@@ -1,0 +1,4 @@
+rootProject.name = 'vk-java-sdk'
+include 'sdk'
+include 'examples'
+

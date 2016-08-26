@@ -1,0 +1,292 @@
+package com.vk.api.sdk.client;
+
+import com.vk.api.sdk.queries.Field;
+
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
+import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static java.util.Arrays.asList;
+
+/**
+ * Query builder for API request
+ */
+public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
+
+    private final Map<String, String> params = new HashMap<>();
+
+    private String method;
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param method method name
+     * @param type   type of method response
+     */
+    public AbstractQueryBuilder(VkApiClient client, String method, Type type) {
+        super(client.getEndpoint() + method, client.getTransportClient(), client.getGson(), type);
+        this.method = method;
+        version(client.getVersion());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client   VK API client
+     * @param endpoint API endpoint
+     * @param method   method name
+     * @param type     type of method response
+     */
+    public AbstractQueryBuilder(VkApiClient client, String endpoint, String method, Type type) {
+        super(endpoint + method, client.getTransportClient(), client.getGson(), type);
+        version(client.getVersion());
+    }
+
+    /**
+     * Convert boolean value to integer flag
+     *
+     * @param param value
+     * @return integer flag
+     */
+    private static String boolAsParam(boolean param) {
+        return param ? "1" : "0";
+    }
+
+    /**
+     * Build request parameter map to query
+     *
+     * @param params parameters
+     * @return string query
+     */
+    private static String mapToGetString(Map<String, String> params) {
+        return params.entrySet().stream()
+                .map(entry -> entry.getKey() + "=" + (entry.getValue() != null ? escape(entry.getValue()) : ""))
+                .collect(Collectors.joining("&"));
+    }
+
+    /**
+     * Encode request data
+     *
+     * @param data request data
+     * @return encoded data
+     */
+    private static String escape(String data) {
+        try {
+            return URLEncoder.encode(data, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    /**
+     * Set access token
+     *
+     * @param value access token
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected T accessToken(String value) {
+        return unsafeParam("access_token", value);
+    }
+
+    /**
+     * Set lang
+     *
+     * @param value lang
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T lang(Lang value) {
+        return unsafeParam("lang", value.getValue());
+    }
+
+    /**
+     * Set version
+     *
+     * @param value version
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected T version(String value) {
+        return unsafeParam("v", value);
+    }
+
+
+    /**
+     * Set captcha sid
+     *
+     * @param value captcha sid
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T captchaSid(String value) {
+        return unsafeParam("captcha_sid", value);
+    }
+
+    /**
+     * Set captcha key
+     *
+     * @param value captcha key
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T captchaKey(String value) {
+        return unsafeParam("captcha_key", value);
+    }
+
+    /**
+     * Set confirmation
+     *
+     * @param value confirm
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T confirm(Boolean value) {
+        return unsafeParam("confirm", value);
+    }
+
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, String value) {
+        params.put(key, value);
+        return getThis();
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, int value) {
+        return unsafeParam(key, Integer.toString(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, boolean value) {
+        return unsafeParam(key, boolAsParam(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, Collection<?> value) {
+        return unsafeParam(key, value.stream().map(Objects::toString).collect(Collectors.joining(",")));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return
+     */
+    public <U> T unsafeParam(String key, U... value) {
+        return unsafeParam(key, asList(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, int[] value) {
+        return unsafeParam(key, IntStream.of(value).mapToObj(Integer::toString).collect(Collectors.joining(",")));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, double value) {
+        return unsafeParam(key, Double.toString(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, Enum<?> value) {
+        return unsafeParam(key, value.ordinal());
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key    name of parameter
+     * @param fields value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, Field... fields) {
+        return unsafeParam(key, Arrays.stream(fields).map(Field::getValue).collect(Collectors.joining(",")));
+    }
+
+    @Override
+    protected String getBody() {
+        return mapToGetString(build());
+    }
+
+    /**
+     * Get reference to this object
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected abstract T getThis();
+
+    /**
+     * Get list of required parameter names
+     *
+     * @return list of names
+     */
+    protected abstract Collection<String> essentialKeys();
+
+    /**
+     * Get map of parameter values
+     *
+     * @return map of values
+     */
+    public Map<String, String> build() {
+        if (!params.keySet().containsAll(essentialKeys())) {
+            throw new IllegalArgumentException("Not all the keys are passed: essential keys are " + essentialKeys());
+        }
+
+        return Collections.unmodifiableMap(params);
+    }
+
+    /**
+     * Get method name
+     *
+     * @return method name
+     */
+    public String getMethod() {
+        return method;
+    }
+}

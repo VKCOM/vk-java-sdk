@@ -1,0 +1,142 @@
+package com.vk.api.sdk.queries.photos;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.objects.photos.responses.GetCommentsExtendedResponse;
+import com.vk.api.sdk.queries.Field;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Query for Photos.getComments method
+ */
+public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<PhotosGetCommentsQueryWithExtended, GetCommentsExtendedResponse> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param photoId value of "photo id" parameter.
+     */
+    public PhotosGetCommentsQueryWithExtended(VkApiClient client, Actor actor, int photoId) {
+        super(client, "photos.getComments", GetCommentsExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        photoId(photoId);
+        extended(true);
+    }
+
+    /**
+     * ID of the user or community that owns the photo.
+     *
+     * @param value value of "owner id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended ownerId(Integer value) {
+        return unsafeParam("owner_id", value);
+    }
+
+    /**
+     * Photo ID.
+     *
+     * @param value value of "photo id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected PhotosGetCommentsQueryWithExtended photoId(int value) {
+        return unsafeParam("photo_id", value);
+    }
+
+    /**
+     * ''1'' - to return an additional "likes" field
+     * ''0'' - (default)
+     *
+     * @param value value of "need likes" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended needLikes(Boolean value) {
+        return unsafeParam("need_likes", value);
+    }
+
+    /**
+     * Set start comment id
+     *
+     * @param value value of "start comment id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended startCommentId(Integer value) {
+        return unsafeParam("start_comment_id", value);
+    }
+
+    /**
+     * Offset needed to return a specific subset of comments. By default, ''0''.
+     *
+     * @param value value of "offset" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * Number of comments to return.
+     *
+     * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended count(Integer value) {
+        return unsafeParam("count", value);
+    }
+
+    /**
+     * Sort order:
+     * ''asc'' - old first
+     * ''desc'' - new first
+     *
+     * @param value value of "sort" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended sort(String value) {
+        return unsafeParam("sort", value);
+    }
+
+    /**
+     * Set access key
+     *
+     * @param value value of "access key" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended accessKey(String value) {
+        return unsafeParam("access_key", value);
+    }
+
+    /**
+     * Set extended
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected PhotosGetCommentsQueryWithExtended extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended fields(Field... value) {
+        return unsafeParam("fields", value);
+    }
+
+    @Override
+    protected PhotosGetCommentsQueryWithExtended getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Arrays.asList("photo_id", "access_token");
+    }
+}

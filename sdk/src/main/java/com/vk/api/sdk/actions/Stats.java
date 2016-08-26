@@ -1,0 +1,35 @@
+package com.vk.api.sdk.actions;
+
+import com.vk.api.sdk.client.AbstractAction;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.queries.stats.StatsGetPostReachQuery;
+import com.vk.api.sdk.queries.stats.StatsGetQuery;
+import com.vk.api.sdk.queries.stats.StatsTrackVisitorQuery;
+
+/**
+ * List of Stats methods
+ */
+public class Stats extends AbstractAction {
+    public Stats(VkApiClient client) {
+        super(client);
+    }
+
+    /**
+     * Returns statistics of a community or an application.
+     */
+    public StatsGetQuery get(Actor actor) {
+        return new StatsGetQuery(getClient(), actor);
+    }
+
+    public StatsTrackVisitorQuery trackVisitor(Actor actor) {
+        return new StatsTrackVisitorQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns stats for a wall post.
+     */
+    public StatsGetPostReachQuery getPostReach(Actor actor, int ownerId, int postId) {
+        return new StatsGetPostReachQuery(getClient(), actor, ownerId, postId);
+    }
+}

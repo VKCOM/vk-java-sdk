@@ -1,0 +1,116 @@
+package com.vk.api.sdk.queries.photos;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.objects.photos.Photo;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Query for Photos.save method
+ */
+public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<Photo>> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public PhotosSaveQuery(VkApiClient client, Actor actor) {
+        super(client, "photos.save", Utils.buildParametrizedType(List.class, Photo.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * ID of the album to save photos to.
+     *
+     * @param value value of "album id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery albumId(Integer value) {
+        return unsafeParam("album_id", value);
+    }
+
+    /**
+     * ID of the community to save photos to.
+     *
+     * @param value value of "group id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Parameter returned when photos are uploaded to server.
+     *
+     * @param value value of "server" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery server(Integer value) {
+        return unsafeParam("server", value);
+    }
+
+    /**
+     * Parameter returned when photos are uploaded to server.
+     *
+     * @param value value of "photos list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery photosList(String value) {
+        return unsafeParam("photos_list", value);
+    }
+
+    /**
+     * Parameter returned when photos are uploaded to server.
+     *
+     * @param value value of "hash" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery hash(String value) {
+        return unsafeParam("hash", value);
+    }
+
+    /**
+     * Geographical latitude, in degrees (from ''-90'' to ''90'').
+     *
+     * @param value value of "latitude" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery latitude(Float value) {
+        return unsafeParam("latitude", value);
+    }
+
+    /**
+     * Geographical longitude, in degrees (from ''-180'' to ''180'').
+     *
+     * @param value value of "longitude" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery longitude(Float value) {
+        return unsafeParam("longitude", value);
+    }
+
+    /**
+     * Text describing the photo. 2048 digits max.
+     *
+     * @param value value of "caption" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveQuery caption(String value) {
+        return unsafeParam("caption", value);
+    }
+
+    @Override
+    protected PhotosSaveQuery getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Arrays.asList("access_token");
+    }
+}

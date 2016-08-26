@@ -1,0 +1,84 @@
+package com.vk.api.sdk.queries.video;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.objects.base.responses.OkResponse;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Query for Video.editAlbum method
+ */
+public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuery, OkResponse> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param albumId value of "album id" parameter. Minimum is 0.
+     * @param title   value of "title" parameter.
+     */
+    public VideoEditAlbumQuery(VkApiClient client, Actor actor, int albumId, String title) {
+        super(client, "video.editAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        albumId(albumId);
+        title(title);
+    }
+
+    /**
+     * Community ID (if the album edited is owned by a community).
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditAlbumQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Album ID.
+     *
+     * @param value value of "album id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected VideoEditAlbumQuery albumId(int value) {
+        return unsafeParam("album_id", value);
+    }
+
+    /**
+     * New album title.
+     *
+     * @param value value of "title" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected VideoEditAlbumQuery title(String value) {
+        return unsafeParam("title", value);
+    }
+
+    /**
+     * New access permissions for the album.
+     * Possible values:
+     * ''0'' - all users;
+     * ''1'' - friends only;
+     * ''2'' - friends and friends of friends;
+     * ''3'' - "only me".
+     *
+     * @param value value of "privacy" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditAlbumQuery privacy(String... value) {
+        return unsafeParam("privacy", value);
+    }
+
+    @Override
+    protected VideoEditAlbumQuery getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Arrays.asList("album_id", "title", "access_token");
+    }
+}

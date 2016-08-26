@@ -1,0 +1,98 @@
+package com.vk.api.sdk.queries.users;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.objects.users.responses.GetSubscriptionsExtendedResponse;
+import com.vk.api.sdk.queries.Field;
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Query for Users.getSubscriptions method
+ */
+public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder<UsersGetSubscriptionsQueryWithExtended, GetSubscriptionsExtendedResponse> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public UsersGetSubscriptionsQueryWithExtended(VkApiClient client, Actor actor) {
+        super(client, "users.getSubscriptions", GetSubscriptionsExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        extended(true);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     */
+    public UsersGetSubscriptionsQueryWithExtended(VkApiClient client) {
+        super(client, "users.getSubscriptions", GetSubscriptionsExtendedResponse.class);
+        extended(true);
+    }
+
+    /**
+     * User ID.
+     *
+     * @param value value of "user id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQueryWithExtended userId(Integer value) {
+        return unsafeParam("user_id", value);
+    }
+
+    /**
+     * ''1'' - to return a combined list of users and communities
+     * ''0'' - to return separate lists of users and communities (default)
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected UsersGetSubscriptionsQueryWithExtended extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * Offset needed to return a specific subset of subscriptions.
+     *
+     * @param value value of "offset" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQueryWithExtended offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * Number of users and communities to return.
+     *
+     * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQueryWithExtended count(Integer value) {
+        return unsafeParam("count", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQueryWithExtended fields(Field... value) {
+        return unsafeParam("fields", value);
+    }
+
+    @Override
+    protected UsersGetSubscriptionsQueryWithExtended getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Collections.EMPTY_LIST;
+    }
+}

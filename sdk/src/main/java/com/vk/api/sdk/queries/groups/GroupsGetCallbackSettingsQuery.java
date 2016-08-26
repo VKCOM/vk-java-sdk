@@ -1,0 +1,47 @@
+package com.vk.api.sdk.queries.groups;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackSettingsResponse;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Query for Groups.getCallbackSettings method
+ */
+public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsGetCallbackSettingsQuery, GetCallbackSettingsResponse> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
+     */
+    public GroupsGetCallbackSettingsQuery(VkApiClient client, Actor actor, int groupId) {
+        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Community ID.
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected GroupsGetCallbackSettingsQuery groupId(int value) {
+        return unsafeParam("group_id", value);
+    }
+
+    @Override
+    protected GroupsGetCallbackSettingsQuery getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Arrays.asList("group_id", "access_token");
+    }
+}
