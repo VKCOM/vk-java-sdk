@@ -77,6 +77,11 @@ public abstract class ApiRequest<T> {
         }
 
         JsonElement response = json.get("response");
+
+        if (!json.has("response")) { // for Client Credentials Flow response
+            response = json;
+        }
+
         try {
             return gson.fromJson(response, responseClass);
         } catch (JsonSyntaxException e) {
