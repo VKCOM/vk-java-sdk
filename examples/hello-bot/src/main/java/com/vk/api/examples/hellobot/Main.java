@@ -51,7 +51,8 @@ public class Main {
 
     private static Properties readProperties() throws FileNotFoundException {
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
-        if (inputStream == null) throw new FileNotFoundException("property file '" + PROPERTIES_FILE + "' not found in the classpath");
+        if (inputStream == null)
+            throw new FileNotFoundException("property file '" + PROPERTIES_FILE + "' not found in the classpath");
 
         try {
             Properties properties = new Properties();

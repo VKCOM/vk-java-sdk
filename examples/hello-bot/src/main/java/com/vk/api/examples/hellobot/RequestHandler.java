@@ -20,7 +20,7 @@ class RequestHandler extends AbstractHandler {
     private final BotRequestHandler botRequestHandler;
     private final String confirmationCode;
 
-     RequestHandler(BotRequestHandler handler, String confirmationCode) {
+    RequestHandler(BotRequestHandler handler, String confirmationCode) {
         this.botRequestHandler = handler;
         this.confirmationCode = confirmationCode;
     }
