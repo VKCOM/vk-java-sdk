@@ -45,7 +45,7 @@ public class HttpTransportClient implements TransportClient {
     private static HttpTransportClient instance;
     private static HttpClient httpClient;
 
-    private HttpTransportClient() {
+    public HttpTransportClient() {
         CookieStore cookieStore = new BasicCookieStore();
         RequestConfig requestConfig = RequestConfig.custom()
                 .setSocketTimeout(SOCKET_TIMEOUT_MS)

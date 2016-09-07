@@ -37,9 +37,6 @@ import com.vk.api.sdk.actions.Videos;
 import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
 
-/**
- * Created by tsivarev on 21.07.16.
- */
 public class VkApiClient {
 
     private static final String API_VERSION = "5.53";
@@ -47,6 +44,10 @@ public class VkApiClient {
 
     private TransportClient transportClient;
     private Gson gson;
+
+    public VkApiClient(TransportClient transportClient) {
+        this(transportClient, new Gson());
+    }
 
     public VkApiClient(TransportClient transportClient, Gson gson) {
         this.transportClient = transportClient;
