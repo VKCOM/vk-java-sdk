@@ -1,0 +1,49 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+group 'com.vk.api.examples'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+apply plugin:'application'
+mainClassName = "com.vk.api.examples.hellobot.Main"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    log4jVersion = '2.5'
+    gsonVersion = '2.6.2'
+    httpCoreVersion = '4.4.4'
+    httpClientVersion = '4.5.2'
+    jettyVersion = '9.3.11.v20160721'
+    jsonVersion = '20160810'
+}
+
+dependencies {
+    compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: httpCoreVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
+    compile group: 'org.json', name: 'json', version: jsonVersion
+    compile project(":sdk")
+}
+
+processResources {
+    eachFile { details ->
+        if (details.name.endsWith('.properties')) {
+            details.filter(ReplaceTokens, tokens: [
+                    'groupId'          : groupId,
+                    'token'            : token,
+                    'confirmationCode' : confirmationCode,
+            ])
+        }
+    }
+}
