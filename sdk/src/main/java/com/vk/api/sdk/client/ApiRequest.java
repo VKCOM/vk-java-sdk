@@ -76,10 +76,9 @@ public abstract class ApiRequest<T> {
             throw exception;
         }
 
-        JsonElement response = json.get("response");
-
-        if (!json.has("response")) { // for Client Credentials Flow response
-            response = json;
+        JsonElement response = json;
+        if (json.has("response")) {
+            response = json.get("response");
         }
 
         try {
