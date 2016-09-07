@@ -22,6 +22,10 @@ ext {
     httpClientVersion = '4.5.2'
     jettyVersion = '9.3.11.v20160721'
     jsonVersion = '20160810'
+
+    groupId = '1';
+    token = 'dummy_token';
+    confirmationCode = 'dummy_confirmation_code';
 }
 
 dependencies {
