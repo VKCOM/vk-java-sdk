@@ -37,7 +37,7 @@ public class MineTasksCommand extends VkCommand {
         String msg = "";
         int index = 1;
         for (Issue issue : issues) {
-            String url = "(" + Application.ytHost() + "/issues/" + issue.getId() + ")";
+            String url = "(" + Application.ytHost() + "/issue/" + issue.getId() + ")";
             String summary = issue.getFieldValue("summary");
             String description = issue.getFieldValue("description");
             String title = summary == null || summary.isEmpty() ? description.substring(0, Math.min(description.length(), 100)) + "..." : summary;

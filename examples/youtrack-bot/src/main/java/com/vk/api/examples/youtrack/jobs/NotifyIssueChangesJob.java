@@ -144,7 +144,7 @@ public class NotifyIssueChangesJob implements Job {
     }
 
     private String newIssueMessage(Issue issue) {
-        String url = Application.ytHost() + "/issues/" + issue.getId();
+        String url = Application.ytHost() + "/issue/" + issue.getId();
         String summary = issue.getFieldValue("summary") != null ? issue.getFieldValue("summary") : "";
         String description = issue.getFieldValue("description") != null ? issue.getFieldValue("description") : "";
         String title = summary.isEmpty() ? description.substring(0, Math.min(description.length(), 100)) + "..." : summary;
@@ -170,7 +170,7 @@ public class NotifyIssueChangesJob implements Job {
             changes += "\n\n";
         }
 
-        String url = Application.ytHost() + "/issues/" + issue.getId();
+        String url = Application.ytHost() + "/issue/" + issue.getId();
         String summary = issue.getFieldValue("summary") != null ? issue.getFieldValue("summary") : "";
         String description = issue.getFieldValue("description") != null ? issue.getFieldValue("description") : "";
         String title = summary.isEmpty() ? description.substring(0, Math.min(description.length(), 100)) + "..." : summary;

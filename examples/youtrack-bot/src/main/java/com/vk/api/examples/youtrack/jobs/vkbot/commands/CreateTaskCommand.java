@@ -27,7 +27,7 @@ public class CreateTaskCommand extends VkCommand {
 
     private static String issue(Issue issue) {
         String changes = "";
-        String url = Application.ytHost() + "/issues/" + issue.getId();
+        String url = Application.ytHost() + "/issue/" + issue.getId();
         String summary = issue.getFieldValue("summary") != null ? issue.getFieldValue("summary") : "";
         String description = issue.getFieldValue("description") != null ? issue.getFieldValue("description") : "";
         String title = summary.isEmpty() ? description.substring(0, Math.min(description.length(), 100)) + "..." : summary;
