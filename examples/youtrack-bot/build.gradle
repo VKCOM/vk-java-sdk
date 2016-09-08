@@ -3,8 +3,10 @@ import org.apache.tools.ant.filters.ReplaceTokens
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
+mainClassName = "com.vk.api.examples.youtrack.Application"
 
 repositories {
     mavenCentral()
@@ -37,7 +39,6 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: httpCoreVersion
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
     compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
-
     testCompile group: 'org.testng', name: 'testng', version: testngVersion
 }
 
