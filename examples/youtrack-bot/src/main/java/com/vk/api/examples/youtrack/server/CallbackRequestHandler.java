@@ -38,6 +38,10 @@ public class CallbackRequestHandler extends AbstractHandler {
         }
 
         CallbackVk callback = gson.fromJson(request.getReader(), CallbackVk.class);
+        if (callback == null) {
+            return;
+        }
+
         switch (callback.getType()) {
             case MESSAGE_NEW:
                 Message message = gson.fromJson(callback.getObject(), Message.class);

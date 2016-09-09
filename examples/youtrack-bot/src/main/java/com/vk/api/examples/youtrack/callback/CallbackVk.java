@@ -16,6 +16,9 @@ public class CallbackVk {
     @SerializedName("object")
     private JsonObject object;
 
+    @SerializedName("group_id")
+    private Integer groupId;
+
     public CallbackVkType getType() {
         return type;
     }
@@ -24,18 +27,23 @@ public class CallbackVk {
         return object;
     }
 
+    public Integer getGroupId() {
+        return groupId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackVk callbackVk = (CallbackVk) o;
-        return type == callbackVk.type &&
-                Objects.equals(object, callbackVk.object);
+        CallbackVk that = (CallbackVk) o;
+        return type == that.type &&
+                Objects.equals(object, that.object) &&
+                Objects.equals(groupId, that.groupId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, object);
+        return Objects.hash(type, object, groupId);
     }
 
     @Override
@@ -43,6 +51,7 @@ public class CallbackVk {
         final StringBuilder sb = new StringBuilder("CallbackVk{");
         sb.append("type=").append(type);
         sb.append(", object=").append(object);
+        sb.append(", groupId=").append(groupId);
         sb.append('}');
         return sb.toString();
     }

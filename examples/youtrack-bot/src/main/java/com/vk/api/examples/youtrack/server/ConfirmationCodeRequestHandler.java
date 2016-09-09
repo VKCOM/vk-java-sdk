@@ -39,6 +39,10 @@ public class ConfirmationCodeRequestHandler extends AbstractHandler {
         }
 
         CallbackVk callback = gson.fromJson(request.getReader(), CallbackVk.class);
+        if (callback == null) {
+            return;
+        }
+
         if (callback.getType() != CallbackVkType.CONFIRMATION) {
             return;
         }
