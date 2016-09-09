@@ -31,7 +31,7 @@ public class CallbackRequestHandler extends AbstractHandler {
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String requestBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        LOG.info(requestBody);
+        System.out.println(requestBody);
 
         if (!"POST".equalsIgnoreCase(request.getMethod())) {
             return;
