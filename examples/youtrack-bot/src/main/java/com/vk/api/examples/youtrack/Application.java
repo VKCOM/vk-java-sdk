@@ -74,12 +74,14 @@ public class Application {
     }
 
     private static void initServer(Properties properties) throws Exception {
+        Integer port = Integer.valueOf(properties.getProperty("server.port"));
+        String host = properties.getProperty("server.host");
         HandlerCollection handlers = new HandlerCollection();
 
         ConfirmationCodeRequestHandler confirmationCodeRequestHandler = null;
 
         GetCallbackServerSettingsResponse getCallbackServerSettingsResponse = vk.groups().getCallbackServerSettings(actor, actor.getGroupId()).execute();
-        if (!getCallbackServerSettingsResponse.getServerUrl().equals(properties.getProperty("server.host"))) {
+        if (!getCallbackServerSettingsResponse.getServerUrl().equals(host)) {
             GetCallbackConfirmationCodeResponse getCallbackConfirmationCodeResponse = vk().groups().getCallbackConfirmationCode(actor, actor.getGroupId()).execute();
             String confirmationCode = getCallbackConfirmationCodeResponse.getCode();
             confirmationCodeRequestHandler = new ConfirmationCodeRequestHandler(confirmationCode);
@@ -95,7 +97,6 @@ public class Application {
             handlers.setHandlers(new Handler[]{callbackRequestHandler}); //temp solution
         }
 
-        Integer port = Integer.valueOf(properties.getProperty("server.port"));
         Server server = new Server(port);
         server.setHandler(handlers);
 
@@ -103,7 +104,7 @@ public class Application {
 
         for (int i = 0; i < 10; i++) {
             SetCallbackServerResponse response = vk.groups().setCallbackServer(actor, actor.getGroupId())
-                    .serverUrl(properties.getProperty("server.host"))
+                    .serverUrl(host)
                     .execute();
 
             if (response.getStateCode() == SetCallbackServerResponseStateCode.FAILED) {
