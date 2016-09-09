@@ -22,6 +22,7 @@ ext {
     commonsCollectionsVersion = '4.1'
     httpCoreVersion = '4.4.4'
     httpClientVersion = '4.5.2'
+    jettyVersion = '9.3.11.v20160721'
     testngVersion = '6.9.10'
 }
 
@@ -39,6 +40,7 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpcore', version: httpCoreVersion
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
     compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
     testCompile group: 'org.testng', name: 'testng', version: testngVersion
 }
 
@@ -63,6 +65,9 @@ processResources {
 
                     'vk.group.id'             : vkGroupId,
                     'vk.group.token'          : vkGroupToken,
+
+                    'server.host'             : serverHost,
+                    'server.port'             : serverPort,
 
                     'data.global'             : dataPath,
 

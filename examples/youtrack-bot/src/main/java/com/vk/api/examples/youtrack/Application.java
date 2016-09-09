@@ -6,7 +6,8 @@ import com.vk.api.examples.youtrack.jobs.Job;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
 import com.vk.api.examples.youtrack.jobs.NewsJob;
 import com.vk.api.examples.youtrack.jobs.NotifyIssueChangesJob;
-import com.vk.api.examples.youtrack.jobs.vkbot.VkMessagesJob;
+import com.vk.api.examples.youtrack.server.CallbackRequestHandler;
+import com.vk.api.examples.youtrack.server.ConfirmationCodeRequestHandler;
 import com.vk.api.examples.youtrack.storage.DataStorage;
 import com.vk.api.examples.youtrack.storage.LangStorage;
 import com.vk.api.examples.youtrack.storage.MembersStorage;
@@ -18,8 +19,15 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackConfirmationCodeResponse;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackServerSettingsResponse;
+import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponse;
+import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponseStateCode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.HandlerCollection;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,14 +62,62 @@ public class Application {
         run();
     }
 
-    private static void init() throws IOException, ClientException, ApiException {
+    private static void init() throws Exception {
         Properties properties = loadConfiguration();
 
         version = properties.getProperty("version");
 
         initClients(properties);
         initData(properties);
+        initServer(properties);
         initJobs();
+    }
+
+    private static void initServer(Properties properties) throws Exception {
+        HandlerCollection handlers = new HandlerCollection();
+
+        ConfirmationCodeRequestHandler confirmationCodeRequestHandler = null;
+
+        GetCallbackServerSettingsResponse getCallbackServerSettingsResponse = vk.groups().getCallbackServerSettings(actor, actor.getGroupId()).execute();
+        if (!getCallbackServerSettingsResponse.getServerUrl().equals(properties.getProperty("server.host"))) {
+            GetCallbackConfirmationCodeResponse getCallbackConfirmationCodeResponse = vk().groups().getCallbackConfirmationCode(actor, actor.getGroupId()).execute();
+            String confirmationCode = getCallbackConfirmationCodeResponse.getCode();
+            confirmationCodeRequestHandler = new ConfirmationCodeRequestHandler(confirmationCode);
+        }
+
+        vk.groups().setCallbackSettings(actor, actor.getGroupId()).messageNew(true).execute();
+
+        CallbackRequestHandler callbackRequestHandler = new CallbackRequestHandler();
+
+        if (confirmationCodeRequestHandler != null) {
+            handlers.setHandlers(new Handler[]{confirmationCodeRequestHandler, callbackRequestHandler});
+        } else {
+            handlers.setHandlers(new Handler[]{callbackRequestHandler}); //temp solution
+        }
+
+        Integer port = Integer.valueOf(properties.getProperty("server.port"));
+        Server server = new Server(port);
+        server.setHandler(handlers);
+
+        server.start();
+
+        for (int i = 0; i < 10; i++) {
+            SetCallbackServerResponse response = vk.groups().setCallbackServer(actor, actor.getGroupId())
+                    .serverUrl(properties.getProperty("server.host"))
+                    .execute();
+
+            if (response.getStateCode() == SetCallbackServerResponseStateCode.FAILED) {
+                throw new IllegalStateException("Can't set callback server");
+            }
+
+            if (response.getStateCode() == SetCallbackServerResponseStateCode.OK) {
+                return;
+            }
+
+            TimeUnit.SECONDS.sleep(1);
+        }
+
+        server.join();
     }
 
     private static void initClients(Properties properties) throws IOException {
@@ -79,7 +135,7 @@ public class Application {
 
     private static void initJobs() throws ClientException, ApiException {
         jobs.add(new MembersUpdateJob());
-        jobs.add(new VkMessagesJob());
+//        jobs.add(new VkMessagesJob());
         jobs.add(new NewsJob());
         jobs.add(new NotifyIssueChangesJob());
     }
