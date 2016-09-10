@@ -1,4 +1,4 @@
-package com.vk.api.examples.youtrack.jobs.vkbot.commands;
+package com.vk.api.examples.youtrack.callback.commands;
 
 import com.vk.api.examples.youtrack.storage.Statistic;
 import com.vk.api.examples.youtrack.storage.users.YouTrackUsersStorage;

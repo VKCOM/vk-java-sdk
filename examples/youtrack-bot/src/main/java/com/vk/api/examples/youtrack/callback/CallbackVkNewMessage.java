@@ -1,47 +1,26 @@
-package com.vk.api.examples.youtrack.jobs.vkbot;
+package com.vk.api.examples.youtrack.callback;
 
-import com.vk.api.examples.youtrack.Application;
-import com.vk.api.examples.youtrack.jobs.Job;
+import com.vk.api.examples.youtrack.callback.commands.CreateTaskCommand;
+import com.vk.api.examples.youtrack.callback.commands.GetConfigCommand;
+import com.vk.api.examples.youtrack.callback.commands.HelpCommand;
+import com.vk.api.examples.youtrack.callback.commands.LoginCommand;
+import com.vk.api.examples.youtrack.callback.commands.LogoutCommand;
+import com.vk.api.examples.youtrack.callback.commands.MineTasksCommand;
+import com.vk.api.examples.youtrack.callback.commands.SearchTasksCommand;
+import com.vk.api.examples.youtrack.callback.commands.SetConfigCommand;
+import com.vk.api.examples.youtrack.callback.commands.UptimeCommand;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.CreateTaskCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.GetConfigCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.HelpCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.LoginCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.LogoutCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.MineTasksCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.SearchTasksCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.SetConfigCommand;
-import com.vk.api.examples.youtrack.jobs.vkbot.commands.UptimeCommand;
-import com.vk.api.examples.youtrack.storage.DataStorage;
 import com.vk.api.examples.youtrack.storage.Statistic;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.messages.Message;
-import com.vk.api.sdk.objects.messages.responses.GetResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
  * Created by tsivarev on 07.09.16.
  */
-public class VkMessagesJob implements Job {
+public class CallbackVkNewMessage {
 
     private static final Logger LOG = LogManager.getLogger(MembersUpdateJob.class);
-    private static final String LAST_MESSAGE_ID_KEY = "vk.bot.lastMessageId";
-
-    private Integer lastMessageId = 0;
-
-    public VkMessagesJob() throws ClientException, ApiException {
-        lastMessageId = DataStorage.getInstance().getInt(LAST_MESSAGE_ID_KEY);
-        if (lastMessageId == 0) {
-            GetResponse getResponse = Application.vk().messages().get(Application.actor()).out(false).count(1).execute();
-
-            if (!getResponse.getItems().isEmpty()) {
-                lastMessageId = getResponse.getItems().get(0).getId();
-                DataStorage.getInstance().add(LAST_MESSAGE_ID_KEY, String.valueOf(lastMessageId));
-            }
-        }
-    }
 
     private static Integer parseInt(String[] args, int index, int defaultValue) {
         if (args.length <= index) {
@@ -55,20 +34,7 @@ public class VkMessagesJob implements Job {
         }
     }
 
-    @Override
-    public void doJob() throws Exception {
-        GetResponse getResponse = Application.vk().messages().get(Application.actor()).out(false).lastMessageId(lastMessageId).execute();
-        for (Message message : getResponse.getItems()) {
-            parseCmd(message);
-
-            if (lastMessageId < message.getId()) {
-                lastMessageId = message.getId();
-                DataStorage.getInstance().add(LAST_MESSAGE_ID_KEY, lastMessageId);
-            }
-        }
-    }
-
-    private void parseCmd(Message message) {
+    public void parseCmd(Message message) {
         Integer vkId = message.getUserId();
         String[] args = message.getBody().split(" ");
         String command = args[0];

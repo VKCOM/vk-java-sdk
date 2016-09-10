@@ -2,6 +2,7 @@ package com.vk.api.examples.youtrack.server;
 
 import com.google.gson.Gson;
 import com.vk.api.examples.youtrack.callback.CallbackVk;
+import com.vk.api.examples.youtrack.callback.CallbackVkNewMessage;
 import com.vk.api.sdk.objects.messages.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,9 +24,11 @@ public class CallbackRequestHandler extends AbstractHandler {
 
     private final static String OK_BODY = "ok";
     private final Gson gson;
+    private final CallbackVkNewMessage callbackVkNewMessage;
 
     public CallbackRequestHandler() {
         gson = new Gson();
+        callbackVkNewMessage = new CallbackVkNewMessage();
     }
 
     @Override
@@ -43,7 +46,7 @@ public class CallbackRequestHandler extends AbstractHandler {
         switch (callback.getType()) {
             case MESSAGE_NEW:
                 Message message = gson.fromJson(callback.getObject(), Message.class);
-                System.out.println(message);
+                callbackVkNewMessage.parseCmd(message);
                 break;
 
             default:

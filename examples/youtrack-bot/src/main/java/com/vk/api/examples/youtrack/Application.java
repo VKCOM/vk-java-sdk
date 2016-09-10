@@ -136,7 +136,6 @@ public class Application {
 
     private static void initJobs() throws ClientException, ApiException {
         jobs.add(new MembersUpdateJob());
-//        jobs.add(new VkMessagesJob());
         jobs.add(new NewsJob());
         jobs.add(new NotifyIssueChangesJob());
     }
