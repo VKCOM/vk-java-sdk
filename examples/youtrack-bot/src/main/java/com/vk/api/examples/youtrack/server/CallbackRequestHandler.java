@@ -30,14 +30,12 @@ public class CallbackRequestHandler extends AbstractHandler {
 
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String requestBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        System.out.println(requestBody);
-
         if (!"POST".equalsIgnoreCase(request.getMethod())) {
             return;
         }
 
-        CallbackVk callback = gson.fromJson(request.getReader(), CallbackVk.class);
+        String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        CallbackVk callback = gson.fromJson(body, CallbackVk.class);
         if (callback == null) {
             return;
         }
