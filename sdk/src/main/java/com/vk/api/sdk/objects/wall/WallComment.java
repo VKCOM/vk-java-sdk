@@ -34,6 +34,9 @@ public class WallComment {
     @SerializedName("text")
     private String text;
 
+    /**
+     * Likes
+     */
     @SerializedName("likes")
     private LikesInfo likes;
 
@@ -49,6 +52,9 @@ public class WallComment {
     @SerializedName("reply_to_comment")
     private Integer replyToComment;
 
+    /**
+     * Comment attachments
+     */
     @SerializedName("attachments")
     private List<CommentAttachment> attachments;
 

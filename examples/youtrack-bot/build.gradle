@@ -1,0 +1,78 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+mainClassName = "com.vk.api.examples.youtrack.Application"
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    log4jVersion = '2.5'
+    gsonVersion = '2.6.2'
+    guavaVersion = '19.0'
+    commonsLangVersion = '3.4'
+    commonsIOVersion = '2.4'
+    commonsCLIVersion = '1.3.1'
+    commonsCollectionsVersion = '4.1'
+    httpCoreVersion = '4.4.4'
+    httpClientVersion = '4.5.2'
+    jettyVersion = '9.3.11.v20160721'
+    testngVersion = '6.9.10'
+}
+
+dependencies {
+    compile project(":sdk")
+
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3'
+    compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
+    compile group: 'com.google.guava', name: 'guava', version: guavaVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
+    compile group: 'commons-io', name: 'commons-io', version: commonsIOVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: httpCoreVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
+    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
+    testCompile group: 'org.testng', name: 'testng', version: testngVersion
+}
+
+
+processResources {
+    eachFile { details ->
+        if (details.name.endsWith('.properties')) {
+            details.filter(ReplaceTokens, tokens: [
+                    'yt.login'                : ytLogin,
+                    'yt.password'             : ytPassword,
+                    'yt.host'                 : ytHost,
+
+                    'http.keystore.type'      : httpKeyStoreType,
+                    'http.keystore.path'      : httpKeyStorePath,
+                    'http.keystore.password'  : httpKeyStorePassword,
+                    'http.key.password'       : httpKeyPassword,
+
+                    'http.truststore.type'    : httpTrustStoreType,
+                    'http.truststore.path'    : httpTrustStorePath,
+                    'http.truststore.password': httpTrustStorePassword,
+
+
+                    'vk.group.id'             : vkGroupId,
+                    'vk.group.token'          : vkGroupToken,
+
+                    'server.host'             : serverHost,
+                    'server.port'             : serverPort,
+
+                    'data.global'             : dataPath,
+
+                    'version'                 : version,
+            ])
+        }
+    }
+}
