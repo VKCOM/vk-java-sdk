@@ -33,8 +33,8 @@ You will need your application ID (referenced as API_ID in the documentation), s
 Create VkApiClient object using the following code:
 
 ```java
-TransportClient transportClient = HttpTransportClient.getInstance();
-VkApiClient vk = new VkApiClient(transportClient, new Gson());
+TransportClient transportClient = new HttpTransportClient();
+VkApiClient vk = new VkApiClient(transportClient);
 ```
 
 Note that you can use your own  transport client. We use [Apache Http Client](https://hc.apache.org/).
