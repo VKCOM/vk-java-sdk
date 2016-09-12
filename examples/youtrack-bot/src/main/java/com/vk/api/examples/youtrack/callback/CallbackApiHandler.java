@@ -11,6 +11,7 @@ import com.vk.api.examples.youtrack.callback.commands.SetConfigCommand;
 import com.vk.api.examples.youtrack.callback.commands.UptimeCommand;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
 import com.vk.api.examples.youtrack.storage.Statistic;
+import com.vk.api.sdk.callback.CallbackApi;
 import com.vk.api.sdk.objects.messages.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by tsivarev on 07.09.16.
  */
-public class CallbackVkNewMessage {
+public class CallbackApiHandler extends CallbackApi {
 
     private static final Logger LOG = LogManager.getLogger(MembersUpdateJob.class);
 
@@ -34,7 +35,8 @@ public class CallbackVkNewMessage {
         }
     }
 
-    public void parseCmd(Message message) {
+    @Override
+    public void messageNew(Integer groupId, Message message) {
         Integer vkId = message.getUserId();
         String[] args = message.getBody().split(" ");
         String command = args[0];

@@ -1,4 +1,4 @@
-package com.vk.api.examples.youtrack.callback;
+package com.vk.api.sdk.callback.objects;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
@@ -8,10 +8,10 @@ import java.util.Objects;
 /**
  * Created by Anton Tsivarev on 09.09.16.
  */
-public class CallbackVk {
+public class CallbackMessageBase {
 
     @SerializedName("type")
-    private CallbackVkType type;
+    private CallbackMessageType type;
 
     @SerializedName("object")
     private JsonObject object;
@@ -19,7 +19,7 @@ public class CallbackVk {
     @SerializedName("group_id")
     private Integer groupId;
 
-    public CallbackVkType getType() {
+    public CallbackMessageType getType() {
         return type;
     }
 
@@ -35,7 +35,7 @@ public class CallbackVk {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackVk that = (CallbackVk) o;
+        CallbackMessageBase that = (CallbackMessageBase) o;
         return type == that.type &&
                 Objects.equals(object, that.object) &&
                 Objects.equals(groupId, that.groupId);
@@ -48,7 +48,7 @@ public class CallbackVk {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CallbackVk{");
+        final StringBuilder sb = new StringBuilder("CallbackMessageBase{");
         sb.append("type=").append(type);
         sb.append(", object=").append(object);
         sb.append(", groupId=").append(groupId);

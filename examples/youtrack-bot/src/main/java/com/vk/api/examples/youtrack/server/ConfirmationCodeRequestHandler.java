@@ -1,8 +1,8 @@
 package com.vk.api.examples.youtrack.server;
 
 import com.google.gson.Gson;
-import com.vk.api.examples.youtrack.callback.CallbackVk;
-import com.vk.api.examples.youtrack.callback.CallbackVkType;
+import com.vk.api.sdk.callback.objects.CallbackMessageBase;
+import com.vk.api.sdk.callback.objects.CallbackMessageType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Request;
@@ -36,12 +36,12 @@ public class ConfirmationCodeRequestHandler extends AbstractHandler {
         }
 
         String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        CallbackVk callback = gson.fromJson(body, CallbackVk.class);
+        CallbackMessageBase callback = gson.fromJson(body, CallbackMessageBase.class);
         if (callback == null) {
             return;
         }
 
-        if (callback.getType() != CallbackVkType.CONFIRMATION) {
+        if (callback.getType() != CallbackMessageType.CONFIRMATION) {
             return;
         }
 

@@ -1,8 +1,8 @@
 package com.vk.api.examples.youtrack;
 
 import com.google.gson.Gson;
-import com.vk.api.examples.youtrack.callback.CallbackVk;
-import com.vk.api.examples.youtrack.callback.CallbackVkType;
+import com.vk.api.sdk.callback.objects.CallbackMessageBase;
+import com.vk.api.sdk.callback.objects.CallbackMessageType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,9 +15,9 @@ public class ParseJsonTest {
     public void testCallback() {
         Gson gson = new Gson();
         String json = "{\"type\":\"confirmation\",\"group_id\":1}";
-        CallbackVk callback = gson.fromJson(json, CallbackVk.class);
+        CallbackMessageBase callback = gson.fromJson(json, CallbackMessageBase.class);
         Assert.assertNotNull(callback);
-        Assert.assertEquals(callback.getType(), CallbackVkType.CONFIRMATION);
+        Assert.assertEquals(callback.getType(), CallbackMessageType.CONFIRMATION);
         Assert.assertEquals(callback.getGroupId(), new Integer(1));
     }
 }
