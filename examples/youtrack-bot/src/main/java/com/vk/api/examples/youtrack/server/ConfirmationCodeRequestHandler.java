@@ -1,7 +1,9 @@
 package com.vk.api.examples.youtrack.server;
 
 import com.google.gson.Gson;
-import com.vk.api.sdk.callback.objects.CallbackMessageBase;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import com.vk.api.sdk.callback.objects.CallbackMessage;
 import com.vk.api.sdk.callback.objects.CallbackMessageType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.stream.Collectors;
 
 /**
@@ -36,7 +39,9 @@ public class ConfirmationCodeRequestHandler extends AbstractHandler {
         }
 
         String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        CallbackMessageBase callback = gson.fromJson(body, CallbackMessageBase.class);
+        Type typeOfClass = new TypeToken<CallbackMessage<JsonObject>>() {
+        }.getType();
+        CallbackMessage<JsonObject> callback = gson.fromJson(body, typeOfClass);
         if (callback == null) {
             return;
         }

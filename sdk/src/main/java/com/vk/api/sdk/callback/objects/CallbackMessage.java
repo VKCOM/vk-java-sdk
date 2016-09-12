@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Created by Anton Tsivarev on 12.09.16.
  */
-public abstract class AbstractCallbackMessage<T> {
+public class CallbackMessage<T> {
 
     @SerializedName("type")
     private CallbackMessageType type;
@@ -34,7 +34,7 @@ public abstract class AbstractCallbackMessage<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractCallbackMessage<?> that = (AbstractCallbackMessage<?>) o;
+        CallbackMessage<?> that = (CallbackMessage<?>) o;
         return type == that.type &&
                 Objects.equals(groupId, that.groupId) &&
                 Objects.equals(object, that.object);
@@ -47,7 +47,7 @@ public abstract class AbstractCallbackMessage<T> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("AbstractCallbackMessage{");
+        final StringBuilder sb = new StringBuilder("CallbackMessage{");
         sb.append("type=").append(type);
         sb.append(", groupId=").append(groupId);
         sb.append(", object=").append(object);
