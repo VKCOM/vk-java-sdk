@@ -1,6 +1,5 @@
 package com.vk.api.examples.youtrack.callback;
 
-import com.vk.api.examples.youtrack.callback.commands.CreateTaskCommand;
 import com.vk.api.examples.youtrack.callback.commands.GetConfigCommand;
 import com.vk.api.examples.youtrack.callback.commands.HelpCommand;
 import com.vk.api.examples.youtrack.callback.commands.LoginCommand;
@@ -89,14 +88,6 @@ public class CallbackApiHandler extends CallbackApi {
                 case "uptime":
                     new UptimeCommand(vkId).run();
                     break;
-
-                case "create":
-                    String project = "API";
-                    String text = message.getBody().substring(command.length() + 1);
-                    String description = message.getFwdMessages().isEmpty() ? "" : message.getFwdMessages().get(0).getBody();
-                    new CreateTaskCommand(vkId, project, text, description).run();
-                    break;
-
 
                 default:
                     new HelpCommand(vkId).run();
