@@ -6,7 +6,7 @@ import com.vk.api.sdk.queries.oauth.OAuthServerClientCredentialsFlowQuery;
 import com.vk.api.sdk.queries.oauth.OAuthUserAuthorizationCodeFlowQuery;
 
 /**
- * Created by tsivarev on 25.07.16.
+ * Created by Anton Tsivarev on 25.07.16.
  */
 public class OAuth extends AbstractAction {
 
