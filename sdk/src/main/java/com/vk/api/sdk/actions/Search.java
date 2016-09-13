@@ -9,6 +9,12 @@ import com.vk.api.sdk.queries.search.SearchGetHintsQuery;
  * List of Search methods
  */
 public class Search extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Search(VkApiClient client) {
         super(client);
     }

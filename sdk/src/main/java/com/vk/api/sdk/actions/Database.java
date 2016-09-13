@@ -19,6 +19,12 @@ import com.vk.api.sdk.queries.database.DatabaseGetUniversitiesQuery;
  * List of Database methods
  */
 public class Database extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Database(VkApiClient client) {
         super(client);
     }

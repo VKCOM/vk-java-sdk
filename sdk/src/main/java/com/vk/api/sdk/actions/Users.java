@@ -18,6 +18,12 @@ import com.vk.api.sdk.queries.users.UsersSearchQuery;
  * List of Users methods
  */
 public class Users extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Users(VkApiClient client) {
         super(client);
     }

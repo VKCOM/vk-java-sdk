@@ -11,6 +11,12 @@ import com.vk.api.sdk.queries.storage.StorageSetQuery;
  * List of Storage methods
  */
 public class Storage extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Storage(VkApiClient client) {
         super(client);
     }

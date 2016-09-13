@@ -50,6 +50,12 @@ import com.vk.api.sdk.queries.groups.GroupsUnbanUserQuery;
  * List of Groups methods
  */
 public class Groups extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Groups(VkApiClient client) {
         super(client);
     }

@@ -18,6 +18,12 @@ import com.vk.api.sdk.queries.docs.DocsSearchQuery;
  * List of Docs methods
  */
 public class Docs extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Docs(VkApiClient client) {
         super(client);
     }

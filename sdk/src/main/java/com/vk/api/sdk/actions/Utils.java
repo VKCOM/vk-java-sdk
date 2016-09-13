@@ -11,6 +11,12 @@ import com.vk.api.sdk.queries.utils.UtilsResolveScreenNameQuery;
  * List of Utils methods
  */
 public class Utils extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Utils(VkApiClient client) {
         super(client);
     }

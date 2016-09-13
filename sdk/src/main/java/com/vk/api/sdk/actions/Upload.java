@@ -19,8 +19,13 @@ import java.io.File;
  */
 public class Upload extends AbstractAction {
 
-    public Upload(VkApiClient vkApiClient) {
-        super(vkApiClient);
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
+    public Upload(VkApiClient client) {
+        super(client);
     }
 
     public UploadPhotoQuery photo(String uploadUrl, File file) {

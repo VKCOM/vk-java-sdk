@@ -10,6 +10,12 @@ import com.vk.api.sdk.queries.notifications.NotificationsMarkAsViewedQuery;
  * List of Notifications methods
  */
 public class Notifications extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Notifications(VkApiClient client) {
         super(client);
     }

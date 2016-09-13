@@ -10,6 +10,12 @@ import com.vk.api.sdk.queries.status.StatusSetQuery;
  * List of Status methods
  */
 public class Status extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Status(VkApiClient client) {
         super(client);
     }

@@ -56,6 +56,12 @@ import com.vk.api.sdk.queries.photos.PhotosSearchQuery;
  * List of Photos methods
  */
 public class Photos extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Photos(VkApiClient client) {
         super(client);
     }

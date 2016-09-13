@@ -11,6 +11,12 @@ import com.vk.api.sdk.queries.stats.StatsTrackVisitorQuery;
  * List of Stats methods
  */
 public class Stats extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Stats(VkApiClient client) {
         super(client);
     }

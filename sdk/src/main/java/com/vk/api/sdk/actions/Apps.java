@@ -15,12 +15,21 @@ import com.vk.api.sdk.queries.apps.AppsSendRequestQuery;
  * List of Apps methods
  */
 public class Apps extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Apps(VkApiClient client) {
         super(client);
     }
 
     /**
      * Returns a list of applications (apps) available to users in the App Catalog.
+     *
+     * @param count count of apps
+     * @return query 
      */
     public AppsGetCatalogQuery getCatalog(int count) {
         return new AppsGetCatalogQuery(getClient(), count);
@@ -28,6 +37,10 @@ public class Apps extends AbstractAction {
 
     /**
      * Returns a list of applications (apps) available to users in the App Catalog.
+     *
+     * @param actor vk actor
+     * @param count count of apps
+     * @return query
      */
     public AppsGetCatalogQuery getCatalog(Actor actor, int count) {
         return new AppsGetCatalogQuery(getClient(), actor, count);
@@ -35,6 +48,8 @@ public class Apps extends AbstractAction {
 
     /**
      * Returns applications data.
+     *
+     * @return query
      */
     public AppsGetQuery get() {
         return new AppsGetQuery(getClient());
@@ -42,6 +57,9 @@ public class Apps extends AbstractAction {
 
     /**
      * Returns applications data.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AppsGetQuery get(Actor actor) {
         return new AppsGetQuery(getClient(), actor);
@@ -49,6 +67,10 @@ public class Apps extends AbstractAction {
 
     /**
      * Sends a request to another user in an app that uses VK authorization.
+     *
+     * @param actor vk actor
+     * @param userId user id
+     * @return query
      */
     public AppsSendRequestQuery sendRequest(Actor actor, int userId) {
         return new AppsSendRequestQuery(getClient(), actor, userId);
@@ -56,6 +78,9 @@ public class Apps extends AbstractAction {
 
     /**
      * Deletes all request notifications from the current app.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AppsDeleteAppRequestsQuery deleteAppRequests(Actor actor) {
         return new AppsDeleteAppRequestsQuery(getClient(), actor);
@@ -63,6 +88,9 @@ public class Apps extends AbstractAction {
 
     /**
      * Creates friends list for requests and invites in current app.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AppsGetFriendsListQuery getFriendsList(Actor actor) {
         return new AppsGetFriendsListQuery(getClient(), actor);
@@ -70,6 +98,10 @@ public class Apps extends AbstractAction {
 
     /**
      * Returns players rating in the game.
+     *
+     * @param actor vk actor
+     * @param type leaderboard type
+     * @return query
      */
     public AppsGetLeaderboardQuery getLeaderboard(Actor actor, String type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
@@ -77,6 +109,10 @@ public class Apps extends AbstractAction {
 
     /**
      * Returns user score in app
+     *
+     * @param actor vk actor
+     * @param userId user id
+     * @return query
      */
     public AppsGetScoreQuery getScore(Actor actor, int userId) {
         return new AppsGetScoreQuery(getClient(), actor, userId);

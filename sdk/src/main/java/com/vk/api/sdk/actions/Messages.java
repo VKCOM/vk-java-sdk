@@ -40,6 +40,12 @@ import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
  * List of Messages methods
  */
 public class Messages extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Messages(VkApiClient client) {
         super(client);
     }

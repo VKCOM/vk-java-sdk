@@ -28,12 +28,21 @@ import com.vk.api.sdk.queries.account.AccountUnregisterDeviceQuery;
  * List of Account methods
  */
 public class Account extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Account(VkApiClient client) {
         super(client);
     }
 
     /**
      * Returns non-null values of user counters.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetCountersQuery getCounters(Actor actor) {
         return new AccountGetCountersQuery(getClient(), actor);
@@ -41,6 +50,10 @@ public class Account extends AbstractAction {
 
     /**
      * Sets an application screen name (up to 17 characters), that is shown to the user in the left menu.
+     *
+     * @param actor  vk actor
+     * @param userId user id
+     * @return query
      */
     public AccountSetNameInMenuQuery setNameInMenu(Actor actor, int userId) {
         return new AccountSetNameInMenuQuery(getClient(), actor, userId);
@@ -48,20 +61,29 @@ public class Account extends AbstractAction {
 
     /**
      * Marks the current user as online for 15 minutes.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountSetOnlineQuery setOnline(Actor actor) {
         return new AccountSetOnlineQuery(getClient(), actor);
     }
 
     /**
-     * Marks a current user as Offline.
+     * Marks a current user as offline.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountSetOfflineQuery setOffline(Actor actor) {
         return new AccountSetOfflineQuery(getClient(), actor);
     }
 
     /**
-     * Allows to search the VK users using phone nubmers, e-mail addresses and user IDs on other services.
+     * Allows to search the VK users using phone numbers, e-mail addresses and user IDs on other services.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountLookupContactsQuery lookupContacts(Actor actor, String service) {
         return new AccountLookupContactsQuery(getClient(), actor, service);
@@ -69,6 +91,11 @@ public class Account extends AbstractAction {
 
     /**
      * Subscribes an iOS/Android-based device to receive push notifications
+     *
+     * @param actor    vk actor
+     * @param token    device token
+     * @param deviceId device id
+     * @return query
      */
     public AccountRegisterDeviceQuery registerDevice(Actor actor, String token, String deviceId) {
         return new AccountRegisterDeviceQuery(getClient(), actor, token, deviceId);
@@ -76,6 +103,9 @@ public class Account extends AbstractAction {
 
     /**
      * Unsubscribes a device from push notifications.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountUnregisterDeviceQuery unregisterDevice(Actor actor) {
         return new AccountUnregisterDeviceQuery(getClient(), actor);
@@ -83,6 +113,9 @@ public class Account extends AbstractAction {
 
     /**
      * Mutes in parameters of sent push notifications for the set period of time.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountSetSilenceModeQuery setSilenceMode(Actor actor) {
         return new AccountSetSilenceModeQuery(getClient(), actor);
@@ -90,24 +123,42 @@ public class Account extends AbstractAction {
 
     /**
      * Gets settings of push notifications.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetPushSettingsQuery getPushSettings(Actor actor) {
         return new AccountGetPushSettingsQuery(getClient(), actor);
     }
 
+    /**
+     * Set push of push notifications
+     *
+     * @param actor    vk actor
+     * @param deviceId device id
+     * @return query
+     */
     public AccountSetPushSettingsQuery setPushSettings(Actor actor, String deviceId) {
         return new AccountSetPushSettingsQuery(getClient(), actor, deviceId);
     }
 
     /**
      * Gets settings of the current user in this application.
+     *
+     * @param actor  vk actor
+     * @param userId user id
+     * @return query
      */
     public AccountGetAppPermissionsQuery getAppPermissions(Actor actor, int userId) {
         return new AccountGetAppPermissionsQuery(getClient(), actor, userId);
     }
 
     /**
-     * Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes to his balance in the application.
+     * Returns a list of active ads (offers) which executed by the user will bring him/her respective number of votes
+     * to his balance in the application.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetActiveOffersQuery getActiveOffers(Actor actor) {
         return new AccountGetActiveOffersQuery(getClient(), actor);
@@ -115,6 +166,10 @@ public class Account extends AbstractAction {
 
     /**
      * Adds user to the banlist.
+     *
+     * @param actor  vk actor
+     * @param userId user id
+     * @return query
      */
     public AccountBanUserQuery banUser(Actor actor, int userId) {
         return new AccountBanUserQuery(getClient(), actor, userId);
@@ -122,6 +177,10 @@ public class Account extends AbstractAction {
 
     /**
      * Deletes user from the banlist.
+     *
+     * @param actor  vk actor
+     * @param userId user id
+     * @return query
      */
     public AccountUnbanUserQuery unbanUser(Actor actor, int userId) {
         return new AccountUnbanUserQuery(getClient(), actor, userId);
@@ -129,6 +188,9 @@ public class Account extends AbstractAction {
 
     /**
      * Returns a user's blacklist.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetBannedQuery getBanned(Actor actor) {
         return new AccountGetBannedQuery(getClient(), actor);
@@ -136,6 +198,9 @@ public class Account extends AbstractAction {
 
     /**
      * Returns current account info.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetInfoQuery getInfo(Actor actor) {
         return new AccountGetInfoQuery(getClient(), actor);
@@ -143,6 +208,9 @@ public class Account extends AbstractAction {
 
     /**
      * Allows to edit the current account info.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountSetInfoQuery setInfo(Actor actor) {
         return new AccountSetInfoQuery(getClient(), actor);
@@ -150,6 +218,10 @@ public class Account extends AbstractAction {
 
     /**
      * Changes a user password after access is successfully restored with the auth.restore method.
+     *
+     * @param actor       vk actor
+     * @param newPassword new password
+     * @return query
      */
     public AccountChangePasswordQuery changePassword(Actor actor, String newPassword) {
         return new AccountChangePasswordQuery(getClient(), actor, newPassword);
@@ -157,6 +229,9 @@ public class Account extends AbstractAction {
 
     /**
      * Returns the current account info
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountGetProfileInfoQuery getProfileInfo(Actor actor) {
         return new AccountGetProfileInfoQuery(getClient(), actor);
@@ -164,6 +239,9 @@ public class Account extends AbstractAction {
 
     /**
      * Edits current profile info.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AccountSaveProfileInfoQuery saveProfileInfo(Actor actor) {
         return new AccountSaveProfileInfoQuery(getClient(), actor);

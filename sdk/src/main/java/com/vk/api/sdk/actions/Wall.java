@@ -30,6 +30,12 @@ import com.vk.api.sdk.queries.wall.WallUnpinQuery;
  * List of Wall methods
  */
 public class Wall extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Wall(VkApiClient client) {
         super(client);
     }

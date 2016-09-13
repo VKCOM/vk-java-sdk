@@ -10,6 +10,12 @@ import com.vk.api.sdk.queries.widgets.WidgetsGetPagesQuery;
  * List of Widgets methods
  */
 public class Widgets extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Widgets(VkApiClient client) {
         super(client);
     }

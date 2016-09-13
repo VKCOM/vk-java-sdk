@@ -18,6 +18,12 @@ import com.vk.api.sdk.queries.notes.NotesRestoreCommentQuery;
  * List of Notes methods
  */
 public class Notes extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Notes(VkApiClient client) {
         super(client);
     }

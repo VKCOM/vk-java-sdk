@@ -16,6 +16,12 @@ import com.vk.api.sdk.queries.pages.PagesSaveQuery;
  * List of Pages methods
  */
 public class Pages extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Pages(VkApiClient client) {
         super(client);
     }

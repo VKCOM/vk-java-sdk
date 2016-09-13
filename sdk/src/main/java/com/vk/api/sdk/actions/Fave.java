@@ -20,6 +20,12 @@ import com.vk.api.sdk.queries.fave.FaveRemoveUserQuery;
  * List of Fave methods
  */
 public class Fave extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Fave(VkApiClient client) {
         super(client);
     }

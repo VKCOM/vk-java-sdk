@@ -33,6 +33,12 @@ import com.vk.api.sdk.queries.friends.FriendsSearchQuery;
  * List of Friends methods
  */
 public class Friends extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Friends(VkApiClient client) {
         super(client);
     }
