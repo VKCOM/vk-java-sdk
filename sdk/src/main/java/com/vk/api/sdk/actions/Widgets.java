@@ -15,7 +15,6 @@ public class Widgets extends AbstractAction {
      * Constructor
      *
      * @param client vk api client
-     * @return query
      */
     public Widgets(VkApiClient client) {
         super(client);
