@@ -4,6 +4,8 @@ Java library for VK API interaction, includes OAuth 2.0 authorization and API me
 
 This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.53.
 
+[Usage Example — YouTrack bot](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot)
+
 ##1. Prerequisites
 
 * [Java  JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 or later
@@ -199,3 +201,5 @@ if (captchaImg != null) {
         .execute();
 }
 ```
+##8. Usage Example
+As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
