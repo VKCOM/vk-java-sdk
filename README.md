@@ -199,3 +199,5 @@ if (captchaImg != null) {
         .execute();
 }
 ```
+##8. Usage Example
+As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
