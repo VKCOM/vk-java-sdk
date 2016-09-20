@@ -199,7 +199,7 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      *
      * @param key   name of parameter
      * @param value value of parameter
-     * @return
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public <U> T unsafeParam(String key, U... value) {
         return unsafeParam(key, asList(value));

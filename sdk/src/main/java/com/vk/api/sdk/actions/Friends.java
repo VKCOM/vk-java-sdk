@@ -3,7 +3,6 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
-import com.vk.api.sdk.queries.Field;
 import com.vk.api.sdk.queries.friends.FriendsAddListQuery;
 import com.vk.api.sdk.queries.friends.FriendsAddQuery;
 import com.vk.api.sdk.queries.friends.FriendsAreFriendsQuery;
@@ -28,6 +27,7 @@ import com.vk.api.sdk.queries.friends.FriendsGetRequestsQueryWithExtended;
 import com.vk.api.sdk.queries.friends.FriendsGetRequestsQueryWithNeedMutual;
 import com.vk.api.sdk.queries.friends.FriendsGetSuggestionsQuery;
 import com.vk.api.sdk.queries.friends.FriendsSearchQuery;
+import com.vk.api.sdk.queries.users.UserField;
 
 /**
  * List of Friends methods
@@ -60,14 +60,14 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(Field... fields) {
+    public FriendsGetQueryWithFields get(UserField... fields) {
         return new FriendsGetQueryWithFields(getClient(), fields);
     }
 
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(Actor actor, Field... fields) {
+    public FriendsGetQueryWithFields get(Actor actor, UserField... fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
@@ -214,12 +214,16 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of friends who can be called by the current user.
      */
-    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, Field... fields) {
+    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, UserField... fields) {
         return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of friends matching the search criteria.
+     *
+     * @param actor  actor with access token
+     * @param userId value of "user id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsSearchQuery search(Actor actor, int userId) {
         return new FriendsSearchQuery(getClient(), actor, userId);

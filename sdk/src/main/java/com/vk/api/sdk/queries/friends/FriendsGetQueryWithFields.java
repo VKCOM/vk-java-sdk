@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetFieldsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,8 +18,9 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
      *
      * @param client VK API client
      * @param actor  actor with access token
+     * @param fields user fields
      */
-    public FriendsGetQueryWithFields(VkApiClient client, Actor actor, Field... fields) {
+    public FriendsGetQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
         super(client, "friends.get", GetFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -29,8 +30,9 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param fields user fields
      */
-    public FriendsGetQueryWithFields(VkApiClient client, Field... fields) {
+    public FriendsGetQueryWithFields(VkApiClient client, UserField... fields) {
         super(client, "friends.get", GetFieldsResponse.class);
         fields(fields);
     }
@@ -95,7 +97,7 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsGetQueryWithFields fields(Field... value) {
+    protected FriendsGetQueryWithFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

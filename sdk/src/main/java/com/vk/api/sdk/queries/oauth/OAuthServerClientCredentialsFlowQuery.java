@@ -2,7 +2,6 @@ package com.vk.api.sdk.queries.oauth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.objects.AuthResponse;
 import com.vk.api.sdk.objects.ClientCredentialsFlowResponse;
 
 import java.util.Arrays;
