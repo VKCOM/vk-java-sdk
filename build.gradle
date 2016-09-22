@@ -1,0 +1,13 @@
+subprojects {
+    apply plugin: 'java'
+
+    group 'com.vk.api'
+    version '0.1.2-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+}
