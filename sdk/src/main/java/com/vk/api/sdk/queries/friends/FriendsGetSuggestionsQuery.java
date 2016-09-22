@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetSuggestionsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,7 +63,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetSuggestionsQuery fields(Field... value) {
+    public FriendsGetSuggestionsQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

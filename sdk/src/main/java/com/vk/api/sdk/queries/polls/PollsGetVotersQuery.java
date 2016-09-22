@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.polls.Voters;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -108,7 +108,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsGetVotersQuery fields(Field... value) {
+    public PollsGetVotersQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

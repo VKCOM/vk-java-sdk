@@ -3,7 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQuery;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQueryWithFields;
 import com.vk.api.sdk.queries.users.UsersGetNearbyQuery;
@@ -101,14 +101,14 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(Field... fields) {
+    public UsersGetFollowersQueryWithFields getFollowers(UserField... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), fields);
     }
 
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(Actor actor, Field... fields) {
+    public UsersGetFollowersQueryWithFields getFollowers(Actor actor, UserField... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 

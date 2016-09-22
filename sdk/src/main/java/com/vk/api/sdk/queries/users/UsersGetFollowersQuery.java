@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.responses.GetFollowersResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -69,7 +68,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery fields(Field... value) {
+    public UsersGetFollowersQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

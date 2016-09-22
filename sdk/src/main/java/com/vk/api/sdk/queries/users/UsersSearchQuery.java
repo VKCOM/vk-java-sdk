@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.responses.SearchResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Arrays;
 import java.util.List;
@@ -72,7 +71,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery fields(Field... value) {
+    public UsersSearchQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

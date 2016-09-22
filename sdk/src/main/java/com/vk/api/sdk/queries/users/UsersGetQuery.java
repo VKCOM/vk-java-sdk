@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,7 +49,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery fields(Field... value) {
+    public UsersGetQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

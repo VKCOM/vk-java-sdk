@@ -29,7 +29,7 @@ public class Apps extends AbstractAction {
      * Returns a list of applications (apps) available to users in the App Catalog.
      *
      * @param count count of apps
-     * @return query 
+     * @return query
      */
     public AppsGetCatalogQuery getCatalog(int count) {
         return new AppsGetCatalogQuery(getClient(), count);
@@ -68,7 +68,7 @@ public class Apps extends AbstractAction {
     /**
      * Sends a request to another user in an app that uses VK authorization.
      *
-     * @param actor vk actor
+     * @param actor  vk actor
      * @param userId user id
      * @return query
      */
@@ -100,7 +100,7 @@ public class Apps extends AbstractAction {
      * Returns players rating in the game.
      *
      * @param actor vk actor
-     * @param type leaderboard type
+     * @param type  leaderboard type
      * @return query
      */
     public AppsGetLeaderboardQuery getLeaderboard(Actor actor, String type) {
@@ -110,7 +110,7 @@ public class Apps extends AbstractAction {
     /**
      * Returns user score in app
      *
-     * @param actor vk actor
+     * @param actor  vk actor
      * @param userId user id
      * @return query
      */

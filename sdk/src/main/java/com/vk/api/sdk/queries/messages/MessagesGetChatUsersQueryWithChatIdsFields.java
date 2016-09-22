@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.responses.GetChatUsersChatIdsFieldsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class MessagesGetChatUsersQueryWithChatIdsFields extends AbstractQueryBui
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithChatIdsFields(VkApiClient client, Actor actor, Integer[] chatIds, Field... fields) {
+    public MessagesGetChatUsersQueryWithChatIdsFields(VkApiClient client, Actor actor, Integer[] chatIds, UserField... fields) {
         super(client, "messages.getChatUsers", GetChatUsersChatIdsFieldsResponse.class);
         accessToken(actor.getAccessToken());
         chatIds(chatIds);
@@ -42,7 +42,7 @@ public class MessagesGetChatUsersQueryWithChatIdsFields extends AbstractQueryBui
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetChatUsersQueryWithChatIdsFields fields(Field... value) {
+    protected MessagesGetChatUsersQueryWithChatIdsFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

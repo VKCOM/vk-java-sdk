@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetMembersFieldsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +19,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, Actor actor, Field... fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -30,7 +30,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      *
      * @param client VK API client
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, Field... fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, UserField... fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
         fields(fields);
     }
@@ -83,7 +83,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetMembersQueryWithFields fields(Field... value) {
+    protected GroupsGetMembersQueryWithFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 
