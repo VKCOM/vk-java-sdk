@@ -56,7 +56,7 @@ public class NotificationsGetQuery extends AbstractQueryBuilder<NotificationsGet
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotificationsGetQuery filters(String... value) {
+    public NotificationsGetQuery filters(NotificationsGetFilter... value) {
         return unsafeParam("filters", value);
     }
 

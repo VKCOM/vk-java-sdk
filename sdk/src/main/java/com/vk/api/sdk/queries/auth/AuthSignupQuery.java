@@ -141,7 +141,7 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AuthSignupQuery sex(Integer value) {
+    public AuthSignupQuery sex(AppsSignupSex value) {
         return unsafeParam("sex", value);
     }
 

@@ -21,7 +21,7 @@ public class NewsfeedIgnoreItemQuery extends AbstractQueryBuilder<NewsfeedIgnore
      * @param ownerId value of "owner id" parameter.
      * @param itemId  value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedIgnoreItemQuery(VkApiClient client, Actor actor, String type, int ownerId, int itemId) {
+    public NewsfeedIgnoreItemQuery(VkApiClient client, Actor actor, NewsfeedItemType type, int ownerId, int itemId) {
         super(client, "newsfeed.ignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -40,7 +40,7 @@ public class NewsfeedIgnoreItemQuery extends AbstractQueryBuilder<NewsfeedIgnore
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedIgnoreItemQuery type(String value) {
+    protected NewsfeedIgnoreItemQuery type(NewsfeedItemType value) {
         return unsafeParam("type", value);
     }
 

@@ -61,7 +61,7 @@ public class FriendsGetOnlineQueryWithMobile extends AbstractQueryBuilder<Friend
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetOnlineQueryWithMobile order(String value) {
+    public FriendsGetOnlineQueryWithMobile order(FriendsGetOnlineOrder value) {
         return unsafeParam("order", value);
     }
 

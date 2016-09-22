@@ -84,7 +84,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery nameCase(String value) {
+    public UsersGetFollowersQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

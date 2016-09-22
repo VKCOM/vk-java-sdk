@@ -104,7 +104,7 @@ public class UsersGetNearbyQuery extends AbstractQueryBuilder<UsersGetNearbyQuer
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetNearbyQuery nameCase(String value) {
+    public UsersGetNearbyQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

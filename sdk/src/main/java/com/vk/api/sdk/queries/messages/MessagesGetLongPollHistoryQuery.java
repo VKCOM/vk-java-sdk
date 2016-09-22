@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollHistoryResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +67,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollHistoryQuery fields(Field... value) {
+    public MessagesGetLongPollHistoryQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

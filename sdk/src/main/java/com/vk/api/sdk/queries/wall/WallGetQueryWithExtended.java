@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.wall.responses.GetExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Collections;
 import java.util.List;
@@ -107,7 +107,7 @@ public class WallGetQueryWithExtended extends AbstractQueryBuilder<WallGetQueryW
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetQueryWithExtended fields(Field... value) {
+    public WallGetQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

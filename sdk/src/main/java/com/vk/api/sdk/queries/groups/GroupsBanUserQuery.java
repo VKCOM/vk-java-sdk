@@ -68,7 +68,7 @@ public class GroupsBanUserQuery extends AbstractQueryBuilder<GroupsBanUserQuery,
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsBanUserQuery reason(Integer value) {
+    public GroupsBanUserQuery reason(GroupsBanUserReason value) {
         return unsafeParam("reason", value);
     }
 

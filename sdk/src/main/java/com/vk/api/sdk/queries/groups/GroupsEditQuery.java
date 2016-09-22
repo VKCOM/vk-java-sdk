@@ -74,7 +74,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "access" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery access(Integer value) {
+    public GroupsEditQuery access(GroupsEditAccess value) {
         return unsafeParam("access", value);
     }
 
@@ -240,7 +240,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "wall" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery wall(Integer value) {
+    public GroupsEditQuery wall(GroupsEditWall value) {
         return unsafeParam("wall", value);
     }
 
@@ -253,7 +253,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "topics" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery topics(Integer value) {
+    public GroupsEditQuery topics(GroupsEditTopics value) {
         return unsafeParam("topics", value);
     }
 
@@ -266,7 +266,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery photos(Integer value) {
+    public GroupsEditQuery photos(GroupsEditPhotos value) {
         return unsafeParam("photos", value);
     }
 
@@ -279,7 +279,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "video" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery video(Integer value) {
+    public GroupsEditQuery video(GroupsEditVideo value) {
         return unsafeParam("video", value);
     }
 
@@ -292,7 +292,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "audio" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery audio(Integer value) {
+    public GroupsEditQuery audio(GroupsEditAudio value) {
         return unsafeParam("audio", value);
     }
 
@@ -353,7 +353,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "docs" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery docs(Integer value) {
+    public GroupsEditQuery docs(GroupsEditDocs value) {
         return unsafeParam("docs", value);
     }
 
@@ -366,7 +366,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "wiki" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery wiki(Integer value) {
+    public GroupsEditQuery wiki(GroupsEditWall value) {
         return unsafeParam("wiki", value);
     }
 
@@ -388,7 +388,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @param value value of "age limits" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery ageLimits(Integer value) {
+    public GroupsEditQuery ageLimits(GroupsEditAgeLimit value) {
         return unsafeParam("age_limits", value);
     }
 

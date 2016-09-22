@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetResponse;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Collections;
 import java.util.List;
@@ -52,7 +53,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetQuery order(String value) {
+    public FriendsGetQuery order(FriendsGetOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -98,7 +99,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetQuery nameCase(String value) {
+    public FriendsGetQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

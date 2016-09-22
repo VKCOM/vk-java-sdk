@@ -54,7 +54,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
      * @param value value of "type" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery type(String value) {
+    public GroupsCreateQuery type(GroupsCreateType value) {
         return unsafeParam("type", value);
     }
 
@@ -78,7 +78,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
      * @param value value of "subtype" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery subtype(Integer value) {
+    public GroupsCreateQuery subtype(GroupsCreateSubType value) {
         return unsafeParam("subtype", value);
     }
 

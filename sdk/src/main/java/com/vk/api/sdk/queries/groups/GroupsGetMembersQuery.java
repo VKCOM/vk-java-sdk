@@ -49,7 +49,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetMembersQuery sort(String value) {
+    public GroupsGetMembersQuery sort(GroupsGetMembersSort value) {
         return unsafeParam("sort", value);
     }
 

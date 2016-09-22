@@ -7,6 +7,7 @@ import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
 import com.vk.api.sdk.queries.apps.AppsGetFriendsListQuery;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQuery;
+import com.vk.api.sdk.queries.apps.AppsGetLeaderboardType;
 import com.vk.api.sdk.queries.apps.AppsGetQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScoreQuery;
 import com.vk.api.sdk.queries.apps.AppsSendRequestQuery;
@@ -103,7 +104,7 @@ public class Apps extends AbstractAction {
      * @param type  leaderboard type
      * @return query
      */
-    public AppsGetLeaderboardQuery getLeaderboard(Actor actor, String type) {
+    public AppsGetLeaderboardQuery getLeaderboard(Actor actor, AppsGetLeaderboardType type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
     }
 

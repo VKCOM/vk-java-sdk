@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.responses.GetChatUsersChatIdsResponse;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +47,7 @@ public class MessagesGetChatUsersQueryWithChatIds extends AbstractQueryBuilder<M
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatUsersQueryWithChatIds nameCase(String value) {
+    public MessagesGetChatUsersQueryWithChatIds nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

@@ -65,7 +65,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery nameCase(String value) {
+    public UsersGetQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

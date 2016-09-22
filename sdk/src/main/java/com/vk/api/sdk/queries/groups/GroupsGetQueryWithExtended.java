@@ -57,7 +57,7 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQueryWithExtended filter(String... value) {
+    public GroupsGetQueryWithExtended filter(GroupsGetFilter... value) {
         return unsafeParam("filter", value);
     }
 

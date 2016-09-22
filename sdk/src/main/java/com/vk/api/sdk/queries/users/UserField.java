@@ -1,11 +1,11 @@
 package com.vk.api.sdk.queries.users;
 
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Created by tsivarev on 22.08.16.
  */
-public enum UserField implements Field {
+public enum UserField implements EnumParam {
     PHOTO_ID("photo_id"),
     VERIFIED("verified"),
     SEX("sex"),

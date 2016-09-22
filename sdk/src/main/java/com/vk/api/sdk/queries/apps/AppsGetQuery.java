@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.apps.responses.GetResponse;
 import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Collections;
 import java.util.List;
@@ -64,12 +65,18 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "platform" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery platform(String value) {
+    public AppsGetQuery platform(AppsGetPlatform value) {
         return unsafeParam("platform", value);
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''contacts'', ''education'', ''online'', ''counters'', ''relation'', ''last_seen'', ''activity'', ''can_write_private_message'', ''can_see_all_posts'', ''can_post'', ''universities''
+     * Profile fields to return.
+     *
+     * Sample values:
+     * ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'',
+     * ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''contacts'', ''education'',
+     * ''online'', ''counters'', ''relation'', ''last_seen'', ''activity'', ''can_write_private_message'',
+     * ''can_see_all_posts'', ''can_post'', ''universities''
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -92,7 +99,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery nameCase(String value) {
+    public AppsGetQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

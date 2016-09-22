@@ -61,7 +61,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param value value of "view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery view(Integer value) {
+    public PagesSaveAccessQuery view(PagesSaveAccess value) {
         return unsafeParam("view", value);
     }
 
@@ -74,7 +74,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param value value of "edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery edit(Integer value) {
+    public PagesSaveAccessQuery edit(PagesSaveAccess value) {
         return unsafeParam("edit", value);
     }
 

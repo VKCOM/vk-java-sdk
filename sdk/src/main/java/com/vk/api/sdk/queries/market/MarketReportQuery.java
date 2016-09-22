@@ -21,7 +21,7 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
      * @param itemId  value of "item id" parameter. Minimum is 0.
      * @param reason  value of "reason" parameter. Minimum is 0.
      */
-    public MarketReportQuery(VkApiClient client, Actor actor, int ownerId, int itemId, int reason) {
+    public MarketReportQuery(VkApiClient client, Actor actor, int ownerId, int itemId, MarketReportReason reason) {
         super(client, "market.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -63,7 +63,7 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReportQuery reason(int value) {
+    protected MarketReportQuery reason(MarketReportReason value) {
         return unsafeParam("reason", value);
     }
 

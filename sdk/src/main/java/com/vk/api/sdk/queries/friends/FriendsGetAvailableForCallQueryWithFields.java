@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetAvailableForCallFieldsResponse;
 import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +50,7 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
      * @param value value of "name case" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetAvailableForCallQueryWithFields nameCase(String value) {
+    public FriendsGetAvailableForCallQueryWithFields nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

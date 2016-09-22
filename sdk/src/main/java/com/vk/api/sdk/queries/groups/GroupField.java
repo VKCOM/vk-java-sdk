@@ -1,11 +1,11 @@
 package com.vk.api.sdk.queries.groups;
 
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Created by tsivarev on 22.08.16.
  */
-public enum GroupField implements Field {
+public enum GroupField implements EnumParam {
     SCREEN_NAME("screen_name"),
     IS_CLOSED("is_closed"),
     DEACTIVATED("deactivated"),

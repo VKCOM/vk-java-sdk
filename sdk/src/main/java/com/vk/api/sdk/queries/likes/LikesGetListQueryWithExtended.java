@@ -19,7 +19,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
      * @param actor  actor with access token
      * @param type   value of "type" parameter.
      */
-    public LikesGetListQueryWithExtended(VkApiClient client, Actor actor, String type) {
+    public LikesGetListQueryWithExtended(VkApiClient client, Actor actor, LikesType type) {
         super(client, "likes.getList", GetListExtendedResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -32,34 +32,19 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
      * @param client VK API client
      * @param type   value of "type" parameter.
      */
-    public LikesGetListQueryWithExtended(VkApiClient client, String type) {
+    public LikesGetListQueryWithExtended(VkApiClient client, LikesType type) {
         super(client, "likes.getList", GetListExtendedResponse.class);
         type(type);
         extended(true);
     }
 
     /**
-     * &lt;&#33;-- MIKHAIL (1 of 6): Original Russian has additional types--
-     * photo_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ðº Ñ�Ð¾Ñ�Ð¾Ð³Ñ�Ð°Ñ�Ð¸Ð¸;
-     * video_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ðº Ð²Ð¸Ð´ÐµÐ¾Ð·Ð°Ð¿Ð¸Ñ�Ð¸;
-     * topic_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ð² Ð¾Ð±Ñ�Ñ�Ð¶Ð´ÐµÐ½Ð¸Ð¸;
-     * Jeff added them in here using Google Translate. Are they OK? --&gt;
-     * Object type:
-     * ''post'' - post on user or community wall
-     * ''comment'' - comment on a wall post
-     * ''photo'' - photo
-     * ''audio'' - audio
-     * ''video'' - video
-     * ''note'' - note
-     * ''photo_comment'' - comment on the photo
-     * ''video_comment'' - comment on the video
-     * ''topic_comment'' - comment in the discussion
-     * ''sitepage'' - page of the site where the Like widget is installed
+     * Type
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LikesGetListQueryWithExtended type(String value) {
+    protected LikesGetListQueryWithExtended type(LikesType value) {
         return unsafeParam("type", value);
     }
 
@@ -101,7 +86,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public LikesGetListQueryWithExtended filter(String value) {
+    public LikesGetListQueryWithExtended filter(LikesGetListFilter value) {
         return unsafeParam("filter", value);
     }
 

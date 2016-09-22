@@ -22,6 +22,7 @@ import com.vk.api.sdk.queries.groups.GroupsGetCatalogQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitedUsersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQueryWithExtended;
+import com.vk.api.sdk.queries.groups.GroupsGetMembersFilter;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFields;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFilter;
@@ -175,14 +176,14 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(String filter) {
+    public GroupsGetMembersQueryWithFilter getMembers(GroupsGetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), filter);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(Actor actor, String filter) {
+    public GroupsGetMembersQueryWithFilter getMembers(Actor actor, GroupsGetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 

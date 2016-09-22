@@ -15,6 +15,7 @@ import com.vk.api.sdk.queries.newsfeed.NewsfeedGetQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetRecommendedQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetSuggestedSourcesQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedIgnoreItemQuery;
+import com.vk.api.sdk.queries.newsfeed.NewsfeedItemType;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedSaveListQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedSearchQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedSearchQueryWithExtended;
@@ -94,14 +95,14 @@ public class Newsfeed extends AbstractAction {
     /**
      * Hides an item from the newsfeed.
      */
-    public NewsfeedIgnoreItemQuery ignoreItem(Actor actor, String type, int ownerId, int itemId) {
+    public NewsfeedIgnoreItemQuery ignoreItem(Actor actor, NewsfeedItemType type, int ownerId, int itemId) {
         return new NewsfeedIgnoreItemQuery(getClient(), actor, type, ownerId, itemId);
     }
 
     /**
      * Returns a hidden item to the newsfeed.
      */
-    public NewsfeedUnignoreItemQuery unignoreItem(Actor actor, String type, int ownerId, int itemId) {
+    public NewsfeedUnignoreItemQuery unignoreItem(Actor actor, NewsfeedItemType type, int ownerId, int itemId) {
         return new NewsfeedUnignoreItemQuery(getClient(), actor, type, ownerId, itemId);
     }
 
@@ -154,7 +155,7 @@ public class Newsfeed extends AbstractAction {
     /**
      * Unsubscribes the current user from specified newsfeeds.
      */
-    public NewsfeedUnsubscribeQuery unsubscribe(Actor actor, String type, int itemId) {
+    public NewsfeedUnsubscribeQuery unsubscribe(Actor actor, NewsfeedItemType type, int itemId) {
         return new NewsfeedUnsubscribeQuery(getClient(), actor, type, itemId);
     }
 

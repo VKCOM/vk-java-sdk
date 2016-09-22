@@ -1,6 +1,6 @@
 package com.vk.api.sdk.client;
 
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
@@ -234,8 +234,8 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param value value of parameter
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public T unsafeParam(String key, Enum<?> value) {
-        return unsafeParam(key, value.ordinal());
+    public T unsafeParam(String key, EnumParam value) {
+        return unsafeParam(key, value.getValue());
     }
 
     /**
@@ -245,8 +245,8 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param fields value of parameter
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public T unsafeParam(String key, Field... fields) {
-        return unsafeParam(key, Arrays.stream(fields).map(Field::getValue).collect(Collectors.joining(",")));
+    public T unsafeParam(String key, EnumParam... fields) {
+        return unsafeParam(key, Arrays.stream(fields).map(EnumParam::getValue).collect(Collectors.joining(",")));
     }
 
     @Override

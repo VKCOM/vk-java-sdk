@@ -18,7 +18,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetMembersQueryWithFilter(VkApiClient client, Actor actor, String filter) {
+    public GroupsGetMembersQueryWithFilter(VkApiClient client, Actor actor, GroupsGetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         accessToken(actor.getAccessToken());
         filter(filter);
@@ -29,7 +29,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      *
      * @param client VK API client
      */
-    public GroupsGetMembersQueryWithFilter(VkApiClient client, String filter) {
+    public GroupsGetMembersQueryWithFilter(VkApiClient client, GroupsGetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         filter(filter);
     }
@@ -51,7 +51,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetMembersQueryWithFilter sort(String value) {
+    public GroupsGetMembersQueryWithFilter sort(GroupsGetMembersSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -82,7 +82,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetMembersQueryWithFilter filter(String value) {
+    protected GroupsGetMembersQueryWithFilter filter(GroupsGetMembersFilter value) {
         return unsafeParam("filter", value);
     }
 

@@ -26,6 +26,7 @@ import com.vk.api.sdk.queries.market.MarketReorderAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketReorderItemsQuery;
 import com.vk.api.sdk.queries.market.MarketReportCommentQuery;
 import com.vk.api.sdk.queries.market.MarketReportQuery;
+import com.vk.api.sdk.queries.market.MarketReportReason;
 import com.vk.api.sdk.queries.market.MarketRestoreCommentQuery;
 import com.vk.api.sdk.queries.market.MarketRestoreQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQuery;
@@ -150,7 +151,7 @@ public class Market extends AbstractAction {
     /**
      * Sends a complaint to the item
      */
-    public MarketReportQuery report(Actor actor, int ownerId, int itemId, int reason) {
+    public MarketReportQuery report(Actor actor, int ownerId, int itemId, MarketReportReason reason) {
         return new MarketReportQuery(getClient(), actor, ownerId, itemId, reason);
     }
 

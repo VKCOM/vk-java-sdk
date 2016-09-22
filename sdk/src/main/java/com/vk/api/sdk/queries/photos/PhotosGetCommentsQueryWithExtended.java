@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.photos.responses.GetCommentsExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -126,7 +126,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended fields(Field... value) {
+    public PhotosGetCommentsQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

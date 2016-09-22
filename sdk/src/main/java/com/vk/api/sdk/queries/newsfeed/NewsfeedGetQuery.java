@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +36,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery filters(String... value) {
+    public NewsfeedGetQuery filters(NewsfeedGetFilter... value) {
         return unsafeParam("filters", value);
     }
 
@@ -125,7 +125,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery fields(Field... value) {
+    public NewsfeedGetQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

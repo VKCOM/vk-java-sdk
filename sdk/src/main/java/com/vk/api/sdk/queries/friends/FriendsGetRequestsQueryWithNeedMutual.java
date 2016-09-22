@@ -83,7 +83,7 @@ public class FriendsGetRequestsQueryWithNeedMutual extends AbstractQueryBuilder<
      * @param value value of "sort" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetRequestsQueryWithNeedMutual sort(Integer value) {
+    public FriendsGetRequestsQueryWithNeedMutual sort(FriendsGetRequestsSort value) {
         return unsafeParam("sort", value);
     }
 

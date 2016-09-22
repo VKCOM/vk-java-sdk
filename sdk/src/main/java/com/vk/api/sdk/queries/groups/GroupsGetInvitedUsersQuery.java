@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetInvitedUsersResponse;
 import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -79,7 +80,7 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetInvitedUsersQuery nameCase(String value) {
+    public GroupsGetInvitedUsersQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 
