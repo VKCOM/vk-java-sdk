@@ -4,6 +4,8 @@ Java library for VK API interaction, includes OAuth 2.0 authorization and API me
 
 This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.53.
 
+[![Maven Central](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg?maxAge=2592000)](https://mvnrepository.com/artifact/com.vk.api/sdk)
+
 ##1. Prerequisites
 
 * [Java  JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 or later
@@ -19,7 +21,29 @@ VK Java SDK uses:
 * [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.4
 * [Google Gson](https://github.com/google/gson) version  2.6.2
 
-##3. Prepare for using
+##3. Latest release
+
+The most recent release is 0.1.2, released September 22, 2016.
+
+To add a dependency on Guava using Maven, use the following:
+
+```xml
+<dependency>
+  <groupId>com.vk.api</groupId>
+  <artifactId>sdk</artifactId>
+  <version>0.1.2</version>
+</dependency>
+```
+
+To add a dependency using Gradle:
+
+```
+dependencies {
+  compile 'com.vk.api:sdk:0.1.2'
+}
+```
+
+##4. Prepare for using
 
 Create a new VK application [here](https://vk.com/editapp?act=create) to use VK Java SDK. Please choose an application type depending on which authorization pattern you need. It should be "Standalone" for Direct Authorization, "Web site" for Authorization Code Flow for  server side  requests and any of them for Client Credentials Flow. 
 
@@ -28,7 +52,7 @@ Fill in the title, confirm the action via SMS and you will be redirected to the 
 You will need your application ID (referenced as API_ID in the documentation), secure key (CLIENT_SECRET) and authorized redirect URI (REDIRECT_URI).
 
 
-##4. Initialization
+##5. Initialization
 
 Create VkApiClient object using the following code:
 
@@ -39,11 +63,11 @@ VkApiClient vk = new VkApiClient(transportClient);
 
 Note that you can use your own  transport client. We use [Apache Http Client](https://hc.apache.org/).
 
-##5. Authorization
+##6. Authorization
 
 The library provides several authorization flows based on OAuth 2.0 protocol implementation in vk.com API. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
 
-###5.1. Authorization Code Flow for User
+###6.1. Authorization Code Flow for User
 
 OAuth 2.0 Authorization Code Flow allows calling methods from the server side.
 
@@ -62,7 +86,7 @@ This takes your application ID, secure key, redirect URI, enumerated [scopes](ht
 When succeed, a UserActor object is created. You can call VK API methods on behalf of a user.
 
 
-###5.2. Authorization Code Flow for Community
+###6.2. Authorization Code Flow for Community
 
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
 
@@ -76,7 +100,7 @@ GroupActor actor = new GroupActor(authResponse.get(), authResponse.getAccessToke
 
 When succeed, a GroupActor object is created. You can call VK API methods on behalf of a community.
 
-###5.3. Handling need_validation error
+###6.3. Handling need_validation error
 
 Proceeding each of previous authorization flows you can receive a "need_validation" error. Use the following code to handle the error:
 
@@ -92,7 +116,7 @@ try {
 UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());
 ```
 
-###5.4. Client Credentials Flow
+###6.4. Client Credentials Flow
 
 This flow allows to interact with API service methods with "secure" prefix. Use this method:
 
@@ -106,7 +130,7 @@ ServerActor actor = new ServerActor(APP_ID, authResponse.getAccessToken());
 
 When succeed, a ServerActor object is created. You can call VK API methods on behalf of an app. 
 
-##6. API Requests
+##7. API Requests
 You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 
 ###Request sample with user actor:
@@ -160,7 +184,7 @@ GetResponse getResponse = vk.wall().post(actor)
     .execute();
 ```
 
-##7. Error Handling
+##8. Error Handling
 
 ###Common Example
 ```java
@@ -199,5 +223,5 @@ if (captchaImg != null) {
         .execute();
 }
 ```
-##8. Usage Example
+##9. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
