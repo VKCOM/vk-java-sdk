@@ -6,14 +6,19 @@ import com.vk.api.sdk.queries.oauth.OAuthServerClientCredentialsFlowQuery;
 import com.vk.api.sdk.queries.oauth.OAuthUserAuthorizationCodeFlowQuery;
 
 /**
- * Created by tsivarev on 25.07.16.
+ * Created by Anton Tsivarev on 25.07.16.
  */
 public class OAuth extends AbstractAction {
 
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
 
-    public OAuth(VkApiClient vkApiClient) {
-        super(vkApiClient);
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
+    public OAuth(VkApiClient client) {
+        super(client);
     }
 
     public OAuthUserAuthorizationCodeFlowQuery userAuthorizationCodeFlow(Integer clientId, String clientSecret, String redirectUri, String code) {

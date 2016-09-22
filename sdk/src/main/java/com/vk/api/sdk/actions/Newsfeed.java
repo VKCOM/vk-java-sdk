@@ -25,6 +25,12 @@ import com.vk.api.sdk.queries.newsfeed.NewsfeedUnsubscribeQuery;
  * List of Newsfeed methods
  */
 public class Newsfeed extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Newsfeed(VkApiClient client) {
         super(client);
     }

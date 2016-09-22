@@ -15,12 +15,17 @@ import com.vk.api.sdk.queries.upload.UploadVideoQuery;
 import java.io.File;
 
 /**
- * Created by tsivarev on 17.08.16.
+ * Created by Anton Tsivarev on 17.08.16.
  */
 public class Upload extends AbstractAction {
 
-    public Upload(VkApiClient vkApiClient) {
-        super(vkApiClient);
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
+    public Upload(VkApiClient client) {
+        super(client);
     }
 
     public UploadPhotoQuery photo(String uploadUrl, File file) {

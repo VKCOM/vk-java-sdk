@@ -1,13 +1,5 @@
-group 'com.vk.api'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 ext {
     log4jVersion = '2.5'
@@ -33,4 +25,68 @@ dependencies {
     compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
 
     testCompile group: 'org.testng', name: 'testng', version: testngVersion
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Java SDK for VK API'
+                packaging 'jar'
+
+                description 'Java library for VK API interaction, includes OAuth 2.0 authorization and API methods.'
+                url 'https://github.com/VKCOM/vk-java-sdk'
+
+                scm {
+                    connection 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                    developerConnection 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                    url 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'http://opensource.org/licenses/MIT'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'tsivarev'
+                        name 'Anton Tsivarev'
+                        email 'a.tsivarev@corp.vk.com'
+                    }
+                }
+            }
+        }
+    }
 }

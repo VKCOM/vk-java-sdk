@@ -9,6 +9,12 @@ import com.vk.api.sdk.queries.gifts.GiftsGetQuery;
  * List of Gifts methods
  */
 public class Gifts extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Gifts(VkApiClient client) {
         super(client);
     }

@@ -14,6 +14,12 @@ import com.vk.api.sdk.queries.leads.LeadsStartQuery;
  * List of Leads methods
  */
 public class Leads extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Leads(VkApiClient client) {
         super(client);
     }

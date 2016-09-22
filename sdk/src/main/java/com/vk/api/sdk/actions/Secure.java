@@ -18,6 +18,12 @@ import com.vk.api.sdk.queries.secure.SecureSetUserLevelQuery;
  * List of Secure methods
  */
 public class Secure extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Secure(VkApiClient client) {
         super(client);
     }

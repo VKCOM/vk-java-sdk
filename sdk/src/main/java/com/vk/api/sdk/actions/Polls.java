@@ -14,6 +14,12 @@ import com.vk.api.sdk.queries.polls.PollsGetVotersQuery;
  * List of Polls methods
  */
 public class Polls extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Polls(VkApiClient client) {
         super(client);
     }

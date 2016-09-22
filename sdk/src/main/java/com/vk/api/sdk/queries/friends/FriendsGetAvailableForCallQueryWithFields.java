@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetAvailableForCallFieldsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +13,15 @@ import java.util.List;
  * Query for Friends.getAvailableForCall method
  */
 public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuilder<FriendsGetAvailableForCallQueryWithFields, GetAvailableForCallFieldsResponse> {
+
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor  actor with access token
+     * @param fields user fields
      */
-    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, Actor actor, Field... fields) {
+    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
         super(client, "friends.getAvailableForCall", GetAvailableForCallFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -31,7 +33,7 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsGetAvailableForCallQueryWithFields fields(Field... value) {
+    protected FriendsGetAvailableForCallQueryWithFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

@@ -13,6 +13,12 @@ import com.vk.api.sdk.queries.likes.LikesIsLikedQuery;
  * List of Likes methods
  */
 public class Likes extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Likes(VkApiClient client) {
         super(client);
     }

@@ -44,6 +44,12 @@ import com.vk.api.sdk.queries.video.VideoSearchQueryWithExtended;
  * List of Videos methods
  */
 public class Videos extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Videos(VkApiClient client) {
         super(client);
     }

@@ -14,6 +14,12 @@ import com.vk.api.sdk.queries.places.PlacesSearchQuery;
  * List of Places methods
  */
 public class Places extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Places(VkApiClient client) {
         super(client);
     }

@@ -23,6 +23,12 @@ import com.vk.api.sdk.queries.board.BoardUnfixTopicQuery;
  * List of Board methods
  */
 public class Board extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Board(VkApiClient client) {
         super(client);
     }

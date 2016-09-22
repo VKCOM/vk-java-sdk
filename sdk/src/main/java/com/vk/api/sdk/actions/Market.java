@@ -35,6 +35,12 @@ import com.vk.api.sdk.queries.market.MarketSearchQueryWithExtended;
  * List of Market methods
  */
 public class Market extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Market(VkApiClient client) {
         super(client);
     }

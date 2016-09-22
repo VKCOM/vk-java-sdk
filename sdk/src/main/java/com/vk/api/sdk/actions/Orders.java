@@ -12,6 +12,12 @@ import com.vk.api.sdk.queries.orders.OrdersGetQuery;
  * List of Orders methods
  */
 public class Orders extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Orders(VkApiClient client) {
         super(client);
     }

@@ -29,12 +29,21 @@ import com.vk.api.sdk.queries.audio.AudioSetBroadcastQuery;
  * List of Audio methods
  */
 public class Audio extends AbstractAction {
+
+    /**
+     * Constructor
+     *
+     * @param client vk api client
+     */
     public Audio(VkApiClient client) {
         super(client);
     }
 
     /**
      * Returns a list of audio files of a user or community.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetQuery get(Actor actor) {
         return new AudioGetQuery(getClient(), actor);
@@ -42,6 +51,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns information about audio files by their IDs.
+     *
+     * @param actor  vk actor
+     * @param audios adios
+     * @return query
      */
     public AudioGetByIdQuery getById(Actor actor, String... audios) {
         return new AudioGetByIdQuery(getClient(), actor, audios);
@@ -49,6 +62,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns lyrics associated with an audio file.
+     *
+     * @param actor    vk actor
+     * @param lyricsId lyrics id
+     * @return query
      */
     public AudioGetLyricsQuery getLyrics(Actor actor, int lyricsId) {
         return new AudioGetLyricsQuery(getClient(), actor, lyricsId);
@@ -56,6 +73,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns a list of audio files.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioSearchQuery search(Actor actor) {
         return new AudioSearchQuery(getClient(), actor);
@@ -63,6 +83,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns the server address to upload audio files.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetUploadServerQuery getUploadServer(Actor actor) {
         return new AudioGetUploadServerQuery(getClient(), actor);
@@ -70,6 +93,11 @@ public class Audio extends AbstractAction {
 
     /**
      * Saves audio files after successful uploading.
+     *
+     * @param actor  vk actor
+     * @param server server
+     * @param audio  audio
+     * @return query
      */
     public AudioSaveQuery save(Actor actor, int server, String audio) {
         return new AudioSaveQuery(getClient(), actor, server, audio);
@@ -77,6 +105,11 @@ public class Audio extends AbstractAction {
 
     /**
      * Copies an audio file to a user page or community page.
+     *
+     * @param actor   vk actor
+     * @param audioId audio id
+     * @param ownerId owner id
+     * @return query
      */
     public AudioAddQuery add(Actor actor, int audioId, int ownerId) {
         return new AudioAddQuery(getClient(), actor, audioId, ownerId);
@@ -84,6 +117,11 @@ public class Audio extends AbstractAction {
 
     /**
      * Deletes an audio file from a user page or community page.
+     *
+     * @param actor   vk actor
+     * @param audioId audio id
+     * @param ownerId owner id
+     * @return query
      */
     public AudioDeleteQuery delete(Actor actor, int audioId, int ownerId) {
         return new AudioDeleteQuery(getClient(), actor, audioId, ownerId);
@@ -91,6 +129,11 @@ public class Audio extends AbstractAction {
 
     /**
      * Edits an audio file on a user or community page.
+     *
+     * @param actor   vk actor
+     * @param ownerId owner id
+     * @param audioId audio id
+     * @return query
      */
     public AudioEditQuery edit(Actor actor, int ownerId, int audioId) {
         return new AudioEditQuery(getClient(), actor, ownerId, audioId);
@@ -98,6 +141,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Reorders an audio file, placing it between other specified audio files.
+     *
+     * @param actor   vk actor
+     * @param audioId audio id
+     * @return query
      */
     public AudioReorderQuery reorder(Actor actor, int audioId) {
         return new AudioReorderQuery(getClient(), actor, audioId);
@@ -105,6 +152,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Restores a deleted audio file.
+     *
+     * @param actor   vk actor
+     * @param audioId audio id
+     * @return query
      */
     public AudioRestoreQuery restore(Actor actor, int audioId) {
         return new AudioRestoreQuery(getClient(), actor, audioId);
@@ -112,6 +163,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns a list of audio albums of a user or community.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetAlbumsQuery getAlbums(Actor actor) {
         return new AudioGetAlbumsQuery(getClient(), actor);
@@ -119,6 +173,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Creates an empty audio album.
+     *
+     * @param actor vk actor
+     * @param title album title
+     * @return query
      */
     public AudioAddAlbumQuery addAlbum(Actor actor, String title) {
         return new AudioAddAlbumQuery(getClient(), actor, title);
@@ -126,6 +184,11 @@ public class Audio extends AbstractAction {
 
     /**
      * Edits the title of an audio album.
+     *
+     * @param actor   vk actor
+     * @param albumId album id
+     * @param title   album title
+     * @return query
      */
     public AudioEditAlbumQuery editAlbum(Actor actor, int albumId, String title) {
         return new AudioEditAlbumQuery(getClient(), actor, albumId, title);
@@ -133,6 +196,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Deletes an audio album.
+     *
+     * @param actor   vk actor
+     * @param albumId albumd id
+     * @return query
      */
     public AudioDeleteAlbumQuery deleteAlbum(Actor actor, int albumId) {
         return new AudioDeleteAlbumQuery(getClient(), actor, albumId);
@@ -140,6 +207,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Moves audio files to an album.
+     *
+     * @param actor    vk actor
+     * @param audioIds audio ids
+     * @return query
      */
     public AudioMoveToAlbumQuery moveToAlbum(Actor actor, int... audioIds) {
         return new AudioMoveToAlbumQuery(getClient(), actor, audioIds);
@@ -147,6 +218,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Activates an audio broadcast to the status of a user or community.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioSetBroadcastQuery setBroadcast(Actor actor) {
         return new AudioSetBroadcastQuery(getClient(), actor);
@@ -154,6 +228,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns a list of the user's friends and communities that are broadcasting music in their statuses.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetBroadcastListQuery getBroadcastList(Actor actor) {
         return new AudioGetBroadcastListQuery(getClient(), actor);
@@ -161,6 +238,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns a list of suggested audio files based on a user's playlist or a particular audio file.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetRecommendationsQuery getRecommendations(Actor actor) {
         return new AudioGetRecommendationsQuery(getClient(), actor);
@@ -168,6 +248,9 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns a list of audio files from the "Popular".
+     *
+     * @param actor vk actor
+     * @return query
      */
     public AudioGetPopularQuery getPopular(Actor actor) {
         return new AudioGetPopularQuery(getClient(), actor);
@@ -175,6 +258,10 @@ public class Audio extends AbstractAction {
 
     /**
      * Returns the total number of audio files on a user or community page.
+     *
+     * @param actor   vk actor
+     * @param ownerId owner id
+     * @return query
      */
     public AudioGetCountQuery getCount(Actor actor, int ownerId) {
         return new AudioGetCountQuery(getClient(), actor, ownerId);
