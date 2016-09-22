@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.queries.ReportReason;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,7 +61,7 @@ public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportC
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosReportCommentQuery reason(Integer value) {
+    public PhotosReportCommentQuery reason(ReportReason value) {
         return unsafeParam("reason", value);
     }
 

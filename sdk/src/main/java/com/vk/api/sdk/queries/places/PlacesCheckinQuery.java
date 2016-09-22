@@ -80,7 +80,7 @@ public class PlacesCheckinQuery extends AbstractQueryBuilder<PlacesCheckinQuery,
      * @param value value of "services" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PlacesCheckinQuery services(String... value) {
+    public PlacesCheckinQuery services(PlacesCheckinService... value) {
         return unsafeParam("services", value);
     }
 

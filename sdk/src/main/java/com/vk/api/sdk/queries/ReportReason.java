@@ -1,11 +1,9 @@
-package com.vk.api.sdk.queries.market;
-
-import com.vk.api.sdk.queries.EnumParam;
+package com.vk.api.sdk.queries;
 
 /**
  * Created by Anton Tsivarev on 22.09.16.
  */
-public enum MarketReportReason implements EnumParam {
+public enum ReportReason implements EnumParam {
 
     SPAM("0"),
     CHILD_PORN("1"),
@@ -17,7 +15,7 @@ public enum MarketReportReason implements EnumParam {
 
     private final String value;
 
-    MarketReportReason(String value) {
+    ReportReason(String value) {
         this.value = value;
     }
 

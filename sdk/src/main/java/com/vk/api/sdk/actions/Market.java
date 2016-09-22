@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.queries.ReportReason;
 import com.vk.api.sdk.queries.market.MarketAddAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketAddQuery;
 import com.vk.api.sdk.queries.market.MarketAddToAlbumQuery;
@@ -26,7 +27,6 @@ import com.vk.api.sdk.queries.market.MarketReorderAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketReorderItemsQuery;
 import com.vk.api.sdk.queries.market.MarketReportCommentQuery;
 import com.vk.api.sdk.queries.market.MarketReportQuery;
-import com.vk.api.sdk.queries.market.MarketReportReason;
 import com.vk.api.sdk.queries.market.MarketRestoreCommentQuery;
 import com.vk.api.sdk.queries.market.MarketRestoreQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQuery;
@@ -140,7 +140,7 @@ public class Market extends AbstractAction {
     /**
      * Sends a complaint to the item's comment
      */
-    public MarketReportCommentQuery reportComment(Actor actor, int ownerId, int commentId, int reason) {
+    public MarketReportCommentQuery reportComment(Actor actor, int ownerId, int commentId, ReportReason reason) {
         return new MarketReportCommentQuery(getClient(), actor, ownerId, commentId, reason);
     }
 
@@ -151,7 +151,7 @@ public class Market extends AbstractAction {
     /**
      * Sends a complaint to the item
      */
-    public MarketReportQuery report(Actor actor, int ownerId, int itemId, MarketReportReason reason) {
+    public MarketReportQuery report(Actor actor, int ownerId, int itemId, ReportReason reason) {
         return new MarketReportQuery(getClient(), actor, ownerId, itemId, reason);
     }
 
