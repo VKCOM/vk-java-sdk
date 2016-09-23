@@ -3,7 +3,6 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
-import com.vk.api.sdk.queries.Field;
 import com.vk.api.sdk.queries.groups.GroupsAddLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsApproveRequestQuery;
 import com.vk.api.sdk.queries.groups.GroupsBanUserQuery;
@@ -23,6 +22,7 @@ import com.vk.api.sdk.queries.groups.GroupsGetCatalogQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitedUsersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQueryWithExtended;
+import com.vk.api.sdk.queries.groups.GroupsGetMembersFilter;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFields;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFilter;
@@ -45,6 +45,7 @@ import com.vk.api.sdk.queries.groups.GroupsSetCallbackServerQuery;
 import com.vk.api.sdk.queries.groups.GroupsSetCallbackServerSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsSetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsUnbanUserQuery;
+import com.vk.api.sdk.queries.users.UserField;
 
 /**
  * List of Groups methods
@@ -161,28 +162,28 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(Field... fields) {
+    public GroupsGetMembersQueryWithFields getMembers(UserField... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), fields);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(Actor actor, Field... fields) {
+    public GroupsGetMembersQueryWithFields getMembers(Actor actor, UserField... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(String filter) {
+    public GroupsGetMembersQueryWithFilter getMembers(GroupsGetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), filter);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(Actor actor, String filter) {
+    public GroupsGetMembersQueryWithFilter getMembers(Actor actor, GroupsGetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
@@ -301,7 +302,7 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of requests to the community.
      */
-    public GroupsGetRequestsQueryWithFields getRequests(Actor actor, int groupId, Field... fields) {
+    public GroupsGetRequestsQueryWithFields getRequests(Actor actor, int groupId, UserField... fields) {
         return new GroupsGetRequestsQueryWithFields(getClient(), actor, groupId, fields);
     }
 

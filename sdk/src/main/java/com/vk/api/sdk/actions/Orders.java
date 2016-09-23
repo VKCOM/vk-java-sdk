@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.queries.orders.OrdersChangeStateAction;
 import com.vk.api.sdk.queries.orders.OrdersChangeStateQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetAmountQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetByIdQuery;
@@ -39,7 +40,7 @@ public class Orders extends AbstractAction {
     /**
      * Changes order status.
      */
-    public OrdersChangeStateQuery changeState(Actor actor, int orderId, String action) {
+    public OrdersChangeStateQuery changeState(Actor actor, int orderId, OrdersChangeStateAction action) {
         return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
     }
 

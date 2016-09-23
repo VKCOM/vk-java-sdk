@@ -24,7 +24,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * Search query string (e.g., ''The Beatles'').
+     * Search query string (e.g., "The Beatles").
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +34,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * ''1'' - to correct for mistakes in the search query (e.g., if you enter ''Beetles'', the system will search for ''Beatles'')
+     * "1" - to correct for mistakes in the search query (e.g., if you enter "Beetles", the system will search for "Beatles")
      *
      * @param value value of "auto complete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,7 +44,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * ''1'' - to return only audio files that have associated lyrics
+     * "1" - to return only audio files that have associated lyrics
      *
      * @param value value of "lyrics" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +54,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * ''1'' - to search only by artist name
+     * "1" - to search only by artist name
      *
      * @param value value of "performer only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -64,15 +64,12 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * Sort order:
-     * ''1'' - by duration
-     * ''2'' - by popularity
-     * ''0'' - by date added
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AudioSearchQuery sort(Integer value) {
+    public AudioSearchQuery sort(AudioSearchSort value) {
         return unsafeParam("sort", value);
     }
 

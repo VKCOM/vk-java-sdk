@@ -15,7 +15,7 @@ import com.vk.api.sdk.queries.upload.UploadVideoQuery;
 import java.io.File;
 
 /**
- * Created by Anton Tsivarev on 17.08.16.
+ * List of Upload methods
  */
 public class Upload extends AbstractAction {
 

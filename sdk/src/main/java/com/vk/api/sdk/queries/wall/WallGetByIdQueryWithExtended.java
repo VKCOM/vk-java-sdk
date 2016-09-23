@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.wall.responses.GetByIdExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +41,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
 
     /**
      * User or community IDs and post IDs, separated by underscores.  Use a negative value to designate a community ID.  Example:
-     * &lt;blockquote&gt;&lt;code&gt;93388_21539,93388_20904,2943_4276,-1_1&lt;/code&gt;&lt;/blockquote&gt;
+     * 93388_21539,93388_20904,2943_4276,-1_1
      *
      * @param value value of "posts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -51,8 +51,8 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
     }
 
     /**
-     * ''1'' - to return user and community objects needed to display posts
-     * ''0'' - no additional fields are returned (default)
+     * "1" - to return user and community objects needed to display posts
+     * "0" - no additional fields are returned (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,7 +77,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetByIdQueryWithExtended fields(Field... value) {
+    public WallGetByIdQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

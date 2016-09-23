@@ -19,7 +19,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param orderId value of "order id" parameter. Minimum is 0.
      * @param action  value of "action" parameter.
      */
-    public OrdersChangeStateQuery(VkApiClient client, Actor actor, int orderId, String action) {
+    public OrdersChangeStateQuery(VkApiClient client, Actor actor, int orderId, OrdersChangeStateAction action) {
         super(client, "orders.changeState", String.class);
         accessToken(actor.getAccessToken());
         orderId(orderId);
@@ -38,7 +38,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
 
     /**
      * Action to be done with the order.
-     * <p>
+     *
      * Available actions:
      * 'cancel' - to cancel unconfirmed order.
      * 'charge' - to confirm unconfirmed order. Applies only if processing of order_change_state notification failed.
@@ -47,7 +47,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param value value of "action" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersChangeStateQuery action(String value) {
+    protected OrdersChangeStateQuery action(OrdersChangeStateAction value) {
         return unsafeParam("action", value);
     }
 

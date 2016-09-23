@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.photos.responses.GetCommentsExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,8 +48,8 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * ''1'' - to return an additional "likes" field
-     * ''0'' - (default)
+     * "1" - to return an additional "likes" field
+     * "0" - (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,7 +69,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * Offset needed to return a specific subset of comments. By default, ''0''.
+     * Offset needed to return a specific subset of comments. By default, "0".
      *
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -90,8 +90,8 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
 
     /**
      * Sort order:
-     * ''asc'' - old first
-     * ''desc'' - new first
+     * "asc" - old first
+     * "desc" - new first
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -126,7 +126,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended fields(Field... value) {
+    public PhotosGetCommentsQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

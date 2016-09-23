@@ -25,21 +25,18 @@ public class AudioGetBroadcastListQuery extends AbstractQueryBuilder<AudioGetBro
     }
 
     /**
-     * Types of objects to return:
-     * ''friends'' - only friends
-     * ''groups'' - only communities
-     * ''all'' - both friends and communities (default)
+     * Types of objects to return
      *
      * @param value value of "filter" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AudioGetBroadcastListQuery filter(String value) {
+    public AudioGetBroadcastListQuery filter(AudioGetBroadcastListFilter value) {
         return unsafeParam("filter", value);
     }
 
     /**
-     * ''1'' - to return only friends and communities that are broadcasting at the moment.
-     * ''0'' - to return all friends and communities (default).
+     * "1" - to return only friends and communities that are broadcasting at the moment.
+     * "0" - to return all friends and communities (default).
      *
      * @param value value of "active" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

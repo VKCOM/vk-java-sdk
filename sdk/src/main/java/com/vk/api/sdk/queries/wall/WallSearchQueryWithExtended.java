@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.wall.responses.SearchExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +37,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
 
     /**
      * User or community id.
-     * &lt;blockquote&gt;Remember that for a community "owner_id" must be negative.&lt;/blockquote&gt;
+     * Remember that for a community "owner_id" must be negative.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -102,7 +102,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallSearchQueryWithExtended fields(Field... value) {
+    public WallSearchQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

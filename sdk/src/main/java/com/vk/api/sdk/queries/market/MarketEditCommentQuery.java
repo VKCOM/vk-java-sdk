@@ -29,7 +29,7 @@ public class MarketEditCommentQuery extends AbstractQueryBuilder<MarketEditComme
 
     /**
      * Identifier of an item owner community
-     * &lt;blockquote&gt;Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community &lt;/blockquote&gt;
+     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -50,7 +50,7 @@ public class MarketEditCommentQuery extends AbstractQueryBuilder<MarketEditComme
 
     /**
      * New comment text (required if "attachments" are not specified)
-     * <p>
+     *
      * 2048 symbols max
      *
      * @param value value of "message" parameter.
@@ -62,19 +62,19 @@ public class MarketEditCommentQuery extends AbstractQueryBuilder<MarketEditComme
 
     /**
      * Comma-separated list of objects attached to a comment. The field is submitted the following way:
-     * &lt;blockquote&gt;"&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;"&lt;/blockquote&gt;
-     * <p>
-     * "&lt;type&gt;" - media attachment type:
-     * &lt;blockquote&gt;"photo" - photo
+     * ""type""owner_id"_"media_id","type""owner_id"_"media_id""
+     *
+     * ""type"" - media attachment type:
+     * "photo" - photo
      * "video" - video
      * "audio" - audio
-     * "doc" - document&lt;/blockquote&gt;
-     * <p>
-     * "&lt;owner_id&gt;" - media owner id
-     * "&lt;media_id&gt;" - media attachment id
-     * <p>
+     * "doc" - document
+     *
+     * ""owner_id"" - media owner id
+     * ""media_id"" - media attachment id
+     *
      * For example:
-     * &lt;blockquote&gt;photo100172_166443618,photo66748_265827614&lt;/blockquote&gt;
+     * photo100172_166443618,photo66748_265827614
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

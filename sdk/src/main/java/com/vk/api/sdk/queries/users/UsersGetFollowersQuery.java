@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.responses.GetFollowersResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -64,28 +63,28 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''rate'', ''contacts'', ''education'', ''online''.
+     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online".
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery fields(Field... value) {
+    public UsersGetFollowersQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery nameCase(String value) {
+    public UsersGetFollowersQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

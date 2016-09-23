@@ -58,17 +58,12 @@ public class GroupsBanUserQuery extends AbstractQueryBuilder<GroupsBanUserQuery,
     }
 
     /**
-     * Reason for ban:
-     * ''1'' - spam
-     * ''2'' - verbal abuse
-     * ''3'' - strong language
-     * ''4'' - irrelevant messages
-     * ''0'' - other (default)
+     * Reason for ban
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsBanUserQuery reason(Integer value) {
+    public GroupsBanUserQuery reason(GroupsBanUserReason value) {
         return unsafeParam("reason", value);
     }
 
@@ -83,8 +78,8 @@ public class GroupsBanUserQuery extends AbstractQueryBuilder<GroupsBanUserQuery,
     }
 
     /**
-     * ''1'' - text of comment will be visible to the user
-     * ''0'' - text of comment will be invisible to the user (default)
+     * "1" - text of comment will be visible to the user
+     * "0" - text of comment will be invisible to the user (default)
      *
      * @param value value of "comment visible" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

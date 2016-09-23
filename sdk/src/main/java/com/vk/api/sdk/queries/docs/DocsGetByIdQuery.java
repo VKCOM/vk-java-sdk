@@ -28,7 +28,7 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
 
     /**
      * Document IDs. Example:
-     * &lt;blockquote&gt;&lt;code&gt;66748_91488,66748_91455&lt;/code&gt;&lt;/blockquote&gt;
+     * 66748_91488,66748_91455
      *
      * @param value value of "docs" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

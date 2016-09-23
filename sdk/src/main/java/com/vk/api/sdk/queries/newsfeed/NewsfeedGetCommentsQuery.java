@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetCommentsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,21 +36,21 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
 
     /**
      * Filters to apply:
-     * ''post'' - new comments on wall posts
-     * ''photo'' - new comments on photos
-     * ''video'' - new comments on videos
-     * ''topic'' - new comments on discussions
-     * ''note'' - new comments on notes
+     * "post" - new comments on wall posts
+     * "photo" - new comments on photos
+     * "video" - new comments on videos
+     * "topic" - new comments on discussions
+     * "note" - new comments on notes
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetCommentsQuery filters(String... value) {
+    public NewsfeedGetCommentsQuery filters(NewsfeedGetCommentsFilter... value) {
         return unsafeParam("filters", value);
     }
 
     /**
-     * Object ID, comments on repost of which shall be returned, e.g. ''wall1_45486''. (If the parameter is set, the ''filters'' parameter is optional.)
+     * Object ID, comments on repost of which shall be returned, e.g. "wall1_45486". (If the parameter is set, the "filters" parameter is optional.)
      *
      * @param value value of "reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -95,7 +95,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetCommentsQuery fields(Field... value) {
+    public NewsfeedGetCommentsQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

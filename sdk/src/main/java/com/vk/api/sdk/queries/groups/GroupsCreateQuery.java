@@ -46,15 +46,12 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
     }
 
     /**
-     * Community type:
-     * ''group'' - group;
-     * ''event'' - event;
-     * ''public'' - public page
+     * Community type
      *
      * @param value value of "type" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery type(String value) {
+    public GroupsCreateQuery type(GroupsCreateType value) {
         return unsafeParam("type", value);
     }
 
@@ -69,16 +66,12 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
     }
 
     /**
-     * Public page subtype:
-     * ''1'' - place or small business;
-     * ''2'' - company, organizaton or website;
-     * ''3'' - famous person or group of people;
-     * ''4'' - porduct or work of art
+     * Public page subtype
      *
      * @param value value of "subtype" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery subtype(Integer value) {
+    public GroupsCreateQuery subtype(GroupsCreateSubType value) {
         return unsafeParam("subtype", value);
     }
 

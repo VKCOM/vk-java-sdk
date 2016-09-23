@@ -45,7 +45,7 @@ public class FriendsGetRequestsQueryWithNeedMutual extends AbstractQueryBuilder<
     }
 
     /**
-     * ''1'' - to return response messages from users who have sent a friend request or, if "suggested" is set to ''1'', to return a list of suggested friends
+     * "1" - to return response messages from users who have sent a friend request or, if "suggested" is set to "1", to return a list of suggested friends
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +55,7 @@ public class FriendsGetRequestsQueryWithNeedMutual extends AbstractQueryBuilder<
     }
 
     /**
-     * ''1'' - to return a list of mutual friends (up to 20), if any
+     * "1" - to return a list of mutual friends (up to 20), if any
      *
      * @param value value of "need mutual" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,8 +65,8 @@ public class FriendsGetRequestsQueryWithNeedMutual extends AbstractQueryBuilder<
     }
 
     /**
-     * ''1'' - to return outgoing requests
-     * ''0'' - to return incoming requests (default)
+     * "1" - to return outgoing requests
+     * "0" - to return incoming requests (default)
      *
      * @param value value of "out" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,20 +76,18 @@ public class FriendsGetRequestsQueryWithNeedMutual extends AbstractQueryBuilder<
     }
 
     /**
-     * Sort order:
-     * ''1'' - by number of mutual friends
-     * ''0'' - by date
+     * Sort order
      *
      * @param value value of "sort" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetRequestsQueryWithNeedMutual sort(Integer value) {
+    public FriendsGetRequestsQueryWithNeedMutual sort(FriendsGetRequestsSort value) {
         return unsafeParam("sort", value);
     }
 
     /**
-     * ''1'' - to return a list of suggested friends
-     * ''0'' - to return friend requests (default)
+     * "1" - to return a list of suggested friends
+     * "0" - to return friend requests (default)
      *
      * @param value value of "suggested" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

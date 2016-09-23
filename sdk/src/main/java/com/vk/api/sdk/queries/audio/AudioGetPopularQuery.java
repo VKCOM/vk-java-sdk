@@ -25,8 +25,8 @@ public class AudioGetPopularQuery extends AbstractQueryBuilder<AudioGetPopularQu
     }
 
     /**
-     * ''1'' - to return only foreign audio files
-     * ''0'' - to return all audio files
+     * "1" - to return only foreign audio files
+     * "0" - to return all audio files
      *
      * @param value value of "only eng" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

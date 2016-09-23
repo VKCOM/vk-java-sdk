@@ -45,7 +45,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Photo album ID. To return information about photos from service albums, use the following string values: ''profile, wall, saved''.
+     * Photo album ID. To return information about photos from service albums, use the following string values: "profile, wall, saved".
      *
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,8 +66,8 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
 
     /**
      * Sort order:
-     * ''1'' - reverse chronological
-     * ''0'' - chronological
+     * "1" - reverse chronological
+     * "0" - chronological
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,8 +77,8 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * ''1'' - to return additional "likes", "comments", and "tags" fields
-     * ''0'' - (default)
+     * "1" - to return additional "likes", "comments", and "tags" fields
+     * "0" - (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,7 +108,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * ''1'' - to return photo sizes in a special format
+     * "1" - to return photo sizes in a special format
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

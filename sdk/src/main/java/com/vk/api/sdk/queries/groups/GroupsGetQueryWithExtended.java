@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetExtendedResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,8 +35,8 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
     }
 
     /**
-     * ''1'' - to return complete information about a user's communities
-     * ''0'' - to return a list of community IDs without any additional fields (default)
+     * "1" - to return complete information about a user's communities
+     * "0" - to return a list of community IDs without any additional fields (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -48,17 +47,17 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
 
     /**
      * Types of communities to return:
-     * ''admin'' - to return communities administered by the user
-     * ''editor'' - to return communities where the user is an administrator or editor
-     * ''moder'' - to return communities where the user is an administrator, editor, or moderator
-     * ''groups'' - to return only groups
-     * ''publics'' - to return only public pages
-     * ''events'' - to return only events
+     * "admin" - to return communities administered by the user
+     * "editor" - to return communities where the user is an administrator or editor
+     * "moder" - to return communities where the user is an administrator, editor, or moderator
+     * "groups" - to return only groups
+     * "publics" - to return only public pages
+     * "events" - to return only events
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQueryWithExtended filter(String... value) {
+    public GroupsGetQueryWithExtended filter(GroupsGetFilter... value) {
         return unsafeParam("filter", value);
     }
 
@@ -68,7 +67,7 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQueryWithExtended fields(Field... value) {
+    public GroupsGetQueryWithExtended fields(GroupField... value) {
         return unsafeParam("fields", value);
     }
 

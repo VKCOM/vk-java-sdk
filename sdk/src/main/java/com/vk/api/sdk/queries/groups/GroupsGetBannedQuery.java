@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetBannedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -62,7 +62,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetBannedQuery fields(Field... value) {
+    public GroupsGetBannedQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

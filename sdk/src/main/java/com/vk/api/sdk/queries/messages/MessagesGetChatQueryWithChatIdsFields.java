@@ -5,7 +5,8 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.ChatFull;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,7 @@ public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, Actor actor, Integer[] chatIds, Field... fields) {
+    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, Actor actor, Integer[] chatIds, UserField... fields) {
         super(client, "messages.getChat", Utils.buildParametrizedType(List.class, ChatFull.class));
         accessToken(actor.getAccessToken());
         chatIds(chatIds);
@@ -43,23 +44,23 @@ public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetChatQueryWithChatIdsFields fields(Field... value) {
+    protected MessagesGetChatQueryWithChatIdsFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatQueryWithChatIdsFields nameCase(String value) {
+    public MessagesGetChatQueryWithChatIdsFields nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

@@ -21,7 +21,7 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
      * @param ownerId value of "owner id" parameter.
      * @param itemId  value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnignoreItemQuery(VkApiClient client, Actor actor, String type, int ownerId, int itemId) {
+    public NewsfeedUnignoreItemQuery(VkApiClient client, Actor actor, NewsfeedItemType type, int ownerId, int itemId) {
         super(client, "newsfeed.unignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -31,24 +31,24 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
 
     /**
      * Item type. Possible values:
-     * ''wall'' - post on the wall;
-     * ''tag'' - tag on a photo;
-     * ''profilephoto'' - profile photo;
-     * ''video'' - video;
-     * ''audio'' - audio.
+     * "wall" - post on the wall;
+     * "tag" - tag on a photo;
+     * "profilephoto" - profile photo;
+     * "video" - video;
+     * "audio" - audio.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnignoreItemQuery type(String value) {
+    protected NewsfeedUnignoreItemQuery type(NewsfeedItemType value) {
         return unsafeParam("type", value);
     }
 
     /**
      * Item owner's identifier (user or community)
-     * &lt;blockquote&gt;Note that community id must be negative.
+     * Note that community id must be negative.
      * "owner_id=1" - user
-     * "owner_id=-1" - community &lt;/blockquote&gt;
+     * "owner_id=-1" - community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

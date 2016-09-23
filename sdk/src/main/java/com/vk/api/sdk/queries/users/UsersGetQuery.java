@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -45,28 +44,28 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''contacts'', ''education'', ''online'', ''counters'', ''relation'', ''last_seen'', ''activity'', ''can_write_private_message'', ''can_see_all_posts'', ''can_post'', ''universities''
+     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "contacts", "education", "online", "counters", "relation", "last_seen", "activity", "can_write_private_message", "can_see_all_posts", "can_post", "universities"
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery fields(Field... value) {
+    public UsersGetQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery nameCase(String value) {
+    public UsersGetQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

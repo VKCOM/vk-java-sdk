@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.Chat;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,17 +38,17 @@ public class MessagesGetChatQueryWithChatIds extends AbstractQueryBuilder<Messag
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatQueryWithChatIds nameCase(String value) {
+    public MessagesGetChatQueryWithChatIds nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

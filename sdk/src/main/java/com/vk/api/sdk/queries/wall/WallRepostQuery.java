@@ -27,7 +27,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
 
     /**
      * ID of the object to be reposted on the wall. Example:
-     * &lt;blockquote&gt;&lt;code&gt;wall66748_3675&lt;/code&gt;&lt;/blockquote&gt;
+     * wall66748_3675
      *
      * @param value value of "object" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

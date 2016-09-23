@@ -34,14 +34,12 @@ public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkRes
     }
 
     /**
-     * Optional parameter which is taken into account when "gid" belongs to the event:
-     * ''1'' - Perhaps I will attend
-     * ''0'' - I will be there for sure (default)
+     * Optional parameter which is taken into account when "group_id" belongs to the event.
      *
      * @param value value of "not sure" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsJoinQuery notSure(String value) {
+    public GroupsJoinQuery notSure(Boolean value) {
         return unsafeParam("not_sure", value);
     }
 

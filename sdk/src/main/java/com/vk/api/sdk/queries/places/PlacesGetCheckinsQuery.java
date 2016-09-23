@@ -24,7 +24,7 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * Geographical latitude of the initial search point, in degrees (from ''-90'' to ''90'').
+     * Geographical latitude of the initial search point, in degrees (from "-90" to "90").
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +34,7 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * Geographical longitude of the initial search point, in degrees (from ''-180'' to ''180'').
+     * Geographical longitude of the initial search point, in degrees (from "-180" to "180").
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -94,7 +94,7 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * ''1'' - to return only check-ins with set geographical coordinates. (Ignored if "latitude" and "longitude" are not set.)
+     * "1" - to return only check-ins with set geographical coordinates. (Ignored if "latitude" and "longitude" are not set.)
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -104,7 +104,7 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * ''1'' - to return location information with the check-ins. (Ignored if "place" is not set.)
+     * "1" - to return location information with the check-ins. (Ignored if "place" is not set.)
      *
      * @param value value of "need places" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,18 +34,12 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
     }
 
     /**
-     * Types of communities to return:
-     * ''admin'' - to return communities administered by the user
-     * ''editor'' - to return communities where the user is an administrator or editor
-     * ''moder'' - to return communities where the user is an administrator, editor, or moderator
-     * ''groups'' - to return only groups
-     * ''publics'' - to return only public pages
-     * ''events'' - to return only events
+     * Types of communities to return
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQuery filter(String... value) {
+    public GroupsGetQuery filter(GroupsGetFilter... value) {
         return unsafeParam("filter", value);
     }
 
@@ -56,7 +49,7 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQuery fields(Field... value) {
+    public GroupsGetQuery fields(GroupField... value) {
         return unsafeParam("fields", value);
     }
 

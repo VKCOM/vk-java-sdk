@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetRecommendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +45,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
     }
 
     /**
-     * Maximum number of photos to return. By default, ''5''.
+     * Maximum number of photos to return. By default, "5".
      *
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -80,7 +80,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetRecommendedQuery fields(Field... value) {
+    public NewsfeedGetRecommendedQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

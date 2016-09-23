@@ -39,7 +39,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
 
     /**
      * Identifier of an item owner community
-     * &lt;blockquote&gt;Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community &lt;/blockquote&gt;
+     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -99,7 +99,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
     }
 
     /**
-     * Item status (''1'' - deleted, ''0'' - not deleted)
+     * Item status ("1" - deleted, "0" - not deleted)
      *
      * @param value value of "deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

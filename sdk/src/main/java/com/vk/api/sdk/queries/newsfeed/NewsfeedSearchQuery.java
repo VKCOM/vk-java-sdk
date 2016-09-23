@@ -33,7 +33,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
     }
 
     /**
-     * Search query string (e.g., ''New Year'').
+     * Search query string (e.g., "New Year").
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

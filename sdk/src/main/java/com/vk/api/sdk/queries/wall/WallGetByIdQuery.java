@@ -39,7 +39,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
 
     /**
      * User or community IDs and post IDs, separated by underscores.  Use a negative value to designate a community ID.  Example:
-     * &lt;blockquote&gt;&lt;code&gt;93388_21539,93388_20904,2943_4276,-1_1&lt;/code&gt;&lt;/blockquote&gt;
+     * 93388_21539,93388_20904,2943_4276,-1_1
      *
      * @param value value of "posts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

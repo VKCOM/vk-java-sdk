@@ -19,7 +19,7 @@ public class AppsGetLeaderboardQuery extends AbstractQueryBuilder<AppsGetLeaderb
      * @param actor  actor with access token
      * @param type   value of "type" parameter.
      */
-    public AppsGetLeaderboardQuery(VkApiClient client, Actor actor, String type) {
+    public AppsGetLeaderboardQuery(VkApiClient client, Actor actor, AppsGetLeaderboardType type) {
         super(client, "apps.getLeaderboard", GetLeaderboardResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -27,21 +27,21 @@ public class AppsGetLeaderboardQuery extends AbstractQueryBuilder<AppsGetLeaderb
 
     /**
      * Leaderboard type. Possible values:
-     * ''level'' - by level;
-     * ''points'' - by mission points;
-     * ''score'' - by score (apps.getScore).
+     * "level" - by level;
+     * "points" - by mission points;
+     * "score" - by score (apps.getScore).
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsGetLeaderboardQuery type(String value) {
+    protected AppsGetLeaderboardQuery type(AppsGetLeaderboardType value) {
         return unsafeParam("type", value);
     }
 
     /**
      * Rating type.  Possible values:
-     * ''1'' - global rating among all players;
-     * ''0'' - rating among user friends.
+     * true - global rating among all players;
+     * false - rating among user friends.
      *
      * @param value value of "global" parameter. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

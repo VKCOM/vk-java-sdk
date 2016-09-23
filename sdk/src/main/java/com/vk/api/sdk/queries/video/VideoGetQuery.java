@@ -34,12 +34,7 @@ public class VideoGetQuery extends AbstractQueryBuilder<VideoGetQuery, GetRespon
     }
 
     /**
-     * Video IDs, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * Use a negative value to designate a community ID.
-     * <p>
-     * Example:
-     * &lt;blockquote&gt;&lt;code&gt;-4363_136089719,13245770_137352259&lt;/code&gt;&lt;/blockquote&gt;
+     * Video IDs
      *
      * @param value value of "videos" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

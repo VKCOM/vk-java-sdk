@@ -26,7 +26,7 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Search query string (e.g., ''The Beatles'').
+     * Search query string (e.g., "The Beatles").
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -37,9 +37,9 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
 
     /**
      * Sort order:
-     * ''1'' - by duration
-     * ''2'' - by relevance
-     * ''0'' - by date added
+     * "1" - by duration
+     * "2" - by relevance
+     * "0" - by date added
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -59,8 +59,8 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * ''1'' - to disable the Safe Search filter
-     * ''0'' - to enable the Safe Search filter
+     * "1" - to disable the Safe Search filter
+     * "0" - to enable the Safe Search filter
      *
      * @param value value of "adult" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,15 +71,15 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
 
     /**
      * Filters to apply:
-     * ''youtube'' - return YouTube videos only
-     * ''vimeo'' - return Vimeo videos only
-     * ''short'' - return short videos only
-     * ''long'' - return long videos only
+     * "youtube" - return YouTube videos only
+     * "vimeo" - return Vimeo videos only
+     * "short" - return short videos only
+     * "long" - return long videos only
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoSearchQuery filters(String... value) {
+    public VideoSearchQuery filters(VideoSearchFilter... value) {
         return unsafeParam("filters", value);
     }
 

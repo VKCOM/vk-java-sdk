@@ -24,7 +24,8 @@ public class AudioSetBroadcastQuery extends AbstractQueryBuilder<AudioSetBroadca
     }
 
     /**
-     * ID of the audio file to be shown in status (e.g., ''1_190442705''). If the parameter is not set, the audio status of given communities and user will be deleted.
+     * ID of the audio file to be shown in status (e.g., "1_190442705").
+     * If the parameter is not set, the audio status of given communities and user will be deleted.
      *
      * @param value value of "audio" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +35,8 @@ public class AudioSetBroadcastQuery extends AbstractQueryBuilder<AudioSetBroadca
     }
 
     /**
-     * IDs of communities and user whose statuses will be included in the broadcast. Use a negative value to designate a community ID. By default, current user ID.
+     * IDs of communities and user whose statuses will be included in the broadcast.
+     * Use a negative value to designate a community ID. By default, current user ID.
      *
      * @param value value of "target ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

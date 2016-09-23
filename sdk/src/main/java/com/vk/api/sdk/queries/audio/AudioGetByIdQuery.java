@@ -28,7 +28,7 @@ public class AudioGetByIdQuery extends AbstractQueryBuilder<AudioGetByIdQuery, L
 
     /**
      * Audio file IDs, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;{owner_id}_{audio_id}&lt;/code&gt;&lt;/blockquote&gt;
+     * {owner_id}_{audio_id}
      *
      * @param value value of "audios" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

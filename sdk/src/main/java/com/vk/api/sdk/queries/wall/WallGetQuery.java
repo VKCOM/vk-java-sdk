@@ -74,11 +74,11 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
 
     /**
      * Filter to apply:
-     * ''owner'' - posts by the wall owner
-     * ''others'' - posts by someone else
-     * ''all'' - posts by the wall owner and others (default)
-     * ''postponed'' - timed posts (only available for calls with an "access_token")
-     * ''suggests'' - suggested posts on a community wall
+     * "owner" - posts by the wall owner
+     * "others" - posts by someone else
+     * "all" - posts by the wall owner and others (default)
+     * "postponed" - timed posts (only available for calls with an "access_token")
+     * "suggests" - suggested posts on a community wall
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

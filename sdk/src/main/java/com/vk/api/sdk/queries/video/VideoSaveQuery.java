@@ -44,8 +44,8 @@ public class VideoSaveQuery extends AbstractQueryBuilder<VideoSaveQuery, SaveRes
     }
 
     /**
-     * ''1'' - to designate the video as private (send it via a private message); the video will not appear on the user's video list and will not be available by ID for other users
-     * ''0'' - not to designate the video as private
+     * "1" - to designate the video as private (send it via a private message); the video will not appear on the user's video list and will not be available by ID for other users
+     * "0" - not to designate the video as private
      *
      * @param value value of "is private" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,8 +55,8 @@ public class VideoSaveQuery extends AbstractQueryBuilder<VideoSaveQuery, SaveRes
     }
 
     /**
-     * ''1'' - to post the saved video on a user's wall
-     * ''0'' - not to post the saved video on a user's wall
+     * "1" - to post the saved video on a user's wall
+     * "0" - not to post the saved video on a user's wall
      *
      * @param value value of "wallpost" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -126,8 +126,8 @@ public class VideoSaveQuery extends AbstractQueryBuilder<VideoSaveQuery, SaveRes
     }
 
     /**
-     * ''1'' - to repeat the playback of the video
-     * ''0'' - to play the video once
+     * "1" - to repeat the playback of the video
+     * "0" - to play the video once
      *
      * @param value value of "repeat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

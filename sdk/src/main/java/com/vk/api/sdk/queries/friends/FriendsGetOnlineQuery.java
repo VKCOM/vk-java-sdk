@@ -44,8 +44,8 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
     }
 
     /**
-     * ''1'' - to return an additional "online_mobile" field
-     * ''0'' - (default)
+     * "1" - to return an additional "online_mobile" field
+     * "0" - (default)
      *
      * @param value value of "online mobile" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,13 +55,12 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
     }
 
     /**
-     * Sort order:
-     * ''random'' - random order
+     * Sort order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetOnlineQuery order(String value) {
+    public FriendsGetOnlineQuery order(FriendsGetOnlineOrder value) {
         return unsafeParam("order", value);
     }
 

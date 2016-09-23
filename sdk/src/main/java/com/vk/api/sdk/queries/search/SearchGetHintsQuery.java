@@ -48,13 +48,12 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SearchGetHintsQuery filters(String... value) {
+    public SearchGetHintsQuery filters(SearchGetHintsFilter... value) {
         return unsafeParam("filters", value);
     }
 
     /**
-     * :
-     * The default search results are added to the results of a global search for all users and groups, it can be disabled by passing 0 --&gt;
+     * The default search results are added to the results of a global search for all users and groups, it can be disabled by passing 0
      *
      * @param value value of "search global" parameter. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

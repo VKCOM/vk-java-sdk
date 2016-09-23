@@ -4,7 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.apps.responses.GetCatalogResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,17 +39,12 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
-     * Sort order:
-     * ''popular_today'' - popular for one day (default)
-     * ''visitors'' - by visitors number
-     * ''create_date'' - by creation date
-     * ''growth_rate'' - by growth rate
-     * ''popular_week'' - popular for one week
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery sort(String value) {
+    public AppsGetCatalogQuery sort(AppsGetCatalogSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -83,8 +79,8 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
-     * ''1'' - to return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to ''100''.
-     * ''0'' - not to return additional fields (default).
+     * "1" - to return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to "100".
+     * "0" - not to return additional fields (default).
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -109,7 +105,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery fields(Field... value) {
+    public AppsGetCatalogQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 
@@ -119,7 +115,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery nameCase(String value) {
+    public AppsGetCatalogQuery nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

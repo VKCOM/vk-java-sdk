@@ -113,8 +113,8 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * ''1'' - test mode, in which the user will not be registered and the phone number will not be checked for availability
-     * ''0'' - default mode (default)
+     * "1" - test mode, in which the user will not be registered and the phone number will not be checked for availability
+     * "0" - default mode (default)
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -124,8 +124,8 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * ''1'' - call the phone number and leave a voice message of the authorization code
-     * ''0'' - send the code by SMS (default)
+     * "1" - call the phone number and leave a voice message of the authorization code
+     * "0" - send the code by SMS (default)
      *
      * @param value value of "voice" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -135,13 +135,13 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * ''1'' - female
-     * ''2'' - male
+     * "1" - female
+     * "2" - male
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AuthSignupQuery sex(Integer value) {
+    public AuthSignupQuery sex(AppsSignupSex value) {
         return unsafeParam("sex", value);
     }
 

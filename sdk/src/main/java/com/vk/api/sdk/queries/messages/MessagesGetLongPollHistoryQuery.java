@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollHistoryResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,8 +43,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
-     * Number of characters after which to truncate a previewed message. To preview the full message, specify ''0''.
-     * &lt;blockquote&gt;NOTE: Messages are not truncated by default. Messages are truncated by words.&lt;/blockquote&gt;
+     * Number of characters after which to truncate a previewed message. To preview the full message, specify "0".
+     * NOTE: Messages are not truncated by default. Messages are truncated by words.
      *
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -67,7 +67,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollHistoryQuery fields(Field... value) {
+    public MessagesGetLongPollHistoryQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

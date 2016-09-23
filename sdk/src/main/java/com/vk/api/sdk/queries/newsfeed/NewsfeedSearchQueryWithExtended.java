@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.newsfeed.responses.SearchExtendedResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,7 +36,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * Search query string (e.g., ''New Year'').
+     * Search query string (e.g., "New Year").
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +46,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * ''1'' - to return additional information about the user or community that placed the post.
+     * "1" - to return additional information about the user or community that placed the post.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -131,7 +131,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQueryWithExtended fields(Field... value) {
+    public NewsfeedSearchQueryWithExtended fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

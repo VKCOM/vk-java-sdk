@@ -29,7 +29,7 @@ public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCoun
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountGetCountersQuery filter(String... value) {
+    public AccountGetCountersQuery filter(AccountGetCountersFilter... value) {
         return unsafeParam("filter", value);
     }
 

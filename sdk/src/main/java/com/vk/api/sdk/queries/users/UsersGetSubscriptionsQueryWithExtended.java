@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.users.responses.GetSubscriptionsExtendedResponse;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -46,8 +45,8 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
     }
 
     /**
-     * ''1'' - to return a combined list of users and communities
-     * ''0'' - to return separate lists of users and communities (default)
+     * "1" - to return a combined list of users and communities
+     * "0" - to return separate lists of users and communities (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -82,7 +81,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetSubscriptionsQueryWithExtended fields(Field... value) {
+    public UsersGetSubscriptionsQueryWithExtended fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 

@@ -48,7 +48,7 @@ public class PlacesSearchQuery extends AbstractQueryBuilder<PlacesSearchQuery, S
     }
 
     /**
-     * Geographical latitude of the initial search point, in degrees (from ''-90'' to ''90'').
+     * Geographical latitude of the initial search point, in degrees (from "-90" to "90").
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +58,7 @@ public class PlacesSearchQuery extends AbstractQueryBuilder<PlacesSearchQuery, S
     }
 
     /**
-     * Geographical longitude of the initial search point, in degrees (from ''-180'' to ''180'').
+     * Geographical longitude of the initial search point, in degrees (from "-180" to "180").
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,10 +69,10 @@ public class PlacesSearchQuery extends AbstractQueryBuilder<PlacesSearchQuery, S
 
     /**
      * Radius of the search zone:
-     * ''1'' - 100 m. (default)
-     * ''2'' - 800 m.
-     * ''3'' - 6 km.
-     * ''4'' - 50 km.
+     * "1" - 100 m. (default)
+     * "2" - 800 m.
+     * "3" - 6 km.
+     * "4" - 50 km.
      *
      * @param value value of "radius" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

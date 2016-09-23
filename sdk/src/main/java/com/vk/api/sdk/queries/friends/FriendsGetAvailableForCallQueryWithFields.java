@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.friends.responses.GetAvailableForCallFieldsResponse;
 import com.vk.api.sdk.queries.users.UserField;
+import com.vk.api.sdk.queries.users.UsersNameCase;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +29,7 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
     }
 
     /**
-     * Profile fields to return. Sample values: ''uid'', ''first_name'', ''last_name'', ''nickname'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''domain'', ''has_mobile'', ''rate'', ''contacts'', ''education''.
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -38,18 +39,12 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
     }
 
     /**
-     * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * Case for declension of user name and surname.
      *
      * @param value value of "name case" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetAvailableForCallQueryWithFields nameCase(String value) {
+    public FriendsGetAvailableForCallQueryWithFields nameCase(UsersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

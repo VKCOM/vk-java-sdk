@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.market.responses.GetCommentsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
 
     /**
      * Identifier of an item owner community
-     * &lt;blockquote&gt;Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community &lt;/blockquote&gt;
+     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -50,7 +50,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
     }
 
     /**
-     * ''1'' - return likes info
+     * "1" - return likes info
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -80,7 +80,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
     }
 
     /**
-     * Comments sort order (''asc'' - from old to new, ''desc'' - from new to old)
+     * Comments sort order ("asc" - from old to new, "desc" - from new to old)
      *
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -90,7 +90,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
     }
 
     /**
-     * ''1'' - comments will be returned as numbered objects, in addition lists of "profiles" and "groups" objects will be returned
+     * "1" - comments will be returned as numbered objects, in addition lists of "profiles" and "groups" objects will be returned
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -105,7 +105,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketGetCommentsQuery fields(Field... value) {
+    public MarketGetCommentsQuery fields(EnumParam... value) {
         return unsafeParam("fields", value);
     }
 

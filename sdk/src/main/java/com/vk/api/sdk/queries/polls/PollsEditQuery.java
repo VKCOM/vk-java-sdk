@@ -59,7 +59,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
 
     /**
      * Answers list, for example:
-     * &lt;blockquote&gt;["yes","no","maybe"]&lt;/blockquote&gt;
+     * ["yes","no","maybe"]
      *
      * @param value value of "add answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -72,7 +72,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * Object containing answers that need to be edited;
      * key - answer id, value - new answer text.
      * Example:
-     * &lt;blockqouote&gt;{"382967099":"option1", "382967103":"option2"}&lt;/blockquote&gt;
+     * {"382967099":"option1", "382967103":"option2"}
      *
      * @param value value of "edit answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -83,7 +83,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
 
     /**
      * List of answer ids to be deleted. For example:
-     * &lt;blockquote&gt;[382967099, 382967103]&lt;/blockquote&gt;
+     * [382967099, 382967103]
      *
      * @param value value of "delete answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

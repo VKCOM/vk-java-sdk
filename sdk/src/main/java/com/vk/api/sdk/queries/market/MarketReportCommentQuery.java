@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.queries.ReportReason;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ public class MarketReportCommentQuery extends AbstractQueryBuilder<MarketReportC
      * @param commentId value of "comment id" parameter. Minimum is 0.
      * @param reason    value of "reason" parameter. Minimum is 0.
      */
-    public MarketReportCommentQuery(VkApiClient client, Actor actor, int ownerId, int commentId, int reason) {
+    public MarketReportCommentQuery(VkApiClient client, Actor actor, int ownerId, int commentId, ReportReason reason) {
         super(client, "market.reportComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -31,7 +32,7 @@ public class MarketReportCommentQuery extends AbstractQueryBuilder<MarketReportC
 
     /**
      * Identifier of an item owner community
-     * &lt;blockquote&gt;Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community &lt;/blockquote&gt;
+     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -52,18 +53,18 @@ public class MarketReportCommentQuery extends AbstractQueryBuilder<MarketReportC
 
     /**
      * Complaint reason:
-     * ''0'' - spam;
-     * ''1'' - child porn;
-     * ''2'' - extremism;
-     * ''3'' - violence;
-     * ''4'' - drugs propaganda;
-     * ''5'' - adult materials;
-     * ''6'' - insult.
+     * "0" - spam;
+     * "1" - child porn;
+     * "2" - extremism;
+     * "3" - violence;
+     * "4" - drugs propaganda;
+     * "5" - adult materials;
+     * "6" - insult.
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReportCommentQuery reason(int value) {
+    protected MarketReportCommentQuery reason(ReportReason value) {
         return unsafeParam("reason", value);
     }
 

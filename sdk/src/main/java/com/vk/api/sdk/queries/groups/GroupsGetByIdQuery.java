@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.queries.Field;
 
 import java.util.Collections;
 import java.util.List;
@@ -60,7 +59,7 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetByIdQuery fields(Field... value) {
+    public GroupsGetByIdQuery fields(GroupField... value) {
         return unsafeParam("fields", value);
     }
 

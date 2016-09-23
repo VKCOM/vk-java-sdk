@@ -75,7 +75,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Geographical latitude, in degrees (from ''-90'' to ''90'').
+     * Geographical latitude, in degrees (from "-90" to "90").
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -85,7 +85,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Geographical longitude, in degrees (from ''-180'' to ''180'').
+     * Geographical longitude, in degrees (from "-180" to "180").
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

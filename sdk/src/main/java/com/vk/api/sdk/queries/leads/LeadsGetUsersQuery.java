@@ -83,11 +83,11 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
 
     /**
      * Action type. Possible values:
-     * ''0'' - start;
-     * ''1'' - finish;
-     * ''2'' - blocking users;
-     * ''3'' - start in a test mode;
-     * ''4'' - finish in a test mode.
+     * "0" - start;
+     * "1" - finish;
+     * "2" - blocking users;
+     * "3" - start in a test mode;
+     * "4" - finish in a test mode.
      *
      * @param value value of "status" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -98,8 +98,8 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
 
     /**
      * Sort order. Possible values:
-     * ''1'' - chronological;
-     * ''0'' - reverse chronological.
+     * "1" - chronological;
+     * "0" - reverse chronological.
      *
      * @param value value of "reverse" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -47,7 +47,7 @@ public class AudioMoveToAlbumQuery extends AbstractQueryBuilder<AudioMoveToAlbum
 
     /**
      * IDs of the audio files to be moved.
-     * &lt;blockquote&gt;NOTE: An album can hold up to 1000 audio files.&lt;/blockquote&gt;
+     * NOTE: An album can hold up to 1000 audio files.
      *
      * @param value value of "audio ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

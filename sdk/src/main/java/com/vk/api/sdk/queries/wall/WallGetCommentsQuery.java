@@ -57,8 +57,8 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
     }
 
     /**
-     * ''1'' - to return the "likes" field
-     * ''0''  - not to return the "likes" field (default)
+     * "1" - to return the "likes" field
+     * "0"  - not to return the "likes" field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -89,8 +89,8 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
 
     /**
      * Sort order:
-     * ''asc'' - chronological
-     * ''desc'' - reverse chronological
+     * "asc" - chronological
+     * "desc" - reverse chronological
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -100,7 +100,7 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
     }
 
     /**
-     * Number of characters at which to truncate comments when previewed. By default, ''90''. Specify ''0'' if you do not want to truncate comments.
+     * Number of characters at which to truncate comments when previewed. By default, "90". Specify "0" if you do not want to truncate comments.
      *
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

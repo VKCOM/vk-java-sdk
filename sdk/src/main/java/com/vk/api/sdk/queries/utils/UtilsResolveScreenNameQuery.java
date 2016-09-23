@@ -37,7 +37,7 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
     }
 
     /**
-     * Screen name of the user, community (e.g., ''apiclub,'' ''andrew'', or ''rules_of_war''), or application.
+     * Screen name of the user, community (e.g., "apiclub," "andrew", or "rules_of_war"), or application.
      *
      * @param value value of "screen name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

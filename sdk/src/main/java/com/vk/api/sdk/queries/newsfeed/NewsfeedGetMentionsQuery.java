@@ -35,7 +35,8 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
 
     /**
      * Earliest timestamp (in Unix time) of a post to return. By default, 24 hours ago.
-     * If the parameter is not set, all mentions about the user will be returned if end_time parameter is not set, otherwise - mentions considering "end_time" parameter." I used the common description that we devised. Is there any technical detail in the original that needs to be worked into the edited description? Does the statement "By default, 24 hours ago" apply?--&gt;
+     * If the parameter is not set, all mentions about the user will be returned if end_time parameter is not set,
+     * otherwise - mentions considering "end_time" parameter."
      *
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +47,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
 
     /**
      * Latest timestamp (in Unix time) of a post to return. By default, the current time.
-     * If the parameter is not set, all mentions about the user will be returned if "start_time" parameter is not set, otherwise - mentions considering "start_time" parameter." Does any technical detail there need to be worked into the edited description? Does the statement "By default, the current time" apply?--&gt;
+     * If the parameter is not set, all mentions about the user will be returned if "start_time" parameter is not set, otherwise - mentions considering "start_time" parameter."
      *
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

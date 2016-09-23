@@ -20,7 +20,7 @@ public class LikesDeleteQuery extends AbstractQueryBuilder<LikesDeleteQuery, Del
      * @param type   value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public LikesDeleteQuery(VkApiClient client, Actor actor, String type, int itemId) {
+    public LikesDeleteQuery(VkApiClient client, Actor actor, LikesType type, int itemId) {
         super(client, "likes.delete", DeleteResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -28,26 +28,12 @@ public class LikesDeleteQuery extends AbstractQueryBuilder<LikesDeleteQuery, Del
     }
 
     /**
-     * &lt;&#33;-- MIKHAIL (1 of 2): Original Russian has additional types--
-     * photo_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ðº Ñ�Ð¾Ñ�Ð¾Ð³Ñ�Ð°Ñ�Ð¸Ð¸;
-     * video_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ðº Ð²Ð¸Ð´ÐµÐ¾Ð·Ð°Ð¿Ð¸Ñ�Ð¸;
-     * topic_comment - ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ�Ð°Ñ�Ð¸Ð¹ Ð² Ð¾Ð±Ñ�Ñ�Ð¶Ð´ÐµÐ½Ð¸Ð¸;
-     * Jeff added them in here using Google Translate. Are they OK? --&gt;Object type:
-     * ''post'' - post on user or community wall
-     * ''comment'' - comment on a wall post
-     * ''photo'' - photo
-     * ''audio'' - audio
-     * ''video'' - video
-     * ''note'' - note
-     * ''photo_comment'' - comment on the photo
-     * ''video_comment'' - comment on the video
-     * ''topic_comment'' - comment in the discussion
-     * ''sitepage'' - page of the site where the Like widget is installed
+     * Type
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LikesDeleteQuery type(String value) {
+    protected LikesDeleteQuery type(LikesType value) {
         return unsafeParam("type", value);
     }
 

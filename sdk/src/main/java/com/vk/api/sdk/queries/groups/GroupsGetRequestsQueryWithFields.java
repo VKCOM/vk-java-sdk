@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.groups.responses.GetRequestsFieldsResponse;
-import com.vk.api.sdk.queries.Field;
+import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class GroupsGetRequestsQueryWithFields extends AbstractQueryBuilder<Group
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetRequestsQueryWithFields(VkApiClient client, Actor actor, int groupId, Field... fields) {
+    public GroupsGetRequestsQueryWithFields(VkApiClient client, Actor actor, int groupId, UserField... fields) {
         super(client, "groups.getRequests", GetRequestsFieldsResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -63,7 +63,7 @@ public class GroupsGetRequestsQueryWithFields extends AbstractQueryBuilder<Group
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetRequestsQueryWithFields fields(Field... value) {
+    protected GroupsGetRequestsQueryWithFields fields(UserField... value) {
         return unsafeParam("fields", value);
     }
 
