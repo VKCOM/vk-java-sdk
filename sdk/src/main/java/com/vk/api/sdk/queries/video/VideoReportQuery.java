@@ -50,13 +50,13 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
 
     /**
      * Reason for the complaint:
-     * ''0'' - spam
-     * ''1'' - child pornography
-     * ''2'' - extremism
-     * ''3'' - violence
-     * ''4'' - drug propaganda
-     * ''5'' - adult material
-     * ''6'' - insult; abuse
+     * "0" - spam
+     * "1" - child pornography
+     * "2" - extremism
+     * "3" - violence
+     * "4" - drug propaganda
+     * "5" - adult material
+     * "6" - insult; abuse
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

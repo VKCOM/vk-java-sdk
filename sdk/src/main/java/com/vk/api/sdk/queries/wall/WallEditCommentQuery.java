@@ -57,18 +57,18 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
 
     /**
      * List of objects attached to the comment, in the following format:
-     * <p>
-     * &lt;blockquote&gt;&lt;code&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media attachment:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * "&lt;owner_id&gt;" - ID of the media attachment owner.
-     * "&lt;media_id&gt;" - Media attachment ID.
-     * <p>
+     *
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media attachment owner.
+     * ""media_id"" - Media attachment ID.
+     *
      * For example:
-     * &lt;blockquote&gt;&lt;code&gt;photo100172_166443618,photo66748_265827614&lt;/code&gt;&lt;/blockquote&gt;
+     * photo100172_166443618,photo66748_265827614
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

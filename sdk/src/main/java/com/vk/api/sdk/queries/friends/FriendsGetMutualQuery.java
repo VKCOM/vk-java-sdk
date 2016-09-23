@@ -55,7 +55,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
 
     /**
      * Sort order:
-     * ''random'' - random order
+     * "random" - random order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

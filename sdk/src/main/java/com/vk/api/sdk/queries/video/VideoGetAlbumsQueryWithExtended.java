@@ -55,7 +55,7 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
     }
 
     /**
-     * ''1'' - to return additional information about album privacy settings for the current user
+     * "1" - to return additional information about album privacy settings for the current user
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

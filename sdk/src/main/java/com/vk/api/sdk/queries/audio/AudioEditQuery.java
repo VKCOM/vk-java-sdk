@@ -87,8 +87,8 @@ public class AudioEditQuery extends AbstractQueryBuilder<AudioEditQuery, Integer
     }
 
     /**
-     * ''1'' - audio file will not be available for search
-     * ''0'' - audio file will be available for search (default)
+     * "1" - audio file will not be available for search
+     * "0" - audio file will be available for search (default)
      *
      * @param value value of "no search" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

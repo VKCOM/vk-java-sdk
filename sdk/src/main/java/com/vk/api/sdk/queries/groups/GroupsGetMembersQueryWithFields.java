@@ -46,8 +46,8 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * Sort order. Available values: ''id_asc'', ''id_desc'', ''time_asc'', ''time_desc''.
-     * ''time_asc'' and ''time_desc'' are availavle only if the method is called by the group's "moderator".
+     * Sort order. Available values: "id_asc", "id_desc", "time_asc", "time_desc".
+     * "time_asc" and "time_desc" are availavle only if the method is called by the group's "moderator".
      *
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

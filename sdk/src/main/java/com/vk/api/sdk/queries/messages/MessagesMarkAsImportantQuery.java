@@ -34,8 +34,8 @@ public class MessagesMarkAsImportantQuery extends AbstractQueryBuilder<MessagesM
     }
 
     /**
-     * ''1'' - to add a star (mark as important)
-     * ''0'' - to remove the star
+     * "1" - to add a star (mark as important)
+     * "0" - to remove the star
      *
      * @param value value of "important" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -48,20 +48,17 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     }
 
     /**
-     * Manager role. Possible values:
-     * ''moderator'';
-     * ''editor'';
-     * ''administrator''.
+     * Manager role.
      *
      * @param value value of "role" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditManagerQuery role(String value) {
+    public GroupsEditManagerQuery role(GroupsEditManagerRole value) {
         return unsafeParam("role", value);
     }
 
     /**
-     * ''1'' - to show the manager in Contacts block of the community.
+     * "1" - to show the manager in Contacts block of the community.
      *
      * @param value value of "is contact" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

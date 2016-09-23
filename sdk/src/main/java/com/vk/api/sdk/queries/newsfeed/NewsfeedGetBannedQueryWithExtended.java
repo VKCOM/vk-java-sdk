@@ -27,7 +27,7 @@ public class NewsfeedGetBannedQueryWithExtended extends AbstractQueryBuilder<New
     }
 
     /**
-     * ''1'' - return extra information about users and communities
+     * "1" - return extra information about users and communities
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -48,12 +48,12 @@ public class NewsfeedGetBannedQueryWithExtended extends AbstractQueryBuilder<New
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

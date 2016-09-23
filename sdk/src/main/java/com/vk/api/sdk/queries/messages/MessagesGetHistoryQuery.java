@@ -75,8 +75,8 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
 
     /**
      * Sort order:
-     * ''1'' - return messages in chronological order.
-     * ''0'' - return messages in reverse chronological order.
+     * "1" - return messages in chronological order.
+     * "0" - return messages in reverse chronological order.
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -26,12 +26,12 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
 
     /**
      * Filters to apply:
-     * ''post'' - new wall posts
-     * ''photo'' - new photos
-     * ''photo_tag'' - new photo tags
-     * ''wall_photo'' - new wall photos
-     * ''friend'' - new friends
-     * ''note'' - new notes
+     * "post" - new wall posts
+     * "photo" - new photos
+     * "photo_tag" - new photo tags
+     * "wall_photo" - new wall photos
+     * "friend" - new friends
+     * "note" - new notes
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -41,7 +41,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * ''1'' - to return news items from banned sources
+     * "1" - to return news items from banned sources
      *
      * @param value value of "return banned" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,7 +71,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Maximum number of photos to return. By default, ''5''.
+     * Maximum number of photos to return. By default, "5".
      *
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -82,14 +82,14 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
 
     /**
      * Sources to obtain news from, separated by commas.
-     * <p>
-     * User IDs can be specified in formats ''&lt;uid&gt;'' or ''u&lt;uid&gt;''
-     * where ''&lt;uid&gt;'' is the user's friend ID.
-     * <p>
-     * Community IDs can be specified in formats ''-&lt;gid&gt;'' or ''g&lt;gid&gt;''
-     * where ''&lt;gid&gt;'' is the community ID.
-     * <p>
-     * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the  newsfeed.getBanned method.
+     *
+     * User IDs can be specified in formats "user_id" or "u"user_id""
+     * where ""user_id"" is the user's friend ID.
+     *
+     * Community IDs can be specified in formats "-"group_id"" or "g"group_id""
+     * where "group_id" is the community ID.
+     *
+     * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the newsfeed.getBanned method.
      *
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

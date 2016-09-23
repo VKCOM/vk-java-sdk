@@ -30,7 +30,7 @@ public class PlacesAddQuery extends AbstractQueryBuilder<PlacesAddQuery, AddResp
     }
 
     /**
-     * ID of the location's type (e.g., ''1'' - Home, ''2'' - Work). To get location type IDs, use the places.getTypes  method.
+     * ID of the location's type (e.g., "1" - Home, "2" - Work). To get location type IDs, use the places.getTypes  method.
      *
      * @param value value of "type" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -50,7 +50,7 @@ public class PlacesAddQuery extends AbstractQueryBuilder<PlacesAddQuery, AddResp
     }
 
     /**
-     * Geographical latitude, in degrees (from ''-90'' to ''90'').
+     * Geographical latitude, in degrees (from "-90" to "90").
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -60,7 +60,7 @@ public class PlacesAddQuery extends AbstractQueryBuilder<PlacesAddQuery, AddResp
     }
 
     /**
-     * Geographical longitude, in degrees (from ''-180'' to ''180'').
+     * Geographical longitude, in degrees (from "-180" to "180").
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -90,7 +90,7 @@ public class PlacesAddQuery extends AbstractQueryBuilder<PlacesAddQuery, AddResp
     }
 
     /**
-     * Street address of the location (e.g., ''125 Elm Street'').
+     * Street address of the location (e.g., "125 Elm Street").
      *
      * @param value value of "address" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -73,7 +73,7 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     }
 
     /**
-     * ''1'' - to return system albums with negative IDs
+     * "1" - to return system albums with negative IDs
      *
      * @param value value of "need system" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -83,8 +83,8 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     }
 
     /**
-     * ''1'' - to return an additional "thumb_src" field
-     * ''0'' - (default)
+     * "1" - to return an additional "thumb_src" field
+     * "0" - (default)
      *
      * @param value value of "need covers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -94,7 +94,7 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     }
 
     /**
-     * ''1'' - to return photo sizes in a special format
+     * "1" - to return photo sizes in a special format
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

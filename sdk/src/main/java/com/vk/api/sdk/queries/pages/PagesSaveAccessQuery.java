@@ -54,9 +54,9 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
 
     /**
      * Who can view the wiki page:
-     * ''1'' - only community members
-     * ''2'' - all users can view the page
-     * ''0'' - only community managers
+     * "1" - only community members
+     * "2" - all users can view the page
+     * "0" - only community managers
      *
      * @param value value of "view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -67,9 +67,9 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
 
     /**
      * Who can edit the wiki page:
-     * ''1'' - only community members
-     * ''2'' - all users can edit the page
-     * ''0'' - only community managers
+     * "1" - only community members
+     * "2" - all users can edit the page
+     * "0" - only community managers
      *
      * @param value value of "edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

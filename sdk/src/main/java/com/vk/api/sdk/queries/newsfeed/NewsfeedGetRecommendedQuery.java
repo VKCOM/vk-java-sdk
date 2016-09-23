@@ -45,7 +45,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
     }
 
     /**
-     * Maximum number of photos to return. By default, ''5''.
+     * Maximum number of photos to return. By default, "5".
      *
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

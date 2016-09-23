@@ -34,7 +34,7 @@ public class MessagesSetActivityQuery extends AbstractQueryBuilder<MessagesSetAc
     }
 
     /**
-     * ''typing'' - user has started to type.
+     * "typing" - user has started to type.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

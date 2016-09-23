@@ -8,8 +8,18 @@ import com.vk.api.sdk.queries.EnumParam;
 public enum GroupsEditWall implements EnumParam {
 
     DISABLED("0"),
+
     OPEN("1"),
-    LIMITED("2");
+
+    /**
+     * groups and events only
+     */
+    LIMITED("2"),
+
+    /**
+     * groups and events only
+     */
+    CLOSED("3");
 
     private final String value;
 

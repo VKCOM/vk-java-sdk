@@ -47,8 +47,8 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
 
     /**
      * (Applies only when editing a scheduled post.)
-     * ''1'' - post will be available to friends only
-     * ''0'' - post will be available to all users (default)
+     * "1" - post will be available to friends only
+     * "0" - post will be available to all users (default)
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,20 +69,20 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media attachment:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * "&lt;owner_id&gt;" - ID of the media application owner.
-     * "&lt;media_id&gt;" - Media application ID.
-     * <p>
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media application owner.
+     * ""media_id"" - Media application ID.
+     *
      * Example:
-     * &lt;blockquote&gt;&lt;code&gt;photo100172_166443618,photo66748_265827614&lt;/code&gt;&lt;/blockquote&gt;
+     * photo100172_166443618,photo66748_265827614
      * May contain a link to an external page to include in the post. Example:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;pre&gt;photo66748_265827614,http://habrahabr.ru&lt;/pre&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * &lt;blockquote&gt;NOTE: If more than one link is being attached, an error is thrown.&lt;/blockquote&gt;
+     * <pre>photo66748_265827614,http://habrahabr.ru</pre>
+     * NOTE: If more than one link is being attached, an error is thrown.
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -92,7 +92,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
     }
 
     /**
-     * (Applies only to a scheduled post.) List of services or websites where status will be updated, if the user has so requested. Sample values: ''twitter'', ''facebook''.
+     * (Applies only to a scheduled post.) List of services or websites where status will be updated, if the user has so requested. Sample values: "twitter", "facebook".
      *
      * @param value value of "services" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -103,7 +103,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
 
     /**
      * (Applies only to a post that was created "as community" on a community wall.)
-     * ''1'' - to add the signature of the user who created the post
+     * "1" - to add the signature of the user who created the post
      *
      * @param value value of "signed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

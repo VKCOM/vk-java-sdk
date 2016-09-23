@@ -12,6 +12,7 @@ import java.util.List;
  * Query for Account.saveProfileInfo method
  */
 public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSaveProfileInfoQuery, SaveProfileInfoResponse> {
+
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -74,32 +75,22 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * User sex, returned values:
-     * ''1'' - female;
-     * ''2'' - male.
+     * User sex
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery sex(Integer value) {
+    public AccountSaveProfileInfoQuery sex(AccountSaveProfileInfoSex value) {
         return unsafeParam("sex", value);
     }
 
     /**
-     * User relationship status, returned values:
-     * ''1'' - single;
-     * ''2'' - in a relationship;
-     * ''3'' - engaged;
-     * ''4'' - married;
-     * ''5'' - it's complicated;
-     * ''6'' - actively searching;
-     * ''7'' - in love;
-     * ''0'' - not specified.
+     * User relationship status.
      *
      * @param value value of "relation" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery relation(Integer value) {
+    public AccountSaveProfileInfoQuery relation(AccountSaveProfileInfoRelation value) {
         return unsafeParam("relation", value);
     }
 
@@ -124,15 +115,12 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Birth date visibility. Returned values:
-     * ''1'' - show birth date;
-     * ''2'' - show only month and date;
-     * ''0'' - hide birth date.
+     * Birth date visibility.
      *
      * @param value value of "bdate visibility" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery bdateVisibility(Integer value) {
+    public AccountSaveProfileInfoQuery bdateVisibility(AccountSaveProfileInfoBdateVisibility value) {
         return unsafeParam("bdate_visibility", value);
     }
 

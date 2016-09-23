@@ -37,7 +37,7 @@ public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuer
     }
 
     /**
-     * Link to check (e.g., ''http://google.com'').
+     * Link to check (e.g., "http://google.com").
      *
      * @param value value of "url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

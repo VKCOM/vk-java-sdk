@@ -39,17 +39,12 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
-     * Sort order:
-     * ''popular_today'' - popular for one day (default)
-     * ''visitors'' - by visitors number
-     * ''create_date'' - by creation date
-     * ''growth_rate'' - by growth rate
-     * ''popular_week'' - popular for one week
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery sort(String value) {
+    public AppsGetCatalogQuery sort(AppsGetCatalogSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -84,8 +79,8 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
-     * ''1'' - to return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to ''100''.
-     * ''0'' - not to return additional fields (default).
+     * "1" - to return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to "100".
+     * "0" - not to return additional fields (default).
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

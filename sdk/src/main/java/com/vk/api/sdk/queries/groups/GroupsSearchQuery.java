@@ -36,7 +36,7 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
     }
 
     /**
-     * Community type. Possible values: ''group, page, event.''
+     * Community type. Possible values: "group, page, event."
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -56,7 +56,7 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
     }
 
     /**
-     * City ID. If this parameter is transmitted, &lt;code&gt;country_id&lt;/code&gt; is ignored.
+     * City ID. If this parameter is transmitted, country_id is ignored.
      *
      * @param value value of "city id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,7 +66,7 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
     }
 
     /**
-     * If 1, only upcoming events will be returned. Works with the ''event'' type only.
+     * If 1, only upcoming events will be returned. Works with the "event" type only.
      *
      * @param value value of "future" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -87,12 +87,12 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
 
     /**
      * Sort order:
-     * ''0'' - default sorting (similar th the full version of the site);
-     * ''1'' - by growth speed;
-     * ''2'' - by the "day attendance/members number" ratio;
-     * ''3'' - by the "Likes number/members number" ratio;
-     * ''4'' - by the "comments number/members number" ratio;
-     * ''5'' - by the "boards entries number/members number" ratio.
+     * "0" - default sorting (similar th the full version of the site);
+     * "1" - by growth speed;
+     * "2" - by the "day attendance/members number" ratio;
+     * "3" - by the "Likes number/members number" ratio;
+     * "4" - by the "comments number/members number" ratio;
+     * "5" - by the "boards entries number/members number" ratio.
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -113,7 +113,7 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
 
     /**
      * Number of communities to return.
-     * &lt;blockquote&gt;Note that you can not receive more than first thousand of results, regardless of "count" and "offset" values.&lt;/blockquote&gt;
+     * Note that you can not receive more than first thousand of results, regardless of "count" and "offset" values.
      *
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

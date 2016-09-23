@@ -28,7 +28,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     /**
      * List of phone numbers in MSISDN format (maximum 1000).
      * Example:
-     * &lt;blockquote&gt;&lt;code&gt;+79219876543,+79111234567&lt;/code&gt;&lt;/blockquote&gt;
+     * +79219876543,+79111234567
      *
      * @param value value of "phones" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -38,7 +38,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''rate'', ''contacts'', ''education'', ''online, counters''.
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

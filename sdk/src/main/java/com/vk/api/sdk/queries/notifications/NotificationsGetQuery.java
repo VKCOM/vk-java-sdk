@@ -45,13 +45,13 @@ public class NotificationsGetQuery extends AbstractQueryBuilder<NotificationsGet
 
     /**
      * Type of notifications to return:
-     * ''wall'' - wall posts
-     * ''mentions'' - mentions in wall posts, comments, or topics
-     * ''comments'' - comments to wall posts, photos, and videos
-     * ''likes''  - likes
-     * ''reposted'' - wall posts that are copied from the current user's wall
-     * ''followers'' - new followers
-     * ''friends'' - accepted friend requests
+     * "wall" - wall posts
+     * "mentions" - mentions in wall posts, comments, or topics
+     * "comments" - comments to wall posts, photos, and videos
+     * "likes"  - likes
+     * "reposted" - wall posts that are copied from the current user's wall
+     * "followers" - new followers
+     * "friends" - accepted friend requests
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

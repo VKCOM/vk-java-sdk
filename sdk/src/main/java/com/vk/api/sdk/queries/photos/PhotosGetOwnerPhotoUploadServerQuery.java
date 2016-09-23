@@ -25,11 +25,11 @@ public class PhotosGetOwnerPhotoUploadServerQuery extends AbstractQueryBuilder<P
 
     /**
      * Identifier of a community or current user.
-     * <p>
-     * &lt;blockquote&gt;Note that community id must be negative.
+     *
+     * Note that community id must be negative.
      * "owner_id=1" - user
      * "owner_id=-1" - community
-     * &lt;/blockquote&gt;
+     *
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

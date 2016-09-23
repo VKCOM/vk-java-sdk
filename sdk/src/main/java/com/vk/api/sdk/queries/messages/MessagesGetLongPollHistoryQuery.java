@@ -43,8 +43,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
-     * Number of characters after which to truncate a previewed message. To preview the full message, specify ''0''.
-     * &lt;blockquote&gt;NOTE: Messages are not truncated by default. Messages are truncated by words.&lt;/blockquote&gt;
+     * Number of characters after which to truncate a previewed message. To preview the full message, specify "0".
+     * NOTE: Messages are not truncated by default. Messages are truncated by words.
      *
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

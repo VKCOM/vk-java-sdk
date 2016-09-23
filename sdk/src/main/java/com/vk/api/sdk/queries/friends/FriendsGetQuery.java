@@ -44,10 +44,8 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     }
 
     /**
-     * Sort order:
-     * ''name'' - by name (enabled only if the "fields" parameter is used)
-     * ''hints'' - by rating, similar to how friends are sorted in My friends section
-     * <p>
+     * Sort order
+     *
      * This parameter is available only for desktop applications.
      *
      * @param value value of "order" parameter.
@@ -88,13 +86,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     }
 
     /**
-     * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * Case for declension of user name and surname.
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

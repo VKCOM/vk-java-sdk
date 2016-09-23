@@ -71,17 +71,17 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
 
     /**
      * (Required if "message" is not set.) List of media objects attached to the comment, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media object:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * "&lt;owner_id&gt;" - ID of the media owner.
-     * "&lt;media_id&gt;" - Media ID.
-     * <p>
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media object:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
+     *
      * Example:
-     * &lt;blockquote&gt;&lt;code&gt;photo100172_166443618,photo66748_265827614&lt;/code&gt;&lt;/blockquote&gt;
+     * photo100172_166443618,photo66748_265827614
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

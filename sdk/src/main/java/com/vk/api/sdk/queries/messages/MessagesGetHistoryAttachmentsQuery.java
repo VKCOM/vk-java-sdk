@@ -28,13 +28,13 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
 
     /**
      * Peer ID.
-     * <p>
-     * &lt;blockquote&gt;
+     *
+     *
      * For group chat:
-     * ''2000000000 + chat ID''
-     * <p>
+     * "2000000000 + chat ID"
+     *
      * For community:
-     * ''-community ID''&lt;/blockquote&gt;
+     * "-community ID"
      *
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -45,11 +45,11 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
 
     /**
      * Type of media files to return:
-     * ''photo'';
-     * ''video'';
-     * ''audio'';
-     * ''doc'';
-     * ''link''.
+     * "photo";
+     * "video";
+     * "audio";
+     * "doc";
+     * "link".
      *
      * @param value value of "media type" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -79,7 +79,7 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
     }
 
     /**
-     * ''1'' - to return photo sizes in a special format
+     * "1" - to return photo sizes in a special format
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

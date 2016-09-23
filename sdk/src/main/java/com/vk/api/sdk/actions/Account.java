@@ -13,6 +13,7 @@ import com.vk.api.sdk.queries.account.AccountGetInfoQuery;
 import com.vk.api.sdk.queries.account.AccountGetProfileInfoQuery;
 import com.vk.api.sdk.queries.account.AccountGetPushSettingsQuery;
 import com.vk.api.sdk.queries.account.AccountLookupContactsQuery;
+import com.vk.api.sdk.queries.account.AccountLookupContactsService;
 import com.vk.api.sdk.queries.account.AccountRegisterDeviceQuery;
 import com.vk.api.sdk.queries.account.AccountSaveProfileInfoQuery;
 import com.vk.api.sdk.queries.account.AccountSetInfoQuery;
@@ -85,7 +86,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountLookupContactsQuery lookupContacts(Actor actor, String service) {
+    public AccountLookupContactsQuery lookupContacts(Actor actor, AccountLookupContactsService service) {
         return new AccountLookupContactsQuery(getClient(), actor, service);
     }
 

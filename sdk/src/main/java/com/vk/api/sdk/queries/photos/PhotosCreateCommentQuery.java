@@ -56,17 +56,17 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * &lt;blockquote&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media attachment:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * "&lt;owner_id&gt;" - Media attachment owner ID.
-     * "&lt;media_id&gt;" - Media attachment ID.
-     * <p>
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - Media attachment owner ID.
+     * ""media_id"" - Media attachment ID.
+     *
      * Example:
-     * &lt;blockquote&gt;photo100172_166443618,photo66748_265827614&lt;/blockquote&gt;
+     * photo100172_166443618,photo66748_265827614
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,7 +76,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
     }
 
     /**
-     * ''1'' - to post a comment from the community
+     * "1" - to post a comment from the community
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

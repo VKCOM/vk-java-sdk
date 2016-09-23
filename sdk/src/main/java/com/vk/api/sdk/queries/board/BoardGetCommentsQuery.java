@@ -61,8 +61,8 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
     }
 
     /**
-     * ''1'' - to return the "likes" field
-     * ''0''  - not to return the "likes" field (default)
+     * "1" - to return the "likes" field
+     * "0"  - not to return the "likes" field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -103,8 +103,8 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
 
     /**
      * Sort order:
-     * ''asc'' - by creation date in chronological order
-     * ''desc'' - by creation date in reverse chronological order
+     * "asc" - by creation date in chronological order
+     * "desc" - by creation date in reverse chronological order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

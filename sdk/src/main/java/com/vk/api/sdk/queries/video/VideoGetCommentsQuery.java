@@ -46,7 +46,7 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
     }
 
     /**
-     * ''1'' - to return an additional "likes" field
+     * Return an additional "likes" field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,14 +86,12 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
     }
 
     /**
-     * Sort order:
-     * ''asc'' - oldest comment first
-     * ''desc'' - newest comment first
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoGetCommentsQuery sort(String value) {
+    public VideoGetCommentsQuery sort(VideoGetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

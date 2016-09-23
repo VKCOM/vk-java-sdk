@@ -29,11 +29,11 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
 
     /**
      * Type of object from which to unsubscribe:
-     * ''note'' - note
-     * ''photo'' - photo
-     * ''post'' - post on user wall or community wall
-     * ''topic'' - topic
-     * ''video'' - video
+     * "note" - note
+     * "photo" - photo
+     * "post" - post on user wall or community wall
+     * "topic" - topic
+     * "video" - video
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

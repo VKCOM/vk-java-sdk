@@ -41,11 +41,11 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
 
     /**
      * Object type:
-     * ''community'' - community;
-     * ''post'' - community post;
-     * ''application'' - VK application;
-     * ''video'' - video;
-     * ''site'' - external site.
+     * "community" - community;
+     * "post" - community post;
+     * "application" - VK application;
+     * "video" - video;
+     * "site" - external site.
      *
      * @param value value of "link type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

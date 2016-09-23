@@ -44,7 +44,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * ''1'' - to return information about a global wiki page
+     * "1" - to return information about a global wiki page
      *
      * @param value value of "global" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +54,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * ''1'' - resulting wiki page is a preview for the attached link
+     * "1" - resulting wiki page is a preview for the attached link
      *
      * @param value value of "site preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -84,7 +84,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * ''1'' - to return the page as HTML
+     * "1" - to return the page as HTML
      *
      * @param value value of "need html" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

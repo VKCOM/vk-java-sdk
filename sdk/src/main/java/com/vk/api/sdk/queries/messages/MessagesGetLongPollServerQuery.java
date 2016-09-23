@@ -24,7 +24,7 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
     }
 
     /**
-     * ''1'' - to use SSL.
+     * "1" - to use SSL.
      *
      * @param value value of "use ssl" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +34,7 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
     }
 
     /**
-     * ''1'' - to return the "pts" field, needed for the messages.getLongPollHistory method.
+     * "1" - to return the "pts" field, needed for the messages.getLongPollHistory method.
      *
      * @param value value of "need pts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

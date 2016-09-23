@@ -9,6 +9,10 @@ public enum GroupsEditAudio implements EnumParam {
 
     DISABLED("0"),
     OPEN("1"),
+
+    /**
+     * for groups and events only
+     */
     LIMITED("2");
 
     private final String value;

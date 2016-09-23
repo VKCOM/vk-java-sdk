@@ -10,6 +10,10 @@ public enum AppsGetPlatform implements EnumParam {
     IOS("ios"),
     ANDROID("android"),
     WINPHONE("winphone"),
+
+    /**
+     * Default
+     */
     WEB("web");
 
     private final String value;

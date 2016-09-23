@@ -59,11 +59,6 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
 
     /**
      * New access permissions for the album.
-     * Possible values:
-     * ''0'' - all users;
-     * ''1'' - friends only;
-     * ''2'' - friends and friends of friends;
-     * ''3'' - "only me".
      *
      * @param value value of "privacy" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

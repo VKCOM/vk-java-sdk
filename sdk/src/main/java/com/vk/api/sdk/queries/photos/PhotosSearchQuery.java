@@ -43,7 +43,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Geographical latitude, in degrees (from ''-90'' to ''90'').
+     * Geographical latitude, in degrees (from "-90" to "90").
      *
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -53,7 +53,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Geographical longitude, in degrees (from ''-180'' to ''180'').
+     * Geographical longitude, in degrees (from "-180" to "180").
      *
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -109,7 +109,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Radius of search in meters (works very approximately). Available values: ''10'', ''100'', ''800'', ''6000'', ''50000''.
+     * Radius of search in meters (works very approximately). Available values: "10", "100", "800", "6000", "50000".
      *
      * @param value value of "radius" parameter. Minimum is 0. By default 5000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

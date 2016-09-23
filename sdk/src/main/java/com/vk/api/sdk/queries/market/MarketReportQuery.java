@@ -32,7 +32,7 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
 
     /**
      * Identifier of an item owner community
-     * &lt;blockquote&gt;Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community &lt;/blockquote&gt;
+     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -53,13 +53,13 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
 
     /**
      * Complaint reason:
-     * ''0'' - spam;
-     * ''1'' - child porn;
-     * ''2'' - extremism;
-     * ''3'' - violence;
-     * ''4'' - drugs propaganda;
-     * ''5'' - adult materials;
-     * ''6'' - insult.
+     * "0" - spam;
+     * "1" - child porn;
+     * "2" - extremism;
+     * "3" - violence;
+     * "4" - drugs propaganda;
+     * "5" - adult materials;
+     * "6" - insult.
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

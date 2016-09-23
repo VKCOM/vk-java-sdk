@@ -20,7 +20,7 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
      * @param actor   actor with access token
      * @param service value of "service" parameter.
      */
-    public AccountLookupContactsQuery(VkApiClient client, Actor actor, String service) {
+    public AccountLookupContactsQuery(VkApiClient client, Actor actor, AccountLookupContactsService service) {
         super(client, "account.lookupContacts", LookupResult.class);
         accessToken(actor.getAccessToken());
         service(service);
@@ -37,19 +37,12 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
     }
 
     /**
-     * String identifier of a service which contacts are used for searching. May take the following values:
-     * email
-     * phone
-     * twitter
-     * facebook
-     * odnoklassniki
-     * instagram
-     * google
+     * String identifier of a service which contacts are used for searching.
      *
      * @param value value of "service" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountLookupContactsQuery service(String value) {
+    protected AccountLookupContactsQuery service(AccountLookupContactsService value) {
         return unsafeParam("service", value);
     }
 

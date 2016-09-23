@@ -27,14 +27,14 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
 
     /**
      * Types of potential friends to return:
-     * ''mutual'' - users with many mutual friends
-     * ''contacts'' - users found with the account.importContacts]] method
-     * ''mutual_contacts'' - users who imported the same contacts as the current user with the [[account.importContacts method
+     * "mutual" - users with many mutual friends
+     * "contacts" - users found with the account.importContacts]] method
+     * "mutual_contacts" - users who imported the same contacts as the current user with the [[account.importContacts method
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetSuggestionsQuery filter(String... value) {
+    public FriendsGetSuggestionsQuery filter(FriendsGetSuggestionsFilter... value) {
         return unsafeParam("filter", value);
     }
 
@@ -59,7 +59,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''rate'', ''contacts'', ''education'', ''online'', ''counters''.
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,13 +69,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
     }
 
     /**
-     * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * Case for declension of user name and surname.
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

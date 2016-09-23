@@ -47,7 +47,7 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
     }
 
     /**
-     * ID of the user, community, or application that owns the object. If the "type" parameter is set as ''sitepage'', the application ID is passed as "owner_id". Use negative value for a community id. If the "type" parameter is not set, the "owner_id" is assumed to be either the current user or the same application ID as if the "type" parameter was set to ''sitepage''.
+     * ID of the user, community, or application that owns the object. If the "type" parameter is set as "sitepage", the application ID is passed as "owner_id". Use negative value for a community id. If the "type" parameter is not set, the "owner_id" is assumed to be either the current user or the same application ID as if the "type" parameter was set to "sitepage".
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -57,7 +57,7 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
     }
 
     /**
-     * Object ID. If "type" is set as ''sitepage'', "item_id" can include the "page_id" parameter value used during initialization of the Like widget.
+     * Object ID. If "type" is set as "sitepage", "item_id" can include the "page_id" parameter value used during initialization of the Like widget.
      *
      * @param value value of "item id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -78,8 +78,8 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
 
     /**
      * Filters to apply:
-     * ''likes'' - returns information about all users who liked the object (default)
-     * ''copies'' - returns information only about users who told their friends about the object
+     * "likes" - returns information about all users who liked the object (default)
+     * "copies" - returns information only about users who told their friends about the object
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -90,8 +90,8 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
 
     /**
      * Specifies which users are returned:
-     * ''1'' - to return only the current user's friends
-     * ''0'' - to return all users (default)
+     * "1" - to return only the current user's friends
+     * "0" - to return all users (default)
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -111,8 +111,8 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
     }
 
     /**
-     * Number of user IDs to return (maximum ''1000'').
-     * Default is ''100'' if "friends_only" is set to  ''0''; otherwise, the default is ''10'' if "friends_only" is set to ''1''.
+     * Number of user IDs to return (maximum "1000").
+     * Default is "100" if "friends_only" is set to  "0"; otherwise, the default is "10" if "friends_only" is set to "1".
      *
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -55,12 +55,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
     }
 
     /**
-     * Platform. Possible values:
-     * ''ios'' - iOS;
-     * ''android'' - Android;
-     * ''winphone'' - Windows Phone;
-     * ''web'' - Ð¿Ñ�Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ� Ð½Ð° vk.com.
-     * By default: ''web''.
+     * Platform.
      *
      * @param value value of "platform" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -72,11 +67,6 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
     /**
      * Profile fields to return.
      *
-     * Sample values:
-     * ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'',
-     * ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''contacts'', ''education'',
-     * ''online'', ''counters'', ''relation'', ''last_seen'', ''activity'', ''can_write_private_message'',
-     * ''can_see_all_posts'', ''can_post'', ''universities''
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,15 +76,8 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
     }
 
     /**
-     * Case for declension of user name and surname:
-     * ''nom'' - nominative (default);
-     * ''gen'' - genitive;
-     * ''dat'' - dative;
-     * ''acc'' - accusative;
-     * ''ins'' - instrumental;
-     * ''abl'' - prepositional.
-     * <p>
-     * (only if "return_friends" = ''1'')
+     * Case for declension of user name and surname.
+     * Only if "return_friends" = "1"
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

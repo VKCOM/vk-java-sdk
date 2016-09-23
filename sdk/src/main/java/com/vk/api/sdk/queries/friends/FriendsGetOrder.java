@@ -7,7 +7,14 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum FriendsGetOrder implements EnumParam {
 
+    /**
+     * by name
+     */
     NAME("name"),
+
+    /**
+     * by rating, similar to how friends are sorted in My friends section
+     */
     HINTS("hints");
 
     private final String value;

@@ -36,7 +36,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New messages notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New messages notifications.
      *
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +46,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New photos notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New photos notifications.
      *
      * @param value value of "photo new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -56,7 +56,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New audios notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New audios notifications.
      *
      * @param value value of "audio new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,7 +66,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New videos notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New videos notifications.
      *
      * @param value value of "video new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,7 +76,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New wall replies notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New wall replies notifications.
      *
      * @param value value of "wall reply new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,7 +86,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Wall replies edited notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Wall replies edited notifications.
      *
      * @param value value of "wall reply edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -96,7 +96,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New wall posts notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New wall posts notifications.
      *
      * @param value value of "wall post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -106,7 +106,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New board posts notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New board posts notifications.
      *
      * @param value value of "board post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -116,7 +116,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts edited notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Board posts edited notifications.
      *
      * @param value value of "board post edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -126,7 +126,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts restored notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Board posts restored notifications.
      *
      * @param value value of "board post restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -136,7 +136,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts deleted notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Board posts deleted notifications.
      *
      * @param value value of "board post delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -146,7 +146,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to photo notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New comment to photo notifications.
      *
      * @param value value of "photo comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -156,7 +156,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to video notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New comment to video notifications.
      *
      * @param value value of "video comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -166,7 +166,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to market item notificaitions (''0'' - disabled, ''1'' - enabled).
+     * New comment to market item notifications.
      *
      * @param value value of "market comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -176,7 +176,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Joined community notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Joined community notifications.
      *
      * @param value value of "group join" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -186,7 +186,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Left community notificaitions (''0'' - disabled, ''1'' - enabled).
+     * Left community notifications.
      *
      * @param value value of "group leave" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

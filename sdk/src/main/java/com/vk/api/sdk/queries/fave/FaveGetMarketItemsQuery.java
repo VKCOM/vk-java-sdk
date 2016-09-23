@@ -34,7 +34,7 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
     }
 
     /**
-     * ''1'' - additional fields  "likes, can_comment, can_repost, photos" will be returned. These fields are disabled by default.
+     * "1" - additional fields  "likes, can_comment, can_repost, photos" will be returned. These fields are disabled by default.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

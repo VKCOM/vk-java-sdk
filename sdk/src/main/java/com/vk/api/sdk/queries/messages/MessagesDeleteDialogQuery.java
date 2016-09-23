@@ -55,7 +55,7 @@ public class MessagesDeleteDialogQuery extends AbstractQueryBuilder<MessagesDele
 
     /**
      * Number of messages to delete.
-     * &lt;blockquote&gt;NOTE: If the number of messages exceeds the maximum, the method shall be called several times.&lt;/blockquote&gt;
+     * NOTE: If the number of messages exceeds the maximum, the method shall be called several times.
      *
      * @param value value of "count" parameter. Maximum is 10000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

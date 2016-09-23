@@ -34,7 +34,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Offset needed to return a specific subset of photos. By default, ''0''.
+     * Offset needed to return a specific subset of photos. By default, "0".
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,8 +54,8 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * ''1'' - to return an additional "likes" field
-     * ''0'' - (default)
+     * "1" - to return an additional "likes" field
+     * "0" - (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,8 +66,8 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
 
     /**
      * Sort order:
-     * ''1'' - by date the tag was added in ascending order
-     * ''0'' - by date the tag was added in descending order
+     * "1" - by date the tag was added in ascending order
+     * "0" - by date the tag was added in descending order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

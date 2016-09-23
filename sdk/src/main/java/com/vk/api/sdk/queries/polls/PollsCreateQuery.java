@@ -57,7 +57,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
 
     /**
      * Available answers list, for example:
-     * &lt;blockquote&gt; ["yes","no","maybe"]&lt;/blockquote&gt;
+     *  ["yes","no","maybe"]
      * There can be from 1 to 10 answers.
      *
      * @param value value of "add answers" parameter.

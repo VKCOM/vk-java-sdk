@@ -24,8 +24,8 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
-     * ''1'' - to return outgoing messages
-     * ''0'' - to return incoming messages (default)
+     * "1" - to return outgoing messages
+     * "0" - to return incoming messages (default)
      *
      * @param value value of "out" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +55,7 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
-     * Maximum time since a message was sent, in seconds. To return messages without a time limitation, set as ''0''.
+     * Maximum time since a message was sent, in seconds. To return messages without a time limitation, set as "0".
      *
      * @param value value of "time offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,8 +65,8 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
-     * Number of characters after which to truncate a previewed message. To preview the full message, specify ''0''.
-     * &lt;blockquote&gt;NOTE: Messages are not truncated by default. Messages are truncated by words.&lt;/blockquote&gt;
+     * Number of characters after which to truncate a previewed message. To preview the full message, specify "0".
+     * NOTE: Messages are not truncated by default. Messages are truncated by words.
      *
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -65,7 +65,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Profile fields to return. Sample values: ''nickname'', ''screen_name'', ''sex'', ''bdate'' (birthdate), ''city'', ''country'', ''timezone'', ''photo'', ''photo_medium'', ''photo_big'', ''has_mobile'', ''rate'', ''contacts'', ''education'', ''online''.
+     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online".
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,12 +76,12 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
 
     /**
      * Case for declension of user name and surname:
-     * ''nom'' - nominative (default)
-     * ''gen'' - genitive
-     * ''dat'' - dative
-     * ''acc'' - accusative
-     * ''ins'' - instrumental
-     * ''abl'' - prepositional
+     * "nom" - nominative (default)
+     * "gen" - genitive
+     * "dat" - dative
+     * "acc" - accusative
+     * "ins" - instrumental
+     * "abl" - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

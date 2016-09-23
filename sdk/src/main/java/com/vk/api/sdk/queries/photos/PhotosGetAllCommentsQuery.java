@@ -44,8 +44,8 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * ''1'' - to return an additional "likes" field
-     * ''0'' - (default)
+     * "1" - to return an additional "likes" field
+     * "0" - (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +55,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * Offset needed to return a specific subset of comments. By default, ''0''.
+     * Offset needed to return a specific subset of comments. By default, "0".
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,7 +65,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * Number of comments to return. By default, ''20''. Maximum value, ''100''.
+     * Number of comments to return. By default, "20". Maximum value, "100".
      *
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

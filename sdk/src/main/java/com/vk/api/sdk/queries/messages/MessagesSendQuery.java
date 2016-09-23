@@ -53,7 +53,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * User's short address (for example, ''illarionov'').
+     * User's short address (for example, "illarionov").
      *
      * @param value value of "domain" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -114,18 +114,18 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
 
     /**
      * (Required if "message" is not set.) List of objects attached to the message, separated by commas, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media attachment:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * ''wall'' - wall post
-     * "&lt;owner_id&gt;" - ID of the media attachment owner.
-     * "&lt;media_id&gt;" - media attachment ID.
-     * <p>
+     * "type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * "wall" - wall post
+     * ""owner_id"" - ID of the media attachment owner.
+     * ""media_id"" - media attachment ID.
+     *
      * Example:
-     * &lt;blockquote&gt;&lt;code&gt;photo100172_166443618&lt;/code&gt;&lt;/blockquote&gt;
+     * photo100172_166443618
      *
      * @param value value of "attachment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -136,9 +136,9 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
 
     /**
      * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's.
-     * <p>
+     *
      * Example:
-     * &lt;blockquote&gt;&lt;code&gt;123,431,544&lt;/code&gt;&lt;/blockquote&gt;
+     * 123,431,544
      *
      * @param value value of "forward messages" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

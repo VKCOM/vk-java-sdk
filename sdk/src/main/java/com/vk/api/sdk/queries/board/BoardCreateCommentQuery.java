@@ -58,14 +58,14 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
 
     /**
      * (Required if "text" is not set.) List of media objects attached to the comment, in the following format:
-     * &lt;blockquote&gt;&lt;code&gt;&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;,&lt;type&gt;&lt;owner_id&gt;_&lt;media_id&gt;&lt;/code&gt;&lt;/blockquote&gt;
-     * "&lt;type&gt;" - Type of media object:
-     * ''photo'' - photo
-     * ''video'' - video
-     * ''audio'' - audio
-     * ''doc'' - document
-     * "&lt;owner_id&gt;" - ID of the media owner.
-     * "&lt;media_id&gt;" - Media ID.
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media object:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,8 +75,8 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * ''1'' - to post the comment as by the community
-     * ''0'' - to post the comment as by the user (default)
+     * "1" - to post the comment as by the community
+     * "0" - to post the comment as by the user (default)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

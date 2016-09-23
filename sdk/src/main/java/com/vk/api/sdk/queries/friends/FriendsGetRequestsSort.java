@@ -7,7 +7,14 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum FriendsGetRequestsSort implements EnumParam {
 
+    /**
+     * by number of mutual friends
+     */
     BY_MUTUAL_FRIENDS("1"),
+
+    /**
+     * by date
+     */
     BY_DATE("0");
 
     private final String value;

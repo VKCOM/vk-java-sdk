@@ -37,7 +37,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
 
     /**
      * User or community id.
-     * &lt;blockquote&gt;Remember that for a community "owner_id" must be negative.&lt;/blockquote&gt;
+     * Remember that for a community "owner_id" must be negative.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -55,14 +55,12 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
     }
 
     /**
-     * Request type. Values:
-     * "invite" - if the request is sent to a user who does not have the app installed;
-     * "request" - if a user has already installed the app
+     * Request type.
      *
      * @param value value of "type" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsSendRequestQuery type(String value) {
+    public AppsSendRequestQuery type(AppsSendRequestType value) {
         return unsafeParam("type", value);
     }
 
