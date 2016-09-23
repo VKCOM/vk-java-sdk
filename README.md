@@ -225,10 +225,9 @@ if (captchaImg != null) {
 ##10. Callback API handler
 Override methods from CallbackApi class for handling events
 
-```
+```java
 public class CallbackApiHandler extends CallbackApi {
-
- @Override
+  @Override
   public void messageNew(Integer groupId, Message message) {
     System.out.println(message.getBody());
   }
