@@ -4,8 +4,6 @@ Java library for VK API interaction, includes OAuth 2.0 authorization and API me
 
 This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.53.
 
-[![Maven Central](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg?maxAge=2592000)](https://mvnrepository.com/artifact/com.vk.api/sdk)
-
 ##1. Prerequisites
 
 * [Java  JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 or later
@@ -223,5 +221,24 @@ if (captchaImg != null) {
         .execute();
 }
 ```
-##9. Usage Example
+
+##10. Callback API handler
+Override methods from CallbackApi class for handling events
+
+```
+public class CallbackApiHandler extends CallbackApi {
+
+ @Override
+  public void messageNew(Integer groupId, Message message) {
+    System.out.println(message.getBody());
+  }
+}
+
+...
+CallbackApiHandler callbackApiHandler = new CallbackApiHandler();
+
+String body = httpRequest.getBody();
+callbackApiHandler.parse(body);
+```
+##11. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
