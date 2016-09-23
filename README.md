@@ -23,7 +23,7 @@ VK Java SDK uses:
 
 The most recent release is 0.1.3, released September 23, 2016.
 
-To add a dependency on Guava using Maven, use the following:
+To add a dependency on VK Java SDK using Maven, use the following:
 
 ```xml
 <dependency>
