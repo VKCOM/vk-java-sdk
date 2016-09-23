@@ -222,7 +222,7 @@ if (captchaImg != null) {
 }
 ```
 
-##10. Callback API handler
+##9. Callback API handler
 Override methods from CallbackApi class for handling events
 
 ```java
@@ -239,5 +239,5 @@ CallbackApiHandler callbackApiHandler = new CallbackApiHandler();
 String body = httpRequest.getBody();
 callbackApiHandler.parse(body);
 ```
-##11. Usage Example
+##10. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
