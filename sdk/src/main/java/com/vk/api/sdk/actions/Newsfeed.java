@@ -148,6 +148,13 @@ public class Newsfeed extends AbstractAction {
         return new NewsfeedSaveListQuery(getClient(), actor, title);
     }
 
+    /**
+     * Delete newsfeed list by id
+     *
+     * @param actor  actor vk actor
+     * @param listId list id
+     * @return
+     */
     public NewsfeedDeleteListQuery deleteList(Actor actor, int listId) {
         return new NewsfeedDeleteListQuery(getClient(), actor, listId);
     }
