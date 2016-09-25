@@ -44,6 +44,16 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
     }
 
     /**
+     * IDs or screen names of communities.
+     *
+     * @param value value of "group ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetByIdQuery groupIds(List<String> value) {
+        return unsafeParam("group_ids", value);
+    }
+
+    /**
      * ID or screen name of the community.
      *
      * @param value value of "group id" parameter.
@@ -60,6 +70,16 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetByIdQuery fields(GroupField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Group fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetByIdQuery fields(List<GroupField> value) {
         return unsafeParam("fields", value);
     }
 

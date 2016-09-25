@@ -28,8 +28,30 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public UsersGetFollowersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
      */
     public UsersGetFollowersQueryWithFields(VkApiClient client, UserField... fields) {
+        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     */
+    public UsersGetFollowersQueryWithFields(VkApiClient client, List<UserField> fields) {
         super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
         fields(fields);
     }
@@ -71,6 +93,16 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected UsersGetFollowersQueryWithFields fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected UsersGetFollowersQueryWithFields fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

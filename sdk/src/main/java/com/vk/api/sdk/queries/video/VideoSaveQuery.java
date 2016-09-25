@@ -105,12 +105,32 @@ public class VideoSaveQuery extends AbstractQueryBuilder<VideoSaveQuery, SaveRes
     }
 
     /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSaveQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public VideoSaveQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSaveQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 

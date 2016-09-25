@@ -76,12 +76,32 @@ public class PhotosEditAlbumQuery extends AbstractQueryBuilder<PhotosEditAlbumQu
     }
 
     /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosEditAlbumQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PhotosEditAlbumQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosEditAlbumQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 

@@ -68,6 +68,16 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
     }
 
     /**
+     * Additional fields list to return
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetInvitedUsersQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.

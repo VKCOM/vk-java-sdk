@@ -72,6 +72,16 @@ public class VideoGetCatalogQuery extends AbstractQueryBuilder<VideoGetCatalogQu
         return unsafeParam("filters", value);
     }
 
+    /**
+     * List of requested catalog sections
+     *
+     * @param value value of "filters" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetCatalogQuery filters(List<VideoGetCatalogFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
     @Override
     protected VideoGetCatalogQuery getThis() {
         return this;

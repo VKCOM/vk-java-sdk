@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -247,6 +248,17 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      */
     public T unsafeParam(String key, EnumParam... fields) {
         return unsafeParam(key, Arrays.stream(fields).map(EnumParam::getValue).collect(Collectors.joining(",")));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key    name of parameter
+     * @param fields value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, List<? extends EnumParam> fields) {
+        return unsafeParam(key, fields.stream().map(EnumParam::getValue).collect(Collectors.joining(",")));
     }
 
     @Override

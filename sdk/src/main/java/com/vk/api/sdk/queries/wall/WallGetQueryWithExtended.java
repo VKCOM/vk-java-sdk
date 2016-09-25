@@ -105,6 +105,16 @@ public class WallGetQueryWithExtended extends AbstractQueryBuilder<WallGetQueryW
         return unsafeParam("fields", value);
     }
 
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetQueryWithExtended fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected WallGetQueryWithExtended getThis() {
         return this;

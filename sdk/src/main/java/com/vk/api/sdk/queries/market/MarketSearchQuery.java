@@ -76,7 +76,17 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
     }
 
     /**
-     * "0" - do not use reverse order, "1" - use reverse order
+     * Comma-separated tag ids list
+     *
+     * @param value value of "tags" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQuery tags(List<Integer> value) {
+        return unsafeParam("tags", value);
+    }
+
+    /**
+     * Use reverse order
      *
      * @param value value of "rev" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

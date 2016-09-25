@@ -65,6 +65,16 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
+     * Photo IDs.
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetQueryWithExtended photoIds(List<String> value) {
+        return unsafeParam("photo_ids", value);
+    }
+
+    /**
      * Return photos in reverse chronological order
      *
      * @param value value of "rev" parameter.

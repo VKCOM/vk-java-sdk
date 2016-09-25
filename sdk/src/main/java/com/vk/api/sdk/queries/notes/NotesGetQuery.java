@@ -34,6 +34,16 @@ public class NotesGetQuery extends AbstractQueryBuilder<NotesGetQuery, GetRespon
     }
 
     /**
+     * Note IDs.
+     *
+     * @param value value of "note ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesGetQuery noteIds(List<Integer> value) {
+        return unsafeParam("note_ids", value);
+    }
+
+    /**
      * Note owner ID.
      *
      * @param value value of "user id" parameter. Minimum is 0.

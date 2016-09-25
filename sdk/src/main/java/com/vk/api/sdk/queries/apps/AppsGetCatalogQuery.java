@@ -109,6 +109,16 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetCatalogQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * Set name case
      *
      * @param value value of "name case" parameter.

@@ -36,6 +36,8 @@ import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
+import java.util.List;
+
 /**
  * List of Messages methods
  */
@@ -68,6 +70,13 @@ public class Messages extends AbstractAction {
      * Returns messages by their IDs.
      */
     public MessagesGetByIdQuery getById(Actor actor, int... messageIds) {
+        return new MessagesGetByIdQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     */
+    public MessagesGetByIdQuery getById(Actor actor, List<Integer> messageIds) {
         return new MessagesGetByIdQuery(getClient(), actor, messageIds);
     }
 
@@ -165,14 +174,21 @@ public class Messages extends AbstractAction {
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithChatIds getChat(Actor actor, Integer[] chatIds) {
+    public MessagesGetChatQueryWithChatIds getChat(Actor actor, Integer... chatIds) {
         return new MessagesGetChatQueryWithChatIds(getClient(), actor, chatIds);
     }
 
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithChatIdsFields getChat(Actor actor, Integer[] chatIds, UserField... fields) {
+    public MessagesGetChatQueryWithChatIds getChat(Actor actor, List<Integer> chatIds) {
+        return new MessagesGetChatQueryWithChatIds(getClient(), actor, chatIds);
+    }
+
+    /**
+     * Returns information about a chat.
+     */
+    public MessagesGetChatQueryWithChatIdsFields getChat(Actor actor, List<Integer> chatIds, List<UserField> fields) {
         return new MessagesGetChatQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
     }
 
@@ -180,6 +196,13 @@ public class Messages extends AbstractAction {
      * Creates a chat with several participants.
      */
     public MessagesCreateChatQuery createChat(Actor actor, int... userIds) {
+        return new MessagesCreateChatQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * Creates a chat with several participants.
+     */
+    public MessagesCreateChatQuery createChat(Actor actor, List<Integer> userIds) {
         return new MessagesCreateChatQuery(getClient(), actor, userIds);
     }
 
@@ -207,14 +230,28 @@ public class Messages extends AbstractAction {
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithChatIds getChatUsers(Actor actor, Integer[] chatIds) {
+    public MessagesGetChatUsersQueryWithFields getChatUsers(Actor actor, List<UserField> fields) {
+        return new MessagesGetChatUsersQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of IDs of users participating in a chat.
+     */
+    public MessagesGetChatUsersQueryWithChatIds getChatUsers(Actor actor, Integer... chatIds) {
         return new MessagesGetChatUsersQueryWithChatIds(getClient(), actor, chatIds);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(Actor actor, Integer[] chatIds, UserField... fields) {
+    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(Actor actor, List<Integer> chatIds, UserField... fields) {
+        return new MessagesGetChatUsersQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
+    }
+
+    /**
+     * Returns a list of IDs of users participating in a chat.
+     */
+    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(Actor actor, List<Integer> chatIds, List<UserField> fields) {
         return new MessagesGetChatUsersQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
     }
 

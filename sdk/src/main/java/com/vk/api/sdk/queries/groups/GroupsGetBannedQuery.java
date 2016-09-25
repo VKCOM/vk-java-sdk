@@ -66,6 +66,17 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
         return unsafeParam("fields", value);
     }
 
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetBannedQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
     /**
      * Set user id
      *

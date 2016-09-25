@@ -76,6 +76,27 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
     }
 
     /**
+     * (Required if "message" is not set.) List of objects attached to the post, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - Media attachment owner ID.
+     * ""media_id"" - Media attachment ID.
+     * <p>
+     * Example:
+     * photo100172_166443618,photo66748_265827614
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
      * Post a comment from the community
      *
      * @param value value of "from group" parameter.

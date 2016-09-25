@@ -15,6 +15,8 @@ import com.vk.api.sdk.queries.users.UsersReportQuery;
 import com.vk.api.sdk.queries.users.UsersReportType;
 import com.vk.api.sdk.queries.users.UsersSearchQuery;
 
+import java.util.List;
+
 /**
  * List of Users methods
  */
@@ -109,7 +111,21 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
+    public UsersGetFollowersQueryWithFields getFollowers(List<UserField> fields) {
+        return new UsersGetFollowersQueryWithFields(getClient(), fields);
+    }
+
+    /**
+     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+     */
     public UsersGetFollowersQueryWithFields getFollowers(Actor actor, UserField... fields) {
+        return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+     */
+    public UsersGetFollowersQueryWithFields getFollowers(Actor actor, List<UserField> fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 

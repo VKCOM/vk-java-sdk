@@ -36,6 +36,16 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
     }
 
     /**
+     * Types of potential friends to return
+     *
+     * @param value value of "filter" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetSuggestionsQuery filter(List<FriendsGetSuggestionsFilter> value) {
+        return unsafeParam("filter", value);
+    }
+
+    /**
      * Number of suggestions to return.
      *
      * @param value value of "count" parameter. Maximum is 500. Minimum is 0. By default 500.
@@ -62,6 +72,16 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetSuggestionsQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetSuggestionsQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

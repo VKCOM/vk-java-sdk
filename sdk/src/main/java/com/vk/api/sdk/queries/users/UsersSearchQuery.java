@@ -74,6 +74,16 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersSearchQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * City ID.
      *
      * @param value value of "city" parameter. Minimum is 0.
@@ -352,6 +362,17 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     public UsersSearchQuery fromList(String... value) {
         return unsafeParam("from_list", value);
     }
+
+    /**
+     * Set from list
+     *
+     * @param value value of "from list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersSearchQuery fromList(List<String> value) {
+        return unsafeParam("from_list", value);
+    }
+
 
     @Override
     protected UsersSearchQuery getThis() {

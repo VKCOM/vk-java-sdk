@@ -135,6 +135,16 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
         return unsafeParam("fields", value);
     }
 
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSearchQueryWithExtended fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected NewsfeedSearchQueryWithExtended getThis() {
         return this;

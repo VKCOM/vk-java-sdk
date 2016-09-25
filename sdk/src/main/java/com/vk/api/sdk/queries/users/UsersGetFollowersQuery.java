@@ -73,6 +73,16 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
     }
 
     /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetFollowersQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.

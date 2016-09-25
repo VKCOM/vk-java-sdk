@@ -9,6 +9,8 @@ import com.vk.api.sdk.queries.orders.OrdersGetAmountQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetByIdQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetQuery;
 
+import java.util.List;
+
 /**
  * List of Orders methods
  */
@@ -45,6 +47,10 @@ public class Orders extends AbstractAction {
     }
 
     public OrdersGetAmountQuery getAmount(Actor actor, int userId, String... votes) {
+        return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
+    }
+
+    public OrdersGetAmountQuery getAmount(Actor actor, int userId, List<String> votes) {
         return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
     }
 }

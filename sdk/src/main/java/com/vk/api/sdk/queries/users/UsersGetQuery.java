@@ -44,7 +44,17 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
     }
 
     /**
-     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "contacts", "education", "online", "counters", "relation", "last_seen", "activity", "can_write_private_message", "can_see_all_posts", "can_post", "universities"
+     * User IDs or screen names ("screen_name"). By default, current user ID.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetQuery userIds(List<String> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,13 +64,17 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

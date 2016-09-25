@@ -76,6 +76,16 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
+     * Set filters
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSearchQuery filters(List<VideoSearchFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
      * @param value value of "search own" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

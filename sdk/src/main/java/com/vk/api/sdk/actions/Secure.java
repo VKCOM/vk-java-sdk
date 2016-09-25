@@ -14,6 +14,8 @@ import com.vk.api.sdk.queries.secure.SecureSendSMSNotificationQuery;
 import com.vk.api.sdk.queries.secure.SecureSetCounterQuery;
 import com.vk.api.sdk.queries.secure.SecureSetUserLevelQuery;
 
+import java.util.List;
+
 /**
  * List of Secure methods
  */
@@ -81,6 +83,13 @@ public class Secure extends AbstractAction {
      * Returns one of the previously set game levels of one or more users in the application.
      */
     public SecureGetUserLevelQuery getUserLevel(ServerActor actor, int... userIds) {
+        return new SecureGetUserLevelQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * Returns one of the previously set game levels of one or more users in the application.
+     */
+    public SecureGetUserLevelQuery getUserLevel(ServerActor actor, List<Integer> userIds) {
         return new SecureGetUserLevelQuery(getClient(), actor, userIds);
     }
 

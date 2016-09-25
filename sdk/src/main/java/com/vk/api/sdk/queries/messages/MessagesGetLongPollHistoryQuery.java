@@ -76,6 +76,16 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * Set events limit
      *
      * @param value value of "events limit" parameter. Minimum is 1000. By default 1000.

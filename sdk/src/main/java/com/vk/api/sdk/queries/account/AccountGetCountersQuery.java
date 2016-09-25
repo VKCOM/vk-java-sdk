@@ -33,6 +33,16 @@ public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCoun
         return unsafeParam("filter", value);
     }
 
+    /**
+     * Counters information of which shall be returned
+     *
+     * @param value value of "filter" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountGetCountersQuery filter(List<AccountGetCountersFilter> value) {
+        return unsafeParam("filter", value);
+    }
+
     @Override
     protected AccountGetCountersQuery getThis() {
         return this;

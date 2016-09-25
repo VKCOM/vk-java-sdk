@@ -28,6 +28,21 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param votes  value of "votes" parameter.
+     */
+    public OrdersGetAmountQuery(VkApiClient client, Actor actor, int userId, List<String> votes) {
+        super(client, "orders.getAmount", Amount.class);
+        accessToken(actor.getAccessToken());
+        userId(userId);
+        votes(votes);
+    }
+
+    /**
      * Set user id
      *
      * @param value value of "user id" parameter. Minimum is 0.
@@ -44,6 +59,16 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected OrdersGetAmountQuery votes(String... value) {
+        return unsafeParam("votes", value);
+    }
+
+    /**
+     * Set votes
+     *
+     * @param value value of "votes" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected OrdersGetAmountQuery votes(List<String> value) {
         return unsafeParam("votes", value);
     }
 

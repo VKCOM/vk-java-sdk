@@ -27,12 +27,35 @@ public class SecureGetUserLevelQuery extends AbstractQueryBuilder<SecureGetUserL
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param userIds value of "user ids" parameter.
+     */
+    public SecureGetUserLevelQuery(VkApiClient client, ServerActor actor, List<Integer> userIds) {
+        super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, Level.class));
+        accessToken(actor.getAccessToken());
+        userIds(userIds);
+    }
+
+    /**
      * Set user ids
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected SecureGetUserLevelQuery userIds(int... value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * Set user ids
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected SecureGetUserLevelQuery userIds(List<Integer> value) {
         return unsafeParam("user_ids", value);
     }
 

@@ -370,12 +370,32 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
+     * Market delivery regions
+     *
+     * @param value value of "market country" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery marketCountry(List<Integer> value) {
+        return unsafeParam("market_country", value);
+    }
+
+    /**
      * Market delivery cities (if only one country is specified)
      *
      * @param value value of "market city" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsEditQuery marketCity(Integer... value) {
+        return unsafeParam("market_city", value);
+    }
+
+    /**
+     * Market delivery cities (if only one country is specified)
+     *
+     * @param value value of "market city" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery marketCity(List<Integer> value) {
         return unsafeParam("market_city", value);
     }
 
@@ -445,6 +465,16 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsEditQuery obsceneWords(String... value) {
+        return unsafeParam("obscene_words", value);
+    }
+
+    /**
+     * Keywords for stopwords filter
+     *
+     * @param value value of "obscene words" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery obsceneWords(List<String> value) {
         return unsafeParam("obscene_words", value);
     }
 

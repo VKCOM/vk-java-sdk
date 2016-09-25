@@ -84,6 +84,17 @@ public class PlacesCheckinQuery extends AbstractQueryBuilder<PlacesCheckinQuery,
         return unsafeParam("services", value);
     }
 
+    /**
+     * List of services or websites (e.g., "twitter", "facebook") to which the check-in will be exported,
+     * if the user has set up the respective option.
+     *
+     * @param value value of "services" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PlacesCheckinQuery services(List<PlacesCheckinService> value) {
+        return unsafeParam("services", value);
+    }
+
     @Override
     protected PlacesCheckinQuery getThis() {
         return this;

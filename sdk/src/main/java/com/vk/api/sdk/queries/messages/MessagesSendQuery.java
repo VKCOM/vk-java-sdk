@@ -83,6 +83,16 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
+     * IDs of message recipients (if new conversation shall be started).
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
      * Text of the message.
      * Required if "attachments" is not set.
      *
@@ -131,7 +141,29 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * @param value value of "attachment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery attachment(String value) {
+    public MessagesSendQuery attachment(String... value) {
+        return unsafeParam("attachment", value);
+    }
+
+    /**
+     * (Required if "message" is not set.) List of objects attached to the message, separated by commas, in the following format:
+     * "type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * "wall" - wall post
+     * ""owner_id"" - ID of the media attachment owner.
+     * ""media_id"" - media attachment ID.
+     * <p>
+     * Example:
+     * photo100172_166443618
+     *
+     * @param value value of "attachment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery attachment(List<String> value) {
         return unsafeParam("attachment", value);
     }
 
@@ -145,6 +177,19 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesSendQuery forwardMessages(String... value) {
+        return unsafeParam("forward_messages", value);
+    }
+
+    /**
+     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's.
+     * <p>
+     * Example:
+     * 123,431,544
+     *
+     * @param value value of "forward messages" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery forwardMessages(List<String> value) {
         return unsafeParam("forward_messages", value);
     }
 

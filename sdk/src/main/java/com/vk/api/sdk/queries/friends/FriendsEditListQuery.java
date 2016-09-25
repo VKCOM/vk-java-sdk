@@ -56,6 +56,16 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
+     * IDs of users in the friend list.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsEditListQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
      * (Applies if "user_ids" parameter is not set.)
      * User IDs to add to the friend list.
      *
@@ -63,6 +73,17 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsEditListQuery addUserIds(Integer... value) {
+        return unsafeParam("add_user_ids", value);
+    }
+
+    /**
+     * (Applies if "user_ids" parameter is not set.)
+     * User IDs to add to the friend list.
+     *
+     * @param value value of "add user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsEditListQuery addUserIds(List<Integer> value) {
         return unsafeParam("add_user_ids", value);
     }
 
@@ -76,6 +97,18 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     public FriendsEditListQuery deleteUserIds(Integer... value) {
         return unsafeParam("delete_user_ids", value);
     }
+
+    /**
+     * (Applies if "user_ids" parameter is not set.)
+     * User IDs to delete from the friend list.
+     *
+     * @param value value of "delete user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsEditListQuery deleteUserIds(List<Integer> value) {
+        return unsafeParam("delete_user_ids", value);
+    }
+
 
     @Override
     protected FriendsEditListQuery getThis() {

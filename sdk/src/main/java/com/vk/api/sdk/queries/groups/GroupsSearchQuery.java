@@ -66,7 +66,8 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
     }
 
     /**
-     * If 1, only upcoming events will be returned. Works with the "event" type only.
+     * Only upcoming events will be returned.
+     * Works with the "event" type only.
      *
      * @param value value of "future" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

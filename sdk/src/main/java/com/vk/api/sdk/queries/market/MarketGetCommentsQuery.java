@@ -110,6 +110,16 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
         return unsafeParam("fields", value);
     }
 
+    /**
+     * List of additional profile fields to return. See the [vk.com/dev/fields|details]
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetCommentsQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected MarketGetCommentsQuery getThis() {
         return this;

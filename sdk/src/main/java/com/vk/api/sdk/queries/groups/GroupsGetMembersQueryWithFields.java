@@ -29,8 +29,30 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public GroupsGetMembersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+        super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
      */
     public GroupsGetMembersQueryWithFields(VkApiClient client, UserField... fields) {
+        super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     */
+    public GroupsGetMembersQueryWithFields(VkApiClient client, List<UserField> fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
         fields(fields);
     }
@@ -82,6 +104,16 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetMembersQueryWithFields fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * List of additional fields to be returned.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected GroupsGetMembersQueryWithFields fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

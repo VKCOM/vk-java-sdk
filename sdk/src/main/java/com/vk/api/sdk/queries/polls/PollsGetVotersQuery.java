@@ -31,6 +31,21 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client    VK API client
+     * @param actor     actor with access token
+     * @param pollId    value of "poll id" parameter. Minimum is 0.
+     * @param answerIds value of "answer ids" parameter.
+     */
+    public PollsGetVotersQuery(VkApiClient client, Actor actor, int pollId, List<Integer> answerIds) {
+        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
+        accessToken(actor.getAccessToken());
+        pollId(pollId);
+        answerIds(answerIds);
+    }
+
+    /**
      * ID of the user or community that owns the poll.  Use a negative value to designate a community ID.
      *
      * @param value value of "owner id" parameter.
@@ -57,6 +72,16 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected PollsGetVotersQuery answerIds(int... value) {
+        return unsafeParam("answer_ids", value);
+    }
+
+    /**
+     * Answer IDs.
+     *
+     * @param value value of "answer ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected PollsGetVotersQuery answerIds(List<Integer> value) {
         return unsafeParam("answer_ids", value);
     }
 
@@ -109,6 +134,16 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PollsGetVotersQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsGetVotersQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

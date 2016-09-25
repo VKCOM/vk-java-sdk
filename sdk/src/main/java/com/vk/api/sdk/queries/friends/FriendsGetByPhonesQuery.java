@@ -38,12 +38,34 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     }
 
     /**
+     * List of phone numbers in MSISDN format (maximum 1000).
+     * Example:
+     * +79219876543,+79111234567
+     *
+     * @param value value of "phones" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetByPhonesQuery phones(List<String> value) {
+        return unsafeParam("phones", value);
+    }
+
+    /**
      * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetByPhonesQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetByPhonesQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

@@ -55,6 +55,16 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
     }
 
     /**
+     * List of application ID
+     *
+     * @param value value of "app ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetQuery appIds(List<String> value) {
+        return unsafeParam("app_ids", value);
+    }
+
+    /**
      * Platform.
      *
      * @param value value of "platform" parameter. By default 0.
@@ -71,6 +81,16 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AppsGetQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

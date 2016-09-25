@@ -27,6 +27,19 @@ public class AudioGetByIdQuery extends AbstractQueryBuilder<AudioGetByIdQuery, L
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param audios value of "audios" parameter.
+     */
+    public AudioGetByIdQuery(VkApiClient client, Actor actor, List<String> audios) {
+        super(client, "audio.getById", Utils.buildParametrizedType(List.class, AudioFull.class));
+        accessToken(actor.getAccessToken());
+        audios(audios);
+    }
+
+    /**
      * Audio file IDs, in the following format:
      * {owner_id}_{audio_id}
      *
@@ -34,6 +47,17 @@ public class AudioGetByIdQuery extends AbstractQueryBuilder<AudioGetByIdQuery, L
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AudioGetByIdQuery audios(String... value) {
+        return unsafeParam("audios", value);
+    }
+
+    /**
+     * Audio file IDs, in the following format:
+     * {owner_id}_{audio_id}
+     *
+     * @param value value of "audios" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected AudioGetByIdQuery audios(List<String> value) {
         return unsafeParam("audios", value);
     }
 

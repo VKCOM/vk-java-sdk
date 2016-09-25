@@ -34,6 +34,16 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
     }
 
     /**
+     * IDs of messages to mark as read.
+     *
+     * @param value value of "message ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesMarkAsReadQuery messageIds(List<Integer> value) {
+        return unsafeParam("message_ids", value);
+    }
+
+    /**
      * Set peer id
      *
      * @param value value of "peer id" parameter.

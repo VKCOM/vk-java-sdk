@@ -67,6 +67,16 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
         return unsafeParam("privacy", value);
     }
 
+    /**
+     * New access permissions for the album.
+     *
+     * @param value value of "privacy" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditAlbumQuery privacy(List<String> value) {
+        return unsafeParam("privacy", value);
+    }
+
     @Override
     protected VideoEditAlbumQuery getThis() {
         return this;

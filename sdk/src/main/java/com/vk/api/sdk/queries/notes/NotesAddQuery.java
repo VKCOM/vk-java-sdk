@@ -57,12 +57,32 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
     }
 
     /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesAddQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesAddQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesAddQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 

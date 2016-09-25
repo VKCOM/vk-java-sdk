@@ -15,6 +15,8 @@ import com.vk.api.sdk.queries.database.DatabaseGetSchoolsQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetStreetsByIdQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetUniversitiesQuery;
 
+import java.util.List;
+
 /**
  * List of Database methods
  */
@@ -67,7 +69,21 @@ public class Database extends AbstractAction {
     /**
      * Returns information about streets by their IDs.
      */
+    public DatabaseGetStreetsByIdQuery getStreetsById(List<Integer> streetIds) {
+        return new DatabaseGetStreetsByIdQuery(getClient(), streetIds);
+    }
+
+    /**
+     * Returns information about streets by their IDs.
+     */
     public DatabaseGetStreetsByIdQuery getStreetsById(Actor actor, int... streetIds) {
+        return new DatabaseGetStreetsByIdQuery(getClient(), actor, streetIds);
+    }
+
+    /**
+     * Returns information about streets by their IDs.
+     */
+    public DatabaseGetStreetsByIdQuery getStreetsById(Actor actor, List<Integer> streetIds) {
         return new DatabaseGetStreetsByIdQuery(getClient(), actor, streetIds);
     }
 

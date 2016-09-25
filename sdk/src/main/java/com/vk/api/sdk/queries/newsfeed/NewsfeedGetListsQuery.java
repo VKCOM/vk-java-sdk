@@ -33,6 +33,16 @@ public class NewsfeedGetListsQuery extends AbstractQueryBuilder<NewsfeedGetLists
         return unsafeParam("list_ids", value);
     }
 
+    /**
+     * Numeric list identifiers.
+     *
+     * @param value value of "list ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetListsQuery listIds(List<Integer> value) {
+        return unsafeParam("list_ids", value);
+    }
+
     @Override
     protected NewsfeedGetListsQuery getThis() {
         return this;

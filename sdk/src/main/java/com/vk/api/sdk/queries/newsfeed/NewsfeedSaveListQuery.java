@@ -55,6 +55,16 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
     }
 
     /**
+     * Users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
+     *
+     * @param value value of "source ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSaveListQuery sourceIds(List<Integer> value) {
+        return unsafeParam("source_ids", value);
+    }
+
+    /**
      * Reposts display on and off ("true" is for off).
      *
      * @param value value of "no reposts" parameter.

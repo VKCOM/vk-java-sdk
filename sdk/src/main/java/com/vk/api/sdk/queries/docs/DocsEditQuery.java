@@ -67,6 +67,16 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
         return unsafeParam("tags", value);
     }
 
+    /**
+     * Document tags.
+     *
+     * @param value value of "tags" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsEditQuery tags(List<String> value) {
+        return unsafeParam("tags", value);
+    }
+
     @Override
     protected DocsEditQuery getThis() {
         return this;

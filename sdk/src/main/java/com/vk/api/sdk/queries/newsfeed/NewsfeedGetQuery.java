@@ -35,6 +35,17 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
+     * Filters to apply
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery filters(List<NewsfeedGetFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
+
+    /**
      * Return news items from banned sources
      *
      * @param value value of "return banned" parameter.
@@ -120,6 +131,16 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedGetQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

@@ -29,6 +29,8 @@ import com.vk.api.sdk.queries.friends.FriendsGetSuggestionsQuery;
 import com.vk.api.sdk.queries.friends.FriendsSearchQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
+import java.util.List;
+
 /**
  * List of Friends methods
  */
@@ -67,7 +69,21 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
+    public FriendsGetQueryWithFields get(List<UserField> fields) {
+        return new FriendsGetQueryWithFields(getClient(), fields);
+    }
+
+    /**
+     * Returns a list of user IDs or detailed information about a user's friends.
+     */
     public FriendsGetQueryWithFields get(Actor actor, UserField... fields) {
+        return new FriendsGetQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of user IDs or detailed information about a user's friends.
+     */
+    public FriendsGetQueryWithFields get(Actor actor, List<UserField> fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
@@ -205,6 +221,13 @@ public class Friends extends AbstractAction {
     }
 
     /**
+     * Checks the current user's friendship status with other specified users.
+     */
+    public FriendsAreFriendsQuery areFriends(Actor actor, List<Integer> userIds) {
+        return new FriendsAreFriendsQuery(getClient(), actor, userIds);
+    }
+
+    /**
      * Returns a list of friends who can be called by the current user.
      */
     public FriendsGetAvailableForCallQuery getAvailableForCall(Actor actor) {
@@ -215,6 +238,13 @@ public class Friends extends AbstractAction {
      * Returns a list of friends who can be called by the current user.
      */
     public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, UserField... fields) {
+        return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of friends who can be called by the current user.
+     */
+    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, List<UserField> fields) {
         return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
     }
 

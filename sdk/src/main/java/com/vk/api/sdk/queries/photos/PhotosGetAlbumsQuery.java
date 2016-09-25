@@ -53,6 +53,16 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     }
 
     /**
+     * Album IDs.
+     *
+     * @param value value of "album ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetAlbumsQuery albumIds(List<Integer> value) {
+        return unsafeParam("album_ids", value);
+    }
+
+    /**
      * Offset needed to return a specific subset of albums.
      *
      * @param value value of "offset" parameter. Minimum is 0.

@@ -52,6 +52,8 @@ import com.vk.api.sdk.queries.photos.PhotosSaveQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveWallPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSearchQuery;
 
+import java.util.List;
+
 /**
  * List of Photos methods
  */
@@ -139,7 +141,21 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
+    public PhotosGetByIdQuery getById(List<String> photos) {
+        return new PhotosGetByIdQuery(getClient(), photos);
+    }
+
+    /**
+     * Returns information about photos by their IDs.
+     */
     public PhotosGetByIdQuery getById(Actor actor, String... photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
+    }
+
+    /**
+     * Returns information about photos by their IDs.
+     */
+    public PhotosGetByIdQuery getById(Actor actor, List<String> photos) {
         return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
@@ -153,7 +169,21 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
+    public PhotosGetByIdQueryWithExtended getByIdExtended(List<String> photos) {
+        return new PhotosGetByIdQueryWithExtended(getClient(), photos);
+    }
+
+    /**
+     * Returns information about photos by their IDs.
+     */
     public PhotosGetByIdQueryWithExtended getByIdExtended(Actor actor, String... photos) {
+        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
+    }
+
+    /**
+     * Returns information about photos by their IDs.
+     */
+    public PhotosGetByIdQueryWithExtended getByIdExtended(Actor actor, List<String> photos) {
         return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
     }
 
@@ -202,7 +232,8 @@ public class Photos extends AbstractAction {
     /**
      * Saves market album photos after successful uploading.
      */
-    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(Actor actor, int groupId, String photo, int server, String hash) {
+    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(Actor actor, int groupId, String photo,
+                                                                int server, String hash) {
         return new PhotosSaveMarketAlbumPhotoQuery(getClient(), actor, groupId, photo, server, hash);
     }
 

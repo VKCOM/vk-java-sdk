@@ -97,6 +97,27 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
     }
 
     /**
+     * (Required if "message" is not set.) List of media objects attached to the comment, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media ojbect:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
+     * <p>
+     * For example:
+     * photo100172_166443618,photo66748_265827614
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
      * Sticker ID.
      *
      * @param value value of "sticker id" parameter. Minimum is 0.

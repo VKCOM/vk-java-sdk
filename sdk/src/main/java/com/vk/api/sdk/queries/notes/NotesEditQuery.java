@@ -70,12 +70,32 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
     }
 
     /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesEditQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesEditQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesEditQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 

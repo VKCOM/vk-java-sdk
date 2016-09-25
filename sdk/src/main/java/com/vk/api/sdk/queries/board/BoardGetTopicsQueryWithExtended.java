@@ -61,6 +61,18 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
+     * IDs of topics to be returned (100 maximum). By default, all topics are returned.
+     * <p>
+     * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
+     *
+     * @param value value of "topic ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardGetTopicsQueryWithExtended topicIds(List<Integer> value) {
+        return unsafeParam("topic_ids", value);
+    }
+
+    /**
      * Sort order
      * If no sort order is specified, topics are returned in the order specified by the group administrator.
      * Pinned topics are returned first, regardless of the sorting.

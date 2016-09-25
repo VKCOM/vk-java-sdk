@@ -45,6 +45,16 @@ public class FriendsEditQuery extends AbstractQueryBuilder<FriendsEditQuery, OkR
         return unsafeParam("list_ids", value);
     }
 
+    /**
+     * IDs of the friend lists to which to add the user.
+     *
+     * @param value value of "list ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsEditQuery listIds(List<Integer> value) {
+        return unsafeParam("list_ids", value);
+    }
+
     @Override
     protected FriendsEditQuery getThis() {
         return this;

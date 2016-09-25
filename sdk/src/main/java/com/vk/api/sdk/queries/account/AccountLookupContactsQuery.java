@@ -32,7 +32,7 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
      * @param value value of "contacts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountLookupContactsQuery contacts(String... value) {
+    public AccountLookupContactsQuery contacts(List<String> value) {
         return unsafeParam("contacts", value);
     }
 
@@ -78,6 +78,17 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
     public AccountLookupContactsQuery fields(UserField... value) {
         return unsafeParam("fields", value);
     }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountLookupContactsQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
 
     @Override
     protected AccountLookupContactsQuery getThis() {

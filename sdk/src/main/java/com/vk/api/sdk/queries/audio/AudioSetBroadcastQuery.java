@@ -45,6 +45,17 @@ public class AudioSetBroadcastQuery extends AbstractQueryBuilder<AudioSetBroadca
         return unsafeParam("target_ids", value);
     }
 
+    /**
+     * IDs of communities and user whose statuses will be included in the broadcast.
+     * Use a negative value to designate a community ID. By default, current user ID.
+     *
+     * @param value value of "target ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AudioSetBroadcastQuery targetIds(List<Integer> value) {
+        return unsafeParam("target_ids", value);
+    }
+
     @Override
     protected AudioSetBroadcastQuery getThis() {
         return this;

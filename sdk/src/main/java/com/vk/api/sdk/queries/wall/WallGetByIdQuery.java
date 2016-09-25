@@ -30,9 +30,33 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor  actor with access token
+     * @param posts  value of "posts" parameter.
+     */
+    public WallGetByIdQuery(VkApiClient client, Actor actor, List<String> posts) {
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        accessToken(actor.getAccessToken());
+        posts(posts);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
      * @param posts  value of "posts" parameter.
      */
     public WallGetByIdQuery(VkApiClient client, String... posts) {
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        posts(posts);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param posts  value of "posts" parameter.
+     */
+    public WallGetByIdQuery(VkApiClient client, List<String> posts) {
         super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
         posts(posts);
     }
@@ -45,6 +69,17 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected WallGetByIdQuery posts(String... value) {
+        return unsafeParam("posts", value);
+    }
+
+    /**
+     * User or community IDs and post IDs, separated by underscores.  Use a negative value to designate a community ID.  Example:
+     * 93388_21539,93388_20904,2943_4276,-1_1
+     *
+     * @param value value of "posts" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected WallGetByIdQuery posts(List<String> value) {
         return unsafeParam("posts", value);
     }
 

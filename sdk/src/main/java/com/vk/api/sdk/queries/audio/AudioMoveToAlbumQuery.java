@@ -26,6 +26,19 @@ public class AudioMoveToAlbumQuery extends AbstractQueryBuilder<AudioMoveToAlbum
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client   VK API client
+     * @param actor    actor with access token
+     * @param audioIds value of "audio ids" parameter.
+     */
+    public AudioMoveToAlbumQuery(VkApiClient client, Actor actor, List<Integer> audioIds) {
+        super(client, "audio.moveToAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        audioIds(audioIds);
+    }
+
+    /**
      * ID of the community where the audio files are located. By default, current user ID.
      *
      * @param value value of "group id" parameter. Minimum is 0.
@@ -53,6 +66,17 @@ public class AudioMoveToAlbumQuery extends AbstractQueryBuilder<AudioMoveToAlbum
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AudioMoveToAlbumQuery audioIds(int... value) {
+        return unsafeParam("audio_ids", value);
+    }
+
+    /**
+     * IDs of the audio files to be moved.
+     * NOTE: An album can hold up to 1000 audio files.
+     *
+     * @param value value of "audio ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected AudioMoveToAlbumQuery audioIds(List<Integer> value) {
         return unsafeParam("audio_ids", value);
     }
 

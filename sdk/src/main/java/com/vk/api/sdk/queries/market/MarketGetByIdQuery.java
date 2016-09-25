@@ -26,12 +26,35 @@ public class MarketGetByIdQuery extends AbstractQueryBuilder<MarketGetByIdQuery,
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param itemIds value of "item ids" parameter.
+     */
+    public MarketGetByIdQuery(VkApiClient client, Actor actor, List<String> itemIds) {
+        super(client, "market.getById", GetByIdResponse.class);
+        accessToken(actor.getAccessToken());
+        itemIds(itemIds);
+    }
+
+    /**
      * Items ID
      *
      * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MarketGetByIdQuery itemIds(String... value) {
+        return unsafeParam("item_ids", value);
+    }
+
+    /**
+     * Items ID
+     *
+     * @param value value of "item ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MarketGetByIdQuery itemIds(List<String> value) {
         return unsafeParam("item_ids", value);
     }
 

@@ -43,6 +43,17 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
         return unsafeParam("city_ids", value);
     }
 
+    /**
+     * City IDs.
+     *
+     * @param value value of "city ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DatabaseGetCitiesByIdQuery cityIds(List<Integer> value) {
+        return unsafeParam("city_ids", value);
+    }
+
+
     @Override
     protected DatabaseGetCitiesByIdQuery getThis() {
         return this;

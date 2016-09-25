@@ -54,6 +54,16 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
         return unsafeParam("fields", value);
     }
 
+    /**
+     * Additional profile fields, see description.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetFriendsListQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected AppsGetFriendsListQuery getThis() {
         return this;

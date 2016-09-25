@@ -277,7 +277,8 @@ public class Ads extends AbstractAction {
      * @param dateTo    to date
      * @return query
      */
-    public AdsGetDemographicsQuery getDemographics(Actor actor, int accountId, AdsGetDemographicsIdsType idsType, String ids, String period, String dateFrom, String dateTo) {
+    public AdsGetDemographicsQuery getDemographics(Actor actor, int accountId, AdsGetDemographicsIdsType idsType,
+                                                   String ids, String period, String dateFrom, String dateTo) {
         return new AdsGetDemographicsQuery(getClient(), actor, accountId, idsType, ids, period, dateFrom, dateTo);
     }
 

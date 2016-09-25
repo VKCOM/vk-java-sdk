@@ -45,6 +45,16 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
+     * Filters to apply
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetCommentsQuery filters(List<NewsfeedGetCommentsFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
      * Object ID, comments on repost of which shall be returned, e.g. "wall1_45486".
      * If the parameter is set, the "filters" parameter is optional.
      *
@@ -92,6 +102,16 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedGetCommentsQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetCommentsQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

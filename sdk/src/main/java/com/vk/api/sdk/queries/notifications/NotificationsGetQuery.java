@@ -54,6 +54,16 @@ public class NotificationsGetQuery extends AbstractQueryBuilder<NotificationsGet
     }
 
     /**
+     * Type of notifications to return
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotificationsGetQuery filters(List<NotificationsGetFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
      * Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
      *
      * @param value value of "start time" parameter.

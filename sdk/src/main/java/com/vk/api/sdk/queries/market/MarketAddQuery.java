@@ -24,7 +24,8 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param price       value of "price" parameter. Minimum is 0.
      * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
-    public MarketAddQuery(VkApiClient client, Actor actor, int ownerId, String name, String description, int categoryId, float price, int mainPhotoId) {
+    public MarketAddQuery(VkApiClient client, Actor actor, int ownerId, String name, String description, int categoryId,
+                          float price, int mainPhotoId) {
         super(client, "market.add", AddResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -113,6 +114,16 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MarketAddQuery photoIds(Integer... value) {
+        return unsafeParam("photo_ids", value);
+    }
+
+    /**
+     * Ids of additional photos
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery photoIds(List<Integer> value) {
         return unsafeParam("photo_ids", value);
     }
 

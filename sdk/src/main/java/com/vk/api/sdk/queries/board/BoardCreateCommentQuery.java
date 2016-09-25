@@ -78,6 +78,26 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
+     * List of media objects attached to the comment, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media object:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
+     * <p>
+     * Required if "message" is not set.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
      * true - to post the comment as by the community
      * false - to post the comment as by the user (default)
      *
