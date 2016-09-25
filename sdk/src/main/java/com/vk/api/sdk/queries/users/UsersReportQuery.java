@@ -20,7 +20,7 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
      * @param userId value of "user id" parameter. Minimum is 0.
      * @param type   value of "type" parameter.
      */
-    public UsersReportQuery(VkApiClient client, Actor actor, int userId, String type) {
+    public UsersReportQuery(VkApiClient client, Actor actor, int userId, UsersReportType type) {
         super(client, "users.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
@@ -38,16 +38,12 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
     }
 
     /**
-     * Type of complaint:
-     * "porn" - pornography
-     * "spam" - spamming
-     * "insult" - abusive behavior
-     * "advertisment" - disruptive advertisements
+     * Type of complaint
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected UsersReportQuery type(String value) {
+    protected UsersReportQuery type(UsersReportType value) {
         return unsafeParam("type", value);
     }
 

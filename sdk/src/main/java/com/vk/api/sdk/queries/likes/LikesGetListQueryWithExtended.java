@@ -91,9 +91,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
     }
 
     /**
-     * Specifies which users are returned:
-     * "1" - to return only the current user's friends
-     * "0" - to return all users (default)
+     * Return only the current user's friends
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -103,9 +101,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
     }
 
     /**
-     * Specifies whether extended information will be returned.
-     * "1" - to return extended information about users and communities from the "Likes" list
-     * "0" - to return no additional information (default)
+     * Return extended information about users and communities from the "Likes" list
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

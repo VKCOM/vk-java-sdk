@@ -59,8 +59,7 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * "1" - to return an extended response with additional fields
-     * "0" - (default)
+     * Return an extended response with additional fields
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

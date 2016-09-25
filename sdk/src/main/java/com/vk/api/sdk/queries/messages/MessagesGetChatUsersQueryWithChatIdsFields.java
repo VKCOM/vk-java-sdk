@@ -48,13 +48,7 @@ public class MessagesGetChatUsersQueryWithChatIdsFields extends AbstractQueryBui
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

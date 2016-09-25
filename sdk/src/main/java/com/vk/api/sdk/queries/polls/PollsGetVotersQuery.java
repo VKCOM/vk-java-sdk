@@ -71,8 +71,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * "1" - to return only current user's friends
-     * "0" - to return all users (default)
+     * Return only current user's friends
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -104,7 +103,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate (birthdate)", "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online", "counters".
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -114,13 +113,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

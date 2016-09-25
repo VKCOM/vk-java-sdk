@@ -26,9 +26,7 @@ public class MarketGetByIdQuery extends AbstractQueryBuilder<MarketGetByIdQuery,
     }
 
     /**
-     * Comma-separated ids list: {user id}_{item id}.
-     * If an item belongs to a community -{community id} is used.
-     *  "Videos" value example: <br>"-4363_136089719,13245770_137352259"
+     * Items ID
      *
      * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

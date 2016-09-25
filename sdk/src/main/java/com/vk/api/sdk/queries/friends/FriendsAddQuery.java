@@ -46,7 +46,7 @@ public class FriendsAddQuery extends AbstractQueryBuilder<FriendsAddQuery, AddRe
     }
 
     /**
-     * "1" to pass an incoming request to followers list.
+     * true -  to pass an incoming request to followers list.
      *
      * @param value value of "follow" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

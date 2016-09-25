@@ -58,7 +58,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     }
 
     /**
-     * "1" - to show the manager in Contacts block of the community.
+     * Show the manager in Contacts block of the community.
      *
      * @param value value of "is contact" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

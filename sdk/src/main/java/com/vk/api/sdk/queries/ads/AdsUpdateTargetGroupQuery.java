@@ -81,7 +81,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
-     * "Only for the groups that get audience from sites with user accounting code."
+     * Only for the groups that get audience from sites with user accounting code.
      * Time in days when users added to a retarget group will be automatically excluded from it.
      * "0" - automatic exclusion is off.
      *

@@ -57,8 +57,7 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
     }
 
     /**
-     * "1" - to return the "likes" field
-     * "0"  - not to return the "likes" field (default)
+     * Return the "likes" field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,14 +87,12 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
     }
 
     /**
-     * Sort order:
-     * "asc" - chronological
-     * "desc" - reverse chronological
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentsQuery sort(String value) {
+    public WallGetCommentsQuery sort(WallGetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

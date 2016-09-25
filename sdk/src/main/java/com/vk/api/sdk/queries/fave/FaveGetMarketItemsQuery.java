@@ -24,7 +24,7 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
     }
 
     /**
-     * Nubmer of items to return info/
+     * Number of items to return info
      *
      * @param value value of "count" parameter. Minimum is 0. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +34,8 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
     }
 
     /**
-     * "1" - additional fields  "likes, can_comment, can_repost, photos" will be returned. These fields are disabled by default.
+     * true - additional fields  "likes, can_comment, can_repost, photos" will be returned.
+     * These fields are disabled by default.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

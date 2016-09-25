@@ -60,13 +60,12 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "platform" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery platform(AppsGetPlatform value) {
+    public AppsGetQuery platform(AppsPlatform value) {
         return unsafeParam("platform", value);
     }
 
     /**
      * Profile fields to return.
-     *
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

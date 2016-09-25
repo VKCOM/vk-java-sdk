@@ -99,7 +99,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
     }
 
     /**
-     * Item status ("1" - deleted, "0" - not deleted)
+     * Item status
      *
      * @param value value of "deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -39,11 +39,6 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
     /**
      * Action to be done with the order.
      *
-     * Available actions:
-     * 'cancel' - to cancel unconfirmed order.
-     * 'charge' - to confirm unconfirmed order. Applies only if processing of order_change_state notification failed.
-     * 'refund' - to cancel confirmed order.
-     *
      * @param value value of "action" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

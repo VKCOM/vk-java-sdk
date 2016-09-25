@@ -50,7 +50,7 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
 
     /**
      * IDs of topics to be returned (100 maximum). By default, all topics are returned.
-     *
+     * <p>
      * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
      *
      * @param value value of "topic ids" parameter.
@@ -61,18 +61,14 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * Sort order:
-     * "1" - by date updated in reverse chronological order.
-     * "2" - by date created in reverse chronological order.
-     * "-1" - by date updated in chronological order.
-     * "-2" - by date created in chronological order.
-     *
-     * If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
+     * Sort order
+     * If no sort order is specified, topics are returned in the order specified by the group administrator.
+     * Pinned topics are returned first, regardless of the sorting.
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended order(Integer value) {
+    public BoardGetTopicsQueryWithExtended order(BoardGetTopicsOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -97,8 +93,7 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * "1" - to return information about users who created topics or who posted there last
-     * "0" - to return no additional fields (default)
+     * Return information about users who created topics or who posted there last
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,19 +103,18 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * "1" - to return the first comment in each topic
-     * "2" - to return the last comment in each topic
-     * "0" - to return no comments (default)
+     * Set preview
      *
      * @param value value of "preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended preview(Integer value) {
+    public BoardGetTopicsQueryWithExtended preview(BoardGetTopicsPreview value) {
         return unsafeParam("preview", value);
     }
 
     /**
-     * Number of characters after which to truncate the previewed comment. To preview the full comment, specify "0".
+     * Number of characters after which to truncate the previewed comment.
+     * To preview the full comment, specify "0".
      *
      * @param value value of "preview length" parameter. Minimum is 0. By default 90.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

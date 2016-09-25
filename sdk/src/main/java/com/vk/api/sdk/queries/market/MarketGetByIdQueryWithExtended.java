@@ -27,9 +27,7 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
     }
 
     /**
-     * Comma-separated ids list: {user id}_{item id}.
-     * If an item belongs to a community -{community id} is used.
-     *  "Videos" value example: <br>"-4363_136089719,13245770_137352259"
+     * Items ID
      *
      * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -39,7 +37,9 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
     }
 
     /**
-     * 1 - method will return additional fields: likes, can_comment, car_repost, photos. These parameters are not returned by default
+     * true - method will return additional fields:
+     * likes, can_comment, can_repost, photos.
+     * These parameters are not returned by default
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -74,13 +74,12 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "platform" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery platform(String value) {
+    public AppsGetCatalogQuery platform(AppsPlatform value) {
         return unsafeParam("platform", value);
     }
 
     /**
-     * "1" - to return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to "100".
-     * "0" - not to return additional fields (default).
+     * Return additional fields "screenshots", "MAU", "catalog_position", and "international". If set, "count" must be less than or equal to "100".
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -140,12 +139,12 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
     }
 
     /**
-     * "installed" - to return list of installed apps (only for mobile platform).
+     * Set filter
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery filter(String value) {
+    public AppsGetCatalogQuery filter(AppsGetCatalogFilter value) {
         return unsafeParam("filter", value);
     }
 

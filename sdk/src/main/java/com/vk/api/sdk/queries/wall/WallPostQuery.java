@@ -34,8 +34,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * "1" - post will be available to friends only
-     * "0" - post will be available to all users (default)
+     * Post will be available to friends only
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -45,9 +44,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * For a community:
-     * "1" - post will be published by the community
-     * "0" - post will be published by the user (default)
+     * Post will be published by the community
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -80,7 +77,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * "album" - photo album
      * ""owner_id"" - ID of the media application owner.
      * ""media_id"" - Media application ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      * May contain a link to an external page to include in the post. Example:
@@ -105,9 +102,8 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * Only for posts in communities with "from_group" set to "1":
-     * "1" - post will be signed with the name of the posting user
-     * "0" - post will not be signed (default)
+     * Post will be signed with the name of the posting user
+     * Only for posts in communities with "from_group"
      *
      * @param value value of "signed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

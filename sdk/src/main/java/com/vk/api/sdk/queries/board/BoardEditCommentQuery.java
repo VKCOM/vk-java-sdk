@@ -60,7 +60,8 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
-     * (Required if "attachments" is not set). New comment text.
+     * New comment text.
+     * Required if "attachments" is not set
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -70,7 +71,7 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
-     * (Required if "message" is not set.) List of media objects attached to the comment, in the following format:
+     * List of media objects attached to the comment, in the following format:
      * "type""owner_id"_"media_id","type""owner_id"_"media_id"
      * ""type"" - Type of media object:
      * "photo" - photo
@@ -79,9 +80,11 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
      * "doc" - document
      * ""owner_id"" - ID of the media owner.
      * ""media_id"" - Media ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
+     * <p>
+     * Required if "message" is not set.
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

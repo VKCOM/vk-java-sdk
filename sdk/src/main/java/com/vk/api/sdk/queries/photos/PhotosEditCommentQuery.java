@@ -65,7 +65,7 @@ public class PhotosEditCommentQuery extends AbstractQueryBuilder<PhotosEditComme
      * "doc" - document
      * ""owner_id"" - Media attachment owner ID.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      *

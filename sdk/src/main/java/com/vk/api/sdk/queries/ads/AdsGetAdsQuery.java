@@ -48,8 +48,8 @@ public class AdsGetAdsQuery extends AbstractQueryBuilder<AdsGetAdsQuery, List<Ad
 
     /**
      * Flag that specifies whether archived ads shall be shown:
-     * '0' - show only active ads;
-     * '1' - show all ads.
+     * false - show only active ads;
+     * true - show all ads.
      *
      * @param value value of "include deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

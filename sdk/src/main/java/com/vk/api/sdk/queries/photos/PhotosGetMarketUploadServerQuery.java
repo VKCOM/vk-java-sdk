@@ -36,7 +36,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
     }
 
     /**
-     * "1" if you want to upload the main item photo.
+     * You want to upload the main item photo.
      *
      * @param value value of "main photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

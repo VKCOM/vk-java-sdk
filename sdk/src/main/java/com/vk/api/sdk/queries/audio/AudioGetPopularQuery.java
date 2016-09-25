@@ -25,8 +25,7 @@ public class AudioGetPopularQuery extends AbstractQueryBuilder<AudioGetPopularQu
     }
 
     /**
-     * "1" - to return only foreign audio files
-     * "0" - to return all audio files
+     * Return only foreign audio files
      *
      * @param value value of "only eng" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -41,7 +40,7 @@ public class AudioGetPopularQuery extends AbstractQueryBuilder<AudioGetPopularQu
      * @param value value of "genre id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AudioGetPopularQuery genreId(Integer value) {
+    public AudioGetPopularQuery genreId(AudioGenre value) {
         return unsafeParam("genre_id", value);
     }
 

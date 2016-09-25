@@ -12,6 +12,7 @@ import com.vk.api.sdk.queries.users.UsersGetSubscriptionsQuery;
 import com.vk.api.sdk.queries.users.UsersGetSubscriptionsQueryWithExtended;
 import com.vk.api.sdk.queries.users.UsersIsAppUserQuery;
 import com.vk.api.sdk.queries.users.UsersReportQuery;
+import com.vk.api.sdk.queries.users.UsersReportType;
 import com.vk.api.sdk.queries.users.UsersSearchQuery;
 
 /**
@@ -115,7 +116,7 @@ public class Users extends AbstractAction {
     /**
      * Reports (submits a complain about) a user.
      */
-    public UsersReportQuery report(Actor actor, int userId, String type) {
+    public UsersReportQuery report(Actor actor, int userId, UsersReportType type) {
         return new UsersReportQuery(getClient(), actor, userId, type);
     }
 

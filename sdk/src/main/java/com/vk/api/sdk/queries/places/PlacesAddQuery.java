@@ -30,7 +30,8 @@ public class PlacesAddQuery extends AbstractQueryBuilder<PlacesAddQuery, AddResp
     }
 
     /**
-     * ID of the location's type (e.g., "1" - Home, "2" - Work). To get location type IDs, use the places.getTypes  method.
+     * ID of the location's type (e.g., "1" - Home, "2" - Work).
+     * To get location type IDs, use the places.getTypes  method.
      *
      * @param value value of "type" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

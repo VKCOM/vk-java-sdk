@@ -35,6 +35,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Set pts
+     *
      * @param value value of "pts" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -54,6 +56,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Return user onlines
+     *
      * @param value value of "onlines" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -72,6 +76,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Set events limit
+     *
      * @param value value of "events limit" parameter. Minimum is 1000. By default 1000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -80,6 +86,8 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Set messages limit
+     *
      * @param value value of "msgs limit" parameter. Minimum is 200. By default 200.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

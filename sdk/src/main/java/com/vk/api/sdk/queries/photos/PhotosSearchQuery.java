@@ -109,7 +109,8 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Radius of search in meters (works very approximately). Available values: "10", "100", "800", "6000", "50000".
+     * Radius of search in meters (works very approximately).
+     * Available values: "10", "100", "800", "6000", "50000".
      *
      * @param value value of "radius" parameter. Minimum is 0. By default 5000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

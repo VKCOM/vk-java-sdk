@@ -86,18 +86,12 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
     }
 
     /**
-     * Sort order:
-     * "0" - default sorting (similar th the full version of the site);
-     * "1" - by growth speed;
-     * "2" - by the "day attendance/members number" ratio;
-     * "3" - by the "Likes number/members number" ratio;
-     * "4" - by the "comments number/members number" ratio;
-     * "5" - by the "boards entries number/members number" ratio.
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsSearchQuery sort(Integer value) {
+    public GroupsSearchQuery sort(GroupsSearchSort value) {
         return unsafeParam("sort", value);
     }
 

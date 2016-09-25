@@ -57,7 +57,10 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
     }
 
     /**
-     * "1" - also return contacts found using this service before, "0" - return only contacts found using "contacts" field.
+     * Set returnAll param
+     * <p>
+     * true - also return contacts found using this service before,
+     * false - return only contacts found using "contacts" field.
      *
      * @param value value of "return all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

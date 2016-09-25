@@ -107,7 +107,9 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * "1" - method will return additional fields: likes, can_comment, car_repost, photos. These parameters are not returned by default
+     * "true" - method will return additional fields:
+     * likes, can_comment, car_repost, photos.
+     * These parameters are not returned by default
      *
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

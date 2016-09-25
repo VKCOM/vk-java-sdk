@@ -50,7 +50,7 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
 
     /**
      * Sort order
-     *
+     * <p>
      * This parameter is available only for desktop applications.
      *
      * @param value value of "order" parameter.

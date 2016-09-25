@@ -46,7 +46,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * "1" - to return additional information about the user or community that placed the post.
+     * Return additional information about the user or community that placed the post.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -78,8 +78,8 @@ public class GroupsBanUserQuery extends AbstractQueryBuilder<GroupsBanUserQuery,
     }
 
     /**
-     * "1" - text of comment will be visible to the user
-     * "0" - text of comment will be invisible to the user (default)
+     * true - text of comment will be visible to the user
+     * false - text of comment will be invisible to the user (default)
      *
      * @param value value of "comment visible" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

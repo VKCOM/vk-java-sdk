@@ -44,8 +44,8 @@ public class FaveGetPostsQuery extends AbstractQueryBuilder<FaveGetPostsQuery, G
     }
 
     /**
-     * "1" - to return additional "wall", "profiles", and "groups" fields
-     * "0" - (default)
+     * Return additional "wall", "profiles", and "groups" fields
+     * false - (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

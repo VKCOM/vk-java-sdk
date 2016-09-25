@@ -37,8 +37,8 @@ public class PollsGetByIdQuery extends AbstractQueryBuilder<PollsGetByIdQuery, L
     }
 
     /**
-     * "1" - poll is in a board, "0" - poll is on a wall.
-     * "0" by default.
+     * "true" - poll is in a board,
+     * "false" - poll is on a wall (by default).
      *
      * @param value value of "is board" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

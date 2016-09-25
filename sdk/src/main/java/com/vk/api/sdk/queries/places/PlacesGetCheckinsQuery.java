@@ -94,7 +94,8 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * "1" - to return only check-ins with set geographical coordinates. (Ignored if "latitude" and "longitude" are not set.)
+     * Return only check-ins with set geographical coordinates.
+     * Ignored if "latitude" and "longitude" are not set.
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -104,7 +105,8 @@ public class PlacesGetCheckinsQuery extends AbstractQueryBuilder<PlacesGetChecki
     }
 
     /**
-     * "1" - to return location information with the check-ins. (Ignored if "place" is not set.)
+     * Return location information with the check-ins.
+     * Ignored if "place" is not set.
      *
      * @param value value of "need places" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

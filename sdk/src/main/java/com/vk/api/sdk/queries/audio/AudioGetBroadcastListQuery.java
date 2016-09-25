@@ -35,8 +35,7 @@ public class AudioGetBroadcastListQuery extends AbstractQueryBuilder<AudioGetBro
     }
 
     /**
-     * "1" - to return only friends and communities that are broadcasting at the moment.
-     * "0" - to return all friends and communities (default).
+     * Return only friends and communities that are broadcasting at the moment.
      *
      * @param value value of "active" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

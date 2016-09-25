@@ -58,8 +58,7 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
     }
 
     /**
-     * Additional fields list to return:
-     * nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities
+     * Additional fields list to return
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,13 +68,7 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

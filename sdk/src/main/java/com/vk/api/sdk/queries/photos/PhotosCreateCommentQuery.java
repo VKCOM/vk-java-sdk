@@ -64,7 +64,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * "doc" - document
      * ""owner_id"" - Media attachment owner ID.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      *
@@ -76,7 +76,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
     }
 
     /**
-     * "1" - to post a comment from the community
+     * Post a comment from the community
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

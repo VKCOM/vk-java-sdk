@@ -24,7 +24,7 @@ public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCoun
     }
 
     /**
-     * Counters information of which shall be returned ('friends, messages, photos, videos, notes, gifts, events, groups, sdk').
+     * Counters information of which shall be returned
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

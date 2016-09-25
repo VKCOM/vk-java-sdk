@@ -68,22 +68,17 @@ public class UsersGetNearbyQuery extends AbstractQueryBuilder<UsersGetNearbyQuer
     }
 
     /**
-     * Search zone radius type (1 to 4)
-     * :* 1 - 300 m;
-     * :* 2 - 2400 m;
-     * :* 3 - 18 km;
-     * :* 4 - 150 km.
+     * Search zone radius type
      *
      * @param value value of "radius" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetNearbyQuery radius(Integer value) {
+    public UsersGetNearbyQuery radius(UsersGetNearbyRadius value) {
         return unsafeParam("radius", value);
     }
 
     /**
      * List of additional fields to return.
-     * Available values: sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters, screen_name, maiden_name, timezone, occupation
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -93,13 +88,7 @@ public class UsersGetNearbyQuery extends AbstractQueryBuilder<UsersGetNearbyQuer
     }
 
     /**
-     * Case for declension of user name and surname:
-     * nom -nominative (default)
-     * gen - genitive
-     * dat - dative
-     * acc - accusative
-     * ins - instrumental
-     * abl - prepositional
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

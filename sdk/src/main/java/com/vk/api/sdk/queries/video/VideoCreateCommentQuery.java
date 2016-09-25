@@ -64,7 +64,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * "doc" - document
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      *
@@ -76,7 +76,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
     }
 
     /**
-     * "1" - to post the comment from a community name (only if "owner_id" less than 0)
+     * Post the comment from a community name (only if "owner_id" less than 0)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

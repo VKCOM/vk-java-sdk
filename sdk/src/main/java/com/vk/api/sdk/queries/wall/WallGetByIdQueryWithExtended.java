@@ -51,8 +51,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
     }
 
     /**
-     * "1" - to return user and community objects needed to display posts
-     * "0" - no additional fields are returned (default)
+     * Return user and community objects needed to display posts
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

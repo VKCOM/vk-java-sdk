@@ -35,12 +35,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Filters to apply:
-     * "post" - new comments on wall posts
-     * "photo" - new comments on photos
-     * "video" - new comments on videos
-     * "topic" - new comments on discussions
-     * "note" - new comments on notes
+     * Filters to apply
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -50,7 +45,8 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Object ID, comments on repost of which shall be returned, e.g. "wall1_45486". (If the parameter is set, the "filters" parameter is optional.)
+     * Object ID, comments on repost of which shall be returned, e.g. "wall1_45486".
+     * If the parameter is set, the "filters" parameter is optional.
      *
      * @param value value of "reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

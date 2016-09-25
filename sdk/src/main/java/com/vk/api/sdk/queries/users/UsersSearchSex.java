@@ -1,24 +1,20 @@
-package com.vk.api.sdk.queries.apps;
+package com.vk.api.sdk.queries.users;
+
 
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Created by Anton Tsivarev on 22.09.16.
  */
-public enum AppsGetPlatform implements EnumParam {
+public enum UsersSearchSex implements EnumParam {
 
-    IOS("ios"),
-    ANDROID("android"),
-    WINPHONE("winphone"),
-
-    /**
-     * Default
-     */
-    WEB("web");
+    FEMALE("1"),
+    MALE("2"),
+    ANY("0");
 
     private final String value;
 
-    AppsGetPlatform(String value) {
+    UsersSearchSex(String value) {
         this.value = value;
     }
 

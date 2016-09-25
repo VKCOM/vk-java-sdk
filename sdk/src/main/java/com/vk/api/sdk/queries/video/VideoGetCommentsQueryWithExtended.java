@@ -47,7 +47,7 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
     }
 
     /**
-     * "1" - to return an additional "likes" field
+     * Return an additional "likes" field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

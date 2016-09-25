@@ -26,10 +26,7 @@ public class AppsGetLeaderboardQuery extends AbstractQueryBuilder<AppsGetLeaderb
     }
 
     /**
-     * Leaderboard type. Possible values:
-     * "level" - by level;
-     * "points" - by mission points;
-     * "score" - by score (apps.getScore).
+     * Leaderboard type.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

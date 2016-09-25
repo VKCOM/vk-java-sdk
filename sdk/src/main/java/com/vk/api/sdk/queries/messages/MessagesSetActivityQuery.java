@@ -39,7 +39,7 @@ public class MessagesSetActivityQuery extends AbstractQueryBuilder<MessagesSetAc
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSetActivityQuery type(String value) {
+    public MessagesSetActivityQuery type(MessagesSetActivityType value) {
         return unsafeParam("type", value);
     }
 

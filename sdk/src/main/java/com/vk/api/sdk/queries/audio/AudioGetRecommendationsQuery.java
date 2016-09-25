@@ -65,7 +65,7 @@ public class AudioGetRecommendationsQuery extends AbstractQueryBuilder<AudioGetR
     }
 
     /**
-     * "1" - shuffle on
+     * true - shuffle on
      *
      * @param value value of "shuffle" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

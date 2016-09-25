@@ -7,8 +7,19 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum OrdersChangeStateAction implements EnumParam {
 
-    CANCEK("cancel"),
+    /**
+     * cancel unconfirmed order
+     */
+    CANCEL("cancel"),
+
+    /**
+     * confirm unconfirmed order. Applies only if processing of order_change_state notification failed.
+     */
     CHARGE("charge"),
+
+    /**
+     * cancel confirmed order
+     */
     REFUND("refund");
 
     private final String value;

@@ -67,8 +67,7 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
     }
 
     /**
-     * "1" - to return all cities in the country
-     * "0" - to return major cities in the country (default)
+     * Return all cities in the country
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

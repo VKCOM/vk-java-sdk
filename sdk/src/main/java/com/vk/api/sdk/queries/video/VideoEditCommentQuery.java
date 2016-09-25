@@ -65,7 +65,7 @@ public class VideoEditCommentQuery extends AbstractQueryBuilder<VideoEditComment
      * "doc" - document
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      *

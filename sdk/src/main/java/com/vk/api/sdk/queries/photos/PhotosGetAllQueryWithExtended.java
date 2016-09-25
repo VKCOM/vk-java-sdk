@@ -36,7 +36,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * "1" - to return detailed information about photos
+     * Return detailed information about photos
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,7 +66,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * "1" - to return image sizes in special format.
+     * Return image sizes in special format.
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,8 +76,8 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * "1" - to return photos only from standard albums
-     * "0" - to return all photos including those in service albums, e.g., "My wall photos" (default)
+     * "true" - to return photos only from standard albums
+     * "false" - to return all photos including those in service albums, e.g., "My wall photos" (default)
      *
      * @param value value of "no service albums" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -87,7 +87,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * "1" - to show information about photos being hidden from the block above the wall.
+     * Show information about photos being hidden from the block above the wall.
      *
      * @param value value of "need hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -97,7 +97,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * "1" - not to return photos being hidden from the block above the wall. Works only with owner_id greater than 0, no_service_albums is ignored.
+     * Not to return photos being hidden from the block above the wall. Works only with owner_id greater than 0, no_service_albums is ignored.
      *
      * @param value value of "skip hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

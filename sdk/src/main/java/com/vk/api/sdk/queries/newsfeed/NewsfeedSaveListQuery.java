@@ -55,7 +55,7 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
     }
 
     /**
-     * Reposts display on and off ("1" is for off).
+     * Reposts display on and off ("true" is for off).
      *
      * @param value value of "no reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

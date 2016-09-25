@@ -83,7 +83,8 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * (Required if "attachments" is not set.) Text of the message.
+     * Text of the message.
+     * Required if "attachments" is not set.
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -123,7 +124,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * "wall" - wall post
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618
      *
@@ -136,14 +137,14 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
 
     /**
      * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's.
-     *
+     * <p>
      * Example:
      * 123,431,544
      *
      * @param value value of "forward messages" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery forwardMessages(String value) {
+    public MessagesSendQuery forwardMessages(String... value) {
         return unsafeParam("forward_messages", value);
     }
 

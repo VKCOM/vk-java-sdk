@@ -97,8 +97,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     }
 
     /**
-     * "1" - to repeat the playback of the video
-     * "0" - to play the video once
+     * Repeat the playback of the video
      *
      * @param value value of "repeat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

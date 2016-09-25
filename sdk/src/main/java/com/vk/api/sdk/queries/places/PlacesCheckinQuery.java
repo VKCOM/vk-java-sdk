@@ -64,8 +64,7 @@ public class PlacesCheckinQuery extends AbstractQueryBuilder<PlacesCheckinQuery,
     }
 
     /**
-     * "1" - Check-in will be available only for friends.
-     * "0" - Check-in will be available for all users (default).
+     * heck-in will be available only for friends.
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,7 +74,8 @@ public class PlacesCheckinQuery extends AbstractQueryBuilder<PlacesCheckinQuery,
     }
 
     /**
-     * List of services or websites (e.g., "twitter", "facebook") to which the check-in will be exported, if the user has set up the respective option.
+     * List of services or websites (e.g., "twitter", "facebook") to which the check-in will be exported,
+     * if the user has set up the respective option.
      *
      * @param value value of "services" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

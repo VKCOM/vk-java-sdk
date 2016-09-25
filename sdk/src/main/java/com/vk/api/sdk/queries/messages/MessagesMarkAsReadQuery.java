@@ -44,6 +44,8 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
     }
 
     /**
+     * Set start message id
+     *
      * @param value value of "start message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

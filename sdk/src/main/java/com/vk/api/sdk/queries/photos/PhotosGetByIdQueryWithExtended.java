@@ -52,8 +52,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
     }
 
     /**
-     * "1" - to return additional fields
-     * "0" - (default)
+     * Return additional fields
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -63,7 +62,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
     }
 
     /**
-     * "1" - to return photo sizes in a special format
+     * Return photo sizes in a special format
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

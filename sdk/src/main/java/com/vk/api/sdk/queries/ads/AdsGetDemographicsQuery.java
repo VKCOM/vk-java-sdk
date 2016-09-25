@@ -25,7 +25,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param dateFrom  value of "date from" parameter.
      * @param dateTo    value of "date to" parameter.
      */
-    public AdsGetDemographicsQuery(VkApiClient client, Actor actor, int accountId, String idsType, String ids, String period, String dateFrom, String dateTo) {
+    public AdsGetDemographicsQuery(VkApiClient client, Actor actor, int accountId, AdsGetDemographicsIdsType idsType, String ids, String period, String dateFrom, String dateTo) {
         super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, DemoStats.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -47,14 +47,12 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     }
 
     /**
-     * Type of requested objects listed in "ids" parameter:
-     * 'ad' - ads;
-     * 'campaign' - campaigns.
+     * Type of requested objects listed in "ids" parameter.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery idsType(String value) {
+    protected AdsGetDemographicsQuery idsType(AdsGetDemographicsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
