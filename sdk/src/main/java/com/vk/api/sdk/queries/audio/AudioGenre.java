@@ -16,7 +16,7 @@ public enum AudioGenre implements EnumParam {
      */
     POP("2"),
     /**
-     * Rap & Hip-Hop
+     * Rap and Hip-Hop
      */
     RAP_AND_HIP_HOP("3"),
     /**
@@ -24,7 +24,7 @@ public enum AudioGenre implements EnumParam {
      */
     EASY_LISTENING("4"),
     /**
-     * House & Dance
+     * House and Dance
      */
     HOUSE_AND_DANCE("5"),
     /**
@@ -44,11 +44,11 @@ public enum AudioGenre implements EnumParam {
      */
     DUBSTEP("8"),
     /**
-     * Jazz & Blues
+     * Jazz and Blues
      */
     JAZZ_AND_BLUES("1001"),
     /**
-     * Drum & Bass
+     * Drum and Bass
      */
     DRUM_AND_BASS("10"),
     /**
@@ -64,7 +64,7 @@ public enum AudioGenre implements EnumParam {
      */
     ETHNIC("13"),
     /**
-     * Acoustic & Vocal
+     * Acoustic and Vocal
      */
     ACOUSTIC_AND_VOCAL("14"),
     /**
@@ -84,7 +84,7 @@ public enum AudioGenre implements EnumParam {
      */
     SPEECH("19"),
     /**
-     * Electropop & Disco
+     * Electropop and Disco
      */
     ELECTROPOP_AND_DISCO("22"),
     /**
