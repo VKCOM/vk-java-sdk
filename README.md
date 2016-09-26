@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.1.3, released September 23, 2016.
+The most recent release is 0.2.0, released September 26, 2016.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.1.3</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.1.3'
+  compile 'com.vk.api:sdk:0.2.0'
 }
 ```
 
@@ -120,7 +120,7 @@ This flow allows to interact with API service methods with "secure" prefix. Use 
 
 ```java
 AuthResponse authResponse = vk.oauth()
-    .serverClientCredentionalsFlow(APP_ID, CLIENT_SECRET)
+    .serverClientCredentialsFlow(APP_ID, CLIENT_SECRET)
     .execute();
     
 ServerActor actor = new ServerActor(APP_ID, authResponse.getAccessToken());
@@ -182,7 +182,36 @@ GetResponse getResponse = vk.wall().post(actor)
     .execute();
 ```
 
-##8. Error Handling
+##8. Execute requests
+You can find more information about execute method [here](https://vk.com/dev/execute).
+
+###Code
+
+```java
+JsonElement response = vk.execute().code(actor, "return API.wall.get({"count": 1})")
+    .execute();
+```
+
+###Storage function
+
+```java
+JsonElement response = vk.execute().storageFunction(actor, "foo")
+    .funcV(2) // set storage function version
+    .unsafeParam("user_id", 1) // set storage function argument
+    .execute();
+```
+
+###Batch requests
+
+```java
+JsonElement response = vk.execute().batch(actor,
+        vk.database().getChairs(1).count(10),
+        vk.database().getCities(1),
+        vk.groups().getMembers(actor).groupId(groupId)
+).execute();
+```
+
+##9. Error Handling
 
 ###Common Example
 ```java
@@ -222,7 +251,7 @@ if (captchaImg != null) {
 }
 ```
 
-##9. Callback API handler
+##10. Callback API handler
 Override methods from CallbackApi class for handling events
 
 ```java
@@ -239,5 +268,5 @@ CallbackApiHandler callbackApiHandler = new CallbackApiHandler();
 String body = httpRequest.getBody();
 callbackApiHandler.parse(body);
 ```
-##10. Usage Example
+##11. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
