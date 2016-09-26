@@ -24,6 +24,16 @@ public class ExecuteStorageFunctionQuery extends AbstractQueryBuilder<ExecuteSto
         accessToken(actor.getAccessToken());
     }
 
+    /**
+     * Function version
+     *
+     * @param value value of "code" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected ExecuteStorageFunctionQuery funcV(Integer value) {
+        return unsafeParam("func_v", value);
+    }
+
     @Override
     protected ExecuteStorageFunctionQuery getThis() {
         return this;

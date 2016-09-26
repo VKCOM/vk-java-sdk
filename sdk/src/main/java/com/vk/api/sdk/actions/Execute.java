@@ -1,9 +1,11 @@
 package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
+import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
-import com.vk.api.sdk.queries.execute.ExecuteQuery;
+import com.vk.api.sdk.queries.execute.ExecuteBatchQuery;
+import com.vk.api.sdk.queries.execute.ExecuteCodeQuery;
 import com.vk.api.sdk.queries.execute.ExecuteStorageFunctionQuery;
 
 /**
@@ -23,8 +25,8 @@ public class Execute extends AbstractAction {
     /**
      * Execute by code
      */
-    public ExecuteQuery code(Actor actor, String code) {
-        return new ExecuteQuery(getClient(), actor, code);
+    public ExecuteCodeQuery code(Actor actor, String code) {
+        return new ExecuteCodeQuery(getClient(), actor, code);
     }
 
     /**
@@ -32,5 +34,9 @@ public class Execute extends AbstractAction {
      */
     public ExecuteStorageFunctionQuery storageFunction(Actor actor, String storageFunctionName) {
         return new ExecuteStorageFunctionQuery(getClient(), actor, storageFunctionName);
+    }
+
+    public ExecuteBatchQuery batch(Actor actor, AbstractQueryBuilder... request) {
+        return new ExecuteBatchQuery(getClient(), actor, request);
     }
 }

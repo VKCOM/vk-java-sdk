@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for execute by code
  */
-public class ExecuteQuery extends AbstractQueryBuilder<ExecuteQuery, JsonElement> {
+public class ExecuteCodeQuery extends AbstractQueryBuilder<ExecuteCodeQuery, JsonElement> {
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
@@ -20,7 +20,7 @@ public class ExecuteQuery extends AbstractQueryBuilder<ExecuteQuery, JsonElement
      * @param actor  actor with access token
      * @param code   value of "code" parameter
      */
-    public ExecuteQuery(VkApiClient client, Actor actor, String code) {
+    public ExecuteCodeQuery(VkApiClient client, Actor actor, String code) {
         super(client, "execute", JsonElement.class);
         accessToken(actor.getAccessToken());
         code(code);
@@ -32,12 +32,12 @@ public class ExecuteQuery extends AbstractQueryBuilder<ExecuteQuery, JsonElement
      * @param value value of "code" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected ExecuteQuery code(String value) {
+    protected ExecuteCodeQuery code(String value) {
         return unsafeParam("code", value);
     }
 
     @Override
-    protected ExecuteQuery getThis() {
+    protected ExecuteCodeQuery getThis() {
         return this;
     }
 
