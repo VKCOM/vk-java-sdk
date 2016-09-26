@@ -82,13 +82,13 @@ public class AudioEditQuery extends AbstractQueryBuilder<AudioEditQuery, Integer
      * @param value value of "genre id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AudioEditQuery genreId(Integer value) {
+    public AudioEditQuery genreId(AudioGenre value) {
         return unsafeParam("genre_id", value);
     }
 
     /**
-     * "1" - audio file will not be available for search
-     * "0" - audio file will be available for search (default)
+     * true - audio file will not be available for search
+     * false - audio file will be available for search (default)
      *
      * @param value value of "no search" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

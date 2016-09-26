@@ -29,12 +29,35 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param fields user fields
+     */
+    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+        super(client, "friends.getAvailableForCall", GetAvailableForCallFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
      * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected FriendsGetAvailableForCallQueryWithFields fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected FriendsGetAvailableForCallQueryWithFields fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

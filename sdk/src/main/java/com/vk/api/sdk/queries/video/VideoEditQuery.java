@@ -77,12 +77,34 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     }
 
     /**
+     * Privacy settings in a special format.
+     * Privacy setting is available for videos uploaded to own profile by user.
+     *
+     * @param value value of "privacy view" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+
+    /**
      * Privacy settings for comments in a special format.
      *
      * @param value value of "privacy comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public VideoEditQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Privacy settings for comments in a special format.
+     *
+     * @param value value of "privacy comment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 
@@ -97,8 +119,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     }
 
     /**
-     * "1" - to repeat the playback of the video
-     * "0" - to play the video once
+     * Repeat the playback of the video
      *
      * @param value value of "repeat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -48,8 +48,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * "1" - to return an additional "likes" field
-     * "0" - (default)
+     * Return an additional "likes" field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -89,14 +88,12 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * Sort order:
-     * "asc" - old first
-     * "desc" - new first
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended sort(String value) {
+    public PhotosGetCommentsQueryWithExtended sort(PhotosGetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -127,6 +124,16 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PhotosGetCommentsQueryWithExtended fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetCommentsQueryWithExtended fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

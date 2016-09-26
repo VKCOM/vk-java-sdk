@@ -52,7 +52,7 @@ public class PagesGetVersionQuery extends AbstractQueryBuilder<PagesGetVersionQu
     }
 
     /**
-     * "1" - to return the page as HTML
+     * Return the page as HTML
      *
      * @param value value of "need html" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

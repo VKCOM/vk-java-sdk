@@ -46,18 +46,22 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
     }
 
     /**
-     * Types of communities to return:
-     * "admin" - to return communities administered by the user
-     * "editor" - to return communities where the user is an administrator or editor
-     * "moder" - to return communities where the user is an administrator, editor, or moderator
-     * "groups" - to return only groups
-     * "publics" - to return only public pages
-     * "events" - to return only events
+     * Types of communities to return
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetQueryWithExtended filter(GroupsGetFilter... value) {
+        return unsafeParam("filter", value);
+    }
+
+    /**
+     * Types of communities to return
+     *
+     * @param value value of "filter" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetQueryWithExtended filter(List<GroupsGetFilter> value) {
         return unsafeParam("filter", value);
     }
 
@@ -68,6 +72,16 @@ public class GroupsGetQueryWithExtended extends AbstractQueryBuilder<GroupsGetQu
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetQueryWithExtended fields(GroupField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetQueryWithExtended fields(List<GroupField> value) {
         return unsafeParam("fields", value);
     }
 

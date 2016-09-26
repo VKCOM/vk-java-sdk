@@ -37,15 +37,12 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
     }
 
     /**
-     * Sort order:
-     * "1" - by duration
-     * "2" - by relevance
-     * "0" - by date added
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoSearchQueryWithExtended sort(Integer value) {
+    public VideoSearchQueryWithExtended sort(VideoSearchSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -60,8 +57,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
     }
 
     /**
-     * "1" - to disable the Safe Search filter
-     * "0" - to enable the Safe Search filter
+     * Disable the Safe Search filter
      *
      * @param value value of "adult" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,16 +67,22 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
     }
 
     /**
-     * Filters to apply:
-     * "youtube" - return YouTube videos only
-     * "vimeo" - return Vimeo videos only
-     * "short" - return short videos only
-     * "long" - return long videos only
+     * Set filters
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public VideoSearchQueryWithExtended filters(VideoSearchFilter... value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * Set filters
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSearchQueryWithExtended filters(List<VideoSearchFilter> value) {
         return unsafeParam("filters", value);
     }
 

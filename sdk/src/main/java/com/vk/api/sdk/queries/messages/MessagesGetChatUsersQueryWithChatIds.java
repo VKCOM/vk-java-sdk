@@ -19,7 +19,19 @@ public class MessagesGetChatUsersQueryWithChatIds extends AbstractQueryBuilder<M
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, Actor actor, Integer[] chatIds) {
+    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, Actor actor, Integer... chatIds) {
+        super(client, "messages.getChatUsers", GetChatUsersChatIdsResponse.class);
+        accessToken(actor.getAccessToken());
+        chatIds(chatIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, Actor actor, List<Integer> chatIds) {
         super(client, "messages.getChatUsers", GetChatUsersChatIdsResponse.class);
         accessToken(actor.getAccessToken());
         chatIds(chatIds);
@@ -36,13 +48,17 @@ public class MessagesGetChatUsersQueryWithChatIds extends AbstractQueryBuilder<M
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Chat IDs.
+     *
+     * @param value value of "chat ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MessagesGetChatUsersQueryWithChatIds chatIds(List<Integer> value) {
+        return unsafeParam("chat_ids", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

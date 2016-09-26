@@ -76,23 +76,17 @@ public class WallGetQueryWithExtended extends AbstractQueryBuilder<WallGetQueryW
     }
 
     /**
-     * Filter to apply:
-     * "owner" - posts by the wall owner
-     * "others" - posts by someone else
-     * "all" - posts by the wall owner and others (default)
-     * "postponed" - timed posts (only available for calls with an "access_token")
-     * "suggests" - suggested posts on a community wall
+     * Set filter
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetQueryWithExtended filter(String value) {
+    public WallGetQueryWithExtended filter(WallGetFilter value) {
         return unsafeParam("filter", value);
     }
 
     /**
-     * "1" - to return "wall", "profiles", and "groups" fields
-     * "0" - to return no additional fields (default)
+     * Return "wall", "profiles", and "groups" fields
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,6 +102,16 @@ public class WallGetQueryWithExtended extends AbstractQueryBuilder<WallGetQueryW
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallGetQueryWithExtended fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetQueryWithExtended fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

@@ -33,8 +33,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
     }
 
     /**
-     * "1" - to return a full list of all countries
-     * "0" - to return a list of countries near the current user's country (default)
+     * Return a full list of all countries
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -32,6 +32,8 @@ import com.vk.api.sdk.queries.market.MarketRestoreQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQueryWithExtended;
 
+import java.util.List;
+
 /**
  * List of Market methods
  */
@@ -70,7 +72,21 @@ public class Market extends AbstractAction {
     /**
      * Returns information about market items by their ids.
      */
+    public MarketGetByIdQuery getById(Actor actor, List<String> itemIds) {
+        return new MarketGetByIdQuery(getClient(), actor, itemIds);
+    }
+
+    /**
+     * Returns information about market items by their ids.
+     */
     public MarketGetByIdQueryWithExtended getByIdExtended(Actor actor, String... itemIds) {
+        return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
+    }
+
+    /**
+     * Returns information about market items by their ids.
+     */
+    public MarketGetByIdQueryWithExtended getByIdExtended(Actor actor, List<String> itemIds) {
         return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
     }
 
@@ -99,6 +115,13 @@ public class Market extends AbstractAction {
      * Returns items album's data
      */
     public MarketGetAlbumByIdQuery getAlbumById(Actor actor, int ownerId, int... albumIds) {
+        return new MarketGetAlbumByIdQuery(getClient(), actor, ownerId, albumIds);
+    }
+
+    /**
+     * Returns items album's data
+     */
+    public MarketGetAlbumByIdQuery getAlbumById(Actor actor, int ownerId, List<Integer> albumIds) {
         return new MarketGetAlbumByIdQuery(getClient(), actor, ownerId, albumIds);
     }
 
@@ -158,14 +181,16 @@ public class Market extends AbstractAction {
     /**
      * Ads a new item to the market
      */
-    public MarketAddQuery add(Actor actor, int ownerId, String name, String description, int categoryId, float price, int mainPhotoId) {
+    public MarketAddQuery add(Actor actor, int ownerId, String name, String description, int categoryId,
+                              float price, int mainPhotoId) {
         return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId, price, mainPhotoId);
     }
 
     /**
      * Edits an item
      */
-    public MarketEditQuery edit(Actor actor, int ownerId, int itemId, String name, String description, int categoryId, float price, int mainPhotoId) {
+    public MarketEditQuery edit(Actor actor, int ownerId, int itemId, String name, String description,
+                                int categoryId, float price, int mainPhotoId) {
         return new MarketEditQuery(getClient(), actor, ownerId, itemId, name, description, categoryId, price, mainPhotoId);
     }
 
@@ -226,9 +251,23 @@ public class Market extends AbstractAction {
     }
 
     /**
+     * Removes an item from one or multiple collections
+     */
+    public MarketRemoveFromAlbumQuery removeFromAlbum(Actor actor, int ownerId, int itemId, List<Integer> albumIds) {
+        return new MarketRemoveFromAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
+    }
+
+    /**
      * Adds an item to one or multiple collections
      */
     public MarketAddToAlbumQuery addToAlbum(Actor actor, int ownerId, int itemId, int... albumIds) {
+        return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
+    }
+
+    /**
+     * Adds an item to one or multiple collections
+     */
+    public MarketAddToAlbumQuery addToAlbum(Actor actor, int ownerId, int itemId, List<Integer> albumIds) {
         return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
     }
 }

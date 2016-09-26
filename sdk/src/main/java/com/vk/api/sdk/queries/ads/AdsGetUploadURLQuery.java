@@ -18,7 +18,7 @@ public class AdsGetUploadURLQuery extends AbstractQueryBuilder<AdsGetUploadURLQu
      * @param actor    actor with access token
      * @param adFormat value of "ad format" parameter.
      */
-    public AdsGetUploadURLQuery(VkApiClient client, Actor actor, int adFormat) {
+    public AdsGetUploadURLQuery(VkApiClient client, Actor actor, AdsGetUploadURLAdFormat adFormat) {
         super(client, "ads.getUploadURL", String.class);
         accessToken(actor.getAccessToken());
         adFormat(adFormat);
@@ -35,7 +35,7 @@ public class AdsGetUploadURLQuery extends AbstractQueryBuilder<AdsGetUploadURLQu
      * @param value value of "ad format" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetUploadURLQuery adFormat(int value) {
+    protected AdsGetUploadURLQuery adFormat(AdsGetUploadURLAdFormat value) {
         return unsafeParam("ad_format", value);
     }
 

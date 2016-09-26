@@ -52,14 +52,7 @@ public class MarketReportCommentQuery extends AbstractQueryBuilder<MarketReportC
     }
 
     /**
-     * Complaint reason:
-     * "0" - spam;
-     * "1" - child porn;
-     * "2" - extremism;
-     * "3" - violence;
-     * "4" - drugs propaganda;
-     * "5" - adult materials;
-     * "6" - insult.
+     * Complaint reason
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -9,6 +9,7 @@ import com.vk.api.sdk.actions.Auth;
 import com.vk.api.sdk.actions.Board;
 import com.vk.api.sdk.actions.Database;
 import com.vk.api.sdk.actions.Docs;
+import com.vk.api.sdk.actions.Execute;
 import com.vk.api.sdk.actions.Fave;
 import com.vk.api.sdk.actions.Friends;
 import com.vk.api.sdk.actions.Gifts;
@@ -212,5 +213,9 @@ public class VkApiClient {
 
     public Widgets widgets() {
         return new Widgets(this);
+    }
+
+    public Execute execute() {
+        return new Execute(this);
     }
 }

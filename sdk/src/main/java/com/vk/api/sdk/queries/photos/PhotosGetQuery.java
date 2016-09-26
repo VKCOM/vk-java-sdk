@@ -63,9 +63,17 @@ public class PhotosGetQuery extends AbstractQueryBuilder<PhotosGetQuery, GetResp
     }
 
     /**
-     * Sort order:
-     * "1" - reverse chronological
-     * "0" - chronological
+     * Photo IDs.
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetQuery photoIds(List<String> value) {
+        return unsafeParam("photo_ids", value);
+    }
+
+    /**
+     * Return photos in reverse chronological order
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,8 +83,7 @@ public class PhotosGetQuery extends AbstractQueryBuilder<PhotosGetQuery, GetResp
     }
 
     /**
-     * "1" - to return additional "likes", "comments", and "tags" fields
-     * "0" - (default)
+     * Return additional "likes", "comments", and "tags" fields
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -106,7 +113,7 @@ public class PhotosGetQuery extends AbstractQueryBuilder<PhotosGetQuery, GetResp
     }
 
     /**
-     * "1" - to return photo sizes in a special format
+     * Return photo sizes in a special format
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

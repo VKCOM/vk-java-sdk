@@ -84,6 +84,16 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
     }
 
     /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WidgetsGetCommentsQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
      * Set count
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 10. By default 10.

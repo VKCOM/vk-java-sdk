@@ -54,8 +54,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * "1" - to return an additional "likes" field
-     * "0" - (default)
+     * Return an additional "likes" field
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,14 +64,12 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Sort order:
-     * "1" - by date the tag was added in ascending order
-     * "0" - by date the tag was added in descending order
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetUserPhotosQuery sort(String value) {
+    public PhotosGetUserPhotosQuery sort(PhotosGetUserPhotosSort value) {
         return unsafeParam("sort", value);
     }
 

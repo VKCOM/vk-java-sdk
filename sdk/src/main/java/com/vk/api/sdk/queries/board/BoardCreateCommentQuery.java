@@ -47,7 +47,8 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * (Required if "attachments" is not set.) Text of the comment.
+     * Text of the comment.
+     * Required if "attachments" is not set.
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -57,7 +58,7 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * (Required if "text" is not set.) List of media objects attached to the comment, in the following format:
+     * List of media objects attached to the comment, in the following format:
      * "type""owner_id"_"media_id","type""owner_id"_"media_id"
      * ""type"" - Type of media object:
      * "photo" - photo
@@ -66,6 +67,8 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
      * "doc" - document
      * ""owner_id"" - ID of the media owner.
      * ""media_id"" - Media ID.
+     * <p>
+     * Required if "message" is not set.
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,8 +78,28 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * "1" - to post the comment as by the community
-     * "0" - to post the comment as by the user (default)
+     * List of media objects attached to the comment, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media object:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
+     * <p>
+     * Required if "message" is not set.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
+     * true - to post the comment as by the community
+     * false - to post the comment as by the user (default)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

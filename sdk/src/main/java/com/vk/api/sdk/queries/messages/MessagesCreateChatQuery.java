@@ -25,12 +25,35 @@ public class MessagesCreateChatQuery extends AbstractQueryBuilder<MessagesCreate
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param userIds value of "user ids" parameter.
+     */
+    public MessagesCreateChatQuery(VkApiClient client, Actor actor, List<Integer> userIds) {
+        super(client, "messages.createChat", Integer.class);
+        accessToken(actor.getAccessToken());
+        userIds(userIds);
+    }
+
+    /**
      * IDs of the users to be added to the chat.
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MessagesCreateChatQuery userIds(int... value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * IDs of the users to be added to the chat.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MessagesCreateChatQuery userIds(List<Integer> value) {
         return unsafeParam("user_ids", value);
     }
 

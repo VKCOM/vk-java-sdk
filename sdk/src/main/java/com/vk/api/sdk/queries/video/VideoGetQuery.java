@@ -44,6 +44,16 @@ public class VideoGetQuery extends AbstractQueryBuilder<VideoGetQuery, GetRespon
     }
 
     /**
+     * Video IDs
+     *
+     * @param value value of "videos" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetQuery videos(List<String> value) {
+        return unsafeParam("videos", value);
+    }
+
+    /**
      * ID of the album containing the video(s).
      *
      * @param value value of "album id" parameter.

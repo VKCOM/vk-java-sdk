@@ -14,6 +14,8 @@ import com.vk.api.sdk.queries.docs.DocsGetWallUploadServerQuery;
 import com.vk.api.sdk.queries.docs.DocsSaveQuery;
 import com.vk.api.sdk.queries.docs.DocsSearchQuery;
 
+import java.util.List;
+
 /**
  * List of Docs methods
  */
@@ -39,6 +41,13 @@ public class Docs extends AbstractAction {
      * Returns information about documents by their IDs.
      */
     public DocsGetByIdQuery getById(Actor actor, String... docs) {
+        return new DocsGetByIdQuery(getClient(), actor, docs);
+    }
+
+    /**
+     * Returns information about documents by their IDs.
+     */
+    public DocsGetByIdQuery getById(Actor actor, List<String> docs) {
         return new DocsGetByIdQuery(getClient(), actor, docs);
     }
 

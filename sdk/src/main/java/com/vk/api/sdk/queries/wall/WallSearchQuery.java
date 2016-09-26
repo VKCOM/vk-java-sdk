@@ -65,7 +65,7 @@ public class WallSearchQuery extends AbstractQueryBuilder<WallSearchQuery, Searc
     }
 
     /**
-     * "1" - returns only page owner's posts.
+     * Returns only page owner's posts.
      *
      * @param value value of "owners only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -101,6 +101,16 @@ public class WallSearchQuery extends AbstractQueryBuilder<WallSearchQuery, Searc
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallSearchQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallSearchQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

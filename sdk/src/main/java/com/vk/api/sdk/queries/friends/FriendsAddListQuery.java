@@ -45,6 +45,16 @@ public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuer
         return unsafeParam("user_ids", value);
     }
 
+    /**
+     * IDs of users to be added to the friend list.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsAddListQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
     @Override
     protected FriendsAddListQuery getThis() {
         return this;

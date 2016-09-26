@@ -45,7 +45,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
 
     /**
      * Sort order
-     *
+     * <p>
      * This parameter is available only for desktop applications.
      *
      * @param value value of "order" parameter.

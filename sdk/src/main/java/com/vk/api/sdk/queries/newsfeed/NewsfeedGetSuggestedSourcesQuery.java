@@ -64,6 +64,16 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
         return unsafeParam("fields", value);
     }
 
+    /**
+     * List of extra fields to be returned. See communities.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetSuggestedSourcesQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected NewsfeedGetSuggestedSourcesQuery getThis() {
         return this;

@@ -28,8 +28,24 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client   VK API client
+     * @param actor    actor with access token
+     * @param ownerId  value of "owner id" parameter.
+     * @param albumIds value of "album ids" parameter.
+     */
+    public MarketGetAlbumByIdQuery(VkApiClient client, Actor actor, int ownerId, List<Integer> albumIds) {
+        super(client, "market.getAlbumById", GetAlbumByIdResponse.class);
+        accessToken(actor.getAccessToken());
+        ownerId(ownerId);
+        albumIds(albumIds);
+    }
+
+    /**
      * Identifier of an album owner community
-     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
+     * Note that community id in the 'owner_id' parameter should be negative number.
+     * For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -45,6 +61,16 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MarketGetAlbumByIdQuery albumIds(int... value) {
+        return unsafeParam("album_ids", value);
+    }
+
+    /**
+     * Collections identifiers to obtain data from
+     *
+     * @param value value of "album ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MarketGetAlbumByIdQuery albumIds(List<Integer> value) {
         return unsafeParam("album_ids", value);
     }
 

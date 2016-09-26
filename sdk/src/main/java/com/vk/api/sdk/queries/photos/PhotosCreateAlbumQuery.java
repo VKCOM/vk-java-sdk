@@ -66,12 +66,32 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
     }
 
     /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PhotosCreateAlbumQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }
 

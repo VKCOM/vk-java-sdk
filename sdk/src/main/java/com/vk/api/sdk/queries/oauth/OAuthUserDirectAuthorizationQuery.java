@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.oauth;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.objects.AuthResponse;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -43,13 +42,12 @@ public class OAuthUserDirectAuthorizationQuery extends OAuthQueryBuilder<OAuthUs
     }
 
     public OAuthUserDirectAuthorizationQuery scope(OAuthUserScope... value) {
-        List<String> scope = new ArrayList<>();
-        for (OAuthUserScope scopeValue : value) {
-            scope.add(scopeValue.getValue());
-        }
-        return unsafeParam("scope", scope);
+        return unsafeParam("scope", value);
     }
 
+    public OAuthUserDirectAuthorizationQuery scope(List<OAuthUserScope> value) {
+        return unsafeParam("scope", value);
+    }
 
     public OAuthUserDirectAuthorizationQuery scope(Integer value) {
         return unsafeParam("scope", value);

@@ -15,13 +15,14 @@ import java.util.List;
  * Query for Messages.getChat method
  */
 public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<MessagesGetChatQueryWithChatIdsFields, List<ChatFull>> {
+
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, Actor actor, Integer[] chatIds, UserField... fields) {
+    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, Actor actor, List<Integer> chatIds, List<UserField> fields) {
         super(client, "messages.getChat", Utils.buildParametrizedType(List.class, ChatFull.class));
         accessToken(actor.getAccessToken());
         chatIds(chatIds);
@@ -39,6 +40,16 @@ public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<
     }
 
     /**
+     * Chat IDs.
+     *
+     * @param value value of "chat ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MessagesGetChatQueryWithChatIdsFields chatIds(List<Integer> value) {
+        return unsafeParam("chat_ids", value);
+    }
+
+    /**
      * Profile fields to return.
      *
      * @param value value of "fields" parameter.
@@ -49,13 +60,17 @@ public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MessagesGetChatQueryWithChatIdsFields fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

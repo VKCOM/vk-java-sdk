@@ -27,6 +27,18 @@ dependencies {
     testCompile group: 'org.testng', name: 'testng', version: testngVersion
 }
 
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
+
+def getRepositoryUsername() {
+    return hasProperty('ossrhUsername') ? ossrhUsername : ''
+}
+
+def getRepositoryPassword() {
+    return hasProperty('ossrhPassword') ? ossrhPassword : ''
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -42,6 +54,8 @@ artifacts {
 }
 
 signing {
+    required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+
     sign configurations.archives
 }
 
@@ -51,11 +65,11 @@ uploadArchives {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
             }
 
             pom.project {

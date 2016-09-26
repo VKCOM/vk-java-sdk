@@ -34,12 +34,32 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
     }
 
     /**
+     * Set user ids
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedDeleteBanQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
      * Set group ids
      *
      * @param value value of "group ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedDeleteBanQuery groupIds(Integer... value) {
+        return unsafeParam("group_ids", value);
+    }
+
+    /**
+     * Set group ids
+     *
+     * @param value value of "group ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedDeleteBanQuery groupIds(List<Integer> value) {
         return unsafeParam("group_ids", value);
     }
 

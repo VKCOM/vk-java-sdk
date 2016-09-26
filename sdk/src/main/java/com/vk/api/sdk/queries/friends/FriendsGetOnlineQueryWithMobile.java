@@ -44,8 +44,7 @@ public class FriendsGetOnlineQueryWithMobile extends AbstractQueryBuilder<Friend
     }
 
     /**
-     * "1" - to return an additional "online_mobile" field
-     * "0" - (default)
+     * Return an additional "online_mobile" field
      *
      * @param value value of "online mobile" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

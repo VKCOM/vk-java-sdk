@@ -45,8 +45,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * Sort order. Available values: "id_asc", "id_desc", "time_asc", "time_desc".
-     * "time_asc" and "time_desc" are availavle only if the method is called by the group's "moderator".
+     * Sort order.
      *
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,8 +75,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * "friends" - only friends in this community will be returned;
-     * "unsure" - only those who pressed 'I may attend' will be returned (if it's an event).
+     * Set filter
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -34,7 +34,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * "1" - to correct for mistakes in the search query (e.g., if you enter "Beetles", the system will search for "Beatles")
+     * Correct for mistakes in the search query (e.g., if you enter "Beetles", the system will search for "Beatles")
      *
      * @param value value of "auto complete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,7 +44,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * "1" - to return only audio files that have associated lyrics
+     * Return only audio files that have associated lyrics
      *
      * @param value value of "lyrics" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +54,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
     }
 
     /**
-     * "1" - to search only by artist name
+     * Search only by artist name
      *
      * @param value value of "performer only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

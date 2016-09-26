@@ -90,7 +90,8 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
     }
 
     /**
-     * "1" - comments will be returned as numbered objects, in addition lists of "profiles" and "groups" objects will be returned
+     * "true" - comments will be returned as numbered objects,
+     * in addition lists of "profiles" and "groups" objects will be returned
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -106,6 +107,16 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MarketGetCommentsQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * List of additional profile fields to return. See the [vk.com/dev/fields|details]
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetCommentsQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

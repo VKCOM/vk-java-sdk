@@ -31,6 +31,21 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client    VK API client
+     * @param actor     actor with access token
+     * @param pollId    value of "poll id" parameter. Minimum is 0.
+     * @param answerIds value of "answer ids" parameter.
+     */
+    public PollsGetVotersQuery(VkApiClient client, Actor actor, int pollId, List<Integer> answerIds) {
+        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
+        accessToken(actor.getAccessToken());
+        pollId(pollId);
+        answerIds(answerIds);
+    }
+
+    /**
      * ID of the user or community that owns the poll.  Use a negative value to designate a community ID.
      *
      * @param value value of "owner id" parameter.
@@ -61,6 +76,16 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
+     * Answer IDs.
+     *
+     * @param value value of "answer ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected PollsGetVotersQuery answerIds(List<Integer> value) {
+        return unsafeParam("answer_ids", value);
+    }
+
+    /**
      * Set is board
      *
      * @param value value of "is board" parameter.
@@ -71,8 +96,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * "1" - to return only current user's friends
-     * "0" - to return all users (default)
+     * Return only current user's friends
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -104,7 +128,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate (birthdate)", "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online", "counters".
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -114,13 +138,17 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsGetVotersQuery fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

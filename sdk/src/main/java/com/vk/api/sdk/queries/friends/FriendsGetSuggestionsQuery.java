@@ -26,15 +26,22 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
     }
 
     /**
-     * Types of potential friends to return:
-     * "mutual" - users with many mutual friends
-     * "contacts" - users found with the account.importContacts]] method
-     * "mutual_contacts" - users who imported the same contacts as the current user with the [[account.importContacts method
+     * Types of potential friends to return
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetSuggestionsQuery filter(FriendsGetSuggestionsFilter... value) {
+        return unsafeParam("filter", value);
+    }
+
+    /**
+     * Types of potential friends to return
+     *
+     * @param value value of "filter" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetSuggestionsQuery filter(List<FriendsGetSuggestionsFilter> value) {
         return unsafeParam("filter", value);
     }
 
@@ -65,6 +72,16 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetSuggestionsQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetSuggestionsQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

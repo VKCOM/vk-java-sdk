@@ -34,6 +34,16 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
     }
 
     /**
+     * Message IDs.
+     *
+     * @param value value of "message ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesDeleteQuery messageIds(List<Integer> value) {
+        return unsafeParam("message_ids", value);
+    }
+
+    /**
      * Set spam
      *
      * @param value value of "spam" parameter.

@@ -64,7 +64,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * "doc" - document
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      *
@@ -76,7 +76,28 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
     }
 
     /**
-     * "1" - to post the comment from a community name (only if "owner_id" less than 0)
+     * List of objects attached to the comment, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media attachment owner.
+     * ""media_id"" - Media attachment ID.
+     * <p>
+     * Example:
+     * photo100172_166443618,photo66748_265827614
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
+     * Post the comment from a community name (only if "owner_id" less than 0)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

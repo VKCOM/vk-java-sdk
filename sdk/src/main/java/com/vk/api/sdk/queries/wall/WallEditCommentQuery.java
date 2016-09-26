@@ -57,7 +57,7 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
 
     /**
      * List of objects attached to the comment, in the following format:
-     *
+     * <p>
      * "type""owner_id"_"media_id","type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
@@ -66,7 +66,7 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
      * "doc" - document
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - Media attachment ID.
-     *
+     * <p>
      * For example:
      * photo100172_166443618,photo66748_265827614
      *
@@ -74,6 +74,28 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallEditCommentQuery attachments(String... value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
+     * List of objects attached to the comment, in the following format:
+     * <p>
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media attachment owner.
+     * ""media_id"" - Media attachment ID.
+     * <p>
+     * For example:
+     * photo100172_166443618,photo66748_265827614
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallEditCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }
 

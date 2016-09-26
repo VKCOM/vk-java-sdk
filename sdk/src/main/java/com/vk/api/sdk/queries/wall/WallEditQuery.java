@@ -47,8 +47,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
 
     /**
      * (Applies only when editing a scheduled post.)
-     * "1" - post will be available to friends only
-     * "0" - post will be available to all users (default)
+     * Post will be available to friends only
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,7 +76,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
      * "doc" - document
      * ""owner_id"" - ID of the media application owner.
      * ""media_id"" - Media application ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      * May contain a link to an external page to include in the post. Example:
@@ -88,6 +87,30 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, OkRespons
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallEditQuery attachments(String... value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
+     * (Required if "message" is not set.) List of objects attached to the post, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media application owner.
+     * ""media_id"" - Media application ID.
+     * <p>
+     * Example:
+     * photo100172_166443618,photo66748_265827614
+     * May contain a link to an external page to include in the post. Example:
+     * <pre>photo66748_265827614,http://habrahabr.ru</pre>
+     * NOTE: If more than one link is being attached, an error is thrown.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallEditQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }
 

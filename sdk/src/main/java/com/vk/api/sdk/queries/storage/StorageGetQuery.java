@@ -43,6 +43,16 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
     }
 
     /**
+     * Set keys
+     *
+     * @param value value of "keys" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageGetQuery keys(List<String> value) {
+        return unsafeParam("keys", value);
+    }
+
+    /**
      * Set user id
      *
      * @param value value of "user id" parameter. Minimum is 0.

@@ -36,6 +36,17 @@ public class SecureSendNotificationQuery extends AbstractQueryBuilder<SecureSend
     }
 
     /**
+     * Set user ids
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSendNotificationQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+
+    /**
      * Set user id
      *
      * @param value value of "user id" parameter. Minimum is 0.

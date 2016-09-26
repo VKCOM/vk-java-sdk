@@ -236,9 +236,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Links settings (for public pages only). Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Links settings (for public pages only).
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled
      *
      * @param value value of "links" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -248,9 +250,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Events settings (for public pages only). Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Events settings (for public pages only).
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled
      *
      * @param value value of "events" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -260,9 +264,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Places settings (for public pages only). Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Places settings (for public pages only).
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled
      *
      * @param value value of "places" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -272,9 +278,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Contacts settings (for public pages only). Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Contacts settings (for public pages only).
      *
      * @param value value of "contacts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -284,10 +288,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Documents settings. Possible values:
-     * "0" - disabled;
-     * "1" - open;
-     * "2" - limited (for groups and events only)
+     * Documents settings.
      *
      * @param value value of "docs" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -297,10 +298,7 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Wiki pages settings. Possible values:
-     * "0" - disabled;
-     * "1" - open;
-     * "2" - limited (for groups and events only)
+     * Wiki pages settings.
      *
      * @param value value of "wiki" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -310,9 +308,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Community messages. Possible values:
-     * "0" - disabled;
-     * "1" - enabled.
+     * Community messages.
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled.
      *
      * @param value value of "messages" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -332,9 +332,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Market settings. Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Market settings.
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled
      *
      * @param value value of "market" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -344,9 +346,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Market comments settings. Possible values:
-     * "0" - disabled;
-     * "1" - enabled
+     * Market comments settings.
+     * <p>
+     * Possible values:
+     * false - disabled;
+     * true - enabled
      *
      * @param value value of "market comments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -366,6 +370,16 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
+     * Market delivery regions
+     *
+     * @param value value of "market country" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery marketCountry(List<Integer> value) {
+        return unsafeParam("market_country", value);
+    }
+
+    /**
      * Market delivery cities (if only one country is specified)
      *
      * @param value value of "market city" parameter.
@@ -376,17 +390,22 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Market currency settings. Possbile values:
-     * "643" - Russian rubles;
-     * "980" - Ukrainian hryvnia;
-     * "398" - Kazakh tenge;
-     * "978" - Euro;
-     * "840" - US dollars
+     * Market delivery cities (if only one country is specified)
+     *
+     * @param value value of "market city" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery marketCity(List<Integer> value) {
+        return unsafeParam("market_city", value);
+    }
+
+    /**
+     * Market currency settings.
      *
      * @param value value of "market currency" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditQuery marketCurrency(Integer value) {
+    public GroupsEditQuery marketCurrency(GroupsEditMarketCurrency value) {
         return unsafeParam("market_currency", value);
     }
 
@@ -412,9 +431,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Obscene expressions filter in comments. Possible values:
-     * "0" - disabled
-     * "1" - enabled
+     * Obscene expressions filter in comments.
+     * <p>
+     * Possible values:
+     * false - disabled
+     * true - enabled
      *
      * @param value value of "obscene filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -424,9 +445,11 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
     }
 
     /**
-     * Stopwords filter in comments. Possible values:
-     * "0" - disabled
-     * "1" - enabled
+     * Stopwords filter in comments.
+     * <p>
+     * Possible values:
+     * false - disabled
+     * true - enabled
      *
      * @param value value of "obscene stopwords" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -442,6 +465,16 @@ public class GroupsEditQuery extends AbstractQueryBuilder<GroupsEditQuery, OkRes
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsEditQuery obsceneWords(String... value) {
+        return unsafeParam("obscene_words", value);
+    }
+
+    /**
+     * Keywords for stopwords filter
+     *
+     * @param value value of "obscene words" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsEditQuery obsceneWords(List<String> value) {
         return unsafeParam("obscene_words", value);
     }
 

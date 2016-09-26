@@ -25,6 +25,8 @@ import com.vk.api.sdk.queries.audio.AudioSaveQuery;
 import com.vk.api.sdk.queries.audio.AudioSearchQuery;
 import com.vk.api.sdk.queries.audio.AudioSetBroadcastQuery;
 
+import java.util.List;
+
 /**
  * List of Audio methods
  */
@@ -57,6 +59,17 @@ public class Audio extends AbstractAction {
      * @return query
      */
     public AudioGetByIdQuery getById(Actor actor, String... audios) {
+        return new AudioGetByIdQuery(getClient(), actor, audios);
+    }
+
+    /**
+     * Returns information about audio files by their IDs.
+     *
+     * @param actor  vk actor
+     * @param audios adios
+     * @return query
+     */
+    public AudioGetByIdQuery getById(Actor actor, List<String> audios) {
         return new AudioGetByIdQuery(getClient(), actor, audios);
     }
 
@@ -213,6 +226,17 @@ public class Audio extends AbstractAction {
      * @return query
      */
     public AudioMoveToAlbumQuery moveToAlbum(Actor actor, int... audioIds) {
+        return new AudioMoveToAlbumQuery(getClient(), actor, audioIds);
+    }
+
+    /**
+     * Moves audio files to an album.
+     *
+     * @param actor    vk actor
+     * @param audioIds audio ids
+     * @return query
+     */
+    public AudioMoveToAlbumQuery moveToAlbum(Actor actor, List<Integer> audioIds) {
         return new AudioMoveToAlbumQuery(getClient(), actor, audioIds);
     }
 

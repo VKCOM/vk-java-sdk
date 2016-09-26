@@ -25,13 +25,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Filters to apply:
-     * "post" - new wall posts
-     * "photo" - new photos
-     * "photo_tag" - new photo tags
-     * "wall_photo" - new wall photos
-     * "friend" - new friends
-     * "note" - new notes
+     * Filters to apply
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -41,7 +35,18 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * "1" - to return news items from banned sources
+     * Filters to apply
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery filters(List<NewsfeedGetFilter> value) {
+        return unsafeParam("filters", value);
+    }
+
+
+    /**
+     * Return news items from banned sources
      *
      * @param value value of "return banned" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -82,13 +87,13 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
 
     /**
      * Sources to obtain news from, separated by commas.
-     *
+     * <p>
      * User IDs can be specified in formats "user_id" or "u"user_id""
      * where ""user_id"" is the user's friend ID.
-     *
+     * <p>
      * Community IDs can be specified in formats "-"group_id"" or "g"group_id""
      * where "group_id" is the community ID.
-     *
+     * <p>
      * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the newsfeed.getBanned method.
      *
      * @param value value of "source ids" parameter.
@@ -126,6 +131,16 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedGetQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

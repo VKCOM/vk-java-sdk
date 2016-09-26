@@ -61,7 +61,7 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
      * @param value value of "value" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSetPushSettingsQuery value(String... value) {
+    public AccountSetPushSettingsQuery value(List<String> value) {
         return unsafeParam("value", value);
     }
 

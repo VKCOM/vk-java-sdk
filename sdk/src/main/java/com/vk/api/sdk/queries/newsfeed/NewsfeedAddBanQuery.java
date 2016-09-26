@@ -34,12 +34,33 @@ public class NewsfeedAddBanQuery extends AbstractQueryBuilder<NewsfeedAddBanQuer
     }
 
     /**
+     * Set user ids
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedAddBanQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
+    }
+
+
+    /**
      * Set group ids
      *
      * @param value value of "group ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedAddBanQuery groupIds(Integer... value) {
+        return unsafeParam("group_ids", value);
+    }
+
+    /**
+     * Set group ids
+     *
+     * @param value value of "group ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedAddBanQuery groupIds(List<Integer> value) {
         return unsafeParam("group_ids", value);
     }
 

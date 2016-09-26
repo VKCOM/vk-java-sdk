@@ -44,8 +44,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * "1" - to return an additional "likes" field
-     * "0" - (default)
+     * Return an additional "likes" field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

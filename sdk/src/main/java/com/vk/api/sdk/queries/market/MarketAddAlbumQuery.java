@@ -59,7 +59,7 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
     }
 
     /**
-     * Set as main ("1" - set, "0" - no)
+     * Set as main
      *
      * @param value value of "main album" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

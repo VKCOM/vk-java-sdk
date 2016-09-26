@@ -34,13 +34,23 @@ public class MessagesMarkAsImportantQuery extends AbstractQueryBuilder<MessagesM
     }
 
     /**
-     * "1" - to add a star (mark as important)
-     * "0" - to remove the star
+     * IDs of messages to mark as important.
+     *
+     * @param value value of "message ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesMarkAsImportantQuery messageIds(List<Integer> value) {
+        return unsafeParam("message_ids", value);
+    }
+
+    /**
+     * "true" - to add a star (mark as important)
+     * "false" - to remove the star
      *
      * @param value value of "important" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesMarkAsImportantQuery important(Integer value) {
+    public MessagesMarkAsImportantQuery important(Boolean value) {
         return unsafeParam("important", value);
     }
 

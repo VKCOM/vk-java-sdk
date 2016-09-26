@@ -113,8 +113,8 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * "1" - test mode, in which the user will not be registered and the phone number will not be checked for availability
-     * "0" - default mode (default)
+     * true - test mode, in which the user will not be registered and the phone number will not be checked for availability
+     * false - default mode (default)
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -124,8 +124,8 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * "1" - call the phone number and leave a voice message of the authorization code
-     * "0" - send the code by SMS (default)
+     * true - call the phone number and leave a voice message of the authorization code
+     * false - send the code by SMS (default)
      *
      * @param value value of "voice" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -135,8 +135,7 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
     }
 
     /**
-     * "1" - female
-     * "2" - male
+     * Set sex
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

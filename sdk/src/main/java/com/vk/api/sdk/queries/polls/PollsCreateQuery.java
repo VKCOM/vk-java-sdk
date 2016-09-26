@@ -34,9 +34,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
     }
 
     /**
-     * "1" - anonymous poll, participants list is hidden;
-     * "0" - public poll, participants list is available;
-     * Default value is "0".
+     * Is anonymous poll, participants list is hidden;
      *
      * @param value value of "is anonymous" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +44,8 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
     }
 
     /**
-     * If a poll will be added to a communty it is required to send a negative group identifier. Current user by default.
+     * If a poll will be added to a community it is required to send a negative group identifier.
+     * Current user by default.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -57,7 +56,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
 
     /**
      * Available answers list, for example:
-     *  ["yes","no","maybe"]
+     * ["yes","no","maybe"]
      * There can be from 1 to 10 answers.
      *
      * @param value value of "add answers" parameter.

@@ -34,8 +34,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * "1" - post will be available to friends only
-     * "0" - post will be available to all users (default)
+     * Post will be available to friends only
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -45,9 +44,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * For a community:
-     * "1" - post will be published by the community
-     * "0" - post will be published by the user (default)
+     * Post will be published by the community
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -80,7 +77,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * "album" - photo album
      * ""owner_id"" - ID of the media application owner.
      * ""media_id"" - Media application ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
      * May contain a link to an external page to include in the post. Example:
@@ -95,6 +92,34 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
+     * (Required if "message" is not set.) List of objects attached to the post, in the following format:
+     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media attachment:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * "page" - wiki-page
+     * "note" - note
+     * "poll" - poll
+     * "album" - photo album
+     * ""owner_id"" - ID of the media application owner.
+     * ""media_id"" - Media application ID.
+     * <p>
+     * Example:
+     * photo100172_166443618,photo66748_265827614
+     * May contain a link to an external page to include in the post. Example:
+     * <pre>photo66748_265827614,http://habrahabr.ru</pre>
+     * NOTE: If more than one link is being attached, an error will be thrown.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallPostQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
      * List of services or websites the update will be exported to, if the user has so requested. Sample values: "twitter", "facebook".
      *
      * @param value value of "services" parameter.
@@ -105,9 +130,8 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
-     * Only for posts in communities with "from_group" set to "1":
-     * "1" - post will be signed with the name of the posting user
-     * "0" - post will not be signed (default)
+     * Post will be signed with the name of the posting user
+     * Only for posts in communities with "from_group"
      *
      * @param value value of "signed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

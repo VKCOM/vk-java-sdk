@@ -20,31 +20,19 @@ public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestio
      * @param actor   actor with access token
      * @param section value of "section" parameter.
      */
-    public AdsGetSuggestionsQuery(VkApiClient client, Actor actor, String section) {
+    public AdsGetSuggestionsQuery(VkApiClient client, Actor actor, AdsGetSuggestionsSection section) {
         super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestions.class));
         accessToken(actor.getAccessToken());
         section(section);
     }
 
     /**
-     * Section, suggestions are retrieved in. Available values:
-     * 'countries' - request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown.
-     * 'regions' - requested list of regions.  "country" parameter is required.
-     * 'cities' - requested list of cities. "country" parameter is required.
-     * 'districts' - requested list of districts.  "cities" parameter is required.
-     * 'stations' - requested list of subway stations.  "cities" parameter is required.
-     * 'streets' - requested list of cities. "cities" parameter is required.
-     * 'schools' - requested list of educational organizations.  "cities" parameter is required.
-     * 'interests' - requested list of interests.
-     * 'positions' - requested list of positions (professions).
-     * 'group_types' - requested list of group types.
-     * 'religions' - requested list of religious commitments.
-     * 'browsers' - requested list of browsers and mobile devices.
+     * Section, suggestions are retrieved in.
      *
      * @param value value of "section" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetSuggestionsQuery section(String value) {
+    protected AdsGetSuggestionsQuery section(AdsGetSuggestionsSection value) {
         return unsafeParam("section", value);
     }
 
@@ -89,15 +77,12 @@ public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestio
     }
 
     /**
-     * Language of the returned string values. Supported languages:
-     * 'ru' - Russian;
-     * 'ua' - Ukrainian;
-     * 'en' - English.
+     * Language of the returned string values.
      *
      * @param value value of "lang" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetSuggestionsQuery lang(String value) {
+    public AdsGetSuggestionsQuery lang(AdsGetSuggestionsLang value) {
         return unsafeParam("lang", value);
     }
 

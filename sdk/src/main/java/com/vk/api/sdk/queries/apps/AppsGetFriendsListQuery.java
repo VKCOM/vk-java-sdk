@@ -35,10 +35,7 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
     }
 
     /**
-     * List type. Possible values:
-     * "invite" - available for invites (don't play the game);
-     * "request" - available for request (play the game).
-     * By default: "invite".
+     * List type.
      *
      * @param value value of "type" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,6 +51,16 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AppsGetFriendsListQuery fields(EnumParam... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Additional profile fields, see description.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetFriendsListQuery fields(List<EnumParam> value) {
         return unsafeParam("fields", value);
     }
 

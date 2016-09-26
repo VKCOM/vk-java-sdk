@@ -28,6 +28,18 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public MessagesGetChatUsersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+        super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, UserXtrInvitedBy.class));
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
      * Chat ID.
      *
      * @param value value of "chat id" parameter.
@@ -48,13 +60,17 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MessagesGetChatUsersQueryWithFields fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

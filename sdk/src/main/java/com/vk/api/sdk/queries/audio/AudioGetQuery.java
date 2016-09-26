@@ -54,7 +54,17 @@ public class AudioGetQuery extends AbstractQueryBuilder<AudioGetQuery, GetRespon
     }
 
     /**
-     * "1" - to return information about users who uploaded audio files
+     * IDs of the audio files to return.
+     *
+     * @param value value of "audio ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AudioGetQuery audioIds(List<Integer> value) {
+        return unsafeParam("audio_ids", value);
+    }
+
+    /**
+     * Return information about users who uploaded audio files
      *
      * @param value value of "need user" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

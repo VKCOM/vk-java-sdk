@@ -27,12 +27,35 @@ public class PlacesGetByIdQuery extends AbstractQueryBuilder<PlacesGetByIdQuery,
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param places value of "places" parameter.
+     */
+    public PlacesGetByIdQuery(VkApiClient client, Actor actor, List<Integer> places) {
+        super(client, "places.getById", Utils.buildParametrizedType(List.class, Place.class));
+        accessToken(actor.getAccessToken());
+        places(places);
+    }
+
+    /**
      * Location IDs.
      *
      * @param value value of "places" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected PlacesGetByIdQuery places(int... value) {
+        return unsafeParam("places", value);
+    }
+
+    /**
+     * Location IDs.
+     *
+     * @param value value of "places" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected PlacesGetByIdQuery places(List<Integer> value) {
         return unsafeParam("places", value);
     }
 

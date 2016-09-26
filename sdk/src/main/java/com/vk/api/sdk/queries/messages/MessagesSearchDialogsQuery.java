@@ -53,6 +53,16 @@ public class MessagesSearchDialogsQuery extends AbstractQueryBuilder<MessagesSea
         return unsafeParam("fields", value);
     }
 
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSearchDialogsQuery fields(List<EnumParam> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected MessagesSearchDialogsQuery getThis() {
         return this;

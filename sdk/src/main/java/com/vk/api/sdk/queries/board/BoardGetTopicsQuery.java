@@ -48,7 +48,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
 
     /**
      * IDs of topics to be returned (100 maximum). By default, all topics are returned.
-     *
+     * <p>
      * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
      *
      * @param value value of "topic ids" parameter.
@@ -59,18 +59,26 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
     }
 
     /**
-     * Sort order:
-     * "1" - by date updated in reverse chronological order.
-     * "2" - by date created in reverse chronological order.
-     * "-1" - by date updated in chronological order.
-     * "-2" - by date created in chronological order.
+     * IDs of topics to be returned (100 maximum). By default, all topics are returned.
+     * <p>
+     * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
      *
-     * If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
+     * @param value value of "topic ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardGetTopicsQuery topicIds(List<Integer> value) {
+        return unsafeParam("topic_ids", value);
+    }
+
+    /**
+     * Sort order
+     * If no sort order is specified, topics are returned in the order specified by the group administrator.
+     * Pinned topics are returned first, regardless of the sorting.
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQuery order(Integer value) {
+    public BoardGetTopicsQuery order(BoardGetTopicsOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -95,14 +103,12 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
     }
 
     /**
-     * "1" - to return the first comment in each topic
-     * "2" - to return the last comment in each topic
-     * "0" - to return no comments (default)
+     * Set preview
      *
      * @param value value of "preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQuery preview(Integer value) {
+    public BoardGetTopicsQuery preview(BoardGetTopicsPreview value) {
         return unsafeParam("preview", value);
     }
 

@@ -43,6 +43,16 @@ public class DatabaseGetCountriesByIdQuery extends AbstractQueryBuilder<Database
         return unsafeParam("country_ids", value);
     }
 
+    /**
+     * Country IDs.
+     *
+     * @param value value of "country ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DatabaseGetCountriesByIdQuery countryIds(List<Integer> value) {
+        return unsafeParam("country_ids", value);
+    }
+
     @Override
     protected DatabaseGetCountriesByIdQuery getThis() {
         return this;

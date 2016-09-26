@@ -28,8 +28,30 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public UsersGetFollowersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
      */
     public UsersGetFollowersQueryWithFields(VkApiClient client, UserField... fields) {
+        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     */
+    public UsersGetFollowersQueryWithFields(VkApiClient client, List<UserField> fields) {
         super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
         fields(fields);
     }
@@ -65,7 +87,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online".
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,13 +97,17 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Case for declension of user name and surname:
-     * "nom" - nominative (default)
-     * "gen" - genitive
-     * "dat" - dative
-     * "acc" - accusative
-     * "ins" - instrumental
-     * "abl" - prepositional
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected UsersGetFollowersQueryWithFields fields(List<UserField> value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Case for declension of user name and surname
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

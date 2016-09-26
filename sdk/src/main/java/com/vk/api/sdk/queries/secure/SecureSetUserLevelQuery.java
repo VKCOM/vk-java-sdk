@@ -34,6 +34,16 @@ public class SecureSetUserLevelQuery extends AbstractQueryBuilder<SecureSetUserL
     }
 
     /**
+     * Set levels
+     *
+     * @param value value of "levels" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSetUserLevelQuery levels(List<String> value) {
+        return unsafeParam("levels", value);
+    }
+
+    /**
      * Set user id
      *
      * @param value value of "user id" parameter. Minimum is 0.

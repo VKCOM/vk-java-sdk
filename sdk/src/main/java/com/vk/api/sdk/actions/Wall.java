@@ -26,6 +26,8 @@ import com.vk.api.sdk.queries.wall.WallSearchQuery;
 import com.vk.api.sdk.queries.wall.WallSearchQueryWithExtended;
 import com.vk.api.sdk.queries.wall.WallUnpinQuery;
 
+import java.util.List;
+
 /**
  * List of Wall methods
  */
@@ -106,7 +108,21 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
+    public WallGetByIdQuery getById(List<String> posts) {
+        return new WallGetByIdQuery(getClient(), posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     */
     public WallGetByIdQuery getById(Actor actor, String... posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     */
+    public WallGetByIdQuery getById(Actor actor, List<String> posts) {
         return new WallGetByIdQuery(getClient(), actor, posts);
     }
 
@@ -120,7 +136,21 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
+    public WallGetByIdQueryWithExtended getByIdExtended(List<String> posts) {
+        return new WallGetByIdQueryWithExtended(getClient(), posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     */
     public WallGetByIdQueryWithExtended getByIdExtended(Actor actor, String... posts) {
+        return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     */
+    public WallGetByIdQueryWithExtended getByIdExtended(Actor actor, List<String> posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
 

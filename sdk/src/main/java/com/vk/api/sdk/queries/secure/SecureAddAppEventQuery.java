@@ -54,7 +54,7 @@ public class SecureAddAppEventQuery extends AbstractQueryBuilder<SecureAddAppEve
      * Depends on activity_id:
      * 1 - number, current level number;
      * 2 - number, current user's points amount
-     *
+     * <p>
      * Any other value is ignored
      *
      * @param value value of "value" parameter. Maximum is 10000. Minimum is 0.

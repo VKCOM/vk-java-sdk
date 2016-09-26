@@ -27,13 +27,39 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
     }
 
     /**
-     * Document IDs. Example:
-     * 66748_91488,66748_91455
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param docs   value of "docs" parameter.
+     */
+    public DocsGetByIdQuery(VkApiClient client, Actor actor, List<String> docs) {
+        super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
+        accessToken(actor.getAccessToken());
+        docs(docs);
+    }
+
+    /**
+     * Document IDs.
+     * Example:
+     * 66748_91488
      *
      * @param value value of "docs" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected DocsGetByIdQuery docs(String... value) {
+        return unsafeParam("docs", value);
+    }
+
+    /**
+     * Document IDs.
+     * Example:
+     * 66748_91488
+     *
+     * @param value value of "docs" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected DocsGetByIdQuery docs(List<String> value) {
         return unsafeParam("docs", value);
     }
 

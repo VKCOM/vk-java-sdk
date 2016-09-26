@@ -21,7 +21,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
      * @param linkType  value of "link type" parameter.
      * @param linkUrl   value of "link url" parameter.
      */
-    public AdsCheckLinkQuery(VkApiClient client, Actor actor, int accountId, String linkType, String linkUrl) {
+    public AdsCheckLinkQuery(VkApiClient client, Actor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
         super(client, "ads.checkLink", LinkStatus.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -40,17 +40,12 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
     }
 
     /**
-     * Object type:
-     * "community" - community;
-     * "post" - community post;
-     * "application" - VK application;
-     * "video" - video;
-     * "site" - external site.
+     * Object type
      *
      * @param value value of "link type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery linkType(String value) {
+    protected AdsCheckLinkQuery linkType(AdsCheckLinkType value) {
         return unsafeParam("link_type", value);
     }
 

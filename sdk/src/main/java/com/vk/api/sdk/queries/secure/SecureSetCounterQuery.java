@@ -34,6 +34,16 @@ public class SecureSetCounterQuery extends AbstractQueryBuilder<SecureSetCounter
     }
 
     /**
+     * Set counters
+     *
+     * @param value value of "counters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSetCounterQuery counters(List<String> value) {
+        return unsafeParam("counters", value);
+    }
+
+    /**
      * Set user id
      *
      * @param value value of "user id" parameter. Minimum is 0.

@@ -10,6 +10,8 @@ import com.vk.api.sdk.queries.polls.PollsEditQuery;
 import com.vk.api.sdk.queries.polls.PollsGetByIdQuery;
 import com.vk.api.sdk.queries.polls.PollsGetVotersQuery;
 
+import java.util.List;
+
 /**
  * List of Polls methods
  */
@@ -49,6 +51,13 @@ public class Polls extends AbstractAction {
      * Returns a list of IDs of users who selected specific answers in the poll.
      */
     public PollsGetVotersQuery getVoters(Actor actor, int pollId, int... answerIds) {
+        return new PollsGetVotersQuery(getClient(), actor, pollId, answerIds);
+    }
+
+    /**
+     * Returns a list of IDs of users who selected specific answers in the poll.
+     */
+    public PollsGetVotersQuery getVoters(Actor actor, int pollId, List<Integer> answerIds) {
         return new PollsGetVotersQuery(getClient(), actor, pollId, answerIds);
     }
 

@@ -10,6 +10,8 @@ import com.vk.api.sdk.queries.places.PlacesGetCheckinsQuery;
 import com.vk.api.sdk.queries.places.PlacesGetTypesQuery;
 import com.vk.api.sdk.queries.places.PlacesSearchQuery;
 
+import java.util.List;
+
 /**
  * List of Places methods
  */
@@ -35,6 +37,13 @@ public class Places extends AbstractAction {
      * Returns information about locations by their IDs.
      */
     public PlacesGetByIdQuery getById(Actor actor, int... places) {
+        return new PlacesGetByIdQuery(getClient(), actor, places);
+    }
+
+    /**
+     * Returns information about locations by their IDs.
+     */
+    public PlacesGetByIdQuery getById(Actor actor, List<Integer> places) {
         return new PlacesGetByIdQuery(getClient(), actor, places);
     }
 

@@ -34,14 +34,12 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * Sort order:
-     * "1" - by date registered
-     * "0" - by rating
+     * Sort order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery sort(Integer value) {
+    public UsersSearchQuery sort(UsersSearchSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -66,12 +64,22 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * Profile fields to return. Sample values: "nickname", "screen_name", "sex", "bdate" (birthdate), "city", "country", "timezone", "photo", "photo_medium", "photo_big", "has_mobile", "rate", "contacts", "education", "online"
+     * Profile fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public UsersSearchQuery fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersSearchQuery fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 
@@ -156,31 +164,22 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * "1" - female
-     * "2" - male
-     * "0" - any (default)
+     * Set sex
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery sex(Integer value) {
+    public UsersSearchQuery sex(UsersSearchSex value) {
         return unsafeParam("sex", value);
     }
 
     /**
-     * Relationship status:
-     * "1" - Not married
-     * "2" - In a relationship
-     * "3" - Engaged
-     * "4" - Married
-     * "5" - It's complicated
-     * "6" - Actively searching
-     * "7" - In love
+     * Relationship status
      *
      * @param value value of "status" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery status(Integer value) {
+    public UsersSearchQuery status(UsersSearchRelation value) {
         return unsafeParam("status", value);
     }
 
@@ -235,8 +234,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * "1" - online only
-     * "0" - all users
+     * Return online only
      *
      * @param value value of "online" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -246,8 +244,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * "1" - with photo only
-     * "0" - all users
+     * Return with photo only
      *
      * @param value value of "has photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -365,6 +362,17 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     public UsersSearchQuery fromList(String... value) {
         return unsafeParam("from_list", value);
     }
+
+    /**
+     * Set from list
+     *
+     * @param value value of "from list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersSearchQuery fromList(List<String> value) {
+        return unsafeParam("from_list", value);
+    }
+
 
     @Override
     protected UsersSearchQuery getThis() {

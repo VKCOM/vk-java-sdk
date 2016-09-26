@@ -45,8 +45,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
     }
 
     /**
-     * "1" - to return a combined list of users and communities
-     * "0" - to return separate lists of users and communities (default)
+     * Return a combined list of users and communities
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -82,6 +81,16 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public UsersGetSubscriptionsQueryWithExtended fields(UserField... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQueryWithExtended fields(List<UserField> value) {
         return unsafeParam("fields", value);
     }
 

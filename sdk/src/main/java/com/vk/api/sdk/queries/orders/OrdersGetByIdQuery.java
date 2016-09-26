@@ -45,6 +45,16 @@ public class OrdersGetByIdQuery extends AbstractQueryBuilder<OrdersGetByIdQuery,
     }
 
     /**
+     * Order IDs (when information about several orders is requested).
+     *
+     * @param value value of "order ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public OrdersGetByIdQuery orderIds(List<Integer> value) {
+        return unsafeParam("order_ids", value);
+    }
+
+    /**
      * If this parameter is set to '1', this method returns a list of test mode orders. By default - '0'.
      *
      * @param value value of "test mode" parameter.

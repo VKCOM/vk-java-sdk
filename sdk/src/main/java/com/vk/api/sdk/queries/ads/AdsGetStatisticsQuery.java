@@ -25,7 +25,8 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param dateFrom  value of "date from" parameter.
      * @param dateTo    value of "date to" parameter.
      */
-    public AdsGetStatisticsQuery(VkApiClient client, Actor actor, int accountId, String idsType, String ids, String period, String dateFrom, String dateTo) {
+    public AdsGetStatisticsQuery(VkApiClient client, Actor actor, int accountId, AdsGetStatisticsIdsType idsType,
+                                 String ids, AdsGetStatisticsPeriod period, String dateFrom, String dateTo) {
         super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, Stats.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -47,16 +48,12 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
     }
 
     /**
-     * Type of requested objects listed in "ids" parameter:
-     * 'ad' - ads;
-     * 'campaign' - campaigns;
-     * 'client' - clients;
-     * 'office' - account.
+     * Type of requested objects listed in "ids" parameter.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery idsType(String value) {
+    protected AdsGetStatisticsQuery idsType(AdsGetStatisticsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -71,16 +68,13 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
     }
 
     /**
-     * Data grouping by dates:
-     * 'day' - statistics by days;
-     * 'month' - statistics by months;
-     * 'overall' - overall statistics.
+     * Data grouping by dates.
      * "date_from" and "date_to" parameters set temporary limits.
      *
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery period(String value) {
+    protected AdsGetStatisticsQuery period(AdsGetStatisticsPeriod value) {
         return unsafeParam("period", value);
     }
 

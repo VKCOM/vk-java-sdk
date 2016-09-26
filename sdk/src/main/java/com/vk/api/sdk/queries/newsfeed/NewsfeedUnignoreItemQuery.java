@@ -30,12 +30,7 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
     }
 
     /**
-     * Item type. Possible values:
-     * "wall" - post on the wall;
-     * "tag" - tag on a photo;
-     * "profilephoto" - profile photo;
-     * "video" - video;
-     * "audio" - audio.
+     * Item type.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

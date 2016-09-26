@@ -24,8 +24,8 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
-     * "1" - to return outgoing messages
-     * "0" - to return incoming messages (default)
+     * "true" - to return outgoing messages
+     * "false" - to return incoming messages (default)
      *
      * @param value value of "out" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

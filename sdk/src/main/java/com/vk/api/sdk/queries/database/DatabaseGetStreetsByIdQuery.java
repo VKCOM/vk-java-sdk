@@ -30,9 +30,33 @@ public class DatabaseGetStreetsByIdQuery extends AbstractQueryBuilder<DatabaseGe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client    VK API client
+     * @param actor     actor with access token
+     * @param streetIds value of "street ids" parameter.
+     */
+    public DatabaseGetStreetsByIdQuery(VkApiClient client, Actor actor, List<Integer> streetIds) {
+        super(client, "database.getStreetsById", Utils.buildParametrizedType(List.class, Street.class));
+        accessToken(actor.getAccessToken());
+        streetIds(streetIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client    VK API client
      * @param streetIds value of "street ids" parameter.
      */
     public DatabaseGetStreetsByIdQuery(VkApiClient client, int... streetIds) {
+        super(client, "database.getStreetsById", Utils.buildParametrizedType(List.class, Street.class));
+        streetIds(streetIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client    VK API client
+     * @param streetIds value of "street ids" parameter.
+     */
+    public DatabaseGetStreetsByIdQuery(VkApiClient client, List<Integer> streetIds) {
         super(client, "database.getStreetsById", Utils.buildParametrizedType(List.class, Street.class));
         streetIds(streetIds);
     }
@@ -44,6 +68,16 @@ public class DatabaseGetStreetsByIdQuery extends AbstractQueryBuilder<DatabaseGe
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected DatabaseGetStreetsByIdQuery streetIds(int... value) {
+        return unsafeParam("street_ids", value);
+    }
+
+    /**
+     * Street IDs.
+     *
+     * @param value value of "street ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected DatabaseGetStreetsByIdQuery streetIds(List<Integer> value) {
         return unsafeParam("street_ids", value);
     }
 

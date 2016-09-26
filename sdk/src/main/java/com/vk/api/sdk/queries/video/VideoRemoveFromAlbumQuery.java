@@ -58,6 +58,16 @@ public class VideoRemoveFromAlbumQuery extends AbstractQueryBuilder<VideoRemoveF
     }
 
     /**
+     * Set album ids
+     *
+     * @param value value of "album ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoRemoveFromAlbumQuery albumIds(List<Integer> value) {
+        return unsafeParam("album_ids", value);
+    }
+
+    /**
      * Set owner id
      *
      * @param value value of "owner id" parameter.

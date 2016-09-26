@@ -58,8 +58,8 @@ public class BoardAddTopicQuery extends AbstractQueryBuilder<BoardAddTopicQuery,
 
     /**
      * For a community:
-     * "1" - to post the topic as by the community
-     * "0" - to post the topic as by the user (default)
+     * true - to post the topic as by the community
+     * false - to post the topic as by the user (default)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -78,10 +78,10 @@ public class BoardAddTopicQuery extends AbstractQueryBuilder<BoardAddTopicQuery,
      * "doc" - document
      * ""owner_id"" - ID of the media owner.
      * ""media_id"" - Media ID.
-     *
+     * <p>
      * Example:
      * photo100172_166443618,photo66748_265827614
-     *
+     * <p>
      * NOTE: If you try to attach more than one reference, an error will be thrown.
      *
      * @param value value of "attachments" parameter.
@@ -90,6 +90,30 @@ public class BoardAddTopicQuery extends AbstractQueryBuilder<BoardAddTopicQuery,
     public BoardAddTopicQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
+
+    /**
+     * List of media objects attached to the topic, in the following format:
+     * "type""owner_id","type""owner_id"_"media_id"
+     * ""type"" - Type of media object:
+     * "photo" - photo
+     * "video" - video
+     * "audio" - audio
+     * "doc" - document
+     * ""owner_id"" - ID of the media owner.
+     * ""media_id"" - Media ID.
+     * <p>
+     * Example:
+     * photo100172_166443618,photo66748_265827614
+     * <p>
+     * NOTE: If you try to attach more than one reference, an error will be thrown.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardAddTopicQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
+    }
+
 
     @Override
     protected BoardAddTopicQuery getThis() {
