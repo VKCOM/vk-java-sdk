@@ -62,17 +62,17 @@ public class MarketEditCommentQuery extends AbstractQueryBuilder<MarketEditComme
 
     /**
      * Comma-separated list of objects attached to a comment. The field is submitted the following way:
-     * ""type""owner_id"_"media_id","type""owner_id"_"media_id""
-     * <p>
-     * ""type"" - media attachment type:
+     * "type""owner_id"_"media_id"
+     *
+     * "type" - media attachment type:
      * "photo" - photo
      * "video" - video
      * "audio" - audio
      * "doc" - document
-     * <p>
-     * ""owner_id"" - media owner id
-     * ""media_id"" - media attachment id
-     * <p>
+     *
+     * "owner_id" - media owner id
+     * "media_id" - media attachment id
+     *
      * For example:
      * photo100172_166443618,photo66748_265827614
      *
@@ -85,17 +85,17 @@ public class MarketEditCommentQuery extends AbstractQueryBuilder<MarketEditComme
 
     /**
      * Comma-separated list of objects attached to a comment. The field is submitted the following way:
-     * ""type""owner_id"_"media_id","type""owner_id"_"media_id""
-     * <p>
+     * "type""owner_id"_"media_id"
+     *
      * ""type"" - media attachment type:
      * "photo" - photo
      * "video" - video
      * "audio" - audio
      * "doc" - document
-     * <p>
-     * ""owner_id"" - media owner id
-     * ""media_id"" - media attachment id
-     * <p>
+     *
+     * "owner_id" - media owner id
+     * "media_id" - media attachment id
+     *
      * For example:
      * photo100172_166443618,photo66748_265827614
      *

@@ -72,7 +72,7 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
 
     /**
      * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media object:
      * "photo" - photo
      * "video" - video
@@ -95,7 +95,7 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
 
     /**
      * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media object:
      * "photo" - photo
      * "video" - video

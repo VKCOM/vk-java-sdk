@@ -77,7 +77,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
 
     /**
      * List of objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video

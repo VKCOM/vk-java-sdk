@@ -65,7 +65,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
@@ -77,9 +77,10 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * "album" - photo album
      * ""owner_id"" - ID of the media application owner.
      * ""media_id"" - Media application ID.
-     * <p>
+
      * Example:
      * photo100172_166443618,photo66748_265827614
+     *
      * May contain a link to an external page to include in the post. Example:
      * <pre>photo66748_265827614,http://habrahabr.ru</pre>
      * NOTE: If more than one link is being attached, an error will be thrown.
@@ -93,7 +94,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
@@ -105,9 +106,10 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * "album" - photo album
      * ""owner_id"" - ID of the media application owner.
      * ""media_id"" - Media application ID.
-     * <p>
+
      * Example:
      * photo100172_166443618,photo66748_265827614
+     *
      * May contain a link to an external page to include in the post. Example:
      * <pre>photo66748_265827614,http://habrahabr.ru</pre>
      * NOTE: If more than one link is being attached, an error will be thrown.
