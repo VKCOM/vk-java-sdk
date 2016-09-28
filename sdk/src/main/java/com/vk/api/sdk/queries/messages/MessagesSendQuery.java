@@ -136,8 +136,10 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * "audio" - audio
      * "doc" - document
      * "wall" - wall post
+     *
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - media attachment ID.
+     * "access_key" - object access key.
      *
      * Example:
      * photo100172_166443618
@@ -167,7 +169,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      *
      * "owner_id" - ID of the media attachment owner.
      * "media_id" - media attachment ID.
-     * "access_lkey" - media attachment ID.
+     * "access_key" - object access key.
      *
      * Example:
      * photo100172_166443618
