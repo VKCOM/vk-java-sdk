@@ -124,17 +124,23 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * (Required if "message" is not set.) List of objects attached to the message, separated by commas, in the following format:
+     * List of objects attached to the message, separated by commas, in the following format:
      * "type""owner_id"_"media_id"
+     *
+     * If the attached object belonging to another owner should be added access_key, in the following format:
+     * "type""owner_id"_"media_id"_"access_key"
+     *
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
      * "audio" - audio
      * "doc" - document
      * "wall" - wall post
+     *
      * ""owner_id"" - ID of the media attachment owner.
      * ""media_id"" - media attachment ID.
-     * <p>
+     * "access_key" - object access key.
+     *
      * Example:
      * photo100172_166443618
      *
@@ -146,17 +152,25 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * (Required if "message" is not set.) List of objects attached to the message, separated by commas, in the following format:
+     * Required if "message" is not set.
+     *
+     * List of objects attached to the message, separated by commas, in the following format:
      * "type""owner_id"_"media_id"
+     *
+     * If the attached object belonging to another owner should be added access_key, in the following format:
+     * "type""owner_id"_"media_id"_"access_key"
+     *
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
      * "audio" - audio
      * "doc" - document
      * "wall" - wall post
-     * ""owner_id"" - ID of the media attachment owner.
-     * ""media_id"" - media attachment ID.
-     * <p>
+     *
+     * "owner_id" - ID of the media attachment owner.
+     * "media_id" - media attachment ID.
+     * "access_key" - object access key.
+     *
      * Example:
      * photo100172_166443618
      *

@@ -77,7 +77,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
 
     /**
      * (Required if "message" is not set.) List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media ojbect:
      * "photo" - photo
      * "video" - video
@@ -98,7 +98,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
 
     /**
      * (Required if "message" is not set.) List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media ojbect:
      * "photo" - photo
      * "video" - video

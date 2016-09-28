@@ -57,7 +57,7 @@ public class VideoEditCommentQuery extends AbstractQueryBuilder<VideoEditComment
 
     /**
      * List of objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
@@ -78,7 +78,7 @@ public class VideoEditCommentQuery extends AbstractQueryBuilder<VideoEditComment
 
     /**
      * List of objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video

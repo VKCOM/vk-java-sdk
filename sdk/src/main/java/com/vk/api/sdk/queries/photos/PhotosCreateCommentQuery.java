@@ -56,7 +56,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
@@ -77,7 +77,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
 
     /**
      * (Required if "message" is not set.) List of objects attached to the post, in the following format:
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
