@@ -59,7 +59,7 @@ public class MarketCreateCommentQuery extends AbstractQueryBuilder<MarketCreateC
 
     /**
      * Comma-separated list of objects attached to a comment. The field is submitted the following way:
-     * ""type""owner_id"_"media_id","type""owner_id"_"media_id""
+     * "type""owner_id"_"media_id""
      * <p>
      * ""type"" - media attachment type:
      * "photo" - photo
@@ -82,7 +82,7 @@ public class MarketCreateCommentQuery extends AbstractQueryBuilder<MarketCreateC
 
     /**
      * Comma-separated list of objects attached to a comment. The field is submitted the following way:
-     * ""type""owner_id"_"media_id","type""owner_id"_"media_id""
+     * "type""owner_id"_"media_id""
      * <p>
      * ""type"" - media attachment type:
      * "photo" - photo

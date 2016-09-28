@@ -57,8 +57,7 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
 
     /**
      * List of objects attached to the comment, in the following format:
-     * <p>
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video
@@ -79,8 +78,7 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
 
     /**
      * List of objects attached to the comment, in the following format:
-     * <p>
-     * "type""owner_id"_"media_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media attachment:
      * "photo" - photo
      * "video" - video

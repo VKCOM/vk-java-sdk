@@ -93,7 +93,7 @@ public class BoardAddTopicQuery extends AbstractQueryBuilder<BoardAddTopicQuery,
 
     /**
      * List of media objects attached to the topic, in the following format:
-     * "type""owner_id","type""owner_id"_"media_id"
+     * "type""owner_id"_"media_id"
      * ""type"" - Type of media object:
      * "photo" - photo
      * "video" - video
