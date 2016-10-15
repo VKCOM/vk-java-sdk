@@ -31,6 +31,7 @@ public enum GroupField implements EnumParam {
     FINISH_DATE("finish_date"),
     PUBLIC_DATE_LABEL("public_date_label"),
     CAN_MESSAGE("can_message"),
+    IS_MESSAGES_ALLOWED("is_messages_allowed"),
     CAN_POST("can_post"),
     CAN_SEE_ALL_POSTS("can_see_all_posts"),
     CAN_UPLOAD_DOC("can_upload_doc"),

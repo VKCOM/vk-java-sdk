@@ -12,6 +12,7 @@ import java.util.Objects;
  * GroupFull object
  */
 public class GroupFull extends Group {
+
     @SerializedName("market")
     private MarketInfo market;
 
@@ -139,6 +140,12 @@ public class GroupFull extends Group {
     private Integer canMessage;
 
     /**
+     * Information whether current user allow to community send a message
+     */
+    @SerializedName("is_messages_allowed")
+    private Integer isMessagesAllowed;
+
+    /**
      * Start date of event in Unixtime
      */
     @SerializedName("start_date")
@@ -258,6 +265,10 @@ public class GroupFull extends Group {
         return canMessage;
     }
 
+    public Integer isMessagesAllowed() {
+        return isMessagesAllowed;
+    }
+
     public Integer getStartDate() {
         return startDate;
     }
@@ -276,7 +287,10 @@ public class GroupFull extends Group {
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description, deactivated, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters, canSeeAllPosts, verified, canMessage, market, ageLimits, site, fixedPost, finishDate, contacts, startDate, isFavorite, status);
+        return Objects.hash(country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description,
+                deactivated, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters,
+                canSeeAllPosts, verified, canMessage, isMessagesAllowed, market, ageLimits, site, fixedPost, finishDate,
+                contacts, startDate, isFavorite, status);
     }
 
     @Override
@@ -308,6 +322,7 @@ public class GroupFull extends Group {
                 Objects.equals(site, groupFull.site) &&
                 Objects.equals(mainSection, groupFull.mainSection) &&
                 Objects.equals(canMessage, groupFull.canMessage) &&
+                Objects.equals(isMessagesAllowed, groupFull.isMessagesAllowed) &&
                 Objects.equals(startDate, groupFull.startDate) &&
                 Objects.equals(finishDate, groupFull.finishDate) &&
                 Objects.equals(deactivated, groupFull.deactivated) &&
@@ -341,6 +356,7 @@ public class GroupFull extends Group {
         sb.append(", site='").append(site).append("'");
         sb.append(", mainSection=").append(mainSection);
         sb.append(", canMessage=").append(canMessage);
+        sb.append(", isMessagesAllowed=").append(isMessagesAllowed);
         sb.append(", startDate=").append(startDate);
         sb.append(", finishDate=").append(finishDate);
         sb.append(", deactivated='").append(deactivated).append("'");

@@ -40,7 +40,7 @@ import com.vk.api.sdk.actions.Widgets;
 
 public class VkApiClient {
 
-    private static final String API_VERSION = "5.53";
+    private static final String API_VERSION = "5.58";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
 
     private TransportClient transportClient;
