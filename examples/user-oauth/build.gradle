@@ -1,5 +1,9 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
+apply plugin: 'application'
+
+mainClassName = "com.vk.api.examples.oauth.user.Application"
+
 repositories {
     mavenCentral()
 }
