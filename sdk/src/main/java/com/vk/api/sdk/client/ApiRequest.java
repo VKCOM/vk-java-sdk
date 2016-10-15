@@ -99,7 +99,7 @@ public abstract class ApiRequest<T> {
         }
 
         if (response.getStatusCode() != 200) {
-            throw new ClientException("Internal API server error");
+            throw new ClientException("Internal API server error. Wrong status code: " + response.getStatusCode() + ". Content: " + response.getContent());
         }
 
         if (!response.getHeaders().containsKey("Content-Type")) {
