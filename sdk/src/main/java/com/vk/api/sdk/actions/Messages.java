@@ -4,10 +4,12 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
+import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromCommunityQuery;
 import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteChatPhotoQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteDialogQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteQuery;
+import com.vk.api.sdk.queries.messages.MessagesDenyMessagesFromCommunityQuery;
 import com.vk.api.sdk.queries.messages.MessagesEditChatQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetByIdQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetChatQuery;
@@ -25,6 +27,7 @@ import com.vk.api.sdk.queries.messages.MessagesGetLastActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLongPollHistoryQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLongPollServerQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetQuery;
+import com.vk.api.sdk.queries.messages.MessagesIsMessagesFromGroupAllowedQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsReadQuery;
 import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
@@ -302,5 +305,26 @@ public class Messages extends AbstractAction {
      */
     public MessagesDeleteChatPhotoQuery deleteChatPhoto(Actor actor, int chatId) {
         return new MessagesDeleteChatPhotoQuery(getClient(), actor, chatId);
+    }
+
+    /**
+     * Deny messages from community.
+     */
+    public MessagesDenyMessagesFromCommunityQuery denyMessagesFromCommunity(Actor actor, int groupId) {
+        return new MessagesDenyMessagesFromCommunityQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Allow messages from community.
+     */
+    public MessagesAllowMessagesFromCommunityQuery allowMessagesFromCommunity(Actor actor, int groupId) {
+        return new MessagesAllowMessagesFromCommunityQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns information specifying whether a user allowed to send messages from community.
+     */
+    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(Actor actor, int groupId, int userId) {
+        return new MessagesIsMessagesFromGroupAllowedQuery(getClient(), actor, groupId, userId);
     }
 }
