@@ -35,16 +35,16 @@ public class App {
     private String description;
 
     /**
-     * URL of the app icon with 100 px in width
+     * URL of the app icon with 139 px in width
      */
-    @SerializedName("icon_100")
-    private String icon100;
+    @SerializedName("icon_139")
+    private String icon139;
 
     /**
-     * URL of the app icon with 200 px in width
+     * URL of the app icon with 278 px in width
      */
-    @SerializedName("icon_200")
-    private String icon200;
+    @SerializedName("icon_278")
+    private String icon278;
 
     /**
      * URL of the app icon with 75 px in width
@@ -53,28 +53,22 @@ public class App {
     private String icon75;
 
     /**
-     * URL of the app icon with 50 px in width
+     * URL of the app icon with 150 px in width
      */
-    @SerializedName("icon_50")
-    private String icon50;
-
-    /**
-     * URL of the app icon with 16 px in width
-     */
-    @SerializedName("icon_16")
-    private String icon16;
+    @SerializedName("icon_150")
+    private String icon150;
 
     /**
      * URL of the app banner with 186 px in width
      */
     @SerializedName("banner_186")
-    private String banner186;
+    private String banner560;
 
     /**
      * URL of the app banner with 896 px in width
      */
-    @SerializedName("banner_896")
-    private String banner896;
+    @SerializedName("banner_1120")
+    private String banner1120;
 
     /**
      * Application type
@@ -179,32 +173,28 @@ public class App {
         return description;
     }
 
-    public String getIcon100() {
-        return icon100;
+    public String getIcon139() {
+        return icon139;
     }
 
-    public String getIcon200() {
-        return icon200;
+    public String getIcon278() {
+        return icon278;
     }
 
     public String getIcon75() {
         return icon75;
     }
 
-    public String getIcon50() {
-        return icon50;
+    public String getIcon150() {
+        return icon150;
     }
 
-    public String getIcon16() {
-        return icon16;
+    public String getBanner560() {
+        return banner560;
     }
 
-    public String getBanner186() {
-        return banner186;
-    }
-
-    public String getBanner896() {
-        return banner896;
+    public String getBanner1120() {
+        return banner1120;
     }
 
     public AppType getType() {
@@ -269,7 +259,7 @@ public class App {
 
     @Override
     public int hashCode() {
-        return Objects.hash(icon50, genreId, isInCatalog, icon75, banner896, description, icon16, section, screenName, title, type, screenshots, authorUrl, genre, leaderboardType, id, authorGroup, international, membersCount, banner186, platformId, authorId, icon200, icon100, catalogPosition, publishedDate);
+        return Objects.hash(icon150, genreId, isInCatalog, icon75, banner1120, description, section, screenName, title, type, screenshots, authorUrl, genre, leaderboardType, id, authorGroup, international, membersCount, banner560, platformId, authorId, icon278, icon139, catalogPosition, publishedDate);
     }
 
     @Override
@@ -281,13 +271,12 @@ public class App {
                 Objects.equals(title, app.title) &&
                 Objects.equals(screenName, app.screenName) &&
                 Objects.equals(description, app.description) &&
-                Objects.equals(icon100, app.icon100) &&
-                Objects.equals(icon200, app.icon200) &&
+                Objects.equals(icon139, app.icon139) &&
+                Objects.equals(icon278, app.icon278) &&
                 Objects.equals(icon75, app.icon75) &&
-                Objects.equals(icon50, app.icon50) &&
-                Objects.equals(icon16, app.icon16) &&
-                Objects.equals(banner186, app.banner186) &&
-                Objects.equals(banner896, app.banner896) &&
+                Objects.equals(icon150, app.icon150) &&
+                Objects.equals(banner560, app.banner560) &&
+                Objects.equals(banner1120, app.banner1120) &&
                 Objects.equals(type, app.type) &&
                 Objects.equals(section, app.section) &&
                 Objects.equals(authorUrl, app.authorUrl) &&
@@ -312,13 +301,12 @@ public class App {
         sb.append(", title='").append(title).append("'");
         sb.append(", screenName='").append(screenName).append("'");
         sb.append(", description='").append(description).append("'");
-        sb.append(", icon100='").append(icon100).append("'");
-        sb.append(", icon200='").append(icon200).append("'");
+        sb.append(", icon139='").append(icon139).append("'");
+        sb.append(", icon278='").append(icon278).append("'");
         sb.append(", icon75='").append(icon75).append("'");
-        sb.append(", icon50='").append(icon50).append("'");
-        sb.append(", icon16='").append(icon16).append("'");
-        sb.append(", banner186='").append(banner186).append("'");
-        sb.append(", banner896='").append(banner896).append("'");
+        sb.append(", icon150='").append(icon150).append("'");
+        sb.append(", banner560='").append(banner560).append("'");
+        sb.append(", banner1120='").append(banner1120).append("'");
         sb.append(", type='").append(type).append("'");
         sb.append(", section='").append(section).append("'");
         sb.append(", authorUrl='").append(authorUrl).append("'");
