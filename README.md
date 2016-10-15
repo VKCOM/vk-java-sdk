@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.2.1, released September 28, 2016.
+The most recent release is 0.3.0, released October 15, 2016.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.2.1</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.2.1'
+  compile 'com.vk.api:sdk:0.3.0'
 }
 ```
 
@@ -90,7 +90,7 @@ The difference from the previous flow is that you send the groupId parameter to 
 
 ```java
 AuthGroupResponse authResponse = vk.oauth()
-    .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code, groupId)
+    .authorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code, groupId)
     .execute();
 
 GroupActor actor = new GroupActor(authResponse.get(), authResponse.getAccessToken());
@@ -105,7 +105,7 @@ Proceeding each of previous authorization flows you can receive a "need_validati
 ```java
 try {
     AuthResponse authResponse = vk.oauth()
-        .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
+        .authorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
         .execute();
 } catch (OAuthException e) {
     e.getRedirectUri();
@@ -119,7 +119,7 @@ UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccess
 This flow allows to interact with API service methods with "secure" prefix. Use this method:
 
 ```java
-AuthResponse authResponse = vk.oauth()
+ClientCredentialsFlowResponse authResponse = vk.oauth()
     .serverClientCredentialsFlow(APP_ID, CLIENT_SECRET)
     .execute();
     
