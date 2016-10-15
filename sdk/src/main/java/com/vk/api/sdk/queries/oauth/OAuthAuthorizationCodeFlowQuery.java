@@ -10,9 +10,9 @@ import java.util.Collection;
 /**
  * Created by tsivarev on 22.07.16.
  */
-public class OAuthUserAuthorizationCodeFlowQuery extends AbstractQueryBuilder<OAuthUserAuthorizationCodeFlowQuery, AuthResponse> {
+public class OAuthAuthorizationCodeFlowQuery extends AbstractQueryBuilder<OAuthAuthorizationCodeFlowQuery, AuthResponse> {
 
-    public OAuthUserAuthorizationCodeFlowQuery(VkApiClient client, String endpoint, Integer clientId, String clientSecret, String redirectUri, String code) {
+    public OAuthAuthorizationCodeFlowQuery(VkApiClient client, String endpoint, Integer clientId, String clientSecret, String redirectUri, String code) {
         super(client, endpoint, "access_token", AuthResponse.class);
         clientId(clientId);
         clientSecret(clientSecret);
@@ -20,24 +20,24 @@ public class OAuthUserAuthorizationCodeFlowQuery extends AbstractQueryBuilder<OA
         code(code);
     }
 
-    public OAuthUserAuthorizationCodeFlowQuery clientId(Integer value) {
+    public OAuthAuthorizationCodeFlowQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
 
-    public OAuthUserAuthorizationCodeFlowQuery clientSecret(String value) {
+    public OAuthAuthorizationCodeFlowQuery clientSecret(String value) {
         return unsafeParam("client_secret", value);
     }
 
-    public OAuthUserAuthorizationCodeFlowQuery redirectUri(String value) {
+    public OAuthAuthorizationCodeFlowQuery redirectUri(String value) {
         return unsafeParam("redirect_uri", value);
     }
 
-    public OAuthUserAuthorizationCodeFlowQuery code(String value) {
+    public OAuthAuthorizationCodeFlowQuery code(String value) {
         return unsafeParam("code", value);
     }
 
     @Override
-    protected OAuthUserAuthorizationCodeFlowQuery getThis() {
+    protected OAuthAuthorizationCodeFlowQuery getThis() {
         return this;
     }
 
