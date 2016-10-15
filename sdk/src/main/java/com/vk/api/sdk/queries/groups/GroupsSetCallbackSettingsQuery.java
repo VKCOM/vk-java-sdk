@@ -46,6 +46,26 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Allow messages notifications.
+     *
+     * @param value value of "message new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageAllow(Boolean value) {
+        return unsafeParam("message_allow", value);
+    }
+
+    /**
+     * Deny messages notifications.
+     *
+     * @param value value of "message new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageDeny(Boolean value) {
+        return unsafeParam("message_deny", value);
+    }
+
+    /**
      * New photos notifications.
      *
      * @param value value of "photo new" parameter.

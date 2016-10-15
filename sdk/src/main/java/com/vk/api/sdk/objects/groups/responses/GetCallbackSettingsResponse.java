@@ -16,6 +16,18 @@ public class GetCallbackSettingsResponse {
     private BoolInt messageNew;
 
     /**
+     * Whether notifications about allowed messages
+     */
+    @SerializedName("message_allow")
+    private BoolInt messageAllow;
+
+    /**
+     * Whether notifications about denied messages
+     */
+    @SerializedName("message_deny")
+    private BoolInt messageDeny;
+
+    /**
      * Whether notifications about new photos enabled
      */
     @SerializedName("photo_new")
@@ -109,6 +121,14 @@ public class GetCallbackSettingsResponse {
         return messageNew == BoolInt.YES;
     }
 
+    public boolean isMessageAllow() {
+        return messageAllow == BoolInt.YES;
+    }
+
+    public boolean isMessageDeny() {
+        return messageDeny == BoolInt.YES;
+    }
+
     public boolean isPhotoNew() {
         return photoNew == BoolInt.YES;
     }
@@ -171,7 +191,7 @@ public class GetCallbackSettingsResponse {
 
     @Override
     public int hashCode() {
-        return Objects.hash(messageNew, audioNew, photoNew, videoNew, groupLeave, boardPostEdit, photoCommentNew, wallReplyEdit, boardPostNew, videoCommentNew, wallPostNew, boardPostRestore, wallReplyNew, boardPostDelete, marketCommentNew, groupJoin);
+        return Objects.hash(messageNew, messageAllow, messageDeny, audioNew, photoNew, videoNew, groupLeave, boardPostEdit, photoCommentNew, wallReplyEdit, boardPostNew, videoCommentNew, wallPostNew, boardPostRestore, wallReplyNew, boardPostDelete, marketCommentNew, groupJoin);
     }
 
     @Override
@@ -180,6 +200,8 @@ public class GetCallbackSettingsResponse {
         if (o == null || getClass() != o.getClass()) return false;
         GetCallbackSettingsResponse getCallbackSettingsResponse = (GetCallbackSettingsResponse) o;
         return Objects.equals(messageNew, getCallbackSettingsResponse.messageNew) &&
+                Objects.equals(messageAllow, getCallbackSettingsResponse.messageAllow) &&
+                Objects.equals(messageDeny, getCallbackSettingsResponse.messageDeny) &&
                 Objects.equals(photoNew, getCallbackSettingsResponse.photoNew) &&
                 Objects.equals(audioNew, getCallbackSettingsResponse.audioNew) &&
                 Objects.equals(videoNew, getCallbackSettingsResponse.videoNew) &&
@@ -201,6 +223,8 @@ public class GetCallbackSettingsResponse {
     public String toString() {
         final StringBuilder sb = new StringBuilder("GetCallbackSettingsResponse{");
         sb.append("messageNew=").append(messageNew);
+        sb.append(", messageAllow=").append(messageAllow);
+        sb.append(", messageDeny=").append(messageDeny);
         sb.append(", photoNew=").append(photoNew);
         sb.append(", audioNew=").append(audioNew);
         sb.append(", videoNew=").append(videoNew);

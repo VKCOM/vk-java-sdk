@@ -8,6 +8,8 @@ import com.vk.api.sdk.callback.objects.CallbackGroupJoin;
 import com.vk.api.sdk.callback.objects.CallbackGroupLeave;
 import com.vk.api.sdk.callback.objects.CallbackMarketComment;
 import com.vk.api.sdk.callback.objects.CallbackMessage;
+import com.vk.api.sdk.callback.objects.CallbackMessageAllow;
+import com.vk.api.sdk.callback.objects.CallbackMessageDeny;
 import com.vk.api.sdk.callback.objects.CallbackPhotoComment;
 import com.vk.api.sdk.callback.objects.CallbackVideoComment;
 import com.vk.api.sdk.callback.objects.CallbackWallComment;
@@ -56,6 +58,12 @@ public class CallbackApi {
     }
 
     public void messageNew(Integer groupId, Message message) {
+    }
+
+    public void messageAllow(Integer groupId, CallbackMessageAllow message) {
+    }
+
+    public void messageDeny(Integer groupId, CallbackMessageDeny message) {
     }
 
     public void groupJoin(Integer groupId, CallbackGroupJoin message) {
@@ -152,6 +160,20 @@ public class CallbackApi {
                 }.getType();
                 message = gson.fromJson(json, typeOfClass);
                 messageNew(message.getGroupId(), (Message) message.getObject());
+                break;
+
+            case "message_allow":
+                typeOfClass = new TypeToken<CallbackMessage<CallbackMessageAllow>>() {
+                }.getType();
+                message = gson.fromJson(json, typeOfClass);
+                messageAllow(message.getGroupId(), (CallbackMessageAllow) message.getObject());
+                break;
+
+            case "message_deny":
+                typeOfClass = new TypeToken<CallbackMessage<CallbackMessageDeny>>() {
+                }.getType();
+                message = gson.fromJson(json, typeOfClass);
+                messageDeny(message.getGroupId(), (CallbackMessageDeny) message.getObject());
                 break;
 
             case "group_join":
