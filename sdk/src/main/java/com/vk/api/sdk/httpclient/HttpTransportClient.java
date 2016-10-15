@@ -37,10 +37,15 @@ public class HttpTransportClient implements TransportClient {
     private static final Logger LOG = LogManager.getLogger(HttpTransportClient.class);
 
     private static final String ENCODING = "UTF-8";
+    private static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
+    private static final String CONTENT_TYPE_HEADER = "Content-Type";
+    private static final String USER_AGENT = "Java VK SDK/0.3.0";
+
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int FULL_CONNECTION_TIMEOUT_S = 60;
     private static final int CONNECTION_TIMEOUT_MS = 5_000;
     private static final int SOCKET_TIMEOUT_MS = FULL_CONNECTION_TIMEOUT_S * 1000;
+
     private static final ConnectionsSupervisor SUPERVISOR = new ConnectionsSupervisor();
     private static HttpTransportClient instance;
     private static HttpClient httpClient;
@@ -63,6 +68,7 @@ public class HttpTransportClient implements TransportClient {
                 .setConnectionManager(connectionManager)
                 .setDefaultRequestConfig(requestConfig)
                 .setDefaultCookieStore(cookieStore)
+                .setUserAgent(USER_AGENT)
                 .build();
     }
 
@@ -117,7 +123,7 @@ public class HttpTransportClient implements TransportClient {
     @Override
     public ClientResponse post(String url, String body) throws IOException {
         HttpPost request = new HttpPost(url);
-        request.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE);
         if (body != null) {
             request.setEntity(new StringEntity(body));
         }
@@ -128,7 +134,7 @@ public class HttpTransportClient implements TransportClient {
     @Override
     public ClientResponse post(String url) throws IOException {
         HttpPost request = new HttpPost(url);
-        request.setHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE);
         return call(request);
     }
 
