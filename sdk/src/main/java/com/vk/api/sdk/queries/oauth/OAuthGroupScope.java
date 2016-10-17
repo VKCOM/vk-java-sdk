@@ -7,6 +7,7 @@ public enum OAuthGroupScope {
 
     PHOTOS("photos"),
     DOCS("docs"),
+    MESSAGES("messages"),
     MANAGE("manage");
 
     private String value;

@@ -2,7 +2,7 @@ package com.vk.api.examples.oauth.user;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.AuthResponse;
+import com.vk.api.sdk.objects.UserAuthResponse;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -55,7 +55,7 @@ public class RequestHandler extends AbstractHandler {
 
             case "/callback":
                 try {
-                    AuthResponse authResponse = vk.oauth().authorizationCodeFlow(clientId, clientSecret, getRedirectUri(), baseRequest.getParameter("code")).execute();
+                    UserAuthResponse authResponse = vk.oauth().userAuthorizationCodeFlow(clientId, clientSecret, getRedirectUri(), baseRequest.getParameter("code")).execute();
                     response.sendRedirect("/info?token=" + authResponse.getAccessToken() + "&user=" + authResponse.getUserId());
                 } catch (Exception e) {
                     response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
