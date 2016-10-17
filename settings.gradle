@@ -4,4 +4,4 @@ include 'examples'
 include 'examples:hello-bot'
 include 'examples:youtrack-bot'
 include 'examples:user-oauth'
-
+include 'examples:group-oauth'
