@@ -3,7 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.queries.oauth.OAuthGroupAuthorizationCodeFlowQuery;
-import com.vk.api.sdk.queries.oauth.OAuthServerClientCredentialsFlowQuery;
+import com.vk.api.sdk.queries.oauth.OAuthServiceClientCredentialsFlowQuery;
 import com.vk.api.sdk.queries.oauth.OAuthUserAuthorizationCodeFlowQuery;
 
 /**
@@ -30,7 +30,7 @@ public class OAuth extends AbstractAction {
         return new OAuthGroupAuthorizationCodeFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret, redirectUri, code);
     }
 
-    public OAuthServerClientCredentialsFlowQuery serverClientCredentialsFlow(Integer clientId, String clientSecret) {
-        return new OAuthServerClientCredentialsFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret);
+    public OAuthServiceClientCredentialsFlowQuery serviceClientCredentialsFlow(Integer clientId, String clientSecret) {
+        return new OAuthServiceClientCredentialsFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret);
     }
 }
