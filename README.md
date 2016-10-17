@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.3.0, released October 15, 2016.
+The most recent release is 0.3.1, released October 17, 2016.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.3.0'
+  compile 'com.vk.api:sdk:0.3.1'
 }
 ```
 
@@ -69,10 +69,10 @@ The library provides several authorization flows based on OAuth 2.0 protocol imp
 
 OAuth 2.0 Authorization Code Flow allows calling methods from the server side.
 
-This flow includes two steps — obtaining an authorization code and exchanging the code for an access token. Primarly you should obtain the "code" ([manual](https://vk.com/dev/authcode_flow_user)) and then use this method to complete the flow:
+This flow includes two steps — obtaining an authorization code and exchanging the code for an access token. Primarily you should obtain the "code" ([manual](https://vk.com/dev/authcode_flow_user)) and then use this method to complete the flow:
 
 ```java
-AuthResponse authResponse = vk.oauth()
+UserAuthResponse authResponse = vk.oauth()
     .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
@@ -83,20 +83,23 @@ This takes your application ID, secure key, redirect URI, enumerated [scopes](ht
 
 When succeed, a UserActor object is created. You can call VK API methods on behalf of a user.
 
+See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/user-oauth).
 
 ###6.2. Authorization Code Flow for Community
 
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
 
 ```java
-AuthGroupResponse authResponse = vk.oauth()
-    .authorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code, groupId)
+GroupAuthGroupResponse authResponse = vk.oauth()
+    .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
-GroupActor actor = new GroupActor(authResponse.get(), authResponse.getAccessToken());
+GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(groupId);
 ```
 
 When succeed, a GroupActor object is created. You can call VK API methods on behalf of a community.
+
+See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/group-oauth).
 
 ###6.3. Handling need_validation error
 
@@ -104,8 +107,8 @@ Proceeding each of previous authorization flows you can receive a "need_validati
 
 ```java
 try {
-    AuthResponse authResponse = vk.oauth()
-        .authorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
+    UserAuthResponse authResponse = vk.oauth()
+        .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
         .execute();
 } catch (OAuthException e) {
     e.getRedirectUri();
