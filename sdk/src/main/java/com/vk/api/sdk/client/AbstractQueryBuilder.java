@@ -34,7 +34,7 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param type   type of method response
      */
     public AbstractQueryBuilder(VkApiClient client, String method, Type type) {
-        super(client.getEndpoint() + method, client.getTransportClient(), client.getGson(), type);
+        super(client.getApiEndpoint() + method, client.getTransportClient(), client.getGson(), type);
         this.method = method;
         version(client.getVersion());
     }

@@ -40,14 +40,19 @@ import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
 import com.vk.api.sdk.deserializers.GroupAuthResponseDeserializer;
 import com.vk.api.sdk.objects.GroupAuthResponse;
+import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
 
     private static final String API_VERSION = "5.58";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
+    private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
 
     private TransportClient transportClient;
     private Gson gson;
+
+    private String apiEndpoint;
+    private String oauthEndpoint;
 
     public VkApiClient(TransportClient transportClient) {
         Gson gson = new GsonBuilder()
@@ -56,6 +61,18 @@ public class VkApiClient {
 
         this.transportClient = transportClient;
         this.gson = gson;
+
+        if (StringUtils.isNoneEmpty(System.getProperty("api.host"))) {
+            apiEndpoint = "https://" + System.getProperty("api.host") + "/method/";
+        } else {
+            apiEndpoint = API_ADDRESS;
+        }
+
+        if (StringUtils.isNoneEmpty(System.getProperty("oauth.host"))) {
+            oauthEndpoint = "https://" + System.getProperty("oauth.host") + "/";
+        } else {
+            oauthEndpoint = OAUTH_ENDPOINT;
+        }
     }
 
     public TransportClient getTransportClient() {
@@ -66,8 +83,12 @@ public class VkApiClient {
         return gson;
     }
 
-    String getEndpoint() {
-        return API_ADDRESS;
+    public String getApiEndpoint() {
+        return apiEndpoint;
+    }
+
+    public String getOAuthEndpoint() {
+        return oauthEndpoint;
     }
 
     String getVersion() {

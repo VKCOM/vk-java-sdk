@@ -11,8 +11,6 @@ import com.vk.api.sdk.queries.oauth.OAuthUserAuthorizationCodeFlowQuery;
  */
 public class OAuth extends AbstractAction {
 
-    private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
-
     /**
      * Constructor
      *
@@ -23,14 +21,14 @@ public class OAuth extends AbstractAction {
     }
 
     public OAuthUserAuthorizationCodeFlowQuery userAuthorizationCodeFlow(Integer clientId, String clientSecret, String redirectUri, String code) {
-        return new OAuthUserAuthorizationCodeFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret, redirectUri, code);
+        return new OAuthUserAuthorizationCodeFlowQuery(getClient(), getClient().getOAuthEndpoint(), clientId, clientSecret, redirectUri, code);
     }
 
     public OAuthGroupAuthorizationCodeFlowQuery groupAuthorizationCodeFlow(Integer clientId, String clientSecret, String redirectUri, String code) {
-        return new OAuthGroupAuthorizationCodeFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret, redirectUri, code);
+        return new OAuthGroupAuthorizationCodeFlowQuery(getClient(), getClient().getOAuthEndpoint(), clientId, clientSecret, redirectUri, code);
     }
 
     public OAuthServiceClientCredentialsFlowQuery serviceClientCredentialsFlow(Integer clientId, String clientSecret) {
-        return new OAuthServiceClientCredentialsFlowQuery(getClient(), OAUTH_ENDPOINT, clientId, clientSecret);
+        return new OAuthServiceClientCredentialsFlowQuery(getClient(), getClient().getOAuthEndpoint(), clientId, clientSecret);
     }
 }
