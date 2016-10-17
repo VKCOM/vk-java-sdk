@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.polls;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQu
      * @param pollId   value of "poll id" parameter. Minimum is 0.
      * @param answerId value of "answer id" parameter. Minimum is 0.
      */
-    public PollsDeleteVoteQuery(VkApiClient client, Actor actor, int pollId, int answerId) {
+    public PollsDeleteVoteQuery(VkApiClient client, UserActor actor, int pollId, int answerId) {
         super(client, "polls.deleteVote", BoolInt.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);

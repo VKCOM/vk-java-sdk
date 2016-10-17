@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.account.AccountBanUserQuery;
 import com.vk.api.sdk.queries.account.AccountChangePasswordQuery;
 import com.vk.api.sdk.queries.account.AccountGetActiveOffersQuery;
@@ -45,7 +45,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetCountersQuery getCounters(Actor actor) {
+    public AccountGetCountersQuery getCounters(UserActor actor) {
         return new AccountGetCountersQuery(getClient(), actor);
     }
 
@@ -56,7 +56,7 @@ public class Account extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AccountSetNameInMenuQuery setNameInMenu(Actor actor, int userId) {
+    public AccountSetNameInMenuQuery setNameInMenu(UserActor actor, int userId) {
         return new AccountSetNameInMenuQuery(getClient(), actor, userId);
     }
 
@@ -66,7 +66,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountSetOnlineQuery setOnline(Actor actor) {
+    public AccountSetOnlineQuery setOnline(UserActor actor) {
         return new AccountSetOnlineQuery(getClient(), actor);
     }
 
@@ -76,7 +76,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountSetOfflineQuery setOffline(Actor actor) {
+    public AccountSetOfflineQuery setOffline(UserActor actor) {
         return new AccountSetOfflineQuery(getClient(), actor);
     }
 
@@ -86,7 +86,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountLookupContactsQuery lookupContacts(Actor actor, AccountLookupContactsService service) {
+    public AccountLookupContactsQuery lookupContacts(UserActor actor, AccountLookupContactsService service) {
         return new AccountLookupContactsQuery(getClient(), actor, service);
     }
 
@@ -98,7 +98,7 @@ public class Account extends AbstractAction {
      * @param deviceId device id
      * @return query
      */
-    public AccountRegisterDeviceQuery registerDevice(Actor actor, String token, String deviceId) {
+    public AccountRegisterDeviceQuery registerDevice(UserActor actor, String token, String deviceId) {
         return new AccountRegisterDeviceQuery(getClient(), actor, token, deviceId);
     }
 
@@ -108,7 +108,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountUnregisterDeviceQuery unregisterDevice(Actor actor) {
+    public AccountUnregisterDeviceQuery unregisterDevice(UserActor actor) {
         return new AccountUnregisterDeviceQuery(getClient(), actor);
     }
 
@@ -118,7 +118,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountSetSilenceModeQuery setSilenceMode(Actor actor) {
+    public AccountSetSilenceModeQuery setSilenceMode(UserActor actor) {
         return new AccountSetSilenceModeQuery(getClient(), actor);
     }
 
@@ -128,7 +128,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetPushSettingsQuery getPushSettings(Actor actor) {
+    public AccountGetPushSettingsQuery getPushSettings(UserActor actor) {
         return new AccountGetPushSettingsQuery(getClient(), actor);
     }
 
@@ -139,7 +139,7 @@ public class Account extends AbstractAction {
      * @param deviceId device id
      * @return query
      */
-    public AccountSetPushSettingsQuery setPushSettings(Actor actor, String deviceId) {
+    public AccountSetPushSettingsQuery setPushSettings(UserActor actor, String deviceId) {
         return new AccountSetPushSettingsQuery(getClient(), actor, deviceId);
     }
 
@@ -150,7 +150,7 @@ public class Account extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AccountGetAppPermissionsQuery getAppPermissions(Actor actor, int userId) {
+    public AccountGetAppPermissionsQuery getAppPermissions(UserActor actor, int userId) {
         return new AccountGetAppPermissionsQuery(getClient(), actor, userId);
     }
 
@@ -161,7 +161,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetActiveOffersQuery getActiveOffers(Actor actor) {
+    public AccountGetActiveOffersQuery getActiveOffers(UserActor actor) {
         return new AccountGetActiveOffersQuery(getClient(), actor);
     }
 
@@ -172,7 +172,7 @@ public class Account extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AccountBanUserQuery banUser(Actor actor, int userId) {
+    public AccountBanUserQuery banUser(UserActor actor, int userId) {
         return new AccountBanUserQuery(getClient(), actor, userId);
     }
 
@@ -183,7 +183,7 @@ public class Account extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AccountUnbanUserQuery unbanUser(Actor actor, int userId) {
+    public AccountUnbanUserQuery unbanUser(UserActor actor, int userId) {
         return new AccountUnbanUserQuery(getClient(), actor, userId);
     }
 
@@ -193,7 +193,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetBannedQuery getBanned(Actor actor) {
+    public AccountGetBannedQuery getBanned(UserActor actor) {
         return new AccountGetBannedQuery(getClient(), actor);
     }
 
@@ -203,7 +203,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetInfoQuery getInfo(Actor actor) {
+    public AccountGetInfoQuery getInfo(UserActor actor) {
         return new AccountGetInfoQuery(getClient(), actor);
     }
 
@@ -213,7 +213,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountSetInfoQuery setInfo(Actor actor) {
+    public AccountSetInfoQuery setInfo(UserActor actor) {
         return new AccountSetInfoQuery(getClient(), actor);
     }
 
@@ -224,7 +224,7 @@ public class Account extends AbstractAction {
      * @param newPassword new password
      * @return query
      */
-    public AccountChangePasswordQuery changePassword(Actor actor, String newPassword) {
+    public AccountChangePasswordQuery changePassword(UserActor actor, String newPassword) {
         return new AccountChangePasswordQuery(getClient(), actor, newPassword);
     }
 
@@ -234,7 +234,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountGetProfileInfoQuery getProfileInfo(Actor actor) {
+    public AccountGetProfileInfoQuery getProfileInfo(UserActor actor) {
         return new AccountGetProfileInfoQuery(getClient(), actor);
     }
 
@@ -244,7 +244,7 @@ public class Account extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AccountSaveProfileInfoQuery saveProfileInfo(Actor actor) {
+    public AccountSaveProfileInfoQuery saveProfileInfo(UserActor actor) {
         return new AccountSaveProfileInfoQuery(getClient(), actor);
     }
 }

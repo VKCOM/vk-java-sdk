@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosReorderAlbumsQuery extends AbstractQueryBuilder<PhotosReorder
      * @param actor   actor with access token
      * @param albumId value of "album id" parameter.
      */
-    public PhotosReorderAlbumsQuery(VkApiClient client, Actor actor, int albumId) {
+    public PhotosReorderAlbumsQuery(VkApiClient client, UserActor actor, int albumId) {
         super(client, "photos.reorderAlbums", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetBannedResponse;
 import com.vk.api.sdk.queries.users.UserField;
 
@@ -20,7 +20,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetBannedQuery(VkApiClient client, Actor actor, int groupId) {
+    public GroupsGetBannedQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getBanned", GetBannedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

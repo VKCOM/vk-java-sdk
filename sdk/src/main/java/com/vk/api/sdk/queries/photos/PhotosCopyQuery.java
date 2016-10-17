@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class PhotosCopyQuery extends AbstractQueryBuilder<PhotosCopyQuery, Integ
      * @param ownerId value of "owner id" parameter.
      * @param photoId value of "photo id" parameter. Minimum is 0.
      */
-    public PhotosCopyQuery(VkApiClient client, Actor actor, int ownerId, int photoId) {
+    public PhotosCopyQuery(VkApiClient client, UserActor actor, int ownerId, int photoId) {
         super(client, "photos.copy", Integer.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

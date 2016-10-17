@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.AddResponse;
 
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param price       value of "price" parameter. Minimum is 0.
      * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
-    public MarketAddQuery(VkApiClient client, Actor actor, int ownerId, String name, String description, int categoryId,
+    public MarketAddQuery(VkApiClient client, UserActor actor, int ownerId, String name, String description, int categoryId,
                           float price, int mainPhotoId) {
         super(client, "market.add", AddResponse.class);
         accessToken(actor.getAccessToken());

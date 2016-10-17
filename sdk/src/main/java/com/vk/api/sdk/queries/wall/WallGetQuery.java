@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetResponse;
 
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public WallGetQuery(VkApiClient client, Actor actor) {
+    public WallGetQuery(VkApiClient client, UserActor actor) {
         super(client, "wall.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

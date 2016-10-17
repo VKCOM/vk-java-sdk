@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
      * @param ownerId value of "owner id" parameter.
      * @param itemId  value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnignoreItemQuery(VkApiClient client, Actor actor, NewsfeedItemType type, int ownerId, int itemId) {
+    public NewsfeedUnignoreItemQuery(VkApiClient client, UserActor actor, NewsfeedItemType type, int ownerId, int itemId) {
         super(client, "newsfeed.unignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

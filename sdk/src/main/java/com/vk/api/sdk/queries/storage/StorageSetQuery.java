@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.storage;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class StorageSetQuery extends AbstractQueryBuilder<StorageSetQuery, OkRes
      * @param actor  actor with access token
      * @param key    value of "key" parameter.
      */
-    public StorageSetQuery(VkApiClient client, Actor actor, String key) {
+    public StorageSetQuery(VkApiClient client, UserActor actor, String key) {
         super(client, "storage.set", OkResponse.class);
         accessToken(actor.getAccessToken());
         key(key);

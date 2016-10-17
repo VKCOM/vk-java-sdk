@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AdsGetBudgetQuery extends AbstractQueryBuilder<AdsGetBudgetQuery, I
      * @param actor     actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetBudgetQuery(VkApiClient client, Actor actor, int accountId) {
+    public AdsGetBudgetQuery(VkApiClient client, UserActor actor, int accountId) {
         super(client, "ads.getBudget", Integer.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

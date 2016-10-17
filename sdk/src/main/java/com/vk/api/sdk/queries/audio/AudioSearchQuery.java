@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.responses.SearchResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class AudioSearchQuery extends AbstractQueryBuilder<AudioSearchQuery, Sea
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AudioSearchQuery(VkApiClient client, Actor actor) {
+    public AudioSearchQuery(VkApiClient client, UserActor actor) {
         super(client, "audio.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
     }

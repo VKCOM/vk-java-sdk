@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class VideoDeleteCommentQuery extends AbstractQueryBuilder<VideoDeleteCom
      * @param actor     actor with access token
      * @param commentId value of "comment id" parameter.
      */
-    public VideoDeleteCommentQuery(VkApiClient client, Actor actor, int commentId) {
+    public VideoDeleteCommentQuery(VkApiClient client, UserActor actor, int commentId) {
         super(client, "video.deleteComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);

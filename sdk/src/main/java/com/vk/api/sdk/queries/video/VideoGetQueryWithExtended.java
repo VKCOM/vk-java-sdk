@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.GetExtendedResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class VideoGetQueryWithExtended extends AbstractQueryBuilder<VideoGetQuer
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public VideoGetQueryWithExtended(VkApiClient client, Actor actor) {
+    public VideoGetQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "video.get", GetExtendedResponse.class);
         accessToken(actor.getAccessToken());
         extended(true);

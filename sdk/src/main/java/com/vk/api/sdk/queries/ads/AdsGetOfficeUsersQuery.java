@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.Users;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetOfficeUsersQuery extends AbstractQueryBuilder<AdsGetOfficeUse
      * @param actor     actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetOfficeUsersQuery(VkApiClient client, Actor actor, int accountId) {
+    public AdsGetOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId) {
         super(client, "ads.getOfficeUsers", Utils.buildParametrizedType(List.class, Users.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);

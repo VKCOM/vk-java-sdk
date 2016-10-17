@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetRecommendedResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -19,7 +19,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NewsfeedGetRecommendedQuery(VkApiClient client, Actor actor) {
+    public NewsfeedGetRecommendedQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.getRecommended", GetRecommendedResponse.class);
         accessToken(actor.getAccessToken());
     }

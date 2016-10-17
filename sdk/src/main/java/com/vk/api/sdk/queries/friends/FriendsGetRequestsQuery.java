@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.GetRequestsResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class FriendsGetRequestsQuery extends AbstractQueryBuilder<FriendsGetRequ
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public FriendsGetRequestsQuery(VkApiClient client, Actor actor) {
+    public FriendsGetRequestsQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.getRequests", GetRequestsResponse.class);
         accessToken(actor.getAccessToken());
     }

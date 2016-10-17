@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.widgets;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.widgets.responses.GetCommentsResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -19,7 +19,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public WidgetsGetCommentsQuery(VkApiClient client, Actor actor) {
+    public WidgetsGetCommentsQuery(VkApiClient client, UserActor actor) {
         super(client, "widgets.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
     }

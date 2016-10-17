@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.GetCommentsExtendedResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
      * @param actor   actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoGetCommentsQueryWithExtended(VkApiClient client, Actor actor, int videoId) {
+    public VideoGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int videoId) {
         super(client, "video.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);

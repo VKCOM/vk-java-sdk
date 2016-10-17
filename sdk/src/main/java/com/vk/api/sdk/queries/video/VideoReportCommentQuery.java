@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.queries.ReportReason;
 
@@ -21,7 +21,7 @@ public class VideoReportCommentQuery extends AbstractQueryBuilder<VideoReportCom
      * @param ownerId   value of "owner id" parameter.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public VideoReportCommentQuery(VkApiClient client, Actor actor, int ownerId, int commentId) {
+    public VideoReportCommentQuery(VkApiClient client, UserActor actor, int ownerId, int commentId) {
         super(client, "video.reportComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

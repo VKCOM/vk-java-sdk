@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.PhotoAlbumFull;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
      * @param actor  actor with access token
      * @param title  value of "title" parameter.
      */
-    public PhotosCreateAlbumQuery(VkApiClient client, Actor actor, String title) {
+    public PhotosCreateAlbumQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "photos.createAlbum", PhotoAlbumFull.class);
         accessToken(actor.getAccessToken());
         title(title);

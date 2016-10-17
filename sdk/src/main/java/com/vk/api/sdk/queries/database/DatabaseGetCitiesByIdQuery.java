@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.database;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BaseObject;
 
 import java.util.Collections;
@@ -19,7 +19,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public DatabaseGetCitiesByIdQuery(VkApiClient client, Actor actor) {
+    public DatabaseGetCitiesByIdQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCitiesById", Utils.buildParametrizedType(List.class, BaseObject.class));
         accessToken(actor.getAccessToken());
     }

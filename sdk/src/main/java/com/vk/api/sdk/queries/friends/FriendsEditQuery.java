@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class FriendsEditQuery extends AbstractQueryBuilder<FriendsEditQuery, OkR
      * @param actor  actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
      */
-    public FriendsEditQuery(VkApiClient client, Actor actor, int userId) {
+    public FriendsEditQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "friends.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);

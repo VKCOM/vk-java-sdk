@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosDeleteQuery extends AbstractQueryBuilder<PhotosDeleteQuery, O
      * @param actor   actor with access token
      * @param photoId value of "photo id" parameter. Minimum is 0.
      */
-    public PhotosDeleteQuery(VkApiClient client, Actor actor, int photoId) {
+    public PhotosDeleteQuery(VkApiClient client, UserActor actor, int photoId) {
         super(client, "photos.delete", OkResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);

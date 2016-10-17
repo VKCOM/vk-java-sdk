@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetByIdExtendedResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
      * @param actor   actor with access token
      * @param itemIds value of "item ids" parameter.
      */
-    public MarketGetByIdQueryWithExtended(VkApiClient client, Actor actor, String... itemIds) {
+    public MarketGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... itemIds) {
         super(client, "market.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         itemIds(itemIds);
@@ -33,7 +33,7 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
      * @param actor   actor with access token
      * @param itemIds value of "item ids" parameter.
      */
-    public MarketGetByIdQueryWithExtended(VkApiClient client, Actor actor, List<String> itemIds) {
+    public MarketGetByIdQueryWithExtended(VkApiClient client, UserActor actor, List<String> itemIds) {
         super(client, "market.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         itemIds(itemIds);

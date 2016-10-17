@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.likes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.likes.responses.GetListExtendedResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
      * @param actor  actor with access token
      * @param type   value of "type" parameter.
      */
-    public LikesGetListQueryWithExtended(VkApiClient client, Actor actor, LikesType type) {
+    public LikesGetListQueryWithExtended(VkApiClient client, UserActor actor, LikesType type) {
         super(client, "likes.getList", GetListExtendedResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

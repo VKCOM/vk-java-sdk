@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromCommunityQuery;
 import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
@@ -142,7 +143,7 @@ public class Messages extends AbstractAction {
     /**
      * Marks and unmarks messages as important (starred).
      */
-    public MessagesMarkAsImportantQuery markAsImportant(Actor actor) {
+    public MessagesMarkAsImportantQuery markAsImportant(UserActor actor) {
         return new MessagesMarkAsImportantQuery(getClient(), actor);
     }
 
@@ -163,161 +164,161 @@ public class Messages extends AbstractAction {
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQuery getChat(Actor actor) {
+    public MessagesGetChatQuery getChat(UserActor actor) {
         return new MessagesGetChatQuery(getClient(), actor);
     }
 
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithFields getChat(Actor actor, UserField... fields) {
+    public MessagesGetChatQueryWithFields getChat(UserActor actor, UserField... fields) {
         return new MessagesGetChatQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithChatIds getChat(Actor actor, Integer... chatIds) {
+    public MessagesGetChatQueryWithChatIds getChat(UserActor actor, Integer... chatIds) {
         return new MessagesGetChatQueryWithChatIds(getClient(), actor, chatIds);
     }
 
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithChatIds getChat(Actor actor, List<Integer> chatIds) {
+    public MessagesGetChatQueryWithChatIds getChat(UserActor actor, List<Integer> chatIds) {
         return new MessagesGetChatQueryWithChatIds(getClient(), actor, chatIds);
     }
 
     /**
      * Returns information about a chat.
      */
-    public MessagesGetChatQueryWithChatIdsFields getChat(Actor actor, List<Integer> chatIds, List<UserField> fields) {
+    public MessagesGetChatQueryWithChatIdsFields getChat(UserActor actor, List<Integer> chatIds, List<UserField> fields) {
         return new MessagesGetChatQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
     }
 
     /**
      * Creates a chat with several participants.
      */
-    public MessagesCreateChatQuery createChat(Actor actor, int... userIds) {
+    public MessagesCreateChatQuery createChat(UserActor actor, int... userIds) {
         return new MessagesCreateChatQuery(getClient(), actor, userIds);
     }
 
     /**
      * Creates a chat with several participants.
      */
-    public MessagesCreateChatQuery createChat(Actor actor, List<Integer> userIds) {
+    public MessagesCreateChatQuery createChat(UserActor actor, List<Integer> userIds) {
         return new MessagesCreateChatQuery(getClient(), actor, userIds);
     }
 
     /**
      * Edits the title of a chat.
      */
-    public MessagesEditChatQuery editChat(Actor actor, int chatId, String title) {
+    public MessagesEditChatQuery editChat(UserActor actor, int chatId, String title) {
         return new MessagesEditChatQuery(getClient(), actor, chatId, title);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQuery getChatUsers(Actor actor) {
+    public MessagesGetChatUsersQuery getChatUsers(UserActor actor) {
         return new MessagesGetChatUsersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithFields getChatUsers(Actor actor, UserField... fields) {
+    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, UserField... fields) {
         return new MessagesGetChatUsersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithFields getChatUsers(Actor actor, List<UserField> fields) {
+    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, List<UserField> fields) {
         return new MessagesGetChatUsersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithChatIds getChatUsers(Actor actor, Integer... chatIds) {
+    public MessagesGetChatUsersQueryWithChatIds getChatUsers(UserActor actor, Integer... chatIds) {
         return new MessagesGetChatUsersQueryWithChatIds(getClient(), actor, chatIds);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(Actor actor, List<Integer> chatIds, UserField... fields) {
+    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(UserActor actor, List<Integer> chatIds, UserField... fields) {
         return new MessagesGetChatUsersQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(Actor actor, List<Integer> chatIds, List<UserField> fields) {
+    public MessagesGetChatUsersQueryWithChatIdsFields getChatUsers(UserActor actor, List<Integer> chatIds, List<UserField> fields) {
         return new MessagesGetChatUsersQueryWithChatIdsFields(getClient(), actor, chatIds, fields);
     }
 
     /**
      * Changes the status of a user as typing in a conversation.
      */
-    public MessagesSetActivityQuery setActivity(Actor actor) {
+    public MessagesSetActivityQuery setActivity(UserActor actor) {
         return new MessagesSetActivityQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of the current user's conversations that match search criteria.
      */
-    public MessagesSearchDialogsQuery searchDialogs(Actor actor) {
+    public MessagesSearchDialogsQuery searchDialogs(UserActor actor) {
         return new MessagesSearchDialogsQuery(getClient(), actor);
     }
 
     /**
      * Adds a new user to a chat.
      */
-    public MessagesAddChatUserQuery addChatUser(Actor actor, int chatId, int userId) {
+    public MessagesAddChatUserQuery addChatUser(UserActor actor, int chatId, int userId) {
         return new MessagesAddChatUserQuery(getClient(), actor, chatId, userId);
     }
 
     /**
      * Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove another user from the chat.
      */
-    public MessagesRemoveChatUserQuery removeChatUser(Actor actor, int chatId, String userId) {
+    public MessagesRemoveChatUserQuery removeChatUser(UserActor actor, int chatId, String userId) {
         return new MessagesRemoveChatUserQuery(getClient(), actor, chatId, userId);
     }
 
     /**
      * Returns a user's current status and date of last activity.
      */
-    public MessagesGetLastActivityQuery getLastActivity(Actor actor, int userId) {
+    public MessagesGetLastActivityQuery getLastActivity(UserActor actor, int userId) {
         return new MessagesGetLastActivityQuery(getClient(), actor, userId);
     }
 
     /**
      * Sets a previously-uploaded picture as the cover picture of a chat.
      */
-    public MessagesSetChatPhotoQuery setChatPhoto(Actor actor, String file) {
+    public MessagesSetChatPhotoQuery setChatPhoto(UserActor actor, String file) {
         return new MessagesSetChatPhotoQuery(getClient(), actor, file);
     }
 
     /**
      * Deletes a chat's cover picture.
      */
-    public MessagesDeleteChatPhotoQuery deleteChatPhoto(Actor actor, int chatId) {
+    public MessagesDeleteChatPhotoQuery deleteChatPhoto(UserActor actor, int chatId) {
         return new MessagesDeleteChatPhotoQuery(getClient(), actor, chatId);
     }
 
     /**
      * Deny messages from community.
      */
-    public MessagesDenyMessagesFromCommunityQuery denyMessagesFromCommunity(Actor actor, int groupId) {
+    public MessagesDenyMessagesFromCommunityQuery denyMessagesFromCommunity(UserActor actor, int groupId) {
         return new MessagesDenyMessagesFromCommunityQuery(getClient(), actor, groupId);
     }
 
     /**
      * Allow messages from community.
      */
-    public MessagesAllowMessagesFromCommunityQuery allowMessagesFromCommunity(Actor actor, int groupId) {
+    public MessagesAllowMessagesFromCommunityQuery allowMessagesFromCommunity(UserActor actor, int groupId) {
         return new MessagesAllowMessagesFromCommunityQuery(getClient(), actor, groupId);
     }
 

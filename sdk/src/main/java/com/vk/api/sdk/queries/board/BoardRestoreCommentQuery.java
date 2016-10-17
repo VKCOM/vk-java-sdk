@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.board;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class BoardRestoreCommentQuery extends AbstractQueryBuilder<BoardRestoreC
      * @param topicId   value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public BoardRestoreCommentQuery(VkApiClient client, Actor actor, int groupId, int topicId, int commentId) {
+    public BoardRestoreCommentQuery(VkApiClient client, UserActor actor, int groupId, int topicId, int commentId) {
         super(client, "board.restoreComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

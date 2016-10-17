@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class GroupsEditLinkQuery extends AbstractQueryBuilder<GroupsEditLinkQuer
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param linkId  value of "link id" parameter. Minimum is 0.
      */
-    public GroupsEditLinkQuery(VkApiClient client, Actor actor, int groupId, int linkId) {
+    public GroupsEditLinkQuery(VkApiClient client, UserActor actor, int groupId, int linkId) {
         super(client, "groups.editLink", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

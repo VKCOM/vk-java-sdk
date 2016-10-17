@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.stats;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class StatsTrackVisitorQuery extends AbstractQueryBuilder<StatsTrackVisit
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public StatsTrackVisitorQuery(VkApiClient client, Actor actor) {
+    public StatsTrackVisitorQuery(VkApiClient client, UserActor actor) {
         super(client, "stats.trackVisitor", OkResponse.class);
         accessToken(actor.getAccessToken());
     }

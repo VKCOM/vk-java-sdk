@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetInvitesExtendedResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class GroupsGetInvitesQueryWithExtended extends AbstractQueryBuilder<Grou
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetInvitesQueryWithExtended(VkApiClient client, Actor actor) {
+    public GroupsGetInvitesQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "groups.getInvites", GetInvitesExtendedResponse.class);
         accessToken(actor.getAccessToken());
         extended(true);

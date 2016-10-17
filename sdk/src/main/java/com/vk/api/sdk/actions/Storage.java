@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.storage.StorageGetKeysQuery;
 import com.vk.api.sdk.queries.storage.StorageGetQuery;
 import com.vk.api.sdk.queries.storage.StorageSetQuery;
@@ -27,7 +27,7 @@ public class Storage extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public StorageGetQuery get(Actor actor) {
+    public StorageGetQuery get(UserActor actor) {
         return new StorageGetQuery(getClient(), actor);
     }
 
@@ -38,7 +38,7 @@ public class Storage extends AbstractAction {
      * @param key   key
      * @return query
      */
-    public StorageSetQuery set(Actor actor, String key) {
+    public StorageSetQuery set(UserActor actor, String key) {
         return new StorageSetQuery(getClient(), actor, key);
     }
 
@@ -48,7 +48,7 @@ public class Storage extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public StorageGetKeysQuery getKeys(Actor actor) {
+    public StorageGetKeysQuery getKeys(UserActor actor) {
         return new StorageGetKeysQuery(getClient(), actor);
     }
 }

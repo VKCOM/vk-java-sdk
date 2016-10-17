@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.EditPlaceResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class GroupsEditPlaceQuery extends AbstractQueryBuilder<GroupsEditPlaceQu
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsEditPlaceQuery(VkApiClient client, Actor actor, int groupId) {
+    public GroupsEditPlaceQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.editPlace", EditPlaceResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

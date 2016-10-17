@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.polls.Poll;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PollsGetByIdQuery extends AbstractQueryBuilder<PollsGetByIdQuery, L
      * @param actor  actor with access token
      * @param pollId value of "poll id" parameter. Minimum is 0.
      */
-    public PollsGetByIdQuery(VkApiClient client, Actor actor, int pollId) {
+    public PollsGetByIdQuery(VkApiClient client, UserActor actor, int pollId) {
         super(client, "polls.getById", Utils.buildParametrizedType(List.class, Poll.class));
         accessToken(actor.getAccessToken());
         pollId(pollId);

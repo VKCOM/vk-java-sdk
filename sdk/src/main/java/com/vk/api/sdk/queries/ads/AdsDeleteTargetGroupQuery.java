@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
      * @param accountId     value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
      */
-    public AdsDeleteTargetGroupQuery(VkApiClient client, Actor actor, int accountId, int targetGroupId) {
+    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId) {
         super(client, "ads.deleteTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

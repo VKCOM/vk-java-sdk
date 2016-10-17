@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.Group;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
      * @param actor  actor with access token
      * @param title  value of "title" parameter.
      */
-    public GroupsCreateQuery(VkApiClient client, Actor actor, String title) {
+    public GroupsCreateQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "groups.create", Group.class);
         accessToken(actor.getAccessToken());
         title(title);

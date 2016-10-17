@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.pages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param actor  actor with access token
      * @param pageId value of "page id" parameter.
      */
-    public PagesSaveAccessQuery(VkApiClient client, Actor actor, int pageId) {
+    public PagesSaveAccessQuery(VkApiClient client, UserActor actor, int pageId) {
         super(client, "pages.saveAccess", Integer.class);
         accessToken(actor.getAccessToken());
         pageId(pageId);

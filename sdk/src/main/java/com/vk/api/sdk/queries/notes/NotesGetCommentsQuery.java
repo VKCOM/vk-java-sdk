@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.notes.responses.GetCommentsResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
      * @param actor  actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
      */
-    public NotesGetCommentsQuery(VkApiClient client, Actor actor, int noteId) {
+    public NotesGetCommentsQuery(VkApiClient client, UserActor actor, int noteId) {
         super(client, "notes.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);

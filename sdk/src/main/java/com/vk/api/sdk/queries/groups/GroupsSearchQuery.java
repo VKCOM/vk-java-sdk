@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.SearchResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class GroupsSearchQuery extends AbstractQueryBuilder<GroupsSearchQuery, S
      * @param actor  actor with access token
      * @param q      value of "q" parameter.
      */
-    public GroupsSearchQuery(VkApiClient client, Actor actor, String q) {
+    public GroupsSearchQuery(VkApiClient client, UserActor actor, String q) {
         super(client, "groups.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         q(q);

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.audio;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.Audio;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class AudioSaveQuery extends AbstractQueryBuilder<AudioSaveQuery, List<Au
      * @param server value of "server" parameter.
      * @param audio  value of "audio" parameter.
      */
-    public AudioSaveQuery(VkApiClient client, Actor actor, int server, String audio) {
+    public AudioSaveQuery(VkApiClient client, UserActor actor, int server, String audio) {
         super(client, "audio.save", Utils.buildParametrizedType(List.class, Audio.class));
         accessToken(actor.getAccessToken());
         server(server);

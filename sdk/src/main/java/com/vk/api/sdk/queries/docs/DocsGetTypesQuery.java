@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.docs;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.GetTypesResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class DocsGetTypesQuery extends AbstractQueryBuilder<DocsGetTypesQuery, G
      * @param actor   actor with access token
      * @param ownerId value of "owner id" parameter.
      */
-    public DocsGetTypesQuery(VkApiClient client, Actor actor, int ownerId) {
+    public DocsGetTypesQuery(VkApiClient client, UserActor actor, int ownerId) {
         super(client, "docs.getTypes", GetTypesResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

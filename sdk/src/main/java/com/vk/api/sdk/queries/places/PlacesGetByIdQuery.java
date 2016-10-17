@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.places;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.Place;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PlacesGetByIdQuery extends AbstractQueryBuilder<PlacesGetByIdQuery,
      * @param actor  actor with access token
      * @param places value of "places" parameter.
      */
-    public PlacesGetByIdQuery(VkApiClient client, Actor actor, int... places) {
+    public PlacesGetByIdQuery(VkApiClient client, UserActor actor, int... places) {
         super(client, "places.getById", Utils.buildParametrizedType(List.class, Place.class));
         accessToken(actor.getAccessToken());
         places(places);
@@ -33,7 +33,7 @@ public class PlacesGetByIdQuery extends AbstractQueryBuilder<PlacesGetByIdQuery,
      * @param actor  actor with access token
      * @param places value of "places" parameter.
      */
-    public PlacesGetByIdQuery(VkApiClient client, Actor actor, List<Integer> places) {
+    public PlacesGetByIdQuery(VkApiClient client, UserActor actor, List<Integer> places) {
         super(client, "places.getById", Utils.buildParametrizedType(List.class, Place.class));
         accessToken(actor.getAccessToken());
         places(places);

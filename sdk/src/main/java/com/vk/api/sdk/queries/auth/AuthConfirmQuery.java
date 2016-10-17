@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.auth.responses.ConfirmResponse;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ public class AuthConfirmQuery extends AbstractQueryBuilder<AuthConfirmQuery, Con
      * @param phone        value of "phone" parameter.
      * @param code         value of "code" parameter.
      */
-    public AuthConfirmQuery(VkApiClient client, Actor actor, int clientId, String clientSecret, String phone, String code) {
+    public AuthConfirmQuery(VkApiClient client, UserActor actor, int clientId, String clientSecret, String phone, String code) {
         super(client, "auth.confirm", ConfirmResponse.class);
         accessToken(actor.getAccessToken());
         clientId(clientId);

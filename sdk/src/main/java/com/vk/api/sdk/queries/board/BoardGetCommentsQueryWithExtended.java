@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.board;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.board.responses.GetCommentsExtendedResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardGetCommentsQueryWithExtended(VkApiClient client, Actor actor, int groupId, int topicId) {
+    public BoardGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int groupId, int topicId) {
         super(client, "board.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

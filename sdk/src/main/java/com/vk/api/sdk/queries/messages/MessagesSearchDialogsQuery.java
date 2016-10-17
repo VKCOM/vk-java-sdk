@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.SearchDialogsResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -20,7 +20,7 @@ public class MessagesSearchDialogsQuery extends AbstractQueryBuilder<MessagesSea
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesSearchDialogsQuery(VkApiClient client, Actor actor) {
+    public MessagesSearchDialogsQuery(VkApiClient client, UserActor actor) {
         super(client, "messages.searchDialogs", Utils.buildParametrizedType(List.class, SearchDialogsResponse.class));
         accessToken(actor.getAccessToken());
     }

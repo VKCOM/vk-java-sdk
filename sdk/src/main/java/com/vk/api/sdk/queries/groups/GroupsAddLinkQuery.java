@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.GroupLink;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery,
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param link    value of "link" parameter.
      */
-    public GroupsAddLinkQuery(VkApiClient client, Actor actor, int groupId, String link) {
+    public GroupsAddLinkQuery(VkApiClient client, UserActor actor, int groupId, String link) {
         super(client, "groups.addLink", GroupLink.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

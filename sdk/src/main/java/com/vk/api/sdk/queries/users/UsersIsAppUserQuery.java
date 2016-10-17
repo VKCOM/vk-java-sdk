@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class UsersIsAppUserQuery extends AbstractQueryBuilder<UsersIsAppUserQuer
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public UsersIsAppUserQuery(VkApiClient client, Actor actor) {
+    public UsersIsAppUserQuery(VkApiClient client, UserActor actor) {
         super(client, "users.isAppUser", BoolInt.class);
         accessToken(actor.getAccessToken());
     }

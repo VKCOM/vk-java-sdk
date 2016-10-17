@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.likes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.likes.responses.DeleteResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class LikesDeleteQuery extends AbstractQueryBuilder<LikesDeleteQuery, Del
      * @param type   value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public LikesDeleteQuery(VkApiClient client, Actor actor, LikesType type, int itemId) {
+    public LikesDeleteQuery(VkApiClient client, UserActor actor, LikesType type, int itemId) {
         super(client, "likes.delete", DeleteResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

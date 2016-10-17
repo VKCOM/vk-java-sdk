@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargStats;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param accountId value of "account id" parameter.
      * @param linkUrl   value of "link url" parameter.
      */
-    public AdsGetTargetingStatsQuery(VkApiClient client, Actor actor, int accountId, String linkUrl) {
+    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, int accountId, String linkUrl) {
         super(client, "ads.getTargetingStats", TargStats.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

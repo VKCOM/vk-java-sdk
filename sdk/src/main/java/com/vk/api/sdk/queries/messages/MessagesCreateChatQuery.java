@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class MessagesCreateChatQuery extends AbstractQueryBuilder<MessagesCreate
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public MessagesCreateChatQuery(VkApiClient client, Actor actor, int... userIds) {
+    public MessagesCreateChatQuery(VkApiClient client, UserActor actor, int... userIds) {
         super(client, "messages.createChat", Integer.class);
         accessToken(actor.getAccessToken());
         userIds(userIds);
@@ -31,7 +31,7 @@ public class MessagesCreateChatQuery extends AbstractQueryBuilder<MessagesCreate
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public MessagesCreateChatQuery(VkApiClient client, Actor actor, List<Integer> userIds) {
+    public MessagesCreateChatQuery(VkApiClient client, UserActor actor, List<Integer> userIds) {
         super(client, "messages.createChat", Integer.class);
         accessToken(actor.getAccessToken());
         userIds(userIds);

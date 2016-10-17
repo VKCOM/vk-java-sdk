@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.Stats;
 
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param dateFrom  value of "date from" parameter.
      * @param dateTo    value of "date to" parameter.
      */
-    public AdsGetStatisticsQuery(VkApiClient client, Actor actor, int accountId, AdsGetStatisticsIdsType idsType,
+    public AdsGetStatisticsQuery(VkApiClient client, UserActor actor, int accountId, AdsGetStatisticsIdsType idsType,
                                  String ids, AdsGetStatisticsPeriod period, String dateFrom, String dateTo) {
         super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, Stats.class));
         accessToken(actor.getAccessToken());

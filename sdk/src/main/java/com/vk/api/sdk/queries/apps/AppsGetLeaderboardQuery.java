@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.apps;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.apps.responses.GetLeaderboardResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AppsGetLeaderboardQuery extends AbstractQueryBuilder<AppsGetLeaderb
      * @param actor  actor with access token
      * @param type   value of "type" parameter.
      */
-    public AppsGetLeaderboardQuery(VkApiClient client, Actor actor, AppsGetLeaderboardType type) {
+    public AppsGetLeaderboardQuery(VkApiClient client, UserActor actor, AppsGetLeaderboardType type) {
         super(client, "apps.getLeaderboard", GetLeaderboardResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

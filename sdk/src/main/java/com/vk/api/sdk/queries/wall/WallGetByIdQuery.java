@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.WallpostFull;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param actor  actor with access token
      * @param posts  value of "posts" parameter.
      */
-    public WallGetByIdQuery(VkApiClient client, Actor actor, String... posts) {
+    public WallGetByIdQuery(VkApiClient client, UserActor actor, String... posts) {
         super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
         accessToken(actor.getAccessToken());
         posts(posts);
@@ -33,7 +33,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param actor  actor with access token
      * @param posts  value of "posts" parameter.
      */
-    public WallGetByIdQuery(VkApiClient client, Actor actor, List<String> posts) {
+    public WallGetByIdQuery(VkApiClient client, UserActor actor, List<String> posts) {
         super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
         accessToken(actor.getAccessToken());
         posts(posts);

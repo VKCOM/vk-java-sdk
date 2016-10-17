@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetUniversitiesResponse;
 
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class DatabaseGetUniversitiesQuery extends AbstractQueryBuilder<DatabaseG
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public DatabaseGetUniversitiesQuery(VkApiClient client, Actor actor) {
+    public DatabaseGetUniversitiesQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getUniversities", GetUniversitiesResponse.class);
         accessToken(actor.getAccessToken());
     }

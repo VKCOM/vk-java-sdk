@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.stats;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.stats.Period;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<Peri
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public StatsGetQuery(VkApiClient client, Actor actor) {
+    public StatsGetQuery(VkApiClient client, UserActor actor) {
         super(client, "stats.get", Utils.buildParametrizedType(List.class, Period.class));
         accessToken(actor.getAccessToken());
     }

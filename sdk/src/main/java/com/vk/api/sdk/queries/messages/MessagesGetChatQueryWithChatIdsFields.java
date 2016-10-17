@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.ChatFull;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -22,7 +22,7 @@ public class MessagesGetChatQueryWithChatIdsFields extends AbstractQueryBuilder<
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, Actor actor, List<Integer> chatIds, List<UserField> fields) {
+    public MessagesGetChatQueryWithChatIdsFields(VkApiClient client, UserActor actor, List<Integer> chatIds, List<UserField> fields) {
         super(client, "messages.getChat", Utils.buildParametrizedType(List.class, ChatFull.class));
         accessToken(actor.getAccessToken());
         chatIds(chatIds);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      * @param actor  actor with access token
      * @param title  value of "title" parameter.
      */
-    public NewsfeedSaveListQuery(VkApiClient client, Actor actor, String title) {
+    public NewsfeedSaveListQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "newsfeed.saveList", Integer.class);
         accessToken(actor.getAccessToken());
         title(title);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
      * @param title  value of "title" parameter.
      * @param text   value of "text" parameter.
      */
-    public NotesAddQuery(VkApiClient client, Actor actor, String title, String text) {
+    public NotesAddQuery(VkApiClient client, UserActor actor, String title, String text) {
         super(client, "notes.add", Integer.class);
         accessToken(actor.getAccessToken());
         title(title);

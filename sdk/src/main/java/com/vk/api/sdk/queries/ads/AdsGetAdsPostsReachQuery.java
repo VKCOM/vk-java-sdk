@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.PostStats;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class AdsGetAdsPostsReachQuery extends AbstractQueryBuilder<AdsGetAdsPost
      * @param accountId value of "account id" parameter.
      * @param adsIds    value of "ads ids" parameter.
      */
-    public AdsGetAdsPostsReachQuery(VkApiClient client, Actor actor, int accountId, String adsIds) {
+    public AdsGetAdsPostsReachQuery(VkApiClient client, UserActor actor, int accountId, String adsIds) {
         super(client, "ads.getAdsPostsReach", Utils.buildParametrizedType(List.class, PostStats.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);

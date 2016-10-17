@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetRegionsResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
      * @param actor     actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
-    public DatabaseGetRegionsQuery(VkApiClient client, Actor actor, int countryId) {
+    public DatabaseGetRegionsQuery(VkApiClient client, UserActor actor, int countryId) {
         super(client, "database.getRegions", GetRegionsResponse.class);
         accessToken(actor.getAccessToken());
         countryId(countryId);

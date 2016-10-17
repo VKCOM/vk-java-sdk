@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.FriendStatus;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFrien
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public FriendsAreFriendsQuery(VkApiClient client, Actor actor, int... userIds) {
+    public FriendsAreFriendsQuery(VkApiClient client, UserActor actor, int... userIds) {
         super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, FriendStatus.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);
@@ -33,7 +33,7 @@ public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFrien
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public FriendsAreFriendsQuery(VkApiClient client, Actor actor, List<Integer> userIds) {
+    public FriendsAreFriendsQuery(VkApiClient client, UserActor actor, List<Integer> userIds) {
         super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, FriendStatus.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PhotosGetByIdQuery extends AbstractQueryBuilder<PhotosGetByIdQuery,
      * @param actor  actor with access token
      * @param photos value of "photos" parameter.
      */
-    public PhotosGetByIdQuery(VkApiClient client, Actor actor, String... photos) {
+    public PhotosGetByIdQuery(VkApiClient client, UserActor actor, String... photos) {
         super(client, "photos.getById", Utils.buildParametrizedType(List.class, Photo.class));
         accessToken(actor.getAccessToken());
         photos(photos);
@@ -33,7 +33,7 @@ public class PhotosGetByIdQuery extends AbstractQueryBuilder<PhotosGetByIdQuery,
      * @param actor  actor with access token
      * @param photos value of "photos" parameter.
      */
-    public PhotosGetByIdQuery(VkApiClient client, Actor actor, List<String> photos) {
+    public PhotosGetByIdQuery(VkApiClient client, UserActor actor, List<String> photos) {
         super(client, "photos.getById", Utils.buildParametrizedType(List.class, Photo.class));
         accessToken(actor.getAccessToken());
         photos(photos);

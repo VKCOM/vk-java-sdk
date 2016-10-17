@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.responses.GetResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class AudioGetQuery extends AbstractQueryBuilder<AudioGetQuery, GetRespon
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AudioGetQuery(VkApiClient client, Actor actor) {
+    public AudioGetQuery(VkApiClient client, UserActor actor) {
         super(client, "audio.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

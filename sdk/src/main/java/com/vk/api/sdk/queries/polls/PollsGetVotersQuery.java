@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.polls.Voters;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -23,7 +23,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @param pollId    value of "poll id" parameter. Minimum is 0.
      * @param answerIds value of "answer ids" parameter.
      */
-    public PollsGetVotersQuery(VkApiClient client, Actor actor, int pollId, int... answerIds) {
+    public PollsGetVotersQuery(VkApiClient client, UserActor actor, int pollId, int... answerIds) {
         super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
         accessToken(actor.getAccessToken());
         pollId(pollId);
@@ -38,7 +38,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @param pollId    value of "poll id" parameter. Minimum is 0.
      * @param answerIds value of "answer ids" parameter.
      */
-    public PollsGetVotersQuery(VkApiClient client, Actor actor, int pollId, List<Integer> answerIds) {
+    public PollsGetVotersQuery(VkApiClient client, UserActor actor, int pollId, List<Integer> answerIds) {
         super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
         accessToken(actor.getAccessToken());
         pollId(pollId);

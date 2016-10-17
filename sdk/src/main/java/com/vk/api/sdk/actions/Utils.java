@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.utils.UtilsCheckLinkQuery;
 import com.vk.api.sdk.queries.utils.UtilsGetServerTimeQuery;
 import com.vk.api.sdk.queries.utils.UtilsResolveScreenNameQuery;
@@ -31,7 +31,7 @@ public class Utils extends AbstractAction {
     /**
      * Checks whether a link is blocked in VK.
      */
-    public UtilsCheckLinkQuery checkLink(Actor actor, String url) {
+    public UtilsCheckLinkQuery checkLink(UserActor actor, String url) {
         return new UtilsCheckLinkQuery(getClient(), actor, url);
     }
 
@@ -45,7 +45,7 @@ public class Utils extends AbstractAction {
     /**
      * Detects a type of object (e.g., user, community, application) and its ID by screen name.
      */
-    public UtilsResolveScreenNameQuery resolveScreenName(Actor actor, String screenName) {
+    public UtilsResolveScreenNameQuery resolveScreenName(UserActor actor, String screenName) {
         return new UtilsResolveScreenNameQuery(getClient(), actor, screenName);
     }
 
@@ -59,7 +59,7 @@ public class Utils extends AbstractAction {
     /**
      * Returns the current time of the VK server.
      */
-    public UtilsGetServerTimeQuery getServerTime(Actor actor) {
+    public UtilsGetServerTimeQuery getServerTime(UserActor actor) {
         return new UtilsGetServerTimeQuery(getClient(), actor);
     }
 }

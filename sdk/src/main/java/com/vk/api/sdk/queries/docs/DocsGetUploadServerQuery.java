@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.docs;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.GetUploadServerResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class DocsGetUploadServerQuery extends AbstractQueryBuilder<DocsGetUpload
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public DocsGetUploadServerQuery(VkApiClient client, Actor actor) {
+    public DocsGetUploadServerQuery(VkApiClient client, UserActor actor) {
         super(client, "docs.getUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }

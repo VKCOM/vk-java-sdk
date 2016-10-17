@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.audio;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.AudioFull;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioGetRecommendationsQuery extends AbstractQueryBuilder<AudioGetR
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AudioGetRecommendationsQuery(VkApiClient client, Actor actor) {
+    public AudioGetRecommendationsQuery(VkApiClient client, UserActor actor) {
         super(client, "audio.getRecommendations", Utils.buildParametrizedType(List.class, AudioFull.class));
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.pages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.pages.WikipageFull;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PagesGetQuery(VkApiClient client, Actor actor) {
+    public PagesGetQuery(VkApiClient client, UserActor actor) {
         super(client, "pages.get", WikipageFull.class);
         accessToken(actor.getAccessToken());
     }

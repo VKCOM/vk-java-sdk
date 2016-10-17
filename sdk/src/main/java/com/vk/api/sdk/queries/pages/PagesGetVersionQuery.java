@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.pages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.pages.WikipageFull;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PagesGetVersionQuery extends AbstractQueryBuilder<PagesGetVersionQu
      * @param actor     actor with access token
      * @param versionId value of "version id" parameter.
      */
-    public PagesGetVersionQuery(VkApiClient client, Actor actor, int versionId) {
+    public PagesGetVersionQuery(VkApiClient client, UserActor actor, int versionId) {
         super(client, "pages.getVersion", WikipageFull.class);
         accessToken(actor.getAccessToken());
         versionId(versionId);

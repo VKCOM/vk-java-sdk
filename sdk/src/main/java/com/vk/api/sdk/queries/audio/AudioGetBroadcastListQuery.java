@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.audio;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.UserBroadcast;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioGetBroadcastListQuery extends AbstractQueryBuilder<AudioGetBro
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AudioGetBroadcastListQuery(VkApiClient client, Actor actor) {
+    public AudioGetBroadcastListQuery(VkApiClient client, UserActor actor) {
         super(client, "audio.getBroadcastList", Utils.buildParametrizedType(List.class, UserBroadcast.class));
         accessToken(actor.getAccessToken());
     }

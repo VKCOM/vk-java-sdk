@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.apps;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param actor  actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
      */
-    public AppsSendRequestQuery(VkApiClient client, Actor actor, int userId) {
+    public AppsSendRequestQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "apps.sendRequest", Integer.class);
         accessToken(actor.getAccessToken());
         userId(userId);

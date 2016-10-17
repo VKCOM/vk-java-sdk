@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.PostResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public WallPostQuery(VkApiClient client, Actor actor) {
+    public WallPostQuery(VkApiClient client, UserActor actor) {
         super(client, "wall.post", PostResponse.class);
         accessToken(actor.getAccessToken());
     }

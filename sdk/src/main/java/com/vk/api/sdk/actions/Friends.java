@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.friends.FriendsAddListQuery;
 import com.vk.api.sdk.queries.friends.FriendsAddQuery;
 import com.vk.api.sdk.queries.friends.FriendsAreFriendsQuery;
@@ -55,7 +55,7 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQuery get(Actor actor) {
+    public FriendsGetQuery get(UserActor actor) {
         return new FriendsGetQuery(getClient(), actor);
     }
 
@@ -76,175 +76,175 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(Actor actor, UserField... fields) {
+    public FriendsGetQueryWithFields get(UserActor actor, UserField... fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(Actor actor, List<UserField> fields) {
+    public FriendsGetQueryWithFields get(UserActor actor, List<UserField> fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of user IDs of a user's friends who are online.
      */
-    public FriendsGetOnlineQuery getOnline(Actor actor) {
+    public FriendsGetOnlineQuery getOnline(UserActor actor) {
         return new FriendsGetOnlineQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of user IDs of a user's friends who are online.
      */
-    public FriendsGetOnlineQueryWithMobile getOnlineMobile(Actor actor) {
+    public FriendsGetOnlineQueryWithMobile getOnlineMobile(UserActor actor) {
         return new FriendsGetOnlineQueryWithMobile(getClient(), actor);
     }
 
     /**
      * Returns a list of user IDs of the mutual friends of two users.
      */
-    public FriendsGetMutualQuery getMutual(Actor actor) {
+    public FriendsGetMutualQuery getMutual(UserActor actor) {
         return new FriendsGetMutualQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of user IDs of the current user's recently added friends.
      */
-    public FriendsGetRecentQuery getRecent(Actor actor) {
+    public FriendsGetRecentQuery getRecent(UserActor actor) {
         return new FriendsGetRecentQuery(getClient(), actor);
     }
 
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      */
-    public FriendsGetRequestsQuery getRequests(Actor actor) {
+    public FriendsGetRequestsQuery getRequests(UserActor actor) {
         return new FriendsGetRequestsQuery(getClient(), actor);
     }
 
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      */
-    public FriendsGetRequestsQueryWithNeedMutual getRequests(Actor actor, Boolean needMutual) {
+    public FriendsGetRequestsQueryWithNeedMutual getRequests(UserActor actor, Boolean needMutual) {
         return new FriendsGetRequestsQueryWithNeedMutual(getClient(), actor, needMutual);
     }
 
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      */
-    public FriendsGetRequestsQueryWithExtended getRequestsExtended(Actor actor) {
+    public FriendsGetRequestsQueryWithExtended getRequestsExtended(UserActor actor) {
         return new FriendsGetRequestsQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Approves or creates a friend request.
      */
-    public FriendsAddQuery add(Actor actor, int userId) {
+    public FriendsAddQuery add(UserActor actor, int userId) {
         return new FriendsAddQuery(getClient(), actor, userId);
     }
 
     /**
      * Edits the friend lists of the selected user.
      */
-    public FriendsEditQuery edit(Actor actor, int userId) {
+    public FriendsEditQuery edit(UserActor actor, int userId) {
         return new FriendsEditQuery(getClient(), actor, userId);
     }
 
     /**
      * Declines a friend request or deletes a user from the current user's friend list.
      */
-    public FriendsDeleteQuery delete(Actor actor, int userId) {
+    public FriendsDeleteQuery delete(UserActor actor, int userId) {
         return new FriendsDeleteQuery(getClient(), actor, userId);
     }
 
     /**
      * Returns a list of the current user's friend lists.
      */
-    public FriendsGetListsQuery getLists(Actor actor) {
+    public FriendsGetListsQuery getLists(UserActor actor) {
         return new FriendsGetListsQuery(getClient(), actor);
     }
 
     /**
      * Creates a new friend list for the current user.
      */
-    public FriendsAddListQuery addList(Actor actor, String name) {
+    public FriendsAddListQuery addList(UserActor actor, String name) {
         return new FriendsAddListQuery(getClient(), actor, name);
     }
 
     /**
      * Edits a friend list of the current user.
      */
-    public FriendsEditListQuery editList(Actor actor, int listId) {
+    public FriendsEditListQuery editList(UserActor actor, int listId) {
         return new FriendsEditListQuery(getClient(), actor, listId);
     }
 
     /**
      * Deletes a friend list of the current user.
      */
-    public FriendsDeleteListQuery deleteList(Actor actor, int listId) {
+    public FriendsDeleteListQuery deleteList(UserActor actor, int listId) {
         return new FriendsDeleteListQuery(getClient(), actor, listId);
     }
 
     /**
      * Returns a list of IDs of the current user's friends who installed the application.
      */
-    public FriendsGetAppUsersQuery getAppUsers(Actor actor) {
+    public FriendsGetAppUsersQuery getAppUsers(UserActor actor) {
         return new FriendsGetAppUsersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
      */
-    public FriendsGetByPhonesQuery getByPhones(Actor actor) {
+    public FriendsGetByPhonesQuery getByPhones(UserActor actor) {
         return new FriendsGetByPhonesQuery(getClient(), actor);
     }
 
     /**
      * Marks all incoming friend requests as viewed.
      */
-    public FriendsDeleteAllRequestsQuery deleteAllRequests(Actor actor) {
+    public FriendsDeleteAllRequestsQuery deleteAllRequests(UserActor actor) {
         return new FriendsDeleteAllRequestsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of profiles of users whom the current user may know.
      */
-    public FriendsGetSuggestionsQuery getSuggestions(Actor actor) {
+    public FriendsGetSuggestionsQuery getSuggestions(UserActor actor) {
         return new FriendsGetSuggestionsQuery(getClient(), actor);
     }
 
     /**
      * Checks the current user's friendship status with other specified users.
      */
-    public FriendsAreFriendsQuery areFriends(Actor actor, int... userIds) {
+    public FriendsAreFriendsQuery areFriends(UserActor actor, int... userIds) {
         return new FriendsAreFriendsQuery(getClient(), actor, userIds);
     }
 
     /**
      * Checks the current user's friendship status with other specified users.
      */
-    public FriendsAreFriendsQuery areFriends(Actor actor, List<Integer> userIds) {
+    public FriendsAreFriendsQuery areFriends(UserActor actor, List<Integer> userIds) {
         return new FriendsAreFriendsQuery(getClient(), actor, userIds);
     }
 
     /**
      * Returns a list of friends who can be called by the current user.
      */
-    public FriendsGetAvailableForCallQuery getAvailableForCall(Actor actor) {
+    public FriendsGetAvailableForCallQuery getAvailableForCall(UserActor actor) {
         return new FriendsGetAvailableForCallQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of friends who can be called by the current user.
      */
-    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, UserField... fields) {
+    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(UserActor actor, UserField... fields) {
         return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of friends who can be called by the current user.
      */
-    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(Actor actor, List<UserField> fields) {
+    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(UserActor actor, List<UserField> fields) {
         return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
     }
 
@@ -255,7 +255,7 @@ public class Friends extends AbstractAction {
      * @param userId value of "user id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsSearchQuery search(Actor actor, int userId) {
+    public FriendsSearchQuery search(UserActor actor, int userId) {
         return new FriendsSearchQuery(getClient(), actor, userId);
     }
 }

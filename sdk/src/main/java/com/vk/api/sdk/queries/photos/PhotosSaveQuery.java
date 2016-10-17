@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PhotosSaveQuery(VkApiClient client, Actor actor) {
+    public PhotosSaveQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.save", Utils.buildParametrizedType(List.class, Photo.class));
         accessToken(actor.getAccessToken());
     }

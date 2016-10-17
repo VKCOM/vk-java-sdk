@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.GroupSettings;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class GroupsGetSettingsQuery extends AbstractQueryBuilder<GroupsGetSettin
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetSettingsQuery(VkApiClient client, Actor actor, int groupId) {
+    public GroupsGetSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getSettings", GroupSettings.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

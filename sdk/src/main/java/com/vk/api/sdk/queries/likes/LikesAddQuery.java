@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.likes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.likes.responses.AddResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class LikesAddQuery extends AbstractQueryBuilder<LikesAddQuery, AddRespon
      * @param type   value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public LikesAddQuery(VkApiClient client, Actor actor, LikesType type, int itemId) {
+    public LikesAddQuery(VkApiClient client, UserActor actor, LikesType type, int itemId) {
         super(client, "likes.add", AddResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

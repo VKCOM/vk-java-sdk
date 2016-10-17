@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.fave;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class FaveAddLinkQuery extends AbstractQueryBuilder<FaveAddLinkQuery, OkR
      * @param actor  actor with access token
      * @param link   value of "link" parameter.
      */
-    public FaveAddLinkQuery(VkApiClient client, Actor actor, String link) {
+    public FaveAddLinkQuery(VkApiClient client, UserActor actor, String link) {
         super(client, "fave.addLink", OkResponse.class);
         accessToken(actor.getAccessToken());
         link(link);

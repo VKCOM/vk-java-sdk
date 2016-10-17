@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.leads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Lead;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class LeadsGetStatsQuery extends AbstractQueryBuilder<LeadsGetStatsQuery,
      * @param actor  actor with access token
      * @param leadId value of "lead id" parameter. Minimum is 0.
      */
-    public LeadsGetStatsQuery(VkApiClient client, Actor actor, int leadId) {
+    public LeadsGetStatsQuery(VkApiClient client, UserActor actor, int leadId) {
         super(client, "leads.getStats", Lead.class);
         accessToken(actor.getAccessToken());
         leadId(leadId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.polls;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param ownerId value of "owner id" parameter.
      * @param pollId  value of "poll id" parameter. Minimum is 0.
      */
-    public PollsEditQuery(VkApiClient client, Actor actor, int ownerId, int pollId) {
+    public PollsEditQuery(VkApiClient client, UserActor actor, int ownerId, int pollId) {
         super(client, "polls.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

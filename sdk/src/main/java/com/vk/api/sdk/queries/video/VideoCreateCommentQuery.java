@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * @param actor   actor with access token
      * @param videoId value of "video id" parameter.
      */
-    public VideoCreateCommentQuery(VkApiClient client, Actor actor, int videoId) {
+    public VideoCreateCommentQuery(VkApiClient client, UserActor actor, int videoId) {
         super(client, "video.createComment", Integer.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);

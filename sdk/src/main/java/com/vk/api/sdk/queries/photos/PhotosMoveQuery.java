@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PhotosMoveQuery extends AbstractQueryBuilder<PhotosMoveQuery, OkRes
      * @param targetAlbumId value of "target album id" parameter.
      * @param photoId       value of "photo id" parameter.
      */
-    public PhotosMoveQuery(VkApiClient client, Actor actor, int targetAlbumId, int photoId) {
+    public PhotosMoveQuery(VkApiClient client, UserActor actor, int targetAlbumId, int photoId) {
         super(client, "photos.move", OkResponse.class);
         accessToken(actor.getAccessToken());
         targetAlbumId(targetAlbumId);

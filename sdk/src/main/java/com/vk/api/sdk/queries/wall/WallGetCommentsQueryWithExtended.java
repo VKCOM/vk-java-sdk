@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsExtendedResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param actor  actor with access token
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallGetCommentsQueryWithExtended(VkApiClient client, Actor actor, int postId) {
+    public WallGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int postId) {
         super(client, "wall.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         postId(postId);

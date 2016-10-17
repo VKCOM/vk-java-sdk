@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.account;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.LookupResult;
 import com.vk.api.sdk.queries.users.UserField;
 
@@ -20,7 +20,7 @@ public class AccountLookupContactsQuery extends AbstractQueryBuilder<AccountLook
      * @param actor   actor with access token
      * @param service value of "service" parameter.
      */
-    public AccountLookupContactsQuery(VkApiClient client, Actor actor, AccountLookupContactsService service) {
+    public AccountLookupContactsQuery(VkApiClient client, UserActor actor, AccountLookupContactsService service) {
         super(client, "account.lookupContacts", LookupResult.class);
         accessToken(actor.getAccessToken());
         service(service);

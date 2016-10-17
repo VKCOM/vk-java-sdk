@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.UserXtrInvitedBy;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -21,7 +21,7 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
+    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, UserField... fields) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, UserXtrInvitedBy.class));
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -33,7 +33,7 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, List<UserField> fields) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, UserXtrInvitedBy.class));
         accessToken(actor.getAccessToken());
         fields(fields);

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.audio;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.AudioFull;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AudioGetByIdQuery extends AbstractQueryBuilder<AudioGetByIdQuery, L
      * @param actor  actor with access token
      * @param audios value of "audios" parameter.
      */
-    public AudioGetByIdQuery(VkApiClient client, Actor actor, String... audios) {
+    public AudioGetByIdQuery(VkApiClient client, UserActor actor, String... audios) {
         super(client, "audio.getById", Utils.buildParametrizedType(List.class, AudioFull.class));
         accessToken(actor.getAccessToken());
         audios(audios);
@@ -33,7 +33,7 @@ public class AudioGetByIdQuery extends AbstractQueryBuilder<AudioGetByIdQuery, L
      * @param actor  actor with access token
      * @param audios value of "audios" parameter.
      */
-    public AudioGetByIdQuery(VkApiClient client, Actor actor, List<String> audios) {
+    public AudioGetByIdQuery(VkApiClient client, UserActor actor, List<String> audios) {
         super(client, "audio.getById", Utils.buildParametrizedType(List.class, AudioFull.class));
         accessToken(actor.getAccessToken());
         audios(audios);

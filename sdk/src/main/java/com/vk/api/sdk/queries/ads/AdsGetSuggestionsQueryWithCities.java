@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargSuggestionsCities;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGe
      * @param actor   actor with access token
      * @param section value of "section" parameter.
      */
-    public AdsGetSuggestionsQueryWithCities(VkApiClient client, Actor actor, AdsGetSuggestionsSection section, String cities) {
+    public AdsGetSuggestionsQueryWithCities(VkApiClient client, UserActor actor, AdsGetSuggestionsSection section, String cities) {
         super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestionsCities.class));
         accessToken(actor.getAccessToken());
         section(section);

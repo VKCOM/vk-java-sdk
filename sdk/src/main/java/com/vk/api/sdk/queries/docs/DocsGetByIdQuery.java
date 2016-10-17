@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.Doc;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * @param actor  actor with access token
      * @param docs   value of "docs" parameter.
      */
-    public DocsGetByIdQuery(VkApiClient client, Actor actor, String... docs) {
+    public DocsGetByIdQuery(VkApiClient client, UserActor actor, String... docs) {
         super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
         accessToken(actor.getAccessToken());
         docs(docs);
@@ -33,7 +33,7 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * @param actor  actor with access token
      * @param docs   value of "docs" parameter.
      */
-    public DocsGetByIdQuery(VkApiClient client, Actor actor, List<String> docs) {
+    public DocsGetByIdQuery(VkApiClient client, UserActor actor, List<String> docs) {
         super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
         accessToken(actor.getAccessToken());
         docs(docs);

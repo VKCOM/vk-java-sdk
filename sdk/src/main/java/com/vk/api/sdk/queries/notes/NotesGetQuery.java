@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.notes.responses.GetResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class NotesGetQuery extends AbstractQueryBuilder<NotesGetQuery, GetRespon
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NotesGetQuery(VkApiClient client, Actor actor) {
+    public NotesGetQuery(VkApiClient client, UserActor actor) {
         super(client, "notes.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

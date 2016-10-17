@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.auth.AuthCheckPhoneQuery;
 import com.vk.api.sdk.queries.auth.AuthConfirmQuery;
 import com.vk.api.sdk.queries.auth.AuthRestoreQuery;
@@ -41,7 +41,7 @@ public class Auth extends AbstractAction {
      * @param clientSecret client secret
      * @return query
      */
-    public AuthCheckPhoneQuery checkPhone(Actor actor, String phone, String clientSecret) {
+    public AuthCheckPhoneQuery checkPhone(UserActor actor, String phone, String clientSecret) {
         return new AuthCheckPhoneQuery(getClient(), actor, phone, clientSecret);
     }
 
@@ -70,7 +70,7 @@ public class Auth extends AbstractAction {
      * @param phone        phone number
      * @return query
      */
-    public AuthSignupQuery signup(Actor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
+    public AuthSignupQuery signup(UserActor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
         return new AuthSignupQuery(getClient(), actor, firstName, lastName, clientId, clientSecret, phone);
     }
 
@@ -97,7 +97,7 @@ public class Auth extends AbstractAction {
      * @param code         confirmation code
      * @return query
      */
-    public AuthConfirmQuery confirm(Actor actor, int clientId, String clientSecret, String phone, String code) {
+    public AuthConfirmQuery confirm(UserActor actor, int clientId, String clientSecret, String phone, String code) {
         return new AuthConfirmQuery(getClient(), actor, clientId, clientSecret, phone, code);
     }
 
@@ -118,7 +118,7 @@ public class Auth extends AbstractAction {
      * @param phone phone number
      * @return query
      */
-    public AuthRestoreQuery restore(Actor actor, String phone) {
+    public AuthRestoreQuery restore(UserActor actor, String phone) {
         return new AuthRestoreQuery(getClient(), actor, phone);
     }
 }

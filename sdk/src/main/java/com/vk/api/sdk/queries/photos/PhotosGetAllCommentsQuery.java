@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetAllCommentsResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PhotosGetAllCommentsQuery(VkApiClient client, Actor actor) {
+    public PhotosGetAllCommentsQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getAllComments", GetAllCommentsResponse.class);
         accessToken(actor.getAccessToken());
     }

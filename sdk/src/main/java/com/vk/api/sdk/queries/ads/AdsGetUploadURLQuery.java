@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class AdsGetUploadURLQuery extends AbstractQueryBuilder<AdsGetUploadURLQu
      * @param actor    actor with access token
      * @param adFormat value of "ad format" parameter.
      */
-    public AdsGetUploadURLQuery(VkApiClient client, Actor actor, AdsGetUploadURLAdFormat adFormat) {
+    public AdsGetUploadURLQuery(VkApiClient client, UserActor actor, AdsGetUploadURLAdFormat adFormat) {
         super(client, "ads.getUploadURL", String.class);
         accessToken(actor.getAccessToken());
         adFormat(adFormat);

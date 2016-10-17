@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param targetGroupId value of "target group id" parameter.
      * @param name          value of "name" parameter.
      */
-    public AdsUpdateTargetGroupQuery(VkApiClient client, Actor actor, int accountId, int targetGroupId, String name) {
+    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId, String name) {
         super(client, "ads.updateTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

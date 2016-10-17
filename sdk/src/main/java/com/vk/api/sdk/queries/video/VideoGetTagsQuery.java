@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.VideoTag;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class VideoGetTagsQuery extends AbstractQueryBuilder<VideoGetTagsQuery, L
      * @param actor   actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoGetTagsQuery(VkApiClient client, Actor actor, int videoId) {
+    public VideoGetTagsQuery(VkApiClient client, UserActor actor, int videoId) {
         super(client, "video.getTags", Utils.buildParametrizedType(List.class, VideoTag.class));
         accessToken(actor.getAccessToken());
         videoId(videoId);

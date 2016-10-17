@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
      * @param itemId   value of "item id" parameter. Minimum is 0.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketAddToAlbumQuery(VkApiClient client, Actor actor, int ownerId, int itemId, int... albumIds) {
+    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, int... albumIds) {
         super(client, "market.addToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -38,7 +38,7 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
      * @param itemId   value of "item id" parameter. Minimum is 0.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketAddToAlbumQuery(VkApiClient client, Actor actor, int ownerId, int itemId, List<Integer> albumIds) {
+    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, List<Integer> albumIds) {
         super(client, "market.addToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

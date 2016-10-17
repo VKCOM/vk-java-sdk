@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetFollowersResponse;
 
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public UsersGetFollowersQuery(VkApiClient client, Actor actor) {
+    public UsersGetFollowersQuery(VkApiClient client, UserActor actor) {
         super(client, "users.getFollowers", GetFollowersResponse.class);
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.gifts;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.gifts.responses.GetResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class GiftsGetQuery extends AbstractQueryBuilder<GiftsGetQuery, GetRespon
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GiftsGetQuery(VkApiClient client, Actor actor) {
+    public GiftsGetQuery(VkApiClient client, UserActor actor) {
         super(client, "gifts.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

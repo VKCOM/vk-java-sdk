@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.utils;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.utils.LinkChecked;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuer
      * @param actor  actor with access token
      * @param url    value of "url" parameter.
      */
-    public UtilsCheckLinkQuery(VkApiClient client, Actor actor, String url) {
+    public UtilsCheckLinkQuery(VkApiClient client, UserActor actor, String url) {
         super(client, "utils.checkLink", LinkChecked.class);
         accessToken(actor.getAccessToken());
         url(url);
