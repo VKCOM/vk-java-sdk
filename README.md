@@ -122,14 +122,14 @@ UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccess
 This flow allows to interact with API service methods with "secure" prefix. Use this method:
 
 ```java
-ClientCredentialsFlowResponse authResponse = vk.oauth()
-    .serverClientCredentialsFlow(APP_ID, CLIENT_SECRET)
+ServiceClientCredentialsFlowResponse authResponse = vk.oauth()
+    .serviceClientCredentialsFlow(APP_ID, CLIENT_SECRET)
     .execute();
     
-ServerActor actor = new ServerActor(APP_ID, authResponse.getAccessToken());
+ServiceActor actor = new ServiceActor(APP_ID, authResponse.getAccessToken());
 ```
 
-When succeed, a ServerActor object is created. You can call VK API methods on behalf of an app. 
+When succeed, a ServiceActor object is created. You can call VK API methods on behalf of an app.
 
 ##7. API Requests
 You can find the full list of VK API methods [here](https://vk.com/dev/methods).

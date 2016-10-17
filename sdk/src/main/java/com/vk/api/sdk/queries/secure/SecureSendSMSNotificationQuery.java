@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.secure;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class SecureSendSMSNotificationQuery extends AbstractQueryBuilder<SecureS
      * @param userId  value of "user id" parameter. Minimum is 0.
      * @param message value of "message" parameter.
      */
-    public SecureSendSMSNotificationQuery(VkApiClient client, ServerActor actor, int userId, String message) {
+    public SecureSendSMSNotificationQuery(VkApiClient client, ServiceActor actor, int userId, String message) {
         super(client, "secure.sendSMSNotification", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);

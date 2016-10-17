@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.secure;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class SecureSetUserLevelQuery extends AbstractQueryBuilder<SecureSetUserL
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public SecureSetUserLevelQuery(VkApiClient client, ServerActor actor) {
+    public SecureSetUserLevelQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.setUserLevel", OkResponse.class);
         accessToken(actor.getAccessToken());
     }

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.secure.Level;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class SecureGetUserLevelQuery extends AbstractQueryBuilder<SecureGetUserL
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public SecureGetUserLevelQuery(VkApiClient client, ServerActor actor, int... userIds) {
+    public SecureGetUserLevelQuery(VkApiClient client, ServiceActor actor, int... userIds) {
         super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, Level.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);
@@ -33,7 +33,7 @@ public class SecureGetUserLevelQuery extends AbstractQueryBuilder<SecureGetUserL
      * @param actor   actor with access token
      * @param userIds value of "user ids" parameter.
      */
-    public SecureGetUserLevelQuery(VkApiClient client, ServerActor actor, List<Integer> userIds) {
+    public SecureGetUserLevelQuery(VkApiClient client, ServiceActor actor, List<Integer> userIds) {
         super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, Level.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);

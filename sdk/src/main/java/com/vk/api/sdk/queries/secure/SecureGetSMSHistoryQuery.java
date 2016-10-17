@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.secure.SmsNotification;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class SecureGetSMSHistoryQuery extends AbstractQueryBuilder<SecureGetSMSH
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public SecureGetSMSHistoryQuery(VkApiClient client, ServerActor actor) {
+    public SecureGetSMSHistoryQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getSMSHistory", Utils.buildParametrizedType(List.class, SmsNotification.class));
         accessToken(actor.getAccessToken());
     }
