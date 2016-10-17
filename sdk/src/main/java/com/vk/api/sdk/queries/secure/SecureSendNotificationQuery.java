@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class SecureSendNotificationQuery extends AbstractQueryBuilder<SecureSend
      * @param actor   actor with access token
      * @param message value of "message" parameter.
      */
-    public SecureSendNotificationQuery(VkApiClient client, ServerActor actor, String message) {
+    public SecureSendNotificationQuery(VkApiClient client, ServiceActor actor, String message) {
         super(client, "secure.sendNotification", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         message(message);

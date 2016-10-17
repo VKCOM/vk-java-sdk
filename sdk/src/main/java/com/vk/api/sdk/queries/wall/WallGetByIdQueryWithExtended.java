@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetByIdExtendedResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -20,7 +20,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * @param actor  actor with access token
      * @param posts  value of "posts" parameter.
      */
-    public WallGetByIdQueryWithExtended(VkApiClient client, Actor actor, String... posts) {
+    public WallGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         posts(posts);
@@ -34,7 +34,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * @param actor  actor with access token
      * @param posts  value of "posts" parameter.
      */
-    public WallGetByIdQueryWithExtended(VkApiClient client, Actor actor, List<String> posts) {
+    public WallGetByIdQueryWithExtended(VkApiClient client, UserActor actor, List<String> posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         posts(posts);

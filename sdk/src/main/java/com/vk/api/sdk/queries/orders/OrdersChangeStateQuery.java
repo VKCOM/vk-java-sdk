@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.orders;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param orderId value of "order id" parameter. Minimum is 0.
      * @param action  value of "action" parameter.
      */
-    public OrdersChangeStateQuery(VkApiClient client, Actor actor, int orderId, OrdersChangeStateAction action) {
+    public OrdersChangeStateQuery(VkApiClient client, UserActor actor, int orderId, OrdersChangeStateAction action) {
         super(client, "orders.changeState", String.class);
         accessToken(actor.getAccessToken());
         orderId(orderId);

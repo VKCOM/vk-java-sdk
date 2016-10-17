@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.queries.ReportReason;
 
@@ -21,7 +21,7 @@ public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportC
      * @param ownerId   value of "owner id" parameter.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public PhotosReportCommentQuery(VkApiClient client, Actor actor, int ownerId, int commentId) {
+    public PhotosReportCommentQuery(VkApiClient client, UserActor actor, int ownerId, int commentId) {
         super(client, "photos.reportComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

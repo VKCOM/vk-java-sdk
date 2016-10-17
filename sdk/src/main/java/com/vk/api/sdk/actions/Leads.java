@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.leads.LeadsCheckUserQuery;
 import com.vk.api.sdk.queries.leads.LeadsCompleteQuery;
 import com.vk.api.sdk.queries.leads.LeadsGetStatsQuery;
@@ -34,7 +34,7 @@ public class Leads extends AbstractAction {
     /**
      * Completes the lead started by user.
      */
-    public LeadsCompleteQuery complete(Actor actor, String vkSid, String secret) {
+    public LeadsCompleteQuery complete(UserActor actor, String vkSid, String secret) {
         return new LeadsCompleteQuery(getClient(), actor, vkSid, secret);
     }
 
@@ -48,14 +48,14 @@ public class Leads extends AbstractAction {
     /**
      * Creates new session for the user passing the offer.
      */
-    public LeadsStartQuery start(Actor actor, int leadId, String secret) {
+    public LeadsStartQuery start(UserActor actor, int leadId, String secret) {
         return new LeadsStartQuery(getClient(), actor, leadId, secret);
     }
 
     /**
      * Returns lead stats data.
      */
-    public LeadsGetStatsQuery getStats(Actor actor, int leadId) {
+    public LeadsGetStatsQuery getStats(UserActor actor, int leadId) {
         return new LeadsGetStatsQuery(getClient(), actor, leadId);
     }
 
@@ -69,11 +69,11 @@ public class Leads extends AbstractAction {
     /**
      * Returns a list of last user actions for the offer.
      */
-    public LeadsGetUsersQuery getUsers(Actor actor, int offerId, String secret) {
+    public LeadsGetUsersQuery getUsers(UserActor actor, int offerId, String secret) {
         return new LeadsGetUsersQuery(getClient(), actor, offerId, secret);
     }
 
-    public LeadsCheckUserQuery checkUser(Actor actor, int leadId) {
+    public LeadsCheckUserQuery checkUser(UserActor actor, int leadId) {
         return new LeadsCheckUserQuery(getClient(), actor, leadId);
     }
 
@@ -81,7 +81,7 @@ public class Leads extends AbstractAction {
         return new LeadsMetricHitQuery(getClient(), data);
     }
 
-    public LeadsMetricHitQuery metricHit(Actor actor, String data) {
+    public LeadsMetricHitQuery metricHit(UserActor actor, String data) {
         return new LeadsMetricHitQuery(getClient(), actor, data);
     }
 }

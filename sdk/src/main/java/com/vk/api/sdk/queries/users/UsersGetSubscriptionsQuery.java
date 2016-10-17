@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetSubscriptionsResponse;
 
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public UsersGetSubscriptionsQuery(VkApiClient client, Actor actor) {
+    public UsersGetSubscriptionsQuery(VkApiClient client, UserActor actor) {
         super(client, "users.getSubscriptions", GetSubscriptionsResponse.class);
         accessToken(actor.getAccessToken());
     }

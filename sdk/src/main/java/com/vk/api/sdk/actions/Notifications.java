@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.notifications.NotificationsGetQuery;
 import com.vk.api.sdk.queries.notifications.NotificationsMarkAsViewedQuery;
 
@@ -23,14 +23,14 @@ public class Notifications extends AbstractAction {
     /**
      * Returns a list of notifications about other users' feedback to the current user's wall posts.
      */
-    public NotificationsGetQuery get(Actor actor) {
+    public NotificationsGetQuery get(UserActor actor) {
         return new NotificationsGetQuery(getClient(), actor);
     }
 
     /**
      * Resets the counter of new notifications about other users' feedback to the current user's wall posts.
      */
-    public NotificationsMarkAsViewedQuery markAsViewed(Actor actor) {
+    public NotificationsMarkAsViewedQuery markAsViewed(UserActor actor) {
         return new NotificationsMarkAsViewedQuery(getClient(), actor);
     }
 }

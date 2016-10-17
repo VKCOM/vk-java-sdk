@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
 
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
      * @param server  value of "server" parameter. Minimum is 0.
      * @param hash    value of "hash" parameter.
      */
-    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, Actor actor, int groupId, String photo, int server, String hash) {
+    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, int groupId, String photo, int server, String hash) {
         super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, Photo.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);

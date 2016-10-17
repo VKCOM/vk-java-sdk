@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetCategoriesResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class MarketGetCategoriesQuery extends AbstractQueryBuilder<MarketGetCate
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MarketGetCategoriesQuery(VkApiClient client, Actor actor) {
+    public MarketGetCategoriesQuery(VkApiClient client, UserActor actor) {
         super(client, "market.getCategories", GetCategoriesResponse.class);
         accessToken(actor.getAccessToken());
     }

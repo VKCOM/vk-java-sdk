@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class VideoRemoveTagQuery extends AbstractQueryBuilder<VideoRemoveTagQuer
      * @param tagId   value of "tag id" parameter.
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoRemoveTagQuery(VkApiClient client, Actor actor, int tagId, int videoId) {
+    public VideoRemoveTagQuery(VkApiClient client, UserActor actor, int tagId, int videoId) {
         super(client, "video.removeTag", OkResponse.class);
         accessToken(actor.getAccessToken());
         tagId(tagId);

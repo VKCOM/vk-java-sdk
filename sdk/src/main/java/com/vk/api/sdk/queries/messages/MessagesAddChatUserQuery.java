@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class MessagesAddChatUserQuery extends AbstractQueryBuilder<MessagesAddCh
      * @param chatId value of "chat id" parameter. Minimum is 0.
      * @param userId value of "user id" parameter. Minimum is 0.
      */
-    public MessagesAddChatUserQuery(VkApiClient client, Actor actor, int chatId, int userId) {
+    public MessagesAddChatUserQuery(VkApiClient client, UserActor actor, int chatId, int userId) {
         super(client, "messages.addChatUser", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);

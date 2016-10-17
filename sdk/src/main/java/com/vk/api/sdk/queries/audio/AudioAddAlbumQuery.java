@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.responses.AddAlbumResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioAddAlbumQuery extends AbstractQueryBuilder<AudioAddAlbumQuery,
      * @param actor  actor with access token
      * @param title  value of "title" parameter.
      */
-    public AudioAddAlbumQuery(VkApiClient client, Actor actor, String title) {
+    public AudioAddAlbumQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "audio.addAlbum", AddAlbumResponse.class);
         accessToken(actor.getAccessToken());
         title(title);

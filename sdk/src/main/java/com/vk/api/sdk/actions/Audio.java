@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.audio.AudioAddAlbumQuery;
 import com.vk.api.sdk.queries.audio.AudioAddQuery;
 import com.vk.api.sdk.queries.audio.AudioDeleteAlbumQuery;
@@ -47,7 +47,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetQuery get(Actor actor) {
+    public AudioGetQuery get(UserActor actor) {
         return new AudioGetQuery(getClient(), actor);
     }
 
@@ -58,7 +58,7 @@ public class Audio extends AbstractAction {
      * @param audios adios
      * @return query
      */
-    public AudioGetByIdQuery getById(Actor actor, String... audios) {
+    public AudioGetByIdQuery getById(UserActor actor, String... audios) {
         return new AudioGetByIdQuery(getClient(), actor, audios);
     }
 
@@ -69,7 +69,7 @@ public class Audio extends AbstractAction {
      * @param audios adios
      * @return query
      */
-    public AudioGetByIdQuery getById(Actor actor, List<String> audios) {
+    public AudioGetByIdQuery getById(UserActor actor, List<String> audios) {
         return new AudioGetByIdQuery(getClient(), actor, audios);
     }
 
@@ -80,7 +80,7 @@ public class Audio extends AbstractAction {
      * @param lyricsId lyrics id
      * @return query
      */
-    public AudioGetLyricsQuery getLyrics(Actor actor, int lyricsId) {
+    public AudioGetLyricsQuery getLyrics(UserActor actor, int lyricsId) {
         return new AudioGetLyricsQuery(getClient(), actor, lyricsId);
     }
 
@@ -90,7 +90,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioSearchQuery search(Actor actor) {
+    public AudioSearchQuery search(UserActor actor) {
         return new AudioSearchQuery(getClient(), actor);
     }
 
@@ -100,7 +100,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetUploadServerQuery getUploadServer(Actor actor) {
+    public AudioGetUploadServerQuery getUploadServer(UserActor actor) {
         return new AudioGetUploadServerQuery(getClient(), actor);
     }
 
@@ -112,7 +112,7 @@ public class Audio extends AbstractAction {
      * @param audio  audio
      * @return query
      */
-    public AudioSaveQuery save(Actor actor, int server, String audio) {
+    public AudioSaveQuery save(UserActor actor, int server, String audio) {
         return new AudioSaveQuery(getClient(), actor, server, audio);
     }
 
@@ -124,7 +124,7 @@ public class Audio extends AbstractAction {
      * @param ownerId owner id
      * @return query
      */
-    public AudioAddQuery add(Actor actor, int audioId, int ownerId) {
+    public AudioAddQuery add(UserActor actor, int audioId, int ownerId) {
         return new AudioAddQuery(getClient(), actor, audioId, ownerId);
     }
 
@@ -136,7 +136,7 @@ public class Audio extends AbstractAction {
      * @param ownerId owner id
      * @return query
      */
-    public AudioDeleteQuery delete(Actor actor, int audioId, int ownerId) {
+    public AudioDeleteQuery delete(UserActor actor, int audioId, int ownerId) {
         return new AudioDeleteQuery(getClient(), actor, audioId, ownerId);
     }
 
@@ -148,7 +148,7 @@ public class Audio extends AbstractAction {
      * @param audioId audio id
      * @return query
      */
-    public AudioEditQuery edit(Actor actor, int ownerId, int audioId) {
+    public AudioEditQuery edit(UserActor actor, int ownerId, int audioId) {
         return new AudioEditQuery(getClient(), actor, ownerId, audioId);
     }
 
@@ -159,7 +159,7 @@ public class Audio extends AbstractAction {
      * @param audioId audio id
      * @return query
      */
-    public AudioReorderQuery reorder(Actor actor, int audioId) {
+    public AudioReorderQuery reorder(UserActor actor, int audioId) {
         return new AudioReorderQuery(getClient(), actor, audioId);
     }
 
@@ -170,7 +170,7 @@ public class Audio extends AbstractAction {
      * @param audioId audio id
      * @return query
      */
-    public AudioRestoreQuery restore(Actor actor, int audioId) {
+    public AudioRestoreQuery restore(UserActor actor, int audioId) {
         return new AudioRestoreQuery(getClient(), actor, audioId);
     }
 
@@ -180,7 +180,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetAlbumsQuery getAlbums(Actor actor) {
+    public AudioGetAlbumsQuery getAlbums(UserActor actor) {
         return new AudioGetAlbumsQuery(getClient(), actor);
     }
 
@@ -191,7 +191,7 @@ public class Audio extends AbstractAction {
      * @param title album title
      * @return query
      */
-    public AudioAddAlbumQuery addAlbum(Actor actor, String title) {
+    public AudioAddAlbumQuery addAlbum(UserActor actor, String title) {
         return new AudioAddAlbumQuery(getClient(), actor, title);
     }
 
@@ -203,7 +203,7 @@ public class Audio extends AbstractAction {
      * @param title   album title
      * @return query
      */
-    public AudioEditAlbumQuery editAlbum(Actor actor, int albumId, String title) {
+    public AudioEditAlbumQuery editAlbum(UserActor actor, int albumId, String title) {
         return new AudioEditAlbumQuery(getClient(), actor, albumId, title);
     }
 
@@ -214,7 +214,7 @@ public class Audio extends AbstractAction {
      * @param albumId albumd id
      * @return query
      */
-    public AudioDeleteAlbumQuery deleteAlbum(Actor actor, int albumId) {
+    public AudioDeleteAlbumQuery deleteAlbum(UserActor actor, int albumId) {
         return new AudioDeleteAlbumQuery(getClient(), actor, albumId);
     }
 
@@ -225,7 +225,7 @@ public class Audio extends AbstractAction {
      * @param audioIds audio ids
      * @return query
      */
-    public AudioMoveToAlbumQuery moveToAlbum(Actor actor, int... audioIds) {
+    public AudioMoveToAlbumQuery moveToAlbum(UserActor actor, int... audioIds) {
         return new AudioMoveToAlbumQuery(getClient(), actor, audioIds);
     }
 
@@ -236,7 +236,7 @@ public class Audio extends AbstractAction {
      * @param audioIds audio ids
      * @return query
      */
-    public AudioMoveToAlbumQuery moveToAlbum(Actor actor, List<Integer> audioIds) {
+    public AudioMoveToAlbumQuery moveToAlbum(UserActor actor, List<Integer> audioIds) {
         return new AudioMoveToAlbumQuery(getClient(), actor, audioIds);
     }
 
@@ -246,7 +246,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioSetBroadcastQuery setBroadcast(Actor actor) {
+    public AudioSetBroadcastQuery setBroadcast(UserActor actor) {
         return new AudioSetBroadcastQuery(getClient(), actor);
     }
 
@@ -256,7 +256,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetBroadcastListQuery getBroadcastList(Actor actor) {
+    public AudioGetBroadcastListQuery getBroadcastList(UserActor actor) {
         return new AudioGetBroadcastListQuery(getClient(), actor);
     }
 
@@ -266,7 +266,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetRecommendationsQuery getRecommendations(Actor actor) {
+    public AudioGetRecommendationsQuery getRecommendations(UserActor actor) {
         return new AudioGetRecommendationsQuery(getClient(), actor);
     }
 
@@ -276,7 +276,7 @@ public class Audio extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AudioGetPopularQuery getPopular(Actor actor) {
+    public AudioGetPopularQuery getPopular(UserActor actor) {
         return new AudioGetPopularQuery(getClient(), actor);
     }
 
@@ -287,7 +287,7 @@ public class Audio extends AbstractAction {
      * @param ownerId owner id
      * @return query
      */
-    public AudioGetCountQuery getCount(Actor actor, int ownerId) {
+    public AudioGetCountQuery getCount(UserActor actor, int ownerId) {
         return new AudioGetCountQuery(getClient(), actor, ownerId);
     }
 }

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.storage;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,7 @@ public class StorageGetKeysQuery extends AbstractQueryBuilder<StorageGetKeysQuer
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public StorageGetKeysQuery(VkApiClient client, Actor actor) {
+    public StorageGetKeysQuery(VkApiClient client, UserActor actor) {
         super(client, "storage.getKeys", Utils.buildParametrizedType(List.class, String.class));
         accessToken(actor.getAccessToken());
     }

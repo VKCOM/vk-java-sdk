@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.Category;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AdsGetCategoriesQuery extends AbstractQueryBuilder<AdsGetCategories
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AdsGetCategoriesQuery(VkApiClient client, Actor actor) {
+    public AdsGetCategoriesQuery(VkApiClient client, UserActor actor) {
         super(client, "ads.getCategories", Utils.buildParametrizedType(List.class, Category.class));
         accessToken(actor.getAccessToken());
     }

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AdsCreateClientsQuery extends AbstractQueryBuilder<AdsCreateClients
      * @param accountId value of "account id" parameter.
      * @param data      value of "data" parameter.
      */
-    public AdsCreateClientsQuery(VkApiClient client, Actor actor, int accountId, String data) {
+    public AdsCreateClientsQuery(VkApiClient client, UserActor actor, int accountId, String data) {
         super(client, "ads.createClients", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);

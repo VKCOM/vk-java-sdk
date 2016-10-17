@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.queries.ReportReason;
 
@@ -21,7 +21,7 @@ public class WallReportPostQuery extends AbstractQueryBuilder<WallReportPostQuer
      * @param ownerId value of "owner id" parameter.
      * @param postId  value of "post id" parameter. Minimum is 0.
      */
-    public WallReportPostQuery(VkApiClient client, Actor actor, int ownerId, int postId) {
+    public WallReportPostQuery(VkApiClient client, UserActor actor, int ownerId, int postId) {
         super(client, "wall.reportPost", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

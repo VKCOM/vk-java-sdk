@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
 import com.vk.api.sdk.queries.apps.AppsGetFriendsListQuery;
@@ -43,7 +43,7 @@ public class Apps extends AbstractAction {
      * @param count count of apps
      * @return query
      */
-    public AppsGetCatalogQuery getCatalog(Actor actor, int count) {
+    public AppsGetCatalogQuery getCatalog(UserActor actor, int count) {
         return new AppsGetCatalogQuery(getClient(), actor, count);
     }
 
@@ -62,7 +62,7 @@ public class Apps extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AppsGetQuery get(Actor actor) {
+    public AppsGetQuery get(UserActor actor) {
         return new AppsGetQuery(getClient(), actor);
     }
 
@@ -73,7 +73,7 @@ public class Apps extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AppsSendRequestQuery sendRequest(Actor actor, int userId) {
+    public AppsSendRequestQuery sendRequest(UserActor actor, int userId) {
         return new AppsSendRequestQuery(getClient(), actor, userId);
     }
 
@@ -83,7 +83,7 @@ public class Apps extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AppsDeleteAppRequestsQuery deleteAppRequests(Actor actor) {
+    public AppsDeleteAppRequestsQuery deleteAppRequests(UserActor actor) {
         return new AppsDeleteAppRequestsQuery(getClient(), actor);
     }
 
@@ -93,7 +93,7 @@ public class Apps extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AppsGetFriendsListQuery getFriendsList(Actor actor) {
+    public AppsGetFriendsListQuery getFriendsList(UserActor actor) {
         return new AppsGetFriendsListQuery(getClient(), actor);
     }
 
@@ -104,7 +104,7 @@ public class Apps extends AbstractAction {
      * @param type  leaderboard type
      * @return query
      */
-    public AppsGetLeaderboardQuery getLeaderboard(Actor actor, AppsGetLeaderboardType type) {
+    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, AppsGetLeaderboardType type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
     }
 
@@ -115,7 +115,7 @@ public class Apps extends AbstractAction {
      * @param userId user id
      * @return query
      */
-    public AppsGetScoreQuery getScore(Actor actor, int userId) {
+    public AppsGetScoreQuery getScore(UserActor actor, int userId) {
         return new AppsGetScoreQuery(getClient(), actor, userId);
     }
 }

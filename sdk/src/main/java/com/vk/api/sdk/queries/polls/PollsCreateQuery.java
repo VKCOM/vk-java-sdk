@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.polls;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.polls.Poll;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PollsCreateQuery(VkApiClient client, Actor actor) {
+    public PollsCreateQuery(VkApiClient client, UserActor actor) {
         super(client, "polls.create", Poll.class);
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetCommentsResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -20,7 +20,7 @@ public class PhotosGetCommentsQuery extends AbstractQueryBuilder<PhotosGetCommen
      * @param actor   actor with access token
      * @param photoId value of "photo id" parameter.
      */
-    public PhotosGetCommentsQuery(VkApiClient client, Actor actor, int photoId) {
+    public PhotosGetCommentsQuery(VkApiClient client, UserActor actor, int photoId) {
         super(client, "photos.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);

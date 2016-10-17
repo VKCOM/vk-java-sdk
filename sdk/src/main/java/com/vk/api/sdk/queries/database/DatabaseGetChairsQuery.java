@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetChairsResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class DatabaseGetChairsQuery extends AbstractQueryBuilder<DatabaseGetChai
      * @param actor     actor with access token
      * @param facultyId value of "faculty id" parameter. Minimum is 0.
      */
-    public DatabaseGetChairsQuery(VkApiClient client, Actor actor, int facultyId) {
+    public DatabaseGetChairsQuery(VkApiClient client, UserActor actor, int facultyId) {
         super(client, "database.getChairs", GetChairsResponse.class);
         accessToken(actor.getAccessToken());
         facultyId(facultyId);

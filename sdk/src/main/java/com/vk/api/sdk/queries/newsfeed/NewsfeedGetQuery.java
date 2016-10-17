@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -19,7 +19,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NewsfeedGetQuery(VkApiClient client, Actor actor) {
+    public NewsfeedGetQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

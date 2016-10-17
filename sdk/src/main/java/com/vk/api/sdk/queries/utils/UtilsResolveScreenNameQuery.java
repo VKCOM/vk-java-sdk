@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.utils;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.utils.DomainResolved;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
      * @param actor      actor with access token
      * @param screenName value of "screen name" parameter.
      */
-    public UtilsResolveScreenNameQuery(VkApiClient client, Actor actor, String screenName) {
+    public UtilsResolveScreenNameQuery(VkApiClient client, UserActor actor, String screenName) {
         super(client, "utils.resolveScreenName", DomainResolved.class);
         accessToken(actor.getAccessToken());
         screenName(screenName);

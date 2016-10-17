@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.secure;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ public class SecureGetAppBalanceQuery extends AbstractQueryBuilder<SecureGetAppB
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public SecureGetAppBalanceQuery(VkApiClient client, ServerActor actor) {
+    public SecureGetAppBalanceQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getAppBalance", Integer.class);
         accessToken(actor.getAccessToken());
     }

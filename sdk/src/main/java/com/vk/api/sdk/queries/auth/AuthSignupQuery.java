@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.auth.responses.SignupResponse;
 
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
      * @param clientSecret value of "client secret" parameter.
      * @param phone        value of "phone" parameter.
      */
-    public AuthSignupQuery(VkApiClient client, Actor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
+    public AuthSignupQuery(VkApiClient client, UserActor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
         super(client, "auth.signup", SignupResponse.class);
         accessToken(actor.getAccessToken());
         firstName(firstName);

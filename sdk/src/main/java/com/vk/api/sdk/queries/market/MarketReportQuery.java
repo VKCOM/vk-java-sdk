@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.queries.ReportReason;
 
@@ -22,7 +22,7 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
      * @param itemId  value of "item id" parameter. Minimum is 0.
      * @param reason  value of "reason" parameter. Minimum is 0.
      */
-    public MarketReportQuery(VkApiClient client, Actor actor, int ownerId, int itemId, ReportReason reason) {
+    public MarketReportQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, ReportReason reason) {
         super(client, "market.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

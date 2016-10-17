@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.places;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.places.responses.CheckinResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class PlacesCheckinQuery extends AbstractQueryBuilder<PlacesCheckinQuery,
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PlacesCheckinQuery(VkApiClient client, Actor actor) {
+    public PlacesCheckinQuery(VkApiClient client, UserActor actor) {
         super(client, "places.checkin", CheckinResponse.class);
         accessToken(actor.getAccessToken());
     }

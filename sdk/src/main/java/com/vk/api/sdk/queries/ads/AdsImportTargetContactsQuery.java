@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
      * @param targetGroupId value of "target group id" parameter.
      * @param contacts      value of "contacts" parameter.
      */
-    public AdsImportTargetContactsQuery(VkApiClient client, Actor actor, int accountId, int targetGroupId, String contacts) {
+    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId, String contacts) {
         super(client, "ads.importTargetContacts", Integer.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

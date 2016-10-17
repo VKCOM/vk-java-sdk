@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetAlbumByIdResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
      * @param ownerId  value of "owner id" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketGetAlbumByIdQuery(VkApiClient client, Actor actor, int ownerId, int... albumIds) {
+    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId, int... albumIds) {
         super(client, "market.getAlbumById", GetAlbumByIdResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -35,7 +35,7 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
      * @param ownerId  value of "owner id" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketGetAlbumByIdQuery(VkApiClient client, Actor actor, int ownerId, List<Integer> albumIds) {
+    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId, List<Integer> albumIds) {
         super(client, "market.getAlbumById", GetAlbumByIdResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

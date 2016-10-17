@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.AdLayout;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param actor     actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetAdsLayoutQuery(VkApiClient client, Actor actor, int accountId) {
+    public AdsGetAdsLayoutQuery(VkApiClient client, UserActor actor, int accountId) {
         super(client, "ads.getAdsLayout", Utils.buildParametrizedType(List.class, AdLayout.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);

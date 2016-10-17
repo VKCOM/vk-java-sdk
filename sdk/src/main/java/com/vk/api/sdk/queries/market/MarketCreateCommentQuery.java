@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class MarketCreateCommentQuery extends AbstractQueryBuilder<MarketCreateC
      * @param ownerId value of "owner id" parameter.
      * @param itemId  value of "item id" parameter. Minimum is 0.
      */
-    public MarketCreateCommentQuery(VkApiClient client, Actor actor, int ownerId, int itemId) {
+    public MarketCreateCommentQuery(VkApiClient client, UserActor actor, int ownerId, int itemId) {
         super(client, "market.createComment", Integer.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

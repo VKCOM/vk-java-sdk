@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.stats;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.stats.WallpostStat;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
      * @param ownerId value of "owner id" parameter.
      * @param postId  value of "post id" parameter. Minimum is 0.
      */
-    public StatsGetPostReachQuery(VkApiClient client, Actor actor, int ownerId, int postId) {
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, int ownerId, int postId) {
         super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, WallpostStat.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

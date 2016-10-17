@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQuery;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQueryWithFields;
@@ -41,21 +41,21 @@ public class Users extends AbstractAction {
     /**
      * Returns detailed information on users.
      */
-    public UsersGetQuery get(Actor actor) {
+    public UsersGetQuery get(UserActor actor) {
         return new UsersGetQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of users matching the search criteria.
      */
-    public UsersSearchQuery search(Actor actor) {
+    public UsersSearchQuery search(UserActor actor) {
         return new UsersSearchQuery(getClient(), actor);
     }
 
     /**
      * Returns information whether a user installed the application.
      */
-    public UsersIsAppUserQuery isAppUser(Actor actor) {
+    public UsersIsAppUserQuery isAppUser(UserActor actor) {
         return new UsersIsAppUserQuery(getClient(), actor);
     }
 
@@ -69,7 +69,7 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      */
-    public UsersGetSubscriptionsQuery getSubscriptions(Actor actor) {
+    public UsersGetSubscriptionsQuery getSubscriptions(UserActor actor) {
         return new UsersGetSubscriptionsQuery(getClient(), actor);
     }
 
@@ -83,7 +83,7 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      */
-    public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended(Actor actor) {
+    public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended(UserActor actor) {
         return new UsersGetSubscriptionsQueryWithExtended(getClient(), actor);
     }
 
@@ -97,7 +97,7 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQuery getFollowers(Actor actor) {
+    public UsersGetFollowersQuery getFollowers(UserActor actor) {
         return new UsersGetFollowersQuery(getClient(), actor);
     }
 
@@ -118,28 +118,28 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(Actor actor, UserField... fields) {
+    public UsersGetFollowersQueryWithFields getFollowers(UserActor actor, UserField... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(Actor actor, List<UserField> fields) {
+    public UsersGetFollowersQueryWithFields getFollowers(UserActor actor, List<UserField> fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Reports (submits a complain about) a user.
      */
-    public UsersReportQuery report(Actor actor, int userId, UsersReportType type) {
+    public UsersReportQuery report(UserActor actor, int userId, UsersReportType type) {
         return new UsersReportQuery(getClient(), actor, userId, type);
     }
 
     /**
      * Indexes current user location and returns nearby users.
      */
-    public UsersGetNearbyQuery getNearby(Actor actor, float latitude, float longitude) {
+    public UsersGetNearbyQuery getNearby(UserActor actor, float latitude, float longitude) {
         return new UsersGetNearbyQuery(getClient(), actor, latitude, longitude);
     }
 }

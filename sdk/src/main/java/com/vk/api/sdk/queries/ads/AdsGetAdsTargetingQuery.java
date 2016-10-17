@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargSettings;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetAdsTargetingQuery extends AbstractQueryBuilder<AdsGetAdsTarge
      * @param actor     actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetAdsTargetingQuery(VkApiClient client, Actor actor, int accountId) {
+    public AdsGetAdsTargetingQuery(VkApiClient client, UserActor actor, int accountId) {
         super(client, "ads.getAdsTargeting", Utils.buildParametrizedType(List.class, TargSettings.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class MarketRemoveFromAlbumQuery extends AbstractQueryBuilder<MarketRemov
      * @param itemId   value of "item id" parameter. Minimum is 0.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketRemoveFromAlbumQuery(VkApiClient client, Actor actor, int ownerId, int itemId, int... albumIds) {
+    public MarketRemoveFromAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, int... albumIds) {
         super(client, "market.removeFromAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -38,7 +38,7 @@ public class MarketRemoveFromAlbumQuery extends AbstractQueryBuilder<MarketRemov
      * @param itemId   value of "item id" parameter. Minimum is 0.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketRemoveFromAlbumQuery(VkApiClient client, Actor actor, int ownerId, int itemId, List<Integer> albumIds) {
+    public MarketRemoveFromAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, List<Integer> albumIds) {
         super(client, "market.removeFromAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

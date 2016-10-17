@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.docs;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.SearchResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param actor  actor with access token
      * @param q      value of "q" parameter.
      */
-    public DocsSearchQuery(VkApiClient client, Actor actor, String q) {
+    public DocsSearchQuery(VkApiClient client, UserActor actor, String q) {
         super(client, "docs.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         q(q);

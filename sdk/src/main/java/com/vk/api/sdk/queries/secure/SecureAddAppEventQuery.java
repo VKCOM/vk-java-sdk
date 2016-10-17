@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.secure;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class SecureAddAppEventQuery extends AbstractQueryBuilder<SecureAddAppEve
      * @param userId     value of "user id" parameter. Minimum is 0.
      * @param activityId value of "activity id" parameter. Minimum is 0.
      */
-    public SecureAddAppEventQuery(VkApiClient client, ServerActor actor, int userId, int activityId) {
+    public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor, int userId, int activityId) {
         super(client, "secure.addAppEvent", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);

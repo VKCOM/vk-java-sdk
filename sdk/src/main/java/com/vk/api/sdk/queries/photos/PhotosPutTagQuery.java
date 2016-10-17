@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param photoId value of "photo id" parameter. Minimum is 0.
      * @param userId  value of "user id" parameter.
      */
-    public PhotosPutTagQuery(VkApiClient client, Actor actor, int photoId, int userId) {
+    public PhotosPutTagQuery(VkApiClient client, UserActor actor, int photoId, int userId) {
         super(client, "photos.putTag", Integer.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);

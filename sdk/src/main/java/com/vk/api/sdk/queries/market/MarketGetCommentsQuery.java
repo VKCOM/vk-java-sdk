@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetCommentsResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -21,7 +21,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
      * @param ownerId value of "owner id" parameter.
      * @param itemId  value of "item id" parameter. Minimum is 0.
      */
-    public MarketGetCommentsQuery(VkApiClient client, Actor actor, int ownerId, int itemId) {
+    public MarketGetCommentsQuery(VkApiClient client, UserActor actor, int ownerId, int itemId) {
         super(client, "market.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosRestoreQuery extends AbstractQueryBuilder<PhotosRestoreQuery,
      * @param actor   actor with access token
      * @param photoId value of "photo id" parameter. Minimum is 0.
      */
-    public PhotosRestoreQuery(VkApiClient client, Actor actor, int photoId) {
+    public PhotosRestoreQuery(VkApiClient client, UserActor actor, int photoId) {
         super(client, "photos.restore", OkResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);

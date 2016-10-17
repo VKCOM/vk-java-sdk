@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.Chat;
 import com.vk.api.sdk.queries.users.UsersNameCase;
 
@@ -19,7 +19,7 @@ public class MessagesGetChatQuery extends AbstractQueryBuilder<MessagesGetChatQu
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatQuery(VkApiClient client, Actor actor) {
+    public MessagesGetChatQuery(VkApiClient client, UserActor actor) {
         super(client, "messages.getChat", Chat.class);
         accessToken(actor.getAccessToken());
     }

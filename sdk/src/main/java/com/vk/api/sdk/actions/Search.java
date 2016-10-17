@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.search.SearchGetHintsQuery;
 
 /**
@@ -22,7 +22,7 @@ public class Search extends AbstractAction {
     /**
      * Allows the programmer to do a quick search for any substring.
      */
-    public SearchGetHintsQuery getHints(Actor actor) {
+    public SearchGetHintsQuery getHints(UserActor actor) {
         return new SearchGetHintsQuery(getClient(), actor);
     }
 }

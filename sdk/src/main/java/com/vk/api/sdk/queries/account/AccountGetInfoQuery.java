@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.account;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.Info;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class AccountGetInfoQuery extends AbstractQueryBuilder<AccountGetInfoQuer
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AccountGetInfoQuery(VkApiClient client, Actor actor) {
+    public AccountGetInfoQuery(VkApiClient client, UserActor actor) {
         super(client, "account.getInfo", Info.class);
         accessToken(actor.getAccessToken());
     }

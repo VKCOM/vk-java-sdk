@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetNearbyResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class UsersGetNearbyQuery extends AbstractQueryBuilder<UsersGetNearbyQuer
      * @param latitude  value of "latitude" parameter.
      * @param longitude value of "longitude" parameter.
      */
-    public UsersGetNearbyQuery(VkApiClient client, Actor actor, float latitude, float longitude) {
+    public UsersGetNearbyQuery(VkApiClient client, UserActor actor, float latitude, float longitude) {
         super(client, "users.getNearby", GetNearbyResponse.class);
         accessToken(actor.getAccessToken());
         latitude(latitude);

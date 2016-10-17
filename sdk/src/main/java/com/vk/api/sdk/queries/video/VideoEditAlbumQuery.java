@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
      * @param albumId value of "album id" parameter. Minimum is 0.
      * @param title   value of "title" parameter.
      */
-    public VideoEditAlbumQuery(VkApiClient client, Actor actor, int albumId, String title) {
+    public VideoEditAlbumQuery(VkApiClient client, UserActor actor, int albumId, String title) {
         super(client, "video.editAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);

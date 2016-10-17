@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.ads.AdsAddOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsCheckLinkQuery;
 import com.vk.api.sdk.queries.ads.AdsCheckLinkType;
@@ -68,7 +68,7 @@ public class Ads extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AdsGetAccountsQuery getAccounts(Actor actor) {
+    public AdsGetAccountsQuery getAccounts(UserActor actor) {
         return new AdsGetAccountsQuery(getClient(), actor);
     }
 
@@ -79,7 +79,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetClientsQuery getClients(Actor actor, int accountId) {
+    public AdsGetClientsQuery getClients(UserActor actor, int accountId) {
         return new AdsGetClientsQuery(getClient(), actor, accountId);
     }
 
@@ -91,7 +91,7 @@ public class Ads extends AbstractAction {
      * @param data      data
      * @return query
      */
-    public AdsCreateClientsQuery createClients(Actor actor, int accountId, String data) {
+    public AdsCreateClientsQuery createClients(UserActor actor, int accountId, String data) {
         return new AdsCreateClientsQuery(getClient(), actor, accountId, data);
     }
 
@@ -103,7 +103,7 @@ public class Ads extends AbstractAction {
      * @param data      data
      * @return query
      */
-    public AdsUpdateClientsQuery updateClients(Actor actor, int accountId, String data) {
+    public AdsUpdateClientsQuery updateClients(UserActor actor, int accountId, String data) {
         return new AdsUpdateClientsQuery(getClient(), actor, accountId, data);
     }
 
@@ -115,7 +115,7 @@ public class Ads extends AbstractAction {
      * @param ids       ids
      * @return query
      */
-    public AdsDeleteClientsQuery deleteClients(Actor actor, int accountId, String ids) {
+    public AdsDeleteClientsQuery deleteClients(UserActor actor, int accountId, String ids) {
         return new AdsDeleteClientsQuery(getClient(), actor, accountId, ids);
     }
 
@@ -126,7 +126,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetCampaignsQuery getCampaigns(Actor actor, int accountId) {
+    public AdsGetCampaignsQuery getCampaigns(UserActor actor, int accountId) {
         return new AdsGetCampaignsQuery(getClient(), actor, accountId);
     }
 
@@ -138,7 +138,7 @@ public class Ads extends AbstractAction {
      * @param data      data
      * @return query
      */
-    public AdsCreateCampaignsQuery createCampaigns(Actor actor, int accountId, String data) {
+    public AdsCreateCampaignsQuery createCampaigns(UserActor actor, int accountId, String data) {
         return new AdsCreateCampaignsQuery(getClient(), actor, accountId, data);
     }
 
@@ -150,7 +150,7 @@ public class Ads extends AbstractAction {
      * @param data      data
      * @return query
      */
-    public AdsUpdateCampaignsQuery updateCampaigns(Actor actor, int accountId, String data) {
+    public AdsUpdateCampaignsQuery updateCampaigns(UserActor actor, int accountId, String data) {
         return new AdsUpdateCampaignsQuery(getClient(), actor, accountId, data);
     }
 
@@ -162,7 +162,7 @@ public class Ads extends AbstractAction {
      * @param ids       ids
      * @return query
      */
-    public AdsDeleteCampaignsQuery deleteCampaigns(Actor actor, int accountId, String ids) {
+    public AdsDeleteCampaignsQuery deleteCampaigns(UserActor actor, int accountId, String ids) {
         return new AdsDeleteCampaignsQuery(getClient(), actor, accountId, ids);
     }
 
@@ -173,7 +173,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetAdsQuery getAds(Actor actor, int accountId) {
+    public AdsGetAdsQuery getAds(UserActor actor, int accountId) {
         return new AdsGetAdsQuery(getClient(), actor, accountId);
     }
 
@@ -184,7 +184,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetAdsLayoutQuery getAdsLayout(Actor actor, int accountId) {
+    public AdsGetAdsLayoutQuery getAdsLayout(UserActor actor, int accountId) {
         return new AdsGetAdsLayoutQuery(getClient(), actor, accountId);
     }
 
@@ -195,7 +195,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetAdsTargetingQuery getAdsTargeting(Actor actor, int accountId) {
+    public AdsGetAdsTargetingQuery getAdsTargeting(UserActor actor, int accountId) {
         return new AdsGetAdsTargetingQuery(getClient(), actor, accountId);
     }
 
@@ -207,7 +207,7 @@ public class Ads extends AbstractAction {
      * @param data      date
      * @return query
      */
-    public AdsCreateAdsQuery createAds(Actor actor, int accountId, String data) {
+    public AdsCreateAdsQuery createAds(UserActor actor, int accountId, String data) {
         return new AdsCreateAdsQuery(getClient(), actor, accountId, data);
     }
 
@@ -219,7 +219,7 @@ public class Ads extends AbstractAction {
      * @param data      date
      * @return query
      */
-    public AdsUpdateAdsQuery updateAds(Actor actor, int accountId, String data) {
+    public AdsUpdateAdsQuery updateAds(UserActor actor, int accountId, String data) {
         return new AdsUpdateAdsQuery(getClient(), actor, accountId, data);
     }
 
@@ -231,7 +231,7 @@ public class Ads extends AbstractAction {
      * @param ids       ids
      * @return query
      */
-    public AdsDeleteAdsQuery deleteAds(Actor actor, int accountId, String ids) {
+    public AdsDeleteAdsQuery deleteAds(UserActor actor, int accountId, String ids) {
         return new AdsDeleteAdsQuery(getClient(), actor, accountId, ids);
     }
 
@@ -244,7 +244,7 @@ public class Ads extends AbstractAction {
      * @param linkUrl   url
      * @return query
      */
-    public AdsCheckLinkQuery checkLink(Actor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
+    public AdsCheckLinkQuery checkLink(UserActor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
         return new AdsCheckLinkQuery(getClient(), actor, accountId, linkType, linkUrl);
     }
 
@@ -260,7 +260,7 @@ public class Ads extends AbstractAction {
      * @param dateTo    to date
      * @return query
      */
-    public AdsGetStatisticsQuery getStatistics(Actor actor, int accountId, AdsGetStatisticsIdsType idsType, String ids,
+    public AdsGetStatisticsQuery getStatistics(UserActor actor, int accountId, AdsGetStatisticsIdsType idsType, String ids,
                                                AdsGetStatisticsPeriod period, String dateFrom, String dateTo) {
         return new AdsGetStatisticsQuery(getClient(), actor, accountId, idsType, ids, period, dateFrom, dateTo);
     }
@@ -277,7 +277,7 @@ public class Ads extends AbstractAction {
      * @param dateTo    to date
      * @return query
      */
-    public AdsGetDemographicsQuery getDemographics(Actor actor, int accountId, AdsGetDemographicsIdsType idsType,
+    public AdsGetDemographicsQuery getDemographics(UserActor actor, int accountId, AdsGetDemographicsIdsType idsType,
                                                    String ids, String period, String dateFrom, String dateTo) {
         return new AdsGetDemographicsQuery(getClient(), actor, accountId, idsType, ids, period, dateFrom, dateTo);
     }
@@ -289,7 +289,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetAdsPostsReachQuery getAdsPostsReach(Actor actor, int accountId, String adsIds) {
+    public AdsGetAdsPostsReachQuery getAdsPostsReach(UserActor actor, int accountId, String adsIds) {
         return new AdsGetAdsPostsReachQuery(getClient(), actor, accountId, adsIds);
     }
 
@@ -300,7 +300,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetBudgetQuery getBudget(Actor actor, int accountId) {
+    public AdsGetBudgetQuery getBudget(UserActor actor, int accountId) {
         return new AdsGetBudgetQuery(getClient(), actor, accountId);
     }
 
@@ -311,7 +311,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetOfficeUsersQuery getOfficeUsers(Actor actor, int accountId) {
+    public AdsGetOfficeUsersQuery getOfficeUsers(UserActor actor, int accountId) {
         return new AdsGetOfficeUsersQuery(getClient(), actor, accountId);
     }
 
@@ -323,7 +323,7 @@ public class Ads extends AbstractAction {
      * @param data      data
      * @return query
      */
-    public AdsAddOfficeUsersQuery addOfficeUsers(Actor actor, int accountId, String data) {
+    public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId, String data) {
         return new AdsAddOfficeUsersQuery(getClient(), actor, accountId, data);
     }
 
@@ -335,7 +335,7 @@ public class Ads extends AbstractAction {
      * @param ids       ids
      * @return query
      */
-    public AdsRemoveOfficeUsersQuery removeOfficeUsers(Actor actor, int accountId, String ids) {
+    public AdsRemoveOfficeUsersQuery removeOfficeUsers(UserActor actor, int accountId, String ids) {
         return new AdsRemoveOfficeUsersQuery(getClient(), actor, accountId, ids);
     }
 
@@ -347,7 +347,7 @@ public class Ads extends AbstractAction {
      * @param linkUrl   link
      * @return query
      */
-    public AdsGetTargetingStatsQuery getTargetingStats(Actor actor, int accountId, String linkUrl) {
+    public AdsGetTargetingStatsQuery getTargetingStats(UserActor actor, int accountId, String linkUrl) {
         return new AdsGetTargetingStatsQuery(getClient(), actor, accountId, linkUrl);
     }
 
@@ -358,7 +358,7 @@ public class Ads extends AbstractAction {
      * @param section section
      * @return query
      */
-    public AdsGetSuggestionsQuery getSuggestions(Actor actor, AdsGetSuggestionsSection section) {
+    public AdsGetSuggestionsQuery getSuggestions(UserActor actor, AdsGetSuggestionsSection section) {
         return new AdsGetSuggestionsQuery(getClient(), actor, section);
     }
 
@@ -369,7 +369,7 @@ public class Ads extends AbstractAction {
      * @param section section
      * @return query
      */
-    public AdsGetSuggestionsQueryWithRegions getSuggestionsRegions(Actor actor, AdsGetSuggestionsSection section) {
+    public AdsGetSuggestionsQueryWithRegions getSuggestionsRegions(UserActor actor, AdsGetSuggestionsSection section) {
         return new AdsGetSuggestionsQueryWithRegions(getClient(), actor, section);
     }
 
@@ -381,7 +381,7 @@ public class Ads extends AbstractAction {
      * @param cities  cities
      * @return query
      */
-    public AdsGetSuggestionsQueryWithCities getSuggestions(Actor actor, AdsGetSuggestionsSection section, String cities) {
+    public AdsGetSuggestionsQueryWithCities getSuggestions(UserActor actor, AdsGetSuggestionsSection section, String cities) {
         return new AdsGetSuggestionsQueryWithCities(getClient(), actor, section, cities);
     }
 
@@ -392,7 +392,7 @@ public class Ads extends AbstractAction {
      * @param section section
      * @return query
      */
-    public AdsGetSuggestionsQueryWithSchools getSuggestionsSchools(Actor actor, AdsGetSuggestionsSection section) {
+    public AdsGetSuggestionsQueryWithSchools getSuggestionsSchools(UserActor actor, AdsGetSuggestionsSection section) {
         return new AdsGetSuggestionsQueryWithSchools(getClient(), actor, section);
     }
 
@@ -402,7 +402,7 @@ public class Ads extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AdsGetCategoriesQuery getCategories(Actor actor) {
+    public AdsGetCategoriesQuery getCategories(UserActor actor) {
         return new AdsGetCategoriesQuery(getClient(), actor);
     }
 
@@ -413,7 +413,7 @@ public class Ads extends AbstractAction {
      * @param adFormat ad format
      * @return query
      */
-    public AdsGetUploadURLQuery getUploadURL(Actor actor, AdsGetUploadURLAdFormat adFormat) {
+    public AdsGetUploadURLQuery getUploadURL(UserActor actor, AdsGetUploadURLAdFormat adFormat) {
         return new AdsGetUploadURLQuery(getClient(), actor, adFormat);
     }
 
@@ -423,7 +423,7 @@ public class Ads extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public AdsGetVideoUploadURLQuery getVideoUploadURL(Actor actor) {
+    public AdsGetVideoUploadURLQuery getVideoUploadURL(UserActor actor) {
         return new AdsGetVideoUploadURLQuery(getClient(), actor);
     }
 
@@ -434,7 +434,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetFloodStatsQuery getFloodStats(Actor actor, int accountId) {
+    public AdsGetFloodStatsQuery getFloodStats(UserActor actor, int accountId) {
         return new AdsGetFloodStatsQuery(getClient(), actor, accountId);
     }
 
@@ -446,7 +446,7 @@ public class Ads extends AbstractAction {
      * @param adId      ad id
      * @return query
      */
-    public AdsGetRejectionReasonQuery getRejectionReason(Actor actor, int accountId, int adId) {
+    public AdsGetRejectionReasonQuery getRejectionReason(UserActor actor, int accountId, int adId) {
         return new AdsGetRejectionReasonQuery(getClient(), actor, accountId, adId);
     }
 
@@ -458,7 +458,7 @@ public class Ads extends AbstractAction {
      * @param name      name
      * @return query
      */
-    public AdsCreateTargetGroupQuery createTargetGroup(Actor actor, int accountId, String name) {
+    public AdsCreateTargetGroupQuery createTargetGroup(UserActor actor, int accountId, String name) {
         return new AdsCreateTargetGroupQuery(getClient(), actor, accountId, name);
     }
 
@@ -471,7 +471,7 @@ public class Ads extends AbstractAction {
      * @param name          name
      * @return query
      */
-    public AdsUpdateTargetGroupQuery updateTargetGroup(Actor actor, int accountId, int targetGroupId, String name) {
+    public AdsUpdateTargetGroupQuery updateTargetGroup(UserActor actor, int accountId, int targetGroupId, String name) {
         return new AdsUpdateTargetGroupQuery(getClient(), actor, accountId, targetGroupId, name);
     }
 
@@ -483,7 +483,7 @@ public class Ads extends AbstractAction {
      * @param targetGroupId target group id
      * @return query
      */
-    public AdsDeleteTargetGroupQuery deleteTargetGroup(Actor actor, int accountId, int targetGroupId) {
+    public AdsDeleteTargetGroupQuery deleteTargetGroup(UserActor actor, int accountId, int targetGroupId) {
         return new AdsDeleteTargetGroupQuery(getClient(), actor, accountId, targetGroupId);
     }
 
@@ -494,7 +494,7 @@ public class Ads extends AbstractAction {
      * @param accountId account id
      * @return query
      */
-    public AdsGetTargetGroupsQuery getTargetGroups(Actor actor, int accountId) {
+    public AdsGetTargetGroupsQuery getTargetGroups(UserActor actor, int accountId) {
         return new AdsGetTargetGroupsQuery(getClient(), actor, accountId);
     }
 
@@ -507,7 +507,7 @@ public class Ads extends AbstractAction {
      * @param contacts      advertiser's contacts
      * @return query
      */
-    public AdsImportTargetContactsQuery importTargetContacts(Actor actor, int accountId, int targetGroupId, String contacts) {
+    public AdsImportTargetContactsQuery importTargetContacts(UserActor actor, int accountId, int targetGroupId, String contacts) {
         return new AdsImportTargetContactsQuery(getClient(), actor, accountId, targetGroupId, contacts);
     }
 }

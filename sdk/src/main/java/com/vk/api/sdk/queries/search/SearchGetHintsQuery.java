@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.search;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.search.Hint;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public SearchGetHintsQuery(VkApiClient client, Actor actor) {
+    public SearchGetHintsQuery(VkApiClient client, UserActor actor) {
         super(client, "search.getHints", Utils.buildParametrizedType(List.class, Hint.class));
         accessToken(actor.getAccessToken());
     }

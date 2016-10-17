@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class AdsDeleteCampaignsQuery extends AbstractQueryBuilder<AdsDeleteCampa
      * @param accountId value of "account id" parameter.
      * @param ids       value of "ids" parameter.
      */
-    public AdsDeleteCampaignsQuery(VkApiClient client, Actor actor, int accountId, String ids) {
+    public AdsDeleteCampaignsQuery(VkApiClient client, UserActor actor, int accountId, String ids) {
         super(client, "ads.deleteCampaigns", Integer.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

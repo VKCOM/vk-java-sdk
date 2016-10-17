@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.GetChatUsersChatIdsResponse;
 import com.vk.api.sdk.queries.users.UsersNameCase;
 
@@ -19,7 +19,7 @@ public class MessagesGetChatUsersQueryWithChatIds extends AbstractQueryBuilder<M
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, Actor actor, Integer... chatIds) {
+    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, UserActor actor, Integer... chatIds) {
         super(client, "messages.getChatUsers", GetChatUsersChatIdsResponse.class);
         accessToken(actor.getAccessToken());
         chatIds(chatIds);
@@ -31,7 +31,7 @@ public class MessagesGetChatUsersQueryWithChatIds extends AbstractQueryBuilder<M
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, Actor actor, List<Integer> chatIds) {
+    public MessagesGetChatUsersQueryWithChatIds(VkApiClient client, UserActor actor, List<Integer> chatIds) {
         super(client, "messages.getChatUsers", GetChatUsersChatIdsResponse.class);
         accessToken(actor.getAccessToken());
         chatIds(chatIds);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
      * @param type   value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnsubscribeQuery(VkApiClient client, Actor actor, NewsfeedItemType type, int itemId) {
+    public NewsfeedUnsubscribeQuery(VkApiClient client, UserActor actor, NewsfeedItemType type, int itemId) {
         super(client, "newsfeed.unsubscribe", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.leads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Complete;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class LeadsCompleteQuery extends AbstractQueryBuilder<LeadsCompleteQuery,
      * @param vkSid  value of "vk sid" parameter.
      * @param secret value of "secret" parameter.
      */
-    public LeadsCompleteQuery(VkApiClient client, Actor actor, String vkSid, String secret) {
+    public LeadsCompleteQuery(VkApiClient client, UserActor actor, String vkSid, String secret) {
         super(client, "leads.complete", Complete.class);
         accessToken(actor.getAccessToken());
         vkSid(vkSid);

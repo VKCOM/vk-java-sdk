@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class MarketRestoreCommentQuery extends AbstractQueryBuilder<MarketRestor
      * @param ownerId   value of "owner id" parameter.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public MarketRestoreCommentQuery(VkApiClient client, Actor actor, int ownerId, int commentId) {
+    public MarketRestoreCommentQuery(VkApiClient client, UserActor actor, int ownerId, int commentId) {
         super(client, "market.restoreComment", BoolInt.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

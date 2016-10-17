@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.board;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param title   value of "title" parameter.
      */
-    public BoardEditTopicQuery(VkApiClient client, Actor actor, int groupId, int topicId, String title) {
+    public BoardEditTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId, String title) {
         super(client, "board.editTopic", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

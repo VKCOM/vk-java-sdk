@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.groups.GroupsAddLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsApproveRequestQuery;
 import com.vk.api.sdk.queries.groups.GroupsBanUserQuery;
@@ -73,7 +74,7 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQuery isMember(Actor actor, String groupId) {
+    public GroupsIsMemberQuery isMember(UserActor actor, String groupId) {
         return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
@@ -94,14 +95,14 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(Actor actor, String groupId, Integer... userIds) {
+    public GroupsIsMemberQueryWithUserIds isMember(UserActor actor, String groupId, Integer... userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(Actor actor, String groupId, List<Integer> userIds) {
+    public GroupsIsMemberQueryWithUserIds isMember(UserActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
@@ -115,7 +116,7 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithExtended isMemberExtended(Actor actor, String groupId) {
+    public GroupsIsMemberQueryWithExtended isMemberExtended(UserActor actor, String groupId) {
         return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
 
@@ -136,14 +137,14 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(Actor actor, String groupId, Integer... userIds) {
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(UserActor actor, String groupId, Integer... userIds) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(Actor actor, String groupId, List<Integer> userIds) {
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(UserActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
     }
 
@@ -164,14 +165,14 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of the communities to which a user belongs.
      */
-    public GroupsGetQuery get(Actor actor) {
+    public GroupsGetQuery get(UserActor actor) {
         return new GroupsGetQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of the communities to which a user belongs.
      */
-    public GroupsGetQueryWithExtended getExtended(Actor actor) {
+    public GroupsGetQueryWithExtended getExtended(UserActor actor) {
         return new GroupsGetQueryWithExtended(getClient(), actor);
     }
 
@@ -234,182 +235,182 @@ public class Groups extends AbstractAction {
     /**
      * With this method you can join the group or public page, and also confirm your participation in an event.
      */
-    public GroupsJoinQuery join(Actor actor) {
+    public GroupsJoinQuery join(UserActor actor) {
         return new GroupsJoinQuery(getClient(), actor);
     }
 
     /**
      * With this method you can leave a group, public page, or event.
      */
-    public GroupsLeaveQuery leave(Actor actor, int groupId) {
+    public GroupsLeaveQuery leave(UserActor actor, int groupId) {
         return new GroupsLeaveQuery(getClient(), actor, groupId);
     }
 
     /**
      * Searches for communities by substring.
      */
-    public GroupsSearchQuery search(Actor actor, String q) {
+    public GroupsSearchQuery search(UserActor actor, String q) {
         return new GroupsSearchQuery(getClient(), actor, q);
     }
 
     /**
      * Returns communities list for a catalog category.
      */
-    public GroupsGetCatalogQuery getCatalog(Actor actor) {
+    public GroupsGetCatalogQuery getCatalog(UserActor actor) {
         return new GroupsGetCatalogQuery(getClient(), actor);
     }
 
     /**
      * Returns categories list for communities catalog
      */
-    public GroupsGetCatalogInfoQuery getCatalogInfo(Actor actor) {
+    public GroupsGetCatalogInfoQuery getCatalogInfo(UserActor actor) {
         return new GroupsGetCatalogInfoQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of invitations to join communities and events.
      */
-    public GroupsGetInvitesQuery getInvites(Actor actor) {
+    public GroupsGetInvitesQuery getInvites(UserActor actor) {
         return new GroupsGetInvitesQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of invitations to join communities and events.
      */
-    public GroupsGetInvitesQueryWithExtended getInvitesExtended(Actor actor) {
+    public GroupsGetInvitesQueryWithExtended getInvitesExtended(UserActor actor) {
         return new GroupsGetInvitesQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Returns invited users list of a community
      */
-    public GroupsGetInvitedUsersQuery getInvitedUsers(Actor actor, int groupId) {
+    public GroupsGetInvitedUsersQuery getInvitedUsers(UserActor actor, int groupId) {
         return new GroupsGetInvitedUsersQuery(getClient(), actor, groupId);
     }
 
     /**
      * Adds a user to a community blacklist.
      */
-    public GroupsBanUserQuery banUser(Actor actor, int groupId, int userId) {
+    public GroupsBanUserQuery banUser(UserActor actor, int groupId, int userId) {
         return new GroupsBanUserQuery(getClient(), actor, groupId, userId);
     }
 
     /**
      * Deletes a user from a community blacklist.
      */
-    public GroupsUnbanUserQuery unbanUser(Actor actor, int groupId, int userId) {
+    public GroupsUnbanUserQuery unbanUser(UserActor actor, int groupId, int userId) {
         return new GroupsUnbanUserQuery(getClient(), actor, groupId, userId);
     }
 
     /**
      * Returns a list of users on a community blacklist.
      */
-    public GroupsGetBannedQuery getBanned(Actor actor, int groupId) {
+    public GroupsGetBannedQuery getBanned(UserActor actor, int groupId) {
         return new GroupsGetBannedQuery(getClient(), actor, groupId);
     }
 
     /**
      * Creates a new community
      */
-    public GroupsCreateQuery create(Actor actor, String title) {
+    public GroupsCreateQuery create(UserActor actor, String title) {
         return new GroupsCreateQuery(getClient(), actor, title);
     }
 
     /**
      * Edits a community
      */
-    public GroupsEditQuery edit(Actor actor, int groupId) {
+    public GroupsEditQuery edit(UserActor actor, int groupId) {
         return new GroupsEditQuery(getClient(), actor, groupId);
     }
 
     /**
      * Edits the place in community.
      */
-    public GroupsEditPlaceQuery editPlace(Actor actor, int groupId) {
+    public GroupsEditPlaceQuery editPlace(UserActor actor, int groupId) {
         return new GroupsEditPlaceQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns community settings.
      */
-    public GroupsGetSettingsQuery getSettings(Actor actor, int groupId) {
+    public GroupsGetSettingsQuery getSettings(UserActor actor, int groupId) {
         return new GroupsGetSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns a list of requests to the community.
      */
-    public GroupsGetRequestsQuery getRequests(Actor actor, int groupId) {
+    public GroupsGetRequestsQuery getRequests(UserActor actor, int groupId) {
         return new GroupsGetRequestsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns a list of requests to the community.
      */
-    public GroupsGetRequestsQueryWithFields getRequests(Actor actor, int groupId, UserField... fields) {
+    public GroupsGetRequestsQueryWithFields getRequests(UserActor actor, int groupId, UserField... fields) {
         return new GroupsGetRequestsQueryWithFields(getClient(), actor, groupId, fields);
     }
 
     /**
      * Returns a list of requests to the community.
      */
-    public GroupsGetRequestsQueryWithFields getRequests(Actor actor, int groupId, List<UserField> fields) {
+    public GroupsGetRequestsQueryWithFields getRequests(UserActor actor, int groupId, List<UserField> fields) {
         return new GroupsGetRequestsQueryWithFields(getClient(), actor, groupId, fields);
     }
 
     /**
      * Allows to add, remove or edit the community manager .
      */
-    public GroupsEditManagerQuery editManager(Actor actor, int groupId, int userId) {
+    public GroupsEditManagerQuery editManager(UserActor actor, int groupId, int userId) {
         return new GroupsEditManagerQuery(getClient(), actor, groupId, userId);
     }
 
     /**
      * Allows to invite friends to the community.
      */
-    public GroupsInviteQuery invite(Actor actor, int groupId, int userId) {
+    public GroupsInviteQuery invite(UserActor actor, int groupId, int userId) {
         return new GroupsInviteQuery(getClient(), actor, groupId, userId);
     }
 
     /**
      * Allows to add a link to the community.
      */
-    public GroupsAddLinkQuery addLink(Actor actor, int groupId, String link) {
+    public GroupsAddLinkQuery addLink(UserActor actor, int groupId, String link) {
         return new GroupsAddLinkQuery(getClient(), actor, groupId, link);
     }
 
     /**
      * Allows to delete a link from the community.
      */
-    public GroupsDeleteLinkQuery deleteLink(Actor actor, int groupId, int linkId) {
+    public GroupsDeleteLinkQuery deleteLink(UserActor actor, int groupId, int linkId) {
         return new GroupsDeleteLinkQuery(getClient(), actor, groupId, linkId);
     }
 
     /**
      * Allows to edit a link in the community.
      */
-    public GroupsEditLinkQuery editLink(Actor actor, int groupId, int linkId) {
+    public GroupsEditLinkQuery editLink(UserActor actor, int groupId, int linkId) {
         return new GroupsEditLinkQuery(getClient(), actor, groupId, linkId);
     }
 
     /**
      * Allows to reorder links in the community.
      */
-    public GroupsReorderLinkQuery reorderLink(Actor actor, int groupId, int linkId) {
+    public GroupsReorderLinkQuery reorderLink(UserActor actor, int groupId, int linkId) {
         return new GroupsReorderLinkQuery(getClient(), actor, groupId, linkId);
     }
 
     /**
      * Removes a user from the community.
      */
-    public GroupsRemoveUserQuery removeUser(Actor actor, int groupId, int userId) {
+    public GroupsRemoveUserQuery removeUser(UserActor actor, int groupId, int userId) {
         return new GroupsRemoveUserQuery(getClient(), actor, groupId, userId);
     }
 
     /**
      * Allows to approve join request to the community.
      */
-    public GroupsApproveRequestQuery approveRequest(Actor actor, int groupId, int userId) {
+    public GroupsApproveRequestQuery approveRequest(UserActor actor, int groupId, int userId) {
         return new GroupsApproveRequestQuery(getClient(), actor, groupId, userId);
     }
 

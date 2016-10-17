@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Created by tsivarev on 26.07.16.
  */
-public class ClientCredentialsFlowResponse {
+public class ServiceClientCredentialsFlowResponse {
 
     @SerializedName("access_token")
     private String accessToken;
@@ -20,7 +20,7 @@ public class ClientCredentialsFlowResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ClientCredentialsFlowResponse that = (ClientCredentialsFlowResponse) o;
+        ServiceClientCredentialsFlowResponse that = (ServiceClientCredentialsFlowResponse) o;
         return Objects.equals(accessToken, that.accessToken);
     }
 
@@ -31,7 +31,7 @@ public class ClientCredentialsFlowResponse {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("ClientCredentialsFlowResponse{");
+        final StringBuilder sb = new StringBuilder("ServiceClientCredentialsFlowResponse{");
         sb.append("accessToken='").append(accessToken).append('\'');
         sb.append('}');
         return sb.toString();

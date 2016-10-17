@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.pages.WikipageVersion;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQu
      * @param actor  actor with access token
      * @param pageId value of "page id" parameter.
      */
-    public PagesGetHistoryQuery(VkApiClient client, Actor actor, int pageId) {
+    public PagesGetHistoryQuery(VkApiClient client, UserActor actor, int pageId) {
         super(client, "pages.getHistory", Utils.buildParametrizedType(List.class, WikipageVersion.class));
         accessToken(actor.getAccessToken());
         pageId(pageId);

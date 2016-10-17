@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetMarketAlbumUploadServerResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class PhotosGetMarketAlbumUploadServerQuery extends AbstractQueryBuilder<
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public PhotosGetMarketAlbumUploadServerQuery(VkApiClient client, Actor actor, int groupId) {
+    public PhotosGetMarketAlbumUploadServerQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "photos.getMarketAlbumUploadServer", GetMarketAlbumUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

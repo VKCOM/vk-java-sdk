@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargSuggestions;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestio
      * @param actor   actor with access token
      * @param section value of "section" parameter.
      */
-    public AdsGetSuggestionsQuery(VkApiClient client, Actor actor, AdsGetSuggestionsSection section) {
+    public AdsGetSuggestionsQuery(VkApiClient client, UserActor actor, AdsGetSuggestionsSection section) {
         super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestions.class));
         accessToken(actor.getAccessToken());
         section(section);

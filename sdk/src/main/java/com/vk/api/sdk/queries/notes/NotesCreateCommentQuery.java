@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCom
      * @param noteId  value of "note id" parameter. Minimum is 0.
      * @param message value of "message" parameter.
      */
-    public NotesCreateCommentQuery(VkApiClient client, Actor actor, int noteId, String message) {
+    public NotesCreateCommentQuery(VkApiClient client, UserActor actor, int noteId, String message) {
         super(client, "notes.createComment", Integer.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);

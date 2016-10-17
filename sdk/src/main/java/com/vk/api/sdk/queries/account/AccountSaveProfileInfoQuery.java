@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.account;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.SaveProfileInfoResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AccountSaveProfileInfoQuery(VkApiClient client, Actor actor) {
+    public AccountSaveProfileInfoQuery(VkApiClient client, UserActor actor) {
         super(client, "account.saveProfileInfo", SaveProfileInfoResponse.class);
         accessToken(actor.getAccessToken());
     }

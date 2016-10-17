@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
      * @param title  value of "title" parameter.
      * @param text   value of "text" parameter.
      */
-    public NotesEditQuery(VkApiClient client, Actor actor, int noteId, String title, String text) {
+    public NotesEditQuery(VkApiClient client, UserActor actor, int noteId, String title, String text) {
         super(client, "notes.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.fave;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.fave.responses.GetPostsResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class FaveGetPostsQuery extends AbstractQueryBuilder<FaveGetPostsQuery, G
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public FaveGetPostsQuery(VkApiClient client, Actor actor) {
+    public FaveGetPostsQuery(VkApiClient client, UserActor actor) {
         super(client, "fave.getPosts", GetPostsResponse.class);
         accessToken(actor.getAccessToken());
     }

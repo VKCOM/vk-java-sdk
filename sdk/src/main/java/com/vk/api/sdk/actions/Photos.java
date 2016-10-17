@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.photos.PhotosConfirmTagQuery;
 import com.vk.api.sdk.queries.photos.PhotosCopyQuery;
 import com.vk.api.sdk.queries.photos.PhotosCreateAlbumQuery;
@@ -71,14 +72,14 @@ public class Photos extends AbstractAction {
     /**
      * Creates an empty photo album.
      */
-    public PhotosCreateAlbumQuery createAlbum(Actor actor, String title) {
+    public PhotosCreateAlbumQuery createAlbum(UserActor actor, String title) {
         return new PhotosCreateAlbumQuery(getClient(), actor, title);
     }
 
     /**
      * Edits information about a photo album.
      */
-    public PhotosEditAlbumQuery editAlbum(Actor actor, int albumId) {
+    public PhotosEditAlbumQuery editAlbum(UserActor actor, int albumId) {
         return new PhotosEditAlbumQuery(getClient(), actor, albumId);
     }
 
@@ -92,7 +93,7 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photo albums.
      */
-    public PhotosGetAlbumsQuery getAlbums(Actor actor) {
+    public PhotosGetAlbumsQuery getAlbums(UserActor actor) {
         return new PhotosGetAlbumsQuery(getClient(), actor);
     }
 
@@ -106,7 +107,7 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photos.
      */
-    public PhotosGetQuery get(Actor actor) {
+    public PhotosGetQuery get(UserActor actor) {
         return new PhotosGetQuery(getClient(), actor);
     }
 
@@ -120,14 +121,14 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photos.
      */
-    public PhotosGetQueryWithExtended getExtended(Actor actor) {
+    public PhotosGetQueryWithExtended getExtended(UserActor actor) {
         return new PhotosGetQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Returns the number of photo albums belonging to a user or community.
      */
-    public PhotosGetAlbumsCountQuery getAlbumsCount(Actor actor) {
+    public PhotosGetAlbumsCountQuery getAlbumsCount(UserActor actor) {
         return new PhotosGetAlbumsCountQuery(getClient(), actor);
     }
 
@@ -148,14 +149,14 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQuery getById(Actor actor, String... photos) {
+    public PhotosGetByIdQuery getById(UserActor actor, String... photos) {
         return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQuery getById(Actor actor, List<String> photos) {
+    public PhotosGetByIdQuery getById(UserActor actor, List<String> photos) {
         return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
@@ -176,63 +177,63 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(Actor actor, String... photos) {
+    public PhotosGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... photos) {
         return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(Actor actor, List<String> photos) {
+    public PhotosGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> photos) {
         return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
     }
 
     /**
      * Returns the server address for photo upload.
      */
-    public PhotosGetUploadServerQuery getUploadServer(Actor actor) {
+    public PhotosGetUploadServerQuery getUploadServer(UserActor actor) {
         return new PhotosGetUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns an upload server address for a profile or community photo.
      */
-    public PhotosGetOwnerPhotoUploadServerQuery getOwnerPhotoUploadServer(Actor actor) {
+    public PhotosGetOwnerPhotoUploadServerQuery getOwnerPhotoUploadServer(UserActor actor) {
         return new PhotosGetOwnerPhotoUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns an upload link for chat cover pictures.
      */
-    public PhotosGetChatUploadServerQuery getChatUploadServer(Actor actor, int chatId) {
+    public PhotosGetChatUploadServerQuery getChatUploadServer(UserActor actor, int chatId) {
         return new PhotosGetChatUploadServerQuery(getClient(), actor, chatId);
     }
 
     /**
      * Returns the server address for market photo upload.
      */
-    public PhotosGetMarketUploadServerQuery getMarketUploadServer(Actor actor, int groupId) {
+    public PhotosGetMarketUploadServerQuery getMarketUploadServer(UserActor actor, int groupId) {
         return new PhotosGetMarketUploadServerQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns the server address for market album photo upload.
      */
-    public PhotosGetMarketAlbumUploadServerQuery getMarketAlbumUploadServer(Actor actor, int groupId) {
+    public PhotosGetMarketAlbumUploadServerQuery getMarketAlbumUploadServer(UserActor actor, int groupId) {
         return new PhotosGetMarketAlbumUploadServerQuery(getClient(), actor, groupId);
     }
 
     /**
      * Saves market photos after successful uploading.
      */
-    public PhotosSaveMarketPhotoQuery saveMarketPhoto(Actor actor, String photo, int server, String hash) {
+    public PhotosSaveMarketPhotoQuery saveMarketPhoto(UserActor actor, String photo, int server, String hash) {
         return new PhotosSaveMarketPhotoQuery(getClient(), actor, photo, server, hash);
     }
 
     /**
      * Saves market album photos after successful uploading.
      */
-    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(Actor actor, int groupId, String photo,
+    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(UserActor actor, int groupId, String photo,
                                                                 int server, String hash) {
         return new PhotosSaveMarketAlbumPhotoQuery(getClient(), actor, groupId, photo, server, hash);
     }
@@ -240,21 +241,21 @@ public class Photos extends AbstractAction {
     /**
      * Saves  a profile or community photo.
      */
-    public PhotosSaveOwnerPhotoQuery saveOwnerPhoto(Actor actor) {
+    public PhotosSaveOwnerPhotoQuery saveOwnerPhoto(UserActor actor) {
         return new PhotosSaveOwnerPhotoQuery(getClient(), actor);
     }
 
     /**
      * Saves a photo to a user's or community's wall after being uploaded.
      */
-    public PhotosSaveWallPhotoQuery saveWallPhoto(Actor actor, String photo) {
+    public PhotosSaveWallPhotoQuery saveWallPhoto(UserActor actor, String photo) {
         return new PhotosSaveWallPhotoQuery(getClient(), actor, photo);
     }
 
     /**
      * Returns the server address for photo upload onto a user's wall.
      */
-    public PhotosGetWallUploadServerQuery getWallUploadServer(Actor actor) {
+    public PhotosGetWallUploadServerQuery getWallUploadServer(UserActor actor) {
         return new PhotosGetWallUploadServerQuery(getClient(), actor);
     }
 
@@ -275,14 +276,14 @@ public class Photos extends AbstractAction {
     /**
      * Reports (submits a complaint about) a photo.
      */
-    public PhotosReportQuery report(Actor actor, int ownerId, int photoId) {
+    public PhotosReportQuery report(UserActor actor, int ownerId, int photoId) {
         return new PhotosReportQuery(getClient(), actor, ownerId, photoId);
     }
 
     /**
      * Reports (submits a complaint about) a comment on a photo.
      */
-    public PhotosReportCommentQuery reportComment(Actor actor, int ownerId, int commentId) {
+    public PhotosReportCommentQuery reportComment(UserActor actor, int ownerId, int commentId) {
         return new PhotosReportCommentQuery(getClient(), actor, ownerId, commentId);
     }
 
@@ -296,182 +297,182 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos.
      */
-    public PhotosSearchQuery search(Actor actor) {
+    public PhotosSearchQuery search(UserActor actor) {
         return new PhotosSearchQuery(getClient(), actor);
     }
 
     /**
      * Saves photos after successful uploading.
      */
-    public PhotosSaveQuery save(Actor actor) {
+    public PhotosSaveQuery save(UserActor actor) {
         return new PhotosSaveQuery(getClient(), actor);
     }
 
     /**
      * Allows to copy a photo to the "Saved photos" album
      */
-    public PhotosCopyQuery copy(Actor actor, int ownerId, int photoId) {
+    public PhotosCopyQuery copy(UserActor actor, int ownerId, int photoId) {
         return new PhotosCopyQuery(getClient(), actor, ownerId, photoId);
     }
 
     /**
      * Edits the caption of a photo.
      */
-    public PhotosEditQuery edit(Actor actor, int photoId) {
+    public PhotosEditQuery edit(UserActor actor, int photoId) {
         return new PhotosEditQuery(getClient(), actor, photoId);
     }
 
     /**
      * Moves a photo from one album to another.
      */
-    public PhotosMoveQuery move(Actor actor, int targetAlbumId, int photoId) {
+    public PhotosMoveQuery move(UserActor actor, int targetAlbumId, int photoId) {
         return new PhotosMoveQuery(getClient(), actor, targetAlbumId, photoId);
     }
 
     /**
      * Makes a photo into an album cover.
      */
-    public PhotosMakeCoverQuery makeCover(Actor actor, int photoId) {
+    public PhotosMakeCoverQuery makeCover(UserActor actor, int photoId) {
         return new PhotosMakeCoverQuery(getClient(), actor, photoId);
     }
 
     /**
      * Reorders the album in the list of user albums.
      */
-    public PhotosReorderAlbumsQuery reorderAlbums(Actor actor, int albumId) {
+    public PhotosReorderAlbumsQuery reorderAlbums(UserActor actor, int albumId) {
         return new PhotosReorderAlbumsQuery(getClient(), actor, albumId);
     }
 
     /**
      * Reorders the photo in the list of photos of the user album.
      */
-    public PhotosReorderPhotosQuery reorderPhotos(Actor actor, int photoId) {
+    public PhotosReorderPhotosQuery reorderPhotos(UserActor actor, int photoId) {
         return new PhotosReorderPhotosQuery(getClient(), actor, photoId);
     }
 
     /**
      * Returns a list of photos belonging to a user or community, in reverse chronological order.
      */
-    public PhotosGetAllQuery getAll(Actor actor) {
+    public PhotosGetAllQuery getAll(UserActor actor) {
         return new PhotosGetAllQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of photos belonging to a user or community, in reverse chronological order.
      */
-    public PhotosGetAllQueryWithExtended getAllExtended(Actor actor) {
+    public PhotosGetAllQueryWithExtended getAllExtended(UserActor actor) {
         return new PhotosGetAllQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Returns a list of photos in which a user is tagged.
      */
-    public PhotosGetUserPhotosQuery getUserPhotos(Actor actor) {
+    public PhotosGetUserPhotosQuery getUserPhotos(UserActor actor) {
         return new PhotosGetUserPhotosQuery(getClient(), actor);
     }
 
     /**
      * Deletes a photo album belonging to the current user.
      */
-    public PhotosDeleteAlbumQuery deleteAlbum(Actor actor, int albumId) {
+    public PhotosDeleteAlbumQuery deleteAlbum(UserActor actor, int albumId) {
         return new PhotosDeleteAlbumQuery(getClient(), actor, albumId);
     }
 
     /**
      * Deletes a photo.
      */
-    public PhotosDeleteQuery delete(Actor actor, int photoId) {
+    public PhotosDeleteQuery delete(UserActor actor, int photoId) {
         return new PhotosDeleteQuery(getClient(), actor, photoId);
     }
 
     /**
      * Restores a deleted photo.
      */
-    public PhotosRestoreQuery restore(Actor actor, int photoId) {
+    public PhotosRestoreQuery restore(UserActor actor, int photoId) {
         return new PhotosRestoreQuery(getClient(), actor, photoId);
     }
 
     /**
      * Confirms a tag on a photo.
      */
-    public PhotosConfirmTagQuery confirmTag(Actor actor, String photoId, int tagId) {
+    public PhotosConfirmTagQuery confirmTag(UserActor actor, String photoId, int tagId) {
         return new PhotosConfirmTagQuery(getClient(), actor, photoId, tagId);
     }
 
     /**
      * Returns a list of comments on a photo.
      */
-    public PhotosGetCommentsQuery getComments(Actor actor, int photoId) {
+    public PhotosGetCommentsQuery getComments(UserActor actor, int photoId) {
         return new PhotosGetCommentsQuery(getClient(), actor, photoId);
     }
 
     /**
      * Returns a list of comments on a photo.
      */
-    public PhotosGetCommentsQueryWithExtended getCommentsExtended(Actor actor, int photoId) {
+    public PhotosGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int photoId) {
         return new PhotosGetCommentsQueryWithExtended(getClient(), actor, photoId);
     }
 
     /**
      * Returns a list of comments on a specific photo album or all albums of the user sorted in reverse chronological order.
      */
-    public PhotosGetAllCommentsQuery getAllComments(Actor actor) {
+    public PhotosGetAllCommentsQuery getAllComments(UserActor actor) {
         return new PhotosGetAllCommentsQuery(getClient(), actor);
     }
 
     /**
      * Adds a new comment on the photo.
      */
-    public PhotosCreateCommentQuery createComment(Actor actor, int photoId) {
+    public PhotosCreateCommentQuery createComment(UserActor actor, int photoId) {
         return new PhotosCreateCommentQuery(getClient(), actor, photoId);
     }
 
     /**
      * Deletes a comment on the photo.
      */
-    public PhotosDeleteCommentQuery deleteComment(Actor actor, int commentId) {
+    public PhotosDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
         return new PhotosDeleteCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Restores a deleted comment on a photo.
      */
-    public PhotosRestoreCommentQuery restoreComment(Actor actor, int commentId) {
+    public PhotosRestoreCommentQuery restoreComment(UserActor actor, int commentId) {
         return new PhotosRestoreCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Edits a comment on a photo.
      */
-    public PhotosEditCommentQuery editComment(Actor actor, int commentId) {
+    public PhotosEditCommentQuery editComment(UserActor actor, int commentId) {
         return new PhotosEditCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Returns a list of tags on a photo.
      */
-    public PhotosGetTagsQuery getTags(Actor actor, int photoId) {
+    public PhotosGetTagsQuery getTags(UserActor actor, int photoId) {
         return new PhotosGetTagsQuery(getClient(), actor, photoId);
     }
 
     /**
      * Adds a tag on the photo.
      */
-    public PhotosPutTagQuery putTag(Actor actor, int photoId, int userId) {
+    public PhotosPutTagQuery putTag(UserActor actor, int photoId, int userId) {
         return new PhotosPutTagQuery(getClient(), actor, photoId, userId);
     }
 
     /**
      * Removes a tag from a photo.
      */
-    public PhotosRemoveTagQuery removeTag(Actor actor, int photoId, int tagId) {
+    public PhotosRemoveTagQuery removeTag(UserActor actor, int photoId, int tagId) {
         return new PhotosRemoveTagQuery(getClient(), actor, photoId, tagId);
     }
 
     /**
      * Returns a list of photos with tags that have not been viewed.
      */
-    public PhotosGetNewTagsQuery getNewTags(Actor actor) {
+    public PhotosGetNewTagsQuery getNewTags(UserActor actor) {
         return new PhotosGetNewTagsQuery(getClient(), actor);
     }
 }

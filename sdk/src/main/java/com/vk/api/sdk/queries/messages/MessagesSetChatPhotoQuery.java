@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.SetChatPhotoResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class MessagesSetChatPhotoQuery extends AbstractQueryBuilder<MessagesSetC
      * @param actor  actor with access token
      * @param file   value of "file" parameter.
      */
-    public MessagesSetChatPhotoQuery(VkApiClient client, Actor actor, String file) {
+    public MessagesSetChatPhotoQuery(VkApiClient client, UserActor actor, String file) {
         super(client, "messages.setChatPhoto", SetChatPhotoResponse.class);
         accessToken(actor.getAccessToken());
         file(file);

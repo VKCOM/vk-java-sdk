@@ -1,6 +1,7 @@
 package com.vk.api.sdk.client;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.actions.Account;
 import com.vk.api.sdk.actions.Ads;
 import com.vk.api.sdk.actions.Apps;
@@ -37,6 +38,8 @@ import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.actions.Videos;
 import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
+import com.vk.api.sdk.deserializers.GroupAuthResponseDeserializer;
+import com.vk.api.sdk.objects.GroupAuthResponse;
 
 public class VkApiClient {
 
@@ -47,10 +50,10 @@ public class VkApiClient {
     private Gson gson;
 
     public VkApiClient(TransportClient transportClient) {
-        this(transportClient, new Gson());
-    }
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(GroupAuthResponse.class, new GroupAuthResponseDeserializer())
+                .create();
 
-    public VkApiClient(TransportClient transportClient, Gson gson) {
         this.transportClient = transportClient;
         this.gson = gson;
     }

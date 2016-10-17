@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.Lyrics;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioGetLyricsQuery extends AbstractQueryBuilder<AudioGetLyricsQuer
      * @param actor    actor with access token
      * @param lyricsId value of "lyrics id" parameter.
      */
-    public AudioGetLyricsQuery(VkApiClient client, Actor actor, int lyricsId) {
+    public AudioGetLyricsQuery(VkApiClient client, UserActor actor, int lyricsId) {
         super(client, "audio.getLyrics", Lyrics.class);
         accessToken(actor.getAccessToken());
         lyricsId(lyricsId);

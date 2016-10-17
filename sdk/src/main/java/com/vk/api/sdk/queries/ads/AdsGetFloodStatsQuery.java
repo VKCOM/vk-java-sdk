@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.FloodStats;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AdsGetFloodStatsQuery extends AbstractQueryBuilder<AdsGetFloodStats
      * @param actor     actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetFloodStatsQuery(VkApiClient client, Actor actor, int accountId) {
+    public AdsGetFloodStatsQuery(VkApiClient client, UserActor actor, int accountId) {
         super(client, "ads.getFloodStats", FloodStats.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.LinkStatus;
 
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
      * @param linkType  value of "link type" parameter.
      * @param linkUrl   value of "link url" parameter.
      */
-    public AdsCheckLinkQuery(VkApiClient client, Actor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
+    public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
         super(client, "ads.checkLink", LinkStatus.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

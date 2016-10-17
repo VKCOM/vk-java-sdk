@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.video.VideoAddAlbumQuery;
 import com.vk.api.sdk.queries.video.VideoAddQuery;
 import com.vk.api.sdk.queries.video.VideoAddToAlbumQuery;
@@ -57,222 +57,222 @@ public class Videos extends AbstractAction {
     /**
      * Returns detailed information about videos.
      */
-    public VideoGetQuery get(Actor actor) {
+    public VideoGetQuery get(UserActor actor) {
         return new VideoGetQuery(getClient(), actor);
     }
 
     /**
      * Returns detailed information about videos.
      */
-    public VideoGetQueryWithExtended getExtended(Actor actor) {
+    public VideoGetQueryWithExtended getExtended(UserActor actor) {
         return new VideoGetQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Edits information about a video on a user or community page.
      */
-    public VideoEditQuery edit(Actor actor, int videoId) {
+    public VideoEditQuery edit(UserActor actor, int videoId) {
         return new VideoEditQuery(getClient(), actor, videoId);
     }
 
     /**
      * Adds a video to a user or community page.
      */
-    public VideoAddQuery add(Actor actor, int videoId, int ownerId) {
+    public VideoAddQuery add(UserActor actor, int videoId, int ownerId) {
         return new VideoAddQuery(getClient(), actor, videoId, ownerId);
     }
 
     /**
      * Returns a server address (required for upload) and video data.
      */
-    public VideoSaveQuery save(Actor actor) {
+    public VideoSaveQuery save(UserActor actor) {
         return new VideoSaveQuery(getClient(), actor);
     }
 
     /**
      * Deletes a video from a user or community page.
      */
-    public VideoDeleteQuery delete(Actor actor, int videoId) {
+    public VideoDeleteQuery delete(UserActor actor, int videoId) {
         return new VideoDeleteQuery(getClient(), actor, videoId);
     }
 
     /**
      * Restores a previously deleted video.
      */
-    public VideoRestoreQuery restore(Actor actor, int videoId) {
+    public VideoRestoreQuery restore(UserActor actor, int videoId) {
         return new VideoRestoreQuery(getClient(), actor, videoId);
     }
 
     /**
      * Returns a list of videos under the set search criterion.
      */
-    public VideoSearchQuery search(Actor actor, String q) {
+    public VideoSearchQuery search(UserActor actor, String q) {
         return new VideoSearchQuery(getClient(), actor, q);
     }
 
     /**
      * Returns a list of videos under the set search criterion.
      */
-    public VideoSearchQueryWithExtended searchExtended(Actor actor, String q) {
+    public VideoSearchQueryWithExtended searchExtended(UserActor actor, String q) {
         return new VideoSearchQueryWithExtended(getClient(), actor, q);
     }
 
     /**
      * Returns list of videos in which the user is tagged.
      */
-    public VideoGetUserVideosQuery getUserVideos(Actor actor) {
+    public VideoGetUserVideosQuery getUserVideos(UserActor actor) {
         return new VideoGetUserVideosQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of video albums owned by a user or community.
      */
-    public VideoGetAlbumsQuery getAlbums(Actor actor) {
+    public VideoGetAlbumsQuery getAlbums(UserActor actor) {
         return new VideoGetAlbumsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of video albums owned by a user or community.
      */
-    public VideoGetAlbumsQueryWithExtended getAlbumsExtended(Actor actor) {
+    public VideoGetAlbumsQueryWithExtended getAlbumsExtended(UserActor actor) {
         return new VideoGetAlbumsQueryWithExtended(getClient(), actor);
     }
 
     /**
      * Returns video album info
      */
-    public VideoGetAlbumByIdQuery getAlbumById(Actor actor, int albumId) {
+    public VideoGetAlbumByIdQuery getAlbumById(UserActor actor, int albumId) {
         return new VideoGetAlbumByIdQuery(getClient(), actor, albumId);
     }
 
     /**
      * Creates an empty album for videos.
      */
-    public VideoAddAlbumQuery addAlbum(Actor actor) {
+    public VideoAddAlbumQuery addAlbum(UserActor actor) {
         return new VideoAddAlbumQuery(getClient(), actor);
     }
 
     /**
      * Edits the title of a video album.
      */
-    public VideoEditAlbumQuery editAlbum(Actor actor, int albumId, String title) {
+    public VideoEditAlbumQuery editAlbum(UserActor actor, int albumId, String title) {
         return new VideoEditAlbumQuery(getClient(), actor, albumId, title);
     }
 
     /**
      * Deletes a video album.
      */
-    public VideoDeleteAlbumQuery deleteAlbum(Actor actor, int albumId) {
+    public VideoDeleteAlbumQuery deleteAlbum(UserActor actor, int albumId) {
         return new VideoDeleteAlbumQuery(getClient(), actor, albumId);
     }
 
     /**
      * Reorders the album in the list of user video albums.
      */
-    public VideoReorderAlbumsQuery reorderAlbums(Actor actor, int albumId) {
+    public VideoReorderAlbumsQuery reorderAlbums(UserActor actor, int albumId) {
         return new VideoReorderAlbumsQuery(getClient(), actor, albumId);
     }
 
     /**
      * Reorders the video in the video album.
      */
-    public VideoReorderVideosQuery reorderVideos(Actor actor, int ownerId, int videoId) {
+    public VideoReorderVideosQuery reorderVideos(UserActor actor, int ownerId, int videoId) {
         return new VideoReorderVideosQuery(getClient(), actor, ownerId, videoId);
     }
 
-    public VideoAddToAlbumQuery addToAlbum(Actor actor, int ownerId, int videoId) {
+    public VideoAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, int videoId) {
         return new VideoAddToAlbumQuery(getClient(), actor, ownerId, videoId);
     }
 
-    public VideoRemoveFromAlbumQuery removeFromAlbum(Actor actor, int ownerId, int videoId) {
+    public VideoRemoveFromAlbumQuery removeFromAlbum(UserActor actor, int ownerId, int videoId) {
         return new VideoRemoveFromAlbumQuery(getClient(), actor, ownerId, videoId);
     }
 
-    public VideoGetAlbumsByVideoQuery getAlbumsByVideo(Actor actor, int ownerId, int videoId) {
+    public VideoGetAlbumsByVideoQuery getAlbumsByVideo(UserActor actor, int ownerId, int videoId) {
         return new VideoGetAlbumsByVideoQuery(getClient(), actor, ownerId, videoId);
     }
 
     /**
      * Returns a list of comments on a video.
      */
-    public VideoGetCommentsQuery getComments(Actor actor, int videoId) {
+    public VideoGetCommentsQuery getComments(UserActor actor, int videoId) {
         return new VideoGetCommentsQuery(getClient(), actor, videoId);
     }
 
     /**
      * Returns a list of comments on a video.
      */
-    public VideoGetCommentsQueryWithExtended getCommentsExtended(Actor actor, int videoId) {
+    public VideoGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int videoId) {
         return new VideoGetCommentsQueryWithExtended(getClient(), actor, videoId);
     }
 
     /**
      * Adds a new comment on a video.
      */
-    public VideoCreateCommentQuery createComment(Actor actor, int videoId) {
+    public VideoCreateCommentQuery createComment(UserActor actor, int videoId) {
         return new VideoCreateCommentQuery(getClient(), actor, videoId);
     }
 
     /**
      * Deletes a comment on a video.
      */
-    public VideoDeleteCommentQuery deleteComment(Actor actor, int commentId) {
+    public VideoDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
         return new VideoDeleteCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Restores a previously deleted comment on a video.
      */
-    public VideoRestoreCommentQuery restoreComment(Actor actor, int commentId) {
+    public VideoRestoreCommentQuery restoreComment(UserActor actor, int commentId) {
         return new VideoRestoreCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Edits the text of a comment on a video.
      */
-    public VideoEditCommentQuery editComment(Actor actor, int commentId) {
+    public VideoEditCommentQuery editComment(UserActor actor, int commentId) {
         return new VideoEditCommentQuery(getClient(), actor, commentId);
     }
 
     /**
      * Returns a list of tags on a video.
      */
-    public VideoGetTagsQuery getTags(Actor actor, int videoId) {
+    public VideoGetTagsQuery getTags(UserActor actor, int videoId) {
         return new VideoGetTagsQuery(getClient(), actor, videoId);
     }
 
     /**
      * Adds a tag on a video.
      */
-    public VideoPutTagQuery putTag(Actor actor, int userId, int videoId) {
+    public VideoPutTagQuery putTag(UserActor actor, int userId, int videoId) {
         return new VideoPutTagQuery(getClient(), actor, userId, videoId);
     }
 
     /**
      * Removes a tag from a video.
      */
-    public VideoRemoveTagQuery removeTag(Actor actor, int tagId, int videoId) {
+    public VideoRemoveTagQuery removeTag(UserActor actor, int tagId, int videoId) {
         return new VideoRemoveTagQuery(getClient(), actor, tagId, videoId);
     }
 
     /**
      * Returns a list of videos with tags that have not been viewed.
      */
-    public VideoGetNewTagsQuery getNewTags(Actor actor) {
+    public VideoGetNewTagsQuery getNewTags(UserActor actor) {
         return new VideoGetNewTagsQuery(getClient(), actor);
     }
 
     /**
      * Reports (submits a complaint about) a video.
      */
-    public VideoReportQuery report(Actor actor, int ownerId, int videoId) {
+    public VideoReportQuery report(UserActor actor, int ownerId, int videoId) {
         return new VideoReportQuery(getClient(), actor, ownerId, videoId);
     }
 
     /**
      * Reports (submits a complaint about) a comment on a video.
      */
-    public VideoReportCommentQuery reportComment(Actor actor, int ownerId, int commentId) {
+    public VideoReportCommentQuery reportComment(UserActor actor, int ownerId, int commentId) {
         return new VideoReportCommentQuery(getClient(), actor, ownerId, commentId);
     }
 
@@ -286,7 +286,7 @@ public class Videos extends AbstractAction {
     /**
      * Returns video catalog
      */
-    public VideoGetCatalogQuery getCatalog(Actor actor) {
+    public VideoGetCatalogQuery getCatalog(UserActor actor) {
         return new VideoGetCatalogQuery(getClient(), actor);
     }
 
@@ -300,14 +300,14 @@ public class Videos extends AbstractAction {
     /**
      * Returns a separate catalog section
      */
-    public VideoGetCatalogSectionQuery getCatalogSection(Actor actor, String sectionId, String from) {
+    public VideoGetCatalogSectionQuery getCatalogSection(UserActor actor, String sectionId, String from) {
         return new VideoGetCatalogSectionQuery(getClient(), actor, sectionId, from);
     }
 
     /**
      * Hides a video catalog section from a user.
      */
-    public VideoHideCatalogSectionQuery hideCatalogSection(Actor actor, int sectionId) {
+    public VideoHideCatalogSectionQuery hideCatalogSection(UserActor actor, int sectionId) {
         return new VideoHideCatalogSectionQuery(getClient(), actor, sectionId);
     }
 }

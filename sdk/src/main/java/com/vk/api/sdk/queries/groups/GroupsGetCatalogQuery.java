@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetCatalogResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class GroupsGetCatalogQuery extends AbstractQueryBuilder<GroupsGetCatalog
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetCatalogQuery(VkApiClient client, Actor actor) {
+    public GroupsGetCatalogQuery(VkApiClient client, UserActor actor) {
         super(client, "groups.getCatalog", GetCatalogResponse.class);
         accessToken(actor.getAccessToken());
     }

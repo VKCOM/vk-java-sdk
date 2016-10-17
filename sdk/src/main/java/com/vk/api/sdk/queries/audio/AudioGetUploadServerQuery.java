@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.responses.GetUploadServerResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class AudioGetUploadServerQuery extends AbstractQueryBuilder<AudioGetUplo
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public AudioGetUploadServerQuery(VkApiClient client, Actor actor) {
+    public AudioGetUploadServerQuery(VkApiClient client, UserActor actor) {
         super(client, "audio.getUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }

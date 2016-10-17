@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.account;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.ChangePasswordResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
      * @param actor       actor with access token
      * @param newPassword value of "new password" parameter.
      */
-    public AccountChangePasswordQuery(VkApiClient client, Actor actor, String newPassword) {
+    public AccountChangePasswordQuery(VkApiClient client, UserActor actor, String newPassword) {
         super(client, "account.changePassword", ChangePasswordResponse.class);
         accessToken(actor.getAccessToken());
         newPassword(newPassword);

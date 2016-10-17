@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notifications;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class NotificationsMarkAsViewedQuery extends AbstractQueryBuilder<Notific
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NotificationsMarkAsViewedQuery(VkApiClient client, Actor actor) {
+    public NotificationsMarkAsViewedQuery(VkApiClient client, UserActor actor) {
         super(client, "notifications.markAsViewed", BoolInt.class);
         accessToken(actor.getAccessToken());
     }

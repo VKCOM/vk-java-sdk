@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.likes.LikesAddQuery;
 import com.vk.api.sdk.queries.likes.LikesDeleteQuery;
 import com.vk.api.sdk.queries.likes.LikesGetListQuery;
@@ -34,7 +34,7 @@ public class Likes extends AbstractAction {
     /**
      * Returns a list of IDs of users who added the specified object to their "Likes" list.
      */
-    public LikesGetListQuery getList(Actor actor, LikesType type) {
+    public LikesGetListQuery getList(UserActor actor, LikesType type) {
         return new LikesGetListQuery(getClient(), actor, type);
     }
 
@@ -48,28 +48,28 @@ public class Likes extends AbstractAction {
     /**
      * Returns a list of IDs of users who added the specified object to their "Likes" list.
      */
-    public LikesGetListQueryWithExtended getListExtended(Actor actor, LikesType type) {
+    public LikesGetListQueryWithExtended getListExtended(UserActor actor, LikesType type) {
         return new LikesGetListQueryWithExtended(getClient(), actor, type);
     }
 
     /**
      * Adds the specified object to the "Likes" list of the current user.
      */
-    public LikesAddQuery add(Actor actor, LikesType type, int itemId) {
+    public LikesAddQuery add(UserActor actor, LikesType type, int itemId) {
         return new LikesAddQuery(getClient(), actor, type, itemId);
     }
 
     /**
      * Deletes the specified object from the "Likes" list of the current user.
      */
-    public LikesDeleteQuery delete(Actor actor, LikesType type, int itemId) {
+    public LikesDeleteQuery delete(UserActor actor, LikesType type, int itemId) {
         return new LikesDeleteQuery(getClient(), actor, type, itemId);
     }
 
     /**
      * Checks for the object in the "Likes" list of the specified user.
      */
-    public LikesIsLikedQuery isLiked(Actor actor, LikesType type, int itemId) {
+    public LikesIsLikedQuery isLiked(UserActor actor, LikesType type, int itemId) {
         return new LikesIsLikedQuery(getClient(), actor, type, itemId);
     }
 }

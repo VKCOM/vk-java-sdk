@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.GetOnlineMobileResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class FriendsGetOnlineQueryWithMobile extends AbstractQueryBuilder<Friend
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public FriendsGetOnlineQueryWithMobile(VkApiClient client, Actor actor) {
+    public FriendsGetOnlineQueryWithMobile(VkApiClient client, UserActor actor) {
         super(client, "friends.getOnline", GetOnlineMobileResponse.class);
         accessToken(actor.getAccessToken());
     }

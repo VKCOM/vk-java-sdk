@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param actor   actor with access token
      * @param videoId value of "video id" parameter.
      */
-    public VideoEditQuery(VkApiClient client, Actor actor, int videoId) {
+    public VideoEditQuery(VkApiClient client, UserActor actor, int videoId) {
         super(client, "video.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);

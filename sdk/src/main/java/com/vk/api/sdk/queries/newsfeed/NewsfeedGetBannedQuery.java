@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetBannedResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class NewsfeedGetBannedQuery extends AbstractQueryBuilder<NewsfeedGetBann
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NewsfeedGetBannedQuery(VkApiClient client, Actor actor) {
+    public NewsfeedGetBannedQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.getBanned", GetBannedResponse.class);
         accessToken(actor.getAccessToken());
     }

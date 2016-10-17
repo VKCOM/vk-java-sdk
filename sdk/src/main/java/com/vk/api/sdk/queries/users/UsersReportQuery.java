@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
      * @param userId value of "user id" parameter. Minimum is 0.
      * @param type   value of "type" parameter.
      */
-    public UsersReportQuery(VkApiClient client, Actor actor, int userId, UsersReportType type) {
+    public UsersReportQuery(VkApiClient client, UserActor actor, int userId, UsersReportType type) {
         super(client, "users.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);

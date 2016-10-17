@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.orders.Order;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class OrdersGetByIdQuery extends AbstractQueryBuilder<OrdersGetByIdQuery,
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public OrdersGetByIdQuery(VkApiClient client, Actor actor) {
+    public OrdersGetByIdQuery(VkApiClient client, UserActor actor) {
         super(client, "orders.getById", Utils.buildParametrizedType(List.class, Order.class));
         accessToken(actor.getAccessToken());
     }

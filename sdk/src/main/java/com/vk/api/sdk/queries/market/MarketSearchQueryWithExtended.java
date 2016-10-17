@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.SearchExtendedResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
      * @param actor   actor with access token
      * @param ownerId value of "owner id" parameter.
      */
-    public MarketSearchQueryWithExtended(VkApiClient client, Actor actor, int ownerId) {
+    public MarketSearchQueryWithExtended(VkApiClient client, UserActor actor, int ownerId) {
         super(client, "market.search", SearchExtendedResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

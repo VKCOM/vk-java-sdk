@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.notes.Note;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, N
      * @param actor  actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
      */
-    public NotesGetByIdQuery(VkApiClient client, Actor actor, int noteId) {
+    public NotesGetByIdQuery(VkApiClient client, UserActor actor, int noteId) {
         super(client, "notes.getById", Note.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);

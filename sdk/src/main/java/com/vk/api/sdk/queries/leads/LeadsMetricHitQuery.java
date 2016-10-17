@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.leads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.responses.MetricHitResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class LeadsMetricHitQuery extends AbstractQueryBuilder<LeadsMetricHitQuer
      * @param actor  actor with access token
      * @param data   value of "data" parameter.
      */
-    public LeadsMetricHitQuery(VkApiClient client, Actor actor, String data) {
+    public LeadsMetricHitQuery(VkApiClient client, UserActor actor, String data) {
         super(client, "leads.metricHit", MetricHitResponse.class);
         accessToken(actor.getAccessToken());
         data(data);

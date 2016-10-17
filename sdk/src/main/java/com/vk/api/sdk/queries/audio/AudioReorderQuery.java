@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioReorderQuery extends AbstractQueryBuilder<AudioReorderQuery, O
      * @param actor   actor with access token
      * @param audioId value of "audio id" parameter. Minimum is 0.
      */
-    public AudioReorderQuery(VkApiClient client, Actor actor, int audioId) {
+    public AudioReorderQuery(VkApiClient client, UserActor actor, int audioId) {
         super(client, "audio.reorder", OkResponse.class);
         accessToken(actor.getAccessToken());
         audioId(audioId);

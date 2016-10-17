@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.SaveResult;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class VideoSaveQuery extends AbstractQueryBuilder<VideoSaveQuery, SaveRes
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public VideoSaveQuery(VkApiClient client, Actor actor) {
+    public VideoSaveQuery(VkApiClient client, UserActor actor) {
         super(client, "video.save", SaveResult.class);
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.notifications;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.notifications.responses.GetResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class NotificationsGetQuery extends AbstractQueryBuilder<NotificationsGet
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public NotificationsGetQuery(VkApiClient client, Actor actor) {
+    public NotificationsGetQuery(VkApiClient client, UserActor actor) {
         super(client, "notifications.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }

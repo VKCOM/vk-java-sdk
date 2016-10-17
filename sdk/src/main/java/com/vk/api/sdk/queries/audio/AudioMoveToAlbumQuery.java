@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class AudioMoveToAlbumQuery extends AbstractQueryBuilder<AudioMoveToAlbum
      * @param actor    actor with access token
      * @param audioIds value of "audio ids" parameter.
      */
-    public AudioMoveToAlbumQuery(VkApiClient client, Actor actor, int... audioIds) {
+    public AudioMoveToAlbumQuery(VkApiClient client, UserActor actor, int... audioIds) {
         super(client, "audio.moveToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         audioIds(audioIds);
@@ -32,7 +32,7 @@ public class AudioMoveToAlbumQuery extends AbstractQueryBuilder<AudioMoveToAlbum
      * @param actor    actor with access token
      * @param audioIds value of "audio ids" parameter.
      */
-    public AudioMoveToAlbumQuery(VkApiClient client, Actor actor, List<Integer> audioIds) {
+    public AudioMoveToAlbumQuery(VkApiClient client, UserActor actor, List<Integer> audioIds) {
         super(client, "audio.moveToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         audioIds(audioIds);

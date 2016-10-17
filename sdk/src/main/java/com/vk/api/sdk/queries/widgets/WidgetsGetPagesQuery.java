@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.widgets;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.widgets.responses.GetPagesResponse;
 
 import java.util.Collections;
@@ -18,7 +18,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public WidgetsGetPagesQuery(VkApiClient client, Actor actor) {
+    public WidgetsGetPagesQuery(VkApiClient client, UserActor actor) {
         super(client, "widgets.getPages", GetPagesResponse.class);
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.apps;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.apps.responses.GetCatalogResponse;
 import com.vk.api.sdk.queries.EnumParam;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -21,7 +21,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param actor  actor with access token
      * @param count  value of "count" parameter. Minimum is 0. By default 100.
      */
-    public AppsGetCatalogQuery(VkApiClient client, Actor actor, int count) {
+    public AppsGetCatalogQuery(VkApiClient client, UserActor actor, int count) {
         super(client, "apps.getCatalog", GetCatalogResponse.class);
         accessToken(actor.getAccessToken());
         count(count);

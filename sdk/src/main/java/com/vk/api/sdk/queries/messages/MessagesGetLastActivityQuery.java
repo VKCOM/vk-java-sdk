@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.LastActivity;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class MessagesGetLastActivityQuery extends AbstractQueryBuilder<MessagesG
      * @param actor  actor with access token
      * @param userId value of "user id" parameter.
      */
-    public MessagesGetLastActivityQuery(VkApiClient client, Actor actor, int userId) {
+    public MessagesGetLastActivityQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "messages.getLastActivity", LastActivity.class);
         accessToken(actor.getAccessToken());
         userId(userId);

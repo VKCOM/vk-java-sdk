@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.orders.OrdersChangeStateAction;
 import com.vk.api.sdk.queries.orders.OrdersChangeStateQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetAmountQuery;
@@ -28,29 +28,29 @@ public class Orders extends AbstractAction {
     /**
      * Returns a list of orders.
      */
-    public OrdersGetQuery get(Actor actor) {
+    public OrdersGetQuery get(UserActor actor) {
         return new OrdersGetQuery(getClient(), actor);
     }
 
     /**
      * Returns information about orders by their IDs.
      */
-    public OrdersGetByIdQuery getById(Actor actor) {
+    public OrdersGetByIdQuery getById(UserActor actor) {
         return new OrdersGetByIdQuery(getClient(), actor);
     }
 
     /**
      * Changes order status.
      */
-    public OrdersChangeStateQuery changeState(Actor actor, int orderId, OrdersChangeStateAction action) {
+    public OrdersChangeStateQuery changeState(UserActor actor, int orderId, OrdersChangeStateAction action) {
         return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
     }
 
-    public OrdersGetAmountQuery getAmount(Actor actor, int userId, String... votes) {
+    public OrdersGetAmountQuery getAmount(UserActor actor, int userId, String... votes) {
         return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
     }
 
-    public OrdersGetAmountQuery getAmount(Actor actor, int userId, List<String> votes) {
+    public OrdersGetAmountQuery getAmount(UserActor actor, int userId, List<String> votes) {
         return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
     }
 }

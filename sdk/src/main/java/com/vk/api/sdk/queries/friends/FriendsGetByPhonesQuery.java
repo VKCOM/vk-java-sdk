@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.UserXtrPhone;
 import com.vk.api.sdk.queries.users.UserField;
 
@@ -20,7 +20,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public FriendsGetByPhonesQuery(VkApiClient client, Actor actor) {
+    public FriendsGetByPhonesQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.getByPhones", Utils.buildParametrizedType(List.class, UserXtrPhone.class));
         accessToken(actor.getAccessToken());
     }

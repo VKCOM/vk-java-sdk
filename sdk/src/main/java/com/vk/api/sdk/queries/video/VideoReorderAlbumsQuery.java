@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class VideoReorderAlbumsQuery extends AbstractQueryBuilder<VideoReorderAl
      * @param actor   actor with access token
      * @param albumId value of "album id" parameter. Minimum is 0.
      */
-    public VideoReorderAlbumsQuery(VkApiClient client, Actor actor, int albumId) {
+    public VideoReorderAlbumsQuery(VkApiClient client, UserActor actor, int albumId) {
         super(client, "video.reorderAlbums", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);

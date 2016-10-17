@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.widgets.WidgetsGetCommentsQuery;
 import com.vk.api.sdk.queries.widgets.WidgetsGetPagesQuery;
 
@@ -35,7 +35,7 @@ public class Widgets extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public WidgetsGetCommentsQuery getComments(Actor actor) {
+    public WidgetsGetCommentsQuery getComments(UserActor actor) {
         return new WidgetsGetCommentsQuery(getClient(), actor);
     }
 
@@ -54,7 +54,7 @@ public class Widgets extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public WidgetsGetPagesQuery getPages(Actor actor) {
+    public WidgetsGetPagesQuery getPages(UserActor actor) {
         return new WidgetsGetPagesQuery(getClient(), actor);
     }
 }

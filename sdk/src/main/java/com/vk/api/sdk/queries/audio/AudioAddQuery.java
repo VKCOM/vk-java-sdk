@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.audio;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,7 @@ public class AudioAddQuery extends AbstractQueryBuilder<AudioAddQuery, Integer> 
      * @param audioId value of "audio id" parameter. Minimum is 0.
      * @param ownerId value of "owner id" parameter.
      */
-    public AudioAddQuery(VkApiClient client, Actor actor, int audioId, int ownerId) {
+    public AudioAddQuery(VkApiClient client, UserActor actor, int audioId, int ownerId) {
         super(client, "audio.add", Integer.class);
         accessToken(actor.getAccessToken());
         audioId(audioId);

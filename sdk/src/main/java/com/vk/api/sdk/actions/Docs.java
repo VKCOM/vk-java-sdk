@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.docs.DocsAddQuery;
 import com.vk.api.sdk.queries.docs.DocsDeleteQuery;
 import com.vk.api.sdk.queries.docs.DocsEditQuery;
@@ -33,28 +34,28 @@ public class Docs extends AbstractAction {
     /**
      * Returns detailed information about user or community documents.
      */
-    public DocsGetQuery get(Actor actor) {
+    public DocsGetQuery get(UserActor actor) {
         return new DocsGetQuery(getClient(), actor);
     }
 
     /**
      * Returns information about documents by their IDs.
      */
-    public DocsGetByIdQuery getById(Actor actor, String... docs) {
+    public DocsGetByIdQuery getById(UserActor actor, String... docs) {
         return new DocsGetByIdQuery(getClient(), actor, docs);
     }
 
     /**
      * Returns information about documents by their IDs.
      */
-    public DocsGetByIdQuery getById(Actor actor, List<String> docs) {
+    public DocsGetByIdQuery getById(UserActor actor, List<String> docs) {
         return new DocsGetByIdQuery(getClient(), actor, docs);
     }
 
     /**
      * Returns the server address for document upload.
      */
-    public DocsGetUploadServerQuery getUploadServer(Actor actor) {
+    public DocsGetUploadServerQuery getUploadServer(UserActor actor) {
         return new DocsGetUploadServerQuery(getClient(), actor);
     }
 
@@ -75,35 +76,35 @@ public class Docs extends AbstractAction {
     /**
      * Deletes a user or community document.
      */
-    public DocsDeleteQuery delete(Actor actor, int ownerId, int docId) {
+    public DocsDeleteQuery delete(UserActor actor, int ownerId, int docId) {
         return new DocsDeleteQuery(getClient(), actor, ownerId, docId);
     }
 
     /**
      * Copies a document to a user's or community's document list.
      */
-    public DocsAddQuery add(Actor actor, int ownerId, int docId) {
+    public DocsAddQuery add(UserActor actor, int ownerId, int docId) {
         return new DocsAddQuery(getClient(), actor, ownerId, docId);
     }
 
     /**
      * Returns documents types available for current user.
      */
-    public DocsGetTypesQuery getTypes(Actor actor, int ownerId) {
+    public DocsGetTypesQuery getTypes(UserActor actor, int ownerId) {
         return new DocsGetTypesQuery(getClient(), actor, ownerId);
     }
 
     /**
      * Returns a list of documents matching the search criteria.
      */
-    public DocsSearchQuery search(Actor actor, String q) {
+    public DocsSearchQuery search(UserActor actor, String q) {
         return new DocsSearchQuery(getClient(), actor, q);
     }
 
     /**
      * Edits a document.
      */
-    public DocsEditQuery edit(Actor actor, int ownerId, int docId) {
+    public DocsEditQuery edit(UserActor actor, int ownerId, int docId) {
         return new DocsEditQuery(getClient(), actor, ownerId, docId);
     }
 }

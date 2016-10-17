@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PhotosRemoveTagQuery extends AbstractQueryBuilder<PhotosRemoveTagQu
      * @param photoId value of "photo id" parameter.
      * @param tagId   value of "tag id" parameter.
      */
-    public PhotosRemoveTagQuery(VkApiClient client, Actor actor, int photoId, int tagId) {
+    public PhotosRemoveTagQuery(VkApiClient client, UserActor actor, int photoId, int tagId) {
         super(client, "photos.removeTag", OkResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);

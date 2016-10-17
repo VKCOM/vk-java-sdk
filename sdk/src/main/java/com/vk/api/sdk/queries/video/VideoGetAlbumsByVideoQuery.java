@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class VideoGetAlbumsByVideoQuery extends AbstractQueryBuilder<VideoGetAlb
      * @param ownerId value of "owner id" parameter.
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoGetAlbumsByVideoQuery(VkApiClient client, Actor actor, int ownerId, int videoId) {
+    public VideoGetAlbumsByVideoQuery(VkApiClient client, UserActor actor, int ownerId, int videoId) {
         super(client, "video.getAlbumsByVideo", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

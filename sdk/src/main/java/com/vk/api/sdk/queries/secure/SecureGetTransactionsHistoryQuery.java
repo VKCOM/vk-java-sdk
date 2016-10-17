@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServerActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.secure.Transaction;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractQueryBuilder<Secu
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public SecureGetTransactionsHistoryQuery(VkApiClient client, ServerActor actor) {
+    public SecureGetTransactionsHistoryQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getTransactionsHistory", Utils.buildParametrizedType(List.class, Transaction.class));
         accessToken(actor.getAccessToken());
     }

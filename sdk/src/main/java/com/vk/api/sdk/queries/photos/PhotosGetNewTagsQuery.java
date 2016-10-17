@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetNewTagsResponse;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class PhotosGetNewTagsQuery extends AbstractQueryBuilder<PhotosGetNewTags
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public PhotosGetNewTagsQuery(VkApiClient client, Actor actor) {
+    public PhotosGetNewTagsQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getNewTags", GetNewTagsResponse.class);
         accessToken(actor.getAccessToken());
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.GetAvailableForCallFieldsResponse;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -22,7 +22,7 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
      * @param actor  actor with access token
      * @param fields user fields
      */
-    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
+    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, UserActor actor, UserField... fields) {
         super(client, "friends.getAvailableForCall", GetAvailableForCallFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -35,7 +35,7 @@ public class FriendsGetAvailableForCallQueryWithFields extends AbstractQueryBuil
      * @param actor  actor with access token
      * @param fields user fields
      */
-    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+    public FriendsGetAvailableForCallQueryWithFields(VkApiClient client, UserActor actor, List<UserField> fields) {
         super(client, "friends.getAvailableForCall", GetAvailableForCallFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);

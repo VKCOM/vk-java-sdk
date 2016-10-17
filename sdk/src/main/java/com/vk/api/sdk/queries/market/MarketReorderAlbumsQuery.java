@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class MarketReorderAlbumsQuery extends AbstractQueryBuilder<MarketReorder
      * @param ownerId value of "owner id" parameter.
      * @param albumId value of "album id" parameter.
      */
-    public MarketReorderAlbumsQuery(VkApiClient client, Actor actor, int ownerId, int albumId) {
+    public MarketReorderAlbumsQuery(VkApiClient client, UserActor actor, int ownerId, int albumId) {
         super(client, "market.reorderAlbums", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.SearchResponse;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersNameCase;
@@ -21,7 +21,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param actor  actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
      */
-    public FriendsSearchQuery(VkApiClient client, Actor actor, int userId) {
+    public FriendsSearchQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "friends.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);

@@ -2,7 +2,7 @@ package com.vk.api.sdk.queries.places;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.places.responses.SearchResponse;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class PlacesSearchQuery extends AbstractQueryBuilder<PlacesSearchQuery, S
      * @param latitude  value of "latitude" parameter.
      * @param longitude value of "longitude" parameter.
      */
-    public PlacesSearchQuery(VkApiClient client, Actor actor, float latitude, float longitude) {
+    public PlacesSearchQuery(VkApiClient client, UserActor actor, float latitude, float longitude) {
         super(client, "places.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         latitude(latitude);
