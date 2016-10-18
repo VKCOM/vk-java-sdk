@@ -1,15 +1,14 @@
 package com.vk.api.examples.hellobot;
 
+import com.google.gson.*;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.stream.Collectors;
+import java.io.Reader;
 
 class RequestHandler extends AbstractHandler {
 
@@ -19,10 +18,12 @@ class RequestHandler extends AbstractHandler {
 
     private final BotRequestHandler botRequestHandler;
     private final String confirmationCode;
+    private final Gson gson;
 
     RequestHandler(BotRequestHandler handler, String confirmationCode) {
         this.botRequestHandler = handler;
         this.confirmationCode = confirmationCode;
+        this.gson = new GsonBuilder().create();
     }
 
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
@@ -32,12 +33,12 @@ class RequestHandler extends AbstractHandler {
             throw new ServletException("This method is unsupported");
         }
 
-        String requestBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        Reader reader = request.getReader();
 
         try {
-            JSONObject requestJson = new JSONObject(requestBody);
+            JsonObject requestJson = gson.fromJson(reader, JsonObject.class);
 
-            String type = requestJson.optString("type");
+            String type = requestJson.get("type").getAsString();
 
             if (type == null || type.isEmpty()) throw new ServletException("No type in json");
 
@@ -47,8 +48,8 @@ class RequestHandler extends AbstractHandler {
                     responseBody = confirmationCode;
                     break;
                 case MESSAGE_TYPE:
-                    JSONObject object = requestJson.getJSONObject("object");
-                    int userId = object.getInt("user_id");
+                    JsonObject object = requestJson.getAsJsonObject("object");
+                    int userId = object.getAsJsonPrimitive("user_id").getAsInt();
                     botRequestHandler.handle(userId);
                     responseBody = OK_BODY;
                     break;
@@ -61,7 +62,7 @@ class RequestHandler extends AbstractHandler {
             response.setStatus(HttpServletResponse.SC_OK);
             baseRequest.setHandled(true);
             response.getWriter().println(responseBody);
-        } catch (JSONException e) {
+        } catch (JsonParseException e) {
             throw new ServletException("Incorrect json", e);
         }
     }

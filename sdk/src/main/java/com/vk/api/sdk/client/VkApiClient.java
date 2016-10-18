@@ -55,10 +55,10 @@ public class VkApiClient {
     private String oauthEndpoint;
 
     public VkApiClient(TransportClient transportClient) {
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(GroupAuthResponse.class, new GroupAuthResponseDeserializer())
-                .create();
+        this(transportClient, new GsonBuilder().create());
+    }
 
+    public VkApiClient(TransportClient transportClient, Gson gson) {
         this.transportClient = transportClient;
         this.gson = gson;
 
