@@ -80,6 +80,16 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
     }
 
     /**
+     * Offset needed to return a specific subset of comments.
+     *
+     * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetCommentsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
      * Comments sort order ("asc" - from old to new, "desc" - from new to old)
      *
      * @param value value of "sort" parameter. By default 0.

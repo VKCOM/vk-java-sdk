@@ -37,6 +37,17 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
+     * Identifier of an album
+     *
+     * @param value value of "count" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended albumId(Integer value) {
+        return unsafeParam("album_id", value);
+    }
+
+
+    /**
      * Search query, for example "pink slippers"
      *
      * @param value value of "q" parameter.
@@ -84,6 +95,16 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
      */
     public MarketSearchQueryWithExtended tags(List<Integer> value) {
         return unsafeParam("tags", value);
+    }
+
+    /**
+     * Items sort
+     *
+     * @param value value of "price to" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended sort(MarketSearchSort value) {
+        return unsafeParam("sort", value);
     }
 
     /**

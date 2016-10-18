@@ -1,6 +1,5 @@
 package com.vk.api.sdk;
 
-import com.google.gson.Gson;
 import com.vk.api.sdk.client.Lang;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
@@ -29,7 +28,7 @@ public class ApiTest {
     @BeforeClass
     public void setUp() {
         client = HttpTransportClient.getInstance();
-        vk = new VkApiClient(client, new Gson());
+        vk = new VkApiClient(client);
     }
 
     @Test

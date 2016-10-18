@@ -8,6 +8,8 @@ import com.vk.api.sdk.queries.execute.ExecuteBatchQuery;
 import com.vk.api.sdk.queries.execute.ExecuteCodeQuery;
 import com.vk.api.sdk.queries.execute.ExecuteStorageFunctionQuery;
 
+import java.util.List;
+
 /**
  * List of Videos methods
  */
@@ -38,5 +40,9 @@ public class Execute extends AbstractAction {
 
     public ExecuteBatchQuery batch(Actor actor, AbstractQueryBuilder... request) {
         return new ExecuteBatchQuery(getClient(), actor, request);
+    }
+
+    public ExecuteBatchQuery batch(Actor actor, List<AbstractQueryBuilder> requests) {
+        return new ExecuteBatchQuery(getClient(), actor, requests.toArray(new AbstractQueryBuilder[requests.size()]));
     }
 }

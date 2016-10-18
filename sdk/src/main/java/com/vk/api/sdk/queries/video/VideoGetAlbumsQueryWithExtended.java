@@ -64,6 +64,16 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
         return unsafeParam("extended", value);
     }
 
+    /**
+     * Return system albums
+     *
+     * @param value value of "need_system" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetAlbumsQueryWithExtended needSystem(Boolean value) {
+        return unsafeParam("need_system", value);
+    }
+
     @Override
     protected VideoGetAlbumsQueryWithExtended getThis() {
         return this;
