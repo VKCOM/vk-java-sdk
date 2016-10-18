@@ -63,6 +63,26 @@ public class NotesGetQuery extends AbstractQueryBuilder<NotesGetQuery, GetRespon
         return unsafeParam("count", value);
     }
 
+    /**
+     * Offset needed to return a specific subset of notes.
+     *
+     * @param value value of "offset" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesGetQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * Sort
+     *
+     * @param value value of "price to" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesGetQuery sort(NotesGetSort value) {
+        return unsafeParam("sort", value);
+    }
+
     @Override
     protected NotesGetQuery getThis() {
         return this;

@@ -45,6 +45,16 @@ public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, N
         return unsafeParam("owner_id", value);
     }
 
+    /**
+     * Need wiki text.
+     *
+     * @param value value of "note id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesGetByIdQuery needWiki(Boolean value) {
+        return unsafeParam("need_wiki", value);
+    }
+
     @Override
     protected NotesGetByIdQuery getThis() {
         return this;

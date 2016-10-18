@@ -55,6 +55,16 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
         return unsafeParam("count", value);
     }
 
+    /**
+     * Offset needed to return a specific subset of comments.
+     *
+     * @param value value of "offset" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotesGetCommentsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
     @Override
     protected NotesGetCommentsQuery getThis() {
         return this;

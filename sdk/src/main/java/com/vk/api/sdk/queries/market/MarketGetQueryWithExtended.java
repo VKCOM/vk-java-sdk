@@ -38,6 +38,16 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
+     * Identifier of an album
+     *
+     * @param value value of "count" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetQueryWithExtended albumId(Integer value) {
+        return unsafeParam("album_id", value);
+    }
+
+    /**
      * Number of items to return
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 100.
