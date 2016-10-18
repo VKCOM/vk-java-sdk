@@ -72,7 +72,6 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
         }
 
         builder.append("];");
-        System.out.println(builder.toString());
         return unsafeParam("code", builder.toString());
     }
 
