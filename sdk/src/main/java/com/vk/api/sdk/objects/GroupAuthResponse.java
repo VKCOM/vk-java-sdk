@@ -1,10 +1,13 @@
 package com.vk.api.sdk.objects;
 
 
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.deserializers.GroupAuthResponseDeserializer;
 
 import java.util.Map;
 
+@JsonAdapter(GroupAuthResponseDeserializer.class)
 public class GroupAuthResponse {
 
     private Map<Integer, String> accessTokens;
