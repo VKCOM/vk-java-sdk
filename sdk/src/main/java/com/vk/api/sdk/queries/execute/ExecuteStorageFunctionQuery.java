@@ -1,6 +1,6 @@
 package com.vk.api.sdk.queries.execute;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for execute by storage function
  */
-public class ExecuteStorageFunctionQuery extends AbstractQueryBuilder<ExecuteStorageFunctionQuery, JsonObject> {
+public class ExecuteStorageFunctionQuery extends AbstractQueryBuilder<ExecuteStorageFunctionQuery, JsonElement> {
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
@@ -20,7 +20,7 @@ public class ExecuteStorageFunctionQuery extends AbstractQueryBuilder<ExecuteSto
      * @param actor  actor with access token
      */
     public ExecuteStorageFunctionQuery(VkApiClient client, Actor actor, String storageFunctionName) {
-        super(client, "execute." + storageFunctionName, JsonObject.class);
+        super(client, "execute." + storageFunctionName, JsonElement.class);
         accessToken(actor.getAccessToken());
     }
 

@@ -12,7 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Main {
+public class Application {
+
     private final static String PROPERTIES_FILE = "config.properties";
 
     public static void main(String[] args) throws Exception {
@@ -50,7 +51,7 @@ public class Main {
     }
 
     private static Properties readProperties() throws FileNotFoundException {
-        InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
+        InputStream inputStream = Application.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
         if (inputStream == null)
             throw new FileNotFoundException("property file '" + PROPERTIES_FILE + "' not found in the classpath");
 
