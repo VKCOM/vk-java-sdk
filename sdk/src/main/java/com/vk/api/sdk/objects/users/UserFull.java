@@ -90,7 +90,7 @@ public class UserFull extends User {
      * Information whether the user has main photo
      */
     @SerializedName("has_photo")
-    private Integer hasPhoto;
+    private BoolInt hasPhoto;
 
     /**
      * Information whether the user specified his phone number
@@ -450,8 +450,8 @@ public class UserFull extends User {
         return photoId;
     }
 
-    public Integer getHasPhoto() {
-        return hasPhoto;
+    public boolean hasPhoto() {
+        return hasPhoto == BoolInt.YES;
     }
 
     public boolean isHasMobile() {
