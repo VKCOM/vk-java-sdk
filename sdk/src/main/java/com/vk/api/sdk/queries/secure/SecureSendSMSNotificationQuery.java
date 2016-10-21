@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Secure.sendSMSNotification method
  */
-public class SecureSendSMSNotificationQuery extends AbstractQueryBuilder<SecureSendSMSNotificationQuery, OkResponse> {
+public class SecureSendSMSNotificationQuery extends AbstractSecureQueryBuilder<SecureSendSMSNotificationQuery, OkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,6 +23,7 @@ public class SecureSendSMSNotificationQuery extends AbstractQueryBuilder<SecureS
     public SecureSendSMSNotificationQuery(VkApiClient client, ServiceActor actor, int userId, String message) {
         super(client, "secure.sendSMSNotification", OkResponse.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         userId(userId);
         message(message);
     }
@@ -54,6 +55,6 @@ public class SecureSendSMSNotificationQuery extends AbstractQueryBuilder<SecureS
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("message", "user_id", "access_token");
+        return Arrays.asList("message", "user_id", "access_token", "client_secret");
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Secure.setCounter method
  */
-public class SecureSetCounterQuery extends AbstractQueryBuilder<SecureSetCounterQuery, OkResponse> {
+public class SecureSetCounterQuery extends AbstractSecureQueryBuilder<SecureSetCounterQuery, OkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,6 +21,7 @@ public class SecureSetCounterQuery extends AbstractQueryBuilder<SecureSetCounter
     public SecureSetCounterQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.setCounter", OkResponse.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -70,6 +71,6 @@ public class SecureSetCounterQuery extends AbstractQueryBuilder<SecureSetCounter
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }
