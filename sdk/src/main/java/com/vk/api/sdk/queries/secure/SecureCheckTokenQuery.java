@@ -1,6 +1,5 @@
 package com.vk.api.sdk.queries.secure;
 
-import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.secure.TokenChecked;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * Query for Secure.checkToken method
  */
-public class SecureCheckTokenQuery extends AbstractQueryBuilder<SecureCheckTokenQuery, TokenChecked> {
+public class SecureCheckTokenQuery extends AbstractSecureQueryBuilder<SecureCheckTokenQuery, TokenChecked> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,6 +20,7 @@ public class SecureCheckTokenQuery extends AbstractQueryBuilder<SecureCheckToken
     public SecureCheckTokenQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.checkToken", TokenChecked.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -51,6 +51,6 @@ public class SecureCheckTokenQuery extends AbstractQueryBuilder<SecureCheckToken
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }

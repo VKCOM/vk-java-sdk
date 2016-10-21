@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Secure.sendNotification method
  */
-public class SecureSendNotificationQuery extends AbstractQueryBuilder<SecureSendNotificationQuery, List<Integer>> {
+public class SecureSendNotificationQuery extends AbstractSecureQueryBuilder<SecureSendNotificationQuery, List<Integer>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,6 +22,7 @@ public class SecureSendNotificationQuery extends AbstractQueryBuilder<SecureSend
     public SecureSendNotificationQuery(VkApiClient client, ServiceActor actor, String message) {
         super(client, "secure.sendNotification", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         message(message);
     }
 
@@ -73,6 +74,6 @@ public class SecureSendNotificationQuery extends AbstractQueryBuilder<SecureSend
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("message", "access_token");
+        return Arrays.asList("message", "access_token", "client_secret");
     }
 }

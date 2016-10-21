@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Secure.addAppEvent method
  */
-public class SecureAddAppEventQuery extends AbstractQueryBuilder<SecureAddAppEventQuery, OkResponse> {
+public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAddAppEventQuery, OkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,6 +23,7 @@ public class SecureAddAppEventQuery extends AbstractQueryBuilder<SecureAddAppEve
     public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor, int userId, int activityId) {
         super(client, "secure.addAppEvent", OkResponse.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         userId(userId);
         activityId(activityId);
     }
@@ -71,6 +72,6 @@ public class SecureAddAppEventQuery extends AbstractQueryBuilder<SecureAddAppEve
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("activity_id", "user_id", "access_token");
+        return Arrays.asList("activity_id", "user_id", "access_token", "client_secret");
     }
 }

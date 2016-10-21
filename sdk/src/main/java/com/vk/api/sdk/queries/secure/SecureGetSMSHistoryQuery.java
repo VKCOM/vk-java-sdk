@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Query for Secure.getSMSHistory method
  */
-public class SecureGetSMSHistoryQuery extends AbstractQueryBuilder<SecureGetSMSHistoryQuery, List<SmsNotification>> {
+public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureGetSMSHistoryQuery, List<SmsNotification>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,6 +22,7 @@ public class SecureGetSMSHistoryQuery extends AbstractQueryBuilder<SecureGetSMSH
     public SecureGetSMSHistoryQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getSMSHistory", Utils.buildParametrizedType(List.class, SmsNotification.class));
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -71,6 +72,6 @@ public class SecureGetSMSHistoryQuery extends AbstractQueryBuilder<SecureGetSMSH
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }
