@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 /**
  * Abstract query builder for Secure methods
  *
- * @see "https://vk.com/dev/secure"
+ * @see <a href="https://vk.com/dev/secure">https://vk.com/dev/secure</a>
  * Created by AnatoliyS on 21.10.16.
  */
 public abstract class AbstractSecureQueryBuilder<T, R> extends AbstractQueryBuilder<T, R> {
