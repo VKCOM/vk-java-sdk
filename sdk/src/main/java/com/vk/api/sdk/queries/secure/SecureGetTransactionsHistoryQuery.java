@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Query for Secure.getTransactionsHistory method
  */
-public class SecureGetTransactionsHistoryQuery extends AbstractQueryBuilder<SecureGetTransactionsHistoryQuery, List<Transaction>> {
+public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilder<SecureGetTransactionsHistoryQuery, List<Transaction>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,6 +22,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractQueryBuilder<Secu
     public SecureGetTransactionsHistoryQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getTransactionsHistory", Utils.buildParametrizedType(List.class, Transaction.class));
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     @Override
@@ -31,6 +32,6 @@ public class SecureGetTransactionsHistoryQuery extends AbstractQueryBuilder<Secu
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }

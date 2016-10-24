@@ -76,6 +76,36 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
         return unsafeParam("hash", value);
     }
 
+    /**
+     * Geographical latitude, in degrees (from "-90" to "90").
+     *
+     * @param value value of "latitude" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveWallPhotoQuery latitude(Float value) {
+        return unsafeParam("latitude", value);
+    }
+
+    /**
+     * Geographical longitude, in degrees (from "-180" to "180").
+     *
+     * @param value value of "longitude" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveWallPhotoQuery longitude(Float value) {
+        return unsafeParam("longitude", value);
+    }
+
+    /**
+     * Text describing the photo. 2048 digits max.
+     *
+     * @param value value of "caption" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosSaveWallPhotoQuery caption(String value) {
+        return unsafeParam("caption", value);
+    }
+
     @Override
     protected PhotosSaveWallPhotoQuery getThis() {
         return this;

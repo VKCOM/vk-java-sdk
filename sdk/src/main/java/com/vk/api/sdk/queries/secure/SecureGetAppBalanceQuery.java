@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Query for Secure.getAppBalance method
  */
-public class SecureGetAppBalanceQuery extends AbstractQueryBuilder<SecureGetAppBalanceQuery, Integer> {
+public class SecureGetAppBalanceQuery extends AbstractSecureQueryBuilder<SecureGetAppBalanceQuery, Integer> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,6 +20,7 @@ public class SecureGetAppBalanceQuery extends AbstractQueryBuilder<SecureGetAppB
     public SecureGetAppBalanceQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.getAppBalance", Integer.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     @Override
@@ -29,6 +30,6 @@ public class SecureGetAppBalanceQuery extends AbstractQueryBuilder<SecureGetAppB
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }

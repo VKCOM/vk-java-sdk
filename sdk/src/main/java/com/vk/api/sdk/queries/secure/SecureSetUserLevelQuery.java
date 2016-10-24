@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Secure.setUserLevel method
  */
-public class SecureSetUserLevelQuery extends AbstractQueryBuilder<SecureSetUserLevelQuery, OkResponse> {
+public class SecureSetUserLevelQuery extends AbstractSecureQueryBuilder<SecureSetUserLevelQuery, OkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,6 +21,7 @@ public class SecureSetUserLevelQuery extends AbstractQueryBuilder<SecureSetUserL
     public SecureSetUserLevelQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.setUserLevel", OkResponse.class);
         accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -70,6 +71,6 @@ public class SecureSetUserLevelQuery extends AbstractQueryBuilder<SecureSetUserL
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "client_secret");
     }
 }

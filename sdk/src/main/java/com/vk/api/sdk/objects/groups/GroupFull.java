@@ -137,13 +137,13 @@ public class GroupFull extends Group {
      * Information whether current user can send a message to community
      */
     @SerializedName("can_message")
-    private Integer canMessage;
+    private BoolInt canMessage;
 
     /**
      * Information whether current user allow to community send a message
      */
     @SerializedName("is_messages_allowed")
-    private Integer isMessagesAllowed;
+    private BoolInt isMessagesAllowed;
 
     /**
      * Start date of event in Unixtime
@@ -261,12 +261,12 @@ public class GroupFull extends Group {
         return mainSection;
     }
 
-    public Integer getCanMessage() {
-        return canMessage;
+    public boolean canMessage() {
+        return canMessage == BoolInt.YES;
     }
 
-    public Integer isMessagesAllowed() {
-        return isMessagesAllowed;
+    public boolean isMessagesAllowed() {
+        return isMessagesAllowed == BoolInt.YES;
     }
 
     public Integer getStartDate() {

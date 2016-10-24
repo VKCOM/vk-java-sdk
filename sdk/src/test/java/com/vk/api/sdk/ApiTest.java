@@ -56,13 +56,8 @@ public class ApiTest {
         Assert.assertTrue(user.isVerified());
     }
 
-    @Test
+    @Test(expectedExceptions = ApiAuthException.class)
     public void accessTokenRequiredTest() throws ClientException, ApiException {
-        try {
-            vk.wall().post(new UserActor(0, "dummy")).execute();
-            Assert.fail();
-        } catch (ApiAuthException e) {
-            //nop
-        }
+        vk.wall().post(new UserActor(0, "dummy")).execute();
     }
 }
