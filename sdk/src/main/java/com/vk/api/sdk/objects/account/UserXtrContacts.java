@@ -32,13 +32,14 @@ public class UserXtrContacts extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(contact, sortNum, requestSent);
+        return Objects.hash(super.hashCode(), contact, sortNum, requestSent);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrContacts userXtrContacts = (UserXtrContacts) o;
         return Objects.equals(contact, userXtrContacts.contact) &&
                 Objects.equals(requestSent, userXtrContacts.requestSent) &&

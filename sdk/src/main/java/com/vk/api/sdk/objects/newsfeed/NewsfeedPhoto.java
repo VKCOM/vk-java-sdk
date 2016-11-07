@@ -48,13 +48,14 @@ public class NewsfeedPhoto extends Photo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(comments, canRepost, canComment, likes);
+        return Objects.hash(super.hashCode(), comments, canRepost, canComment, likes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         NewsfeedPhoto newsfeedPhoto = (NewsfeedPhoto) o;
         return Objects.equals(likes, newsfeedPhoto.likes) &&
                 Objects.equals(comments, newsfeedPhoto.comments) &&

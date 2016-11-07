@@ -60,13 +60,14 @@ public class User extends UserMin {
 
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, sex, photo50, online, screenName);
+        return Objects.hash(super.hashCode(), photo100, sex, photo50, online, screenName);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         User user = (User) o;
         return Objects.equals(sex, user.sex) &&
                 Objects.equals(screenName, user.screenName) &&

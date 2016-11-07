@@ -23,13 +23,14 @@ public class CallbackWallPost extends Wallpost {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
+        if (!super.equals(o)) return false;
         CallbackWallPost that = (CallbackWallPost) o;
         return Objects.equals(fromId, that.fromId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), fromId);
+        return Objects.hash(super.hashCode(), super.hashCode(), fromId);
     }
 
     @Override

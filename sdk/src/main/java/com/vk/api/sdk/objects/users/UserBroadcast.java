@@ -18,13 +18,14 @@ public class UserBroadcast extends UserMin {
 
     @Override
     public int hashCode() {
-        return Objects.hash(statusAudio);
+        return Objects.hash(super.hashCode(), statusAudio);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserBroadcast userBroadcast = (UserBroadcast) o;
         return Objects.equals(statusAudio, userBroadcast.statusAudio);
     }

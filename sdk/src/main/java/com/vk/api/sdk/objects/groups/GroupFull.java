@@ -287,7 +287,7 @@ public class GroupFull extends Group {
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description,
+        return Objects.hash(super.hashCode(), country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description,
                 deactivated, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters,
                 canSeeAllPosts, verified, canMessage, isMessagesAllowed, market, ageLimits, site, fixedPost, finishDate,
                 contacts, startDate, isFavorite, status);
@@ -297,6 +297,7 @@ public class GroupFull extends Group {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         GroupFull groupFull = (GroupFull) o;
         return Objects.equals(market, groupFull.market) &&
                 Objects.equals(memberStatus, groupFull.memberStatus) &&

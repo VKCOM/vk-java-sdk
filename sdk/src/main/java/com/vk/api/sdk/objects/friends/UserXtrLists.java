@@ -22,13 +22,14 @@ public class UserXtrLists extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(lists);
+        return Objects.hash(super.hashCode(), lists);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrLists userXtrLists = (UserXtrLists) o;
         return Objects.equals(lists, userXtrLists.lists);
     }

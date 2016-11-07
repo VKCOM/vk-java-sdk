@@ -17,13 +17,14 @@ public class UserXtrCounters extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(counters);
+        return Objects.hash(super.hashCode(), counters);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrCounters userXtrCounters = (UserXtrCounters) o;
         return Objects.equals(counters, userXtrCounters.counters);
     }

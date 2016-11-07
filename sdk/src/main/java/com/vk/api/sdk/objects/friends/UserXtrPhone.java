@@ -21,13 +21,14 @@ public class UserXtrPhone extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(phone);
+        return Objects.hash(super.hashCode(), phone);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrPhone userXtrPhone = (UserXtrPhone) o;
         return Objects.equals(phone, userXtrPhone.phone);
     }
