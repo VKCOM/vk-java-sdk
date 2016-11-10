@@ -45,6 +45,12 @@ public class Info {
     @SerializedName("lang")
     private Integer lang;
 
+    /**
+     * Two factor authentication is required
+     */
+    @SerializedName("2fa_required")
+    private BoolInt twoFactorAuthRequired;
+
     public String getCountry() {
         return country;
     }
@@ -69,6 +75,10 @@ public class Info {
         return lang;
     }
 
+    public boolean isTwoFactorAuthRequired() {
+        return twoFactorAuthRequired == BoolInt.YES;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(country, intro, lang, ownPostsDefault, noWallReplies, httpsRequired);
@@ -84,7 +94,8 @@ public class Info {
                 Objects.equals(ownPostsDefault, info.ownPostsDefault) &&
                 Objects.equals(noWallReplies, info.noWallReplies) &&
                 Objects.equals(intro, info.intro) &&
-                Objects.equals(lang, info.lang);
+                Objects.equals(lang, info.lang) &&
+                Objects.equals(twoFactorAuthRequired, info.twoFactorAuthRequired);
     }
 
     @Override
@@ -96,6 +107,7 @@ public class Info {
         sb.append(", noWallReplies=").append(noWallReplies);
         sb.append(", intro=").append(intro);
         sb.append(", lang=").append(lang);
+        sb.append(", twoFactorAuthRequired=").append(twoFactorAuthRequired);
         sb.append('}');
         return sb.toString();
     }

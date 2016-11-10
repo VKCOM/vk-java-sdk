@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.polls;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.List;
 import java.util.Objects;
@@ -49,6 +50,9 @@ public class Poll {
     @SerializedName("answers")
     private List<JsonObject> answers;
 
+    @SerializedName("anonymous")
+    private BoolInt anonymous;
+
     public Integer getId() {
         return id;
     }
@@ -77,6 +81,10 @@ public class Poll {
         return answers;
     }
 
+    public BoolInt getAnonymous() {
+        return anonymous;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(answerId, question, created, answers, votes, id, ownerId);
@@ -93,7 +101,8 @@ public class Poll {
                 Objects.equals(question, poll.question) &&
                 Objects.equals(votes, poll.votes) &&
                 Objects.equals(answerId, poll.answerId) &&
-                Objects.equals(answers, poll.answers);
+                Objects.equals(answers, poll.answers) &&
+                Objects.equals(anonymous, poll.anonymous);
     }
 
     @Override
@@ -106,6 +115,7 @@ public class Poll {
         sb.append(", votes='").append(votes).append("'");
         sb.append(", answerId=").append(answerId);
         sb.append(", answers=").append(answers);
+        sb.append(", anonymous=").append(anonymous);
         sb.append('}');
         return sb.toString();
     }

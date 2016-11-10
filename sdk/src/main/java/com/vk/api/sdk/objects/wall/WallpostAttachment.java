@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.docs.Doc;
 import com.vk.api.sdk.objects.market.MarketAlbum;
 import com.vk.api.sdk.objects.market.MarketItem;
@@ -34,7 +35,7 @@ public class WallpostAttachment {
     private Doc doc;
 
     @SerializedName("link")
-    private WallLink link;
+    private Link link;
 
     @SerializedName("graffiti")
     private Graffiti graffiti;
@@ -89,7 +90,7 @@ public class WallpostAttachment {
         return doc;
     }
 
-    public WallLink getLink() {
+    public Link getLink() {
         return link;
     }
 
