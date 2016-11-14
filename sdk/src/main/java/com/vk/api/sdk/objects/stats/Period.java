@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.stats;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -53,19 +52,19 @@ public class Period {
     private Integer unsubscribed;
 
     @SerializedName("sex")
-    private List<JsonObject> sex;
+    private List<Sex> sex;
 
     @SerializedName("age")
-    private List<JsonObject> age;
+    private List<Age> age;
 
     @SerializedName("sex_age")
-    private List<JsonObject> sexAge;
+    private List<SexAge> sexAge;
 
     @SerializedName("cities")
-    private List<JsonObject> cities;
+    private List<City> cities;
 
     @SerializedName("countries")
-    private List<JsonObject> countries;
+    private List<Country> countries;
 
     public String getDay() {
         return day;
@@ -95,23 +94,23 @@ public class Period {
         return unsubscribed;
     }
 
-    public List<JsonObject> getSex() {
+    public List<Sex> getSex() {
         return sex;
     }
 
-    public List<JsonObject> getAge() {
+    public List<Age> getAge() {
         return age;
     }
 
-    public List<JsonObject> getSexAge() {
+    public List<SexAge> getSexAge() {
         return sexAge;
     }
 
-    public List<JsonObject> getCities() {
+    public List<City> getCities() {
         return cities;
     }
 
-    public List<JsonObject> getCountries() {
+    public List<Country> getCountries() {
         return countries;
     }
 
