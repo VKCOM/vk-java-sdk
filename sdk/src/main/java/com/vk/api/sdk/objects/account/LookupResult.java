@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.account;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -10,17 +9,18 @@ import java.util.Objects;
  * LookupResult object
  */
 public class LookupResult {
+
     @SerializedName("found")
-    private List<UserXtrContacts> found;
+    private List<UserXtrContact> found;
 
     @SerializedName("other")
-    private List<JsonObject> other;
+    private List<OtherContact> other;
 
-    public List<UserXtrContacts> getFound() {
+    public List<UserXtrContact> getFound() {
         return found;
     }
 
-    public List<JsonObject> getOther() {
+    public List<OtherContact> getOther() {
         return other;
     }
 
