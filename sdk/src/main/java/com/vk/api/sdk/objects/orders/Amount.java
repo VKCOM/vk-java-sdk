@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.orders;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -10,13 +9,14 @@ import java.util.Objects;
  * Amount object
  */
 public class Amount {
+
     @SerializedName("amounts")
-    private List<JsonObject> amounts;
+    private List<AmountItem> amounts;
 
     @SerializedName("currency")
     private String currency;
 
-    public List<JsonObject> getAmounts() {
+    public List<AmountItem> getAmounts() {
         return amounts;
     }
 
