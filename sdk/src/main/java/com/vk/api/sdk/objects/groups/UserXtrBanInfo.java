@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseObject;
 
 import java.util.List;
 import java.util.Objects;
@@ -95,10 +96,10 @@ public class UserXtrBanInfo {
     private String bdate;
 
     @SerializedName("city")
-    private JsonObject city;
+    private BaseObject city;
 
     @SerializedName("country")
-    private JsonObject country;
+    private BaseObject country;
 
     /**
      * User's timezone
@@ -513,11 +514,11 @@ public class UserXtrBanInfo {
         return bdate;
     }
 
-    public JsonObject getCity() {
+    public BaseObject getCity() {
         return city;
     }
 
-    public JsonObject getCountry() {
+    public BaseObject getCountry() {
         return country;
     }
 
