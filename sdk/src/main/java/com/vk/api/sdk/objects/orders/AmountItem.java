@@ -12,8 +12,8 @@ public class AmountItem {
     @SerializedName("votes")
     private String votes;
 
-    @SerializedName("ammount")
-    private Integer ammount;
+    @SerializedName("amount")
+    private Integer amount;
 
     @SerializedName("description")
     private String description;
@@ -22,8 +22,8 @@ public class AmountItem {
         return votes;
     }
 
-    public Integer getAmmount() {
-        return ammount;
+    public Integer getAmount() {
+        return amount;
     }
 
     public String getDescription() {
@@ -36,20 +36,20 @@ public class AmountItem {
         if (o == null || getClass() != o.getClass()) return false;
         AmountItem that = (AmountItem) o;
         return Objects.equals(votes, that.votes) &&
-                Objects.equals(ammount, that.ammount) &&
+                Objects.equals(amount, that.amount) &&
                 Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(votes, ammount, description);
+        return Objects.hash(votes, amount, description);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AmountItem{");
         sb.append("votes='").append(votes).append('\'');
-        sb.append(", ammount=").append(ammount);
+        sb.append(", amount=").append(amount);
         sb.append(", description='").append(description).append('\'');
         sb.append('}');
         return sb.toString();
