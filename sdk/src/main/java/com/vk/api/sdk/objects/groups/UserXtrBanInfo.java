@@ -670,11 +670,11 @@ public class UserXtrBanInfo {
         return followersCount;
     }
 
-    public boolean blacklisted() {
+    public boolean isBlacklisted() {
         return blacklisted == BoolInt.YES;
     }
 
-    public boolean blacklistedByMe() {
+    public boolean isBlacklistedByMe() {
         return blacklistedByMe == BoolInt.YES;
     }
 
