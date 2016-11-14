@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.polls;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 
@@ -48,7 +47,7 @@ public class Poll {
     private Integer answerId;
 
     @SerializedName("answers")
-    private List<JsonObject> answers;
+    private List<Answer> answers;
 
     @SerializedName("anonymous")
     private BoolInt anonymous;
@@ -77,7 +76,7 @@ public class Poll {
         return answerId;
     }
 
-    public List<JsonObject> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
