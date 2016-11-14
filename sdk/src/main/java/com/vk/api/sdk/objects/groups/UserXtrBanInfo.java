@@ -2,7 +2,19 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
+import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.users.Career;
+import com.vk.api.sdk.objects.users.CropPhoto;
+import com.vk.api.sdk.objects.users.LastSeen;
+import com.vk.api.sdk.objects.users.Military;
+import com.vk.api.sdk.objects.users.Occupation;
+import com.vk.api.sdk.objects.users.Personal;
+import com.vk.api.sdk.objects.users.Relative;
+import com.vk.api.sdk.objects.users.School;
+import com.vk.api.sdk.objects.users.University;
+import com.vk.api.sdk.objects.users.UserMin;
 
 import java.util.List;
 import java.util.Objects;
@@ -147,19 +159,19 @@ public class UserXtrBanInfo {
      * Information whether the user has main photo
      */
     @SerializedName("has_photo")
-    private Integer hasPhoto;
+    private BoolInt hasPhoto;
 
     /**
      * Information whether the user specified his phone number
      */
     @SerializedName("has_mobile")
-    private Integer hasMobile;
+    private BoolInt hasMobile;
 
     /**
      * Information whether the user is a friend of current user
      */
     @SerializedName("is_friend")
-    private Integer isFriend;
+    private BoolInt isFriend;
 
     /**
      * Friend status for current user
@@ -171,37 +183,37 @@ public class UserXtrBanInfo {
      * Information whether current user can comment wall posts
      */
     @SerializedName("wall_comments")
-    private Integer wallComments;
+    private BoolInt wallComments;
 
     /**
      * Information whether current user can post on the user's wall
      */
     @SerializedName("can_post")
-    private Integer canPost;
+    private BoolInt canPost;
 
     /**
      * Information whether current user can see other users' audio on the wall
      */
     @SerializedName("can_see_all_posts")
-    private Integer canSeeAllPosts;
+    private BoolInt canSeeAllPosts;
 
     /**
      * Information whether current user can see the user's audio
      */
     @SerializedName("can_see_audio")
-    private Integer canSeeAudio;
+    private BoolInt canSeeAudio;
 
     /**
      * Information whether current user can write private message
      */
     @SerializedName("can_write_private_message")
-    private Integer canWritePrivateMessage;
+    private BoolInt canWritePrivateMessage;
 
     /**
      * Information whether current user can send a friend request
      */
     @SerializedName("can_send_friend_request")
-    private Integer canSendFriendRequest;
+    private BoolInt canSendFriendRequest;
 
     /**
      * Information whether current user can see
@@ -258,7 +270,7 @@ public class UserXtrBanInfo {
     private String site;
 
     @SerializedName("status_audio")
-    private JsonObject statusAudio;
+    private AudioFull statusAudio;
 
     /**
      * User's status
@@ -273,13 +285,13 @@ public class UserXtrBanInfo {
     private String activity;
 
     @SerializedName("last_seen")
-    private JsonObject lastSeen;
+    private LastSeen lastSeen;
 
     @SerializedName("exports")
     private String exports;
 
     @SerializedName("crop_photo")
-    private JsonObject cropPhoto;
+    private CropPhoto cropPhoto;
 
     /**
      * Information whether the user is verified
@@ -297,25 +309,25 @@ public class UserXtrBanInfo {
      * Information whether current user is in the requested user's blacklist.
      */
     @SerializedName("blacklisted")
-    private Integer blacklisted;
+    private BoolInt blacklisted;
 
     /**
      * Information whether the requested user is in current user's blacklist
      */
     @SerializedName("blacklisted_by_me")
-    private Integer blacklistedByMe;
+    private BoolInt blacklistedByMe;
 
     /**
      * Information whether the requested user is in faves of current user
      */
     @SerializedName("is_favorite")
-    private Integer isFavorite;
+    private BoolInt isFavorite;
 
     /**
      * Information whether the requested user is hidden from current user's newsfeed
      */
     @SerializedName("is_hidden_from_feed")
-    private Integer isHiddenFromFeed;
+    private BoolInt isHiddenFromFeed;
 
     /**
      * Number of common friends with current user
@@ -324,13 +336,13 @@ public class UserXtrBanInfo {
     private Integer commonCount;
 
     @SerializedName("occupation")
-    private JsonObject occupation;
+    private Occupation occupation;
 
     @SerializedName("career")
-    private List<JsonObject> career;
+    private List<Career> career;
 
     @SerializedName("military")
-    private List<JsonObject> military;
+    private List<Military> military;
 
     /**
      * University ID
@@ -387,10 +399,10 @@ public class UserXtrBanInfo {
     private Integer relation;
 
     @SerializedName("relation_partner")
-    private JsonObject relationPartner;
+    private UserMin relationPartner;
 
     @SerializedName("personal")
-    private JsonObject personal;
+    private Personal personal;
 
     /**
      * User's interests
@@ -435,10 +447,10 @@ public class UserXtrBanInfo {
     private String games;
 
     @SerializedName("universities")
-    private List<JsonObject> universities;
+    private List<University> universities;
 
     @SerializedName("schools")
-    private List<JsonObject> schools;
+    private List<School> schools;
 
     /**
      * About me field
@@ -447,7 +459,7 @@ public class UserXtrBanInfo {
     private String about;
 
     @SerializedName("relatives")
-    private List<JsonObject> relatives;
+    private List<Relative> relatives;
 
     /**
      * Favorite quotes
@@ -550,44 +562,44 @@ public class UserXtrBanInfo {
         return photoId;
     }
 
-    public Integer getHasPhoto() {
-        return hasPhoto;
+    public boolean hasPhoto() {
+        return hasPhoto == BoolInt.YES;
     }
 
-    public Integer getHasMobile() {
-        return hasMobile;
+    public boolean hasMobile() {
+        return hasMobile == BoolInt.YES;
     }
 
-    public Integer getIsFriend() {
-        return isFriend;
+    public boolean isFriend() {
+        return isFriend == BoolInt.YES;
     }
 
     public Integer getFriendStatus() {
         return friendStatus;
     }
 
-    public Integer getWallComments() {
-        return wallComments;
+    public boolean wallComments() {
+        return wallComments == BoolInt.YES;
     }
 
-    public Integer getCanPost() {
-        return canPost;
+    public boolean canPost() {
+        return canPost == BoolInt.YES;
     }
 
-    public Integer getCanSeeAllPosts() {
-        return canSeeAllPosts;
+    public boolean canSeeAllPosts() {
+        return canSeeAllPosts == BoolInt.YES;
     }
 
-    public Integer getCanSeeAudio() {
-        return canSeeAudio;
+    public boolean canSeeAudio() {
+        return canSeeAudio == BoolInt.YES;
     }
 
-    public Integer getCanWritePrivateMessage() {
-        return canWritePrivateMessage;
+    public boolean canWritePrivateMessage() {
+        return canWritePrivateMessage == BoolInt.YES;
     }
 
-    public Integer getCanSendFriendRequest() {
-        return canSendFriendRequest;
+    public boolean canSendFriendRequest() {
+        return canSendFriendRequest == BoolInt.YES;
     }
 
     public String getMobilePhone() {
@@ -626,7 +638,7 @@ public class UserXtrBanInfo {
         return site;
     }
 
-    public JsonObject getStatusAudio() {
+    public AudioFull getStatusAudio() {
         return statusAudio;
     }
 
@@ -638,7 +650,7 @@ public class UserXtrBanInfo {
         return activity;
     }
 
-    public JsonObject getLastSeen() {
+    public LastSeen getLastSeen() {
         return lastSeen;
     }
 
@@ -646,7 +658,7 @@ public class UserXtrBanInfo {
         return exports;
     }
 
-    public JsonObject getCropPhoto() {
+    public CropPhoto getCropPhoto() {
         return cropPhoto;
     }
 
@@ -658,35 +670,35 @@ public class UserXtrBanInfo {
         return followersCount;
     }
 
-    public Integer getBlacklisted() {
-        return blacklisted;
+    public boolean blacklisted() {
+        return blacklisted == BoolInt.YES;
     }
 
-    public Integer getBlacklistedByMe() {
-        return blacklistedByMe;
+    public boolean blacklistedByMe() {
+        return blacklistedByMe == BoolInt.YES;
     }
 
-    public Integer getIsFavorite() {
-        return isFavorite;
+    public boolean isFavorite() {
+        return isFavorite == BoolInt.YES;
     }
 
-    public Integer getIsHiddenFromFeed() {
-        return isHiddenFromFeed;
+    public boolean isHiddenFromFeed() {
+        return isHiddenFromFeed == BoolInt.YES;
     }
 
     public Integer getCommonCount() {
         return commonCount;
     }
 
-    public JsonObject getOccupation() {
+    public Occupation getOccupation() {
         return occupation;
     }
 
-    public List<JsonObject> getCareer() {
+    public List<Career> getCareer() {
         return career;
     }
 
-    public List<JsonObject> getMilitary() {
+    public List<Military> getMilitary() {
         return military;
     }
 
@@ -726,11 +738,11 @@ public class UserXtrBanInfo {
         return relation;
     }
 
-    public JsonObject getRelationPartner() {
+    public UserMin getRelationPartner() {
         return relationPartner;
     }
 
-    public JsonObject getPersonal() {
+    public Personal getPersonal() {
         return personal;
     }
 
@@ -762,11 +774,11 @@ public class UserXtrBanInfo {
         return games;
     }
 
-    public List<JsonObject> getUniversities() {
+    public List<University> getUniversities() {
         return universities;
     }
 
-    public List<JsonObject> getSchools() {
+    public List<School> getSchools() {
         return schools;
     }
 
@@ -774,7 +786,7 @@ public class UserXtrBanInfo {
         return about;
     }
 
-    public List<JsonObject> getRelatives() {
+    public List<Relative> getRelatives() {
         return relatives;
     }
 
