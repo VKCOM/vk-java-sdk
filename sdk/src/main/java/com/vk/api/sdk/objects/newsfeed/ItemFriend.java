@@ -1,18 +1,20 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseUserId;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
  * ItemFriend object
  */
 public class ItemFriend {
-    @SerializedName("friends")
-    private JsonObject friends;
 
-    public JsonObject getFriends() {
+    @SerializedName("friends")
+    private List<BaseUserId> friends;
+
+    public List<BaseUserId> getFriends() {
         return friends;
     }
 
