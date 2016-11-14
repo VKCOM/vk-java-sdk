@@ -3,12 +3,13 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
  * List object
  */
-public class List {
+public class NewsfeedList {
     /**
      * List ID
      */
@@ -28,7 +29,7 @@ public class List {
     private BoolInt noReposts;
 
     @SerializedName("source_ids")
-    private java.util.List<Integer> sourceIds;
+    private List<Integer> sourceIds;
 
     public Integer getId() {
         return id;
@@ -55,7 +56,7 @@ public class List {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        List list = (List) o;
+        NewsfeedList list = (NewsfeedList) o;
         return Objects.equals(id, list.id) &&
                 Objects.equals(title, list.title) &&
                 Objects.equals(noReposts, list.noReposts) &&
@@ -64,7 +65,7 @@ public class List {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("List{");
+        final StringBuilder sb = new StringBuilder("NewsfeedList{");
         sb.append("id=").append(id);
         sb.append(", title='").append(title).append("'");
         sb.append(", noReposts=").append(noReposts);
