@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.users;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.photos.Photo;
 
@@ -14,20 +13,20 @@ public class CropPhoto {
     private Photo photo;
 
     @SerializedName("crop")
-    private JsonObject crop;
+    private CropPhotoCrop crop;
 
     @SerializedName("rect")
-    private JsonObject rect;
+    private CropPhotoRect rect;
 
     public Photo getPhoto() {
         return photo;
     }
 
-    public JsonObject getCrop() {
+    public CropPhotoCrop getCrop() {
         return crop;
     }
 
-    public JsonObject getRect() {
+    public CropPhotoRect getRect() {
         return rect;
     }
 
