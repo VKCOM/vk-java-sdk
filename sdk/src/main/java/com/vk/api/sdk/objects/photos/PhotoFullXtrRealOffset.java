@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.photos;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.PropertyExists;
@@ -122,10 +122,10 @@ public class PhotoFullXtrRealOffset {
     private Likes likes;
 
     @SerializedName("reposts")
-    private JsonObject reposts;
+    private BaseCount reposts;
 
     @SerializedName("comments")
-    private JsonObject comments;
+    private BaseCount comments;
 
     /**
      * Information whether current user can comment the photo
@@ -134,7 +134,7 @@ public class PhotoFullXtrRealOffset {
     private BoolInt canComment;
 
     @SerializedName("tags")
-    private JsonObject tags;
+    private BaseCount tags;
 
     /**
      * Returns if the photo is hidden above the wall
@@ -224,11 +224,11 @@ public class PhotoFullXtrRealOffset {
         return likes;
     }
 
-    public JsonObject getReposts() {
+    public BaseCount getReposts() {
         return reposts;
     }
 
-    public JsonObject getComments() {
+    public BaseCount getComments() {
         return comments;
     }
 
@@ -236,7 +236,7 @@ public class PhotoFullXtrRealOffset {
         return canComment == BoolInt.YES;
     }
 
-    public JsonObject getTags() {
+    public BaseCount getTags() {
         return tags;
     }
 

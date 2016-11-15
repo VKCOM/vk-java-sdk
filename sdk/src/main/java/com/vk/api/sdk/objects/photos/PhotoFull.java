@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.photos;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 
@@ -121,10 +121,10 @@ public class PhotoFull {
     private Likes likes;
 
     @SerializedName("reposts")
-    private JsonObject reposts;
+    private BaseCount reposts;
 
     @SerializedName("comments")
-    private JsonObject comments;
+    private BaseCount comments;
 
     /**
      * Information whether current user can comment the photo
@@ -133,7 +133,7 @@ public class PhotoFull {
     private BoolInt canComment;
 
     @SerializedName("tags")
-    private JsonObject tags;
+    private BaseCount tags;
 
     public Integer getId() {
         return id;
@@ -211,11 +211,11 @@ public class PhotoFull {
         return likes;
     }
 
-    public JsonObject getReposts() {
+    public BaseCount getReposts() {
         return reposts;
     }
 
-    public JsonObject getComments() {
+    public BaseCount getComments() {
         return comments;
     }
 
@@ -223,7 +223,7 @@ public class PhotoFull {
         return canComment == BoolInt.YES;
     }
 
-    public JsonObject getTags() {
+    public BaseCount getTags() {
         return tags;
     }
 
