@@ -121,7 +121,7 @@ public class VideoFull {
     private PropertyExists live;
 
     @SerializedName("files")
-    private JsonObject files;
+    private VideoFiles files;
 
     @SerializedName("privacy_view")
     private List<String> privacyView;
@@ -222,7 +222,7 @@ public class VideoFull {
         return live == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public JsonObject getFiles() {
+    public VideoFiles getFiles() {
         return files;
     }
 
