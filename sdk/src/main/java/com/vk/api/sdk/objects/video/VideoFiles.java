@@ -34,7 +34,7 @@ public class VideoFiles {
     private String mp720;
 
     /**
-     * URL of the mpeg4 file with 240p quality
+     * URL of the external player
      */
     @SerializedName("external")
     private String external;
