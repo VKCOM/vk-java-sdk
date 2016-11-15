@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.groups;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
@@ -468,7 +467,7 @@ public class UserXtrBanInfo {
     private String quotes;
 
     @SerializedName("ban_info")
-    private JsonObject banInfo;
+    private BanInfo banInfo;
 
     public Integer getId() {
         return id;
@@ -794,7 +793,7 @@ public class UserXtrBanInfo {
         return quotes;
     }
 
-    public JsonObject getBanInfo() {
+    public BanInfo getBanInfo() {
         return banInfo;
     }
 
