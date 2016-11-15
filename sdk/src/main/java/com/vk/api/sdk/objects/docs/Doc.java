@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.docs;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -58,7 +57,7 @@ public class Doc {
     private Integer type;
 
     @SerializedName("preview")
-    private JsonObject preview;
+    private DocPreview preview;
 
     /**
      * Access key for the document
@@ -98,7 +97,7 @@ public class Doc {
         return type;
     }
 
-    public JsonObject getPreview() {
+    public DocPreview getPreview() {
         return preview;
     }
 
