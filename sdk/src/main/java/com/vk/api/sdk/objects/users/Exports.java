@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * Exports objects
+ * Exports object
  */
 public class Exports {
 
