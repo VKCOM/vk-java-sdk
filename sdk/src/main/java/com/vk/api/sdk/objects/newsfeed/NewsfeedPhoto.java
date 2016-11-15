@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.photos.Photo;
@@ -12,11 +12,12 @@ import java.util.Objects;
  * NewsfeedPhoto object
  */
 public class NewsfeedPhoto extends Photo {
+
     @SerializedName("likes")
     private Likes likes;
 
     @SerializedName("comments")
-    private JsonObject comments;
+    private BaseCount comments;
 
     /**
      * Information whether current user can comment the photo
@@ -34,7 +35,7 @@ public class NewsfeedPhoto extends Photo {
         return likes;
     }
 
-    public JsonObject getComments() {
+    public BaseCount getComments() {
         return comments;
     }
 
