@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.friends;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -22,7 +21,7 @@ public class Requests {
     private String from;
 
     @SerializedName("mutual")
-    private JsonObject mutual;
+    private RequestsManual mutual;
 
     public Integer getUserId() {
         return userId;
@@ -32,7 +31,7 @@ public class Requests {
         return from;
     }
 
-    public JsonObject getMutual() {
+    public RequestsManual getMutual() {
         return mutual;
     }
 
