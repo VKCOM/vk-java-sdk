@@ -2,7 +2,6 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -10,39 +9,30 @@ import java.util.Objects;
  */
 public class ItemNote {
 
-    @SerializedName("count")
-    private Integer count;
+    @SerializedName("notes")
+    private ItemNoteNotes notes;
 
-    @SerializedName("items")
-    private List<NewsfeedNote> items;
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public List<NewsfeedNote> getItems() {
-        return items;
+    public ItemNoteNotes getNotes() {
+        return notes;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemNote itemNote = (ItemNote) o;
-        return Objects.equals(count, itemNote.count) &&
-                Objects.equals(items, itemNote.items);
+        ItemNote itemAudio = (ItemNote) o;
+        return Objects.equals(notes, itemAudio.notes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(notes);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ItemNote{");
-        sb.append("count=").append(count);
-        sb.append(", items=").append(items);
+        sb.append("notes=").append(notes);
         sb.append('}');
         return sb.toString();
     }
