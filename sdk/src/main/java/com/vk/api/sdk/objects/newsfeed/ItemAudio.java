@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -11,7 +10,7 @@ import java.util.Objects;
 public class ItemAudio {
 
     @SerializedName("audio")
-    private JsonObject audio;
+    private ItemAudioAudio audio;
 
     /**
      * Post ID
@@ -19,7 +18,7 @@ public class ItemAudio {
     @SerializedName("post_id")
     private Integer postId;
 
-    public JsonObject getAudio() {
+    public ItemAudioAudio getAudio() {
         return audio;
     }
 
