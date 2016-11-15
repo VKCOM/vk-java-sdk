@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.polls;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -16,13 +15,13 @@ public class Voters {
     private Integer answerId;
 
     @SerializedName("users")
-    private JsonObject users;
+    private VotersUsers users;
 
     public Integer getAnswerId() {
         return answerId;
     }
 
-    public JsonObject getUsers() {
+    public VotersUsers getUsers() {
         return users;
     }
 
