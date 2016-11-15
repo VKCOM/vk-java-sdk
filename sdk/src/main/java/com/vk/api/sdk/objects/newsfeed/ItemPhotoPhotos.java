@@ -1,27 +1,26 @@
 package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.audio.AudioFull;
 
 import java.util.List;
 import java.util.Objects;
 
 /**
- * ItemAudioAudio object
+ * ItemPhotoPhotos object
  */
-public class ItemAudioAudio {
+public class ItemPhotoPhotos {
 
     @SerializedName("count")
     private Integer count;
 
     @SerializedName("items")
-    private List<AudioFull> items;
+    private List<NewsfeedPhoto> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<AudioFull> getItems() {
+    public List<NewsfeedPhoto> getItems() {
         return items;
     }
 
@@ -29,7 +28,7 @@ public class ItemAudioAudio {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemAudioAudio that = (ItemAudioAudio) o;
+        ItemPhotoPhotos that = (ItemPhotoPhotos) o;
         return Objects.equals(count, that.count) &&
                 Objects.equals(items, that.items);
     }
@@ -41,7 +40,7 @@ public class ItemAudioAudio {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("ItemAudioAudio{");
+        final StringBuilder sb = new StringBuilder("ItemPhotoPhotos{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);
         sb.append('}');
