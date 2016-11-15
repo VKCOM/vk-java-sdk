@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.users;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
@@ -219,7 +218,7 @@ public class UserFull extends User {
     private LastSeen lastSeen;
 
     @SerializedName("exports")
-    private JsonObject exports;
+    private Exports exports;
 
     @SerializedName("crop_photo")
     private CropPhoto cropPhoto;
@@ -542,7 +541,7 @@ public class UserFull extends User {
         return lastSeen;
     }
 
-    public JsonObject getExports() {
+    public Exports getExports() {
         return exports;
     }
 

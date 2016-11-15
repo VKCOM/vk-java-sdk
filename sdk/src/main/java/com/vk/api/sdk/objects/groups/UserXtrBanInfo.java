@@ -6,6 +6,7 @@ import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.users.Career;
 import com.vk.api.sdk.objects.users.CropPhoto;
+import com.vk.api.sdk.objects.users.Exports;
 import com.vk.api.sdk.objects.users.LastSeen;
 import com.vk.api.sdk.objects.users.Military;
 import com.vk.api.sdk.objects.users.Occupation;
@@ -287,7 +288,7 @@ public class UserXtrBanInfo {
     private LastSeen lastSeen;
 
     @SerializedName("exports")
-    private String exports;
+    private Exports exports;
 
     @SerializedName("crop_photo")
     private CropPhoto cropPhoto;
@@ -653,7 +654,7 @@ public class UserXtrBanInfo {
         return lastSeen;
     }
 
-    public String getExports() {
+    public Exports getExports() {
         return exports;
     }
 
