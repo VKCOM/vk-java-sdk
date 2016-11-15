@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -9,10 +8,11 @@ import java.util.Objects;
  * ItemVideo object
  */
 public class ItemVideo {
-    @SerializedName("video")
-    private JsonObject video;
 
-    public JsonObject getVideo() {
+    @SerializedName("video")
+    private ItemVideoVideo video;
+
+    public ItemVideoVideo getVideo() {
         return video;
     }
 
