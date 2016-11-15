@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.account;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 
@@ -23,7 +22,7 @@ public class PushSettings {
     private Integer disabledUntil;
 
     @SerializedName("conversations")
-    private JsonObject conversations;
+    private PushConversations conversations;
 
     @SerializedName("settings")
     private PushParams settings;
@@ -36,7 +35,7 @@ public class PushSettings {
         return disabledUntil;
     }
 
-    public JsonObject getConversations() {
+    public PushConversations getConversations() {
         return conversations;
     }
 
