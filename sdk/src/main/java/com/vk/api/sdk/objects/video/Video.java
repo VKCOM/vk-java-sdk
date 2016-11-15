@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.video;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.PropertyExists;
@@ -120,7 +119,7 @@ public class Video {
     private PropertyExists live;
 
     @SerializedName("files")
-    private JsonObject files;
+    private VideoFiles files;
 
     public Integer getId() {
         return id;
@@ -194,7 +193,7 @@ public class Video {
         return live == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public JsonObject getFiles() {
+    public VideoFiles getFiles() {
         return files;
     }
 

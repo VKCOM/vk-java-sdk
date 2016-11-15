@@ -29,7 +29,7 @@ public class CallbackWallPost extends Wallpost {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), fromId);
+        return Objects.hash(super.hashCode(), super.hashCode(), fromId);
     }
 
     @Override

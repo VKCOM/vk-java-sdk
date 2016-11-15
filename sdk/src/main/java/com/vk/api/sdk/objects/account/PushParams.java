@@ -9,6 +9,7 @@ import java.util.Objects;
  * PushParams object
  */
 public class PushParams {
+
     @SerializedName("msg")
     private List<String> msg;
 

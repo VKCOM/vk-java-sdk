@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.users;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
@@ -219,7 +218,7 @@ public class UserFull extends User {
     private LastSeen lastSeen;
 
     @SerializedName("exports")
-    private JsonObject exports;
+    private Exports exports;
 
     @SerializedName("crop_photo")
     private CropPhoto cropPhoto;
@@ -542,7 +541,7 @@ public class UserFull extends User {
         return lastSeen;
     }
 
-    public JsonObject getExports() {
+    public Exports getExports() {
         return exports;
     }
 
@@ -684,13 +683,14 @@ public class UserFull extends User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canSendFriendRequest, universityName, country, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
+        return Objects.hash(super.hashCode(), canSendFriendRequest, universityName, country, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserFull userFull = (UserFull) o;
         return Objects.equals(nickname, userFull.nickname) &&
                 Objects.equals(maidenName, userFull.maidenName) &&

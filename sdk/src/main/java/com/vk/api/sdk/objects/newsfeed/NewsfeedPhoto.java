@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.photos.Photo;
@@ -12,11 +12,12 @@ import java.util.Objects;
  * NewsfeedPhoto object
  */
 public class NewsfeedPhoto extends Photo {
+
     @SerializedName("likes")
     private Likes likes;
 
     @SerializedName("comments")
-    private JsonObject comments;
+    private BaseCount comments;
 
     /**
      * Information whether current user can comment the photo
@@ -34,7 +35,7 @@ public class NewsfeedPhoto extends Photo {
         return likes;
     }
 
-    public JsonObject getComments() {
+    public BaseCount getComments() {
         return comments;
     }
 
@@ -48,13 +49,14 @@ public class NewsfeedPhoto extends Photo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(comments, canRepost, canComment, likes);
+        return Objects.hash(super.hashCode(), comments, canRepost, canComment, likes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         NewsfeedPhoto newsfeedPhoto = (NewsfeedPhoto) o;
         return Objects.equals(likes, newsfeedPhoto.likes) &&
                 Objects.equals(comments, newsfeedPhoto.comments) &&

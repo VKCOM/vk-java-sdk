@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseObjectWithName;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +23,7 @@ public class GroupCategory {
     private String name;
 
     @SerializedName("subcategories")
-    private List<JsonObject> subcategories;
+    private List<BaseObjectWithName> subcategories;
 
     public Integer getId() {
         return id;
@@ -33,7 +33,7 @@ public class GroupCategory {
         return name;
     }
 
-    public List<JsonObject> getSubcategories() {
+    public List<BaseObjectWithName> getSubcategories() {
         return subcategories;
     }
 

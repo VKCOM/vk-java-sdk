@@ -71,13 +71,14 @@ public class AudioFull extends Audio {
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration, date, lyricsId, genreId, albumId, noSearch);
+        return Objects.hash(super.hashCode(), duration, date, lyricsId, genreId, albumId, noSearch);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         AudioFull audioFull = (AudioFull) o;
         return Objects.equals(duration, audioFull.duration) &&
                 Objects.equals(date, audioFull.date) &&

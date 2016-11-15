@@ -1,15 +1,14 @@
-package com.vk.api.sdk.objects.wall;
+package com.vk.api.sdk.objects.base;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.photos.Photo;
 
 import java.util.Objects;
 
 /**
- * WallLink object
+ * Link object
  */
-public class WallLink {
+public class Link {
     /**
      * Link URL
      */
@@ -64,6 +63,9 @@ public class WallLink {
     @SerializedName("rating")
     private LinkRating rating;
 
+    @SerializedName("application")
+    private LinkApplication application;
+
     public String getUrl() {
         return url;
     }
@@ -108,6 +110,10 @@ public class WallLink {
         return rating;
     }
 
+    public LinkApplication getApplication() {
+        return application;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(previewPage, button, product, previewUrl, isExternal, rating, caption, description, photo, title, url);
@@ -117,23 +123,24 @@ public class WallLink {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WallLink wallLink = (WallLink) o;
-        return Objects.equals(url, wallLink.url) &&
-                Objects.equals(title, wallLink.title) &&
-                Objects.equals(caption, wallLink.caption) &&
-                Objects.equals(description, wallLink.description) &&
-                Objects.equals(photo, wallLink.photo) &&
-                Objects.equals(isExternal, wallLink.isExternal) &&
-                Objects.equals(previewUrl, wallLink.previewUrl) &&
-                Objects.equals(previewPage, wallLink.previewPage) &&
-                Objects.equals(button, wallLink.button) &&
-                Objects.equals(product, wallLink.product) &&
-                Objects.equals(rating, wallLink.rating);
+        Link link = (Link) o;
+        return Objects.equals(url, link.url) &&
+                Objects.equals(title, link.title) &&
+                Objects.equals(caption, link.caption) &&
+                Objects.equals(description, link.description) &&
+                Objects.equals(photo, link.photo) &&
+                Objects.equals(isExternal, link.isExternal) &&
+                Objects.equals(previewUrl, link.previewUrl) &&
+                Objects.equals(previewPage, link.previewPage) &&
+                Objects.equals(button, link.button) &&
+                Objects.equals(product, link.product) &&
+                Objects.equals(rating, link.rating) &&
+                Objects.equals(application, link.application);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("WallLink{");
+        final StringBuilder sb = new StringBuilder("Link{");
         sb.append("url='").append(url).append("'");
         sb.append(", title='").append(title).append("'");
         sb.append(", caption='").append(caption).append("'");
@@ -145,6 +152,7 @@ public class WallLink {
         sb.append(", button=").append(button);
         sb.append(", product=").append(product);
         sb.append(", rating=").append(rating);
+        sb.append(", application=").append(application);
         sb.append('}');
         return sb.toString();
     }

@@ -20,13 +20,14 @@ public class UserXtrType extends User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type);
+        return Objects.hash(super.hashCode(), type);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrType userXtrType = (UserXtrType) o;
         return Objects.equals(type, userXtrType.type);
     }

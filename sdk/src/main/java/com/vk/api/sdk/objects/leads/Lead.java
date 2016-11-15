@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.leads;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -46,7 +45,7 @@ public class Lead {
     private Integer completed;
 
     @SerializedName("days")
-    private JsonObject days;
+    private LeadDays days;
 
     public Integer getLimit() {
         return limit;
@@ -72,7 +71,7 @@ public class Lead {
         return completed;
     }
 
-    public JsonObject getDays() {
+    public LeadDays getDays() {
         return days;
     }
 

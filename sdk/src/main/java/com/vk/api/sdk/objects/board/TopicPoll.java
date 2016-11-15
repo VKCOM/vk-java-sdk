@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.board;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.polls.Answer;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,6 +11,7 @@ import java.util.Objects;
  * TopicPoll object
  */
 public class TopicPoll {
+
     /**
      * Poll ID
      */
@@ -54,7 +55,7 @@ public class TopicPoll {
     private Integer answerId;
 
     @SerializedName("answers")
-    private List<JsonObject> answers;
+    private List<Answer> answers;
 
     public Integer getPollId() {
         return pollId;
@@ -84,7 +85,7 @@ public class TopicPoll {
         return answerId;
     }
 
-    public List<JsonObject> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 

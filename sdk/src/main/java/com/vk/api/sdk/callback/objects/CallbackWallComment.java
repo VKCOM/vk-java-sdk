@@ -28,7 +28,7 @@ public class CallbackWallComment extends WallComment {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), postId);
+        return Objects.hash(super.hashCode(), super.hashCode(), postId);
     }
 
     @Override

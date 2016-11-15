@@ -18,13 +18,14 @@ public class UserXtrRole extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(role);
+        return Objects.hash(super.hashCode(), role);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         UserXtrRole userXtrRole = (UserXtrRole) o;
         return Objects.equals(role, userXtrRole.role);
     }

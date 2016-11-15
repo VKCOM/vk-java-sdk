@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.video;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.PropertyExists;
 
 import java.util.List;
@@ -121,7 +121,7 @@ public class VideoFull {
     private PropertyExists live;
 
     @SerializedName("files")
-    private JsonObject files;
+    private VideoFiles files;
 
     @SerializedName("privacy_view")
     private List<String> privacyView;
@@ -142,7 +142,7 @@ public class VideoFull {
     private BoolInt canRepost;
 
     @SerializedName("likes")
-    private JsonObject likes;
+    private Likes likes;
 
     /**
      * Information whether the video is repeated
@@ -222,7 +222,7 @@ public class VideoFull {
         return live == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public JsonObject getFiles() {
+    public VideoFiles getFiles() {
         return files;
     }
 
@@ -242,7 +242,7 @@ public class VideoFull {
         return canRepost == BoolInt.YES;
     }
 
-    public JsonObject getLikes() {
+    public Likes getLikes() {
         return likes;
     }
 

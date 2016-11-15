@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.messages.responses;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.messages.LongpollMessages;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,13 +14,13 @@ public class GetLongPollHistoryResponse {
     private List<List<Integer>> history;
 
     @SerializedName("messages")
-    private JsonObject messages;
+    private LongpollMessages messages;
 
     public List<List<Integer>> getHistory() {
         return history;
     }
 
-    public JsonObject getMessages() {
+    public LongpollMessages getMessages() {
         return messages;
     }
 

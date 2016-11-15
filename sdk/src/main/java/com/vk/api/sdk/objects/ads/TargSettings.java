@@ -30,13 +30,14 @@ public class TargSettings extends Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(campaignId, id);
+        return Objects.hash(super.hashCode(), campaignId, id);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         TargSettings targSettings = (TargSettings) o;
         return Objects.equals(id, targSettings.id) &&
                 Objects.equals(campaignId, targSettings.campaignId);

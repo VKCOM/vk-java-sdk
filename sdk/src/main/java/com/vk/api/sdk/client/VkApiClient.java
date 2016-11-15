@@ -38,13 +38,11 @@ import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.actions.Videos;
 import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
-import com.vk.api.sdk.deserializers.GroupAuthResponseDeserializer;
-import com.vk.api.sdk.objects.GroupAuthResponse;
 import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
 
-    private static final String API_VERSION = "5.58";
+    private static final String API_VERSION = "5.60";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
 

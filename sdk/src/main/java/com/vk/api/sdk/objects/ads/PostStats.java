@@ -21,13 +21,14 @@ public class PostStats extends WallpostStat {
 
     @Override
     public int hashCode() {
-        return Objects.hash(adId);
+        return Objects.hash(super.hashCode(), adId);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         PostStats postStats = (PostStats) o;
         return Objects.equals(adId, postStats.adId);
     }

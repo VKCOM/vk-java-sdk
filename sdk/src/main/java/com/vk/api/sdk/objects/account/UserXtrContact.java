@@ -6,9 +6,10 @@ import com.vk.api.sdk.objects.users.UserFull;
 import java.util.Objects;
 
 /**
- * UserXtrContacts object
+ * UserXtrContact object
  */
-public class UserXtrContacts extends UserFull {
+public class UserXtrContact extends UserFull {
+
     @SerializedName("contact")
     private String contact;
 
@@ -32,22 +33,23 @@ public class UserXtrContacts extends UserFull {
 
     @Override
     public int hashCode() {
-        return Objects.hash(contact, sortNum, requestSent);
+        return Objects.hash(super.hashCode(), contact, sortNum, requestSent);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserXtrContacts userXtrContacts = (UserXtrContacts) o;
-        return Objects.equals(contact, userXtrContacts.contact) &&
-                Objects.equals(requestSent, userXtrContacts.requestSent) &&
-                Objects.equals(sortNum, userXtrContacts.sortNum);
+        if (!super.equals(o)) return false;
+        UserXtrContact userXtrContact = (UserXtrContact) o;
+        return Objects.equals(contact, userXtrContact.contact) &&
+                Objects.equals(requestSent, userXtrContact.requestSent) &&
+                Objects.equals(sortNum, userXtrContact.sortNum);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("UserXtrContacts{");
+        final StringBuilder sb = new StringBuilder("UserXtrContact{");
         sb.append("contact='").append(contact).append("'");
         sb.append(", requestSent=").append(requestSent);
         sb.append(", sortNum=").append(sortNum);

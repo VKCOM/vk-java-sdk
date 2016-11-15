@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -9,24 +8,25 @@ import java.util.Objects;
  * ItemNote object
  */
 public class ItemNote {
+
     @SerializedName("notes")
-    private JsonObject notes;
+    private ItemNoteNotes notes;
 
-    public JsonObject getNotes() {
+    public ItemNoteNotes getNotes() {
         return notes;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(notes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemNote itemNote = (ItemNote) o;
-        return Objects.equals(notes, itemNote.notes);
+        ItemNote itemAudio = (ItemNote) o;
+        return Objects.equals(notes, itemAudio.notes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(notes);
     }
 
     @Override

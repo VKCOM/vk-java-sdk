@@ -58,13 +58,14 @@ public class MarketItemFull extends MarketItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canRepost, viewsCount, canComment, photos, likes);
+        return Objects.hash(super.hashCode(), canRepost, viewsCount, canComment, photos, likes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         MarketItemFull marketItemFull = (MarketItemFull) o;
         return Objects.equals(photos, marketItemFull.photos) &&
                 Objects.equals(canComment, marketItemFull.canComment) &&

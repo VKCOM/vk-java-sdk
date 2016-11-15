@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.docs.Doc;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
@@ -31,7 +32,7 @@ public class AttachmentsHistory {
     private Doc doc;
 
     @SerializedName("link")
-    private MessageLink link;
+    private Link link;
 
     public AttachmentsHistoryType getType() {
         return type;
@@ -53,7 +54,7 @@ public class AttachmentsHistory {
         return doc;
     }
 
-    public MessageLink getLink() {
+    public Link getLink() {
         return link;
     }
 

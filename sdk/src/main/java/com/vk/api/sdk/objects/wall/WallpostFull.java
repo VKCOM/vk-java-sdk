@@ -92,13 +92,14 @@ public class WallpostFull extends Wallpost {
 
     @Override
     public int hashCode() {
-        return Objects.hash(comments, createdBy, isPinned, canEdit, canDelete, canPin, reposts, copyHistory, likes);
+        return Objects.hash(super.hashCode(), comments, createdBy, isPinned, canEdit, canDelete, canPin, reposts, copyHistory, likes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         WallpostFull wallpostFull = (WallpostFull) o;
         return Objects.equals(copyHistory, wallpostFull.copyHistory) &&
                 Objects.equals(canEdit, wallpostFull.canEdit) &&

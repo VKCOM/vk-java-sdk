@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.widgets;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BaseCount;
 
 import java.util.Objects;
 
@@ -40,10 +40,10 @@ public class WidgetPage {
     private String url;
 
     @SerializedName("likes")
-    private JsonObject likes;
+    private BaseCount likes;
 
     @SerializedName("comments")
-    private JsonObject comments;
+    private BaseCount comments;
 
     /**
      * Date when widgets on the page has been initialized firstly in Unixtime
@@ -77,11 +77,11 @@ public class WidgetPage {
         return url;
     }
 
-    public JsonObject getLikes() {
+    public BaseCount getLikes() {
         return likes;
     }
 
-    public JsonObject getComments() {
+    public BaseCount getComments() {
         return comments;
     }
 

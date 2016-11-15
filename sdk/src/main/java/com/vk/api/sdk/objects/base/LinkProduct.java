@@ -1,4 +1,4 @@
-package com.vk.api.sdk.objects.wall;
+package com.vk.api.sdk.objects.base;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.market.Price;

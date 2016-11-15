@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects.newsfeed;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
@@ -9,8 +8,9 @@ import java.util.Objects;
  * ItemPhoto object
  */
 public class ItemPhoto {
+
     @SerializedName("photos")
-    private JsonObject photos;
+    private ItemPhotoPhotos photos;
 
     /**
      * Post ID
@@ -18,7 +18,7 @@ public class ItemPhoto {
     @SerializedName("post_id")
     private Integer postId;
 
-    public JsonObject getPhotos() {
+    public ItemPhotoPhotos getPhotos() {
         return photos;
     }
 
