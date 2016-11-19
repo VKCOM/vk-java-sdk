@@ -40,6 +40,8 @@ processResources {
                     'vk.group.id'             : vkGroupId,
                     'vk.group.token'          : vkGroupToken,
 
+                    'mode'                    : botMode,
+
                     'server.host'             : serverHost,
                     'server.port'             : serverPort,
 
