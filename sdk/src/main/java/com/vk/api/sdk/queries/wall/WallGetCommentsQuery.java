@@ -77,6 +77,16 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
     }
 
     /**
+     * Offset needed to return a specific subset of comments.
+     *
+     * @param value value of "offset" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetCommentsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
      * Number of comments to return (maximum 100).
      *
      * @param value value of "count" parameter. Minimum is 0.

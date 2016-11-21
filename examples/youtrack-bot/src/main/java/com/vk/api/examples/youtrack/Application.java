@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.vk.api.examples.youtrack.api.client.YouTrackClient;
 import com.vk.api.examples.youtrack.jobs.Job;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
+import com.vk.api.examples.youtrack.jobs.MessagesJob;
 import com.vk.api.examples.youtrack.jobs.NewsJob;
 import com.vk.api.examples.youtrack.jobs.NotifyIssueChangesJob;
+import com.vk.api.examples.youtrack.jobs.SprintEndJob;
 import com.vk.api.examples.youtrack.server.CallbackRequestHandler;
 import com.vk.api.examples.youtrack.server.ConfirmationCodeRequestHandler;
 import com.vk.api.examples.youtrack.storage.DataStorage;
@@ -48,6 +50,10 @@ public class Application {
 
     private static String version = "1.0";
 
+    private static String mode = "standalone";
+
+    private static Integer groupId = null;
+
     private static VkApiClient vk;
 
     private static YouTrackClient yt;
@@ -66,10 +72,16 @@ public class Application {
         Properties properties = loadConfiguration();
 
         version = properties.getProperty("version");
+        mode = properties.getProperty("mode");
+        groupId = Integer.valueOf(properties.getProperty("vk.group.id"));
 
         initClients(properties);
         initData(properties);
-        initServer(properties);
+
+        if (isServerMode()) {
+            initServer(properties);
+        }
+
         initJobs();
     }
 
@@ -138,6 +150,11 @@ public class Application {
         jobs.add(new MembersUpdateJob());
         jobs.add(new NewsJob());
         jobs.add(new NotifyIssueChangesJob());
+        jobs.add(new SprintEndJob());
+
+        if (!isServerMode()) {
+            jobs.add(new MessagesJob());
+        }
     }
 
 
@@ -228,5 +245,13 @@ public class Application {
 
     public static String getVersion() {
         return version;
+    }
+
+    public static boolean isServerMode() {
+        return mode.equalsIgnoreCase("server");
+    }
+
+    public static Integer groupId() {
+        return groupId;
     }
 }

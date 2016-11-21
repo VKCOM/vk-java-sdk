@@ -18,7 +18,7 @@ public class VideoFiles {
     /**
      * URL of the mpeg4 file with 360p quality
      */
-    @SerializedName("mp_240")
+    @SerializedName("mp_360")
     private String mp360;
 
     /**
