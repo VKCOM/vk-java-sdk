@@ -45,13 +45,13 @@ public class Message {
      * Is it an important message
      */
     @SerializedName("important")
-    private Boolean important;
+    private BoolInt important;
 
     /**
      * Is it an deleted message
      */
     @SerializedName("deleted")
-    private Boolean deleted;
+    private BoolInt deleted;
 
     /**
      * Forwarded messages
@@ -142,12 +142,12 @@ public class Message {
         return randomId;
     }
 
-    public Boolean getImportant() {
-        return important;
+    public boolean getImportant() {
+        return important == BoolInt.YES;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public boolean getDeleted() {
+        return deleted == BoolInt.YES;
     }
 
     public List<Message> getFwdMessages() {

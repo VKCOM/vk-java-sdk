@@ -2,7 +2,7 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.base.Place;
+import com.vk.api.sdk.objects.places.PlaceMin;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +30,7 @@ public class GroupSettings {
     private String address;
 
     @SerializedName("place")
-    private Place place;
+    private PlaceMin place;
 
     /**
      * Wall settings
@@ -131,7 +131,7 @@ public class GroupSettings {
         return address;
     }
 
-    public Place getPlace() {
+    public PlaceMin getPlace() {
         return place;
     }
 
