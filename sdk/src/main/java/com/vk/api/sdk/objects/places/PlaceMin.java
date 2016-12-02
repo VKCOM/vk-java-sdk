@@ -1,13 +1,13 @@
-package com.vk.api.sdk.objects.base;
+package com.vk.api.sdk.objects.places;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
 /**
- * Place object
+ * PlaceMin object
  */
-public class Place {
+public class PlaceMin {
     /**
      * Place ID
      */
@@ -57,16 +57,16 @@ public class Place {
     private String type;
 
     /**
-     * Country name
+     * Country ID
      */
     @SerializedName("country")
-    private String country;
+    private Integer country;
 
     /**
-     * City name
+     * City ID
      */
     @SerializedName("city")
-    private String city;
+    private Integer city;
 
     /**
      * Place address
@@ -106,11 +106,11 @@ public class Place {
         return type;
     }
 
-    public String getCountry() {
+    public Integer getCountry() {
         return country;
     }
 
-    public String getCity() {
+    public Integer getCity() {
         return city;
     }
 
@@ -127,7 +127,7 @@ public class Place {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Place place = (Place) o;
+        PlaceMin place = (PlaceMin) o;
         return Objects.equals(id, place.id) &&
                 Objects.equals(title, place.title) &&
                 Objects.equals(latitude, place.latitude) &&
@@ -143,7 +143,7 @@ public class Place {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Place{");
+        final StringBuilder sb = new StringBuilder("PlaceMin{");
         sb.append("id=").append(id);
         sb.append(", title='").append(title).append("'");
         sb.append(", latitude=").append(latitude);
@@ -152,8 +152,8 @@ public class Place {
         sb.append(", icon='").append(icon).append("'");
         sb.append(", checkins=").append(checkins);
         sb.append(", type='").append(type).append("'");
-        sb.append(", country='").append(country).append("'");
-        sb.append(", city='").append(city).append("'");
+        sb.append(", country=").append(country);
+        sb.append(", city=").append(city);
         sb.append(", address='").append(address).append("'");
         sb.append('}');
         return sb.toString();
