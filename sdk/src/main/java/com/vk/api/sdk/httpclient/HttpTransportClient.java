@@ -107,6 +107,9 @@ public class HttpTransportClient implements TransportClient {
 
                 try (InputStream content = response.getEntity().getContent()) {
                     String result = IOUtils.toString(content, ENCODING);
+                    if (LOG.isDebugEnabled()) {
+                        LOG.debug("Response: " + result);
+                    }
                     return new ClientResponse(response.getStatusLine().getStatusCode(), result, getHeaders(response.getAllHeaders()));
                 } finally {
                     SUPERVISOR.removeRequest(request);
