@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.3.6, released December 2, 2016.
+The most recent release is 0.3.7, released December 12, 2016.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.3.6</version>
+  <version>0.3.7</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.3.6'
+  compile 'com.vk.api:sdk:0.3.7'
 }
 ```
 
