@@ -36,6 +36,12 @@ public class Message {
     private Integer userId;
 
     /**
+     * Message author's ID
+     */
+    @SerializedName("from_id")
+    private Integer fromId;
+
+    /**
      * ID used for sending messages. It returned only for outgoing messages
      */
     @SerializedName("random_id")
@@ -138,6 +144,10 @@ public class Message {
         return userId;
     }
 
+    public Integer getFromId() {
+        return fromId;
+    }
+
     public Integer getRandomId() {
         return randomId;
     }
@@ -204,7 +214,7 @@ public class Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, readState, attachments, chatId, photo50, usersCount, photo200, title, body, userId, out, important, geo, randomId, fwdMessages, deleted, chatActive, photo100, adminId, id);
+        return Objects.hash(date, readState, attachments, chatId, photo50, usersCount, photo200, title, body, userId, fromId, out, important, geo, randomId, fwdMessages, deleted, chatActive, photo100, adminId, id);
     }
 
     @Override
@@ -216,6 +226,7 @@ public class Message {
                 Objects.equals(date, message.date) &&
                 Objects.equals(out, message.out) &&
                 Objects.equals(userId, message.userId) &&
+                Objects.equals(fromId, message.fromId) &&
                 Objects.equals(randomId, message.randomId) &&
                 Objects.equals(important, message.important) &&
                 Objects.equals(deleted, message.deleted) &&
