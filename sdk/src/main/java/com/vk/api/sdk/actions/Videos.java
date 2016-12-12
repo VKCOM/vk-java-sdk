@@ -18,7 +18,9 @@ import com.vk.api.sdk.queries.video.VideoGetAlbumsByVideoQuery;
 import com.vk.api.sdk.queries.video.VideoGetAlbumsQuery;
 import com.vk.api.sdk.queries.video.VideoGetAlbumsQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetCatalogQuery;
+import com.vk.api.sdk.queries.video.VideoGetCatalogQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetCatalogSectionQuery;
+import com.vk.api.sdk.queries.video.VideoGetCatalogSectionQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetCommentsQuery;
 import com.vk.api.sdk.queries.video.VideoGetCommentsQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetNewTagsQuery;
@@ -26,6 +28,7 @@ import com.vk.api.sdk.queries.video.VideoGetQuery;
 import com.vk.api.sdk.queries.video.VideoGetQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetTagsQuery;
 import com.vk.api.sdk.queries.video.VideoGetUserVideosQuery;
+import com.vk.api.sdk.queries.video.VideoGetUserVideosQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoHideCatalogSectionQuery;
 import com.vk.api.sdk.queries.video.VideoPutTagQuery;
 import com.vk.api.sdk.queries.video.VideoRemoveFromAlbumQuery;
@@ -122,6 +125,13 @@ public class Videos extends AbstractAction {
      */
     public VideoGetUserVideosQuery getUserVideos(UserActor actor) {
         return new VideoGetUserVideosQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns list of videos in which the user is tagged.
+     */
+    public VideoGetUserVideosQueryWithExtended getUserVideosExtended(UserActor actor) {
+        return new VideoGetUserVideosQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -286,8 +296,22 @@ public class Videos extends AbstractAction {
     /**
      * Returns video catalog
      */
+    public VideoGetCatalogQueryWithExtended getCatalogExtended() {
+        return new VideoGetCatalogQueryWithExtended(getClient());
+    }
+
+    /**
+     * Returns video catalog
+     */
     public VideoGetCatalogQuery getCatalog(UserActor actor) {
         return new VideoGetCatalogQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns video catalog
+     */
+    public VideoGetCatalogQueryWithExtended getCatalogExtended(UserActor actor) {
+        return new VideoGetCatalogQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -300,8 +324,22 @@ public class Videos extends AbstractAction {
     /**
      * Returns a separate catalog section
      */
+    public VideoGetCatalogSectionQueryWithExtended getCatalogSectionExtended(String sectionId, String from) {
+        return new VideoGetCatalogSectionQueryWithExtended(getClient(), sectionId, from);
+    }
+
+    /**
+     * Returns a separate catalog section
+     */
     public VideoGetCatalogSectionQuery getCatalogSection(UserActor actor, String sectionId, String from) {
         return new VideoGetCatalogSectionQuery(getClient(), actor, sectionId, from);
+    }
+
+    /**
+     * Returns a separate catalog section
+     */
+    public VideoGetCatalogSectionQueryWithExtended getCatalogSectionExtended(UserActor actor, String sectionId, String from) {
+        return new VideoGetCatalogSectionQueryWithExtended(getClient(), actor, sectionId, from);
     }
 
     /**

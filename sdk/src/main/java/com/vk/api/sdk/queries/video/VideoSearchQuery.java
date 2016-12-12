@@ -134,16 +134,6 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Set extended
-     *
-     * @param value value of "extended" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoSearchQuery extended(Boolean value) {
-        return unsafeParam("extended", value);
-    }
-
-    /**
      * Set date
      *
      * @param value value of "date" parameter. Minimum is 0.

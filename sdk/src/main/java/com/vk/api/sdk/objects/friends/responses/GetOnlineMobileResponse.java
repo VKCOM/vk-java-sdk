@@ -9,6 +9,7 @@ import java.util.Objects;
  * GetOnlineMobileResponse object
  */
 public class GetOnlineMobileResponse {
+
     @SerializedName("online")
     private List<Integer> online;
 

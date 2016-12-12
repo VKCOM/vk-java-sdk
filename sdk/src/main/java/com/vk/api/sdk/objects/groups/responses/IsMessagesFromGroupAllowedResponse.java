@@ -16,6 +16,10 @@ public class IsMessagesFromGroupAllowedResponse {
     @SerializedName("is_allowed")
     private BoolInt isAllowed;
 
+    public BoolInt getIsAllowed() {
+        return isAllowed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

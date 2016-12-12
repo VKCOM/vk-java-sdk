@@ -7,6 +7,7 @@ import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
 import com.vk.api.sdk.queries.apps.AppsGetFriendsListQuery;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQuery;
+import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQueryWithExtended;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardType;
 import com.vk.api.sdk.queries.apps.AppsGetQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScoreQuery;
@@ -106,6 +107,17 @@ public class Apps extends AbstractAction {
      */
     public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, AppsGetLeaderboardType type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
+    }
+
+    /**
+     * Returns players rating in the game.
+     *
+     * @param actor vk actor
+     * @param type  leaderboard type
+     * @return query
+     */
+    public AppsGetLeaderboardQueryWithExtended getLeaderboardExtended(UserActor actor, AppsGetLeaderboardType type) {
+        return new AppsGetLeaderboardQueryWithExtended(getClient(), actor, type);
     }
 
     /**
