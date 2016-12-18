@@ -9,6 +9,7 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.base.BaseObject;
+import com.vk.api.sdk.objects.base.SexInt;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
 import com.vk.api.sdk.queries.users.UserField;
 import org.testng.Assert;
@@ -52,7 +53,7 @@ public class ApiTest {
 
         Assert.assertNotNull(user);
         Assert.assertEquals(user.getLastName(), "Durov");
-        Assert.assertEquals(user.getSex(), new Integer(2));
+        Assert.assertEquals(user.getSex(), SexInt.MALE);
         Assert.assertTrue(user.isVerified());
     }
 

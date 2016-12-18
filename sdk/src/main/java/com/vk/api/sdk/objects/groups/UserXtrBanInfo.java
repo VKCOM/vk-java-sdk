@@ -4,17 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.users.Career;
-import com.vk.api.sdk.objects.users.CropPhoto;
-import com.vk.api.sdk.objects.users.Exports;
-import com.vk.api.sdk.objects.users.LastSeen;
-import com.vk.api.sdk.objects.users.Military;
-import com.vk.api.sdk.objects.users.Occupation;
-import com.vk.api.sdk.objects.users.Personal;
-import com.vk.api.sdk.objects.users.Relative;
-import com.vk.api.sdk.objects.users.School;
-import com.vk.api.sdk.objects.users.University;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.base.SexInt;
+import com.vk.api.sdk.objects.users.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +48,7 @@ public class UserXtrBanInfo {
      * User sex
      */
     @SerializedName("sex")
-    private Integer sex;
+    private SexInt sex;
 
     /**
      * Domain name of the user's page
@@ -490,7 +481,7 @@ public class UserXtrBanInfo {
         return hidden;
     }
 
-    public Integer getSex() {
+    public SexInt getSex() {
         return sex;
     }
 
