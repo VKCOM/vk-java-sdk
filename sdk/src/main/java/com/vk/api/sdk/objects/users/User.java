@@ -1,6 +1,7 @@
 package com.vk.api.sdk.objects.users;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.Sex;
 
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ public class User extends UserMin {
      * User sex
      */
     @SerializedName("sex")
-    private Integer sex;
+    private Sex sex;
 
     /**
      * Domain name of the user's page
@@ -38,7 +39,7 @@ public class User extends UserMin {
     @SerializedName("online")
     private Integer online;
 
-    public Integer getSex() {
+    public Sex getSex() {
         return sex;
     }
 
