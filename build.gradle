@@ -2,7 +2,7 @@ subprojects {
     apply plugin: 'java'
 
     group 'com.vk.api'
-    version '0.3.8-SNAPSHOT'
+    version '0.3.8'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -13,15 +13,15 @@ subprojects {
 
     ext {
         log4jVersion = '2.7'
-        gsonVersion = '2.7'
-        guavaVersion = '19.0'
-        commonsLangVersion = '3.4'
-        commonsIOVersion = '2.4'
+        gsonVersion = '2.8.0'
+        guavaVersion = '20.0'
+        commonsLangVersion = '3.5'
+        commonsIOVersion = '2.5'
         commonsCLIVersion = '1.3.1'
         commonsCollectionsVersion = '4.1'
         httpClientVersion = '4.5.2'
-        jacksonVersion = '2.8.4'
-        jettyVersion = '9.3.12.v20160915'
-        testngVersion = '6.9.13.6'
+        jacksonVersion = '2.8.5'
+        jettyVersion = '9.4.0.v20161208'
+        testngVersion = '6.10'
     }
 }
