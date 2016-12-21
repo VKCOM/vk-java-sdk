@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.account;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.base.Sex;
 import com.vk.api.sdk.objects.users.UserMin;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class UserSettings {
      * User sex
      */
     @SerializedName("sex")
-    private Integer sex;
+    private Sex sex;
 
     /**
      * User relationship status
@@ -115,7 +116,7 @@ public class UserSettings {
         return screenName;
     }
 
-    public Integer getSex() {
+    public Sex getSex() {
         return sex;
     }
 

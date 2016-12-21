@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Sex;
 import com.vk.api.sdk.objects.users.Career;
 import com.vk.api.sdk.objects.users.CropPhoto;
 import com.vk.api.sdk.objects.users.Exports;
@@ -57,7 +58,7 @@ public class UserXtrBanInfo {
      * User sex
      */
     @SerializedName("sex")
-    private Integer sex;
+    private Sex sex;
 
     /**
      * Domain name of the user's page
@@ -490,7 +491,7 @@ public class UserXtrBanInfo {
         return hidden;
     }
 
-    public Integer getSex() {
+    public Sex getSex() {
         return sex;
     }
 

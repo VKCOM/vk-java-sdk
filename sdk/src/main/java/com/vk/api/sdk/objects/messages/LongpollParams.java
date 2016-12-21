@@ -26,6 +26,12 @@ public class LongpollParams {
     @SerializedName("ts")
     private Integer ts;
 
+    /**
+     * PTS
+     */
+    @SerializedName("pts")
+    private Integer pts;
+
     public String getKey() {
         return key;
     }
@@ -38,9 +44,13 @@ public class LongpollParams {
         return ts;
     }
 
+    public Integer getPts() {
+        return pts;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(server, key, ts);
+        return Objects.hash(server, key, ts, pts);
     }
 
     @Override
@@ -50,7 +60,8 @@ public class LongpollParams {
         LongpollParams longpollParams = (LongpollParams) o;
         return Objects.equals(key, longpollParams.key) &&
                 Objects.equals(server, longpollParams.server) &&
-                Objects.equals(ts, longpollParams.ts);
+                Objects.equals(ts, longpollParams.ts) &&
+                Objects.equals(pts, longpollParams.pts);
     }
 
     @Override
@@ -59,6 +70,7 @@ public class LongpollParams {
         sb.append("key='").append(key).append("'");
         sb.append(", server='").append(server).append("'");
         sb.append(", ts=").append(ts);
+        sb.append(", pts=").append(pts);
         sb.append('}');
         return sb.toString();
     }
