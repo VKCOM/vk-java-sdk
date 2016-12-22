@@ -20,7 +20,7 @@ public class MessagesDenyMessagesFromCommunityQuery extends AbstractQueryBuilder
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public MessagesDenyMessagesFromCommunityQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "messages.denyMessagesFromCommunity", OkResponse.class);
+        super(client, "messages.denyMessagesFromGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
