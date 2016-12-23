@@ -20,7 +20,7 @@ public class MessagesAllowMessagesFromCommunityQuery extends AbstractQueryBuilde
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public MessagesAllowMessagesFromCommunityQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "messages.allowMessagesFromCommunity", OkResponse.class);
+        super(client, "messages.allowMessagesFromGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
