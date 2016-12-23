@@ -68,6 +68,12 @@ public class PhotoXtrRealOffset {
     private String photo1280;
 
     /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_2560")
+    private String photo2560;
+
+    /**
      * Post ID
      */
     @SerializedName("post_id")
@@ -167,6 +173,10 @@ public class PhotoXtrRealOffset {
         return photo1280;
     }
 
+    public String getPhoto2560() {
+        return photo2560;
+    }
+
     public Integer getPostId() {
         return postId;
     }
@@ -209,7 +219,7 @@ public class PhotoXtrRealOffset {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, photo604, lng, hidden, photo807, photo1280, albumId, postId, ownerId, userId, realOffset, sizes, photo75, accessKey, photo130, width, id, text, lat, height);
+        return Objects.hash(date, photo604, lng, hidden, photo807, photo1280, photo2560, albumId, postId, ownerId, userId, realOffset, sizes, photo75, accessKey, photo130, width, id, text, lat, height);
     }
 
     @Override
@@ -227,6 +237,7 @@ public class PhotoXtrRealOffset {
                 Objects.equals(photo604, photoXtrRealOffset.photo604) &&
                 Objects.equals(photo807, photoXtrRealOffset.photo807) &&
                 Objects.equals(photo1280, photoXtrRealOffset.photo1280) &&
+                Objects.equals(photo2560, photoXtrRealOffset.photo2560) &&
                 Objects.equals(postId, photoXtrRealOffset.postId) &&
                 Objects.equals(width, photoXtrRealOffset.width) &&
                 Objects.equals(height, photoXtrRealOffset.height) &&
@@ -252,6 +263,7 @@ public class PhotoXtrRealOffset {
         sb.append(", photo604='").append(photo604).append("'");
         sb.append(", photo807='").append(photo807).append("'");
         sb.append(", photo1280='").append(photo1280).append("'");
+        sb.append(", photo2560='").append(photo2560).append("'");
         sb.append(", postId=").append(postId);
         sb.append(", width=").append(width);
         sb.append(", height=").append(height);

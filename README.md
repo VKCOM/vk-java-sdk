@@ -13,15 +13,15 @@ This library has been created using the VK API JSON Schema. It can be found [her
 
 VK Java SDK uses:
 * [Apache Http Client](https://hc.apache.org) version 4.5.2
-* [Apache Log4j](http://logging.apache.org/log4j/2.x/) version 2.5
-* [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) version 3.4
+* [Apache Log4j](http://logging.apache.org/log4j/2.x/) version 2.7
+* [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) version 3.5
 * [Apache Commons Collections](https://commons.apache.org/proper/commons-collections/) version 4.1
-* [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.4
-* [Google Gson](https://github.com/google/gson) version  2.6.2
+* [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.5
+* [Google Gson](https://github.com/google/gson) version  2.8.9
 
 ##3. Latest release
 
-The most recent release is 0.3.8, released December 20, 2016.
+The most recent release is 0.3.9, released December 23, 2016.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.3.8</version>
+  <version>0.3.9</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.3.8'
+  compile 'com.vk.api:sdk:0.3.9'
 }
 ```
 

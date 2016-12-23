@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Query for Messages.allowMessagesFromCommunity method
+ * Query for Messages.denyMessagesFromGroup method
  */
-public class MessagesAllowMessagesFromCommunityQuery extends AbstractQueryBuilder<MessagesAllowMessagesFromCommunityQuery, OkResponse> {
+public class MessagesDenyMessagesFromGroupQuery extends AbstractQueryBuilder<MessagesDenyMessagesFromGroupQuery, OkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,8 +19,8 @@ public class MessagesAllowMessagesFromCommunityQuery extends AbstractQueryBuilde
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public MessagesAllowMessagesFromCommunityQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "messages.allowMessagesFromCommunity", OkResponse.class);
+    public MessagesDenyMessagesFromGroupQuery(VkApiClient client, UserActor actor, int groupId) {
+        super(client, "messages.denyMessagesFromGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
@@ -31,12 +31,12 @@ public class MessagesAllowMessagesFromCommunityQuery extends AbstractQueryBuilde
      * @param value value of "chat id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesAllowMessagesFromCommunityQuery groupId(int value) {
+    protected MessagesDenyMessagesFromGroupQuery groupId(int value) {
         return unsafeParam("group_id", value);
     }
 
     @Override
-    protected MessagesAllowMessagesFromCommunityQuery getThis() {
+    protected MessagesDenyMessagesFromGroupQuery getThis() {
         return this;
     }
 

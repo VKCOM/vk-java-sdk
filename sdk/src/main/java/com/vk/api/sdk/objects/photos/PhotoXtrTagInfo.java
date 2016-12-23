@@ -67,6 +67,12 @@ public class PhotoXtrTagInfo {
     private String photo1280;
 
     /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_2560")
+    private String photo2560;
+
+    /**
      * Post ID
      */
     @SerializedName("post_id")
@@ -172,6 +178,10 @@ public class PhotoXtrTagInfo {
         return photo1280;
     }
 
+    public String getPhoto2560() {
+        return photo2560;
+    }
+
     public Integer getPostId() {
         return postId;
     }
@@ -218,7 +228,7 @@ public class PhotoXtrTagInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, photo604, lng, tagId, photo807, photo1280, albumId, postId, placerId, ownerId, userId, sizes, photo75, accessKey, photo130, width, id, text, tagCreated, lat, height);
+        return Objects.hash(date, photo604, lng, tagId, photo807, photo1280, photo2560, albumId, postId, placerId, ownerId, userId, sizes, photo75, accessKey, photo130, width, id, text, tagCreated, lat, height);
     }
 
     @Override
@@ -236,6 +246,7 @@ public class PhotoXtrTagInfo {
                 Objects.equals(photo604, photoXtrTagInfo.photo604) &&
                 Objects.equals(photo807, photoXtrTagInfo.photo807) &&
                 Objects.equals(photo1280, photoXtrTagInfo.photo1280) &&
+                Objects.equals(photo2560, photoXtrTagInfo.photo2560) &&
                 Objects.equals(postId, photoXtrTagInfo.postId) &&
                 Objects.equals(width, photoXtrTagInfo.width) &&
                 Objects.equals(height, photoXtrTagInfo.height) &&
@@ -262,6 +273,7 @@ public class PhotoXtrTagInfo {
         sb.append(", photo604='").append(photo604).append("'");
         sb.append(", photo807='").append(photo807).append("'");
         sb.append(", photo1280='").append(photo1280).append("'");
+        sb.append(", photo2560='").append(photo2560).append("'");
         sb.append(", postId=").append(postId);
         sb.append(", width=").append(width);
         sb.append(", height=").append(height);
