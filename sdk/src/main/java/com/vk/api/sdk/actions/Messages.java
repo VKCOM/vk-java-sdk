@@ -5,12 +5,12 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
-import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromCommunityQuery;
+import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromGroupQuery;
 import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteChatPhotoQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteDialogQuery;
 import com.vk.api.sdk.queries.messages.MessagesDeleteQuery;
-import com.vk.api.sdk.queries.messages.MessagesDenyMessagesFromCommunityQuery;
+import com.vk.api.sdk.queries.messages.MessagesDenyMessagesFromGroupQuery;
 import com.vk.api.sdk.queries.messages.MessagesEditChatQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetByIdQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetChatQuery;
@@ -311,15 +311,15 @@ public class Messages extends AbstractAction {
     /**
      * Deny messages from community.
      */
-    public MessagesDenyMessagesFromCommunityQuery denyMessagesFromCommunity(UserActor actor, int groupId) {
-        return new MessagesDenyMessagesFromCommunityQuery(getClient(), actor, groupId);
+    public MessagesDenyMessagesFromGroupQuery denyMessagesFromCommunity(UserActor actor, int groupId) {
+        return new MessagesDenyMessagesFromGroupQuery(getClient(), actor, groupId);
     }
 
     /**
      * Allow messages from community.
      */
-    public MessagesAllowMessagesFromCommunityQuery allowMessagesFromCommunity(UserActor actor, int groupId) {
-        return new MessagesAllowMessagesFromCommunityQuery(getClient(), actor, groupId);
+    public MessagesAllowMessagesFromGroupQuery allowMessagesFromCommunity(UserActor actor, int groupId) {
+        return new MessagesAllowMessagesFromGroupQuery(getClient(), actor, groupId);
     }
 
     /**
