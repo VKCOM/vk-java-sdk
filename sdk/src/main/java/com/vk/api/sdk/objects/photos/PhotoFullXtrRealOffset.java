@@ -71,6 +71,12 @@ public class PhotoFullXtrRealOffset {
     private String photo1280;
 
     /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_2560")
+    private String photo2560;
+
+    /**
      * Post ID
      */
     @SerializedName("post_id")
@@ -188,6 +194,10 @@ public class PhotoFullXtrRealOffset {
         return photo1280;
     }
 
+    public String getPhoto2560() {
+        return photo2560;
+    }
+
     public Integer getPostId() {
         return postId;
     }
@@ -250,7 +260,7 @@ public class PhotoFullXtrRealOffset {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, photo604, hidden, photo807, albumId, ownerId, realOffset, sizes, photo75, photo130, id, text, canComment, lat, height, likes, comments, lng, photo1280, postId, userId, tags, accessKey, width, reposts);
+        return Objects.hash(date, photo604, hidden, photo807, albumId, ownerId, realOffset, sizes, photo75, photo130, id, text, canComment, lat, height, likes, comments, lng, photo1280, photo2560, postId, userId, tags, accessKey, width, reposts);
     }
 
     @Override
@@ -268,6 +278,7 @@ public class PhotoFullXtrRealOffset {
                 Objects.equals(photo604, photoFullXtrRealOffset.photo604) &&
                 Objects.equals(photo807, photoFullXtrRealOffset.photo807) &&
                 Objects.equals(photo1280, photoFullXtrRealOffset.photo1280) &&
+                Objects.equals(photo2560, photoFullXtrRealOffset.photo2560) &&
                 Objects.equals(postId, photoFullXtrRealOffset.postId) &&
                 Objects.equals(width, photoFullXtrRealOffset.width) &&
                 Objects.equals(height, photoFullXtrRealOffset.height) &&
@@ -298,6 +309,7 @@ public class PhotoFullXtrRealOffset {
         sb.append(", photo604='").append(photo604).append("'");
         sb.append(", photo807='").append(photo807).append("'");
         sb.append(", photo1280='").append(photo1280).append("'");
+        sb.append(", photo2560='").append(photo2560).append("'");
         sb.append(", postId=").append(postId);
         sb.append(", width=").append(width);
         sb.append(", height=").append(height);
