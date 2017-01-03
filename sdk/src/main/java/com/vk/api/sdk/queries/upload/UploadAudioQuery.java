@@ -11,8 +11,7 @@ import java.io.File;
 public class UploadAudioQuery extends UploadQueryBuilder<UploadAudioQuery, AudioUploadResponse> {
 
     public UploadAudioQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "file", AudioUploadResponse.class);
-        file(file);
+        super(client, uploadUrl, "file", file, AudioUploadResponse.class);
     }
 
     @Override
