@@ -11,8 +11,7 @@ import java.io.File;
 public class UploadPhotoWallQuery extends UploadQueryBuilder<UploadPhotoWallQuery, WallUploadResponse> {
 
     public UploadPhotoWallQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "photo", WallUploadResponse.class);
-        file(file);
+        super(client, uploadUrl, "photo", file, WallUploadResponse.class);
     }
 
     @Override

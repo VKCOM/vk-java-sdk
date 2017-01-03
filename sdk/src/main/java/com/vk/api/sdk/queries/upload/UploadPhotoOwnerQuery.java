@@ -11,8 +11,7 @@ import java.io.File;
 public class UploadPhotoOwnerQuery extends UploadQueryBuilder<UploadPhotoOwnerQuery, OwnerUploadResponse> {
 
     public UploadPhotoOwnerQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "photo", OwnerUploadResponse.class);
-        file(file);
+        super(client, uploadUrl, "photo", file, OwnerUploadResponse.class);
     }
 
     @Override
