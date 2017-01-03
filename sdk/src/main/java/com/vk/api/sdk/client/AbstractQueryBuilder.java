@@ -269,6 +269,10 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return Collections.unmodifiableMap(params);
     }
 
+    public String getEndpoint() {
+        return endpoint;
+    }
+
     /**
      * Get method name
      *
@@ -317,13 +321,17 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return json;
     }
 
+    protected String getParam(String key) {
+        return params.get(key);
+    }
+
     /**
      * Build request parameter map to query
      *
      * @param params parameters
      * @return string query
      */
-    private static String urlEncodeParams(Map<String, String> params) {
+    protected static String urlEncodeParams(Map<String, String> params) {
         return params.entrySet().stream()
                 .map(entry -> entry.getKey() + "=" + escape(entry.getValue()))
                 .collect(Collectors.joining("&"));

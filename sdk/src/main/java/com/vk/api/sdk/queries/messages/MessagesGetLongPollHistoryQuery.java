@@ -1,10 +1,13 @@
 package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.ClientResponse;
+import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollHistoryResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -170,6 +173,13 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     @Override
     protected List<String> essentialKeys() {
         return Arrays.asList(SERVER_PARAM, "key", "ts");
+    }
+
+    @Override
+    protected ClientResponse sendRequest(TransportClient client) throws IOException {
+        String baseUrl = getParam(SERVER_PARAM);
+        String query = urlEncodeParams(build());
+        return client.get(baseUrl + "?" + query);
     }
 
     @Override
