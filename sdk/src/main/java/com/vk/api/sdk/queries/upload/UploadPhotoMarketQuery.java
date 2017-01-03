@@ -11,8 +11,7 @@ import java.io.File;
 public class UploadPhotoMarketQuery extends UploadQueryBuilder<UploadPhotoMarketQuery, MarketUploadResponse> {
 
     public UploadPhotoMarketQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "photo", MarketUploadResponse.class);
-        file(file);
+        super(client, uploadUrl, "photo", file, MarketUploadResponse.class);
     }
 
     @Override

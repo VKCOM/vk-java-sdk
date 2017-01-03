@@ -12,8 +12,7 @@ import java.io.File;
 public class UploadDocQuery extends UploadQueryBuilder<UploadDocQuery, DocUploadResponse> {
 
     public UploadDocQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "file", DocUploadResponse.class);
-        file(file);
+        super(client, uploadUrl, "file", file, DocUploadResponse.class);
     }
 
     @Override
