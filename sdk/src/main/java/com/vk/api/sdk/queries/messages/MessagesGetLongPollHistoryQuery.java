@@ -1,27 +1,52 @@
 package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.ClientResponse;
+import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollHistoryResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Query for Messages.getLongPollHistory method
  */
 public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<MessagesGetLongPollHistoryQuery, GetLongPollHistoryResponse> {
+    private static String SERVER_PARAM = "server";
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
      */
-    public MessagesGetLongPollHistoryQuery(VkApiClient client, Actor actor) {
+    public MessagesGetLongPollHistoryQuery(VkApiClient client) {
         super(client, "messages.getLongPollHistory", GetLongPollHistoryResponse.class);
-        accessToken(actor.getAccessToken());
+        //TODO is's unclear from documentation, which values can be passed for an "act" parameter
+        unsafeParam("act", "a_check");
+    }
+
+    /**
+     * Server address to which a request needs to be sent.
+     *
+     * @param value value of "server" parameter. Required.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery server(String value) {
+        return unsafeParam(SERVER_PARAM, value);
+    }
+
+    /**
+     * The session's secret key. Do not miss with "access_token".
+     *
+     * @param value value of "server" parameter. Required.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery key(String value) {
+        return unsafeParam("key", value);
     }
 
     /**
@@ -42,6 +67,31 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      */
     public MessagesGetLongPollHistoryQuery pts(Integer value) {
         return unsafeParam("pts", value);
+    }
+
+    /**
+     * Set request modes
+     *
+     * @param modes value of "mode" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery mode(MessagesGetLongPollHistoryMode... modes) {
+        int value = 0;
+        for (MessagesGetLongPollHistoryMode mode : modes) {
+            value += mode.getValue();
+        }
+
+        return unsafeParam("mode", value);
+    }
+
+    /**
+     * Set request wait time
+     *
+     * @param value long-poll server wait time in seconds. Value of 25 is recommeded.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery longPollWait(Integer value) {
+        return unsafeParam("wait", value);
     }
 
     /**
@@ -115,6 +165,16 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
         return unsafeParam("max_msg_id", value);
     }
 
+    /**
+     * Version of long-polling protocol.
+     *
+     * @param value long-polling version. Available values are 0 and 1. Default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery longPollVersion(Integer value) {
+        return unsafeParam("version", value);
+    }
+
     @Override
     protected MessagesGetLongPollHistoryQuery getThis() {
         return this;
@@ -122,6 +182,28 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList(SERVER_PARAM, "key", "ts");
+    }
+
+    @Override
+    protected ClientResponse sendRequest(TransportClient client) throws IOException {
+        String server = getParam(SERVER_PARAM);
+        String query = urlEncodeParams(build());
+        String url = "https://" + server + "?" + query;
+        return client.get(url);
+    }
+
+    @Override
+    protected String getExpectedContentType() {
+        return "text/javascript";
+    }
+
+    @Override
+    public Map<String, String> build() {
+        //We have to skip SERVER_PARAM since we use it as request URL
+        Map<String, String> result = new HashMap<>(super.build());
+        result.remove(SERVER_PARAM);
+        result.remove("v");
+        return result;
     }
 }

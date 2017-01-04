@@ -1,15 +1,10 @@
 package com.vk.api.sdk.client;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.exceptions.ExceptionMapper;
-import com.vk.api.sdk.objects.base.Error;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,23 +19,16 @@ public abstract class ApiRequest<T> {
 
     private static final Logger LOG = LogManager.getLogger(ApiRequest.class);
 
-    private TransportClient client;
+    private final TransportClient client;
 
-    private Gson gson;
+    private final Gson gson;
 
-    private String url;
+    private final Type responseClass;
 
-    private Type responseClass;
-
-    public ApiRequest(String url, TransportClient client, Gson gson, Type responseClass) {
+    public ApiRequest(TransportClient client, Gson gson, Type responseClass) {
         this.client = client;
-        this.url = url;
-        this.responseClass = responseClass;
         this.gson = gson;
-    }
-
-    protected String getUrl() {
-        return url;
+        this.responseClass = responseClass;
     }
 
     protected Gson getGson() {
@@ -59,27 +47,7 @@ public abstract class ApiRequest<T> {
         String textResponse = executeAsString();
         JsonReader jsonReader = new JsonReader(new StringReader(textResponse));
         JsonObject json = (JsonObject) new JsonParser().parse(jsonReader);
-
-        if (json.has("error")) {
-            JsonElement errorElement = json.get("error");
-            Error error;
-            try {
-                error = gson.fromJson(errorElement, Error.class);
-            } catch (JsonSyntaxException e) {
-                LOG.error("Invalid JSON: " + textResponse, e);
-                throw new ClientException("Can't parse json response");
-            }
-
-            ApiException exception = ExceptionMapper.parseException(error);
-
-            LOG.error("API error", exception);
-            throw exception;
-        }
-
-        JsonElement response = json;
-        if (json.has("response")) {
-            response = json.get("response");
-        }
+        JsonElement response = handleJson(json, gson);
 
         try {
             return gson.fromJson(response, responseClass);
@@ -92,28 +60,64 @@ public abstract class ApiRequest<T> {
     public String executeAsString() throws ClientException {
         ClientResponse response;
         try {
-            response = client.post(url, getBody());
+            response = sendRequest(client);
         } catch (IOException e) {
-            LOG.error("Problems with request: " + url, e);
-            throw new ClientException("I/O exception");
+            LOG.error("Problems with request", e);
+            throw new ClientException("I/O exception", e);
         }
 
+        response = handleResponse(response);
+        return response.getContent();
+    }
+
+    /**
+     * Handles responses
+     * @param response
+     * @return ClientResponse
+     * @throws ClientException
+     */
+    protected ClientResponse handleResponse(ClientResponse response) throws ClientException {
         if (response.getStatusCode() != 200) {
             throw new ClientException("Internal API server error. Wrong status code: " + response.getStatusCode() + ". Content: " + response.getContent());
         }
 
-        if (!response.getHeaders().containsKey("Content-Type")) {
-            throw new ClientException("No content type header");
+        String expectedType = getExpectedContentType();
+        if (StringUtils.isEmpty(expectedType)) {
+            return response;
         }
 
-        if (!response.getHeaders().get("Content-Type").contains("application/json")) {
-            throw new ClientException("Invalid content type");
+        String contentType = response.getHeaders().get("Content-Type");
+
+        if (StringUtils.isEmpty(contentType)) {
+            throw new ClientException("No content type header, but expected: " + expectedType);
         }
 
-        return response.getContent();
+        if (!contentType.contains(expectedType)) {
+            throw new ClientException("Invalid content type: received " + contentType + ", but expected " + expectedType);
+        }
+
+        return response;
     }
 
-    protected abstract String getBody();
+    /**
+     * Sends actual request to server
+     * @param client TrasportClient
+     * @return ClientResponse
+     * @throws IOException
+     */
+    protected abstract ClientResponse sendRequest(TransportClient client) throws IOException;
 
-
+    /**
+     * MIME Content Type, that this request expects
+     * @return content type
+     */
+    protected abstract String getExpectedContentType();
+    /**
+     *
+     * @param json
+     * @param gson
+     * @return JsonElement that should be parsed to instance of generic parameter T
+     * @throws ApiException
+     */
+    protected abstract JsonElement handleJson(JsonObject json, Gson gson) throws ApiException ;
 }

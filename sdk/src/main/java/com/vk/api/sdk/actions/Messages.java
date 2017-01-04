@@ -4,40 +4,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
-import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromGroupQuery;
-import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
-import com.vk.api.sdk.queries.messages.MessagesDeleteChatPhotoQuery;
-import com.vk.api.sdk.queries.messages.MessagesDeleteDialogQuery;
-import com.vk.api.sdk.queries.messages.MessagesDeleteQuery;
-import com.vk.api.sdk.queries.messages.MessagesDenyMessagesFromGroupQuery;
-import com.vk.api.sdk.queries.messages.MessagesEditChatQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetByIdQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetChatQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetChatQueryWithChatIds;
-import com.vk.api.sdk.queries.messages.MessagesGetChatQueryWithChatIdsFields;
-import com.vk.api.sdk.queries.messages.MessagesGetChatQueryWithFields;
-import com.vk.api.sdk.queries.messages.MessagesGetChatUsersQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetChatUsersQueryWithChatIds;
-import com.vk.api.sdk.queries.messages.MessagesGetChatUsersQueryWithChatIdsFields;
-import com.vk.api.sdk.queries.messages.MessagesGetChatUsersQueryWithFields;
-import com.vk.api.sdk.queries.messages.MessagesGetDialogsQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetHistoryAttachmentsQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetHistoryQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetLastActivityQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetLongPollHistoryQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetLongPollServerQuery;
-import com.vk.api.sdk.queries.messages.MessagesGetQuery;
-import com.vk.api.sdk.queries.messages.MessagesIsMessagesFromGroupAllowedQuery;
-import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantQuery;
-import com.vk.api.sdk.queries.messages.MessagesMarkAsReadQuery;
-import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
-import com.vk.api.sdk.queries.messages.MessagesRestoreQuery;
-import com.vk.api.sdk.queries.messages.MessagesSearchDialogsQuery;
-import com.vk.api.sdk.queries.messages.MessagesSearchQuery;
-import com.vk.api.sdk.queries.messages.MessagesSendQuery;
-import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
-import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
+import com.vk.api.sdk.queries.messages.*;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -158,7 +125,7 @@ public class Messages extends AbstractAction {
      * Returns updates in user's private messages.
      */
     public MessagesGetLongPollHistoryQuery getLongPollHistory(Actor actor) {
-        return new MessagesGetLongPollHistoryQuery(getClient(), actor);
+        return new MessagesGetLongPollHistoryQuery(getClient());
     }
 
     /**

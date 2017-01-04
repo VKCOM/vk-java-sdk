@@ -1,17 +1,20 @@
 package com.vk.api.sdk.client;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ExceptionMapper;
+import com.vk.api.sdk.objects.base.Error;
 import com.vk.api.sdk.queries.EnumParam;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,9 +25,12 @@ import static java.util.Arrays.asList;
  */
 public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
 
+    private static final Logger LOG = LogManager.getLogger(AbstractQueryBuilder.class);
+
     private final Map<String, String> params = new HashMap<>();
 
-    private String method;
+    private final String endpoint;
+    private final String method;
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
@@ -34,21 +40,21 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param type   type of method response
      */
     public AbstractQueryBuilder(VkApiClient client, String method, Type type) {
-        super(client.getApiEndpoint() + method, client.getTransportClient(), client.getGson(), type);
-        this.method = method;
-        version(client.getVersion());
+        this(client, client.getApiEndpoint(), method, type);
     }
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client   VK API client
-     * @param endpoint API endpoint
-     * @param method   method name
      * @param type     type of method response
+     * @param endpoint server's address
+     * @param method   method name
      */
     public AbstractQueryBuilder(VkApiClient client, String endpoint, String method, Type type) {
-        super(endpoint + method, client.getTransportClient(), client.getGson(), type);
+        super(client.getTransportClient(), client.getGson(), type);
+        this.endpoint = endpoint;
+        this.method = method;
         version(client.getVersion());
     }
 
@@ -60,32 +66,6 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      */
     private static String boolAsParam(boolean param) {
         return param ? "1" : "0";
-    }
-
-    /**
-     * Build request parameter map to query
-     *
-     * @param params parameters
-     * @return string query
-     */
-    private static String mapToGetString(Map<String, String> params) {
-        return params.entrySet().stream()
-                .map(entry -> entry.getKey() + "=" + (entry.getValue() != null ? escape(entry.getValue()) : ""))
-                .collect(Collectors.joining("&"));
-    }
-
-    /**
-     * Encode request data
-     *
-     * @param data request data
-     * @return encoded data
-     */
-    private static String escape(String data) {
-        try {
-            return URLEncoder.encode(data, "UTF-8");
-        } catch (UnsupportedEncodingException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
     /**
@@ -261,11 +241,6 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return unsafeParam(key, fields.stream().map(EnumParam::getValue).collect(Collectors.joining(",")));
     }
 
-    @Override
-    protected String getBody() {
-        return mapToGetString(build());
-    }
-
     /**
      * Get reference to this object
      *
@@ -293,6 +268,10 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return Collections.unmodifiableMap(params);
     }
 
+    public String getEndpoint() {
+        return endpoint;
+    }
+
     /**
      * Get method name
      *
@@ -300,5 +279,66 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      */
     public String getMethod() {
         return method;
+    }
+
+    @Override
+    protected ClientResponse sendRequest(TransportClient client) throws IOException {
+        return client.post(endpoint + method, urlEncodeParams(build()));
+    }
+
+    @Override
+    protected String getExpectedContentType() {
+        return "application/json";
+    }
+
+    @Override
+    protected JsonElement handleJson(JsonObject json, Gson gson) throws ApiException {
+        if (json.has("error")) {
+            JsonElement errorElement = json.get("error");
+            Error error = gson.fromJson(errorElement, Error.class);
+            ApiException exception = ExceptionMapper.parseException(error);
+            LOG.error("API error", exception);
+            throw exception;
+        }
+
+        if (json.has("response")) {
+            return json.get("response");
+        }
+
+        return json;
+    }
+
+    protected String getParam(String key) {
+        return params.get(key);
+    }
+
+    /**
+     * Build request parameter map to query
+     *
+     * @param params parameters
+     * @return string query
+     */
+    protected static String urlEncodeParams(Map<String, String> params) {
+        return params.entrySet().stream()
+                .map(entry -> entry.getKey() + "=" + escape(entry.getValue()))
+                .collect(Collectors.joining("&"));
+    }
+
+    /**
+     * Encode request data
+     *
+     * @param data request data
+     * @return encoded data
+     */
+    private static String escape(String data) {
+        if (data == null || data.isEmpty()) {
+            return "";
+        }
+
+        try {
+            return URLEncoder.encode(data, "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
