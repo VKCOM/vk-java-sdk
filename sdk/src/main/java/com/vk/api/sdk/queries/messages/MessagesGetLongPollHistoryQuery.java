@@ -90,7 +90,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value long-poll server wait time in seconds. Value of 25 is recommeded.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollHistoryQuery wait(Integer value) {
+    public MessagesGetLongPollHistoryQuery longPollWait(Integer value) {
         return unsafeParam("wait", value);
     }
 
@@ -165,6 +165,16 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
         return unsafeParam("max_msg_id", value);
     }
 
+    /**
+     * Version of long-polling protocol.
+     *
+     * @param value long-polling version. Available values are 0 and 1. Default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetLongPollHistoryQuery longPollVersion(Integer value) {
+        return unsafeParam("version", value);
+    }
+
     @Override
     protected MessagesGetLongPollHistoryQuery getThis() {
         return this;
@@ -177,9 +187,15 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
 
     @Override
     protected ClientResponse sendRequest(TransportClient client) throws IOException {
-        String baseUrl = getParam(SERVER_PARAM);
+        String server = getParam(SERVER_PARAM);
         String query = urlEncodeParams(build());
-        return client.get(baseUrl + "?" + query);
+        String url = "https://" + server + "?" + query;
+        return client.get(url);
+    }
+
+    @Override
+    protected String getExpectedContentType() {
+        return "text/javascript";
     }
 
     @Override
@@ -187,6 +203,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
         //We have to skip SERVER_PARAM since we use it as request URL
         Map<String, String> result = new HashMap<>(super.build());
         result.remove(SERVER_PARAM);
+        result.remove("v");
         return result;
     }
 }

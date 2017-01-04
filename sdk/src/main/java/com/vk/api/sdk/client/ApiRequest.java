@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -70,6 +71,35 @@ public abstract class ApiRequest<T> {
     }
 
     /**
+     * Handles responses
+     * @param response
+     * @return ClientResponse
+     * @throws ClientException
+     */
+    protected ClientResponse handleResponse(ClientResponse response) throws ClientException {
+        if (response.getStatusCode() != 200) {
+            throw new ClientException("Internal API server error. Wrong status code: " + response.getStatusCode() + ". Content: " + response.getContent());
+        }
+
+        String expectedType = getExpectedContentType();
+        if (StringUtils.isEmpty(expectedType)) {
+            return response;
+        }
+
+        String contentType = response.getHeaders().get("Content-Type");
+
+        if (StringUtils.isEmpty(contentType)) {
+            throw new ClientException("No content type header, but expected: " + expectedType);
+        }
+
+        if (!contentType.contains(expectedType)) {
+            throw new ClientException("Invalid content type: received " + contentType + ", but expected " + expectedType);
+        }
+
+        return response;
+    }
+
+    /**
      * Sends actual request to server
      * @param client TrasportClient
      * @return ClientResponse
@@ -78,13 +108,10 @@ public abstract class ApiRequest<T> {
     protected abstract ClientResponse sendRequest(TransportClient client) throws IOException;
 
     /**
-     * Handles responses
-     * @param response
-     * @return ClientResponse
-     * @throws ClientException
+     * MIME Content Type, that this request expects
+     * @return content type
      */
-    protected abstract ClientResponse handleResponse(ClientResponse response) throws ClientException;
-
+    protected abstract String getExpectedContentType();
     /**
      *
      * @param json

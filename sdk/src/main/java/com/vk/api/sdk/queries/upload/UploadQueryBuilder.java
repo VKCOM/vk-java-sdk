@@ -8,7 +8,6 @@ import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.UploadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,12 +43,9 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
     }
 
     @Override
-    protected ClientResponse handleResponse(ClientResponse response) throws ClientException {
-        if (response.getStatusCode() != 200) {
-            throw new ClientException("Internal API server error");
-        }
-
-        return response;
+    protected String getExpectedContentType() {
+        //Only checks HTTP status
+        return null;
     }
 
     @Override

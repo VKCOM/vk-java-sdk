@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.ExceptionMapper;
 import com.vk.api.sdk.objects.base.Error;
 import com.vk.api.sdk.queries.EnumParam;
@@ -284,24 +283,12 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
 
     @Override
     protected ClientResponse sendRequest(TransportClient client) throws IOException {
-        return client.post(endpoint, urlEncodeParams(build()));
+        return client.post(endpoint + method, urlEncodeParams(build()));
     }
 
     @Override
-    protected ClientResponse handleResponse(ClientResponse response) throws ClientException {
-        if (response.getStatusCode() != 200) {
-            throw new ClientException("Internal API server error. Wrong status code: " + response.getStatusCode() + ". Content: " + response.getContent());
-        }
-
-        if (!response.getHeaders().containsKey("Content-Type")) {
-            throw new ClientException("No content type header");
-        }
-
-        if (!response.getHeaders().get("Content-Type").contains("application/json")) {
-            throw new ClientException("Invalid content type");
-        }
-
-        return response;
+    protected String getExpectedContentType() {
+        return "application/json";
     }
 
     @Override
