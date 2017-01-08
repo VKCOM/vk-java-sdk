@@ -1,7 +1,22 @@
 package com.vk.api.sdk.objects.updates;
 
 /**
- * Created by Denis on 07.01.2017.
+ * @author Denis Kokorin
  */
-public class ReadAllIncomingMessages {
+public class ReadAllIncomingMessages implements Update{
+    private final Integer peerId;
+    private final Integer messageId;
+
+    public ReadAllIncomingMessages(Integer peerId, Integer messageId) {
+        this.peerId = peerId;
+        this.messageId = messageId;
+    }
+
+    public Integer getPeerId() {
+        return peerId;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
 }

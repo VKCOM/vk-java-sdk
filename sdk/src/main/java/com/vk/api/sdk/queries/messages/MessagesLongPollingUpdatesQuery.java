@@ -8,7 +8,7 @@ import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.objects.messages.responses.LongPollingUpdatesResponse;
+import com.vk.api.sdk.objects.updates.responses.LongPollingUpdatesResponse;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;

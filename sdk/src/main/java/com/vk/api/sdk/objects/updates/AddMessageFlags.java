@@ -1,29 +1,27 @@
-package contactus.core.update;
+package com.vk.api.sdk.objects.updates;
 
-import contactus.core.Data;
-import contactus.domain.Message;
-import contactus.domain.MessageFlag;
-import javafx.application.Platform;
-
-import java.util.Collections;
 import java.util.Set;
 
 public class AddMessageFlags implements Update {
-    private final long messageId;
+    private final Integer messageId;
     private final Set<MessageFlag> flags;
-    private final long userId;
+    private final Integer userId;
 
-    public AddMessageFlags(long messageId, Set<MessageFlag> flags, long userId) {
+    public AddMessageFlags(Integer messageId, Set<MessageFlag> flags, Integer userId) {
         this.messageId = messageId;
         this.flags = flags;
         this.userId = userId;
     }
 
-    @Override
-    public void accept(Data data) {
-        Platform.runLater(() -> {
-            Message message = data.updateMessage(messageId, m -> Message.copyOf(m).addFlags(flags).build());
-            data.updateLastIncomingMessages(Collections.singleton(message.getUserId()));
-        });
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public Set<MessageFlag> getFlags() {
+        return flags;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 }

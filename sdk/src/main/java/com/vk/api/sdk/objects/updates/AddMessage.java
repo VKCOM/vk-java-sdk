@@ -1,10 +1,6 @@
-package contactus.core.update;
+package com.vk.api.sdk.objects.updates;
 
-import contactus.core.Data;
-import contactus.domain.Message;
-import javafx.application.Platform;
-
-import java.util.Collections;
+import com.vk.api.sdk.objects.messages.Message;
 
 public class AddMessage implements Update {
     private final Message message;
@@ -13,11 +9,7 @@ public class AddMessage implements Update {
         this.message = message;
     }
 
-    @Override
-    public void accept(Data data) {
-        Platform.runLater(() -> {
-            data.addMessages(Collections.singletonList(message));
-            data.updateLastIncomingMessages(Collections.singleton(message.getUserId()));
-        });
+    public Message getMessage() {
+        return message;
     }
 }

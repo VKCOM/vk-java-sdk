@@ -1,7 +1,22 @@
 package com.vk.api.sdk.objects.updates;
 
 /**
- * Created by Denis on 07.01.2017.
+ * @author Denis Kokorin
  */
-public class FriendOnline {
+public class FriendOnline implements Update {
+    private final Integer userId;
+    private final Platform platform;
+
+    public FriendOnline(Integer userId, Platform platform) {
+        this.userId = userId;
+        this.platform = platform;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Platform getPlatform() {
+        return platform;
+    }
 }

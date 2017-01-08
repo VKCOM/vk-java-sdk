@@ -1,8 +1,12 @@
-package contactus.domain;
+package com.vk.api.sdk.objects.updates;
 
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * @author Denis Kokorin
+ * @see <a href="https://vk.com/dev/using_longpoll">Connecting to the LongPoll Server</a>
+ */
 public enum MessageFlag {
     UNREAD(+1),
     OUTBOX(+2),

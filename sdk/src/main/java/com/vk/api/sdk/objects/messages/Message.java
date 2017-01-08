@@ -271,4 +271,170 @@ public class Message {
         sb.append('}');
         return sb.toString();
     }
+
+    public static MessageBuilder builder() {
+        return MessageBuilder.aMessage();
+    }
+
+    public static final class MessageBuilder {
+        private Integer id;
+        private Integer date;
+        private BoolInt out;
+        private Integer userId;
+        private Integer fromId;
+        private Integer randomId;
+        private BoolInt important;
+        private BoolInt deleted;
+        private List<Message> fwdMessages;
+        private BoolInt readState;
+        private String title;
+        private String body;
+        private List<MessageAttachment> attachments;
+        private Integer chatId;
+        private List<Integer> chatActive;
+        private Integer usersCount;
+        private Integer adminId;
+        private String photo50;
+        private String photo100;
+        private String photo200;
+        private Geo geo;
+
+        private MessageBuilder() {
+        }
+
+        public static MessageBuilder aMessage() {
+            return new MessageBuilder();
+        }
+
+        public MessageBuilder id(Integer id) {
+            this.id = id;
+            return this;
+        }
+
+        public MessageBuilder date(Integer date) {
+            this.date = date;
+            return this;
+        }
+
+        public MessageBuilder out(BoolInt out) {
+            this.out = out;
+            return this;
+        }
+
+        public MessageBuilder userId(Integer userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        public MessageBuilder fromId(Integer fromId) {
+            this.fromId = fromId;
+            return this;
+        }
+
+        public MessageBuilder randomId(Integer randomId) {
+            this.randomId = randomId;
+            return this;
+        }
+
+        public MessageBuilder important(BoolInt important) {
+            this.important = important;
+            return this;
+        }
+
+        public MessageBuilder deleted(BoolInt deleted) {
+            this.deleted = deleted;
+            return this;
+        }
+
+        public MessageBuilder fwdMessages(List<Message> fwdMessages) {
+            this.fwdMessages = fwdMessages;
+            return this;
+        }
+
+        public MessageBuilder readState(BoolInt readState) {
+            this.readState = readState;
+            return this;
+        }
+
+        public MessageBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public MessageBuilder body(String body) {
+            this.body = body;
+            return this;
+        }
+
+        public MessageBuilder attachments(List<MessageAttachment> attachments) {
+            this.attachments = attachments;
+            return this;
+        }
+
+        public MessageBuilder chatId(Integer chatId) {
+            this.chatId = chatId;
+            return this;
+        }
+
+        public MessageBuilder chatActive(List<Integer> chatActive) {
+            this.chatActive = chatActive;
+            return this;
+        }
+
+        public MessageBuilder usersCount(Integer usersCount) {
+            this.usersCount = usersCount;
+            return this;
+        }
+
+        public MessageBuilder adminId(Integer adminId) {
+            this.adminId = adminId;
+            return this;
+        }
+
+        public MessageBuilder photo50(String photo50) {
+            this.photo50 = photo50;
+            return this;
+        }
+
+        public MessageBuilder photo100(String photo100) {
+            this.photo100 = photo100;
+            return this;
+        }
+
+        public MessageBuilder photo200(String photo200) {
+            this.photo200 = photo200;
+            return this;
+        }
+
+        public MessageBuilder geo(Geo geo) {
+            this.geo = geo;
+            return this;
+        }
+
+        public Message build() {
+            Message message = new Message();
+            message.title = this.title;
+            message.usersCount = this.usersCount;
+            message.photo100 = this.photo100;
+            message.photo200 = this.photo200;
+            message.out = this.out;
+            message.chatActive = this.chatActive;
+            message.body = this.body;
+            message.chatId = this.chatId;
+            message.photo50 = this.photo50;
+            message.deleted = this.deleted;
+            message.geo = this.geo;
+            message.attachments = this.attachments;
+            message.adminId = this.adminId;
+            message.fromId = this.fromId;
+            message.important = this.important;
+            message.id = this.id;
+            message.date = this.date;
+            message.randomId = this.randomId;
+            message.fwdMessages = this.fwdMessages;
+            message.userId = this.userId;
+            message.readState = this.readState;
+            return message;
+        }
+    }
 }

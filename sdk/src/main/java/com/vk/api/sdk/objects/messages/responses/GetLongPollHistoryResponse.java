@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.messages.Chat;
 import com.vk.api.sdk.objects.messages.LongpollMessages;
+import com.vk.api.sdk.objects.updates.Update;
 import com.vk.api.sdk.objects.users.User;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Objects;
 public class GetLongPollHistoryResponse {
 
     @SerializedName("history")
-    private List<List<Integer>> history;
+    private List<Update> history;
 
     @SerializedName("messages")
     private LongpollMessages messages;
@@ -32,7 +33,7 @@ public class GetLongPollHistoryResponse {
     @SerializedName("more")
     private BoolInt more;
 
-    public List<List<Integer>> getHistory() {
+    public List<Update> getHistory() {
         return history;
     }
 

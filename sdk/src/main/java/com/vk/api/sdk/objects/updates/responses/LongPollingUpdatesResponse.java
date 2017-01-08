@@ -1,6 +1,9 @@
-package com.vk.api.sdk.objects.messages.responses;
+package com.vk.api.sdk.objects.updates.responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.updates.Update;
+
+import java.util.List;
 
 /**
  * @author Denis Kokorin
@@ -10,13 +13,13 @@ public class LongPollingUpdatesResponse {
     private Integer ts;
 
     @SerializedName("updates")
-    private Object[][] updates;
+    private List<Update> updates;
 
     public Integer getTs() {
         return ts;
     }
 
-    public Object[][] getUpdates() {
+    public List<Update> getUpdates() {
         return updates;
     }
 }

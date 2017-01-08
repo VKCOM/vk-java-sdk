@@ -125,7 +125,7 @@ public class Messages extends AbstractAction {
      * Returns updates in user's private messages.
      */
     public MessagesGetLongPollHistoryQuery getLongPollHistory(Actor actor) {
-        return new MessagesGetLongPollHistoryQuery(getClient());
+        return new MessagesGetLongPollHistoryQuery(getClient(), actor);
     }
 
     public MessagesLongPollingUpdatesQuery longPollingUpdates() {

@@ -1,11 +1,14 @@
-package contactus.core.update;
+package com.vk.api.sdk.objects.updates;
 
-import contactus.core.Data;
-
-import java.util.function.Consumer;
+import com.google.gson.annotations.JsonAdapter;
+import com.vk.api.sdk.deserializers.LongPollingUpdateDeserializer;
 
 /**
- * https://vk.com/dev/using_longpoll
+ * Marker interface for any long-polling update
+ * @author Denis Kokorin
+ * @see <a href="https://vk.com/dev/using_longpoll">Connecting to the LongPoll Server</a>
+ *
  */
-public interface Update extends Consumer<Data>{
+@JsonAdapter(LongPollingUpdateDeserializer.class)
+public interface Update {
 }

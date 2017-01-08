@@ -305,8 +305,4 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
 
         return json;
     }
-
-    protected String getParam(String key) {
-        return params.get(key);
-    }
 }
