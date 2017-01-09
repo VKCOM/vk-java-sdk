@@ -82,7 +82,19 @@ public class UserXtrBanInfo {
      * Information whether the user is online
      */
     @SerializedName("online")
-    private Integer online;
+    private BoolInt online;
+
+    /**
+     * Information whether the user is online in mobile site or application
+     */
+    @SerializedName("online_mobile")
+    private BoolInt onlineMobile;
+
+    /**
+     * Application ID
+     */
+    @SerializedName("online_app")
+    private Integer onlineApp;
 
     /**
      * User nickname
@@ -507,8 +519,16 @@ public class UserXtrBanInfo {
         return photo100;
     }
 
-    public Integer getOnline() {
-        return online;
+    public boolean isOnline() {
+        return online == BoolInt.YES;
+    }
+
+    public boolean isOnlineMobile() {
+        return online == BoolInt.YES;
+    }
+
+    public Integer getOnlineApp() {
+        return onlineApp;
     }
 
     public String getNickname() {
@@ -801,7 +821,7 @@ public class UserXtrBanInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canSendFriendRequest, universityName, country, career, tv, bdate, occupation, banInfo, about, screenName, instagram, educationForm, deactivated, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, id, canSeeAllPosts, homePhone, livejournal, personal, relatives, firstName, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, lastName, relationPartner, hidden, activity, city, cropPhoto, timezone, exports, university, photo50, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, sex, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, photo100, activities, online, canWritePrivateMessage, interests);
+        return Objects.hash(canSendFriendRequest, universityName, country, career, tv, bdate, occupation, banInfo, about, screenName, instagram, educationForm, deactivated, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, id, canSeeAllPosts, homePhone, livejournal, personal, relatives, firstName, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, lastName, relationPartner, hidden, activity, city, cropPhoto, timezone, exports, university, photo50, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, sex, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, photo100, activities, online, onlineMobile, onlineApp, canWritePrivateMessage, interests);
     }
 
     @Override
@@ -819,6 +839,8 @@ public class UserXtrBanInfo {
                 Objects.equals(photo50, userXtrBanInfo.photo50) &&
                 Objects.equals(photo100, userXtrBanInfo.photo100) &&
                 Objects.equals(online, userXtrBanInfo.online) &&
+                Objects.equals(onlineMobile, userXtrBanInfo.onlineMobile) &&
+                Objects.equals(onlineApp, userXtrBanInfo.onlineApp) &&
                 Objects.equals(nickname, userXtrBanInfo.nickname) &&
                 Objects.equals(maidenName, userXtrBanInfo.maidenName) &&
                 Objects.equals(domain, userXtrBanInfo.domain) &&
@@ -906,6 +928,8 @@ public class UserXtrBanInfo {
         sb.append(", photo50='").append(photo50).append("'");
         sb.append(", photo100='").append(photo100).append("'");
         sb.append(", online=").append(online);
+        sb.append(", onlineMobile=").append(onlineMobile);
+        sb.append(", onlineApp=").append(onlineApp);
         sb.append(", nickname='").append(nickname).append("'");
         sb.append(", maidenName='").append(maidenName).append("'");
         sb.append(", domain='").append(domain).append("'");
