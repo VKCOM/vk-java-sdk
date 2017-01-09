@@ -10,8 +10,8 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.ExceptionMapper;
 import com.vk.api.sdk.objects.base.Error;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -22,7 +22,7 @@ import java.lang.reflect.Type;
  */
 public abstract class ApiRequest<T> {
 
-    private static final Logger LOG = LogManager.getLogger(ApiRequest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ApiRequest.class);
 
     private TransportClient client;
 

@@ -10,8 +10,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.UploadException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.lang.reflect.Type;
 
 public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
-    private static final Logger LOG = LogManager.getLogger(UploadQueryBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UploadQueryBuilder.class);
 
     private String filename;
 

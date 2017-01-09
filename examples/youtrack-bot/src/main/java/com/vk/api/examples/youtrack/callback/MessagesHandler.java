@@ -11,15 +11,15 @@ import com.vk.api.examples.youtrack.callback.commands.UptimeCommand;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
 import com.vk.api.examples.youtrack.storage.Statistic;
 import com.vk.api.sdk.objects.messages.Message;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Anton Tsivarev on 19.11.16.
  */
 public class MessagesHandler {
 
-    private static final Logger LOG = LogManager.getLogger(MembersUpdateJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MembersUpdateJob.class);
 
     private static Integer parseInt(String[] args, int index, int defaultValue) {
         if (args.length <= index) {

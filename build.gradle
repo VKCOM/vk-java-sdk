@@ -2,7 +2,7 @@ subprojects {
     apply plugin: 'java'
 
     group 'com.vk.api'
-    version '0.3.10-SNAPSHOT'
+    version '0.4.0-SNAPSHOT'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -12,6 +12,7 @@ subprojects {
     }
 
     ext {
+        slf4jVersion = '1.7.22'
         log4jVersion = '2.7'
         gsonVersion = '2.8.0'
         guavaVersion = '20.0'

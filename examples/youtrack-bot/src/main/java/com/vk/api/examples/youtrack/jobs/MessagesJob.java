@@ -7,15 +7,15 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.messages.responses.GetResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Anton Tsivarev on 19.11.16.
  */
 public class MessagesJob implements Job {
 
-    private static final Logger LOG = LogManager.getLogger(MembersUpdateJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MembersUpdateJob.class);
     private static final String LAST_MESSAGE_ID_KEY = "vk.bot.lastMessageId";
 
     private Integer lastMessageId = 0;

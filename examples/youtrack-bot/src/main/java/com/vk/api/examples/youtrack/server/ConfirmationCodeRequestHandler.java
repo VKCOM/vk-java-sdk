@@ -5,10 +5,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.vk.api.sdk.callback.objects.CallbackMessage;
 import com.vk.api.sdk.callback.objects.CallbackMessageType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 public class ConfirmationCodeRequestHandler extends AbstractHandler {
 
-    private static final Logger LOG = LogManager.getLogger(ConfirmationCodeRequestHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ConfirmationCodeRequestHandler.class);
 
     private final Gson gson;
     private final String confirmationCode;

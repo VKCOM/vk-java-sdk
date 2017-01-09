@@ -8,8 +8,8 @@ import com.vk.api.examples.youtrack.storage.users.YouTrackUser;
 import com.vk.api.examples.youtrack.storage.users.YouTrackUsersStorage;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class MineTasksCommand extends VkCommand {
 
-    private static final Logger LOG = LogManager.getLogger(MineTasksCommand.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MineTasksCommand.class);
 
     private Integer count;
 

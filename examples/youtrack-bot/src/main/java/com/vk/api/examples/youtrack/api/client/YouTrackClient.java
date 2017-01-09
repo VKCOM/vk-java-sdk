@@ -26,8 +26,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.ssl.SSLContexts;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,7 +47,7 @@ import java.util.Map;
  */
 public class YouTrackClient {
 
-    private static final Logger LOG = LogManager.getLogger(YouTrackClient.class);
+    private static final Logger LOG = LoggerFactory.getLogger(YouTrackClient.class);
 
     private static final String ENCODING = "UTF-8";
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
