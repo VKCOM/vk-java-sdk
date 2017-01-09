@@ -2,8 +2,8 @@ package com.vk.api.examples.youtrack.storage.users;
 
 import com.vk.api.examples.youtrack.storage.Statistic;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,7 +21,7 @@ import java.util.Set;
  */
 public class YouTrackUsersStorage {
 
-    private static final Logger LOG = LogManager.getLogger(YouTrackUsersStorage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(YouTrackUsersStorage.class);
     private static final Map<String, YouTrackUser> USERS = new HashMap<>();
     private static YouTrackUsersStorage instance;
     private String filePath;

@@ -3,8 +3,8 @@ package com.vk.api.examples.youtrack.callback.commands;
 import com.vk.api.examples.youtrack.storage.users.YouTrackUsersStorage;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class LoginCommand extends VkCommand {
 
-    private static final Logger LOG = LogManager.getLogger(LoginCommand.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LoginCommand.class);
 
     private String ytLogin;
 

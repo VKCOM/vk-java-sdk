@@ -1,7 +1,7 @@
 package com.vk.api.examples.youtrack.storage;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class LangStorage {
 
-    private static final Logger LOG = LogManager.getLogger(DataStorage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DataStorage.class);
 
     private static LangStorage instance;
 

@@ -1,7 +1,7 @@
 package com.vk.api.examples.youtrack.storage;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class MembersStorage {
 
-    private static final Logger LOG = LogManager.getLogger(MembersStorage.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MembersStorage.class);
     private static final Set<Integer> MEMBERS = new HashSet<>();
     private static MembersStorage instance;
     private String filePath;

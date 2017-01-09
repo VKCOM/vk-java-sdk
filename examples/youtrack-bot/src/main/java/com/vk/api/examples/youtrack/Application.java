@@ -25,11 +25,11 @@ import com.vk.api.sdk.objects.groups.responses.GetCallbackConfirmationCodeRespon
 import com.vk.api.sdk.objects.groups.responses.GetCallbackServerSettingsResponse;
 import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponse;
 import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponseStateCode;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Application {
 
-    private static final Logger LOG = LogManager.getLogger(Application.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
     private static GroupActor actor = null;
 

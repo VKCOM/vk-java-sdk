@@ -19,8 +19,8 @@ import com.vk.api.examples.youtrack.storage.users.YouTrackUsersStorage;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -32,7 +32,7 @@ import java.util.Set;
  */
 public class NotifyIssueChangesJob implements Job {
 
-    private static final Logger LOG = LogManager.getLogger(NotifyIssueChangesJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(NotifyIssueChangesJob.class);
 
     private static final int COUNT = 100;
     private static final Set<String> SKIP_FIELDS = new HashSet<>();

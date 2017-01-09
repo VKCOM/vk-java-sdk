@@ -13,7 +13,7 @@ public class LongpollMessages {
     @SerializedName("count")
     private Integer count;
 
-    @SerializedName("messages")
+    @SerializedName("items")
     private List<Message> messages;
 
     public Integer getCount() {

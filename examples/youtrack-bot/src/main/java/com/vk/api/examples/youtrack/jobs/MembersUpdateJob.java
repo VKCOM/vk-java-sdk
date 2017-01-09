@@ -6,8 +6,8 @@ import com.vk.api.examples.youtrack.storage.MembersStorage;
 import com.vk.api.examples.youtrack.storage.users.YouTrackUsersStorage;
 import com.vk.api.sdk.exceptions.ApiMessagesDenySendException;
 import com.vk.api.sdk.objects.groups.responses.GetMembersResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -18,7 +18,7 @@ import java.util.Set;
  */
 public class MembersUpdateJob implements Job {
 
-    private static final Logger LOG = LogManager.getLogger(MembersUpdateJob.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MembersUpdateJob.class);
 
     @Override
     public void doJob() throws Exception {

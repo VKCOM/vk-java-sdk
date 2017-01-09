@@ -34,6 +34,12 @@ public class VideoFiles {
     private String mp720;
 
     /**
+     * URL of the mpeg4 file with 1080p quality
+     */
+    @SerializedName("mp_1080")
+    private String mp1080;
+
+    /**
      * URL of the external player
      */
     @SerializedName("external")
@@ -55,6 +61,10 @@ public class VideoFiles {
         return mp720;
     }
 
+    public String getMp1080() {
+        return mp1080;
+    }
+
     public String getExternal() {
         return external;
     }
@@ -68,12 +78,13 @@ public class VideoFiles {
                 Objects.equals(mp360, that.mp360) &&
                 Objects.equals(mp480, that.mp480) &&
                 Objects.equals(mp720, that.mp720) &&
+                Objects.equals(mp1080, that.mp1080) &&
                 Objects.equals(external, that.external);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mp240, mp360, mp480, mp720, external);
+        return Objects.hash(mp240, mp360, mp480, mp720, mp1080, external);
     }
 
     @Override
@@ -83,6 +94,7 @@ public class VideoFiles {
         sb.append(", mp360='").append(mp360).append('\'');
         sb.append(", mp480='").append(mp480).append('\'');
         sb.append(", mp720='").append(mp720).append('\'');
+        sb.append(", mp1080='").append(mp1080).append('\'');
         sb.append(", external='").append(external).append('\'');
         sb.append('}');
         return sb.toString();

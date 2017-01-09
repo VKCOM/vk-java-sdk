@@ -1,6 +1,7 @@
 package com.vk.api.sdk.objects.users;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Sex;
 
 import java.util.Objects;
@@ -37,7 +38,19 @@ public class User extends UserMin {
      * Information whether the user is online
      */
     @SerializedName("online")
-    private Integer online;
+    private BoolInt online;
+
+    /**
+     * Information whether the user is online in mobile site or application
+     */
+    @SerializedName("online_mobile")
+    private BoolInt onlineMobile;
+
+    /**
+     * Application ID
+     */
+    @SerializedName("online_app")
+    private Integer onlineApp;
 
     public Sex getSex() {
         return sex;
@@ -55,13 +68,21 @@ public class User extends UserMin {
         return photo100;
     }
 
-    public Integer getOnline() {
-        return online;
+    public boolean isOnline() {
+        return online == BoolInt.YES;
+    }
+
+    public boolean isOnlineMobile() {
+        return online == BoolInt.YES;
+    }
+
+    public Integer getOnlineApp() {
+        return onlineApp;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), photo100, sex, photo50, online, screenName);
+        return Objects.hash(super.hashCode(), photo100, sex, photo50, online, onlineMobile, onlineApp, screenName);
     }
 
     @Override
@@ -74,7 +95,9 @@ public class User extends UserMin {
                 Objects.equals(screenName, user.screenName) &&
                 Objects.equals(photo50, user.photo50) &&
                 Objects.equals(photo100, user.photo100) &&
-                Objects.equals(online, user.online);
+                Objects.equals(online, user.online) &&
+                Objects.equals(onlineMobile, user.onlineMobile) &&
+                Objects.equals(onlineApp, user.onlineApp);
     }
 
     @Override
@@ -85,6 +108,8 @@ public class User extends UserMin {
         sb.append(", photo50='").append(photo50).append("'");
         sb.append(", photo100='").append(photo100).append("'");
         sb.append(", online=").append(online);
+        sb.append(", onlineMobile=").append(onlineMobile);
+        sb.append(", onlineApp=").append(onlineApp);
         sb.append('}');
         return sb.toString();
     }
