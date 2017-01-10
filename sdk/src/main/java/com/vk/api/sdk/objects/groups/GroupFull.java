@@ -67,6 +67,9 @@ public class GroupFull extends Group {
     @SerializedName("counters")
     private CountersGroup counters;
 
+    @SerializedName("cover")
+    private Cover cover;
+
     /**
      * Information whether current user can post on community's wall
      */
@@ -213,6 +216,10 @@ public class GroupFull extends Group {
         return counters;
     }
 
+    public Cover getCover() {
+        return cover;
+    }
+
     public boolean canPost() {
         return canPost == BoolInt.YES;
     }
@@ -310,6 +317,7 @@ public class GroupFull extends Group {
                 Objects.equals(wikiPage, groupFull.wikiPage) &&
                 Objects.equals(membersCount, groupFull.membersCount) &&
                 Objects.equals(counters, groupFull.counters) &&
+                Objects.equals(cover, groupFull.cover) &&
                 Objects.equals(canPost, groupFull.canPost) &&
                 Objects.equals(canSeeAllPosts, groupFull.canSeeAllPosts) &&
                 Objects.equals(activity, groupFull.activity) &&
@@ -344,6 +352,7 @@ public class GroupFull extends Group {
         sb.append(", wikiPage='").append(wikiPage).append("'");
         sb.append(", membersCount=").append(membersCount);
         sb.append(", counters=").append(counters);
+        sb.append(", cover=").append(cover);
         sb.append(", canPost=").append(canPost);
         sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
         sb.append(", activity='").append(activity).append("'");

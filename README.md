@@ -2,7 +2,7 @@
 
 Java library for VK API interaction, includes OAuth 2.0 authorization and API methods. Full VK API features documentation can be found [here](http://vk.com/dev).
 
-This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.60.
+This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.62.
 
 ##1. Prerequisites
 
@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.4.0, released January 9, 2017.
+The most recent release is 0.4.1, released January 10, 2017.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.4.0</version>
+  <version>0.4.1</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.4.0'
+  compile 'com.vk.api:sdk:0.4.1'
 }
 ```
 
