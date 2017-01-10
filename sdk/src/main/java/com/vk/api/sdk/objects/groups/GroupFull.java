@@ -40,7 +40,7 @@ public class GroupFull extends Group {
     @SerializedName("country")
     private Country country;
 
-    @SerializedName("covert")
+    @SerializedName("cover")
     private Cover cover;
 
     /**
