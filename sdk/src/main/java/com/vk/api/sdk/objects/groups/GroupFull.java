@@ -40,6 +40,9 @@ public class GroupFull extends Group {
     @SerializedName("country")
     private Country country;
 
+    @SerializedName("covert")
+    private Cover cover;
+
     /**
      * Information whether community is verified
      */

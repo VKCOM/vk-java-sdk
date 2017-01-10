@@ -62,6 +62,12 @@ public class AccountCounters {
     @SerializedName("app_requests")
     private Integer appRequests;
 
+    /**
+     * New friends suggestions number
+     */
+    @SerializedName("friends_suggestions")
+    private Integer friendsSuggestions;
+
     public Integer getFriends() {
         return friends;
     }
@@ -98,9 +104,13 @@ public class AccountCounters {
         return appRequests;
     }
 
+    public Integer getFriendsSuggestions() {
+        return friendsSuggestions;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(appRequests, messages, groups, videos, photos, friends, events, notifications, gifts);
+        return Objects.hash(appRequests, messages, groups, videos, photos, friends, events, notifications, gifts, friendsSuggestions);
     }
 
     @Override
@@ -116,6 +126,7 @@ public class AccountCounters {
                 Objects.equals(events, accountCounters.events) &&
                 Objects.equals(groups, accountCounters.groups) &&
                 Objects.equals(notifications, accountCounters.notifications) &&
+                Objects.equals(friendsSuggestions, accountCounters.friendsSuggestions) &&
                 Objects.equals(appRequests, accountCounters.appRequests);
     }
 
@@ -131,6 +142,7 @@ public class AccountCounters {
         sb.append(", groups=").append(groups);
         sb.append(", notifications=").append(notifications);
         sb.append(", appRequests=").append(appRequests);
+        sb.append(", friendsSuggestions=").append(friendsSuggestions);
         sb.append('}');
         return sb.toString();
     }
