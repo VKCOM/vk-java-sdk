@@ -15,6 +15,9 @@ public class UserAuthResponse {
 
     @SerializedName("expires_in")
     private Integer expiresIn;
+    
+    @SerializedName("email")
+    private String email;
 
     @SerializedName("error")
     private String error;
@@ -30,6 +33,10 @@ public class UserAuthResponse {
     public Integer getExpiresIn() {
         return expiresIn;
     }
+    
+    public String getEmail() {
+        return email;
+    }
 
     public String getError() {
         return error;
@@ -43,12 +50,13 @@ public class UserAuthResponse {
         return Objects.equals(accessToken, that.accessToken) &&
                 Objects.equals(userId, that.userId) &&
                 Objects.equals(expiresIn, that.expiresIn) &&
+                Objects.equals(email, that.email) &&
                 Objects.equals(error, that.error);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accessToken, userId, expiresIn, error);
+        return Objects.hash(accessToken, userId, expiresIn, email, error);
     }
 
     @Override
@@ -57,6 +65,7 @@ public class UserAuthResponse {
         sb.append("accessToken='").append(accessToken).append('\'');
         sb.append(", userId=").append(userId);
         sb.append(", expiresIn=").append(expiresIn);
+        sb.append(", email=").append(email);
         sb.append(", error='").append(error).append('\'');
         sb.append('}');
         return sb.toString();
