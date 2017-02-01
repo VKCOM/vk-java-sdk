@@ -10,9 +10,7 @@ import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
@@ -26,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,7 +88,7 @@ public class HttpTransportClient implements TransportClient {
         return result;
     }
 
-    private ClientResponse call(HttpUriRequest request) throws IOException {
+    private ClientResponse call(HttpPost request) throws IOException {
         SocketException exception = null;
         for (int i = 0; i < 3; i++) {
             try {
@@ -103,24 +102,61 @@ public class HttpTransportClient implements TransportClient {
 
                 long resultTime = endTime - startTime;
 
-                LOG.info(String.format("%s\t\t%d", request.getURI().toURL().toString(), resultTime));
-
                 try (InputStream content = response.getEntity().getContent()) {
                     String result = IOUtils.toString(content, ENCODING);
-                    if (LOG.isDebugEnabled()) {
-                        LOG.debug("Response: " + result);
-                    }
-                    return new ClientResponse(response.getStatusLine().getStatusCode(), result, getHeaders(response.getAllHeaders()));
+                    Map<String, String> headers = getHeaders(response.getAllHeaders());
+                    logRequest(request, response, headers, result, resultTime);
+                    return new ClientResponse(response.getStatusLine().getStatusCode(), result, headers);
                 } finally {
                     SUPERVISOR.removeRequest(request);
                 }
             } catch (SocketException e) {
+                logRequest(request);
                 LOG.warn("Network troubles", e);
                 exception = e;
             }
         }
 
         throw exception;
+    }
+
+    private void logRequest(HttpPost request) throws IOException {
+        logRequest(request, null, null, null, null);
+    }
+
+    private void logRequest(HttpPost request, HttpResponse response, Map<String, String> headers, String body, Long time) throws IOException {
+        if (LOG.isDebugEnabled()) {
+            Header contentType = request.getFirstHeader(CONTENT_TYPE_HEADER);
+            String payload;
+            if (contentType != null && contentType.getValue().equalsIgnoreCase(CONTENT_TYPE)) {
+                payload = IOUtils.toString(request.getEntity().getContent(), StandardCharsets.UTF_8);
+            } else {
+                payload = "-";
+            }
+
+            StringBuilder builder = new StringBuilder("\n")
+                    .append("Request:\n")
+                    .append("\t").append("Method: ").append(request.getMethod()).append("\n")
+                    .append("\t").append("URI: ").append(request.getURI()).append("\n")
+                    .append("\t").append("Payload: ").append(payload).append("\n")
+                    .append("\t").append("Time: ").append(time != null ? time : "-").append("\n");
+
+            if (response != null) {
+                builder.append("Response:\n")
+                        .append("\t").append("Status: ").append(response.getStatusLine().toString()).append("\n")
+                        .append("\t").append("Headers: ").append(headers != null ? headers : "-").append("\n")
+                        .append("\t").append("Body: ").append(body != null ? body : "-").append("\n");
+            }
+
+            LOG.debug(builder.toString());
+        } else if (LOG.isInfoEnabled()) {
+            StringBuilder builder = new StringBuilder().append("Request: ").append(request.getURI().toURL().toString());
+            if (time != null) {
+                builder.append("\t\t").append(time);
+            }
+
+            LOG.info(builder.toString());
+        }
     }
 
     @Override
@@ -150,16 +186,7 @@ public class HttpTransportClient implements TransportClient {
                 .create()
                 .addPart(fileName, fileBody).build();
 
-
         request.setEntity(entity);
         return call(request);
     }
-
-    @Override
-    public ClientResponse get(String url) throws IOException {
-        HttpGet request = new HttpGet(url);
-        return call(request);
-    }
-
-
 }
