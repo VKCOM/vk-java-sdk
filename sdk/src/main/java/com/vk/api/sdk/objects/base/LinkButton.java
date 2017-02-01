@@ -8,11 +8,6 @@ import java.util.Objects;
  * LinkButton object
  */
 public class LinkButton {
-    /**
-     * Button URL
-     */
-    @SerializedName("url")
-    private String url;
 
     /**
      * Button title
@@ -20,8 +15,14 @@ public class LinkButton {
     @SerializedName("title")
     private String title;
 
-    public String getUrl() {
-        return url;
+    /**
+     * Button action
+     */
+    @SerializedName("action")
+    private LinkButtonAction action;
+
+    public LinkButtonAction getAction() {
+        return action;
     }
 
     public String getTitle() {
@@ -30,7 +31,7 @@ public class LinkButton {
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, url);
+        return Objects.hash(title, action);
     }
 
     @Override
@@ -38,14 +39,14 @@ public class LinkButton {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkButton linkButton = (LinkButton) o;
-        return Objects.equals(url, linkButton.url) &&
+        return Objects.equals(action, linkButton.action) &&
                 Objects.equals(title, linkButton.title);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("LinkButton{");
-        sb.append("url='").append(url).append("'");
+        sb.append("action=").append(action);
         sb.append(", title='").append(title).append("'");
         sb.append('}');
         return sb.toString();
