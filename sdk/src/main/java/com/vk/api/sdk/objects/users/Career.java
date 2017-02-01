@@ -15,6 +15,12 @@ public class Career {
     private Integer groupId;
 
     /**
+     * Company name
+     */
+    @SerializedName("company")
+    private String company;
+
+    /**
      * Country ID
      */
     @SerializedName("country_id")
@@ -48,6 +54,10 @@ public class Career {
         return groupId;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
     public Integer getCountryId() {
         return countryId;
     }
@@ -70,7 +80,7 @@ public class Career {
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, from, until, cityId, position, countryId);
+        return Objects.hash(groupId, company, from, until, cityId, position, countryId);
     }
 
     @Override
@@ -79,6 +89,7 @@ public class Career {
         if (o == null || getClass() != o.getClass()) return false;
         Career career = (Career) o;
         return Objects.equals(groupId, career.groupId) &&
+                Objects.equals(company, career.company) &&
                 Objects.equals(countryId, career.countryId) &&
                 Objects.equals(cityId, career.cityId) &&
                 Objects.equals(from, career.from) &&
@@ -90,6 +101,7 @@ public class Career {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Career{");
         sb.append("groupId=").append(groupId);
+        sb.append(", company=").append(company);
         sb.append(", countryId=").append(countryId);
         sb.append(", cityId=").append(cityId);
         sb.append(", from=").append(from);

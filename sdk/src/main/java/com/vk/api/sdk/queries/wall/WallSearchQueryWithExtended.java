@@ -87,6 +87,16 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
+     * Results offset.
+     *
+     * @param value value of "offset" parameter. Default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallSearchQueryWithExtended offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
      * Show extended post info.
      *
      * @param value value of "extended" parameter.
