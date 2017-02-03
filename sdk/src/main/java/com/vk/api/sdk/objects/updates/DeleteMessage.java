@@ -1,24 +1,13 @@
-package contactus.core.update;
-
-import contactus.core.Data;
-import contactus.domain.Message;
-import javafx.application.Platform;
-
-import java.util.Collections;
+package com.vk.api.sdk.objects.updates;
 
 public class DeleteMessage implements Update {
-    private final long messageId;
+    private final Integer messageId;
 
-    public DeleteMessage(long messageId) {
+    public DeleteMessage(Integer messageId) {
         this.messageId = messageId;
     }
 
-    @Override
-    public void accept(Data data) {
-        Platform.runLater(() -> {
-            Message message = data.removeMessage(messageId);
-            data.updateLastIncomingMessages(Collections.singleton(message.getUserId()));
-        });
+    public Integer getMessageId() {
+        return messageId;
     }
-
 }
