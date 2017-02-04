@@ -12,6 +12,9 @@ public class LongPollingUpdatesResponse {
     @SerializedName("ts")
     private Integer ts;
 
+    @SerializedName("pts")
+    private Integer pts;
+
     @SerializedName("updates")
     private List<Update> updates;
 
