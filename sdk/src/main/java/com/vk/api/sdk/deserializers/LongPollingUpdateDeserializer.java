@@ -117,13 +117,20 @@ public class LongPollingUpdateDeserializer implements JsonDeserializer<Update> {
             String body = items.next().getAsString();
 
             List<MessageAttachment> attachments = null;
+            Integer randomId = null;
+
             if (items.hasNext()) {
-                items.next().getAsJsonArray();
+                JsonElement element = items.next();
+                if (element.isJsonObject()) {
+                    attachments = null;
+                } else if (element.isJsonPrimitive()) {
+                    randomId = element.getAsInt();
+                }
             }
 
-            Integer randomId = null;
-            if (items.hasNext()) {
-                randomId = items.next().getAsInt();
+            if (randomId == null && items.hasNext()) {
+                JsonElement element = items.next();
+                randomId = element.getAsInt();
             }
 
             messageBuilder
