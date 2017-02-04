@@ -29,14 +29,22 @@ public class LongPollingUpdateDeserializer implements JsonDeserializer<Update> {
     private static final int FRIEND_ONLINE = 8;
     private static final int FRIEND_OFFLINE = 9;
 
-    //TODO implement events below
-    //51,$chat_id,$self -- one of $chat_id's parameters (title, participants) was changed. $self shows if changes were made by user themself
-    //61,$user_id,$flags -- $user_id started typing text in a dialog. The event is sent once in ~5 sec while constantly typing. $flags = 1
-    //62,$user_id,$chat_id — $user_id started typing in $chat_id.
-    //70,$user_id,$call_id — $user_id made a call with $call_id identifier.
-    //80,$count,0 — new unread messages counter in the left menu equals $count.
-    //114,{ $peerId, $sound, $disabled_until } — notification settings changed, where peerId is a chat's/user's $peer_id, sound — 1 || 0, sound notifications on/off, disabled_until — notifications disabled for a certain period (-1: forever; 0: notifications enabled; other: timestamp for time to switch back on).
+    private static final int REMOVE_DIALOG_FLAGS = 10;
+    private static final int SET_DIALOG_FLAGS = 11;
+    private static final int ADD_DIALOG_FLAGS = 12;
 
+    private static final int CHAT_CHANGED = 51;
+
+    private static final int USER_TYPED_IN_DIALOG = 61;
+    private static final int USER_TYPED_IN_CHAT = 62;
+
+    private static final int USER_MADE_A_CALL = 70;
+
+    private static final int UNREAD_MESSAGE_COUNT = 80;
+
+    private static final int NOTIFICATION_SETTINGS_CHANGED = 114;
+
+    //TODO implement events below
 
     @Override
     public Update deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -66,12 +74,31 @@ public class LongPollingUpdateDeserializer implements JsonDeserializer<Update> {
                 return parseFriendOnline(elementIterator);
             case FRIEND_OFFLINE:
                 return parseFriendOffline(elementIterator);
+            case REMOVE_DIALOG_FLAGS:
+                return parseRemoveDialogFlags(elementIterator);
+            case SET_DIALOG_FLAGS:
+                return parseSetDialogFlags(elementIterator);
+            case ADD_DIALOG_FLAGS:
+                return parseAddDialogFlags(elementIterator);
+            case CHAT_CHANGED:
+                return parseChatChanged(elementIterator);
+            case USER_TYPED_IN_DIALOG:
+                return parseUserTypedInDialog(elementIterator);
+            case USER_TYPED_IN_CHAT:
+                return parseUserTypesInChat(elementIterator);
+            case USER_MADE_A_CALL:
+                return parseUserMadeCall(elementIterator);
+            case UNREAD_MESSAGE_COUNT:
+                return parseUnreadMessageCount(elementIterator);
+            case NOTIFICATION_SETTINGS_CHANGED:
+                return parseNotificationSettingsChanged(elementIterator);
             default:
                 throw new IllegalArgumentException("Unsupported update type: " + updateType);
         }
     }
 
-    //$message_id,$flags,$from_id,$timestamp,$subject,$text,$attachments -- add a new message
+    // $message_id,$flags,$peer_id,$timestamp,$subject,$text,[$attachments],[$random_id]
+    // add a new message
     private Update parseAddMessage(Iterator<JsonElement> items) {
         int messageId = items.next().getAsInt();
         Set<MessageFlag> flags = MessageFlag.fromCode(items.next().getAsInt());
@@ -79,23 +106,32 @@ public class LongPollingUpdateDeserializer implements JsonDeserializer<Update> {
 
         Message.MessageBuilder messageBuilder = Message.builder()
                 .id(messageId)
-                //flags are set a little bit later
+                        //flags are set a little bit later
                 .userId(fromId);
 
         //Such event can be caught in two ways: via messages.getLongPolingHistory and via long-polling server
         //in case of messages.getLongPolingHistory, there will be only 4 integers, describing message
         if (items.hasNext()) {
-            long epochSeconds = items.next().getAsLong();
-            Instant instant = Instant.ofEpochSecond(epochSeconds);
+            int timestamp = items.next().getAsInt();
             String title = items.next().getAsString();
             String body = items.next().getAsString();
+
             List<MessageAttachment> attachments = null;
+            if (items.hasNext()) {
+                items.next().getAsJsonArray();
+            }
+
+            Integer randomId = null;
+            if (items.hasNext()) {
+                randomId = items.next().getAsInt();
+            }
 
             messageBuilder
-                    .date((int)instant.toEpochMilli())
+                    .date(timestamp)
                     .title(title)
                     .body(body)
-                    .attachments(attachments);
+                    .attachments(attachments)
+                    .randomId(randomId);
         }
 
 
@@ -202,5 +238,102 @@ public class LongPollingUpdateDeserializer implements JsonDeserializer<Update> {
         boolean timeout = items.next().getAsInt() == 1;
 
         return new FriendOffline(userId, timeout);
+    }
+
+    // $peer_id,$mask
+    // Reset dialog flags $peer_id. Corresponds to the operation (PEER_FLAGS &= ~$flags).
+    // An event is returned only for community messages.
+    private Update parseRemoveDialogFlags(Iterator<JsonElement> items) {
+        int peerId = items.next().getAsInt();
+        Set<DialogFlag> flags = DialogFlag.fromCode(items.next().getAsInt());
+
+        return new RemoveDialogFlags(peerId, flags);
+    }
+
+    // $peer_id,$mask
+    // Replace dialog flags $peer_id. Corresponds to the operation (PEER_FLAGS:= $flags).
+    // An event is returned only for community messages.
+    private Update parseSetDialogFlags(Iterator<JsonElement> items) {
+        int peerId = items.next().getAsInt();
+        Set<DialogFlag> flags = DialogFlag.fromCode(items.next().getAsInt());
+
+        return new SetDialogFlags(peerId, flags);
+    }
+
+    // $peer_id,$mask
+    // Install dialog flags $peer_id. Corresponds to the operation (PEER_FLAGS|= $flags).
+    // An event is returned only for community messages.
+    private Update parseAddDialogFlags(Iterator<JsonElement> items) {
+        int peerId = items.next().getAsInt();
+        Set<DialogFlag> flags = DialogFlag.fromCode(items.next().getAsInt());
+
+        return new AddDialogFlags(peerId, flags);
+    }
+
+    // $chat_id,$self
+    // One of the parameters (content, topic) of the conversation $chat_id was changed.
+    // $self — 1 or 0 (whether the change was caused by the user).
+    private Update parseChatChanged(Iterator<JsonElement> items) {
+        int chatId = items.next().getAsInt();
+        boolean byOneself = items.next().getAsInt() > 0;
+
+        return new ChatChanged(chatId, byOneself);
+    }
+
+    // $user_id,$flags
+    // $user_id started typing text in a dialog.
+    // The event is sent once in ~5 sec while constantly typing. $flags = 1
+    private Update parseUserTypedInDialog(Iterator<JsonElement> items) {
+        int userId = items.next().getAsInt();
+
+        return new UserTypedInDialog(userId);
+    }
+
+    // $user_id,$chat_id
+    // $user_id started typing in $chat_id.
+    private Update parseUserTypesInChat(Iterator<JsonElement> items) {
+        int userId = items.next().getAsInt();
+        int chatId = items.next().getAsInt();
+
+        return new UserTypedInChat(userId, chatId);
+    }
+
+    // $user_id,$call_id — $user_id made a call with $call_id identifier.
+    private Update parseUserMadeCall(Iterator<JsonElement> items) {
+        int userId = items.next().getAsInt();
+        int callId = items.next().getAsInt();
+
+        return new UserMadeCall(userId, callId);
+    }
+
+    // $count,0 — new unread messages counter in the left menu equals $count.
+    private Update parseUnreadMessageCount(Iterator<JsonElement> items) {
+        int count = items.next().getAsInt();
+
+        return new UnreadMessageCount(count);
+    }
+
+    // $peerId, $sound, $disabled_until
+    // notification settings changed, where peerId is a chat's/user's $peer_id,
+    // sound — 1 || 0, sound notifications on/off,
+    // disabled_until — notifications disabled for a certain period
+    //  (-1: forever; 0: notifications enabled; other: timestamp for time to switch back on).
+    private Update parseNotificationSettingsChanged(Iterator<JsonElement> items) {
+        int peerId = items.next().getAsInt();
+        boolean soundOn = items.next().getAsInt() > 0;
+
+        int timestamp = items.next().getAsInt();
+        Instant disabledUntil = Instant.EPOCH;
+        boolean disabled = true;
+
+        if (timestamp < 0) {
+            disabledUntil = Instant.MAX;
+        } else if (timestamp == 0) {
+            disabled = false;
+        } else {
+            disabledUntil = Instant.ofEpochSecond(timestamp);
+        }
+
+        return new NotificationSettingsChanged(peerId, soundOn, disabledUntil, disabled);
     }
 }

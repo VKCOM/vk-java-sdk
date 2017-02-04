@@ -2,6 +2,9 @@ package com.vk.api.sdk.objects.updates;
 
 import java.util.Set;
 
+/**
+ * @author Denis Kokorin
+ */
 public class RemoveMessageFlags implements Update {
     private final Integer messageId;
     private final Set<MessageFlag> flags;
