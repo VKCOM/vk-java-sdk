@@ -22,6 +22,10 @@ public class LongPollingUpdatesResponse {
         return ts;
     }
 
+    public Integer getPts() {
+        return pts;
+    }
+
     public List<Update> getUpdates() {
         return updates;
     }
