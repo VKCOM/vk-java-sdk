@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ##3. Latest release
 
-The most recent release is 0.4.3, released February 1, 2017.
+The most recent release is 0.4.3, released February 6, 2017.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
