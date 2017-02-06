@@ -38,7 +38,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.4.2";
+    private static final String USER_AGENT = "Java VK SDK/0.4.3";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int FULL_CONNECTION_TIMEOUT_S = 60;
@@ -127,11 +127,11 @@ public class HttpTransportClient implements TransportClient {
     private void logRequest(HttpPost request, HttpResponse response, Map<String, String> headers, String body, Long time) throws IOException {
         if (LOG.isDebugEnabled()) {
             Header contentType = request.getFirstHeader(CONTENT_TYPE_HEADER);
-            String payload;
+            String payload = "-";
             if (contentType != null && contentType.getValue().equalsIgnoreCase(CONTENT_TYPE)) {
-                payload = IOUtils.toString(request.getEntity().getContent(), StandardCharsets.UTF_8);
-            } else {
-                payload = "-";
+                if (request.getEntity() != null) {
+                    payload = IOUtils.toString(request.getEntity().getContent(), StandardCharsets.UTF_8);
+                }
             }
 
             StringBuilder builder = new StringBuilder("\n")
