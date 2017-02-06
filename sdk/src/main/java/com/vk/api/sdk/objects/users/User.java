@@ -73,7 +73,7 @@ public class User extends UserMin {
     }
 
     public boolean isOnlineMobile() {
-        return online == BoolInt.YES;
+        return onlineMobile == BoolInt.YES;
     }
 
     public Integer getOnlineApp() {
