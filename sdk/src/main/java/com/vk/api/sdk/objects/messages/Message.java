@@ -60,6 +60,12 @@ public class Message {
     private BoolInt deleted;
 
     /**
+     * Whether the message contains smiles
+     */
+    @SerializedName("emoji")
+    private BoolInt emoji;
+
+    /**
      * Forwarded messages
      */
     @SerializedName("fwd_messages")
@@ -94,6 +100,36 @@ public class Message {
 
     @SerializedName("chat_active")
     private List<Integer> chatActive;
+
+    /**
+     * Push settings for the chat
+     */
+    @SerializedName("push_settings")
+    private ChatPushSettings pushSettings;
+
+    /**
+     * Action type
+     */
+    @SerializedName("action")
+    private Action action;
+
+    /**
+     * User or email ID has been invited to the chat or kicked from the chat
+     */
+    @SerializedName("action_mid")
+    private Integer actionMid;
+
+    /**
+     * Email has been invited or kicked
+     */
+    @SerializedName("action_email")
+    private String actionEmail;
+
+    /**
+     * Action text
+     */
+    @SerializedName("action_text")
+    private String actionText;
 
     /**
      * Chat users number
@@ -160,6 +196,10 @@ public class Message {
         return deleted == BoolInt.YES;
     }
 
+    public boolean getEmoji() {
+        return emoji == BoolInt.YES;
+    }
+
     public List<Message> getFwdMessages() {
         return fwdMessages;
     }
@@ -188,6 +228,26 @@ public class Message {
         return chatActive;
     }
 
+    public ChatPushSettings getPushSettings() {
+        return pushSettings;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public Integer getActionMid() {
+        return actionMid;
+    }
+
+    public String getActionEmail() {
+        return actionEmail;
+    }
+
+    public String getActionText() {
+        return actionText;
+    }
+
     public Integer getUsersCount() {
         return usersCount;
     }
@@ -214,7 +274,7 @@ public class Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, readState, attachments, chatId, photo50, usersCount, photo200, title, body, userId, fromId, out, important, geo, randomId, fwdMessages, deleted, chatActive, photo100, adminId, id);
+        return Objects.hash(id, date, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
     }
 
     @Override
@@ -224,19 +284,25 @@ public class Message {
         Message message = (Message) o;
         return Objects.equals(id, message.id) &&
                 Objects.equals(date, message.date) &&
-                Objects.equals(out, message.out) &&
+                out == message.out &&
                 Objects.equals(userId, message.userId) &&
                 Objects.equals(fromId, message.fromId) &&
                 Objects.equals(randomId, message.randomId) &&
-                Objects.equals(important, message.important) &&
-                Objects.equals(deleted, message.deleted) &&
+                important == message.important &&
+                deleted == message.deleted &&
+                emoji == message.emoji &&
                 Objects.equals(fwdMessages, message.fwdMessages) &&
-                Objects.equals(readState, message.readState) &&
+                readState == message.readState &&
                 Objects.equals(title, message.title) &&
                 Objects.equals(body, message.body) &&
                 Objects.equals(attachments, message.attachments) &&
                 Objects.equals(chatId, message.chatId) &&
                 Objects.equals(chatActive, message.chatActive) &&
+                Objects.equals(pushSettings, message.pushSettings) &&
+                action == message.action &&
+                Objects.equals(actionMid, message.actionMid) &&
+                Objects.equals(actionEmail, message.actionEmail) &&
+                Objects.equals(actionText, message.actionText) &&
                 Objects.equals(usersCount, message.usersCount) &&
                 Objects.equals(adminId, message.adminId) &&
                 Objects.equals(photo50, message.photo50) &&
@@ -252,21 +318,28 @@ public class Message {
         sb.append(", date=").append(date);
         sb.append(", out=").append(out);
         sb.append(", userId=").append(userId);
+        sb.append(", fromId=").append(fromId);
         sb.append(", randomId=").append(randomId);
         sb.append(", important=").append(important);
         sb.append(", deleted=").append(deleted);
+        sb.append(", emoji=").append(emoji);
         sb.append(", fwdMessages=").append(fwdMessages);
         sb.append(", readState=").append(readState);
-        sb.append(", title='").append(title).append("'");
-        sb.append(", body='").append(body).append("'");
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", body='").append(body).append('\'');
         sb.append(", attachments=").append(attachments);
         sb.append(", chatId=").append(chatId);
         sb.append(", chatActive=").append(chatActive);
+        sb.append(", pushSettings=").append(pushSettings);
+        sb.append(", action=").append(action);
+        sb.append(", actionMid=").append(actionMid);
+        sb.append(", actionEmail='").append(actionEmail).append('\'');
+        sb.append(", actionText='").append(actionText).append('\'');
         sb.append(", usersCount=").append(usersCount);
         sb.append(", adminId=").append(adminId);
-        sb.append(", photo50='").append(photo50).append("'");
-        sb.append(", photo100='").append(photo100).append("'");
-        sb.append(", photo200='").append(photo200).append("'");
+        sb.append(", photo50='").append(photo50).append('\'');
+        sb.append(", photo100='").append(photo100).append('\'');
+        sb.append(", photo200='").append(photo200).append('\'');
         sb.append(", geo=").append(geo);
         sb.append('}');
         return sb.toString();
