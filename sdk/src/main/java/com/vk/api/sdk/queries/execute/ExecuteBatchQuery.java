@@ -4,6 +4,8 @@ import com.google.gson.JsonElement;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import org.apache.commons.lang3.text.translate.CharSequenceTranslator;
+import org.apache.commons.lang3.text.translate.LookupTranslator;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,6 +31,18 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
     }
 
     /**
+     * Translator object for escaping VKScript
+     */
+    private static final CharSequenceTranslator ESCAPE_VKSCRIPT = new LookupTranslator(
+            new String[][] {
+                    {"\"", "\\\""},
+                    {"\n", "\\n"},
+                    {"\r", "\\r"},
+                    {"\\", "\\\\"}
+            }
+    );
+
+    /**
      * Batch requests
      *
      * @param value value of "code" parameter. Minimum is 0.
@@ -50,7 +64,8 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
                 builder.append("{");
                 int paramIndex = 0;
                 for (Map.Entry<String, String> param : params.entrySet()) {
-                    builder.append("\"").append(param.getKey()).append("\":").append("\"").append(param.getValue()).append("\"");
+                    builder.append("\"").append(param.getKey()).append("\":").append("\"")
+                            .append(ESCAPE_VKSCRIPT.translate(param.getValue())).append("\"");
 
                     if (paramIndex < (params.size() - 1)) {
                         builder.append(",");
