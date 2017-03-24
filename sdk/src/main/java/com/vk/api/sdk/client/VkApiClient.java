@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.actions.Account;
 import com.vk.api.sdk.actions.Ads;
 import com.vk.api.sdk.actions.Apps;
-import com.vk.api.sdk.actions.Audio;
 import com.vk.api.sdk.actions.Auth;
 import com.vk.api.sdk.actions.Board;
 import com.vk.api.sdk.actions.Database;
@@ -107,10 +106,6 @@ public class VkApiClient {
 
     public Apps apps() {
         return new Apps(this);
-    }
-
-    public Audio audio() {
-        return new Audio(this);
     }
 
     public Auth auth() {
