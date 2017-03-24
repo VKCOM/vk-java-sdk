@@ -1,15 +1,15 @@
-##Java SDK for VK API
+## Java SDK for VK API
 
 Java library for VK API interaction, includes OAuth 2.0 authorization and API methods. Full VK API features documentation can be found [here](http://vk.com/dev).
 
 This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.62.
 
-##1. Prerequisites
+## 1. Prerequisites
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 or later
 * [Gradle](https://gradle.org/) 2.13 or later
 
-##2. Dependencies
+## 2. Dependencies
 
 VK Java SDK uses:
 * [Apache Http Client](https://hc.apache.org) version 4.5.2
@@ -19,7 +19,7 @@ VK Java SDK uses:
 * [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.5
 * [Google Gson](https://github.com/google/gson) version  2.8.9
 
-##3. Latest release
+## 3. Latest release
 
 The most recent release is 0.4.3, released February 6, 2017.
 
@@ -41,7 +41,7 @@ dependencies {
 }
 ```
 
-##4. Prepare for using
+## 4. Prepare for using
 
 Create a new VK application [here](https://vk.com/editapp?act=create) to use VK Java SDK. Please choose an application type depending on which authorization pattern you need. It should be "Standalone" for Direct Authorization, "Web site" for Authorization Code Flow for  server side  requests and any of them for Client Credentials Flow. 
 
@@ -49,11 +49,11 @@ Fill in the title, confirm the action via SMS and you will be redirected to the 
 
 You will need your application ID (referenced as API_ID in the documentation), secure key (CLIENT_SECRET) and authorized redirect URI (REDIRECT_URI).
 
-##5. Logging
+## 5. Logging
 
 VK Java SDK uses SLF4J for logging. If you want to turn on logging, you must include a plugin that bridges SLF4J with a concrete logging framework. See [SLF4J documentation](http://www.slf4j.org/manual.html#swapping).
 
-###JDK Logger
+### JDK Logger
 
 Maven:
 ```xml
@@ -86,7 +86,7 @@ Set java.util.logging.config.file system property:
 -Djava.util.logging.config.file=logging.properties
 ```
 
-###log4j2
+### log4j2
 
 Maven:
 ```xml
@@ -142,7 +142,7 @@ Add log4j2.xml file with configuration (located at your src/main/resources path)
 </Configuration>
 ```
 
-##6. Initialization
+## 6. Initialization
 
 Create VkApiClient object using the following code:
 
@@ -153,11 +153,11 @@ VkApiClient vk = new VkApiClient(transportClient);
 
 Note that you can use your own  transport client. We use [Apache Http Client](https://hc.apache.org/).
 
-##7. Authorization
+## 7. Authorization
 
 The library provides several authorization flows based on OAuth 2.0 protocol implementation in vk.com API. Please read the full [documentation](https://vk.com/dev/access_token) before you start.
 
-###7.1. Authorization Code Flow for User
+### 7.1. Authorization Code Flow for User
 
 OAuth 2.0 Authorization Code Flow allows calling methods from the server side.
 
@@ -177,7 +177,7 @@ When succeed, a UserActor object is created. You can call VK API methods on beha
 
 See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/user-oauth).
 
-###7.2. Authorization Code Flow for Community
+### 7.2. Authorization Code Flow for Community
 
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
 
@@ -193,7 +193,7 @@ When succeed, a GroupActor object is created. You can call VK API methods on beh
 
 See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/group-oauth).
 
-###7.3. Handling need_validation error
+### 7.3. Handling need_validation error
 
 Proceeding each of previous authorization flows you can receive a "need_validation" error. Use the following code to handle the error:
 
@@ -209,7 +209,7 @@ try {
 UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());
 ```
 
-###7.4. Client Credentials Flow
+### 7.4. Client Credentials Flow
 
 This flow allows to interact with API service methods with "secure" prefix. Use this method:
 
@@ -223,10 +223,10 @@ ServiceActor actor = new ServiceActor(APP_ID, authResponse.getAccessToken());
 
 When succeed, a ServiceActor object is created. You can call VK API methods on behalf of an app.
 
-##8. API Requests
+## 8. API Requests
 You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 
-###Request sample with user actor:
+### Request sample with user actor:
 
 ```java
 GetResponse getResponse = vk.wall().get(actor)
@@ -237,7 +237,7 @@ GetResponse getResponse = vk.wall().get(actor)
     .execute();
 ```
 
-###Request sample without actor:
+### Request sample without actor:
 
 ```java
 GetResponse getResponse = vk.wall().get()
@@ -248,7 +248,7 @@ GetResponse getResponse = vk.wall().get()
     .execute();
 ```
 
-###Request sample with common method parameters:
+### Request sample with common method parameters:
 
 ```java
 List<UserXtrCounters> users = vk.users().get()
@@ -260,7 +260,7 @@ List<UserXtrCounters> users = vk.users().get()
 
 The full list of common parameters is available on [this page](https://vk.com/dev/api_requests).
 
-###Request sample for uploading and posting photos on user wall.
+### Request sample for uploading and posting photos on user wall.
 
 ```java
 PhotoUpload serverResponse = vk.photos().getWallUploadServer(actor).execute();
@@ -277,17 +277,17 @@ GetResponse getResponse = vk.wall().post(actor)
     .execute();
 ```
 
-##9. Execute requests
+## 9. Execute requests
 You can find more information about execute method [here](https://vk.com/dev/execute).
 
-###Code
+### Code
 
 ```java
 JsonElement response = vk.execute().code(actor, "return API.wall.get({"count": 1})")
     .execute();
 ```
 
-###Storage function
+### Storage function
 
 ```java
 JsonElement response = vk.execute().storageFunction(actor, "foo")
@@ -296,7 +296,7 @@ JsonElement response = vk.execute().storageFunction(actor, "foo")
     .execute();
 ```
 
-###Batch requests
+### Batch requests
 
 ```java
 JsonElement response = vk.execute().batch(actor,
@@ -306,9 +306,9 @@ JsonElement response = vk.execute().batch(actor,
 ).execute();
 ```
 
-##10. Error Handling
+## 10. Error Handling
 
-###Common Example
+### Common Example
 ```java
 try {
     vk.wall().post(actor)
@@ -323,7 +323,7 @@ try {
 }
 ```
 
-###Captcha error handling
+### Captcha error handling
 ```java
 String captchaSid = null;
 String captchaImg = null;
@@ -346,7 +346,7 @@ if (captchaImg != null) {
 }
 ```
 
-##11. Callback API handler
+## 11. Callback API handler
 Override methods from CallbackApi class for handling events
 
 ```java
@@ -363,5 +363,5 @@ CallbackApiHandler callbackApiHandler = new CallbackApiHandler();
 String body = httpRequest.getBody();
 callbackApiHandler.parse(body);
 ```
-##12. Usage Example
+## 12. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
