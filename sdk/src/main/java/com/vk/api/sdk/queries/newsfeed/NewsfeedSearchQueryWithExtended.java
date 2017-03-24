@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.newsfeed;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.newsfeed.responses.SearchExtendedResponse;
 import com.vk.api.sdk.queries.EnumParam;
@@ -30,8 +31,10 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
      *
      * @param client VK API client
      */
-    public NewsfeedSearchQueryWithExtended(VkApiClient client) {
+    public NewsfeedSearchQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "newsfeed.search", SearchExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         extended(true);
     }
 

@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.friends;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.GetFieldsResponse;
 import com.vk.api.sdk.queries.users.UserField;
@@ -46,8 +47,10 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
      * @param client VK API client
      * @param fields user fields
      */
-    public FriendsGetQueryWithFields(VkApiClient client, UserField... fields) {
+    public FriendsGetQueryWithFields(VkApiClient client, ServiceActor actor, UserField... fields) {
         super(client, "friends.get", GetFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         fields(fields);
     }
 
@@ -57,8 +60,10 @@ public class FriendsGetQueryWithFields extends AbstractQueryBuilder<FriendsGetQu
      * @param client VK API client
      * @param fields user fields
      */
-    public FriendsGetQueryWithFields(VkApiClient client, List<UserField> fields) {
+    public FriendsGetQueryWithFields(VkApiClient client, ServiceActor actor, List<UserField> fields) {
         super(client, "friends.get", GetFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         fields(fields);
     }
 

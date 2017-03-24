@@ -2,7 +2,9 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetMembersFieldsResponse;
 import com.vk.api.sdk.queries.users.UserField;
 
@@ -19,7 +21,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, Actor actor, UserField... fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, UserActor actor, UserField... fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -31,7 +33,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, Actor actor, List<UserField> fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, GroupActor actor, UserField... fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
         accessToken(actor.getAccessToken());
         fields(fields);
@@ -42,8 +44,34 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      *
      * @param client VK API client
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, UserField... fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, ServiceActor actor, UserField... fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public GroupsGetMembersQueryWithFields(VkApiClient client, UserActor actor, List<UserField> fields) {
+        super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public GroupsGetMembersQueryWithFields(VkApiClient client, GroupActor actor, List<UserField> fields) {
+        super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
         fields(fields);
     }
 
@@ -52,8 +80,10 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      *
      * @param client VK API client
      */
-    public GroupsGetMembersQueryWithFields(VkApiClient client, List<UserField> fields) {
+    public GroupsGetMembersQueryWithFields(VkApiClient client, ServiceActor actor, List<UserField> fields) {
         super(client, "groups.getMembers", GetMembersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         fields(fields);
     }
 

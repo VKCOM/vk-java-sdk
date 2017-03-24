@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.MemberStatus;
 
@@ -47,8 +48,10 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
      * @param client  VK API client
      * @param groupId value of "group id" parameter.
      */
-    public GroupsIsMemberQueryWithUserIds(VkApiClient client, String groupId, Integer... userIds) {
+    public GroupsIsMemberQueryWithUserIds(VkApiClient client, ServiceActor actor, String groupId, Integer... userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatus.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         groupId(groupId);
         userIds(userIds);
     }
@@ -59,8 +62,10 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
      * @param client  VK API client
      * @param groupId value of "group id" parameter.
      */
-    public GroupsIsMemberQueryWithUserIds(VkApiClient client, String groupId, List<Integer> userIds) {
+    public GroupsIsMemberQueryWithUserIds(VkApiClient client, ServiceActor actor, String groupId, List<Integer> userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatus.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         groupId(groupId);
         userIds(userIds);
     }

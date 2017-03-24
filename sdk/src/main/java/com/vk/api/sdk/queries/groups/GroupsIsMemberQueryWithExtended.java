@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.IsMemberExtendedResponse;
 
@@ -32,8 +33,10 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
      * @param client  VK API client
      * @param groupId value of "group id" parameter.
      */
-    public GroupsIsMemberQueryWithExtended(VkApiClient client, String groupId) {
+    public GroupsIsMemberQueryWithExtended(VkApiClient client, ServiceActor actor, String groupId) {
         super(client, "groups.isMember", IsMemberExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         groupId(groupId);
         extended(true);
     }

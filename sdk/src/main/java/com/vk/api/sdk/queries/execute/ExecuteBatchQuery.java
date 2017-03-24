@@ -3,7 +3,8 @@ package com.vk.api.sdk.queries.execute;
 import com.google.gson.JsonElement;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import org.apache.commons.lang3.text.translate.CharSequenceTranslator;
 import org.apache.commons.lang3.text.translate.LookupTranslator;
 
@@ -18,19 +19,6 @@ import java.util.Map;
 public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, JsonElement> {
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client   VK API client
-     * @param actor    actor with access token
-     * @param requests batch requests
-     */
-    public ExecuteBatchQuery(VkApiClient client, Actor actor, AbstractQueryBuilder... requests) {
-        super(client, "execute", JsonElement.class);
-        accessToken(actor.getAccessToken());
-        requests(requests);
-    }
-
-    /**
      * Translator object for escaping VKScript
      */
     private static final CharSequenceTranslator ESCAPE_VKSCRIPT = new LookupTranslator(
@@ -41,6 +29,32 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
                     {"\\", "\\\\"}
             }
     );
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client   VK API client
+     * @param actor    actor with access token
+     * @param requests batch requests
+     */
+    public ExecuteBatchQuery(VkApiClient client, UserActor actor, AbstractQueryBuilder... requests) {
+        super(client, "execute", JsonElement.class);
+        accessToken(actor.getAccessToken());
+        requests(requests);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client   VK API client
+     * @param actor    actor with access token
+     * @param requests batch requests
+     */
+    public ExecuteBatchQuery(VkApiClient client, GroupActor actor, AbstractQueryBuilder... requests) {
+        super(client, "execute", JsonElement.class);
+        accessToken(actor.getAccessToken());
+        requests(requests);
+    }
 
     /**
      * Batch requests

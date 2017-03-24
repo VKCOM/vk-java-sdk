@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
 
@@ -45,8 +46,10 @@ public class PhotosGetByIdQuery extends AbstractQueryBuilder<PhotosGetByIdQuery,
      * @param client VK API client
      * @param photos value of "photos" parameter.
      */
-    public PhotosGetByIdQuery(VkApiClient client, String... photos) {
+    public PhotosGetByIdQuery(VkApiClient client, ServiceActor actor, String... photos) {
         super(client, "photos.getById", Utils.buildParametrizedType(List.class, Photo.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         photos(photos);
     }
 
@@ -56,8 +59,10 @@ public class PhotosGetByIdQuery extends AbstractQueryBuilder<PhotosGetByIdQuery,
      * @param client VK API client
      * @param photos value of "photos" parameter.
      */
-    public PhotosGetByIdQuery(VkApiClient client, List<String> photos) {
+    public PhotosGetByIdQuery(VkApiClient client, ServiceActor actor, List<String> photos) {
         super(client, "photos.getById", Utils.buildParametrizedType(List.class, Photo.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         photos(photos);
     }
 

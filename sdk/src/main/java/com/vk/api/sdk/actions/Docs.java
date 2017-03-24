@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.docs.DocsAddQuery;
 import com.vk.api.sdk.queries.docs.DocsDeleteQuery;
@@ -62,14 +62,28 @@ public class Docs extends AbstractAction {
     /**
      * Returns the server address for document upload onto a user's or community's wall.
      */
-    public DocsGetWallUploadServerQuery getWallUploadServer(Actor actor) {
+    public DocsGetWallUploadServerQuery getWallUploadServer(UserActor actor) {
+        return new DocsGetWallUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for document upload onto a user's or community's wall.
+     */
+    public DocsGetWallUploadServerQuery getWallUploadServer(GroupActor actor) {
         return new DocsGetWallUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Saves a document after uploading it to a server.
      */
-    public DocsSaveQuery save(Actor actor, String file) {
+    public DocsSaveQuery save(UserActor actor, String file) {
+        return new DocsSaveQuery(getClient(), actor, file);
+    }
+
+    /**
+     * Saves a document after uploading it to a server.
+     */
+    public DocsSaveQuery save(GroupActor actor, String file) {
         return new DocsSaveQuery(getClient(), actor, file);
     }
 

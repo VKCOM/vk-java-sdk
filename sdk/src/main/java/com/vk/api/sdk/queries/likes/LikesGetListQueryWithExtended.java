@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.likes;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.likes.responses.GetListExtendedResponse;
 
@@ -32,8 +33,10 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
      * @param client VK API client
      * @param type   value of "type" parameter.
      */
-    public LikesGetListQueryWithExtended(VkApiClient client, LikesType type) {
+    public LikesGetListQueryWithExtended(VkApiClient client, ServiceActor actor, LikesType type) {
         super(client, "likes.getList", GetListExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         type(type);
         extended(true);
     }

@@ -2,7 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromGroupQuery;
@@ -59,84 +59,168 @@ public class Messages extends AbstractAction {
     /**
      * Returns a list of the current user's incoming or outgoing private messages.
      */
-    public MessagesGetQuery get(Actor actor) {
+    public MessagesGetQuery get(UserActor actor) {
+        return new MessagesGetQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's incoming or outgoing private messages.
+     */
+    public MessagesGetQuery get(GroupActor actor) {
         return new MessagesGetQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of the current user's conversations.
      */
-    public MessagesGetDialogsQuery getDialogs(Actor actor) {
+    public MessagesGetDialogsQuery getDialogs(UserActor actor) {
+        return new MessagesGetDialogsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's conversations.
+     */
+    public MessagesGetDialogsQuery getDialogs(GroupActor actor) {
         return new MessagesGetDialogsQuery(getClient(), actor);
     }
 
     /**
      * Returns messages by their IDs.
      */
-    public MessagesGetByIdQuery getById(Actor actor, int... messageIds) {
+    public MessagesGetByIdQuery getById(UserActor actor, int... messageIds) {
         return new MessagesGetByIdQuery(getClient(), actor, messageIds);
     }
 
     /**
      * Returns messages by their IDs.
      */
-    public MessagesGetByIdQuery getById(Actor actor, List<Integer> messageIds) {
+    public MessagesGetByIdQuery getById(GroupActor actor, int... messageIds) {
+        return new MessagesGetByIdQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     */
+    public MessagesGetByIdQuery getById(UserActor actor, List<Integer> messageIds) {
+        return new MessagesGetByIdQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     */
+    public MessagesGetByIdQuery getById(GroupActor actor, List<Integer> messageIds) {
         return new MessagesGetByIdQuery(getClient(), actor, messageIds);
     }
 
     /**
      * Returns a list of the current user's private messages that match search criteria.
      */
-    public MessagesSearchQuery search(Actor actor) {
+    public MessagesSearchQuery search(UserActor actor) {
+        return new MessagesSearchQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's private messages that match search criteria.
+     */
+    public MessagesSearchQuery search(GroupActor actor) {
         return new MessagesSearchQuery(getClient(), actor);
     }
 
     /**
      * Returns message history for the specified user or group chat.
      */
-    public MessagesGetHistoryQuery getHistory(Actor actor) {
+    public MessagesGetHistoryQuery getHistory(UserActor actor) {
+        return new MessagesGetHistoryQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns message history for the specified user or group chat.
+     */
+    public MessagesGetHistoryQuery getHistory(GroupActor actor) {
         return new MessagesGetHistoryQuery(getClient(), actor);
     }
 
     /**
      * Returns media files from the dialog or group chat.
      */
-    public MessagesGetHistoryAttachmentsQuery getHistoryAttachments(Actor actor, int peerId) {
+    public MessagesGetHistoryAttachmentsQuery getHistoryAttachments(UserActor actor, int peerId) {
+        return new MessagesGetHistoryAttachmentsQuery(getClient(), actor, peerId);
+    }
+
+    /**
+     * Returns media files from the dialog or group chat.
+     */
+    public MessagesGetHistoryAttachmentsQuery getHistoryAttachments(GroupActor actor, int peerId) {
         return new MessagesGetHistoryAttachmentsQuery(getClient(), actor, peerId);
     }
 
     /**
      * Sends a message.
      */
-    public MessagesSendQuery send(Actor actor) {
+    public MessagesSendQuery send(UserActor actor) {
+        return new MessagesSendQuery(getClient(), actor);
+    }
+
+    /**
+     * Sends a message.
+     */
+    public MessagesSendQuery send(GroupActor actor) {
         return new MessagesSendQuery(getClient(), actor);
     }
 
     /**
      * Deletes one or more messages.
      */
-    public MessagesDeleteQuery delete(Actor actor) {
+    public MessagesDeleteQuery delete(UserActor actor) {
+        return new MessagesDeleteQuery(getClient(), actor);
+    }
+
+    /**
+     * Deletes one or more messages.
+     */
+    public MessagesDeleteQuery delete(GroupActor actor) {
         return new MessagesDeleteQuery(getClient(), actor);
     }
 
     /**
      * Deletes all private messages in a conversation.
      */
-    public MessagesDeleteDialogQuery deleteDialog(Actor actor) {
+    public MessagesDeleteDialogQuery deleteDialog(UserActor actor) {
+        return new MessagesDeleteDialogQuery(getClient(), actor);
+    }
+
+    /**
+     * Deletes all private messages in a conversation.
+     */
+    public MessagesDeleteDialogQuery deleteDialog(GroupActor actor) {
         return new MessagesDeleteDialogQuery(getClient(), actor);
     }
 
     /**
      * Restores a deleted message.
      */
-    public MessagesRestoreQuery restore(Actor actor, int messageId) {
+    public MessagesRestoreQuery restore(UserActor actor, int messageId) {
+        return new MessagesRestoreQuery(getClient(), actor, messageId);
+    }
+
+    /**
+     * Restores a deleted message.
+     */
+    public MessagesRestoreQuery restore(GroupActor actor, int messageId) {
         return new MessagesRestoreQuery(getClient(), actor, messageId);
     }
 
     /**
      * Marks messages as read.
      */
-    public MessagesMarkAsReadQuery markAsRead(Actor actor) {
+    public MessagesMarkAsReadQuery markAsRead(UserActor actor) {
+        return new MessagesMarkAsReadQuery(getClient(), actor);
+    }
+
+    /**
+     * Marks messages as read.
+     */
+    public MessagesMarkAsReadQuery markAsRead(GroupActor actor) {
         return new MessagesMarkAsReadQuery(getClient(), actor);
     }
 
@@ -150,14 +234,28 @@ public class Messages extends AbstractAction {
     /**
      * Returns data required for connection to a Long Poll server.
      */
-    public MessagesGetLongPollServerQuery getLongPollServer(Actor actor) {
+    public MessagesGetLongPollServerQuery getLongPollServer(UserActor actor) {
+        return new MessagesGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns data required for connection to a Long Poll server.
+     */
+    public MessagesGetLongPollServerQuery getLongPollServer(GroupActor actor) {
         return new MessagesGetLongPollServerQuery(getClient(), actor);
     }
 
     /**
      * Returns updates in user's private messages.
      */
-    public MessagesGetLongPollHistoryQuery getLongPollHistory(Actor actor) {
+    public MessagesGetLongPollHistoryQuery getLongPollHistory(UserActor actor) {
+        return new MessagesGetLongPollHistoryQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns updates in user's private messages.
+     */
+    public MessagesGetLongPollHistoryQuery getLongPollHistory(GroupActor actor) {
         return new MessagesGetLongPollHistoryQuery(getClient(), actor);
     }
 
@@ -325,7 +423,14 @@ public class Messages extends AbstractAction {
     /**
      * Returns information specifying whether a user allowed to send messages from community.
      */
-    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(Actor actor, int groupId, int userId) {
+    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(UserActor actor, int groupId, int userId) {
+        return new MessagesIsMessagesFromGroupAllowedQuery(getClient(), actor, groupId, userId);
+    }
+
+    /**
+     * Returns information specifying whether a user allowed to send messages from community.
+     */
+    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(GroupActor actor, int groupId, int userId) {
         return new MessagesIsMessagesFromGroupAllowedQuery(getClient(), actor, groupId, userId);
     }
 }

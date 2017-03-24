@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.utils;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Collections;
@@ -27,8 +28,10 @@ public class UtilsGetServerTimeQuery extends AbstractQueryBuilder<UtilsGetServer
      *
      * @param client VK API client
      */
-    public UtilsGetServerTimeQuery(VkApiClient client) {
+    public UtilsGetServerTimeQuery(VkApiClient client, ServiceActor actor) {
         super(client, "utils.getServerTime", Integer.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     @Override

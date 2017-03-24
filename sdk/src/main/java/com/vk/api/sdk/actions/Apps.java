@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
@@ -33,8 +34,8 @@ public class Apps extends AbstractAction {
      * @param count count of apps
      * @return query
      */
-    public AppsGetCatalogQuery getCatalog(int count) {
-        return new AppsGetCatalogQuery(getClient(), count);
+    public AppsGetCatalogQuery getCatalog(ServiceActor actor, int count) {
+        return new AppsGetCatalogQuery(getClient(), actor, count);
     }
 
     /**
@@ -53,8 +54,8 @@ public class Apps extends AbstractAction {
      *
      * @return query
      */
-    public AppsGetQuery get() {
-        return new AppsGetQuery(getClient());
+    public AppsGetQuery get(ServiceActor actor) {
+        return new AppsGetQuery(getClient(), actor);
     }
 
     /**

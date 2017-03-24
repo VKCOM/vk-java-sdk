@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.users.UserField;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQuery;
@@ -34,8 +35,8 @@ public class Users extends AbstractAction {
     /**
      * Returns detailed information on users.
      */
-    public UsersGetQuery get() {
-        return new UsersGetQuery(getClient());
+    public UsersGetQuery get(ServiceActor actor) {
+        return new UsersGetQuery(getClient(), actor);
     }
 
     /**
@@ -62,8 +63,8 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      */
-    public UsersGetSubscriptionsQuery getSubscriptions() {
-        return new UsersGetSubscriptionsQuery(getClient());
+    public UsersGetSubscriptionsQuery getSubscriptions(ServiceActor actor) {
+        return new UsersGetSubscriptionsQuery(getClient(), actor);
     }
 
     /**
@@ -76,8 +77,8 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      */
-    public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended() {
-        return new UsersGetSubscriptionsQueryWithExtended(getClient());
+    public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended(ServiceActor actor) {
+        return new UsersGetSubscriptionsQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -90,8 +91,8 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQuery getFollowers() {
-        return new UsersGetFollowersQuery(getClient());
+    public UsersGetFollowersQuery getFollowers(ServiceActor actor) {
+        return new UsersGetFollowersQuery(getClient(), actor);
     }
 
     /**
@@ -104,15 +105,15 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(UserField... fields) {
-        return new UsersGetFollowersQueryWithFields(getClient(), fields);
+    public UsersGetFollowersQueryWithFields getFollowers(ServiceActor actor, UserField... fields) {
+        return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      */
-    public UsersGetFollowersQueryWithFields getFollowers(List<UserField> fields) {
-        return new UsersGetFollowersQueryWithFields(getClient(), fields);
+    public UsersGetFollowersQueryWithFields getFollowers(ServiceActor actor, List<UserField> fields) {
+        return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
     }
 
     /**

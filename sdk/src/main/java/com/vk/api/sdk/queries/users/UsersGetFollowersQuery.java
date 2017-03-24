@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetFollowersResponse;
 
@@ -28,8 +29,10 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      *
      * @param client VK API client
      */
-    public UsersGetFollowersQuery(VkApiClient client) {
+    public UsersGetFollowersQuery(VkApiClient client, ServiceActor actor) {
         super(client, "users.getFollowers", GetFollowersResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

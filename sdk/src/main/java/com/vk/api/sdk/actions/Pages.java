@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.pages.PagesClearCacheQuery;
 import com.vk.api.sdk.queries.pages.PagesGetHistoryQuery;
@@ -78,8 +79,8 @@ public class Pages extends AbstractAction {
     /**
      * Allows to clear the cache of particular "external" pages which may be attached to VK posts.
      */
-    public PagesClearCacheQuery clearCache(String url) {
-        return new PagesClearCacheQuery(getClient(), url);
+    public PagesClearCacheQuery clearCache(ServiceActor actor, String url) {
+        return new PagesClearCacheQuery(getClient(), actor, url);
     }
 
     /**

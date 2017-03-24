@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.database;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.Street;
 
@@ -45,8 +46,10 @@ public class DatabaseGetStreetsByIdQuery extends AbstractQueryBuilder<DatabaseGe
      * @param client    VK API client
      * @param streetIds value of "street ids" parameter.
      */
-    public DatabaseGetStreetsByIdQuery(VkApiClient client, int... streetIds) {
+    public DatabaseGetStreetsByIdQuery(VkApiClient client, ServiceActor actor, int... streetIds) {
         super(client, "database.getStreetsById", Utils.buildParametrizedType(List.class, Street.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         streetIds(streetIds);
     }
 
@@ -56,8 +59,10 @@ public class DatabaseGetStreetsByIdQuery extends AbstractQueryBuilder<DatabaseGe
      * @param client    VK API client
      * @param streetIds value of "street ids" parameter.
      */
-    public DatabaseGetStreetsByIdQuery(VkApiClient client, List<Integer> streetIds) {
+    public DatabaseGetStreetsByIdQuery(VkApiClient client, ServiceActor actor, List<Integer> streetIds) {
         super(client, "database.getStreetsById", Utils.buildParametrizedType(List.class, Street.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         streetIds(streetIds);
     }
 

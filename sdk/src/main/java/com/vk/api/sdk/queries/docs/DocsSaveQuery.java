@@ -3,7 +3,8 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.Doc;
 
 import java.util.Arrays;
@@ -20,7 +21,20 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, List<Doc>
      * @param actor  actor with access token
      * @param file   value of "file" parameter.
      */
-    public DocsSaveQuery(VkApiClient client, Actor actor, String file) {
+    public DocsSaveQuery(VkApiClient client, UserActor actor, String file) {
+        super(client, "docs.save", Utils.buildParametrizedType(List.class, Doc.class));
+        accessToken(actor.getAccessToken());
+        file(file);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param file   value of "file" parameter.
+     */
+    public DocsSaveQuery(VkApiClient client, GroupActor actor, String file) {
         super(client, "docs.save", Utils.buildParametrizedType(List.class, Doc.class));
         accessToken(actor.getAccessToken());
         file(file);
