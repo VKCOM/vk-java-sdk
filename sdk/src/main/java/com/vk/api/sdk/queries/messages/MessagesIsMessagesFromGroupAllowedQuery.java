@@ -33,13 +33,12 @@ public class MessagesIsMessagesFromGroupAllowedQuery extends AbstractQueryBuilde
      *
      * @param client  VK API client
      * @param actor   actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
      * @param userId  value of "user id" parameter. Minimum is 0.
      */
-    public MessagesIsMessagesFromGroupAllowedQuery(VkApiClient client, GroupActor actor, int groupId, int userId) {
+    public MessagesIsMessagesFromGroupAllowedQuery(VkApiClient client, GroupActor actor, int userId) {
         super(client, "messages.isMessagesFromGroupAllowed", IsMessagesFromGroupAllowedResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(groupId);
+        groupId(actor.getGroupId());
         userId(userId);
     }
 

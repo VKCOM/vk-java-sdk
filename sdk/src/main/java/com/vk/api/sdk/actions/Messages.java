@@ -430,7 +430,7 @@ public class Messages extends AbstractAction {
     /**
      * Returns information specifying whether a user allowed to send messages from community.
      */
-    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(GroupActor actor, int groupId, int userId) {
-        return new MessagesIsMessagesFromGroupAllowedQuery(getClient(), actor, groupId, userId);
+    public MessagesIsMessagesFromGroupAllowedQuery isMessagesFromGroupAllowed(GroupActor actor, int userId) {
+        return new MessagesIsMessagesFromGroupAllowedQuery(getClient(), actor, userId);
     }
 }
