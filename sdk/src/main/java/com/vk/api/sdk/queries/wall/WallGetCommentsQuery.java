@@ -116,16 +116,6 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
         return unsafeParam("preview_length", value);
     }
 
-    /**
-     * Set extended
-     *
-     * @param value value of "extended" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public WallGetCommentsQuery extended(Boolean value) {
-        return unsafeParam("extended", value);
-    }
-
     @Override
     protected WallGetCommentsQuery getThis() {
         return this;

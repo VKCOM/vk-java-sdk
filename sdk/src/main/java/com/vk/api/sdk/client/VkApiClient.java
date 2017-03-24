@@ -42,7 +42,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
 
-    private static final String API_VERSION = "5.62";
+    private static final String API_VERSION = "5.63";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
 

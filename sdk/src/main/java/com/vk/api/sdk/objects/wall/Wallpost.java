@@ -34,6 +34,13 @@ public class Wallpost {
     @SerializedName("date")
     private Integer date;
 
+    /**
+     * Count of views
+     */
+    @SerializedName("views")
+    private Integer views;
+
+
     @SerializedName("post_type")
     private PostType postType;
 
@@ -74,6 +81,10 @@ public class Wallpost {
         return date;
     }
 
+    public Integer getViews() {
+        return views;
+    }
+
     public PostType getPostType() {
         return postType;
     }
@@ -112,6 +123,7 @@ public class Wallpost {
                 Objects.equals(fromId, wallpost.fromId) &&
                 Objects.equals(ownerId, wallpost.ownerId) &&
                 Objects.equals(date, wallpost.date) &&
+                Objects.equals(views, wallpost.views) &&
                 Objects.equals(postType, wallpost.postType) &&
                 Objects.equals(text, wallpost.text) &&
                 Objects.equals(signerId, wallpost.signerId) &&
@@ -127,6 +139,7 @@ public class Wallpost {
         sb.append(", fromId=").append(fromId);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", date=").append(date);
+        sb.append(", views=").append(views);
         sb.append(", postType=").append(postType);
         sb.append(", text='").append(text).append("'");
         sb.append(", signerId=").append(signerId);
