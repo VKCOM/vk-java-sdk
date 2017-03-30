@@ -24,13 +24,13 @@ public class LinksItem {
      * Information whether the link title can be edited
      */
     @SerializedName("edit_title")
-    private Integer editTitle;
+    private String editTitle;
 
     /**
      * Link title
      */
     @SerializedName("name")
-    private Integer name;
+    private String name;
 
     /**
      * Link description
@@ -58,11 +58,11 @@ public class LinksItem {
         return url;
     }
 
-    public Integer getEditTitle() {
+    public String getEditTitle() {
         return editTitle;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
