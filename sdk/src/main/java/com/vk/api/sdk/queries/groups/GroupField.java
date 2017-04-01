@@ -49,7 +49,8 @@ public enum GroupField implements EnumParam {
     IS_HIDDEN_FROM_FEED("is_hidden_from_feed"),
     MAIN_SECTION("main_section"),
     MARKET("market"),
-    AGE_LIMITS("age_limits");
+    AGE_LIMITS("age_limits"),
+    COVER("cover");
 
     private final String value;
 
