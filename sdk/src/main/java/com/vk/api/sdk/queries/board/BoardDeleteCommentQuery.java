@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.board;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
@@ -25,6 +26,22 @@ public class BoardDeleteCommentQuery extends AbstractQueryBuilder<BoardDeleteCom
         super(client, "board.deleteComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
+        topicId(topicId);
+        commentId(commentId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client    VK API client
+     * @param actor     actor with access token
+     * @param topicId   value of "topic id" parameter. Minimum is 0.
+     * @param commentId value of "comment id" parameter. Minimum is 0.
+     */
+    public BoardDeleteCommentQuery(VkApiClient client, GroupActor actor, int topicId, int commentId) {
+        super(client, "board.deleteComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
         topicId(topicId);
         commentId(commentId);
     }

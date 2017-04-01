@@ -107,7 +107,6 @@ public class Groups extends AbstractAction {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
-
     /**
      * Returns information specifying whether a user is a member of a community.
      */
@@ -121,7 +120,6 @@ public class Groups extends AbstractAction {
     public GroupsIsMemberQueryWithUserIds isMember(GroupActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
-
 
     /**
      * Returns information specifying whether a user is a member of a community.

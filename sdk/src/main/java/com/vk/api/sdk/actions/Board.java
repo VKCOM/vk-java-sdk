@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.board.BoardAddTopicQuery;
@@ -133,10 +134,24 @@ public class Board extends AbstractAction {
     }
 
     /**
+     * Restores a comment deleted from a topic on a community's discussion board.
+     */
+    public BoardRestoreCommentQuery restoreComment(GroupActor actor, int topicId, int commentId) {
+        return new BoardRestoreCommentQuery(getClient(), actor, topicId, commentId);
+    }
+
+    /**
      * Deletes a comment on a topic on a community's discussion board.
      */
     public BoardDeleteCommentQuery deleteComment(UserActor actor, int groupId, int topicId, int commentId) {
         return new BoardDeleteCommentQuery(getClient(), actor, groupId, topicId, commentId);
+    }
+
+    /**
+     * Deletes a comment on a topic on a community's discussion board.
+     */
+    public BoardDeleteCommentQuery deleteComment(GroupActor actor, int topicId, int commentId) {
+        return new BoardDeleteCommentQuery(getClient(), actor, topicId, commentId);
     }
 
     /**
