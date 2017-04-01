@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.MemberStatusFull;
@@ -36,7 +37,7 @@ public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, UserActor actor, String groupId, List<Integer> userIds) {
+    public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, GroupActor actor, String groupId, Integer... userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -54,6 +55,36 @@ public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
+        groupId(groupId);
+        extended(true);
+        userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param groupId value of "group id" parameter.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, UserActor actor, String groupId, List<Integer> userIds) {
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        extended(true);
+        userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param groupId value of "group id" parameter.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, GroupActor actor, String groupId, List<Integer> userIds) {
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
+        accessToken(actor.getAccessToken());
         groupId(groupId);
         extended(true);
         userIds(userIds);

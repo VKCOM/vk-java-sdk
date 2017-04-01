@@ -68,13 +68,6 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQuery isMember(ServiceActor actor, String groupId) {
-        return new GroupsIsMemberQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Returns information specifying whether a user is a member of a community.
-     */
     public GroupsIsMemberQuery isMember(UserActor actor, String groupId) {
         return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
@@ -82,15 +75,15 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, Integer... userIds) {
-        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    public GroupsIsMemberQuery isMember(GroupActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, List<Integer> userIds) {
-        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    public GroupsIsMemberQuery isMember(ServiceActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
     /**
@@ -103,6 +96,21 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
+    public GroupsIsMemberQueryWithUserIds isMember(GroupActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
     public GroupsIsMemberQueryWithUserIds isMember(UserActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
@@ -110,8 +118,16 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithExtended isMemberExtended(ServiceActor actor, String groupId) {
-        return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
+    public GroupsIsMemberQueryWithUserIds isMember(GroupActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
     /**
@@ -124,15 +140,15 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, Integer... userIds) {
-        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    public GroupsIsMemberQueryWithExtended isMemberExtended(GroupActor actor, String groupId) {
+        return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, List<Integer> userIds) {
-        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    public GroupsIsMemberQueryWithExtended isMemberExtended(ServiceActor actor, String groupId) {
+        return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
@@ -145,15 +161,36 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(GroupActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
     public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(UserActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
     }
 
     /**
-     * Returns information about communities by their IDs.
+     * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsGetByIdQuery getById(ServiceActor actor) {
-        return new GroupsGetByIdQuery(getClient(), actor);
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(GroupActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
     }
 
     /**
@@ -167,6 +204,13 @@ public class Groups extends AbstractAction {
      * Returns information about communities by their IDs.
      */
     public GroupsGetByIdQuery getById(GroupActor actor) {
+        return new GroupsGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information about communities by their IDs.
+     */
+    public GroupsGetByIdQuery getById(ServiceActor actor) {
         return new GroupsGetByIdQuery(getClient(), actor);
     }
 
