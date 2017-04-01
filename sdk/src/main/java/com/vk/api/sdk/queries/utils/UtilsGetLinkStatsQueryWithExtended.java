@@ -2,6 +2,8 @@ package com.vk.api.sdk.queries.utils;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.utils.LinkStatsExtended;
 
@@ -22,6 +24,35 @@ public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<Uti
     public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, UserActor actor, String key) {
         super(client, "utils.getShortLink", LinkStatsExtended.class);
         accessToken(actor.getAccessToken());
+        key(key);
+        extended(true);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param key    value of "key" parameter.
+     */
+    public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, GroupActor actor, String key) {
+        super(client, "utils.getShortLink", LinkStatsExtended.class);
+        accessToken(actor.getAccessToken());
+        key(key);
+        extended(true);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param key    value of "key" parameter.
+     */
+    public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, ServiceActor actor, String key) {
+        super(client, "utils.getShortLink", LinkStatsExtended.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         key(key);
         extended(true);
     }
