@@ -139,6 +139,16 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Wall repost notifications.
+     *
+     * @param value value of "wall post new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery wallRepost(Boolean value) {
+        return unsafeParam("wall_repost", value);
+    }
+
+    /**
      * New board posts notifications.
      *
      * @param value value of "board post new" parameter.
