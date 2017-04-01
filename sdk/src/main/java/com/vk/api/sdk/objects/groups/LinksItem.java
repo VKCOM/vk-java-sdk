@@ -24,7 +24,7 @@ public class LinksItem {
      * Information whether the link title can be edited
      */
     @SerializedName("edit_title")
-    private String editTitle;
+    private Integer editTitle;
 
     /**
      * Link title
@@ -58,7 +58,7 @@ public class LinksItem {
         return url;
     }
 
-    public String getEditTitle() {
+    public Integer getEditTitle() {
         return editTitle;
     }
 
@@ -103,7 +103,7 @@ public class LinksItem {
         sb.append("id=").append(id);
         sb.append(", url='").append(url).append("'");
         sb.append(", editTitle=").append(editTitle);
-        sb.append(", name=").append(name);
+        sb.append(", name='").append(name).append("'");
         sb.append(", desc='").append(desc).append("'");
         sb.append(", photo50='").append(photo50).append("'");
         sb.append(", photo100='").append(photo100).append("'");
