@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetFacultiesResponse;
 
@@ -31,8 +32,10 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
      * @param client       VK API client
      * @param universityId value of "university id" parameter. Minimum is 0.
      */
-    public DatabaseGetFacultiesQuery(VkApiClient client, int universityId) {
+    public DatabaseGetFacultiesQuery(VkApiClient client, ServiceActor actor, int universityId) {
         super(client, "database.getFaculties", GetFacultiesResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         universityId(universityId);
     }
 

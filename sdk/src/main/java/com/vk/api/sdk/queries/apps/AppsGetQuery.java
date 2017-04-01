@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.apps;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.apps.responses.GetResponse;
 import com.vk.api.sdk.queries.users.UserField;
@@ -30,8 +31,10 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      *
      * @param client VK API client
      */
-    public AppsGetQuery(VkApiClient client) {
+    public AppsGetQuery(VkApiClient client, ServiceActor actor) {
         super(client, "apps.get", GetResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

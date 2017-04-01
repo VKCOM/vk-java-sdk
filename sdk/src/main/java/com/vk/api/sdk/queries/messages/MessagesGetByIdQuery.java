@@ -2,7 +2,8 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.GetByIdResponse;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ public class MessagesGetByIdQuery extends AbstractQueryBuilder<MessagesGetByIdQu
      * @param actor      actor with access token
      * @param messageIds value of "message ids" parameter.
      */
-    public MessagesGetByIdQuery(VkApiClient client, Actor actor, int... messageIds) {
+    public MessagesGetByIdQuery(VkApiClient client, UserActor actor, int... messageIds) {
         super(client, "messages.getById", GetByIdResponse.class);
         accessToken(actor.getAccessToken());
         messageIds(messageIds);
@@ -32,7 +33,33 @@ public class MessagesGetByIdQuery extends AbstractQueryBuilder<MessagesGetByIdQu
      * @param actor      actor with access token
      * @param messageIds value of "message ids" parameter.
      */
-    public MessagesGetByIdQuery(VkApiClient client, Actor actor, List<Integer> messageIds) {
+    public MessagesGetByIdQuery(VkApiClient client, GroupActor actor, int... messageIds) {
+        super(client, "messages.getById", GetByIdResponse.class);
+        accessToken(actor.getAccessToken());
+        messageIds(messageIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client     VK API client
+     * @param actor      actor with access token
+     * @param messageIds value of "message ids" parameter.
+     */
+    public MessagesGetByIdQuery(VkApiClient client, UserActor actor, List<Integer> messageIds) {
+        super(client, "messages.getById", GetByIdResponse.class);
+        accessToken(actor.getAccessToken());
+        messageIds(messageIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client     VK API client
+     * @param actor      actor with access token
+     * @param messageIds value of "message ids" parameter.
+     */
+    public MessagesGetByIdQuery(VkApiClient client, GroupActor actor, List<Integer> messageIds) {
         super(client, "messages.getById", GetByIdResponse.class);
         accessToken(actor.getAccessToken());
         messageIds(messageIds);

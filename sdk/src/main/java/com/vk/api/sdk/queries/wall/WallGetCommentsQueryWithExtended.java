@@ -2,8 +2,10 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsExtendedResponse;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,8 +34,10 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param client VK API client
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallGetCommentsQueryWithExtended(VkApiClient client, int postId) {
+    public WallGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor, int postId) {
         super(client, "wall.getComments", GetCommentsExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         postId(postId);
         extended(true);
     }
@@ -136,6 +140,16 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      */
     protected WallGetCommentsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetCommentsQueryWithExtended fields(EnumParam... value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

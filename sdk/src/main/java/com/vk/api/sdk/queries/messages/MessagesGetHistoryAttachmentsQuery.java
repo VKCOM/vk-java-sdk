@@ -2,7 +2,8 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryAttachmentsResponse;
 import com.vk.api.sdk.queries.EnumParam;
 
@@ -20,7 +21,20 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
      * @param actor  actor with access token
      * @param peerId value of "peer id" parameter.
      */
-    public MessagesGetHistoryAttachmentsQuery(VkApiClient client, Actor actor, int peerId) {
+    public MessagesGetHistoryAttachmentsQuery(VkApiClient client, UserActor actor, int peerId) {
+        super(client, "messages.getHistoryAttachments", GetHistoryAttachmentsResponse.class);
+        accessToken(actor.getAccessToken());
+        peerId(peerId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param peerId value of "peer id" parameter.
+     */
+    public MessagesGetHistoryAttachmentsQuery(VkApiClient client, GroupActor actor, int peerId) {
         super(client, "messages.getHistoryAttachments", GetHistoryAttachmentsResponse.class);
         accessToken(actor.getAccessToken());
         peerId(peerId);

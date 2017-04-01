@@ -37,12 +37,6 @@ public class Link {
     private Photo photo;
 
     /**
-     * Information whether the link is external
-     */
-    @SerializedName("is_external")
-    private BoolInt isExternal;
-
-    /**
      * URL of the page with article preview
      */
     @SerializedName("preview_url")
@@ -86,10 +80,6 @@ public class Link {
         return photo;
     }
 
-    public boolean isIsExternal() {
-        return isExternal == BoolInt.YES;
-    }
-
     public String getPreviewUrl() {
         return previewUrl;
     }
@@ -116,7 +106,7 @@ public class Link {
 
     @Override
     public int hashCode() {
-        return Objects.hash(previewPage, button, product, previewUrl, isExternal, rating, caption, description, photo, title, url);
+        return Objects.hash(previewPage, button, product, previewUrl, rating, caption, description, photo, title, url);
     }
 
     @Override
@@ -129,7 +119,6 @@ public class Link {
                 Objects.equals(caption, link.caption) &&
                 Objects.equals(description, link.description) &&
                 Objects.equals(photo, link.photo) &&
-                Objects.equals(isExternal, link.isExternal) &&
                 Objects.equals(previewUrl, link.previewUrl) &&
                 Objects.equals(previewPage, link.previewPage) &&
                 Objects.equals(button, link.button) &&
@@ -146,7 +135,6 @@ public class Link {
         sb.append(", caption='").append(caption).append("'");
         sb.append(", description='").append(description).append("'");
         sb.append(", photo=").append(photo);
-        sb.append(", isExternal=").append(isExternal);
         sb.append(", previewUrl='").append(previewUrl).append("'");
         sb.append(", previewPage='").append(previewPage).append("'");
         sb.append(", button=").append(button);

@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.GetCommentsExtendedResponse;
+import com.vk.api.sdk.queries.EnumParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -104,6 +105,17 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
      */
     protected VideoGetCommentsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetCommentsQueryWithExtended fields(EnumParam... value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

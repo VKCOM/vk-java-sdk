@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.leads.LeadsCheckUserQuery;
 import com.vk.api.sdk.queries.leads.LeadsCompleteQuery;
@@ -27,8 +28,8 @@ public class Leads extends AbstractAction {
     /**
      * Completes the lead started by user.
      */
-    public LeadsCompleteQuery complete(String vkSid, String secret) {
-        return new LeadsCompleteQuery(getClient(), vkSid, secret);
+    public LeadsCompleteQuery complete(ServiceActor actor, String vkSid, String secret) {
+        return new LeadsCompleteQuery(getClient(), actor, vkSid, secret);
     }
 
     /**
@@ -41,8 +42,8 @@ public class Leads extends AbstractAction {
     /**
      * Creates new session for the user passing the offer.
      */
-    public LeadsStartQuery start(int leadId, String secret) {
-        return new LeadsStartQuery(getClient(), leadId, secret);
+    public LeadsStartQuery start(ServiceActor actor, int leadId, String secret) {
+        return new LeadsStartQuery(getClient(), actor, leadId, secret);
     }
 
     /**
@@ -62,8 +63,8 @@ public class Leads extends AbstractAction {
     /**
      * Returns a list of last user actions for the offer.
      */
-    public LeadsGetUsersQuery getUsers(int offerId, String secret) {
-        return new LeadsGetUsersQuery(getClient(), offerId, secret);
+    public LeadsGetUsersQuery getUsers(ServiceActor actor, int offerId, String secret) {
+        return new LeadsGetUsersQuery(getClient(), actor, offerId, secret);
     }
 
     /**
@@ -77,8 +78,8 @@ public class Leads extends AbstractAction {
         return new LeadsCheckUserQuery(getClient(), actor, leadId);
     }
 
-    public LeadsMetricHitQuery metricHit(String data) {
-        return new LeadsMetricHitQuery(getClient(), data);
+    public LeadsMetricHitQuery metricHit(ServiceActor actor, String data) {
+        return new LeadsMetricHitQuery(getClient(), actor, data);
     }
 
     public LeadsMetricHitQuery metricHit(UserActor actor, String data) {

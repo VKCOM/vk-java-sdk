@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.users;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
 
@@ -29,8 +30,10 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      *
      * @param client VK API client
      */
-    public UsersGetQuery(VkApiClient client) {
+    public UsersGetQuery(VkApiClient client, ServiceActor actor) {
         super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

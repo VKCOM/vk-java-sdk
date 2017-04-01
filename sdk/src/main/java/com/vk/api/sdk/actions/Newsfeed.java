@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedAddBanQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedDeleteBanQuery;
@@ -109,8 +110,8 @@ public class Newsfeed extends AbstractAction {
     /**
      * Returns search results by statuses.
      */
-    public NewsfeedSearchQuery search() {
-        return new NewsfeedSearchQuery(getClient());
+    public NewsfeedSearchQuery search(ServiceActor actor) {
+        return new NewsfeedSearchQuery(getClient(), actor);
     }
 
     /**
@@ -123,8 +124,8 @@ public class Newsfeed extends AbstractAction {
     /**
      * Returns search results by statuses.
      */
-    public NewsfeedSearchQueryWithExtended searchExtended() {
-        return new NewsfeedSearchQueryWithExtended(getClient());
+    public NewsfeedSearchQueryWithExtended searchExtended(ServiceActor actor) {
+        return new NewsfeedSearchQueryWithExtended(getClient(), actor);
     }
 
     /**

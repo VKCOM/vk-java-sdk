@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.leads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Start;
 
@@ -34,8 +35,10 @@ public class LeadsStartQuery extends AbstractQueryBuilder<LeadsStartQuery, Start
      * @param leadId value of "lead id" parameter. Minimum is 0.
      * @param secret value of "secret" parameter.
      */
-    public LeadsStartQuery(VkApiClient client, int leadId, String secret) {
+    public LeadsStartQuery(VkApiClient client, ServiceActor actor, int leadId, String secret) {
         super(client, "leads.start", Start.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         leadId(leadId);
         secret(secret);
     }

@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.wall.WallCreateCommentQuery;
 import com.vk.api.sdk.queries.wall.WallDeleteCommentQuery;
@@ -45,8 +46,8 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts on a user wall or community wall.
      */
-    public WallGetQuery get() {
-        return new WallGetQuery(getClient());
+    public WallGetQuery get(ServiceActor actor) {
+        return new WallGetQuery(getClient(), actor);
     }
 
     /**
@@ -59,8 +60,8 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts on a user wall or community wall.
      */
-    public WallGetQueryWithExtended getExtended() {
-        return new WallGetQueryWithExtended(getClient());
+    public WallGetQueryWithExtended getExtended(ServiceActor actor) {
+        return new WallGetQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -73,8 +74,8 @@ public class Wall extends AbstractAction {
     /**
      * Allows to search posts on user or community walls.
      */
-    public WallSearchQuery search() {
-        return new WallSearchQuery(getClient());
+    public WallSearchQuery search(ServiceActor actor) {
+        return new WallSearchQuery(getClient(), actor);
     }
 
     /**
@@ -87,8 +88,8 @@ public class Wall extends AbstractAction {
     /**
      * Allows to search posts on user or community walls.
      */
-    public WallSearchQueryWithExtended searchExtended() {
-        return new WallSearchQueryWithExtended(getClient());
+    public WallSearchQueryWithExtended searchExtended(ServiceActor actor) {
+        return new WallSearchQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -101,15 +102,15 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
-    public WallGetByIdQuery getById(String... posts) {
-        return new WallGetByIdQuery(getClient(), posts);
+    public WallGetByIdQuery getById(ServiceActor actor, String... posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
     }
 
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
-    public WallGetByIdQuery getById(List<String> posts) {
-        return new WallGetByIdQuery(getClient(), posts);
+    public WallGetByIdQuery getById(ServiceActor actor, List<String> posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
     }
 
     /**
@@ -129,15 +130,15 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
-    public WallGetByIdQueryWithExtended getByIdExtended(String... posts) {
-        return new WallGetByIdQueryWithExtended(getClient(), posts);
+    public WallGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, String... posts) {
+        return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
 
     /**
      * Returns a list of posts from user or community walls by their IDs.
      */
-    public WallGetByIdQueryWithExtended getByIdExtended(List<String> posts) {
-        return new WallGetByIdQueryWithExtended(getClient(), posts);
+    public WallGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, List<String> posts) {
+        return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
 
     /**
@@ -171,8 +172,8 @@ public class Wall extends AbstractAction {
     /**
      * Returns information about reposts of a post on user wall or community wall.
      */
-    public WallGetRepostsQuery getReposts() {
-        return new WallGetRepostsQuery(getClient());
+    public WallGetRepostsQuery getReposts(ServiceActor actor) {
+        return new WallGetRepostsQuery(getClient(), actor);
     }
 
     /**
@@ -220,8 +221,8 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      */
-    public WallGetCommentsQuery getComments(int postId) {
-        return new WallGetCommentsQuery(getClient(), postId);
+    public WallGetCommentsQuery getComments(ServiceActor actor, int postId) {
+        return new WallGetCommentsQuery(getClient(), actor, postId);
     }
 
     /**
@@ -234,8 +235,8 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      */
-    public WallGetCommentsQueryWithExtended getCommentsExtended(int postId) {
-        return new WallGetCommentsQueryWithExtended(getClient(), postId);
+    public WallGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor, int postId) {
+        return new WallGetCommentsQueryWithExtended(getClient(), actor, postId);
     }
 
     /**

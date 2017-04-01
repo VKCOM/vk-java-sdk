@@ -3,7 +3,8 @@ package com.vk.api.sdk.queries.execute;
 import com.google.gson.JsonElement;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,20 @@ public class ExecuteCodeQuery extends AbstractQueryBuilder<ExecuteCodeQuery, Jso
      * @param actor  actor with access token
      * @param code   value of "code" parameter
      */
-    public ExecuteCodeQuery(VkApiClient client, Actor actor, String code) {
+    public ExecuteCodeQuery(VkApiClient client, UserActor actor, String code) {
+        super(client, "execute", JsonElement.class);
+        accessToken(actor.getAccessToken());
+        code(code);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param code   value of "code" parameter
+     */
+    public ExecuteCodeQuery(VkApiClient client, GroupActor actor, String code) {
         super(client, "execute", JsonElement.class);
         accessToken(actor.getAccessToken());
         code(code);

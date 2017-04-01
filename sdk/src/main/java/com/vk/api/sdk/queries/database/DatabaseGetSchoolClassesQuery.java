@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Collections;
@@ -29,8 +30,10 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
      *
      * @param client VK API client
      */
-    public DatabaseGetSchoolClassesQuery(VkApiClient client) {
+    public DatabaseGetSchoolClassesQuery(VkApiClient client, ServiceActor actor) {
         super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonObject.class)));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

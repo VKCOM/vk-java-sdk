@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.database.DatabaseGetChairsQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetCitiesByIdQuery;
@@ -34,8 +35,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of countries.
      */
-    public DatabaseGetCountriesQuery getCountries() {
-        return new DatabaseGetCountriesQuery(getClient());
+    public DatabaseGetCountriesQuery getCountries(ServiceActor actor) {
+        return new DatabaseGetCountriesQuery(getClient(), actor);
     }
 
     /**
@@ -48,8 +49,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of regions.
      */
-    public DatabaseGetRegionsQuery getRegions(int countryId) {
-        return new DatabaseGetRegionsQuery(getClient(), countryId);
+    public DatabaseGetRegionsQuery getRegions(ServiceActor actor, int countryId) {
+        return new DatabaseGetRegionsQuery(getClient(), actor, countryId);
     }
 
     /**
@@ -62,15 +63,15 @@ public class Database extends AbstractAction {
     /**
      * Returns information about streets by their IDs.
      */
-    public DatabaseGetStreetsByIdQuery getStreetsById(int... streetIds) {
-        return new DatabaseGetStreetsByIdQuery(getClient(), streetIds);
+    public DatabaseGetStreetsByIdQuery getStreetsById(ServiceActor actor, int... streetIds) {
+        return new DatabaseGetStreetsByIdQuery(getClient(), actor, streetIds);
     }
 
     /**
      * Returns information about streets by their IDs.
      */
-    public DatabaseGetStreetsByIdQuery getStreetsById(List<Integer> streetIds) {
-        return new DatabaseGetStreetsByIdQuery(getClient(), streetIds);
+    public DatabaseGetStreetsByIdQuery getStreetsById(ServiceActor actor, List<Integer> streetIds) {
+        return new DatabaseGetStreetsByIdQuery(getClient(), actor, streetIds);
     }
 
     /**
@@ -90,8 +91,8 @@ public class Database extends AbstractAction {
     /**
      * Returns information about countries by their IDs.
      */
-    public DatabaseGetCountriesByIdQuery getCountriesById() {
-        return new DatabaseGetCountriesByIdQuery(getClient());
+    public DatabaseGetCountriesByIdQuery getCountriesById(ServiceActor actor) {
+        return new DatabaseGetCountriesByIdQuery(getClient(), actor);
     }
 
     /**
@@ -104,8 +105,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of cities.
      */
-    public DatabaseGetCitiesQuery getCities(int countryId) {
-        return new DatabaseGetCitiesQuery(getClient(), countryId);
+    public DatabaseGetCitiesQuery getCities(ServiceActor actor, int countryId) {
+        return new DatabaseGetCitiesQuery(getClient(), actor, countryId);
     }
 
     /**
@@ -118,8 +119,8 @@ public class Database extends AbstractAction {
     /**
      * Returns information about cities by their IDs.
      */
-    public DatabaseGetCitiesByIdQuery getCitiesById() {
-        return new DatabaseGetCitiesByIdQuery(getClient());
+    public DatabaseGetCitiesByIdQuery getCitiesById(ServiceActor actor) {
+        return new DatabaseGetCitiesByIdQuery(getClient(), actor);
     }
 
     /**
@@ -132,8 +133,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of higher education institutions.
      */
-    public DatabaseGetUniversitiesQuery getUniversities() {
-        return new DatabaseGetUniversitiesQuery(getClient());
+    public DatabaseGetUniversitiesQuery getUniversities(ServiceActor actor) {
+        return new DatabaseGetUniversitiesQuery(getClient(), actor);
     }
 
     /**
@@ -146,8 +147,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of schools.
      */
-    public DatabaseGetSchoolsQuery getSchools(int cityId) {
-        return new DatabaseGetSchoolsQuery(getClient(), cityId);
+    public DatabaseGetSchoolsQuery getSchools(ServiceActor actor, int cityId) {
+        return new DatabaseGetSchoolsQuery(getClient(), actor, cityId);
     }
 
     /**
@@ -160,8 +161,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of school classes specified for the country.
      */
-    public DatabaseGetSchoolClassesQuery getSchoolClasses() {
-        return new DatabaseGetSchoolClassesQuery(getClient());
+    public DatabaseGetSchoolClassesQuery getSchoolClasses(ServiceActor actor) {
+        return new DatabaseGetSchoolClassesQuery(getClient(), actor);
     }
 
     /**
@@ -174,8 +175,8 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of faculties (i.e., university departments).
      */
-    public DatabaseGetFacultiesQuery getFaculties(int universityId) {
-        return new DatabaseGetFacultiesQuery(getClient(), universityId);
+    public DatabaseGetFacultiesQuery getFaculties(ServiceActor actor, int universityId) {
+        return new DatabaseGetFacultiesQuery(getClient(), actor, universityId);
     }
 
     /**
@@ -188,8 +189,8 @@ public class Database extends AbstractAction {
     /**
      * Returns list of chairs on a specified faculty.
      */
-    public DatabaseGetChairsQuery getChairs(int facultyId) {
-        return new DatabaseGetChairsQuery(getClient(), facultyId);
+    public DatabaseGetChairsQuery getChairs(ServiceActor actor, int facultyId) {
+        return new DatabaseGetChairsQuery(getClient(), actor, facultyId);
     }
 
     /**

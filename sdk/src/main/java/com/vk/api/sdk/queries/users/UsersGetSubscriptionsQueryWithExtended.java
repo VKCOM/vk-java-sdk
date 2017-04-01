@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetSubscriptionsExtendedResponse;
 
@@ -29,8 +30,10 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      *
      * @param client VK API client
      */
-    public UsersGetSubscriptionsQueryWithExtended(VkApiClient client) {
+    public UsersGetSubscriptionsQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "users.getSubscriptions", GetSubscriptionsExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         extended(true);
     }
 

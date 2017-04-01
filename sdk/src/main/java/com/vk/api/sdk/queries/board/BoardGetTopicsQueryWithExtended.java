@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.board;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.board.responses.GetTopicsExtendedResponse;
 
@@ -32,8 +33,10 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
      * @param client  VK API client
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public BoardGetTopicsQueryWithExtended(VkApiClient client, int groupId) {
+    public BoardGetTopicsQueryWithExtended(VkApiClient client, ServiceActor actor, int groupId) {
         super(client, "board.getTopics", GetTopicsExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         groupId(groupId);
         extended(true);
     }

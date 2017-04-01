@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetRepostsResponse;
 
@@ -28,8 +29,10 @@ public class WallGetRepostsQuery extends AbstractQueryBuilder<WallGetRepostsQuer
      *
      * @param client VK API client
      */
-    public WallGetRepostsQuery(VkApiClient client) {
+    public WallGetRepostsQuery(VkApiClient client, ServiceActor actor) {
         super(client, "wall.getReposts", GetRepostsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

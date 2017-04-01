@@ -2,7 +2,8 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.responses.GetDialogsResponse;
 
 import java.util.Arrays;
@@ -18,7 +19,18 @@ public class MessagesGetDialogsQuery extends AbstractQueryBuilder<MessagesGetDia
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetDialogsQuery(VkApiClient client, Actor actor) {
+    public MessagesGetDialogsQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getDialogs", GetDialogsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public MessagesGetDialogsQuery(VkApiClient client, GroupActor actor) {
         super(client, "messages.getDialogs", GetDialogsResponse.class);
         accessToken(actor.getAccessToken());
     }
