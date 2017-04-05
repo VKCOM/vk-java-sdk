@@ -161,10 +161,10 @@ public class GroupFull extends Group {
     private Integer finishDate;
 
     /**
-     * Information whether community is banned
+     * Information whether community has photo
      */
-    @SerializedName("deactivated")
-    private String deactivated;
+    @SerializedName("has_photo")
+    private BoolInt hasPhoto;
 
     /**
      * Information whether age limit
@@ -284,8 +284,8 @@ public class GroupFull extends Group {
         return finishDate;
     }
 
-    public String getDeactivated() {
-        return deactivated;
+    public boolean hasPhoto() {
+        return hasPhoto == BoolInt.YES;
     }
 
     public GroupFullAgeLimits getAgeLimits() {
@@ -295,7 +295,7 @@ public class GroupFull extends Group {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description,
-                deactivated, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters,
+                hasPhoto, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters,
                 canSeeAllPosts, verified, canMessage, isMessagesAllowed, market, ageLimits, site, fixedPost, finishDate,
                 contacts, startDate, isFavorite, status);
     }
@@ -334,7 +334,7 @@ public class GroupFull extends Group {
                 Objects.equals(isMessagesAllowed, groupFull.isMessagesAllowed) &&
                 Objects.equals(startDate, groupFull.startDate) &&
                 Objects.equals(finishDate, groupFull.finishDate) &&
-                Objects.equals(deactivated, groupFull.deactivated) &&
+                Objects.equals(hasPhoto, groupFull.hasPhoto) &&
                 Objects.equals(ageLimits, groupFull.ageLimits);
     }
 
@@ -369,7 +369,7 @@ public class GroupFull extends Group {
         sb.append(", isMessagesAllowed=").append(isMessagesAllowed);
         sb.append(", startDate=").append(startDate);
         sb.append(", finishDate=").append(finishDate);
-        sb.append(", deactivated='").append(deactivated).append("'");
+        sb.append(", hasPhoto=").append(hasPhoto);
         sb.append(", ageLimits=").append(ageLimits);
         sb.append('}');
         return sb.toString();
