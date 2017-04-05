@@ -2,7 +2,8 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponse;
 
 import java.util.Arrays;
@@ -19,10 +20,22 @@ public class GroupsSetCallbackServerQuery extends AbstractQueryBuilder<GroupsSet
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsSetCallbackServerQuery(VkApiClient client, Actor actor, int groupId) {
+    public GroupsSetCallbackServerQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.setCallbackServer", SetCallbackServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public GroupsSetCallbackServerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.setCallbackServer", SetCallbackServerResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
     }
 
     /**

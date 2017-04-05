@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.users;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.responses.GetFollowersFieldsResponse;
 
@@ -28,6 +29,18 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     */
+    public UsersGetFollowersQueryWithFields(VkApiClient client, ServiceActor actor, UserField... fields) {
+        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+        fields(fields);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
      * @param actor  actor with access token
      */
     public UsersGetFollowersQueryWithFields(VkApiClient client, UserActor actor, List<UserField> fields) {
@@ -41,18 +54,10 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      *
      * @param client VK API client
      */
-    public UsersGetFollowersQueryWithFields(VkApiClient client, UserField... fields) {
+    public UsersGetFollowersQueryWithFields(VkApiClient client, ServiceActor actor, List<UserField> fields) {
         super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
-        fields(fields);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     */
-    public UsersGetFollowersQueryWithFields(VkApiClient client, List<UserField> fields) {
-        super(client, "users.getFollowers", GetFollowersFieldsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         fields(fields);
     }
 

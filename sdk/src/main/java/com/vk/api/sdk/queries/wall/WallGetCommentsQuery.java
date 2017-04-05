@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsResponse;
 
@@ -31,8 +32,10 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
      * @param client VK API client
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallGetCommentsQuery(VkApiClient client, int postId) {
+    public WallGetCommentsQuery(VkApiClient client, ServiceActor actor, int postId) {
         super(client, "wall.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         postId(postId);
     }
 
@@ -114,16 +117,6 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
      */
     public WallGetCommentsQuery previewLength(Integer value) {
         return unsafeParam("preview_length", value);
-    }
-
-    /**
-     * Set extended
-     *
-     * @param value value of "extended" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public WallGetCommentsQuery extended(Boolean value) {
-        return unsafeParam("extended", value);
     }
 
     @Override

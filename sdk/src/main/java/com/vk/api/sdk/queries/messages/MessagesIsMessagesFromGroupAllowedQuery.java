@@ -2,7 +2,8 @@ package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.IsMessagesFromGroupAllowedResponse;
 
 import java.util.Arrays;
@@ -20,10 +21,24 @@ public class MessagesIsMessagesFromGroupAllowedQuery extends AbstractQueryBuilde
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param userId  value of "user id" parameter. Minimum is 0.
      */
-    public MessagesIsMessagesFromGroupAllowedQuery(VkApiClient client, Actor actor, int groupId, int userId) {
+    public MessagesIsMessagesFromGroupAllowedQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
         super(client, "messages.isMessagesFromGroupAllowed", IsMessagesFromGroupAllowedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
+        userId(userId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param actor   actor with access token
+     * @param userId  value of "user id" parameter. Minimum is 0.
+     */
+    public MessagesIsMessagesFromGroupAllowedQuery(VkApiClient client, GroupActor actor, int userId) {
+        super(client, "messages.isMessagesFromGroupAllowed", IsMessagesFromGroupAllowedResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
         userId(userId);
     }
 

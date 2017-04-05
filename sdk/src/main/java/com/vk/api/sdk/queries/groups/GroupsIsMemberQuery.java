@@ -2,6 +2,8 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BoolInt;
 
@@ -29,10 +31,25 @@ public class GroupsIsMemberQuery extends AbstractQueryBuilder<GroupsIsMemberQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client  VK API client
+     * @param actor   actor with access token
      * @param groupId value of "group id" parameter.
      */
-    public GroupsIsMemberQuery(VkApiClient client, String groupId) {
+    public GroupsIsMemberQuery(VkApiClient client, GroupActor actor, String groupId) {
         super(client, "groups.isMember", BoolInt.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client  VK API client
+     * @param groupId value of "group id" parameter.
+     */
+    public GroupsIsMemberQuery(VkApiClient client, ServiceActor actor, String groupId) {
+        super(client, "groups.isMember", BoolInt.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         groupId(groupId);
     }
 

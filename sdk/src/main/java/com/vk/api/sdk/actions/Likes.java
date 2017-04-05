@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.likes.LikesAddQuery;
 import com.vk.api.sdk.queries.likes.LikesDeleteQuery;
@@ -27,8 +28,8 @@ public class Likes extends AbstractAction {
     /**
      * Returns a list of IDs of users who added the specified object to their "Likes" list.
      */
-    public LikesGetListQuery getList(LikesType type) {
-        return new LikesGetListQuery(getClient(), type);
+    public LikesGetListQuery getList(ServiceActor actor, LikesType type) {
+        return new LikesGetListQuery(getClient(), actor, type);
     }
 
     /**
@@ -41,8 +42,8 @@ public class Likes extends AbstractAction {
     /**
      * Returns a list of IDs of users who added the specified object to their "Likes" list.
      */
-    public LikesGetListQueryWithExtended getListExtended(LikesType type) {
-        return new LikesGetListQueryWithExtended(getClient(), type);
+    public LikesGetListQueryWithExtended getListExtended(ServiceActor actor, LikesType type) {
+        return new LikesGetListQueryWithExtended(getClient(), actor, type);
     }
 
     /**

@@ -2,7 +2,8 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.photos.PhotosConfirmTagQuery;
 import com.vk.api.sdk.queries.photos.PhotosCopyQuery;
@@ -28,6 +29,7 @@ import com.vk.api.sdk.queries.photos.PhotosGetMarketAlbumUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetMarketUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetMessagesUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetNewTagsQuery;
+import com.vk.api.sdk.queries.photos.PhotosGetOwnerCoverPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetOwnerPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetQueryWithExtended;
@@ -48,6 +50,7 @@ import com.vk.api.sdk.queries.photos.PhotosRestoreQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMarketAlbumPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMarketPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMessagesPhotoQuery;
+import com.vk.api.sdk.queries.photos.PhotosSaveOwnerCoverPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveOwnerPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveWallPhotoQuery;
@@ -86,8 +89,8 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photo albums.
      */
-    public PhotosGetAlbumsQuery getAlbums() {
-        return new PhotosGetAlbumsQuery(getClient());
+    public PhotosGetAlbumsQuery getAlbums(ServiceActor actor) {
+        return new PhotosGetAlbumsQuery(getClient(), actor);
     }
 
     /**
@@ -100,8 +103,8 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photos.
      */
-    public PhotosGetQuery get() {
-        return new PhotosGetQuery(getClient());
+    public PhotosGetQuery get(ServiceActor actor) {
+        return new PhotosGetQuery(getClient(), actor);
     }
 
     /**
@@ -114,8 +117,8 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photos.
      */
-    public PhotosGetQueryWithExtended getExtended() {
-        return new PhotosGetQueryWithExtended(getClient());
+    public PhotosGetQueryWithExtended getExtended(ServiceActor actor) {
+        return new PhotosGetQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -135,15 +138,15 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQuery getById(String... photos) {
-        return new PhotosGetByIdQuery(getClient(), photos);
+    public PhotosGetByIdQuery getById(ServiceActor actor, String... photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQuery getById(List<String> photos) {
-        return new PhotosGetByIdQuery(getClient(), photos);
+    public PhotosGetByIdQuery getById(ServiceActor actor, List<String> photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
@@ -163,15 +166,15 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(String... photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), photos);
+    public PhotosGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, String... photos) {
+        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(List<String> photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), photos);
+    public PhotosGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, List<String> photos) {
+        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
     }
 
     /**
@@ -239,7 +242,7 @@ public class Photos extends AbstractAction {
     }
 
     /**
-     * Saves  a profile or community photo.
+     * Saves a profile or community photo.
      */
     public PhotosSaveOwnerPhotoQuery saveOwnerPhoto(UserActor actor) {
         return new PhotosSaveOwnerPhotoQuery(getClient(), actor);
@@ -262,16 +265,59 @@ public class Photos extends AbstractAction {
     /**
      * Returns the server address for photo upload in a private message for a user.
      */
-    public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(Actor actor) {
+    public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(UserActor actor) {
         return new PhotosGetMessagesUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for photo upload in a private message for a user.
+     */
+    public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(GroupActor actor) {
+        return new PhotosGetMessagesUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(UserActor actor, Integer groupId) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(GroupActor actor) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves cover photo after successful uploading. URL obtained with photos.getOwnerCoverPhotoUploadServer method.
+     */
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(UserActor actor, String photo, String hash) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, photo, hash);
+    }
+
+    /**
+     * Saves cover photo after successful uploading. URL obtained with photos.getOwnerCoverPhotoUploadServer method.
+     */
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(GroupActor actor, String photo, String hash) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, photo, hash);
     }
 
     /**
      * Saves a photo after being successfully uploaded. URL obtained with photos.getMessagesUploadServer method.
      */
-    public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(Actor actor, String photo) {
+    public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(UserActor actor, String photo) {
         return new PhotosSaveMessagesPhotoQuery(getClient(), actor, photo);
     }
+
+    /**
+     * Saves a photo after being successfully uploaded. URL obtained with photos.getMessagesUploadServer method.
+     */
+    public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(GroupActor actor, String photo) {
+        return new PhotosSaveMessagesPhotoQuery(getClient(), actor, photo);
+    }
+
 
     /**
      * Reports (submits a complaint about) a photo.
@@ -290,8 +336,8 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos.
      */
-    public PhotosSearchQuery search() {
-        return new PhotosSearchQuery(getClient());
+    public PhotosSearchQuery search(ServiceActor actor) {
+        return new PhotosSearchQuery(getClient(), actor);
     }
 
     /**

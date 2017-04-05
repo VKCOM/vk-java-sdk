@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetExtendedResponse;
 
@@ -29,8 +30,10 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
      *
      * @param client VK API client
      */
-    public PhotosGetQueryWithExtended(VkApiClient client) {
+    public PhotosGetQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "photos.get", GetExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         extended(true);
     }
 

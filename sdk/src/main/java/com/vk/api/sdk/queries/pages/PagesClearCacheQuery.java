@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.pages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
@@ -31,8 +32,10 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
      * @param client VK API client
      * @param url    value of "url" parameter.
      */
-    public PagesClearCacheQuery(VkApiClient client, String url) {
+    public PagesClearCacheQuery(VkApiClient client, ServiceActor actor, String url) {
         super(client, "pages.clearCache", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         url(url);
     }
 

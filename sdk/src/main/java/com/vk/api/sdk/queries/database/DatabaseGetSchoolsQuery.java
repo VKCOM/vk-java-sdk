@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetSchoolsResponse;
 
@@ -31,8 +32,10 @@ public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSch
      * @param client VK API client
      * @param cityId value of "city id" parameter. Minimum is 0.
      */
-    public DatabaseGetSchoolsQuery(VkApiClient client, int cityId) {
+    public DatabaseGetSchoolsQuery(VkApiClient client, ServiceActor actor, int cityId) {
         super(client, "database.getSchools", GetSchoolsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         cityId(cityId);
     }
 

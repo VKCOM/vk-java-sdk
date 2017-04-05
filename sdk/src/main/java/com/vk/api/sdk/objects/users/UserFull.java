@@ -453,11 +453,11 @@ public class UserFull extends User {
         return hasPhoto == BoolInt.YES;
     }
 
-    public boolean isHasMobile() {
+    public boolean hasMobile() {
         return hasMobile == BoolInt.YES;
     }
 
-    public boolean isIsFriend() {
+    public boolean isFriend() {
         return isFriend == BoolInt.YES;
     }
 
@@ -565,11 +565,11 @@ public class UserFull extends User {
         return blacklistedByMe == BoolInt.YES;
     }
 
-    public boolean isIsFavorite() {
+    public boolean isFavorite() {
         return isFavorite == BoolInt.YES;
     }
 
-    public boolean isIsHiddenFromFeed() {
+    public boolean isHiddenFromFeed() {
         return isHiddenFromFeed == BoolInt.YES;
     }
 

@@ -69,7 +69,7 @@ public class TopicPoll {
         return created;
     }
 
-    public boolean isIsClosed() {
+    public boolean isClosed() {
         return isClosed == BoolInt.YES;
     }
 

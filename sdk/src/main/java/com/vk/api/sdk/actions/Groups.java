@@ -2,7 +2,8 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.groups.GroupsAddLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsApproveRequestQuery;
@@ -67,13 +68,6 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQuery isMember(String groupId) {
-        return new GroupsIsMemberQuery(getClient(), groupId);
-    }
-
-    /**
-     * Returns information specifying whether a user is a member of a community.
-     */
     public GroupsIsMemberQuery isMember(UserActor actor, String groupId) {
         return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
@@ -81,21 +75,35 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(String groupId, Integer... userIds) {
-        return new GroupsIsMemberQueryWithUserIds(getClient(), groupId, userIds);
+    public GroupsIsMemberQuery isMember(GroupActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIds isMember(String groupId, List<Integer> userIds) {
-        return new GroupsIsMemberQueryWithUserIds(getClient(), groupId, userIds);
+    public GroupsIsMemberQuery isMember(ServiceActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
     public GroupsIsMemberQueryWithUserIds isMember(UserActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIds isMember(GroupActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, Integer... userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
@@ -109,8 +117,15 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithExtended isMemberExtended(String groupId) {
-        return new GroupsIsMemberQueryWithExtended(getClient(), groupId);
+    public GroupsIsMemberQueryWithUserIds isMember(GroupActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIds isMember(ServiceActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
     /**
@@ -123,15 +138,15 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(String groupId, Integer... userIds) {
-        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), groupId, userIds);
+    public GroupsIsMemberQueryWithExtended isMemberExtended(GroupActor actor, String groupId) {
+        return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      */
-    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(String groupId, List<Integer> userIds) {
-        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), groupId, userIds);
+    public GroupsIsMemberQueryWithExtended isMemberExtended(ServiceActor actor, String groupId) {
+        return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
@@ -144,21 +159,56 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(GroupActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, Integer... userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
     public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(UserActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(GroupActor actor, String groupId, List<Integer> userIds) {
+        return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     */
+    public GroupsIsMemberQueryWithUserIdsExtended isMemberExtended(ServiceActor actor, String groupId, List<Integer> userIds) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId, userIds);
     }
 
     /**
      * Returns information about communities by their IDs.
      */
-    public GroupsGetByIdQuery getById() {
-        return new GroupsGetByIdQuery(getClient());
+    public GroupsGetByIdQuery getById(UserActor actor) {
+        return new GroupsGetByIdQuery(getClient(), actor);
     }
 
     /**
      * Returns information about communities by their IDs.
      */
-    public GroupsGetByIdQuery getById(Actor actor) {
+    public GroupsGetByIdQuery getById(GroupActor actor) {
+        return new GroupsGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information about communities by their IDs.
+     */
+    public GroupsGetByIdQuery getById(ServiceActor actor) {
         return new GroupsGetByIdQuery(getClient(), actor);
     }
 
@@ -179,56 +229,84 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQuery getMembers() {
-        return new GroupsGetMembersQuery(getClient());
-    }
-
-    /**
-     * Returns a list of community members.
-     */
-    public GroupsGetMembersQuery getMembers(Actor actor) {
+    public GroupsGetMembersQuery getMembers(UserActor actor) {
         return new GroupsGetMembersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(UserField... fields) {
-        return new GroupsGetMembersQueryWithFields(getClient(), fields);
+    public GroupsGetMembersQuery getMembers(GroupActor actor) {
+        return new GroupsGetMembersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(List<UserField> fields) {
-        return new GroupsGetMembersQueryWithFields(getClient(), fields);
+    public GroupsGetMembersQuery getMembers(ServiceActor actor) {
+        return new GroupsGetMembersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(Actor actor, UserField... fields) {
+    public GroupsGetMembersQueryWithFields getMembers(ServiceActor actor, UserField... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFields getMembers(Actor actor, List<UserField> fields) {
+    public GroupsGetMembersQueryWithFields getMembers(ServiceActor actor, List<UserField> fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(GroupsGetMembersFilter filter) {
-        return new GroupsGetMembersQueryWithFilter(getClient(), filter);
+    public GroupsGetMembersQueryWithFields getMembers(UserActor actor, UserField... fields) {
+        return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of community members.
      */
-    public GroupsGetMembersQueryWithFilter getMembers(Actor actor, GroupsGetMembersFilter filter) {
+    public GroupsGetMembersQueryWithFields getMembers(GroupActor actor, UserField... fields) {
+        return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of community members.
+     */
+    public GroupsGetMembersQueryWithFields getMembers(UserActor actor, List<UserField> fields) {
+        return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of community members.
+     */
+    public GroupsGetMembersQueryWithFields getMembers(GroupActor actor, List<UserField> fields) {
+        return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
+    }
+
+    /**
+     * Returns a list of community members.
+     */
+    public GroupsGetMembersQueryWithFilter getMembers(ServiceActor actor, GroupsGetMembersFilter filter) {
+        return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
+    }
+
+    /**
+     * Returns a list of community members.
+     */
+    public GroupsGetMembersQueryWithFilter getMembers(UserActor actor, GroupsGetMembersFilter filter) {
+        return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
+    }
+
+    /**
+     * Returns a list of community members.
+     */
+    public GroupsGetMembersQueryWithFilter getMembers(GroupActor actor, GroupsGetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
@@ -417,42 +495,84 @@ public class Groups extends AbstractAction {
     /**
      * Returns Callback API confirmation code for the community.
      */
-    public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(Actor actor, int groupId) {
+    public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(UserActor actor, int groupId) {
         return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns Callback API confirmation code for the community.
+     */
+    public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(GroupActor actor) {
+        return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor);
     }
 
     /**
      * Returns Callback API server settings for the community.
      */
-    public GroupsGetCallbackServerSettingsQuery getCallbackServerSettings(Actor actor, int groupId) {
+    public GroupsGetCallbackServerSettingsQuery getCallbackServerSettings(UserActor actor, int groupId) {
         return new GroupsGetCallbackServerSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns Callback API server settings for the community.
+     */
+    public GroupsGetCallbackServerSettingsQuery getCallbackServerSettings(GroupActor actor) {
+        return new GroupsGetCallbackServerSettingsQuery(getClient(), actor);
     }
 
     /**
      * Returns Callback API notifications settings.
      */
-    public GroupsGetCallbackSettingsQuery getCallbackSettings(Actor actor, int groupId) {
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor, int groupId) {
         return new GroupsGetCallbackSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns Callback API notifications settings.
+     */
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor) {
+        return new GroupsGetCallbackSettingsQuery(getClient(), actor);
     }
 
     /**
      * Allow to set Callback API server URL for the community.
      */
-    public GroupsSetCallbackServerQuery setCallbackServer(Actor actor, int groupId) {
+    public GroupsSetCallbackServerQuery setCallbackServer(UserActor actor, int groupId) {
         return new GroupsSetCallbackServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Allow to set Callback API server URL for the community.
+     */
+    public GroupsSetCallbackServerQuery setCallbackServer(GroupActor actor) {
+        return new GroupsSetCallbackServerQuery(getClient(), actor);
     }
 
     /**
      * Allow to set Callback API server settings.
      */
-    public GroupsSetCallbackServerSettingsQuery setCallbackServerSettings(Actor actor, int groupId) {
+    public GroupsSetCallbackServerSettingsQuery setCallbackServerSettings(UserActor actor, int groupId) {
         return new GroupsSetCallbackServerSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Allow to set Callback API server settings.
+     */
+    public GroupsSetCallbackServerSettingsQuery setCallbackServerSettings(GroupActor actor) {
+        return new GroupsSetCallbackServerSettingsQuery(getClient(), actor);
     }
 
     /**
      * Allow to set notifications settings for Callback API.
      */
-    public GroupsSetCallbackSettingsQuery setCallbackSettings(Actor actor, int groupId) {
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor, int groupId) {
         return new GroupsSetCallbackSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Allow to set notifications settings for Callback API.
+     */
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor) {
+        return new GroupsSetCallbackSettingsQuery(getClient(), actor);
     }
 }

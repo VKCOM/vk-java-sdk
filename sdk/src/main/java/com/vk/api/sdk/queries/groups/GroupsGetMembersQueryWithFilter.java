@@ -2,7 +2,9 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetMembersFilterResponse;
 
 import java.util.Collections;
@@ -18,7 +20,19 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetMembersQueryWithFilter(VkApiClient client, Actor actor, GroupsGetMembersFilter filter) {
+    public GroupsGetMembersQueryWithFilter(VkApiClient client, UserActor actor, GroupsGetMembersFilter filter) {
+        super(client, "groups.getMembers", GetMembersFilterResponse.class);
+        accessToken(actor.getAccessToken());
+        filter(filter);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public GroupsGetMembersQueryWithFilter(VkApiClient client, GroupActor actor, GroupsGetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         accessToken(actor.getAccessToken());
         filter(filter);
@@ -29,8 +43,10 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      *
      * @param client VK API client
      */
-    public GroupsGetMembersQueryWithFilter(VkApiClient client, GroupsGetMembersFilter filter) {
+    public GroupsGetMembersQueryWithFilter(VkApiClient client, ServiceActor actor, GroupsGetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         filter(filter);
     }
 

@@ -1,15 +1,15 @@
-package com.vk.api.sdk.objects.audio.responses;
+package com.vk.api.sdk.objects.photos.responses;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
 /**
- * GetUploadServerResponse object
+ * GetOwnerCoverPhotoUploadServerResponse object
  */
-public class GetUploadServerResponse {
+public class GetOwnerCoverPhotoUploadServerResponse {
     /**
-     * URL to upload the audio
+     * URL to upload the photo
      */
     @SerializedName("upload_url")
     private String uploadUrl;
@@ -27,13 +27,13 @@ public class GetUploadServerResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetUploadServerResponse getUploadServerResponse = (GetUploadServerResponse) o;
-        return Objects.equals(uploadUrl, getUploadServerResponse.uploadUrl);
+        GetOwnerCoverPhotoUploadServerResponse getOwnerPhotoUploadServerResponse = (GetOwnerCoverPhotoUploadServerResponse) o;
+        return Objects.equals(uploadUrl, getOwnerPhotoUploadServerResponse.uploadUrl);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("GetUploadServerResponse{");
+        final StringBuilder sb = new StringBuilder("GetOwnerCoverPhotoUploadServerResponse{");
         sb.append("uploadUrl='").append(uploadUrl).append("'");
         sb.append('}');
         return sb.toString();

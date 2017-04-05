@@ -2,6 +2,8 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.board.BoardAddTopicQuery;
 import com.vk.api.sdk.queries.board.BoardCloseTopicQuery;
@@ -36,8 +38,8 @@ public class Board extends AbstractAction {
     /**
      * Returns a list of topics on a community's discussion board.
      */
-    public BoardGetTopicsQuery getTopics(int groupId) {
-        return new BoardGetTopicsQuery(getClient(), groupId);
+    public BoardGetTopicsQuery getTopics(ServiceActor actor, int groupId) {
+        return new BoardGetTopicsQuery(getClient(), actor, groupId);
     }
 
     /**
@@ -50,8 +52,8 @@ public class Board extends AbstractAction {
     /**
      * Returns a list of topics on a community's discussion board.
      */
-    public BoardGetTopicsQueryWithExtended getTopicsExtended(int groupId) {
-        return new BoardGetTopicsQueryWithExtended(getClient(), groupId);
+    public BoardGetTopicsQueryWithExtended getTopicsExtended(ServiceActor actor, int groupId) {
+        return new BoardGetTopicsQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
@@ -64,8 +66,8 @@ public class Board extends AbstractAction {
     /**
      * Returns a list of comments on a topic on a community's discussion board.
      */
-    public BoardGetCommentsQuery getComments(int groupId, int topicId) {
-        return new BoardGetCommentsQuery(getClient(), groupId, topicId);
+    public BoardGetCommentsQuery getComments(ServiceActor actor, int groupId, int topicId) {
+        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
@@ -78,8 +80,8 @@ public class Board extends AbstractAction {
     /**
      * Returns a list of comments on a topic on a community's discussion board.
      */
-    public BoardGetCommentsQueryWithExtended getCommentsExtended(int groupId, int topicId) {
-        return new BoardGetCommentsQueryWithExtended(getClient(), groupId, topicId);
+    public BoardGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor, int groupId, int topicId) {
+        return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
     }
 
     /**
@@ -132,10 +134,24 @@ public class Board extends AbstractAction {
     }
 
     /**
+     * Restores a comment deleted from a topic on a community's discussion board.
+     */
+    public BoardRestoreCommentQuery restoreComment(GroupActor actor, int topicId, int commentId) {
+        return new BoardRestoreCommentQuery(getClient(), actor, topicId, commentId);
+    }
+
+    /**
      * Deletes a comment on a topic on a community's discussion board.
      */
     public BoardDeleteCommentQuery deleteComment(UserActor actor, int groupId, int topicId, int commentId) {
         return new BoardDeleteCommentQuery(getClient(), actor, groupId, topicId, commentId);
+    }
+
+    /**
+     * Deletes a comment on a topic on a community's discussion board.
+     */
+    public BoardDeleteCommentQuery deleteComment(GroupActor actor, int topicId, int commentId) {
+        return new BoardDeleteCommentQuery(getClient(), actor, topicId, commentId);
     }
 
     /**

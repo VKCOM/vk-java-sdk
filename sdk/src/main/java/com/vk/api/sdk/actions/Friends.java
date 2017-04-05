@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.friends.FriendsAddListQuery;
 import com.vk.api.sdk.queries.friends.FriendsAddQuery;
@@ -12,11 +13,10 @@ import com.vk.api.sdk.queries.friends.FriendsDeleteQuery;
 import com.vk.api.sdk.queries.friends.FriendsEditListQuery;
 import com.vk.api.sdk.queries.friends.FriendsEditQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetAppUsersQuery;
-import com.vk.api.sdk.queries.friends.FriendsGetAvailableForCallQuery;
-import com.vk.api.sdk.queries.friends.FriendsGetAvailableForCallQueryWithFields;
 import com.vk.api.sdk.queries.friends.FriendsGetByPhonesQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetListsQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetMutualQuery;
+import com.vk.api.sdk.queries.friends.FriendsGetMutualQueryWithTargetUids;
 import com.vk.api.sdk.queries.friends.FriendsGetOnlineQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetOnlineQueryWithMobile;
 import com.vk.api.sdk.queries.friends.FriendsGetQuery;
@@ -48,8 +48,8 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQuery get() {
-        return new FriendsGetQuery(getClient());
+    public FriendsGetQuery get(ServiceActor actor) {
+        return new FriendsGetQuery(getClient(), actor);
     }
 
     /**
@@ -62,15 +62,15 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(UserField... fields) {
-        return new FriendsGetQueryWithFields(getClient(), fields);
+    public FriendsGetQueryWithFields get(ServiceActor actor, UserField... fields) {
+        return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      */
-    public FriendsGetQueryWithFields get(List<UserField> fields) {
-        return new FriendsGetQueryWithFields(getClient(), fields);
+    public FriendsGetQueryWithFields get(ServiceActor actor, List<UserField> fields) {
+        return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
 
     /**
@@ -106,6 +106,20 @@ public class Friends extends AbstractAction {
      */
     public FriendsGetMutualQuery getMutual(UserActor actor) {
         return new FriendsGetMutualQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user IDs of the mutual friends of two users.
+     */
+    public FriendsGetMutualQueryWithTargetUids getMutualTargetUids(UserActor actor, List<Integer> targetUids) {
+        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
+    }
+
+    /**
+     * Returns a list of user IDs of the mutual friends of two users.
+     */
+    public FriendsGetMutualQueryWithTargetUids getMutualTargetUids(UserActor actor, Integer... targetUids) {
+        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
     }
 
     /**
@@ -225,27 +239,6 @@ public class Friends extends AbstractAction {
      */
     public FriendsAreFriendsQuery areFriends(UserActor actor, List<Integer> userIds) {
         return new FriendsAreFriendsQuery(getClient(), actor, userIds);
-    }
-
-    /**
-     * Returns a list of friends who can be called by the current user.
-     */
-    public FriendsGetAvailableForCallQuery getAvailableForCall(UserActor actor) {
-        return new FriendsGetAvailableForCallQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of friends who can be called by the current user.
-     */
-    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(UserActor actor, UserField... fields) {
-        return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
-    }
-
-    /**
-     * Returns a list of friends who can be called by the current user.
-     */
-    public FriendsGetAvailableForCallQueryWithFields getAvailableForCall(UserActor actor, List<UserField> fields) {
-        return new FriendsGetAvailableForCallQueryWithFields(getClient(), actor, fields);
     }
 
     /**

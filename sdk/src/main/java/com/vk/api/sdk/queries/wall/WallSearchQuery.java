@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.wall;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.SearchResponse;
 import com.vk.api.sdk.queries.EnumParam;
@@ -29,8 +30,10 @@ public class WallSearchQuery extends AbstractQueryBuilder<WallSearchQuery, Searc
      *
      * @param client VK API client
      */
-    public WallSearchQuery(VkApiClient client) {
+    public WallSearchQuery(VkApiClient client, ServiceActor actor) {
         super(client, "wall.search", SearchResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**

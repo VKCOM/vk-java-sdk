@@ -30,7 +30,7 @@ public class LinksItem {
      * Link title
      */
     @SerializedName("name")
-    private Integer name;
+    private String name;
 
     /**
      * Link description
@@ -62,7 +62,7 @@ public class LinksItem {
         return editTitle;
     }
 
-    public Integer getName() {
+    public String getName() {
         return name;
     }
 
@@ -103,7 +103,7 @@ public class LinksItem {
         sb.append("id=").append(id);
         sb.append(", url='").append(url).append("'");
         sb.append(", editTitle=").append(editTitle);
-        sb.append(", name=").append(name);
+        sb.append(", name='").append(name).append("'");
         sb.append(", desc='").append(desc).append("'");
         sb.append(", photo50='").append(photo50).append("'");
         sb.append(", photo100='").append(photo100).append("'");
