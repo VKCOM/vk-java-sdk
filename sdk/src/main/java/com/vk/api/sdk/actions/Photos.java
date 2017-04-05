@@ -29,6 +29,7 @@ import com.vk.api.sdk.queries.photos.PhotosGetMarketAlbumUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetMarketUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetMessagesUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetNewTagsQuery;
+import com.vk.api.sdk.queries.photos.PhotosGetOwnerCoverPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetOwnerPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetQueryWithExtended;
@@ -49,6 +50,7 @@ import com.vk.api.sdk.queries.photos.PhotosRestoreQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMarketAlbumPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMarketPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveMessagesPhotoQuery;
+import com.vk.api.sdk.queries.photos.PhotosSaveOwnerCoverPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveOwnerPhotoQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveQuery;
 import com.vk.api.sdk.queries.photos.PhotosSaveWallPhotoQuery;
@@ -240,7 +242,7 @@ public class Photos extends AbstractAction {
     }
 
     /**
-     * Saves  a profile or community photo.
+     * Saves a profile or community photo.
      */
     public PhotosSaveOwnerPhotoQuery saveOwnerPhoto(UserActor actor) {
         return new PhotosSaveOwnerPhotoQuery(getClient(), actor);
@@ -272,6 +274,34 @@ public class Photos extends AbstractAction {
      */
     public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(GroupActor actor) {
         return new PhotosGetMessagesUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(UserActor actor, Integer groupId) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(GroupActor actor) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves cover photo after successful uploading. URL obtained with photos.getOwnerCoverPhotoUploadServer method.
+     */
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(UserActor actor, String photo, String hash) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, photo, hash);
+    }
+
+    /**
+     * Saves cover photo after successful uploading. URL obtained with photos.getOwnerCoverPhotoUploadServer method.
+     */
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(GroupActor actor, String photo, String hash) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, photo, hash);
     }
 
     /**
