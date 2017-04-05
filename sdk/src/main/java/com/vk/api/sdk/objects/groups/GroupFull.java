@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.base.Place;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,12 @@ public class GroupFull extends Group {
      */
     @SerializedName("is_favorite")
     private BoolInt isFavorite;
+
+    /**
+     * Information whether current user hide posts from community in newsfeed
+     */
+    @SerializedName("is_hidden_from_feed")
+    private BoolInt isHiddenFromFeed;
 
     /**
      * Information whether current user is subscribed
@@ -101,6 +108,12 @@ public class GroupFull extends Group {
     private BoolInt canCreateTopic;
 
     /**
+     * Information whether current user can upload doc
+     */
+    @SerializedName("can_upload_doc")
+    private BoolInt canUploadDoc;
+
+    /**
      * Information whether current user can upload video
      */
     @SerializedName("can_upload_video")
@@ -149,6 +162,12 @@ public class GroupFull extends Group {
     private BoolInt isMessagesAllowed;
 
     /**
+     * Label for star date
+     */
+    @SerializedName("public_date_label")
+    private String publicDateLabel;
+
+    /**
      * Start date of event in Unixtime
      */
     @SerializedName("start_date")
@@ -172,6 +191,18 @@ public class GroupFull extends Group {
     @SerializedName("age_limits")
     private GroupFullAgeLimits ageLimits;
 
+    /**
+     * Community's place
+     */
+    @SerializedName("place")
+    private Place place;
+
+    /**
+     * User ban info
+     */
+    @SerializedName("ban_info")
+    private GroupBanInfo banInfo;
+
     public MarketInfo getMarket() {
         return market;
     }
@@ -180,11 +211,15 @@ public class GroupFull extends Group {
         return memberStatus;
     }
 
-    public boolean isIsFavorite() {
+    public boolean isFavorite() {
         return isFavorite == BoolInt.YES;
     }
 
-    public boolean isIsSubscribed() {
+    public boolean isHiddenFromFeed() {
+        return isHiddenFromFeed == BoolInt.YES;
+    }
+
+    public boolean isSubscribed() {
         return isSubscribed == BoolInt.YES;
     }
 
@@ -240,6 +275,10 @@ public class GroupFull extends Group {
         return canCreateTopic == BoolInt.YES;
     }
 
+    public boolean canUploadDoc() {
+        return canUploadDoc == BoolInt.YES;
+    }
+
     public boolean canUploadVideo() {
         return canUploadVideo == BoolInt.YES;
     }
@@ -276,6 +315,10 @@ public class GroupFull extends Group {
         return isMessagesAllowed == BoolInt.YES;
     }
 
+    public String getPublicDateLabel() {
+        return publicDateLabel;
+    }
+
     public Integer getStartDate() {
         return startDate;
     }
@@ -292,12 +335,12 @@ public class GroupFull extends Group {
         return ageLimits;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), country, wikiPage, mainSection, canCreateTopic, activity, city, memberStatus, description,
-                hasPhoto, isSubscribed, mainAlbumId, canPost, canUploadVideo, links, membersCount, counters,
-                canSeeAllPosts, verified, canMessage, isMessagesAllowed, market, ageLimits, site, fixedPost, finishDate,
-                contacts, startDate, isFavorite, status);
+    public Place getPlace() {
+        return place;
+    }
+
+    public GroupBanInfo getBanInfo() {
+        return banInfo;
     }
 
     @Override
@@ -307,35 +350,45 @@ public class GroupFull extends Group {
         if (!super.equals(o)) return false;
         GroupFull groupFull = (GroupFull) o;
         return Objects.equals(market, groupFull.market) &&
-                Objects.equals(memberStatus, groupFull.memberStatus) &&
-                Objects.equals(isFavorite, groupFull.isFavorite) &&
-                Objects.equals(isSubscribed, groupFull.isSubscribed) &&
+                memberStatus == groupFull.memberStatus &&
+                isFavorite == groupFull.isFavorite &&
+                isHiddenFromFeed == groupFull.isHiddenFromFeed &&
+                isSubscribed == groupFull.isSubscribed &&
                 Objects.equals(city, groupFull.city) &&
                 Objects.equals(country, groupFull.country) &&
-                Objects.equals(verified, groupFull.verified) &&
+                verified == groupFull.verified &&
                 Objects.equals(description, groupFull.description) &&
                 Objects.equals(wikiPage, groupFull.wikiPage) &&
                 Objects.equals(membersCount, groupFull.membersCount) &&
                 Objects.equals(counters, groupFull.counters) &&
                 Objects.equals(cover, groupFull.cover) &&
-                Objects.equals(canPost, groupFull.canPost) &&
-                Objects.equals(canSeeAllPosts, groupFull.canSeeAllPosts) &&
+                canPost == groupFull.canPost &&
+                canSeeAllPosts == groupFull.canSeeAllPosts &&
                 Objects.equals(activity, groupFull.activity) &&
                 Objects.equals(fixedPost, groupFull.fixedPost) &&
-                Objects.equals(canCreateTopic, groupFull.canCreateTopic) &&
-                Objects.equals(canUploadVideo, groupFull.canUploadVideo) &&
+                canCreateTopic == groupFull.canCreateTopic &&
+                canUploadDoc == groupFull.canUploadDoc &&
+                canUploadVideo == groupFull.canUploadVideo &&
                 Objects.equals(status, groupFull.status) &&
                 Objects.equals(mainAlbumId, groupFull.mainAlbumId) &&
                 Objects.equals(links, groupFull.links) &&
                 Objects.equals(contacts, groupFull.contacts) &&
                 Objects.equals(site, groupFull.site) &&
-                Objects.equals(mainSection, groupFull.mainSection) &&
-                Objects.equals(canMessage, groupFull.canMessage) &&
-                Objects.equals(isMessagesAllowed, groupFull.isMessagesAllowed) &&
+                mainSection == groupFull.mainSection &&
+                canMessage == groupFull.canMessage &&
+                isMessagesAllowed == groupFull.isMessagesAllowed &&
+                Objects.equals(publicDateLabel, groupFull.publicDateLabel) &&
                 Objects.equals(startDate, groupFull.startDate) &&
                 Objects.equals(finishDate, groupFull.finishDate) &&
-                Objects.equals(hasPhoto, groupFull.hasPhoto) &&
-                Objects.equals(ageLimits, groupFull.ageLimits);
+                hasPhoto == groupFull.hasPhoto &&
+                ageLimits == groupFull.ageLimits &&
+                Objects.equals(place, groupFull.place) &&
+                Objects.equals(banInfo, groupFull.banInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), market, memberStatus, isFavorite, isHiddenFromFeed, isSubscribed, city, country, verified, description, wikiPage, membersCount, counters, cover, canPost, canSeeAllPosts, activity, fixedPost, canCreateTopic, canUploadDoc, canUploadVideo, status, mainAlbumId, links, contacts, site, mainSection, canMessage, isMessagesAllowed, publicDateLabel, startDate, finishDate, hasPhoto, ageLimits, place, banInfo);
     }
 
     @Override
@@ -344,33 +397,38 @@ public class GroupFull extends Group {
         sb.append("market=").append(market);
         sb.append(", memberStatus=").append(memberStatus);
         sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", isHiddenFromFeed=").append(isHiddenFromFeed);
         sb.append(", isSubscribed=").append(isSubscribed);
         sb.append(", city=").append(city);
         sb.append(", country=").append(country);
         sb.append(", verified=").append(verified);
-        sb.append(", description='").append(description).append("'");
-        sb.append(", wikiPage='").append(wikiPage).append("'");
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", wikiPage='").append(wikiPage).append('\'');
         sb.append(", membersCount=").append(membersCount);
         sb.append(", counters=").append(counters);
         sb.append(", cover=").append(cover);
         sb.append(", canPost=").append(canPost);
         sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
-        sb.append(", activity='").append(activity).append("'");
+        sb.append(", activity='").append(activity).append('\'');
         sb.append(", fixedPost=").append(fixedPost);
         sb.append(", canCreateTopic=").append(canCreateTopic);
+        sb.append(", canUploadDoc=").append(canUploadDoc);
         sb.append(", canUploadVideo=").append(canUploadVideo);
-        sb.append(", status='").append(status).append("'");
+        sb.append(", status='").append(status).append('\'');
         sb.append(", mainAlbumId=").append(mainAlbumId);
         sb.append(", links=").append(links);
         sb.append(", contacts=").append(contacts);
-        sb.append(", site='").append(site).append("'");
+        sb.append(", site='").append(site).append('\'');
         sb.append(", mainSection=").append(mainSection);
         sb.append(", canMessage=").append(canMessage);
         sb.append(", isMessagesAllowed=").append(isMessagesAllowed);
+        sb.append(", publicDateLabel='").append(publicDateLabel).append('\'');
         sb.append(", startDate=").append(startDate);
         sb.append(", finishDate=").append(finishDate);
         sb.append(", hasPhoto=").append(hasPhoto);
         sb.append(", ageLimits=").append(ageLimits);
+        sb.append(", place=").append(place);
+        sb.append(", banInfo=").append(banInfo);
         sb.append('}');
         return sb.toString();
     }
