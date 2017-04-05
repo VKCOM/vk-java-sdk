@@ -80,7 +80,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param value value of "interval" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UtilsGetLinkStatsQuery interval(String value) {
+    public UtilsGetLinkStatsQuery interval(UtilsLinkStatsInterval value) {
         return unsafeParam("interval", value);
     }
 
