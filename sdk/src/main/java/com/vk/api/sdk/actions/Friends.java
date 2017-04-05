@@ -16,6 +16,7 @@ import com.vk.api.sdk.queries.friends.FriendsGetAppUsersQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetByPhonesQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetListsQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetMutualQuery;
+import com.vk.api.sdk.queries.friends.FriendsGetMutualQueryWithTargetUids;
 import com.vk.api.sdk.queries.friends.FriendsGetOnlineQuery;
 import com.vk.api.sdk.queries.friends.FriendsGetOnlineQueryWithMobile;
 import com.vk.api.sdk.queries.friends.FriendsGetQuery;
@@ -105,6 +106,20 @@ public class Friends extends AbstractAction {
      */
     public FriendsGetMutualQuery getMutual(UserActor actor) {
         return new FriendsGetMutualQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user IDs of the mutual friends of two users.
+     */
+    public FriendsGetMutualQueryWithTargetUids getMutualTargetUids(UserActor actor, List<Integer> targetUids) {
+        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
+    }
+
+    /**
+     * Returns a list of user IDs of the mutual friends of two users.
+     */
+    public FriendsGetMutualQueryWithTargetUids getMutualTargetUids(UserActor actor, Integer... targetUids) {
+        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
     }
 
     /**

@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.friends.MutualFriends;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,16 +12,29 @@ import java.util.List;
 /**
  * Query for Friends.getMutual method
  */
-public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutualQuery, List<Integer>> {
+public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<FriendsGetMutualQueryWithTargetUids, List<MutualFriends>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public FriendsGetMutualQuery(VkApiClient client, UserActor actor) {
+    public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor, List<Integer> targetUids) {
         super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
+        targetUids(targetUids);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     */
+    public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor, Integer... targetUids) {
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
+        accessToken(actor.getAccessToken());
+        targetUids(targetUids);
     }
 
     /**
@@ -29,18 +43,28 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "source uid" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery sourceUid(Integer value) {
+    public FriendsGetMutualQueryWithTargetUids sourceUid(Integer value) {
         return unsafeParam("source_uid", value);
     }
 
     /**
-     * ID of the user whose friends will be checked against the friends of the user specified in "source_uid".
+     * Set target uids
      *
-     * @param value value of "target uid" parameter. Minimum is 0.
+     * @param value value of "target uids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery targetUid(Integer value) {
-        return unsafeParam("target_uid", value);
+    protected FriendsGetMutualQueryWithTargetUids targetUids(Integer... value) {
+        return unsafeParam("target_uids", value);
+    }
+
+    /**
+     * Set target uids
+     *
+     * @param value value of "target uids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected FriendsGetMutualQueryWithTargetUids targetUids(List<Integer> value) {
+        return unsafeParam("target_uids", value);
     }
 
     /**
@@ -49,7 +73,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery order(FriendsGetMutualOrder value) {
+    public FriendsGetMutualQueryWithTargetUids order(FriendsGetMutualOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -59,7 +83,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery count(Integer value) {
+    public FriendsGetMutualQueryWithTargetUids count(Integer value) {
         return unsafeParam("count", value);
     }
 
@@ -69,12 +93,12 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery offset(Integer value) {
+    public FriendsGetMutualQueryWithTargetUids offset(Integer value) {
         return unsafeParam("offset", value);
     }
 
     @Override
-    protected FriendsGetMutualQuery getThis() {
+    protected FriendsGetMutualQueryWithTargetUids getThis() {
         return this;
     }
 
