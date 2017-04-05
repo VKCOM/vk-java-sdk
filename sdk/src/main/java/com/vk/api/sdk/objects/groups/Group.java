@@ -22,6 +22,12 @@ public class Group {
     private String name;
 
     /**
+     * Returns if a group is deleted or blocked
+     */
+    @SerializedName("deactivated")
+    private String deactivated;
+
+    /**
      * Domain of the community page
      */
     @SerializedName("screen_name")
@@ -83,6 +89,10 @@ public class Group {
         return name;
     }
 
+    public String getDeactivated() {
+        return deactivated;
+    }
+
     public String getScreenName() {
         return screenName;
     }
@@ -121,7 +131,7 @@ public class Group {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isClosed, adminLevel, photo100, name, photo50, id, screenName, isAdmin, isMember, photo200, type);
+        return Objects.hash(deactivated, isClosed, adminLevel, photo100, name, photo50, id, screenName, isAdmin, isMember, photo200, type);
     }
 
     @Override
@@ -131,6 +141,7 @@ public class Group {
         Group group = (Group) o;
         return Objects.equals(id, group.id) &&
                 Objects.equals(name, group.name) &&
+                Objects.equals(deactivated, group.deactivated) &&
                 Objects.equals(screenName, group.screenName) &&
                 Objects.equals(isClosed, group.isClosed) &&
                 Objects.equals(type, group.type) &&
@@ -147,6 +158,7 @@ public class Group {
         final StringBuilder sb = new StringBuilder("Group{");
         sb.append("id='").append(id).append("'");
         sb.append(", name='").append(name).append("'");
+        sb.append(", deactivated='").append(deactivated).append("'");
         sb.append(", screenName='").append(screenName).append("'");
         sb.append(", isClosed=").append(isClosed);
         sb.append(", type='").append(type).append("'");
