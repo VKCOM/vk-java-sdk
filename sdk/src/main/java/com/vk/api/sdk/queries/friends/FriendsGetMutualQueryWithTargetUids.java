@@ -20,7 +20,7 @@ public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<Fr
      * @param actor  actor with access token
      */
     public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor, List<Integer> targetUids) {
-        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, MutualFriends.class));
         accessToken(actor.getAccessToken());
         targetUids(targetUids);
     }
@@ -32,7 +32,7 @@ public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<Fr
      * @param actor  actor with access token
      */
     public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor, Integer... targetUids) {
-        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, MutualFriends.class));
         accessToken(actor.getAccessToken());
         targetUids(targetUids);
     }
