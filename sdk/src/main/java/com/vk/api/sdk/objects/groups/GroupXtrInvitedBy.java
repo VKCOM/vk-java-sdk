@@ -93,7 +93,7 @@ public class GroupXtrInvitedBy {
         return screenName;
     }
 
-    public boolean isIsClosed() {
+    public boolean isClosed() {
         return isClosed == BoolInt.YES;
     }
 
@@ -101,7 +101,7 @@ public class GroupXtrInvitedBy {
         return type;
     }
 
-    public boolean isIsAdmin() {
+    public boolean isAdmin() {
         return isAdmin == BoolInt.YES;
     }
 
@@ -109,7 +109,7 @@ public class GroupXtrInvitedBy {
         return adminLevel;
     }
 
-    public boolean isIsMember() {
+    public boolean isMember() {
         return isMember == BoolInt.YES;
     }
 

@@ -105,7 +105,7 @@ public class Group {
         return type;
     }
 
-    public boolean isIsAdmin() {
+    public boolean isAdmin() {
         return isAdmin == BoolInt.YES;
     }
 
@@ -113,7 +113,7 @@ public class Group {
         return adminLevel;
     }
 
-    public boolean isIsMember() {
+    public boolean isMember() {
         return isMember == BoolInt.YES;
     }
 

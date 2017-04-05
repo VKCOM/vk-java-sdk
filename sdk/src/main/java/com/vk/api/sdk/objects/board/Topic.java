@@ -87,11 +87,11 @@ public class Topic {
         return updatedBy;
     }
 
-    public boolean isIsClosed() {
+    public boolean isClosed() {
         return isClosed == BoolInt.YES;
     }
 
-    public boolean isIsFixed() {
+    public boolean isFixed() {
         return isFixed == BoolInt.YES;
     }
 
