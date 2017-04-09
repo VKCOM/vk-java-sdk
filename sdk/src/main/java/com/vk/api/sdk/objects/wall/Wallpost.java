@@ -38,7 +38,7 @@ public class Wallpost {
      * Count of views
      */
     @SerializedName("views")
-    private Integer views;
+    private Views views;
 
 
     @SerializedName("post_type")
@@ -81,7 +81,7 @@ public class Wallpost {
         return date;
     }
 
-    public Integer getViews() {
+    public Views getViews() {
         return views;
     }
 
