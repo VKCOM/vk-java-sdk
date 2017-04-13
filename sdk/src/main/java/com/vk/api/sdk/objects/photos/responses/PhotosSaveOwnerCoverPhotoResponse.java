@@ -4,12 +4,13 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.Image;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
- * Created by yuriy.dorofeev on 13.04.17.
- * </p>
+ * PhotosSaveOwnerCoverPhotoResponse object
  */
 public class PhotosSaveOwnerCoverPhotoResponse {
+
     /**
      * Images list
      */
@@ -24,15 +25,13 @@ public class PhotosSaveOwnerCoverPhotoResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         PhotosSaveOwnerCoverPhotoResponse that = (PhotosSaveOwnerCoverPhotoResponse) o;
-
-        return images != null ? images.equals(that.images) : that.images == null;
+        return Objects.equals(images, that.images);
     }
 
     @Override
     public int hashCode() {
-        return images != null ? images.hashCode() : 0;
+        return Objects.hash(images);
     }
 
     @Override
