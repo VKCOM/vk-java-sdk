@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.5.0'
+  compile 'com.vk.api:sdk:0.5.1'
 }
 ```
 
