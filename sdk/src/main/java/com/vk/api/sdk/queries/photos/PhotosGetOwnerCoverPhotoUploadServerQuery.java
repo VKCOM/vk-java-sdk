@@ -30,6 +30,24 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      *
      * @param client VK API client
      * @param actor  actor with access token
+     * @param cropX  X coordinate of the left-upper corner. positive number, default 0
+     * @param cropY  Y coordinate of the left-upper corner. positive number, default 0
+     * @param cropX2 X coordinate of the right-bottom corner. positive number, default 795
+     * @param cropY2 Y coordinate of the right-bottom corner. positive number, default 200
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, UserActor actor, int groupId, int cropX,
+                                                     int cropY, int cropX2, int cropY2) {
+        super(client, "photos.getOwnerCoverPhotoUploadServer", GetOwnerCoverPhotoUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        crop(cropX, cropY, cropX2, cropY2);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
      */
     public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor) {
         super(client, "photos.getOwnerCoverPhotoUploadServer", GetOwnerCoverPhotoUploadServerResponse.class);
@@ -37,23 +55,48 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
         groupId(actor.getGroupId());
     }
 
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  actor with access token
+     * @param cropX  X coordinate of the left-upper corner. positive number, default 0
+     * @param cropY  Y coordinate of the left-upper corner. positive number, default 0
+     * @param cropX2 X coordinate of the right-bottom corner. positive number, default 795
+     * @param cropY2 Y coordinate of the right-bottom corner. positive number, default 200
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor, int cropX,
+                                                     int cropY, int cropX2, int cropY2) {
+        super(client, "photos.getOwnerCoverPhotoUploadServer", GetOwnerCoverPhotoUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+        crop(cropX, cropY, cropX2, cropY2);
+    }
+
+    protected void crop(int cropX, int cropY, int cropX2, int cropY2) {
+        cropX(cropX);
+        cropY(cropY);
+        cropX2(cropX2);
+        cropY2(cropY2);
+    }
+
     protected PhotosGetOwnerCoverPhotoUploadServerQuery groupId(Integer value) {
         return unsafeParam("group_id", value);
     }
 
-    public PhotosGetOwnerCoverPhotoUploadServerQuery cropX(Integer value) {
+    public PhotosGetOwnerCoverPhotoUploadServerQuery cropX(int value) {
         return unsafeParam("crop_x", value);
     }
 
-    public PhotosGetOwnerCoverPhotoUploadServerQuery cropY(Integer value) {
+    public PhotosGetOwnerCoverPhotoUploadServerQuery cropY(int value) {
         return unsafeParam("crop_y", value);
     }
 
-    public PhotosGetOwnerCoverPhotoUploadServerQuery cropX2(Integer value) {
+    public PhotosGetOwnerCoverPhotoUploadServerQuery cropX2(int value) {
         return unsafeParam("crop_x2", value);
     }
 
-    public PhotosGetOwnerCoverPhotoUploadServerQuery cropY2(Integer value) {
+    public PhotosGetOwnerCoverPhotoUploadServerQuery cropY2(int value) {
         return unsafeParam("crop_y2", value);
     }
 

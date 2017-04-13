@@ -286,8 +286,25 @@ public class Photos extends AbstractAction {
     /**
      * Returns the server address for owner cover upload.
      */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(UserActor actor, Integer groupId,
+                                                                                    int cropX, int cropY, int cropX2,
+                                                                                    int cropY2) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, groupId, cropX, cropY, cropX2, cropY2);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
     public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(GroupActor actor) {
         return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for owner cover upload.
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(GroupActor actor, int cropX,
+                                                                                    int cropY, int cropX2, int cropY2) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, cropX, cropY, cropX2, cropY2);
     }
 
     /**
