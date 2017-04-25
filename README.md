@@ -186,7 +186,7 @@ GroupAuthGroupResponse authResponse = vk.oauth()
     .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
-GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(groupId);
+GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(groupId));
 ```
 
 When succeed, a GroupActor object is created. You can call VK API methods on behalf of a community.
