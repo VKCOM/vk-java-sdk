@@ -19,7 +19,16 @@ public enum AttachmentsHistoryType {
     DOC("doc"),
 
     @SerializedName("link")
-    LINK("link");
+    LINK("link"),
+
+    @SerializedName("market")
+    MARKET("market"),
+
+    @SerializedName("wall")
+    WALL("wall"),
+
+    @SerializedName("share")
+    SHARE("share");
 
     private final String value;
 
