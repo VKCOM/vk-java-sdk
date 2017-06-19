@@ -61,7 +61,7 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
      * @param value value of "user id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQuery userId(String value) {
+    public MessagesGetHistoryQuery userId(Integer value) {
         return unsafeParam("user_id", value);
     }
 
