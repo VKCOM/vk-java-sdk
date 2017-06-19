@@ -132,6 +132,4 @@ public abstract class ApiRequest<T> {
     }
 
     protected abstract String getBody();
-
-
 }
