@@ -245,6 +245,17 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param value value of parameter
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    public T unsafeParam(String key, float value) {
+        return unsafeParam(key, Float.toString(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
     public T unsafeParam(String key, EnumParam value) {
         return unsafeParam(key, value.getValue());
     }
