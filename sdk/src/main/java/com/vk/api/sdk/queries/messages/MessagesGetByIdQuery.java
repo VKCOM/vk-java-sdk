@@ -85,6 +85,17 @@ public class MessagesGetByIdQuery extends AbstractQueryBuilder<MessagesGetByIdQu
         return unsafeParam("message_ids", value);
     }
 
+    /**
+     * Number of characters after which to truncate a previewed message. To preview the full message, specify "0".
+     * NOTE: Messages are not truncated by default. Messages are truncated by words.
+     *
+     * @param value value of "preview length" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetByIdQuery previewLength(Integer value) {
+        return unsafeParam("preview_length", value);
+    }
+
     @Override
     protected MessagesGetByIdQuery getThis() {
         return this;
