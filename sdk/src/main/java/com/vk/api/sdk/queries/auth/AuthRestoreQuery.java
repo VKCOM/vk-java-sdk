@@ -19,9 +19,10 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
      * @param actor  actor with access token
      * @param phone  value of "phone" parameter.
      */
-    public AuthRestoreQuery(VkApiClient client, UserActor actor, String phone) {
+    public AuthRestoreQuery(VkApiClient client, UserActor actor, String lastName, String phone) {
         super(client, "auth.restore", RestoreResponse.class);
         accessToken(actor.getAccessToken());
+        lastName(lastName);
         phone(phone);
     }
 
@@ -31,9 +32,20 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
      * @param client VK API client
      * @param phone  value of "phone" parameter.
      */
-    public AuthRestoreQuery(VkApiClient client, String phone) {
+    public AuthRestoreQuery(VkApiClient client, String lastName, String phone) {
         super(client, "auth.restore", RestoreResponse.class);
+        lastName(lastName);
         phone(phone);
+    }
+
+    /**
+     * User last name.
+     *
+     * @param value value of "phone" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected AuthRestoreQuery lastName(String value) {
+        return unsafeParam("last_name", value);
     }
 
     /**
