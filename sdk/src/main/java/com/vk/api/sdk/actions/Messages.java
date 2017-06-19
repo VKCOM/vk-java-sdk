@@ -29,6 +29,7 @@ import com.vk.api.sdk.queries.messages.MessagesGetLongPollHistoryQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLongPollServerQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetQuery;
 import com.vk.api.sdk.queries.messages.MessagesIsMessagesFromGroupAllowedQuery;
+import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantDialogQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsReadQuery;
 import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
@@ -236,6 +237,13 @@ public class Messages extends AbstractAction {
      */
     public MessagesMarkAsImportantQuery markAsImportant(UserActor actor) {
         return new MessagesMarkAsImportantQuery(getClient(), actor);
+    }
+
+    /**
+     * Marks and unmarks dialogs as important.
+     */
+    public MessagesMarkAsImportantDialogQuery markAsImportantDialog(GroupActor actor, Integer peerId) {
+        return new MessagesMarkAsImportantDialogQuery(getClient(), actor, peerId);
     }
 
     /**
