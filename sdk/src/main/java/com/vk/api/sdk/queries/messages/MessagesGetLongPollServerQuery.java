@@ -36,13 +36,13 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
     }
 
     /**
-     * Use SSL.
+     * Long Poll version
      *
-     * @param value value of "use ssl" parameter.
+     * @param value value of "lp_version" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollServerQuery useSsl(Boolean value) {
-        return unsafeParam("use_ssl", value);
+    public MessagesGetLongPollServerQuery lpVersion(Integer value) {
+        return unsafeParam("lp_version", value);
     }
 
     /**
