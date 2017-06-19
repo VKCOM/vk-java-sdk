@@ -283,7 +283,7 @@ You can find more information about execute method [here](https://vk.com/dev/exe
 ### Code
 
 ```java
-JsonElement response = vk.execute().code(actor, "return API.wall.get({"count": 1})")
+JsonElement response = vk.execute().code(actor, "return API.wall.get({\"count\": 1})")
     .execute();
 ```
 
