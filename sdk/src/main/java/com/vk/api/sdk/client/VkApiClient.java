@@ -41,23 +41,26 @@ import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
 
-    private static final String API_VERSION = "5.63";
+    private static final String API_VERSION = "5.65";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
+    private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
 
     private TransportClient transportClient;
     private Gson gson;
 
     private String apiEndpoint;
     private String oauthEndpoint;
+    private int retryAttemptsInternalServerErrorCount;
 
     public VkApiClient(TransportClient transportClient) {
-        this(transportClient, new GsonBuilder().create());
+        this(transportClient, new GsonBuilder().create(), DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT);
     }
 
-    public VkApiClient(TransportClient transportClient, Gson gson) {
+    public VkApiClient(TransportClient transportClient, Gson gson, int retryAttemptsInternalServerErrorCount) {
         this.transportClient = transportClient;
         this.gson = gson;
+        this.retryAttemptsInternalServerErrorCount = retryAttemptsInternalServerErrorCount;
 
         if (StringUtils.isNoneEmpty(System.getProperty("api.host"))) {
             apiEndpoint = "https://" + System.getProperty("api.host") + "/method/";
@@ -78,6 +81,10 @@ public class VkApiClient {
 
     public Gson getGson() {
         return gson;
+    }
+
+    int getRetryAttemptsInternalServerErrorCount() {
+        return retryAttemptsInternalServerErrorCount;
     }
 
     public String getApiEndpoint() {
