@@ -201,6 +201,13 @@ public class Messages extends AbstractAction {
     /**
      * Deletes all private messages in a conversation.
      */
+    public MessagesDeleteDialogQuery deleteDialog(UserActor actor) {
+        return new MessagesDeleteDialogQuery(getClient(), actor);
+    }
+
+    /**
+     * Deletes all private messages in a conversation.
+     */
     public MessagesDeleteDialogQuery deleteDialog(GroupActor actor) {
         return new MessagesDeleteDialogQuery(getClient(), actor);
     }
