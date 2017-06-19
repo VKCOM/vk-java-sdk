@@ -65,6 +65,6 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("phone");
+        return Arrays.asList("last_name", "phone");
     }
 }
