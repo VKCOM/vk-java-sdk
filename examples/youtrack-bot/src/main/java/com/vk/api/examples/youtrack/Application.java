@@ -1,6 +1,5 @@
 package com.vk.api.examples.youtrack;
 
-import com.google.gson.Gson;
 import com.vk.api.examples.youtrack.api.client.YouTrackClient;
 import com.vk.api.examples.youtrack.jobs.Job;
 import com.vk.api.examples.youtrack.jobs.MembersUpdateJob;
@@ -134,7 +133,7 @@ public class Application {
 
     private static void initClients(Properties properties) throws IOException {
         TransportClient client = HttpTransportClient.getInstance();
-        vk = new VkApiClient(client, new Gson());
+        vk = new VkApiClient(client);
 
         ytHost = properties.getProperty("yt.host");
         actor = new GroupActor(Integer.parseInt(properties.getProperty("vk.group.id")), properties.getProperty("vk.group.token"));
