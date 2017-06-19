@@ -67,6 +67,16 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
+     * Filter messages
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetQuery filters(Integer value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
      * Maximum time since a message was sent, in seconds. To return messages without a time limitation, set as "0".
      *
      * @param value value of "time offset" parameter. Minimum is 0.
