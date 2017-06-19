@@ -1,27 +1,31 @@
 package com.vk.api.sdk.queries.messages;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Query for Messages.delete method
  */
-public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuery, OkResponse> {
+public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuery, Map<Integer, BoolInt>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor  actor with access token
+     * @param messageIds messages ids
      */
-    public MessagesDeleteQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.delete", OkResponse.class);
+    public MessagesDeleteQuery(VkApiClient client, UserActor actor, Integer... messageIds) {
+        super(client, "messages.delete", Utils.buildParametrizedType(Map.class, Integer.class, BoolInt.class));
         accessToken(actor.getAccessToken());
+        messageIds(messageIds);
     }
 
     /**
@@ -29,10 +33,38 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      *
      * @param client VK API client
      * @param actor  actor with access token
+     * @param messageIds messages ids
      */
-    public MessagesDeleteQuery(VkApiClient client, GroupActor actor) {
-        super(client, "messages.delete", OkResponse.class);
+    public MessagesDeleteQuery(VkApiClient client, UserActor actor, List<Integer> messageIds) {
+        super(client, "messages.delete", Utils.buildParametrizedType(Map.class, Integer.class, BoolInt.class));
         accessToken(actor.getAccessToken());
+        messageIds(messageIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client     VK API client
+     * @param actor      actor with access token
+     * @param messageIds messages ids
+     */
+    public MessagesDeleteQuery(VkApiClient client, GroupActor actor, List<Integer> messageIds) {
+        super(client, "messages.delete", Utils.buildParametrizedType(Map.class, Integer.class, BoolInt.class));
+        accessToken(actor.getAccessToken());
+        messageIds(messageIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client     VK API client
+     * @param actor      actor with access token
+     * @param messageIds messages ids
+     */
+    public MessagesDeleteQuery(VkApiClient client, GroupActor actor, Integer... messageIds) {
+        super(client, "messages.delete", Utils.buildParametrizedType(Map.class, Integer.class, BoolInt.class));
+        accessToken(actor.getAccessToken());
+        messageIds(messageIds);
     }
 
     /**
@@ -41,7 +73,7 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      * @param value value of "message ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesDeleteQuery messageIds(Integer... value) {
+    private MessagesDeleteQuery messageIds(Integer... value) {
         return unsafeParam("message_ids", value);
     }
 
@@ -51,7 +83,7 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      * @param value value of "message ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesDeleteQuery messageIds(List<Integer> value) {
+    private MessagesDeleteQuery messageIds(List<Integer> value) {
         return unsafeParam("message_ids", value);
     }
 
@@ -72,6 +104,6 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("message_ids", "access_token");
     }
 }

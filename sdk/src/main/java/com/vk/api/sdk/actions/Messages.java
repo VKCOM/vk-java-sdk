@@ -171,22 +171,29 @@ public class Messages extends AbstractAction {
     /**
      * Deletes one or more messages.
      */
-    public MessagesDeleteQuery delete(UserActor actor) {
-        return new MessagesDeleteQuery(getClient(), actor);
+    public MessagesDeleteQuery delete(UserActor actor, Integer... messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
     }
 
     /**
      * Deletes one or more messages.
      */
-    public MessagesDeleteQuery delete(GroupActor actor) {
-        return new MessagesDeleteQuery(getClient(), actor);
+    public MessagesDeleteQuery delete(UserActor actor, List<Integer> messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
     }
 
     /**
-     * Deletes all private messages in a conversation.
+     * Deletes one or more messages.
      */
-    public MessagesDeleteDialogQuery deleteDialog(UserActor actor) {
-        return new MessagesDeleteDialogQuery(getClient(), actor);
+    public MessagesDeleteQuery delete(GroupActor actor, Integer... messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Deletes one or more messages.
+     */
+    public MessagesDeleteQuery delete(GroupActor actor, List<Integer> messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
     }
 
     /**
