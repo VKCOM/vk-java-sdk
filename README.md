@@ -226,7 +226,7 @@ When succeed, a ServiceActor object is created. You can call VK API methods on b
 ## 8. API Requests
 You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 
-### Request sample with user actor:
+### Request sample
 
 ```java
 GetResponse getResponse = vk.wall().get(actor)
@@ -237,21 +237,10 @@ GetResponse getResponse = vk.wall().get(actor)
     .execute();
 ```
 
-### Request sample without actor:
-
-```java
-GetResponse getResponse = vk.wall().get()
-    .ownerId(1)
-    .count(100)
-    .offset(5)
-    .filter("owner")
-    .execute();
-```
-
 ### Request sample with common method parameters:
 
 ```java
-List<UserXtrCounters> users = vk.users().get()
+List<UserXtrCounters> users = vk.users().get(actor)
     .userIds("1")
     .fields(UserField.VERIFIED, UserField.SEX)
     .lang(Lang.EN)
