@@ -99,7 +99,26 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery sourceIds(String value) {
+    public NewsfeedGetQuery sourceIds(String... value) {
+        return unsafeParam("source_ids", value);
+    }
+
+
+    /**
+     * Sources to obtain news from, separated by commas.
+     * <p>
+     * User IDs can be specified in formats "user_id" or "u"user_id""
+     * where ""user_id"" is the user's friend ID.
+     * <p>
+     * Community IDs can be specified in formats "-"group_id"" or "g"group_id""
+     * where "group_id" is the community ID.
+     * <p>
+     * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the newsfeed.getBanned method.
+     *
+     * @param value value of "source ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery sourceIds(List<String> value) {
         return unsafeParam("source_ids", value);
     }
 
