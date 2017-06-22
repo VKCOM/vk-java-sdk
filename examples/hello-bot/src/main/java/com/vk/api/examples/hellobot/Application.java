@@ -40,7 +40,7 @@ public class Application {
         GroupActor actor = new GroupActor(groupId, token);
 
         try {
-            apiClient.groups().setCallbackSettings(actor, actor.getGroupId()).messageNew(true).execute();
+            apiClient.groups().setCallbackSettings(actor).messageNew(true).execute();
         } catch (ApiException e) {
             throw new RuntimeException("Api error during init", e);
         } catch (ClientException e) {

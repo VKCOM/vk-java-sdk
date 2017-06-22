@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ApiServerException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.ExceptionMapper;
 import com.vk.api.sdk.objects.base.Error;
@@ -32,11 +33,14 @@ public abstract class ApiRequest<T> {
 
     private Type responseClass;
 
-    public ApiRequest(String url, TransportClient client, Gson gson, Type responseClass) {
+    private int retryAttempts;
+
+    public ApiRequest(String url, TransportClient client, Gson gson, int retryAttempts, Type responseClass) {
         this.client = client;
         this.url = url;
         this.responseClass = responseClass;
         this.gson = gson;
+        this.retryAttempts = retryAttempts;
     }
 
     protected String getUrl() {
@@ -56,6 +60,20 @@ public abstract class ApiRequest<T> {
     }
 
     public T execute() throws ApiException, ClientException {
+        ApiServerException exception = null;
+        for (int i = 0; i < retryAttempts; i++) {
+            try {
+                return executeWithoutRetry();
+            } catch (ApiServerException e) {
+                LOG.warn("API Server error", e);
+                exception = e;
+            }
+        }
+
+        throw exception;
+    }
+
+    private T executeWithoutRetry() throws ClientException, ApiException {
         String textResponse = executeAsString();
         JsonReader jsonReader = new JsonReader(new StringReader(textResponse));
         JsonObject json = (JsonObject) new JsonParser().parse(jsonReader);
@@ -114,6 +132,4 @@ public abstract class ApiRequest<T> {
     }
 
     protected abstract String getBody();
-
-
 }

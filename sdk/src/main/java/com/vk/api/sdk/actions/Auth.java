@@ -107,8 +107,8 @@ public class Auth extends AbstractAction {
      * @param phone phone number
      * @return query
      */
-    public AuthRestoreQuery restore(String phone) {
-        return new AuthRestoreQuery(getClient(), phone);
+    public AuthRestoreQuery restore(String phone, String lastName) {
+        return new AuthRestoreQuery(getClient(), lastName, phone);
     }
 
     /**
@@ -118,7 +118,7 @@ public class Auth extends AbstractAction {
      * @param phone phone number
      * @return query
      */
-    public AuthRestoreQuery restore(UserActor actor, String phone) {
-        return new AuthRestoreQuery(getClient(), actor, phone);
+    public AuthRestoreQuery restore(UserActor actor, String lastName, String phone) {
+        return new AuthRestoreQuery(getClient(), actor, lastName, phone);
     }
 }

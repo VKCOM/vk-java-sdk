@@ -66,6 +66,17 @@ public class MessagesSearchQuery extends AbstractQueryBuilder<MessagesSearchQuer
     }
 
     /**
+     * Number of characters after which to truncate a previewed message. To preview the full message, specify "0".
+     * NOTE: Messages are not truncated by default. Messages are truncated by words.
+     *
+     * @param value value of "preview length" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSearchQuery previewLength(Integer value) {
+        return unsafeParam("preview_length", value);
+    }
+
+    /**
      * Number of messages to return.
      *
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
@@ -73,6 +84,16 @@ public class MessagesSearchQuery extends AbstractQueryBuilder<MessagesSearchQuer
      */
     public MessagesSearchQuery count(Integer value) {
         return unsafeParam("count", value);
+    }
+
+    /**
+     * Offset needed to return a specific subset of messages.
+     *
+     * @param value value of "offset" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSearchQuery offset(Integer value) {
+        return unsafeParam("offset", value);
     }
 
     @Override

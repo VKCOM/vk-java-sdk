@@ -25,8 +25,7 @@ class BotRequestHandler {
 
     void handle(int userId) {
         try {
-            String name = apiClient.users().get().userIds(String.valueOf(userId)).execute().get(0).getFirstName();
-            apiClient.messages().send(actor).message("Hello, " + name + "!").userId(userId).randomId(random.nextInt()).execute();
+            apiClient.messages().send(actor).message("Hello my friend!").userId(userId).randomId(random.nextInt()).execute();
         } catch (ApiException e) {
             LOG.error("INVALID REQUEST", e);
         } catch (ClientException e) {

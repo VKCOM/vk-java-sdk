@@ -78,13 +78,33 @@ public class MessagesGetDialogsQuery extends AbstractQueryBuilder<MessagesGetDia
     }
 
     /**
-     * Return unread messages only.
+     * Return unread dialogs only.
      *
      * @param value value of "unread" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesGetDialogsQuery unread(Boolean value) {
         return unsafeParam("unread", value);
+    }
+
+    /**
+     * Return important dialogs only.
+     *
+     * @param value value of "important" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetDialogsQuery important(Boolean value) {
+        return unsafeParam("important", value);
+    }
+
+    /**
+     * Return unanswered dialogs only.
+     *
+     * @param value value of "unanswered" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetDialogsQuery unanswered1(Boolean value) {
+        return unsafeParam("unanswered", value);
     }
 
     @Override

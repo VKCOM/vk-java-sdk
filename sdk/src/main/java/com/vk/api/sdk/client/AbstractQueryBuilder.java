@@ -34,7 +34,7 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param type   type of method response
      */
     public AbstractQueryBuilder(VkApiClient client, String method, Type type) {
-        super(client.getApiEndpoint() + method, client.getTransportClient(), client.getGson(), type);
+        super(client.getApiEndpoint() + method, client.getTransportClient(), client.getGson(), client.getRetryAttemptsInternalServerErrorCount(), type);
         this.method = method;
         version(client.getVersion());
     }
@@ -48,7 +48,7 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param type     type of method response
      */
     public AbstractQueryBuilder(VkApiClient client, String endpoint, String method, Type type) {
-        super(endpoint + method, client.getTransportClient(), client.getGson(), type);
+        super(endpoint + method, client.getTransportClient(), client.getGson(), client.getRetryAttemptsInternalServerErrorCount(), type);
         version(client.getVersion());
     }
 
@@ -236,6 +236,17 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      */
     public T unsafeParam(String key, double value) {
         return unsafeParam(key, Double.toString(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T unsafeParam(String key, float value) {
+        return unsafeParam(key, Float.toString(value));
     }
 
     /**

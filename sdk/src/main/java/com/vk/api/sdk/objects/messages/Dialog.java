@@ -29,6 +29,18 @@ public class Dialog {
     @SerializedName("out_read")
     private Integer outRead;
 
+    /**
+     * Is it an important dialog
+     */
+    @SerializedName("important")
+    private Boolean important;
+
+    /**
+     * Is it an unanswered dialog
+     */
+    @SerializedName("unanswered")
+    private Boolean unanswered;
+
     public Integer getUnread() {
         return unread;
     }
@@ -45,9 +57,12 @@ public class Dialog {
         return outRead;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(outRead, unread, inRead, message);
+    public Boolean isImportant() {
+        return important;
+    }
+
+    public Boolean isUnanswered() {
+        return unanswered;
     }
 
     @Override
@@ -58,7 +73,14 @@ public class Dialog {
         return Objects.equals(unread, dialog.unread) &&
                 Objects.equals(message, dialog.message) &&
                 Objects.equals(inRead, dialog.inRead) &&
-                Objects.equals(outRead, dialog.outRead);
+                Objects.equals(outRead, dialog.outRead) &&
+                Objects.equals(important, dialog.important) &&
+                Objects.equals(unanswered, dialog.unanswered);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(unread, message, inRead, outRead, important, unanswered);
     }
 
     @Override
@@ -68,6 +90,8 @@ public class Dialog {
         sb.append(", message=").append(message);
         sb.append(", inRead=").append(inRead);
         sb.append(", outRead=").append(outRead);
+        sb.append(", important=").append(important);
+        sb.append(", unanswered=").append(unanswered);
         sb.append('}');
         return sb.toString();
     }

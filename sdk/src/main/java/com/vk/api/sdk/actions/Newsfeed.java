@@ -11,6 +11,7 @@ import com.vk.api.sdk.queries.newsfeed.NewsfeedGetBannedQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetBannedQueryWithExtended;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetCommentsQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetListsQuery;
+import com.vk.api.sdk.queries.newsfeed.NewsfeedGetListsQueryWithExtended;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetMentionsQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedGetRecommendedQuery;
@@ -140,6 +141,13 @@ public class Newsfeed extends AbstractAction {
      */
     public NewsfeedGetListsQuery getLists(UserActor actor) {
         return new NewsfeedGetListsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of newsfeeds followed by the current user.
+     */
+    public NewsfeedGetListsQueryWithExtended getListsExtended(UserActor actor) {
+        return new NewsfeedGetListsQueryWithExtended(getClient(), actor);
     }
 
     /**

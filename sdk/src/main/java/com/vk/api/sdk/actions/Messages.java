@@ -29,6 +29,8 @@ import com.vk.api.sdk.queries.messages.MessagesGetLongPollHistoryQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLongPollServerQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetQuery;
 import com.vk.api.sdk.queries.messages.MessagesIsMessagesFromGroupAllowedQuery;
+import com.vk.api.sdk.queries.messages.MessagesMarkAsAnsweredDialogQuery;
+import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantDialogQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsImportantQuery;
 import com.vk.api.sdk.queries.messages.MessagesMarkAsReadQuery;
 import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
@@ -171,15 +173,29 @@ public class Messages extends AbstractAction {
     /**
      * Deletes one or more messages.
      */
-    public MessagesDeleteQuery delete(UserActor actor) {
-        return new MessagesDeleteQuery(getClient(), actor);
+    public MessagesDeleteQuery delete(UserActor actor, Integer... messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
     }
 
     /**
      * Deletes one or more messages.
      */
-    public MessagesDeleteQuery delete(GroupActor actor) {
-        return new MessagesDeleteQuery(getClient(), actor);
+    public MessagesDeleteQuery delete(UserActor actor, List<Integer> messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Deletes one or more messages.
+     */
+    public MessagesDeleteQuery delete(GroupActor actor, Integer... messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Deletes one or more messages.
+     */
+    public MessagesDeleteQuery delete(GroupActor actor, List<Integer> messageIds) {
+        return new MessagesDeleteQuery(getClient(), actor, messageIds);
     }
 
     /**
@@ -229,6 +245,20 @@ public class Messages extends AbstractAction {
      */
     public MessagesMarkAsImportantQuery markAsImportant(UserActor actor) {
         return new MessagesMarkAsImportantQuery(getClient(), actor);
+    }
+
+    /**
+     * Marks and unmarks dialogs as important.
+     */
+    public MessagesMarkAsImportantDialogQuery markAsImportantDialog(GroupActor actor, Integer peerId) {
+        return new MessagesMarkAsImportantDialogQuery(getClient(), actor, peerId);
+    }
+
+    /**
+     * Marks and unmarks dialogs as answered.
+     */
+    public MessagesMarkAsAnsweredDialogQuery markAsAnsweredDialog(GroupActor actor, Integer peerId) {
+        return new MessagesMarkAsAnsweredDialogQuery(getClient(), actor, peerId);
     }
 
     /**

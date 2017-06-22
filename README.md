@@ -2,7 +2,7 @@
 
 Java library for VK API interaction, includes OAuth 2.0 authorization and API methods. Full VK API features documentation can be found [here](http://vk.com/dev).
 
-This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.63.
+This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.65.
 
 ## 1. Prerequisites
 
@@ -21,7 +21,7 @@ VK Java SDK uses:
 
 ## 3. Latest release
 
-The most recent release is 0.5.2, released April 13, 2017.
+The most recent release is 0.5.3, released June 22, 2017.
 
 To add a dependency on VK Java SDK using Maven, use the following:
 
@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>0.5.2</version>
+  <version>0.5.3</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ To add a dependency using Gradle:
 
 ```
 dependencies {
-  compile 'com.vk.api:sdk:0.5.2'
+  compile 'com.vk.api:sdk:0.5.3'
 }
 ```
 
@@ -186,7 +186,7 @@ GroupAuthGroupResponse authResponse = vk.oauth()
     .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
-GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(groupId);
+GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(groupId));
 ```
 
 When succeed, a GroupActor object is created. You can call VK API methods on behalf of a community.
@@ -226,7 +226,7 @@ When succeed, a ServiceActor object is created. You can call VK API methods on b
 ## 8. API Requests
 You can find the full list of VK API methods [here](https://vk.com/dev/methods).
 
-### Request sample with user actor:
+### Request sample
 
 ```java
 GetResponse getResponse = vk.wall().get(actor)
@@ -237,21 +237,10 @@ GetResponse getResponse = vk.wall().get(actor)
     .execute();
 ```
 
-### Request sample without actor:
-
-```java
-GetResponse getResponse = vk.wall().get()
-    .ownerId(1)
-    .count(100)
-    .offset(5)
-    .filter("owner")
-    .execute();
-```
-
 ### Request sample with common method parameters:
 
 ```java
-List<UserXtrCounters> users = vk.users().get()
+List<UserXtrCounters> users = vk.users().get(actor)
     .userIds("1")
     .fields(UserField.VERIFIED, UserField.SEX)
     .lang(Lang.EN)
@@ -283,7 +272,7 @@ You can find more information about execute method [here](https://vk.com/dev/exe
 ### Code
 
 ```java
-JsonElement response = vk.execute().code(actor, "return API.wall.get({"count": 1})")
+JsonElement response = vk.execute().code(actor, "return API.wall.get({\"count\": 1})")
     .execute();
 ```
 

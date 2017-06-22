@@ -46,6 +46,12 @@ public class GetCallbackSettingsResponse {
     private BoolInt videoNew;
 
     /**
+     * Whether notifications about new reposts enabled
+     */
+    @SerializedName("wall_repost")
+    private BoolInt wallRepost;
+
+    /**
      * Whether notifications about new wall replies enabled
      */
     @SerializedName("wall_reply_new")
@@ -141,6 +147,10 @@ public class GetCallbackSettingsResponse {
         return videoNew == BoolInt.YES;
     }
 
+    public boolean isWallRepost() {
+        return wallRepost == BoolInt.YES;
+    }
+
     public boolean isWallReplyNew() {
         return wallReplyNew == BoolInt.YES;
     }
@@ -205,6 +215,7 @@ public class GetCallbackSettingsResponse {
                 Objects.equals(photoNew, getCallbackSettingsResponse.photoNew) &&
                 Objects.equals(audioNew, getCallbackSettingsResponse.audioNew) &&
                 Objects.equals(videoNew, getCallbackSettingsResponse.videoNew) &&
+                Objects.equals(wallRepost, getCallbackSettingsResponse.wallRepost) &&
                 Objects.equals(wallReplyNew, getCallbackSettingsResponse.wallReplyNew) &&
                 Objects.equals(wallReplyEdit, getCallbackSettingsResponse.wallReplyEdit) &&
                 Objects.equals(wallPostNew, getCallbackSettingsResponse.wallPostNew) &&
@@ -228,6 +239,7 @@ public class GetCallbackSettingsResponse {
         sb.append(", photoNew=").append(photoNew);
         sb.append(", audioNew=").append(audioNew);
         sb.append(", videoNew=").append(videoNew);
+        sb.append(", wallRepost=").append(wallRepost);
         sb.append(", wallReplyNew=").append(wallReplyNew);
         sb.append(", wallReplyEdit=").append(wallReplyEdit);
         sb.append(", wallPostNew=").append(wallPostNew);

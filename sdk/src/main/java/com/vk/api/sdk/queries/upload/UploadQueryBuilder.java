@@ -27,7 +27,7 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
     private File file;
 
     public UploadQueryBuilder(VkApiClient client, String uploadUrl, String filename, Type type) {
-        super(uploadUrl, client.getTransportClient(), client.getGson(), type);
+        super(uploadUrl, client.getTransportClient(), client.getGson(), 0, type);
         this.filename = filename;
     }
 
