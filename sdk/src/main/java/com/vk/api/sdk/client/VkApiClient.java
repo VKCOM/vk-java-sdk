@@ -95,7 +95,7 @@ public class VkApiClient {
         return oauthEndpoint;
     }
 
-    String getVersion() {
+    public String getVersion() {
         return API_VERSION;
     }
 
