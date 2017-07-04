@@ -2,7 +2,7 @@ subprojects {
     apply plugin: 'java'
 
     group 'com.vk.api'
-    version '0.5.4'
+    version '0.5.5'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -20,6 +20,7 @@ subprojects {
         commonsIOVersion = '2.5'
         commonsCLIVersion = '1.3.1'
         commonsCollectionsVersion = '4.1'
+        asyncHttpClientVersion = '2.0.33'
         httpClientVersion = '4.5.2'
         jacksonVersion = '2.8.5'
         jettyVersion = '9.4.0.v20161208'

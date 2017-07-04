@@ -8,6 +8,7 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
     compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
     compile group: 'commons-io', name: 'commons-io', version: commonsIOVersion
+    compile group: 'org.asynchttpclient', name: 'async-http-client', version: asyncHttpClientVersion
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
     compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
 
