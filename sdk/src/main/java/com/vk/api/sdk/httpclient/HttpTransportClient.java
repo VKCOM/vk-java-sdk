@@ -10,7 +10,9 @@ import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
@@ -36,9 +38,9 @@ public class HttpTransportClient implements TransportClient {
     private static final Logger LOG = LoggerFactory.getLogger(HttpTransportClient.class);
 
     private static final String ENCODING = "UTF-8";
-    private static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
+    private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.4";
+    private static final String USER_AGENT = "Java VK SDK/0.5.5";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
@@ -97,7 +99,7 @@ public class HttpTransportClient implements TransportClient {
         return result;
     }
 
-    private ClientResponse call(HttpPost request) throws IOException {
+    private ClientResponse call(HttpRequestBase request) throws IOException {
         SocketException exception = null;
         for (int i = 0; i < retryAttemptsNetworkErrorCount; i++) {
             try {
@@ -129,17 +131,21 @@ public class HttpTransportClient implements TransportClient {
         throw exception;
     }
 
-    private void logRequest(HttpPost request) throws IOException {
+    private void logRequest(HttpRequestBase request) throws IOException {
         logRequest(request, null, null, null, null);
     }
 
-    private void logRequest(HttpPost request, HttpResponse response, Map<String, String> headers, String body, Long time) throws IOException {
+    private void logRequest(HttpRequestBase request, HttpResponse response, Map<String, String> headers, String body, Long time) throws IOException {
         if (LOG.isDebugEnabled()) {
             Header contentType = request.getFirstHeader(CONTENT_TYPE_HEADER);
             String payload = "-";
-            if (contentType != null && contentType.getValue().equalsIgnoreCase(CONTENT_TYPE)) {
-                if (request.getEntity() != null) {
-                    payload = IOUtils.toString(request.getEntity().getContent(), StandardCharsets.UTF_8);
+            if (contentType != null && contentType.getValue().equalsIgnoreCase(FORM_CONTENT_TYPE)) {
+                if (request instanceof HttpPost) {
+                    HttpPost postRequest = (HttpPost) request;
+                    if (postRequest.getEntity() != null) {
+                        payload = IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
+                    }
+
                 }
             }
 
@@ -169,23 +175,37 @@ public class HttpTransportClient implements TransportClient {
     }
 
     @Override
+    public ClientResponse get(String url) throws IOException {
+        return get(url, FORM_CONTENT_TYPE);
+    }
+
+    @Override
+    public ClientResponse get(String url, String contentType) throws IOException {
+        HttpGet request = new HttpGet(url);
+        request.setHeader(CONTENT_TYPE_HEADER, contentType);
+        return call(request);
+    }
+
+    @Override
+    public ClientResponse post(String url) throws IOException {
+        return post(url, null);
+    }
+
+    @Override
     public ClientResponse post(String url, String body) throws IOException {
+        return post(url, body, FORM_CONTENT_TYPE);
+    }
+
+    @Override
+    public ClientResponse post(String url, String body, String contentType) throws IOException {
         HttpPost request = new HttpPost(url);
-        request.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE);
+        request.setHeader(CONTENT_TYPE_HEADER, contentType);
         if (body != null) {
             request.setEntity(new StringEntity(body));
         }
 
         return call(request);
     }
-
-    @Override
-    public ClientResponse post(String url) throws IOException {
-        HttpPost request = new HttpPost(url);
-        request.setHeader(CONTENT_TYPE_HEADER, CONTENT_TYPE);
-        return call(request);
-    }
-
 
     @Override
     public ClientResponse post(String url, String fileName, File file) throws IOException {
@@ -196,6 +216,27 @@ public class HttpTransportClient implements TransportClient {
                 .addPart(fileName, fileBody).build();
 
         request.setEntity(entity);
+        return call(request);
+    }
+
+    @Override
+    public ClientResponse delete(String url) throws IOException {
+        return delete(url);
+    }
+
+    @Override
+    public ClientResponse delete(String url, String body) throws IOException {
+        return delete(url, body, FORM_CONTENT_TYPE);
+    }
+
+    @Override
+    public ClientResponse delete(String url, String body, String contentType) throws IOException {
+        HttpDeleteWithBody request = new HttpDeleteWithBody(url);
+        request.setHeader(CONTENT_TYPE_HEADER, contentType);
+        if (body != null) {
+            request.setEntity(new StringEntity(body));
+        }
+
         return call(request);
     }
 }
