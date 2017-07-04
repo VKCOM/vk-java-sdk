@@ -379,7 +379,7 @@ StreamingResponse addRuleResponse = streamingClient.rules().add(actor, tag, valu
 StreamingGetRulesResponse gerRulesResponse = streamingClient.rules().get(actor).execute();
 
 //Delete rule
-streamingApiClient.rules().delete(actor, tag).execute();
+streamingClient.rules().delete(actor, tag).execute();
 ```
 
 ### Stream handler
