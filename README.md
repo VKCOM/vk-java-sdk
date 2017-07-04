@@ -345,12 +345,54 @@ public class CallbackApiHandler extends CallbackApi {
     System.out.println(message.getBody());
   }
 }
-
-...
-CallbackApiHandler callbackApiHandler = new CallbackApiHandler();
-
-String body = httpRequest.getBody();
-callbackApiHandler.parse(body);
 ```
-## 12. Usage Example
+
+## 12. Streaming API
+
+### Initialization
+```java
+//Init clients
+TransportClient transportClient = new HttpTransportClient();
+
+VkApiClient vkClient = new VkApiClient(transportClient);
+VkStreamingApiClient streamingClient = new VkStreamingApiClient(transportClient);
+
+//Create service actor
+Integer appId = 4123123;
+String accessToken = "sadf0asdf0asdfsadfassadf0asdf0asdfsadfassadf0asdf0asdfsadfas";
+ServiceActor actor = new ServiceActor(appId, accessToken);
+
+//Get streaming actor
+GetServerUrlResponse getServerUrlResponse = vkClient.streaming().getServerUrl(actor).execute();
+StreamingActor actor = new StreamingActor(getServerUrlResponse.getEndpoint(), getServerUrlResponse.getKey());
+```
+
+### Change rules
+```java
+//Create rule
+String tag = "1";
+String value = "ok";
+
+StreamingResponse addRuleResponse = streamingClient.rules().add(actor, tag, value).execute();
+
+//Get rules
+StreamingGetRulesResponse gerRulesResponse = streamingClient.rules().get(actor).execute();
+
+//Delete rule
+streamingApiClient.rules().delete(actor, tag).execute();
+```
+
+### Stream handler
+Implement handle method from StreamingEventHandler class for handling stream events
+
+```java
+streamingClient.stream().get(actor, new StreamingEventHandler() {
+    @Override
+    public void handle(StreamingCallbackMessage message) {
+        System.out.println(message);
+    }
+}).execute();
+```
+
+## 13. Usage Example
 As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).

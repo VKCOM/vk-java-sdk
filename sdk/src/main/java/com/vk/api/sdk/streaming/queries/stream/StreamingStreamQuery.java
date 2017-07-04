@@ -1,7 +1,7 @@
 package com.vk.api.sdk.streaming.queries.stream;
 
 import com.google.gson.Gson;
-import com.vk.api.sdk.streaming.StreamingEventHandler;
+import com.vk.api.sdk.streaming.clients.StreamingEventHandler;
 import com.vk.api.sdk.streaming.clients.VkStreamingApiClient;
 import com.vk.api.sdk.streaming.clients.actors.StreamingActor;
 import com.vk.api.sdk.streaming.clients.websocket.WSMessageListener;

@@ -1,4 +1,4 @@
-package com.vk.api.sdk.streaming;
+package com.vk.api.sdk.streaming.clients;
 
 
 import com.vk.api.sdk.streaming.objects.StreamingCallbackMessage;
