@@ -2,7 +2,6 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.auth.responses.RestoreResponse;
 
 import java.util.Arrays;
@@ -12,20 +11,6 @@ import java.util.List;
  * Query for Auth.restore method
  */
 public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, RestoreResponse> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor  actor with access token
-     * @param phone  value of "phone" parameter.
-     */
-    public AuthRestoreQuery(VkApiClient client, UserActor actor, String lastName, String phone) {
-        super(client, "auth.restore", RestoreResponse.class);
-        accessToken(actor.getAccessToken());
-        lastName(lastName);
-        phone(phone);
-    }
-
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *

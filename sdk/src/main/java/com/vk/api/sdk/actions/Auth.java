@@ -2,7 +2,6 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.auth.AuthCheckPhoneQuery;
 import com.vk.api.sdk.queries.auth.AuthConfirmQuery;
 import com.vk.api.sdk.queries.auth.AuthRestoreQuery;
@@ -34,44 +33,18 @@ public class Auth extends AbstractAction {
     }
 
     /**
-     * Checks a user's phone number for correctness.
-     *
-     * @param actor        vk actor
-     * @param phone        phone number
-     * @param clientSecret client secret
-     * @return query
-     */
-    public AuthCheckPhoneQuery checkPhone(UserActor actor, String phone, String clientSecret) {
-        return new AuthCheckPhoneQuery(getClient(), actor, phone, clientSecret);
-    }
-
-    /**
      * Registers a new user by phone number.
      *
      * @param firstName    first name
      * @param lastName     last name
+     * @param birthday     birth day
      * @param clientId     client id
      * @param clientSecret client secret
      * @param phone        phone number
      * @return query
      */
-    public AuthSignupQuery signup(String firstName, String lastName, int clientId, String clientSecret, String phone) {
-        return new AuthSignupQuery(getClient(), firstName, lastName, clientId, clientSecret, phone);
-    }
-
-    /**
-     * Registers a new user by phone number.
-     *
-     * @param actor        vk actor
-     * @param firstName    first name
-     * @param lastName     last name
-     * @param clientId     client id
-     * @param clientSecret client secret
-     * @param phone        phone number
-     * @return query
-     */
-    public AuthSignupQuery signup(UserActor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
-        return new AuthSignupQuery(getClient(), actor, firstName, lastName, clientId, clientSecret, phone);
+    public AuthSignupQuery signup(String firstName, String lastName, String birthday, int clientId, String clientSecret, String phone) {
+        return new AuthSignupQuery(getClient(), firstName, lastName, birthday, clientId, clientSecret, phone);
     }
 
     /**
@@ -88,20 +61,6 @@ public class Auth extends AbstractAction {
     }
 
     /**
-     * Completes a user's registration (begun with the auth.signup method) using an authorization code.
-     *
-     * @param actor        vk actor
-     * @param clientId     client id
-     * @param clientSecret client secret
-     * @param phone        phone number
-     * @param code         confirmation code
-     * @return query
-     */
-    public AuthConfirmQuery confirm(UserActor actor, int clientId, String clientSecret, String phone, String code) {
-        return new AuthConfirmQuery(getClient(), actor, clientId, clientSecret, phone, code);
-    }
-
-    /**
      * Allows to restore account access using a code received via SMS.
      *
      * @param phone phone number
@@ -109,16 +68,5 @@ public class Auth extends AbstractAction {
      */
     public AuthRestoreQuery restore(String phone, String lastName) {
         return new AuthRestoreQuery(getClient(), lastName, phone);
-    }
-
-    /**
-     * Allows to restore account access using a code received via SMS.
-     *
-     * @param actor vk actor
-     * @param phone phone number
-     * @return query
-     */
-    public AuthRestoreQuery restore(UserActor actor, String lastName, String phone) {
-        return new AuthRestoreQuery(getClient(), actor, lastName, phone);
     }
 }
