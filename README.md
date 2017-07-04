@@ -367,18 +367,25 @@ GetServerUrlResponse getServerUrlResponse = vkClient.streaming().getServerUrl(ac
 StreamingActor actor = new StreamingActor(getServerUrlResponse.getEndpoint(), getServerUrlResponse.getKey());
 ```
 
-### Change rules
+### Add rule
 ```java
 //Create rule
 String tag = "1";
 String value = "ok";
 
-StreamingResponse addRuleResponse = streamingClient.rules().add(actor, tag, value).execute();
+StreamingResponse response = streamingClient.rules().add(actor, tag, value).execute();
+```
 
+### Get rules
+```java
 //Get rules
-StreamingGetRulesResponse gerRulesResponse = streamingClient.rules().get(actor).execute();
+StreamingGetRulesResponse response = streamingClient.rules().get(actor).execute();
+```
 
+### Delete rule
+```java
 //Delete rule
+String tag = "1";
 streamingClient.rules().delete(actor, tag).execute();
 ```
 
@@ -395,4 +402,4 @@ streamingClient.stream().get(actor, new StreamingEventHandler() {
 ```
 
 ## 13. Usage Example
-As an SDK usage example we have releazed the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
+As an SDK usage example we have released the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
