@@ -32,6 +32,7 @@ import com.vk.api.sdk.actions.Secure;
 import com.vk.api.sdk.actions.Stats;
 import com.vk.api.sdk.actions.Status;
 import com.vk.api.sdk.actions.Storage;
+import com.vk.api.sdk.actions.Streaming;
 import com.vk.api.sdk.actions.Upload;
 import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.actions.Videos;
@@ -213,6 +214,10 @@ public class VkApiClient {
 
     public Storage storage() {
         return new Storage(this);
+    }
+
+    public Streaming streaming() {
+        return new Streaming(this);
     }
 
     public Users users() {
