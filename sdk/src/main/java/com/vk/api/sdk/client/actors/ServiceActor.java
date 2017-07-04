@@ -13,6 +13,11 @@ public class ServiceActor implements Actor {
 
     private String accessToken;
 
+    public ServiceActor(Integer appId, String accessToken) {
+        this.accessToken = accessToken;
+        this.appId = appId;
+    }
+
     public ServiceActor(Integer appId, String clientSecret, String accessToken) {
         this.accessToken = accessToken;
         this.appId = appId;

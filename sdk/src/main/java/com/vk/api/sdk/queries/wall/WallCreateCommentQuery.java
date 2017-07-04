@@ -51,7 +51,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallCreateCommentQuery fromGroup(Boolean value) {
+    public WallCreateCommentQuery fromGroup(Integer value) {
         return unsafeParam("from_group", value);
     }
 

@@ -2,7 +2,6 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.auth.responses.SignupResponse;
 
 import java.util.Arrays;
@@ -12,26 +11,6 @@ import java.util.List;
  * Query for Auth.signup method
  */
 public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, SignupResponse> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client       VK API client
-     * @param actor        actor with access token
-     * @param firstName    value of "first name" parameter.
-     * @param lastName     value of "last name" parameter.
-     * @param clientId     value of "client id" parameter.
-     * @param clientSecret value of "client secret" parameter.
-     * @param phone        value of "phone" parameter.
-     */
-    public AuthSignupQuery(VkApiClient client, UserActor actor, String firstName, String lastName, int clientId, String clientSecret, String phone) {
-        super(client, "auth.signup", SignupResponse.class);
-        accessToken(actor.getAccessToken());
-        firstName(firstName);
-        lastName(lastName);
-        clientId(clientId);
-        clientSecret(clientSecret);
-        phone(phone);
-    }
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
@@ -43,10 +22,11 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
      * @param clientSecret value of "client secret" parameter.
      * @param phone        value of "phone" parameter.
      */
-    public AuthSignupQuery(VkApiClient client, String firstName, String lastName, int clientId, String clientSecret, String phone) {
+    public AuthSignupQuery(VkApiClient client, String firstName, String lastName, String birthday, int clientId, String clientSecret, String phone) {
         super(client, "auth.signup", SignupResponse.class);
         firstName(firstName);
         lastName(lastName);
+        birthday(birthday);
         clientId(clientId);
         clientSecret(clientSecret);
         phone(phone);
@@ -70,6 +50,16 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
      */
     protected AuthSignupQuery lastName(String value) {
         return unsafeParam("last_name", value);
+    }
+
+    /**
+     * User's birthday.
+     *
+     * @param value value of "last name" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected AuthSignupQuery birthday(String value) {
+        return unsafeParam("birthday", value);
     }
 
     /**
@@ -161,6 +151,6 @@ public class AuthSignupQuery extends AbstractQueryBuilder<AuthSignupQuery, Signu
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("first_name", "phone", "client_secret", "last_name", "client_id");
+        return Arrays.asList("first_name", "phone", "client_secret", "last_name", "birthday", "client_id");
     }
 }

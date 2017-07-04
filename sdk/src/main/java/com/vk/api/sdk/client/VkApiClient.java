@@ -32,6 +32,7 @@ import com.vk.api.sdk.actions.Secure;
 import com.vk.api.sdk.actions.Stats;
 import com.vk.api.sdk.actions.Status;
 import com.vk.api.sdk.actions.Storage;
+import com.vk.api.sdk.actions.Streaming;
 import com.vk.api.sdk.actions.Upload;
 import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.actions.Videos;
@@ -41,7 +42,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
 
-    private static final String API_VERSION = "5.65";
+    private static final String API_VERSION = "5.67";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
     private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
@@ -95,7 +96,7 @@ public class VkApiClient {
         return oauthEndpoint;
     }
 
-    String getVersion() {
+    public String getVersion() {
         return API_VERSION;
     }
 
@@ -213,6 +214,10 @@ public class VkApiClient {
 
     public Storage storage() {
         return new Storage(this);
+    }
+
+    public Streaming streaming() {
+        return new Streaming(this);
     }
 
     public Users users() {
