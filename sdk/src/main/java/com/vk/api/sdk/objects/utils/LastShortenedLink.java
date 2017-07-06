@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * LastShortenedLinks object
+ * LastShortenedLink object
  */
-public class LastShortenedLinks {
+public class LastShortenedLink {
     /**
      * Creation time in Unixtime
      */
@@ -72,7 +72,7 @@ public class LastShortenedLinks {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LastShortenedLinks that = (LastShortenedLinks) o;
+        LastShortenedLink that = (LastShortenedLink) o;
         return Objects.equals(timestamp, that.timestamp) &&
                 Objects.equals(url, that.url) &&
                 Objects.equals(shortUrl, that.shortUrl) &&
@@ -88,7 +88,7 @@ public class LastShortenedLinks {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("LastShortenedLinks{");
+        final StringBuilder sb = new StringBuilder("LastShortenedLink{");
         sb.append("timestamp=").append(timestamp);
         sb.append(", url='").append(url).append('\'');
         sb.append(", shortUrl='").append(shortUrl).append('\'');

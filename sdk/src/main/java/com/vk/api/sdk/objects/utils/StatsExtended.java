@@ -28,16 +28,16 @@ public class StatsExtended {
     private List<StatsSexAge> sexAge;
 
     /**
-     * Object StatsCountries
+     * Object StatsCountry
      */
     @SerializedName("countries")
-    private List<StatsCountries> countries;
+    private List<StatsCountry> countries;
 
     /**
-     * Object StatsCities
+     * Object StatsCity
      */
     @SerializedName("cities")
-    private List<StatsCities> cities;
+    private List<StatsCity> cities;
 
     public Integer getTimestamp() {
         return timestamp;
@@ -51,11 +51,11 @@ public class StatsExtended {
         return sexAge;
     }
 
-    public List<StatsCountries> getCountries() {
+    public List<StatsCountry> getCountries() {
         return countries;
     }
 
-    public List<StatsCities> getCities() {
+    public List<StatsCity> getCities() {
         return cities;
     }
 
