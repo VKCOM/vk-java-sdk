@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.messages.AttachmentsHistory;
+import com.vk.api.sdk.objects.messages.HistoryAttachment;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class GetHistoryAttachmentsResponse {
     @SerializedName("items")
-    private List<AttachmentsHistory> items;
+    private List<HistoryAttachment> items;
 
     /**
      * Value for pagination
@@ -19,7 +19,7 @@ public class GetHistoryAttachmentsResponse {
     @SerializedName("next_from")
     private String nextFrom;
 
-    public List<AttachmentsHistory> getItems() {
+    public List<HistoryAttachment> getItems() {
         return items;
     }
 

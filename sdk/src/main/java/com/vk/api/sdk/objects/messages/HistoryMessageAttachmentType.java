@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Attachments type
  */
-public enum AttachmentsHistoryType {
+public enum HistoryMessageAttachmentType {
     @SerializedName("photo")
     PHOTO("photo"),
 
@@ -32,7 +32,7 @@ public enum AttachmentsHistoryType {
 
     private final String value;
 
-    AttachmentsHistoryType(String value) {
+    HistoryMessageAttachmentType(String value) {
         this.value = value;
     }
 
