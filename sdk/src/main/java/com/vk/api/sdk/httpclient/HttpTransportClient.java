@@ -40,7 +40,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.5";
+    private static final String USER_AGENT = "Java VK SDK/0.5.6";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
