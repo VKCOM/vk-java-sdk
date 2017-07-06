@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * MutualFriends object
+ * MutualFriend object
  */
-public class MutualFriends {
+public class MutualFriend {
 
     @SerializedName("id")
     private Integer id;
@@ -35,7 +35,7 @@ public class MutualFriends {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MutualFriends that = (MutualFriends) o;
+        MutualFriend that = (MutualFriend) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(commonFriends, that.commonFriends) &&
                 Objects.equals(commonCount, that.commonCount);
@@ -48,7 +48,7 @@ public class MutualFriends {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("MutualFriends{");
+        final StringBuilder sb = new StringBuilder("MutualFriend{");
         sb.append("id=").append(id);
         sb.append(", commonFriends=").append(commonFriends);
         sb.append(", commonCount=").append(commonCount);
