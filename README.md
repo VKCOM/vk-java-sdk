@@ -12,12 +12,12 @@ This library has been created using the VK API JSON Schema. It can be found [her
 ## 2. Dependencies
 
 VK Java SDK uses:
-* [Apache Http Client](https://hc.apache.org) version 4.5.2
-* [SLF4J](http://www.slf4j.org/) version 1.7.22
-* [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) version 3.5
+* [Apache Http Client](https://hc.apache.org) version 4.5.3
+* [SLF4J](http://www.slf4j.org/) version 1.7.25
+* [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) version 3.6
 * [Apache Commons Collections](https://commons.apache.org/proper/commons-collections/) version 4.1
 * [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.5
-* [Google Gson](https://github.com/google/gson) version  2.8.9
+* [Google Gson](https://github.com/google/gson) version  2.8.1
 
 ## 3. Latest release
 
@@ -61,7 +61,7 @@ Maven:
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-jdk14</artifactId>
-        <version>1.7.22</version>
+        <version>1.7.25</version>
     </dependency>
 </dependencies>
 ```
@@ -69,7 +69,7 @@ Maven:
 Gradle:
 ```
 dependencies {
-    compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.22'
+    compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.25'
 }
 ```
 
@@ -95,19 +95,19 @@ Maven:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.7</version>
+      <version>2.8.2</version>
     </dependency>
     
     <!-- Log4j API and Core implementation required for binding -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.7</version>
+      <version>2.8.2</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.7</version>
+      <version>2.8.2</version>
     </dependency>
 </dependencies>
 ```
@@ -116,11 +116,11 @@ Gradle:
 ```
 dependencies {
     //Binding for Log4J -->
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2'
     
     //Log4j API and Core implementation required for binding
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
 }
 ```
 
