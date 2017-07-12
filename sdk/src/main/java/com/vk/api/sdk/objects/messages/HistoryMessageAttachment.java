@@ -10,14 +10,14 @@ import com.vk.api.sdk.objects.video.Video;
 import java.util.Objects;
 
 /**
- * Attachment object
+ * HistoryMessageAttachment object
  */
-public class Attachment {
+public class HistoryMessageAttachment {
     /**
      * Attachments type
      */
     @SerializedName("type")
-    private AttachmentsHistoryType type;
+    private HistoryMessageAttachmentType type;
 
     @SerializedName("photo")
     private Photo photo;
@@ -43,7 +43,7 @@ public class Attachment {
     @SerializedName("share")
     private Link share;
 
-    public AttachmentsHistoryType getType() {
+    public HistoryMessageAttachmentType getType() {
         return type;
     }
 
@@ -83,7 +83,7 @@ public class Attachment {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Attachment that = (Attachment) o;
+        HistoryMessageAttachment that = (HistoryMessageAttachment) o;
         return type == that.type &&
                 Objects.equals(photo, that.photo) &&
                 Objects.equals(video, that.video) &&
@@ -102,7 +102,7 @@ public class Attachment {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Attachment{");
+        final StringBuilder sb = new StringBuilder("HistoryMessageAttachment{");
         sb.append("type=").append(type);
         sb.append(", photo=").append(photo);
         sb.append(", video=").append(video);

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils.responces;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.utils.LastShortenedLinks;
+import com.vk.api.sdk.objects.utils.LastShortenedLink;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,13 +18,13 @@ public class GetLastShortenedLinksResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<LastShortenedLinks> items;
+    private List<LastShortenedLink> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<LastShortenedLinks> getItems() {
+    public List<LastShortenedLink> getItems() {
         return items;
     }
 

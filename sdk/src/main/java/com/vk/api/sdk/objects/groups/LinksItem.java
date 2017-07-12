@@ -1,6 +1,7 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class LinksItem {
      * Information whether the link title can be edited
      */
     @SerializedName("edit_title")
-    private Integer editTitle;
+    private BoolInt editTitle;
 
     /**
      * Link title
@@ -58,8 +59,8 @@ public class LinksItem {
         return url;
     }
 
-    public Integer getEditTitle() {
-        return editTitle;
+    public boolean isEditTitle() {
+        return editTitle == BoolInt.YES;
     }
 
     public String getName() {

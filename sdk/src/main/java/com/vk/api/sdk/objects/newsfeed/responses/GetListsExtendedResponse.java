@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.newsfeed.NewsfeedListExtended;
+import com.vk.api.sdk.objects.newsfeed.NewsfeedListFull;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,13 +17,13 @@ public class GetListsExtendedResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<NewsfeedListExtended> items;
+    private List<NewsfeedListFull> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<NewsfeedListExtended> getItems() {
+    public List<NewsfeedListFull> getItems() {
         return items;
     }
 

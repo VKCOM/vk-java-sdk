@@ -40,7 +40,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.5";
+    private static final String USER_AGENT = "Java VK SDK/0.5.6";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
@@ -115,9 +115,10 @@ public class HttpTransportClient implements TransportClient {
 
                 try (InputStream content = response.getEntity().getContent()) {
                     String result = IOUtils.toString(content, ENCODING);
-                    Map<String, String> headers = getHeaders(response.getAllHeaders());
-                    logRequest(request, response, headers, result, resultTime);
-                    return new ClientResponse(response.getStatusLine().getStatusCode(), result, headers);
+                    Map<String, String> responseHeaders = getHeaders(response.getAllHeaders());
+                    Map<String, String> requestHeaders = getHeaders(request.getAllHeaders());
+                    logRequest(request, requestHeaders, response, responseHeaders, result, resultTime);
+                    return new ClientResponse(response.getStatusLine().getStatusCode(), result, responseHeaders);
                 } finally {
                     SUPERVISOR.removeRequest(request);
                 }
@@ -132,25 +133,22 @@ public class HttpTransportClient implements TransportClient {
     }
 
     private void logRequest(HttpRequestBase request) throws IOException {
-        logRequest(request, null, null, null, null);
+        logRequest(request, null, null, null, null, null);
     }
 
-    private void logRequest(HttpRequestBase request, HttpResponse response, Map<String, String> headers, String body, Long time) throws IOException {
+    private void logRequest(HttpRequestBase request, Map<String, String> requestHeaders, HttpResponse response, Map<String, String> responseHeaders, String body, Long time) throws IOException {
         if (LOG.isDebugEnabled()) {
-            Header contentType = request.getFirstHeader(CONTENT_TYPE_HEADER);
             String payload = "-";
-            if (contentType != null && contentType.getValue().equalsIgnoreCase(FORM_CONTENT_TYPE)) {
-                if (request instanceof HttpPost) {
-                    HttpPost postRequest = (HttpPost) request;
-                    if (postRequest.getEntity() != null) {
-                        payload = IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
-                    }
-
+            if (request instanceof HttpPost) {
+                HttpPost postRequest = (HttpPost) request;
+                if (postRequest.getEntity() != null) {
+                    payload = IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
                 }
             }
 
             StringBuilder builder = new StringBuilder("\n")
                     .append("Request:\n")
+                    .append("\t").append("Headers: ").append(requestHeaders != null ? responseHeaders : "-").append("\n")
                     .append("\t").append("Method: ").append(request.getMethod()).append("\n")
                     .append("\t").append("URI: ").append(request.getURI()).append("\n")
                     .append("\t").append("Payload: ").append(payload).append("\n")
@@ -159,7 +157,7 @@ public class HttpTransportClient implements TransportClient {
             if (response != null) {
                 builder.append("Response:\n")
                         .append("\t").append("Status: ").append(response.getStatusLine().toString()).append("\n")
-                        .append("\t").append("Headers: ").append(headers != null ? headers : "-").append("\n")
+                        .append("\t").append("Headers: ").append(responseHeaders != null ? responseHeaders : "-").append("\n")
                         .append("\t").append("Body: ").append(body != null ? body : "-").append("\n");
             }
 
@@ -201,7 +199,7 @@ public class HttpTransportClient implements TransportClient {
         HttpPost request = new HttpPost(url);
         request.setHeader(CONTENT_TYPE_HEADER, contentType);
         if (body != null) {
-            request.setEntity(new StringEntity(body));
+            request.setEntity(new StringEntity(body, "UTF-8"));
         }
 
         return call(request);

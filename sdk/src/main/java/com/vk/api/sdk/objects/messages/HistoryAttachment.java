@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * AttachmentsHistory object
+ * HistoryAttachment object
  */
-public class AttachmentsHistory {
+public class HistoryAttachment {
     @SerializedName("message_id")
     private Integer messageId;
 
     @SerializedName("attachment")
-    private Attachment attachment;
+    private HistoryMessageAttachment attachment;
 
     public Integer getMessageId() {
         return messageId;
     }
 
-    public Attachment getAttachment() {
+    public HistoryMessageAttachment getAttachment() {
         return attachment;
     }
 
@@ -26,7 +26,7 @@ public class AttachmentsHistory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AttachmentsHistory that = (AttachmentsHistory) o;
+        HistoryAttachment that = (HistoryAttachment) o;
         return Objects.equals(messageId, that.messageId) &&
                 Objects.equals(attachment, that.attachment);
     }
@@ -38,7 +38,7 @@ public class AttachmentsHistory {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("AttachmentsHistory{");
+        final StringBuilder sb = new StringBuilder("HistoryAttachment{");
         sb.append("messageId=").append(messageId);
         sb.append(", attachment=").append(attachment);
         sb.append('}');

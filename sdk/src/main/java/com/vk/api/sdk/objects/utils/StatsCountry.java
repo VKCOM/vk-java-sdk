@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * StatsCountries object
+ * StatsCountry object
  */
-public class StatsCountries {
+public class StatsCountry {
     /**
      * Country ID
      */
@@ -32,7 +32,7 @@ public class StatsCountries {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StatsCountries countries = (StatsCountries) o;
+        StatsCountry countries = (StatsCountry) o;
         return Objects.equals(countryId, countries.countryId) &&
                 Objects.equals(views, countries.views);
     }
@@ -44,7 +44,7 @@ public class StatsCountries {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("StatsCountries{");
+        final StringBuilder sb = new StringBuilder("StatsCountry{");
         sb.append("countryId=").append(countryId);
         sb.append(", views=").append(views);
         sb.append('}');
