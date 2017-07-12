@@ -29,7 +29,7 @@ To add a dependency on VK Java SDK using Maven, use the following:
 <dependency>
   <groupId>com.vk.api</groupId>
   <artifactId>sdk</artifactId>
-  <version>LATEST_VERSION'</version>
+  <version>LATEST_VERSION</version>
 </dependency>
 ```
 
