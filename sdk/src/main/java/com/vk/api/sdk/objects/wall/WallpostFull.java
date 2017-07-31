@@ -115,15 +115,26 @@ public class WallpostFull extends Wallpost {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("WallpostFull{");
-        sb.append("copyHistory=").append(copyHistory);
-        sb.append(", canEdit=").append(canEdit);
-        sb.append(", createdBy=").append(createdBy);
+        sb.append("attachments=").append(getAttachments());
         sb.append(", canDelete=").append(canDelete);
+        sb.append(", canEdit=").append(canEdit);
         sb.append(", canPin=").append(canPin);
-        sb.append(", isPinned=").append(isPinned);
         sb.append(", comments=").append(comments);
+        sb.append(", copyHistory=").append(copyHistory);
+        sb.append(", createdBy=").append(createdBy);
+        sb.append(", date=").append(getDate());
+        sb.append(", fromId=").append(getFromId());
+        sb.append(", geo=").append(getGeo());
+        sb.append(", id=").append(getId());
+        sb.append(", isPinned=").append(isPinned);
         sb.append(", likes=").append(likes);
+        sb.append(", ownerId=").append(getOwnerId());
+        sb.append(", postSource=").append(getPostSource());
+        sb.append(", postType=").append(getPostType());
         sb.append(", reposts=").append(reposts);
+        sb.append(", signerId=").append(getSignerId());
+        sb.append(", text='").append(getText()).append('\'');
+        sb.append(", views=").append(getViews());
         sb.append('}');
         return sb.toString();
     }

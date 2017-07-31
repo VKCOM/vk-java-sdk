@@ -103,13 +103,18 @@ public class User extends UserMin {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
-        sb.append("sex=").append(sex);
-        sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", photo50='").append(photo50).append("'");
-        sb.append(", photo100='").append(photo100).append("'");
+        sb.append("deactivated='").append(getDeactivated()).append('\'');
+        sb.append(", firstName='").append(getFirstName()).append('\'');
+        sb.append(", hidden=").append(getHidden());
+        sb.append(", id=").append(getId());
+        sb.append(", lastName='").append(getLastName()).append('\'');
         sb.append(", online=").append(online);
-        sb.append(", onlineMobile=").append(onlineMobile);
         sb.append(", onlineApp=").append(onlineApp);
+        sb.append(", onlineMobile=").append(onlineMobile);
+        sb.append(", photo100='").append(photo100).append('\'');
+        sb.append(", photo50='").append(photo50).append('\'');
+        sb.append(", screenName='").append(screenName).append('\'');
+        sb.append(", sex=").append(sex);
         sb.append('}');
         return sb.toString();
     }

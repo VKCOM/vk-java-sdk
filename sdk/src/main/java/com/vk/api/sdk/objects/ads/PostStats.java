@@ -37,6 +37,14 @@ public class PostStats extends WallpostStat {
     public String toString() {
         final StringBuilder sb = new StringBuilder("PostStats{");
         sb.append("adId=").append(adId);
+        sb.append(", hide=").append(getHide());
+        sb.append(", joinGroup=").append(getJoinGroup());
+        sb.append(", links=").append(getLinks());
+        sb.append(", reachSubscribers=").append(getReachSubscribers());
+        sb.append(", reachTotal=").append(getReachTotal());
+        sb.append(", report=").append(getReport());
+        sb.append(", toGroup=").append(getToGroup());
+        sb.append(", unsubscribe=").append(getUnsubscribe());
         sb.append('}');
         return sb.toString();
     }

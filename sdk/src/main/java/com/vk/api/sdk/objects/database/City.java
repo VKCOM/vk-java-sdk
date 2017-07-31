@@ -59,9 +59,11 @@ public class City extends BaseObject {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("City{");
-        sb.append("area='").append(area).append("'");
-        sb.append(", region='").append(region).append("'");
+        sb.append("area='").append(area).append('\'');
+        sb.append(", id=").append(getId());
         sb.append(", important=").append(important);
+        sb.append(", region='").append(region).append('\'');
+        sb.append(", title='").append(getTitle()).append('\'');
         sb.append('}');
         return sb.toString();
     }

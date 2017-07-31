@@ -91,12 +91,18 @@ public class AudioFull extends Audio {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("AudioFull{");
-        sb.append("duration=").append(duration);
-        sb.append(", date=").append(date);
+        sb.append("accessKey='").append(getAccessKey()).append('\'');
         sb.append(", albumId=").append(albumId);
-        sb.append(", lyricsId=").append(lyricsId);
+        sb.append(", artist='").append(getArtist()).append('\'');
+        sb.append(", date=").append(date);
+        sb.append(", duration=").append(duration);
         sb.append(", genreId=").append(genreId);
+        sb.append(", id=").append(getId());
+        sb.append(", lyricsId=").append(lyricsId);
         sb.append(", noSearch=").append(noSearch);
+        sb.append(", ownerId=").append(getOwnerId());
+        sb.append(", title='").append(getTitle()).append('\'');
+        sb.append(", url='").append(getUrl()).append('\'');
         sb.append('}');
         return sb.toString();
     }
