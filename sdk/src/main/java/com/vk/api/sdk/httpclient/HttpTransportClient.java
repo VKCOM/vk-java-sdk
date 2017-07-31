@@ -148,7 +148,7 @@ public class HttpTransportClient implements TransportClient {
 
             StringBuilder builder = new StringBuilder("\n")
                     .append("Request:\n")
-                    .append("\t").append("Headers: ").append(requestHeaders != null ? responseHeaders : "-").append("\n")
+                    .append("\t").append("Headers: ").append(requestHeaders != null ? requestHeaders : "-").append("\n")
                     .append("\t").append("Method: ").append(request.getMethod()).append("\n")
                     .append("\t").append("URI: ").append(request.getURI()).append("\n")
                     .append("\t").append("Payload: ").append(payload).append("\n")
