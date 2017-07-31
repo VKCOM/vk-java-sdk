@@ -3,6 +3,7 @@ package com.vk.api.sdk.httpclient;
 import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -40,7 +41,9 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.6";
+    private static final String USER_AGENT = "Java VK SDK/0.5.7";
+
+    private static final String EMPTY_PAYLOAD = "-";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
@@ -136,19 +139,33 @@ public class HttpTransportClient implements TransportClient {
         logRequest(request, null, null, null, null, null);
     }
 
+    private String getRequestPayload(HttpRequestBase request) throws IOException {
+        if (!(request instanceof HttpPost)) {
+            return EMPTY_PAYLOAD;
+        }
+
+        HttpPost postRequest = (HttpPost) request;
+        if (postRequest.getEntity() == null) {
+            return EMPTY_PAYLOAD;
+        }
+
+        if (StringUtils.isNotEmpty(postRequest.getEntity().getContentType().getValue())) {
+            String contentType = postRequest.getEntity().getContentType().getValue();
+            if (contentType.contains("multipart/form-data")) {
+                return EMPTY_PAYLOAD;
+            }
+        }
+
+        return IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
+    }
+
     private void logRequest(HttpRequestBase request, Map<String, String> requestHeaders, HttpResponse response, Map<String, String> responseHeaders, String body, Long time) throws IOException {
         if (LOG.isDebugEnabled()) {
-            String payload = "-";
-            if (request instanceof HttpPost) {
-                HttpPost postRequest = (HttpPost) request;
-                if (postRequest.getEntity() != null) {
-                    payload = IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
-                }
-            }
+            String payload = getRequestPayload(request);
 
             StringBuilder builder = new StringBuilder("\n")
                     .append("Request:\n")
-                    .append("\t").append("Headers: ").append(requestHeaders != null ? responseHeaders : "-").append("\n")
+                    .append("\t").append("Headers: ").append(requestHeaders != null ? requestHeaders : "-").append("\n")
                     .append("\t").append("Method: ").append(request.getMethod()).append("\n")
                     .append("\t").append("URI: ").append(request.getURI()).append("\n")
                     .append("\t").append("Payload: ").append(payload).append("\n")

@@ -35,7 +35,19 @@ public class UserXtrType extends User {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("UserXtrType{");
-        sb.append("type='").append(type).append("'");
+        sb.append("deactivated='").append(getDeactivated()).append('\'');
+        sb.append(", firstName='").append(getFirstName()).append('\'');
+        sb.append(", hidden=").append(getHidden());
+        sb.append(", id=").append(getId());
+        sb.append(", lastName='").append(getLastName()).append('\'');
+        sb.append(", online=").append(isOnline());
+        sb.append(", onlineApp=").append(getOnlineApp());
+        sb.append(", onlineMobile=").append(isOnlineMobile());
+        sb.append(", photo100='").append(getPhoto100()).append('\'');
+        sb.append(", photo50='").append(getPhoto50()).append('\'');
+        sb.append(", screenName='").append(getScreenName()).append('\'');
+        sb.append(", sex=").append(getSex());
+        sb.append(", type=").append(type);
         sb.append('}');
         return sb.toString();
     }

@@ -131,5 +131,14 @@ public abstract class ApiRequest<T> {
         return response.getContent();
     }
 
+    public ClientResponse executeAsRaw() throws ClientException {
+        try {
+            return client.post(url, getBody());
+        } catch (IOException e) {
+            LOG.error("Problems with request: " + url, e);
+            throw new ClientException("I/O exception");
+        }
+    }
+
     protected abstract String getBody();
 }

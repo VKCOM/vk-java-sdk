@@ -77,10 +77,19 @@ public class MarketItemFull extends MarketItem {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("MarketItemFull{");
-        sb.append("photos=").append(photos);
+        sb.append("availability=").append(getAvailability());
         sb.append(", canComment=").append(canComment);
         sb.append(", canRepost=").append(canRepost);
+        sb.append(", category=").append(getCategory());
+        sb.append(", date=").append(getDate());
+        sb.append(", description='").append(getDescription()).append('\'');
+        sb.append(", id=").append(getId());
         sb.append(", likes=").append(likes);
+        sb.append(", ownerId=").append(getOwnerId());
+        sb.append(", photos=").append(photos);
+        sb.append(", price=").append(getPrice());
+        sb.append(", thumbPhoto='").append(getThumbPhoto()).append('\'');
+        sb.append(", title='").append(getTitle()).append('\'');
         sb.append(", viewsCount=").append(viewsCount);
         sb.append('}');
         return sb.toString();

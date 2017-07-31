@@ -45,8 +45,10 @@ public class NewsfeedListFull extends NewsfeedList {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("NewsfeedListFull{");
-        sb.append("noReposts=").append(noReposts);
+        sb.append("id=").append(getId());
+        sb.append(", noReposts=").append(noReposts);
         sb.append(", sourceIds=").append(sourceIds);
+        sb.append(", title='").append(getTitle()).append('\'');
         sb.append('}');
         return sb.toString();
     }
