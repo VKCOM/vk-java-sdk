@@ -10,17 +10,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Query for Docs.getWallUploadServer method
+ * Query for docs.getMessagesUploadServer method
  */
-public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWallUploadServerQuery, GetUploadServerResponse> {
+public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsGetMessagesUploadServerQuery, GetUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public DocsGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
+    public DocsGetMessagesUploadServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -30,24 +30,33 @@ public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWa
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public DocsGetWallUploadServerQuery(VkApiClient client, GroupActor actor) {
-        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
+    public DocsGetMessagesUploadServerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(actor.getGroupId());
     }
 
     /**
-     * Community ID (if the document will be uploaded to the community).
+     * Set peer id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public DocsGetWallUploadServerQuery groupId(Integer value) {
-        return unsafeParam("group_id", value);
+    public DocsGetMessagesUploadServerQuery peerId(Integer value) {
+        return unsafeParam("peer_id", value);
+    }
+
+    /**
+     * Set document type
+     *
+     * @param value value of "type" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsGetMessagesUploadServerQuery type(DocsGetMessagesUploadServerType value) {
+        return unsafeParam("type", value);
     }
 
     @Override
-    protected DocsGetWallUploadServerQuery getThis() {
+    protected DocsGetMessagesUploadServerQuery getThis() {
         return this;
     }
 
