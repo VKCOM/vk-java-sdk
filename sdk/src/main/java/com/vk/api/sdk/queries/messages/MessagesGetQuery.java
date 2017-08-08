@@ -36,17 +36,6 @@ public class MessagesGetQuery extends AbstractQueryBuilder<MessagesGetQuery, Get
     }
 
     /**
-     * "true" - to return outgoing messages
-     * "false" - to return incoming messages (default)
-     *
-     * @param value value of "out" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MessagesGetQuery out(Boolean value) {
-        return unsafeParam("out", value);
-    }
-
-    /**
      * Offset needed to return a specific subset of messages.
      *
      * @param value value of "offset" parameter. Minimum is 0.
