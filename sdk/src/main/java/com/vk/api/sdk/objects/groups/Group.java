@@ -13,7 +13,7 @@ public class Group {
      * Community ID
      */
     @SerializedName("id")
-    private String id;
+    private Integer id;
 
     /**
      * Community name
@@ -81,7 +81,7 @@ public class Group {
     @SerializedName("photo_200")
     private String photo200;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -156,7 +156,7 @@ public class Group {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Group{");
-        sb.append("id='").append(id).append("'");
+        sb.append("id=").append(id);
         sb.append(", name='").append(name).append("'");
         sb.append(", deactivated='").append(deactivated).append("'");
         sb.append(", screenName='").append(screenName).append("'");
