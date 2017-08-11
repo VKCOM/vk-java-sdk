@@ -5,11 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.queries.groups.GroupsAddCallbackServerQuery;
 import com.vk.api.sdk.queries.groups.GroupsAddLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsApproveRequestQuery;
 import com.vk.api.sdk.queries.groups.GroupsBanUserQuery;
 import com.vk.api.sdk.queries.groups.GroupsCreateQuery;
+import com.vk.api.sdk.queries.groups.GroupsDeleteCallbackServerQuery;
 import com.vk.api.sdk.queries.groups.GroupsDeleteLinkQuery;
+import com.vk.api.sdk.queries.groups.GroupsEditCallbackServerQuery;
 import com.vk.api.sdk.queries.groups.GroupsEditLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsEditManagerQuery;
 import com.vk.api.sdk.queries.groups.GroupsEditPlaceQuery;
@@ -17,7 +20,7 @@ import com.vk.api.sdk.queries.groups.GroupsEditQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetBannedQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetByIdQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackConfirmationCodeQuery;
-import com.vk.api.sdk.queries.groups.GroupsGetCallbackServerSettingsQuery;
+import com.vk.api.sdk.queries.groups.GroupsGetCallbackServersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCatalogInfoQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCatalogQuery;
@@ -43,8 +46,6 @@ import com.vk.api.sdk.queries.groups.GroupsLeaveQuery;
 import com.vk.api.sdk.queries.groups.GroupsRemoveUserQuery;
 import com.vk.api.sdk.queries.groups.GroupsReorderLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsSearchQuery;
-import com.vk.api.sdk.queries.groups.GroupsSetCallbackServerQuery;
-import com.vk.api.sdk.queries.groups.GroupsSetCallbackServerSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsSetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsUnbanUserQuery;
 import com.vk.api.sdk.queries.users.UserField;
@@ -507,72 +508,86 @@ public class Groups extends AbstractAction {
     }
 
     /**
-     * Returns Callback API server settings for the community.
+     * Returns Callback API notifications settings.
      */
-    public GroupsGetCallbackServerSettingsQuery getCallbackServerSettings(UserActor actor, int groupId) {
-        return new GroupsGetCallbackServerSettingsQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Returns Callback API server settings for the community.
-     */
-    public GroupsGetCallbackServerSettingsQuery getCallbackServerSettings(GroupActor actor) {
-        return new GroupsGetCallbackServerSettingsQuery(getClient(), actor);
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor, int groupId, int serverId) {
+        return new GroupsGetCallbackSettingsQuery(getClient(), actor, groupId, serverId);
     }
 
     /**
      * Returns Callback API notifications settings.
      */
-    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor, int groupId) {
-        return new GroupsGetCallbackSettingsQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Returns Callback API notifications settings.
-     */
-    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor) {
-        return new GroupsGetCallbackSettingsQuery(getClient(), actor);
-    }
-
-    /**
-     * Allow to set Callback API server URL for the community.
-     */
-    public GroupsSetCallbackServerQuery setCallbackServer(UserActor actor, int groupId) {
-        return new GroupsSetCallbackServerQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Allow to set Callback API server URL for the community.
-     */
-    public GroupsSetCallbackServerQuery setCallbackServer(GroupActor actor) {
-        return new GroupsSetCallbackServerQuery(getClient(), actor);
-    }
-
-    /**
-     * Allow to set Callback API server settings.
-     */
-    public GroupsSetCallbackServerSettingsQuery setCallbackServerSettings(UserActor actor, int groupId) {
-        return new GroupsSetCallbackServerSettingsQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Allow to set Callback API server settings.
-     */
-    public GroupsSetCallbackServerSettingsQuery setCallbackServerSettings(GroupActor actor) {
-        return new GroupsSetCallbackServerSettingsQuery(getClient(), actor);
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor, int serverId) {
+        return new GroupsGetCallbackSettingsQuery(getClient(), actor, serverId);
     }
 
     /**
      * Allow to set notifications settings for Callback API.
      */
-    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor, int groupId) {
-        return new GroupsSetCallbackSettingsQuery(getClient(), actor, groupId);
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor, int groupId, int serverId) {
+        return new GroupsSetCallbackSettingsQuery(getClient(), actor, groupId, serverId);
     }
 
     /**
      * Allow to set notifications settings for Callback API.
      */
-    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor) {
-        return new GroupsSetCallbackSettingsQuery(getClient(), actor);
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor, int serverId) {
+        return new GroupsSetCallbackSettingsQuery(getClient(), actor, serverId);
+    }
+
+    /**
+     * Receives a list of Callback API servers from the community.
+     */
+    public GroupsGetCallbackServersQuery getCallbackServersQuery(UserActor actor, int groupId) {
+        return new GroupsGetCallbackServersQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Receives a list of Callback API servers from the community.
+     */
+    public GroupsGetCallbackServersQuery getCallbackServersQuery(GroupActor actor) {
+        return new GroupsGetCallbackServersQuery(getClient(), actor);
+    }
+
+    /**
+     * Adds Callback API server to the community.
+     */
+    public GroupsAddCallbackServerQuery addCallbackServer(UserActor actor, int groupId, String url, String title) {
+        return new GroupsAddCallbackServerQuery(getClient(), actor, groupId, url, title);
+    }
+
+    /**
+     * Adds Callback API server to the community.
+     */
+    public GroupsAddCallbackServerQuery addCallbackServer(GroupActor actor, String url, String title) {
+        return new GroupsAddCallbackServerQuery(getClient(), actor, url, title);
+    }
+
+    /**
+     * Edits Callback API server in the community.
+     */
+    public GroupsEditCallbackServerQuery editCallbackServer(UserActor actor, int groupId, int serverId, String url, String title) {
+        return new GroupsEditCallbackServerQuery(getClient(), actor, groupId, serverId, url, title);
+    }
+
+    /**
+     * Edits Callback API server in the community.
+     */
+    public GroupsEditCallbackServerQuery editCallbackServer(GroupActor actor, int serverId, String url, String title) {
+        return new GroupsEditCallbackServerQuery(getClient(), actor, serverId, url, title);
+    }
+
+    /**
+     * Deletes Callback API server from the community.
+     */
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(UserActor actor, int groupId, int serverId) {
+        return new GroupsDeleteCallbackServerQuery(getClient(), actor, groupId, serverId);
+    }
+
+    /**
+     * Deletes Callback API server from the community.
+     */
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor, int serverId) {
+        return new GroupsDeleteCallbackServerQuery(getClient(), actor, serverId);
     }
 }

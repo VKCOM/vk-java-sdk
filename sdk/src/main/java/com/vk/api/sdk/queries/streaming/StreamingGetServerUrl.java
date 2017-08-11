@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Query for Streaming.getServerUrl method
+ * Query for Streaming.getUrl method
  */
 public class StreamingGetServerUrl extends AbstractQueryBuilder<StreamingGetServerUrl, GetServerUrlResponse> {
     /**
@@ -18,7 +18,7 @@ public class StreamingGetServerUrl extends AbstractQueryBuilder<StreamingGetServ
      * @param client VK API client
      */
     public StreamingGetServerUrl(VkApiClient client, ServiceActor actor) {
-        super(client, "streaming.getServerUrl", GetServerUrlResponse.class);
+        super(client, "streaming.getUrl", GetServerUrlResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

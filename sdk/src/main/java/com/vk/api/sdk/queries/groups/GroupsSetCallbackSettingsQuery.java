@@ -20,10 +20,11 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId, int serverId) {
         super(client, "groups.setCallbackSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
+        serverId(serverId);
     }
 
     /**
@@ -32,10 +33,11 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor) {
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int serverId) {
         super(client, "groups.setCallbackSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
+        serverId(serverId);
     }
 
     /**
@@ -46,6 +48,16 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      */
     protected GroupsSetCallbackSettingsQuery groupId(int value) {
         return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Server ID.
+     *
+     * @param value value of "server id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected GroupsSetCallbackSettingsQuery serverId(int value) {
+        return unsafeParam("server_id", value);
     }
 
     /**
@@ -245,6 +257,6 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "access_token");
+        return Arrays.asList("group_id", "server_id", "access_token");
     }
 }
