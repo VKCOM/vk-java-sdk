@@ -38,6 +38,7 @@ import com.vk.api.sdk.queries.messages.MessagesRestoreQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchDialogsQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchQuery;
 import com.vk.api.sdk.queries.messages.MessagesSendQuery;
+import com.vk.api.sdk.queries.messages.MessagesSendWithUserIdsQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
 import com.vk.api.sdk.queries.users.UserField;
@@ -168,6 +169,20 @@ public class Messages extends AbstractAction {
      */
     public MessagesSendQuery send(GroupActor actor) {
         return new MessagesSendQuery(getClient(), actor);
+    }
+
+    /**
+     * Sends a message.
+     */
+    public MessagesSendWithUserIdsQuery send(GroupActor actor, List<Integer> userIds) {
+        return new MessagesSendWithUserIdsQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * Sends a message.
+     */
+    public MessagesSendWithUserIdsQuery send(GroupActor actor, Integer... userIds) {
+        return new MessagesSendWithUserIdsQuery(getClient(), actor, userIds);
     }
 
     /**
