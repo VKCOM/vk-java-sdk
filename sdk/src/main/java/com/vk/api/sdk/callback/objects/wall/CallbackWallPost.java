@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.objects;
+package com.vk.api.sdk.callback.objects.wall;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.wall.Wallpost;

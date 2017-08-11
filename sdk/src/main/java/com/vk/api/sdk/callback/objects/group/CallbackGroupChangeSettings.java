@@ -1,47 +1,48 @@
-package com.vk.api.sdk.callback.objects;
+package com.vk.api.sdk.callback.objects.group;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Objects;
 
 /**
- * Created by Anton Tsivarev on 12.09.16.
+ * Created by Anton Tsivarev on 11.08.17.
  */
-public class CallbackGroupJoin {
+public class CallbackGroupChangeSettings {
 
     @SerializedName("user_id")
     private Integer userId;
 
-    @SerializedName("join_type")
-    private CallbackGroupJoinType joinType;
+    @SerializedName("self")
+    private BoolInt self;
 
     public Integer getUserId() {
         return userId;
     }
 
-    public CallbackGroupJoinType getJoinType() {
-        return joinType;
+    public BoolInt getSelf() {
+        return self;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackGroupJoin that = (CallbackGroupJoin) o;
+        CallbackGroupChangeSettings that = (CallbackGroupChangeSettings) o;
         return Objects.equals(userId, that.userId) &&
-                joinType == that.joinType;
+                self == that.self;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, joinType);
+        return Objects.hash(userId, self);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CallbackGroupJoin{");
+        final StringBuilder sb = new StringBuilder("CallbackGroupLeave{");
         sb.append("userId=").append(userId);
-        sb.append(", joinType=").append(joinType);
+        sb.append(", self=").append(self);
         sb.append('}');
         return sb.toString();
     }

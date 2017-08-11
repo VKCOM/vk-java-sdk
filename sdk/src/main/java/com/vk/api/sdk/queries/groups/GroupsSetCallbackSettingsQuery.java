@@ -71,6 +71,16 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Reply messages notifications.
+     *
+     * @param value value of "message new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageReply(Boolean value) {
+        return unsafeParam("message_reply", value);
+    }
+
+    /**
      * Allow messages notifications.
      *
      * @param value value of "message new" parameter.
@@ -138,6 +148,26 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      */
     public GroupsSetCallbackSettingsQuery wallReplyEdit(Boolean value) {
         return unsafeParam("wall_reply_edit", value);
+    }
+
+    /**
+     * Wall replies deleted notifications.
+     *
+     * @param value value of "wall reply delete" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery wallReplyDelete(Boolean value) {
+        return unsafeParam("wall_reply_delete", value);
+    }
+
+    /**
+     * Wall replies restored notifications.
+     *
+     * @param value value of "wall reply restore" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery wallReplyRestore(Boolean value) {
+        return unsafeParam("wall_reply_restore", value);
     }
 
     /**
@@ -211,6 +241,36 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Photo comments edited notifications.
+     *
+     * @param value value of "photo comment edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery photoCommentEdit(Boolean value) {
+        return unsafeParam("photo_comment_edit", value);
+    }
+
+    /**
+     * Photo comments deleted notifications.
+     *
+     * @param value value of "photo comment delete" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery photoCommentDelete(Boolean value) {
+        return unsafeParam("photo_comment_delete", value);
+    }
+
+    /**
+     * Photo comments restored notifications.
+     *
+     * @param value value of "photo comment restore" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery photoCommentRestore(Boolean value) {
+        return unsafeParam("photo_comment_restore", value);
+    }
+
+    /**
      * New comment to video notifications.
      *
      * @param value value of "video comment new" parameter.
@@ -221,6 +281,36 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Video comments edited notifications.
+     *
+     * @param value value of "video comment edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery videoCommentEdit(Boolean value) {
+        return unsafeParam("video_comment_edit", value);
+    }
+
+    /**
+     * Video comments deleted notifications.
+     *
+     * @param value value of "video comment delete" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery videoCommentDelete(Boolean value) {
+        return unsafeParam("video_comment_delete", value);
+    }
+
+    /**
+     * Video comments restored notifications.
+     *
+     * @param value value of "video comment restore" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery videoCommentRestore(Boolean value) {
+        return unsafeParam("video_comment_restore", value);
+    }
+
+    /**
      * New comment to market item notifications.
      *
      * @param value value of "market comment new" parameter.
@@ -228,6 +318,46 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      */
     public GroupsSetCallbackSettingsQuery marketCommentNew(Boolean value) {
         return unsafeParam("market_comment_new", value);
+    }
+
+    /**
+     * Market comments edited notifications.
+     *
+     * @param value value of "market comment edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery marketCommentEdit(Boolean value) {
+        return unsafeParam("market_comment_edit", value);
+    }
+
+    /**
+     * Market comments deleted notifications.
+     *
+     * @param value value of "market comment delete" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery marketCommentDelete(Boolean value) {
+        return unsafeParam("market_comment_delete", value);
+    }
+
+    /**
+     * Market comments restored notifications.
+     *
+     * @param value value of "market comment restore" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery marketCommentRestore(Boolean value) {
+        return unsafeParam("market_comment_restore", value);
+    }
+
+    /**
+     * New poll vote notifications.
+     *
+     * @param value value of "poll vote new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery pollVoteNew(Boolean value) {
+        return unsafeParam("poll_vote_new", value);
     }
 
     /**
@@ -249,6 +379,37 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     public GroupsSetCallbackSettingsQuery groupLeave(Boolean value) {
         return unsafeParam("group_leave", value);
     }
+
+    /**
+     * Group settings changed notifications.
+     *
+     * @param value value of "group change settings" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery groupChangeSettings(Boolean value) {
+        return unsafeParam("group_change_settings", value);
+    }
+
+    /**
+     * Group photo changed notifications.
+     *
+     * @param value value of "group change photo" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery groupChangePhoto(Boolean value) {
+        return unsafeParam("group_change_photo", value);
+    }
+
+    /**
+     * Group officers edited notifications.
+     *
+     * @param value value of "group officers edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery groupOfficersEdit(Boolean value) {
+        return unsafeParam("group_officers_edit", value);
+    }
+
 
     @Override
     protected GroupsSetCallbackSettingsQuery getThis() {

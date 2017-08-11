@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.objects;
+package com.vk.api.sdk.callback.objects.poll;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,59 +7,59 @@ import java.util.Objects;
 /**
  * Created by Anton Tsivarev on 12.09.16.
  */
-public class CallbackMarketCommentDelete {
+public class CallbackPollVoteNew {
 
     @SerializedName("owner_id")
     private Integer ownerId;
 
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("poll_id")
+    private Integer pollId;
+
+    @SerializedName("option_id")
+    private Integer optionId;
 
     @SerializedName("user_id")
     private Integer userId;
-
-    @SerializedName("item_id")
-    private Integer itemId;
 
     public Integer getOwnerId() {
         return ownerId;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getPollId() {
+        return pollId;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getOptionId() {
+        return optionId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackMarketCommentDelete that = (CallbackMarketCommentDelete) o;
+        CallbackPollVoteNew that = (CallbackPollVoteNew) o;
         return Objects.equals(ownerId, that.ownerId) &&
-                Objects.equals(id, that.id) &&
+                Objects.equals(pollId, that.pollId) &&
                 Objects.equals(userId, that.userId) &&
-                Objects.equals(itemId, that.itemId);
+                Objects.equals(optionId, that.optionId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerId, id, userId, itemId);
+        return Objects.hash(ownerId, pollId, userId, optionId);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CallbackMarketCommentDelete{");
+        final StringBuilder sb = new StringBuilder("CallbackPollVoteNew{");
         sb.append("ownerId=").append(ownerId);
-        sb.append(", id=").append(id);
+        sb.append(", pollId=").append(pollId);
         sb.append(", userId=").append(userId);
-        sb.append(", itemId=").append(itemId);
+        sb.append(", optionId=").append(optionId);
         sb.append('}');
         return sb.toString();
     }

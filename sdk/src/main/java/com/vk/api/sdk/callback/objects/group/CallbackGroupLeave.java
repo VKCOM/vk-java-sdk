@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.objects;
+package com.vk.api.sdk.callback.objects.group;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;

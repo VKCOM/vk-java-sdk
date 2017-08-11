@@ -3,22 +3,25 @@ package com.vk.api.sdk.callback;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.vk.api.sdk.callback.objects.CallbackBoardPostDelete;
-import com.vk.api.sdk.callback.objects.CallbackGroupJoin;
-import com.vk.api.sdk.callback.objects.CallbackGroupLeave;
-import com.vk.api.sdk.callback.objects.CallbackMarketComment;
-import com.vk.api.sdk.callback.objects.CallbackMarketCommentDelete;
-import com.vk.api.sdk.callback.objects.CallbackMessage;
-import com.vk.api.sdk.callback.objects.CallbackMessageAllow;
-import com.vk.api.sdk.callback.objects.CallbackMessageDeny;
-import com.vk.api.sdk.callback.objects.CallbackPhotoComment;
-import com.vk.api.sdk.callback.objects.CallbackPhotoCommentDelete;
-import com.vk.api.sdk.callback.objects.CallbackPollVoteNew;
-import com.vk.api.sdk.callback.objects.CallbackVideoComment;
-import com.vk.api.sdk.callback.objects.CallbackVideoCommentDelete;
-import com.vk.api.sdk.callback.objects.CallbackWallComment;
-import com.vk.api.sdk.callback.objects.CallbackWallCommentDelete;
-import com.vk.api.sdk.callback.objects.CallbackWallPost;
+import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
+import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
+import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
+import com.vk.api.sdk.callback.objects.group.CallbackGroupJoin;
+import com.vk.api.sdk.callback.objects.group.CallbackGroupLeave;
+import com.vk.api.sdk.callback.objects.group.CallbackGroupOfficersEdit;
+import com.vk.api.sdk.callback.objects.market.CallbackMarketComment;
+import com.vk.api.sdk.callback.objects.market.CallbackMarketCommentDelete;
+import com.vk.api.sdk.callback.objects.messages.CallbackMessage;
+import com.vk.api.sdk.callback.objects.messages.CallbackMessageAllow;
+import com.vk.api.sdk.callback.objects.messages.CallbackMessageDeny;
+import com.vk.api.sdk.callback.objects.photo.CallbackPhotoComment;
+import com.vk.api.sdk.callback.objects.photo.CallbackPhotoCommentDelete;
+import com.vk.api.sdk.callback.objects.poll.CallbackPollVoteNew;
+import com.vk.api.sdk.callback.objects.video.CallbackVideoComment;
+import com.vk.api.sdk.callback.objects.video.CallbackVideoCommentDelete;
+import com.vk.api.sdk.callback.objects.wall.CallbackWallComment;
+import com.vk.api.sdk.callback.objects.wall.CallbackWallCommentDelete;
+import com.vk.api.sdk.callback.objects.wall.CallbackWallPost;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.messages.Message;
@@ -69,6 +72,9 @@ public class CallbackApi {
     private static final String CALLBACK_EVENT_MARKET_COMMENT_DELETE = "market_comment_delete";
     private static final String CALLBACK_EVENT_GROUP_LEAVE = "group_leave";
     private static final String CALLBACK_EVENT_GROUP_JOIN = "group_join";
+    private static final String CALLBACK_EVENT_GROUP_CHANGE_SETTINGS = "group_change_settings";
+    private static final String CALLBACK_EVENT_GROUP_CHANGE_PHOTO = "group_change_photo";
+    private static final String CALLBACK_EVENT_GROUP_OFFICERS_EDIT = "group_officers_edit";
     private static final String CALLBACK_EVENT_POLL_VOTE_NEW = "poll_vote_new";
     private final static Map<String, Type> CALLBACK_TYPES;
 
@@ -143,6 +149,12 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
         }.getType());
         types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_CHANGE_SETTINGS, new TypeToken<CallbackMessage<CallbackGroupChangeSettings>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_CHANGE_PHOTO, new TypeToken<CallbackMessage<CallbackGroupChangePhoto>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_OFFICERS_EDIT, new TypeToken<CallbackMessage<CallbackGroupOfficersEdit>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
@@ -248,6 +260,15 @@ public class CallbackApi {
     }
 
     public void groupJoin(Integer groupId, CallbackGroupJoin message) {
+    }
+
+    public void groupChangeSettings(Integer groupId, CallbackGroupChangeSettings message) {
+    }
+
+    public void groupChangePhoto(Integer groupId, CallbackGroupChangePhoto message) {
+    }
+
+    public void groupOfficersEdit(Integer groupId, CallbackGroupOfficersEdit message) {
     }
 
     public void pollVoteNew(Integer groupId, CallbackPollVoteNew message) {
@@ -391,6 +412,18 @@ public class CallbackApi {
 
             case CALLBACK_EVENT_GROUP_JOIN:
                 groupJoin(message.getGroupId(), (CallbackGroupJoin) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_GROUP_CHANGE_SETTINGS:
+                groupChangeSettings(message.getGroupId(), (CallbackGroupChangeSettings) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_GROUP_CHANGE_PHOTO:
+                groupChangePhoto(message.getGroupId(), (CallbackGroupChangePhoto) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_GROUP_OFFICERS_EDIT:
+                groupOfficersEdit(message.getGroupId(), (CallbackGroupOfficersEdit) message.getObject());
                 break;
 
             case CALLBACK_EVENT_POLL_VOTE_NEW:

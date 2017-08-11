@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.objects;
+package com.vk.api.sdk.callback.objects.video;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Created by Anton Tsivarev on 10.09.16.
  */
-public class CallbackPhotoComment {
+public class CallbackVideoComment {
 
     /**
      * Comment ID
@@ -34,16 +34,16 @@ public class CallbackPhotoComment {
     private String text;
 
     /**
-     * Photo owner ID
+     * video owner ID
      */
-    @SerializedName("photo_owner_od")
-    private Integer photoOwnerId;
+    @SerializedName("video_owner_od")
+    private Integer videoOwnerId;
 
     /**
-     * Photo ID
+     * video ID
      */
-    @SerializedName("photo_id")
-    private Integer photoId;
+    @SerializedName("video_id")
+    private Integer videoId;
 
     public Integer getId() {
         return id;
@@ -61,41 +61,41 @@ public class CallbackPhotoComment {
         return text;
     }
 
-    public Integer getPhotoOwnerId() {
-        return photoOwnerId;
+    public Integer getVideoOwnerId() {
+        return videoOwnerId;
     }
 
-    public Integer getPhotoId() {
-        return photoId;
+    public Integer getVideoId() {
+        return videoId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackPhotoComment that = (CallbackPhotoComment) o;
+        CallbackVideoComment that = (CallbackVideoComment) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(fromId, that.fromId) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(text, that.text) &&
-                Objects.equals(photoOwnerId, that.photoOwnerId) &&
-                Objects.equals(photoId, that.photoId);
+                Objects.equals(videoOwnerId, that.videoOwnerId) &&
+                Objects.equals(videoId, that.videoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fromId, date, text, photoOwnerId, photoId);
+        return Objects.hash(id, fromId, date, text, videoOwnerId, videoId);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CallbackPhotoComment{");
+        final StringBuilder sb = new StringBuilder("CallbackVideoComment{");
         sb.append("id=").append(id);
         sb.append(", fromId=").append(fromId);
         sb.append(", date=").append(date);
         sb.append(", text='").append(text).append('\'');
-        sb.append(", photoOwnerId=").append(photoOwnerId);
-        sb.append(", photoId=").append(photoId);
+        sb.append(", videoOwnerId=").append(videoOwnerId);
+        sb.append(", videoId=").append(videoId);
         sb.append('}');
         return sb.toString();
     }
