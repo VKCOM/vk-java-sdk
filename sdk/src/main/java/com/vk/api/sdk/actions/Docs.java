@@ -8,6 +8,7 @@ import com.vk.api.sdk.queries.docs.DocsAddQuery;
 import com.vk.api.sdk.queries.docs.DocsDeleteQuery;
 import com.vk.api.sdk.queries.docs.DocsEditQuery;
 import com.vk.api.sdk.queries.docs.DocsGetByIdQuery;
+import com.vk.api.sdk.queries.docs.DocsGetMessagesUploadServerQuery;
 import com.vk.api.sdk.queries.docs.DocsGetQuery;
 import com.vk.api.sdk.queries.docs.DocsGetTypesQuery;
 import com.vk.api.sdk.queries.docs.DocsGetUploadServerQuery;
@@ -71,6 +72,20 @@ public class Docs extends AbstractAction {
      */
     public DocsGetWallUploadServerQuery getWallUploadServer(GroupActor actor) {
         return new DocsGetWallUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for document upload onto messages.
+     */
+    public DocsGetMessagesUploadServerQuery getMessagesUploadServer(UserActor actor) {
+        return new DocsGetMessagesUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the server address for document upload onto messages.
+     */
+    public DocsGetMessagesUploadServerQuery getMessagesUploadServer(GroupActor actor) {
+        return new DocsGetMessagesUploadServerQuery(getClient(), actor);
     }
 
     /**

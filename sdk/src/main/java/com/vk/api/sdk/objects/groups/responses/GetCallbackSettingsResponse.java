@@ -112,6 +112,12 @@ public class GetCallbackSettingsResponse {
     private BoolInt marketCommentNew;
 
     /**
+     * Whether notifications about new vote in a public poll
+     */
+    @SerializedName("poll_vote_new")
+    private BoolInt pollVoteNew;
+
+    /**
      * Whether notifications about anyone joined the community enabled
      */
     @SerializedName("group_join")
@@ -122,6 +128,24 @@ public class GetCallbackSettingsResponse {
      */
     @SerializedName("group_leave")
     private BoolInt groupLeave;
+
+    /**
+     * Whether notifications about changed group settings
+     */
+    @SerializedName("group_change_settings")
+    private BoolInt groupChangeSettings;
+
+    /**
+     * Whether notifications about changed group photo
+     */
+    @SerializedName("group_change_photo")
+    private BoolInt groupChangePhoto;
+
+    /**
+     * Whether notifications about changed group officers
+     */
+    @SerializedName("group_officers_edit")
+    private BoolInt groupOfficersEdit;
 
     public boolean isMessageNew() {
         return messageNew == BoolInt.YES;
@@ -191,67 +215,87 @@ public class GetCallbackSettingsResponse {
         return marketCommentNew == BoolInt.YES;
     }
 
-    public boolean isGroupJoin() {
-        return groupJoin == BoolInt.YES;
-    }
-
     public boolean isGroupLeave() {
         return groupLeave == BoolInt.YES;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(messageNew, messageAllow, messageDeny, audioNew, photoNew, videoNew, groupLeave, boardPostEdit, photoCommentNew, wallReplyEdit, boardPostNew, videoCommentNew, wallPostNew, boardPostRestore, wallReplyNew, boardPostDelete, marketCommentNew, groupJoin);
+    public boolean isGroupJoin() {
+        return pollVoteNew == BoolInt.YES;
+    }
+
+    public boolean isGroupChangeSettings() {
+        return groupChangeSettings == BoolInt.YES;
+    }
+
+    public boolean isGroupChangePhoto() {
+        return groupChangePhoto == BoolInt.YES;
+    }
+
+    public boolean isGroupOfficersEdit() {
+        return groupOfficersEdit == BoolInt.YES;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetCallbackSettingsResponse getCallbackSettingsResponse = (GetCallbackSettingsResponse) o;
-        return Objects.equals(messageNew, getCallbackSettingsResponse.messageNew) &&
-                Objects.equals(messageAllow, getCallbackSettingsResponse.messageAllow) &&
-                Objects.equals(messageDeny, getCallbackSettingsResponse.messageDeny) &&
-                Objects.equals(photoNew, getCallbackSettingsResponse.photoNew) &&
-                Objects.equals(audioNew, getCallbackSettingsResponse.audioNew) &&
-                Objects.equals(videoNew, getCallbackSettingsResponse.videoNew) &&
-                Objects.equals(wallRepost, getCallbackSettingsResponse.wallRepost) &&
-                Objects.equals(wallReplyNew, getCallbackSettingsResponse.wallReplyNew) &&
-                Objects.equals(wallReplyEdit, getCallbackSettingsResponse.wallReplyEdit) &&
-                Objects.equals(wallPostNew, getCallbackSettingsResponse.wallPostNew) &&
-                Objects.equals(boardPostNew, getCallbackSettingsResponse.boardPostNew) &&
-                Objects.equals(boardPostEdit, getCallbackSettingsResponse.boardPostEdit) &&
-                Objects.equals(boardPostRestore, getCallbackSettingsResponse.boardPostRestore) &&
-                Objects.equals(boardPostDelete, getCallbackSettingsResponse.boardPostDelete) &&
-                Objects.equals(photoCommentNew, getCallbackSettingsResponse.photoCommentNew) &&
-                Objects.equals(videoCommentNew, getCallbackSettingsResponse.videoCommentNew) &&
-                Objects.equals(marketCommentNew, getCallbackSettingsResponse.marketCommentNew) &&
-                Objects.equals(groupJoin, getCallbackSettingsResponse.groupJoin) &&
-                Objects.equals(groupLeave, getCallbackSettingsResponse.groupLeave);
+        GetCallbackSettingsResponse that = (GetCallbackSettingsResponse) o;
+        return messageNew == that.messageNew &&
+                messageAllow == that.messageAllow &&
+                messageDeny == that.messageDeny &&
+                photoNew == that.photoNew &&
+                audioNew == that.audioNew &&
+                videoNew == that.videoNew &&
+                wallRepost == that.wallRepost &&
+                wallReplyNew == that.wallReplyNew &&
+                wallReplyEdit == that.wallReplyEdit &&
+                wallPostNew == that.wallPostNew &&
+                boardPostNew == that.boardPostNew &&
+                boardPostEdit == that.boardPostEdit &&
+                boardPostRestore == that.boardPostRestore &&
+                boardPostDelete == that.boardPostDelete &&
+                photoCommentNew == that.photoCommentNew &&
+                videoCommentNew == that.videoCommentNew &&
+                marketCommentNew == that.marketCommentNew &&
+                pollVoteNew == that.pollVoteNew &&
+                groupJoin == that.groupJoin &&
+                groupLeave == that.groupLeave &&
+                groupChangeSettings == that.groupChangeSettings &&
+                groupChangePhoto == that.groupChangePhoto &&
+                groupOfficersEdit == that.groupOfficersEdit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(messageNew, messageAllow, messageDeny, photoNew, audioNew, videoNew, wallRepost, wallReplyNew, wallReplyEdit, wallPostNew, boardPostNew, boardPostEdit, boardPostRestore, boardPostDelete, photoCommentNew, videoCommentNew, marketCommentNew, pollVoteNew, groupJoin, groupLeave, groupChangeSettings, groupChangePhoto, groupOfficersEdit);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("GetCallbackSettingsResponse{");
-        sb.append("messageNew=").append(messageNew);
-        sb.append(", messageAllow=").append(messageAllow);
-        sb.append(", messageDeny=").append(messageDeny);
-        sb.append(", photoNew=").append(photoNew);
-        sb.append(", audioNew=").append(audioNew);
-        sb.append(", videoNew=").append(videoNew);
-        sb.append(", wallRepost=").append(wallRepost);
-        sb.append(", wallReplyNew=").append(wallReplyNew);
-        sb.append(", wallReplyEdit=").append(wallReplyEdit);
-        sb.append(", wallPostNew=").append(wallPostNew);
-        sb.append(", boardPostNew=").append(boardPostNew);
-        sb.append(", boardPostEdit=").append(boardPostEdit);
-        sb.append(", boardPostRestore=").append(boardPostRestore);
+        sb.append("audioNew=").append(audioNew);
         sb.append(", boardPostDelete=").append(boardPostDelete);
-        sb.append(", photoCommentNew=").append(photoCommentNew);
-        sb.append(", videoCommentNew=").append(videoCommentNew);
-        sb.append(", marketCommentNew=").append(marketCommentNew);
+        sb.append(", boardPostEdit=").append(boardPostEdit);
+        sb.append(", boardPostNew=").append(boardPostNew);
+        sb.append(", boardPostRestore=").append(boardPostRestore);
+        sb.append(", groupChangePhoto=").append(groupChangePhoto);
+        sb.append(", groupChangeSettings=").append(groupChangeSettings);
         sb.append(", groupJoin=").append(groupJoin);
         sb.append(", groupLeave=").append(groupLeave);
+        sb.append(", groupOfficersEdit=").append(groupOfficersEdit);
+        sb.append(", marketCommentNew=").append(marketCommentNew);
+        sb.append(", messageAllow=").append(messageAllow);
+        sb.append(", messageDeny=").append(messageDeny);
+        sb.append(", messageNew=").append(messageNew);
+        sb.append(", photoCommentNew=").append(photoCommentNew);
+        sb.append(", photoNew=").append(photoNew);
+        sb.append(", pollVoteNew=").append(pollVoteNew);
+        sb.append(", videoCommentNew=").append(videoCommentNew);
+        sb.append(", videoNew=").append(videoNew);
+        sb.append(", wallPostNew=").append(wallPostNew);
+        sb.append(", wallReplyEdit=").append(wallReplyEdit);
+        sb.append(", wallReplyNew=").append(wallReplyNew);
+        sb.append(", wallRepost=").append(wallRepost);
         sb.append('}');
         return sb.toString();
     }

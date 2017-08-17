@@ -4,15 +4,16 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.groups.responses.GetCallbackSettingsResponse;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackServersResponse;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Query for Groups.getCallbackSettings method
+ * Created by Anton Tsivarev on 11.08.17.
  */
-public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsGetCallbackSettingsQuery, GetCallbackSettingsResponse> {
+public class GroupsGetCallbackServersQuery extends AbstractQueryBuilder<GroupsGetCallbackServersQuery, GetCallbackServersResponse> {
+
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,11 +21,10 @@ public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsG
      * @param actor   actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId, int serverId) {
-        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+    public GroupsGetCallbackServersQuery(VkApiClient client, UserActor actor, int groupId) {
+        super(client, "groups.getCallbackServers", GetCallbackServersResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
-        serverId(serverId);
     }
 
     /**
@@ -33,11 +33,10 @@ public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsG
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public GroupsGetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int serverId) {
-        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+    public GroupsGetCallbackServersQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.getCallbackServers", GetCallbackServersResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
-        serverId(serverId);
     }
 
     /**
@@ -46,27 +45,17 @@ public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsG
      * @param value value of "group id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetCallbackSettingsQuery groupId(int value) {
+    protected GroupsGetCallbackServersQuery groupId(int value) {
         return unsafeParam("group_id", value);
     }
 
-    /**
-     * Server ID.
-     *
-     * @param value value of "server id" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected GroupsGetCallbackSettingsQuery serverId(int value) {
-        return unsafeParam("server_id", value);
-    }
-
     @Override
-    protected GroupsGetCallbackSettingsQuery getThis() {
+    protected GroupsGetCallbackServersQuery getThis() {
         return this;
     }
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "server_id", "access_token");
+        return Arrays.asList("group_id", "access_token");
     }
 }
