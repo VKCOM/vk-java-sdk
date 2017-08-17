@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.groups.responses.GetCallbackSettingsResponse;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackServersResponse;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Anton Tsivarev on 11.08.17.
  */
-public class GroupsGetCallbackServersQuery extends AbstractQueryBuilder<GroupsGetCallbackServersQuery, GetCallbackSettingsResponse> {
+public class GroupsGetCallbackServersQuery extends AbstractQueryBuilder<GroupsGetCallbackServersQuery, GetCallbackServersResponse> {
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
@@ -22,7 +22,7 @@ public class GroupsGetCallbackServersQuery extends AbstractQueryBuilder<GroupsGe
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public GroupsGetCallbackServersQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.getCallbackServers", GetCallbackSettingsResponse.class);
+        super(client, "groups.getCallbackServers", GetCallbackServersResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
@@ -34,7 +34,7 @@ public class GroupsGetCallbackServersQuery extends AbstractQueryBuilder<GroupsGe
      * @param actor  actor with access token
      */
     public GroupsGetCallbackServersQuery(VkApiClient client, GroupActor actor) {
-        super(client, "groups.getCallbackServers", GetCallbackSettingsResponse.class);
+        super(client, "groups.getCallbackServers", GetCallbackServersResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
     }

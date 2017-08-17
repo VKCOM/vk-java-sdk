@@ -538,14 +538,14 @@ public class Groups extends AbstractAction {
     /**
      * Receives a list of Callback API servers from the community.
      */
-    public GroupsGetCallbackServersQuery getCallbackServersQuery(UserActor actor, int groupId) {
+    public GroupsGetCallbackServersQuery getCallbackServers(UserActor actor, int groupId) {
         return new GroupsGetCallbackServersQuery(getClient(), actor, groupId);
     }
 
     /**
      * Receives a list of Callback API servers from the community.
      */
-    public GroupsGetCallbackServersQuery getCallbackServersQuery(GroupActor actor) {
+    public GroupsGetCallbackServersQuery getCallbackServers(GroupActor actor) {
         return new GroupsGetCallbackServersQuery(getClient(), actor);
     }
 
