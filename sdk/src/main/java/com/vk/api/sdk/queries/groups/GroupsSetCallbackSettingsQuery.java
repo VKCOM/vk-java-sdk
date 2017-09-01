@@ -7,17 +7,24 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
- * Query for Groups.setCallbackSettings method
+ * Query for {@link com.vk.api.sdk.actions.Groups#setCallbackSettings} method
  */
 public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsSetCallbackSettingsQuery, OkResponse> {
     /**
+     * {@code HasSet} of {@code CallbackFlag}s representing all events for which Callback should be sent.
+     */
+    private Set<CallbackFlag> flags = new HashSet<>();
+
+    /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId, int serverId) {
@@ -31,13 +38,44 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param flags flags which should be added (set to {@code true})
+     */
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId, int serverId, CallbackFlag... flags) {
+        super(client, "groups.setCallbackSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        serverId(serverId);
+        setFlags(flags);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
      */
     public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int serverId) {
         super(client, "groups.setCallbackSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
         serverId(serverId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param flags flags which should be added (set to {@code true})
+     */
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int serverId, CallbackFlag... flags) {
+        super(client, "groups.setCallbackSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+        serverId(serverId);
+        setFlags(flags);
     }
 
     /**
@@ -66,8 +104,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery messageNew(Boolean value) {
-        return unsafeParam("message_new", value);
+        return setFlag(CallbackFlag.MESSAGE_NEW, value);
     }
 
     /**
@@ -76,8 +115,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery messageReply(Boolean value) {
-        return unsafeParam("message_reply", value);
+        return setFlag(CallbackFlag.MESSAGE_REPLY, value);
     }
 
     /**
@@ -86,8 +126,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery messageAllow(Boolean value) {
-        return unsafeParam("message_allow", value);
+        return setFlag(CallbackFlag.MESSAGE_ALLOW, value);
     }
 
     /**
@@ -96,8 +137,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery messageDeny(Boolean value) {
-        return unsafeParam("message_deny", value);
+        return setFlag(CallbackFlag.MESSAGE_DENY, value);
     }
 
     /**
@@ -106,8 +148,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "photo new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery photoNew(Boolean value) {
-        return unsafeParam("photo_new", value);
+        return setFlag(CallbackFlag.PHOTO_NEW, value);
     }
 
     /**
@@ -116,8 +159,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "audio new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery audioNew(Boolean value) {
-        return unsafeParam("audio_new", value);
+        return setFlag(CallbackFlag.AUDIO_NEW, value);
     }
 
     /**
@@ -126,8 +170,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "video new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery videoNew(Boolean value) {
-        return unsafeParam("video_new", value);
+        return setFlag(CallbackFlag.VIDEO_NEW, value);
     }
 
     /**
@@ -136,8 +181,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall reply new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallReplyNew(Boolean value) {
-        return unsafeParam("wall_reply_new", value);
+        return setFlag(CallbackFlag.WALL_REPLY_NEW, value);
     }
 
     /**
@@ -146,8 +192,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall reply edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallReplyEdit(Boolean value) {
-        return unsafeParam("wall_reply_edit", value);
+        return setFlag(CallbackFlag.WALL_REPLY_EDIT, value);
     }
 
     /**
@@ -156,8 +203,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall reply delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallReplyDelete(Boolean value) {
-        return unsafeParam("wall_reply_delete", value);
+        return setFlag(CallbackFlag.WALL_REPLY_DELETE, value);
     }
 
     /**
@@ -166,8 +214,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall reply restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallReplyRestore(Boolean value) {
-        return unsafeParam("wall_reply_restore", value);
+        return setFlag(CallbackFlag.WALL_REPLY_RESTORE, value);
     }
 
     /**
@@ -176,8 +225,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallPostNew(Boolean value) {
-        return unsafeParam("wall_post_new", value);
+        return setFlag(CallbackFlag.WALL_POST_NEW, value);
     }
 
     /**
@@ -186,8 +236,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "wall post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery wallRepost(Boolean value) {
-        return unsafeParam("wall_repost", value);
+        return setFlag(CallbackFlag.WALL_REPOST, value);
     }
 
     /**
@@ -196,8 +247,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "board post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery boardPostNew(Boolean value) {
-        return unsafeParam("board_post_new", value);
+        return setFlag(CallbackFlag.BOARD_POST_NEW, value);
     }
 
     /**
@@ -206,8 +258,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "board post edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery boardPostEdit(Boolean value) {
-        return unsafeParam("board_post_edit", value);
+        return setFlag(CallbackFlag.BOARD_POST_EDIT, value);
     }
 
     /**
@@ -216,8 +269,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "board post restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery boardPostRestore(Boolean value) {
-        return unsafeParam("board_post_restore", value);
+        return setFlag(CallbackFlag.BOARD_POST_RESTORE, value);
     }
 
     /**
@@ -226,8 +280,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "board post delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery boardPostDelete(Boolean value) {
-        return unsafeParam("board_post_delete", value);
+        return setFlag(CallbackFlag.BOARD_POST_DELETE, value);
     }
 
     /**
@@ -236,8 +291,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "photo comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery photoCommentNew(Boolean value) {
-        return unsafeParam("photo_comment_new", value);
+        return setFlag(CallbackFlag.PHOTO_COMMENT_NEW, value);
     }
 
     /**
@@ -246,8 +302,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "photo comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery photoCommentEdit(Boolean value) {
-        return unsafeParam("photo_comment_edit", value);
+        return setFlag(CallbackFlag.PHOTO_COMMENT_EDIT, value);
     }
 
     /**
@@ -256,8 +313,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "photo comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery photoCommentDelete(Boolean value) {
-        return unsafeParam("photo_comment_delete", value);
+        return setFlag(CallbackFlag.PHOTO_COMMENT_DELETE, value);
     }
 
     /**
@@ -266,8 +324,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "photo comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery photoCommentRestore(Boolean value) {
-        return unsafeParam("photo_comment_restore", value);
+        return setFlag(CallbackFlag.PHOTO_COMMENT_RESTORE, value);
     }
 
     /**
@@ -276,8 +335,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "video comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery videoCommentNew(Boolean value) {
-        return unsafeParam("video_comment_new", value);
+        return setFlag(CallbackFlag.VIDEO_COMMENT_NEW, value);
     }
 
     /**
@@ -286,8 +346,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "video comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery videoCommentEdit(Boolean value) {
-        return unsafeParam("video_comment_edit", value);
+        return setFlag(CallbackFlag.VIDEO_COMMENT_EDIT, value);
     }
 
     /**
@@ -296,8 +357,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "video comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery videoCommentDelete(Boolean value) {
-        return unsafeParam("video_comment_delete", value);
+        return setFlag(CallbackFlag.VIDEO_COMMENT_DELETE, value);
     }
 
     /**
@@ -306,8 +368,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "video comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery videoCommentRestore(Boolean value) {
-        return unsafeParam("video_comment_restore", value);
+        return setFlag(CallbackFlag.VIDEO_COMMENT_RESTORE, value);
     }
 
     /**
@@ -316,8 +379,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "market comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery marketCommentNew(Boolean value) {
-        return unsafeParam("market_comment_new", value);
+        return setFlag(CallbackFlag.MARKET_COMMENT_NEW, value);
     }
 
     /**
@@ -326,8 +390,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "market comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery marketCommentEdit(Boolean value) {
-        return unsafeParam("market_comment_edit", value);
+        return setFlag(CallbackFlag.MARKET_COMMENT_EDIT, value);
     }
 
     /**
@@ -336,8 +401,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "market comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery marketCommentDelete(Boolean value) {
-        return unsafeParam("market_comment_delete", value);
+        return setFlag(CallbackFlag.MARKET_COMMENT_DELETE, value);
     }
 
     /**
@@ -346,8 +412,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "market comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery marketCommentRestore(Boolean value) {
-        return unsafeParam("market_comment_restore", value);
+        return setFlag(CallbackFlag.MARKET_COMMENT_RESTORE, value);
     }
 
     /**
@@ -356,8 +423,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "poll vote new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery pollVoteNew(Boolean value) {
-        return unsafeParam("poll_vote_new", value);
+        return setFlag(CallbackFlag.POLL_VOTE_NEW, value);
     }
 
     /**
@@ -366,8 +434,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group join" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery groupJoin(Boolean value) {
-        return unsafeParam("group_join", value);
+        return setFlag(CallbackFlag.GROUP_JOIN, value);
     }
 
     /**
@@ -376,8 +445,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group leave" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery groupLeave(Boolean value) {
-        return unsafeParam("group_leave", value);
+        return setFlag(CallbackFlag.GROUP_LEAVE, value);
     }
 
     /**
@@ -386,8 +456,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group change settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery groupChangeSettings(Boolean value) {
-        return unsafeParam("group_change_settings", value);
+        return setFlag(CallbackFlag.GROUP_CHANGE_SETTINGS, value);
     }
 
     /**
@@ -396,8 +467,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group change photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery groupChangePhoto(Boolean value) {
-        return unsafeParam("group_change_photo", value);
+        return setFlag(CallbackFlag.GROUP_CHANGE_PHOTO, value);
     }
 
     /**
@@ -406,8 +478,132 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group officers edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @Deprecated
     public GroupsSetCallbackSettingsQuery groupOfficersEdit(Boolean value) {
-        return unsafeParam("group_officers_edit", value);
+        return setFlag(CallbackFlag.GROUP_OFFICERS_EDIT, value);
+    }
+
+    /**
+     * Adds all given {@code CallbackFlag}s to the Set of this {@code GroupsSetCallbackSettingsQuery}`s flags
+     *
+     * @param flags flags which should be added (set to {@code true})
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery addFlags(CallbackFlag... flags) {
+        this.flags.addAll(Arrays.asList(flags));
+        return updateUnsafeParamsWithFlags();
+    }
+
+    /**
+     * Removes all given {@code CallbackFlag}s from Set of this {@code GroupsSetCallbackSettingsQuery}`s flags
+     *
+     * @param flags flags which should be removed (set to {@code false})
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery removeFlags(CallbackFlag... flags) {
+        this.flags.removeAll(Arrays.asList(flags));
+        return updateUnsafeParamsWithFlags();
+    }
+
+    /**
+     * Sets the given {@code CallbackFlag} to the {@code Boolean} value given
+     *
+     * @param flag flag to be updated
+     * @param value value to which update the flag
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery setFlag(CallbackFlag flag, Boolean value) {
+        if (value) flags.add(flag);
+        else flags.remove(flag);
+        return unsafeParam(flag.unsafeKey, value);
+    }
+
+    /**
+     * Clears the Set of {@code CallBackFlag}s and adds all flags given
+     *
+     * @param flags flags which should be added (set to {@code true})
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery setFlags(CallbackFlag... flags) {
+        this.flags = new HashSet<>(Arrays.asList(flags));
+        return updateUnsafeParamsWithFlags();
+    }
+
+    /**
+     * Clears the Set of {@code CallBackFlag}s which is similar to setting all flags to {@code false}
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery clearFlags() {
+        this.flags.clear();
+        return updateUnsafeParamsWithFlags();
+    }
+
+    /**
+     * Gets the Set of all flags set to {@code true} for this {@code GroupsSetCallbackSettingsQuery}
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public Set<CallbackFlag> getFlags() {
+        return flags;
+    }
+
+    /**
+     * Updates unsafe params for all existing flags
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    private GroupsSetCallbackSettingsQuery updateUnsafeParamsWithFlags() {
+        for (CallbackFlag flag : CallbackFlag.values()) unsafeParam(flag.unsafeKey, flags.contains(flag));
+        return getThis();
+    }
+
+    enum CallbackFlag {
+        MESSAGE_NEW("message_new"),
+        MESSAGE_REPLY("message_reply"),
+        MESSAGE_ALLOW("message_allow"),
+        MESSAGE_DENY("message_deny"),
+        PHOTO_NEW("photo_new"),
+        AUDIO_NEW("audio_new"),
+        VIDEO_NEW("video_new"),
+        WALL_REPLY_NEW("wall_reply_new"),
+        WALL_REPLY_EDIT("wall_reply_edit"),
+        WALL_REPLY_DELETE("wall_reply_delete"),
+        WALL_REPLY_RESTORE("wall_reply_restore"),
+        WALL_POST_NEW("wall_post_new"),
+        WALL_REPOST("wall_repost"),
+        BOARD_POST_NEW("board_post_new"),
+        BOARD_POST_EDIT("board_post_edit"),
+        BOARD_POST_RESTORE("board_post_restore"),
+        BOARD_POST_DELETE("board_post_delete"),
+        PHOTO_COMMENT_NEW("photo_comment_new"),
+        PHOTO_COMMENT_EDIT("photo_comment_edit"),
+        PHOTO_COMMENT_DELETE("photo_comment_delete"),
+        PHOTO_COMMENT_RESTORE("photo_comment_restore"),
+        VIDEO_COMMENT_NEW("video_comment_new"),
+        VIDEO_COMMENT_EDIT("video_comment_edit"),
+        VIDEO_COMMENT_DELETE("video_comment_delete"),
+        VIDEO_COMMENT_RESTORE("video_comment_restore"),
+        MARKET_COMMENT_NEW("market_comment_new"),
+        MARKET_COMMENT_EDIT("market_comment_edit"),
+        MARKET_COMMENT_DELETE("market_comment_delete"),
+        MARKET_COMMENT_RESTORE("market_comment_restore"),
+        POLL_VOTE_NEW("poll_vote_new"),
+        GROUP_JOIN("group_join"),
+        GROUP_LEAVE("group_leave"),
+        GROUP_CHANGE_SETTINGS("group_change_settings"),
+        GROUP_CHANGE_PHOTO("group_change_photo"),
+        GROUP_OFFICERS_EDIT("group_officers_edit");
+
+        private String unsafeKey;
+
+        CallbackFlag(String unsafeKey) {
+            this.unsafeKey = unsafeKey;
+        }
+
+        public String getUnsafeKey() {
+            return unsafeKey;
+        }
     }
 
 
