@@ -198,8 +198,9 @@ See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/group-oa
 Proceeding each of previous authorization flows you can receive a "need_validation" error. Use the following code to handle the error:
 
 ```java
+UserAuthResponse authResponse;
 try {
-    UserAuthResponse authResponse = vk.oauth()
+    authResponse = vk.oauth()
         .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
         .execute();
 } catch (OAuthException e) {
