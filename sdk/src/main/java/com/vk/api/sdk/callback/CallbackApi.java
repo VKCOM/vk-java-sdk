@@ -146,9 +146,9 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_MARKET_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackMarketCommentDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
+        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
+        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
         }.getType());
         types.put(CALLBACK_EVENT_GROUP_CHANGE_SETTINGS, new TypeToken<CallbackMessage<CallbackGroupChangeSettings>>() {
         }.getType());
