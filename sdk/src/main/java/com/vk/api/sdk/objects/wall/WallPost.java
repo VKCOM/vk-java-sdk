@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Wallpost object
+ * WallPost object
  */
-public class Wallpost {
+public class WallPost {
     /**
      * Post ID
      */
@@ -118,23 +118,23 @@ public class Wallpost {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Wallpost wallpost = (Wallpost) o;
-        return Objects.equals(id, wallpost.id) &&
-                Objects.equals(fromId, wallpost.fromId) &&
-                Objects.equals(ownerId, wallpost.ownerId) &&
-                Objects.equals(date, wallpost.date) &&
-                Objects.equals(views, wallpost.views) &&
-                Objects.equals(postType, wallpost.postType) &&
-                Objects.equals(text, wallpost.text) &&
-                Objects.equals(signerId, wallpost.signerId) &&
-                Objects.equals(attachments, wallpost.attachments) &&
-                Objects.equals(geo, wallpost.geo) &&
-                Objects.equals(postSource, wallpost.postSource);
+        WallPost wallPost = (WallPost) o;
+        return Objects.equals(id, wallPost.id) &&
+                Objects.equals(fromId, wallPost.fromId) &&
+                Objects.equals(ownerId, wallPost.ownerId) &&
+                Objects.equals(date, wallPost.date) &&
+                Objects.equals(views, wallPost.views) &&
+                Objects.equals(postType, wallPost.postType) &&
+                Objects.equals(text, wallPost.text) &&
+                Objects.equals(signerId, wallPost.signerId) &&
+                Objects.equals(attachments, wallPost.attachments) &&
+                Objects.equals(geo, wallPost.geo) &&
+                Objects.equals(postSource, wallPost.postSource);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Wallpost{");
+        final StringBuilder sb = new StringBuilder("WallPost{");
         sb.append("id=").append(id);
         sb.append(", fromId=").append(fromId);
         sb.append(", ownerId=").append(ownerId);

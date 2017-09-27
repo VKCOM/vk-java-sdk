@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.wall.responses;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.User;
-import com.vk.api.sdk.objects.wall.WallpostFull;
+import com.vk.api.sdk.objects.wall.WallPostFull;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class GetRepostsResponse {
     @SerializedName("items")
-    private List<WallpostFull> items;
+    private List<WallPostFull> items;
 
     @SerializedName("profiles")
     private List<User> profiles;
@@ -21,7 +21,7 @@ public class GetRepostsResponse {
     @SerializedName("groups")
     private List<Group> groups;
 
-    public List<WallpostFull> getItems() {
+    public List<WallPostFull> getItems() {
         return items;
     }
 

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.wall.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.wall.WallpostFull;
+import com.vk.api.sdk.objects.wall.WallPostFull;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,13 +17,13 @@ public class SearchResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<WallpostFull> items;
+    private List<WallPostFull> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<WallpostFull> getItems() {
+    public List<WallPostFull> getItems() {
         return items;
     }
 
