@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.board.Topic;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
-import com.vk.api.sdk.objects.wall.Wallpost;
+import com.vk.api.sdk.objects.wall.WallPost;
 
 import java.util.Objects;
 
@@ -43,7 +43,7 @@ public class NotificationsComment {
     private Video video;
 
     @SerializedName("post")
-    private Wallpost post;
+    private WallPost post;
 
     @SerializedName("topic")
     private Topic topic;
@@ -72,7 +72,7 @@ public class NotificationsComment {
         return video;
     }
 
-    public Wallpost getPost() {
+    public WallPost getPost() {
         return post;
     }
 

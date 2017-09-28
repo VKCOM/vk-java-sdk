@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * WallpostFull object
+ * WallPostFull object
  */
-public class WallpostFull extends Wallpost {
+public class WallPostFull extends WallPost {
     @SerializedName("copy_history")
-    private List<Wallpost> copyHistory;
+    private List<WallPost> copyHistory;
 
     /**
      * Information whether current user can edit the post
@@ -54,7 +54,7 @@ public class WallpostFull extends Wallpost {
     @SerializedName("reposts")
     private RepostsInfo reposts;
 
-    public List<Wallpost> getCopyHistory() {
+    public List<WallPost> getCopyHistory() {
         return copyHistory;
     }
 
@@ -100,7 +100,7 @@ public class WallpostFull extends Wallpost {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        WallpostFull wallpostFull = (WallpostFull) o;
+        WallPostFull wallpostFull = (WallPostFull) o;
         return Objects.equals(copyHistory, wallpostFull.copyHistory) &&
                 Objects.equals(canEdit, wallpostFull.canEdit) &&
                 Objects.equals(createdBy, wallpostFull.createdBy) &&
@@ -114,7 +114,7 @@ public class WallpostFull extends Wallpost {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("WallpostFull{");
+        final StringBuilder sb = new StringBuilder("WallPostFull{");
         sb.append("attachments=").append(getAttachments());
         sb.append(", canDelete=").append(canDelete);
         sb.append(", canEdit=").append(canEdit);

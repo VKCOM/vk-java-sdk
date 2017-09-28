@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
@@ -41,12 +42,13 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.8";
+    private static final String USER_AGENT = "Java VK SDK/0.5.9";
 
     private static final String EMPTY_PAYLOAD = "-";
 
     private static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     private static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
+    private static final int DEFAULT_RETRY_INVALID_STATUS_COUNT = 3;
     private static final int FULL_CONNECTION_TIMEOUT_S = 60;
     private static final int CONNECTION_TIMEOUT_MS = 5_000;
     private static final int SOCKET_TIMEOUT_MS = FULL_CONNECTION_TIMEOUT_S * 1000;
@@ -56,13 +58,15 @@ public class HttpTransportClient implements TransportClient {
     private static HttpClient httpClient;
 
     private int retryAttemptsNetworkErrorCount;
+    private int retryAttemptsInvalidStatusCount;
 
     public HttpTransportClient() {
-        this(DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT);
+        this(DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT, DEFAULT_RETRY_INVALID_STATUS_COUNT);
     }
 
-    public HttpTransportClient(int retryAttemptsNetworkErrorCount) {
+    public HttpTransportClient(int retryAttemptsNetworkErrorCount, int retryAttemptsInvalidStatusCount) {
         this.retryAttemptsNetworkErrorCount = retryAttemptsNetworkErrorCount;
+        this.retryAttemptsInvalidStatusCount = retryAttemptsInvalidStatusCount;
 
         CookieStore cookieStore = new BasicCookieStore();
         RequestConfig requestConfig = RequestConfig.custom()
@@ -100,6 +104,22 @@ public class HttpTransportClient implements TransportClient {
         }
 
         return result;
+    }
+
+    private ClientResponse callWithStatusCheck(HttpRequestBase request) throws IOException {
+        ClientResponse response;
+        int attempts = 0;
+
+        do {
+            response = call(request);
+            attempts++;
+        } while (attempts < retryAttemptsInvalidStatusCount && isInvalidGatewayStatus(response.getStatusCode()));
+
+        return response;
+    }
+
+    private boolean isInvalidGatewayStatus(int status) {
+        return status == HttpStatus.SC_BAD_GATEWAY || status == HttpStatus.SC_GATEWAY_TIMEOUT;
     }
 
     private ClientResponse call(HttpRequestBase request) throws IOException {
@@ -198,7 +218,7 @@ public class HttpTransportClient implements TransportClient {
     public ClientResponse get(String url, String contentType) throws IOException {
         HttpGet request = new HttpGet(url);
         request.setHeader(CONTENT_TYPE_HEADER, contentType);
-        return call(request);
+        return callWithStatusCheck(request);
     }
 
     @Override
@@ -219,7 +239,7 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body, "UTF-8"));
         }
 
-        return call(request);
+        return callWithStatusCheck(request);
     }
 
     @Override
@@ -231,7 +251,7 @@ public class HttpTransportClient implements TransportClient {
                 .addPart(fileName, fileBody).build();
 
         request.setEntity(entity);
-        return call(request);
+        return callWithStatusCheck(request);
     }
 
     @Override
@@ -252,6 +272,6 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body));
         }
 
-        return call(request);
+        return callWithStatusCheck(request);
     }
 }

@@ -21,12 +21,12 @@ import com.vk.api.sdk.callback.objects.video.CallbackVideoComment;
 import com.vk.api.sdk.callback.objects.video.CallbackVideoCommentDelete;
 import com.vk.api.sdk.callback.objects.wall.CallbackWallComment;
 import com.vk.api.sdk.callback.objects.wall.CallbackWallCommentDelete;
-import com.vk.api.sdk.callback.objects.wall.CallbackWallPost;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.wall.WallPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -114,9 +114,9 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_VIDEO_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackVideoCommentDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_WALL_POST_NEW, new TypeToken<CallbackMessage<CallbackWallPost>>() {
+        types.put(CALLBACK_EVENT_WALL_POST_NEW, new TypeToken<CallbackMessage<WallPost>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_WALL_REPOST, new TypeToken<CallbackMessage<CallbackWallPost>>() {
+        types.put(CALLBACK_EVENT_WALL_REPOST, new TypeToken<CallbackMessage<WallPost>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_WALL_REPLY_NEW, new TypeToken<CallbackMessage<CallbackWallComment>>() {
@@ -146,9 +146,9 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_MARKET_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackMarketCommentDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
+        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
+        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
         }.getType());
         types.put(CALLBACK_EVENT_GROUP_CHANGE_SETTINGS, new TypeToken<CallbackMessage<CallbackGroupChangeSettings>>() {
         }.getType());
@@ -214,10 +214,10 @@ public class CallbackApi {
     public void videoCommentDelete(Integer groupId, CallbackVideoCommentDelete message) {
     }
 
-    public void wallPostNew(Integer groupId, CallbackWallPost message) {
+    public void wallPostNew(Integer groupId, WallPost message) {
     }
 
-    public void wallRepost(Integer groupId, CallbackWallPost message) {
+    public void wallRepost(Integer groupId, WallPost message) {
     }
 
     public void wallReplyNew(Integer groupId, CallbackWallComment object) {
@@ -351,11 +351,11 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_WALL_POST_NEW:
-                wallPostNew(message.getGroupId(), (CallbackWallPost) message.getObject());
+                wallPostNew(message.getGroupId(), (WallPost) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPOST:
-                wallRepost(message.getGroupId(), (CallbackWallPost) message.getObject());
+                wallRepost(message.getGroupId(), (WallPost) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_NEW:

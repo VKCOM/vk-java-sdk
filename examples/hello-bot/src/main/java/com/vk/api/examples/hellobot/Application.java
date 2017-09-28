@@ -36,11 +36,12 @@ public class Application {
     private static GroupActor initVkApi(VkApiClient apiClient, Properties properties) {
         int groupId = Integer.parseInt(properties.getProperty("groupId"));
         String token = properties.getProperty("token");
-        if (groupId == 0 || token == null) throw new RuntimeException("Params are not set");
+        int serverId = Integer.parseInt(properties.getProperty("serverId"));
+        if (groupId == 0 || token == null || serverId == 0) throw new RuntimeException("Params are not set");
         GroupActor actor = new GroupActor(groupId, token);
 
         try {
-            apiClient.groups().setCallbackSettings(actor).messageNew(true).execute();
+            apiClient.groups().setCallbackSettings(actor, serverId).messageNew(true).execute();
         } catch (ApiException e) {
             throw new RuntimeException("Api error during init", e);
         } catch (ClientException e) {

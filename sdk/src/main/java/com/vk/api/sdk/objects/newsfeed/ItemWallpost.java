@@ -6,7 +6,7 @@ import com.vk.api.sdk.objects.base.Geo;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.base.RepostsInfo;
 import com.vk.api.sdk.objects.wall.PostSource;
-import com.vk.api.sdk.objects.wall.Wallpost;
+import com.vk.api.sdk.objects.wall.WallPost;
 import com.vk.api.sdk.objects.wall.WallpostAttachment;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class ItemWallpost {
     private String text;
 
     @SerializedName("copy_history")
-    private List<Wallpost> copyHistory;
+    private List<WallPost> copyHistory;
 
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
@@ -67,7 +67,7 @@ public class ItemWallpost {
         return text;
     }
 
-    public List<Wallpost> getCopyHistory() {
+    public List<WallPost> getCopyHistory() {
         return copyHistory;
     }
 

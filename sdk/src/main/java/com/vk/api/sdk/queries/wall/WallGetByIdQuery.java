@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.wall.WallpostFull;
+import com.vk.api.sdk.objects.wall.WallPostFull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Wall.getById method
  */
-public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, List<WallpostFull>> {
+public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, List<WallPostFull>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,7 +22,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param posts  value of "posts" parameter.
      */
     public WallGetByIdQuery(VkApiClient client, UserActor actor, String... posts) {
-        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallPostFull.class));
         accessToken(actor.getAccessToken());
         posts(posts);
     }
@@ -35,7 +35,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param posts  value of "posts" parameter.
      */
     public WallGetByIdQuery(VkApiClient client, UserActor actor, List<String> posts) {
-        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallPostFull.class));
         accessToken(actor.getAccessToken());
         posts(posts);
     }
@@ -47,7 +47,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param posts  value of "posts" parameter.
      */
     public WallGetByIdQuery(VkApiClient client, ServiceActor actor, String... posts) {
-        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallPostFull.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         posts(posts);
@@ -60,7 +60,7 @@ public class WallGetByIdQuery extends AbstractQueryBuilder<WallGetByIdQuery, Lis
      * @param posts  value of "posts" parameter.
      */
     public WallGetByIdQuery(VkApiClient client, ServiceActor actor, List<String> posts) {
-        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallpostFull.class));
+        super(client, "wall.getById", Utils.buildParametrizedType(List.class, WallPostFull.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         posts(posts);
