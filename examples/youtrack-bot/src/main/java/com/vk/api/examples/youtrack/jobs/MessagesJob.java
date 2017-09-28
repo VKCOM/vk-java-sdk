@@ -24,7 +24,7 @@ public class MessagesJob implements Job {
     public MessagesJob() throws ClientException, ApiException {
         lastMessageId = DataStorage.getInstance().getInt(LAST_MESSAGE_ID_KEY);
         if (lastMessageId == 0) {
-            GetResponse getResponse = Application.vk().messages().get(Application.actor()).out(false).count(1).execute();
+            GetResponse getResponse = Application.vk().messages().get(Application.actor()).count(1).execute();
 
             if (!getResponse.getItems().isEmpty()) {
                 lastMessageId = getResponse.getItems().get(0).getId();
@@ -39,7 +39,6 @@ public class MessagesJob implements Job {
     public void doJob() throws Exception {
         GetResponse getResponse = Application.vk().messages()
                 .get(Application.actor())
-                .out(false)
                 .lastMessageId(lastMessageId)
                 .execute();
 

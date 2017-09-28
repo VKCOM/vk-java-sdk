@@ -19,10 +19,10 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.api.sdk.objects.groups.CallbackServer;
+import com.vk.api.sdk.objects.groups.responses.AddCallbackServerResponse;
 import com.vk.api.sdk.objects.groups.responses.GetCallbackConfirmationCodeResponse;
-import com.vk.api.sdk.objects.groups.responses.GetCallbackServerSettingsResponse;
-import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponse;
-import com.vk.api.sdk.objects.groups.responses.SetCallbackServerResponseStateCode;
+import com.vk.api.sdk.objects.groups.responses.GetCallbackServersResponse;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerCollection;
@@ -83,6 +83,16 @@ public class Application {
         initJobs();
     }
 
+    private static CallbackServer isServerExist(List<CallbackServer> items, String host) {
+        for (CallbackServer callbackServer : items) {
+            if (callbackServer.getUrl().equals(host)) {
+                return callbackServer;
+            }
+        }
+
+        return null;
+    }
+
     private static void initServer(Properties properties) throws Exception {
         Integer port = Integer.valueOf(properties.getProperty("server.port"));
         String host = properties.getProperty("server.host");
@@ -90,18 +100,18 @@ public class Application {
 
         ConfirmationCodeRequestHandler confirmationCodeRequestHandler = null;
 
-        GetCallbackServerSettingsResponse getCallbackServerSettingsResponse = vk.groups().getCallbackServerSettings(actor).execute();
-        if (!getCallbackServerSettingsResponse.getServerUrl().equals(host)) {
+        GetCallbackServersResponse getCallbackServersResponse = vk.groups().getCallbackServers(actor).execute();
+        CallbackServer callbackServer = isServerExist(getCallbackServersResponse.getItems(), host);
+
+        if (callbackServer == null) {
             GetCallbackConfirmationCodeResponse getCallbackConfirmationCodeResponse = vk().groups().getCallbackConfirmationCode(actor).execute();
             String confirmationCode = getCallbackConfirmationCodeResponse.getCode();
             confirmationCodeRequestHandler = new ConfirmationCodeRequestHandler(confirmationCode);
         }
 
-        vk.groups().setCallbackSettings(actor).messageNew(true).execute();
-
         CallbackRequestHandler callbackRequestHandler = new CallbackRequestHandler();
 
-        if (confirmationCodeRequestHandler != null) {
+        if (callbackServer == null) {
             handlers.setHandlers(new Handler[]{confirmationCodeRequestHandler, callbackRequestHandler});
         } else {
             handlers.setHandlers(new Handler[]{callbackRequestHandler}); //temp solution
@@ -112,20 +122,10 @@ public class Application {
 
         server.start();
 
-        for (int i = 0; i < 10; i++) {
-            SetCallbackServerResponse response = vk.groups().setCallbackServer(actor)
-                    .serverUrl(host)
-                    .execute();
-
-            if (response.getStateCode() == SetCallbackServerResponseStateCode.FAILED) {
-                throw new IllegalStateException("Can't set callback server");
-            }
-
-            if (response.getStateCode() == SetCallbackServerResponseStateCode.OK) {
-                return;
-            }
-
-            TimeUnit.SECONDS.sleep(1);
+        if (callbackServer == null) {
+            AddCallbackServerResponse addServerResponse = vk.groups().addCallbackServer(actor, host, "YouTrack Bot").execute();
+            Integer serverId = addServerResponse.getServerId();
+            vk.groups().setCallbackSettings(actor, serverId).messageNew(true).execute();
         }
 
         server.join();
