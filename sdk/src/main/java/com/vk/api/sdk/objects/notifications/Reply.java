@@ -24,7 +24,7 @@ public class Reply {
      * Reply text
      */
     @SerializedName("text")
-    private Integer text;
+    private String text;
 
     public Integer getId() {
         return id;
@@ -34,7 +34,7 @@ public class Reply {
         return date;
     }
 
-    public Integer getText() {
+    public String getText() {
         return text;
     }
 
