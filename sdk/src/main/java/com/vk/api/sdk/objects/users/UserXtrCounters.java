@@ -116,6 +116,7 @@ public class UserXtrCounters extends UserFull {
         sb.append(", universityName='").append(getUniversityName()).append('\'');
         sb.append(", verified=").append(isVerified());
         sb.append(", wallComments=").append(isWallComments());
+        sb.append(", trending=").append(getTrending());
         sb.append('}');
         return sb.toString();
     }
