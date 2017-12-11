@@ -17,6 +17,8 @@ import com.vk.api.sdk.callback.objects.messages.CallbackMessageDeny;
 import com.vk.api.sdk.callback.objects.photo.CallbackPhotoComment;
 import com.vk.api.sdk.callback.objects.photo.CallbackPhotoCommentDelete;
 import com.vk.api.sdk.callback.objects.poll.CallbackPollVoteNew;
+import com.vk.api.sdk.callback.objects.user.CallbackUserBlock;
+import com.vk.api.sdk.callback.objects.user.CallbackUserUnblock;
 import com.vk.api.sdk.callback.objects.video.CallbackVideoComment;
 import com.vk.api.sdk.callback.objects.video.CallbackVideoCommentDelete;
 import com.vk.api.sdk.callback.objects.wall.CallbackWallComment;
@@ -158,10 +160,10 @@ public class CallbackApi {
         }.getType());
         types.put(CALLBACK_EVENT_GROUP_OFFICERS_EDIT, new TypeToken<CallbackMessage<CallbackGroupOfficersEdit>>() {
         }.getType());
-
-        // TODO
-        // Add CALLBACK_EVENT_USER_BLOCK
-        // Add CALLBACK_EVENT_USER_UNBLOCK
+        types.put(CALLBACK_EVENT_USER_BLOCK, new TypeToken<CallbackMessage<CallbackUserBlock>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_USER_UNBLOCK, new TypeToken<CallbackMessage<CallbackUserUnblock>>() {
+        }.getType());
 
         types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
         }.getType());
@@ -278,6 +280,12 @@ public class CallbackApi {
     }
 
     public void pollVoteNew(Integer groupId, CallbackPollVoteNew message) {
+    }
+
+    public void userBlock(Integer groupId, CallbackUserBlock message) {
+    }
+
+    public void userUnblock(Integer groupId, CallbackUserUnblock message) {
     }
 
     public boolean parse(String json) {
@@ -430,6 +438,14 @@ public class CallbackApi {
 
             case CALLBACK_EVENT_GROUP_OFFICERS_EDIT:
                 groupOfficersEdit(message.getGroupId(), (CallbackGroupOfficersEdit) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_USER_BLOCK:
+                userBlock(message.getGroupId(), (CallbackUserBlock) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_USER_UNBLOCK:
+                userUnblock(message.getGroupId(), (CallbackUserUnblock) message.getObject());
                 break;
 
             case CALLBACK_EVENT_POLL_VOTE_NEW:
