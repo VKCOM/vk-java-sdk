@@ -15,7 +15,6 @@ public class CallbackUserUnblock {
     @SerializedName("by_end_date")
     private Integer byEndDate;
 
-
     public Integer getAdminId() {
         return adminId;
     }

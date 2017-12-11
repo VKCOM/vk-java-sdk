@@ -72,7 +72,7 @@ public class GetLongPollHistoryResponse {
         return Objects.equals(history, that.history) &&
                 Objects.equals(messages, that.messages) &&
                 Objects.equals(profiles, that.profiles) &&
-                Objects.equals(groups, that.getGroups()) &&
+                Objects.equals(groups, that.groups) &&
                 Objects.equals(chats, that.chats) &&
                 Objects.equals(newPts, that.newPts) &&
                 more == that.more;

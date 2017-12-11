@@ -53,7 +53,7 @@ public class UserFull extends User {
      * Information whether current user has "little light" on his page
      */
     @SerializedName("trending")
-    private Integer trending;
+    private BoolInt trending;
 
     /**
      * URL of square photo of the user with 200 pixels in width
@@ -687,12 +687,8 @@ public class UserFull extends User {
         return quotes;
     }
 
-    public Integer getTrending() {
-        return trending;
-    }
-
     public boolean isTrending() {
-        return trending.equals(1);
+        return trending == BoolInt.YES;
     }
 
     @Override

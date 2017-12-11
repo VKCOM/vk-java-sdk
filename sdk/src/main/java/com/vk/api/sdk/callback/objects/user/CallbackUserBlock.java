@@ -21,7 +21,6 @@ public class CallbackUserBlock {
     @SerializedName("comment")
     private String comment;
 
-
     public Integer getAdminId() {
         return adminId;
     }

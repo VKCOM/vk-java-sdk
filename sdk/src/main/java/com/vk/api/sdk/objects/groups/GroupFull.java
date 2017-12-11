@@ -54,10 +54,10 @@ public class GroupFull extends Group {
     private BoolInt verified;
 
     /**
-     * Information whether group has "little light"
+     * Information whether the user a "fire" pictogram
      */
     @SerializedName("trending")
-    private Integer trending;
+    private BoolInt trending;
 
     /**
      * Community description
@@ -349,12 +349,8 @@ public class GroupFull extends Group {
         return banInfo;
     }
 
-    public Integer getTrending() {
-        return trending;
-    }
-
     public boolean isTrending() {
-        return trending.equals(1);
+        return trending == BoolInt.YES;
     }
 
     @Override
