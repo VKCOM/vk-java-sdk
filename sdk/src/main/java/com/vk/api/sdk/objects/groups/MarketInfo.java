@@ -20,13 +20,13 @@ public class MarketInfo {
      * Minimum price
      */
     @SerializedName("price_min")
-    private Integer priceMin;
+    private Long priceMin;
 
     /**
      * Maximum price
      */
     @SerializedName("price_max")
-    private Integer priceMax;
+    private Long priceMax;
 
     /**
      * Main market album ID
@@ -53,11 +53,11 @@ public class MarketInfo {
         return enabled == BoolInt.YES;
     }
 
-    public Integer getPriceMin() {
+    public Long getPriceMin() {
         return priceMin;
     }
 
-    public Integer getPriceMax() {
+    public Long getPriceMax() {
         return priceMax;
     }
 

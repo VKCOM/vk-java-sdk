@@ -12,7 +12,7 @@ public class Checkin {
      * Checkin ID
      */
     @SerializedName("id")
-    private Integer id;
+    private String id;
 
     /**
      * User ID
@@ -86,7 +86,7 @@ public class Checkin {
     @SerializedName("place_icon")
     private String placeIcon;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 

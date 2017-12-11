@@ -26,7 +26,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
      * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
     public MarketEditQuery(VkApiClient client, UserActor actor, int ownerId, int itemId, String name, String description,
-                           int categoryId, float price, int mainPhotoId) {
+                           int categoryId, double price, int mainPhotoId) {
         super(client, "market.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -95,7 +95,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
      * @param value value of "price" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketEditQuery price(float value) {
+    protected MarketEditQuery price(double value) {
         return unsafeParam("price", value);
     }
 

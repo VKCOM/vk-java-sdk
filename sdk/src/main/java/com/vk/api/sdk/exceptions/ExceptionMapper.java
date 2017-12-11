@@ -163,6 +163,12 @@ public class ExceptionMapper {
                 return new ApiMessagesDenySendException(error.getErrorMsg());
             case 902:
                 return new ApiMessagesPrivacyException(error.getErrorMsg());
+            case 913:
+                return new ApiMessagesForwardAmountExceededException(error.getErrorMsg());
+            case 914:
+                return new ApiMessagesLongMessageException(error.getErrorMsg());
+            case 921:
+                return new ApiMessagesForwardUnableException(error.getErrorMsg());
             case 1160:
                 return new ApiPhotoChangedException(error.getErrorMsg());
             case 140:

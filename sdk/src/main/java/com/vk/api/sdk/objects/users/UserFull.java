@@ -50,6 +50,12 @@ public class UserFull extends User {
     private Integer timezone;
 
     /**
+     * Information whether current user has "little light" on his page
+     */
+    @SerializedName("trending")
+    private BoolInt trending;
+
+    /**
      * URL of square photo of the user with 200 pixels in width
      */
     @SerializedName("photo_200")
@@ -681,9 +687,13 @@ public class UserFull extends User {
         return quotes;
     }
 
+    public boolean isTrending() {
+        return trending == BoolInt.YES;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), canSendFriendRequest, universityName, country, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
+        return Objects.hash(super.hashCode(), canSendFriendRequest, universityName, country, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, friendStatus, twitter, music, canSeeAudio, homeTown, universities, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, followersCount, facultyName, facebookName, isHiddenFromFeed, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests, trending);
     }
 
     @Override
@@ -762,7 +772,8 @@ public class UserFull extends User {
                 Objects.equals(schools, userFull.schools) &&
                 Objects.equals(about, userFull.about) &&
                 Objects.equals(relatives, userFull.relatives) &&
-                Objects.equals(quotes, userFull.quotes);
+                Objects.equals(quotes, userFull.quotes) &&
+                Objects.equals(trending, userFull.trending);
     }
 
     @Override
@@ -854,6 +865,7 @@ public class UserFull extends User {
         sb.append(", universityName='").append(universityName).append('\'');
         sb.append(", verified=").append(verified);
         sb.append(", wallComments=").append(wallComments);
+        sb.append(", trending=").append(trending);
         sb.append('}');
         return sb.toString();
     }
