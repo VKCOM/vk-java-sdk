@@ -76,6 +76,8 @@ public class CallbackApi {
     private static final String CALLBACK_EVENT_GROUP_CHANGE_PHOTO = "group_change_photo";
     private static final String CALLBACK_EVENT_GROUP_OFFICERS_EDIT = "group_officers_edit";
     private static final String CALLBACK_EVENT_POLL_VOTE_NEW = "poll_vote_new";
+    private static final String CALLBACK_EVENT_USER_BLOCK = "user_block";
+    private static final String CALLBACK_EVENT_USER_UNBLOCK = "user_unblock";
     private final static Map<String, Type> CALLBACK_TYPES;
 
     static {
@@ -156,6 +158,10 @@ public class CallbackApi {
         }.getType());
         types.put(CALLBACK_EVENT_GROUP_OFFICERS_EDIT, new TypeToken<CallbackMessage<CallbackGroupOfficersEdit>>() {
         }.getType());
+
+        // TODO
+        // Add CALLBACK_EVENT_USER_BLOCK
+        // Add CALLBACK_EVENT_USER_UNBLOCK
 
         types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
         }.getType());
