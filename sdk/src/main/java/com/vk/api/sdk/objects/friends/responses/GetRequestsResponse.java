@@ -53,7 +53,7 @@ public class GetRequestsResponse {
         final StringBuilder sb = new StringBuilder("GetRequestsResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);
-        sb.append(", countUndread=").append(countUnread);
+        sb.append(", countUnread=").append(countUnread);
         sb.append('}');
         return sb.toString();
     }
