@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class JoinChatResponse {
 
     @SerializedName("chat_id")
@@ -15,19 +17,20 @@ public class JoinChatResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JoinChatResponse that = (JoinChatResponse) o;
-        return chatId != null ? chatId.equals(that.chatId) : that.chatId == null;
+        JoinChatResponse response = (JoinChatResponse) o;
+        return Objects.equals(chatId, response.chatId);
     }
 
     @Override
     public int hashCode() {
-        return chatId != null ? chatId.hashCode() : 0;
+        return Objects.hash(chatId);
     }
 
     @Override
     public String toString() {
-        return "JoinChatResponse{" +
-                "chatId=" + chatId +
-                '}';
+        final StringBuilder sb = new StringBuilder("JoinChatResponse{");
+        sb.append("chatId=").append(chatId);
+        sb.append('}');
+        return sb.toString();
     }
 }

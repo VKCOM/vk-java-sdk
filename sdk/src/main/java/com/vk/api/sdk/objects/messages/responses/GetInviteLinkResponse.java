@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 /**
  * Response which contains chat invite link
  */
@@ -20,18 +22,19 @@ public class GetInviteLinkResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetInviteLinkResponse that = (GetInviteLinkResponse) o;
-        return link != null ? link.equals(that.link) : that.link == null;
+        return Objects.equals(link, that.link);
     }
 
     @Override
     public int hashCode() {
-        return link != null ? link.hashCode() : 0;
+        return Objects.hash(link);
     }
 
     @Override
     public String toString() {
-        return "GetInviteLinkResponse{" +
-                "link='" + link + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("GetInviteLinkResponse{");
+        sb.append("link='").append(link).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
