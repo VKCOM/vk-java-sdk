@@ -33,7 +33,6 @@ public class MessagesJoinChatByInviteLinkQuery extends AbstractQueryBuilder<Mess
         return unsafeParam("link", link);
     }
 
-
     @Override
     protected MessagesJoinChatByInviteLinkQuery getThis() {
         return this;

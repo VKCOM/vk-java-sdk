@@ -53,7 +53,6 @@ public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGe
         return unsafeParam("fields", fields);
     }
 
-
     @Override
     protected MessagesGetChatPreviewQuery getThis() {
         return this;
