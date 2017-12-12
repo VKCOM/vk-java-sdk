@@ -61,12 +61,13 @@ public class ChatPreview {
 
     @Override
     public String toString() {
-        return "ChatPreview{" +
-                "adminId=" + adminId +
-                ", members=" + members +
-                ", title='" + title + '\'' +
-                ", photo=" + photo +
-                ", localId=" + localId +
-                '}';
+        final StringBuilder sb = new StringBuilder("ChatPreview{");
+        sb.append("adminId=").append(adminId);
+        sb.append(", members=").append(members);
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", photo=").append(photo);
+        sb.append(", localId=").append(localId);
+        sb.append('}');
+        return sb.toString();
     }
 }

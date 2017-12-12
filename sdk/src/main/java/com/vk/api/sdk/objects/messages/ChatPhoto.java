@@ -12,7 +12,6 @@ public class ChatPhoto {
     @SerializedName("photo_100")
     private String photo100;
 
-
     @SerializedName("photo_200")
     private String photo200;
 
@@ -45,10 +44,11 @@ public class ChatPhoto {
 
     @Override
     public String toString() {
-        return "ChatPhoto{" +
-                "photo50='" + photo50 + '\'' +
-                ", photo100='" + photo100 + '\'' +
-                ", photo200='" + photo200 + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("ChatPhoto{");
+        sb.append("photo50='").append(photo50).append('\'');
+        sb.append(", photo100='").append(photo100).append('\'');
+        sb.append(", photo200='").append(photo200).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
