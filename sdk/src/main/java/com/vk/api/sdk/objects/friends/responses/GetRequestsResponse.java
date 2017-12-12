@@ -18,6 +18,9 @@ public class GetRequestsResponse {
     @SerializedName("items")
     private List<Integer> items;
 
+    @SerializedName("count_unread")
+    private Integer countUnread;
+
     public Integer getCount() {
         return count;
     }
@@ -26,9 +29,13 @@ public class GetRequestsResponse {
         return items;
     }
 
+    public Integer getCountUnread() {
+        return countUnread;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, items, countUnread);
     }
 
     @Override
@@ -37,7 +44,8 @@ public class GetRequestsResponse {
         if (o == null || getClass() != o.getClass()) return false;
         GetRequestsResponse getRequestsResponse = (GetRequestsResponse) o;
         return Objects.equals(count, getRequestsResponse.count) &&
-                Objects.equals(items, getRequestsResponse.items);
+                Objects.equals(items, getRequestsResponse.items) &&
+                Objects.equals(countUnread, getRequestsResponse.countUnread);
     }
 
     @Override
@@ -45,6 +53,7 @@ public class GetRequestsResponse {
         final StringBuilder sb = new StringBuilder("GetRequestsResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);
+        sb.append(", countUnread=").append(countUnread);
         sb.append('}');
         return sb.toString();
     }

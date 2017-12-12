@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.users;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.users.UserXtrCounters;
@@ -18,7 +19,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor  user actor with access token
      */
     public UsersGetQuery(VkApiClient client, UserActor actor) {
         super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
@@ -29,11 +30,23 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor  service actor with access token
      */
     public UsersGetQuery(VkApiClient client, ServiceActor actor) {
         super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  group actor with access token
+     */
+    public UsersGetQuery(VkApiClient client, GroupActor actor) {
+        super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**

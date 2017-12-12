@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.users.UserField;
@@ -34,6 +35,7 @@ public class Users extends AbstractAction {
 
     /**
      * Returns detailed information on users.
+     * @param actor service actor
      */
     public UsersGetQuery get(ServiceActor actor) {
         return new UsersGetQuery(getClient(), actor);
@@ -41,8 +43,17 @@ public class Users extends AbstractAction {
 
     /**
      * Returns detailed information on users.
+     * @param actor user actor
      */
     public UsersGetQuery get(UserActor actor) {
+        return new UsersGetQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns detailed information on users.
+     * @param actor group actor
+     */
+    public UsersGetQuery get(GroupActor actor) {
         return new UsersGetQuery(getClient(), actor);
     }
 

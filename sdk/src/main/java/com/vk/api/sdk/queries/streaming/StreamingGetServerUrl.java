@@ -18,7 +18,7 @@ public class StreamingGetServerUrl extends AbstractQueryBuilder<StreamingGetServ
      * @param client VK API client
      */
     public StreamingGetServerUrl(VkApiClient client, ServiceActor actor) {
-        super(client, "streaming.getUrl", GetServerUrlResponse.class);
+        super(client, "streaming.getServerUrl", GetServerUrlResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

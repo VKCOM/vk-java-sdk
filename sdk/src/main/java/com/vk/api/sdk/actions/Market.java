@@ -182,7 +182,7 @@ public class Market extends AbstractAction {
      * Ads a new item to the market
      */
     public MarketAddQuery add(UserActor actor, int ownerId, String name, String description, int categoryId,
-                              float price, int mainPhotoId) {
+                              double price, int mainPhotoId) {
         return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId, price, mainPhotoId);
     }
 
@@ -190,7 +190,7 @@ public class Market extends AbstractAction {
      * Edits an item
      */
     public MarketEditQuery edit(UserActor actor, int ownerId, int itemId, String name, String description,
-                                int categoryId, float price, int mainPhotoId) {
+                                int categoryId, double price, int mainPhotoId) {
         return new MarketEditQuery(getClient(), actor, ownerId, itemId, name, description, categoryId, price, mainPhotoId);
     }
 

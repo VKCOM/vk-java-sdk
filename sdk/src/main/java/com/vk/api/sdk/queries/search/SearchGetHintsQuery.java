@@ -35,6 +35,16 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
     }
 
     /**
+     * Offset for selecting needed result subset.
+     *
+     * @param value value of "offset" parameter. Maximum is 200.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SearchGetHintsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
      * Maximum number of results to return.
      *
      * @param value value of "limit" parameter. Maximum is 200. Minimum is 0. By default 9.
