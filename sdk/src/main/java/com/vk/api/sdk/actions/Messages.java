@@ -41,6 +41,7 @@ import com.vk.api.sdk.queries.messages.MessagesSendQuery;
 import com.vk.api.sdk.queries.messages.MessagesSendWithUserIdsQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
+import com.vk.api.sdk.queries.messages.MessagesGetInviteLinkQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -288,6 +289,13 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetLongPollServerQuery getLongPollServer(GroupActor actor) {
         return new MessagesGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns invite link for the specified chat.
+     */
+    public MessagesGetInviteLinkQuery getInviteLink(UserActor actor) {
+        return new MessagesGetInviteLinkQuery(getClient(), actor);
     }
 
     /**
