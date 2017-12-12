@@ -54,6 +54,12 @@ public class GroupFull extends Group {
     private BoolInt verified;
 
     /**
+     * Information whether the user a "fire" pictogram
+     */
+    @SerializedName("trending")
+    private BoolInt trending;
+
+    /**
      * Community description
      */
     @SerializedName("description")
@@ -343,6 +349,10 @@ public class GroupFull extends Group {
         return banInfo;
     }
 
+    public boolean isTrending() {
+        return trending == BoolInt.YES;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -383,12 +393,13 @@ public class GroupFull extends Group {
                 hasPhoto == groupFull.hasPhoto &&
                 ageLimits == groupFull.ageLimits &&
                 Objects.equals(place, groupFull.place) &&
-                Objects.equals(banInfo, groupFull.banInfo);
+                Objects.equals(banInfo, groupFull.banInfo) &&
+                Objects.equals(trending, groupFull.trending);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), market, memberStatus, isFavorite, isHiddenFromFeed, isSubscribed, city, country, verified, description, wikiPage, membersCount, counters, cover, canPost, canSeeAllPosts, activity, fixedPost, canCreateTopic, canUploadDoc, canUploadVideo, status, mainAlbumId, links, contacts, site, mainSection, canMessage, isMessagesAllowed, publicDateLabel, startDate, finishDate, hasPhoto, ageLimits, place, banInfo);
+        return Objects.hash(super.hashCode(), market, memberStatus, isFavorite, isHiddenFromFeed, isSubscribed, city, country, verified, description, wikiPage, membersCount, counters, cover, canPost, canSeeAllPosts, activity, fixedPost, canCreateTopic, canUploadDoc, canUploadVideo, status, mainAlbumId, links, contacts, site, mainSection, canMessage, isMessagesAllowed, publicDateLabel, startDate, finishDate, hasPhoto, ageLimits, place, banInfo, trending);
     }
 
     @Override
@@ -445,6 +456,7 @@ public class GroupFull extends Group {
         sb.append(", type=").append(getType());
         sb.append(", verified=").append(verified);
         sb.append(", wikiPage='").append(wikiPage).append('\'');
+        sb.append(", trending=").append(trending);
         sb.append('}');
         return sb.toString();
     }

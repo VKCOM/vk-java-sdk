@@ -73,6 +73,7 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
         }
 
         if (response.getStatusCode() != 200) {
+            LOG.error("Invalid HTTP status " + response.getStatusCode() + " from " + getUrl());
             throw new ClientException("Internal API server error");
         }
 
