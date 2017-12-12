@@ -4,6 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
 
+/**
+ * Response which contains chat_id the current user joined to
+ */
+
 public class JoinChatResponse {
 
     @SerializedName("chat_id")
