@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.messages.ChatPreview;
 import com.vk.api.sdk.objects.messages.responses.GetChatPreviewResponse;
 
 import java.util.Arrays;

@@ -43,6 +43,7 @@ import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetInviteLinkQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetChatPreviewQuery;
+import com.vk.api.sdk.queries.messages.MessagesJoinChatByInviteLinkQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -304,6 +305,13 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetChatPreviewQuery getChatPreview(UserActor actor, String link) {
         return new MessagesGetChatPreviewQuery(getClient(), actor, link);
+    }
+
+    /**
+     * Returns chat id to which the user has joined.
+     */
+    public MessagesJoinChatByInviteLinkQuery joinChatByInviteLink(UserActor actor, String link) {
+        return new MessagesJoinChatByInviteLinkQuery(getClient(), actor, link);
     }
 
     /**
