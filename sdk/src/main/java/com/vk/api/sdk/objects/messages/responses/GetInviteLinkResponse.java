@@ -27,4 +27,11 @@ public class GetInviteLinkResponse {
     public int hashCode() {
         return link != null ? link.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "GetInviteLinkResponse{" +
+                "link='" + link + '\'' +
+                '}';
+    }
 }
