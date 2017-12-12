@@ -256,7 +256,7 @@ public class HttpTransportClient implements TransportClient {
 
     @Override
     public ClientResponse delete(String url) throws IOException {
-        return delete(url);
+        return delete(url, null, FORM_CONTENT_TYPE);
     }
 
     @Override
