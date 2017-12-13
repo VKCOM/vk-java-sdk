@@ -3,6 +3,7 @@ package com.vk.api.sdk.callback;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import com.vk.api.sdk.callback.objects.CallbackConfirmation;
 import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
@@ -80,6 +81,7 @@ public class CallbackApi {
     private static final String CALLBACK_EVENT_POLL_VOTE_NEW = "poll_vote_new";
     private static final String CALLBACK_EVENT_USER_BLOCK = "user_block";
     private static final String CALLBACK_EVENT_USER_UNBLOCK = "user_unblock";
+    private static final String CALLBACK_EVENT_CONFIRMATION = "confirmation";
     private final static Map<String, Type> CALLBACK_TYPES;
 
     static {
@@ -166,6 +168,9 @@ public class CallbackApi {
         }.getType());
 
         types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
+        }.getType());
+
+        types.put(CALLBACK_EVENT_CONFIRMATION, new TypeToken<CallbackMessage<CallbackConfirmation>>() {
         }.getType());
 
         CALLBACK_TYPES = Collections.unmodifiableMap(types);
@@ -286,6 +291,9 @@ public class CallbackApi {
     }
 
     public void userUnblock(Integer groupId, CallbackUserUnblock message) {
+    }
+
+    public void confirmation(Integer groupId, CallbackConfirmation message) {
     }
 
     public boolean parse(String json) {
@@ -451,6 +459,9 @@ public class CallbackApi {
             case CALLBACK_EVENT_POLL_VOTE_NEW:
                 pollVoteNew(message.getGroupId(), (CallbackPollVoteNew) message.getObject());
                 break;
+
+            case CALLBACK_EVENT_CONFIRMATION:
+                confirmation(message.getGroupId(), (CallbackConfirmation) message.getObject());
 
             default:
                 LOG.warn("Unsupported callback event", type);
