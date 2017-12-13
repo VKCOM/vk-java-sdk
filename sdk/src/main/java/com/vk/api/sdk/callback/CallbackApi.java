@@ -12,6 +12,7 @@ import com.vk.api.sdk.callback.objects.group.CallbackGroupLeave;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupOfficersEdit;
 import com.vk.api.sdk.callback.objects.market.CallbackMarketComment;
 import com.vk.api.sdk.callback.objects.market.CallbackMarketCommentDelete;
+import com.vk.api.sdk.callback.objects.messages.CallbackConfirmationMessage;
 import com.vk.api.sdk.callback.objects.messages.CallbackMessage;
 import com.vk.api.sdk.callback.objects.messages.CallbackMessageAllow;
 import com.vk.api.sdk.callback.objects.messages.CallbackMessageDeny;
@@ -456,6 +457,12 @@ public class CallbackApi {
 
     public boolean parse(JsonObject json) {
         String type = json.get("type").getAsString();
+        if (type.equalsIgnoreCase(CALLBACK_EVENT_CONFIRMATION)) {
+            CallbackConfirmationMessage message = gson.fromJson(json, CallbackConfirmationMessage.class);
+            confirmation(message.getGroupId(), message.getSecret());
+            return true;
+        }
+
         Type typeOfClass = CALLBACK_TYPES.get(type);
         if (typeOfClass == null) {
             LOG.warn("Unsupported callback event", type);
@@ -612,9 +619,6 @@ public class CallbackApi {
             case CALLBACK_EVENT_POLL_VOTE_NEW:
                 pollVoteNew(message.getGroupId(), message.getSecret(), (CallbackPollVoteNew) message.getObject());
                 break;
-
-            case CALLBACK_EVENT_CONFIRMATION:
-                confirmation(message.getGroupId(), message.getSecret());
 
             default:
                 LOG.warn("Unsupported callback event", type);
