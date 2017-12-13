@@ -38,7 +38,6 @@ import com.vk.api.sdk.actions.Users;
 import com.vk.api.sdk.actions.Videos;
 import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
-import com.vk.api.sdk.actions.AppWidgets;
 import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
@@ -243,10 +242,6 @@ public class VkApiClient {
 
     public Widgets widgets() {
         return new Widgets(this);
-    }
-
-    public AppWidgets appWidgets() {
-        return new AppWidgets(this);
     }
 
     public Execute execute() {
