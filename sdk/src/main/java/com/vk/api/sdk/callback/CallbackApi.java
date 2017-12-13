@@ -3,7 +3,6 @@ package com.vk.api.sdk.callback;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.vk.api.sdk.callback.objects.CallbackConfirmation;
 import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
 import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
@@ -169,9 +168,6 @@ public class CallbackApi {
         }.getType());
 
         types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
-        }.getType());
-
-        types.put(CALLBACK_EVENT_CONFIRMATION, new TypeToken<CallbackMessage<CallbackConfirmation>>() {
         }.getType());
 
         CALLBACK_TYPES = Collections.unmodifiableMap(types);
