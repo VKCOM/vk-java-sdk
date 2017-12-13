@@ -18,6 +18,9 @@ public class CallbackMessage<T> {
     @SerializedName("object")
     private T object;
 
+    @SerializedName("secret")
+    private String secret;
+
     public CallbackMessageType getType() {
         return type;
     }
@@ -30,6 +33,10 @@ public class CallbackMessage<T> {
         return object;
     }
 
+    public String getSecret() {
+        return secret;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,7 +44,8 @@ public class CallbackMessage<T> {
         CallbackMessage<?> that = (CallbackMessage<?>) o;
         return type == that.type &&
                 Objects.equals(groupId, that.groupId) &&
-                Objects.equals(object, that.object);
+                Objects.equals(object, that.object) &&
+                Objects.equals(secret, that.secret);
     }
 
     @Override
@@ -51,6 +59,7 @@ public class CallbackMessage<T> {
         sb.append("type=").append(type);
         sb.append(", groupId=").append(groupId);
         sb.append(", object=").append(object);
+        sb.append(", secret='").append(secret).append('\'');
         sb.append('}');
         return sb.toString();
     }
