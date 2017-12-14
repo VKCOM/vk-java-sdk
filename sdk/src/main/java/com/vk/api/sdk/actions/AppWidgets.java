@@ -5,9 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.app.widgets.ImageType;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetAppImageUploadServerQuery;
-import com.vk.api.sdk.queries.app.widgets.AppWidgetsUploadImageQuery;
-
-import java.io.File;
+import com.vk.api.sdk.queries.app.widgets.AppWidgetsSaveAppImageQuery;
 
 /**
  * List of AppWidgets methods
@@ -34,7 +32,15 @@ public class AppWidgets extends AbstractAction {
         return new AppWidgetsGetAppImageUploadServerQuery(getClient(), actor, imageType);
     }
 
-    public AppWidgetsUploadImageQuery uploadImage(String uploadUrl, File file) {
-        return new AppWidgetsUploadImageQuery(getClient(), uploadUrl, file);
+    /**
+     * Allows to save image into app collection for community app widgets.
+     *
+     * @param actor  vk service actor
+     * @param hash   hash param received after uploading to server
+     * @param image  image param received after uploading to server
+     * @return query
+     */
+    public AppWidgetsSaveAppImageQuery saveAppImage(ServiceActor actor, String hash, String image) {
+        return new AppWidgetsSaveAppImageQuery(getClient(), actor, hash, image);
     }
 }

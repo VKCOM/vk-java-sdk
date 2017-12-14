@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.queries.upload.UploadAppImageQuery;
 import com.vk.api.sdk.queries.upload.UploadDocQuery;
 import com.vk.api.sdk.queries.upload.UploadPhotoMarketAlbumQuery;
 import com.vk.api.sdk.queries.upload.UploadPhotoMarketQuery;
@@ -58,6 +59,10 @@ public class Upload extends AbstractAction {
 
     public UploadVideoQuery video(String uploadUrl, File file) {
         return new UploadVideoQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadAppImageQuery appImage(String uploadUrl, File file) {
+        return new UploadAppImageQuery(getClient(), uploadUrl, file);
     }
 
     public UploadDocQuery doc(String uploadUrl, File file) {
