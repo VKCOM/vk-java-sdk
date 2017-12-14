@@ -18,23 +18,8 @@ public class SaveAppImageResponse {
     @SerializedName("images")
     private List<Image> images;
 
-    private ImageType imageType = null;
-
     public String getId() {
         return id;
-    }
-
-    public ImageType getImageType() {
-        if (imageType == null) {
-            switch (type) {
-                case "50x50":
-                    imageType = ImageType.WIDTH_50_HEIGHT_50;
-                    break;
-                default:
-                    break;
-            }
-        }
-        return imageType;
     }
 
     public List<Image> getImages() {
