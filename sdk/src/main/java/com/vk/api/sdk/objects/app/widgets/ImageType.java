@@ -28,4 +28,9 @@ public enum ImageType {
     public String getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return getType();
+    }
 }

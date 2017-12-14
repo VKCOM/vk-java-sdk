@@ -7,19 +7,23 @@ import com.vk.api.sdk.objects.base.Image;
 import java.util.List;
 import java.util.Objects;
 
-public class SaveAppImageResponse {
+public class SaveImageResponse {
 
     @SerializedName("id")
     private String id;
 
     @SerializedName("type")
-    private String type;
+    private ImageType type;
 
     @SerializedName("images")
     private List<Image> images;
 
     public String getId() {
         return id;
+    }
+
+    public ImageType getType() {
+        return type;
     }
 
     public List<Image> getImages() {
@@ -30,7 +34,7 @@ public class SaveAppImageResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SaveAppImageResponse that = (SaveAppImageResponse) o;
+        SaveImageResponse that = (SaveImageResponse) o;
         return Objects.equals(id, that.id) &&
                 type == that.type &&
                 Objects.equals(images, that.images);
@@ -43,7 +47,7 @@ public class SaveAppImageResponse {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("SaveAppImageResponse{");
+        final StringBuilder sb = new StringBuilder("SaveImageResponse{");
         sb.append("id='").append(id).append('\'');
         sb.append(", type=").append(type);
         sb.append(", images=").append(images);
