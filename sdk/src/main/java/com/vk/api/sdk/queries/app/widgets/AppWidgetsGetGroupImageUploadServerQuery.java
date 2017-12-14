@@ -20,7 +20,7 @@ public class AppWidgetsGetGroupImageUploadServerQuery extends AbstractQueryBuild
      * @param imageType  type of image to upload
      */
     public AppWidgetsGetGroupImageUploadServerQuery(VkApiClient client, UserActor actor, ImageType imageType) {
-        super(client, "appWidgets.getAppImageUploadServer", GetGroupImageUploadServerResponse.class);
+        super(client, "appWidgets.getGroupImageUploadServer", GetGroupImageUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         imageType(imageType);
     }
@@ -33,7 +33,7 @@ public class AppWidgetsGetGroupImageUploadServerQuery extends AbstractQueryBuild
      * @param imageType  type of image to upload
      */
     public AppWidgetsGetGroupImageUploadServerQuery(VkApiClient client, GroupActor actor, ImageType imageType) {
-        super(client, "appWidgets.getAppImageUploadServer", GetGroupImageUploadServerResponse.class);
+        super(client, "appWidgets.getGroupImageUploadServer", GetGroupImageUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         imageType(imageType);
     }
