@@ -20,7 +20,7 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
      * @param image    image param received after uploading to server
      */
     public AppWidgetsSaveGroupImageQuery(VkApiClient client, UserActor actor, String hash, String image) {
-        super(client, "appWidgets.saveAppImage", SaveImageResponse.class);
+        super(client, "appWidgets.saveGroupImage", SaveImageResponse.class);
         accessToken(actor.getAccessToken());
         hash(hash);
         image(image);
@@ -35,7 +35,7 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
      * @param image    image param received after uploading to server
      */
     public AppWidgetsSaveGroupImageQuery(VkApiClient client, GroupActor actor, String hash, String image) {
-        super(client, "appWidgets.saveAppImage", SaveImageResponse.class);
+        super(client, "appWidgets.saveGroupImage", SaveImageResponse.class);
         accessToken(actor.getAccessToken());
         hash(hash);
         image(image);
@@ -47,7 +47,7 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "image_type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsSaveGroupImageQuery hash(String value) {
+    protected AppWidgetsSaveGroupImageQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 
@@ -57,7 +57,7 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "image_type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsSaveGroupImageQuery image(String value) {
+    protected AppWidgetsSaveGroupImageQuery image(String value) {
         return unsafeParam("image", value);
     }
 

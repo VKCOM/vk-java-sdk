@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.actions.Account;
 import com.vk.api.sdk.actions.Ads;
+import com.vk.api.sdk.actions.AppWidgets;
 import com.vk.api.sdk.actions.Apps;
 import com.vk.api.sdk.actions.Auth;
 import com.vk.api.sdk.actions.Board;
@@ -242,6 +243,10 @@ public class VkApiClient {
 
     public Widgets widgets() {
         return new Widgets(this);
+    }
+
+    public AppWidgets appWidgets() {
+        return new AppWidgets(this);
     }
 
     public Execute execute() {

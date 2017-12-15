@@ -1,8 +1,9 @@
 package com.vk.api.sdk.objects.app.widgets;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-public enum ImageType {
+public enum ImageType implements EnumParam {
 
     @SerializedName("160x160")
     WIDTH_160_HEIGHT_160("160x160"),
@@ -19,18 +20,19 @@ public enum ImageType {
     @SerializedName("50x50")
     WIDTH_50_HEIGHT_50("50x50");
 
-    private String type;
+    private String value;
 
-    ImageType(String type) {
-        this.type = type;
+    ImageType(String value) {
+        this.value = value;
     }
 
-    public String getType() {
-        return type;
+    @Override
+    public String getValue() {
+        return value;
     }
 
     @Override
     public String toString() {
-        return getType();
+        return getValue();
     }
 }

@@ -31,7 +31,7 @@ public class AppWidgetsSaveAppImageQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "image_type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsSaveAppImageQuery hash(String value) {
+    protected AppWidgetsSaveAppImageQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 
@@ -41,7 +41,7 @@ public class AppWidgetsSaveAppImageQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "image_type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsSaveAppImageQuery image(String value) {
+    protected AppWidgetsSaveAppImageQuery image(String value) {
         return unsafeParam("image", value);
     }
 

@@ -44,8 +44,8 @@ public class AppWidgetsGetGroupImageUploadServerQuery extends AbstractQueryBuild
      * @param value value of "image_type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsGetGroupImageUploadServerQuery imageType(ImageType value) {
-        return unsafeParam("image_type", value.getType());
+    protected AppWidgetsGetGroupImageUploadServerQuery imageType(ImageType value) {
+        return unsafeParam("image_type", value.getValue());
     }
 
     @Override
