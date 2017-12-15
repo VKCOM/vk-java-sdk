@@ -10,6 +10,7 @@ import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetAppImageUploadServerQuery
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetAppImagesQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetGroupImageUploadServerQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetGroupImagesQuery;
+import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetImagesByIdQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsSaveAppImageQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsSaveGroupImageQuery;
 
@@ -144,5 +145,35 @@ public class AppWidgets extends AbstractAction {
      */
     public AppWidgetsGetGroupImagesQuery getGroupImages(GroupActor actor) {
         return new AppWidgetsGetGroupImagesQuery(getClient(), actor);
+    }
+
+    /**
+     * Retrieves collection of images by their ids.
+     *
+     * @param actor user actor with access token
+     * @return query
+     */
+    public AppWidgetsGetImagesByIdQuery getImagesById(UserActor actor) {
+        return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Retrieves collection of images by their ids.
+     *
+     * @param actor group actor with access token
+     * @return query
+     */
+    public AppWidgetsGetImagesByIdQuery getImagesById(GroupActor actor) {
+        return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Retrieves collection of images by their ids.
+     *
+     * @param actor service actor with access token
+     * @return query
+     */
+    public AppWidgetsGetImagesByIdQuery getImagesById(ServiceActor actor) {
+        return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
     }
 }
