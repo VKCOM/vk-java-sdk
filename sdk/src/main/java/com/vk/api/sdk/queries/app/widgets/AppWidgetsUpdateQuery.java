@@ -3,26 +3,11 @@ package com.vk.api.sdk.queries.app.widgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.client.actors.UserActor;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AppWidgetsUpdateQuery extends AbstractQueryBuilder<AppWidgetsUpdateQuery, Integer> {
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client   VK API client
-     * @param actor    user actor with access token
-     * @param code     widget's code
-     */
-    public AppWidgetsUpdateQuery(VkApiClient client, UserActor actor, String code) {
-        super(client, "appWidgets.update", Integer.class);
-        accessToken(actor.getAccessToken());
-        code(code);
-    }
-
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *

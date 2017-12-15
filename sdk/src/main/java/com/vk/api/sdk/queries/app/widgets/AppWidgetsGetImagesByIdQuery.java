@@ -5,24 +5,12 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.app.widgets.ImageItem;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AppWidgetsGetImagesByIdQuery extends AbstractQueryBuilder<AppWidgetsGetImagesByIdQuery, List<ImageItem>> {
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client  VK API client
-     * @param actor   user actor with access token
-     */
-    public AppWidgetsGetImagesByIdQuery(VkApiClient client, UserActor actor) {
-        super(client, "appWidgets.getImagesById", Utils.buildParametrizedType(List.class, ImageItem.class));
-        accessToken(actor.getAccessToken());
-    }
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters

@@ -3,29 +3,12 @@ package com.vk.api.sdk.queries.app.widgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.app.widgets.responses.SaveImageResponse;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidgetsSaveGroupImageQuery, SaveImageResponse> {
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client   VK API client
-     * @param actor    user actor with access token
-     * @param hash     hash param received after uploading to server
-     * @param image    image param received after uploading to server
-     */
-    public AppWidgetsSaveGroupImageQuery(VkApiClient client, UserActor actor, String hash, String image) {
-        super(client, "appWidgets.saveGroupImage", SaveImageResponse.class);
-        accessToken(actor.getAccessToken());
-        hash(hash);
-        image(image);
-    }
-
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *

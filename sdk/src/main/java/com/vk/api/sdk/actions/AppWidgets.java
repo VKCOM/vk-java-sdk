@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.app.widgets.ImageType;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetAppImageUploadServerQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetAppImagesQuery;
@@ -43,17 +42,6 @@ public class AppWidgets extends AbstractAction {
     /**
      * Returns an upload url.
      *
-     * @param actor user actor with access token
-     * @param imageType type of image
-     * @return query
-     */
-    public AppWidgetsGetGroupImageUploadServerQuery getGroupImageUploadServer(UserActor actor, ImageType imageType) {
-        return new AppWidgetsGetGroupImageUploadServerQuery(getClient(), actor, imageType);
-    }
-
-    /**
-     * Returns an upload url.
-     *
      * @param actor group actor with access token
      * @param imageType type of image
      * @return query
@@ -77,18 +65,6 @@ public class AppWidgets extends AbstractAction {
     /**
      * Saves image into group collection for community app widgets.
      *
-     * @param actor  user actor with access token
-     * @param hash   hash param received after uploading to server
-     * @param image  image param received after uploading to server
-     * @return query
-     */
-    public AppWidgetsSaveGroupImageQuery saveGroupImage(UserActor actor, String hash, String image) {
-        return new AppWidgetsSaveGroupImageQuery(getClient(), actor, hash, image);
-    }
-
-    /**
-     * Saves image into group collection for community app widgets.
-     *
      * @param actor  group actor with access token
      * @param hash   hash param received after uploading to server
      * @param image  image param received after uploading to server
@@ -96,16 +72,6 @@ public class AppWidgets extends AbstractAction {
      */
     public AppWidgetsSaveGroupImageQuery saveGroupImage(GroupActor actor, String hash, String image) {
         return new AppWidgetsSaveGroupImageQuery(getClient(), actor, hash, image);
-    }
-
-    /**
-     * Retrieves collection of images uploaded for application.
-     *
-     * @param actor user actor with access token
-     * @return query
-     */
-    public AppWidgetsGetAppImagesQuery getAppImages(UserActor actor) {
-        return new AppWidgetsGetAppImagesQuery(getClient(), actor);
     }
 
     /**
@@ -131,31 +97,11 @@ public class AppWidgets extends AbstractAction {
     /**
      * Retrieves collection of images uploaded for application.
      *
-     * @param actor user actor with access token
-     * @return query
-     */
-    public AppWidgetsGetGroupImagesQuery getGroupImages(UserActor actor) {
-        return new AppWidgetsGetGroupImagesQuery(getClient(), actor);
-    }
-
-    /**
-     * Retrieves collection of images uploaded for application.
-     *
      * @param actor group actor with access token
      * @return query
      */
     public AppWidgetsGetGroupImagesQuery getGroupImages(GroupActor actor) {
         return new AppWidgetsGetGroupImagesQuery(getClient(), actor);
-    }
-
-    /**
-     * Retrieves collection of images by their ids.
-     *
-     * @param actor user actor with access token
-     * @return query
-     */
-    public AppWidgetsGetImagesByIdQuery getImagesById(UserActor actor) {
-        return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
     }
 
     /**
@@ -176,17 +122,6 @@ public class AppWidgets extends AbstractAction {
      */
     public AppWidgetsGetImagesByIdQuery getImagesById(ServiceActor actor) {
         return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
-    }
-
-    /**
-     * Refreshes widget.
-     *
-     * @param actor user actor with access token
-     * @param code  widget's code
-     * @return query
-     */
-    public AppWidgetsUpdateQuery update(UserActor actor, String code) {
-        return new AppWidgetsUpdateQuery(getClient(), actor, code);
     }
 
     /**
