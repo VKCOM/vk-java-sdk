@@ -13,6 +13,7 @@ import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetGroupImagesQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsGetImagesByIdQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsSaveAppImageQuery;
 import com.vk.api.sdk.queries.app.widgets.AppWidgetsSaveGroupImageQuery;
+import com.vk.api.sdk.queries.app.widgets.AppWidgetsUpdateQuery;
 
 /**
  * List of AppWidgets methods
@@ -175,5 +176,27 @@ public class AppWidgets extends AbstractAction {
      */
     public AppWidgetsGetImagesByIdQuery getImagesById(ServiceActor actor) {
         return new AppWidgetsGetImagesByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Refreshes widget.
+     *
+     * @param actor user actor with access token
+     * @param code  widget's code
+     * @return query
+     */
+    public AppWidgetsUpdateQuery update(UserActor actor, String code) {
+        return new AppWidgetsUpdateQuery(getClient(), actor, code);
+    }
+
+    /**
+     * Refreshes widget.
+     *
+     * @param actor group actor with access token
+     * @param code  widget's code
+     * @return query
+     */
+    public AppWidgetsUpdateQuery update(GroupActor actor, String code) {
+        return new AppWidgetsUpdateQuery(getClient(), actor, code);
     }
 }
