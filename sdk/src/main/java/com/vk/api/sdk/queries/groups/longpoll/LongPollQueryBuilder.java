@@ -32,6 +32,8 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
     private static final int INCORRECT_TS_VALUE_ERROR_CODE = 1;
     private static final int TOKEN_EXPIRED_ERROR_CODE = 2;
 
+    private static final String FAILED_CODE = "failed";
+
     private final Map<String, String> params = new HashMap<>();
 
     public LongPollQueryBuilder(VkApiClient client, String url, Type type) {
@@ -95,8 +97,8 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
         String textResponse = executeAsString();
         JsonReader jsonReader = new JsonReader(new StringReader(textResponse));
         JsonObject json = (JsonObject) new JsonParser().parse(jsonReader);
-        if (json.has("failed")) {
-            JsonPrimitive failedParam = json.getAsJsonPrimitive("failed");
+        if (json.has(FAILED_CODE)) {
+            JsonPrimitive failedParam = json.getAsJsonPrimitive(FAILED_CODE);
             int code = failedParam.getAsInt();
             switch (code) {
                 case INCORRECT_TS_VALUE_ERROR_CODE:
