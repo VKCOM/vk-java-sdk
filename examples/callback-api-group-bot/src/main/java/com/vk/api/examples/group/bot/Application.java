@@ -2,13 +2,9 @@ package com.vk.api.examples.group.bot;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
-import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,21 +17,21 @@ public class Application {
 
     public void run() throws FileNotFoundException, ClientException, ApiException {
         Properties properties = readProperties();
-        GroupActor groupActor = Utils.createGroupActor(properties);
+        GroupActor groupActor = createGroupActor(properties);
 
         String groupId = properties.getProperty("groupId");
-
-        String adminId = properties.getProperty("adminId");
-        String adminToken = properties.getProperty("adminToken");
-        UserActor adminActor = new UserActor(Integer.parseInt(adminId), adminToken);
 
         HttpTransportClient httpClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(httpClient);
 
         CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor, groupId);
-        handler.setGroupActor(groupActor);
-        handler.setUserActor(adminActor);
         handler.run();
+    }
+
+    private GroupActor createGroupActor(Properties properties) {
+        String groupId = properties.getProperty("groupId");
+        String accessToken = properties.getProperty("token");
+        return new GroupActor(Integer.parseInt(groupId), accessToken);
     }
 
     private Properties readProperties() throws FileNotFoundException {

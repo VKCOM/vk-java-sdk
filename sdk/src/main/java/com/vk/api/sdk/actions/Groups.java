@@ -2,7 +2,6 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
@@ -28,7 +27,6 @@ import com.vk.api.sdk.queries.groups.GroupsGetCatalogQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitedUsersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQueryWithExtended;
-import com.vk.api.sdk.queries.groups.GroupsGetLongPollServerQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersFilter;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFields;
@@ -50,7 +48,6 @@ import com.vk.api.sdk.queries.groups.GroupsReorderLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsSearchQuery;
 import com.vk.api.sdk.queries.groups.GroupsSetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsUnbanUserQuery;
-import com.vk.api.sdk.queries.groups.longpoll.GetEventsLongPollQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -592,15 +589,5 @@ public class Groups extends AbstractAction {
      */
     public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor, int serverId) {
         return new GroupsDeleteCallbackServerQuery(getClient(), actor, serverId);
-    }
-
-    // Documentation: TODO
-
-    public GroupsGetLongPollServerQuery getLongPollServer(Actor actor, String groupId) {
-        return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
-    }
-
-    public GetEventsLongPollQuery getEventsLongPoll(String url, String key, Integer ts) {
-        return new GetEventsLongPollQuery(getClient(), url, key, ts);
     }
 }

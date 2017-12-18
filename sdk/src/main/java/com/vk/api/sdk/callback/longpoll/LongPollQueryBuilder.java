@@ -1,4 +1,4 @@
-package com.vk.api.sdk.queries.groups.longpoll;
+package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -61,14 +61,6 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
         return unsafeParam(key, Integer.toString(value));
     }
 
-    private static String boolAsParam(boolean param) {
-        return param ? "1" : "0";
-    }
-
-    public T unsafeParam(String key, boolean value) {
-        return unsafeParam(key, boolAsParam(value));
-    }
-
     private static String mapToGetString(Map<String, String> params) {
         return params.entrySet().stream()
                 .map(entry -> entry.getKey() + "=" + (entry.getValue() != null ? escape(entry.getValue()) : ""))
@@ -120,3 +112,4 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
     }
 
 }
+

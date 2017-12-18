@@ -12,10 +12,7 @@ dependencies {
     compile project(':sdk')
 
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
-    compile group: 'com.google.guava', name: 'guava', version: guavaVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 }

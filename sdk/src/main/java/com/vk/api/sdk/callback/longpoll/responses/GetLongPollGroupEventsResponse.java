@@ -1,4 +1,4 @@
-package com.vk.api.sdk.objects.groups.longpoll;
+package com.vk.api.sdk.callback.longpoll.responses;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Objects;
 
-public class GetEventsResponse {
+public class GetLongPollGroupEventsResponse {
 
     @SerializedName("timestamp")
     private Integer timestamp;
@@ -26,7 +26,7 @@ public class GetEventsResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetEventsResponse that = (GetEventsResponse) o;
+        GetLongPollGroupEventsResponse that = (GetLongPollGroupEventsResponse) o;
         return Objects.equals(timestamp, that.timestamp) &&
                 Objects.equals(updates, that.updates);
     }
@@ -45,3 +45,4 @@ public class GetEventsResponse {
         return sb.toString();
     }
 }
+
