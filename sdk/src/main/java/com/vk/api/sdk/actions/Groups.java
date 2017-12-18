@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
@@ -595,11 +596,7 @@ public class Groups extends AbstractAction {
 
     // Documentation: TODO
 
-    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, String groupId) {
-        return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
-    }
-
-    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor, String groupId) {
+    public GroupsGetLongPollServerQuery getLongPollServer(Actor actor, String groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 

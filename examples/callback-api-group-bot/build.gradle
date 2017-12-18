@@ -16,8 +16,6 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
-    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: jettyVersion
 
-    testCompile group: 'org.testng', name: 'testng', version: testngVersion
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
