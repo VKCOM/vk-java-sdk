@@ -29,7 +29,6 @@ public class CallbackApiLongPoll extends CallbackApi {
         GetLongPollServerResponse credentials = getCredentials();
         int lastTs = credentials.getTs();
         while (true) {
-            System.out.println("Waiting.....");
             try {
                 GetEventsResponse eventsResponse = client.groups().getEventsLongPoll(credentials.getServer(), credentials.getKey(), lastTs).waitParam(DEFAULT_WAIT).execute();
                 System.out.println(eventsResponse);
