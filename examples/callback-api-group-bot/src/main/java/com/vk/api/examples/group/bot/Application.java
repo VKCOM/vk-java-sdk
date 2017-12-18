@@ -2,6 +2,7 @@ package com.vk.api.examples.group.bot;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
@@ -23,13 +24,17 @@ public class Application {
         GroupActor groupActor = Utils.createGroupActor(properties);
 
         String groupId = properties.getProperty("groupId");
+
         String adminId = properties.getProperty("adminId");
+        String adminToken = properties.getProperty("adminToken");
+        UserActor adminActor = new UserActor(Integer.parseInt(adminId), adminToken);
 
         HttpTransportClient httpClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(httpClient);
 
-        CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor, groupId, adminId);
+        CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor, groupId);
         handler.setGroupActor(groupActor);
+        handler.setUserActor(adminActor);
         handler.run();
     }
 

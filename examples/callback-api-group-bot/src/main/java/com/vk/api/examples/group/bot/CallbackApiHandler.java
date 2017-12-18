@@ -12,19 +12,15 @@ public class CallbackApiHandler extends CallbackApiLongPoll {
     private UserActor userActor;
     private GroupActor groupActor;
 
-    private Integer adminId;
-
-    public CallbackApiHandler(VkApiClient client, Actor actor, String groupId, String adminId) {
+    public CallbackApiHandler(VkApiClient client, Actor actor, String groupId) {
         super(client, actor, groupId);
-        this.adminId = Integer.parseInt(adminId);
     }
 
     @Override
     public void wallPostNew(Integer groupId, WallPost message) {
         StringBuilder response = new StringBuilder();
-        response.append("User with id = [").append(message.getFromId()).append(']');
-        response.append(" made a new post on community wall with text = \'").append(message.getText()).append('\'');
-        getClient().messages().send(groupActor).userId(adminId).message(response.toString());
+        response.append("Hi! You just made a new post on community wall with text = \'").append(message.getText()).append('\'');
+        getClient().messages().send(userActor).userId(message.getFromId()).message(response.toString());
     }
 
     public UserActor getUserActor() {
