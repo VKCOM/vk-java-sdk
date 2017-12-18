@@ -8,9 +8,11 @@ import java.util.List;
 
 public class GetEventsLongPollQuery extends LongPollQueryBuilder<GetEventsLongPollQuery, GetEventsResponse> {
 
+    private static final String ACT_PARAM_VALUE = "a_check";
+
     public GetEventsLongPollQuery(VkApiClient client, String url, String key, Integer ts) {
         super(client, url, GetEventsResponse.class);
-        act("a_check");
+        act(ACT_PARAM_VALUE);
         key(key);
         ts(ts);
     }

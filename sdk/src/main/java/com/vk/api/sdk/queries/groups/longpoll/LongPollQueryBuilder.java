@@ -29,6 +29,9 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
     private static final Logger LOG = LoggerFactory.getLogger(LongPollQueryBuilder.class);
     private static final Integer RETRY_ATTEMPTS = 3;
 
+    private static final int INCORRECT_TS_VALUE_ERROR_CODE = 1;
+    private static final int TOKEN_EXPIRED_ERROR_CODE = 2;
+
     private final Map<String, String> params = new HashMap<>();
 
     public LongPollQueryBuilder(VkApiClient client, String url, Type type) {
@@ -96,10 +99,10 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
             JsonPrimitive failedParam = json.getAsJsonPrimitive("failed");
             int code = failedParam.getAsInt();
             switch (code) {
-                case 1:
+                case INCORRECT_TS_VALUE_ERROR_CODE:
                     int ts = json.getAsJsonPrimitive("ts").getAsInt();
                     throw new LongPollServerTsException("\'ts\' value is incorrect, minimal value is 1, maximal value is " + ts);
-                case 2:
+                case TOKEN_EXPIRED_ERROR_CODE:
                     throw new LongPollServerKeyExpiredException("Try to generate a new key.");
                 default:
                     throw new ClientException("Unknown LongPollServer exception, something went wrong.");

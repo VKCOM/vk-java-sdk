@@ -6,4 +6,3 @@ include 'examples:youtrack-bot'
 include 'examples:user-oauth'
 include 'examples:group-oauth'
 include 'examples:callback-api-group-bot'
-
