@@ -13,29 +13,27 @@ import java.util.Properties;
 
 public class Application {
 
-    private final String PROPERTIES_FILE = "config.properties";
+    private static final String PROPERTIES_FILE = "config.properties";
 
-    public void run() throws FileNotFoundException, ClientException, ApiException {
+    public static void main(String[] args)  throws FileNotFoundException, ClientException, ApiException {
         Properties properties = readProperties();
         GroupActor groupActor = createGroupActor(properties);
-
-        String groupId = properties.getProperty("groupId");
 
         HttpTransportClient httpClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(httpClient);
 
-        CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor, groupId);
+        CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor);
         handler.run();
     }
 
-    private GroupActor createGroupActor(Properties properties) {
+    private static GroupActor createGroupActor(Properties properties) {
         String groupId = properties.getProperty("groupId");
         String accessToken = properties.getProperty("token");
         return new GroupActor(Integer.parseInt(groupId), accessToken);
     }
 
-    private Properties readProperties() throws FileNotFoundException {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE);
+    private static Properties readProperties() throws FileNotFoundException {
+        InputStream inputStream = Application.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
         if (inputStream == null) {
             throw new FileNotFoundException("property file '" + PROPERTIES_FILE + "' not found in the classpath");
         }

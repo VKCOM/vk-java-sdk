@@ -4,7 +4,8 @@ import com.vk.api.sdk.callback.longpoll.queries.GetLongPollGroupEventsQuery;
 import com.vk.api.sdk.callback.longpoll.queries.GetLongPollServerQuery;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 
 public class LongPoll extends AbstractAction {
 
@@ -20,8 +21,15 @@ public class LongPoll extends AbstractAction {
     /**
      * Retrieves server info needed to use long polling.
      */
-    public GetLongPollServerQuery getLongPollServer(Actor actor, String groupId) {
+    public GetLongPollServerQuery getLongPollServer(UserActor actor, Integer groupId) {
         return new GetLongPollServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Retrieves server info needed to use long polling.
+     */
+    public GetLongPollServerQuery getLongPollServer(GroupActor actor) {
+        return new GetLongPollServerQuery(getClient(), actor);
     }
 
     /**

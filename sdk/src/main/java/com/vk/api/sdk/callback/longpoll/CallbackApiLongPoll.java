@@ -5,6 +5,8 @@ import com.vk.api.sdk.callback.CallbackApi;
 import com.vk.api.sdk.callback.longpoll.responses.GetLongPollGroupEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
@@ -12,17 +14,40 @@ import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
 
 public class CallbackApiLongPoll extends CallbackApi {
 
-    private static final int DEFAULT_WAIT = 10;
+    private final int DEFAULT_WAIT;
 
     private VkApiClient client;
     private Actor actor;
 
-    private final String groupId;
+    private final Integer groupId;
 
-    public CallbackApiLongPoll(VkApiClient client, Actor actor, String groupId) {
+    public CallbackApiLongPoll(VkApiClient client, UserActor actor, Integer groupId) {
         this.client = client;
         this.actor = actor;
         this.groupId = groupId;
+        DEFAULT_WAIT = 10;
+    }
+
+    public CallbackApiLongPoll(VkApiClient client, GroupActor actor) {
+        this.client = client;
+        this.actor = actor;
+        this.groupId = actor.getGroupId();
+        DEFAULT_WAIT = 10;
+    }
+
+
+    public CallbackApiLongPoll(VkApiClient client, UserActor actor, Integer groupId, int waitTime) {
+        this.client = client;
+        this.actor = actor;
+        this.groupId = groupId;
+        DEFAULT_WAIT = waitTime;
+    }
+
+    public CallbackApiLongPoll(VkApiClient client, GroupActor actor, int waitTime) {
+        this.client = client;
+        this.actor = actor;
+        this.groupId = actor.getGroupId();
+        DEFAULT_WAIT = waitTime;
     }
 
     public void run() throws ClientException, ApiException {
@@ -42,7 +67,10 @@ public class CallbackApiLongPoll extends CallbackApi {
     }
 
     private GetLongPollServerResponse getLongPollServer() throws ClientException, ApiException {
-        return client.longPoll().getLongPollServer(actor, groupId).execute();
+        if (actor instanceof GroupActor) {
+            return client.longPoll().getLongPollServer((GroupActor) actor).execute();
+        }
+        return client.longPoll().getLongPollServer((UserActor) actor, groupId).execute();
     }
 
     protected VkApiClient getClient() {
