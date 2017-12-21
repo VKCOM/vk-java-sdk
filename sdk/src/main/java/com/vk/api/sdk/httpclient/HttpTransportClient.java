@@ -42,7 +42,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.10";
+    private static final String USER_AGENT = "Java VK SDK/0.5.11";
 
     private static final String EMPTY_PAYLOAD = "-";
 
@@ -256,7 +256,7 @@ public class HttpTransportClient implements TransportClient {
 
     @Override
     public ClientResponse delete(String url) throws IOException {
-        return delete(url);
+        return delete(url, null, FORM_CONTENT_TYPE);
     }
 
     @Override

@@ -7,16 +7,13 @@ import java.util.Objects;
 /**
  * Created by Anton Tsivarev on 12.09.16.
  */
-public class CallbackMessage<T> {
+public class CallbackConfirmationMessage {
 
     @SerializedName("type")
     private CallbackMessageType type;
 
     @SerializedName("group_id")
     private Integer groupId;
-
-    @SerializedName("object")
-    private T object;
 
     @SerializedName("secret")
     private String secret;
@@ -29,10 +26,6 @@ public class CallbackMessage<T> {
         return groupId;
     }
 
-    public T getObject() {
-        return object;
-    }
-
     public String getSecret() {
         return secret;
     }
@@ -41,24 +34,22 @@ public class CallbackMessage<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackMessage<?> that = (CallbackMessage<?>) o;
+        CallbackConfirmationMessage that = (CallbackConfirmationMessage) o;
         return type == that.type &&
                 Objects.equals(groupId, that.groupId) &&
-                Objects.equals(object, that.object) &&
                 Objects.equals(secret, that.secret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, groupId, object);
+        return Objects.hash(type, groupId, secret);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CallbackMessage{");
+        final StringBuilder sb = new StringBuilder("CallbackConfirmationMessage{");
         sb.append("type=").append(type);
         sb.append(", groupId=").append(groupId);
-        sb.append(", object=").append(object);
         sb.append(", secret='").append(secret).append('\'');
         sb.append('}');
         return sb.toString();

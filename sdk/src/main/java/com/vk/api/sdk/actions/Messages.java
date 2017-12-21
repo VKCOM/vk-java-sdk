@@ -41,6 +41,9 @@ import com.vk.api.sdk.queries.messages.MessagesSendQuery;
 import com.vk.api.sdk.queries.messages.MessagesSendWithUserIdsQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesSetChatPhotoQuery;
+import com.vk.api.sdk.queries.messages.MessagesGetInviteLinkQuery;
+import com.vk.api.sdk.queries.messages.MessagesGetChatPreviewQuery;
+import com.vk.api.sdk.queries.messages.MessagesJoinChatByInviteLinkQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -288,6 +291,27 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetLongPollServerQuery getLongPollServer(GroupActor actor) {
         return new MessagesGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns invite link for the specified chat.
+     */
+    public MessagesGetInviteLinkQuery getInviteLink(UserActor actor) {
+        return new MessagesGetInviteLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns chat preview for the specified chat.
+     */
+    public MessagesGetChatPreviewQuery getChatPreview(UserActor actor, String link) {
+        return new MessagesGetChatPreviewQuery(getClient(), actor, link);
+    }
+
+    /**
+     * Returns chat id to which the user has joined.
+     */
+    public MessagesJoinChatByInviteLinkQuery joinChatByInviteLink(UserActor actor, String link) {
+        return new MessagesJoinChatByInviteLinkQuery(getClient(), actor, link);
     }
 
     /**

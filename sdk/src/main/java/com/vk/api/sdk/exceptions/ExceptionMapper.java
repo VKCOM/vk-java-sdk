@@ -167,6 +167,10 @@ public class ExceptionMapper {
                 return new ApiMessagesForwardAmountExceededException(error.getErrorMsg());
             case 914:
                 return new ApiMessagesLongMessageException(error.getErrorMsg());
+            case 917:
+                return new ApiMessageInviteLinkNoAccessException(error.getErrorMsg());
+            case 919:
+                return new ApiMessagesForbiddenInviteLinkException(error.getErrorMsg());
             case 921:
                 return new ApiMessagesForwardUnableException(error.getErrorMsg());
             case 1160:

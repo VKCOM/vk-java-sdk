@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Objects;
 
 /**
- * UploadResponse object
+ * VideoUploadResponse object
  */
-public class UploadResponse {
+public class VideoUploadResponse {
     /**
      * Video size
      */
@@ -37,14 +37,14 @@ public class UploadResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UploadResponse uploadResponse = (UploadResponse) o;
-        return Objects.equals(size, uploadResponse.size) &&
-                Objects.equals(videoId, uploadResponse.videoId);
+        VideoUploadResponse videoUploadResponse = (VideoUploadResponse) o;
+        return Objects.equals(size, videoUploadResponse.size) &&
+                Objects.equals(videoId, videoUploadResponse.videoId);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("UploadResponse{");
+        final StringBuilder sb = new StringBuilder("VideoUploadResponse{");
         sb.append("size=").append(size);
         sb.append(", videoId=").append(videoId);
         sb.append('}');
