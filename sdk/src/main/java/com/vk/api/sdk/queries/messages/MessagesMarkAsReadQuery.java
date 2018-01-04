@@ -61,7 +61,7 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesMarkAsReadQuery peerId(String value) {
+    public MessagesMarkAsReadQuery peerId(Integer value) {
         return unsafeParam("peer_id", value);
     }
 
