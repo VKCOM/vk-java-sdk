@@ -32,7 +32,7 @@ public class Application {
         return new GroupActor(Integer.parseInt(groupId), accessToken);
     }
 
-    private static Properties readProperties() throws FileNotFoundException {
+    private static Properties readProperties() throws IOException {
         InputStream inputStream = Application.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE);
         if (inputStream == null) {
             throw new FileNotFoundException("property file '" + PROPERTIES_FILE + "' not found in the classpath");
@@ -40,10 +40,11 @@ public class Application {
         try {
             Properties properties = new Properties();
             properties.load(inputStream);
-            inputStream.close();
             return properties;
         } catch (IOException e) {
             throw new RuntimeException("Incorrect properties file");
+        } finally {
+            inputStream.close();
         }
     }
 }
