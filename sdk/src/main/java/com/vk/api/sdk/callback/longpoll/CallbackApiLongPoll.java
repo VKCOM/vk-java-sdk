@@ -57,7 +57,7 @@ public class CallbackApiLongPoll extends CallbackApi {
         int lastTimeStamp = longPollServer.getTs();
         while (true) {
             try {
-                GetLongPollGroupEventsResponse eventsResponse = client.longPoll().getEventsLongPoll(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(DEFAULT_WAIT).execute();
+                GetLongPollGroupEventsResponse eventsResponse = client.longPoll().getEventsLongPoll(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
                 for (JsonObject jsonObject: eventsResponse.getUpdates()) {
                     parse(jsonObject);
                 }
