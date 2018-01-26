@@ -2,7 +2,7 @@ package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.callback.CallbackApi;
-import com.vk.api.sdk.callback.longpoll.responses.GetLongPollGroupEventsResponse;
+import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
@@ -57,7 +57,7 @@ public class CallbackApiLongPoll extends CallbackApi {
         int lastTimeStamp = longPollServer.getTs();
         while (true) {
             try {
-                GetLongPollGroupEventsResponse eventsResponse = client.longPoll().getEventsLongPoll(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
+                GetLongPollEventsResponse eventsResponse = client.longPoll().getEventsLongPoll(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
                 for (JsonObject jsonObject: eventsResponse.getUpdates()) {
                     parse(jsonObject);
                 }
@@ -70,10 +70,10 @@ public class CallbackApiLongPoll extends CallbackApi {
 
     private GetLongPollServerResponse getLongPollServer() throws ClientException, ApiException {
         if (groupActor != null) {
-            return client.longPoll().getLongPollServer(groupActor).execute();
+            return client.groups().getLongPollServer(groupActor).execute();
         }
 
-        return client.longPoll().getLongPollServer(userActor, groupId).execute();
+        return client.groups().getLongPollServer(userActor, groupId).execute();
     }
 
     protected VkApiClient getClient() {

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Objects;
 
-public class GetLongPollGroupEventsResponse {
+public class GetLongPollEventsResponse {
 
     @SerializedName("timestamp")
     private Integer timestamp;
@@ -26,7 +26,7 @@ public class GetLongPollGroupEventsResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetLongPollGroupEventsResponse that = (GetLongPollGroupEventsResponse) o;
+        GetLongPollEventsResponse that = (GetLongPollEventsResponse) o;
         return Objects.equals(timestamp, that.timestamp) &&
                 Objects.equals(updates, that.updates);
     }

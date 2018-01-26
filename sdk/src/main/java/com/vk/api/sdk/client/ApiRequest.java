@@ -124,7 +124,7 @@ public abstract class ApiRequest<T> {
             throw new ClientException("No content type header");
         }
 
-        if (!response.getHeaders().get("Content-Type").contains("application/json")) {
+        if (!response.getHeaders().get("Content-Type").contains("application/json") && !response.getHeaders().get("Content-Type").contains("text/javascript")) {
             throw new ClientException("Invalid content type");
         }
 

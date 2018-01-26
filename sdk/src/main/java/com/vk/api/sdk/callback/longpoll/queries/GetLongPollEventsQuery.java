@@ -1,13 +1,13 @@
 package com.vk.api.sdk.callback.longpoll.queries;
 
 import com.vk.api.sdk.callback.longpoll.LongPollQueryBuilder;
-import com.vk.api.sdk.callback.longpoll.responses.GetLongPollGroupEventsResponse;
+import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class GetLongPollGroupEventsQuery extends LongPollQueryBuilder<GetLongPollGroupEventsQuery, GetLongPollGroupEventsResponse> {
+public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEventsQuery, GetLongPollEventsResponse> {
 
     private static final String ACT_PARAM_VALUE = "a_check";
 
@@ -19,31 +19,31 @@ public class GetLongPollGroupEventsQuery extends LongPollQueryBuilder<GetLongPol
      * @param key    secret key
      * @param ts     timestamp
      */
-    public GetLongPollGroupEventsQuery(VkApiClient client, String url, String key, Integer ts) {
-        super(client, url, GetLongPollGroupEventsResponse.class);
+    public GetLongPollEventsQuery(VkApiClient client, String url, String key, Integer ts) {
+        super(client, url, GetLongPollEventsResponse.class);
         act(ACT_PARAM_VALUE);
         key(key);
         ts(ts);
     }
 
-    public GetLongPollGroupEventsQuery waitTime(Integer value) {
+    public GetLongPollEventsQuery waitTime(Integer value) {
         return unsafeParam("wait", value);
     }
 
-    protected GetLongPollGroupEventsQuery key(String value) {
+    protected GetLongPollEventsQuery key(String value) {
         return unsafeParam("key", value);
     }
 
-    protected GetLongPollGroupEventsQuery ts(Integer value) {
+    protected GetLongPollEventsQuery ts(Integer value) {
         return unsafeParam("ts", value);
     }
 
-    protected GetLongPollGroupEventsQuery act(String value) {
+    protected GetLongPollEventsQuery act(String value) {
         return unsafeParam("act", value);
     }
 
     @Override
-    protected GetLongPollGroupEventsQuery getThis() {
+    protected GetLongPollEventsQuery getThis() {
         return this;
     }
 

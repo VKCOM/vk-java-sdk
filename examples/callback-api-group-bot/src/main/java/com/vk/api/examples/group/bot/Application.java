@@ -15,15 +15,26 @@ public class Application {
 
     private static final String PROPERTIES_FILE = "config.properties";
 
-    public static void main(String[] args)  throws FileNotFoundException, ClientException, ApiException {
+    public static void main(String[] args) throws IOException, ClientException, ApiException {
         Properties properties = readProperties();
         GroupActor groupActor = createGroupActor(properties);
 
         HttpTransportClient httpClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(httpClient);
 
+        if (!vk.groups().getLongPollSettings(groupActor).execute().getEnabled()) {
+            Integer responseCode = vk.groups().setLongPollSettings(groupActor).enabled(1).wallPostNew(1).execute();
+            if (responseCode == 1) {
+                System.out.println("Yes, set settings method was run successfully!");
+            } else {
+                System.out.println("Ooops, something weird");
+            }
+        }
+
         CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor);
         handler.run();
+
+        System.out.println(vk.groups().getLongPollSettings(groupActor).execute());
     }
 
     private static GroupActor createGroupActor(Properties properties) {
