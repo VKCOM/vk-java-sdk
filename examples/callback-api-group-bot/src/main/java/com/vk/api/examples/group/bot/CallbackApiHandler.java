@@ -44,7 +44,6 @@ public class CallbackApiHandler extends CallbackApiLongPoll {
         super(client, actor);
     }
 
-
     public void messageNew(Integer groupId, Message message) {
         LOG.info("messageNew: " +  message.toString());
     }
