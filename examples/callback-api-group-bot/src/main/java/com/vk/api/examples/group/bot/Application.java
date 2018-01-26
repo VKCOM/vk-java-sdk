@@ -24,11 +24,7 @@ public class Application {
 
         if (!vk.groups().getLongPollSettings(groupActor).execute().getEnabled()) {
             Integer responseCode = vk.groups().setLongPollSettings(groupActor).enabled(1).wallPostNew(1).execute();
-            if (responseCode == 1) {
-                System.out.println("Yes, set settings method was run successfully!");
-            } else {
-                System.out.println("Ooops, something weird");
-            }
+            assert responseCode == 1;
         }
 
         CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor);
