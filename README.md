@@ -336,7 +336,7 @@ if (captchaImg != null) {
 }
 ```
 
-## 11. Callback API handler 
+## 11. Callback API handler
 Override methods from CallbackApi class for handling events
 
 ```java
