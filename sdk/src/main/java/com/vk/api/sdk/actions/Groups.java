@@ -597,7 +597,7 @@ public class Groups extends AbstractAction {
     /**
      * Retrieves server info needed to use long polling.
      */
-    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, Integer groupId) {
+    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, int groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 
@@ -611,7 +611,7 @@ public class Groups extends AbstractAction {
     /**
      * Retrieves group longpoll settings
      */
-    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, Integer groupId) {
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, int groupId) {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
@@ -625,7 +625,7 @@ public class Groups extends AbstractAction {
     /**
      * Sets group longpoll settings
      */
-    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, Integer groupId) {
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, int groupId) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 

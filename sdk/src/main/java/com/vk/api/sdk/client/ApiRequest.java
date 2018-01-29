@@ -122,11 +122,12 @@ public abstract class ApiRequest<T> {
         }
 
         Map<String, String> headers = response.getHeaders();
-        String contentType = headers.get("Content-Type");
 
         if (!headers.containsKey("Content-Type")) {
             throw new ClientException("No content type header");
         }
+
+        String contentType = headers.get("Content-Type");
 
         if (!contentType.contains("application/json") && !contentType.contains("text/javascript")) {
             throw new ClientException("Invalid content type");
