@@ -348,7 +348,7 @@ public class CallbackApiHandler extends CallbackApi {
 }
 ```
 
-## 11. Callback API LongPoll handler
+## 12. Callback API LongPoll handler
 Enable Callback API LongPoll for needed group and specify
 which events should be tracked
 
@@ -378,6 +378,7 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
       System.out.println("messageNew: " + message.toString());
     }
 
+    @Override
     public void wallPostNew(Integer groupId, WallPost wallPost) {
       System.out.println("wallPostNew: " + wallPost.toString());
     }
