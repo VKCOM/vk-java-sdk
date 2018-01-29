@@ -393,6 +393,8 @@ CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupAct
 handler.run();
 ```
 
+An example of usage Callback API LongPoll can be found in ```examples``` as a group-bot which logs all events. 
+
 
 ## 13. Streaming API
 
