@@ -38,7 +38,7 @@ public class GetLongPollEventsResponse {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("GetEventsResponse{");
+        final StringBuilder sb = new StringBuilder("GetLongPollEventsResponse{");
         sb.append("timestamp=").append(timestamp);
         sb.append(", updates=").append(updates);
         sb.append('}');

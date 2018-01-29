@@ -18,7 +18,7 @@ public class GroupsGetLongPollServerQuery extends AbstractQueryBuilder<GroupsGet
      * @param actor   user actor with access token
      * @param groupId value of "group id" parameter.
      */
-    public GroupsGetLongPollServerQuery(VkApiClient client, UserActor actor, Integer groupId) {
+    public GroupsGetLongPollServerQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getLongPollServer", GetLongPollServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -36,7 +36,7 @@ public class GroupsGetLongPollServerQuery extends AbstractQueryBuilder<GroupsGet
         groupId(actor.getGroupId());
     }
 
-    protected GroupsGetLongPollServerQuery groupId(Integer groupId) {
+    protected GroupsGetLongPollServerQuery groupId(int groupId) {
         return unsafeParam("group_id", groupId);
     }
 

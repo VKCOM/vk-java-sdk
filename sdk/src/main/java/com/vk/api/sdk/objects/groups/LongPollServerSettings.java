@@ -1,253 +1,254 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.base.BoolInt;
 
 import java.util.Objects;
 
 public class LongPollServerSettings {
 
     @SerializedName("message_new")
-    private Integer messageNew;
+    private BoolInt messageNew;
 
     @SerializedName("message_allow")
-    private Integer messageAllow;
+    private BoolInt messageAllow;
 
     @SerializedName("message_deny")
-    private Integer messageDeny;
+    private BoolInt messageDeny;
 
     @SerializedName("photo_new")
-    private Integer photoNew;
+    private BoolInt photoNew;
 
     @SerializedName("audio_new")
-    private Integer audioNew;
+    private BoolInt audioNew;
 
     @SerializedName("video_new")
-    private Integer videoNew;
+    private BoolInt videoNew;
 
     @SerializedName("wall_reply_new")
-    private Integer wallReplyNew;
+    private BoolInt wallReplyNew;
 
     @SerializedName("wall_reply_edit")
-    private Integer wallReplyEdit;
+    private BoolInt wallReplyEdit;
 
     @SerializedName("wall_reply_delete")
-    private Integer wallReplyDelete;
+    private BoolInt wallReplyDelete;
 
     @SerializedName("wall_post_new")
-    private Integer wallPostNew;
+    private BoolInt wallPostNew;
 
     @SerializedName("wall_repost")
-    private Integer wallRespost;
+    private BoolInt wallRespost;
 
     @SerializedName("board_post_new")
-    private Integer boardPostNew;
+    private BoolInt boardPostNew;
 
     @SerializedName("board_post_edit")
-    private Integer boardPostEdit;
+    private BoolInt boardPostEdit;
 
     @SerializedName("board_post_delete")
-    private Integer boardPostDelete;
+    private BoolInt boardPostDelete;
 
     @SerializedName("board_post_restore")
-    private Integer boardPostRestore;
+    private BoolInt boardPostRestore;
 
     @SerializedName("photo_comment_new")
-    private Integer photoCommentNew;
+    private BoolInt photoCommentNew;
 
     @SerializedName("photo_comment_edit")
-    private Integer photoCommentEdit;
+    private BoolInt photoCommentEdit;
 
     @SerializedName("photo_comment_delete")
-    private Integer photoCommentDelete;
+    private BoolInt photoCommentDelete;
 
     @SerializedName("photo_comment_restore")
-    private Integer photoCommentRestore;
+    private BoolInt photoCommentRestore;
 
     @SerializedName("video_comment_new")
-    private Integer videoCommentNew;
+    private BoolInt videoCommentNew;
 
     @SerializedName("video_comment_edit")
-    private Integer videoCommentEdit;
+    private BoolInt videoCommentEdit;
 
     @SerializedName("video_comment_delete")
-    private Integer videoCommentDelete;
+    private BoolInt videoCommentDelete;
 
     @SerializedName("video_comment_restore")
-    private Integer videoCommentRestore;
+    private BoolInt videoCommentRestore;
 
     @SerializedName("market_comment_new")
-    private Integer marketCommentNew;
+    private BoolInt marketCommentNew;
 
     @SerializedName("market_comment_edit")
-    private Integer marketCommentEdit;
+    private BoolInt marketCommentEdit;
 
     @SerializedName("market_comment_delete")
-    private Integer marketCommentDelete;
+    private BoolInt marketCommentDelete;
 
     @SerializedName("market_comment_restore")
-    private Integer marketCommentRestore;
+    private BoolInt marketCommentRestore;
 
     @SerializedName("poll_vote_new")
-    private Integer pollVoteNew;
+    private BoolInt pollVoteNew;
 
     @SerializedName("group_join")
-    private Integer groupJoin;
+    private BoolInt groupJoin;
 
     @SerializedName("group_leave")
-    private Integer groupLeave;
+    private BoolInt groupLeave;
 
     @SerializedName("user_block")
-    private Integer userBlock;
+    private BoolInt userBlock;
 
     @SerializedName("user_unblock")
-    private Integer userUnblock;
+    private BoolInt userUnblock;
 
     @SerializedName("group_change_settings")
-    private Integer groupChangeSettings;
+    private BoolInt groupChangeSettings;
 
     @SerializedName("group_change_photo")
-    private Integer groupChangePhoto;
+    private BoolInt groupChangePhoto;
 
     @SerializedName("group_officers_edit")
-    private Integer groupOfficersEdit;
+    private BoolInt groupOfficersEdit;
 
-    public Integer getMessageNew() {
+    public BoolInt getMessageNew() {
         return messageNew;
     }
 
-    public Integer getMessageAllow() {
+    public BoolInt getMessageAllow() {
         return messageAllow;
     }
 
-    public Integer getMessageDeny() {
+    public BoolInt getMessageDeny() {
         return messageDeny;
     }
 
-    public Integer getPhotoNew() {
+    public BoolInt getPhotoNew() {
         return photoNew;
     }
 
-    public Integer getAudioNew() {
+    public BoolInt getAudioNew() {
         return audioNew;
     }
 
-    public Integer getVideoNew() {
+    public BoolInt getVideoNew() {
         return videoNew;
     }
 
-    public Integer getWallReplyNew() {
+    public BoolInt getWallReplyNew() {
         return wallReplyNew;
     }
 
-    public Integer getWallReplyEdit() {
+    public BoolInt getWallReplyEdit() {
         return wallReplyEdit;
     }
 
-    public Integer getWallReplyDelete() {
+    public BoolInt getWallReplyDelete() {
         return wallReplyDelete;
     }
 
-    public Integer getWallPostNew() {
+    public BoolInt getWallPostNew() {
         return wallPostNew;
     }
 
-    public Integer getWallRespost() {
+    public BoolInt getWallRespost() {
         return wallRespost;
     }
 
-    public Integer getBoardPostNew() {
+    public BoolInt getBoardPostNew() {
         return boardPostNew;
     }
 
-    public Integer getBoardPostEdit() {
+    public BoolInt getBoardPostEdit() {
         return boardPostEdit;
     }
 
-    public Integer getBoardPostDelete() {
+    public BoolInt getBoardPostDelete() {
         return boardPostDelete;
     }
 
-    public Integer getBoardPostRestore() {
+    public BoolInt getBoardPostRestore() {
         return boardPostRestore;
     }
 
-    public Integer getPhotoCommentNew() {
+    public BoolInt getPhotoCommentNew() {
         return photoCommentNew;
     }
 
-    public Integer getPhotoCommentEdit() {
+    public BoolInt getPhotoCommentEdit() {
         return photoCommentEdit;
     }
 
-    public Integer getPhotoCommentDelete() {
+    public BoolInt getPhotoCommentDelete() {
         return photoCommentDelete;
     }
 
-    public Integer getPhotoCommentRestore() {
+    public BoolInt getPhotoCommentRestore() {
         return photoCommentRestore;
     }
 
-    public Integer getVideoCommentNew() {
+    public BoolInt getVideoCommentNew() {
         return videoCommentNew;
     }
 
-    public Integer getVideoCommentEdit() {
+    public BoolInt getVideoCommentEdit() {
         return videoCommentEdit;
     }
 
-    public Integer getVideoCommentDelete() {
+    public BoolInt getVideoCommentDelete() {
         return videoCommentDelete;
     }
 
-    public Integer getVideoCommentRestore() {
+    public BoolInt getVideoCommentRestore() {
         return videoCommentRestore;
     }
 
-    public Integer getMarketCommentNew() {
+    public BoolInt getMarketCommentNew() {
         return marketCommentNew;
     }
 
-    public Integer getMarketCommentEdit() {
+    public BoolInt getMarketCommentEdit() {
         return marketCommentEdit;
     }
 
-    public Integer getMarketCommentDelete() {
+    public BoolInt getMarketCommentDelete() {
         return marketCommentDelete;
     }
 
-    public Integer getMarketCommentRestore() {
+    public BoolInt getMarketCommentRestore() {
         return marketCommentRestore;
     }
 
-    public Integer getPollVoteNew() {
+    public BoolInt getPollVoteNew() {
         return pollVoteNew;
     }
 
-    public Integer getGroupJoin() {
+    public BoolInt getGroupJoin() {
         return groupJoin;
     }
 
-    public Integer getGroupLeave() {
+    public BoolInt getGroupLeave() {
         return groupLeave;
     }
 
-    public Integer getUserBlock() {
+    public BoolInt getUserBlock() {
         return userBlock;
     }
 
-    public Integer getUserUnblock() {
+    public BoolInt getUserUnblock() {
         return userUnblock;
     }
 
-    public Integer getGroupChangeSettings() {
+    public BoolInt getGroupChangeSettings() {
         return groupChangeSettings;
     }
 
-    public Integer getGroupChangePhoto() {
+    public BoolInt getGroupChangePhoto() {
         return groupChangePhoto;
     }
 
-    public Integer getGroupOfficersEdit() {
+    public BoolInt getGroupOfficersEdit() {
         return groupOfficersEdit;
     }
 

@@ -2,15 +2,13 @@ package com.vk.api.sdk.callback.longpoll.queries;
 
 import com.vk.api.sdk.callback.longpoll.LongPollQueryBuilder;
 import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
+import com.vk.api.sdk.callback.objects.longpoll.GetLongPollEventsActInfo;
 import com.vk.api.sdk.client.VkApiClient;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEventsQuery, GetLongPollEventsResponse> {
-
-    private static final String ACT_PARAM_VALUE = "a_check";
-
     /**
      * Creates a LongPollQueryBuilder instance that can be used to build long polling request with various parameters
      *
@@ -21,7 +19,7 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
      */
     public GetLongPollEventsQuery(VkApiClient client, String url, String key, Integer ts) {
         super(client, url, GetLongPollEventsResponse.class);
-        act(ACT_PARAM_VALUE);
+        act(GetLongPollEventsActInfo.A_CHECK);
         key(key);
         ts(ts);
     }
@@ -38,8 +36,8 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
         return unsafeParam("ts", value);
     }
 
-    protected GetLongPollEventsQuery act(String value) {
-        return unsafeParam("act", value);
+    protected GetLongPollEventsQuery act(GetLongPollEventsActInfo actInfo) {
+        return unsafeParam("act", actInfo.getValue());
     }
 
     @Override

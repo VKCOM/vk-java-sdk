@@ -5,6 +5,8 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,15 +24,12 @@ public class Application {
         HttpTransportClient httpClient = HttpTransportClient.getInstance();
         VkApiClient vk = new VkApiClient(httpClient);
 
-        if (!vk.groups().getLongPollSettings(groupActor).execute().getEnabled()) {
-            Integer responseCode = vk.groups().setLongPollSettings(groupActor).enabled(1).wallPostNew(1).execute();
-            assert responseCode == 1;
+        if (!vk.groups().getLongPollSettings(groupActor).execute().isEnabled()) {
+            vk.groups().setLongPollSettings(groupActor).enabled(BoolInt.YES).wallPostNew(BoolInt.YES).execute();
         }
 
-        CallbackApiHandler handler = new CallbackApiHandler(vk, groupActor);
+        CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupActor);
         handler.run();
-
-        System.out.println(vk.groups().getLongPollSettings(groupActor).execute());
     }
 
     private static GroupActor createGroupActor(Properties properties) {

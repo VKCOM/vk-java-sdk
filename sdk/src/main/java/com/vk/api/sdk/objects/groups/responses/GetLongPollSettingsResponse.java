@@ -13,7 +13,7 @@ public class GetLongPollSettingsResponse {
     @SerializedName("events")
     private LongPollServerSettings events;
 
-    public Boolean getEnabled() {
+    public Boolean isEnabled() {
         return isEnabled;
     }
 

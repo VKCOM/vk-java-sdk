@@ -23,7 +23,7 @@ public class CallbackApiLongPoll extends CallbackApi {
 
     private final Integer waitTime;
 
-    public CallbackApiLongPoll(VkApiClient client, UserActor actor, Integer groupId) {
+    public CallbackApiLongPoll(VkApiClient client, UserActor actor, int groupId) {
         this.client = client;
         this.userActor = actor;
         this.groupId = groupId;
@@ -37,8 +37,7 @@ public class CallbackApiLongPoll extends CallbackApi {
         waitTime = DEFAULT_WAIT;
     }
 
-
-    public CallbackApiLongPoll(VkApiClient client, UserActor actor, Integer groupId, int waitTime) {
+    public CallbackApiLongPoll(VkApiClient client, UserActor actor, int groupId, int waitTime) {
         this.client = client;
         this.userActor = actor;
         this.groupId = groupId;
@@ -57,7 +56,7 @@ public class CallbackApiLongPoll extends CallbackApi {
         int lastTimeStamp = longPollServer.getTs();
         while (true) {
             try {
-                GetLongPollEventsResponse eventsResponse = client.longPoll().getEventsLongPoll(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
+                GetLongPollEventsResponse eventsResponse = client.longPoll().getEvents(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
                 for (JsonObject jsonObject: eventsResponse.getUpdates()) {
                     parse(jsonObject);
                 }

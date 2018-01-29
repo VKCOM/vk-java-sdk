@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  * Created by tsivarev on 21.07.16.
@@ -120,11 +121,14 @@ public abstract class ApiRequest<T> {
             throw new ClientException("Internal API server error. Wrong status code: " + response.getStatusCode() + ". Content: " + response.getContent());
         }
 
-        if (!response.getHeaders().containsKey("Content-Type")) {
+        Map<String, String> headers = response.getHeaders();
+        String contentType = headers.get("Content-Type");
+
+        if (!headers.containsKey("Content-Type")) {
             throw new ClientException("No content type header");
         }
 
-        if (!response.getHeaders().get("Content-Type").contains("application/json") && !response.getHeaders().get("Content-Type").contains("text/javascript")) {
+        if (!contentType.contains("application/json") && !contentType.contains("text/javascript")) {
             throw new ClientException("Invalid content type");
         }
 

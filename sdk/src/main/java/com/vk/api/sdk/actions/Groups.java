@@ -622,10 +622,16 @@ public class Groups extends AbstractAction {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor);
     }
 
+    /**
+     * Sets group longpoll settings
+     */
     public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, Integer groupId) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
+    /**
+     * Sets group longpoll settings
+     */
     public GroupsSetLongPollSettingsQuery setLongPollSettings(GroupActor actor) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor);
     }

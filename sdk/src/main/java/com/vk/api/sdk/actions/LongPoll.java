@@ -18,7 +18,7 @@ public class LongPoll extends AbstractAction {
     /**
      * Retrieves events from long poll server starting from the specified timestamp.
      */
-    public GetLongPollEventsQuery getEventsLongPoll(String url, String key, Integer ts) {
+    public GetLongPollEventsQuery getEvents(String url, String key, Integer ts) {
         return new GetLongPollEventsQuery(getClient(), url, key, ts);
     }
 }
