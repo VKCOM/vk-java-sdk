@@ -385,7 +385,7 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
 }
 ```
 
-In order to use the created CallbackApiLongPollHandler which overrides methods from CallBackApiLongPoll,
+In order to use the created ```CallbackApiLongPollHandler``` which overrides methods from CallBackApiLongPoll,
 the instance of it needs to be created and method ```run``` called
 
 ```java
