@@ -112,144 +112,144 @@ public class LongPollServerSettings {
     @SerializedName("group_officers_edit")
     private BoolInt groupOfficersEdit;
 
-    public BoolInt getMessageNew() {
-        return messageNew;
+    public boolean isMessageNewEnabled() {
+        return messageNew == BoolInt.YES;
     }
 
-    public BoolInt getMessageAllow() {
-        return messageAllow;
+    public boolean isMessageAllowEnabled() {
+        return messageAllow == BoolInt.YES;
     }
 
-    public BoolInt getMessageDeny() {
-        return messageDeny;
+    public boolean isMessageDenyEnabled() {
+        return messageDeny == BoolInt.YES;
     }
 
-    public BoolInt getPhotoNew() {
-        return photoNew;
+    public boolean isPhotoNewEnabled() {
+        return photoNew == BoolInt.YES;
     }
 
-    public BoolInt getAudioNew() {
-        return audioNew;
+    public boolean isAudioNewEnabled() {
+        return audioNew == BoolInt.YES;
     }
 
-    public BoolInt getVideoNew() {
-        return videoNew;
+    public boolean isVideoNewEnabled() {
+        return videoNew == BoolInt.YES;
     }
 
-    public BoolInt getWallReplyNew() {
-        return wallReplyNew;
+    public boolean isWallReplyNewEnabled() {
+        return wallReplyNew == BoolInt.YES;
     }
 
-    public BoolInt getWallReplyEdit() {
-        return wallReplyEdit;
+    public boolean isWallReplyEditEnabled() {
+        return wallReplyEdit == BoolInt.YES;
     }
 
-    public BoolInt getWallReplyDelete() {
-        return wallReplyDelete;
+    public boolean isWallReplyDeleteEnabled() {
+        return wallReplyDelete == BoolInt.YES;
     }
 
-    public BoolInt getWallPostNew() {
-        return wallPostNew;
+    public boolean isWallPostNewEnabled() {
+        return wallPostNew == BoolInt.YES;
     }
 
-    public BoolInt getWallRespost() {
-        return wallRespost;
+    public boolean isWallRespostEnabled() {
+        return wallRespost == BoolInt.YES;
     }
 
-    public BoolInt getBoardPostNew() {
-        return boardPostNew;
+    public boolean isBoardPostNewEnabled() {
+        return boardPostNew == BoolInt.YES;
     }
 
-    public BoolInt getBoardPostEdit() {
-        return boardPostEdit;
+    public boolean isBoardPostEditEnabled() {
+        return boardPostEdit == BoolInt.YES;
     }
 
-    public BoolInt getBoardPostDelete() {
-        return boardPostDelete;
+    public boolean isBoardPostDeleteEnabled() {
+        return boardPostDelete == BoolInt.YES;
     }
 
-    public BoolInt getBoardPostRestore() {
-        return boardPostRestore;
+    public boolean isBoardPostRestoreEnabled() {
+        return boardPostRestore == BoolInt.YES;
     }
 
-    public BoolInt getPhotoCommentNew() {
-        return photoCommentNew;
+    public boolean isPhotoCommentNewEnabled() {
+        return photoCommentNew == BoolInt.YES;
     }
 
-    public BoolInt getPhotoCommentEdit() {
-        return photoCommentEdit;
+    public boolean isPhotoCommentEditEnabled() {
+        return photoCommentEdit == BoolInt.YES;
     }
 
-    public BoolInt getPhotoCommentDelete() {
-        return photoCommentDelete;
+    public boolean isPhotoCommentDeleteEnabled() {
+        return photoCommentDelete == BoolInt.YES;
     }
 
-    public BoolInt getPhotoCommentRestore() {
-        return photoCommentRestore;
+    public boolean isPhotoCommentRestoreEnabled() {
+        return photoCommentRestore == BoolInt.YES;
     }
 
-    public BoolInt getVideoCommentNew() {
-        return videoCommentNew;
+    public boolean isVideoCommentNewEnabled() {
+        return videoCommentNew == BoolInt.YES;
     }
 
-    public BoolInt getVideoCommentEdit() {
-        return videoCommentEdit;
+    public boolean isVideoCommentEditEnabled() {
+        return videoCommentEdit == BoolInt.YES;
     }
 
-    public BoolInt getVideoCommentDelete() {
-        return videoCommentDelete;
+    public boolean isVideoCommentDeleteEnabled() {
+        return videoCommentDelete == BoolInt.YES;
     }
 
-    public BoolInt getVideoCommentRestore() {
-        return videoCommentRestore;
+    public boolean isVideoCommentRestoreEnabled() {
+        return videoCommentRestore == BoolInt.YES;
     }
 
-    public BoolInt getMarketCommentNew() {
-        return marketCommentNew;
+    public boolean isMarketCommentNewEnabled() {
+        return marketCommentNew == BoolInt.YES;
     }
 
-    public BoolInt getMarketCommentEdit() {
-        return marketCommentEdit;
+    public boolean isMarketCommentEditEnabled() {
+        return marketCommentEdit == BoolInt.YES;
     }
 
-    public BoolInt getMarketCommentDelete() {
-        return marketCommentDelete;
+    public boolean isMarketCommentDeleteEnabled() {
+        return marketCommentDelete == BoolInt.YES;
     }
 
-    public BoolInt getMarketCommentRestore() {
-        return marketCommentRestore;
+    public boolean isMarketCommentRestoreEnabled() {
+        return marketCommentRestore == BoolInt.YES;
     }
 
-    public BoolInt getPollVoteNew() {
-        return pollVoteNew;
+    public boolean isPollVoteNewEnabled() {
+        return pollVoteNew == BoolInt.YES;
     }
 
-    public BoolInt getGroupJoin() {
-        return groupJoin;
+    public boolean isGroupJoinEnabled() {
+        return groupJoin == BoolInt.YES;
     }
 
-    public BoolInt getGroupLeave() {
-        return groupLeave;
+    public boolean isGroupLeaveEnabled() {
+        return groupLeave == BoolInt.YES;
     }
 
-    public BoolInt getUserBlock() {
-        return userBlock;
+    public boolean isUserBlockEnabled() {
+        return userBlock == BoolInt.YES;
     }
 
-    public BoolInt getUserUnblock() {
-        return userUnblock;
+    public boolean isUserUnblockEnabled() {
+        return userUnblock == BoolInt.YES;
     }
 
-    public BoolInt getGroupChangeSettings() {
-        return groupChangeSettings;
+    public boolean isGroupChangeSettingsEnabled() {
+        return groupChangeSettings == BoolInt.YES;
     }
 
-    public BoolInt getGroupChangePhoto() {
-        return groupChangePhoto;
+    public boolean isGroupChangePhotoEnabled() {
+        return groupChangePhoto == BoolInt.YES;
     }
 
-    public BoolInt getGroupOfficersEdit() {
-        return groupOfficersEdit;
+    public boolean isGroupOfficersEditEnabled() {
+        return groupOfficersEdit == BoolInt.YES;
     }
 
     @Override

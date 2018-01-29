@@ -14,6 +14,6 @@ public enum GetLongPollEventsActInfo implements EnumParam {
 
     @Override
     public String getValue() {
-        return null;
+        return value;
     }
 }

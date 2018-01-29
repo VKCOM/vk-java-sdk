@@ -25,7 +25,7 @@ public class Application {
         VkApiClient vk = new VkApiClient(httpClient);
 
         if (!vk.groups().getLongPollSettings(groupActor).execute().isEnabled()) {
-            vk.groups().setLongPollSettings(groupActor).enabled(BoolInt.YES).wallPostNew(BoolInt.YES).execute();
+            vk.groups().setLongPollSettings(groupActor).enabled(true).wallPostNew(true).execute();
         }
 
         CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupActor);
