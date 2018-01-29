@@ -1,6 +1,7 @@
 package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
+import com.oracle.tools.packager.Log;
 import com.vk.api.sdk.callback.CallbackApi;
 import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
@@ -63,6 +64,7 @@ public class CallbackApiLongPoll extends CallbackApi {
                 lastTimeStamp = eventsResponse.getTimestamp();
             } catch (LongPollServerKeyExpiredException e) {
                 longPollServer = getLongPollServer();
+                Log.info(longPollServer.toString());
             }
         }
     }

@@ -19,7 +19,7 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
      */
     public GetLongPollEventsQuery(VkApiClient client, String url, String key, Integer ts) {
         super(client, url, GetLongPollEventsResponse.class);
-        act(GetLongPollEventsActInfo.A_CHECK);
+        act(GetLongPollEventsActInfo.CHECK);
         key(key);
         ts(ts);
     }

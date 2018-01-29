@@ -4,7 +4,7 @@ import com.vk.api.sdk.queries.EnumParam;
 
 public enum GetLongPollEventsActInfo implements EnumParam {
 
-    A_CHECK("a_check");
+    CHECK("a_check");
 
     private final String value;
 
