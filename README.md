@@ -450,5 +450,5 @@ streamingClient.stream().get(actor, new StreamingEventHandler() {
 }).execute();
 ```
 
-## 13. Usage Example
+## 14. Usage Example
 As an SDK usage example we have released the YouTrack bot. The documentation can be found [here](https://github.com/VKCOM/vk-java-sdk/wiki/YouTrack-bot).
