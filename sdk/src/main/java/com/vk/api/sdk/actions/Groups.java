@@ -48,6 +48,9 @@ import com.vk.api.sdk.queries.groups.GroupsReorderLinkQuery;
 import com.vk.api.sdk.queries.groups.GroupsSearchQuery;
 import com.vk.api.sdk.queries.groups.GroupsSetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsUnbanUserQuery;
+import com.vk.api.sdk.queries.groups.GroupsGetLongPollServerQuery;
+import com.vk.api.sdk.queries.groups.GroupsGetLongPollSettingsQuery;
+import com.vk.api.sdk.queries.groups.GroupsSetLongPollSettingsQuery;
 import com.vk.api.sdk.queries.users.UserField;
 
 import java.util.List;
@@ -589,5 +592,47 @@ public class Groups extends AbstractAction {
      */
     public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor, int serverId) {
         return new GroupsDeleteCallbackServerQuery(getClient(), actor, serverId);
+    }
+
+    /**
+     * Retrieves server info needed to use long polling.
+     */
+    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, int groupId) {
+        return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Retrieves server info needed to use long polling.
+     */
+    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor) {
+        return new GroupsGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Retrieves group longpoll settings
+     */
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, int groupId) {
+        return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Retrieves group longpoll settings
+     */
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor) {
+        return new GroupsGetLongPollSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * Sets group longpoll settings
+     */
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, int groupId) {
+        return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Sets group longpoll settings
+     */
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(GroupActor actor) {
+        return new GroupsSetLongPollSettingsQuery(getClient(), actor);
     }
 }

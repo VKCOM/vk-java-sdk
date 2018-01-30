@@ -348,7 +348,55 @@ public class CallbackApiHandler extends CallbackApi {
 }
 ```
 
-## 12. Streaming API
+## 12. Callback API LongPoll handler
+Enable Callback API LongPoll for needed group and specify
+which events should be tracked
+
+```java
+HttpTransportClient httpClient = HttpTransportClient.getInstance();
+VkApiClient vk = new VkApiClient(httpClient);
+vk.groups().setLongPollSettings(groupActor).enabled(true)
+                                           .wallPostNew(true)
+                                           .messageNew(true)
+                                           .execute();
+```
+
+Override methods from CallbackApiLongPoll class for handling events and create needed constructors
+
+```java
+public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
+    public CallbackApiLongPollHandler(VkApiClient client, UserActor actor, Integer groupId) {
+      super(client, actor, groupId);
+    }
+
+    public CallbackApiLongPollHandler(VkApiClient client, GroupActor actor) {
+      super(client, actor);
+    }
+
+    @Override
+    public void messageNew(Integer groupId, Message message) {
+      System.out.println("messageNew: " + message.toString());
+    }
+
+    @Override
+    public void wallPostNew(Integer groupId, WallPost wallPost) {
+      System.out.println("wallPostNew: " + wallPost.toString());
+    }
+}
+```
+
+In order to use the created ```CallbackApiLongPollHandler``` which overrides methods from CallBackApiLongPoll,
+the instance of it needs to be created and method ```run``` called
+
+```java
+CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupActor);
+handler.run();
+```
+
+An example of usage Callback API LongPoll can be found in ```examples``` as a group-bot which logs all events. 
+
+
+## 13. Streaming API
 
 ### Initialization
 ```java
