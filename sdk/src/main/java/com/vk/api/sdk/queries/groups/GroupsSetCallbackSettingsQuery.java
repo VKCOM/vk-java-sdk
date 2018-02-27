@@ -73,7 +73,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     /**
      * Reply messages notifications.
      *
-     * @param value value of "message new" parameter.
+     * @param value value of "message reply" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsSetCallbackSettingsQuery messageReply(Boolean value) {
@@ -81,9 +81,19 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Reply messages notifications.
+     *
+     * @param value value of "message edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageEdit(Boolean value) {
+        return unsafeParam("message_edit", value);
+    }
+
+    /**
      * Allow messages notifications.
      *
-     * @param value value of "message new" parameter.
+     * @param value value of "message allow" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsSetCallbackSettingsQuery messageAllow(Boolean value) {
@@ -93,7 +103,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     /**
      * Deny messages notifications.
      *
-     * @param value value of "message new" parameter.
+     * @param value value of "message deny" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsSetCallbackSettingsQuery messageDeny(Boolean value) {

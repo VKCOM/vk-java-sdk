@@ -10,6 +10,12 @@ public class LongPollServerSettings {
     @SerializedName("message_new")
     private BoolInt messageNew;
 
+    @SerializedName("message_reply")
+    private BoolInt messageReply;
+
+    @SerializedName("message_edit")
+    private BoolInt messageEdit;
+
     @SerializedName("message_allow")
     private BoolInt messageAllow;
 
@@ -114,6 +120,14 @@ public class LongPollServerSettings {
 
     public boolean isMessageNewEnabled() {
         return messageNew == BoolInt.YES;
+    }
+
+    public boolean isMessageReplyEnabled() {
+        return messageReply == BoolInt.YES;
+    }
+
+    public boolean isMessageEditnabled() {
+        return messageEdit == BoolInt.YES;
     }
 
     public boolean isMessageAllowEnabled() {
@@ -258,6 +272,8 @@ public class LongPollServerSettings {
         if (o == null || getClass() != o.getClass()) return false;
         LongPollServerSettings that = (LongPollServerSettings) o;
         return Objects.equals(messageNew, that.messageNew) &&
+                Objects.equals(messageEdit, that.messageEdit) &&
+                Objects.equals(messageReply, that.messageReply) &&
                 Objects.equals(messageAllow, that.messageAllow) &&
                 Objects.equals(messageDeny, that.messageDeny) &&
                 Objects.equals(photoNew, that.photoNew) &&
@@ -296,47 +312,49 @@ public class LongPollServerSettings {
 
     @Override
     public int hashCode() {
-        return Objects.hash(messageNew, messageAllow, messageDeny, photoNew, audioNew, videoNew, wallReplyNew, wallReplyEdit, wallReplyDelete, wallPostNew, wallRespost, boardPostNew, boardPostEdit, boardPostDelete, boardPostRestore, photoCommentNew, photoCommentEdit, photoCommentDelete, photoCommentRestore, videoCommentNew, videoCommentEdit, videoCommentDelete, videoCommentRestore, marketCommentNew, marketCommentEdit, marketCommentDelete, marketCommentRestore, pollVoteNew, groupJoin, groupLeave, userBlock, userUnblock, groupChangeSettings, groupChangePhoto, groupOfficersEdit);
+        return Objects.hash(messageNew, messageReply, messageEdit, messageAllow, messageDeny, photoNew, audioNew, videoNew, wallReplyNew, wallReplyEdit, wallReplyDelete, wallPostNew, wallRespost, boardPostNew, boardPostEdit, boardPostDelete, boardPostRestore, photoCommentNew, photoCommentEdit, photoCommentDelete, photoCommentRestore, videoCommentNew, videoCommentEdit, videoCommentDelete, videoCommentRestore, marketCommentNew, marketCommentEdit, marketCommentDelete, marketCommentRestore, pollVoteNew, groupJoin, groupLeave, userBlock, userUnblock, groupChangeSettings, groupChangePhoto, groupOfficersEdit);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("LongPollServerSettings{");
-        sb.append("messageNew=").append(messageNew);
-        sb.append(", messageAllow=").append(messageAllow);
-        sb.append(", messageDeny=").append(messageDeny);
-        sb.append(", photoNew=").append(photoNew);
-        sb.append(", audioNew=").append(audioNew);
-        sb.append(", videoNew=").append(videoNew);
-        sb.append(", wallReplyNew=").append(wallReplyNew);
-        sb.append(", wallReplyEdit=").append(wallReplyEdit);
-        sb.append(", wallReplyDelete=").append(wallReplyDelete);
-        sb.append(", wallPostNew=").append(wallPostNew);
-        sb.append(", wallRespost=").append(wallRespost);
-        sb.append(", boardPostNew=").append(boardPostNew);
-        sb.append(", boardPostEdit=").append(boardPostEdit);
+        sb.append("audioNew=").append(audioNew);
         sb.append(", boardPostDelete=").append(boardPostDelete);
+        sb.append(", boardPostEdit=").append(boardPostEdit);
+        sb.append(", boardPostNew=").append(boardPostNew);
         sb.append(", boardPostRestore=").append(boardPostRestore);
-        sb.append(", photoCommentNew=").append(photoCommentNew);
-        sb.append(", photoCommentEdit=").append(photoCommentEdit);
-        sb.append(", photoCommentDelete=").append(photoCommentDelete);
-        sb.append(", photoCommentRestore=").append(photoCommentRestore);
-        sb.append(", videoCommentNew=").append(videoCommentNew);
-        sb.append(", videoCommentEdit=").append(videoCommentEdit);
-        sb.append(", videoCommentDelete=").append(videoCommentDelete);
-        sb.append(", videoCommentRestore=").append(videoCommentRestore);
-        sb.append(", marketCommentNew=").append(marketCommentNew);
-        sb.append(", marketCommentEdit=").append(marketCommentEdit);
-        sb.append(", marketCommentDelete=").append(marketCommentDelete);
-        sb.append(", marketCommentRestore=").append(marketCommentRestore);
-        sb.append(", pollVoteNew=").append(pollVoteNew);
+        sb.append(", groupChangePhoto=").append(groupChangePhoto);
+        sb.append(", groupChangeSettings=").append(groupChangeSettings);
         sb.append(", groupJoin=").append(groupJoin);
         sb.append(", groupLeave=").append(groupLeave);
+        sb.append(", groupOfficersEdit=").append(groupOfficersEdit);
+        sb.append(", marketCommentDelete=").append(marketCommentDelete);
+        sb.append(", marketCommentEdit=").append(marketCommentEdit);
+        sb.append(", marketCommentNew=").append(marketCommentNew);
+        sb.append(", marketCommentRestore=").append(marketCommentRestore);
+        sb.append(", messageAllow=").append(messageAllow);
+        sb.append(", messageDeny=").append(messageDeny);
+        sb.append(", messageEdit=").append(messageEdit);
+        sb.append(", messageNew=").append(messageNew);
+        sb.append(", messageReply=").append(messageReply);
+        sb.append(", photoCommentDelete=").append(photoCommentDelete);
+        sb.append(", photoCommentEdit=").append(photoCommentEdit);
+        sb.append(", photoCommentNew=").append(photoCommentNew);
+        sb.append(", photoCommentRestore=").append(photoCommentRestore);
+        sb.append(", photoNew=").append(photoNew);
+        sb.append(", pollVoteNew=").append(pollVoteNew);
         sb.append(", userBlock=").append(userBlock);
         sb.append(", userUnblock=").append(userUnblock);
-        sb.append(", groupChangeSettings=").append(groupChangeSettings);
-        sb.append(", groupChangePhoto=").append(groupChangePhoto);
-        sb.append(", groupOfficersEdit=").append(groupOfficersEdit);
+        sb.append(", videoCommentDelete=").append(videoCommentDelete);
+        sb.append(", videoCommentEdit=").append(videoCommentEdit);
+        sb.append(", videoCommentNew=").append(videoCommentNew);
+        sb.append(", videoCommentRestore=").append(videoCommentRestore);
+        sb.append(", videoNew=").append(videoNew);
+        sb.append(", wallPostNew=").append(wallPostNew);
+        sb.append(", wallReplyDelete=").append(wallReplyDelete);
+        sb.append(", wallReplyEdit=").append(wallReplyEdit);
+        sb.append(", wallReplyNew=").append(wallReplyNew);
+        sb.append(", wallRespost=").append(wallRespost);
         sb.append('}');
         return sb.toString();
     }

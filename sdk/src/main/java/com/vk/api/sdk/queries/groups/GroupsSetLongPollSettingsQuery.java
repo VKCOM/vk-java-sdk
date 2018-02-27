@@ -52,6 +52,10 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
         return unsafeParam("message_reply", value);
     }
 
+    public GroupsSetLongPollSettingsQuery messageEdit(Boolean value) {
+        return unsafeParam("message_edit", value);
+    }
+
     public GroupsSetLongPollSettingsQuery messageAllow(Boolean value) {
         return unsafeParam("message_allow", value);
     }
