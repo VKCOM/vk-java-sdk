@@ -8,13 +8,13 @@ import java.util.Objects;
 
 public class GetLongPollEventsResponse {
 
-    @SerializedName("timestamp")
+    @SerializedName("ts")
     private Integer timestamp;
 
     @SerializedName("updates")
     private List<JsonObject> updates;
 
-    public Integer getTimestamp() {
+    public Integer getTs() {
         return timestamp;
     }
 
@@ -39,7 +39,7 @@ public class GetLongPollEventsResponse {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("GetLongPollEventsResponse{");
-        sb.append("timestamp=").append(timestamp);
+        sb.append("ts=").append(timestamp);
         sb.append(", updates=").append(updates);
         sb.append('}');
         return sb.toString();

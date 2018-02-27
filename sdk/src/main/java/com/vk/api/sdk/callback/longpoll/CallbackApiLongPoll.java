@@ -64,7 +64,7 @@ public class CallbackApiLongPoll extends CallbackApi {
                 for (JsonObject jsonObject: eventsResponse.getUpdates()) {
                     parse(jsonObject);
                 }
-                lastTimeStamp = eventsResponse.getTimestamp();
+                lastTimeStamp = eventsResponse.getTs();
             } catch (LongPollServerKeyExpiredException e) {
                 longPollServer = getLongPollServer();
                 LOG.info(longPollServer.toString());
