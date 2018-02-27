@@ -9,13 +9,13 @@ import java.util.Objects;
 public class GetLongPollEventsResponse {
 
     @SerializedName("ts")
-    private Integer timestamp;
+    private Integer ts;
 
     @SerializedName("updates")
     private List<JsonObject> updates;
 
     public Integer getTs() {
-        return timestamp;
+        return ts;
     }
 
     public List<JsonObject> getUpdates() {
@@ -27,19 +27,19 @@ public class GetLongPollEventsResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetLongPollEventsResponse that = (GetLongPollEventsResponse) o;
-        return Objects.equals(timestamp, that.timestamp) &&
+        return Objects.equals(ts, that.ts) &&
                 Objects.equals(updates, that.updates);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(timestamp, updates);
+        return Objects.hash(ts, updates);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("GetLongPollEventsResponse{");
-        sb.append("ts=").append(timestamp);
+        sb.append("ts=").append(ts);
         sb.append(", updates=").append(updates);
         sb.append('}');
         return sb.toString();
