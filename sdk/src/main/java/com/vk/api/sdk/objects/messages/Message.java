@@ -24,6 +24,12 @@ public class Message {
     private Integer date;
 
     /**
+     * Date when the message has been updated in Unixtime
+     */
+    @SerializedName("update_time")
+    private Integer updateTime;
+
+    /**
      * Information whether the message is outcoming
      */
     @SerializedName("out")
@@ -274,7 +280,7 @@ public class Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
+        return Objects.hash(id, date, updateTime, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
     }
 
     @Override
@@ -284,6 +290,7 @@ public class Message {
         Message message = (Message) o;
         return Objects.equals(id, message.id) &&
                 Objects.equals(date, message.date) &&
+                Objects.equals(updateTime, message.updateTime) &&
                 out == message.out &&
                 Objects.equals(userId, message.userId) &&
                 Objects.equals(fromId, message.fromId) &&
@@ -316,6 +323,7 @@ public class Message {
         final StringBuilder sb = new StringBuilder("Message{");
         sb.append("id=").append(id);
         sb.append(", date=").append(date);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", out=").append(out);
         sb.append(", userId=").append(userId);
         sb.append(", fromId=").append(fromId);

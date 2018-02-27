@@ -245,6 +245,8 @@ public class ExceptionMapper {
                 return new ApiStatusNoAudioException(error.getErrorMsg());
             case 222:
                 return new ApiWallLinksForbiddenException(error.getErrorMsg());
+            case 224:
+                return new ApiWallAdsPostLimitReachedException(error.getErrorMsg());
             case 1251:
                 return new ApiAppsAlreadyUnlockedException(error.getErrorMsg());
             case 1000:
@@ -263,6 +265,8 @@ public class ExceptionMapper {
                 return new ApiPollsPollIdException(error.getErrorMsg());
             case 252:
                 return new ApiPollsAnswerIdException(error.getErrorMsg());
+            case 2100:
+                return new ApiLongPollException(error.getErrorMsg());
             default:
                 return new ApiException(error.getErrorCode(), error.getErrorMsg());
         }

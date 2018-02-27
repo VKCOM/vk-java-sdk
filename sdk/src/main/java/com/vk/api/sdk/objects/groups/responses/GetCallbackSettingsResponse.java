@@ -16,6 +16,18 @@ public class GetCallbackSettingsResponse {
     private BoolInt messageNew;
 
     /**
+     * Whether notifications about reply message enabled
+     */
+    @SerializedName("message_reply")
+    private BoolInt messageReply;
+
+    /**
+     * Whether notifications about edit message enabled
+     */
+    @SerializedName("message_edit")
+    private BoolInt messageEdit;
+
+    /**
      * Whether notifications about allowed messages
      */
     @SerializedName("message_allow")
@@ -151,6 +163,14 @@ public class GetCallbackSettingsResponse {
         return messageNew == BoolInt.YES;
     }
 
+    public boolean isMessageReply() {
+        return messageReply == BoolInt.YES;
+    }
+
+    public boolean isMessageEdit() {
+        return messageEdit == BoolInt.YES;
+    }
+
     public boolean isMessageAllow() {
         return messageAllow == BoolInt.YES;
     }
@@ -241,6 +261,8 @@ public class GetCallbackSettingsResponse {
         if (o == null || getClass() != o.getClass()) return false;
         GetCallbackSettingsResponse that = (GetCallbackSettingsResponse) o;
         return messageNew == that.messageNew &&
+                messageReply == that.messageReply &&
+                messageEdit == that.messageEdit &&
                 messageAllow == that.messageAllow &&
                 messageDeny == that.messageDeny &&
                 photoNew == that.photoNew &&
@@ -267,7 +289,7 @@ public class GetCallbackSettingsResponse {
 
     @Override
     public int hashCode() {
-        return Objects.hash(messageNew, messageAllow, messageDeny, photoNew, audioNew, videoNew, wallRepost, wallReplyNew, wallReplyEdit, wallPostNew, boardPostNew, boardPostEdit, boardPostRestore, boardPostDelete, photoCommentNew, videoCommentNew, marketCommentNew, pollVoteNew, groupJoin, groupLeave, groupChangeSettings, groupChangePhoto, groupOfficersEdit);
+        return Objects.hash(messageNew, messageReply, messageEdit, messageAllow, messageDeny, photoNew, audioNew, videoNew, wallRepost, wallReplyNew, wallReplyEdit, wallPostNew, boardPostNew, boardPostEdit, boardPostRestore, boardPostDelete, photoCommentNew, videoCommentNew, marketCommentNew, pollVoteNew, groupJoin, groupLeave, groupChangeSettings, groupChangePhoto, groupOfficersEdit);
     }
 
     @Override
@@ -286,7 +308,9 @@ public class GetCallbackSettingsResponse {
         sb.append(", marketCommentNew=").append(marketCommentNew);
         sb.append(", messageAllow=").append(messageAllow);
         sb.append(", messageDeny=").append(messageDeny);
+        sb.append(", messageEdit=").append(messageEdit);
         sb.append(", messageNew=").append(messageNew);
+        sb.append(", messageReply=").append(messageReply);
         sb.append(", photoCommentNew=").append(photoCommentNew);
         sb.append(", photoNew=").append(photoNew);
         sb.append(", pollVoteNew=").append(pollVoteNew);

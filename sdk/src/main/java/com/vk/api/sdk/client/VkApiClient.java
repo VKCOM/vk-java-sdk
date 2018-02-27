@@ -17,6 +17,7 @@ import com.vk.api.sdk.actions.Gifts;
 import com.vk.api.sdk.actions.Groups;
 import com.vk.api.sdk.actions.Leads;
 import com.vk.api.sdk.actions.Likes;
+import com.vk.api.sdk.actions.LongPoll;
 import com.vk.api.sdk.actions.Market;
 import com.vk.api.sdk.actions.Messages;
 import com.vk.api.sdk.actions.Newsfeed;
@@ -247,6 +248,10 @@ public class VkApiClient {
 
     public AppWidgets appWidgets() {
         return new AppWidgets(this);
+    }
+
+    public LongPoll longPoll() {
+        return new LongPoll(this);
     }
 
     public Execute execute() {
