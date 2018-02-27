@@ -48,6 +48,7 @@ public class CallbackApi {
     private static final String CALLBACK_EVENT_MESSAGE_REPLY = "message_reply";
     private static final String CALLBACK_EVENT_MESSAGE_ALLOW = "message_allow";
     private static final String CALLBACK_EVENT_MESSAGE_DENY = "message_deny";
+    private static final String CALLBACK_EVENT_MESSAGE_EDIT = "message_edit";
     private static final String CALLBACK_EVENT_PHOTO_NEW = "photo_new";
     private static final String CALLBACK_EVENT_PHOTO_COMMENT_NEW = "photo_comment_new";
     private static final String CALLBACK_EVENT_PHOTO_COMMENT_EDIT = "photo_comment_edit";
@@ -89,6 +90,8 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_MESSAGE_NEW, new TypeToken<CallbackMessage<Message>>() {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_REPLY, new TypeToken<CallbackMessage<Message>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_MESSAGE_EDIT, new TypeToken<CallbackMessage<Message>>() {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_ALLOW, new TypeToken<CallbackMessage<CallbackMessageAllow>>() {
         }.getType());
@@ -191,6 +194,13 @@ public class CallbackApi {
 
     public void messageReply(Integer groupId, String secret, Message message) {
         messageReply(groupId, message);
+    }
+
+    public void messageEdit(Integer groupId, Message message) {
+    }
+
+    public void messageEdit(Integer groupId, String secret, Message message) {
+        messageEdit(groupId, message);
     }
 
     public void messageAllow(Integer groupId, CallbackMessageAllow message) {
@@ -474,6 +484,10 @@ public class CallbackApi {
 
             case CALLBACK_EVENT_MESSAGE_REPLY:
                 messageReply(message.getGroupId(), message.getSecret(), (Message) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_MESSAGE_EDIT:
+                messageEdit(message.getGroupId(), message.getSecret(), (Message) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_ALLOW:
