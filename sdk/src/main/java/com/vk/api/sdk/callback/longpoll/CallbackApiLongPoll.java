@@ -1,7 +1,6 @@
 package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
-import com.oracle.tools.packager.Log;
 import com.vk.api.sdk.callback.CallbackApi;
 import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
@@ -11,8 +10,12 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
 import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CallbackApiLongPoll extends CallbackApi {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CallbackApiLongPoll.class);
 
     private static final int DEFAULT_WAIT = 10;
 
@@ -64,7 +67,7 @@ public class CallbackApiLongPoll extends CallbackApi {
                 lastTimeStamp = eventsResponse.getTimestamp();
             } catch (LongPollServerKeyExpiredException e) {
                 longPollServer = getLongPollServer();
-                Log.info(longPollServer.toString());
+                LOG.info(longPollServer.toString());
             }
         }
     }
