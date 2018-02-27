@@ -348,8 +348,8 @@ public class CallbackApiHandler extends CallbackApi {
 }
 ```
 
-## 12. Callback API LongPoll handler
-Enable Callback API LongPoll for needed group and specify
+## 12. Callback API Long Poll handler
+Enable Callback API Long Poll for needed group and specify
 which events should be tracked
 
 ```java
@@ -393,7 +393,7 @@ CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupAct
 handler.run();
 ```
 
-An example of usage Callback API LongPoll can be found in ```examples``` as a group-bot which logs all events. 
+An example of usage Callback API Long Poll can be found in ```examples``` as a group-bot which logs all events. 
 
 
 ## 13. Streaming API
