@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.groups.UserXtrBanInfo;
+import com.vk.api.sdk.objects.groups.OwnerXtrBanInfo;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,13 +17,13 @@ public class GetBannedResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<UserXtrBanInfo> items;
+    private List<OwnerXtrBanInfo> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<UserXtrBanInfo> getItems() {
+    public List<OwnerXtrBanInfo> getItems() {
         return items;
     }
 
