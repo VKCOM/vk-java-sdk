@@ -14,7 +14,7 @@ public class GetRepliesResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<Story> items;
+    private List<List<Story>> items;
 
     @SerializedName("profiles")
     private List<User> profiles;
@@ -26,7 +26,7 @@ public class GetRepliesResponse {
         return count;
     }
 
-    public List<Story> getItems() {
+    public List<List<Story>> getItems() {
         return items;
     }
 

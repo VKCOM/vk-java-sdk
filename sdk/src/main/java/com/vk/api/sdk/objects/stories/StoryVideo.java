@@ -83,7 +83,7 @@ public class StoryVideo extends Video {
         sb.append(", processing=").append(isProcessing());
         sb.append(", live=").append(isLive());
         sb.append(", files=").append(getFiles());
-        sb.append("firstFrame800='").append(firstFrame800).append('\'');
+        sb.append(", firstFrame800='").append(firstFrame800).append('\'');
         sb.append(", firstFrame320='").append(firstFrame320).append('\'');
         sb.append(", firstFrame160='").append(firstFrame160).append('\'');
         sb.append(", firstFrame130='").append(firstFrame130).append('\'');
