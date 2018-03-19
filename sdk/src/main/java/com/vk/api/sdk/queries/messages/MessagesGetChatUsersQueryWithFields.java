@@ -88,6 +88,6 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "chat_id");
     }
 }
