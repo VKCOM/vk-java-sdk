@@ -19,9 +19,10 @@ public class MessagesGetChatUsersQuery extends AbstractQueryBuilder<MessagesGetC
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQuery(VkApiClient client, UserActor actor) {
+    public MessagesGetChatUsersQuery(VkApiClient client, UserActor actor, Integer chatId) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
+        chatId(chatId);
     }
 
     /**
@@ -51,6 +52,6 @@ public class MessagesGetChatUsersQuery extends AbstractQueryBuilder<MessagesGetC
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "chat_id");
     }
 }

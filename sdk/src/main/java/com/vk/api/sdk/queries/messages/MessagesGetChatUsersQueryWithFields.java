@@ -21,9 +21,10 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, UserField... fields) {
+    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, Integer chatId, UserField... fields) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, UserXtrInvitedBy.class));
         accessToken(actor.getAccessToken());
+        chatId(chatId);
         fields(fields);
     }
 
@@ -33,9 +34,10 @@ public class MessagesGetChatUsersQueryWithFields extends AbstractQueryBuilder<Me
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, List<UserField> fields) {
+    public MessagesGetChatUsersQueryWithFields(VkApiClient client, UserActor actor, Integer chatId, List<UserField> fields) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, UserXtrInvitedBy.class));
         accessToken(actor.getAccessToken());
+        chatId(chatId);
         fields(fields);
     }
 
