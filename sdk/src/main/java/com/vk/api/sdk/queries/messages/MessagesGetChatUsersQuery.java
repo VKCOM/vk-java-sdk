@@ -27,11 +27,13 @@ public class MessagesGetChatUsersQuery extends AbstractQueryBuilder<MessagesGetC
 
     /**
      * Chat ID.
+     * 
+     * Sets chat_id for query
      *
      * @param value value of "chat id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatUsersQuery chatId(Integer value) {
+    protected MessagesGetChatUsersQuery chatId(Integer value) {
         return unsafeParam("chat_id", value);
     }
 
