@@ -22,6 +22,19 @@ public class StoriesBanOwnerQuery extends AbstractQueryBuilder<StoriesBanOwnerQu
         ownersIds(ownerIds);
     }
 
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor  User actor with access token
+     * @param ownerIds    List of ids
+     */
+    public StoriesBanOwnerQuery(VkApiClient client, UserActor actor, Integer... ownerIds) {
+        super(client, "stories.banOwner", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        ownersIds(Arrays.asList(ownerIds));
+    }
+
     protected StoriesBanOwnerQuery ownersIds(List<Integer> value) {
         return unsafeParam("owners_ids", value);
     }

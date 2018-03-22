@@ -20,10 +20,6 @@ public class StoriesGetBannedQuery extends AbstractQueryBuilder<StoriesGetBanned
         accessToken(actor.getAccessToken());
     }
 
-    public StoriesGetBannedQuery extended(Boolean value) {
-        return unsafeParam("extended", value);
-    }
-
     public StoriesGetBannedQuery fields(List<String> value) {
         return unsafeParam("fields", value);
     }

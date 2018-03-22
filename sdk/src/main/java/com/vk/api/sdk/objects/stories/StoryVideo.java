@@ -39,7 +39,7 @@ public class StoryVideo extends Video {
         return firstFrame130;
     }
 
-    public boolean getIsPrivate() {
+    public boolean isPrivate() {
         return isPrivate == BoolInt.YES;
     }
 

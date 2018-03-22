@@ -40,7 +40,7 @@ public class Stories extends AbstractAction {
      * Allows to hide stories from chosen sources from current user's feed.
      */
     public StoriesBanOwnerQuery banOwner(UserActor actor, Integer... ownerIds) {
-        return new StoriesBanOwnerQuery(getClient(), actor, Arrays.asList(ownerIds));
+        return new StoriesBanOwnerQuery(getClient(), actor, ownerIds);
     }
 
     /**

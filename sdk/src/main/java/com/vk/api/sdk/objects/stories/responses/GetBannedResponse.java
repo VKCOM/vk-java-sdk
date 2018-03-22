@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.stories.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserFull;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,10 +16,10 @@ public class GetBannedResponse {
     private List<Integer> items;
 
     @SerializedName("profiles")
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
     @SerializedName("groups")
-    private List<Group> groups;
+    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -29,11 +29,11 @@ public class GetBannedResponse {
         return items;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public List<Group> getGroups() {
+    public List<GroupFull> getGroups() {
         return groups;
     }
 

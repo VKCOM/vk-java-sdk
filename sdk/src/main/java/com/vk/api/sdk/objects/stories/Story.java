@@ -186,10 +186,10 @@ public class Story {
         sb.append("id=").append(id);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", date=").append(date);
-        sb.append(", isExpired=").append(isExpired());
-        sb.append(", isDeleted=").append(isDeleted());
-        sb.append(", canSee=").append(canSee());
-        sb.append(", seen=").append(isSeen());
+        sb.append(", isExpired=").append(isExpired);
+        sb.append(", isDeleted=").append(isDeleted);
+        sb.append(", canSee=").append(canSee);
+        sb.append(", seen=").append(seen);
         sb.append(", type=").append(type);
         sb.append(", photo=").append(photo);
         sb.append(", video=").append(video);
@@ -198,11 +198,11 @@ public class Story {
         sb.append(", parentStoryId=").append(parentStoryId);
         sb.append(", parentStory=").append(parentStory);
         sb.append(", replies=").append(replies);
-        sb.append(", canReply=").append(canReply());
-        sb.append(", canShare=").append(canShare());
-        sb.append(", canComment=").append(canComment());
+        sb.append(", canReply=").append(canReply);
+        sb.append(", canShare=").append(canShare);
+        sb.append(", canComment=").append(canComment);
         sb.append(", views=").append(views);
-        sb.append(", accessKey=").append(accessKey);
+        sb.append(", accessKey='").append(accessKey).append('\'');
         sb.append('}');
         return sb.toString();
     }
