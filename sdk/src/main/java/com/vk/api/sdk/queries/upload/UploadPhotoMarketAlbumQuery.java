@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.objects.photos.responses.MarketAlbumUploadResponse;
 
 import java.io.File;
+import java.io.InputStream;
 
 /**
  * Created by tsivarev on 22.07.16.
@@ -13,6 +14,11 @@ public class UploadPhotoMarketAlbumQuery extends UploadQueryBuilder<UploadPhotoM
     public UploadPhotoMarketAlbumQuery(VkApiClient client, String uploadUrl, File file) {
         super(client, uploadUrl, "photo", MarketAlbumUploadResponse.class);
         file(file);
+    }
+
+    public UploadPhotoMarketAlbumQuery(VkApiClient client, String uploadUrl, InputStream content, String inputStreamFilename) {
+        super(client, uploadUrl, "photo", MarketAlbumUploadResponse.class);
+        content(content, inputStreamFilename);
     }
 
     @Override
