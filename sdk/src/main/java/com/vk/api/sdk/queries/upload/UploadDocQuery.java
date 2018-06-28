@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.objects.docs.responses.DocUploadResponse;
 
 import java.io.File;
+import java.io.InputStream;
 
 
 /**
@@ -14,6 +15,11 @@ public class UploadDocQuery extends UploadQueryBuilder<UploadDocQuery, DocUpload
     public UploadDocQuery(VkApiClient client, String uploadUrl, File file) {
         super(client, uploadUrl, "file", DocUploadResponse.class);
         file(file);
+    }
+
+    public UploadDocQuery(VkApiClient client, String uploadUrl, InputStream content, String inputStreamFileName) {
+        super(client, uploadUrl, "file", DocUploadResponse.class);
+        content(content, inputStreamFileName);
     }
 
     @Override
