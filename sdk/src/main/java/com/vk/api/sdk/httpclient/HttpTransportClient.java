@@ -17,7 +17,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -244,11 +247,19 @@ public class HttpTransportClient implements TransportClient {
 
     @Override
     public ClientResponse post(String url, String fileName, File file) throws IOException {
+        return post(url, fileName, new FileBody(file));
+    }
+
+    @Override
+    public ClientResponse post(String url, String fileName, InputStream content) throws IOException {
+        return post(url, fileName, new InputStreamBody(content, fileName));
+    }
+
+    protected ClientResponse post(String url, String fileName, ContentBody body) throws IOException {
         HttpPost request = new HttpPost(url);
-        FileBody fileBody = new FileBody(file);
         HttpEntity entity = MultipartEntityBuilder
                 .create()
-                .addPart(fileName, fileBody).build();
+                .addPart(fileName, body).build();
 
         request.setEntity(entity);
         return callWithStatusCheck(request);

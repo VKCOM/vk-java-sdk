@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.lang.reflect.Type;
 
@@ -26,6 +27,8 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
     private File file;
 
+    private InputStream content;
+
     public UploadQueryBuilder(VkApiClient client, String uploadUrl, String filename, Type type) {
         super(uploadUrl, client.getTransportClient(), client.getGson(), 0, type);
         this.filename = filename;
@@ -33,6 +36,11 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
     public T file(File value) {
         file = value;
+        return getThis();
+    }
+
+    public T content(InputStream value) {
+        content = value;
         return getThis();
     }
 
@@ -64,6 +72,8 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
         try {
             if (file != null) {
                 response = getClient().post(getUrl(), filename, file);
+            } else if (content != null) {
+                response = getClient().post(getUrl(), filename, content);
             } else {
                 response = getClient().post(getUrl());
             }
