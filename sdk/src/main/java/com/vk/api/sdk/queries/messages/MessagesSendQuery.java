@@ -1,9 +1,12 @@
 package com.vk.api.sdk.queries.messages;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.messages.Keyboard;
 
 import java.util.Arrays;
 import java.util.List;
@@ -82,6 +85,17 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery chatId(Integer value) {
         return unsafeParam("chat_id", value);
+    }
+
+    /**
+     * Keyboard
+     *
+     * @param value keyboard
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery keyboard(Keyboard value) {
+        Gson gson = new GsonBuilder().create();
+        return unsafeParam("keyboard", gson.toJson(value));
     }
 
     /**
