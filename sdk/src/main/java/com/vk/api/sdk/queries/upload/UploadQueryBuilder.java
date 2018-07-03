@@ -25,6 +25,8 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
     private String filename;
 
+    private String inputStreamFilename;
+
     private File file;
 
     private InputStream content;
@@ -39,8 +41,9 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
         return getThis();
     }
 
-    public T content(InputStream value) {
+    public T content(InputStream value, String inputStreamFilename) {
         content = value;
+        this.inputStreamFilename = inputStreamFilename;
         return getThis();
     }
 
@@ -73,7 +76,7 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
             if (file != null) {
                 response = getClient().post(getUrl(), filename, file);
             } else if (content != null) {
-                response = getClient().post(getUrl(), filename, content);
+                response = getClient().post(getUrl(), filename, content, inputStreamFilename);
             } else {
                 response = getClient().post(getUrl());
             }

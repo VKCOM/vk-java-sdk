@@ -16,9 +16,9 @@ public class UploadVideoQuery extends UploadQueryBuilder<UploadVideoQuery, Video
         file(file);
     }
 
-    public UploadVideoQuery(VkApiClient client, String uploadUrl, InputStream content) {
+    public UploadVideoQuery(VkApiClient client, String uploadUrl, InputStream content, String inputStreamFilename) {
         super(client, uploadUrl, "video_file", VideoUploadResponse.class);
-        content(content);
+        content(content, inputStreamFilename);
     }
 
     @Override

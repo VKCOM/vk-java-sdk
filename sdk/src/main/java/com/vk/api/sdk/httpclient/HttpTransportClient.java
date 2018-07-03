@@ -251,8 +251,8 @@ public class HttpTransportClient implements TransportClient {
     }
 
     @Override
-    public ClientResponse post(String url, String fileName, InputStream content) throws IOException {
-        return post(url, fileName, new InputStreamBody(content, fileName));
+    public ClientResponse post(String url, String fileName, InputStream content, String inputStreamFilename) throws IOException {
+        return post(url, fileName, new InputStreamBody(content, inputStreamFilename));
     }
 
     protected ClientResponse post(String url, String fileName, ContentBody body) throws IOException {

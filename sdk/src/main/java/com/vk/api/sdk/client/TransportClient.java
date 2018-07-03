@@ -15,7 +15,7 @@ public interface TransportClient {
 
     ClientResponse post(String url, String fileName, File file) throws IOException;
 
-    ClientResponse post(String url, String fileName, InputStream content) throws IOException;
+    ClientResponse post(String url, String fileName, InputStream content, String inputStreamFilename) throws IOException;
 
     ClientResponse post(String url, String body, String contentType) throws IOException;
 
