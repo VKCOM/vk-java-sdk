@@ -8,7 +8,10 @@ import com.vk.api.sdk.streaming.actions.StreamingStream;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 
-public class VkStreamingApiClient {
+import java.io.Closeable;
+import java.io.IOException;
+
+public class VkStreamingApiClient implements Closeable {
 
     private Gson gson;
     private TransportClient transportClient;
@@ -42,5 +45,10 @@ public class VkStreamingApiClient {
 
     public StreamingStream stream() {
         return new StreamingStream(this);
+    }
+
+    @Override
+    public void close() throws IOException {
+        asyncHttpClient.close();
     }
 }
