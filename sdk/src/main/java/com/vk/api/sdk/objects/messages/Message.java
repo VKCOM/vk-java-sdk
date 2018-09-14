@@ -170,6 +170,9 @@ public class Message {
     @SerializedName("geo")
     private Geo geo;
 
+    @SerializedName("payload")
+    private String payload;
+
     public Integer getId() {
         return id;
     }
@@ -278,6 +281,10 @@ public class Message {
         return geo;
     }
 
+    public String getPayload() {
+        return payload;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, date, updateTime, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
@@ -315,7 +322,8 @@ public class Message {
                 Objects.equals(photo50, message.photo50) &&
                 Objects.equals(photo100, message.photo100) &&
                 Objects.equals(photo200, message.photo200) &&
-                Objects.equals(geo, message.geo);
+                Objects.equals(geo, message.geo) &&
+                Objects.equals(payload, message.payload);
     }
 
     @Override
@@ -349,6 +357,7 @@ public class Message {
         sb.append(", photo100='").append(photo100).append('\'');
         sb.append(", photo200='").append(photo200).append('\'');
         sb.append(", geo=").append(geo);
+        sb.append(", payload=").append(payload);
         sb.append('}');
         return sb.toString();
     }

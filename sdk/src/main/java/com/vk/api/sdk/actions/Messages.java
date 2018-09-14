@@ -387,22 +387,22 @@ public class Messages extends AbstractAction {
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQuery getChatUsers(UserActor actor) {
-        return new MessagesGetChatUsersQuery(getClient(), actor);
+    public MessagesGetChatUsersQuery getChatUsers(UserActor actor, Integer chatId) {
+        return new MessagesGetChatUsersQuery(getClient(), actor, chatId);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, UserField... fields) {
-        return new MessagesGetChatUsersQueryWithFields(getClient(), actor, fields);
+    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, Integer chatId, UserField... fields) {
+        return new MessagesGetChatUsersQueryWithFields(getClient(), actor, chatId, fields);
     }
 
     /**
      * Returns a list of IDs of users participating in a chat.
      */
-    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, List<UserField> fields) {
-        return new MessagesGetChatUsersQueryWithFields(getClient(), actor, fields);
+    public MessagesGetChatUsersQueryWithFields getChatUsers(UserActor actor, Integer chatId, List<UserField> fields) {
+        return new MessagesGetChatUsersQueryWithFields(getClient(), actor, chatId, fields);
     }
 
     /**

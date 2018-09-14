@@ -17,7 +17,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ByteArrayBody;
+import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -42,7 +45,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.12";
+    private static final String USER_AGENT = "Java VK SDK/0.5.13";
 
     private static final String EMPTY_PAYLOAD = "-";
 
@@ -244,11 +247,19 @@ public class HttpTransportClient implements TransportClient {
 
     @Override
     public ClientResponse post(String url, String fileName, File file) throws IOException {
+        return post(url, fileName, new FileBody(file));
+    }
+
+    @Override
+    public ClientResponse post(String url, String fileName, InputStream content, String inputStreamFilename) throws IOException {
+        return post(url, fileName, new InputStreamBody(content, inputStreamFilename));
+    }
+
+    protected ClientResponse post(String url, String fileName, ContentBody body) throws IOException {
         HttpPost request = new HttpPost(url);
-        FileBody fileBody = new FileBody(file);
         HttpEntity entity = MultipartEntityBuilder
                 .create()
-                .addPart(fileName, fileBody).build();
+                .addPart(fileName, body).build();
 
         request.setEntity(entity);
         return callWithStatusCheck(request);

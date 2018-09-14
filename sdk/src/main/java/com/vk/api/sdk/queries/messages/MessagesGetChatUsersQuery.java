@@ -19,18 +19,21 @@ public class MessagesGetChatUsersQuery extends AbstractQueryBuilder<MessagesGetC
      * @param client VK API client
      * @param actor  actor with access token
      */
-    public MessagesGetChatUsersQuery(VkApiClient client, UserActor actor) {
+    public MessagesGetChatUsersQuery(VkApiClient client, UserActor actor, Integer chatId) {
         super(client, "messages.getChatUsers", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
+        chatId(chatId);
     }
 
     /**
      * Chat ID.
+     * 
+     * Sets chat_id for query
      *
      * @param value value of "chat id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatUsersQuery chatId(Integer value) {
+    protected MessagesGetChatUsersQuery chatId(Integer value) {
         return unsafeParam("chat_id", value);
     }
 
@@ -51,6 +54,6 @@ public class MessagesGetChatUsersQuery extends AbstractQueryBuilder<MessagesGetC
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token");
+        return Arrays.asList("access_token", "chat_id");
     }
 }
