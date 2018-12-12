@@ -92,7 +92,7 @@ public class Message {
     /**
      * Message text
      */
-    @SerializedName("body")
+    @SerializedName(value="body", alternate={"text"})
     private String body;
 
     @SerializedName("attachments")
