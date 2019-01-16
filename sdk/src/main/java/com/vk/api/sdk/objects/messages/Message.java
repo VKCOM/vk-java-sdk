@@ -54,6 +54,18 @@ public class Message {
     private Integer randomId;
 
     /**
+     * произвольный параметр для работы с источниками переходов.
+     */
+    @SerializedName("ref")
+    private String ref;
+
+    /**
+     * произвольный параметр для работы с источниками переходов.
+     */
+    @SerializedName("ref_source")
+    private String refSource;
+
+    /**
      * Is it an important message
      */
     @SerializedName("important")
@@ -197,6 +209,14 @@ public class Message {
         return randomId;
     }
 
+    public String getRef() {
+        return ref;
+    }
+
+    public String getRefSource() {
+        return refSource;
+    }
+
     public boolean getImportant() {
         return important == BoolInt.YES;
     }
@@ -287,7 +307,7 @@ public class Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, updateTime, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
+        return Objects.hash(id, date, updateTime, out, userId, fromId, randomId, ref, refSource, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
     }
 
     @Override
@@ -302,6 +322,8 @@ public class Message {
                 Objects.equals(userId, message.userId) &&
                 Objects.equals(fromId, message.fromId) &&
                 Objects.equals(randomId, message.randomId) &&
+                Objects.equals(ref, message.ref) &&
+                Objects.equals(refSource, message.refSource) &&
                 important == message.important &&
                 deleted == message.deleted &&
                 emoji == message.emoji &&
@@ -336,6 +358,8 @@ public class Message {
         sb.append(", userId=").append(userId);
         sb.append(", fromId=").append(fromId);
         sb.append(", randomId=").append(randomId);
+        sb.append(", ref=").append(ref);
+        sb.append(", refSource=").append(refSource);
         sb.append(", important=").append(important);
         sb.append(", deleted=").append(deleted);
         sb.append(", emoji=").append(emoji);
