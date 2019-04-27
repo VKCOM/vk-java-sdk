@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class RequestParam {
         return key;
     }
 
+    public RequestParam setKey(String key) {
+        this.key = key;
+        return this;
+    }
+
     public String getValue() {
         return value;
+    }
+
+    public RequestParam setValue(String value) {
+        this.value = value;
+        return this;
     }
 
     @Override
@@ -38,15 +48,20 @@ public class RequestParam {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RequestParam requestParam = (RequestParam) o;
-        return Objects.equals(key, requestParam.key) &&
-                Objects.equals(value, requestParam.value);
+        return Objects.equals(value, requestParam.value) &&
+                Objects.equals(key, requestParam.key);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RequestParam{");
-        sb.append("key='").append(key).append("'");
-        sb.append(", value='").append(value).append("'");
+        sb.append("value='").append(value).append("'");
+        sb.append(", key='").append(key).append("'");
         sb.append('}');
         return sb.toString();
     }

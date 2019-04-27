@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.board;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Sort type
  */
-public enum DefaultOrder {
+public enum DefaultOrder implements EnumParam {
     @SerializedName("1")
     DESC_UPDATED(1),
 
@@ -24,7 +25,7 @@ public enum DefaultOrder {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

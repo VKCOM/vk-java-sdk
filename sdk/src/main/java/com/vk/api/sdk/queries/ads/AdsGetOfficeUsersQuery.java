@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.Users;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class AdsGetOfficeUsersQuery extends AbstractQueryBuilder<AdsGetOfficeUse
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
     public AdsGetOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId) {

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.AddResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,10 @@ public class DocsAddQuery extends AbstractQueryBuilder<DocsAddQuery, AddResponse
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param docId   value of "doc id" parameter. Minimum is 0.
+     * @param docId value of "doc id" parameter. Minimum is 0.
      */
     public DocsAddQuery(VkApiClient client, UserActor actor, int ownerId, int docId) {
         super(client, "docs.add", AddResponse.class);
@@ -48,7 +47,7 @@ public class DocsAddQuery extends AbstractQueryBuilder<DocsAddQuery, AddResponse
     }
 
     /**
-     * Access key. This parameter is required if "access_key" was returned with the document's data.
+     * Access key. This parameter is required if 'access_key' was returned with the document's data.
      *
      * @param value value of "access key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

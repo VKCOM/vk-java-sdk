@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Size type
  */
-public enum PhotoSizesType {
+public enum PhotoSizesType implements EnumParam {
     @SerializedName("s")
     S("s"),
 

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,14 +10,11 @@ import java.util.Objects;
  */
 public class LinkStats {
     /**
-     * Object key
+     * Link key (characters after vk.cc/)
      */
     @SerializedName("key")
     private String key;
 
-    /**
-     * Object stats
-     */
     @SerializedName("stats")
     private List<Stats> stats;
 
@@ -25,8 +22,23 @@ public class LinkStats {
         return key;
     }
 
+    public LinkStats setKey(String key) {
+        this.key = key;
+        return this;
+    }
+
     public List<Stats> getStats() {
         return stats;
+    }
+
+    public LinkStats setStats(List<Stats> stats) {
+        this.stats = stats;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stats, key);
     }
 
     @Override
@@ -34,20 +46,20 @@ public class LinkStats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkStats linkStats = (LinkStats) o;
-        return Objects.equals(key, linkStats.key) &&
-                Objects.equals(stats, linkStats.stats);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(key, stats);
+        return Objects.equals(stats, linkStats.stats) &&
+                Objects.equals(key, linkStats.key);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkStats{");
-        sb.append("key='").append(key).append('\'');
-        sb.append(", stats=").append(stats);
+        sb.append("stats=").append(stats);
+        sb.append(", key='").append(key).append("'");
         sb.append('}');
         return sb.toString();
     }

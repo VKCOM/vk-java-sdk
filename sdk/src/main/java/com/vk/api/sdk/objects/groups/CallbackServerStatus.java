@@ -1,22 +1,20 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-/**
- * Callback server status
- */
-public enum CallbackServerStatus {
-    @SerializedName("ok")
-    OK("ok"),
-
-    @SerializedName("wait")
-    WAIT("wait"),
-
+public enum CallbackServerStatus implements EnumParam {
     @SerializedName("unconfigured")
     UNCONFIGURED("unconfigured"),
 
     @SerializedName("failed")
-    FAILED("failed");
+    FAILED("failed"),
+
+    @SerializedName("wait")
+    WAIT("wait"),
+
+    @SerializedName("ok")
+    OK("ok");
 
     private final String value;
 

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class FaveAddLinkQuery extends AbstractQueryBuilder<FaveAddLinkQuery, OkR
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param link   value of "link" parameter.
+     * @param actor actor with access token
+     * @param link value of "link" parameter.
      */
     public FaveAddLinkQuery(VkApiClient client, UserActor actor, String link) {
         super(client, "fave.addLink", OkResponse.class);
@@ -33,16 +32,6 @@ public class FaveAddLinkQuery extends AbstractQueryBuilder<FaveAddLinkQuery, OkR
      */
     protected FaveAddLinkQuery link(String value) {
         return unsafeParam("link", value);
-    }
-
-    /**
-     * Description text.
-     *
-     * @param value value of "text" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public FaveAddLinkQuery text(String value) {
-        return unsafeParam("text", value);
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +14,14 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client        VK API client
-     * @param actor         actor with access token
-     * @param accountId     value of "account id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param accountId value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
-     * @param name          value of "name" parameter.
+     * @param name value of "name" parameter.
      */
-    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId, String name) {
+    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
+            int targetGroupId, String name) {
         super(client, "ads.updateTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -40,8 +40,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
-     * "Only for advertising agencies."
-     * ID of the client with the advertising account where the group will be created.
+     * 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
      *
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -61,7 +60,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
-     * New name of the target group - a string up to 64 characters long.
+     * New name of the target group — a string up to 64 characters long.
      *
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -81,15 +80,33 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
-     * Only for the groups that get audience from sites with user accounting code.
-     * Time in days when users added to a retarget group will be automatically excluded from it.
-     * "0" - automatic exclusion is off.
+     * 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
      *
-     * @param value value of "lifetime" parameter. Minimum is 0.
+     * @param value value of "lifetime" parameter. Maximum is 365. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AdsUpdateTargetGroupQuery lifetime(Integer value) {
         return unsafeParam("lifetime", value);
+    }
+
+    /**
+     * Set target pixel id
+     *
+     * @param value value of "target pixel id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsUpdateTargetGroupQuery targetPixelId(Integer value) {
+        return unsafeParam("target_pixel_id", value);
+    }
+
+    /**
+     * Set target pixel rules
+     *
+     * @param value value of "target pixel rules" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsUpdateTargetGroupQuery targetPixelRules(String value) {
+        return unsafeParam("target_pixel_rules", value);
     }
 
     @Override

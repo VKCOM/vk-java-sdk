@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.account;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Settings parameters
  */
-public enum OnoffOptions {
+public enum OnoffOptions implements EnumParam {
     @SerializedName("on")
     ON("on"),
 

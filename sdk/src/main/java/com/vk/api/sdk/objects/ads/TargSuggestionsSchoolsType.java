@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * School type
  */
-public enum TargSuggestionsSchoolsType {
+public enum TargSuggestionsSchoolsType implements EnumParam {
     @SerializedName("school")
     SCHOOL("school"),
 

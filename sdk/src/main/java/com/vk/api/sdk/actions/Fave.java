@@ -20,7 +20,6 @@ import com.vk.api.sdk.queries.fave.FaveRemoveUserQuery;
  * List of Fave methods
  */
 public class Fave extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -31,35 +30,43 @@ public class Fave extends AbstractAction {
     }
 
     /**
-     * Returns a list of users whom the current user has bookmarked.
+     * Adds a community to user faves.
+     *
+     * @param actor vk actor
+     * @param groupId Community ID.
+     * @return query
      */
-    public FaveGetUsersQuery getUsers(UserActor actor) {
-        return new FaveGetUsersQuery(getClient(), actor);
+    public FaveAddGroupQuery addGroup(UserActor actor, int groupId) {
+        return new FaveAddGroupQuery(getClient(), actor, groupId);
     }
 
     /**
-     * Returns a list of photos that the current user has liked.
+     * Adds a link to user faves.
+     *
+     * @param actor vk actor
+     * @param link Link URL.
+     * @return query
      */
-    public FaveGetPhotosQuery getPhotos(UserActor actor) {
-        return new FaveGetPhotosQuery(getClient(), actor);
+    public FaveAddLinkQuery addLink(UserActor actor, String link) {
+        return new FaveAddLinkQuery(getClient(), actor, link);
     }
 
     /**
-     * Returns a list of wall posts that the current user has liked.
+     * Adds a profile to user faves.
+     *
+     * @param actor vk actor
+     * @param userId Profile ID.
+     * @return query
      */
-    public FaveGetPostsQuery getPosts(UserActor actor) {
-        return new FaveGetPostsQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of videos that the current user has liked.
-     */
-    public FaveGetVideosQuery getVideos(UserActor actor) {
-        return new FaveGetVideosQuery(getClient(), actor);
+    public FaveAddUserQuery addUser(UserActor actor, int userId) {
+        return new FaveAddUserQuery(getClient(), actor, userId);
     }
 
     /**
      * Returns a list of links that the current user has bookmarked.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public FaveGetLinksQuery getLinks(UserActor actor) {
         return new FaveGetLinksQuery(getClient(), actor);
@@ -67,47 +74,83 @@ public class Fave extends AbstractAction {
 
     /**
      * Returns market items bookmarked by current user.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public FaveGetMarketItemsQuery getMarketItems(UserActor actor) {
         return new FaveGetMarketItemsQuery(getClient(), actor);
     }
 
     /**
-     * Adds a profile to user faves.
+     * Returns a list of photos that the current user has liked.
+     *
+     * @param actor vk actor
+     * @return query
      */
-    public FaveAddUserQuery addUser(UserActor actor, int userId) {
-        return new FaveAddUserQuery(getClient(), actor, userId);
+    public FaveGetPhotosQuery getPhotos(UserActor actor) {
+        return new FaveGetPhotosQuery(getClient(), actor);
     }
 
     /**
-     * Removes a profile from user faves.
+     * Returns a list of wall posts that the current user has liked.
+     *
+     * @param actor vk actor
+     * @return query
      */
-    public FaveRemoveUserQuery removeUser(UserActor actor, int userId) {
-        return new FaveRemoveUserQuery(getClient(), actor, userId);
+    public FaveGetPostsQuery getPosts(UserActor actor) {
+        return new FaveGetPostsQuery(getClient(), actor);
     }
 
     /**
-     * Adds a community to user faves.
+     * Returns a list of users whom the current user has bookmarked.
+     *
+     * @param actor vk actor
+     * @return query
      */
-    public FaveAddGroupQuery addGroup(UserActor actor, int groupId) {
-        return new FaveAddGroupQuery(getClient(), actor, groupId);
+    public FaveGetUsersQuery getUsers(UserActor actor) {
+        return new FaveGetUsersQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of videos that the current user has liked.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveGetVideosQuery getVideos(UserActor actor) {
+        return new FaveGetVideosQuery(getClient(), actor);
     }
 
     /**
      * Removes a community from user faves.
+     *
+     * @param actor vk actor
+     * @param groupId Community ID.
+     * @return query
      */
     public FaveRemoveGroupQuery removeGroup(UserActor actor, int groupId) {
         return new FaveRemoveGroupQuery(getClient(), actor, groupId);
     }
 
     /**
-     * Adds a link to user faves.
+     * Removes link from the user's faves.
+     *
+     * @param actor vk actor
+     * @return query
      */
-    public FaveAddLinkQuery addLink(UserActor actor, String link) {
-        return new FaveAddLinkQuery(getClient(), actor, link);
+    public FaveRemoveLinkQuery removeLink(UserActor actor) {
+        return new FaveRemoveLinkQuery(getClient(), actor);
     }
 
-    public FaveRemoveLinkQuery removeLink(UserActor actor, String linkId) {
-        return new FaveRemoveLinkQuery(getClient(), actor, linkId);
+    /**
+     * Removes a profile from user faves.
+     *
+     * @param actor vk actor
+     * @param userId Profile ID.
+     * @return query
+     */
+    public FaveRemoveUserQuery removeUser(UserActor actor, int userId) {
+        return new FaveRemoveUserQuery(getClient(), actor, userId);
     }
 }

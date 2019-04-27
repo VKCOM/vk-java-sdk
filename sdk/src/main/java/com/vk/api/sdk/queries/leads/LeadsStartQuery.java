@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Start;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class LeadsStartQuery extends AbstractQueryBuilder<LeadsStartQuery, Start
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param leadId value of "lead id" parameter. Minimum is 0.
      * @param secret value of "secret" parameter.
      */
@@ -32,6 +31,7 @@ public class LeadsStartQuery extends AbstractQueryBuilder<LeadsStartQuery, Start
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      * @param leadId value of "lead id" parameter. Minimum is 0.
      * @param secret value of "secret" parameter.
      */
@@ -63,6 +63,46 @@ public class LeadsStartQuery extends AbstractQueryBuilder<LeadsStartQuery, Start
         return unsafeParam("secret", value);
     }
 
+    /**
+     * Set uid
+     *
+     * @param value value of "uid" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsStartQuery uid(Integer value) {
+        return unsafeParam("uid", value);
+    }
+
+    /**
+     * Set aid
+     *
+     * @param value value of "aid" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsStartQuery aid(Integer value) {
+        return unsafeParam("aid", value);
+    }
+
+    /**
+     * Set test mode
+     *
+     * @param value value of "test mode" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsStartQuery testMode(Boolean value) {
+        return unsafeParam("test_mode", value);
+    }
+
+    /**
+     * Set force
+     *
+     * @param value value of "force" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsStartQuery force(Boolean value) {
+        return unsafeParam("force", value);
+    }
+
     @Override
     protected LeadsStartQuery getThis() {
         return this;
@@ -70,6 +110,6 @@ public class LeadsStartQuery extends AbstractQueryBuilder<LeadsStartQuery, Start
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("secret", "lead_id");
+        return Arrays.asList("secret", "lead_id", "access_token");
     }
 }

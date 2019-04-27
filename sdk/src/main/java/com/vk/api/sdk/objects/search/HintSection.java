@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.search;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Section title
  */
-public enum HintSection {
+public enum HintSection implements EnumParam {
     @SerializedName("groups")
     GROUPS("groups"),
 

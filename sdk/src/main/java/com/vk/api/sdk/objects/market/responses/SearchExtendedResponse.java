@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.market.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.market.MarketItemFull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class SearchExtendedResponse {
         return count;
     }
 
+    public SearchExtendedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<MarketItemFull> getItems() {
         return items;
+    }
+
+    public SearchExtendedResponse setItems(List<MarketItemFull> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class SearchExtendedResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SearchExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

@@ -1,13 +1,18 @@
 package com.vk.api.sdk.objects.groups;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * GroupBanInfo object
  */
 public class GroupBanInfo {
+    /**
+     * Ban comment
+     */
+    @SerializedName("comment")
+    private String comment;
 
     /**
      * End date of ban in Unixtime
@@ -15,28 +20,22 @@ public class GroupBanInfo {
     @SerializedName("end_date")
     private Integer endDate;
 
-    /**
-     * Ban comment
-     */
-    @SerializedName("comment")
-    private String comment;
+    public String getComment() {
+        return comment;
+    }
 
+    public GroupBanInfo setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
 
     public Integer getEndDate() {
         return endDate;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GroupBanInfo that = (GroupBanInfo) o;
-        return Objects.equals(endDate, that.endDate) &&
-                Objects.equals(comment, that.comment);
+    public GroupBanInfo setEndDate(Integer endDate) {
+        this.endDate = endDate;
+        return this;
     }
 
     @Override
@@ -45,10 +44,24 @@ public class GroupBanInfo {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupBanInfo groupBanInfo = (GroupBanInfo) o;
+        return Objects.equals(endDate, groupBanInfo.endDate) &&
+                Objects.equals(comment, groupBanInfo.comment);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupBanInfo{");
         sb.append("endDate=").append(endDate);
-        sb.append(", comment='").append(comment).append('\'');
+        sb.append(", comment='").append(comment).append("'");
         sb.append('}');
         return sb.toString();
     }

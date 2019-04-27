@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -14,22 +14,37 @@ public class Stats {
     @SerializedName("id")
     private Integer id;
 
-    @SerializedName("type")
-    private ObjectType type;
-
     @SerializedName("stats")
     private StatsFormat stats;
 
+    @SerializedName("type")
+    private ObjectType type;
+
     public Integer getId() {
         return id;
+    }
+
+    public Stats setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public StatsFormat getStats() {
+        return stats;
+    }
+
+    public Stats setStats(StatsFormat stats) {
+        this.stats = stats;
+        return this;
     }
 
     public ObjectType getType() {
         return type;
     }
 
-    public StatsFormat getStats() {
-        return stats;
+    public Stats setType(ObjectType type) {
+        this.type = type;
+        return this;
     }
 
     @Override
@@ -42,17 +57,22 @@ public class Stats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Stats stats = (Stats) o;
-        return Objects.equals(id, stats.id) &&
-                Objects.equals(type, stats.type) &&
-                Objects.equals(stats, stats.stats);
+        return Objects.equals(stats, stats.stats) &&
+                Objects.equals(id, stats.id) &&
+                Objects.equals(type, stats.type);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Stats{");
-        sb.append("id=").append(id);
+        sb.append("stats=").append(stats);
+        sb.append(", id=").append(id);
         sb.append(", type=").append(type);
-        sb.append(", stats=").append(stats);
         sb.append('}');
         return sb.toString();
     }

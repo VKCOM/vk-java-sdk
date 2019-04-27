@@ -1,10 +1,10 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.newsfeed.NewsfeedItem;
 import com.vk.api.sdk.objects.users.UserFull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -37,20 +37,45 @@ public class GetRecommendedResponse {
         return items;
     }
 
+    public GetRecommendedResponse setItems(List<NewsfeedItem> items) {
+        this.items = items;
+        return this;
+    }
+
     public List<UserFull> getProfiles() {
         return profiles;
+    }
+
+    public GetRecommendedResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
     }
 
     public List<GroupFull> getGroups() {
         return groups;
     }
 
+    public GetRecommendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
+
     public String getNewOffset() {
         return newOffset;
     }
 
+    public GetRecommendedResponse setNewOffset(String newOffset) {
+        this.newOffset = newOffset;
+        return this;
+    }
+
     public String getNewFrom() {
         return newFrom;
+    }
+
+    public GetRecommendedResponse setNewFrom(String newFrom) {
+        this.newFrom = newFrom;
+        return this;
     }
 
     @Override
@@ -63,21 +88,26 @@ public class GetRecommendedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetRecommendedResponse getRecommendedResponse = (GetRecommendedResponse) o;
-        return Objects.equals(items, getRecommendedResponse.items) &&
+        return Objects.equals(newOffset, getRecommendedResponse.newOffset) &&
                 Objects.equals(profiles, getRecommendedResponse.profiles) &&
                 Objects.equals(groups, getRecommendedResponse.groups) &&
-                Objects.equals(newOffset, getRecommendedResponse.newOffset) &&
-                Objects.equals(newFrom, getRecommendedResponse.newFrom);
+                Objects.equals(newFrom, getRecommendedResponse.newFrom) &&
+                Objects.equals(items, getRecommendedResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRecommendedResponse{");
-        sb.append("items=").append(items);
+        sb.append("newOffset='").append(newOffset).append("'");
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
-        sb.append(", newOffset='").append(newOffset).append("'");
         sb.append(", newFrom='").append(newFrom).append("'");
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

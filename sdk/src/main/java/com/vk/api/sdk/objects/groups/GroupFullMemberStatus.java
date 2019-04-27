@@ -1,11 +1,9 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-/**
- * Current user's member status
- */
-public enum GroupFullMemberStatus {
+public enum GroupFullMemberStatus implements EnumParam {
     @SerializedName("0")
     NOT_A_MEMBER(0),
 
@@ -30,7 +28,7 @@ public enum GroupFullMemberStatus {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

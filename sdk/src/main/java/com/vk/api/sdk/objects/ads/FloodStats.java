@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class FloodStats {
         return left;
     }
 
+    public FloodStats setLeft(Integer left) {
+        this.left = left;
+        return this;
+    }
+
     public Integer getRefresh() {
         return refresh;
+    }
+
+    public FloodStats setRefresh(Integer refresh) {
+        this.refresh = refresh;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class FloodStats {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("FloodStats{");
         sb.append("left=").append(left);
         sb.append(", refresh=").append(refresh);

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,33 @@ import java.util.Objects;
  */
 public class LastSeen {
     /**
-     * Last visit date (in Unix time)
-     */
-    @SerializedName("time")
-    private Integer time;
-
-    /**
      * Type of the platform that used for the last authorization
      */
     @SerializedName("platform")
     private Integer platform;
 
+    /**
+     * Last visit date (in Unix time)
+     */
+    @SerializedName("time")
+    private Integer time;
+
+    public Integer getPlatform() {
+        return platform;
+    }
+
+    public LastSeen setPlatform(Integer platform) {
+        this.platform = platform;
+        return this;
+    }
+
     public Integer getTime() {
         return time;
     }
 
-    public Integer getPlatform() {
-        return platform;
+    public LastSeen setTime(Integer time) {
+        this.time = time;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class LastSeen {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LastSeen{");
         sb.append("time=").append(time);
         sb.append(", platform=").append(platform);

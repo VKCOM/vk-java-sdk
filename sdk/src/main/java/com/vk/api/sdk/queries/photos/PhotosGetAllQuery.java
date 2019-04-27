@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetAllResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetAllQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getAll", GetAllResponse.class);
@@ -24,8 +23,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * ID of a user or community that owns the photos.
-     * Use a negative value to designate a community ID.
+     * ID of a user or community that owns the photos. Use a negative value to designate a community ID.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -35,7 +33,17 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * Offset needed to return a specific subset of photos. By default, "0".
+     * '1' — to return detailed information about photos
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetAllQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * Offset needed to return a specific subset of photos. By default, '0'.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +63,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * Return image sizes in special format.
+     * '1' – to return image sizes in [vk.com/dev/photo_sizes|special format].
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,8 +73,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * "true" - to return photos only from standard albums
-     * "false" - to return all photos including those in service albums, e.g., "My wall photos" (default)
+     * '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
      *
      * @param value value of "no service albums" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,7 +83,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * Show information about photos being hidden from the block above the wall.
+     * '1' – to show information about photos being hidden from the block above the wall.
      *
      * @param value value of "need hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,8 +93,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     }
 
     /**
-     * Not to return photos being hidden from the block above the wall.
-     * Works only with owner_id greater than 0, no_service_albums is ignored.
+     * '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
      *
      * @param value value of "skip hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

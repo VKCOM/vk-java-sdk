@@ -1,33 +1,48 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.Objects;
 
 /**
  * CropPhoto object
  */
 public class CropPhoto {
-    @SerializedName("photo")
-    private Photo photo;
-
     @SerializedName("crop")
     private CropPhotoCrop crop;
 
+    @SerializedName("photo")
+    private Photo photo;
+
     @SerializedName("rect")
     private CropPhotoRect rect;
-
-    public Photo getPhoto() {
-        return photo;
-    }
 
     public CropPhotoCrop getCrop() {
         return crop;
     }
 
+    public CropPhoto setCrop(CropPhotoCrop crop) {
+        this.crop = crop;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public CropPhoto setPhoto(Photo photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public CropPhotoRect getRect() {
         return rect;
+    }
+
+    public CropPhoto setRect(CropPhotoRect rect) {
+        this.rect = rect;
+        return this;
     }
 
     @Override
@@ -40,17 +55,22 @@ public class CropPhoto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CropPhoto cropPhoto = (CropPhoto) o;
-        return Objects.equals(photo, cropPhoto.photo) &&
-                Objects.equals(crop, cropPhoto.crop) &&
-                Objects.equals(rect, cropPhoto.rect);
+        return Objects.equals(rect, cropPhoto.rect) &&
+                Objects.equals(photo, cropPhoto.photo) &&
+                Objects.equals(crop, cropPhoto.crop);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CropPhoto{");
-        sb.append("photo=").append(photo);
+        sb.append("rect=").append(rect);
+        sb.append(", photo=").append(photo);
         sb.append(", crop=").append(crop);
-        sb.append(", rect=").append(rect);
         sb.append('}');
         return sb.toString();
     }

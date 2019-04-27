@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +14,14 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      * @param albumId value of "album id" parameter. Minimum is 0.
-     * @param title   value of "title" parameter.
+     * @param title value of "title" parameter.
      */
-    public MarketEditAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int albumId, String title) {
+    public MarketEditAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int albumId,
+            String title) {
         super(client, "market.editAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -30,8 +30,7 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     }
 
     /**
-     * Collection owner identifier
-     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
+     * ID of an collection owner community.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -41,7 +40,7 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     }
 
     /**
-     * Collection id
+     * Collection ID.
      *
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -51,7 +50,7 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     }
 
     /**
-     * Collection title
+     * Collection title.
      *
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,7 +70,7 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     }
 
     /**
-     * Set main album
+     * Set as main ('1' – set, '0' – no).
      *
      * @param value value of "main album" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

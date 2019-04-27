@@ -1,11 +1,9 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-/**
- * Information whether age limit
- */
-public enum GroupFullAgeLimits {
+public enum GroupFullAgeLimits implements EnumParam {
     @SerializedName("1")
     NO(1),
 
@@ -21,7 +19,7 @@ public enum GroupFullAgeLimits {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

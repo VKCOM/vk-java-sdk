@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -15,13 +15,13 @@ public class StatsSexAge {
     private String ageRange;
 
     /**
-     * Views by female users
+     *  Views by female users
      */
     @SerializedName("female")
     private Integer female;
 
     /**
-     * Views by male users
+     *  Views by male users
      */
     @SerializedName("male")
     private Integer male;
@@ -30,22 +30,27 @@ public class StatsSexAge {
         return ageRange;
     }
 
+    public StatsSexAge setAgeRange(String ageRange) {
+        this.ageRange = ageRange;
+        return this;
+    }
+
     public Integer getFemale() {
         return female;
+    }
+
+    public StatsSexAge setFemale(Integer female) {
+        this.female = female;
+        return this;
     }
 
     public Integer getMale() {
         return male;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StatsSexAge sexAge = (StatsSexAge) o;
-        return Objects.equals(ageRange, sexAge.ageRange) &&
-                Objects.equals(female, sexAge.female) &&
-                Objects.equals(male, sexAge.male);
+    public StatsSexAge setMale(Integer male) {
+        this.male = male;
+        return this;
     }
 
     @Override
@@ -54,9 +59,24 @@ public class StatsSexAge {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StatsSexAge statsSexAge = (StatsSexAge) o;
+        return Objects.equals(ageRange, statsSexAge.ageRange) &&
+                Objects.equals(female, statsSexAge.female) &&
+                Objects.equals(male, statsSexAge.male);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsSexAge{");
-        sb.append("ageRange='").append(ageRange).append('\'');
+        sb.append("ageRange='").append(ageRange).append("'");
         sb.append(", female=").append(female);
         sb.append(", male=").append(male);
         sb.append('}');

@@ -1,25 +1,13 @@
 package com.vk.api.sdk.objects.photos.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * PhotoUploadResponse object
  */
 public class PhotoUploadResponse {
-    /**
-     * Upload server number
-     */
-    @SerializedName("server")
-    private Integer server;
-
-    /**
-     * Uploaded photos data
-     */
-    @SerializedName("photos_list")
-    private String photosList;
-
     /**
      * Album ID
      */
@@ -32,20 +20,52 @@ public class PhotoUploadResponse {
     @SerializedName("hash")
     private String hash;
 
-    public Integer getServer() {
-        return server;
+    /**
+     * Uploaded photos data
+     */
+    @SerializedName("photos_list")
+    private String photosList;
+
+    /**
+     * Upload server number
+     */
+    @SerializedName("server")
+    private Integer server;
+
+    public Integer getAid() {
+        return aid;
+    }
+
+    public PhotoUploadResponse setAid(Integer aid) {
+        this.aid = aid;
+        return this;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public PhotoUploadResponse setHash(String hash) {
+        this.hash = hash;
+        return this;
     }
 
     public String getPhotosList() {
         return photosList;
     }
 
-    public Integer getAid() {
-        return aid;
+    public PhotoUploadResponse setPhotosList(String photosList) {
+        this.photosList = photosList;
+        return this;
     }
 
-    public String getHash() {
-        return hash;
+    public Integer getServer() {
+        return server;
+    }
+
+    public PhotoUploadResponse setServer(Integer server) {
+        this.server = server;
+        return this;
     }
 
     @Override
@@ -66,6 +86,11 @@ public class PhotoUploadResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoUploadResponse{");
         sb.append("server=").append(server);
         sb.append(", photosList='").append(photosList).append("'");

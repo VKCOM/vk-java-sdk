@@ -1,18 +1,19 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.util.List;
 import java.util.Objects;
 
 /**
  * Sticker object
  */
 public class Sticker {
-    /**
-     * Sticker ID
-     */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("images")
+    private List<Image> images;
+
+    @SerializedName("images_with_background")
+    private List<Image> imagesWithBackground;
 
     /**
      * Collection ID
@@ -21,76 +22,50 @@ public class Sticker {
     private Integer productId;
 
     /**
-     * URL of the preview image with 64 px in height
+     * Sticker ID
      */
-    @SerializedName("photo_64")
-    private String photo64;
+    @SerializedName("sticker_id")
+    private Integer stickerId;
 
-    /**
-     * URL of the preview image with 128 px in height
-     */
-    @SerializedName("photo_128")
-    private String photo128;
+    public List<Image> getImages() {
+        return images;
+    }
 
-    /**
-     * URL of the preview image with 256 px in height
-     */
-    @SerializedName("photo_256")
-    private String photo256;
+    public Sticker setImages(List<Image> images) {
+        this.images = images;
+        return this;
+    }
 
-    /**
-     * URL of the preview image with 352 px in height
-     */
-    @SerializedName("photo_352")
-    private String photo352;
+    public List<Image> getImagesWithBackground() {
+        return imagesWithBackground;
+    }
 
-    /**
-     * Width in px
-     */
-    @SerializedName("width")
-    private Integer width;
-
-    /**
-     * Hieght in px
-     */
-    @SerializedName("height")
-    private Integer height;
-
-    public Integer getId() {
-        return id;
+    public Sticker setImagesWithBackground(List<Image> imagesWithBackground) {
+        this.imagesWithBackground = imagesWithBackground;
+        return this;
     }
 
     public Integer getProductId() {
         return productId;
     }
 
-    public String getPhoto64() {
-        return photo64;
+    public Sticker setProductId(Integer productId) {
+        this.productId = productId;
+        return this;
     }
 
-    public String getPhoto128() {
-        return photo128;
+    public Integer getStickerId() {
+        return stickerId;
     }
 
-    public String getPhoto256() {
-        return photo256;
-    }
-
-    public String getPhoto352() {
-        return photo352;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public Integer getHeight() {
-        return height;
+    public Sticker setStickerId(Integer stickerId) {
+        this.stickerId = stickerId;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, photo64, photo352, width, photo256, id, photo128, height);
+        return Objects.hash(images, productId, imagesWithBackground, stickerId);
     }
 
     @Override
@@ -98,27 +73,24 @@ public class Sticker {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sticker sticker = (Sticker) o;
-        return Objects.equals(id, sticker.id) &&
+        return Objects.equals(images, sticker.images) &&
+                Objects.equals(stickerId, sticker.stickerId) &&
                 Objects.equals(productId, sticker.productId) &&
-                Objects.equals(photo64, sticker.photo64) &&
-                Objects.equals(photo128, sticker.photo128) &&
-                Objects.equals(photo256, sticker.photo256) &&
-                Objects.equals(photo352, sticker.photo352) &&
-                Objects.equals(width, sticker.width) &&
-                Objects.equals(height, sticker.height);
+                Objects.equals(imagesWithBackground, sticker.imagesWithBackground);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Sticker{");
-        sb.append("id=").append(id);
+        sb.append("images=").append(images);
+        sb.append(", stickerId=").append(stickerId);
         sb.append(", productId=").append(productId);
-        sb.append(", photo64='").append(photo64).append("'");
-        sb.append(", photo128='").append(photo128).append("'");
-        sb.append(", photo256='").append(photo256).append("'");
-        sb.append(", photo352='").append(photo352).append("'");
-        sb.append(", width=").append(width);
-        sb.append(", height=").append(height);
+        sb.append(", imagesWithBackground=").append(imagesWithBackground);
         sb.append('}');
         return sb.toString();
     }

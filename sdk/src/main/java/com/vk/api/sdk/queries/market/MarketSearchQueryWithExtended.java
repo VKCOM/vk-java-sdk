@@ -3,8 +3,10 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.MarketRev;
+import com.vk.api.sdk.objects.enums.MarketSort;
+import com.vk.api.sdk.objects.enums.MarketStatus;
 import com.vk.api.sdk.objects.market.responses.SearchExtendedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +17,8 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      */
     public MarketSearchQueryWithExtended(VkApiClient client, UserActor actor, int ownerId) {
@@ -27,7 +29,7 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Identifier of an items owner community
+     * ID of an items owner community.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -37,18 +39,17 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Identifier of an album
+     * Set album id
      *
-     * @param value value of "count" parameter.
+     * @param value value of "album id" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MarketSearchQueryWithExtended albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 
-
     /**
-     * Search query, for example "pink slippers"
+     * Search query, for example "pink slippers".
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +59,7 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Minimum item price value. For example "100"
+     * Minimum item price value.
      *
      * @param value value of "price from" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -68,7 +69,7 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Maximum item price value. For example "14100"
+     * Maximum item price value.
      *
      * @param value value of "price to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -78,47 +79,27 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Comma-separated tag ids list
+     * Set sort
      *
-     * @param value value of "tags" parameter.
+     * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketSearchQueryWithExtended tags(Integer... value) {
-        return unsafeParam("tags", value);
-    }
-
-    /**
-     * Comma-separated tag ids list
-     *
-     * @param value value of "tags" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MarketSearchQueryWithExtended tags(List<Integer> value) {
-        return unsafeParam("tags", value);
-    }
-
-    /**
-     * Items sort
-     *
-     * @param value value of "price to" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MarketSearchQueryWithExtended sort(MarketSearchSort value) {
+    public MarketSearchQueryWithExtended sort(MarketSort value) {
         return unsafeParam("sort", value);
     }
 
     /**
-     * Use reverse order
+     * '0' — do not use reverse order, '1' — use reverse order
      *
      * @param value value of "rev" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketSearchQueryWithExtended rev(Boolean value) {
+    public MarketSearchQueryWithExtended rev(MarketRev value) {
         return unsafeParam("rev", value);
     }
 
     /**
-     * Offset based on a first matching item to get a certain items subset
+     * Offset needed to return a specific subset of results.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -128,7 +109,7 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * Number of items to return
+     * Number of items to return.
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -138,15 +119,44 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
     }
 
     /**
-     * "true" - method will return additional fields:
-     * likes, can_comment, car_repost, photos.
-     * These parameters are not returned by default
+     * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
      *
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MarketSearchQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * Set status
+     *
+     * @param value value of "status" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended status(MarketStatus value) {
+        return unsafeParam("status", value);
+    }
+
+    /**
+     * tags
+     * Comma-separated tag IDs list.
+     *
+     * @param value value of "tags" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended tags(Integer... value) {
+        return unsafeParam("tags", value);
+    }
+
+    /**
+     * Comma-separated tag IDs list.
+     *
+     * @param value value of "tags" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended tags(List<Integer> value) {
+        return unsafeParam("tags", value);
     }
 
     @Override

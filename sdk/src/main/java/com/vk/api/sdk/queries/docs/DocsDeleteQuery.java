@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,10 @@ public class DocsDeleteQuery extends AbstractQueryBuilder<DocsDeleteQuery, OkRes
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param docId   value of "doc id" parameter. Minimum is 0.
+     * @param docId value of "doc id" parameter. Minimum is 0.
      */
     public DocsDeleteQuery(VkApiClient client, UserActor actor, int ownerId, int docId) {
         super(client, "docs.delete", OkResponse.class);
@@ -28,7 +27,7 @@ public class DocsDeleteQuery extends AbstractQueryBuilder<DocsDeleteQuery, OkRes
     }
 
     /**
-     * Set owner id
+     * ID of the user or community that owns the document. Use a negative value to designate a community ID.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -38,7 +37,7 @@ public class DocsDeleteQuery extends AbstractQueryBuilder<DocsDeleteQuery, OkRes
     }
 
     /**
-     * Set doc id
+     * Document ID.
      *
      * @param value value of "doc id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

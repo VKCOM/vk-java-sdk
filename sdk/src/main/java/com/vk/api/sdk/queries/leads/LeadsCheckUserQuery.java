@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Checked;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class LeadsCheckUserQuery extends AbstractQueryBuilder<LeadsCheckUserQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param leadId value of "lead id" parameter. Minimum is 0.
      */
     public LeadsCheckUserQuery(VkApiClient client, UserActor actor, int leadId) {
@@ -26,7 +25,7 @@ public class LeadsCheckUserQuery extends AbstractQueryBuilder<LeadsCheckUserQuer
     }
 
     /**
-     * Set lead id
+     * Lead ID.
      *
      * @param value value of "lead id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -36,7 +35,7 @@ public class LeadsCheckUserQuery extends AbstractQueryBuilder<LeadsCheckUserQuer
     }
 
     /**
-     * Set test result
+     * Value to be return in 'result' field when test mode is used.
      *
      * @param value value of "test result" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +45,27 @@ public class LeadsCheckUserQuery extends AbstractQueryBuilder<LeadsCheckUserQuer
     }
 
     /**
-     * Set age
+     * Set test mode
+     *
+     * @param value value of "test mode" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsCheckUserQuery testMode(Boolean value) {
+        return unsafeParam("test_mode", value);
+    }
+
+    /**
+     * Set auto start
+     *
+     * @param value value of "auto start" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LeadsCheckUserQuery autoStart(Boolean value) {
+        return unsafeParam("auto_start", value);
+    }
+
+    /**
+     * User age.
      *
      * @param value value of "age" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -56,7 +75,7 @@ public class LeadsCheckUserQuery extends AbstractQueryBuilder<LeadsCheckUserQuer
     }
 
     /**
-     * Set country
+     * User country code.
      *
      * @param value value of "country" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

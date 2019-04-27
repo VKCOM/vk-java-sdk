@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.newsfeed;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +9,9 @@ import java.util.Objects;
  * ItemNoteNotes object
  */
 public class ItemNoteNotes {
-
+    /**
+     * Notes number
+     */
     @SerializedName("count")
     private Integer count;
 
@@ -20,8 +22,23 @@ public class ItemNoteNotes {
         return count;
     }
 
+    public ItemNoteNotes setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<NewsfeedNote> getItems() {
         return items;
+    }
+
+    public ItemNoteNotes setItems(List<NewsfeedNote> items) {
+        this.items = items;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count, items);
     }
 
     @Override
@@ -34,12 +51,12 @@ public class ItemNoteNotes {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(count, items);
+    public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
-    @Override
-    public String toString() {
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemNoteNotes{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

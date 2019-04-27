@@ -22,7 +22,7 @@ import static java.util.Arrays.asList;
  */
 public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
 
-    private final Map<String, String> params = new HashMap<>();
+    private final Map<String, String> params = new HashMap<String, String>();
 
     private String method;
 

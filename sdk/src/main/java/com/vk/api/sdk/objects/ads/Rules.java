@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,26 +9,36 @@ import java.util.Objects;
  * Rules object
  */
 public class Rules {
+    @SerializedName("paragraphs")
+    private List<Paragraphs> paragraphs;
+
     /**
      * Comment
      */
     @SerializedName("title")
     private String title;
 
-    @SerializedName("paragraphs")
-    private List<Paragraphs> paragraphs;
+    public List<Paragraphs> getParagraphs() {
+        return paragraphs;
+    }
+
+    public Rules setParagraphs(List<Paragraphs> paragraphs) {
+        this.paragraphs = paragraphs;
+        return this;
+    }
 
     public String getTitle() {
         return title;
     }
 
-    public List<Paragraphs> getParagraphs() {
-        return paragraphs;
+    public Rules setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, paragraphs);
+        return Objects.hash(paragraphs, title);
     }
 
     @Override
@@ -36,15 +46,20 @@ public class Rules {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rules rules = (Rules) o;
-        return Objects.equals(title, rules.title) &&
-                Objects.equals(paragraphs, rules.paragraphs);
+        return Objects.equals(paragraphs, rules.paragraphs) &&
+                Objects.equals(title, rules.title);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Rules{");
-        sb.append("title='").append(title).append("'");
-        sb.append(", paragraphs=").append(paragraphs);
+        sb.append("paragraphs=").append(paragraphs);
+        sb.append(", title='").append(title).append("'");
         sb.append('}');
         return sb.toString();
     }

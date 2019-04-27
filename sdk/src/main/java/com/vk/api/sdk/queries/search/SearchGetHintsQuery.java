@@ -1,26 +1,24 @@
 package com.vk.api.sdk.queries.search;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
-import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.search.Hint;
-
+import com.vk.api.sdk.objects.search.responses.GetHintsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Search.getHints method
  */
-public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuery, List<Hint>> {
+public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuery, GetHintsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public SearchGetHintsQuery(VkApiClient client, UserActor actor) {
-        super(client, "search.getHints", Utils.buildParametrizedType(List.class, Hint.class));
+        super(client, "search.getHints", GetHintsResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -35,9 +33,9 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
     }
 
     /**
-     * Offset for selecting needed result subset.
+     * Offset for querying specific result subset
      *
-     * @param value value of "offset" parameter. Maximum is 200.
+     * @param value value of "offset" parameter. Maximum is 200. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public SearchGetHintsQuery offset(Integer value) {
@@ -55,29 +53,55 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
     }
 
     /**
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public SearchGetHintsQuery filters(SearchGetHintsFilter... value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public SearchGetHintsQuery filters(List<SearchGetHintsFilter> value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * The default search results are added to the results of a global search for all users and groups, it can be disabled by passing 0
+     * Set search global
      *
      * @param value value of "search global" parameter. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public SearchGetHintsQuery searchGlobal(Boolean value) {
         return unsafeParam("search_global", value);
+    }
+
+    /**
+     * filters
+     * Set filters
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SearchGetHintsQuery filters(String... value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * Set filters
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SearchGetHintsQuery filters(List<String> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SearchGetHintsQuery fields(String... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SearchGetHintsQuery fields(List<String> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-
+import com.vk.api.sdk.objects.messages.Keyboard;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public MessagesSendQuery(VkApiClient client, UserActor actor) {
         super(client, "messages.send", Integer.class);
@@ -27,15 +27,16 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public MessagesSendQuery(VkApiClient client, GroupActor actor) {
         super(client, "messages.send", Integer.class);
         accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
     }
 
     /**
-     * User ID (by default - current user).
+     * User ID (by default — current user).
      *
      * @param value value of "user id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -45,7 +46,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * Set random id
+     * Unique identifier to avoid resending the message.
      *
      * @param value value of "random id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +56,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * Set peer id
+     * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      *
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,7 +66,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * User's short address (for example, "illarionov").
+     * User's short address (for example, 'illarionov').
      *
      * @param value value of "domain" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,7 +78,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     /**
      * ID of conversation the message will relate to.
      *
-     * @param value value of "chat id" parameter. Minimum is 0.
+     * @param value value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesSendQuery chatId(Integer value) {
@@ -85,8 +86,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * Text of the message.
-     * Required if "attachments" is not set.
+     * (Required if 'attachments' is not set.) Text of the message.
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -101,7 +101,7 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery lat(Float value) {
+    public MessagesSendQuery lat(Number value) {
         return unsafeParam("lat", value);
     }
 
@@ -111,91 +111,37 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery lng(Float value) {
+    public MessagesSendQuery lng(Number value) {
         return unsafeParam("long", value);
     }
 
     /**
-     * List of objects attached to the message, separated by commas, in the following format:
-     * "type""owner_id"_"media_id"
-     *
-     * If the attached object belonging to another owner should be added access_key, in the following format:
-     * "type""owner_id"_"media_id"_"access_key"
-     *
-     * ""type"" - Type of media attachment:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * "wall" - wall post
-     *
-     * ""owner_id"" - ID of the media attachment owner.
-     * ""media_id"" - media attachment ID.
-     * "access_key" - object access key.
-     *
-     * Example:
-     * photo100172_166443618
+     * (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
      *
      * @param value value of "attachment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery attachment(String... value) {
+    public MessagesSendQuery attachment(String value) {
         return unsafeParam("attachment", value);
     }
 
     /**
-     * Required if "message" is not set.
+     * Set reply to
      *
-     * List of objects attached to the message, separated by commas, in the following format:
-     * "type""owner_id"_"media_id"
-     *
-     * If the attached object belonging to another owner should be added access_key, in the following format:
-     * "type""owner_id"_"media_id"_"access_key"
-     *
-     * ""type"" - Type of media attachment:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * "wall" - wall post
-     *
-     * "owner_id" - ID of the media attachment owner.
-     * "media_id" - media attachment ID.
-     * "access_key" - object access key.
-     *
-     * Example:
-     * photo100172_166443618
-     *
-     * @param value value of "attachment" parameter.
+     * @param value value of "reply to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery attachment(List<String> value) {
-        return unsafeParam("attachment", value);
+    public MessagesSendQuery replyTo(Integer value) {
+        return unsafeParam("reply_to", value);
     }
 
     /**
-     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's.
-     * <p>
-     * Example:
-     * 123,431,544
+     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
      *
      * @param value value of "forward messages" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery forwardMessages(String... value) {
-        return unsafeParam("forward_messages", value);
-    }
-
-    /**
-     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's.
-     * <p>
-     * Example:
-     * 123,431,544
-     *
-     * @param value value of "forward messages" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MessagesSendQuery forwardMessages(List<String> value) {
+    public MessagesSendQuery forwardMessages(String value) {
         return unsafeParam("forward_messages", value);
     }
 
@@ -207,6 +153,77 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery stickerId(Integer value) {
         return unsafeParam("sticker_id", value);
+    }
+
+    /**
+     * Group ID (for group messages with group access token)
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Set keyboard
+     *
+     * @param value value of "keyboard" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery keyboard(Keyboard value) {
+        return unsafeParam("keyboard", value);
+    }
+
+    /**
+     * Set payload
+     *
+     * @param value value of "payload" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery payload(String value) {
+        return unsafeParam("payload", value);
+    }
+
+    /**
+     * Set dont parse links
+     *
+     * @param value value of "dont parse links" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery dontParseLinks(Boolean value) {
+        return unsafeParam("dont_parse_links", value);
+    }
+
+    /**
+     * Set disable mentions
+     *
+     * @param value value of "disable mentions" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery disableMentions(Boolean value) {
+        return unsafeParam("disable_mentions", value);
+    }
+
+    /**
+     * user_ids
+     * IDs of message recipients (if new conversation shall be started).
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery userIds(Integer... value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * IDs of message recipients (if new conversation shall be started).
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
     }
 
     @Override

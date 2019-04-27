@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,14 +14,17 @@ public class NotesEditCommentQuery extends AbstractQueryBuilder<NotesEditComment
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param commentId value of "comment id" parameter. Minimum is 0.
+     * @param message value of "message" parameter.
      */
-    public NotesEditCommentQuery(VkApiClient client, UserActor actor, int commentId) {
+    public NotesEditCommentQuery(VkApiClient client, UserActor actor, int commentId,
+            String message) {
         super(client, "notes.editComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);
+        message(message);
     }
 
     /**
@@ -51,7 +53,7 @@ public class NotesEditCommentQuery extends AbstractQueryBuilder<NotesEditComment
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotesEditCommentQuery message(String value) {
+    protected NotesEditCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
 
@@ -62,6 +64,6 @@ public class NotesEditCommentQuery extends AbstractQueryBuilder<NotesEditComment
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("comment_id", "access_token");
+        return Arrays.asList("message", "comment_id", "access_token");
     }
 }

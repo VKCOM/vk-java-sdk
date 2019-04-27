@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Level of current user's credentials as manager
  */
-public enum GroupAdminLevel {
+public enum GroupAdminLevel implements EnumParam {
     @SerializedName("1")
     MODERATOR(1),
 
@@ -21,7 +22,7 @@ public enum GroupAdminLevel {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

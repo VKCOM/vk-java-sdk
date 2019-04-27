@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.video;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -9,16 +10,10 @@ import java.util.Objects;
  */
 public class SaveResult {
     /**
-     * URL for the video uploading
+     * Video description
      */
-    @SerializedName("upload_url")
-    private String uploadUrl;
-
-    /**
-     * Video ID
-     */
-    @SerializedName("video_id")
-    private Integer videoId;
+    @SerializedName("description")
+    private String description;
 
     /**
      * Video owner ID
@@ -33,29 +28,60 @@ public class SaveResult {
     private String title;
 
     /**
-     * Video description
+     * URL for the video uploading
      */
-    @SerializedName("description")
-    private String description;
+    @SerializedName("upload_url")
+    private URL uploadUrl;
 
-    public String getUploadUrl() {
-        return uploadUrl;
+    /**
+     * Video ID
+     */
+    @SerializedName("video_id")
+    private Integer videoId;
+
+    public String getDescription() {
+        return description;
     }
 
-    public Integer getVideoId() {
-        return videoId;
+    public SaveResult setDescription(String description) {
+        this.description = description;
+        return this;
     }
 
     public Integer getOwnerId() {
         return ownerId;
     }
 
+    public SaveResult setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public SaveResult setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public URL getUploadUrl() {
+        return uploadUrl;
+    }
+
+    public SaveResult setUploadUrl(URL uploadUrl) {
+        this.uploadUrl = uploadUrl;
+        return this;
+    }
+
+    public Integer getVideoId() {
+        return videoId;
+    }
+
+    public SaveResult setVideoId(Integer videoId) {
+        this.videoId = videoId;
+        return this;
     }
 
     @Override
@@ -68,21 +94,26 @@ public class SaveResult {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SaveResult saveResult = (SaveResult) o;
-        return Objects.equals(uploadUrl, saveResult.uploadUrl) &&
-                Objects.equals(videoId, saveResult.videoId) &&
-                Objects.equals(ownerId, saveResult.ownerId) &&
+        return Objects.equals(ownerId, saveResult.ownerId) &&
+                Objects.equals(description, saveResult.description) &&
+                Objects.equals(uploadUrl, saveResult.uploadUrl) &&
                 Objects.equals(title, saveResult.title) &&
-                Objects.equals(description, saveResult.description);
+                Objects.equals(videoId, saveResult.videoId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SaveResult{");
-        sb.append("uploadUrl='").append(uploadUrl).append("'");
-        sb.append(", videoId=").append(videoId);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", title='").append(title).append("'");
+        sb.append("ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
+        sb.append(", uploadUrl=").append(uploadUrl);
+        sb.append(", title='").append(title).append("'");
+        sb.append(", videoId=").append(videoId);
         sb.append('}');
         return sb.toString();
     }

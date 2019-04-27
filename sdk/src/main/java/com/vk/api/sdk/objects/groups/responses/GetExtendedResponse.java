@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.groups.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.GroupFull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetExtendedResponse {
         return count;
     }
 
+    public GetExtendedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<GroupFull> getItems() {
         return items;
+    }
+
+    public GetExtendedResponse setItems(List<GroupFull> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetExtendedResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

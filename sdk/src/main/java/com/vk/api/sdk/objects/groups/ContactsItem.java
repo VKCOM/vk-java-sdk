@@ -1,19 +1,13 @@
 package com.vk.api.sdk.objects.groups;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * ContactsItem object
  */
 public class ContactsItem {
-    /**
-     * User ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
     /**
      * Contact description
      */
@@ -32,20 +26,46 @@ public class ContactsItem {
     @SerializedName("phone")
     private String phone;
 
-    public Integer getUserId() {
-        return userId;
-    }
+    /**
+     * User ID
+     */
+    @SerializedName("user_id")
+    private Integer userId;
 
     public String getDesc() {
         return desc;
+    }
+
+    public ContactsItem setDesc(String desc) {
+        this.desc = desc;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public ContactsItem setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public String getPhone() {
         return phone;
+    }
+
+    public ContactsItem setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public ContactsItem setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override
@@ -58,19 +78,24 @@ public class ContactsItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactsItem contactsItem = (ContactsItem) o;
-        return Objects.equals(userId, contactsItem.userId) &&
-                Objects.equals(desc, contactsItem.desc) &&
+        return Objects.equals(phone, contactsItem.phone) &&
+                Objects.equals(userId, contactsItem.userId) &&
                 Objects.equals(email, contactsItem.email) &&
-                Objects.equals(phone, contactsItem.phone);
+                Objects.equals(desc, contactsItem.desc);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ContactsItem{");
-        sb.append("userId=").append(userId);
-        sb.append(", desc='").append(desc).append("'");
+        sb.append("phone='").append(phone).append("'");
+        sb.append(", userId=").append(userId);
         sb.append(", email='").append(email).append("'");
-        sb.append(", phone='").append(phone).append("'");
+        sb.append(", desc='").append(desc).append("'");
         sb.append('}');
         return sb.toString();
     }

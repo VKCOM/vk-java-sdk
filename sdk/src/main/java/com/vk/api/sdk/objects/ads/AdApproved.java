@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Review status
  */
-public enum AdApproved {
+public enum AdApproved implements EnumParam {
     @SerializedName("0")
     NOT_MODERATED(0),
 
@@ -24,7 +25,7 @@ public enum AdApproved {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

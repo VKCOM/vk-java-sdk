@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.PhotoUpload;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosG
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getWallUploadServer", PhotoUpload.class);

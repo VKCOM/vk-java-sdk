@@ -1,13 +1,26 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
  * AttachedNote object
  */
 public class AttachedNote {
+    /**
+     * Comments number
+     */
+    @SerializedName("comments")
+    private Integer comments;
+
+    /**
+     * Date when the note has been created in Unixtime
+     */
+    @SerializedName("date")
+    private Integer date;
+
     /**
      * Note ID
      */
@@ -21,22 +34,10 @@ public class AttachedNote {
     private Integer ownerId;
 
     /**
-     * Comments number
-     */
-    @SerializedName("comments")
-    private Integer comments;
-
-    /**
      * Read comments number
      */
     @SerializedName("read_comments")
     private Integer readComments;
-
-    /**
-     * Date when the note has been created in Unixtime
-     */
-    @SerializedName("date")
-    private Integer date;
 
     /**
      * Note title
@@ -48,34 +49,69 @@ public class AttachedNote {
      * URL of the page with note preview
      */
     @SerializedName("view_url")
-    private String viewUrl;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
+    private URL viewUrl;
 
     public Integer getComments() {
         return comments;
     }
 
-    public Integer getReadComments() {
-        return readComments;
+    public AttachedNote setComments(Integer comments) {
+        this.comments = comments;
+        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
+    public AttachedNote setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public AttachedNote setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public AttachedNote setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public Integer getReadComments() {
+        return readComments;
+    }
+
+    public AttachedNote setReadComments(Integer readComments) {
+        this.readComments = readComments;
+        return this;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public String getViewUrl() {
+    public AttachedNote setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public URL getViewUrl() {
         return viewUrl;
+    }
+
+    public AttachedNote setViewUrl(URL viewUrl) {
+        this.viewUrl = viewUrl;
+        return this;
     }
 
     @Override
@@ -88,25 +124,30 @@ public class AttachedNote {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AttachedNote attachedNote = (AttachedNote) o;
-        return Objects.equals(id, attachedNote.id) &&
-                Objects.equals(ownerId, attachedNote.ownerId) &&
+        return Objects.equals(date, attachedNote.date) &&
                 Objects.equals(comments, attachedNote.comments) &&
+                Objects.equals(ownerId, attachedNote.ownerId) &&
                 Objects.equals(readComments, attachedNote.readComments) &&
-                Objects.equals(date, attachedNote.date) &&
-                Objects.equals(title, attachedNote.title) &&
-                Objects.equals(viewUrl, attachedNote.viewUrl);
+                Objects.equals(viewUrl, attachedNote.viewUrl) &&
+                Objects.equals(id, attachedNote.id) &&
+                Objects.equals(title, attachedNote.title);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AttachedNote{");
-        sb.append("id=").append(id);
-        sb.append(", ownerId=").append(ownerId);
+        sb.append("date=").append(date);
         sb.append(", comments=").append(comments);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", readComments=").append(readComments);
-        sb.append(", date=").append(date);
+        sb.append(", viewUrl=").append(viewUrl);
+        sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");
-        sb.append(", viewUrl='").append(viewUrl).append("'");
         sb.append('}');
         return sb.toString();
     }

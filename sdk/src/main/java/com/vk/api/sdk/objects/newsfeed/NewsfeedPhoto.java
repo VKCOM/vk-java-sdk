@@ -1,23 +1,22 @@
 package com.vk.api.sdk.objects.newsfeed;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.ObjectCount;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.Objects;
 
 /**
  * NewsfeedPhoto object
  */
 public class NewsfeedPhoto extends Photo {
-
     @SerializedName("likes")
     private Likes likes;
 
     @SerializedName("comments")
-    private BaseCount comments;
+    private ObjectCount comments;
 
     /**
      * Information whether current user can comment the photo
@@ -35,61 +34,64 @@ public class NewsfeedPhoto extends Photo {
         return likes;
     }
 
-    public BaseCount getComments() {
+    public NewsfeedPhoto setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public ObjectCount getComments() {
         return comments;
+    }
+
+    public NewsfeedPhoto setComments(ObjectCount comments) {
+        this.comments = comments;
+        return this;
     }
 
     public boolean canComment() {
         return canComment == BoolInt.YES;
     }
 
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
     public boolean canRepost() {
         return canRepost == BoolInt.YES;
     }
 
+    public BoolInt getCanRepost() {
+        return canRepost;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), comments, canRepost, canComment, likes);
+        return Objects.hash(comments, canRepost, canComment, likes);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         NewsfeedPhoto newsfeedPhoto = (NewsfeedPhoto) o;
-        return Objects.equals(likes, newsfeedPhoto.likes) &&
-                Objects.equals(comments, newsfeedPhoto.comments) &&
+        return Objects.equals(canRepost, newsfeedPhoto.canRepost) &&
                 Objects.equals(canComment, newsfeedPhoto.canComment) &&
-                Objects.equals(canRepost, newsfeedPhoto.canRepost);
+                Objects.equals(comments, newsfeedPhoto.comments) &&
+                Objects.equals(likes, newsfeedPhoto.likes);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("NewsfeedPhoto{");
-        sb.append("accessKey='").append(getAccessKey()).append('\'');
-        sb.append(", albumId=").append(getAlbumId());
+        sb.append("canRepost=").append(canRepost);
         sb.append(", canComment=").append(canComment);
-        sb.append(", canRepost=").append(canRepost);
         sb.append(", comments=").append(comments);
-        sb.append(", date=").append(getDate());
-        sb.append(", height=").append(getHeight());
-        sb.append(", id=").append(getId());
-        sb.append(", lat=").append(getLat());
         sb.append(", likes=").append(likes);
-        sb.append(", lng=").append(getLng());
-        sb.append(", ownerId=").append(getOwnerId());
-        sb.append(", photo1280='").append(getPhoto1280()).append('\'');
-        sb.append(", photo130='").append(getPhoto130()).append('\'');
-        sb.append(", photo2560='").append(getPhoto2560()).append('\'');
-        sb.append(", photo604='").append(getPhoto604()).append('\'');
-        sb.append(", photo75='").append(getPhoto75()).append('\'');
-        sb.append(", photo807='").append(getPhoto807()).append('\'');
-        sb.append(", postId=").append(getPostId());
-        sb.append(", sizes=").append(getSizes());
-        sb.append(", text='").append(getText()).append('\'');
-        sb.append(", userId=").append(getUserId());
-        sb.append(", width=").append(getWidth());
         sb.append('}');
         return sb.toString();
     }

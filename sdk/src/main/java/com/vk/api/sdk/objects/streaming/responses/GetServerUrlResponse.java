@@ -1,14 +1,13 @@
 package com.vk.api.sdk.objects.streaming.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * GetServerUrlResponse object
  */
 public class GetServerUrlResponse {
-
     /**
      * Server host
      */
@@ -16,8 +15,7 @@ public class GetServerUrlResponse {
     private String endpoint;
 
     /**
-     * Access key.
-     * Key has endless lifetime and revokes only then new key has been received.
+     * Access key
      */
     @SerializedName("key")
     private String key;
@@ -26,17 +24,18 @@ public class GetServerUrlResponse {
         return endpoint;
     }
 
+    public GetServerUrlResponse setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+        return this;
+    }
+
     public String getKey() {
         return key;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GetServerUrlResponse that = (GetServerUrlResponse) o;
-        return Objects.equals(endpoint, that.endpoint) &&
-                Objects.equals(key, that.key);
+    public GetServerUrlResponse setKey(String key) {
+        this.key = key;
+        return this;
     }
 
     @Override
@@ -45,10 +44,24 @@ public class GetServerUrlResponse {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GetServerUrlResponse getServerUrlResponse = (GetServerUrlResponse) o;
+        return Objects.equals(endpoint, getServerUrlResponse.endpoint) &&
+                Objects.equals(key, getServerUrlResponse.key);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetServerUrlResponse{");
-        sb.append("endpoint='").append(endpoint).append('\'');
-        sb.append(", key='").append(key).append('\'');
+        sb.append("endpoint='").append(endpoint).append("'");
+        sb.append(", key='").append(key).append("'");
         sb.append('}');
         return sb.toString();
     }

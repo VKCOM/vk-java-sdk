@@ -25,7 +25,6 @@ import com.vk.api.sdk.queries.board.BoardUnfixTopicQuery;
  * List of Board methods
  */
 public class Board extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -36,42 +35,153 @@ public class Board extends AbstractAction {
     }
 
     /**
-     * Returns a list of topics on a community's discussion board.
+     * Creates a new topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param title Topic title.
+     * @return query
      */
-    public BoardGetTopicsQuery getTopics(ServiceActor actor, int groupId) {
-        return new BoardGetTopicsQuery(getClient(), actor, groupId);
+    public BoardAddTopicQuery addTopic(UserActor actor, int groupId, String title) {
+        return new BoardAddTopicQuery(getClient(), actor, groupId, title);
     }
 
     /**
-     * Returns a list of topics on a community's discussion board.
+     * Closes a topic on a community's discussion board so that comments cannot be posted.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
-    public BoardGetTopicsQuery getTopics(UserActor actor, int groupId) {
-        return new BoardGetTopicsQuery(getClient(), actor, groupId);
+    public BoardCloseTopicQuery closeTopic(UserActor actor, int groupId, int topicId) {
+        return new BoardCloseTopicQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
-     * Returns a list of topics on a community's discussion board.
+     * Adds a comment on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId ID of the topic to be commented on.
+     * @return query
      */
-    public BoardGetTopicsQueryWithExtended getTopicsExtended(ServiceActor actor, int groupId) {
-        return new BoardGetTopicsQueryWithExtended(getClient(), actor, groupId);
+    public BoardCreateCommentQuery createComment(UserActor actor, int groupId, int topicId) {
+        return new BoardCreateCommentQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
-     * Returns a list of topics on a community's discussion board.
+     * Deletes a comment on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param commentId Comment ID.
+     * @return query
      */
-    public BoardGetTopicsQueryWithExtended getTopicsExtended(UserActor actor, int groupId) {
-        return new BoardGetTopicsQueryWithExtended(getClient(), actor, groupId);
+    public BoardDeleteCommentQuery deleteComment(UserActor actor, int groupId, int topicId,
+            int commentId) {
+        return new BoardDeleteCommentQuery(getClient(), actor, groupId, topicId, commentId);
+    }
+
+    /**
+     * Deletes a comment on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param commentId Comment ID.
+     * @return query
+     */
+    public BoardDeleteCommentQuery deleteComment(GroupActor actor, int groupId, int topicId,
+            int commentId) {
+        return new BoardDeleteCommentQuery(getClient(), actor, groupId, topicId, commentId);
+    }
+
+    /**
+     * Deletes a topic from a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
+     */
+    public BoardDeleteTopicQuery deleteTopic(UserActor actor, int groupId, int topicId) {
+        return new BoardDeleteTopicQuery(getClient(), actor, groupId, topicId);
+    }
+
+    /**
+     * Edits a comment on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param commentId ID of the comment on the topic.
+     * @return query
+     */
+    public BoardEditCommentQuery editComment(UserActor actor, int groupId, int topicId,
+            int commentId) {
+        return new BoardEditCommentQuery(getClient(), actor, groupId, topicId, commentId);
+    }
+
+    /**
+     * Edits the title of a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param title New title of the topic.
+     * @return query
+     */
+    public BoardEditTopicQuery editTopic(UserActor actor, int groupId, int topicId, String title) {
+        return new BoardEditTopicQuery(getClient(), actor, groupId, topicId, title);
+    }
+
+    /**
+     * Pins a topic (fixes its place) to the top of a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
+     */
+    public BoardFixTopicQuery fixTopic(UserActor actor, int groupId, int topicId) {
+        return new BoardFixTopicQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
      * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
-    public BoardGetCommentsQuery getComments(ServiceActor actor, int groupId, int topicId) {
-        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
+    public BoardGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int groupId,
+            int topicId) {
+        return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
     }
 
     /**
      * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
+     */
+    public BoardGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor, int groupId,
+            int topicId) {
+        return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
+    }
+
+    /**
+     * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
     public BoardGetCommentsQuery getComments(UserActor actor, int groupId, int topicId) {
         return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
@@ -79,104 +189,107 @@ public class Board extends AbstractAction {
 
     /**
      * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
-    public BoardGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor, int groupId, int topicId) {
-        return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
+    public BoardGetCommentsQuery getComments(ServiceActor actor, int groupId, int topicId) {
+        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
-     * Returns a list of comments on a topic on a community's discussion board.
+     * Returns a list of topics on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @return query
      */
-    public BoardGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int groupId, int topicId) {
-        return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
+    public BoardGetTopicsQueryWithExtended getTopicsExtended(UserActor actor, int groupId) {
+        return new BoardGetTopicsQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
-     * Creates a new topic on a community's discussion board.
+     * Returns a list of topics on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @return query
      */
-    public BoardAddTopicQuery addTopic(UserActor actor, int groupId, String title) {
-        return new BoardAddTopicQuery(getClient(), actor, groupId, title);
+    public BoardGetTopicsQueryWithExtended getTopicsExtended(ServiceActor actor, int groupId) {
+        return new BoardGetTopicsQueryWithExtended(getClient(), actor, groupId);
     }
 
     /**
-     * Adds a comment on a topic on a community's discussion board.
+     * Returns a list of topics on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @return query
      */
-    public BoardCreateCommentQuery createComment(UserActor actor, int groupId, int topicId) {
-        return new BoardCreateCommentQuery(getClient(), actor, groupId, topicId);
+    public BoardGetTopicsQuery getTopics(UserActor actor, int groupId) {
+        return new BoardGetTopicsQuery(getClient(), actor, groupId);
     }
 
     /**
-     * Deletes a topic from a community's discussion board.
+     * Returns a list of topics on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @return query
      */
-    public BoardDeleteTopicQuery deleteTopic(UserActor actor, int groupId, int topicId) {
-        return new BoardDeleteTopicQuery(getClient(), actor, groupId, topicId);
-    }
-
-    /**
-     * Edits the title of a topic on a community's discussion board.
-     */
-    public BoardEditTopicQuery editTopic(UserActor actor, int groupId, int topicId, String title) {
-        return new BoardEditTopicQuery(getClient(), actor, groupId, topicId, title);
-    }
-
-    /**
-     * Edits a comment on a topic on a community's discussion board.
-     */
-    public BoardEditCommentQuery editComment(UserActor actor, int groupId, int topicId, int commentId) {
-        return new BoardEditCommentQuery(getClient(), actor, groupId, topicId, commentId);
-    }
-
-    /**
-     * Restores a comment deleted from a topic on a community's discussion board.
-     */
-    public BoardRestoreCommentQuery restoreComment(UserActor actor, int groupId, int topicId, int commentId) {
-        return new BoardRestoreCommentQuery(getClient(), actor, groupId, topicId, commentId);
-    }
-
-    /**
-     * Restores a comment deleted from a topic on a community's discussion board.
-     */
-    public BoardRestoreCommentQuery restoreComment(GroupActor actor, int topicId, int commentId) {
-        return new BoardRestoreCommentQuery(getClient(), actor, topicId, commentId);
-    }
-
-    /**
-     * Deletes a comment on a topic on a community's discussion board.
-     */
-    public BoardDeleteCommentQuery deleteComment(UserActor actor, int groupId, int topicId, int commentId) {
-        return new BoardDeleteCommentQuery(getClient(), actor, groupId, topicId, commentId);
-    }
-
-    /**
-     * Deletes a comment on a topic on a community's discussion board.
-     */
-    public BoardDeleteCommentQuery deleteComment(GroupActor actor, int topicId, int commentId) {
-        return new BoardDeleteCommentQuery(getClient(), actor, topicId, commentId);
+    public BoardGetTopicsQuery getTopics(ServiceActor actor, int groupId) {
+        return new BoardGetTopicsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Re-opens a previously closed topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
     public BoardOpenTopicQuery openTopic(UserActor actor, int groupId, int topicId) {
         return new BoardOpenTopicQuery(getClient(), actor, groupId, topicId);
     }
 
     /**
-     * Closes a topic on a community's discussion board so that comments cannot be posted.
+     * Restores a comment deleted from a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param commentId Comment ID.
+     * @return query
      */
-    public BoardCloseTopicQuery closeTopic(UserActor actor, int groupId, int topicId) {
-        return new BoardCloseTopicQuery(getClient(), actor, groupId, topicId);
+    public BoardRestoreCommentQuery restoreComment(UserActor actor, int groupId, int topicId,
+            int commentId) {
+        return new BoardRestoreCommentQuery(getClient(), actor, groupId, topicId, commentId);
     }
 
     /**
-     * Pins a topic (fixes its place) to the top of a community's discussion board.
+     * Restores a comment deleted from a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @param commentId Comment ID.
+     * @return query
      */
-    public BoardFixTopicQuery fixTopic(UserActor actor, int groupId, int topicId) {
-        return new BoardFixTopicQuery(getClient(), actor, groupId, topicId);
+    public BoardRestoreCommentQuery restoreComment(GroupActor actor, int groupId, int topicId,
+            int commentId) {
+        return new BoardRestoreCommentQuery(getClient(), actor, groupId, topicId, commentId);
     }
 
     /**
      * Unpins a pinned topic from the top of a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
      */
     public BoardUnfixTopicQuery unfixTopic(UserActor actor, int groupId, int topicId) {
         return new BoardUnfixTopicQuery(getClient(), actor, groupId, topicId);

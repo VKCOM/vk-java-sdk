@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,10 @@ public class PhotosConfirmTagQuery extends AbstractQueryBuilder<PhotosConfirmTag
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param photoId value of "photo id" parameter.
-     * @param tagId   value of "tag id" parameter.
+     * @param tagId value of "tag id" parameter.
      */
     public PhotosConfirmTagQuery(VkApiClient client, UserActor actor, String photoId, int tagId) {
         super(client, "photos.confirmTag", OkResponse.class);

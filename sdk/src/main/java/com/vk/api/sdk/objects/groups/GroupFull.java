@@ -1,11 +1,10 @@
 package com.vk.api.sdk.objects.groups;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Country;
-import com.vk.api.sdk.objects.base.Place;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +12,6 @@ import java.util.Objects;
  * GroupFull object
  */
 public class GroupFull extends Group {
-
     @SerializedName("market")
     private MarketInfo market;
 
@@ -28,12 +26,6 @@ public class GroupFull extends Group {
      */
     @SerializedName("is_favorite")
     private BoolInt isFavorite;
-
-    /**
-     * Information whether current user hide posts from community in newsfeed
-     */
-    @SerializedName("is_hidden_from_feed")
-    private BoolInt isHiddenFromFeed;
 
     /**
      * Information whether current user is subscribed
@@ -52,12 +44,6 @@ public class GroupFull extends Group {
      */
     @SerializedName("verified")
     private BoolInt verified;
-
-    /**
-     * Information whether the user a "fire" pictogram
-     */
-    @SerializedName("trending")
-    private BoolInt trending;
 
     /**
      * Community description
@@ -114,16 +100,16 @@ public class GroupFull extends Group {
     private BoolInt canCreateTopic;
 
     /**
-     * Information whether current user can upload doc
-     */
-    @SerializedName("can_upload_doc")
-    private BoolInt canUploadDoc;
-
-    /**
      * Information whether current user can upload video
      */
     @SerializedName("can_upload_video")
     private BoolInt canUploadVideo;
+
+    /**
+     * Information whether community has photo
+     */
+    @SerializedName("has_photo")
+    private BoolInt hasPhoto;
 
     /**
      * Community status
@@ -149,11 +135,14 @@ public class GroupFull extends Group {
     @SerializedName("site")
     private String site;
 
-    /**
-     * Main section of community
-     */
     @SerializedName("main_section")
     private GroupFullMainSection mainSection;
+
+    /**
+     * Information whether the community has a "fire" pictogram.
+     */
+    @SerializedName("trending")
+    private BoolInt trending;
 
     /**
      * Information whether current user can send a message to community
@@ -162,34 +151,22 @@ public class GroupFull extends Group {
     private BoolInt canMessage;
 
     /**
-     * Information whether current user allow to community send a message
+     * Information whether community can send a message to current user
      */
-    @SerializedName("is_messages_allowed")
-    private BoolInt isMessagesAllowed;
+    @SerializedName("is_messages_blocked")
+    private BoolInt isMessagesBlocked;
 
     /**
-     * Label for star date
+     * Information whether community can send notifications by phone number to current user
      */
-    @SerializedName("public_date_label")
-    private String publicDateLabel;
+    @SerializedName("can_send_notify")
+    private BoolInt canSendNotify;
 
     /**
-     * Start date of event in Unixtime
+     * Status of replies in community messages
      */
-    @SerializedName("start_date")
-    private Integer startDate;
-
-    /**
-     * Finish date of event in Unixtime
-     */
-    @SerializedName("finish_date")
-    private Integer finishDate;
-
-    /**
-     * Information whether community has photo
-     */
-    @SerializedName("has_photo")
-    private BoolInt hasPhoto;
+    @SerializedName("online_status")
+    private OnlineStatus onlineStatus;
 
     /**
      * Information whether age limit
@@ -198,265 +175,439 @@ public class GroupFull extends Group {
     private GroupFullAgeLimits ageLimits;
 
     /**
-     * Community's place
-     */
-    @SerializedName("place")
-    private Place place;
-
-    /**
      * User ban info
      */
     @SerializedName("ban_info")
     private GroupBanInfo banInfo;
 
+    /**
+     * Info about addresses in groups
+     */
+    @SerializedName("addresses")
+    private AddressesInfo addresses;
+
+    /**
+     * Information whether current user is subscribed to podcasts
+     */
+    @SerializedName("is_subscribed_podcasts")
+    private Boolean isSubscribedPodcasts;
+
+    /**
+     * Owner in whitelist or not
+     */
+    @SerializedName("can_subscribe_podcasts")
+    private Boolean canSubscribePodcasts;
+
+    /**
+     * Can subscribe to wall
+     */
+    @SerializedName("can_subscribe_posts")
+    private Boolean canSubscribePosts;
+
     public MarketInfo getMarket() {
         return market;
+    }
+
+    public GroupFull setMarket(MarketInfo market) {
+        this.market = market;
+        return this;
     }
 
     public GroupFullMemberStatus getMemberStatus() {
         return memberStatus;
     }
 
+    public GroupFull setMemberStatus(GroupFullMemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+        return this;
+    }
+
     public boolean isFavorite() {
         return isFavorite == BoolInt.YES;
     }
 
-    public boolean isHiddenFromFeed() {
-        return isHiddenFromFeed == BoolInt.YES;
+    public BoolInt getIsFavorite() {
+        return isFavorite;
     }
 
     public boolean isSubscribed() {
         return isSubscribed == BoolInt.YES;
     }
 
+    public BoolInt getIsSubscribed() {
+        return isSubscribed;
+    }
+
     public BaseObject getCity() {
         return city;
+    }
+
+    public GroupFull setCity(BaseObject city) {
+        this.city = city;
+        return this;
     }
 
     public Country getCountry() {
         return country;
     }
 
+    public GroupFull setCountry(Country country) {
+        this.country = country;
+        return this;
+    }
+
     public boolean isVerified() {
         return verified == BoolInt.YES;
+    }
+
+    public BoolInt getVerified() {
+        return verified;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public GroupFull setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public String getWikiPage() {
         return wikiPage;
+    }
+
+    public GroupFull setWikiPage(String wikiPage) {
+        this.wikiPage = wikiPage;
+        return this;
     }
 
     public Integer getMembersCount() {
         return membersCount;
     }
 
+    public GroupFull setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
+    }
+
     public CountersGroup getCounters() {
         return counters;
+    }
+
+    public GroupFull setCounters(CountersGroup counters) {
+        this.counters = counters;
+        return this;
     }
 
     public Cover getCover() {
         return cover;
     }
 
+    public GroupFull setCover(Cover cover) {
+        this.cover = cover;
+        return this;
+    }
+
     public boolean canPost() {
         return canPost == BoolInt.YES;
+    }
+
+    public BoolInt getCanPost() {
+        return canPost;
     }
 
     public boolean canSeeAllPosts() {
         return canSeeAllPosts == BoolInt.YES;
     }
 
+    public BoolInt getCanSeeAllPosts() {
+        return canSeeAllPosts;
+    }
+
     public String getActivity() {
         return activity;
+    }
+
+    public GroupFull setActivity(String activity) {
+        this.activity = activity;
+        return this;
     }
 
     public Integer getFixedPost() {
         return fixedPost;
     }
 
+    public GroupFull setFixedPost(Integer fixedPost) {
+        this.fixedPost = fixedPost;
+        return this;
+    }
+
     public boolean canCreateTopic() {
         return canCreateTopic == BoolInt.YES;
     }
 
-    public boolean canUploadDoc() {
-        return canUploadDoc == BoolInt.YES;
+    public BoolInt getCanCreateTopic() {
+        return canCreateTopic;
     }
 
     public boolean canUploadVideo() {
         return canUploadVideo == BoolInt.YES;
     }
 
+    public BoolInt getCanUploadVideo() {
+        return canUploadVideo;
+    }
+
+    public boolean isHasPhoto() {
+        return hasPhoto == BoolInt.YES;
+    }
+
+    public BoolInt getHasPhoto() {
+        return hasPhoto;
+    }
+
     public String getStatus() {
         return status;
+    }
+
+    public GroupFull setStatus(String status) {
+        this.status = status;
+        return this;
     }
 
     public Integer getMainAlbumId() {
         return mainAlbumId;
     }
 
+    public GroupFull setMainAlbumId(Integer mainAlbumId) {
+        this.mainAlbumId = mainAlbumId;
+        return this;
+    }
+
     public List<LinksItem> getLinks() {
         return links;
+    }
+
+    public GroupFull setLinks(List<LinksItem> links) {
+        this.links = links;
+        return this;
     }
 
     public List<ContactsItem> getContacts() {
         return contacts;
     }
 
+    public GroupFull setContacts(List<ContactsItem> contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
     public String getSite() {
         return site;
+    }
+
+    public GroupFull setSite(String site) {
+        this.site = site;
+        return this;
     }
 
     public GroupFullMainSection getMainSection() {
         return mainSection;
     }
 
-    public boolean canMessage() {
-        return canMessage == BoolInt.YES;
-    }
-
-    public boolean isMessagesAllowed() {
-        return isMessagesAllowed == BoolInt.YES;
-    }
-
-    public String getPublicDateLabel() {
-        return publicDateLabel;
-    }
-
-    public Integer getStartDate() {
-        return startDate;
-    }
-
-    public Integer getFinishDate() {
-        return finishDate;
-    }
-
-    public boolean hasPhoto() {
-        return hasPhoto == BoolInt.YES;
-    }
-
-    public GroupFullAgeLimits getAgeLimits() {
-        return ageLimits;
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public GroupBanInfo getBanInfo() {
-        return banInfo;
+    public GroupFull setMainSection(GroupFullMainSection mainSection) {
+        this.mainSection = mainSection;
+        return this;
     }
 
     public boolean isTrending() {
         return trending == BoolInt.YES;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        GroupFull groupFull = (GroupFull) o;
-        return Objects.equals(market, groupFull.market) &&
-                memberStatus == groupFull.memberStatus &&
-                isFavorite == groupFull.isFavorite &&
-                isHiddenFromFeed == groupFull.isHiddenFromFeed &&
-                isSubscribed == groupFull.isSubscribed &&
-                Objects.equals(city, groupFull.city) &&
-                Objects.equals(country, groupFull.country) &&
-                verified == groupFull.verified &&
-                Objects.equals(description, groupFull.description) &&
-                Objects.equals(wikiPage, groupFull.wikiPage) &&
-                Objects.equals(membersCount, groupFull.membersCount) &&
-                Objects.equals(counters, groupFull.counters) &&
-                Objects.equals(cover, groupFull.cover) &&
-                canPost == groupFull.canPost &&
-                canSeeAllPosts == groupFull.canSeeAllPosts &&
-                Objects.equals(activity, groupFull.activity) &&
-                Objects.equals(fixedPost, groupFull.fixedPost) &&
-                canCreateTopic == groupFull.canCreateTopic &&
-                canUploadDoc == groupFull.canUploadDoc &&
-                canUploadVideo == groupFull.canUploadVideo &&
-                Objects.equals(status, groupFull.status) &&
-                Objects.equals(mainAlbumId, groupFull.mainAlbumId) &&
-                Objects.equals(links, groupFull.links) &&
-                Objects.equals(contacts, groupFull.contacts) &&
-                Objects.equals(site, groupFull.site) &&
-                mainSection == groupFull.mainSection &&
-                canMessage == groupFull.canMessage &&
-                isMessagesAllowed == groupFull.isMessagesAllowed &&
-                Objects.equals(publicDateLabel, groupFull.publicDateLabel) &&
-                Objects.equals(startDate, groupFull.startDate) &&
-                Objects.equals(finishDate, groupFull.finishDate) &&
-                hasPhoto == groupFull.hasPhoto &&
-                ageLimits == groupFull.ageLimits &&
-                Objects.equals(place, groupFull.place) &&
-                Objects.equals(banInfo, groupFull.banInfo) &&
-                Objects.equals(trending, groupFull.trending);
+    public BoolInt getTrending() {
+        return trending;
+    }
+
+    public boolean canMessage() {
+        return canMessage == BoolInt.YES;
+    }
+
+    public BoolInt getCanMessage() {
+        return canMessage;
+    }
+
+    public boolean isMessagesBlocked() {
+        return isMessagesBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsMessagesBlocked() {
+        return isMessagesBlocked;
+    }
+
+    public boolean canSendNotify() {
+        return canSendNotify == BoolInt.YES;
+    }
+
+    public BoolInt getCanSendNotify() {
+        return canSendNotify;
+    }
+
+    public OnlineStatus getOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public GroupFull setOnlineStatus(OnlineStatus onlineStatus) {
+        this.onlineStatus = onlineStatus;
+        return this;
+    }
+
+    public GroupFullAgeLimits getAgeLimits() {
+        return ageLimits;
+    }
+
+    public GroupFull setAgeLimits(GroupFullAgeLimits ageLimits) {
+        this.ageLimits = ageLimits;
+        return this;
+    }
+
+    public GroupBanInfo getBanInfo() {
+        return banInfo;
+    }
+
+    public GroupFull setBanInfo(GroupBanInfo banInfo) {
+        this.banInfo = banInfo;
+        return this;
+    }
+
+    public AddressesInfo getAddresses() {
+        return addresses;
+    }
+
+    public GroupFull setAddresses(AddressesInfo addresses) {
+        this.addresses = addresses;
+        return this;
+    }
+
+    public Boolean getIsSubscribedPodcasts() {
+        return isSubscribedPodcasts;
+    }
+
+    public GroupFull setIsSubscribedPodcasts(Boolean isSubscribedPodcasts) {
+        this.isSubscribedPodcasts = isSubscribedPodcasts;
+        return this;
+    }
+
+    public Boolean getCanSubscribePodcasts() {
+        return canSubscribePodcasts;
+    }
+
+    public GroupFull setCanSubscribePodcasts(Boolean canSubscribePodcasts) {
+        this.canSubscribePodcasts = canSubscribePodcasts;
+        return this;
+    }
+
+    public Boolean getCanSubscribePosts() {
+        return canSubscribePosts;
+    }
+
+    public GroupFull setCanSubscribePosts(Boolean canSubscribePosts) {
+        this.canSubscribePosts = canSubscribePosts;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), market, memberStatus, isFavorite, isHiddenFromFeed, isSubscribed, city, country, verified, description, wikiPage, membersCount, counters, cover, canPost, canSeeAllPosts, activity, fixedPost, canCreateTopic, canUploadDoc, canUploadVideo, status, mainAlbumId, links, contacts, site, mainSection, canMessage, isMessagesAllowed, publicDateLabel, startDate, finishDate, hasPhoto, ageLimits, place, banInfo, trending);
+        return Objects.hash(trending, country, canSubscribePosts, wikiPage, addresses, mainSection, canCreateTopic, activity, banInfo, city, onlineStatus, isSubscribedPodcasts, description, memberStatus, canSendNotify, cover, mainAlbumId, isSubscribed, canPost, canUploadVideo, links, isMessagesBlocked, membersCount, counters, canSeeAllPosts, verified, canMessage, market, ageLimits, site, canSubscribePodcasts, hasPhoto, fixedPost, contacts, isFavorite, status);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupFull groupFull = (GroupFull) o;
+        return Objects.equals(canCreateTopic, groupFull.canCreateTopic) &&
+                Objects.equals(trending, groupFull.trending) &&
+                Objects.equals(country, groupFull.country) &&
+                Objects.equals(fixedPost, groupFull.fixedPost) &&
+                Objects.equals(addresses, groupFull.addresses) &&
+                Objects.equals(isFavorite, groupFull.isFavorite) &&
+                Objects.equals(activity, groupFull.activity) &&
+                Objects.equals(city, groupFull.city) &&
+                Objects.equals(canSubscribePosts, groupFull.canSubscribePosts) &&
+                Objects.equals(description, groupFull.description) &&
+                Objects.equals(hasPhoto, groupFull.hasPhoto) &&
+                Objects.equals(mainSection, groupFull.mainSection) &&
+                Objects.equals(banInfo, groupFull.banInfo) &&
+                Objects.equals(cover, groupFull.cover) &&
+                Objects.equals(canSubscribePodcasts, groupFull.canSubscribePodcasts) &&
+                Objects.equals(memberStatus, groupFull.memberStatus) &&
+                Objects.equals(canSendNotify, groupFull.canSendNotify) &&
+                Objects.equals(canPost, groupFull.canPost) &&
+                Objects.equals(links, groupFull.links) &&
+                Objects.equals(canSeeAllPosts, groupFull.canSeeAllPosts) &&
+                Objects.equals(mainAlbumId, groupFull.mainAlbumId) &&
+                Objects.equals(isMessagesBlocked, groupFull.isMessagesBlocked) &&
+                Objects.equals(canUploadVideo, groupFull.canUploadVideo) &&
+                Objects.equals(counters, groupFull.counters) &&
+                Objects.equals(onlineStatus, groupFull.onlineStatus) &&
+                Objects.equals(verified, groupFull.verified) &&
+                Objects.equals(market, groupFull.market) &&
+                Objects.equals(ageLimits, groupFull.ageLimits) &&
+                Objects.equals(site, groupFull.site) &&
+                Objects.equals(isSubscribedPodcasts, groupFull.isSubscribedPodcasts) &&
+                Objects.equals(isSubscribed, groupFull.isSubscribed) &&
+                Objects.equals(membersCount, groupFull.membersCount) &&
+                Objects.equals(contacts, groupFull.contacts) &&
+                Objects.equals(wikiPage, groupFull.wikiPage) &&
+                Objects.equals(status, groupFull.status) &&
+                Objects.equals(canMessage, groupFull.canMessage);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupFull{");
-        sb.append("activity='").append(activity).append('\'');
-        sb.append(", admin=").append(isAdmin());
-        sb.append(", adminLevel=").append(getAdminLevel());
-        sb.append(", ageLimits=").append(ageLimits);
-        sb.append(", banInfo=").append(banInfo);
-        sb.append(", canCreateTopic=").append(canCreateTopic);
-        sb.append(", canMessage=").append(canMessage);
-        sb.append(", canPost=").append(canPost);
-        sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
-        sb.append(", canUploadDoc=").append(canUploadDoc);
-        sb.append(", canUploadVideo=").append(canUploadVideo);
-        sb.append(", city=").append(city);
-        sb.append(", contacts=").append(contacts);
-        sb.append(", counters=").append(counters);
-        sb.append(", country=").append(country);
-        sb.append(", cover=").append(cover);
-        sb.append(", deactivated='").append(getDeactivated()).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", favorite=").append(isFavorite());
-        sb.append(", finishDate=").append(finishDate);
-        sb.append(", fixedPost=").append(fixedPost);
-        sb.append(", hasPhoto=").append(hasPhoto);
-        sb.append(", hiddenFromFeed=").append(isHiddenFromFeed());
-        sb.append(", id='").append(getId()).append('\'');
-        sb.append(", isClosed=").append(getIsClosed());
-        sb.append(", isFavorite=").append(isFavorite);
-        sb.append(", isHiddenFromFeed=").append(isHiddenFromFeed);
-        sb.append(", isMessagesAllowed=").append(isMessagesAllowed);
-        sb.append(", isSubscribed=").append(isSubscribed);
-        sb.append(", links=").append(links);
-        sb.append(", mainAlbumId=").append(mainAlbumId);
-        sb.append(", mainSection=").append(mainSection);
-        sb.append(", market=").append(market);
-        sb.append(", member=").append(isMember());
-        sb.append(", membersCount=").append(membersCount);
-        sb.append(", memberStatus=").append(memberStatus);
-        sb.append(", messagesAllowed=").append(isMessagesAllowed());
-        sb.append(", name='").append(getName()).append('\'');
-        sb.append(", photo100='").append(getPhoto100()).append('\'');
-        sb.append(", photo200='").append(getPhoto200()).append('\'');
-        sb.append(", photo50='").append(getPhoto50()).append('\'');
-        sb.append(", place=").append(place);
-        sb.append(", publicDateLabel='").append(publicDateLabel).append('\'');
-        sb.append(", screenName='").append(getScreenName()).append('\'');
-        sb.append(", site='").append(site).append('\'');
-        sb.append(", startDate=").append(startDate);
-        sb.append(", status='").append(status).append('\'');
-        sb.append(", subscribed=").append(isSubscribed());
-        sb.append(", type=").append(getType());
-        sb.append(", verified=").append(verified);
-        sb.append(", wikiPage='").append(wikiPage).append('\'');
+        sb.append("canCreateTopic=").append(canCreateTopic);
         sb.append(", trending=").append(trending);
+        sb.append(", country=").append(country);
+        sb.append(", fixedPost=").append(fixedPost);
+        sb.append(", addresses=").append(addresses);
+        sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", activity='").append(activity).append("'");
+        sb.append(", city=").append(city);
+        sb.append(", canSubscribePosts=").append(canSubscribePosts);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", hasPhoto=").append(hasPhoto);
+        sb.append(", mainSection=").append(mainSection);
+        sb.append(", banInfo=").append(banInfo);
+        sb.append(", cover=").append(cover);
+        sb.append(", canSubscribePodcasts=").append(canSubscribePodcasts);
+        sb.append(", memberStatus=").append(memberStatus);
+        sb.append(", canSendNotify=").append(canSendNotify);
+        sb.append(", canPost=").append(canPost);
+        sb.append(", links=").append(links);
+        sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
+        sb.append(", mainAlbumId=").append(mainAlbumId);
+        sb.append(", isMessagesBlocked=").append(isMessagesBlocked);
+        sb.append(", canUploadVideo=").append(canUploadVideo);
+        sb.append(", counters=").append(counters);
+        sb.append(", onlineStatus=").append(onlineStatus);
+        sb.append(", verified=").append(verified);
+        sb.append(", market=").append(market);
+        sb.append(", ageLimits=").append(ageLimits);
+        sb.append(", site='").append(site).append("'");
+        sb.append(", isSubscribedPodcasts=").append(isSubscribedPodcasts);
+        sb.append(", isSubscribed=").append(isSubscribed);
+        sb.append(", membersCount=").append(membersCount);
+        sb.append(", contacts=").append(contacts);
+        sb.append(", wikiPage='").append(wikiPage).append("'");
+        sb.append(", status='").append(status).append("'");
+        sb.append(", canMessage=").append(canMessage);
         sb.append('}');
         return sb.toString();
     }

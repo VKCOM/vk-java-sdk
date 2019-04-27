@@ -1,25 +1,20 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.photos.Photo;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
  * Link object
  */
 public class Link {
-    /**
-     * Link URL
-     */
-    @SerializedName("url")
-    private String url;
+    @SerializedName("application")
+    private LinkApplication application;
 
-    /**
-     * Link title
-     */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("button")
+    private LinkButton button;
 
     /**
      * Link caption
@@ -33,14 +28,17 @@ public class Link {
     @SerializedName("description")
     private String description;
 
+    /**
+     * Link ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    @SerializedName("is_favorite")
+    private Boolean isFavorite;
+
     @SerializedName("photo")
     private Photo photo;
-
-    /**
-     * URL of the page with article preview
-     */
-    @SerializedName("preview_url")
-    private String previewUrl;
 
     /**
      * String ID of the page with article preview
@@ -48,8 +46,11 @@ public class Link {
     @SerializedName("preview_page")
     private String previewPage;
 
-    @SerializedName("button")
-    private LinkButton button;
+    /**
+     * URL of the page with article preview
+     */
+    @SerializedName("preview_url")
+    private URL previewUrl;
 
     @SerializedName("product")
     private LinkProduct product;
@@ -57,56 +58,138 @@ public class Link {
     @SerializedName("rating")
     private LinkRating rating;
 
-    @SerializedName("application")
-    private LinkApplication application;
+    /**
+     * Link title
+     */
+    @SerializedName("title")
+    private String title;
 
-    public String getUrl() {
-        return url;
+    /**
+     * Link URL
+     */
+    @SerializedName("url")
+    private URL url;
+
+    public LinkApplication getApplication() {
+        return application;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCaption() {
-        return caption;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public String getPreviewUrl() {
-        return previewUrl;
-    }
-
-    public String getPreviewPage() {
-        return previewPage;
+    public Link setApplication(LinkApplication application) {
+        this.application = application;
+        return this;
     }
 
     public LinkButton getButton() {
         return button;
     }
 
+    public Link setButton(LinkButton button) {
+        this.button = button;
+        return this;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public Link setCaption(String caption) {
+        this.caption = caption;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Link setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Link setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+    public Link setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public Link setPhoto(Photo photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public String getPreviewPage() {
+        return previewPage;
+    }
+
+    public Link setPreviewPage(String previewPage) {
+        this.previewPage = previewPage;
+        return this;
+    }
+
+    public URL getPreviewUrl() {
+        return previewUrl;
+    }
+
+    public Link setPreviewUrl(URL previewUrl) {
+        this.previewUrl = previewUrl;
+        return this;
+    }
+
     public LinkProduct getProduct() {
         return product;
+    }
+
+    public Link setProduct(LinkProduct product) {
+        this.product = product;
+        return this;
     }
 
     public LinkRating getRating() {
         return rating;
     }
 
-    public LinkApplication getApplication() {
-        return application;
+    public Link setRating(LinkRating rating) {
+        this.rating = rating;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Link setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public Link setUrl(URL url) {
+        this.url = url;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(previewPage, button, product, previewUrl, rating, caption, description, photo, title, url);
+        return Objects.hash(product, previewUrl, rating, caption, description, photo, title, url, previewPage, button, application, id, isFavorite);
     }
 
     @Override
@@ -114,33 +197,42 @@ public class Link {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Link link = (Link) o;
-        return Objects.equals(url, link.url) &&
-                Objects.equals(title, link.title) &&
+        return Objects.equals(product, link.product) &&
+                Objects.equals(isFavorite, link.isFavorite) &&
+                Objects.equals(previewPage, link.previewPage) &&
+                Objects.equals(rating, link.rating) &&
                 Objects.equals(caption, link.caption) &&
                 Objects.equals(description, link.description) &&
                 Objects.equals(photo, link.photo) &&
-                Objects.equals(previewUrl, link.previewUrl) &&
-                Objects.equals(previewPage, link.previewPage) &&
+                Objects.equals(title, link.title) &&
+                Objects.equals(url, link.url) &&
                 Objects.equals(button, link.button) &&
-                Objects.equals(product, link.product) &&
-                Objects.equals(rating, link.rating) &&
-                Objects.equals(application, link.application);
+                Objects.equals(application, link.application) &&
+                Objects.equals(previewUrl, link.previewUrl) &&
+                Objects.equals(id, link.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Link{");
-        sb.append("url='").append(url).append("'");
-        sb.append(", title='").append(title).append("'");
+        sb.append("product=").append(product);
+        sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", previewPage='").append(previewPage).append("'");
+        sb.append(", rating=").append(rating);
         sb.append(", caption='").append(caption).append("'");
         sb.append(", description='").append(description).append("'");
         sb.append(", photo=").append(photo);
-        sb.append(", previewUrl='").append(previewUrl).append("'");
-        sb.append(", previewPage='").append(previewPage).append("'");
+        sb.append(", title='").append(title).append("'");
+        sb.append(", url=").append(url);
         sb.append(", button=").append(button);
-        sb.append(", product=").append(product);
-        sb.append(", rating=").append(rating);
         sb.append(", application=").append(application);
+        sb.append(", previewUrl=").append(previewUrl);
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

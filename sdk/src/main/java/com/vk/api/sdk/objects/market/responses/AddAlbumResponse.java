@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.market.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class AddAlbumResponse {
 
     public Integer getMarketAlbumId() {
         return marketAlbumId;
+    }
+
+    public AddAlbumResponse setMarketAlbumId(Integer marketAlbumId) {
+        this.marketAlbumId = marketAlbumId;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class AddAlbumResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddAlbumResponse{");
         sb.append("marketAlbumId=").append(marketAlbumId);
         sb.append('}');

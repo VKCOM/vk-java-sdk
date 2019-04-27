@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Friend request status
  */
-public enum AddResponse {
+public enum AddResponse implements EnumParam {
     @SerializedName("1")
     SEND(1),
 
@@ -21,7 +22,7 @@ public enum AddResponse {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

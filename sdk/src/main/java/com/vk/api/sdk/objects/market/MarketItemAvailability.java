@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.market;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Information whether the item is available
  */
-public enum MarketItemAvailability {
+public enum MarketItemAvailability implements EnumParam {
     @SerializedName("0")
     AVAILABLE(0),
 
@@ -21,7 +22,7 @@ public enum MarketItemAvailability {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

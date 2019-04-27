@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetExtendedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      */
     public MarketGetQueryWithExtended(VkApiClient client, UserActor actor, int ownerId) {
@@ -27,8 +26,7 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
-     * Identifier of an item owner community
-     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
+     * ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -38,9 +36,9 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
-     * Identifier of an album
+     * Set album id
      *
-     * @param value value of "count" parameter.
+     * @param value value of "album id" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MarketGetQueryWithExtended albumId(Integer value) {
@@ -48,7 +46,7 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
-     * Number of items to return
+     * Number of items to return.
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +56,7 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
-     * Offset based on a first matching item to get a certain items subset
+     * Offset needed to return a specific subset of results.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -68,9 +66,7 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
     }
 
     /**
-     * true - method will return additional fields:
-     * likes, can_comment, car_repost, photos.
-     * These parameters are not returned by default
+     * '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

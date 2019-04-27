@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.leads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -25,8 +25,17 @@ public class Start {
         return testMode == BoolInt.YES;
     }
 
+    public BoolInt getTestMode() {
+        return testMode;
+    }
+
     public String getVkSid() {
         return vkSid;
+    }
+
+    public Start setVkSid(String vkSid) {
+        this.vkSid = vkSid;
+        return this;
     }
 
     @Override
@@ -45,6 +54,11 @@ public class Start {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Start{");
         sb.append("testMode=").append(testMode);
         sb.append(", vkSid='").append(vkSid).append("'");

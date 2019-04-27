@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AccountUnregisterDeviceQuery extends AbstractQueryBuilder<AccountUn
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountUnregisterDeviceQuery(VkApiClient client, UserActor actor) {
         super(client, "account.unregisterDevice", OkResponse.class);
@@ -24,13 +23,23 @@ public class AccountUnregisterDeviceQuery extends AbstractQueryBuilder<AccountUn
     }
 
     /**
-     * Set device id
+     * Unique device ID.
      *
      * @param value value of "device id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AccountUnregisterDeviceQuery deviceId(String value) {
         return unsafeParam("device_id", value);
+    }
+
+    /**
+     * Set sandbox
+     *
+     * @param value value of "sandbox" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountUnregisterDeviceQuery sandbox(Boolean value) {
+        return unsafeParam("sandbox", value);
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.AddResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,13 +15,11 @@ public class FriendsAddQuery extends AbstractQueryBuilder<FriendsAddQuery, AddRe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param actor actor with access token
      */
-    public FriendsAddQuery(VkApiClient client, UserActor actor, int userId) {
+    public FriendsAddQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.add", AddResponse.class);
         accessToken(actor.getAccessToken());
-        userId(userId);
     }
 
     /**
@@ -31,7 +28,7 @@ public class FriendsAddQuery extends AbstractQueryBuilder<FriendsAddQuery, AddRe
      * @param value value of "user id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsAddQuery userId(int value) {
+    public FriendsAddQuery userId(Integer value) {
         return unsafeParam("user_id", value);
     }
 
@@ -46,7 +43,7 @@ public class FriendsAddQuery extends AbstractQueryBuilder<FriendsAddQuery, AddRe
     }
 
     /**
-     * true -  to pass an incoming request to followers list.
+     * '1' to pass an incoming request to followers list.
      *
      * @param value value of "follow" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -62,6 +59,6 @@ public class FriendsAddQuery extends AbstractQueryBuilder<FriendsAddQuery, AddRe
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("user_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

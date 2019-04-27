@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param url    value of "url" parameter.
+     * @param actor actor with access token
+     * @param url value of "url" parameter.
      */
     public PagesClearCacheQuery(VkApiClient client, UserActor actor, String url) {
         super(client, "pages.clearCache", OkResponse.class);
@@ -30,7 +29,8 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param url    value of "url" parameter.
+     * @param actor actor with access token
+     * @param url value of "url" parameter.
      */
     public PagesClearCacheQuery(VkApiClient client, ServiceActor actor, String url) {
         super(client, "pages.clearCache", OkResponse.class);
@@ -56,6 +56,6 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("url");
+        return Arrays.asList("url", "access_token");
     }
 }

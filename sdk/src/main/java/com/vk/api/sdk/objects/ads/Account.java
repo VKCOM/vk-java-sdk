@@ -1,14 +1,17 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
  * Account object
  */
 public class Account {
+    @SerializedName("access_role")
+    private AccessRole accessRole;
+
     /**
      * Account ID
      */
@@ -16,34 +19,47 @@ public class Account {
     private Integer accountId;
 
     /**
-     * Account type
-     */
-    @SerializedName("account_type")
-    private AccountAccountType accountType;
-
-    /**
      * Information whether account is active
      */
     @SerializedName("account_status")
     private BoolInt accountStatus;
 
-    @SerializedName("access_role")
-    private AccessRole accessRole;
+    @SerializedName("account_type")
+    private AccountType accountType;
+
+    public AccessRole getAccessRole() {
+        return accessRole;
+    }
+
+    public Account setAccessRole(AccessRole accessRole) {
+        this.accessRole = accessRole;
+        return this;
+    }
 
     public Integer getAccountId() {
         return accountId;
     }
 
-    public AccountAccountType getAccountType() {
-        return accountType;
+    public Account setAccountId(Integer accountId) {
+        this.accountId = accountId;
+        return this;
     }
 
     public boolean isAccountStatus() {
         return accountStatus == BoolInt.YES;
     }
 
-    public AccessRole getAccessRole() {
-        return accessRole;
+    public BoolInt getAccountStatus() {
+        return accountStatus;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public Account setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+        return this;
     }
 
     @Override
@@ -56,19 +72,24 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(accountId, account.accountId) &&
-                Objects.equals(accountType, account.accountType) &&
-                Objects.equals(accountStatus, account.accountStatus) &&
-                Objects.equals(accessRole, account.accessRole);
+        return Objects.equals(accountType, account.accountType) &&
+                Objects.equals(accountId, account.accountId) &&
+                Objects.equals(accessRole, account.accessRole) &&
+                Objects.equals(accountStatus, account.accountStatus);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Account{");
-        sb.append("accountId=").append(accountId);
-        sb.append(", accountType='").append(accountType).append("'");
-        sb.append(", accountStatus=").append(accountStatus);
+        sb.append("accountType=").append(accountType);
+        sb.append(", accountId=").append(accountId);
         sb.append(", accessRole=").append(accessRole);
+        sb.append(", accountStatus=").append(accountStatus);
         sb.append('}');
         return sb.toString();
     }

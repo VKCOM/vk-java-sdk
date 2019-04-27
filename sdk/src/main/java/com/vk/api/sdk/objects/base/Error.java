@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -21,30 +21,6 @@ public class Error {
     @SerializedName("error_msg")
     private String errorMsg;
 
-    /**
-     * Captcha id
-     */
-    @SerializedName("captcha_sid")
-    private String captchaSid;
-
-    /**
-     * Captcha image url
-     */
-    @SerializedName("captcha_img")
-    private String captchaImg;
-
-    /**
-     * Confirmation text for user
-     */
-    @SerializedName("confirmation_text")
-    private String confirmationText;
-
-    /**
-     * Redirect uri for validation request
-     */
-    @SerializedName("redirect_uri")
-    private String redirectUri;
-
     @SerializedName("request_params")
     private List<RequestParam> requestParams;
 
@@ -52,34 +28,32 @@ public class Error {
         return errorCode;
     }
 
+    public Error setErrorCode(Integer errorCode) {
+        this.errorCode = errorCode;
+        return this;
+    }
+
     public String getErrorMsg() {
         return errorMsg;
     }
 
-
-    public String getCaptchaImg() {
-        return captchaImg;
-    }
-
-    public String getCaptchaSid() {
-        return captchaSid;
-    }
-
-    public String getConfirmationText() {
-        return confirmationText;
-    }
-
-    public String getRedirectUri() {
-        return redirectUri;
+    public Error setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+        return this;
     }
 
     public List<RequestParam> getRequestParams() {
         return requestParams;
     }
 
+    public Error setRequestParams(List<RequestParam> requestParams) {
+        this.requestParams = requestParams;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(errorCode, requestParams, errorMsg);
+        return Objects.hash(requestParams, errorCode, errorMsg);
     }
 
     @Override
@@ -87,21 +61,22 @@ public class Error {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Error error = (Error) o;
-        return Objects.equals(errorCode, error.errorCode) &&
-                Objects.equals(errorMsg, error.errorMsg) &&
-                Objects.equals(requestParams, error.requestParams);
+        return Objects.equals(errorMsg, error.errorMsg) &&
+                Objects.equals(requestParams, error.requestParams) &&
+                Objects.equals(errorCode, error.errorCode);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Error{");
-        sb.append("errorCode=").append(errorCode);
-        sb.append(", errorMsg='").append(errorMsg).append("'");
-        sb.append(", captchaSid='").append(captchaSid).append("'");
-        sb.append(", captchaImg='").append(captchaImg).append("'");
-        sb.append(", confirmationText='").append(confirmationText).append("'");
-        sb.append(", redirectUri='").append(redirectUri).append("'");
+        sb.append("errorMsg='").append(errorMsg).append("'");
         sb.append(", requestParams=").append(requestParams);
+        sb.append(", errorCode=").append(errorCode);
         sb.append('}');
         return sb.toString();
     }

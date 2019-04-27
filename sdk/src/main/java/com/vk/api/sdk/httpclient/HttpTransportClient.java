@@ -2,6 +2,7 @@ package com.vk.api.sdk.httpclient;
 
 import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
+import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
@@ -21,8 +22,8 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,12 +38,12 @@ import java.util.Map;
  */
 public class HttpTransportClient implements TransportClient {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HttpTransportClient.class);
+    private static final Logger LOG = LogManager.getLogger(HttpTransportClient.class);
 
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.12";
+    private static final String USER_AGENT = "Java VK SDK/0.5.13";
 
     private static final String EMPTY_PAYLOAD = "-";
 

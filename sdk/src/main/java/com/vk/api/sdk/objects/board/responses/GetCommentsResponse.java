@@ -1,9 +1,9 @@
 package com.vk.api.sdk.objects.board.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.board.TopicPoll;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -27,12 +27,27 @@ public class GetCommentsResponse {
         return count;
     }
 
+    public GetCommentsResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<TopicComment> getItems() {
         return items;
     }
 
+    public GetCommentsResponse setItems(List<TopicComment> items) {
+        this.items = items;
+        return this;
+    }
+
     public TopicPoll getPoll() {
         return poll;
+    }
+
+    public GetCommentsResponse setPoll(TopicPoll poll) {
+        this.poll = poll;
+        return this;
     }
 
     @Override
@@ -46,16 +61,21 @@ public class GetCommentsResponse {
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsResponse getCommentsResponse = (GetCommentsResponse) o;
         return Objects.equals(count, getCommentsResponse.count) &&
-                Objects.equals(items, getCommentsResponse.items) &&
-                Objects.equals(poll, getCommentsResponse.poll);
+                Objects.equals(poll, getCommentsResponse.poll) &&
+                Objects.equals(items, getCommentsResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
         sb.append("count=").append(count);
-        sb.append(", items=").append(items);
         sb.append(", poll=").append(poll);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

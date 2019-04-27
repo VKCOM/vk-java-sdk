@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.docs.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class AddResponse {
 
     public Integer getId() {
         return id;
+    }
+
+    public AddResponse setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class AddResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddResponse{");
         sb.append("id=").append(id);
         sb.append('}');

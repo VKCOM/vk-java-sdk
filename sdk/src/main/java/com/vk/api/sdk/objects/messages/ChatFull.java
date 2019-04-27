@@ -1,8 +1,9 @@
 package com.vk.api.sdk.objects.messages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
+import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +11,11 @@ import java.util.Objects;
  * ChatFull object
  */
 public class ChatFull {
+    /**
+     * Chat creator ID
+     */
+    @SerializedName("admin_id")
+    private Integer adminId;
 
     /**
      * Chat ID
@@ -18,46 +24,10 @@ public class ChatFull {
     private Integer id;
 
     /**
-     * Chat type
+     * Shows that user has been kicked from the chat
      */
-    @SerializedName("type")
-    private String type;
-
-    /**
-     * Chat title
-     */
-    @SerializedName("title")
-    private String title;
-
-    /**
-     * Chat creator ID
-     */
-    @SerializedName("admin_id")
-    private Integer adminId;
-
-    @SerializedName("users")
-    private List<UserXtrInvitedBy> users;
-
-    @SerializedName("push_settings")
-    private ChatPushSettings pushSettings;
-
-    /**
-     * URL of the preview image with 50 px in width
-     */
-    @SerializedName("photo_50")
-    private String photo50;
-
-    /**
-     * URL of the preview image with 100 px in width
-     */
-    @SerializedName("photo_100")
-    private String photo100;
-
-    /**
-     * URL of the preview image with 200 px in width
-     */
-    @SerializedName("photo_200")
-    private String photo200;
+    @SerializedName("kicked")
+    private BoolInt kicked;
 
     /**
      * Shows that user has been left the chat
@@ -66,53 +36,141 @@ public class ChatFull {
     private BoolInt left;
 
     /**
-     * Shows that user has been kicked from the chat
+     * URL of the preview image with 100 px in width
      */
-    @SerializedName("kicked")
-    private BoolInt kicked;
+    @SerializedName("photo_100")
+    private URL photo100;
 
-    public Integer getId() {
-        return id;
-    }
+    /**
+     * URL of the preview image with 200 px in width
+     */
+    @SerializedName("photo_200")
+    private URL photo200;
 
-    public String getType() {
-        return type;
-    }
+    /**
+     * URL of the preview image with 50 px in width
+     */
+    @SerializedName("photo_50")
+    private URL photo50;
 
-    public String getTitle() {
-        return title;
-    }
+    @SerializedName("push_settings")
+    private ChatPushSettings pushSettings;
+
+    /**
+     * Chat title
+     */
+    @SerializedName("title")
+    private String title;
+
+    /**
+     * Chat type
+     */
+    @SerializedName("type")
+    private String type;
+
+    @SerializedName("users")
+    private List<UserXtrInvitedBy> users;
 
     public Integer getAdminId() {
         return adminId;
     }
 
-    public List<UserXtrInvitedBy> getUsers() {
-        return users;
+    public ChatFull setAdminId(Integer adminId) {
+        this.adminId = adminId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public ChatFull setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isKicked() {
+        return kicked == BoolInt.YES;
+    }
+
+    public BoolInt getKicked() {
+        return kicked;
+    }
+
+    public boolean isLeft() {
+        return left == BoolInt.YES;
+    }
+
+    public BoolInt getLeft() {
+        return left;
+    }
+
+    public URL getPhoto100() {
+        return photo100;
+    }
+
+    public ChatFull setPhoto100(URL photo100) {
+        this.photo100 = photo100;
+        return this;
+    }
+
+    public URL getPhoto200() {
+        return photo200;
+    }
+
+    public ChatFull setPhoto200(URL photo200) {
+        this.photo200 = photo200;
+        return this;
+    }
+
+    public URL getPhoto50() {
+        return photo50;
+    }
+
+    public ChatFull setPhoto50(URL photo50) {
+        this.photo50 = photo50;
+        return this;
     }
 
     public ChatPushSettings getPushSettings() {
         return pushSettings;
     }
 
-    public String getPhoto50() {
-        return photo50;
+    public ChatFull setPushSettings(ChatPushSettings pushSettings) {
+        this.pushSettings = pushSettings;
+        return this;
     }
 
-    public String getPhoto100() {
-        return photo100;
+    public String getTitle() {
+        return title;
     }
 
-    public String getPhoto200() {
-        return photo200;
+    public ChatFull setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
-    public boolean left() {
-        return left == BoolInt.YES;
+    public String getType() {
+        return type;
     }
 
-    public boolean kicked() {
-        return kicked == BoolInt.YES;
+    public ChatFull setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public List<UserXtrInvitedBy> getUsers() {
+        return users;
+    }
+
+    public ChatFull setUsers(List<UserXtrInvitedBy> users) {
+        this.users = users;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(photo100, left, adminId, photo50, kicked, pushSettings, id, photo200, title, type, users);
     }
 
     @Override
@@ -120,38 +178,38 @@ public class ChatFull {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChatFull chatFull = (ChatFull) o;
-        return Objects.equals(id, chatFull.id) &&
-                Objects.equals(type, chatFull.type) &&
-                Objects.equals(title, chatFull.title) &&
-                Objects.equals(adminId, chatFull.adminId) &&
-                Objects.equals(users, chatFull.users) &&
+        return Objects.equals(photo50, chatFull.photo50) &&
+                Objects.equals(left, chatFull.left) &&
                 Objects.equals(pushSettings, chatFull.pushSettings) &&
-                Objects.equals(photo50, chatFull.photo50) &&
+                Objects.equals(adminId, chatFull.adminId) &&
+                Objects.equals(kicked, chatFull.kicked) &&
+                Objects.equals(id, chatFull.id) &&
                 Objects.equals(photo100, chatFull.photo100) &&
+                Objects.equals(title, chatFull.title) &&
+                Objects.equals(type, chatFull.type) &&
                 Objects.equals(photo200, chatFull.photo200) &&
-                left == chatFull.left &&
-                kicked == chatFull.kicked;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, type, title, adminId, users, pushSettings, photo50, photo100, photo200, left, kicked);
+                Objects.equals(users, chatFull.users);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ChatFull{");
-        sb.append("id=").append(id);
-        sb.append(", type='").append(type).append('\'');
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", adminId=").append(adminId);
-        sb.append(", users=").append(users);
-        sb.append(", pushSettings=").append(pushSettings);
-        sb.append(", photo50='").append(photo50).append('\'');
-        sb.append(", photo100='").append(photo100).append('\'');
-        sb.append(", photo200='").append(photo200).append('\'');
+        sb.append("photo50=").append(photo50);
         sb.append(", left=").append(left);
+        sb.append(", pushSettings=").append(pushSettings);
+        sb.append(", adminId=").append(adminId);
         sb.append(", kicked=").append(kicked);
+        sb.append(", id=").append(id);
+        sb.append(", photo100=").append(photo100);
+        sb.append(", title='").append(title).append("'");
+        sb.append(", type='").append(type).append("'");
+        sb.append(", photo200=").append(photo200);
+        sb.append(", users=").append(users);
         sb.append('}');
         return sb.toString();
     }

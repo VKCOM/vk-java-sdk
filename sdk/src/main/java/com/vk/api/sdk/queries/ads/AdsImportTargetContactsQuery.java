@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,13 +13,14 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client        VK API client
-     * @param actor         actor with access token
-     * @param accountId     value of "account id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param accountId value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
-     * @param contacts      value of "contacts" parameter.
+     * @param contacts value of "contacts" parameter.
      */
-    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId, String contacts) {
+    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor, int accountId,
+            int targetGroupId, String contacts) {
         super(client, "ads.importTargetContacts", Integer.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -39,8 +39,7 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
     }
 
     /**
-     * "Only for advertising agencies."
-     * ID of the client with the advertising account where the group will be created.
+     * 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
      *
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

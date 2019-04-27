@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -23,19 +23,34 @@ public class TargStats {
     /**
      * Recommended CPM value
      */
-    @SerializedName("recommended_cpm ")
+    @SerializedName("recommended_cpm")
     private Float recommendedCpm;
 
     public Integer getAudienceCount() {
         return audienceCount;
     }
 
+    public TargStats setAudienceCount(Integer audienceCount) {
+        this.audienceCount = audienceCount;
+        return this;
+    }
+
     public Float getRecommendedCpc() {
         return recommendedCpc;
     }
 
+    public TargStats setRecommendedCpc(Float recommendedCpc) {
+        this.recommendedCpc = recommendedCpc;
+        return this;
+    }
+
     public Float getRecommendedCpm() {
         return recommendedCpm;
+    }
+
+    public TargStats setRecommendedCpm(Float recommendedCpm) {
+        this.recommendedCpm = recommendedCpm;
+        return this;
     }
 
     @Override
@@ -48,16 +63,21 @@ public class TargStats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TargStats targStats = (TargStats) o;
-        return Objects.equals(audienceCount, targStats.audienceCount) &&
-                Objects.equals(recommendedCpc, targStats.recommendedCpc) &&
+        return Objects.equals(recommendedCpc, targStats.recommendedCpc) &&
+                Objects.equals(audienceCount, targStats.audienceCount) &&
                 Objects.equals(recommendedCpm, targStats.recommendedCpm);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TargStats{");
-        sb.append("audienceCount=").append(audienceCount);
-        sb.append(", recommendedCpc=").append(recommendedCpc);
+        sb.append("recommendedCpc=").append(recommendedCpc);
+        sb.append(", audienceCount=").append(audienceCount);
         sb.append(", recommendedCpm=").append(recommendedCpm);
         sb.append('}');
         return sb.toString();

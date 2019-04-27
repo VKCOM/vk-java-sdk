@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Attachment type
  */
-public enum MessageAttachmentType {
+public enum MessageAttachmentType implements EnumParam {
     @SerializedName("photo")
     PHOTO("photo"),
 
@@ -24,8 +25,8 @@ public enum MessageAttachmentType {
     @SerializedName("market")
     MARKET("market"),
 
-    @SerializedName("market_market_album")
-    MARKET_MARKET_ALBUM("market_market_album"),
+    @SerializedName("market_album")
+    MARKET_ALBUM("market_album"),
 
     @SerializedName("gift")
     GIFT("gift"),
@@ -37,7 +38,13 @@ public enum MessageAttachmentType {
     WALL("wall"),
 
     @SerializedName("wall_reply")
-    WALL_REPLY("wall_reply");
+    WALL_REPLY("wall_reply"),
+
+    @SerializedName("graffiti")
+    GRAFFITI("graffiti"),
+
+    @SerializedName("audio_message")
+    AUDIO_MESSAGE("audio_message");
 
     private final String value;
 

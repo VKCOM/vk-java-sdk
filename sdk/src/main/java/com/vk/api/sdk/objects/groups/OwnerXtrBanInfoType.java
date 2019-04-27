@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Owner type
  */
-public enum OwnerXtrBanInfoType {
+public enum OwnerXtrBanInfoType implements EnumParam {
     @SerializedName("group")
     GROUP("group"),
 

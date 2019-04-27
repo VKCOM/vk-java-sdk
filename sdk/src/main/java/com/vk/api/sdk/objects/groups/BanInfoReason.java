@@ -1,12 +1,12 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Ban info reason
+ * Ban reason
  */
-public enum BanInfoReason {
-
+public enum BanInfoReason implements EnumParam {
     @SerializedName("0")
     OTHER(0),
 
@@ -28,7 +28,7 @@ public enum BanInfoReason {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

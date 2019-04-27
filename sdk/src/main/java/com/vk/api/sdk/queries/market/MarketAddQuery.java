@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.AddResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,17 +14,17 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client      VK API client
-     * @param actor       actor with access token
-     * @param ownerId     value of "owner id" parameter.
-     * @param name        value of "name" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter.
+     * @param name value of "name" parameter.
      * @param description value of "description" parameter.
-     * @param categoryId  value of "category id" parameter. Minimum is 0.
-     * @param price       value of "price" parameter. Minimum is 0.
+     * @param categoryId value of "category id" parameter. Minimum is 0.
+     * @param price value of "price" parameter. Minimum is 0.
      * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
-    public MarketAddQuery(VkApiClient client, UserActor actor, int ownerId, String name, String description, int categoryId,
-                          double price, int mainPhotoId) {
+    public MarketAddQuery(VkApiClient client, UserActor actor, int ownerId, String name,
+            String description, int categoryId, double price, int mainPhotoId) {
         super(client, "market.add", AddResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -37,8 +36,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Identifier of an item owner community
-     * Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
+     * ID of an item owner community.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -48,7 +46,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Item name
+     * Item name.
      *
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +56,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Item description
+     * Item description.
      *
      * @param value value of "description" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -68,7 +66,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Item category id
+     * Item category ID.
      *
      * @param value value of "category id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -78,7 +76,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Item price
+     * Item price.
      *
      * @param value value of "price" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,7 +86,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Item status
+     * Item status ('1' — deleted, '0' — not deleted).
      *
      * @param value value of "deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -98,7 +96,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Cover photo identifier
+     * Cover photo ID.
      *
      * @param value value of "main photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,7 +106,18 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Ids of additional photos
+     * Url for button in market item.
+     *
+     * @param value value of "url" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery url(String value) {
+        return unsafeParam("url", value);
+    }
+
+    /**
+     * photo_ids
+     * IDs of additional photos.
      *
      * @param value value of "photo ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -118,7 +127,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
-     * Ids of additional photos
+     * IDs of additional photos.
      *
      * @param value value of "photo ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

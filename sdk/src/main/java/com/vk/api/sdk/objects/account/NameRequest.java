@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.account;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,22 +9,16 @@ import java.util.Objects;
  */
 public class NameRequest {
     /**
-     * Request ID needed to cancel the request
-     */
-    @SerializedName("id")
-    private Integer id;
-
-    /**
-     * Request status
-     */
-    @SerializedName("status")
-    private NameRequestStatus status;
-
-    /**
      * First name in request
      */
     @SerializedName("first_name")
     private String firstName;
+
+    /**
+     * Request ID needed to cancel the request
+     */
+    @SerializedName("id")
+    private Integer id;
 
     /**
      * Last name in request
@@ -32,25 +26,48 @@ public class NameRequest {
     @SerializedName("last_name")
     private String lastName;
 
+    @SerializedName("status")
+    private NameRequestStatus status;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public NameRequest setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public NameRequestStatus getStatus() {
-        return status;
-    }
-
-    public String getFirstName() {
-        return firstName;
+    public NameRequest setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public NameRequest setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public NameRequestStatus getStatus() {
+        return status;
+    }
+
+    public NameRequest setStatus(NameRequestStatus status) {
+        this.status = status;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, id, status);
+        return Objects.hash(lastName, firstName, id, status);
     }
 
     @Override
@@ -58,19 +75,24 @@ public class NameRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameRequest nameRequest = (NameRequest) o;
-        return Objects.equals(id, nameRequest.id) &&
-                Objects.equals(status, nameRequest.status) &&
+        return Objects.equals(lastName, nameRequest.lastName) &&
+                Objects.equals(id, nameRequest.id) &&
                 Objects.equals(firstName, nameRequest.firstName) &&
-                Objects.equals(lastName, nameRequest.lastName);
+                Objects.equals(status, nameRequest.status);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("NameRequest{");
-        sb.append("id=").append(id);
-        sb.append(", status='").append(status).append("'");
+        sb.append("lastName='").append(lastName).append("'");
+        sb.append(", id=").append(id);
         sb.append(", firstName='").append(firstName).append("'");
-        sb.append(", lastName='").append(lastName).append("'");
+        sb.append(", status=").append(status);
         sb.append('}');
         return sb.toString();
     }

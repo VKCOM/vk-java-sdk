@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.pages.WikipageFull;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PagesGetQuery(VkApiClient client, UserActor actor) {
         super(client, "pages.get", WikipageFull.class);
@@ -44,7 +43,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * Return information about a global wiki page
+     * '1' — to return information about a global wiki page
      *
      * @param value value of "global" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +53,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * Resulting wiki page is a preview for the attached link
+     * '1' — resulting wiki page is a preview for the attached link
      *
      * @param value value of "site preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -84,7 +83,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
     }
 
     /**
-     * Return the page as HTML
+     * '1' — to return the page as HTML,
      *
      * @param value value of "need html" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

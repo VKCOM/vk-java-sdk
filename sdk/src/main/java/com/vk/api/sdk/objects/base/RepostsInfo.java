@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class RepostsInfo {
         return count;
     }
 
+    public RepostsInfo setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public Integer getUserReposted() {
         return userReposted;
+    }
+
+    public RepostsInfo setUserReposted(Integer userReposted) {
+        this.userReposted = userReposted;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class RepostsInfo {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RepostsInfo{");
         sb.append("count=").append(count);
         sb.append(", userReposted=").append(userReposted);

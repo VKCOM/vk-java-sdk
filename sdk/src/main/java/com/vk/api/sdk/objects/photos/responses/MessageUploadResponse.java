@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.photos.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class MessageUploadResponse {
     /**
-     * Upload server number
+     * Uploading hash
      */
-    @SerializedName("server")
-    private Integer server;
+    @SerializedName("hash")
+    private String hash;
 
     /**
      * Uploaded photo data
@@ -21,21 +21,36 @@ public class MessageUploadResponse {
     private String photo;
 
     /**
-     * Uploading hash
+     * Upload server number
      */
-    @SerializedName("hash")
-    private String hash;
+    @SerializedName("server")
+    private Integer server;
 
-    public Integer getServer() {
-        return server;
+    public String getHash() {
+        return hash;
+    }
+
+    public MessageUploadResponse setHash(String hash) {
+        this.hash = hash;
+        return this;
     }
 
     public String getPhoto() {
         return photo;
     }
 
-    public String getHash() {
-        return hash;
+    public MessageUploadResponse setPhoto(String photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public Integer getServer() {
+        return server;
+    }
+
+    public MessageUploadResponse setServer(Integer server) {
+        this.server = server;
+        return this;
     }
 
     @Override
@@ -55,6 +70,11 @@ public class MessageUploadResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageUploadResponse{");
         sb.append("server=").append(server);
         sb.append(", photo='").append(photo).append("'");

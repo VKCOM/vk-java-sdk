@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,21 +15,19 @@ public class MessagesAddChatUserQuery extends AbstractQueryBuilder<MessagesAddCh
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param chatId value of "chat id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param actor actor with access token
+     * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      */
-    public MessagesAddChatUserQuery(VkApiClient client, UserActor actor, int chatId, int userId) {
+    public MessagesAddChatUserQuery(VkApiClient client, UserActor actor, int chatId) {
         super(client, "messages.addChatUser", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
-        userId(userId);
     }
 
     /**
      * Chat ID.
      *
-     * @param value value of "chat id" parameter. Minimum is 0.
+     * @param value value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MessagesAddChatUserQuery chatId(int value) {
@@ -43,7 +40,7 @@ public class MessagesAddChatUserQuery extends AbstractQueryBuilder<MessagesAddCh
      * @param value value of "user id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesAddChatUserQuery userId(int value) {
+    public MessagesAddChatUserQuery userId(Integer value) {
         return unsafeParam("user_id", value);
     }
 
@@ -54,6 +51,6 @@ public class MessagesAddChatUserQuery extends AbstractQueryBuilder<MessagesAddCh
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("chat_id", "user_id", "access_token");
+        return Arrays.asList("chat_id", "access_token");
     }
 }

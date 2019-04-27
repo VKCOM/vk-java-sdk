@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.secure;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,33 @@ import java.util.Objects;
  */
 public class Level {
     /**
-     * User ID
-     */
-    @SerializedName("uid")
-    private Integer uid;
-
-    /**
      * Level
      */
     @SerializedName("level")
     private Integer level;
 
+    /**
+     * User ID
+     */
+    @SerializedName("uid")
+    private Integer uid;
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public Level setLevel(Integer level) {
+        this.level = level;
+        return this;
+    }
+
     public Integer getUid() {
         return uid;
     }
 
-    public Integer getLevel() {
-        return level;
+    public Level setUid(Integer uid) {
+        this.uid = uid;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class Level {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Level{");
         sb.append("uid=").append(uid);
         sb.append(", level=").append(level);

@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Media type
  */
-public enum CommentMediaType {
+public enum CommentMediaType implements EnumParam {
     @SerializedName("audio")
     AUDIO("audio"),
 

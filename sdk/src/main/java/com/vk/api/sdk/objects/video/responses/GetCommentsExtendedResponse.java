@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.video.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.wall.WallComment;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetCommentsExtendedResponse {
         return count;
     }
 
+    public GetCommentsExtendedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<WallComment> getItems() {
         return items;
+    }
+
+    public GetCommentsExtendedResponse setItems(List<WallComment> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetCommentsExtendedResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

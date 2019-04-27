@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -14,18 +14,25 @@ public class MemberRole {
     @SerializedName("id")
     private Integer id;
 
-    /**
-     * User's credentials as community admin
-     */
     @SerializedName("role")
-    private MemberRoleRole role;
+    private MemberRoleStatus role;
 
     public Integer getId() {
         return id;
     }
 
-    public MemberRoleRole getRole() {
+    public MemberRole setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public MemberRoleStatus getRole() {
         return role;
+    }
+
+    public MemberRole setRole(MemberRoleStatus role) {
+        this.role = role;
+        return this;
     }
 
     @Override
@@ -38,15 +45,20 @@ public class MemberRole {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MemberRole memberRole = (MemberRole) o;
-        return Objects.equals(id, memberRole.id) &&
-                Objects.equals(role, memberRole.role);
+        return Objects.equals(role, memberRole.role) &&
+                Objects.equals(id, memberRole.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MemberRole{");
-        sb.append("id=").append(id);
-        sb.append(", role='").append(role).append("'");
+        sb.append("role=").append(role);
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.newsfeed.responses.GetMentionsResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedGetMentionsQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.getMentions", GetMentionsResponse.class);
@@ -24,7 +23,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
     }
 
     /**
-     * Set owner id
+     * Owner ID.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -35,8 +34,6 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
 
     /**
      * Earliest timestamp (in Unix time) of a post to return. By default, 24 hours ago.
-     * If the parameter is not set, all mentions about the user will be returned if end_time parameter is not set,
-     * otherwise - mentions considering "end_time" parameter."
      *
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -47,7 +44,6 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
 
     /**
      * Latest timestamp (in Unix time) of a post to return. By default, the current time.
-     * If the parameter is not set, all mentions about the user will be returned if "start_time" parameter is not set, otherwise - mentions considering "start_time" parameter."
      *
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

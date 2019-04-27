@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.GetActiveOffersResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AccountGetActiveOffersQuery extends AbstractQueryBuilder<AccountGet
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountGetActiveOffersQuery(VkApiClient client, UserActor actor) {
         super(client, "account.getActiveOffers", GetActiveOffersResponse.class);
@@ -24,7 +23,17 @@ public class AccountGetActiveOffersQuery extends AbstractQueryBuilder<AccountGet
     }
 
     /**
-     * Set count
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountGetActiveOffersQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * Number of results to return.
      *
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

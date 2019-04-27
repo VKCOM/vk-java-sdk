@@ -1,15 +1,13 @@
 package com.vk.api.sdk.objects.messages.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
- * Response which contains chat invite link
+ * GetInviteLinkResponse object
  */
-
 public class GetInviteLinkResponse {
-
     @SerializedName("link")
     private String link;
 
@@ -17,12 +15,9 @@ public class GetInviteLinkResponse {
         return link;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GetInviteLinkResponse that = (GetInviteLinkResponse) o;
-        return Objects.equals(link, that.link);
+    public GetInviteLinkResponse setLink(String link) {
+        this.link = link;
+        return this;
     }
 
     @Override
@@ -31,9 +26,22 @@ public class GetInviteLinkResponse {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GetInviteLinkResponse getInviteLinkResponse = (GetInviteLinkResponse) o;
+        return Objects.equals(link, getInviteLinkResponse.link);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetInviteLinkResponse{");
-        sb.append("link='").append(link).append('\'');
+        sb.append("link='").append(link).append("'");
         sb.append('}');
         return sb.toString();
     }

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class Career {
     /**
-     * Community ID
+     * City ID
      */
-    @SerializedName("group_id")
-    private Integer groupId;
+    @SerializedName("city_id")
+    private Integer cityId;
 
     /**
      * Company name
@@ -27,22 +27,22 @@ public class Career {
     private Integer countryId;
 
     /**
-     * City ID
-     */
-    @SerializedName("city_id")
-    private Integer cityId;
-
-    /**
      * From year
      */
     @SerializedName("from")
     private Integer from;
 
     /**
-     * Till year
+     * Community ID
      */
-    @SerializedName("until")
-    private Integer until;
+    @SerializedName("group_id")
+    private Integer groupId;
+
+    /**
+     * Career ID
+     */
+    @SerializedName("id")
+    private Integer id;
 
     /**
      * Position
@@ -50,37 +50,87 @@ public class Career {
     @SerializedName("position")
     private String position;
 
-    public Integer getGroupId() {
-        return groupId;
+    /**
+     * Till year
+     */
+    @SerializedName("until")
+    private Integer until;
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public Career setCityId(Integer cityId) {
+        this.cityId = cityId;
+        return this;
     }
 
     public String getCompany() {
         return company;
     }
 
+    public Career setCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
     public Integer getCountryId() {
         return countryId;
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public Career setCountryId(Integer countryId) {
+        this.countryId = countryId;
+        return this;
     }
 
     public Integer getFrom() {
         return from;
     }
 
-    public Integer getUntil() {
-        return until;
+    public Career setFrom(Integer from) {
+        this.from = from;
+        return this;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public Career setGroupId(Integer groupId) {
+        this.groupId = groupId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Career setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public String getPosition() {
         return position;
     }
 
+    public Career setPosition(String position) {
+        this.position = position;
+        return this;
+    }
+
+    public Integer getUntil() {
+        return until;
+    }
+
+    public Career setUntil(Integer until) {
+        this.until = until;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, company, from, until, cityId, position, countryId);
+        return Objects.hash(groupId, company, from, until, id, position, cityId, countryId);
     }
 
     @Override
@@ -90,23 +140,30 @@ public class Career {
         Career career = (Career) o;
         return Objects.equals(groupId, career.groupId) &&
                 Objects.equals(company, career.company) &&
-                Objects.equals(countryId, career.countryId) &&
-                Objects.equals(cityId, career.cityId) &&
                 Objects.equals(from, career.from) &&
                 Objects.equals(until, career.until) &&
-                Objects.equals(position, career.position);
+                Objects.equals(id, career.id) &&
+                Objects.equals(position, career.position) &&
+                Objects.equals(countryId, career.countryId) &&
+                Objects.equals(cityId, career.cityId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Career{");
         sb.append("groupId=").append(groupId);
-        sb.append(", company=").append(company);
-        sb.append(", countryId=").append(countryId);
-        sb.append(", cityId=").append(cityId);
+        sb.append(", company='").append(company).append("'");
         sb.append(", from=").append(from);
         sb.append(", until=").append(until);
+        sb.append(", id=").append(id);
         sb.append(", position='").append(position).append("'");
+        sb.append(", countryId=").append(countryId);
+        sb.append(", cityId=").append(cityId);
         sb.append('}');
         return sb.toString();
     }

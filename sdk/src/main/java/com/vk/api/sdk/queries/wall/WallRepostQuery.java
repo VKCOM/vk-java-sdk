@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.RepostResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param object value of "object" parameter.
      */
     public WallRepostQuery(VkApiClient client, UserActor actor, String object) {
@@ -26,8 +25,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
     }
 
     /**
-     * ID of the object to be reposted on the wall. Example:
-     * wall66748_3675
+     * ID of the object to be reposted on the wall. Example: "wall66748_3675"
      *
      * @param value value of "object" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -59,7 +57,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
     /**
      * Set mark as ads
      *
-     * @param value value of "mark as ads" parameter. By default 0.
+     * @param value value of "mark as ads" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallRepostQuery markAsAds(Boolean value) {

@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.FriendsSort;
 import com.vk.api.sdk.objects.friends.responses.GetRequestsExtendedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetRequestsQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "friends.getRequests", GetRequestsExtendedResponse.class);
@@ -45,8 +45,7 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
     }
 
     /**
-     * Return response messages from users who have sent a friend request or,
-     * if "suggested" is set to true, to return a list of suggested friends
+     * '1' — to return response messages from users who have sent a friend request or, if 'suggested' is set to '1', to return a list of suggested friends
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -56,7 +55,7 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
     }
 
     /**
-     * Return a list of mutual friends (up to 20)
+     * '1' — to return a list of mutual friends (up to 20), if any
      *
      * @param value value of "need mutual" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,8 +65,7 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
     }
 
     /**
-     * true - to return outgoing requests
-     * false - to return incoming requests (default)
+     * '1' — to return outgoing requests, '0' — to return incoming requests (default)
      *
      * @param value value of "out" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,17 +75,27 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
     }
 
     /**
-     * Sort order
+     * Sort order: '1' — by number of mutual friends, '0' — by date
      *
      * @param value value of "sort" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetRequestsQueryWithExtended sort(FriendsGetRequestsSort value) {
+    public FriendsGetRequestsQueryWithExtended sort(FriendsSort value) {
         return unsafeParam("sort", value);
     }
 
     /**
-     * Return a list of suggested friends
+     * Set need viewed
+     *
+     * @param value value of "need viewed" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetRequestsQueryWithExtended needViewed(Boolean value) {
+        return unsafeParam("need_viewed", value);
+    }
+
+    /**
+     * '1' — to return a list of suggested friends, '0' — to return friend requests (default)
      *
      * @param value value of "suggested" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

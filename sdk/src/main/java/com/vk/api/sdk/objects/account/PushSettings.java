@@ -1,14 +1,17 @@
 package com.vk.api.sdk.objects.account;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
  * PushSettings object
  */
 public class PushSettings {
+    @SerializedName("conversations")
+    private PushConversations conversations;
+
     /**
      * Information whether notifications are disabled
      */
@@ -21,31 +24,47 @@ public class PushSettings {
     @SerializedName("disabled_until")
     private Integer disabledUntil;
 
-    @SerializedName("conversations")
-    private PushConversations conversations;
-
     @SerializedName("settings")
     private PushParams settings;
 
+    public PushConversations getConversations() {
+        return conversations;
+    }
+
+    public PushSettings setConversations(PushConversations conversations) {
+        this.conversations = conversations;
+        return this;
+    }
+
     public boolean isDisabled() {
         return disabled == BoolInt.YES;
+    }
+
+    public BoolInt getDisabled() {
+        return disabled;
     }
 
     public Integer getDisabledUntil() {
         return disabledUntil;
     }
 
-    public PushConversations getConversations() {
-        return conversations;
+    public PushSettings setDisabledUntil(Integer disabledUntil) {
+        this.disabledUntil = disabledUntil;
+        return this;
     }
 
     public PushParams getSettings() {
         return settings;
     }
 
+    public PushSettings setSettings(PushParams settings) {
+        this.settings = settings;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(settings, disabled, disabledUntil, conversations);
+        return Objects.hash(settings, disabledUntil, disabled, conversations);
     }
 
     @Override
@@ -53,19 +72,24 @@ public class PushSettings {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PushSettings pushSettings = (PushSettings) o;
-        return Objects.equals(disabled, pushSettings.disabled) &&
+        return Objects.equals(settings, pushSettings.settings) &&
                 Objects.equals(disabledUntil, pushSettings.disabledUntil) &&
-                Objects.equals(conversations, pushSettings.conversations) &&
-                Objects.equals(settings, pushSettings.settings);
+                Objects.equals(disabled, pushSettings.disabled) &&
+                Objects.equals(conversations, pushSettings.conversations);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PushSettings{");
-        sb.append("disabled=").append(disabled);
+        sb.append("settings=").append(settings);
         sb.append(", disabledUntil=").append(disabledUntil);
+        sb.append(", disabled=").append(disabled);
         sb.append(", conversations=").append(conversations);
-        sb.append(", settings=").append(settings);
         sb.append('}');
         return sb.toString();
     }

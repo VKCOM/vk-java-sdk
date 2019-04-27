@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.LinkStatus;
-
+import com.vk.api.sdk.objects.enums.AdsLinkType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +15,14 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
-     * @param linkType  value of "link type" parameter.
-     * @param linkUrl   value of "link url" parameter.
+     * @param linkType value of "link type" parameter.
+     * @param linkUrl value of "link url" parameter.
      */
-    public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId, AdsCheckLinkType linkType, String linkUrl) {
+    public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId,
+            AdsLinkType linkType, String linkUrl) {
         super(client, "ads.checkLink", LinkStatus.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -30,7 +31,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
     }
 
     /**
-     * Account ID.
+     * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -40,12 +41,12 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
     }
 
     /**
-     * Object type
+     * Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
      *
      * @param value value of "link type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery linkType(AdsCheckLinkType value) {
+    protected AdsCheckLinkQuery linkType(AdsLinkType value) {
         return unsafeParam("link_type", value);
     }
 

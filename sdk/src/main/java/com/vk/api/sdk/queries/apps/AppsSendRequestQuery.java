@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
+import com.vk.api.sdk.objects.enums.AppsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,23 +15,13 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
      */
     public AppsSendRequestQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "apps.sendRequest", Integer.class);
         accessToken(actor.getAccessToken());
         userId(userId);
-    }
-
-    /**
-     * Set app id
-     *
-     * @param value value of "app id" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public AppsSendRequestQuery appId(Integer value) {
-        return unsafeParam("app_id", value);
     }
 
     /**
@@ -55,23 +45,13 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
     }
 
     /**
-     * Request type.
+     * Request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
      *
-     * @param value value of "type" parameter. By default 0.
+     * @param value value of "type" parameter. By default request.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsSendRequestQuery type(AppsSendRequestType value) {
+    public AppsSendRequestQuery type(AppsType value) {
         return unsafeParam("type", value);
-    }
-
-    /**
-     * Set request name
-     *
-     * @param value value of "request name" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public AppsSendRequestQuery requestName(String value) {
-        return unsafeParam("request_name", value);
     }
 
     /**

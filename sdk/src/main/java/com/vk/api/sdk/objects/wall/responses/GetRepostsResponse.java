@@ -1,10 +1,10 @@
 package com.vk.api.sdk.objects.wall.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.User;
-import com.vk.api.sdk.objects.wall.WallPostFull;
-
+import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class GetRepostsResponse {
     @SerializedName("items")
-    private List<WallPostFull> items;
+    private List<WallpostFull> items;
 
     @SerializedName("profiles")
     private List<User> profiles;
@@ -21,16 +21,31 @@ public class GetRepostsResponse {
     @SerializedName("groups")
     private List<Group> groups;
 
-    public List<WallPostFull> getItems() {
+    public List<WallpostFull> getItems() {
         return items;
+    }
+
+    public GetRepostsResponse setItems(List<WallpostFull> items) {
+        this.items = items;
+        return this;
     }
 
     public List<User> getProfiles() {
         return profiles;
     }
 
+    public GetRepostsResponse setProfiles(List<User> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     public List<Group> getGroups() {
         return groups;
+    }
+
+    public GetRepostsResponse setGroups(List<Group> groups) {
+        this.groups = groups;
+        return this;
     }
 
     @Override
@@ -43,17 +58,22 @@ public class GetRepostsResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetRepostsResponse getRepostsResponse = (GetRepostsResponse) o;
-        return Objects.equals(items, getRepostsResponse.items) &&
-                Objects.equals(profiles, getRepostsResponse.profiles) &&
-                Objects.equals(groups, getRepostsResponse.groups);
+        return Objects.equals(profiles, getRepostsResponse.profiles) &&
+                Objects.equals(groups, getRepostsResponse.groups) &&
+                Objects.equals(items, getRepostsResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRepostsResponse{");
-        sb.append("items=").append(items);
-        sb.append(", profiles=").append(profiles);
+        sb.append("profiles=").append(profiles);
         sb.append(", groups=").append(groups);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

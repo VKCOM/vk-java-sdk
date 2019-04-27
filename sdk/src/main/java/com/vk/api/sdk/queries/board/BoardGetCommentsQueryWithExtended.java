@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.board.responses.GetCommentsExtendedResponse;
-
+import com.vk.api.sdk.objects.enums.BoardSort;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,12 +16,13 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int groupId, int topicId) {
+    public BoardGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int groupId,
+            int topicId) {
         super(client, "board.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -32,11 +33,13 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor, int groupId, int topicId) {
+    public BoardGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor, int groupId,
+            int topicId) {
         super(client, "board.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -66,7 +69,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     }
 
     /**
-     * Return the "likes" field
+     * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -106,7 +109,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     }
 
     /**
-     * Return information about users who posted comments
+     * '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -116,12 +119,12 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     }
 
     /**
-     * Sort order
+     * Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetCommentsQueryWithExtended sort(BoardGetCommentsSort value) {
+    public BoardGetCommentsQueryWithExtended sort(BoardSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -132,6 +135,6 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "topic_id");
+        return Arrays.asList("group_id", "topic_id", "access_token");
     }
 }

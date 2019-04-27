@@ -1,8 +1,9 @@
 package com.vk.api.sdk.objects.pages;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-public enum PrivacySettings {
+public enum PrivacySettings implements EnumParam {
     @SerializedName("0")
     COMMUNITY_MANAGERS_ONLY(0),
 
@@ -18,7 +19,7 @@ public enum PrivacySettings {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

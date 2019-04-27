@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetUserPhotosResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetUserPhotosQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getUserPhotos", GetUserPhotosResponse.class);
@@ -34,7 +33,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Offset needed to return a specific subset of photos. By default, "0".
+     * Offset needed to return a specific subset of photos. By default, '0'.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,7 +43,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Number of photos to return. Maximum value is '100'.
+     * Number of photos to return. Maximum value is 1000.
      *
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +53,7 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Return an additional "likes" field
+     * '1' — to return an additional 'likes' field, '0' — (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -64,12 +63,12 @@ public class PhotosGetUserPhotosQuery extends AbstractQueryBuilder<PhotosGetUser
     }
 
     /**
-     * Sort order
+     * Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetUserPhotosQuery sort(PhotosGetUserPhotosSort value) {
+    public PhotosGetUserPhotosQuery sort(String value) {
         return unsafeParam("sort", value);
     }
 

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.GetAlbumsResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class VideoGetAlbumsQuery extends AbstractQueryBuilder<VideoGetAlbumsQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public VideoGetAlbumsQuery(VkApiClient client, UserActor actor) {
         super(client, "video.getAlbums", GetAlbumsResponse.class);
@@ -54,9 +53,19 @@ public class VideoGetAlbumsQuery extends AbstractQueryBuilder<VideoGetAlbumsQuer
     }
 
     /**
-     * Return system albums
+     * '1' — to return additional information about album privacy settings for the current user
      *
-     * @param value value of "need_system" parameter.
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetAlbumsQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * Set need system
+     *
+     * @param value value of "need system" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public VideoGetAlbumsQuery needSystem(Boolean value) {

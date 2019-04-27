@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetOnlineQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.getOnline", Utils.buildParametrizedType(List.class, Integer.class));
@@ -44,7 +43,7 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
     }
 
     /**
-     * Return an additional "online_mobile" field
+     * '1' — to return an additional 'online_mobile' field, '0' — (default),
      *
      * @param value value of "online mobile" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,12 +53,12 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
     }
 
     /**
-     * Sort order
+     * Sort order: 'random' — random order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetOnlineQuery order(FriendsGetOnlineOrder value) {
+    public FriendsGetOnlineQuery order(String value) {
         return unsafeParam("order", value);
     }
 

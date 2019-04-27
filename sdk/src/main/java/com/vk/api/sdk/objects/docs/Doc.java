@@ -1,7 +1,9 @@
 package com.vk.api.sdk.objects.docs;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import com.vk.api.sdk.objects.base.BoolInt;
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -9,40 +11,10 @@ import java.util.Objects;
  */
 public class Doc {
     /**
-     * Document ID
+     * Access key for the document
      */
-    @SerializedName("id")
-    private Integer id;
-
-    /**
-     * Document owner ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Document title
-     */
-    @SerializedName("title")
-    private String title;
-
-    /**
-     * File size in bites
-     */
-    @SerializedName("size")
-    private Integer size;
-
-    /**
-     * File extension
-     */
-    @SerializedName("ext")
-    private String ext;
-
-    /**
-     * File URL
-     */
-    @SerializedName("url")
-    private String url;
+    @SerializedName("access_key")
+    private String accessKey;
 
     /**
      * Date when file has been uploaded in Unixtime
@@ -51,63 +23,154 @@ public class Doc {
     private Integer date;
 
     /**
-     * Document type
+     * File extension
      */
-    @SerializedName("type")
-    private Integer type;
+    @SerializedName("ext")
+    private String ext;
+
+    /**
+     * Document ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    @SerializedName("is_licensed")
+    private BoolInt isLicensed;
+
+    /**
+     * Document owner ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
 
     @SerializedName("preview")
     private DocPreview preview;
 
     /**
-     * Access key for the document
+     * File size in bites
      */
-    @SerializedName("access_key")
-    private String accessKey;
+    @SerializedName("size")
+    private Integer size;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Document title
+     */
+    @SerializedName("title")
+    private String title;
+
+    /**
+     * Document type
+     */
+    @SerializedName("type")
+    private Integer type;
+
+    /**
+     * File URL
+     */
+    @SerializedName("url")
+    private URL url;
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public String getExt() {
-        return ext;
-    }
-
-    public String getUrl() {
-        return url;
+    public Doc setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
-    public Integer getType() {
-        return type;
+    public Doc setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public Doc setExt(String ext) {
+        this.ext = ext;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Doc setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isLicensed() {
+        return isLicensed == BoolInt.YES;
+    }
+
+    public BoolInt getIsLicensed() {
+        return isLicensed;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public Doc setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
     }
 
     public DocPreview getPreview() {
         return preview;
     }
 
-    public String getAccessKey() {
-        return accessKey;
+    public Doc setPreview(DocPreview preview) {
+        this.preview = preview;
+        return this;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public Doc setSize(Integer size) {
+        this.size = size;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Doc setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public Doc setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public Doc setUrl(URL url) {
+        this.url = url;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ext, date, preview, size, accessKey, id, ownerId, title, type, url);
+        return Objects.hash(date, ext, preview, size, accessKey, isLicensed, id, ownerId, title, type, url);
     }
 
     @Override
@@ -115,31 +178,38 @@ public class Doc {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Doc doc = (Doc) o;
-        return Objects.equals(id, doc.id) &&
-                Objects.equals(ownerId, doc.ownerId) &&
-                Objects.equals(title, doc.title) &&
-                Objects.equals(size, doc.size) &&
+        return Objects.equals(date, doc.date) &&
                 Objects.equals(ext, doc.ext) &&
-                Objects.equals(url, doc.url) &&
-                Objects.equals(date, doc.date) &&
-                Objects.equals(type, doc.type) &&
                 Objects.equals(preview, doc.preview) &&
-                Objects.equals(accessKey, doc.accessKey);
+                Objects.equals(size, doc.size) &&
+                Objects.equals(ownerId, doc.ownerId) &&
+                Objects.equals(accessKey, doc.accessKey) &&
+                Objects.equals(isLicensed, doc.isLicensed) &&
+                Objects.equals(id, doc.id) &&
+                Objects.equals(title, doc.title) &&
+                Objects.equals(type, doc.type) &&
+                Objects.equals(url, doc.url);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Doc{");
-        sb.append("id=").append(id);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", title='").append(title).append("'");
-        sb.append(", size=").append(size);
+        sb.append("date=").append(date);
         sb.append(", ext='").append(ext).append("'");
-        sb.append(", url='").append(url).append("'");
-        sb.append(", date=").append(date);
-        sb.append(", type=").append(type);
         sb.append(", preview=").append(preview);
+        sb.append(", size=").append(size);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", accessKey='").append(accessKey).append("'");
+        sb.append(", isLicensed=").append(isLicensed);
+        sb.append(", id=").append(id);
+        sb.append(", title='").append(title).append("'");
+        sb.append(", type=").append(type);
+        sb.append(", url=").append(url);
         sb.append('}');
         return sb.toString();
     }

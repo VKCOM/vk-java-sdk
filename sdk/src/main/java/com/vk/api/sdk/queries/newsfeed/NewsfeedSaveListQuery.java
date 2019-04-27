@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param title  value of "title" parameter.
+     * @param actor actor with access token
+     * @param title value of "title" parameter.
      */
     public NewsfeedSaveListQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "newsfeed.saveList", Integer.class);
@@ -45,6 +44,17 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
     }
 
     /**
+     * Reposts display on and off ('1' is for off).
+     *
+     * @param value value of "no reposts" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSaveListQuery noReposts(Boolean value) {
+        return unsafeParam("no_reposts", value);
+    }
+
+    /**
+     * source_ids
      * Users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
      *
      * @param value value of "source ids" parameter.
@@ -62,16 +72,6 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      */
     public NewsfeedSaveListQuery sourceIds(List<Integer> value) {
         return unsafeParam("source_ids", value);
-    }
-
-    /**
-     * Reposts display on and off ("true" is for off).
-     *
-     * @param value value of "no reposts" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedSaveListQuery noReposts(Boolean value) {
-        return unsafeParam("no_reposts", value);
     }
 
     @Override

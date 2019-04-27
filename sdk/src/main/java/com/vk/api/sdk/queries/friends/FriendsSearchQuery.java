@@ -3,10 +3,9 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.FriendsNameCase;
 import com.vk.api.sdk.objects.friends.responses.SearchResponse;
-import com.vk.api.sdk.queries.users.UserField;
-import com.vk.api.sdk.queries.users.UsersNameCase;
-
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
      */
     public FriendsSearchQuery(VkApiClient client, UserActor actor, int userId) {
@@ -38,7 +37,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
     }
 
     /**
-     * Search query string (e.g., "Vasya Babich").
+     * Search query string (e.g., 'Vasya Babich').
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -48,32 +47,12 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
     }
 
     /**
-     * Profile fields to return.
+     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
      *
-     * @param value value of "fields" parameter.
+     * @param value value of "name case" parameter. By default Nom.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsSearchQuery fields(UserField... value) {
-        return unsafeParam("fields", value);
-    }
-
-    /**
-     * Profile fields to return.
-     *
-     * @param value value of "fields" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public FriendsSearchQuery fields(List<UserField> value) {
-        return unsafeParam("fields", value);
-    }
-
-    /**
-     * Case for declension of user name and surname
-     *
-     * @param value value of "name case" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public FriendsSearchQuery nameCase(UsersNameCase value) {
+    public FriendsSearchQuery nameCase(FriendsNameCase value) {
         return unsafeParam("name_case", value);
     }
 
@@ -95,6 +74,27 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      */
     public FriendsSearchQuery count(Integer value) {
         return unsafeParam("count", value);
+    }
+
+    /**
+     * fields
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsSearchQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsSearchQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

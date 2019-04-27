@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AccountSetOnlineQuery extends AbstractQueryBuilder<AccountSetOnline
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountSetOnlineQuery(VkApiClient client, UserActor actor) {
         super(client, "account.setOnline", OkResponse.class);
@@ -24,7 +23,7 @@ public class AccountSetOnlineQuery extends AbstractQueryBuilder<AccountSetOnline
     }
 
     /**
-     * Set voip
+     * '1' if videocalls are available for current device.
      *
      * @param value value of "voip" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

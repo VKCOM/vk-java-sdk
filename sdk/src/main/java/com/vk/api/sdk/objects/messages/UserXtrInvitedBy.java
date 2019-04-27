@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.messages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.users.UserXtrType;
-
 import java.util.Objects;
 
 /**
@@ -19,37 +19,33 @@ public class UserXtrInvitedBy extends UserXtrType {
         return invitedBy;
     }
 
+    public UserXtrInvitedBy setInvitedBy(Integer invitedBy) {
+        this.invitedBy = invitedBy;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), invitedBy);
+        return Objects.hash(invitedBy);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         UserXtrInvitedBy userXtrInvitedBy = (UserXtrInvitedBy) o;
         return Objects.equals(invitedBy, userXtrInvitedBy.invitedBy);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserXtrInvitedBy{");
-        sb.append("deactivated='").append(getDeactivated()).append('\'');
-        sb.append(", firstName='").append(getFirstName()).append('\'');
-        sb.append(", hidden=").append(getHidden());
-        sb.append(", id=").append(getId());
-        sb.append(", invitedBy=").append(invitedBy);
-        sb.append(", lastName='").append(getLastName()).append('\'');
-        sb.append(", online=").append(isOnline());
-        sb.append(", onlineApp=").append(getOnlineApp());
-        sb.append(", onlineMobile=").append(isOnlineMobile());
-        sb.append(", photo100='").append(getPhoto100()).append('\'');
-        sb.append(", photo50='").append(getPhoto50()).append('\'');
-        sb.append(", screenName='").append(getScreenName()).append('\'');
-        sb.append(", sex=").append(getSex());
-        sb.append(", type=").append(getType());
+        sb.append("invitedBy=").append(invitedBy);
         sb.append('}');
         return sb.toString();
     }

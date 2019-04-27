@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetCategoriesResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AdsGetCategoriesQuery extends AbstractQueryBuilder<AdsGetCategories
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AdsGetCategoriesQuery(VkApiClient client, UserActor actor) {
         super(client, "ads.getCategories", GetCategoriesResponse.class);
@@ -24,7 +23,7 @@ public class AdsGetCategoriesQuery extends AbstractQueryBuilder<AdsGetCategories
     }
 
     /**
-     * Language. The full list of supported languages is here.
+     * Language. The full list of supported languages is [vk.com/dev/api_requests|here].
      *
      * @param value value of "lang" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

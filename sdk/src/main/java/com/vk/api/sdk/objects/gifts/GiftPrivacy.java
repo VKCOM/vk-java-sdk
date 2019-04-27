@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.gifts;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Gift privacy
  */
-public enum GiftPrivacy {
+public enum GiftPrivacy implements EnumParam {
     @SerializedName("0")
     NAME_AND_MESSAGE_FOR_ALL(0),
 
@@ -21,7 +22,7 @@ public enum GiftPrivacy {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

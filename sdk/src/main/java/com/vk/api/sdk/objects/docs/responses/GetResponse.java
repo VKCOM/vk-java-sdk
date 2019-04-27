@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.docs.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.docs.Doc;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetResponse {
         return count;
     }
 
+    public GetResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<Doc> getItems() {
         return items;
+    }
+
+    public GetResponse setItems(List<Doc> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.friends.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Objects;
 
 /**
@@ -40,20 +40,45 @@ public class DeleteResponse {
         return success;
     }
 
+    public DeleteResponse setSuccess(OkResponse success) {
+        this.success = success;
+        return this;
+    }
+
     public DeleteResponseFriendDeleted getFriendDeleted() {
         return friendDeleted;
+    }
+
+    public DeleteResponse setFriendDeleted(DeleteResponseFriendDeleted friendDeleted) {
+        this.friendDeleted = friendDeleted;
+        return this;
     }
 
     public DeleteResponseOutRequestDeleted getOutRequestDeleted() {
         return outRequestDeleted;
     }
 
+    public DeleteResponse setOutRequestDeleted(DeleteResponseOutRequestDeleted outRequestDeleted) {
+        this.outRequestDeleted = outRequestDeleted;
+        return this;
+    }
+
     public DeleteResponseInRequestDeleted getInRequestDeleted() {
         return inRequestDeleted;
     }
 
+    public DeleteResponse setInRequestDeleted(DeleteResponseInRequestDeleted inRequestDeleted) {
+        this.inRequestDeleted = inRequestDeleted;
+        return this;
+    }
+
     public DeleteResponseSuggestionDeleted getSuggestionDeleted() {
         return suggestionDeleted;
+    }
+
+    public DeleteResponse setSuggestionDeleted(DeleteResponseSuggestionDeleted suggestionDeleted) {
+        this.suggestionDeleted = suggestionDeleted;
+        return this;
     }
 
     @Override
@@ -68,19 +93,24 @@ public class DeleteResponse {
         DeleteResponse deleteResponse = (DeleteResponse) o;
         return Objects.equals(success, deleteResponse.success) &&
                 Objects.equals(friendDeleted, deleteResponse.friendDeleted) &&
-                Objects.equals(outRequestDeleted, deleteResponse.outRequestDeleted) &&
                 Objects.equals(inRequestDeleted, deleteResponse.inRequestDeleted) &&
-                Objects.equals(suggestionDeleted, deleteResponse.suggestionDeleted);
+                Objects.equals(suggestionDeleted, deleteResponse.suggestionDeleted) &&
+                Objects.equals(outRequestDeleted, deleteResponse.outRequestDeleted);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DeleteResponse{");
         sb.append("success=").append(success);
         sb.append(", friendDeleted=").append(friendDeleted);
-        sb.append(", outRequestDeleted=").append(outRequestDeleted);
         sb.append(", inRequestDeleted=").append(inRequestDeleted);
         sb.append(", suggestionDeleted=").append(suggestionDeleted);
+        sb.append(", outRequestDeleted=").append(outRequestDeleted);
         sb.append('}');
         return sb.toString();
     }

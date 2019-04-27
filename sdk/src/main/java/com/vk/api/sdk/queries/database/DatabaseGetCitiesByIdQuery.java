@@ -6,8 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.BaseObject;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DatabaseGetCitiesByIdQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCitiesById", Utils.buildParametrizedType(List.class, BaseObject.class));
@@ -29,6 +28,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public DatabaseGetCitiesByIdQuery(VkApiClient client, ServiceActor actor) {
         super(client, "database.getCitiesById", Utils.buildParametrizedType(List.class, BaseObject.class));
@@ -37,6 +37,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
     }
 
     /**
+     * city_ids
      * City IDs.
      *
      * @param value value of "city ids" parameter.
@@ -56,7 +57,6 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
         return unsafeParam("city_ids", value);
     }
 
-
     @Override
     protected DatabaseGetCitiesByIdQuery getThis() {
         return this;
@@ -64,6 +64,6 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
+import com.vk.api.sdk.objects.enums.WallSort;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,13 +18,11 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param postId value of "post id" parameter. Minimum is 0.
+     * @param actor actor with access token
      */
-    public WallGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int postId) {
+    public WallGetCommentsQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "wall.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
-        postId(postId);
         extended(true);
     }
 
@@ -32,13 +30,12 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param postId value of "post id" parameter. Minimum is 0.
+     * @param actor actor with access token
      */
-    public WallGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor, int postId) {
+    public WallGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "wall.getComments", GetCommentsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
-        postId(postId);
         extended(true);
     }
 
@@ -58,28 +55,18 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallGetCommentsQueryWithExtended postId(int value) {
+    public WallGetCommentsQueryWithExtended postId(Integer value) {
         return unsafeParam("post_id", value);
     }
 
     /**
-     * Return the "likes" field
+     * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallGetCommentsQueryWithExtended needLikes(Boolean value) {
         return unsafeParam("need_likes", value);
-    }
-
-    /**
-     * Set allow group comments
-     *
-     * @param value value of "allow group comments" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public WallGetCommentsQueryWithExtended allowGroupComments(Boolean value) {
-        return unsafeParam("allow_group_comments", value);
     }
 
     /**
@@ -95,7 +82,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
     /**
      * Offset needed to return a specific subset of comments.
      *
-     * @param value value of "offset" parameter. Minimum is 0.
+     * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallGetCommentsQueryWithExtended offset(Integer value) {
@@ -113,17 +100,17 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
     }
 
     /**
-     * Sort order
+     * Sort order: 'asc' — chronological, 'desc' — reverse chronological
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentsQueryWithExtended sort(WallGetCommentsSort value) {
+    public WallGetCommentsQueryWithExtended sort(WallSort value) {
         return unsafeParam("sort", value);
     }
 
     /**
-     * Number of characters at which to truncate comments when previewed. By default, "90". Specify "0" if you do not want to truncate comments.
+     * Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
      *
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -143,12 +130,43 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
     }
 
     /**
+     * Comment ID.
+     *
+     * @param value value of "comment id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetCommentsQueryWithExtended commentId(Integer value) {
+        return unsafeParam("comment_id", value);
+    }
+
+    /**
+     * Count items in threads.
+     *
+     * @param value value of "thread items count" parameter. Maximum is 10. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetCommentsQueryWithExtended threadItemsCount(Integer value) {
+        return unsafeParam("thread_items_count", value);
+    }
+
+    /**
+     * fields
      * Set fields
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentsQueryWithExtended fields(EnumParam... value) {
+    public WallGetCommentsQueryWithExtended fields(UserGroupFields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetCommentsQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 
@@ -159,6 +177,6 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("post_id");
+        return Arrays.asList("access_token");
     }
 }

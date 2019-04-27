@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Item type
  */
-public enum NewsfeedItemType {
+public enum NewsfeedItemType implements EnumParam {
     @SerializedName("post")
     POST("post"),
 

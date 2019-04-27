@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.polls;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +10,27 @@ import java.util.Objects;
  * Poll object
  */
 public class Poll {
+    /**
+     * Information whether the pole is anonymous
+     */
+    @SerializedName("anonymous")
+    private BoolInt anonymous;
+
+    /**
+     * Current user's answer ID
+     */
+    @SerializedName("answer_id")
+    private Integer answerId;
+
+    @SerializedName("answers")
+    private List<Answer> answers;
+
+    /**
+     * Date when poll has been created in Unixtime
+     */
+    @SerializedName("created")
+    private Integer created;
+
     /**
      * Poll ID
      */
@@ -23,12 +44,6 @@ public class Poll {
     private Integer ownerId;
 
     /**
-     * Date when poll has been created in Unixtime
-     */
-    @SerializedName("created")
-    private Integer created;
-
-    /**
      * Poll question
      */
     @SerializedName("question")
@@ -40,53 +55,80 @@ public class Poll {
     @SerializedName("votes")
     private String votes;
 
-    /**
-     * Current user's answer ID
-     */
-    @SerializedName("answer_id")
-    private Integer answerId;
-
-    @SerializedName("answers")
-    private List<Answer> answers;
-
-    @SerializedName("anonymous")
-    private BoolInt anonymous;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public Integer getCreated() {
-        return created;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getVotes() {
-        return votes;
-    }
-
-    public Integer getAnswerId() {
-        return answerId;
-    }
-
-    public List<Answer> getAnswers() {
-        return answers;
+    public boolean isAnonymous() {
+        return anonymous == BoolInt.YES;
     }
 
     public BoolInt getAnonymous() {
         return anonymous;
     }
 
+    public Integer getAnswerId() {
+        return answerId;
+    }
+
+    public Poll setAnswerId(Integer answerId) {
+        this.answerId = answerId;
+        return this;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public Poll setAnswers(List<Answer> answers) {
+        this.answers = answers;
+        return this;
+    }
+
+    public Integer getCreated() {
+        return created;
+    }
+
+    public Poll setCreated(Integer created) {
+        this.created = created;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Poll setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public Poll setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public Poll setQuestion(String question) {
+        this.question = question;
+        return this;
+    }
+
+    public String getVotes() {
+        return votes;
+    }
+
+    public Poll setVotes(String votes) {
+        this.votes = votes;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, question, created, answers, votes, id, ownerId);
+        return Objects.hash(answerId, question, created, answers, anonymous, votes, id, ownerId);
     }
 
     @Override
@@ -94,27 +136,32 @@ public class Poll {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Poll poll = (Poll) o;
-        return Objects.equals(id, poll.id) &&
-                Objects.equals(ownerId, poll.ownerId) &&
+        return Objects.equals(question, poll.question) &&
                 Objects.equals(created, poll.created) &&
-                Objects.equals(question, poll.question) &&
-                Objects.equals(votes, poll.votes) &&
-                Objects.equals(answerId, poll.answerId) &&
+                Objects.equals(ownerId, poll.ownerId) &&
                 Objects.equals(answers, poll.answers) &&
-                Objects.equals(anonymous, poll.anonymous);
+                Objects.equals(anonymous, poll.anonymous) &&
+                Objects.equals(votes, poll.votes) &&
+                Objects.equals(id, poll.id) &&
+                Objects.equals(answerId, poll.answerId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Poll{");
-        sb.append("id=").append(id);
-        sb.append(", ownerId=").append(ownerId);
+        sb.append("question='").append(question).append("'");
         sb.append(", created=").append(created);
-        sb.append(", question='").append(question).append("'");
-        sb.append(", votes='").append(votes).append("'");
-        sb.append(", answerId=").append(answerId);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", answers=").append(answers);
         sb.append(", anonymous=").append(anonymous);
+        sb.append(", votes='").append(votes).append("'");
+        sb.append(", id=").append(id);
+        sb.append(", answerId=").append(answerId);
         sb.append('}');
         return sb.toString();
     }

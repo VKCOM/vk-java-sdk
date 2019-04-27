@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.widgets.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.widgets.WidgetPage;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetPagesResponse {
         return count;
     }
 
+    public GetPagesResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<WidgetPage> getPages() {
         return pages;
+    }
+
+    public GetPagesResponse setPages(List<WidgetPage> pages) {
+        this.pages = pages;
+        return this;
     }
 
     @Override
@@ -37,15 +47,20 @@ public class GetPagesResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetPagesResponse getPagesResponse = (GetPagesResponse) o;
-        return Objects.equals(count, getPagesResponse.count) &&
-                Objects.equals(pages, getPagesResponse.pages);
+        return Objects.equals(pages, getPagesResponse.pages) &&
+                Objects.equals(count, getPagesResponse.count);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetPagesResponse{");
-        sb.append("count=").append(count);
-        sb.append(", pages=").append(pages);
+        sb.append("pages=").append(pages);
+        sb.append(", count=").append(count);
         sb.append('}');
         return sb.toString();
     }

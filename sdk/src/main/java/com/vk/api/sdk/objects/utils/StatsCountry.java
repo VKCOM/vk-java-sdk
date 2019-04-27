@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,17 +24,18 @@ public class StatsCountry {
         return countryId;
     }
 
+    public StatsCountry setCountryId(Integer countryId) {
+        this.countryId = countryId;
+        return this;
+    }
+
     public Integer getViews() {
         return views;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StatsCountry countries = (StatsCountry) o;
-        return Objects.equals(countryId, countries.countryId) &&
-                Objects.equals(views, countries.views);
+    public StatsCountry setViews(Integer views) {
+        this.views = views;
+        return this;
     }
 
     @Override
@@ -43,7 +44,21 @@ public class StatsCountry {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StatsCountry statsCountry = (StatsCountry) o;
+        return Objects.equals(countryId, statsCountry.countryId) &&
+                Objects.equals(views, statsCountry.views);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsCountry{");
         sb.append("countryId=").append(countryId);
         sb.append(", views=").append(views);

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class VideoGetAlbumsByVideoQuery extends AbstractQueryBuilder<VideoGetAlb
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoGetAlbumsByVideoQuery(VkApiClient client, UserActor actor, int ownerId, int videoId) {
+    public VideoGetAlbumsByVideoQuery(VkApiClient client, UserActor actor, int ownerId,
+            int videoId) {
         super(client, "video.getAlbumsByVideo", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -55,6 +55,16 @@ public class VideoGetAlbumsByVideoQuery extends AbstractQueryBuilder<VideoGetAlb
      */
     protected VideoGetAlbumsByVideoQuery videoId(int value) {
         return unsafeParam("video_id", value);
+    }
+
+    /**
+     * Set extended
+     *
+     * @param value value of "extended" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetAlbumsByVideoQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     @Override

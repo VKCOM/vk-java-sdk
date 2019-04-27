@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client   VK API client
-     * @param actor    actor with access token
-     * @param token    value of "token" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param token value of "token" parameter.
      * @param deviceId value of "device id" parameter.
      */
-    public AccountRegisterDeviceQuery(VkApiClient client, UserActor actor, String token, String deviceId) {
+    public AccountRegisterDeviceQuery(VkApiClient client, UserActor actor, String token,
+            String deviceId) {
         super(client, "account.registerDevice", OkResponse.class);
         accessToken(actor.getAccessToken());
         token(token);
@@ -48,7 +48,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
     }
 
     /**
-     * Set device year
+     * Device year.
      *
      * @param value value of "device year" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +58,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
     }
 
     /**
-     * Set device id
+     * Unique device ID.
      *
      * @param value value of "device id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -78,13 +78,23 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
     }
 
     /**
-     * Set settings
+     * Push settings in a [vk.com/dev/push_settings|special format].
      *
      * @param value value of "settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AccountRegisterDeviceQuery settings(String value) {
         return unsafeParam("settings", value);
+    }
+
+    /**
+     * Set sandbox
+     *
+     * @param value value of "sandbox" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountRegisterDeviceQuery sandbox(Boolean value) {
+        return unsafeParam("sandbox", value);
     }
 
     @Override

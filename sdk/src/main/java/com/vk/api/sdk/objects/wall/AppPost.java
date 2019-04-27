@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -24,28 +25,48 @@ public class AppPost {
      * URL of the preview image with 130 px in width
      */
     @SerializedName("photo_130")
-    private String photo130;
+    private URL photo130;
 
     /**
      * URL of the preview image with 604 px in width
      */
     @SerializedName("photo_604")
-    private String photo604;
+    private URL photo604;
 
     public Integer getId() {
         return id;
+    }
+
+    public AppPost setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPhoto130() {
+    public AppPost setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public URL getPhoto130() {
         return photo130;
     }
 
-    public String getPhoto604() {
+    public AppPost setPhoto130(URL photo130) {
+        this.photo130 = photo130;
+        return this;
+    }
+
+    public URL getPhoto604() {
         return photo604;
+    }
+
+    public AppPost setPhoto604(URL photo604) {
+        this.photo604 = photo604;
+        return this;
     }
 
     @Override
@@ -58,19 +79,24 @@ public class AppPost {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AppPost appPost = (AppPost) o;
-        return Objects.equals(id, appPost.id) &&
+        return Objects.equals(photo604, appPost.photo604) &&
                 Objects.equals(name, appPost.name) &&
                 Objects.equals(photo130, appPost.photo130) &&
-                Objects.equals(photo604, appPost.photo604);
+                Objects.equals(id, appPost.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AppPost{");
-        sb.append("id=").append(id);
+        sb.append("photo604=").append(photo604);
         sb.append(", name='").append(name).append("'");
-        sb.append(", photo130='").append(photo130).append("'");
-        sb.append(", photo604='").append(photo604).append("'");
+        sb.append(", photo130=").append(photo130);
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

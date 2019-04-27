@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.VideoSort;
 import com.vk.api.sdk.objects.video.responses.SearchResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param q      value of "q" parameter.
+     * @param actor actor with access token
+     * @param q value of "q" parameter.
      */
     public VideoSearchQuery(VkApiClient client, UserActor actor, String q) {
         super(client, "video.search", SearchResponse.class);
@@ -26,7 +26,7 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Search query string (e.g., "The Beatles").
+     * Search query string (e.g., 'The Beatles').
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -36,12 +36,12 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Sort order
+     * Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoSearchQuery sort(VideoSearchSort value) {
+    public VideoSearchQuery sort(VideoSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -56,7 +56,7 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Disable the Safe Search filter
+     * '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
      *
      * @param value value of "adult" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -66,26 +66,8 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Set filters
+     * Set search own
      *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoSearchQuery filters(VideoSearchFilter... value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * Set filters
-     *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoSearchQuery filters(List<VideoSearchFilter> value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
      * @param value value of "search own" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -134,13 +116,34 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
-     * Set date
+     * Set extended
      *
-     * @param value value of "date" parameter. Minimum is 0.
+     * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoSearchQuery date(Integer value) {
-        return unsafeParam("date", value);
+    public VideoSearchQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * filters
+     * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSearchQuery filters(String... value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSearchQuery filters(List<String> value) {
+        return unsafeParam("filters", value);
     }
 
     @Override

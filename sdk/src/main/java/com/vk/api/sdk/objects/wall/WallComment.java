@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.LikesInfo;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,17 +10,8 @@ import java.util.Objects;
  * WallComment object
  */
 public class WallComment {
-    /**
-     * Comment ID
-     */
-    @SerializedName("id")
-    private Integer id;
-
-    /**
-     * Author ID
-     */
-    @SerializedName("from_id")
-    private Integer fromId;
+    @SerializedName("attachments")
+    private List<CommentAttachment> attachments;
 
     /**
      * Date when the comment has been added in Unixtime
@@ -29,22 +20,25 @@ public class WallComment {
     private Integer date;
 
     /**
-     * Comment text
+     * Author ID
      */
-    @SerializedName("text")
-    private String text;
+    @SerializedName("from_id")
+    private Integer fromId;
 
     /**
-     * Likes
+     * Comment ID
      */
+    @SerializedName("id")
+    private Integer id;
+
     @SerializedName("likes")
     private LikesInfo likes;
 
     /**
-     * Replied user ID
+     * Real position of the comment
      */
-    @SerializedName("reply_to_user")
-    private Integer replyToUser;
+    @SerializedName("real_offset")
+    private Integer realOffset;
 
     /**
      * Replied comment ID
@@ -53,56 +47,161 @@ public class WallComment {
     private Integer replyToComment;
 
     /**
-     * Comment attachments
+     * Replied user ID
      */
-    @SerializedName("attachments")
-    private List<CommentAttachment> attachments;
+    @SerializedName("reply_to_user")
+    private Integer replyToUser;
 
     /**
-     * Real position of the comment
+     * Comment text
      */
-    @SerializedName("real_offset")
-    private Integer realOffset;
+    @SerializedName("text")
+    private String text;
 
-    public Integer getId() {
-        return id;
+    @SerializedName("thread")
+    private CommentThread thread;
+
+    @SerializedName("post_id")
+    private Integer postId;
+
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
+
+    @SerializedName("deleted")
+    private Boolean deleted;
+
+    public List<CommentAttachment> getAttachments() {
+        return attachments;
     }
 
-    public Integer getFromId() {
-        return fromId;
+    public WallComment setAttachments(List<CommentAttachment> attachments) {
+        this.attachments = attachments;
+        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
-    public String getText() {
-        return text;
+    public WallComment setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getFromId() {
+        return fromId;
+    }
+
+    public WallComment setFromId(Integer fromId) {
+        this.fromId = fromId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public WallComment setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public LikesInfo getLikes() {
         return likes;
     }
 
-    public Integer getReplyToUser() {
-        return replyToUser;
-    }
-
-    public Integer getReplyToComment() {
-        return replyToComment;
-    }
-
-    public List<CommentAttachment> getAttachments() {
-        return attachments;
+    public WallComment setLikes(LikesInfo likes) {
+        this.likes = likes;
+        return this;
     }
 
     public Integer getRealOffset() {
         return realOffset;
     }
 
+    public WallComment setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public Integer getReplyToComment() {
+        return replyToComment;
+    }
+
+    public WallComment setReplyToComment(Integer replyToComment) {
+        this.replyToComment = replyToComment;
+        return this;
+    }
+
+    public Integer getReplyToUser() {
+        return replyToUser;
+    }
+
+    public WallComment setReplyToUser(Integer replyToUser) {
+        this.replyToUser = replyToUser;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public WallComment setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public CommentThread getThread() {
+        return thread;
+    }
+
+    public WallComment setThread(CommentThread thread) {
+        this.thread = thread;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public WallComment setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public WallComment setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
+
+    public WallComment setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+        return this;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public WallComment setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, realOffset, attachments, id, text, fromId, replyToUser, replyToComment, likes);
+        return Objects.hash(date, attachments, thread, postId, ownerId, fromId, replyToComment, parentsStack, realOffset, deleted, id, text, replyToUser, likes);
     }
 
     @Override
@@ -110,29 +209,44 @@ public class WallComment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WallComment wallComment = (WallComment) o;
-        return Objects.equals(id, wallComment.id) &&
-                Objects.equals(fromId, wallComment.fromId) &&
-                Objects.equals(date, wallComment.date) &&
-                Objects.equals(text, wallComment.text) &&
-                Objects.equals(likes, wallComment.likes) &&
-                Objects.equals(replyToUser, wallComment.replyToUser) &&
-                Objects.equals(replyToComment, wallComment.replyToComment) &&
+        return Objects.equals(date, wallComment.date) &&
                 Objects.equals(attachments, wallComment.attachments) &&
-                Objects.equals(realOffset, wallComment.realOffset);
+                Objects.equals(fromId, wallComment.fromId) &&
+                Objects.equals(replyToComment, wallComment.replyToComment) &&
+                Objects.equals(parentsStack, wallComment.parentsStack) &&
+                Objects.equals(ownerId, wallComment.ownerId) &&
+                Objects.equals(thread, wallComment.thread) &&
+                Objects.equals(realOffset, wallComment.realOffset) &&
+                Objects.equals(deleted, wallComment.deleted) &&
+                Objects.equals(postId, wallComment.postId) &&
+                Objects.equals(replyToUser, wallComment.replyToUser) &&
+                Objects.equals(id, wallComment.id) &&
+                Objects.equals(text, wallComment.text) &&
+                Objects.equals(likes, wallComment.likes);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WallComment{");
-        sb.append("id=").append(id);
+        sb.append("date=").append(date);
+        sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
-        sb.append(", date=").append(date);
+        sb.append(", replyToComment=").append(replyToComment);
+        sb.append(", parentsStack=").append(parentsStack);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", thread=").append(thread);
+        sb.append(", realOffset=").append(realOffset);
+        sb.append(", deleted=").append(deleted);
+        sb.append(", postId=").append(postId);
+        sb.append(", replyToUser=").append(replyToUser);
+        sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", likes=").append(likes);
-        sb.append(", replyToUser=").append(replyToUser);
-        sb.append(", replyToComment=").append(replyToComment);
-        sb.append(", attachments=").append(attachments);
-        sb.append(", realOffset=").append(realOffset);
         sb.append('}');
         return sb.toString();
     }

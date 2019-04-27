@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.apps;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Application type
  */
-public enum AppType {
+public enum AppType implements EnumParam {
     @SerializedName("app")
     APP("app"),
 
@@ -16,7 +17,16 @@ public enum AppType {
     SITE("site"),
 
     @SerializedName("standalone")
-    STANDALONE("standalone");
+    STANDALONE("standalone"),
+
+    @SerializedName("vk_app")
+    VK_APP("vk_app"),
+
+    @SerializedName("community_app")
+    COMMUNITY_APP("community_app"),
+
+    @SerializedName("html5_game")
+    HTML5_GAME("html5_game");
 
     private final String value;
 

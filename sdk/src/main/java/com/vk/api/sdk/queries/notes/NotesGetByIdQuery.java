@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.notes.Note;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, N
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
      */
     public NotesGetByIdQuery(VkApiClient client, UserActor actor, int noteId) {
@@ -46,9 +45,9 @@ public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, N
     }
 
     /**
-     * Need wiki text.
+     * Set need wiki
      *
-     * @param value value of "note id" parameter. Minimum is 0.
+     * @param value value of "need wiki" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesGetByIdQuery needWiki(Boolean value) {

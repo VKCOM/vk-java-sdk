@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class GetCallbackConfirmationCodeResponse {
 
     public String getCode() {
         return code;
+    }
+
+    public GetCallbackConfirmationCodeResponse setCode(String code) {
+        this.code = code;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class GetCallbackConfirmationCodeResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCallbackConfirmationCodeResponse{");
         sb.append("code='").append(code).append("'");
         sb.append('}');

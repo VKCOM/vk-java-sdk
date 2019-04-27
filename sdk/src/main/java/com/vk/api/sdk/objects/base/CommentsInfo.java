@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,28 +9,52 @@ import java.util.Objects;
  */
 public class CommentsInfo {
     /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private BoolInt canPost;
+
+    /**
      * Comments number
      */
     @SerializedName("count")
     private Integer count;
 
     /**
-     * Information whether current user can comment the post
+     * Information whether groups can comment the post
      */
-    @SerializedName("can_post")
-    private Integer canPost;
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
+
+    public boolean canPost() {
+        return canPost == BoolInt.YES;
+    }
+
+    public BoolInt getCanPost() {
+        return canPost;
+    }
 
     public Integer getCount() {
         return count;
     }
 
-    public Integer getCanPost() {
-        return canPost;
+    public CommentsInfo setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public CommentsInfo setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(canPost, count);
+        return Objects.hash(canPost, count, groupsCanPost);
     }
 
     @Override
@@ -39,13 +63,20 @@ public class CommentsInfo {
         if (o == null || getClass() != o.getClass()) return false;
         CommentsInfo commentsInfo = (CommentsInfo) o;
         return Objects.equals(count, commentsInfo.count) &&
+                Objects.equals(groupsCanPost, commentsInfo.groupsCanPost) &&
                 Objects.equals(canPost, commentsInfo.canPost);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CommentsInfo{");
         sb.append("count=").append(count);
+        sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", canPost=").append(canPost);
         sb.append('}');
         return sb.toString();

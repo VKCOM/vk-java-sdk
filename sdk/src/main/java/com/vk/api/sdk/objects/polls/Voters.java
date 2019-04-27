@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.polls;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -21,8 +21,18 @@ public class Voters {
         return answerId;
     }
 
+    public Voters setAnswerId(Integer answerId) {
+        this.answerId = answerId;
+        return this;
+    }
+
     public VotersUsers getUsers() {
         return users;
+    }
+
+    public Voters setUsers(VotersUsers users) {
+        this.users = users;
+        return this;
     }
 
     @Override
@@ -41,6 +51,11 @@ public class Voters {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Voters{");
         sb.append("answerId=").append(answerId);
         sb.append(", users=").append(users);

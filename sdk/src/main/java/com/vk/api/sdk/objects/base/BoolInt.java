@@ -1,8 +1,9 @@
 package com.vk.api.sdk.objects.base;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
-public enum BoolInt {
+public enum BoolInt implements EnumParam {
     @SerializedName("0")
     NO(0),
 
@@ -15,7 +16,7 @@ public enum BoolInt {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

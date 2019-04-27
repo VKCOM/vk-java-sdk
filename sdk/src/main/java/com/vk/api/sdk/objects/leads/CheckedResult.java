@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.leads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Information whether user can start the lead
  */
-public enum CheckedResult {
+public enum CheckedResult implements EnumParam {
     @SerializedName("true")
     TRUE("true"),
 

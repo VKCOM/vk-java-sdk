@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
+import com.vk.api.sdk.objects.enums.UsersType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,11 +16,11 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param userId value of "user id" parameter. Minimum is 0.
-     * @param type   value of "type" parameter.
+     * @param type value of "type" parameter.
      */
-    public UsersReportQuery(VkApiClient client, UserActor actor, int userId, UsersReportType type) {
+    public UsersReportQuery(VkApiClient client, UserActor actor, int userId, UsersType type) {
         super(client, "users.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
@@ -38,12 +38,12 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
     }
 
     /**
-     * Type of complaint
+     * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected UsersReportQuery type(UsersReportType value) {
+    protected UsersReportQuery type(UsersType value) {
         return unsafeParam("type", value);
     }
 

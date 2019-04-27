@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class PagesParseWikiQuery extends AbstractQueryBuilder<PagesParseWikiQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param text   value of "text" parameter.
+     * @param actor actor with access token
+     * @param text value of "text" parameter.
      */
     public PagesParseWikiQuery(VkApiClient client, UserActor actor, String text) {
         super(client, "pages.parseWiki", String.class);

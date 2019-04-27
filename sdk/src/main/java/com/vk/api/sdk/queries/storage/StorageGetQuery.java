@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.storage;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public StorageGetQuery(VkApiClient client, UserActor actor) {
         super(client, "storage.get", String.class);
@@ -33,6 +32,27 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
     }
 
     /**
+     * Set user id
+     *
+     * @param value value of "user id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageGetQuery userId(Integer value) {
+        return unsafeParam("user_id", value);
+    }
+
+    /**
+     * Set global
+     *
+     * @param value value of "global" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageGetQuery global(Boolean value) {
+        return unsafeParam("global", value);
+    }
+
+    /**
+     * keys
      * Set keys
      *
      * @param value value of "keys" parameter.
@@ -50,16 +70,6 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
      */
     public StorageGetQuery keys(List<String> value) {
         return unsafeParam("keys", value);
-    }
-
-    /**
-     * Set user id
-     *
-     * @param value value of "user id" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public StorageGetQuery userId(Integer value) {
-        return unsafeParam("user_id", value);
     }
 
     @Override

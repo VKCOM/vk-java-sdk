@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class UserMin {
     /**
-     * User ID
+     * Returns if a profile is deleted or blocked
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("deactivated")
+    private String deactivated;
 
     /**
      * User first name
@@ -21,46 +21,71 @@ public class UserMin {
     private String firstName;
 
     /**
-     * User last name
-     */
-    @SerializedName("last_name")
-    private String lastName;
-
-    /**
-     * Returns if a profile is deleted or blocked
-     */
-    @SerializedName("deactivated")
-    private String deactivated;
-
-    /**
      * Returns if a profile is hidden.
      */
     @SerializedName("hidden")
     private Integer hidden;
 
-    public Integer getId() {
-        return id;
+    /**
+     * User ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    /**
+     * User last name
+     */
+    @SerializedName("last_name")
+    private String lastName;
+
+    public String getDeactivated() {
+        return deactivated;
+    }
+
+    public UserMin setDeactivated(String deactivated) {
+        this.deactivated = deactivated;
+        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getDeactivated() {
-        return deactivated;
+    public UserMin setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
     }
 
     public Integer getHidden() {
         return hidden;
     }
 
+    public UserMin setHidden(Integer hidden) {
+        this.hidden = hidden;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public UserMin setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserMin setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, hidden, id, deactivated);
+        return Objects.hash(lastName, firstName, hidden, id, deactivated);
     }
 
     @Override
@@ -68,21 +93,26 @@ public class UserMin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserMin userMin = (UserMin) o;
-        return Objects.equals(id, userMin.id) &&
-                Objects.equals(firstName, userMin.firstName) &&
+        return Objects.equals(hidden, userMin.hidden) &&
                 Objects.equals(lastName, userMin.lastName) &&
-                Objects.equals(deactivated, userMin.deactivated) &&
-                Objects.equals(hidden, userMin.hidden);
+                Objects.equals(id, userMin.id) &&
+                Objects.equals(firstName, userMin.firstName) &&
+                Objects.equals(deactivated, userMin.deactivated);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserMin{");
-        sb.append("id=").append(id);
-        sb.append(", firstName='").append(firstName).append("'");
+        sb.append("hidden=").append(hidden);
         sb.append(", lastName='").append(lastName).append("'");
+        sb.append(", id=").append(id);
+        sb.append(", firstName='").append(firstName).append("'");
         sb.append(", deactivated='").append(deactivated).append("'");
-        sb.append(", hidden=").append(hidden);
         sb.append('}');
         return sb.toString();
     }

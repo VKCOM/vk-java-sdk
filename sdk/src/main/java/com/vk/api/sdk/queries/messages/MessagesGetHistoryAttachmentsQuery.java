@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.MessagesMediaType;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryAttachmentsResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param peerId value of "peer id" parameter.
      */
     public MessagesGetHistoryAttachmentsQuery(VkApiClient client, UserActor actor, int peerId) {
@@ -31,24 +31,18 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param peerId value of "peer id" parameter.
      */
     public MessagesGetHistoryAttachmentsQuery(VkApiClient client, GroupActor actor, int peerId) {
         super(client, "messages.getHistoryAttachments", GetHistoryAttachmentsResponse.class);
         accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
         peerId(peerId);
     }
 
     /**
-     * Peer ID.
-     * <p>
-     * <p>
-     * For group chat:
-     * "2000000000 + chat ID"
-     * <p>
-     * For community:
-     * "-community ID"
+     * Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
      *
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,17 +52,17 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
     }
 
     /**
-     * Type of media files to return
+     * Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
      *
-     * @param value value of "media type" parameter. By default 0.
+     * @param value value of "media type" parameter. By default photo.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryAttachmentsQuery mediaType(MessagesGetHistoryAttachmentsType value) {
+    public MessagesGetHistoryAttachmentsQuery mediaType(MessagesMediaType value) {
         return unsafeParam("media_type", value);
     }
 
     /**
-     * Set start from
+     * Message ID to start return results from.
      *
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,7 +82,7 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
     }
 
     /**
-     * Return photo sizes in a special format
+     * '1' — to return photo sizes in a
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -98,22 +92,53 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
     }
 
     /**
-     * Set fields
+     * Group ID (for group messages with group access token)
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryAttachmentsQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Set preserve order
+     *
+     * @param value value of "preserve order" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryAttachmentsQuery preserveOrder(Boolean value) {
+        return unsafeParam("preserve_order", value);
+    }
+
+    /**
+     * Set max forwards level
+     *
+     * @param value value of "max forwards level" parameter. Maximum is 45. Minimum is 0. By default 45.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryAttachmentsQuery maxForwardsLevel(Integer value) {
+        return unsafeParam("max_forwards_level", value);
+    }
+
+    /**
+     * fields
+     * Additional profile [vk.com/dev/fields|fields] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryAttachmentsQuery fields(EnumParam... value) {
+    public MessagesGetHistoryAttachmentsQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Set fields
+     * Additional profile [vk.com/dev/fields|fields] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryAttachmentsQuery fields(List<EnumParam> value) {
+    public MessagesGetHistoryAttachmentsQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
 

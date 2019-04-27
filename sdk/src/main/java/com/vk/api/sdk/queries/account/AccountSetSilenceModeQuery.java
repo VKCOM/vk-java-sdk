@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AccountSetSilenceModeQuery extends AbstractQueryBuilder<AccountSetS
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountSetSilenceModeQuery(VkApiClient client, UserActor actor) {
         super(client, "account.setSilenceMode", OkResponse.class);
@@ -24,7 +23,7 @@ public class AccountSetSilenceModeQuery extends AbstractQueryBuilder<AccountSetS
     }
 
     /**
-     * Set device id
+     * Unique device ID.
      *
      * @param value value of "device id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class AccountSetSilenceModeQuery extends AbstractQueryBuilder<AccountSetS
     }
 
     /**
-     * Set time
+     * Time in seconds for what notifications should be disabled. '-1' to disable forever.
      *
      * @param value value of "time" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,7 +43,7 @@ public class AccountSetSilenceModeQuery extends AbstractQueryBuilder<AccountSetS
     }
 
     /**
-     * Set peer id
+     * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
      *
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +53,7 @@ public class AccountSetSilenceModeQuery extends AbstractQueryBuilder<AccountSetS
     }
 
     /**
-     * Set sound
+     * '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id' contains user or community ID.
      *
      * @param value value of "sound" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class SubjectItem {
         return id;
     }
 
+    public SubjectItem setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public SubjectItem setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
@@ -38,15 +48,20 @@ public class SubjectItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SubjectItem subjectItem = (SubjectItem) o;
-        return Objects.equals(id, subjectItem.id) &&
-                Objects.equals(name, subjectItem.name);
+        return Objects.equals(name, subjectItem.name) &&
+                Objects.equals(id, subjectItem.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SubjectItem{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append("'");
+        sb.append("name='").append(name).append("'");
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

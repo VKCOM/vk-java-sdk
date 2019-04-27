@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Returns 1 if out request has been canceled
  */
-public enum DeleteResponseOutRequestDeleted {
+public enum DeleteResponseOutRequestDeleted implements EnumParam {
     @SerializedName("1")
     OK(1);
 
@@ -15,7 +16,7 @@ public enum DeleteResponseOutRequestDeleted {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

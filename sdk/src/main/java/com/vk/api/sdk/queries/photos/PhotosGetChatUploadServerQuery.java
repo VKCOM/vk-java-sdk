@@ -3,24 +3,23 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.responses.GetChatUploadServerResponse;
-
+import com.vk.api.sdk.objects.base.UploadServer;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getChatUploadServer method
  */
-public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosGetChatUploadServerQuery, GetChatUploadServerResponse> {
+public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosGetChatUploadServerQuery, UploadServer> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Minimum is 0.
      */
     public PhotosGetChatUploadServerQuery(VkApiClient client, UserActor actor, int chatId) {
-        super(client, "photos.getChatUploadServer", GetChatUploadServerResponse.class);
+        super(client, "photos.getChatUploadServer", UploadServer.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
     }
@@ -36,6 +35,8 @@ public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosG
     }
 
     /**
+     * Set crop x
+     *
      * @param value value of "crop x" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -44,6 +45,8 @@ public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosG
     }
 
     /**
+     * Set crop y
+     *
      * @param value value of "crop y" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

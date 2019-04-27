@@ -3,9 +3,9 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
+import com.vk.api.sdk.objects.newsfeed.Filters;
 import com.vk.api.sdk.objects.newsfeed.responses.GetResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedGetQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.get", GetResponse.class);
@@ -25,28 +25,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Filters to apply
-     *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedGetQuery filters(NewsfeedGetFilter... value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * Filters to apply
-     *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedGetQuery filters(List<NewsfeedGetFilter> value) {
-        return unsafeParam("filters", value);
-    }
-
-
-    /**
-     * Return news items from banned sources
+     * '1' — to return news items from banned sources
      *
      * @param value value of "return banned" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -76,7 +55,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Maximum number of photos to return. By default, "5".
+     * Maximum number of photos to return. By default, '5'.
      *
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,45 +65,17 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Sources to obtain news from, separated by commas.
-     * <p>
-     * User IDs can be specified in formats "user_id" or "u"user_id""
-     * where ""user_id"" is the user's friend ID.
-     * <p>
-     * Community IDs can be specified in formats "-"group_id"" or "g"group_id""
-     * where "group_id" is the community ID.
-     * <p>
-     * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the newsfeed.getBanned method.
+     * Sources to obtain news from, separated by commas. User IDs can be specified in formats ' or 'u' , where ' is the user's friend ID. Community IDs can be specified in formats '-' or 'g' , where ' is the community ID. If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the [vk.com/dev/newsfeed.getBanned|newsfeed.getBanned] method.
      *
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery sourceIds(String... value) {
-        return unsafeParam("source_ids", value);
-    }
-
-
-    /**
-     * Sources to obtain news from, separated by commas.
-     * <p>
-     * User IDs can be specified in formats "user_id" or "u"user_id""
-     * where ""user_id"" is the user's friend ID.
-     * <p>
-     * Community IDs can be specified in formats "-"group_id"" or "g"group_id""
-     * where "group_id" is the community ID.
-     * <p>
-     * If the parameter is not set, all of the user's friends and communities are returned, except for banned sources, which can be obtained with the newsfeed.getBanned method.
-     *
-     * @param value value of "source ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedGetQuery sourceIds(List<String> value) {
+    public NewsfeedGetQuery sourceIds(String value) {
         return unsafeParam("source_ids", value);
     }
 
     /**
-     * Identifier required to get the next page of results.
-     * Value for this parameter is returned in "next_from" field in a reply.
+     * Identifier required to get the next page of results. Value for this parameter is returned in 'next_from' field in a reply.
      *
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -134,7 +85,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Number of news items to return (default 50; maximum 100). For auto feed, you can use the "new_offset" parameter returned by this method.
+     * Number of news items to return (default 50, maximum 100). For auto feed, you can use the 'new_offset' parameter returned by this method.
      *
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -144,22 +95,54 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
     }
 
     /**
-     * Set fields
+     * Set section
+     *
+     * @param value value of "section" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery section(String value) {
+        return unsafeParam("section", value);
+    }
+
+    /**
+     * filters
+     * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery filters(Filters... value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends, 'note' — new notes
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetQuery filters(List<Filters> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery fields(EnumParam... value) {
+    public NewsfeedGetQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Set fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery fields(List<EnumParam> value) {
+    public NewsfeedGetQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 

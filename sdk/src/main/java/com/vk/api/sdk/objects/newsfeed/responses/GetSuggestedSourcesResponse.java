@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +10,6 @@ import java.util.Objects;
  * GetSuggestedSourcesResponse object
  */
 public class GetSuggestedSourcesResponse {
-
     /**
      * Total number
      */
@@ -24,8 +23,18 @@ public class GetSuggestedSourcesResponse {
         return count;
     }
 
+    public GetSuggestedSourcesResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<JsonObject> getItems() {
         return items;
+    }
+
+    public GetSuggestedSourcesResponse setItems(List<JsonObject> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -44,6 +53,11 @@ public class GetSuggestedSourcesResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetSuggestedSourcesResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

@@ -2,6 +2,8 @@ package com.vk.api.sdk.queries.oauth;
 
 import com.vk.api.sdk.queries.EnumParam;
 
+import com.vk.api.sdk.queries.EnumParam;
+
 /**
  * Created by tsivarev on 16.08.16.
  */

@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.board;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.wall.CommentAttachment;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,17 +10,8 @@ import java.util.Objects;
  * TopicComment object
  */
 public class TopicComment {
-    /**
-     * Comment ID
-     */
-    @SerializedName("id")
-    private Integer id;
-
-    /**
-     * Author ID
-     */
-    @SerializedName("from_id")
-    private Integer fromId;
+    @SerializedName("attachments")
+    private List<CommentAttachment> attachments;
 
     /**
      * Date when the comment has been added in Unixtime
@@ -29,13 +20,16 @@ public class TopicComment {
     private Integer date;
 
     /**
-     * Comment text
+     * Author ID
      */
-    @SerializedName("text")
-    private String text;
+    @SerializedName("from_id")
+    private Integer fromId;
 
-    @SerializedName("attachments")
-    private List<CommentAttachment> attachments;
+    /**
+     * Comment ID
+     */
+    @SerializedName("id")
+    private Integer id;
 
     /**
      * Real position of the comment
@@ -43,28 +37,64 @@ public class TopicComment {
     @SerializedName("real_offset")
     private Integer realOffset;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Comment text
+     */
+    @SerializedName("text")
+    private String text;
+
+    public List<CommentAttachment> getAttachments() {
+        return attachments;
     }
 
-    public Integer getFromId() {
-        return fromId;
+    public TopicComment setAttachments(List<CommentAttachment> attachments) {
+        this.attachments = attachments;
+        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
-    public String getText() {
-        return text;
+    public TopicComment setDate(Integer date) {
+        this.date = date;
+        return this;
     }
 
-    public List<CommentAttachment> getAttachments() {
-        return attachments;
+    public Integer getFromId() {
+        return fromId;
+    }
+
+    public TopicComment setFromId(Integer fromId) {
+        this.fromId = fromId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public TopicComment setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public Integer getRealOffset() {
         return realOffset;
+    }
+
+    public TopicComment setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public TopicComment setText(String text) {
+        this.text = text;
+        return this;
     }
 
     @Override
@@ -77,23 +107,28 @@ public class TopicComment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TopicComment topicComment = (TopicComment) o;
-        return Objects.equals(id, topicComment.id) &&
-                Objects.equals(fromId, topicComment.fromId) &&
-                Objects.equals(date, topicComment.date) &&
-                Objects.equals(text, topicComment.text) &&
+        return Objects.equals(date, topicComment.date) &&
+                Objects.equals(realOffset, topicComment.realOffset) &&
                 Objects.equals(attachments, topicComment.attachments) &&
-                Objects.equals(realOffset, topicComment.realOffset);
+                Objects.equals(fromId, topicComment.fromId) &&
+                Objects.equals(id, topicComment.id) &&
+                Objects.equals(text, topicComment.text);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TopicComment{");
-        sb.append("id=").append(id);
-        sb.append(", fromId=").append(fromId);
-        sb.append(", date=").append(date);
-        sb.append(", text='").append(text).append("'");
-        sb.append(", attachments=").append(attachments);
+        sb.append("date=").append(date);
         sb.append(", realOffset=").append(realOffset);
+        sb.append(", attachments=").append(attachments);
+        sb.append(", fromId=").append(fromId);
+        sb.append(", id=").append(id);
+        sb.append(", text='").append(text).append("'");
         sb.append('}');
         return sb.toString();
     }

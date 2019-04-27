@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.market.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.market.MarketAlbum;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetAlbumsResponse {
         return count;
     }
 
+    public GetAlbumsResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<MarketAlbum> getItems() {
         return items;
+    }
+
+    public GetAlbumsResponse setItems(List<MarketAlbum> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetAlbumsResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetAlbumsResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

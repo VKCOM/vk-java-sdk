@@ -1,0 +1,68 @@
+package com.vk.api.sdk.queries.stories;
+
+import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.stories.responses.GetExtendedResponse;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Query for Stories.get method
+ */
+public class StoriesGetQueryWithExtended extends AbstractQueryBuilder<StoriesGetQueryWithExtended, GetExtendedResponse> {
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StoriesGetQueryWithExtended(VkApiClient client, UserActor actor) {
+        super(client, "stories.get", GetExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        extended(true);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StoriesGetQueryWithExtended(VkApiClient client, GroupActor actor) {
+        super(client, "stories.get", GetExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        extended(true);
+    }
+
+    /**
+     * Owner ID.
+     *
+     * @param value value of "owner id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesGetQueryWithExtended ownerId(Integer value) {
+        return unsafeParam("owner_id", value);
+    }
+
+    /**
+     * '1' — to return additional fields for users and communities. Default value is 0.
+     *
+     * @param value value of "extended" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected StoriesGetQueryWithExtended extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    @Override
+    protected StoriesGetQueryWithExtended getThis() {
+        return this;
+    }
+
+    @Override
+    protected List<String> essentialKeys() {
+        return Arrays.asList("access_token");
+    }
+}

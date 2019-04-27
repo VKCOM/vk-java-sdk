@@ -1,10 +1,10 @@
 package com.vk.api.sdk.objects.wall.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserFull;
-import com.vk.api.sdk.objects.wall.WallPostFull;
-
+import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class GetByIdExtendedResponse {
     @SerializedName("items")
-    private List<WallPostFull> items;
+    private List<WallpostFull> items;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
@@ -21,16 +21,31 @@ public class GetByIdExtendedResponse {
     @SerializedName("groups")
     private List<GroupFull> groups;
 
-    public List<WallPostFull> getItems() {
+    public List<WallpostFull> getItems() {
         return items;
+    }
+
+    public GetByIdExtendedResponse setItems(List<WallpostFull> items) {
+        this.items = items;
+        return this;
     }
 
     public List<UserFull> getProfiles() {
         return profiles;
     }
 
+    public GetByIdExtendedResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     public List<GroupFull> getGroups() {
         return groups;
+    }
+
+    public GetByIdExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
     }
 
     @Override
@@ -43,17 +58,22 @@ public class GetByIdExtendedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetByIdExtendedResponse getByIdExtendedResponse = (GetByIdExtendedResponse) o;
-        return Objects.equals(items, getByIdExtendedResponse.items) &&
-                Objects.equals(profiles, getByIdExtendedResponse.profiles) &&
-                Objects.equals(groups, getByIdExtendedResponse.groups);
+        return Objects.equals(profiles, getByIdExtendedResponse.profiles) &&
+                Objects.equals(groups, getByIdExtendedResponse.groups) &&
+                Objects.equals(items, getByIdExtendedResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetByIdExtendedResponse{");
-        sb.append("items=").append(items);
-        sb.append(", profiles=").append(profiles);
+        sb.append("profiles=").append(profiles);
         sb.append(", groups=").append(groups);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

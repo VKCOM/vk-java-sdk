@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.leads.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class MetricHitResponse {
         return result;
     }
 
+    public MetricHitResponse setResult(Boolean result) {
+        this.result = result;
+        return this;
+    }
+
     public String getRedirectLink() {
         return redirectLink;
+    }
+
+    public MetricHitResponse setRedirectLink(String redirectLink) {
+        this.redirectLink = redirectLink;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class MetricHitResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MetricHitResponse{");
         sb.append("result=").append(result);
         sb.append(", redirectLink='").append(redirectLink).append("'");

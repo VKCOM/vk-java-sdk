@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,10 +13,10 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param photoId value of "photo id" parameter. Minimum is 0.
-     * @param userId  value of "user id" parameter.
+     * @param userId value of "user id" parameter.
      */
     public PhotosPutTagQuery(VkApiClient client, UserActor actor, int photoId, int userId) {
         super(client, "photos.putTag", Integer.class);
@@ -62,7 +61,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "x" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosPutTagQuery x(Float value) {
+    public PhotosPutTagQuery x(Number value) {
         return unsafeParam("x", value);
     }
 
@@ -72,7 +71,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "y" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosPutTagQuery y(Float value) {
+    public PhotosPutTagQuery y(Number value) {
         return unsafeParam("y", value);
     }
 
@@ -82,7 +81,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "x2" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosPutTagQuery x2(Float value) {
+    public PhotosPutTagQuery x2(Number value) {
         return unsafeParam("x2", value);
     }
 
@@ -92,7 +91,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "y2" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosPutTagQuery y2(Float value) {
+    public PhotosPutTagQuery y2(Number value) {
         return unsafeParam("y2", value);
     }
 

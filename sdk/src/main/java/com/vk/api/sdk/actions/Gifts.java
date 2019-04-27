@@ -9,7 +9,6 @@ import com.vk.api.sdk.queries.gifts.GiftsGetQuery;
  * List of Gifts methods
  */
 public class Gifts extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -21,6 +20,9 @@ public class Gifts extends AbstractAction {
 
     /**
      * Returns a list of user gifts.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public GiftsGetQuery get(UserActor actor) {
         return new GiftsGetQuery(getClient(), actor);

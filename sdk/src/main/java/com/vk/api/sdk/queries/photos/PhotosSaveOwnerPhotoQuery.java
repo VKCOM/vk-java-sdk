@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.SaveOwnerPhotoResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PhotosSaveOwnerPhotoQuery extends AbstractQueryBuilder<PhotosSaveOw
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosSaveOwnerPhotoQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.saveOwnerPhoto", SaveOwnerPhotoResponse.class);
@@ -24,7 +23,7 @@ public class PhotosSaveOwnerPhotoQuery extends AbstractQueryBuilder<PhotosSaveOw
     }
 
     /**
-     * Parameter returned after photo upload.
+     * Parameter returned after [vk.com/dev/upload_files|photo upload].
      *
      * @param value value of "server" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class PhotosSaveOwnerPhotoQuery extends AbstractQueryBuilder<PhotosSaveOw
     }
 
     /**
-     * Parameter returned after photo upload.
+     * Parameter returned after [vk.com/dev/upload_files|photo upload].
      *
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,7 +43,7 @@ public class PhotosSaveOwnerPhotoQuery extends AbstractQueryBuilder<PhotosSaveOw
     }
 
     /**
-     * Parameter returned after photo upload.
+     * Parameter returned after [vk.com/dev/upload_files|photo upload].
      *
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

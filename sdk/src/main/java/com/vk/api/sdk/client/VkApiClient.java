@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.actions.Account;
 import com.vk.api.sdk.actions.Ads;
-import com.vk.api.sdk.actions.AppWidgets;
 import com.vk.api.sdk.actions.Apps;
 import com.vk.api.sdk.actions.Auth;
 import com.vk.api.sdk.actions.Board;
@@ -15,6 +14,7 @@ import com.vk.api.sdk.actions.Fave;
 import com.vk.api.sdk.actions.Friends;
 import com.vk.api.sdk.actions.Gifts;
 import com.vk.api.sdk.actions.Groups;
+import com.vk.api.sdk.actions.GroupsLongPoll;
 import com.vk.api.sdk.actions.Leads;
 import com.vk.api.sdk.actions.Likes;
 import com.vk.api.sdk.actions.LongPoll;
@@ -27,54 +27,61 @@ import com.vk.api.sdk.actions.OAuth;
 import com.vk.api.sdk.actions.Orders;
 import com.vk.api.sdk.actions.Pages;
 import com.vk.api.sdk.actions.Photos;
-import com.vk.api.sdk.actions.Places;
 import com.vk.api.sdk.actions.Polls;
 import com.vk.api.sdk.actions.Search;
 import com.vk.api.sdk.actions.Secure;
 import com.vk.api.sdk.actions.Stats;
 import com.vk.api.sdk.actions.Status;
 import com.vk.api.sdk.actions.Storage;
+import com.vk.api.sdk.actions.Stories;
 import com.vk.api.sdk.actions.Streaming;
 import com.vk.api.sdk.actions.Upload;
 import com.vk.api.sdk.actions.Users;
+import com.vk.api.sdk.actions.Utils;
 import com.vk.api.sdk.actions.Videos;
 import com.vk.api.sdk.actions.Wall;
 import com.vk.api.sdk.actions.Widgets;
 import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
+    private static final String API_VERSION = "5.95";
 
-    private static final String API_VERSION = "5.69";
     private static final String API_ADDRESS = "https://api.vk.com/method/";
+
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
+
     private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
 
     private TransportClient transportClient;
+
     private Gson gson;
 
     private String apiEndpoint;
+
     private String oauthEndpoint;
+
     private int retryAttemptsInternalServerErrorCount;
 
     public VkApiClient(TransportClient transportClient) {
         this(transportClient, new GsonBuilder().create(), DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT);
     }
 
-    public VkApiClient(TransportClient transportClient, Gson gson, int retryAttemptsInternalServerErrorCount) {
+    public VkApiClient(TransportClient transportClient, Gson gson,
+            int retryAttemptsInternalServerErrorCount) {
         this.transportClient = transportClient;
         this.gson = gson;
         this.retryAttemptsInternalServerErrorCount = retryAttemptsInternalServerErrorCount;
 
         if (StringUtils.isNoneEmpty(System.getProperty("api.host"))) {
-            apiEndpoint = "https://" + System.getProperty("api.host") + "/method/";
+           apiEndpoint = "https://" + System.getProperty("api.host") + "/method/";
         } else {
-            apiEndpoint = API_ADDRESS;
+           apiEndpoint = API_ADDRESS;
         }
 
         if (StringUtils.isNoneEmpty(System.getProperty("oauth.host"))) {
-            oauthEndpoint = "https://" + System.getProperty("oauth.host") + "/";
+           oauthEndpoint = "https://" + System.getProperty("oauth.host") + "/";
         } else {
-            oauthEndpoint = OAUTH_ENDPOINT;
+           oauthEndpoint = OAUTH_ENDPOINT;
         }
     }
 
@@ -86,7 +93,7 @@ public class VkApiClient {
         return gson;
     }
 
-    int getRetryAttemptsInternalServerErrorCount() {
+    public int getRetryAttemptsInternalServerErrorCount() {
         return retryAttemptsInternalServerErrorCount;
     }
 
@@ -102,7 +109,7 @@ public class VkApiClient {
         return API_VERSION;
     }
 
-    public OAuth oauth() {
+    public OAuth oAuth() {
         return new OAuth(this);
     }
 
@@ -114,12 +121,12 @@ public class VkApiClient {
         return new Ads(this);
     }
 
-    public Apps apps() {
-        return new Apps(this);
-    }
-
     public Auth auth() {
         return new Auth(this);
+    }
+
+    public Apps apps() {
+        return new Apps(this);
     }
 
     public Board board() {
@@ -148,6 +155,10 @@ public class VkApiClient {
 
     public Groups groups() {
         return new Groups(this);
+    }
+
+    public GroupsLongPoll groupsLongPoll() {
+        return new GroupsLongPoll(this);
     }
 
     public Leads leads() {
@@ -190,10 +201,6 @@ public class VkApiClient {
         return new Photos(this);
     }
 
-    public Places places() {
-        return new Places(this);
-    }
-
     public Polls polls() {
         return new Polls(this);
     }
@@ -214,6 +221,10 @@ public class VkApiClient {
         return new Status(this);
     }
 
+    public Stories stories() {
+        return new Stories(this);
+    }
+
     public Storage storage() {
         return new Storage(this);
     }
@@ -230,8 +241,8 @@ public class VkApiClient {
         return new Upload(this);
     }
 
-    public com.vk.api.sdk.actions.Utils utils() {
-        return new com.vk.api.sdk.actions.Utils(this);
+    public Utils utils() {
+        return new Utils(this);
     }
 
     public Videos videos() {
@@ -244,10 +255,6 @@ public class VkApiClient {
 
     public Widgets widgets() {
         return new Widgets(this);
-    }
-
-    public AppWidgets appWidgets() {
-        return new AppWidgets(this);
     }
 
     public LongPoll longPoll() {

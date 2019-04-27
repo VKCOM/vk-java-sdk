@@ -6,7 +6,6 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.IsMemberExtendedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter.
      */
     public GroupsIsMemberQueryWithExtended(VkApiClient client, UserActor actor, String groupId) {
@@ -31,8 +30,8 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter.
      */
     public GroupsIsMemberQueryWithExtended(VkApiClient client, GroupActor actor, String groupId) {
@@ -45,7 +44,8 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter.
      */
     public GroupsIsMemberQueryWithExtended(VkApiClient client, ServiceActor actor, String groupId) {
@@ -77,13 +77,34 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * Return an extended response with additional fields
+     * '1' — to return an extended response with additional fields. By default: '0'.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsIsMemberQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * user_ids
+     * User IDs.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsIsMemberQueryWithExtended userIds(Integer... value) {
+        return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * User IDs.
+     *
+     * @param value value of "user ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsIsMemberQueryWithExtended userIds(List<Integer> value) {
+        return unsafeParam("user_ids", value);
     }
 
     @Override
@@ -93,6 +114,6 @@ public class GroupsIsMemberQueryWithExtended extends AbstractQueryBuilder<Groups
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id");
+        return Arrays.asList("group_id", "access_token");
     }
 }

@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargetGroup;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
     public AdsGetTargetGroupsQuery(VkApiClient client, UserActor actor, int accountId) {
@@ -37,8 +36,7 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
     }
 
     /**
-     * "Only for advertising agencies."
-     * ID of the client with the advertising account where the group will be created.
+     * 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
      *
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -48,7 +46,7 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
     }
 
     /**
-     * Set extended
+     * '1' — to return pixel code.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

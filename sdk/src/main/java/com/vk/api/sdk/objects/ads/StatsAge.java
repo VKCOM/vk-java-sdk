@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,16 +9,16 @@ import java.util.Objects;
  */
 public class StatsAge {
     /**
-     * Impressions rate
-     */
-    @SerializedName("impressions_rate")
-    private Float impressionsRate;
-
-    /**
      * Clicks rate
      */
     @SerializedName("clicks_rate")
     private Float clicksRate;
+
+    /**
+     * Impressions rate
+     */
+    @SerializedName("impressions_rate")
+    private Float impressionsRate;
 
     /**
      * Age interval
@@ -26,16 +26,31 @@ public class StatsAge {
     @SerializedName("value")
     private String value;
 
-    public Float getImpressionsRate() {
-        return impressionsRate;
-    }
-
     public Float getClicksRate() {
         return clicksRate;
     }
 
+    public StatsAge setClicksRate(Float clicksRate) {
+        this.clicksRate = clicksRate;
+        return this;
+    }
+
+    public Float getImpressionsRate() {
+        return impressionsRate;
+    }
+
+    public StatsAge setImpressionsRate(Float impressionsRate) {
+        this.impressionsRate = impressionsRate;
+        return this;
+    }
+
     public String getValue() {
         return value;
+    }
+
+    public StatsAge setValue(String value) {
+        this.value = value;
+        return this;
     }
 
     @Override
@@ -49,16 +64,21 @@ public class StatsAge {
         if (o == null || getClass() != o.getClass()) return false;
         StatsAge statsAge = (StatsAge) o;
         return Objects.equals(impressionsRate, statsAge.impressionsRate) &&
-                Objects.equals(clicksRate, statsAge.clicksRate) &&
-                Objects.equals(value, statsAge.value);
+                Objects.equals(value, statsAge.value) &&
+                Objects.equals(clicksRate, statsAge.clicksRate);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsAge{");
         sb.append("impressionsRate=").append(impressionsRate);
-        sb.append(", clicksRate=").append(clicksRate);
         sb.append(", value='").append(value).append("'");
+        sb.append(", clicksRate=").append(clicksRate);
         sb.append('}');
         return sb.toString();
     }

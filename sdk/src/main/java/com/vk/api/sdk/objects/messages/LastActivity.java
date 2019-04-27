@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.messages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -25,8 +25,17 @@ public class LastActivity {
         return online == BoolInt.YES;
     }
 
+    public BoolInt getOnline() {
+        return online;
+    }
+
     public Integer getTime() {
         return time;
+    }
+
+    public LastActivity setTime(Integer time) {
+        this.time = time;
+        return this;
     }
 
     @Override
@@ -45,6 +54,11 @@ public class LastActivity {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LastActivity{");
         sb.append("online=").append(online);
         sb.append(", time=").append(time);

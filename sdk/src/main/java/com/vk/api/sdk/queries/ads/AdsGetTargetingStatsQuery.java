@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.TargStats;
-
+import com.vk.api.sdk.objects.enums.AdsAdFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +15,13 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
-     * @param linkUrl   value of "link url" parameter.
+     * @param linkUrl value of "link url" parameter.
      */
-    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, int accountId, String linkUrl) {
+    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, int accountId,
+            String linkUrl) {
         super(client, "ads.getTargetingStats", TargStats.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -38,7 +39,17 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
     }
 
     /**
-     * Serialized JSON object that describes targeting parameters. Description of "criteria" object see below.
+     * Set client id
+     *
+     * @param value value of "client id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery clientId(Integer value) {
+        return unsafeParam("client_id", value);
+    }
+
+    /**
+     * Serialized JSON object that describes targeting parameters. Description of 'criteria' object see below.
      *
      * @param value value of "criteria" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,23 +69,43 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
     }
 
     /**
-     * Set ad format
+     * Ad format. Possible values: *'1' — image and text,, *'2' — big image,, *'3' — exclusive format,, *'4' — community, square image,, *'7' — special app format,, *'8' — special community format,, *'9' — post in community,, *'10' — app board.
      *
      * @param value value of "ad format" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetTargetingStatsQuery adFormat(Integer value) {
+    public AdsGetTargetingStatsQuery adFormat(AdsAdFormat value) {
         return unsafeParam("ad_format", value);
     }
 
     /**
-     * Set ad platform
+     * Platforms to use for ad showing. Possible values: (for 'ad_format' = '1'), *'0' — VK and partner sites,, *'1' — VK only. (for 'ad_format' = '9'), *'all' — all platforms,, *'desktop' — desktop version,, *'mobile' — mobile version and apps.
      *
      * @param value value of "ad platform" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AdsGetTargetingStatsQuery adPlatform(String value) {
         return unsafeParam("ad_platform", value);
+    }
+
+    /**
+     * Set ad platform no wall
+     *
+     * @param value value of "ad platform no wall" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery adPlatformNoWall(String value) {
+        return unsafeParam("ad_platform_no_wall", value);
+    }
+
+    /**
+     * Set ad platform no ad network
+     *
+     * @param value value of "ad platform no ad network" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery adPlatformNoAdNetwork(String value) {
+        return unsafeParam("ad_platform_no_ad_network", value);
     }
 
     /**

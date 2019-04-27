@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.newsfeed;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +9,9 @@ import java.util.Objects;
  * ItemPhotoTagPhotoTags object
  */
 public class ItemPhotoTagPhotoTags {
-
+    /**
+     * Tags number
+     */
     @SerializedName("count")
     private Integer count;
 
@@ -20,17 +22,18 @@ public class ItemPhotoTagPhotoTags {
         return count;
     }
 
+    public ItemPhotoTagPhotoTags setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<NewsfeedPhoto> getItems() {
         return items;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ItemPhotoTagPhotoTags that = (ItemPhotoTagPhotoTags) o;
-        return Objects.equals(count, that.count) &&
-                Objects.equals(items, that.items);
+    public ItemPhotoTagPhotoTags setItems(List<NewsfeedPhoto> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -39,7 +42,21 @@ public class ItemPhotoTagPhotoTags {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemPhotoTagPhotoTags itemPhotoTagPhotoTags = (ItemPhotoTagPhotoTags) o;
+        return Objects.equals(count, itemPhotoTagPhotoTags.count) &&
+                Objects.equals(items, itemPhotoTagPhotoTags.items);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemPhotoTagPhotoTags{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

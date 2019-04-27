@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,10 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param docId   value of "doc id" parameter. Minimum is 0.
+     * @param docId value of "doc id" parameter. Minimum is 0.
      */
     public DocsEditQuery(VkApiClient client, UserActor actor, int ownerId, int docId) {
         super(client, "docs.edit", OkResponse.class);
@@ -58,6 +57,7 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
     }
 
     /**
+     * tags
      * Document tags.
      *
      * @param value value of "tags" parameter.

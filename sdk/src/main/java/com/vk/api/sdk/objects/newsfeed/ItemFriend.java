@@ -1,21 +1,23 @@
 package com.vk.api.sdk.objects.newsfeed;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BaseUserId;
-
-import java.util.List;
 import java.util.Objects;
 
 /**
  * ItemFriend object
  */
 public class ItemFriend {
-
     @SerializedName("friends")
-    private List<BaseUserId> friends;
+    private ItemFriendFriends friends;
 
-    public List<BaseUserId> getFriends() {
+    public ItemFriendFriends getFriends() {
         return friends;
+    }
+
+    public ItemFriend setFriends(ItemFriendFriends friends) {
+        this.friends = friends;
+        return this;
     }
 
     @Override
@@ -33,6 +35,11 @@ public class ItemFriend {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemFriend{");
         sb.append("friends=").append(friends);
         sb.append('}');

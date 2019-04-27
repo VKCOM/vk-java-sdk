@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.account.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.users.UserMin;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetBannedResponse {
         return count;
     }
 
+    public GetBannedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<UserMin> getItems() {
         return items;
+    }
+
+    public GetBannedResponse setItems(List<UserMin> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetBannedResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetBannedResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

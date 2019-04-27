@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.photos.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetUserPhotosResponse {
         return count;
     }
 
+    public GetUserPhotosResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<Photo> getItems() {
         return items;
+    }
+
+    public GetUserPhotosResponse setItems(List<Photo> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetUserPhotosResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetUserPhotosResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

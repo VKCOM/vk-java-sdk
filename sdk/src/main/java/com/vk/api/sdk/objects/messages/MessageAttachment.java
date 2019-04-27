@@ -1,5 +1,6 @@
 package com.vk.api.sdk.objects.messages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.Link;
@@ -11,25 +12,27 @@ import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
-import com.vk.api.sdk.objects.wall.WallpostAttached;
-
+import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.Objects;
 
 /**
  * MessageAttachment object
  */
 public class MessageAttachment {
-    @SerializedName("photo")
-    private Photo photo;
-
     @SerializedName("audio")
     private AudioFull audio;
 
-    @SerializedName("video")
-    private Video video;
+    @SerializedName("audio_message")
+    private AudioMessage audioMessage;
 
     @SerializedName("doc")
     private Doc doc;
+
+    @SerializedName("gift")
+    private Layout gift;
+
+    @SerializedName("graffiti")
+    private Graffiti graffiti;
 
     @SerializedName("link")
     private Link link;
@@ -40,75 +43,153 @@ public class MessageAttachment {
     @SerializedName("market_market_album")
     private MarketAlbum marketMarketAlbum;
 
-    @SerializedName("gift")
-    private Layout gift;
+    @SerializedName("photo")
+    private Photo photo;
 
     @SerializedName("sticker")
     private Sticker sticker;
 
-    @SerializedName("wall")
-    private WallpostAttached wall;
-
-    @SerializedName("wall_reply")
-    private WallComment wallReply;
-
-    /**
-     * Attachment type
-     */
     @SerializedName("type")
     private MessageAttachmentType type;
 
-    public Photo getPhoto() {
-        return photo;
-    }
+    @SerializedName("video")
+    private Video video;
+
+    @SerializedName("wall")
+    private WallpostFull wall;
+
+    @SerializedName("wall_reply")
+    private WallComment wallReply;
 
     public AudioFull getAudio() {
         return audio;
     }
 
-    public Video getVideo() {
-        return video;
+    public MessageAttachment setAudio(AudioFull audio) {
+        this.audio = audio;
+        return this;
+    }
+
+    public AudioMessage getAudioMessage() {
+        return audioMessage;
+    }
+
+    public MessageAttachment setAudioMessage(AudioMessage audioMessage) {
+        this.audioMessage = audioMessage;
+        return this;
     }
 
     public Doc getDoc() {
         return doc;
     }
 
-    public Link getLink() {
-        return link;
-    }
-
-    public MarketItem getMarket() {
-        return market;
-    }
-
-    public MarketAlbum getMarketMarketAlbum() {
-        return marketMarketAlbum;
+    public MessageAttachment setDoc(Doc doc) {
+        this.doc = doc;
+        return this;
     }
 
     public Layout getGift() {
         return gift;
     }
 
+    public MessageAttachment setGift(Layout gift) {
+        this.gift = gift;
+        return this;
+    }
+
+    public Graffiti getGraffiti() {
+        return graffiti;
+    }
+
+    public MessageAttachment setGraffiti(Graffiti graffiti) {
+        this.graffiti = graffiti;
+        return this;
+    }
+
+    public Link getLink() {
+        return link;
+    }
+
+    public MessageAttachment setLink(Link link) {
+        this.link = link;
+        return this;
+    }
+
+    public MarketItem getMarket() {
+        return market;
+    }
+
+    public MessageAttachment setMarket(MarketItem market) {
+        this.market = market;
+        return this;
+    }
+
+    public MarketAlbum getMarketMarketAlbum() {
+        return marketMarketAlbum;
+    }
+
+    public MessageAttachment setMarketMarketAlbum(MarketAlbum marketMarketAlbum) {
+        this.marketMarketAlbum = marketMarketAlbum;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public MessageAttachment setPhoto(Photo photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public Sticker getSticker() {
         return sticker;
     }
 
-    public WallpostAttached getWall() {
-        return wall;
-    }
-
-    public WallComment getWallReply() {
-        return wallReply;
+    public MessageAttachment setSticker(Sticker sticker) {
+        this.sticker = sticker;
+        return this;
     }
 
     public MessageAttachmentType getType() {
         return type;
     }
 
+    public MessageAttachment setType(MessageAttachmentType type) {
+        this.type = type;
+        return this;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public MessageAttachment setVideo(Video video) {
+        this.video = video;
+        return this;
+    }
+
+    public WallpostFull getWall() {
+        return wall;
+    }
+
+    public MessageAttachment setWall(WallpostFull wall) {
+        this.wall = wall;
+        return this;
+    }
+
+    public WallComment getWallReply() {
+        return wallReply;
+    }
+
+    public MessageAttachment setWallReply(WallComment wallReply) {
+        this.wallReply = wallReply;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(market, gift, wallReply, marketMarketAlbum, link, sticker, photo, doc, audio, video, type, wall);
+        return Objects.hash(gift, wallReply, marketMarketAlbum, link, sticker, photo, video, audioMessage, type, market, doc, graffiti, audio, wall);
     }
 
     @Override
@@ -116,35 +197,44 @@ public class MessageAttachment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageAttachment messageAttachment = (MessageAttachment) o;
-        return Objects.equals(photo, messageAttachment.photo) &&
-                Objects.equals(audio, messageAttachment.audio) &&
-                Objects.equals(video, messageAttachment.video) &&
-                Objects.equals(doc, messageAttachment.doc) &&
+        return Objects.equals(gift, messageAttachment.gift) &&
                 Objects.equals(link, messageAttachment.link) &&
-                Objects.equals(market, messageAttachment.market) &&
                 Objects.equals(marketMarketAlbum, messageAttachment.marketMarketAlbum) &&
-                Objects.equals(gift, messageAttachment.gift) &&
                 Objects.equals(sticker, messageAttachment.sticker) &&
-                Objects.equals(wall, messageAttachment.wall) &&
+                Objects.equals(photo, messageAttachment.photo) &&
+                Objects.equals(video, messageAttachment.video) &&
+                Objects.equals(audioMessage, messageAttachment.audioMessage) &&
+                Objects.equals(type, messageAttachment.type) &&
+                Objects.equals(market, messageAttachment.market) &&
                 Objects.equals(wallReply, messageAttachment.wallReply) &&
-                Objects.equals(type, messageAttachment.type);
+                Objects.equals(doc, messageAttachment.doc) &&
+                Objects.equals(graffiti, messageAttachment.graffiti) &&
+                Objects.equals(audio, messageAttachment.audio) &&
+                Objects.equals(wall, messageAttachment.wall);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageAttachment{");
-        sb.append("photo=").append(photo);
-        sb.append(", audio=").append(audio);
-        sb.append(", video=").append(video);
-        sb.append(", doc=").append(doc);
+        sb.append("gift=").append(gift);
         sb.append(", link=").append(link);
-        sb.append(", market=").append(market);
         sb.append(", marketMarketAlbum=").append(marketMarketAlbum);
-        sb.append(", gift=").append(gift);
         sb.append(", sticker=").append(sticker);
-        sb.append(", wall=").append(wall);
+        sb.append(", photo=").append(photo);
+        sb.append(", video=").append(video);
+        sb.append(", audioMessage=").append(audioMessage);
+        sb.append(", type=").append(type);
+        sb.append(", market=").append(market);
         sb.append(", wallReply=").append(wallReply);
-        sb.append(", type='").append(type).append("'");
+        sb.append(", doc=").append(doc);
+        sb.append(", graffiti=").append(graffiti);
+        sb.append(", audio=").append(audio);
+        sb.append(", wall=").append(wall);
         sb.append('}');
         return sb.toString();
     }

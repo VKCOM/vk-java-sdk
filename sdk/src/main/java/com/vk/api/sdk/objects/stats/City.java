@@ -1,36 +1,61 @@
 package com.vk.api.sdk.objects.stats;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
- * Age object
+ * City object
  */
 public class City {
+    /**
+     * Visitors number
+     */
+    @SerializedName("count")
+    private Integer count;
 
-    @SerializedName("visitors")
-    private Integer visitors;
+    /**
+     * City name
+     */
+    @SerializedName("name")
+    private String name;
 
     /**
      * City ID
      */
     @SerializedName("value")
-    private String value;
+    private Integer value;
 
-    @SerializedName("name")
-    private String name;
-
-    public Integer getVisitors() {
-        return visitors;
+    public Integer getCount() {
+        return count;
     }
 
-    public String getValue() {
-        return value;
+    public City setCount(Integer count) {
+        this.count = count;
+        return this;
     }
 
     public String getName() {
         return name;
+    }
+
+    public City setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public City setValue(Integer value) {
+        this.value = value;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count, name, value);
     }
 
     @Override
@@ -38,22 +63,22 @@ public class City {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         City city = (City) o;
-        return Objects.equals(visitors, city.visitors) &&
-                Objects.equals(value, city.value) &&
-                Objects.equals(name, city.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(visitors, value, name);
+        return Objects.equals(count, city.count) &&
+                Objects.equals(name, city.name) &&
+                Objects.equals(value, city.value);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("City{");
-        sb.append("visitors=").append(visitors);
-        sb.append(", value='").append(value).append('\'');
-        sb.append(", name='").append(name).append('\'');
+        sb.append("count=").append(count);
+        sb.append(", name='").append(name).append("'");
+        sb.append(", value=").append(value);
         sb.append('}');
         return sb.toString();
     }

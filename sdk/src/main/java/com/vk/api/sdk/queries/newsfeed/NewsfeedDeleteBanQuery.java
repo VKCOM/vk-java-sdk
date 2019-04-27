@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedDeleteBanQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.deleteBan", OkResponse.class);
@@ -24,6 +23,7 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
     }
 
     /**
+     * user_ids
      * Set user ids
      *
      * @param value value of "user ids" parameter.
@@ -44,6 +44,7 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
     }
 
     /**
+     * group_ids
      * Set group ids
      *
      * @param value value of "group ids" parameter.
