@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.photos;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BaseCount;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.ObjectCount;
 import com.vk.api.sdk.objects.base.PropertyExists;
-
+import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,10 +15,10 @@ import java.util.Objects;
  */
 public class PhotoFullXtrRealOffset {
     /**
-     * Photo ID
+     * Access key for the photo
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("access_key")
+    private String accessKey;
 
     /**
      * Album ID
@@ -25,80 +26,11 @@ public class PhotoFullXtrRealOffset {
     @SerializedName("album_id")
     private Integer albumId;
 
-    /**
-     * Photo owner's ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    @SerializedName("can_comment")
+    private BoolInt canComment;
 
-    /**
-     * ID of the user who have uploaded the photo
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
-
-    /**
-     * URL of image with 75 px width
-     */
-    @SerializedName("photo_75")
-    private String photo75;
-
-    /**
-     * URL of image with 130 px width
-     */
-    @SerializedName("photo_130")
-    private String photo130;
-
-    /**
-     * URL of image with 604 px width
-     */
-    @SerializedName("photo_604")
-    private String photo604;
-
-    /**
-     * URL of image with 807 px width
-     */
-    @SerializedName("photo_807")
-    private String photo807;
-
-    /**
-     * URL of image with 1280 px width
-     */
-    @SerializedName("photo_1280")
-    private String photo1280;
-
-    /**
-     * URL of image with 2560 px width
-     */
-    @SerializedName("photo_2560")
-    private String photo2560;
-
-    /**
-     * Post ID
-     */
-    @SerializedName("post_id")
-    private Integer postId;
-
-    /**
-     * Original photo width
-     */
-    @SerializedName("width")
-    private Integer width;
-
-    /**
-     * Original photo height
-     */
-    @SerializedName("height")
-    private Integer height;
-
-    /**
-     * Photo caption
-     */
-    @SerializedName("text")
-    private String text;
+    @SerializedName("comments")
+    private ObjectCount comments;
 
     /**
      * Date when uploaded
@@ -107,40 +39,10 @@ public class PhotoFullXtrRealOffset {
     private Integer date;
 
     /**
-     * Latitude
+     * Original photo height
      */
-    @SerializedName("lat")
-    private Float lat;
-
-    /**
-     * Longitude
-     */
-    @SerializedName("long")
-    private Float lng;
-
-    /**
-     * Access key for the photo
-     */
-    @SerializedName("access_key")
-    private String accessKey;
-
-    @SerializedName("likes")
-    private Likes likes;
-
-    @SerializedName("reposts")
-    private BaseCount reposts;
-
-    @SerializedName("comments")
-    private BaseCount comments;
-
-    /**
-     * Information whether current user can comment the photo
-     */
-    @SerializedName("can_comment")
-    private BoolInt canComment;
-
-    @SerializedName("tags")
-    private BaseCount tags;
+    @SerializedName("height")
+    private Integer height;
 
     /**
      * Returns if the photo is hidden above the wall
@@ -149,118 +51,338 @@ public class PhotoFullXtrRealOffset {
     private PropertyExists hidden;
 
     /**
+     * Photo ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    /**
+     * Latitude
+     */
+    @SerializedName("lat")
+    private Float lat;
+
+    @SerializedName("likes")
+    private Likes likes;
+
+    /**
+     * Longitude
+     */
+    @SerializedName("long")
+    private Float lng;
+
+    /**
+     * Photo owner's ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
+    /**
+     * URL of image with 1280 px width
+     */
+    @SerializedName("photo_1280")
+    private URL photo1280;
+
+    /**
+     * URL of image with 130 px width
+     */
+    @SerializedName("photo_130")
+    private URL photo130;
+
+    /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_2560")
+    private URL photo2560;
+
+    /**
+     * URL of image with 604 px width
+     */
+    @SerializedName("photo_604")
+    private URL photo604;
+
+    /**
+     * URL of image with 75 px width
+     */
+    @SerializedName("photo_75")
+    private URL photo75;
+
+    /**
+     * URL of image with 807 px width
+     */
+    @SerializedName("photo_807")
+    private URL photo807;
+
+    /**
+     * Post ID
+     */
+    @SerializedName("post_id")
+    private Integer postId;
+
+    /**
      * Real position of the photo
      */
     @SerializedName("real_offset")
     private Integer realOffset;
 
-    public Integer getId() {
-        return id;
+    @SerializedName("reposts")
+    private ObjectCount reposts;
+
+    @SerializedName("sizes")
+    private List<PhotoSizes> sizes;
+
+    @SerializedName("tags")
+    private ObjectCount tags;
+
+    /**
+     * Photo caption
+     */
+    @SerializedName("text")
+    private String text;
+
+    /**
+     * ID of the user who have uploaded the photo
+     */
+    @SerializedName("user_id")
+    private Integer userId;
+
+    /**
+     * Original photo width
+     */
+    @SerializedName("width")
+    private Integer width;
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public PhotoFullXtrRealOffset setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
     }
 
     public Integer getAlbumId() {
         return albumId;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public List<PhotoSizes> getSizes() {
-        return sizes;
-    }
-
-    public String getPhoto75() {
-        return photo75;
-    }
-
-    public String getPhoto130() {
-        return photo130;
-    }
-
-    public String getPhoto604() {
-        return photo604;
-    }
-
-    public String getPhoto807() {
-        return photo807;
-    }
-
-    public String getPhoto1280() {
-        return photo1280;
-    }
-
-    public String getPhoto2560() {
-        return photo2560;
-    }
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public Float getLat() {
-        return lat;
-    }
-
-    public Float getLng() {
-        return lng;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
-    }
-
-    public Likes getLikes() {
-        return likes;
-    }
-
-    public BaseCount getReposts() {
-        return reposts;
-    }
-
-    public BaseCount getComments() {
-        return comments;
+    public PhotoFullXtrRealOffset setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+        return this;
     }
 
     public boolean canComment() {
         return canComment == BoolInt.YES;
     }
 
-    public BaseCount getTags() {
-        return tags;
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
+    public ObjectCount getComments() {
+        return comments;
+    }
+
+    public PhotoFullXtrRealOffset setComments(ObjectCount comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public PhotoFullXtrRealOffset setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public PhotoFullXtrRealOffset setHeight(Integer height) {
+        this.height = height;
+        return this;
     }
 
     public boolean isHidden() {
         return hidden == PropertyExists.PROPERTY_EXISTS;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public PhotoFullXtrRealOffset setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Float getLat() {
+        return lat;
+    }
+
+    public PhotoFullXtrRealOffset setLat(Float lat) {
+        this.lat = lat;
+        return this;
+    }
+
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public PhotoFullXtrRealOffset setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public Float getLng() {
+        return lng;
+    }
+
+    public PhotoFullXtrRealOffset setLng(Float lng) {
+        this.lng = lng;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public PhotoFullXtrRealOffset setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public URL getPhoto1280() {
+        return photo1280;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto1280(URL photo1280) {
+        this.photo1280 = photo1280;
+        return this;
+    }
+
+    public URL getPhoto130() {
+        return photo130;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto130(URL photo130) {
+        this.photo130 = photo130;
+        return this;
+    }
+
+    public URL getPhoto2560() {
+        return photo2560;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto2560(URL photo2560) {
+        this.photo2560 = photo2560;
+        return this;
+    }
+
+    public URL getPhoto604() {
+        return photo604;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto604(URL photo604) {
+        this.photo604 = photo604;
+        return this;
+    }
+
+    public URL getPhoto75() {
+        return photo75;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto75(URL photo75) {
+        this.photo75 = photo75;
+        return this;
+    }
+
+    public URL getPhoto807() {
+        return photo807;
+    }
+
+    public PhotoFullXtrRealOffset setPhoto807(URL photo807) {
+        this.photo807 = photo807;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public PhotoFullXtrRealOffset setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
     public Integer getRealOffset() {
         return realOffset;
     }
 
+    public PhotoFullXtrRealOffset setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public ObjectCount getReposts() {
+        return reposts;
+    }
+
+    public PhotoFullXtrRealOffset setReposts(ObjectCount reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
+    public List<PhotoSizes> getSizes() {
+        return sizes;
+    }
+
+    public PhotoFullXtrRealOffset setSizes(List<PhotoSizes> sizes) {
+        this.sizes = sizes;
+        return this;
+    }
+
+    public ObjectCount getTags() {
+        return tags;
+    }
+
+    public PhotoFullXtrRealOffset setTags(ObjectCount tags) {
+        this.tags = tags;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public PhotoFullXtrRealOffset setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public PhotoFullXtrRealOffset setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public PhotoFullXtrRealOffset setWidth(Integer width) {
+        this.width = width;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, photo604, hidden, photo807, albumId, ownerId, realOffset, sizes, photo75, photo130, id, text, canComment, lat, height, likes, comments, lng, photo1280, photo2560, postId, userId, tags, accessKey, width, reposts);
+        return Objects.hash(date, photo604, hidden, photo807, albumId, photo2560, ownerId, realOffset, photo75, sizes, photo130, canComment, id, text, lat, height, likes, comments, lng, photo1280, postId, userId, tags, accessKey, width, reposts);
     }
 
     @Override
@@ -268,63 +390,68 @@ public class PhotoFullXtrRealOffset {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoFullXtrRealOffset photoFullXtrRealOffset = (PhotoFullXtrRealOffset) o;
-        return Objects.equals(id, photoFullXtrRealOffset.id) &&
-                Objects.equals(albumId, photoFullXtrRealOffset.albumId) &&
-                Objects.equals(ownerId, photoFullXtrRealOffset.ownerId) &&
-                Objects.equals(userId, photoFullXtrRealOffset.userId) &&
-                Objects.equals(sizes, photoFullXtrRealOffset.sizes) &&
-                Objects.equals(photo75, photoFullXtrRealOffset.photo75) &&
-                Objects.equals(photo130, photoFullXtrRealOffset.photo130) &&
-                Objects.equals(photo604, photoFullXtrRealOffset.photo604) &&
-                Objects.equals(photo807, photoFullXtrRealOffset.photo807) &&
-                Objects.equals(photo1280, photoFullXtrRealOffset.photo1280) &&
-                Objects.equals(photo2560, photoFullXtrRealOffset.photo2560) &&
-                Objects.equals(postId, photoFullXtrRealOffset.postId) &&
-                Objects.equals(width, photoFullXtrRealOffset.width) &&
-                Objects.equals(height, photoFullXtrRealOffset.height) &&
-                Objects.equals(text, photoFullXtrRealOffset.text) &&
-                Objects.equals(date, photoFullXtrRealOffset.date) &&
-                Objects.equals(lat, photoFullXtrRealOffset.lat) &&
-                Objects.equals(lng, photoFullXtrRealOffset.lng) &&
-                Objects.equals(accessKey, photoFullXtrRealOffset.accessKey) &&
-                Objects.equals(likes, photoFullXtrRealOffset.likes) &&
-                Objects.equals(reposts, photoFullXtrRealOffset.reposts) &&
-                Objects.equals(comments, photoFullXtrRealOffset.comments) &&
-                Objects.equals(canComment, photoFullXtrRealOffset.canComment) &&
-                Objects.equals(tags, photoFullXtrRealOffset.tags) &&
+        return Objects.equals(date, photoFullXtrRealOffset.date) &&
                 Objects.equals(hidden, photoFullXtrRealOffset.hidden) &&
-                Objects.equals(realOffset, photoFullXtrRealOffset.realOffset);
+                Objects.equals(ownerId, photoFullXtrRealOffset.ownerId) &&
+                Objects.equals(photo75, photoFullXtrRealOffset.photo75) &&
+                Objects.equals(photo2560, photoFullXtrRealOffset.photo2560) &&
+                Objects.equals(photo807, photoFullXtrRealOffset.photo807) &&
+                Objects.equals(lng, photoFullXtrRealOffset.lng) &&
+                Objects.equals(canComment, photoFullXtrRealOffset.canComment) &&
+                Objects.equals(sizes, photoFullXtrRealOffset.sizes) &&
+                Objects.equals(photo604, photoFullXtrRealOffset.photo604) &&
+                Objects.equals(photo1280, photoFullXtrRealOffset.photo1280) &&
+                Objects.equals(id, photoFullXtrRealOffset.id) &&
+                Objects.equals(text, photoFullXtrRealOffset.text) &&
+                Objects.equals(lat, photoFullXtrRealOffset.lat) &&
+                Objects.equals(height, photoFullXtrRealOffset.height) &&
+                Objects.equals(likes, photoFullXtrRealOffset.likes) &&
+                Objects.equals(comments, photoFullXtrRealOffset.comments) &&
+                Objects.equals(tags, photoFullXtrRealOffset.tags) &&
+                Objects.equals(realOffset, photoFullXtrRealOffset.realOffset) &&
+                Objects.equals(postId, photoFullXtrRealOffset.postId) &&
+                Objects.equals(userId, photoFullXtrRealOffset.userId) &&
+                Objects.equals(accessKey, photoFullXtrRealOffset.accessKey) &&
+                Objects.equals(width, photoFullXtrRealOffset.width) &&
+                Objects.equals(photo130, photoFullXtrRealOffset.photo130) &&
+                Objects.equals(albumId, photoFullXtrRealOffset.albumId) &&
+                Objects.equals(reposts, photoFullXtrRealOffset.reposts);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoFullXtrRealOffset{");
-        sb.append("id=").append(id);
-        sb.append(", albumId=").append(albumId);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", userId=").append(userId);
-        sb.append(", sizes=").append(sizes);
-        sb.append(", photo75='").append(photo75).append("'");
-        sb.append(", photo130='").append(photo130).append("'");
-        sb.append(", photo604='").append(photo604).append("'");
-        sb.append(", photo807='").append(photo807).append("'");
-        sb.append(", photo1280='").append(photo1280).append("'");
-        sb.append(", photo2560='").append(photo2560).append("'");
-        sb.append(", postId=").append(postId);
-        sb.append(", width=").append(width);
-        sb.append(", height=").append(height);
-        sb.append(", text='").append(text).append("'");
-        sb.append(", date=").append(date);
-        sb.append(", lat=").append(lat);
-        sb.append(", lng=").append(lng);
-        sb.append(", accessKey='").append(accessKey).append("'");
-        sb.append(", likes=").append(likes);
-        sb.append(", reposts=").append(reposts);
-        sb.append(", comments=").append(comments);
-        sb.append(", canComment=").append(canComment);
-        sb.append(", tags=").append(tags);
+        sb.append("date=").append(date);
         sb.append(", hidden=").append(hidden);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", photo75=").append(photo75);
+        sb.append(", photo2560=").append(photo2560);
+        sb.append(", photo807=").append(photo807);
+        sb.append(", lng=").append(lng);
+        sb.append(", canComment=").append(canComment);
+        sb.append(", sizes=").append(sizes);
+        sb.append(", photo604=").append(photo604);
+        sb.append(", photo1280=").append(photo1280);
+        sb.append(", id=").append(id);
+        sb.append(", text='").append(text).append("'");
+        sb.append(", lat=").append(lat);
+        sb.append(", height=").append(height);
+        sb.append(", likes=").append(likes);
+        sb.append(", comments=").append(comments);
+        sb.append(", tags=").append(tags);
         sb.append(", realOffset=").append(realOffset);
+        sb.append(", postId=").append(postId);
+        sb.append(", userId=").append(userId);
+        sb.append(", accessKey='").append(accessKey).append("'");
+        sb.append(", width=").append(width);
+        sb.append(", photo130=").append(photo130);
+        sb.append(", albumId=").append(albumId);
+        sb.append(", reposts=").append(reposts);
         sb.append('}');
         return sb.toString();
     }

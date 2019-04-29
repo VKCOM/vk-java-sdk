@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.board;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,8 +13,8 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
@@ -47,8 +46,7 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * Text of the comment.
-     * Required if "attachments" is not set.
+     * (Required if 'attachments' is not set.) Text of the comment.
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,48 +56,7 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
     }
 
     /**
-     * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media object:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media owner.
-     * ""media_id"" - Media ID.
-     * <p>
-     * Required if "message" is not set.
-     *
-     * @param value value of "attachments" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public BoardCreateCommentQuery attachments(String... value) {
-        return unsafeParam("attachments", value);
-    }
-
-    /**
-     * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media object:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media owner.
-     * ""media_id"" - Media ID.
-     * <p>
-     * Required if "message" is not set.
-     *
-     * @param value value of "attachments" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public BoardCreateCommentQuery attachments(List<String> value) {
-        return unsafeParam("attachments", value);
-    }
-
-    /**
-     * true - to post the comment as by the community
-     * false - to post the comment as by the user (default)
+     * '1' — to post the comment as by the community, '0' — to post the comment as by the user (default)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -126,6 +83,27 @@ public class BoardCreateCommentQuery extends AbstractQueryBuilder<BoardCreateCom
      */
     public BoardCreateCommentQuery guid(String value) {
         return unsafeParam("guid", value);
+    }
+
+    /**
+     * attachments
+     * (Required if 'text' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardCreateCommentQuery attachments(String... value) {
+        return unsafeParam("attachments", value);
+    }
+
+    /**
+     * (Required if 'text' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID.
+     *
+     * @param value value of "attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardCreateCommentQuery attachments(List<String> value) {
+        return unsafeParam("attachments", value);
     }
 
     @Override

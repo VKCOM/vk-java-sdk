@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.AddAlbumResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class VideoAddAlbumQuery extends AbstractQueryBuilder<VideoAddAlbumQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public VideoAddAlbumQuery(VkApiClient client, UserActor actor) {
         super(client, "video.addAlbum", AddAlbumResponse.class);
@@ -44,7 +43,8 @@ public class VideoAddAlbumQuery extends AbstractQueryBuilder<VideoAddAlbumQuery,
     }
 
     /**
-     * New access permissions for the album.
+     * privacy
+     * New access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      *
      * @param value value of "privacy" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +54,7 @@ public class VideoAddAlbumQuery extends AbstractQueryBuilder<VideoAddAlbumQuery,
     }
 
     /**
-     * New access permissions for the album.
+     * New access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
      *
      * @param value value of "privacy" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

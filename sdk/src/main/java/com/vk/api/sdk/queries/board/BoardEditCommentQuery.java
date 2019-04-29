@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +14,14 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
-     * @param groupId   value of "group id" parameter. Minimum is 0.
-     * @param topicId   value of "topic id" parameter. Minimum is 0.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public BoardEditCommentQuery(VkApiClient client, UserActor actor, int groupId, int topicId, int commentId) {
+    public BoardEditCommentQuery(VkApiClient client, UserActor actor, int groupId, int topicId,
+            int commentId) {
         super(client, "board.editComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -60,8 +60,7 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
-     * New comment text.
-     * Required if "attachments" is not set
+     * (Required if 'attachments' is not set). New comment text.
      *
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,20 +70,8 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
-     * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media object:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media owner.
-     * ""media_id"" - Media ID.
-     * <p>
-     * Example:
-     * photo100172_166443618,photo66748_265827614
-     * <p>
-     * Required if "message" is not set.
+     * attachments
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -94,20 +81,7 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
-     * List of media objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media object:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media owner.
-     * ""media_id"" - Media ID.
-     * <p>
-     * Example:
-     * photo100172_166443618,photo66748_265827614
-     * <p>
-     * Required if "message" is not set.
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -115,7 +89,6 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     public BoardEditCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }
-
 
     @Override
     protected BoardEditCommentQuery getThis() {

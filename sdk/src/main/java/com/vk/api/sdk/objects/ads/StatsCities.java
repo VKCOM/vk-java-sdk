@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,22 +9,16 @@ import java.util.Objects;
  */
 public class StatsCities {
     /**
-     * Impressions rate
-     */
-    @SerializedName("impressions_rate")
-    private Float impressionsRate;
-
-    /**
      * Clicks rate
      */
     @SerializedName("clicks_rate")
     private Float clicksRate;
 
     /**
-     * City ID
+     * Impressions rate
      */
-    @SerializedName("value")
-    private Integer value;
+    @SerializedName("impressions_rate")
+    private Float impressionsRate;
 
     /**
      * City name
@@ -32,20 +26,46 @@ public class StatsCities {
     @SerializedName("name")
     private String name;
 
+    /**
+     * City ID
+     */
+    @SerializedName("value")
+    private Integer value;
+
+    public Float getClicksRate() {
+        return clicksRate;
+    }
+
+    public StatsCities setClicksRate(Float clicksRate) {
+        this.clicksRate = clicksRate;
+        return this;
+    }
+
     public Float getImpressionsRate() {
         return impressionsRate;
     }
 
-    public Float getClicksRate() {
-        return clicksRate;
+    public StatsCities setImpressionsRate(Float impressionsRate) {
+        this.impressionsRate = impressionsRate;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public StatsCities setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public Integer getValue() {
         return value;
     }
 
-    public String getName() {
-        return name;
+    public StatsCities setValue(Integer value) {
+        this.value = value;
+        return this;
     }
 
     @Override
@@ -59,18 +79,23 @@ public class StatsCities {
         if (o == null || getClass() != o.getClass()) return false;
         StatsCities statsCities = (StatsCities) o;
         return Objects.equals(impressionsRate, statsCities.impressionsRate) &&
-                Objects.equals(clicksRate, statsCities.clicksRate) &&
+                Objects.equals(name, statsCities.name) &&
                 Objects.equals(value, statsCities.value) &&
-                Objects.equals(name, statsCities.name);
+                Objects.equals(clicksRate, statsCities.clicksRate);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsCities{");
         sb.append("impressionsRate=").append(impressionsRate);
-        sb.append(", clicksRate=").append(clicksRate);
-        sb.append(", value=").append(value);
         sb.append(", name='").append(name).append("'");
+        sb.append(", value=").append(value);
+        sb.append(", clicksRate=").append(clicksRate);
         sb.append('}');
         return sb.toString();
     }

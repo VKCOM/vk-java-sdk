@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.PollsBackgroundId;
 import com.vk.api.sdk.objects.polls.Poll;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PollsCreateQuery(VkApiClient client, UserActor actor) {
         super(client, "polls.create", Poll.class);
@@ -34,7 +34,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
     }
 
     /**
-     * Is anonymous poll, participants list is hidden;
+     * '1' – anonymous poll, participants list is hidden,, '0' – public poll, participants list is available,, Default value is '0'.
      *
      * @param value value of "is anonymous" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,8 +44,27 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
     }
 
     /**
-     * If a poll will be added to a community it is required to send a negative group identifier.
-     * Current user by default.
+     * Set is multiple
+     *
+     * @param value value of "is multiple" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery isMultiple(Boolean value) {
+        return unsafeParam("is_multiple", value);
+    }
+
+    /**
+     * Set end date
+     *
+     * @param value value of "end date" parameter. Minimum is 1550700000.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery endDate(Integer value) {
+        return unsafeParam("end_date", value);
+    }
+
+    /**
+     * If a poll will be added to a communty it is required to send a negative group identifier. Current user by default.
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,15 +74,33 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
     }
 
     /**
-     * Available answers list, for example:
-     * ["yes","no","maybe"]
-     * There can be from 1 to 10 answers.
+     * Available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
      *
      * @param value value of "add answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PollsCreateQuery addAnswers(String value) {
         return unsafeParam("add_answers", value);
+    }
+
+    /**
+     * Set photo id
+     *
+     * @param value value of "photo id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery photoId(Integer value) {
+        return unsafeParam("photo_id", value);
+    }
+
+    /**
+     * Set background id
+     *
+     * @param value value of "background id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery backgroundId(PollsBackgroundId value) {
+        return unsafeParam("background_id", value);
     }
 
     @Override

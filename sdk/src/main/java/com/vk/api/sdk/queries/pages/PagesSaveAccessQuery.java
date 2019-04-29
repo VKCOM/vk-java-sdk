@@ -3,7 +3,8 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
+import com.vk.api.sdk.objects.enums.PagesEdit;
+import com.vk.api.sdk.objects.enums.PagesView;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param pageId value of "page id" parameter.
      */
     public PagesSaveAccessQuery(VkApiClient client, UserActor actor, int pageId) {
@@ -45,6 +46,8 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
     }
 
     /**
+     * Set user id
+     *
      * @param value value of "user id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -53,22 +56,22 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
     }
 
     /**
-     * Who can view the wiki page
+     * Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
      *
      * @param value value of "view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery view(PagesSaveAccess value) {
+    public PagesSaveAccessQuery view(PagesView value) {
         return unsafeParam("view", value);
     }
 
     /**
-     * Who can edit the wiki page
+     * Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
      *
      * @param value value of "edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery edit(PagesSaveAccess value) {
+    public PagesSaveAccessQuery edit(PagesEdit value) {
         return unsafeParam("edit", value);
     }
 

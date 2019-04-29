@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -9,43 +10,68 @@ import java.util.Objects;
  */
 public class ShortLink {
     /**
-     * Short link URL
-     */
-    @SerializedName("short_url")
-    private String shortUrl;
-
-    /**
-     * Full link URL
-     */
-    @SerializedName("url")
-    private String url;
-
-    /**
-     * Short link key (characters after "vk.cc")
-     */
-    @SerializedName("key")
-    private String key;
-
-    /**
      * Access key for private stats
      */
     @SerializedName("access_key")
     private String accessKey;
 
-    public String getShortUrl() {
-        return shortUrl;
+    /**
+     * Link key (characters after vk.cc/)
+     */
+    @SerializedName("key")
+    private String key;
+
+    /**
+     * Short link URL
+     */
+    @SerializedName("short_url")
+    private URL shortUrl;
+
+    /**
+     * Full URL
+     */
+    @SerializedName("url")
+    private URL url;
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public String getUrl() {
-        return url;
+    public ShortLink setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
     }
 
     public String getKey() {
         return key;
     }
 
-    public String getAccessKey() {
-        return accessKey;
+    public ShortLink setKey(String key) {
+        this.key = key;
+        return this;
+    }
+
+    public URL getShortUrl() {
+        return shortUrl;
+    }
+
+    public ShortLink setShortUrl(URL shortUrl) {
+        this.shortUrl = shortUrl;
+        return this;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public ShortLink setUrl(URL url) {
+        this.url = url;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessKey, shortUrl, key, url);
     }
 
     @Override
@@ -53,24 +79,24 @@ public class ShortLink {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShortLink shortLink = (ShortLink) o;
-        return Objects.equals(shortUrl, shortLink.shortUrl) &&
-                Objects.equals(url, shortLink.url) &&
+        return Objects.equals(accessKey, shortLink.accessKey) &&
                 Objects.equals(key, shortLink.key) &&
-                Objects.equals(accessKey, shortLink.accessKey);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(shortUrl, url, key, accessKey);
+                Objects.equals(url, shortLink.url) &&
+                Objects.equals(shortUrl, shortLink.shortUrl);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ShortLink{");
-        sb.append("shortUrl='").append(shortUrl).append('\'');
-        sb.append(", url='").append(url).append('\'');
-        sb.append(", key='").append(key).append('\'');
-        sb.append(", accessKey='").append(accessKey).append('\'');
+        sb.append("accessKey='").append(accessKey).append("'");
+        sb.append(", key='").append(key).append("'");
+        sb.append(", url=").append(url);
+        sb.append(", shortUrl=").append(shortUrl);
         sb.append('}');
         return sb.toString();
     }

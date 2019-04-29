@@ -1,5 +1,6 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.Link;
@@ -10,21 +11,14 @@ import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.pages.WikipageFull;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
-
 import java.util.Objects;
 
 /**
  * CommentAttachment object
  */
 public class CommentAttachment {
-    @SerializedName("photo")
-    private Photo photo;
-
     @SerializedName("audio")
     private AudioFull audio;
-
-    @SerializedName("video")
-    private Video video;
 
     @SerializedName("doc")
     private Doc doc;
@@ -32,74 +26,132 @@ public class CommentAttachment {
     @SerializedName("link")
     private Link link;
 
+    @SerializedName("market")
+    private MarketItem market;
+
+    @SerializedName("market_market_album")
+    private MarketAlbum marketMarketAlbum;
+
     @SerializedName("note")
     private AttachedNote note;
 
     @SerializedName("page")
     private WikipageFull page;
 
-    @SerializedName("market_market_album")
-    private MarketAlbum marketMarketAlbum;
-
-    @SerializedName("market")
-    private MarketItem market;
+    @SerializedName("photo")
+    private Photo photo;
 
     @SerializedName("sticker")
     private Sticker sticker;
 
-    /**
-     * Attachment type
-     */
     @SerializedName("type")
     private CommentAttachmentType type;
 
-    public Photo getPhoto() {
-        return photo;
-    }
+    @SerializedName("video")
+    private Video video;
 
     public AudioFull getAudio() {
         return audio;
     }
 
-    public Video getVideo() {
-        return video;
+    public CommentAttachment setAudio(AudioFull audio) {
+        this.audio = audio;
+        return this;
     }
 
     public Doc getDoc() {
         return doc;
     }
 
+    public CommentAttachment setDoc(Doc doc) {
+        this.doc = doc;
+        return this;
+    }
+
     public Link getLink() {
         return link;
     }
 
-    public AttachedNote getNote() {
-        return note;
-    }
-
-    public WikipageFull getPage() {
-        return page;
-    }
-
-    public MarketAlbum getMarketMarketAlbum() {
-        return marketMarketAlbum;
+    public CommentAttachment setLink(Link link) {
+        this.link = link;
+        return this;
     }
 
     public MarketItem getMarket() {
         return market;
     }
 
+    public CommentAttachment setMarket(MarketItem market) {
+        this.market = market;
+        return this;
+    }
+
+    public MarketAlbum getMarketMarketAlbum() {
+        return marketMarketAlbum;
+    }
+
+    public CommentAttachment setMarketMarketAlbum(MarketAlbum marketMarketAlbum) {
+        this.marketMarketAlbum = marketMarketAlbum;
+        return this;
+    }
+
+    public AttachedNote getNote() {
+        return note;
+    }
+
+    public CommentAttachment setNote(AttachedNote note) {
+        this.note = note;
+        return this;
+    }
+
+    public WikipageFull getPage() {
+        return page;
+    }
+
+    public CommentAttachment setPage(WikipageFull page) {
+        this.page = page;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public CommentAttachment setPhoto(Photo photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public Sticker getSticker() {
         return sticker;
+    }
+
+    public CommentAttachment setSticker(Sticker sticker) {
+        this.sticker = sticker;
+        return this;
     }
 
     public CommentAttachmentType getType() {
         return type;
     }
 
+    public CommentAttachment setType(CommentAttachmentType type) {
+        this.type = type;
+        return this;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public CommentAttachment setVideo(Video video) {
+        this.video = video;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(market, note, marketMarketAlbum, link, sticker, photo, doc, audio, video, page, type);
+        return Objects.hash(market, note, marketMarketAlbum, link, sticker, doc, photo, audio, page, video, type);
     }
 
     @Override
@@ -107,33 +159,38 @@ public class CommentAttachment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommentAttachment commentAttachment = (CommentAttachment) o;
-        return Objects.equals(photo, commentAttachment.photo) &&
-                Objects.equals(audio, commentAttachment.audio) &&
-                Objects.equals(video, commentAttachment.video) &&
-                Objects.equals(doc, commentAttachment.doc) &&
-                Objects.equals(link, commentAttachment.link) &&
+        return Objects.equals(market, commentAttachment.market) &&
                 Objects.equals(note, commentAttachment.note) &&
-                Objects.equals(page, commentAttachment.page) &&
+                Objects.equals(link, commentAttachment.link) &&
                 Objects.equals(marketMarketAlbum, commentAttachment.marketMarketAlbum) &&
-                Objects.equals(market, commentAttachment.market) &&
                 Objects.equals(sticker, commentAttachment.sticker) &&
+                Objects.equals(doc, commentAttachment.doc) &&
+                Objects.equals(photo, commentAttachment.photo) &&
+                Objects.equals(audio, commentAttachment.audio) &&
+                Objects.equals(page, commentAttachment.page) &&
+                Objects.equals(video, commentAttachment.video) &&
                 Objects.equals(type, commentAttachment.type);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CommentAttachment{");
-        sb.append("photo=").append(photo);
-        sb.append(", audio=").append(audio);
-        sb.append(", video=").append(video);
-        sb.append(", doc=").append(doc);
-        sb.append(", link=").append(link);
+        sb.append("market=").append(market);
         sb.append(", note=").append(note);
-        sb.append(", page=").append(page);
+        sb.append(", link=").append(link);
         sb.append(", marketMarketAlbum=").append(marketMarketAlbum);
-        sb.append(", market=").append(market);
         sb.append(", sticker=").append(sticker);
-        sb.append(", type='").append(type).append("'");
+        sb.append(", doc=").append(doc);
+        sb.append(", photo=").append(photo);
+        sb.append(", audio=").append(audio);
+        sb.append(", page=").append(page);
+        sb.append(", video=").append(video);
+        sb.append(", type=").append(type);
         sb.append('}');
         return sb.toString();
     }

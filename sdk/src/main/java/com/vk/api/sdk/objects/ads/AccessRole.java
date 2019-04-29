@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Current user's role
  */
-public enum AccessRole {
+public enum AccessRole implements EnumParam {
     @SerializedName("admin")
     ADMIN("admin"),
 

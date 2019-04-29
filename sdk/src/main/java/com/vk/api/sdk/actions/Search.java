@@ -9,7 +9,6 @@ import com.vk.api.sdk.queries.search.SearchGetHintsQuery;
  * List of Search methods
  */
 public class Search extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -21,6 +20,9 @@ public class Search extends AbstractAction {
 
     /**
      * Allows the programmer to do a quick search for any substring.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public SearchGetHintsQuery getHints(UserActor actor) {
         return new SearchGetHintsQuery(getClient(), actor);

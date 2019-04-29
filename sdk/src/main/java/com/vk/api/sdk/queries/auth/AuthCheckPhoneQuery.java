@@ -2,8 +2,9 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,14 +15,28 @@ public class AuthCheckPhoneQuery extends AbstractQueryBuilder<AuthCheckPhoneQuer
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client       VK API client
-     * @param phone        value of "phone" parameter.
-     * @param clientSecret value of "client secret" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param phone value of "phone" parameter.
      */
-    public AuthCheckPhoneQuery(VkApiClient client, String phone, String clientSecret) {
+    public AuthCheckPhoneQuery(VkApiClient client, UserActor actor, String phone) {
         super(client, "auth.checkPhone", OkResponse.class);
+        accessToken(actor.getAccessToken());
         phone(phone);
-        clientSecret(clientSecret);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param phone value of "phone" parameter.
+     */
+    public AuthCheckPhoneQuery(VkApiClient client, ServiceActor actor, String phone) {
+        super(client, "auth.checkPhone", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+        phone(phone);
     }
 
     /**
@@ -50,7 +65,7 @@ public class AuthCheckPhoneQuery extends AbstractQueryBuilder<AuthCheckPhoneQuer
      * @param value value of "client secret" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AuthCheckPhoneQuery clientSecret(String value) {
+    public AuthCheckPhoneQuery clientSecret(String value) {
         return unsafeParam("client_secret", value);
     }
 
@@ -71,6 +86,6 @@ public class AuthCheckPhoneQuery extends AbstractQueryBuilder<AuthCheckPhoneQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("phone", "client_secret");
+        return Arrays.asList("phone", "access_token");
     }
 }

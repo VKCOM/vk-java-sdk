@@ -1,7 +1,7 @@
 package com.vk.api.sdk.queries.upload;
 
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.objects.photos.responses.OwnerCoverUploadResponse;
+import com.vk.api.sdk.objects.responses.OwnerCoverUploadResponse;
 
 import java.io.File;
 

@@ -1,15 +1,17 @@
 package com.vk.api.sdk.objects.polls;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
 /**
- * VotesUsers object
+ * VotersUsers object
  */
 public class VotersUsers {
-
+    /**
+     * Votes number
+     */
     @SerializedName("count")
     private Integer count;
 
@@ -20,17 +22,18 @@ public class VotersUsers {
         return count;
     }
 
+    public VotersUsers setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<Integer> getItems() {
         return items;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        VotersUsers that = (VotersUsers) o;
-        return Objects.equals(count, that.count) &&
-                Objects.equals(items, that.items);
+    public VotersUsers setItems(List<Integer> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -39,7 +42,21 @@ public class VotersUsers {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VotersUsers votersUsers = (VotersUsers) o;
+        return Objects.equals(count, votersUsers.count) &&
+                Objects.equals(items, votersUsers.items);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("VotersUsers{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.fave.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.wall.WallPostFull;
-
+import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,14 +17,24 @@ public class GetPostsResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<WallPostFull> items;
+    private List<WallpostFull> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<WallPostFull> getItems() {
+    public GetPostsResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public List<WallpostFull> getItems() {
         return items;
+    }
+
+    public GetPostsResponse setItems(List<WallpostFull> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetPostsResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetPostsResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

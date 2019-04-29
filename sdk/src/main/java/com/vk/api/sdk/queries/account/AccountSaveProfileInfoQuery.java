@@ -4,7 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.SaveProfileInfoResponse;
-
+import com.vk.api.sdk.objects.enums.AccountBdateVisibility;
+import com.vk.api.sdk.objects.enums.AccountRelation;
+import com.vk.api.sdk.objects.enums.AccountSex;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +14,11 @@ import java.util.List;
  * Query for Account.saveProfileInfo method
  */
 public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSaveProfileInfoQuery, SaveProfileInfoResponse> {
-
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountSaveProfileInfoQuery(VkApiClient client, UserActor actor) {
         super(client, "account.saveProfileInfo", SaveProfileInfoResponse.class);
@@ -55,7 +56,7 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Set screen name
+     * User screen name.
      *
      * @param value value of "screen name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,7 +66,7 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Id of the name change request to be canceled. If this paremeter is sent, all the others are ignored.
+     * ID of the name change request to be canceled. If this parameter is sent, all the others are ignored.
      *
      * @param value value of "cancel request id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,27 +76,27 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * User sex
+     * User sex. Possible values: , * '1' – female,, * '2' – male.
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery sex(AccountSaveProfileInfoSex value) {
+    public AccountSaveProfileInfoQuery sex(AccountSex value) {
         return unsafeParam("sex", value);
     }
 
     /**
-     * User relationship status.
+     * User relationship status. Possible values: , * '1' – single,, * '2' – in a relationship,, * '3' – engaged,, * '4' – married,, * '5' – it's complicated,, * '6' – actively searching,, * '7' – in love,, * '0' – not specified.
      *
      * @param value value of "relation" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery relation(AccountSaveProfileInfoRelation value) {
+    public AccountSaveProfileInfoQuery relation(AccountRelation value) {
         return unsafeParam("relation", value);
     }
 
     /**
-     * Id of the relationship partner.
+     * ID of the relationship partner.
      *
      * @param value value of "relation partner id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -115,12 +116,12 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Birth date visibility.
+     * Birth date visibility. Returned values: , * '1' – show birth date,, * '2' – show only month and day,, * '0' – hide birth date.
      *
      * @param value value of "bdate visibility" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery bdateVisibility(AccountSaveProfileInfoBdateVisibility value) {
+    public AccountSaveProfileInfoQuery bdateVisibility(AccountBdateVisibility value) {
         return unsafeParam("bdate_visibility", value);
     }
 
@@ -155,7 +156,7 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Set status
+     * Status text.
      *
      * @param value value of "status" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

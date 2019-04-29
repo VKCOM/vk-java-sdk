@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class FriendsDeleteListQuery extends AbstractQueryBuilder<FriendsDeleteLi
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param listId value of "list id" parameter. Minimum is 0.
+     * @param actor actor with access token
+     * @param listId value of "list id" parameter. Maximum is 24. Minimum is 0.
      */
     public FriendsDeleteListQuery(VkApiClient client, UserActor actor, int listId) {
         super(client, "friends.deleteList", OkResponse.class);
@@ -28,7 +27,7 @@ public class FriendsDeleteListQuery extends AbstractQueryBuilder<FriendsDeleteLi
     /**
      * ID of the friend list to delete.
      *
-     * @param value value of "list id" parameter. Minimum is 0.
+     * @param value value of "list id" parameter. Maximum is 24. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected FriendsDeleteListQuery listId(int value) {

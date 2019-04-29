@@ -5,8 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetExtendedResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "photos.get", GetExtendedResponse.class);
@@ -29,6 +28,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public PhotosGetQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "photos.get", GetExtendedResponse.class);
@@ -48,7 +48,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Photo album ID. To return information about photos from service albums, use the following string values: "profile, wall, saved".
+     * Photo album ID. To return information about photos from service albums, use the following string values: 'profile, wall, saved'.
      *
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,27 +58,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Photo IDs.
-     *
-     * @param value value of "photo ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosGetQueryWithExtended photoIds(String... value) {
-        return unsafeParam("photo_ids", value);
-    }
-
-    /**
-     * Photo IDs.
-     *
-     * @param value value of "photo ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosGetQueryWithExtended photoIds(List<String> value) {
-        return unsafeParam("photo_ids", value);
-    }
-
-    /**
-     * Return photos in reverse chronological order
+     * Sort order: '1' — reverse chronological, '0' — chronological
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,7 +68,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Return additional "likes", "comments", and "tags" fields
+     * '1' — to return additional 'likes', 'comments', and 'tags' fields, '0' — (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -98,7 +78,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Type of feed obtained in "feed" field of the method.
+     * Type of feed obtained in 'feed' field of the method.
      *
      * @param value value of "feed type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,7 +88,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Unixtime, that can be obtained with newsfeed.get method in date field to get all photos uploaded by the user on a specific day, or photos the user has been tagged on. Also, "uid" parameter of the user the event happened with shall be specified.
+     * Unixtime, that can be obtained with [vk.com/dev/newsfeed.get|newsfeed.get] method in date field to get all photos uploaded by the user on a specific day, or photos the user has been tagged on. Also, 'uid' parameter of the user the event happened with shall be specified.
      *
      * @param value value of "feed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -118,7 +98,7 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     }
 
     /**
-     * Return photo sizes in a special format
+     * '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -140,11 +120,32 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
     /**
      * Set count
      *
-     * @param value value of "count" parameter. Maximum is 1000. Minimum is 0.
+     * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PhotosGetQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
+    }
+
+    /**
+     * photo_ids
+     * Photo IDs.
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetQueryWithExtended photoIds(String... value) {
+        return unsafeParam("photo_ids", value);
+    }
+
+    /**
+     * Photo IDs.
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosGetQueryWithExtended photoIds(List<String> value) {
+        return unsafeParam("photo_ids", value);
     }
 
     @Override
@@ -154,6 +155,6 @@ public class PhotosGetQueryWithExtended extends AbstractQueryBuilder<PhotosGetQu
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

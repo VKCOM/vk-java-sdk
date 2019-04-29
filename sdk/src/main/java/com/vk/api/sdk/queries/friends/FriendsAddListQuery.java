@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.AddListResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param name   value of "name" parameter.
+     * @param actor actor with access token
+     * @param name value of "name" parameter.
      */
     public FriendsAddListQuery(VkApiClient client, UserActor actor, String name) {
         super(client, "friends.addList", AddListResponse.class);
@@ -36,6 +35,7 @@ public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuer
     }
 
     /**
+     * user_ids
      * IDs of users to be added to the friend list.
      *
      * @param value value of "user ids" parameter.

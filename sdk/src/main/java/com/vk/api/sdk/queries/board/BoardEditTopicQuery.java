@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +14,14 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param topicId value of "topic id" parameter. Minimum is 0.
-     * @param title   value of "title" parameter.
+     * @param title value of "title" parameter.
      */
-    public BoardEditTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId, String title) {
+    public BoardEditTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId,
+            String title) {
         super(client, "board.editTopic", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);

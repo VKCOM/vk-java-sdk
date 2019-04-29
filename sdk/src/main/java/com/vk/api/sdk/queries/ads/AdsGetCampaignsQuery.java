@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.Campaign;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
     public AdsGetCampaignsQuery(VkApiClient client, UserActor actor, int accountId) {
@@ -37,7 +36,7 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
     }
 
     /**
-     * "For advertising agencies". ID of the client advertising campaigns are retrieved from.
+     * 'For advertising agencies'. ID of the client advertising campaigns are retrieved from.
      *
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -47,9 +46,7 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
     }
 
     /**
-     * Flag that specifies whether archived ads shall be shown.
-     * '0' - show only active campaigns;
-     * '1' - show all campaigns.
+     * Flag that specifies whether archived ads shall be shown. *0 — show only active campaigns,, *1 — show all campaigns.
      *
      * @param value value of "include deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -59,8 +56,7 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
     }
 
     /**
-     * Filter of advertising campaigns to show.
-     * Serialized JSON array with campaign IDs. Only campaigns that exist in "campaign_ids" and belong to the specified advertising account will be shown. If the parameter is 'null', all campaigns will be shown.
+     * Filter of advertising campaigns to show. Serialized JSON array with campaign IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be shown. If the parameter is null, all campaigns will be shown.
      *
      * @param value value of "campaign ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

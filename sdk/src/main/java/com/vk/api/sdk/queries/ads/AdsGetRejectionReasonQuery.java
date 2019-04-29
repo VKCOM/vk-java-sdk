@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.RejectReason;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class AdsGetRejectionReasonQuery extends AbstractQueryBuilder<AdsGetRejec
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
-     * @param adId      value of "ad id" parameter.
+     * @param adId value of "ad id" parameter.
      */
-    public AdsGetRejectionReasonQuery(VkApiClient client, UserActor actor, int accountId, int adId) {
+    public AdsGetRejectionReasonQuery(VkApiClient client, UserActor actor, int accountId,
+            int adId) {
         super(client, "ads.getRejectionReason", RejectReason.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);

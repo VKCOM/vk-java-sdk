@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
+import com.vk.api.sdk.objects.enums.NewsfeedType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,11 +16,12 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param type   value of "type" parameter.
+     * @param actor actor with access token
+     * @param type value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnsubscribeQuery(VkApiClient client, UserActor actor, NewsfeedItemType type, int itemId) {
+    public NewsfeedUnsubscribeQuery(VkApiClient client, UserActor actor, NewsfeedType type,
+            int itemId) {
         super(client, "newsfeed.unsubscribe", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -28,12 +29,12 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
     }
 
     /**
-     * Type of object from which to unsubscribe
+     * Type of object from which to unsubscribe: 'note' — note, 'photo' — photo, 'post' — post on user wall or community wall, 'topic' — topic, 'video' — video
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnsubscribeQuery type(NewsfeedItemType value) {
+    protected NewsfeedUnsubscribeQuery type(NewsfeedType value) {
         return unsafeParam("type", value);
     }
 

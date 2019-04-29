@@ -1,9 +1,10 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -11,10 +12,10 @@ import java.util.Objects;
  */
 public class AdLayout {
     /**
-     * Ad ID
+     * Ad format
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("ad_format")
+    private Integer adFormat;
 
     /**
      * Campaign ID
@@ -22,41 +23,32 @@ public class AdLayout {
     @SerializedName("campaign_id")
     private Integer campaignId;
 
-    /**
-     * Ad format
-     */
-    @SerializedName("ad_format ")
-    private Integer adFormat;
-
-    /**
-     * Cost type
-     */
     @SerializedName("cost_type")
     private AdLayoutCostType costType;
 
     /**
-     * Information whether the ad is a video
-     */
-    @SerializedName("video")
-    private BoolInt video;
-
-    /**
-     * Ad title
-     */
-    @SerializedName("title")
-    private String title;
-
-    /**
      * Ad description
      */
-    @SerializedName("description ")
+    @SerializedName("description")
     private String description;
 
     /**
-     * URL of advertised object
+     * Ad ID
      */
-    @SerializedName("link_url ")
-    private String linkUrl;
+    @SerializedName("id")
+    private Integer id;
+
+    /**
+     * Image URL
+     */
+    @SerializedName("image_src")
+    private URL imageSrc;
+
+    /**
+     * URL of the preview image in double size
+     */
+    @SerializedName("image_src_2x")
+    private URL imageSrc2x;
 
     /**
      * Domain of advertised object
@@ -65,74 +57,139 @@ public class AdLayout {
     private String linkDomain;
 
     /**
+     * URL of advertised object
+     */
+    @SerializedName("link_url")
+    private URL linkUrl;
+
+    /**
      * link to preview an ad as it is shown on the website
      */
-    @SerializedName("preview_link ")
+    @SerializedName("preview_link")
     private JsonObject previewLink;
 
     /**
-     * Image URL
+     * Ad title
      */
-    @SerializedName("image_src")
-    private Integer imageSrc;
+    @SerializedName("title")
+    private String title;
 
     /**
-     * URL of the preview image in double size
+     * Information whether the ad is a video
      */
-    @SerializedName("image_src_2x")
-    private Integer imageSrc2x;
+    @SerializedName("video")
+    private BoolInt video;
 
-    public Integer getId() {
-        return id;
+    public Integer getAdFormat() {
+        return adFormat;
+    }
+
+    public AdLayout setAdFormat(Integer adFormat) {
+        this.adFormat = adFormat;
+        return this;
     }
 
     public Integer getCampaignId() {
         return campaignId;
     }
 
-    public Integer getAdFormat() {
-        return adFormat;
+    public AdLayout setCampaignId(Integer campaignId) {
+        this.campaignId = campaignId;
+        return this;
     }
 
     public AdLayoutCostType getCostType() {
         return costType;
     }
 
-    public boolean isVideo() {
-        return video == BoolInt.YES;
-    }
-
-    public String getTitle() {
-        return title;
+    public AdLayout setCostType(AdLayoutCostType costType) {
+        this.costType = costType;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getLinkUrl() {
-        return linkUrl;
+    public AdLayout setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public AdLayout setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public URL getImageSrc() {
+        return imageSrc;
+    }
+
+    public AdLayout setImageSrc(URL imageSrc) {
+        this.imageSrc = imageSrc;
+        return this;
+    }
+
+    public URL getImageSrc2x() {
+        return imageSrc2x;
+    }
+
+    public AdLayout setImageSrc2x(URL imageSrc2x) {
+        this.imageSrc2x = imageSrc2x;
+        return this;
     }
 
     public String getLinkDomain() {
         return linkDomain;
     }
 
+    public AdLayout setLinkDomain(String linkDomain) {
+        this.linkDomain = linkDomain;
+        return this;
+    }
+
+    public URL getLinkUrl() {
+        return linkUrl;
+    }
+
+    public AdLayout setLinkUrl(URL linkUrl) {
+        this.linkUrl = linkUrl;
+        return this;
+    }
+
     public JsonObject getPreviewLink() {
         return previewLink;
     }
 
-    public Integer getImageSrc() {
-        return imageSrc;
+    public AdLayout setPreviewLink(JsonObject previewLink) {
+        this.previewLink = previewLink;
+        return this;
     }
 
-    public Integer getImageSrc2x() {
-        return imageSrc2x;
+    public String getTitle() {
+        return title;
+    }
+
+    public AdLayout setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public boolean isVideo() {
+        return video == BoolInt.YES;
+    }
+
+    public BoolInt getVideo() {
+        return video;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(campaignId, costType, previewLink, linkUrl, description, imageSrc2x, imageSrc, id, video, adFormat, title, linkDomain);
+        return Objects.hash(campaignId, previewLink, costType, linkUrl, imageSrc2x, description, imageSrc, id, video, adFormat, title, linkDomain);
     }
 
     @Override
@@ -140,35 +197,40 @@ public class AdLayout {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AdLayout adLayout = (AdLayout) o;
-        return Objects.equals(id, adLayout.id) &&
-                Objects.equals(campaignId, adLayout.campaignId) &&
-                Objects.equals(adFormat, adLayout.adFormat) &&
+        return Objects.equals(adFormat, adLayout.adFormat) &&
+                Objects.equals(previewLink, adLayout.previewLink) &&
                 Objects.equals(costType, adLayout.costType) &&
-                Objects.equals(video, adLayout.video) &&
-                Objects.equals(title, adLayout.title) &&
+                Objects.equals(imageSrc2x, adLayout.imageSrc2x) &&
                 Objects.equals(description, adLayout.description) &&
                 Objects.equals(linkUrl, adLayout.linkUrl) &&
-                Objects.equals(linkDomain, adLayout.linkDomain) &&
-                Objects.equals(previewLink, adLayout.previewLink) &&
+                Objects.equals(id, adLayout.id) &&
+                Objects.equals(video, adLayout.video) &&
+                Objects.equals(title, adLayout.title) &&
                 Objects.equals(imageSrc, adLayout.imageSrc) &&
-                Objects.equals(imageSrc2x, adLayout.imageSrc2x);
+                Objects.equals(linkDomain, adLayout.linkDomain) &&
+                Objects.equals(campaignId, adLayout.campaignId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AdLayout{");
-        sb.append("id=").append(id);
-        sb.append(", campaignId=").append(campaignId);
-        sb.append(", adFormat=").append(adFormat);
+        sb.append("adFormat=").append(adFormat);
+        sb.append(", previewLink=").append(previewLink);
         sb.append(", costType=").append(costType);
+        sb.append(", imageSrc2x=").append(imageSrc2x);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", linkUrl=").append(linkUrl);
+        sb.append(", id=").append(id);
         sb.append(", video=").append(video);
         sb.append(", title='").append(title).append("'");
-        sb.append(", description='").append(description).append("'");
-        sb.append(", linkUrl='").append(linkUrl).append("'");
-        sb.append(", linkDomain='").append(linkDomain).append("'");
-        sb.append(", previewLink=").append(previewLink);
         sb.append(", imageSrc=").append(imageSrc);
-        sb.append(", imageSrc2x=").append(imageSrc2x);
+        sb.append(", linkDomain='").append(linkDomain).append("'");
+        sb.append(", campaignId=").append(campaignId);
         sb.append('}');
         return sb.toString();
     }

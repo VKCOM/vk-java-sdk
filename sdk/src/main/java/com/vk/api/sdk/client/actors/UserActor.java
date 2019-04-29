@@ -9,6 +9,7 @@ public class UserActor implements Actor {
 
     private Integer userId;
     private String accessToken;
+    private String phone;
 
     public UserActor(Integer userId, String accessToken) {
         this.accessToken = accessToken;
@@ -23,6 +24,15 @@ public class UserActor implements Actor {
     @Override
     public Integer getId() {
         return userId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public UserActor setPhone(String phone) {
+        this.phone = phone;
+        return this;
     }
 
     @Override

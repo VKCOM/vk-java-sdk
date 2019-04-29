@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.LeadsStatus;
 import com.vk.api.sdk.objects.leads.Entry;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param offerId value of "offer id" parameter. Minimum is 0.
-     * @param secret  value of "secret" parameter.
+     * @param secret value of "secret" parameter.
      */
     public LeadsGetUsersQuery(VkApiClient client, UserActor actor, int offerId, String secret) {
         super(client, "leads.getUsers", Utils.buildParametrizedType(List.class, Entry.class));
@@ -32,9 +32,10 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param offerId value of "offer id" parameter. Minimum is 0.
-     * @param secret  value of "secret" parameter.
+     * @param secret value of "secret" parameter.
      */
     public LeadsGetUsersQuery(VkApiClient client, ServiceActor actor, int offerId, String secret) {
         super(client, "leads.getUsers", Utils.buildParametrizedType(List.class, Entry.class));
@@ -85,21 +86,17 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
     }
 
     /**
-     * Action type.
+     * Action type. Possible values: *'0' — start,, *'1' — finish,, *'2' — blocking users,, *'3' — start in a test mode,, *'4' — finish in a test mode.
      *
      * @param value value of "status" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public LeadsGetUsersQuery status(LeadsGetUsersStatus value) {
+    public LeadsGetUsersQuery status(LeadsStatus value) {
         return unsafeParam("status", value);
     }
 
     /**
-     * Sort order.
-     * <p>
-     * Possible values:
-     * true - chronological;
-     * false - reverse chronological.
+     * Sort order. Possible values: *'1' — chronological,, *'0' — reverse chronological.
      *
      * @param value value of "reverse" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -115,6 +112,6 @@ public class LeadsGetUsersQuery extends AbstractQueryBuilder<LeadsGetUsersQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("secret", "offer_id");
+        return Arrays.asList("secret", "access_token", "offer_id");
     }
 }

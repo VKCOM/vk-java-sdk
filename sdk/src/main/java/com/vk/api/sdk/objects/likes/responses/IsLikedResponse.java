@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.likes.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -25,8 +25,16 @@ public class IsLikedResponse {
         return liked == BoolInt.YES;
     }
 
+    public BoolInt getLiked() {
+        return liked;
+    }
+
     public boolean isCopied() {
         return copied == BoolInt.YES;
+    }
+
+    public BoolInt getCopied() {
+        return copied;
     }
 
     @Override
@@ -39,15 +47,20 @@ public class IsLikedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IsLikedResponse isLikedResponse = (IsLikedResponse) o;
-        return Objects.equals(liked, isLikedResponse.liked) &&
-                Objects.equals(copied, isLikedResponse.copied);
+        return Objects.equals(copied, isLikedResponse.copied) &&
+                Objects.equals(liked, isLikedResponse.liked);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("IsLikedResponse{");
-        sb.append("liked=").append(liked);
-        sb.append(", copied=").append(copied);
+        sb.append("copied=").append(copied);
+        sb.append(", liked=").append(liked);
         sb.append('}');
         return sb.toString();
     }

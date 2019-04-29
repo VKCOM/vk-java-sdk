@@ -5,8 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.wall.responses.GetRepostsResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class WallGetRepostsQuery extends AbstractQueryBuilder<WallGetRepostsQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public WallGetRepostsQuery(VkApiClient client, UserActor actor) {
         super(client, "wall.getReposts", GetRepostsResponse.class);
@@ -28,6 +27,7 @@ public class WallGetRepostsQuery extends AbstractQueryBuilder<WallGetRepostsQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public WallGetRepostsQuery(VkApiClient client, ServiceActor actor) {
         super(client, "wall.getReposts", GetRepostsResponse.class);
@@ -82,6 +82,6 @@ public class WallGetRepostsQuery extends AbstractQueryBuilder<WallGetRepostsQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

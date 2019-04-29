@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PagesSaveQuery(VkApiClient client, UserActor actor) {
         super(client, "pages.save", Integer.class);
@@ -33,7 +32,7 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
     }
 
     /**
-     * Wiki page ID. The "title" parameter can be passed instead of "pid".
+     * Wiki page ID. The 'title' parameter can be passed instead of 'pid'.
      *
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -53,6 +52,8 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
     }
 
     /**
+     * User ID
+     *
      * @param value value of "user id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */

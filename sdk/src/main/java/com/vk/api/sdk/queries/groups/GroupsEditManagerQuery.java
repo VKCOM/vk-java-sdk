@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
+import com.vk.api.sdk.objects.groups.GroupRole;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +15,10 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
-     * @param userId  value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 0.
      */
     public GroupsEditManagerQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
         super(client, "groups.editManager", OkResponse.class);
@@ -48,17 +48,17 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     }
 
     /**
-     * Manager role.
+     * Manager role. Possible values: *'moderator',, *'editor',, *'administrator'.
      *
      * @param value value of "role" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsEditManagerQuery role(GroupsEditManagerRole value) {
+    public GroupsEditManagerQuery role(GroupRole value) {
         return unsafeParam("role", value);
     }
 
     /**
-     * Show the manager in Contacts block of the community.
+     * '1' — to show the manager in Contacts block of the community.
      *
      * @param value value of "is contact" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

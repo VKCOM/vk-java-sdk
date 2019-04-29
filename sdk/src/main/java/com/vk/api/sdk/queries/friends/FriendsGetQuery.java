@@ -4,10 +4,11 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.FriendsNameCase;
+import com.vk.api.sdk.objects.enums.FriendsOrder;
 import com.vk.api.sdk.objects.friends.responses.GetResponse;
-import com.vk.api.sdk.queries.users.UsersNameCase;
-
-import java.util.Collections;
+import com.vk.api.sdk.objects.users.Fields;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.get", GetResponse.class);
@@ -29,21 +30,12 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetQuery(VkApiClient client, ServiceActor actor) {
         super(client, "friends.get", GetResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     */
-    public FriendsGetQuery(VkApiClient client) {
-        super(client, "friends.get", GetResponse.class);
     }
 
     /**
@@ -57,19 +49,17 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     }
 
     /**
-     * Sort order
-     * <p>
-     * This parameter is available only for desktop applications.
+     * Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetQuery order(FriendsGetOrder value) {
+    public FriendsGetQuery order(FriendsOrder value) {
         return unsafeParam("order", value);
     }
 
     /**
-     * ID of the friend list returned by the desktop applications.
+     * ID of the friend list returned by the [vk.com/dev/friends.getLists|friends.getLists] method to be used as the source. This parameter is taken into account only when the uid parameter is set to the current user ID. This parameter is available only for [vk.com/dev/standalone|desktop applications].
      *
      * @param value value of "list id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -81,7 +71,7 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     /**
      * Number of friends to return.
      *
-     * @param value value of "count" parameter. Minimum is 0.
+     * @param value value of "count" parameter. Minimum is 0. By default 5000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetQuery count(Integer value) {
@@ -99,13 +89,34 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     }
 
     /**
-     * Case for declension of user name and surname.
+     * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetQuery nameCase(UsersNameCase value) {
+    public FriendsGetQuery nameCase(FriendsNameCase value) {
         return unsafeParam("name_case", value);
+    }
+
+    /**
+     * fields
+     * Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override
@@ -115,6 +126,6 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

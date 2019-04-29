@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,6 +9,15 @@ import java.util.Objects;
  * StatsExtended object
  */
 public class StatsExtended {
+    @SerializedName("cities")
+    private List<StatsCity> cities;
+
+    @SerializedName("countries")
+    private List<StatsCountry> countries;
+
+    @SerializedName("sex_age")
+    private List<StatsSexAge> sexAge;
+
     /**
      * Start time
      */
@@ -21,69 +30,81 @@ public class StatsExtended {
     @SerializedName("views")
     private Integer views;
 
-    /**
-     * Object StatsSexAge
-     */
-    @SerializedName("sex_age")
-    private List<StatsSexAge> sexAge;
-
-    /**
-     * Object StatsCountry
-     */
-    @SerializedName("countries")
-    private List<StatsCountry> countries;
-
-    /**
-     * Object StatsCity
-     */
-    @SerializedName("cities")
-    private List<StatsCity> cities;
-
-    public Integer getTimestamp() {
-        return timestamp;
+    public List<StatsCity> getCities() {
+        return cities;
     }
 
-    public Integer getViews() {
-        return views;
-    }
-
-    public List<StatsSexAge> getSexAge() {
-        return sexAge;
+    public StatsExtended setCities(List<StatsCity> cities) {
+        this.cities = cities;
+        return this;
     }
 
     public List<StatsCountry> getCountries() {
         return countries;
     }
 
-    public List<StatsCity> getCities() {
-        return cities;
+    public StatsExtended setCountries(List<StatsCountry> countries) {
+        this.countries = countries;
+        return this;
+    }
+
+    public List<StatsSexAge> getSexAge() {
+        return sexAge;
+    }
+
+    public StatsExtended setSexAge(List<StatsSexAge> sexAge) {
+        this.sexAge = sexAge;
+        return this;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public StatsExtended setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+        return this;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public StatsExtended setViews(Integer views) {
+        this.views = views;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cities, countries, sexAge, views, timestamp);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StatsExtended that = (StatsExtended) o;
-        return Objects.equals(timestamp, that.timestamp) &&
-                Objects.equals(views, that.views) &&
-                Objects.equals(sexAge, that.sexAge) &&
-                Objects.equals(countries, that.countries) &&
-                Objects.equals(cities, that.cities);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(timestamp, views, sexAge, countries, cities);
+        StatsExtended statsExtended = (StatsExtended) o;
+        return Objects.equals(cities, statsExtended.cities) &&
+                Objects.equals(countries, statsExtended.countries) &&
+                Objects.equals(sexAge, statsExtended.sexAge) &&
+                Objects.equals(views, statsExtended.views) &&
+                Objects.equals(timestamp, statsExtended.timestamp);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsExtended{");
-        sb.append("timestamp=").append(timestamp);
-        sb.append(", views=").append(views);
-        sb.append(", sexAge=").append(sexAge);
+        sb.append("cities=").append(cities);
         sb.append(", countries=").append(countries);
-        sb.append(", cities=").append(cities);
+        sb.append(", sexAge=").append(sexAge);
+        sb.append(", views=").append(views);
+        sb.append(", timestamp=").append(timestamp);
         sb.append('}');
         return sb.toString();
     }

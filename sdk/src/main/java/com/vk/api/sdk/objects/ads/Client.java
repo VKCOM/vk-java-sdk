@@ -1,13 +1,25 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * Client object
  */
 public class Client {
+    /**
+     * Client's total limit, rubles
+     */
+    @SerializedName("all_limit")
+    private String allLimit;
+
+    /**
+     * Client's day limit, rubles
+     */
+    @SerializedName("day_limit")
+    private String dayLimit;
+
     /**
      * Client ID
      */
@@ -20,32 +32,40 @@ public class Client {
     @SerializedName("name")
     private String name;
 
-    /**
-     * Client's day limit, rubles
-     */
-    @SerializedName("day_limit")
-    private String dayLimit;
-
-    /**
-     * Client's total limit, rubles
-     */
-    @SerializedName("all_limit")
-    private String allLimit;
-
-    public Integer getId() {
-        return id;
+    public String getAllLimit() {
+        return allLimit;
     }
 
-    public String getName() {
-        return name;
+    public Client setAllLimit(String allLimit) {
+        this.allLimit = allLimit;
+        return this;
     }
 
     public String getDayLimit() {
         return dayLimit;
     }
 
-    public String getAllLimit() {
-        return allLimit;
+    public Client setDayLimit(String dayLimit) {
+        this.dayLimit = dayLimit;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Client setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Client setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
@@ -58,19 +78,24 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) &&
-                Objects.equals(name, client.name) &&
+        return Objects.equals(allLimit, client.allLimit) &&
                 Objects.equals(dayLimit, client.dayLimit) &&
-                Objects.equals(allLimit, client.allLimit);
+                Objects.equals(name, client.name) &&
+                Objects.equals(id, client.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Client{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append("'");
+        sb.append("allLimit='").append(allLimit).append("'");
         sb.append(", dayLimit='").append(dayLimit).append("'");
-        sb.append(", allLimit='").append(allLimit).append("'");
+        sb.append(", name='").append(name).append("'");
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

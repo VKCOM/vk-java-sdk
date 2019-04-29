@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,23 @@ public class Stats {
         return timestamp;
     }
 
+    public Stats setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+        return this;
+    }
+
     public Integer getViews() {
         return views;
+    }
+
+    public Stats setViews(Integer views) {
+        this.views = views;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(views, timestamp);
     }
 
     @Override
@@ -33,20 +48,20 @@ public class Stats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Stats stats = (Stats) o;
-        return Objects.equals(timestamp, stats.timestamp) &&
-                Objects.equals(views, stats.views);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(timestamp, views);
+        return Objects.equals(views, stats.views) &&
+                Objects.equals(timestamp, stats.timestamp);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Stats{");
-        sb.append("timestamp=").append(timestamp);
-        sb.append(", views=").append(views);
+        sb.append("views=").append(views);
+        sb.append(", timestamp=").append(timestamp);
         sb.append('}');
         return sb.toString();
     }

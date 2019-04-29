@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.widgets;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class WidgetLikes {
 
     public Integer getCount() {
         return count;
+    }
+
+    public WidgetLikes setCount(Integer count) {
+        this.count = count;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class WidgetLikes {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WidgetLikes{");
         sb.append("count=").append(count);
         sb.append('}');

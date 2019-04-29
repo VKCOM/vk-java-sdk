@@ -6,8 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.Country;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class DatabaseGetCountriesByIdQuery extends AbstractQueryBuilder<Database
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DatabaseGetCountriesByIdQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCountriesById", Utils.buildParametrizedType(List.class, Country.class));
@@ -29,6 +28,7 @@ public class DatabaseGetCountriesByIdQuery extends AbstractQueryBuilder<Database
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public DatabaseGetCountriesByIdQuery(VkApiClient client, ServiceActor actor) {
         super(client, "database.getCountriesById", Utils.buildParametrizedType(List.class, Country.class));
@@ -37,6 +37,7 @@ public class DatabaseGetCountriesByIdQuery extends AbstractQueryBuilder<Database
     }
 
     /**
+     * country_ids
      * Country IDs.
      *
      * @param value value of "country ids" parameter.
@@ -63,6 +64,6 @@ public class DatabaseGetCountriesByIdQuery extends AbstractQueryBuilder<Database
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

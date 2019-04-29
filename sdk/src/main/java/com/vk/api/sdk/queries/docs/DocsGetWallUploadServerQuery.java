@@ -4,23 +4,22 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.docs.responses.GetUploadServerResponse;
-
+import com.vk.api.sdk.objects.base.UploadServer;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Docs.getWallUploadServer method
  */
-public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWallUploadServerQuery, GetUploadServerResponse> {
+public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWallUploadServerQuery, UploadServer> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DocsGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
+        super(client, "docs.getWallUploadServer", UploadServer.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -28,10 +27,10 @@ public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWa
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DocsGetWallUploadServerQuery(VkApiClient client, GroupActor actor) {
-        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
+        super(client, "docs.getWallUploadServer", UploadServer.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
     }

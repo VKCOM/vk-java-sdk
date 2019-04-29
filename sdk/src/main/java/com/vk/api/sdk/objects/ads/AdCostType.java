@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Cost type
  */
-public enum AdCostType {
+public enum AdCostType implements EnumParam {
     @SerializedName("0")
     PER_CLICKS(0),
 
@@ -18,7 +19,7 @@ public enum AdCostType {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

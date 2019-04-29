@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.groups.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.GroupCategoryFull;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetCatalogInfoExtendedResponse {
         return enabled;
     }
 
+    public GetCatalogInfoExtendedResponse setEnabled(Integer enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
     public List<GroupCategoryFull> getCategories() {
         return categories;
+    }
+
+    public GetCatalogInfoExtendedResponse setCategories(List<GroupCategoryFull> categories) {
+        this.categories = categories;
+        return this;
     }
 
     @Override
@@ -37,15 +47,20 @@ public class GetCatalogInfoExtendedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCatalogInfoExtendedResponse getCatalogInfoExtendedResponse = (GetCatalogInfoExtendedResponse) o;
-        return Objects.equals(enabled, getCatalogInfoExtendedResponse.enabled) &&
-                Objects.equals(categories, getCatalogInfoExtendedResponse.categories);
+        return Objects.equals(categories, getCatalogInfoExtendedResponse.categories) &&
+                Objects.equals(enabled, getCatalogInfoExtendedResponse.enabled);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCatalogInfoExtendedResponse{");
-        sb.append("enabled=").append(enabled);
-        sb.append(", categories=").append(categories);
+        sb.append("categories=").append(categories);
+        sb.append(", enabled=").append(enabled);
         sb.append('}');
         return sb.toString();
     }

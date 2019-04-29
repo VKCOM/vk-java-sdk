@@ -4,8 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.queries.ReportReason;
-
+import com.vk.api.sdk.objects.enums.VideoReason;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,12 +15,13 @@ public class VideoReportCommentQuery extends AbstractQueryBuilder<VideoReportCom
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
-     * @param ownerId   value of "owner id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public VideoReportCommentQuery(VkApiClient client, UserActor actor, int ownerId, int commentId) {
+    public VideoReportCommentQuery(VkApiClient client, UserActor actor, int ownerId,
+            int commentId) {
         super(client, "video.reportComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -49,12 +49,12 @@ public class VideoReportCommentQuery extends AbstractQueryBuilder<VideoReportCom
     }
 
     /**
-     * Reason for the complaint
+     * Reason for the complaint: , 0 – spam , 1 – child pornography , 2 – extremism , 3 – violence , 4 – drug propaganda , 5 – adult material , 6 – insult, abuse
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoReportCommentQuery reason(ReportReason value) {
+    public VideoReportCommentQuery reason(VideoReason value) {
         return unsafeParam("reason", value);
     }
 

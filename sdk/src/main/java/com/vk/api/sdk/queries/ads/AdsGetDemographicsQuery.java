@@ -5,7 +5,8 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.DemoStats;
-
+import com.vk.api.sdk.objects.enums.AdsIdsType;
+import com.vk.api.sdk.objects.enums.AdsPeriod;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,16 +17,17 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param accountId value of "account id" parameter.
-     * @param idsType   value of "ids type" parameter.
-     * @param ids       value of "ids" parameter.
-     * @param period    value of "period" parameter.
-     * @param dateFrom  value of "date from" parameter.
-     * @param dateTo    value of "date to" parameter.
+     * @param idsType value of "ids type" parameter.
+     * @param ids value of "ids" parameter.
+     * @param period value of "period" parameter.
+     * @param dateFrom value of "date from" parameter.
+     * @param dateTo value of "date to" parameter.
      */
-    public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, int accountId, AdsGetDemographicsIdsType idsType, String ids, String period, String dateFrom, String dateTo) {
+    public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, int accountId,
+            AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
         super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, DemoStats.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -47,17 +49,17 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     }
 
     /**
-     * Type of requested objects listed in "ids" parameter.
+     * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery idsType(AdsGetDemographicsIdsType value) {
+    protected AdsGetDemographicsQuery idsType(AdsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
     /**
-     * IDs requested ads or campaigns, separated with a comma, depending on the value set in "ids_type". Maximum 2000 objects.
+     * IDs requested ads or campaigns, separated with a comma, depending on the value set in 'ids_type'. Maximum 2000 objects.
      *
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -67,26 +69,17 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     }
 
     /**
-     * Data grouping by dates:
-     * 'day' - statistics by days;
-     * 'month' - statistics by months;
-     * 'overall' - overall statistics.
-     * "date_from" and "date_to" parameters set temporary limits.
+     * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
      *
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery period(String value) {
+    protected AdsGetDemographicsQuery period(AdsPeriod value) {
         return unsafeParam("period", value);
     }
 
     /**
-     * Date to show statistics from. For different value of "period" different date format is used:
-     * 'day': 'YYYY-MM-DD', example: 2011-09-27 - September 27, 2011
-     * '0' - day it was created on;
-     * 'month': 'YYYY-MM', example: 2011-09 - September 2011
-     * '0' - month it was created in;
-     * 'overall': 0.
+     * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
      *
      * @param value value of "date from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -96,12 +89,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     }
 
     /**
-     * Date to show statistics to. For different value of "period" different date format is used:
-     * 'day': 'YYYY-MM-DD', example: 2011-09-27 - September 27, 2011
-     * '0' - current day;
-     * 'month': 'YYYY-MM', example: 2011-09 - September 2011
-     * '0' - current month;
-     * 'overall': 0.
+     * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      *
      * @param value value of "date to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

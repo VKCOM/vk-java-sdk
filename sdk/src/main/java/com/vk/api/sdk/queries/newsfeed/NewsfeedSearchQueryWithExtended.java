@@ -4,10 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.responses.SearchExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedSearchQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.search", SearchExtendedResponse.class);
@@ -30,6 +29,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public NewsfeedSearchQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "newsfeed.search", SearchExtendedResponse.class);
@@ -39,7 +39,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * Search query string (e.g., "New Year").
+     * Search query string (e.g., 'New Year').
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -49,7 +49,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * Return additional information about the user or community that placed the post.
+     * '1' — to return additional information about the user or community that placed the post.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -69,22 +69,12 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * Set geocode
-     *
-     * @param value value of "geocode" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedSearchQueryWithExtended geocode(String value) {
-        return unsafeParam("geocode", value);
-    }
-
-    /**
      * Geographical latitude point (in degrees, -90 to 90) within which to search.
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQueryWithExtended latitude(Float value) {
+    public NewsfeedSearchQueryWithExtended latitude(Number value) {
         return unsafeParam("latitude", value);
     }
 
@@ -94,7 +84,7 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQueryWithExtended longitude(Float value) {
+    public NewsfeedSearchQueryWithExtended longitude(Number value) {
         return unsafeParam("longitude", value);
     }
 
@@ -129,22 +119,23 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
     }
 
     /**
-     * Set fields
+     * fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQueryWithExtended fields(EnumParam... value) {
+    public NewsfeedSearchQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Set fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQueryWithExtended fields(List<EnumParam> value) {
+    public NewsfeedSearchQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 
@@ -155,6 +146,6 @@ public class NewsfeedSearchQueryWithExtended extends AbstractQueryBuilder<Newsfe
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

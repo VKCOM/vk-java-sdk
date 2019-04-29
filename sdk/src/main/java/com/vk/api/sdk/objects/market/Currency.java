@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.market;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class Currency {
         return id;
     }
 
+    public Currency setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public Currency setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
@@ -38,15 +48,20 @@ public class Currency {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Currency currency = (Currency) o;
-        return Objects.equals(id, currency.id) &&
-                Objects.equals(name, currency.name);
+        return Objects.equals(name, currency.name) &&
+                Objects.equals(id, currency.id);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Currency{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append("'");
+        sb.append("name='").append(name).append("'");
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

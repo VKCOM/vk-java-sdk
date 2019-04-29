@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,22 +15,20 @@ public class FaveRemoveLinkQuery extends AbstractQueryBuilder<FaveRemoveLinkQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param linkId value of "link id" parameter.
+     * @param actor actor with access token
      */
-    public FaveRemoveLinkQuery(VkApiClient client, UserActor actor, String linkId) {
+    public FaveRemoveLinkQuery(VkApiClient client, UserActor actor) {
         super(client, "fave.removeLink", OkResponse.class);
         accessToken(actor.getAccessToken());
-        linkId(linkId);
     }
 
     /**
-     * Set link id
+     * Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
      *
      * @param value value of "link id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FaveRemoveLinkQuery linkId(String value) {
+    public FaveRemoveLinkQuery linkId(String value) {
         return unsafeParam("link_id", value);
     }
 
@@ -42,6 +39,6 @@ public class FaveRemoveLinkQuery extends AbstractQueryBuilder<FaveRemoveLinkQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("link_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

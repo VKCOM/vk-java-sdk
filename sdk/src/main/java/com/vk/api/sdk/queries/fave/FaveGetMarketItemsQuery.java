@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.fave.responses.GetMarketItemsResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FaveGetMarketItemsQuery(VkApiClient client, UserActor actor) {
         super(client, "fave.getMarketItems", GetMarketItemsResponse.class);
@@ -24,7 +23,7 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
     }
 
     /**
-     * Number of items to return info
+     * Number of results to return.
      *
      * @param value value of "count" parameter. Minimum is 0. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,8 +33,17 @@ public class FaveGetMarketItemsQuery extends AbstractQueryBuilder<FaveGetMarketI
     }
 
     /**
-     * true - additional fields  "likes, can_comment, can_repost, photos" will be returned.
-     * These fields are disabled by default.
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FaveGetMarketItemsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * '1' – to return additional fields 'likes, can_comment, can_repost, photos'. By default: '0'.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

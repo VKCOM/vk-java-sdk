@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class Paragraphs {
 
     public String getParagraph() {
         return paragraph;
+    }
+
+    public Paragraphs setParagraph(String paragraph) {
+        this.paragraph = paragraph;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class Paragraphs {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Paragraphs{");
         sb.append("paragraph='").append(paragraph).append("'");
         sb.append('}');

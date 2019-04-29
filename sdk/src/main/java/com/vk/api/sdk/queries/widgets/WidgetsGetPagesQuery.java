@@ -2,10 +2,10 @@ package com.vk.api.sdk.queries.widgets;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.widgets.responses.GetPagesResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public WidgetsGetPagesQuery(VkApiClient client, UserActor actor) {
         super(client, "widgets.getPages", GetPagesResponse.class);
@@ -27,9 +27,12 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
-    public WidgetsGetPagesQuery(VkApiClient client) {
+    public WidgetsGetPagesQuery(VkApiClient client, ServiceActor actor) {
         super(client, "widgets.getPages", GetPagesResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -45,7 +48,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
     /**
      * Set order
      *
-     * @param value value of "order" parameter. By default 0.
+     * @param value value of "order" parameter. By default friend_likes.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WidgetsGetPagesQuery order(String value) {
@@ -55,11 +58,21 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
     /**
      * Set period
      *
-     * @param value value of "period" parameter. By default 0.
+     * @param value value of "period" parameter. By default week.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WidgetsGetPagesQuery period(String value) {
         return unsafeParam("period", value);
+    }
+
+    /**
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WidgetsGetPagesQuery offset(Integer value) {
+        return unsafeParam("offset", value);
     }
 
     /**
@@ -79,6 +92,6 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

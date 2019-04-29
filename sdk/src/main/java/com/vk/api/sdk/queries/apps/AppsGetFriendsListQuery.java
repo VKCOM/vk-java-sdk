@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.apps.responses.GetFriendsListResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
+import com.vk.api.sdk.objects.enums.AppsType;
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,11 +17,21 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AppsGetFriendsListQuery(VkApiClient client, UserActor actor) {
         super(client, "apps.getFriendsList", GetFriendsListResponse.class);
         accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Set extended
+     *
+     * @param value value of "extended" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetFriendsListQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**
@@ -35,32 +45,43 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
     }
 
     /**
-     * List type.
+     * Set offset
      *
-     * @param value value of "type" parameter. By default 0.
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetFriendsListQuery type(AppsGetFriendsListType value) {
+    public AppsGetFriendsListQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
+     *
+     * @param value value of "type" parameter. By default invite.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AppsGetFriendsListQuery type(AppsType value) {
         return unsafeParam("type", value);
     }
 
     /**
-     * Additional profile fields, see description.
+     * fields
+     * Additional profile fields, see [vk.com/dev/fields|description].
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetFriendsListQuery fields(EnumParam... value) {
+    public AppsGetFriendsListQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Additional profile fields, see description.
+     * Additional profile fields, see [vk.com/dev/fields|description].
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetFriendsListQuery fields(List<EnumParam> value) {
+    public AppsGetFriendsListQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
 

@@ -18,7 +18,6 @@ import com.vk.api.sdk.queries.notes.NotesRestoreCommentQuery;
  * List of Notes methods
  */
 public class Notes extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -29,7 +28,81 @@ public class Notes extends AbstractAction {
     }
 
     /**
+     * Creates a new note for the current user.
+     *
+     * @param actor vk actor
+     * @param title Note title.
+     * @param text Note text.
+     * @return query
+     */
+    public NotesAddQuery add(UserActor actor, String title, String text) {
+        return new NotesAddQuery(getClient(), actor, title, text);
+    }
+
+    /**
+     * Adds a new comment on a note.
+     *
+     * @param actor vk actor
+     * @param noteId Note ID.
+     * @param message Comment text.
+     * @return query
+     */
+    public NotesCreateCommentQuery createComment(UserActor actor, int noteId, String message) {
+        return new NotesCreateCommentQuery(getClient(), actor, noteId, message);
+    }
+
+    /**
+     * Deletes a note of the current user.
+     *
+     * @param actor vk actor
+     * @param noteId Note ID.
+     * @return query
+     */
+    public NotesDeleteQuery delete(UserActor actor, int noteId) {
+        return new NotesDeleteQuery(getClient(), actor, noteId);
+    }
+
+    /**
+     * Deletes a comment on a note.
+     *
+     * @param actor vk actor
+     * @param commentId Comment ID.
+     * @return query
+     */
+    public NotesDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
+        return new NotesDeleteCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Edits a note of the current user.
+     *
+     * @param actor vk actor
+     * @param noteId Note ID.
+     * @param title Note title.
+     * @param text Note text.
+     * @return query
+     */
+    public NotesEditQuery edit(UserActor actor, int noteId, String title, String text) {
+        return new NotesEditQuery(getClient(), actor, noteId, title, text);
+    }
+
+    /**
+     * Edits a comment on a note.
+     *
+     * @param actor vk actor
+     * @param commentId Comment ID.
+     * @param message New comment text.
+     * @return query
+     */
+    public NotesEditCommentQuery editComment(UserActor actor, int commentId, String message) {
+        return new NotesEditCommentQuery(getClient(), actor, commentId, message);
+    }
+
+    /**
      * Returns a list of notes created by a user.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public NotesGetQuery get(UserActor actor) {
         return new NotesGetQuery(getClient(), actor);
@@ -37,62 +110,32 @@ public class Notes extends AbstractAction {
 
     /**
      * Returns a note by its ID.
+     *
+     * @param actor vk actor
+     * @param noteId Note ID.
+     * @return query
      */
     public NotesGetByIdQuery getById(UserActor actor, int noteId) {
         return new NotesGetByIdQuery(getClient(), actor, noteId);
     }
 
     /**
-     * Creates a new note for the current user.
-     */
-    public NotesAddQuery add(UserActor actor, String title, String text) {
-        return new NotesAddQuery(getClient(), actor, title, text);
-    }
-
-    /**
-     * Edits a note of the current user.
-     */
-    public NotesEditQuery edit(UserActor actor, int noteId, String title, String text) {
-        return new NotesEditQuery(getClient(), actor, noteId, title, text);
-    }
-
-    /**
-     * Deletes a note of the current user.
-     */
-    public NotesDeleteQuery delete(UserActor actor, int noteId) {
-        return new NotesDeleteQuery(getClient(), actor, noteId);
-    }
-
-    /**
      * Returns a list of comments on a note.
+     *
+     * @param actor vk actor
+     * @param noteId Note ID.
+     * @return query
      */
     public NotesGetCommentsQuery getComments(UserActor actor, int noteId) {
         return new NotesGetCommentsQuery(getClient(), actor, noteId);
     }
 
     /**
-     * Adds a new comment on a note.
-     */
-    public NotesCreateCommentQuery createComment(UserActor actor, int noteId, String message) {
-        return new NotesCreateCommentQuery(getClient(), actor, noteId, message);
-    }
-
-    /**
-     * Edits a comment on a note.
-     */
-    public NotesEditCommentQuery editComment(UserActor actor, int commentId) {
-        return new NotesEditCommentQuery(getClient(), actor, commentId);
-    }
-
-    /**
-     * Deletes a comment on a note.
-     */
-    public NotesDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
-        return new NotesDeleteCommentQuery(getClient(), actor, commentId);
-    }
-
-    /**
      * Restores a deleted comment on a note.
+     *
+     * @param actor vk actor
+     * @param commentId Comment ID.
+     * @return query
      */
     public NotesRestoreCommentQuery restoreComment(UserActor actor, int commentId) {
         return new NotesRestoreCommentQuery(getClient(), actor, commentId);

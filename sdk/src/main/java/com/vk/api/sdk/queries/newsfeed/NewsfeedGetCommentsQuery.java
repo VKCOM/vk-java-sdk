@@ -3,9 +3,9 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
+import com.vk.api.sdk.objects.newsfeed.CommentsFilters;
 import com.vk.api.sdk.objects.newsfeed.responses.GetCommentsResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedGetCommentsQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.getComments", GetCommentsResponse.class);
@@ -25,7 +25,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Number of comments to return. For auto feed, you can use the "new_offset" parameter returned by this method.
+     * Number of comments to return. For auto feed, you can use the 'new_offset' parameter returned by this method.
      *
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 30.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -35,28 +35,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Filters to apply
-     *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedGetCommentsQuery filters(NewsfeedGetCommentsFilter... value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * Filters to apply
-     *
-     * @param value value of "filters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public NewsfeedGetCommentsQuery filters(List<NewsfeedGetCommentsFilter> value) {
-        return unsafeParam("filters", value);
-    }
-
-    /**
-     * Object ID, comments on repost of which shall be returned, e.g. "wall1_45486".
-     * If the parameter is set, the "filters" parameter is optional.
+     * Object ID, comments on repost of which shall be returned, e.g. 'wall1_45486'. (If the parameter is set, the 'filters' parameter is optional.),
      *
      * @param value value of "reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,7 +65,17 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Identificator needed to return the next oage with results. Value for this parameter returns in "next_from" field.
+     * Set last comments count
+     *
+     * @param value value of "last comments count" parameter. Maximum is 10. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetCommentsQuery lastCommentsCount(Integer value) {
+        return unsafeParam("last_comments_count", value);
+    }
+
+    /**
+     * Identificator needed to return the next page with results. Value for this parameter returns in 'next_from' field.
      *
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -96,22 +85,44 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
     }
 
     /**
-     * Set fields
+     * filters
+     * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetCommentsQuery filters(CommentsFilters... value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+     *
+     * @param value value of "filters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedGetCommentsQuery filters(List<CommentsFilters> value) {
+        return unsafeParam("filters", value);
+    }
+
+    /**
+     * fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetCommentsQuery fields(EnumParam... value) {
+    public NewsfeedGetCommentsQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Set fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetCommentsQuery fields(List<EnumParam> value) {
+    public NewsfeedGetCommentsQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 

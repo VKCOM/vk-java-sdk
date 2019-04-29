@@ -2,14 +2,15 @@ package com.vk.api.sdk.streaming.queries;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.vk.api.sdk.callback.longpoll.LongPollQueryBuilder;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.streaming.clients.VkStreamingApiClient;
 import com.vk.api.sdk.streaming.clients.actors.StreamingActor;
 import com.vk.api.sdk.streaming.exceptions.StreamingApiException;
 import com.vk.api.sdk.streaming.exceptions.StreamingClientException;
 import com.vk.api.sdk.streaming.objects.responses.StreamingResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Type;
 
@@ -18,7 +19,7 @@ import java.lang.reflect.Type;
  */
 public abstract class StreamingAbstractQuery {
 
-    private static final Logger LOG = LoggerFactory.getLogger(StreamingAbstractQuery.class);
+    private static final Logger LOG = LogManager.getLogger(LongPollQueryBuilder.class);
 
     private TransportClient httpClient;
     private Gson gson;

@@ -5,8 +5,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.UserXtrPhone;
-import com.vk.api.sdk.queries.users.UserField;
-
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetByPhonesQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.getByPhones", Utils.buildParametrizedType(List.class, UserXtrPhone.class));
@@ -26,9 +25,8 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     }
 
     /**
-     * List of phone numbers in MSISDN format (maximum 1000).
-     * Example:
-     * +79219876543,+79111234567
+     * phones
+     * List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
      *
      * @param value value of "phones" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -38,9 +36,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     }
 
     /**
-     * List of phone numbers in MSISDN format (maximum 1000).
-     * Example:
-     * +79219876543,+79111234567
+     * List of phone numbers in MSISDN format (maximum 1000). Example: "+79219876543,+79111234567"
      *
      * @param value value of "phones" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -50,22 +46,23 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
     }
 
     /**
-     * Profile fields to return.
+     * fields
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetByPhonesQuery fields(UserField... value) {
+    public FriendsGetByPhonesQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * Profile fields to return.
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online, counters'.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetByPhonesQuery fields(List<UserField> value) {
+    public FriendsGetByPhonesQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
 

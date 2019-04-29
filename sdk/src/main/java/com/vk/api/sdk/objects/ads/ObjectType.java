@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Object type
  */
-public enum ObjectType {
+public enum ObjectType implements EnumParam {
     @SerializedName("ad")
     AD("ad"),
 

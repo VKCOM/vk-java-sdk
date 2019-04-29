@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.friends;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,19 +9,10 @@ import java.util.Objects;
  */
 public class RequestsXtrMessage {
     /**
-     * User ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    /**
      * ID of the user by whom friend has been suggested
      */
     @SerializedName("from")
     private String from;
-
-    @SerializedName("mutual")
-    private RequestsManual mutual;
 
     /**
      * Message sent with a request
@@ -29,20 +20,49 @@ public class RequestsXtrMessage {
     @SerializedName("message")
     private String message;
 
-    public Integer getUserId() {
-        return userId;
-    }
+    @SerializedName("mutual")
+    private RequestsMutual mutual;
+
+    /**
+     * User ID
+     */
+    @SerializedName("user_id")
+    private Integer userId;
 
     public String getFrom() {
         return from;
     }
 
-    public RequestsManual getMutual() {
-        return mutual;
+    public RequestsXtrMessage setFrom(String from) {
+        this.from = from;
+        return this;
     }
 
     public String getMessage() {
         return message;
+    }
+
+    public RequestsXtrMessage setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public RequestsMutual getMutual() {
+        return mutual;
+    }
+
+    public RequestsXtrMessage setMutual(RequestsMutual mutual) {
+        this.mutual = mutual;
+        return this;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public RequestsXtrMessage setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override
@@ -55,18 +75,23 @@ public class RequestsXtrMessage {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RequestsXtrMessage requestsXtrMessage = (RequestsXtrMessage) o;
-        return Objects.equals(userId, requestsXtrMessage.userId) &&
+        return Objects.equals(mutual, requestsXtrMessage.mutual) &&
+                Objects.equals(userId, requestsXtrMessage.userId) &&
                 Objects.equals(from, requestsXtrMessage.from) &&
-                Objects.equals(mutual, requestsXtrMessage.mutual) &&
                 Objects.equals(message, requestsXtrMessage.message);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RequestsXtrMessage{");
-        sb.append("userId=").append(userId);
+        sb.append("mutual=").append(mutual);
+        sb.append(", userId=").append(userId);
         sb.append(", from='").append(from).append("'");
-        sb.append(", mutual=").append(mutual);
         sb.append(", message='").append(message).append("'");
         sb.append('}');
         return sb.toString();

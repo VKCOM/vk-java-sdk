@@ -1,9 +1,9 @@
 package com.vk.api.sdk.objects.account.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.account.NameRequest;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -23,8 +23,17 @@ public class SaveProfileInfoResponse {
         return changed == BoolInt.YES;
     }
 
+    public BoolInt getChanged() {
+        return changed;
+    }
+
     public NameRequest getNameRequest() {
         return nameRequest;
+    }
+
+    public SaveProfileInfoResponse setNameRequest(NameRequest nameRequest) {
+        this.nameRequest = nameRequest;
+        return this;
     }
 
     @Override
@@ -37,15 +46,20 @@ public class SaveProfileInfoResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SaveProfileInfoResponse saveProfileInfoResponse = (SaveProfileInfoResponse) o;
-        return Objects.equals(changed, saveProfileInfoResponse.changed) &&
-                Objects.equals(nameRequest, saveProfileInfoResponse.nameRequest);
+        return Objects.equals(nameRequest, saveProfileInfoResponse.nameRequest) &&
+                Objects.equals(changed, saveProfileInfoResponse.changed);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SaveProfileInfoResponse{");
-        sb.append("changed=").append(changed);
-        sb.append(", nameRequest=").append(nameRequest);
+        sb.append("nameRequest=").append(nameRequest);
+        sb.append(", changed=").append(changed);
         sb.append('}');
         return sb.toString();
     }

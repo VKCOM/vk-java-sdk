@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,33 @@ import java.util.Objects;
  */
 public class LinkRating {
     /**
-     * Count of stars
-     */
-    @SerializedName("stars")
-    private Float stars;
-
-    /**
      * Count of reviews
      */
     @SerializedName("reviews_count")
     private Integer reviewsCount;
 
+    /**
+     * Count of stars
+     */
+    @SerializedName("stars")
+    private Float stars;
+
+    public Integer getReviewsCount() {
+        return reviewsCount;
+    }
+
+    public LinkRating setReviewsCount(Integer reviewsCount) {
+        this.reviewsCount = reviewsCount;
+        return this;
+    }
+
     public Float getStars() {
         return stars;
     }
 
-    public Integer getReviewsCount() {
-        return reviewsCount;
+    public LinkRating setStars(Float stars) {
+        this.stars = stars;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class LinkRating {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkRating{");
         sb.append("stars=").append(stars);
         sb.append(", reviewsCount=").append(reviewsCount);

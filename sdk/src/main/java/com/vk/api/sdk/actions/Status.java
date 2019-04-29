@@ -10,7 +10,6 @@ import com.vk.api.sdk.queries.status.StatusSetQuery;
  * List of Status methods
  */
 public class Status extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -22,6 +21,9 @@ public class Status extends AbstractAction {
 
     /**
      * Returns data required to show the status of a user or community.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public StatusGetQuery get(UserActor actor) {
         return new StatusGetQuery(getClient(), actor);
@@ -29,6 +31,9 @@ public class Status extends AbstractAction {
 
     /**
      * Sets a new status for the current user.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public StatusSetQuery set(UserActor actor) {
         return new StatusSetQuery(getClient(), actor);

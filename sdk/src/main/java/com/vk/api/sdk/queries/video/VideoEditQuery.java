@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param videoId value of "video id" parameter.
      */
     public VideoEditQuery(VkApiClient client, UserActor actor, int videoId) {
@@ -66,49 +65,6 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     }
 
     /**
-     * Privacy settings in a special format.
-     * Privacy setting is available for videos uploaded to own profile by user.
-     *
-     * @param value value of "privacy view" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoEditQuery privacyView(String... value) {
-        return unsafeParam("privacy_view", value);
-    }
-
-    /**
-     * Privacy settings in a special format.
-     * Privacy setting is available for videos uploaded to own profile by user.
-     *
-     * @param value value of "privacy view" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoEditQuery privacyView(List<String> value) {
-        return unsafeParam("privacy_view", value);
-    }
-
-
-    /**
-     * Privacy settings for comments in a special format.
-     *
-     * @param value value of "privacy comment" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoEditQuery privacyComment(String... value) {
-        return unsafeParam("privacy_comment", value);
-    }
-
-    /**
-     * Privacy settings for comments in a special format.
-     *
-     * @param value value of "privacy comment" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoEditQuery privacyComment(List<String> value) {
-        return unsafeParam("privacy_comment", value);
-    }
-
-    /**
      * Disable comments for the group video.
      *
      * @param value value of "no comments" parameter.
@@ -119,13 +75,55 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
     }
 
     /**
-     * Repeat the playback of the video
+     * '1' — to repeat the playback of the video, '0' — to play the video once,
      *
      * @param value value of "repeat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public VideoEditQuery repeat(Boolean value) {
         return unsafeParam("repeat", value);
+    }
+
+    /**
+     * privacy_view
+     * Privacy settings in a [vk.com/dev/privacy_setting|special format]. Privacy setting is available for videos uploaded to own profile by user.
+     *
+     * @param value value of "privacy view" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyView(String... value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
+     * Privacy settings in a [vk.com/dev/privacy_setting|special format]. Privacy setting is available for videos uploaded to own profile by user.
+     *
+     * @param value value of "privacy view" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
+     * privacy_comment
+     * Privacy settings for comments in a [vk.com/dev/privacy_setting|special format].
+     *
+     * @param value value of "privacy comment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Privacy settings for comments in a [vk.com/dev/privacy_setting|special format].
+     *
+     * @param value value of "privacy comment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoEditQuery privacyComment(List<String> value) {
+        return unsafeParam("privacy_comment", value);
     }
 
     @Override

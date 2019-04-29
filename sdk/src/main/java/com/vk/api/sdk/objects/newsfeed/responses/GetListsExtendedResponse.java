@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.newsfeed.NewsfeedListFull;
-
+import com.vk.api.sdk.objects.newsfeed.ListFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,14 +17,24 @@ public class GetListsExtendedResponse {
     private Integer count;
 
     @SerializedName("items")
-    private List<NewsfeedListFull> items;
+    private List<ListFull> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<NewsfeedListFull> getItems() {
+    public GetListsExtendedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public List<ListFull> getItems() {
         return items;
+    }
+
+    public GetListsExtendedResponse setItems(List<ListFull> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -36,13 +46,18 @@ public class GetListsExtendedResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetListsExtendedResponse getListsResponse = (GetListsExtendedResponse) o;
-        return Objects.equals(count, getListsResponse.count) &&
-                Objects.equals(items, getListsResponse.items);
+        GetListsExtendedResponse getListsExtendedResponse = (GetListsExtendedResponse) o;
+        return Objects.equals(count, getListsExtendedResponse.count) &&
+                Objects.equals(items, getListsExtendedResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetListsExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

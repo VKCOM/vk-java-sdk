@@ -1,17 +1,14 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
  * LinkButtonAction object
  */
 public class LinkButtonAction {
-
-    /**
-     * Action type
-     */
     @SerializedName("type")
     private LinkButtonActionType type;
 
@@ -19,23 +16,24 @@ public class LinkButtonAction {
      * Action URL
      */
     @SerializedName("url")
-    private String url;
+    private URL url;
 
     public LinkButtonActionType getType() {
         return type;
     }
 
-    public String getUrl() {
+    public LinkButtonAction setType(LinkButtonActionType type) {
+        this.type = type;
+        return this;
+    }
+
+    public URL getUrl() {
         return url;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LinkButtonAction that = (LinkButtonAction) o;
-        return type == that.type &&
-                Objects.equals(url, that.url);
+    public LinkButtonAction setUrl(URL url) {
+        this.url = url;
+        return this;
     }
 
     @Override
@@ -44,10 +42,24 @@ public class LinkButtonAction {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LinkButtonAction linkButtonAction = (LinkButtonAction) o;
+        return Objects.equals(type, linkButtonAction.type) &&
+                Objects.equals(url, linkButtonAction.url);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkButtonAction{");
         sb.append("type=").append(type);
-        sb.append(", url='").append(url).append('\'');
+        sb.append(", url=").append(url);
         sb.append('}');
         return sb.toString();
     }

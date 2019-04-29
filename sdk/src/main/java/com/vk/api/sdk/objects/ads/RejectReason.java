@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -22,8 +22,18 @@ public class RejectReason {
         return comment;
     }
 
+    public RejectReason setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
     public List<Rules> getRules() {
         return rules;
+    }
+
+    public RejectReason setRules(List<Rules> rules) {
+        this.rules = rules;
+        return this;
     }
 
     @Override
@@ -42,6 +52,11 @@ public class RejectReason {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RejectReason{");
         sb.append("comment='").append(comment).append("'");
         sb.append(", rules=").append(rules);

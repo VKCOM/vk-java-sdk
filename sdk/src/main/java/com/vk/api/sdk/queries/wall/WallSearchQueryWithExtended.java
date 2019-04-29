@@ -4,10 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.wall.responses.SearchExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public WallSearchQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "wall.search", SearchExtendedResponse.class);
@@ -30,6 +29,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public WallSearchQueryWithExtended(VkApiClient client, ServiceActor actor) {
         super(client, "wall.search", SearchExtendedResponse.class);
@@ -39,8 +39,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
-     * User or community id.
-     * Remember that for a community "owner_id" must be negative.
+     * User or community id. "Remember that for a community 'owner_id' must be negative."
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -70,7 +69,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
-     * Returns only page owner's posts.
+     * '1' – returns only page owner's posts.
      *
      * @param value value of "owners only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -90,9 +89,9 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
-     * Results offset.
+     * Offset needed to return a specific subset of posts.
      *
-     * @param value value of "offset" parameter. Default 0.
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WallSearchQueryWithExtended offset(Integer value) {
@@ -110,12 +109,13 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
+     * fields
      * Set fields
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallSearchQueryWithExtended fields(EnumParam... value) {
+    public WallSearchQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
@@ -125,7 +125,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallSearchQueryWithExtended fields(List<EnumParam> value) {
+    public WallSearchQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 
@@ -136,6 +136,6 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

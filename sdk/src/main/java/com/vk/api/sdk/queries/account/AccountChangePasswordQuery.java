@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.ChangePasswordResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client      VK API client
-     * @param actor       actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param newPassword value of "new password" parameter.
      */
     public AccountChangePasswordQuery(VkApiClient client, UserActor actor, String newPassword) {
@@ -26,8 +25,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
     }
 
     /**
-     * Session id received after the auth.restore method is executed.
-     * (If the password is changed right after the access was restored)
+     * Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
      *
      * @param value value of "restore sid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -37,8 +35,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
     }
 
     /**
-     * Hash received after a successful OAuth authorization with a code got by SMS.
-     * (If the password is changed right after the access was restored)
+     * Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
      *
      * @param value value of "change password hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -58,7 +55,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
     }
 
     /**
-     * New password that  will be set as a current
+     * New password that will be set as a current
      *
      * @param value value of "new password" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

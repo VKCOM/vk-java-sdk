@@ -1,7 +1,7 @@
 package com.vk.api.sdk.queries.upload;
 
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.objects.video.responses.VideoUploadResponse;
+import com.vk.api.sdk.objects.responses.VideoUploadResponse;
 
 import java.io.File;
 

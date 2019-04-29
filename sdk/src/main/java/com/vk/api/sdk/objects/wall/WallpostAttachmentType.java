@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Attachment type
  */
-public enum WallpostAttachmentType {
+public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("photo")
     PHOTO("photo"),
 
@@ -49,7 +50,10 @@ public enum WallpostAttachmentType {
     MARKET_MARKET_ALBUM("market_market_album"),
 
     @SerializedName("market")
-    MARKET("market");
+    MARKET("market"),
+
+    @SerializedName("event")
+    EVENT("event");
 
     private final String value;
 

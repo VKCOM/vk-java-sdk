@@ -4,9 +4,10 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
+import com.vk.api.sdk.objects.enums.WallFilter;
 import com.vk.api.sdk.objects.wall.responses.GetResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public WallGetQuery(VkApiClient client, UserActor actor) {
         super(client, "wall.get", GetResponse.class);
@@ -28,6 +29,7 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public WallGetQuery(VkApiClient client, ServiceActor actor) {
         super(client, "wall.get", GetResponse.class);
@@ -76,13 +78,44 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
     }
 
     /**
-     * Set filter
+     * Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetQuery filter(WallGetFilter value) {
+    public WallGetQuery filter(WallFilter value) {
         return unsafeParam("filter", value);
+    }
+
+    /**
+     * '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetQuery fields(UserGroupFields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallGetQuery fields(List<UserGroupFields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override
@@ -92,6 +125,6 @@ public class WallGetQuery extends AbstractQueryBuilder<WallGetQuery, GetResponse
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

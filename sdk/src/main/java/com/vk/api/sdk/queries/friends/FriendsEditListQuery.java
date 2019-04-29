@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param listId value of "list id" parameter. Minimum is 0.
      */
     public FriendsEditListQuery(VkApiClient client, UserActor actor, int listId) {
@@ -46,6 +45,7 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
+     * user_ids
      * IDs of users in the friend list.
      *
      * @param value value of "user ids" parameter.
@@ -66,8 +66,8 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
-     * (Applies if "user_ids" parameter is not set.)
-     * User IDs to add to the friend list.
+     * add_user_ids
+     * (Applies if 'user_ids' parameter is not set.), User IDs to add to the friend list.
      *
      * @param value value of "add user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,8 +77,7 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
-     * (Applies if "user_ids" parameter is not set.)
-     * User IDs to add to the friend list.
+     * (Applies if 'user_ids' parameter is not set.), User IDs to add to the friend list.
      *
      * @param value value of "add user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,8 +87,8 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
-     * (Applies if "user_ids" parameter is not set.)
-     * User IDs to delete from the friend list.
+     * delete_user_ids
+     * (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
      *
      * @param value value of "delete user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -99,8 +98,7 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     }
 
     /**
-     * (Applies if "user_ids" parameter is not set.)
-     * User IDs to delete from the friend list.
+     * (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
      *
      * @param value value of "delete user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -108,7 +106,6 @@ public class FriendsEditListQuery extends AbstractQueryBuilder<FriendsEditListQu
     public FriendsEditListQuery deleteUserIds(List<Integer> value) {
         return unsafeParam("delete_user_ids", value);
     }
-
 
     @Override
     protected FriendsEditListQuery getThis() {

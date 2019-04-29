@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosSaveQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.save", Utils.buildParametrizedType(List.class, Photo.class));
@@ -45,7 +44,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "server" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,7 +54,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "photos list" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -65,7 +64,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -75,22 +74,22 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     }
 
     /**
-     * Geographical latitude, in degrees (from "-90" to "90").
+     * Geographical latitude, in degrees (from '-90' to '90').
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveQuery latitude(Float value) {
+    public PhotosSaveQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
 
     /**
-     * Geographical longitude, in degrees (from "-180" to "180").
+     * Geographical longitude, in degrees (from '-180' to '180').
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveQuery longitude(Float value) {
+    public PhotosSaveQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
 

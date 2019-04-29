@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.friends.responses.DeleteResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,13 +15,11 @@ public class FriendsDeleteQuery extends AbstractQueryBuilder<FriendsDeleteQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param actor actor with access token
      */
-    public FriendsDeleteQuery(VkApiClient client, UserActor actor, int userId) {
+    public FriendsDeleteQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.delete", DeleteResponse.class);
         accessToken(actor.getAccessToken());
-        userId(userId);
     }
 
     /**
@@ -31,7 +28,7 @@ public class FriendsDeleteQuery extends AbstractQueryBuilder<FriendsDeleteQuery,
      * @param value value of "user id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsDeleteQuery userId(int value) {
+    public FriendsDeleteQuery userId(Integer value) {
         return unsafeParam("user_id", value);
     }
 
@@ -42,6 +39,6 @@ public class FriendsDeleteQuery extends AbstractQueryBuilder<FriendsDeleteQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("user_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

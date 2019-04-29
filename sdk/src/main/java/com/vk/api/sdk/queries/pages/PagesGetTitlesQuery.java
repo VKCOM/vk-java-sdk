@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.pages.Wikipage;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PagesGetTitlesQuery(VkApiClient client, UserActor actor) {
         super(client, "pages.getTitles", Utils.buildParametrizedType(List.class, Wikipage.class));

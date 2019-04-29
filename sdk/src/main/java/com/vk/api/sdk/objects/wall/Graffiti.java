@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -24,28 +25,48 @@ public class Graffiti {
      * URL of the preview image with 200 px in width
      */
     @SerializedName("photo_200")
-    private String photo200;
+    private URL photo200;
 
     /**
      * URL of the preview image with 586 px in width
      */
     @SerializedName("photo_586")
-    private String photo586;
+    private URL photo586;
 
     public Integer getId() {
         return id;
+    }
+
+    public Graffiti setId(Integer id) {
+        this.id = id;
+        return this;
     }
 
     public Integer getOwnerId() {
         return ownerId;
     }
 
-    public String getPhoto200() {
+    public Graffiti setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public URL getPhoto200() {
         return photo200;
     }
 
-    public String getPhoto586() {
+    public Graffiti setPhoto200(URL photo200) {
+        this.photo200 = photo200;
+        return this;
+    }
+
+    public URL getPhoto586() {
         return photo586;
+    }
+
+    public Graffiti setPhoto586(URL photo586) {
+        this.photo586 = photo586;
+        return this;
     }
 
     @Override
@@ -58,19 +79,24 @@ public class Graffiti {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Graffiti graffiti = (Graffiti) o;
-        return Objects.equals(id, graffiti.id) &&
-                Objects.equals(ownerId, graffiti.ownerId) &&
+        return Objects.equals(ownerId, graffiti.ownerId) &&
+                Objects.equals(id, graffiti.id) &&
                 Objects.equals(photo200, graffiti.photo200) &&
                 Objects.equals(photo586, graffiti.photo586);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Graffiti{");
-        sb.append("id=").append(id);
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", photo200='").append(photo200).append("'");
-        sb.append(", photo586='").append(photo586).append("'");
+        sb.append("ownerId=").append(ownerId);
+        sb.append(", id=").append(id);
+        sb.append(", photo200=").append(photo200);
+        sb.append(", photo586=").append(photo586);
         sb.append('}');
         return sb.toString();
     }

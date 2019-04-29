@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.PhotoAlbumFull;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param title  value of "title" parameter.
+     * @param actor actor with access token
+     * @param title value of "title" parameter.
      */
     public PhotosCreateAlbumQuery(VkApiClient client, UserActor actor, String title) {
         super(client, "photos.createAlbum", PhotoAlbumFull.class);
@@ -56,46 +55,6 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
     }
 
     /**
-     * Set privacy view
-     *
-     * @param value value of "privacy view" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosCreateAlbumQuery privacyView(String... value) {
-        return unsafeParam("privacy_view", value);
-    }
-
-    /**
-     * Set privacy view
-     *
-     * @param value value of "privacy view" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosCreateAlbumQuery privacyView(List<String> value) {
-        return unsafeParam("privacy_view", value);
-    }
-
-    /**
-     * Set privacy comment
-     *
-     * @param value value of "privacy comment" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosCreateAlbumQuery privacyComment(String... value) {
-        return unsafeParam("privacy_comment", value);
-    }
-
-    /**
-     * Set privacy comment
-     *
-     * @param value value of "privacy comment" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosCreateAlbumQuery privacyComment(List<String> value) {
-        return unsafeParam("privacy_comment", value);
-    }
-
-    /**
      * Set upload by admins only
      *
      * @param value value of "upload by admins only" parameter.
@@ -113,6 +72,48 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
      */
     public PhotosCreateAlbumQuery commentsDisabled(Boolean value) {
         return unsafeParam("comments_disabled", value);
+    }
+
+    /**
+     * privacy_view
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter. By default all.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyView(String... value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
+     * Set privacy view
+     *
+     * @param value value of "privacy view" parameter. By default all.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyView(List<String> value) {
+        return unsafeParam("privacy_view", value);
+    }
+
+    /**
+     * privacy_comment
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter. By default all.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyComment(String... value) {
+        return unsafeParam("privacy_comment", value);
+    }
+
+    /**
+     * Set privacy comment
+     *
+     * @param value value of "privacy comment" parameter. By default all.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosCreateAlbumQuery privacyComment(List<String> value) {
+        return unsafeParam("privacy_comment", value);
     }
 
     @Override

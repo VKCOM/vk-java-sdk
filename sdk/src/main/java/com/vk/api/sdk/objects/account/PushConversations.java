@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.account;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,28 +9,31 @@ import java.util.Objects;
  * PushConversations object
  */
 public class PushConversations {
-
+    /**
+     * Items count
+     */
     @SerializedName("count")
     private Integer count;
 
     @SerializedName("items")
-    private List<PushConversationItem> items;
+    private List<PushConversationsItem> items;
 
     public Integer getCount() {
         return count;
     }
 
-    public List<PushConversationItem> getItems() {
+    public PushConversations setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public List<PushConversationsItem> getItems() {
         return items;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PushConversations that = (PushConversations) o;
-        return Objects.equals(count, that.count) &&
-                Objects.equals(items, that.items);
+    public PushConversations setItems(List<PushConversationsItem> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -39,7 +42,21 @@ public class PushConversations {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PushConversations pushConversations = (PushConversations) o;
+        return Objects.equals(count, pushConversations.count) &&
+                Objects.equals(items, pushConversations.items);
+    }
+
+    @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PushConversations{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class StorageSetQuery extends AbstractQueryBuilder<StorageSetQuery, OkRes
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param key    value of "key" parameter.
+     * @param actor actor with access token
+     * @param key value of "key" parameter.
      */
     public StorageSetQuery(VkApiClient client, UserActor actor, String key) {
         super(client, "storage.set", OkResponse.class);
@@ -53,6 +52,16 @@ public class StorageSetQuery extends AbstractQueryBuilder<StorageSetQuery, OkRes
      */
     public StorageSetQuery userId(Integer value) {
         return unsafeParam("user_id", value);
+    }
+
+    /**
+     * Set global
+     *
+     * @param value value of "global" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageSetQuery global(Boolean value) {
+        return unsafeParam("global", value);
     }
 
     @Override

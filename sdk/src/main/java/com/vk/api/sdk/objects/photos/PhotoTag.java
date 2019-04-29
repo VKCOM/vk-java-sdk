@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.photos;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -10,10 +10,10 @@ import java.util.Objects;
  */
 public class PhotoTag {
     /**
-     * Tagged user ID
+     * Date when tag has been added in Unixtime
      */
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("date")
+    private Integer date;
 
     /**
      * Tag ID
@@ -34,10 +34,16 @@ public class PhotoTag {
     private String taggedName;
 
     /**
-     * Date when tag has been added in Unixtime
+     * Tagged user ID
      */
-    @SerializedName("date")
-    private Integer date;
+    @SerializedName("user_id")
+    private Integer userId;
+
+    /**
+     * Information whether the tag is reviewed
+     */
+    @SerializedName("viewed")
+    private BoolInt viewed;
 
     /**
      * Coordinate X of the left upper corner
@@ -46,16 +52,16 @@ public class PhotoTag {
     private Float x;
 
     /**
-     * Coordinate Y of the left upper corner
-     */
-    @SerializedName("y")
-    private Float y;
-
-    /**
      * Coordinate X of the right lower corner
      */
     @SerializedName("x2")
     private Float x2;
+
+    /**
+     * Coordinate Y of the left upper corner
+     */
+    @SerializedName("y")
+    private Float y;
 
     /**
      * Coordinate Y of the right lower corner
@@ -63,50 +69,93 @@ public class PhotoTag {
     @SerializedName("y2")
     private Float y2;
 
-    /**
-     * Information whether the tag is reviewed
-     */
-    @SerializedName("viewed")
-    private BoolInt viewed;
+    public Integer getDate() {
+        return date;
+    }
 
-    public Integer getUserId() {
-        return userId;
+    public PhotoTag setDate(Integer date) {
+        this.date = date;
+        return this;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public PhotoTag setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public Integer getPlacerId() {
         return placerId;
+    }
+
+    public PhotoTag setPlacerId(Integer placerId) {
+        this.placerId = placerId;
+        return this;
     }
 
     public String getTaggedName() {
         return taggedName;
     }
 
-    public Integer getDate() {
-        return date;
+    public PhotoTag setTaggedName(String taggedName) {
+        this.taggedName = taggedName;
+        return this;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public PhotoTag setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public boolean isViewed() {
+        return viewed == BoolInt.YES;
+    }
+
+    public BoolInt getViewed() {
+        return viewed;
     }
 
     public Float getX() {
         return x;
     }
 
-    public Float getY() {
-        return y;
+    public PhotoTag setX(Float x) {
+        this.x = x;
+        return this;
     }
 
     public Float getX2() {
         return x2;
     }
 
+    public PhotoTag setX2(Float x2) {
+        this.x2 = x2;
+        return this;
+    }
+
+    public Float getY() {
+        return y;
+    }
+
+    public PhotoTag setY(Float y) {
+        this.y = y;
+        return this;
+    }
+
     public Float getY2() {
         return y2;
     }
 
-    public boolean isViewed() {
-        return viewed == BoolInt.YES;
+    public PhotoTag setY2(Float y2) {
+        this.y2 = y2;
+        return this;
     }
 
     @Override
@@ -119,31 +168,36 @@ public class PhotoTag {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoTag photoTag = (PhotoTag) o;
-        return Objects.equals(userId, photoTag.userId) &&
-                Objects.equals(id, photoTag.id) &&
-                Objects.equals(placerId, photoTag.placerId) &&
+        return Objects.equals(date, photoTag.date) &&
                 Objects.equals(taggedName, photoTag.taggedName) &&
-                Objects.equals(date, photoTag.date) &&
+                Objects.equals(userId, photoTag.userId) &&
+                Objects.equals(viewed, photoTag.viewed) &&
                 Objects.equals(x, photoTag.x) &&
                 Objects.equals(y, photoTag.y) &&
-                Objects.equals(x2, photoTag.x2) &&
                 Objects.equals(y2, photoTag.y2) &&
-                Objects.equals(viewed, photoTag.viewed);
+                Objects.equals(x2, photoTag.x2) &&
+                Objects.equals(id, photoTag.id) &&
+                Objects.equals(placerId, photoTag.placerId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoTag{");
-        sb.append("userId=").append(userId);
-        sb.append(", id=").append(id);
-        sb.append(", placerId=").append(placerId);
+        sb.append("date=").append(date);
         sb.append(", taggedName='").append(taggedName).append("'");
-        sb.append(", date=").append(date);
+        sb.append(", userId=").append(userId);
+        sb.append(", viewed=").append(viewed);
         sb.append(", x=").append(x);
         sb.append(", y=").append(y);
-        sb.append(", x2=").append(x2);
         sb.append(", y2=").append(y2);
-        sb.append(", viewed=").append(viewed);
+        sb.append(", x2=").append(x2);
+        sb.append(", id=").append(id);
+        sb.append(", placerId=").append(placerId);
         sb.append('}');
         return sb.toString();
     }

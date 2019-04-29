@@ -4,9 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.wall.responses.GetByIdExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,8 +17,8 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param posts  value of "posts" parameter.
+     * @param actor actor with access token
+     * @param posts value of "posts" parameter.
      */
     public WallGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
@@ -32,8 +31,8 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param posts  value of "posts" parameter.
+     * @param actor actor with access token
+     * @param posts value of "posts" parameter.
      */
     public WallGetByIdQueryWithExtended(VkApiClient client, UserActor actor, List<String> posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
@@ -46,7 +45,8 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param posts  value of "posts" parameter.
+     * @param actor actor with access token
+     * @param posts value of "posts" parameter.
      */
     public WallGetByIdQueryWithExtended(VkApiClient client, ServiceActor actor, String... posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
@@ -60,9 +60,11 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param posts  value of "posts" parameter.
+     * @param actor actor with access token
+     * @param posts value of "posts" parameter.
      */
-    public WallGetByIdQueryWithExtended(VkApiClient client, ServiceActor actor, List<String> posts) {
+    public WallGetByIdQueryWithExtended(VkApiClient client, ServiceActor actor,
+            List<String> posts) {
         super(client, "wall.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -71,29 +73,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
     }
 
     /**
-     * User or community IDs and post IDs, separated by underscores.  Use a negative value to designate a community ID.  Example:
-     * 93388_21539,93388_20904,2943_4276,-1_1
-     *
-     * @param value value of "posts" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected WallGetByIdQueryWithExtended posts(String... value) {
-        return unsafeParam("posts", value);
-    }
-
-    /**
-     * User or community IDs and post IDs, separated by underscores.  Use a negative value to designate a community ID.  Example:
-     * 93388_21539,93388_20904,2943_4276,-1_1
-     *
-     * @param value value of "posts" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected WallGetByIdQueryWithExtended posts(List<String> value) {
-        return unsafeParam("posts", value);
-    }
-
-    /**
-     * Return user and community objects needed to display posts
+     * '1' — to return user and community objects needed to display posts, '0' — no additional fields are returned (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -103,7 +83,7 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
     }
 
     /**
-     * Sets the number of parent elements to include in the array "copy_history" that is returned if the post is a repost from another wall.
+     * Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall.
      *
      * @param value value of "copy history depth" parameter. By default 2.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -113,12 +93,34 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
     }
 
     /**
+     * posts
+     * User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     *
+     * @param value value of "posts" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected WallGetByIdQueryWithExtended posts(String... value) {
+        return unsafeParam("posts", value);
+    }
+
+    /**
+     * User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     *
+     * @param value value of "posts" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected WallGetByIdQueryWithExtended posts(List<String> value) {
+        return unsafeParam("posts", value);
+    }
+
+    /**
+     * fields
      * Set fields
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetByIdQueryWithExtended fields(EnumParam... value) {
+    public WallGetByIdQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
@@ -128,10 +130,9 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetByIdQueryWithExtended fields(List<EnumParam> value) {
+    public WallGetByIdQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
-
 
     @Override
     protected WallGetByIdQueryWithExtended getThis() {
@@ -140,6 +141,6 @@ public class WallGetByIdQueryWithExtended extends AbstractQueryBuilder<WallGetBy
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("posts");
+        return Arrays.asList("posts", "access_token");
     }
 }

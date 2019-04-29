@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.video.responses.GetExtendedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class VideoGetQueryWithExtended extends AbstractQueryBuilder<VideoGetQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public VideoGetQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "video.get", GetExtendedResponse.class);
@@ -32,26 +31,6 @@ public class VideoGetQueryWithExtended extends AbstractQueryBuilder<VideoGetQuer
      */
     public VideoGetQueryWithExtended ownerId(Integer value) {
         return unsafeParam("owner_id", value);
-    }
-
-    /**
-     * Video IDs
-     *
-     * @param value value of "videos" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoGetQueryWithExtended videos(String... value) {
-        return unsafeParam("videos", value);
-    }
-
-    /**
-     * Video IDs
-     *
-     * @param value value of "videos" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public VideoGetQueryWithExtended videos(List<String> value) {
-        return unsafeParam("videos", value);
     }
 
     /**
@@ -85,13 +64,34 @@ public class VideoGetQueryWithExtended extends AbstractQueryBuilder<VideoGetQuer
     }
 
     /**
-     * Return an extended response with additional fields
+     * '1' — to return an extended response with additional fields
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected VideoGetQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * videos
+     * Video IDs, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", Use a negative value to designate a community ID. Example: "-4363_136089719,13245770_137352259"
+     *
+     * @param value value of "videos" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetQueryWithExtended videos(String... value) {
+        return unsafeParam("videos", value);
+    }
+
+    /**
+     * Video IDs, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", Use a negative value to designate a community ID. Example: "-4363_136089719,13245770_137352259"
+     *
+     * @param value value of "videos" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetQueryWithExtended videos(List<String> value) {
+        return unsafeParam("videos", value);
     }
 
     @Override

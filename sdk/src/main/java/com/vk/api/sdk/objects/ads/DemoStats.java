@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -14,22 +14,37 @@ public class DemoStats {
     @SerializedName("id")
     private Integer id;
 
-    @SerializedName("type")
-    private ObjectType type;
-
     @SerializedName("stats")
     private DemostatsFormat stats;
 
+    @SerializedName("type")
+    private ObjectType type;
+
     public Integer getId() {
         return id;
+    }
+
+    public DemoStats setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public DemostatsFormat getStats() {
+        return stats;
+    }
+
+    public DemoStats setStats(DemostatsFormat stats) {
+        this.stats = stats;
+        return this;
     }
 
     public ObjectType getType() {
         return type;
     }
 
-    public DemostatsFormat getStats() {
-        return stats;
+    public DemoStats setType(ObjectType type) {
+        this.type = type;
+        return this;
     }
 
     @Override
@@ -42,17 +57,22 @@ public class DemoStats {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DemoStats demoStats = (DemoStats) o;
-        return Objects.equals(id, demoStats.id) &&
-                Objects.equals(type, demoStats.type) &&
-                Objects.equals(stats, demoStats.stats);
+        return Objects.equals(stats, demoStats.stats) &&
+                Objects.equals(id, demoStats.id) &&
+                Objects.equals(type, demoStats.type);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DemoStats{");
-        sb.append("id=").append(id);
+        sb.append("stats=").append(stats);
+        sb.append(", id=").append(id);
         sb.append(", type=").append(type);
-        sb.append(", stats=").append(stats);
         sb.append('}');
         return sb.toString();
     }

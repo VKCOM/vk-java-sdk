@@ -1,10 +1,9 @@
 package com.vk.api.sdk.queries.secure;
 
-import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,32 +15,12 @@ public class SecureSetCounterQuery extends AbstractSecureQueryBuilder<SecureSetC
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public SecureSetCounterQuery(VkApiClient client, ServiceActor actor) {
         super(client, "secure.setCounter", OkResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
-    }
-
-    /**
-     * Set counters
-     *
-     * @param value value of "counters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public SecureSetCounterQuery counters(String... value) {
-        return unsafeParam("counters", value);
-    }
-
-    /**
-     * Set counters
-     *
-     * @param value value of "counters" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public SecureSetCounterQuery counters(List<String> value) {
-        return unsafeParam("counters", value);
     }
 
     /**
@@ -64,6 +43,37 @@ public class SecureSetCounterQuery extends AbstractSecureQueryBuilder<SecureSetC
         return unsafeParam("counter", value);
     }
 
+    /**
+     * Set increment
+     *
+     * @param value value of "increment" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSetCounterQuery increment(Boolean value) {
+        return unsafeParam("increment", value);
+    }
+
+    /**
+     * counters
+     * Set counters
+     *
+     * @param value value of "counters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSetCounterQuery counters(String... value) {
+        return unsafeParam("counters", value);
+    }
+
+    /**
+     * Set counters
+     *
+     * @param value value of "counters" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public SecureSetCounterQuery counters(List<String> value) {
+        return unsafeParam("counters", value);
+    }
+
     @Override
     protected SecureSetCounterQuery getThis() {
         return this;
@@ -71,6 +81,6 @@ public class SecureSetCounterQuery extends AbstractSecureQueryBuilder<SecureSetC
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token", "client_secret");
+        return Arrays.asList("access_token");
     }
 }

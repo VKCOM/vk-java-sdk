@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Sex
  */
-public enum StatsSexValue {
+public enum StatsSexValue implements EnumParam {
     @SerializedName("f")
     FEMALE("f"),
 

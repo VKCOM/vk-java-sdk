@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class StorageGetKeysQuery extends AbstractQueryBuilder<StorageGetKeysQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public StorageGetKeysQuery(VkApiClient client, UserActor actor) {
         super(client, "storage.getKeys", Utils.buildParametrizedType(List.class, String.class));
@@ -31,6 +30,26 @@ public class StorageGetKeysQuery extends AbstractQueryBuilder<StorageGetKeysQuer
      */
     public StorageGetKeysQuery userId(Integer value) {
         return unsafeParam("user_id", value);
+    }
+
+    /**
+     * Set global
+     *
+     * @param value value of "global" parameter. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageGetKeysQuery global(Boolean value) {
+        return unsafeParam("global", value);
+    }
+
+    /**
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StorageGetKeysQuery offset(Integer value) {
+        return unsafeParam("offset", value);
     }
 
     /**

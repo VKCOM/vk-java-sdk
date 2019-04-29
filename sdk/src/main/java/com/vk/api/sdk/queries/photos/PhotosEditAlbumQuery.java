@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class PhotosEditAlbumQuery extends AbstractQueryBuilder<PhotosEditAlbumQu
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param albumId value of "album id" parameter. Minimum is 0.
      */
     public PhotosEditAlbumQuery(VkApiClient client, UserActor actor, int albumId) {
@@ -66,6 +65,27 @@ public class PhotosEditAlbumQuery extends AbstractQueryBuilder<PhotosEditAlbumQu
     }
 
     /**
+     * Set upload by admins only
+     *
+     * @param value value of "upload by admins only" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosEditAlbumQuery uploadByAdminsOnly(Boolean value) {
+        return unsafeParam("upload_by_admins_only", value);
+    }
+
+    /**
+     * Set comments disabled
+     *
+     * @param value value of "comments disabled" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PhotosEditAlbumQuery commentsDisabled(Boolean value) {
+        return unsafeParam("comments_disabled", value);
+    }
+
+    /**
+     * privacy_view
      * Set privacy view
      *
      * @param value value of "privacy view" parameter.
@@ -86,6 +106,7 @@ public class PhotosEditAlbumQuery extends AbstractQueryBuilder<PhotosEditAlbumQu
     }
 
     /**
+     * privacy_comment
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter.
@@ -103,26 +124,6 @@ public class PhotosEditAlbumQuery extends AbstractQueryBuilder<PhotosEditAlbumQu
      */
     public PhotosEditAlbumQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
-    }
-
-    /**
-     * Set upload by admins only
-     *
-     * @param value value of "upload by admins only" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosEditAlbumQuery uploadByAdminsOnly(Boolean value) {
-        return unsafeParam("upload_by_admins_only", value);
-    }
-
-    /**
-     * Set comments disabled
-     *
-     * @param value value of "comments disabled" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public PhotosEditAlbumQuery commentsDisabled(Boolean value) {
-        return unsafeParam("comments_disabled", value);
     }
 
     @Override

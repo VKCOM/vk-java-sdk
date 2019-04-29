@@ -6,8 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DatabaseGetSchoolClassesQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonObject.class)));
@@ -29,6 +28,7 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public DatabaseGetSchoolClassesQuery(VkApiClient client, ServiceActor actor) {
         super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonObject.class)));
@@ -53,6 +53,6 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

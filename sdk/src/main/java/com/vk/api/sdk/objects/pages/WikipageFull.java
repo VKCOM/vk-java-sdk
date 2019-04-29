@@ -1,8 +1,9 @@
 package com.vk.api.sdk.objects.pages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -10,22 +11,16 @@ import java.util.Objects;
  */
 public class WikipageFull {
     /**
-     * Page ID
+     * Date when the page has been created in Unixtime
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("created")
+    private Integer created;
 
     /**
-     * Community ID
+     * Page creator ID
      */
-    @SerializedName("group_id")
-    private Integer groupId;
-
-    /**
-     * Page title
-     */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("creator_id")
+    private Integer creatorId;
 
     /**
      * Information whether current user can edit the page
@@ -40,34 +35,10 @@ public class WikipageFull {
     private BoolInt currentUserCanEditAccess;
 
     /**
-     * View settings of the page
-     */
-    @SerializedName("who_can_view")
-    private PrivacySettings whoCanView;
-
-    /**
-     * Edit settings of the page
-     */
-    @SerializedName("who_can_edit")
-    private PrivacySettings whoCanEdit;
-
-    /**
      * Date when the page has been edited in Unixtime
      */
     @SerializedName("edited")
     private Integer edited;
-
-    /**
-     * Date when the page has been created in Unixtime
-     */
-    @SerializedName("created")
-    private Integer created;
-
-    /**
-     * Views number
-     */
-    @SerializedName("views")
-    private Integer views;
 
     /**
      * Last editor ID
@@ -76,16 +47,10 @@ public class WikipageFull {
     private Integer editorId;
 
     /**
-     * Page creator ID
+     * Community ID
      */
-    @SerializedName("creator_id")
-    private Integer creatorId;
-
-    /**
-     * Page content, wiki
-     */
-    @SerializedName("source")
-    private String source;
+    @SerializedName("group_id")
+    private Integer groupId;
 
     /**
      * Page content, HTML
@@ -94,74 +59,183 @@ public class WikipageFull {
     private String html;
 
     /**
+     * Page ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    /**
+     * Page content, wiki
+     */
+    @SerializedName("source")
+    private String source;
+
+    /**
+     * Page title
+     */
+    @SerializedName("title")
+    private String title;
+
+    /**
      * URL of the page preview
      */
     @SerializedName("view_url")
-    private String viewUrl;
+    private URL viewUrl;
 
-    public Integer getId() {
-        return id;
-    }
+    /**
+     * Views number
+     */
+    @SerializedName("views")
+    private Integer views;
 
-    public Integer getGroupId() {
-        return groupId;
-    }
+    /**
+     * Edit settings of the page
+     */
+    @SerializedName("who_can_edit")
+    private PrivacySettings whoCanEdit;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public boolean isCurrentUserCanEdit() {
-        return currentUserCanEdit == BoolInt.YES;
-    }
-
-    public boolean isCurrentUserCanEditAccess() {
-        return currentUserCanEditAccess == BoolInt.YES;
-    }
-
-    public PrivacySettings getWhoCanView() {
-        return whoCanView;
-    }
-
-    public PrivacySettings getWhoCanEdit() {
-        return whoCanEdit;
-    }
-
-    public Integer getEdited() {
-        return edited;
-    }
+    /**
+     * View settings of the page
+     */
+    @SerializedName("who_can_view")
+    private PrivacySettings whoCanView;
 
     public Integer getCreated() {
         return created;
     }
 
-    public Integer getViews() {
-        return views;
-    }
-
-    public Integer getEditorId() {
-        return editorId;
+    public WikipageFull setCreated(Integer created) {
+        this.created = created;
+        return this;
     }
 
     public Integer getCreatorId() {
         return creatorId;
     }
 
-    public String getSource() {
-        return source;
+    public WikipageFull setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
+        return this;
+    }
+
+    public boolean isCurrentUserCanEdit() {
+        return currentUserCanEdit == BoolInt.YES;
+    }
+
+    public BoolInt getCurrentUserCanEdit() {
+        return currentUserCanEdit;
+    }
+
+    public boolean isCurrentUserCanEditAccess() {
+        return currentUserCanEditAccess == BoolInt.YES;
+    }
+
+    public BoolInt getCurrentUserCanEditAccess() {
+        return currentUserCanEditAccess;
+    }
+
+    public Integer getEdited() {
+        return edited;
+    }
+
+    public WikipageFull setEdited(Integer edited) {
+        this.edited = edited;
+        return this;
+    }
+
+    public Integer getEditorId() {
+        return editorId;
+    }
+
+    public WikipageFull setEditorId(Integer editorId) {
+        this.editorId = editorId;
+        return this;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public WikipageFull setGroupId(Integer groupId) {
+        this.groupId = groupId;
+        return this;
     }
 
     public String getHtml() {
         return html;
     }
 
-    public String getViewUrl() {
+    public WikipageFull setHtml(String html) {
+        this.html = html;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public WikipageFull setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public WikipageFull setSource(String source) {
+        this.source = source;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public WikipageFull setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public URL getViewUrl() {
         return viewUrl;
+    }
+
+    public WikipageFull setViewUrl(URL viewUrl) {
+        this.viewUrl = viewUrl;
+        return this;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public WikipageFull setViews(Integer views) {
+        this.views = views;
+        return this;
+    }
+
+    public PrivacySettings getWhoCanEdit() {
+        return whoCanEdit;
+    }
+
+    public WikipageFull setWhoCanEdit(PrivacySettings whoCanEdit) {
+        this.whoCanEdit = whoCanEdit;
+        return this;
+    }
+
+    public PrivacySettings getWhoCanView() {
+        return whoCanView;
+    }
+
+    public WikipageFull setWhoCanView(PrivacySettings whoCanView) {
+        this.whoCanView = whoCanView;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(editorId, edited, currentUserCanEditAccess, whoCanView, created, groupId, creatorId, source, title, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views);
+        return Objects.hash(editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, title, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views);
     }
 
     @Override
@@ -169,41 +243,46 @@ public class WikipageFull {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WikipageFull wikipageFull = (WikipageFull) o;
-        return Objects.equals(id, wikipageFull.id) &&
-                Objects.equals(groupId, wikipageFull.groupId) &&
-                Objects.equals(title, wikipageFull.title) &&
-                Objects.equals(currentUserCanEdit, wikipageFull.currentUserCanEdit) &&
-                Objects.equals(currentUserCanEditAccess, wikipageFull.currentUserCanEditAccess) &&
-                Objects.equals(whoCanView, wikipageFull.whoCanView) &&
-                Objects.equals(whoCanEdit, wikipageFull.whoCanEdit) &&
+        return Objects.equals(whoCanView, wikipageFull.whoCanView) &&
                 Objects.equals(edited, wikipageFull.edited) &&
                 Objects.equals(created, wikipageFull.created) &&
-                Objects.equals(views, wikipageFull.views) &&
                 Objects.equals(editorId, wikipageFull.editorId) &&
-                Objects.equals(creatorId, wikipageFull.creatorId) &&
                 Objects.equals(source, wikipageFull.source) &&
+                Objects.equals(title, wikipageFull.title) &&
+                Objects.equals(whoCanEdit, wikipageFull.whoCanEdit) &&
+                Objects.equals(currentUserCanEdit, wikipageFull.currentUserCanEdit) &&
+                Objects.equals(groupId, wikipageFull.groupId) &&
+                Objects.equals(creatorId, wikipageFull.creatorId) &&
+                Objects.equals(viewUrl, wikipageFull.viewUrl) &&
                 Objects.equals(html, wikipageFull.html) &&
-                Objects.equals(viewUrl, wikipageFull.viewUrl);
+                Objects.equals(id, wikipageFull.id) &&
+                Objects.equals(currentUserCanEditAccess, wikipageFull.currentUserCanEditAccess) &&
+                Objects.equals(views, wikipageFull.views);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WikipageFull{");
-        sb.append("id=").append(id);
-        sb.append(", groupId=").append(groupId);
-        sb.append(", title='").append(title).append("'");
-        sb.append(", currentUserCanEdit=").append(currentUserCanEdit);
-        sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
-        sb.append(", whoCanView=").append(whoCanView);
-        sb.append(", whoCanEdit=").append(whoCanEdit);
+        sb.append("whoCanView=").append(whoCanView);
         sb.append(", edited=").append(edited);
         sb.append(", created=").append(created);
-        sb.append(", views=").append(views);
         sb.append(", editorId=").append(editorId);
-        sb.append(", creatorId=").append(creatorId);
         sb.append(", source='").append(source).append("'");
+        sb.append(", title='").append(title).append("'");
+        sb.append(", whoCanEdit=").append(whoCanEdit);
+        sb.append(", currentUserCanEdit=").append(currentUserCanEdit);
+        sb.append(", groupId=").append(groupId);
+        sb.append(", creatorId=").append(creatorId);
+        sb.append(", viewUrl=").append(viewUrl);
         sb.append(", html='").append(html).append("'");
-        sb.append(", viewUrl='").append(viewUrl).append("'");
+        sb.append(", id=").append(id);
+        sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
+        sb.append(", views=").append(views);
         sb.append('}');
         return sb.toString();
     }

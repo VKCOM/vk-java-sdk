@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.groups.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.groups.CallbackServer;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -10,10 +10,6 @@ import java.util.Objects;
  * GetCallbackServersResponse object
  */
 public class GetCallbackServersResponse {
-
-    /**
-     * Total servers number
-     */
     @SerializedName("count")
     private Integer count;
 
@@ -24,8 +20,18 @@ public class GetCallbackServersResponse {
         return count;
     }
 
+    public GetCallbackServersResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<CallbackServer> getItems() {
         return items;
+    }
+
+    public GetCallbackServersResponse setItems(List<CallbackServer> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -44,6 +50,11 @@ public class GetCallbackServersResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCallbackServersResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

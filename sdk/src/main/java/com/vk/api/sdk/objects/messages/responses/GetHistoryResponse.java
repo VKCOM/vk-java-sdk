@@ -1,8 +1,10 @@
 package com.vk.api.sdk.objects.messages.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.Message;
-
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,72 +18,79 @@ public class GetHistoryResponse {
     @SerializedName("count")
     private Integer count;
 
-    /**
-     * Unread dialogs number
-     */
-    @SerializedName("unread")
-    private Integer unread;
-
     @SerializedName("items")
     private List<Message> items;
 
-    /**
-     * Id of last read inbound message
-     */
-    @SerializedName("in_read")
-    private Integer inRead;
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
 
-    /**
-     * Id of last read outbound message
-     */
-    @SerializedName("out_read")
-    private Integer outRead;
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
     }
 
-    public Integer getUnread() {
-        return unread;
+    public GetHistoryResponse setCount(Integer count) {
+        this.count = count;
+        return this;
     }
 
     public List<Message> getItems() {
         return items;
     }
 
-    public Integer getInRead() {
-        return inRead;
+    public GetHistoryResponse setItems(List<Message> items) {
+        this.items = items;
+        return this;
     }
 
-    public Integer getOutRead() {
-        return outRead;
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetHistoryResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetHistoryResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(unread, count, items, inRead, outRead);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GetHistoryResponse that = (GetHistoryResponse) o;
-        return Objects.equals(count, that.count) &&
-                Objects.equals(unread, that.unread) &&
-                Objects.equals(items, that.items) &&
-                Objects.equals(inRead, that.inRead) &&
-                Objects.equals(outRead, that.outRead);
+        GetHistoryResponse getHistoryResponse = (GetHistoryResponse) o;
+        return Objects.equals(count, getHistoryResponse.count) &&
+                Objects.equals(profiles, getHistoryResponse.profiles) &&
+                Objects.equals(groups, getHistoryResponse.groups) &&
+                Objects.equals(items, getHistoryResponse.items);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetHistoryResponse{");
         sb.append("count=").append(count);
-        sb.append(", unread=").append(unread);
+        sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
-        sb.append(", inRead=").append(inRead);
-        sb.append(", outRead=").append(outRead);
         sb.append('}');
         return sb.toString();
     }

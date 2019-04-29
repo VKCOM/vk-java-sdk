@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,28 +15,28 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId, int serverId) {
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.setCallbackSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
-        serverId(serverId);
     }
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int serverId) {
+    public GroupsSetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.setCallbackSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
-        serverId(serverId);
+        groupId(groupId);
     }
 
     /**
@@ -56,12 +55,22 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "server id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsSetCallbackSettingsQuery serverId(int value) {
+    public GroupsSetCallbackSettingsQuery serverId(Integer value) {
         return unsafeParam("server_id", value);
     }
 
     /**
-     * New messages notifications.
+     * Set api version
+     *
+     * @param value value of "api version" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery apiVersion(String value) {
+        return unsafeParam("api_version", value);
+    }
+
+    /**
+     * A new incoming message has been received ('0' — disabled, '1' — enabled).
      *
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -71,7 +80,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Reply messages notifications.
+     * A new outcoming message has been received ('0' — disabled, '1' — enabled).
      *
      * @param value value of "message reply" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -81,17 +90,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Reply messages notifications.
-     *
-     * @param value value of "message edit" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public GroupsSetCallbackSettingsQuery messageEdit(Boolean value) {
-        return unsafeParam("message_edit", value);
-    }
-
-    /**
-     * Allow messages notifications.
+     * Allowed messages notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "message allow" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -101,7 +100,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Deny messages notifications.
+     * Denied messages notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "message deny" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -111,7 +110,17 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New photos notifications.
+     * Set message typing state
+     *
+     * @param value value of "message typing state" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageTypingState(Boolean value) {
+        return unsafeParam("message_typing_state", value);
+    }
+
+    /**
+     * New photos notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "photo new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -121,7 +130,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New audios notifications.
+     * New audios notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "audio new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -131,7 +140,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New videos notifications.
+     * New videos notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "video new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -141,7 +150,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New wall replies notifications.
+     * New wall replies notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "wall reply new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -151,7 +160,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Wall replies edited notifications.
+     * Wall replies edited notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "wall reply edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -161,7 +170,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Wall replies deleted notifications.
+     * A wall comment has been deleted ('0' — disabled, '1' — enabled).
      *
      * @param value value of "wall reply delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -171,7 +180,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Wall replies restored notifications.
+     * A wall comment has been restored ('0' — disabled, '1' — enabled).
      *
      * @param value value of "wall reply restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -181,7 +190,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New wall posts notifications.
+     * New wall posts notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "wall post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -191,9 +200,9 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Wall repost notifications.
+     * New wall posts notifications ('0' — disabled, '1' — enabled).
      *
-     * @param value value of "wall post new" parameter.
+     * @param value value of "wall repost" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsSetCallbackSettingsQuery wallRepost(Boolean value) {
@@ -201,7 +210,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New board posts notifications.
+     * New board posts notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "board post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -211,7 +220,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts edited notifications.
+     * Board posts edited notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "board post edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -221,7 +230,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts restored notifications.
+     * Board posts restored notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "board post restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -231,7 +240,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Board posts deleted notifications.
+     * Board posts deleted notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "board post delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -241,7 +250,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to photo notifications.
+     * New comment to photo notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "photo comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -251,7 +260,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Photo comments edited notifications.
+     * A photo comment has been edited ('0' — disabled, '1' — enabled).
      *
      * @param value value of "photo comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -261,7 +270,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Photo comments deleted notifications.
+     * A photo comment has been deleted ('0' — disabled, '1' — enabled).
      *
      * @param value value of "photo comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -271,7 +280,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Photo comments restored notifications.
+     * A photo comment has been restored ('0' — disabled, '1' — enabled).
      *
      * @param value value of "photo comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -281,7 +290,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to video notifications.
+     * New comment to video notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "video comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -291,7 +300,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Video comments edited notifications.
+     * A video comment has been edited ('0' — disabled, '1' — enabled).
      *
      * @param value value of "video comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -301,7 +310,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Video comments deleted notifications.
+     * A video comment has been deleted ('0' — disabled, '1' — enabled).
      *
      * @param value value of "video comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -311,7 +320,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Video comments restored notifications.
+     * A video comment has been restored ('0' — disabled, '1' — enabled).
      *
      * @param value value of "video comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -321,7 +330,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New comment to market item notifications.
+     * New comment to market item notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "market comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -331,7 +340,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Market comments edited notifications.
+     * A market comment has been edited ('0' — disabled, '1' — enabled).
      *
      * @param value value of "market comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -341,7 +350,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Market comments deleted notifications.
+     * A market comment has been deleted ('0' — disabled, '1' — enabled).
      *
      * @param value value of "market comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -351,7 +360,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Market comments restored notifications.
+     * A market comment has been restored ('0' — disabled, '1' — enabled).
      *
      * @param value value of "market comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -361,7 +370,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * New poll vote notifications.
+     * A vote in a public poll has been added ('0' — disabled, '1' — enabled).
      *
      * @param value value of "poll vote new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -371,7 +380,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Joined community notifications.
+     * Joined community notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "group join" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -381,7 +390,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Left community notifications.
+     * Left community notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "group leave" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -391,7 +400,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Group settings changed notifications.
+     * Set group change settings
      *
      * @param value value of "group change settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -401,7 +410,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Group photo changed notifications.
+     * Set group change photo
      *
      * @param value value of "group change photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -411,7 +420,7 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
-     * Group officers edited notifications.
+     * Set group officers edit
      *
      * @param value value of "group officers edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -420,6 +429,35 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
         return unsafeParam("group_officers_edit", value);
     }
 
+    /**
+     * User added to community blacklist
+     *
+     * @param value value of "user block" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery userBlock(Boolean value) {
+        return unsafeParam("user_block", value);
+    }
+
+    /**
+     * User removed from community blacklist
+     *
+     * @param value value of "user unblock" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery userUnblock(Boolean value) {
+        return unsafeParam("user_unblock", value);
+    }
+
+    /**
+     * New form in lead forms
+     *
+     * @param value value of "lead forms new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery leadFormsNew(Boolean value) {
+        return unsafeParam("lead_forms_new", value);
+    }
 
     @Override
     protected GroupsSetCallbackSettingsQuery getThis() {
@@ -428,6 +466,6 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "server_id", "access_token");
+        return Arrays.asList("group_id", "access_token");
     }
 }

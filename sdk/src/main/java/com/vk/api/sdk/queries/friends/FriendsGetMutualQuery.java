@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FriendsGetMutualQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
@@ -24,7 +23,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
     }
 
     /**
-     * ID of the user whose friends will be checked against the friends of the user specified in "target_uid".
+     * ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
      *
      * @param value value of "source uid" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
     }
 
     /**
-     * ID of the user whose friends will be checked against the friends of the user specified in "source_uid".
+     * ID of the user whose friends will be checked against the friends of the user specified in 'source_uid'.
      *
      * @param value value of "target uid" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -44,12 +43,12 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
     }
 
     /**
-     * Sort order
+     * Sort order: 'random' — random order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery order(FriendsGetMutualOrder value) {
+    public FriendsGetMutualQuery order(String value) {
         return unsafeParam("order", value);
     }
 
@@ -71,6 +70,27 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      */
     public FriendsGetMutualQuery offset(Integer value) {
         return unsafeParam("offset", value);
+    }
+
+    /**
+     * target_uids
+     * IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
+     *
+     * @param value value of "target uids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetMutualQuery targetUids(Integer... value) {
+        return unsafeParam("target_uids", value);
+    }
+
+    /**
+     * IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
+     *
+     * @param value value of "target uids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetMutualQuery targetUids(List<Integer> value) {
+        return unsafeParam("target_uids", value);
     }
 
     @Override

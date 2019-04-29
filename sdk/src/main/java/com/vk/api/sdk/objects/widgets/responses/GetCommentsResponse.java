@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.widgets.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.widgets.WidgetComment;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetCommentsResponse {
         return count;
     }
 
+    public GetCommentsResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<WidgetComment> getPosts() {
         return posts;
+    }
+
+    public GetCommentsResponse setPosts(List<WidgetComment> posts) {
+        this.posts = posts;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetCommentsResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
         sb.append("count=").append(count);
         sb.append(", posts=").append(posts);

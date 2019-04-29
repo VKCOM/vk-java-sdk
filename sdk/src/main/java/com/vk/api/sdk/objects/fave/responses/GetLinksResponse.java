@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.fave.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.fave.FavesLink;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -23,8 +23,18 @@ public class GetLinksResponse {
         return count;
     }
 
+    public GetLinksResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<FavesLink> getItems() {
         return items;
+    }
+
+    public GetLinksResponse setItems(List<FavesLink> items) {
+        this.items = items;
+        return this;
     }
 
     @Override
@@ -43,6 +53,11 @@ public class GetLinksResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetLinksResponse{");
         sb.append("count=").append(count);
         sb.append(", items=").append(items);

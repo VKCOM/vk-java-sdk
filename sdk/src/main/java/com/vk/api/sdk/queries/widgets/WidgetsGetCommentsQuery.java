@@ -2,11 +2,11 @@ package com.vk.api.sdk.queries.widgets;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.widgets.responses.GetCommentsResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public WidgetsGetCommentsQuery(VkApiClient client, UserActor actor) {
         super(client, "widgets.getComments", GetCommentsResponse.class);
@@ -28,9 +28,12 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
-    public WidgetsGetCommentsQuery(VkApiClient client) {
+    public WidgetsGetCommentsQuery(VkApiClient client, ServiceActor actor) {
         super(client, "widgets.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -66,7 +69,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
     /**
      * Set order
      *
-     * @param value value of "order" parameter. By default 0.
+     * @param value value of "order" parameter. By default date.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public WidgetsGetCommentsQuery order(String value) {
@@ -74,23 +77,13 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
     }
 
     /**
-     * Set fields
+     * Set offset
      *
-     * @param value value of "fields" parameter.
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WidgetsGetCommentsQuery fields(EnumParam... value) {
-        return unsafeParam("fields", value);
-    }
-
-    /**
-     * Set fields
-     *
-     * @param value value of "fields" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public WidgetsGetCommentsQuery fields(List<EnumParam> value) {
-        return unsafeParam("fields", value);
+    public WidgetsGetCommentsQuery offset(Integer value) {
+        return unsafeParam("offset", value);
     }
 
     /**
@@ -103,6 +96,27 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
         return unsafeParam("count", value);
     }
 
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WidgetsGetCommentsQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WidgetsGetCommentsQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected WidgetsGetCommentsQuery getThis() {
         return this;
@@ -110,6 +124,6 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

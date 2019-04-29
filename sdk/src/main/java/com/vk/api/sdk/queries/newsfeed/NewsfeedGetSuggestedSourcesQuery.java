@@ -3,9 +3,8 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.responses.GetSuggestedSourcesResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedGetSuggestedSourcesQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.getSuggestedSources", GetSuggestedSourcesResponse.class);
@@ -55,22 +54,23 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
     }
 
     /**
-     * List of extra fields to be returned. See communities.
+     * fields
+     * List of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetSuggestedSourcesQuery fields(EnumParam... value) {
+    public NewsfeedGetSuggestedSourcesQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
     /**
-     * List of extra fields to be returned. See communities.
+     * List of extra fields to be returned. See available fields for [vk.com/dev/fields|users] and [vk.com/dev/fields_groups|communities].
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetSuggestedSourcesQuery fields(List<EnumParam> value) {
+    public NewsfeedGetSuggestedSourcesQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 

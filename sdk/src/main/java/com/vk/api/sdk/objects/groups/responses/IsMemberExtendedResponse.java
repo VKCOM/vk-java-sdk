@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.groups.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
-
 import java.util.Objects;
 
 /**
@@ -31,12 +31,24 @@ public class IsMemberExtendedResponse {
         return member == BoolInt.YES;
     }
 
+    public BoolInt getMember() {
+        return member;
+    }
+
     public boolean isInvitation() {
         return invitation == BoolInt.YES;
     }
 
+    public BoolInt getInvitation() {
+        return invitation;
+    }
+
     public boolean isRequest() {
         return request == BoolInt.YES;
+    }
+
+    public BoolInt getRequest() {
+        return request;
     }
 
     @Override
@@ -49,17 +61,22 @@ public class IsMemberExtendedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IsMemberExtendedResponse isMemberExtendedResponse = (IsMemberExtendedResponse) o;
-        return Objects.equals(member, isMemberExtendedResponse.member) &&
+        return Objects.equals(request, isMemberExtendedResponse.request) &&
                 Objects.equals(invitation, isMemberExtendedResponse.invitation) &&
-                Objects.equals(request, isMemberExtendedResponse.request);
+                Objects.equals(member, isMemberExtendedResponse.member);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("IsMemberExtendedResponse{");
-        sb.append("member=").append(member);
+        sb.append("request=").append(request);
         sb.append(", invitation=").append(invitation);
-        sb.append(", request=").append(request);
+        sb.append(", member=").append(member);
         sb.append('}');
         return sb.toString();
     }

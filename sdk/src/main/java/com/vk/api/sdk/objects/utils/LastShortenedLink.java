@@ -1,13 +1,32 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
  * LastShortenedLink object
  */
 public class LastShortenedLink {
+    /**
+     * Access key for private stats
+     */
+    @SerializedName("access_key")
+    private String accessKey;
+
+    /**
+     * Link key (characters after vk.cc/)
+     */
+    @SerializedName("key")
+    private String key;
+
+    /**
+     * Short link URL
+     */
+    @SerializedName("short_url")
+    private URL shortUrl;
+
     /**
      * Creation time in Unixtime
      */
@@ -18,83 +37,100 @@ public class LastShortenedLink {
      * Full URL
      */
     @SerializedName("url")
-    private String url;
+    private URL url;
 
     /**
-     * Shortened URL
-     */
-    @SerializedName("short_url")
-    private String shortUrl;
-
-    /**
-     * Link key (characters after "vk.cc")
-     */
-    @SerializedName("key")
-    private String key;
-
-    /**
-     * Views number
+     * Total views number
      */
     @SerializedName("views")
     private Integer views;
 
-    /**
-     * Access key for private stats
-     */
-    @SerializedName("access_key")
-    private String accessKey;
-
-    public Integer getTimestamp() {
-        return timestamp;
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public String getShortUrl() {
-        return shortUrl;
+    public LastShortenedLink setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
     }
 
     public String getKey() {
         return key;
     }
 
+    public LastShortenedLink setKey(String key) {
+        this.key = key;
+        return this;
+    }
+
+    public URL getShortUrl() {
+        return shortUrl;
+    }
+
+    public LastShortenedLink setShortUrl(URL shortUrl) {
+        this.shortUrl = shortUrl;
+        return this;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public LastShortenedLink setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+        return this;
+    }
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public LastShortenedLink setUrl(URL url) {
+        this.url = url;
+        return this;
+    }
+
     public Integer getViews() {
         return views;
     }
 
-    public String getAccessKey() {
-        return accessKey;
+    public LastShortenedLink setViews(Integer views) {
+        this.views = views;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accessKey, shortUrl, key, url, views, timestamp);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LastShortenedLink that = (LastShortenedLink) o;
-        return Objects.equals(timestamp, that.timestamp) &&
-                Objects.equals(url, that.url) &&
-                Objects.equals(shortUrl, that.shortUrl) &&
-                Objects.equals(key, that.key) &&
-                Objects.equals(views, that.views) &&
-                Objects.equals(accessKey, that.accessKey);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(timestamp, url, shortUrl, key, views, accessKey);
+        LastShortenedLink lastShortenedLink = (LastShortenedLink) o;
+        return Objects.equals(accessKey, lastShortenedLink.accessKey) &&
+                Objects.equals(key, lastShortenedLink.key) &&
+                Objects.equals(url, lastShortenedLink.url) &&
+                Objects.equals(views, lastShortenedLink.views) &&
+                Objects.equals(shortUrl, lastShortenedLink.shortUrl) &&
+                Objects.equals(timestamp, lastShortenedLink.timestamp);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LastShortenedLink{");
-        sb.append("timestamp=").append(timestamp);
-        sb.append(", url='").append(url).append('\'');
-        sb.append(", shortUrl='").append(shortUrl).append('\'');
-        sb.append(", key='").append(key).append('\'');
+        sb.append("accessKey='").append(accessKey).append("'");
+        sb.append(", key='").append(key).append("'");
+        sb.append(", url=").append(url);
         sb.append(", views=").append(views);
-        sb.append(", accessKey='").append(accessKey).append('\'');
+        sb.append(", shortUrl=").append(shortUrl);
+        sb.append(", timestamp=").append(timestamp);
         sb.append('}');
         return sb.toString();
     }

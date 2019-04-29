@@ -1,14 +1,13 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * Views object
  */
 public class Views {
-
     /**
      * Count
      */
@@ -17,6 +16,16 @@ public class Views {
 
     public Integer getCount() {
         return count;
+    }
+
+    public Views setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count);
     }
 
     @Override
@@ -28,12 +37,12 @@ public class Views {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(count);
+    public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
-    @Override
-    public String toString() {
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Views{");
         sb.append("count=").append(count);
         sb.append('}');

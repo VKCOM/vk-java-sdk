@@ -1,33 +1,52 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * Exports object
  */
 public class Exports {
-
-    @SerializedName("twitter")
-    private Integer twitter;
-
     @SerializedName("facebook")
     private Integer facebook;
 
     @SerializedName("livejournal")
     private Integer livejournal;
 
-    public Integer getTwitter() {
-        return twitter;
-    }
+    @SerializedName("twitter")
+    private Integer twitter;
 
     public Integer getFacebook() {
         return facebook;
     }
 
+    public Exports setFacebook(Integer facebook) {
+        this.facebook = facebook;
+        return this;
+    }
+
     public Integer getLivejournal() {
         return livejournal;
+    }
+
+    public Exports setLivejournal(Integer livejournal) {
+        this.livejournal = livejournal;
+        return this;
+    }
+
+    public Integer getTwitter() {
+        return twitter;
+    }
+
+    public Exports setTwitter(Integer twitter) {
+        this.twitter = twitter;
+        return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(twitter, facebook, livejournal);
     }
 
     @Override
@@ -41,12 +60,12 @@ public class Exports {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(twitter, facebook, livejournal);
+    public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
-    @Override
-    public String toString() {
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Exports{");
         sb.append("twitter=").append(twitter);
         sb.append(", facebook=").append(facebook);

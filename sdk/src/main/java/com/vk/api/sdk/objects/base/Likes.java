@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,32 @@ import java.util.Objects;
  */
 public class Likes {
     /**
-     * Information whether current user likes the photo
-     */
-    @SerializedName("user_likes")
-    private BoolInt userLikes;
-
-    /**
      * Likes number
      */
     @SerializedName("count")
     private Integer count;
 
+    /**
+     * Information whether current user likes the photo
+     */
+    @SerializedName("user_likes")
+    private BoolInt userLikes;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public Likes setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public boolean isUserLikes() {
         return userLikes == BoolInt.YES;
     }
 
-    public Integer getCount() {
-        return count;
+    public BoolInt getUserLikes() {
+        return userLikes;
     }
 
     @Override
@@ -44,6 +53,11 @@ public class Likes {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Likes{");
         sb.append("userLikes=").append(userLikes);
         sb.append(", count=").append(count);

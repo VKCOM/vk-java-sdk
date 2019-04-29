@@ -1,13 +1,25 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * LikesInfo object
  */
 public class LikesInfo {
+    /**
+     * Information whether current user can like the post
+     */
+    @SerializedName("can_like")
+    private BoolInt canLike;
+
+    /**
+     * Information whether current user can repost
+     */
+    @SerializedName("can_publish")
+    private BoolInt canPublish;
+
     /**
      * Likes number
      */
@@ -20,37 +32,43 @@ public class LikesInfo {
     @SerializedName("user_likes")
     private Integer userLikes;
 
-    /**
-     * Information whether current user can like the post
-     */
-    @SerializedName("can_like")
-    private Integer canLike;
+    public boolean canLike() {
+        return canLike == BoolInt.YES;
+    }
 
-    /**
-     * Information whether current user can repost
-     */
-    @SerializedName("can_publish")
-    private Integer canPublish;
+    public BoolInt getCanLike() {
+        return canLike;
+    }
+
+    public boolean canPublish() {
+        return canPublish == BoolInt.YES;
+    }
+
+    public BoolInt getCanPublish() {
+        return canPublish;
+    }
 
     public Integer getCount() {
         return count;
+    }
+
+    public LikesInfo setCount(Integer count) {
+        this.count = count;
+        return this;
     }
 
     public Integer getUserLikes() {
         return userLikes;
     }
 
-    public Integer getCanLike() {
-        return canLike;
-    }
-
-    public Integer getCanPublish() {
-        return canPublish;
+    public LikesInfo setUserLikes(Integer userLikes) {
+        this.userLikes = userLikes;
+        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(canLike, count, canPublish, userLikes);
+        return Objects.hash(canLike, canPublish, count, userLikes);
     }
 
     @Override
@@ -58,19 +76,24 @@ public class LikesInfo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LikesInfo likesInfo = (LikesInfo) o;
-        return Objects.equals(count, likesInfo.count) &&
-                Objects.equals(userLikes, likesInfo.userLikes) &&
+        return Objects.equals(userLikes, likesInfo.userLikes) &&
+                Objects.equals(canPublish, likesInfo.canPublish) &&
                 Objects.equals(canLike, likesInfo.canLike) &&
-                Objects.equals(canPublish, likesInfo.canPublish);
+                Objects.equals(count, likesInfo.count);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LikesInfo{");
-        sb.append("count=").append(count);
-        sb.append(", userLikes=").append(userLikes);
-        sb.append(", canLike=").append(canLike);
+        sb.append("userLikes=").append(userLikes);
         sb.append(", canPublish=").append(canPublish);
+        sb.append(", canLike=").append(canLike);
+        sb.append(", count=").append(count);
         sb.append('}');
         return sb.toString();
     }

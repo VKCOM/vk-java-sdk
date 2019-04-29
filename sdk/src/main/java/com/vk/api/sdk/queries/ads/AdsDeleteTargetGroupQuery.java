@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client        VK API client
-     * @param actor         actor with access token
-     * @param accountId     value of "account id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param accountId value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
      */
-    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor, int accountId, int targetGroupId) {
+    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
+            int targetGroupId) {
         super(client, "ads.deleteTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -38,8 +38,7 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
     }
 
     /**
-     * "Only for advertising agencies."
-     * ID of the client with the advertising account where the group will be created.
+     * 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
      *
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

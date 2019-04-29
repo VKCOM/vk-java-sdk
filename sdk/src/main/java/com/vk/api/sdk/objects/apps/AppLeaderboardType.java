@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.apps;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Leaderboard type
  */
-public enum AppLeaderboardType {
+public enum AppLeaderboardType implements EnumParam {
     @SerializedName("0")
     NOT_SUPPORTED(0),
 
@@ -21,7 +22,7 @@ public enum AppLeaderboardType {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

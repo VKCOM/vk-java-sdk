@@ -4,11 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupJoin;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupLeave;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupOfficersEdit;
+import com.vk.api.sdk.callback.objects.group.*;
 import com.vk.api.sdk.callback.objects.market.CallbackMarketComment;
 import com.vk.api.sdk.callback.objects.market.CallbackMarketCommentDelete;
 import com.vk.api.sdk.callback.objects.messages.CallbackConfirmationMessage;
@@ -29,9 +25,11 @@ import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
-import com.vk.api.sdk.objects.wall.WallPost;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.vk.api.sdk.objects.wall.Wallpost;
+import com.vk.api.sdk.objects.wall.Wallpost;
+import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -43,7 +41,7 @@ import java.util.Map;
  */
 public class CallbackApi {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CallbackApi.class);
+    private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
     private static final String CALLBACK_EVENT_MESSAGE_NEW = "message_new";
     private static final String CALLBACK_EVENT_MESSAGE_REPLY = "message_reply";
     private static final String CALLBACK_EVENT_MESSAGE_ALLOW = "message_allow";
@@ -123,9 +121,9 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_VIDEO_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackVideoCommentDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_WALL_POST_NEW, new TypeToken<CallbackMessage<WallPost>>() {
+        types.put(CALLBACK_EVENT_WALL_POST_NEW, new TypeToken<CallbackMessage<Wallpost>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_WALL_REPOST, new TypeToken<CallbackMessage<WallPost>>() {
+        types.put(CALLBACK_EVENT_WALL_REPOST, new TypeToken<CallbackMessage<Wallpost>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_WALL_REPLY_NEW, new TypeToken<CallbackMessage<CallbackWallComment>>() {
@@ -294,17 +292,17 @@ public class CallbackApi {
         videoCommentDelete(groupId, message);
     }
 
-    public void wallPostNew(Integer groupId, WallPost message) {
+    public void wallPostNew(Integer groupId, Wallpost message) {
     }
 
-    public void wallPostNew(Integer groupId, String secret, WallPost message) {
+    public void wallPostNew(Integer groupId, String secret, Wallpost message) {
         wallPostNew(groupId, message);
     }
 
-    public void wallRepost(Integer groupId, WallPost message) {
+    public void wallRepost(Integer groupId, Wallpost message) {
     }
 
-    public void wallRepost(Integer groupId, String secret, WallPost message) {
+    public void wallRepost(Integer groupId, String secret, Wallpost message) {
         wallRepost(groupId, message);
     }
 
@@ -543,11 +541,11 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_WALL_POST_NEW:
-                wallPostNew(message.getGroupId(), message.getSecret(), (WallPost) message.getObject());
+                wallPostNew(message.getGroupId(), message.getSecret(), (Wallpost) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPOST:
-                wallRepost(message.getGroupId(), message.getSecret(), (WallPost) message.getObject());
+                wallRepost(message.getGroupId(), message.getSecret(), (Wallpost) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_NEW:

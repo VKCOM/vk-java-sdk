@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetFacultiesResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client       VK API client
-     * @param actor        actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param universityId value of "university id" parameter. Minimum is 0.
      */
     public DatabaseGetFacultiesQuery(VkApiClient client, UserActor actor, int universityId) {
@@ -29,7 +28,8 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client       VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param universityId value of "university id" parameter. Minimum is 0.
      */
     public DatabaseGetFacultiesQuery(VkApiClient client, ServiceActor actor, int universityId) {
@@ -76,6 +76,6 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("university_id");
+        return Arrays.asList("university_id", "access_token");
     }
 }

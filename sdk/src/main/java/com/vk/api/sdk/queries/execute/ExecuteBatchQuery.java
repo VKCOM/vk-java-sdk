@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import org.apache.commons.lang3.text.translate.CharSequenceTranslator;
-import org.apache.commons.lang3.text.translate.LookupTranslator;
+import org.apache.commons.text.translate.CharSequenceTranslator;
+import org.apache.commons.text.translate.LookupTranslator;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,14 +21,15 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
     /**
      * Translator object for escaping VKScript
      */
-    private static final CharSequenceTranslator ESCAPE_VKSCRIPT = new LookupTranslator(
-            new String[][] {
-                    {"\"", "\\\""},
-                    {"\n", "\\n"},
-                    {"\r", "\\r"},
-                    {"\\", "\\\\"}
-            }
-    );
+    private static final CharSequenceTranslator ESCAPE_VKSCRIPT = new LookupTranslator(new HashMap<CharSequence, CharSequence>() {
+        private static final long serialVersionUID = 1L;
+        {
+            put("\"", "\\\"");
+            put("\n", "\\n");
+            put("\r", "\\r");
+            put("\\", "\\\\");
+        }
+    });
 
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters

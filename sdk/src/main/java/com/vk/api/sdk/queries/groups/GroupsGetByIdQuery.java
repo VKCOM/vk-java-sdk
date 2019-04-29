@@ -6,9 +6,9 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.groups.Fields;
 import com.vk.api.sdk.objects.groups.GroupFull;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public GroupsGetByIdQuery(VkApiClient client, UserActor actor) {
         super(client, "groups.getById", Utils.buildParametrizedType(List.class, GroupFull.class));
@@ -30,7 +30,7 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public GroupsGetByIdQuery(VkApiClient client, GroupActor actor) {
         super(client, "groups.getById", Utils.buildParametrizedType(List.class, GroupFull.class));
@@ -41,6 +41,7 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public GroupsGetByIdQuery(VkApiClient client, ServiceActor actor) {
         super(client, "groups.getById", Utils.buildParametrizedType(List.class, GroupFull.class));
@@ -49,6 +50,17 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
     }
 
     /**
+     * ID or screen name of the community.
+     *
+     * @param value value of "group id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetByIdQuery groupId(String value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * group_ids
      * IDs or screen names of communities.
      *
      * @param value value of "group ids" parameter.
@@ -69,22 +81,13 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
     }
 
     /**
-     * ID or screen name of the community.
-     *
-     * @param value value of "group id" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public GroupsGetByIdQuery groupId(String value) {
-        return unsafeParam("group_id", value);
-    }
-
-    /**
+     * fields
      * Group fields to return.
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetByIdQuery fields(GroupField... value) {
+    public GroupsGetByIdQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
 
@@ -94,7 +97,7 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetByIdQuery fields(List<GroupField> value) {
+    public GroupsGetByIdQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
 
@@ -105,6 +108,6 @@ public class GroupsGetByIdQuery extends AbstractQueryBuilder<GroupsGetByIdQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

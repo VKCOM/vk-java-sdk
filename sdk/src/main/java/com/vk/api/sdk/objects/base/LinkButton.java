@@ -1,13 +1,18 @@
 package com.vk.api.sdk.objects.base;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * LinkButton object
  */
 public class LinkButton {
+    /**
+     * Button action
+     */
+    @SerializedName("action")
+    private LinkButtonAction action;
 
     /**
      * Button title
@@ -15,23 +20,27 @@ public class LinkButton {
     @SerializedName("title")
     private String title;
 
-    /**
-     * Button action
-     */
-    @SerializedName("action")
-    private LinkButtonAction action;
-
     public LinkButtonAction getAction() {
         return action;
+    }
+
+    public LinkButton setAction(LinkButtonAction action) {
+        this.action = action;
+        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public LinkButton setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(title, action);
+        return Objects.hash(action, title);
     }
 
     @Override
@@ -45,6 +54,11 @@ public class LinkButton {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkButton{");
         sb.append("action=").append(action);
         sb.append(", title='").append(title).append("'");

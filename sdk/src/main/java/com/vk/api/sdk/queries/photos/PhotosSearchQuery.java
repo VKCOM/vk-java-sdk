@@ -5,8 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.SearchResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosSearchQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.search", SearchResponse.class);
@@ -28,6 +27,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public PhotosSearchQuery(VkApiClient client, ServiceActor actor) {
         super(client, "photos.search", SearchResponse.class);
@@ -46,26 +46,28 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Geographical latitude, in degrees (from "-90" to "90").
+     * Geographical latitude, in degrees (from '-90' to '90').
      *
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSearchQuery lat(Float value) {
+    public PhotosSearchQuery lat(Number value) {
         return unsafeParam("lat", value);
     }
 
     /**
-     * Geographical longitude, in degrees (from "-180" to "180").
+     * Geographical longitude, in degrees (from '-180' to '180').
      *
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSearchQuery lng(Float value) {
+    public PhotosSearchQuery lng(Number value) {
         return unsafeParam("long", value);
     }
 
     /**
+     * Set start time
+     *
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -74,6 +76,8 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
+     * Set end time
+     *
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
@@ -112,8 +116,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Radius of search in meters (works very approximately).
-     * Available values: "10", "100", "800", "6000", "50000".
+     * Radius of search in meters (works very approximately). Available values: '10', '100', '800', '6000', '50000'.
      *
      * @param value value of "radius" parameter. Minimum is 0. By default 5000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -129,6 +132,6 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

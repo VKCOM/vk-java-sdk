@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetCallbackConfirmationCodeResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,11 +15,12 @@ public class GroupsGetCallbackConfirmationCodeQuery extends AbstractQueryBuilder
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetCallbackConfirmationCodeQuery(VkApiClient client, UserActor actor, int groupId) {
+    public GroupsGetCallbackConfirmationCodeQuery(VkApiClient client, UserActor actor,
+            int groupId) {
         super(client, "groups.getCallbackConfirmationCode", GetCallbackConfirmationCodeResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -30,12 +30,15 @@ public class GroupsGetCallbackConfirmationCodeQuery extends AbstractQueryBuilder
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetCallbackConfirmationCodeQuery(VkApiClient client, GroupActor actor) {
+    public GroupsGetCallbackConfirmationCodeQuery(VkApiClient client, GroupActor actor,
+            int groupId) {
         super(client, "groups.getCallbackConfirmationCode", GetCallbackConfirmationCodeResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
+        groupId(groupId);
     }
 
     /**

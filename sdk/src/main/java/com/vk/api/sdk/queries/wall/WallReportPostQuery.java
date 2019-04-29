@@ -4,8 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.queries.ReportReason;
-
+import com.vk.api.sdk.objects.enums.WallReason;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,10 +15,10 @@ public class WallReportPostQuery extends AbstractQueryBuilder<WallReportPostQuer
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param postId  value of "post id" parameter. Minimum is 0.
+     * @param postId value of "post id" parameter. Minimum is 0.
      */
     public WallReportPostQuery(VkApiClient client, UserActor actor, int ownerId, int postId) {
         super(client, "wall.reportPost", OkResponse.class);
@@ -49,12 +48,12 @@ public class WallReportPostQuery extends AbstractQueryBuilder<WallReportPostQuer
     }
 
     /**
-     * Reason for the complaint
+     * Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
      *
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallReportPostQuery reason(ReportReason value) {
+    public WallReportPostQuery reason(WallReason value) {
         return unsafeParam("reason", value);
     }
 

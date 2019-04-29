@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetCategoriesResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class MarketGetCategoriesQuery extends AbstractQueryBuilder<MarketGetCate
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public MarketGetCategoriesQuery(VkApiClient client, UserActor actor) {
         super(client, "market.getCategories", GetCategoriesResponse.class);
@@ -24,7 +23,7 @@ public class MarketGetCategoriesQuery extends AbstractQueryBuilder<MarketGetCate
     }
 
     /**
-     * Set count
+     * Number of results to return.
      *
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class MarketGetCategoriesQuery extends AbstractQueryBuilder<MarketGetCate
     }
 
     /**
-     * Set offset
+     * Offset needed to return a specific subset of results.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

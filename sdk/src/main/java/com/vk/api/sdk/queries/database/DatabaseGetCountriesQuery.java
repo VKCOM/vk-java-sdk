@@ -5,8 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetCountriesResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DatabaseGetCountriesQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCountries", GetCountriesResponse.class);
@@ -28,6 +27,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public DatabaseGetCountriesQuery(VkApiClient client, ServiceActor actor) {
         super(client, "database.getCountries", GetCountriesResponse.class);
@@ -36,7 +36,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
     }
 
     /**
-     * Return a full list of all countries
+     * '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -46,7 +46,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
     }
 
     /**
-     * Country codes in ISO 3166-1 alpha-2 standard.
+     * Country codes in [vk.com/dev/country_codes|ISO 3166-1 alpha-2] standard.
      *
      * @param value value of "code" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -82,6 +82,6 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

@@ -5,7 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.board.responses.GetTopicsExtendedResponse;
-
+import com.vk.api.sdk.objects.enums.BoardOrder;
+import com.vk.api.sdk.objects.enums.BoardPreview;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public BoardGetTopicsQueryWithExtended(VkApiClient client, UserActor actor, int groupId) {
@@ -30,7 +31,8 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public BoardGetTopicsQueryWithExtended(VkApiClient client, ServiceActor actor, int groupId) {
@@ -52,38 +54,12 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * IDs of topics to be returned (100 maximum). By default, all topics are returned.
-     * <p>
-     * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
-     *
-     * @param value value of "topic ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public BoardGetTopicsQueryWithExtended topicIds(Integer... value) {
-        return unsafeParam("topic_ids", value);
-    }
-
-    /**
-     * IDs of topics to be returned (100 maximum). By default, all topics are returned.
-     * <p>
-     * If this parameter is set, the "order", "offset", and "count" parameters are ignored.
-     *
-     * @param value value of "topic ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public BoardGetTopicsQueryWithExtended topicIds(List<Integer> value) {
-        return unsafeParam("topic_ids", value);
-    }
-
-    /**
-     * Sort order
-     * If no sort order is specified, topics are returned in the order specified by the group administrator.
-     * Pinned topics are returned first, regardless of the sorting.
+     * Sort order: '1' — by date updated in reverse chronological order. '2' — by date created in reverse chronological order. '-1' — by date updated in chronological order. '-2' — by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended order(BoardGetTopicsOrder value) {
+    public BoardGetTopicsQueryWithExtended order(BoardOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -108,7 +84,7 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * Return information about users who created topics or who posted there last
+     * '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -118,24 +94,44 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
     }
 
     /**
-     * Set preview
+     * '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
      *
      * @param value value of "preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended preview(BoardGetTopicsPreview value) {
+    public BoardGetTopicsQueryWithExtended preview(BoardPreview value) {
         return unsafeParam("preview", value);
     }
 
     /**
-     * Number of characters after which to truncate the previewed comment.
-     * To preview the full comment, specify "0".
+     * Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
      *
      * @param value value of "preview length" parameter. Minimum is 0. By default 90.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public BoardGetTopicsQueryWithExtended previewLength(Integer value) {
         return unsafeParam("preview_length", value);
+    }
+
+    /**
+     * topic_ids
+     * IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
+     *
+     * @param value value of "topic ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardGetTopicsQueryWithExtended topicIds(Integer... value) {
+        return unsafeParam("topic_ids", value);
+    }
+
+    /**
+     * IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
+     *
+     * @param value value of "topic ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public BoardGetTopicsQueryWithExtended topicIds(List<Integer> value) {
+        return unsafeParam("topic_ids", value);
     }
 
     @Override
@@ -145,6 +141,6 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id");
+        return Arrays.asList("group_id", "access_token");
     }
 }

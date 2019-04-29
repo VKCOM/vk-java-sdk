@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.base.responses;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Returns 1 if request has been processed successfully
  */
-public enum OkResponse {
+public enum OkResponse implements EnumParam {
     @SerializedName("1")
     OK(1);
 
@@ -15,7 +16,7 @@ public enum OkResponse {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

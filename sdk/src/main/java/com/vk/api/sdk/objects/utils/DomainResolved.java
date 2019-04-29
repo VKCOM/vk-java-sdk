@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,30 @@ import java.util.Objects;
  */
 public class DomainResolved {
     /**
-     * Object type
-     */
-    @SerializedName("type")
-    private DomainResolvedType type;
-
-    /**
      * Object ID
      */
     @SerializedName("object_id")
     private Integer objectId;
 
+    @SerializedName("type")
+    private DomainResolvedType type;
+
+    public Integer getObjectId() {
+        return objectId;
+    }
+
+    public DomainResolved setObjectId(Integer objectId) {
+        this.objectId = objectId;
+        return this;
+    }
+
     public DomainResolvedType getType() {
         return type;
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public DomainResolved setType(DomainResolvedType type) {
+        this.type = type;
+        return this;
     }
 
     @Override
@@ -44,8 +51,13 @@ public class DomainResolved {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DomainResolved{");
-        sb.append("type='").append(type).append("'");
+        sb.append("type=").append(type);
         sb.append(", objectId=").append(objectId);
         sb.append('}');
         return sb.toString();

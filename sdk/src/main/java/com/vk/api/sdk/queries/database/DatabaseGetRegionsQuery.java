@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetRegionsResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
     public DatabaseGetRegionsQuery(VkApiClient client, UserActor actor, int countryId) {
@@ -29,7 +28,8 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
     public DatabaseGetRegionsQuery(VkApiClient client, ServiceActor actor, int countryId) {
@@ -40,7 +40,7 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
     }
 
     /**
-     * Country ID, received in database.getCountries method.
+     * Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
      *
      * @param value value of "country id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -86,6 +86,6 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("country_id");
+        return Arrays.asList("country_id", "access_token");
     }
 }

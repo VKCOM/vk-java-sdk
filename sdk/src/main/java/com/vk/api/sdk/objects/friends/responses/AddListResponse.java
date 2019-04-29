@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.friends.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class AddListResponse {
 
     public Integer getListId() {
         return listId;
+    }
+
+    public AddListResponse setListId(Integer listId) {
+        this.listId = listId;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class AddListResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddListResponse{");
         sb.append("listId=").append(listId);
         sb.append('}');

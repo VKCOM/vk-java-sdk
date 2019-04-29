@@ -3,7 +3,6 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class PhotosGetAlbumsCountQuery extends AbstractQueryBuilder<PhotosGetAlb
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetAlbumsCountQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getAlbumsCount", Integer.class);

@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.responses.GetSubscriptionsResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public UsersGetSubscriptionsQuery(VkApiClient client, UserActor actor) {
         super(client, "users.getSubscriptions", GetSubscriptionsResponse.class);
@@ -28,6 +28,7 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public UsersGetSubscriptionsQuery(VkApiClient client, ServiceActor actor) {
         super(client, "users.getSubscriptions", GetSubscriptionsResponse.class);
@@ -43,6 +44,16 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
      */
     public UsersGetSubscriptionsQuery userId(Integer value) {
         return unsafeParam("user_id", value);
+    }
+
+    /**
+     * '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**
@@ -65,6 +76,27 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
         return unsafeParam("count", value);
     }
 
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public UsersGetSubscriptionsQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected UsersGetSubscriptionsQuery getThis() {
         return this;
@@ -72,6 +104,6 @@ public class UsersGetSubscriptionsQuery extends AbstractQueryBuilder<UsersGetSub
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

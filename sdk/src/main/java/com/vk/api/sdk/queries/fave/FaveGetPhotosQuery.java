@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.fave.responses.GetPhotosResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class FaveGetPhotosQuery extends AbstractQueryBuilder<FaveGetPhotosQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public FaveGetPhotosQuery(VkApiClient client, UserActor actor) {
         super(client, "fave.getPhotos", GetPhotosResponse.class);
@@ -41,16 +40,6 @@ public class FaveGetPhotosQuery extends AbstractQueryBuilder<FaveGetPhotosQuery,
      */
     public FaveGetPhotosQuery count(Integer value) {
         return unsafeParam("count", value);
-    }
-
-    /**
-     * Set photo sizes
-     *
-     * @param value value of "photo sizes" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public FaveGetPhotosQuery photoSizes(Boolean value) {
-        return unsafeParam("photo_sizes", value);
     }
 
     @Override

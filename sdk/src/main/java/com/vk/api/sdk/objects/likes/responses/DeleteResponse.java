@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.likes.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -16,6 +16,11 @@ public class DeleteResponse {
 
     public Integer getLikes() {
         return likes;
+    }
+
+    public DeleteResponse setLikes(Integer likes) {
+        this.likes = likes;
+        return this;
     }
 
     @Override
@@ -33,6 +38,11 @@ public class DeleteResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DeleteResponse{");
         sb.append("likes=").append(likes);
         sb.append('}');

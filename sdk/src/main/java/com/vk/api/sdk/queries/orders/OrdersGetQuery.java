@@ -3,9 +3,9 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.orders.Order;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,11 +17,33 @@ public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Or
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public OrdersGetQuery(VkApiClient client, UserActor actor) {
         super(client, "orders.get", Utils.buildParametrizedType(List.class, Order.class));
         accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public OrdersGetQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "orders.get", Utils.buildParametrizedType(List.class, Order.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public OrdersGetQuery offset(Integer value) {
+        return unsafeParam("offset", value);
     }
 
     /**
@@ -35,7 +57,7 @@ public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Or
     }
 
     /**
-     * If this parameter is set to '1', this method returns a list of test mode orders. By default - '0'.
+     * If this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

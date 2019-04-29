@@ -6,7 +6,6 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.utils.ShortLink;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,8 +17,8 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param url    value of "url" parameter.
+     * @param actor actor with access token
+     * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, UserActor actor, String url) {
         super(client, "utils.getShortLink", ShortLink.class);
@@ -31,8 +30,8 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param url    value of "url" parameter.
+     * @param actor actor with access token
+     * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, GroupActor actor, String url) {
         super(client, "utils.getShortLink", ShortLink.class);
@@ -44,8 +43,8 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param url    value of "url" parameter.
+     * @param actor actor with access token
+     * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, ServiceActor actor, String url) {
         super(client, "utils.getShortLink", ShortLink.class);
@@ -65,12 +64,12 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
     }
 
     /**
-     * Flag of privacy: 1 — private stats, 0 — public stats.
+     * 1 — private stats, 0 — public stats.
      *
-     * @param value value of "private" parameter.
+     * @param value value of "private" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UtilsGetShortLinkQuery privateFlag(Boolean value) {
+    public UtilsGetShortLinkQuery privateParam(Boolean value) {
         return unsafeParam("private", value);
     }
 
@@ -81,6 +80,6 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("url");
+        return Arrays.asList("url", "access_token");
     }
 }

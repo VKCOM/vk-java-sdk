@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
+import com.vk.api.sdk.objects.newsfeed.IgnoreItemType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,13 +15,14 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
-     * @param type    value of "type" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param type value of "type" parameter.
      * @param ownerId value of "owner id" parameter.
-     * @param itemId  value of "item id" parameter. Minimum is 0.
+     * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnignoreItemQuery(VkApiClient client, UserActor actor, NewsfeedItemType type, int ownerId, int itemId) {
+    public NewsfeedUnignoreItemQuery(VkApiClient client, UserActor actor, IgnoreItemType type,
+            int ownerId, int itemId) {
         super(client, "newsfeed.unignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -30,20 +31,17 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
     }
 
     /**
-     * Item type.
+     * Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnignoreItemQuery type(NewsfeedItemType value) {
+    protected NewsfeedUnignoreItemQuery type(IgnoreItemType value) {
         return unsafeParam("type", value);
     }
 
     /**
-     * Item owner's identifier (user or community)
-     * Note that community id must be negative.
-     * "owner_id=1" - user
-     * "owner_id=-1" - community
+     * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

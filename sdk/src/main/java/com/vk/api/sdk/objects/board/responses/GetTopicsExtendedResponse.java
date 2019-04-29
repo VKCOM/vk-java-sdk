@@ -1,11 +1,11 @@
 package com.vk.api.sdk.objects.board.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.board.DefaultOrder;
 import com.vk.api.sdk.objects.board.Topic;
 import com.vk.api.sdk.objects.users.UserMin;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -38,20 +38,44 @@ public class GetTopicsExtendedResponse {
         return count;
     }
 
+    public GetTopicsExtendedResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public List<Topic> getItems() {
         return items;
+    }
+
+    public GetTopicsExtendedResponse setItems(List<Topic> items) {
+        this.items = items;
+        return this;
     }
 
     public DefaultOrder getDefaultOrder() {
         return defaultOrder;
     }
 
+    public GetTopicsExtendedResponse setDefaultOrder(DefaultOrder defaultOrder) {
+        this.defaultOrder = defaultOrder;
+        return this;
+    }
+
     public boolean canAddTopics() {
         return canAddTopics == BoolInt.YES;
     }
 
+    public BoolInt getCanAddTopics() {
+        return canAddTopics;
+    }
+
     public List<UserMin> getProfiles() {
         return profiles;
+    }
+
+    public GetTopicsExtendedResponse setProfiles(List<UserMin> profiles) {
+        this.profiles = profiles;
+        return this;
     }
 
     @Override
@@ -64,21 +88,26 @@ public class GetTopicsExtendedResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetTopicsExtendedResponse getTopicsExtendedResponse = (GetTopicsExtendedResponse) o;
-        return Objects.equals(count, getTopicsExtendedResponse.count) &&
+        return Objects.equals(canAddTopics, getTopicsExtendedResponse.canAddTopics) &&
+                Objects.equals(count, getTopicsExtendedResponse.count) &&
+                Objects.equals(profiles, getTopicsExtendedResponse.profiles) &&
                 Objects.equals(items, getTopicsExtendedResponse.items) &&
-                Objects.equals(defaultOrder, getTopicsExtendedResponse.defaultOrder) &&
-                Objects.equals(canAddTopics, getTopicsExtendedResponse.canAddTopics) &&
-                Objects.equals(profiles, getTopicsExtendedResponse.profiles);
+                Objects.equals(defaultOrder, getTopicsExtendedResponse.defaultOrder);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetTopicsExtendedResponse{");
-        sb.append("count=").append(count);
+        sb.append("canAddTopics=").append(canAddTopics);
+        sb.append(", count=").append(count);
+        sb.append(", profiles=").append(profiles);
         sb.append(", items=").append(items);
         sb.append(", defaultOrder=").append(defaultOrder);
-        sb.append(", canAddTopics=").append(canAddTopics);
-        sb.append(", profiles=").append(profiles);
         sb.append('}');
         return sb.toString();
     }

@@ -4,22 +4,23 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.groups.responses.GetLongPollSettingsResponse;
-
+import com.vk.api.sdk.objects.groups.LongPollSettings;
 import java.util.Arrays;
 import java.util.List;
 
-public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsGetLongPollSettingsQuery, GetLongPollSettingsResponse> {
-
+/**
+ * Query for Groups.getLongPollSettings method
+ */
+public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsGetLongPollSettingsQuery, LongPollSettings> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   user actor with access token
-     * @param groupId group id
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public GroupsGetLongPollSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.getLongPollSettings", GetLongPollSettingsResponse.class);
+        super(client, "groups.getLongPollSettings", LongPollSettings.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
@@ -28,16 +29,34 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  group actor with access token
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 0.
      */
-    public GroupsGetLongPollSettingsQuery(VkApiClient client, GroupActor actor) {
-        super(client, "groups.getLongPollSettings", GetLongPollSettingsResponse.class);
+    public GroupsGetLongPollSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
+        super(client, "groups.getLongPollSettings", LongPollSettings.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
+        groupId(groupId);
     }
 
-    public GroupsGetLongPollSettingsQuery groupId(Integer groupId) {
-        return unsafeParam("group_id", groupId);
+    /**
+     * Community ID.
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected GroupsGetLongPollSettingsQuery groupId(int value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
+     *
+     * @param value value of "enabled" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsGetLongPollSettingsQuery enabled(Boolean value) {
+        return unsafeParam("enabled", value);
     }
 
     @Override
@@ -47,6 +66,6 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("access_token", "group_id");
+        return Arrays.asList("group_id", "access_token");
     }
 }

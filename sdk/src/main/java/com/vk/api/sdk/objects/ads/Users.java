@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,21 +9,31 @@ import java.util.Objects;
  * Users object
  */
 public class Users {
+    @SerializedName("accesses")
+    private List<Accesses> accesses;
+
     /**
      * User ID
      */
     @SerializedName("user_id")
     private Integer userId;
 
-    @SerializedName("accesses")
-    private List<Accesses> accesses;
+    public List<Accesses> getAccesses() {
+        return accesses;
+    }
+
+    public Users setAccesses(List<Accesses> accesses) {
+        this.accesses = accesses;
+        return this;
+    }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public List<Accesses> getAccesses() {
-        return accesses;
+    public Users setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override
@@ -42,6 +52,11 @@ public class Users {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Users{");
         sb.append("userId=").append(userId);
         sb.append(", accesses=").append(accesses);

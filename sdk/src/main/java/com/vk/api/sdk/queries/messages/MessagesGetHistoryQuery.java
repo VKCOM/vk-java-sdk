@@ -4,8 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.MessagesRev;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryResponse;
-
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public MessagesGetHistoryQuery(VkApiClient client, UserActor actor) {
         super(client, "messages.getHistory", GetHistoryResponse.class);
@@ -28,11 +29,12 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public MessagesGetHistoryQuery(VkApiClient client, GroupActor actor) {
         super(client, "messages.getHistory", GetHistoryResponse.class);
         accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
     }
 
     /**
@@ -78,7 +80,7 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
     /**
      * Starting message ID from which to return history.
      *
-     * @param value value of "start message id" parameter.
+     * @param value value of "start message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesGetHistoryQuery startMessageId(Integer value) {
@@ -86,13 +88,54 @@ public class MessagesGetHistoryQuery extends AbstractQueryBuilder<MessagesGetHis
     }
 
     /**
-     * Return messages in chronological order.
+     * Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQuery rev(Boolean value) {
+    public MessagesGetHistoryQuery rev(MessagesRev value) {
         return unsafeParam("rev", value);
+    }
+
+    /**
+     * Information whether the response should be extended
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
+     * Group ID (for group messages with group access token)
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
+     * fields
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Profile fields to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesGetHistoryQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

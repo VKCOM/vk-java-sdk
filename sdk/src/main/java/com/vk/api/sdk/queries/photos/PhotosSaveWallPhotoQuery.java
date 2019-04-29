@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param photo  value of "photo" parameter.
+     * @param actor actor with access token
+     * @param photo value of "photo" parameter.
      */
     public PhotosSaveWallPhotoQuery(VkApiClient client, UserActor actor, String photo) {
         super(client, "photos.saveWallPhoto", Utils.buildParametrizedType(List.class, Photo.class));
@@ -47,7 +46,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
     }
 
     /**
-     * Parameter returned when the photo is uploaded to the server.
+     * Parameter returned when the the photo is [vk.com/dev/upload_files|uploaded to the server].
      *
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,22 +76,22 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
     }
 
     /**
-     * Geographical latitude, in degrees (from "-90" to "90").
+     * Geographical latitude, in degrees (from '-90' to '90').
      *
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveWallPhotoQuery latitude(Float value) {
+    public PhotosSaveWallPhotoQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
 
     /**
-     * Geographical longitude, in degrees (from "-180" to "180").
+     * Geographical longitude, in degrees (from '-180' to '180').
      *
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveWallPhotoQuery longitude(Float value) {
+    public PhotosSaveWallPhotoQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
 

@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * User's credentials as community admin
  */
-public enum RoleOptions {
+public enum RoleOptions implements EnumParam {
     @SerializedName("moderator")
     MODERATOR("moderator"),
 

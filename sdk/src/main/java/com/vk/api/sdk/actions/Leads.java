@@ -15,7 +15,6 @@ import com.vk.api.sdk.queries.leads.LeadsStartQuery;
  * List of Leads methods
  */
 public class Leads extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -26,35 +25,46 @@ public class Leads extends AbstractAction {
     }
 
     /**
-     * Completes the lead started by user.
+     * Checks if the user can start the lead.
+     *
+     * @param actor vk actor
+     * @param leadId Lead ID.
+     * @return query
      */
-    public LeadsCompleteQuery complete(ServiceActor actor, String vkSid, String secret) {
-        return new LeadsCompleteQuery(getClient(), actor, vkSid, secret);
+    public LeadsCheckUserQuery checkUser(UserActor actor, int leadId) {
+        return new LeadsCheckUserQuery(getClient(), actor, leadId);
     }
 
     /**
      * Completes the lead started by user.
+     *
+     * @param actor vk actor
+     * @param vkSid Session obtained as GET parameter when session started.
+     * @param secret Secret key from the lead testing interface.
+     * @return query
      */
     public LeadsCompleteQuery complete(UserActor actor, String vkSid, String secret) {
         return new LeadsCompleteQuery(getClient(), actor, vkSid, secret);
     }
 
     /**
-     * Creates new session for the user passing the offer.
+     * Completes the lead started by user.
+     *
+     * @param actor vk actor
+     * @param vkSid Session obtained as GET parameter when session started.
+     * @param secret Secret key from the lead testing interface.
+     * @return query
      */
-    public LeadsStartQuery start(ServiceActor actor, int leadId, String secret) {
-        return new LeadsStartQuery(getClient(), actor, leadId, secret);
-    }
-
-    /**
-     * Creates new session for the user passing the offer.
-     */
-    public LeadsStartQuery start(UserActor actor, int leadId, String secret) {
-        return new LeadsStartQuery(getClient(), actor, leadId, secret);
+    public LeadsCompleteQuery complete(ServiceActor actor, String vkSid, String secret) {
+        return new LeadsCompleteQuery(getClient(), actor, vkSid, secret);
     }
 
     /**
      * Returns lead stats data.
+     *
+     * @param actor vk actor
+     * @param leadId Lead ID.
+     * @return query
      */
     public LeadsGetStatsQuery getStats(UserActor actor, int leadId) {
         return new LeadsGetStatsQuery(getClient(), actor, leadId);
@@ -62,27 +72,71 @@ public class Leads extends AbstractAction {
 
     /**
      * Returns a list of last user actions for the offer.
+     *
+     * @param actor vk actor
+     * @param offerId Offer ID.
+     * @param secret Secret key obtained in the lead testing interface.
+     * @return query
+     */
+    public LeadsGetUsersQuery getUsers(UserActor actor, int offerId, String secret) {
+        return new LeadsGetUsersQuery(getClient(), actor, offerId, secret);
+    }
+
+    /**
+     * Returns a list of last user actions for the offer.
+     *
+     * @param actor vk actor
+     * @param offerId Offer ID.
+     * @param secret Secret key obtained in the lead testing interface.
+     * @return query
      */
     public LeadsGetUsersQuery getUsers(ServiceActor actor, int offerId, String secret) {
         return new LeadsGetUsersQuery(getClient(), actor, offerId, secret);
     }
 
     /**
-     * Returns a list of last user actions for the offer.
+     * Counts the metric event.
+     *
+     * @param actor vk actor
+     * @param data Metric data obtained in the lead interface.
+     * @return query
      */
-    public LeadsGetUsersQuery getUsers(UserActor actor, int offerId, String secret) {
-        return new LeadsGetUsersQuery(getClient(), actor, offerId, secret);
+    public LeadsMetricHitQuery metricHit(UserActor actor, String data) {
+        return new LeadsMetricHitQuery(getClient(), actor, data);
     }
 
-    public LeadsCheckUserQuery checkUser(UserActor actor, int leadId) {
-        return new LeadsCheckUserQuery(getClient(), actor, leadId);
-    }
-
+    /**
+     * Counts the metric event.
+     *
+     * @param actor vk actor
+     * @param data Metric data obtained in the lead interface.
+     * @return query
+     */
     public LeadsMetricHitQuery metricHit(ServiceActor actor, String data) {
         return new LeadsMetricHitQuery(getClient(), actor, data);
     }
 
-    public LeadsMetricHitQuery metricHit(UserActor actor, String data) {
-        return new LeadsMetricHitQuery(getClient(), actor, data);
+    /**
+     * Creates new session for the user passing the offer.
+     *
+     * @param actor vk actor
+     * @param leadId Lead ID.
+     * @param secret Secret key from the lead testing interface.
+     * @return query
+     */
+    public LeadsStartQuery start(UserActor actor, int leadId, String secret) {
+        return new LeadsStartQuery(getClient(), actor, leadId, secret);
+    }
+
+    /**
+     * Creates new session for the user passing the offer.
+     *
+     * @param actor vk actor
+     * @param leadId Lead ID.
+     * @param secret Secret key from the lead testing interface.
+     * @return query
+     */
+    public LeadsStartQuery start(ServiceActor actor, int leadId, String secret) {
+        return new LeadsStartQuery(getClient(), actor, leadId, secret);
     }
 }

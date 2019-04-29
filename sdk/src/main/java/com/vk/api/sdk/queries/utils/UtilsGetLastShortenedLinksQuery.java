@@ -3,8 +3,7 @@ package com.vk.api.sdk.queries.utils;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.utils.responces.GetLastShortenedLinksResponse;
-
+import com.vk.api.sdk.objects.utils.responses.GetLastShortenedLinksResponse;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class UtilsGetLastShortenedLinksQuery extends AbstractQueryBuilder<UtilsG
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public UtilsGetLastShortenedLinksQuery(VkApiClient client, UserActor actor) {
         super(client, "utils.getLastShortenedLinks", GetLastShortenedLinksResponse.class);
@@ -26,7 +25,7 @@ public class UtilsGetLastShortenedLinksQuery extends AbstractQueryBuilder<UtilsG
     /**
      * Number of links to return.
      *
-     * @param value value of "count" parameter.
+     * @param value value of "count" parameter. Minimum is 0. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public UtilsGetLastShortenedLinksQuery count(Integer value) {
@@ -36,7 +35,7 @@ public class UtilsGetLastShortenedLinksQuery extends AbstractQueryBuilder<UtilsG
     /**
      * Offset needed to return a specific subset of links.
      *
-     * @param value value of "offset" parameter.
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public UtilsGetLastShortenedLinksQuery offset(Integer value) {

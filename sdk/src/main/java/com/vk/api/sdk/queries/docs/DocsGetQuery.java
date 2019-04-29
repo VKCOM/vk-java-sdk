@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.GetResponse;
-
+import com.vk.api.sdk.objects.enums.DocsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public DocsGetQuery(VkApiClient client, UserActor actor) {
         super(client, "docs.get", GetResponse.class);
@@ -41,6 +41,16 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      */
     public DocsGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
+    }
+
+    /**
+     * Set type
+     *
+     * @param value value of "type" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsGetQuery type(DocsType value) {
+        return unsafeParam("type", value);
     }
 
     /**

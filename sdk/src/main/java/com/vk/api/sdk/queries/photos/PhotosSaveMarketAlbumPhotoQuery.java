@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.Photo;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,14 +15,15 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
-     * @param photo   value of "photo" parameter.
-     * @param server  value of "server" parameter. Minimum is 0.
-     * @param hash    value of "hash" parameter.
+     * @param photo value of "photo" parameter.
+     * @param server value of "server" parameter. Minimum is 0.
+     * @param hash value of "hash" parameter.
      */
-    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, int groupId, String photo, int server, String hash) {
+    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, int groupId,
+            String photo, int server, String hash) {
         super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, Photo.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -43,7 +43,7 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -53,7 +53,7 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "server" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -63,7 +63,7 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
     }
 
     /**
-     * Parameter returned when photos are uploaded to server.
+     * Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      *
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

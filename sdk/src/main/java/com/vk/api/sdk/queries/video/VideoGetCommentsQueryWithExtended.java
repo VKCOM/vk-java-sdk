@@ -3,9 +3,8 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.VideoSort;
 import com.vk.api.sdk.objects.video.responses.GetCommentsExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
     public VideoGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int videoId) {
@@ -48,7 +47,7 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
     }
 
     /**
-     * Return an additional "likes" field
+     * '1' — to return an additional 'likes' field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,12 +87,12 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
     }
 
     /**
-     * Sort order
+     * Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoGetCommentsQueryWithExtended sort(VideoGetCommentsSort value) {
+    public VideoGetCommentsQueryWithExtended sort(VideoSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -107,6 +106,16 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
         return unsafeParam("extended", value);
     }
 
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetCommentsQueryWithExtended fields(String... value) {
+        return unsafeParam("fields", value);
+    }
 
     /**
      * Set fields
@@ -114,7 +123,7 @@ public class VideoGetCommentsQueryWithExtended extends AbstractQueryBuilder<Vide
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoGetCommentsQueryWithExtended fields(EnumParam... value) {
+    public VideoGetCommentsQueryWithExtended fields(List<String> value) {
         return unsafeParam("fields", value);
     }
 

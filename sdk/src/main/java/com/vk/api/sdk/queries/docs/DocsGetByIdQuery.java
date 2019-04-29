@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.Doc;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param docs   value of "docs" parameter.
+     * @param actor actor with access token
+     * @param docs value of "docs" parameter.
      */
     public DocsGetByIdQuery(VkApiClient client, UserActor actor, String... docs) {
         super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
@@ -30,8 +29,8 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param docs   value of "docs" parameter.
+     * @param actor actor with access token
+     * @param docs value of "docs" parameter.
      */
     public DocsGetByIdQuery(VkApiClient client, UserActor actor, List<String> docs) {
         super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
@@ -40,9 +39,8 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
     }
 
     /**
-     * Document IDs.
-     * Example:
-     * 66748_91488
+     * docs
+     * Document IDs. Example: , "66748_91488,66748_91455",
      *
      * @param value value of "docs" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -52,9 +50,7 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
     }
 
     /**
-     * Document IDs.
-     * Example:
-     * 66748_91488
+     * Document IDs. Example: , "66748_91488,66748_91455",
      *
      * @param value value of "docs" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

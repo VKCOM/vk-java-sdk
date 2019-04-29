@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
     public WallEditCommentQuery(VkApiClient client, UserActor actor, int commentId) {
@@ -56,18 +55,8 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
     }
 
     /**
-     * List of objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media attachment:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media attachment owner.
-     * ""media_id"" - Media attachment ID.
-     * <p>
-     * For example:
-     * photo100172_166443618,photo66748_265827614
+     * attachments
+     * List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -77,18 +66,7 @@ public class WallEditCommentQuery extends AbstractQueryBuilder<WallEditCommentQu
     }
 
     /**
-     * List of objects attached to the comment, in the following format:
-     * "type""owner_id"_"media_id"
-     * ""type"" - Type of media attachment:
-     * "photo" - photo
-     * "video" - video
-     * "audio" - audio
-     * "doc" - document
-     * ""owner_id"" - ID of the media attachment owner.
-     * ""media_id"" - Media attachment ID.
-     * <p>
-     * For example:
-     * photo100172_166443618,photo66748_265827614
+     * List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

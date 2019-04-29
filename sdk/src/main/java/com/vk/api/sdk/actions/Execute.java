@@ -11,9 +11,6 @@ import com.vk.api.sdk.queries.execute.ExecuteStorageFunctionQuery;
 
 import java.util.List;
 
-/**
- * List of Videos methods
- */
 public class Execute extends AbstractAction {
 
     /**

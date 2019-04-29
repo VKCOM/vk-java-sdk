@@ -9,13 +9,14 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
-import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.vk.api.sdk.objects.groups.LongPollServer;
+import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CallbackApiLongPoll extends CallbackApi {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CallbackApiLongPoll.class);
+    private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
 
     private static final int DEFAULT_WAIT = 10;
 
@@ -56,7 +57,7 @@ public class CallbackApiLongPoll extends CallbackApi {
     }
 
     public void run() throws ClientException, ApiException {
-        GetLongPollServerResponse longPollServer = getLongPollServer();
+        LongPollServer longPollServer = getLongPollServer();
         int lastTimeStamp = longPollServer.getTs();
         while (true) {
             try {
@@ -72,12 +73,12 @@ public class CallbackApiLongPoll extends CallbackApi {
         }
     }
 
-    private GetLongPollServerResponse getLongPollServer() throws ClientException, ApiException {
+    private LongPollServer getLongPollServer() throws ClientException, ApiException {
         if (groupActor != null) {
-            return client.groups().getLongPollServer(groupActor).execute();
+            return client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
         }
 
-        return client.groups().getLongPollServer(userActor, groupId).execute();
+        return client.groupsLongPoll().getLongPollServer(userActor, groupId).execute();
     }
 
     protected VkApiClient getClient() {

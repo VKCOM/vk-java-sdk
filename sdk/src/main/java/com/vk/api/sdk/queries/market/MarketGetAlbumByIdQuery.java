@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetAlbumByIdResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +14,13 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client   VK API client
-     * @param actor    actor with access token
-     * @param ownerId  value of "owner id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId, int... albumIds) {
+    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId,
+            Integer... albumIds) {
         super(client, "market.getAlbumById", GetAlbumByIdResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -30,12 +30,13 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client   VK API client
-     * @param actor    actor with access token
-     * @param ownerId  value of "owner id" parameter.
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId, List<Integer> albumIds) {
+    public MarketGetAlbumByIdQuery(VkApiClient client, UserActor actor, int ownerId,
+            List<Integer> albumIds) {
         super(client, "market.getAlbumById", GetAlbumByIdResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -43,9 +44,7 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
     }
 
     /**
-     * Identifier of an album owner community
-     * Note that community id in the 'owner_id' parameter should be negative number.
-     * For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community
+     * Identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      *
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -55,12 +54,13 @@ public class MarketGetAlbumByIdQuery extends AbstractQueryBuilder<MarketGetAlbum
     }
 
     /**
+     * album_ids
      * Collections identifiers to obtain data from
      *
      * @param value value of "album ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetAlbumByIdQuery albumIds(int... value) {
+    protected MarketGetAlbumByIdQuery albumIds(Integer... value) {
         return unsafeParam("album_ids", value);
     }
 

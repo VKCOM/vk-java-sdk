@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.utils;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Link status
  */
-public enum LinkCheckedStatus {
+public enum LinkCheckedStatus implements EnumParam {
     @SerializedName("not_banned")
     NOT_BANNED("not_banned"),
 

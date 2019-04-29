@@ -1,9 +1,9 @@
 package com.vk.api.sdk.objects.messages;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Geo;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -11,11 +11,23 @@ import java.util.Objects;
  * Message object
  */
 public class Message {
+    @SerializedName("action")
+    private MessageAction action;
+
     /**
-     * Message ID
+     * Only for messages from community. Contains user ID of community admin, who sent this message.
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("admin_author_id")
+    private Integer adminAuthorId;
+
+    @SerializedName("attachments")
+    private List<MessageAttachment> attachments;
+
+    /**
+     * Unique auto-incremented number for all messages with this peer
+     */
+    @SerializedName("conversation_message_id")
+    private Integer conversationMessageId;
 
     /**
      * Date when the message has been sent in Unixtime
@@ -24,22 +36,10 @@ public class Message {
     private Integer date;
 
     /**
-     * Date when the message has been updated in Unixtime
+     * Is it an deleted message
      */
-    @SerializedName("update_time")
-    private Integer updateTime;
-
-    /**
-     * Information whether the message is outcoming
-     */
-    @SerializedName("out")
-    private BoolInt out;
-
-    /**
-     * Message author's ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("deleted")
+    private BoolInt deleted;
 
     /**
      * Message author's ID
@@ -48,239 +48,264 @@ public class Message {
     private Integer fromId;
 
     /**
-     * ID used for sending messages. It returned only for outgoing messages
+     * Forwarded messages
      */
-    @SerializedName("random_id")
-    private Integer randomId;
+    @SerializedName("fwd_messages")
+    private List<ForeignMessage> fwdMessages;
+
+    @SerializedName("geo")
+    private Geo geo;
+
+    /**
+     * Message ID
+     */
+    @SerializedName("id")
+    private Integer id;
 
     /**
      * Is it an important message
      */
     @SerializedName("important")
-    private BoolInt important;
+    private Boolean important;
+
+    @SerializedName("is_hidden")
+    private Boolean isHidden;
+
+    @SerializedName("keyboard")
+    private Keyboard keyboard;
 
     /**
-     * Is it an deleted message
+     * Members number
      */
-    @SerializedName("deleted")
-    private BoolInt deleted;
+    @SerializedName("members_count")
+    private Integer membersCount;
 
     /**
-     * Whether the message contains smiles
+     * Information whether the message is outcoming
      */
-    @SerializedName("emoji")
-    private BoolInt emoji;
+    @SerializedName("out")
+    private BoolInt out;
+
+    @SerializedName("payload")
+    private String payload;
 
     /**
-     * Forwarded messages
+     * Peer ID
      */
-    @SerializedName("fwd_messages")
-    private List<Message> fwdMessages;
+    @SerializedName("peer_id")
+    private Integer peerId;
 
     /**
-     * Information whether the messages is read
+     * ID used for sending messages. It returned only for outgoing messages
      */
-    @SerializedName("read_state")
-    private BoolInt readState;
+    @SerializedName("random_id")
+    private Integer randomId;
 
-    /**
-     * Message title or chat title
-     */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("reply_message")
+    private ForeignMessage replyMessage;
 
     /**
      * Message text
      */
-    @SerializedName("body")
-    private String body;
-
-    @SerializedName("attachments")
-    private List<MessageAttachment> attachments;
+    @SerializedName("text")
+    private String text;
 
     /**
-     * Chat ID
+     * Date when the message has been updated in Unixtime
      */
-    @SerializedName("chat_id")
-    private Integer chatId;
+    @SerializedName("update_time")
+    private Integer updateTime;
 
-    @SerializedName("chat_active")
-    private List<Integer> chatActive;
-
-    /**
-     * Push settings for the chat
-     */
-    @SerializedName("push_settings")
-    private ChatPushSettings pushSettings;
-
-    /**
-     * Action type
-     */
-    @SerializedName("action")
-    private Action action;
-
-    /**
-     * User or email ID has been invited to the chat or kicked from the chat
-     */
-    @SerializedName("action_mid")
-    private Integer actionMid;
-
-    /**
-     * Email has been invited or kicked
-     */
-    @SerializedName("action_email")
-    private String actionEmail;
-
-    /**
-     * Action text
-     */
-    @SerializedName("action_text")
-    private String actionText;
-
-    /**
-     * Chat users number
-     */
-    @SerializedName("users_count")
-    private Integer usersCount;
-
-    /**
-     * Chat administrator ID
-     */
-    @SerializedName("admin_id")
-    private Integer adminId;
-
-    /**
-     * URL of the preview image with 50px in width
-     */
-    @SerializedName("photo_50")
-    private String photo50;
-
-    /**
-     * URL of the preview image with 100px in width
-     */
-    @SerializedName("photo_100")
-    private String photo100;
-
-    /**
-     * URL of the preview image with 200px in width
-     */
-    @SerializedName("photo_200")
-    private String photo200;
-
-    @SerializedName("geo")
-    private Geo geo;
-
-    public Integer getId() {
-        return id;
+    public MessageAction getAction() {
+        return action;
     }
 
-    public Integer getDate() {
-        return date;
+    public Message setAction(MessageAction action) {
+        this.action = action;
+        return this;
     }
 
-    public boolean isOut() {
-        return out == BoolInt.YES;
+    public Integer getAdminAuthorId() {
+        return adminAuthorId;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public Integer getFromId() {
-        return fromId;
-    }
-
-    public Integer getRandomId() {
-        return randomId;
-    }
-
-    public boolean getImportant() {
-        return important == BoolInt.YES;
-    }
-
-    public boolean getDeleted() {
-        return deleted == BoolInt.YES;
-    }
-
-    public boolean getEmoji() {
-        return emoji == BoolInt.YES;
-    }
-
-    public List<Message> getFwdMessages() {
-        return fwdMessages;
-    }
-
-    public boolean isReadState() {
-        return readState == BoolInt.YES;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getBody() {
-        return body;
+    public Message setAdminAuthorId(Integer adminAuthorId) {
+        this.adminAuthorId = adminAuthorId;
+        return this;
     }
 
     public List<MessageAttachment> getAttachments() {
         return attachments;
     }
 
-    public Integer getChatId() {
-        return chatId;
+    public Message setAttachments(List<MessageAttachment> attachments) {
+        this.attachments = attachments;
+        return this;
     }
 
-    public List<Integer> getChatActive() {
-        return chatActive;
+    public Integer getConversationMessageId() {
+        return conversationMessageId;
     }
 
-    public ChatPushSettings getPushSettings() {
-        return pushSettings;
+    public Message setConversationMessageId(Integer conversationMessageId) {
+        this.conversationMessageId = conversationMessageId;
+        return this;
     }
 
-    public Action getAction() {
-        return action;
+    public Integer getDate() {
+        return date;
     }
 
-    public Integer getActionMid() {
-        return actionMid;
+    public Message setDate(Integer date) {
+        this.date = date;
+        return this;
     }
 
-    public String getActionEmail() {
-        return actionEmail;
+    public boolean isDeleted() {
+        return deleted == BoolInt.YES;
     }
 
-    public String getActionText() {
-        return actionText;
+    public BoolInt getDeleted() {
+        return deleted;
     }
 
-    public Integer getUsersCount() {
-        return usersCount;
+    public Integer getFromId() {
+        return fromId;
     }
 
-    public Integer getAdminId() {
-        return adminId;
+    public Message setFromId(Integer fromId) {
+        this.fromId = fromId;
+        return this;
     }
 
-    public String getPhoto50() {
-        return photo50;
+    public List<ForeignMessage> getFwdMessages() {
+        return fwdMessages;
     }
 
-    public String getPhoto100() {
-        return photo100;
-    }
-
-    public String getPhoto200() {
-        return photo200;
+    public Message setFwdMessages(List<ForeignMessage> fwdMessages) {
+        this.fwdMessages = fwdMessages;
+        return this;
     }
 
     public Geo getGeo() {
         return geo;
     }
 
+    public Message setGeo(Geo geo) {
+        this.geo = geo;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Message setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getImportant() {
+        return important;
+    }
+
+    public Message setImportant(Boolean important) {
+        this.important = important;
+        return this;
+    }
+
+    public Boolean getIsHidden() {
+        return isHidden;
+    }
+
+    public Message setIsHidden(Boolean isHidden) {
+        this.isHidden = isHidden;
+        return this;
+    }
+
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public Message setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+        return this;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public Message setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
+    }
+
+    public boolean isOut() {
+        return out == BoolInt.YES;
+    }
+
+    public BoolInt getOut() {
+        return out;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public Message setPayload(String payload) {
+        this.payload = payload;
+        return this;
+    }
+
+    public Integer getPeerId() {
+        return peerId;
+    }
+
+    public Message setPeerId(Integer peerId) {
+        this.peerId = peerId;
+        return this;
+    }
+
+    public Integer getRandomId() {
+        return randomId;
+    }
+
+    public Message setRandomId(Integer randomId) {
+        this.randomId = randomId;
+        return this;
+    }
+
+    public ForeignMessage getReplyMessage() {
+        return replyMessage;
+    }
+
+    public Message setReplyMessage(ForeignMessage replyMessage) {
+        this.replyMessage = replyMessage;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Message setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public Integer getUpdateTime() {
+        return updateTime;
+    }
+
+    public Message setUpdateTime(Integer updateTime) {
+        this.updateTime = updateTime;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, updateTime, out, userId, fromId, randomId, important, deleted, emoji, fwdMessages, readState, title, body, attachments, chatId, chatActive, pushSettings, action, actionMid, actionEmail, actionText, usersCount, adminId, photo50, photo100, photo200, geo);
+        return Objects.hash(date, peerId, keyboard, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, out, geo, important, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
     }
 
     @Override
@@ -288,67 +313,58 @@ public class Message {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(id, message.id) &&
-                Objects.equals(date, message.date) &&
-                Objects.equals(updateTime, message.updateTime) &&
-                out == message.out &&
-                Objects.equals(userId, message.userId) &&
-                Objects.equals(fromId, message.fromId) &&
-                Objects.equals(randomId, message.randomId) &&
-                important == message.important &&
-                deleted == message.deleted &&
-                emoji == message.emoji &&
-                Objects.equals(fwdMessages, message.fwdMessages) &&
-                readState == message.readState &&
-                Objects.equals(title, message.title) &&
-                Objects.equals(body, message.body) &&
+        return Objects.equals(date, message.date) &&
+                Objects.equals(keyboard, message.keyboard) &&
                 Objects.equals(attachments, message.attachments) &&
-                Objects.equals(chatId, message.chatId) &&
-                Objects.equals(chatActive, message.chatActive) &&
-                Objects.equals(pushSettings, message.pushSettings) &&
-                action == message.action &&
-                Objects.equals(actionMid, message.actionMid) &&
-                Objects.equals(actionEmail, message.actionEmail) &&
-                Objects.equals(actionText, message.actionText) &&
-                Objects.equals(usersCount, message.usersCount) &&
-                Objects.equals(adminId, message.adminId) &&
-                Objects.equals(photo50, message.photo50) &&
-                Objects.equals(photo100, message.photo100) &&
-                Objects.equals(photo200, message.photo200) &&
-                Objects.equals(geo, message.geo);
+                Objects.equals(fromId, message.fromId) &&
+                Objects.equals(isHidden, message.isHidden) &&
+                Objects.equals(conversationMessageId, message.conversationMessageId) &&
+                Objects.equals(out, message.out) &&
+                Objects.equals(peerId, message.peerId) &&
+                Objects.equals(geo, message.geo) &&
+                Objects.equals(important, message.important) &&
+                Objects.equals(updateTime, message.updateTime) &&
+                Objects.equals(deleted, message.deleted) &&
+                Objects.equals(payload, message.payload) &&
+                Objects.equals(action, message.action) &&
+                Objects.equals(adminAuthorId, message.adminAuthorId) &&
+                Objects.equals(fwdMessages, message.fwdMessages) &&
+                Objects.equals(membersCount, message.membersCount) &&
+                Objects.equals(id, message.id) &&
+                Objects.equals(randomId, message.randomId) &&
+                Objects.equals(text, message.text) &&
+                Objects.equals(replyMessage, message.replyMessage);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Message{");
-        sb.append("id=").append(id);
-        sb.append(", date=").append(date);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", out=").append(out);
-        sb.append(", userId=").append(userId);
-        sb.append(", fromId=").append(fromId);
-        sb.append(", randomId=").append(randomId);
-        sb.append(", important=").append(important);
-        sb.append(", deleted=").append(deleted);
-        sb.append(", emoji=").append(emoji);
-        sb.append(", fwdMessages=").append(fwdMessages);
-        sb.append(", readState=").append(readState);
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", body='").append(body).append('\'');
+        sb.append("date=").append(date);
+        sb.append(", keyboard=").append(keyboard);
         sb.append(", attachments=").append(attachments);
-        sb.append(", chatId=").append(chatId);
-        sb.append(", chatActive=").append(chatActive);
-        sb.append(", pushSettings=").append(pushSettings);
-        sb.append(", action=").append(action);
-        sb.append(", actionMid=").append(actionMid);
-        sb.append(", actionEmail='").append(actionEmail).append('\'');
-        sb.append(", actionText='").append(actionText).append('\'');
-        sb.append(", usersCount=").append(usersCount);
-        sb.append(", adminId=").append(adminId);
-        sb.append(", photo50='").append(photo50).append('\'');
-        sb.append(", photo100='").append(photo100).append('\'');
-        sb.append(", photo200='").append(photo200).append('\'');
+        sb.append(", fromId=").append(fromId);
+        sb.append(", isHidden=").append(isHidden);
+        sb.append(", conversationMessageId=").append(conversationMessageId);
+        sb.append(", out=").append(out);
+        sb.append(", peerId=").append(peerId);
         sb.append(", geo=").append(geo);
+        sb.append(", important=").append(important);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", deleted=").append(deleted);
+        sb.append(", payload='").append(payload).append("'");
+        sb.append(", action=").append(action);
+        sb.append(", adminAuthorId=").append(adminAuthorId);
+        sb.append(", fwdMessages=").append(fwdMessages);
+        sb.append(", membersCount=").append(membersCount);
+        sb.append(", id=").append(id);
+        sb.append(", randomId=").append(randomId);
+        sb.append(", text='").append(text).append("'");
+        sb.append(", replyMessage=").append(replyMessage);
         sb.append('}');
         return sb.toString();
     }

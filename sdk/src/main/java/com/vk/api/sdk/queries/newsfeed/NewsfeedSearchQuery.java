@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.responses.SearchResponse;
-
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public NewsfeedSearchQuery(VkApiClient client, UserActor actor) {
         super(client, "newsfeed.search", SearchResponse.class);
@@ -28,6 +28,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
+     * @param actor actor with access token
      */
     public NewsfeedSearchQuery(VkApiClient client, ServiceActor actor) {
         super(client, "newsfeed.search", SearchResponse.class);
@@ -36,13 +37,23 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
     }
 
     /**
-     * Search query string (e.g., "New Year").
+     * Search query string (e.g., 'New Year').
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NewsfeedSearchQuery q(String value) {
         return unsafeParam("q", value);
+    }
+
+    /**
+     * '1' — to return additional information about the user or community that placed the post.
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSearchQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**
@@ -61,7 +72,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQuery latitude(Float value) {
+    public NewsfeedSearchQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
 
@@ -71,7 +82,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSearchQuery longitude(Float value) {
+    public NewsfeedSearchQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
 
@@ -105,6 +116,27 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
         return unsafeParam("start_from", value);
     }
 
+    /**
+     * fields
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSearchQuery fields(UserGroupFields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedSearchQuery fields(List<UserGroupFields> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected NewsfeedSearchQuery getThis() {
         return this;
@@ -112,6 +144,6 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Collections.EMPTY_LIST;
+        return Arrays.asList("access_token");
     }
 }

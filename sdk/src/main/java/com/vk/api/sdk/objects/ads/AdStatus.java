@@ -1,11 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.queries.EnumParam;
 
 /**
  * Ad atatus
  */
-public enum AdStatus {
+public enum AdStatus implements EnumParam {
     @SerializedName("0")
     STOPPED(0),
 
@@ -21,7 +22,7 @@ public enum AdStatus {
         this.value = value;
     }
 
-    public Integer getValue() {
-        return value;
+    public String getValue() {
+        return value.toString();
     }
 }

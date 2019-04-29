@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.auth.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -24,8 +24,18 @@ public class RestoreResponse {
         return success;
     }
 
+    public RestoreResponse setSuccess(RestoreResponseSuccess success) {
+        this.success = success;
+        return this;
+    }
+
     public String getSid() {
         return sid;
+    }
+
+    public RestoreResponse setSid(String sid) {
+        this.sid = sid;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class RestoreResponse {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RestoreResponse{");
         sb.append("success=").append(success);
         sb.append(", sid='").append(sid).append("'");

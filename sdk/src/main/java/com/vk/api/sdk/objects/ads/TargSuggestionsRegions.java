@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -30,12 +30,27 @@ public class TargSuggestionsRegions {
         return id;
     }
 
+    public TargSuggestionsRegions setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
 
+    public TargSuggestionsRegions setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getType() {
         return type;
+    }
+
+    public TargSuggestionsRegions setType(String type) {
+        this.type = type;
+        return this;
     }
 
     @Override
@@ -48,16 +63,21 @@ public class TargSuggestionsRegions {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TargSuggestionsRegions targSuggestionsRegions = (TargSuggestionsRegions) o;
-        return Objects.equals(id, targSuggestionsRegions.id) &&
-                Objects.equals(name, targSuggestionsRegions.name) &&
+        return Objects.equals(name, targSuggestionsRegions.name) &&
+                Objects.equals(id, targSuggestionsRegions.id) &&
                 Objects.equals(type, targSuggestionsRegions.type);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TargSuggestionsRegions{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append("'");
+        sb.append("name='").append(name).append("'");
+        sb.append(", id=").append(id);
         sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();

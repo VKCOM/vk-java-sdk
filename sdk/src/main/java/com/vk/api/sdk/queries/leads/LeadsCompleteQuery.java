@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.leads.Complete;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class LeadsCompleteQuery extends AbstractQueryBuilder<LeadsCompleteQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param vkSid  value of "vk sid" parameter.
+     * @param actor actor with access token
+     * @param vkSid value of "vk sid" parameter.
      * @param secret value of "secret" parameter.
      */
     public LeadsCompleteQuery(VkApiClient client, UserActor actor, String vkSid, String secret) {
@@ -32,8 +31,8 @@ public class LeadsCompleteQuery extends AbstractQueryBuilder<LeadsCompleteQuery,
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param vkSid  value of "vk sid" parameter.
+     * @param actor actor with access token
+     * @param vkSid value of "vk sid" parameter.
      * @param secret value of "secret" parameter.
      */
     public LeadsCompleteQuery(VkApiClient client, ServiceActor actor, String vkSid, String secret) {
@@ -81,6 +80,6 @@ public class LeadsCompleteQuery extends AbstractQueryBuilder<LeadsCompleteQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("vk_sid", "secret");
+        return Arrays.asList("vk_sid", "secret", "access_token");
     }
 }

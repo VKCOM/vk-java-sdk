@@ -1,14 +1,13 @@
 package com.vk.api.sdk.objects.newsfeed;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * ItemPhotoTag object
  */
 public class ItemPhotoTag {
-
     @SerializedName("photo_tags")
     private ItemPhotoTagPhotoTags photoTags;
 
@@ -22,8 +21,18 @@ public class ItemPhotoTag {
         return photoTags;
     }
 
+    public ItemPhotoTag setPhotoTags(ItemPhotoTagPhotoTags photoTags) {
+        this.photoTags = photoTags;
+        return this;
+    }
+
     public Integer getPostId() {
         return postId;
+    }
+
+    public ItemPhotoTag setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
     }
 
     @Override
@@ -36,15 +45,20 @@ public class ItemPhotoTag {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemPhotoTag itemPhotoTag = (ItemPhotoTag) o;
-        return Objects.equals(photoTags, itemPhotoTag.photoTags) &&
-                Objects.equals(postId, itemPhotoTag.postId);
+        return Objects.equals(postId, itemPhotoTag.postId) &&
+                Objects.equals(photoTags, itemPhotoTag.photoTags);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemPhotoTag{");
-        sb.append("photoTags=").append(photoTags);
-        sb.append(", postId=").append(postId);
+        sb.append("postId=").append(postId);
+        sb.append(", photoTags=").append(photoTags);
         sb.append('}');
         return sb.toString();
     }

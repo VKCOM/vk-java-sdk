@@ -1,8 +1,8 @@
 package com.vk.api.sdk.objects.wall.responses;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Objects;
 
 /**
@@ -34,16 +34,36 @@ public class RepostResponse {
         return success;
     }
 
+    public RepostResponse setSuccess(OkResponse success) {
+        this.success = success;
+        return this;
+    }
+
     public Integer getPostId() {
         return postId;
+    }
+
+    public RepostResponse setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
     }
 
     public Integer getRepostsCount() {
         return repostsCount;
     }
 
+    public RepostResponse setRepostsCount(Integer repostsCount) {
+        this.repostsCount = repostsCount;
+        return this;
+    }
+
     public Integer getLikesCount() {
         return likesCount;
+    }
+
+    public RepostResponse setLikesCount(Integer likesCount) {
+        this.likesCount = likesCount;
+        return this;
     }
 
     @Override
@@ -56,19 +76,24 @@ public class RepostResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RepostResponse repostResponse = (RepostResponse) o;
-        return Objects.equals(success, repostResponse.success) &&
+        return Objects.equals(likesCount, repostResponse.likesCount) &&
                 Objects.equals(postId, repostResponse.postId) &&
-                Objects.equals(repostsCount, repostResponse.repostsCount) &&
-                Objects.equals(likesCount, repostResponse.likesCount);
+                Objects.equals(success, repostResponse.success) &&
+                Objects.equals(repostsCount, repostResponse.repostsCount);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RepostResponse{");
-        sb.append("success=").append(success);
+        sb.append("likesCount=").append(likesCount);
         sb.append(", postId=").append(postId);
+        sb.append(", success=").append(success);
         sb.append(", repostsCount=").append(repostsCount);
-        sb.append(", likesCount=").append(likesCount);
         sb.append('}');
         return sb.toString();
     }

@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.GetBannedResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class AccountGetBannedQuery extends AbstractQueryBuilder<AccountGetBanned
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public AccountGetBannedQuery(VkApiClient client, UserActor actor) {
         super(client, "account.getBanned", GetBannedResponse.class);
@@ -24,7 +23,7 @@ public class AccountGetBannedQuery extends AbstractQueryBuilder<AccountGetBanned
     }
 
     /**
-     * Offset required to select a certain subset of users. By default - 0.
+     * Offset needed to return a specific subset of results.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class AccountGetBannedQuery extends AbstractQueryBuilder<AccountGetBanned
     }
 
     /**
-     * Number of users, information of which shall be returned.
+     * Number of results to return.
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

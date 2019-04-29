@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +14,10 @@ public class GroupsReorderLinkQuery extends AbstractQueryBuilder<GroupsReorderLi
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
-     * @param linkId  value of "link id" parameter. Minimum is 0.
+     * @param linkId value of "link id" parameter. Minimum is 0.
      */
     public GroupsReorderLinkQuery(VkApiClient client, UserActor actor, int groupId, int linkId) {
         super(client, "groups.reorderLink", OkResponse.class);
@@ -48,7 +47,7 @@ public class GroupsReorderLinkQuery extends AbstractQueryBuilder<GroupsReorderLi
     }
 
     /**
-     * ID of the link after which to place the link with "link_id".
+     * ID of the link after which to place the link with 'link_id'.
      *
      * @param value value of "after" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

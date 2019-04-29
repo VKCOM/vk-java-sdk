@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.gifts;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 public class Gift {
     /**
-     * Gift ID
+     * Date when gist has been sent in Unixtime
      */
-    @SerializedName("id")
-    private Integer id;
+    @SerializedName("date")
+    private Integer date;
 
     /**
      * Gift sender ID
@@ -20,26 +20,8 @@ public class Gift {
     @SerializedName("from_id")
     private Integer fromId;
 
-    /**
-     * Comment text
-     */
-    @SerializedName("message")
-    private String message;
-
-    /**
-     * Date when gist has been sent in Unixtime
-     */
-    @SerializedName("date")
-    private Integer date;
-
     @SerializedName("gift")
     private Layout gift;
-
-    /**
-     * Gift privacy
-     */
-    @SerializedName("privacy")
-    private GiftPrivacy privacy;
 
     /**
      * Hash
@@ -47,32 +29,82 @@ public class Gift {
     @SerializedName("gift_hash")
     private String giftHash;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Gift ID
+     */
+    @SerializedName("id")
+    private Integer id;
+
+    /**
+     * Comment text
+     */
+    @SerializedName("message")
+    private String message;
+
+    @SerializedName("privacy")
+    private GiftPrivacy privacy;
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public Gift setDate(Integer date) {
+        this.date = date;
+        return this;
     }
 
     public Integer getFromId() {
         return fromId;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public Integer getDate() {
-        return date;
+    public Gift setFromId(Integer fromId) {
+        this.fromId = fromId;
+        return this;
     }
 
     public Layout getGift() {
         return gift;
     }
 
-    public GiftPrivacy getPrivacy() {
-        return privacy;
+    public Gift setGift(Layout gift) {
+        this.gift = gift;
+        return this;
     }
 
     public String getGiftHash() {
         return giftHash;
+    }
+
+    public Gift setGiftHash(String giftHash) {
+        this.giftHash = giftHash;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Gift setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Gift setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public GiftPrivacy getPrivacy() {
+        return privacy;
+    }
+
+    public Gift setPrivacy(GiftPrivacy privacy) {
+        this.privacy = privacy;
+        return this;
     }
 
     @Override
@@ -85,25 +117,30 @@ public class Gift {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Gift gift = (Gift) o;
-        return Objects.equals(id, gift.id) &&
-                Objects.equals(fromId, gift.fromId) &&
-                Objects.equals(message, gift.message) &&
-                Objects.equals(date, gift.date) &&
+        return Objects.equals(date, gift.date) &&
                 Objects.equals(gift, gift.gift) &&
+                Objects.equals(giftHash, gift.giftHash) &&
+                Objects.equals(fromId, gift.fromId) &&
                 Objects.equals(privacy, gift.privacy) &&
-                Objects.equals(giftHash, gift.giftHash);
+                Objects.equals(id, gift.id) &&
+                Objects.equals(message, gift.message);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Gift{");
-        sb.append("id=").append(id);
-        sb.append(", fromId=").append(fromId);
-        sb.append(", message='").append(message).append("'");
-        sb.append(", date=").append(date);
+        sb.append("date=").append(date);
         sb.append(", gift=").append(gift);
-        sb.append(", privacy=").append(privacy);
         sb.append(", giftHash='").append(giftHash).append("'");
+        sb.append(", fromId=").append(fromId);
+        sb.append(", privacy=").append(privacy);
+        sb.append(", id=").append(id);
+        sb.append(", message='").append(message).append("'");
         sb.append('}');
         return sb.toString();
     }

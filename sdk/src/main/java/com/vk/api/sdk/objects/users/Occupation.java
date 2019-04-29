@@ -1,19 +1,13 @@
 package com.vk.api.sdk.objects.users;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
  * Occupation object
  */
 public class Occupation {
-    /**
-     * Type of occupation
-     */
-    @SerializedName("type")
-    private String type;
-
     /**
      * ID of school, university, company group
      */
@@ -26,16 +20,37 @@ public class Occupation {
     @SerializedName("name")
     private String name;
 
-    public String getType() {
-        return type;
-    }
+    /**
+     * Type of occupation
+     */
+    @SerializedName("type")
+    private String type;
 
     public Integer getId() {
         return id;
     }
 
+    public Occupation setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public Occupation setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Occupation setType(String type) {
+        this.type = type;
+        return this;
     }
 
     @Override
@@ -48,17 +63,22 @@ public class Occupation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Occupation occupation = (Occupation) o;
-        return Objects.equals(type, occupation.type) &&
+        return Objects.equals(name, occupation.name) &&
                 Objects.equals(id, occupation.id) &&
-                Objects.equals(name, occupation.name);
+                Objects.equals(type, occupation.type);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Occupation{");
-        sb.append("type='").append(type).append("'");
+        sb.append("name='").append(name).append("'");
         sb.append(", id=").append(id);
-        sb.append(", name='").append(name).append("'");
+        sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();
     }

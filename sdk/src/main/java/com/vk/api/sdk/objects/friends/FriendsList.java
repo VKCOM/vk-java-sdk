@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.friends;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Objects;
 
 /**
@@ -9,23 +9,33 @@ import java.util.Objects;
  */
 public class FriendsList {
     /**
-     * List title
-     */
-    @SerializedName("name")
-    private String name;
-
-    /**
      * List ID
      */
     @SerializedName("id")
     private Integer id;
 
+    /**
+     * List title
+     */
+    @SerializedName("name")
+    private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public FriendsList setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
 
-    public Integer getId() {
-        return id;
+    public FriendsList setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
@@ -44,6 +54,11 @@ public class FriendsList {
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("FriendsList{");
         sb.append("name='").append(name).append("'");
         sb.append(", id=").append(id);

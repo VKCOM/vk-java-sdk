@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.photos.responses.GetAllCommentsResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public PhotosGetAllCommentsQuery(VkApiClient client, UserActor actor) {
         super(client, "photos.getAllComments", GetAllCommentsResponse.class);
@@ -44,7 +43,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * Return an additional "likes" field
+     * '1' — to return an additional 'likes' field, '0' — (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -54,7 +53,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * Offset needed to return a specific subset of comments. By default, "0".
+     * Offset needed to return a specific subset of comments. By default, '0'.
      *
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -64,7 +63,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     }
 
     /**
-     * Number of comments to return. By default, "20". Maximum value, "100".
+     * Number of comments to return. By default, '20'. Maximum value, '100'.
      *
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

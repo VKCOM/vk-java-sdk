@@ -2,9 +2,9 @@ package com.vk.api.sdk.queries.docs;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.SearchResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,10 +16,23 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
-     * @param q      value of "q" parameter.
+     * @param actor actor with access token
+     * @param q value of "q" parameter.
      */
     public DocsSearchQuery(VkApiClient client, UserActor actor, String q) {
+        super(client, "docs.search", SearchResponse.class);
+        accessToken(actor.getAccessToken());
+        q(q);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param q value of "q" parameter.
+     */
+    public DocsSearchQuery(VkApiClient client, GroupActor actor, String q) {
         super(client, "docs.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         q(q);
@@ -33,6 +46,16 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      */
     protected DocsSearchQuery q(String value) {
         return unsafeParam("q", value);
+    }
+
+    /**
+     * Set search own
+     *
+     * @param value value of "search own" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsSearchQuery searchOwn(Boolean value) {
+        return unsafeParam("search_own", value);
     }
 
     /**

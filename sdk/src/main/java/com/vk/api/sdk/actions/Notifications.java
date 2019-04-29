@@ -10,7 +10,6 @@ import com.vk.api.sdk.queries.notifications.NotificationsMarkAsViewedQuery;
  * List of Notifications methods
  */
 public class Notifications extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -22,6 +21,9 @@ public class Notifications extends AbstractAction {
 
     /**
      * Returns a list of notifications about other users' feedback to the current user's wall posts.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public NotificationsGetQuery get(UserActor actor) {
         return new NotificationsGetQuery(getClient(), actor);
@@ -29,6 +31,9 @@ public class Notifications extends AbstractAction {
 
     /**
      * Resets the counter of new notifications about other users' feedback to the current user's wall posts.
+     *
+     * @param actor vk actor
+     * @return query
      */
     public NotificationsMarkAsViewedQuery markAsViewed(UserActor actor) {
         return new NotificationsMarkAsViewedQuery(getClient(), actor);

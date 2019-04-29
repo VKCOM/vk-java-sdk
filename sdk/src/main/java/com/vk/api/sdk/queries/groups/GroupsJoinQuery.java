@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkRes
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public GroupsJoinQuery(VkApiClient client, UserActor actor) {
         super(client, "groups.join", OkResponse.class);
@@ -34,12 +33,12 @@ public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkRes
     }
 
     /**
-     * Optional parameter which is taken into account when "group_id" belongs to the event.
+     * Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
      *
      * @param value value of "not sure" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsJoinQuery notSure(Boolean value) {
+    public GroupsJoinQuery notSure(String value) {
         return unsafeParam("not_sure", value);
     }
 

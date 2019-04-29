@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetCitiesResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +15,8 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
-     * @param actor     actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
     public DatabaseGetCitiesQuery(VkApiClient client, UserActor actor, int countryId) {
@@ -29,7 +28,8 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client    VK API client
+     * @param client VK API client
+     * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
     public DatabaseGetCitiesQuery(VkApiClient client, ServiceActor actor, int countryId) {
@@ -70,7 +70,7 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
     }
 
     /**
-     * Return all cities in the country
+     * '1' — to return all cities in the country, '0' — to return major cities in the country (default),
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -106,6 +106,6 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("country_id");
+        return Arrays.asList("country_id", "access_token");
     }
 }

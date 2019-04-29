@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.groups.responses.GetCatalogResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class GroupsGetCatalogQuery extends AbstractQueryBuilder<GroupsGetCatalog
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      */
     public GroupsGetCatalogQuery(VkApiClient client, UserActor actor) {
         super(client, "groups.getCatalog", GetCatalogResponse.class);
@@ -24,7 +23,7 @@ public class GroupsGetCatalogQuery extends AbstractQueryBuilder<GroupsGetCatalog
     }
 
     /**
-     * Category id received from groups.getCatalogInfo.
+     * Category id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
      *
      * @param value value of "category id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +33,7 @@ public class GroupsGetCatalogQuery extends AbstractQueryBuilder<GroupsGetCatalog
     }
 
     /**
-     * Subcategory id received from groups.getCatalogInfo.
+     * Subcategory id received from [vk.com/dev/groups.getCatalogInfo|groups.getCatalogInfo].
      *
      * @param value value of "subcategory id" parameter. Maximum is 99. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.photos;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -9,16 +10,16 @@ import java.util.Objects;
  */
 public class PhotoUpload {
     /**
-     * URL to upload photo
-     */
-    @SerializedName("upload_url")
-    private String uploadUrl;
-
-    /**
      * Album ID
      */
     @SerializedName("album_id")
     private Integer albumId;
+
+    /**
+     * URL to upload photo
+     */
+    @SerializedName("upload_url")
+    private URL uploadUrl;
 
     /**
      * User ID
@@ -26,16 +27,31 @@ public class PhotoUpload {
     @SerializedName("user_id")
     private Integer userId;
 
-    public String getUploadUrl() {
-        return uploadUrl;
-    }
-
     public Integer getAlbumId() {
         return albumId;
     }
 
+    public PhotoUpload setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+        return this;
+    }
+
+    public URL getUploadUrl() {
+        return uploadUrl;
+    }
+
+    public PhotoUpload setUploadUrl(URL uploadUrl) {
+        this.uploadUrl = uploadUrl;
+        return this;
+    }
+
     public Integer getUserId() {
         return userId;
+    }
+
+    public PhotoUpload setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override
@@ -48,17 +64,22 @@ public class PhotoUpload {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoUpload photoUpload = (PhotoUpload) o;
-        return Objects.equals(uploadUrl, photoUpload.uploadUrl) &&
-                Objects.equals(albumId, photoUpload.albumId) &&
-                Objects.equals(userId, photoUpload.userId);
+        return Objects.equals(userId, photoUpload.userId) &&
+                Objects.equals(uploadUrl, photoUpload.uploadUrl) &&
+                Objects.equals(albumId, photoUpload.albumId);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoUpload{");
-        sb.append("uploadUrl='").append(uploadUrl).append("'");
+        sb.append("userId=").append(userId);
+        sb.append(", uploadUrl=").append(uploadUrl);
         sb.append(", albumId=").append(albumId);
-        sb.append(", userId=").append(userId);
         sb.append('}');
         return sb.toString();
     }

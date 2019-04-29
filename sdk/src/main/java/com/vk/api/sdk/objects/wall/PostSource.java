@@ -1,7 +1,8 @@
 package com.vk.api.sdk.objects.wall;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
@@ -9,10 +10,10 @@ import java.util.Objects;
  */
 public class PostSource {
     /**
-     * Type of post source
+     * Additional data
      */
-    @SerializedName("type")
-    private PostSourceType type;
+    @SerializedName("data")
+    private String data;
 
     /**
      * Platform name
@@ -20,32 +21,49 @@ public class PostSource {
     @SerializedName("platform")
     private String platform;
 
-    /**
-     * Additional data
-     */
-    @SerializedName("data")
-    private String data;
+    @SerializedName("type")
+    private PostSourceType type;
 
     /**
      * URL to an external site used to publish the post
      */
     @SerializedName("url")
-    private String url;
+    private URL url;
 
-    public PostSourceType getType() {
-        return type;
+    public String getData() {
+        return data;
+    }
+
+    public PostSource setData(String data) {
+        this.data = data;
+        return this;
     }
 
     public String getPlatform() {
         return platform;
     }
 
-    public String getData() {
-        return data;
+    public PostSource setPlatform(String platform) {
+        this.platform = platform;
+        return this;
     }
 
-    public String getUrl() {
+    public PostSourceType getType() {
+        return type;
+    }
+
+    public PostSource setType(PostSourceType type) {
+        this.type = type;
+        return this;
+    }
+
+    public URL getUrl() {
         return url;
+    }
+
+    public PostSource setUrl(URL url) {
+        this.url = url;
+        return this;
     }
 
     @Override
@@ -58,19 +76,24 @@ public class PostSource {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostSource postSource = (PostSource) o;
-        return Objects.equals(type, postSource.type) &&
+        return Objects.equals(data, postSource.data) &&
+                Objects.equals(type, postSource.type) &&
                 Objects.equals(platform, postSource.platform) &&
-                Objects.equals(data, postSource.data) &&
                 Objects.equals(url, postSource.url);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PostSource{");
-        sb.append("type='").append(type).append("'");
+        sb.append("data='").append(data).append("'");
+        sb.append(", type=").append(type);
         sb.append(", platform='").append(platform).append("'");
-        sb.append(", data='").append(data).append("'");
-        sb.append(", url='").append(url).append("'");
+        sb.append(", url=").append(url);
         sb.append('}');
         return sb.toString();
     }

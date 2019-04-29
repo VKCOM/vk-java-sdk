@@ -3,9 +3,9 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.PhotosSort;
 import com.vk.api.sdk.objects.photos.responses.GetCommentsExtendedResponse;
-import com.vk.api.sdk.queries.EnumParam;
-
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
-     * @param client  VK API client
-     * @param actor   actor with access token
+     * @param client VK API client
+     * @param actor actor with access token
      * @param photoId value of "photo id" parameter.
      */
     public PhotosGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int photoId) {
@@ -48,7 +48,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * Return an additional "likes" field
+     * '1' — to return an additional 'likes' field, '0' — (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -68,7 +68,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * Offset needed to return a specific subset of comments. By default, "0".
+     * Offset needed to return a specific subset of comments. By default, '0'.
      *
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -88,12 +88,12 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
-     * Sort order
+     * Sort order: 'asc' — old first, 'desc' — new first
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended sort(PhotosGetCommentsSort value) {
+    public PhotosGetCommentsQueryWithExtended sort(PhotosSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -118,12 +118,13 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
     }
 
     /**
+     * fields
      * Set fields
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended fields(EnumParam... value) {
+    public PhotosGetCommentsQueryWithExtended fields(Fields... value) {
         return unsafeParam("fields", value);
     }
 
@@ -133,7 +134,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended fields(List<EnumParam> value) {
+    public PhotosGetCommentsQueryWithExtended fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
 

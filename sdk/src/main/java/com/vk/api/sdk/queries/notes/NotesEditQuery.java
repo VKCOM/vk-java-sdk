@@ -4,7 +4,6 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,12 +15,13 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor  actor with access token
+     * @param actor actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
-     * @param title  value of "title" parameter.
-     * @param text   value of "text" parameter.
+     * @param title value of "title" parameter.
+     * @param text value of "text" parameter.
      */
-    public NotesEditQuery(VkApiClient client, UserActor actor, int noteId, String title, String text) {
+    public NotesEditQuery(VkApiClient client, UserActor actor, int noteId, String title,
+            String text) {
         super(client, "notes.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);
@@ -60,9 +60,10 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
     }
 
     /**
+     * privacy_view
      * Set privacy view
      *
-     * @param value value of "privacy view" parameter. By default 0.
+     * @param value value of "privacy view" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesEditQuery privacyView(String... value) {
@@ -72,7 +73,7 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
     /**
      * Set privacy view
      *
-     * @param value value of "privacy view" parameter. By default 0.
+     * @param value value of "privacy view" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesEditQuery privacyView(List<String> value) {
@@ -80,9 +81,10 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
     }
 
     /**
+     * privacy_comment
      * Set privacy comment
      *
-     * @param value value of "privacy comment" parameter. By default 0.
+     * @param value value of "privacy comment" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesEditQuery privacyComment(String... value) {
@@ -92,7 +94,7 @@ public class NotesEditQuery extends AbstractQueryBuilder<NotesEditQuery, OkRespo
     /**
      * Set privacy comment
      *
-     * @param value value of "privacy comment" parameter. By default 0.
+     * @param value value of "privacy comment" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public NotesEditQuery privacyComment(List<String> value) {

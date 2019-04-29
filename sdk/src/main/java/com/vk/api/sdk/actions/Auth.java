@@ -2,16 +2,15 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.auth.AuthCheckPhoneQuery;
-import com.vk.api.sdk.queries.auth.AuthConfirmQuery;
 import com.vk.api.sdk.queries.auth.AuthRestoreQuery;
-import com.vk.api.sdk.queries.auth.AuthSignupQuery;
 
 /**
  * List of Auth methods
  */
 public class Auth extends AbstractAction {
-
     /**
      * Constructor
      *
@@ -24,49 +23,46 @@ public class Auth extends AbstractAction {
     /**
      * Checks a user's phone number for correctness.
      *
-     * @param phone        phone number
-     * @param clientSecret client secret
+     * @param actor vk actor
+     * @param phone Phone number.
      * @return query
      */
-    public AuthCheckPhoneQuery checkPhone(String phone, String clientSecret) {
-        return new AuthCheckPhoneQuery(getClient(), phone, clientSecret);
+    public AuthCheckPhoneQuery checkPhone(UserActor actor, String phone) {
+        return new AuthCheckPhoneQuery(getClient(), actor, phone);
     }
 
     /**
-     * Registers a new user by phone number.
+     * Checks a user's phone number for correctness.
      *
-     * @param firstName    first name
-     * @param lastName     last name
-     * @param birthday     birth day
-     * @param clientId     client id
-     * @param clientSecret client secret
-     * @param phone        phone number
+     * @param actor vk actor
+     * @param phone Phone number.
      * @return query
      */
-    public AuthSignupQuery signup(String firstName, String lastName, String birthday, int clientId, String clientSecret, String phone) {
-        return new AuthSignupQuery(getClient(), firstName, lastName, birthday, clientId, clientSecret, phone);
+    public AuthCheckPhoneQuery checkPhone(ServiceActor actor, String phone) {
+        return new AuthCheckPhoneQuery(getClient(), actor, phone);
     }
 
     /**
-     * Completes a user's registration (begun with the auth.signup method) using an authorization code.
+     * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
      *
-     * @param clientId     client id
-     * @param clientSecret client secret
-     * @param phone        phone number
-     * @param code         confirmation code
+     * @param actor vk actor
+     * @param phone User phone number.
+     * @param lastName User last name.
      * @return query
      */
-    public AuthConfirmQuery confirm(int clientId, String clientSecret, String phone, String code) {
-        return new AuthConfirmQuery(getClient(), clientId, clientSecret, phone, code);
+    public AuthRestoreQuery restore(UserActor actor, String phone, String lastName) {
+        return new AuthRestoreQuery(getClient(), actor, phone, lastName);
     }
 
     /**
-     * Allows to restore account access using a code received via SMS.
+     * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
      *
-     * @param phone phone number
+     * @param actor vk actor
+     * @param phone User phone number.
+     * @param lastName User last name.
      * @return query
      */
-    public AuthRestoreQuery restore(String phone, String lastName) {
-        return new AuthRestoreQuery(getClient(), lastName, phone);
+    public AuthRestoreQuery restore(ServiceActor actor, String phone, String lastName) {
+        return new AuthRestoreQuery(getClient(), actor, phone, lastName);
     }
 }

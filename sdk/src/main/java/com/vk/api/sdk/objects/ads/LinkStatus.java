@@ -1,19 +1,14 @@
 package com.vk.api.sdk.objects.ads;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
+import java.net.URL;
 import java.util.Objects;
 
 /**
  * LinkStatus object
  */
 public class LinkStatus {
-    /**
-     * Link status
-     */
-    @SerializedName("status")
-    private String status;
-
     /**
      * Reject reason
      */
@@ -24,18 +19,39 @@ public class LinkStatus {
      * URL
      */
     @SerializedName("redirect_url")
-    private String redirectUrl;
+    private URL redirectUrl;
 
-    public String getStatus() {
-        return status;
-    }
+    /**
+     * Link status
+     */
+    @SerializedName("status")
+    private String status;
 
     public String getDescription() {
         return description;
     }
 
-    public String getRedirectUrl() {
+    public LinkStatus setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public URL getRedirectUrl() {
         return redirectUrl;
+    }
+
+    public LinkStatus setRedirectUrl(URL redirectUrl) {
+        this.redirectUrl = redirectUrl;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public LinkStatus setStatus(String status) {
+        this.status = status;
+        return this;
     }
 
     @Override
@@ -48,17 +64,22 @@ public class LinkStatus {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkStatus linkStatus = (LinkStatus) o;
-        return Objects.equals(status, linkStatus.status) &&
-                Objects.equals(description, linkStatus.description) &&
-                Objects.equals(redirectUrl, linkStatus.redirectUrl);
+        return Objects.equals(description, linkStatus.description) &&
+                Objects.equals(redirectUrl, linkStatus.redirectUrl) &&
+                Objects.equals(status, linkStatus.status);
     }
 
     @Override
     public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkStatus{");
-        sb.append("status='").append(status).append("'");
-        sb.append(", description='").append(description).append("'");
-        sb.append(", redirectUrl='").append(redirectUrl).append("'");
+        sb.append("description='").append(description).append("'");
+        sb.append(", redirectUrl=").append(redirectUrl);
+        sb.append(", status='").append(status).append("'");
         sb.append('}');
         return sb.toString();
     }
