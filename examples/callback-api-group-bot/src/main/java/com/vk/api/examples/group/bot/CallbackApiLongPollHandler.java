@@ -28,7 +28,7 @@ import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
-import com.vk.api.sdk.objects.wall.WallPost;
+import com.vk.api.sdk.objects.wall.Wallpost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,11 +108,11 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("videoCommentDelete: " + message.toString());
     }
 
-    public void wallPostNew(Integer groupId, WallPost message) {
+    public void wallPostNew(Integer groupId, Wallpost message) {
         LOG.info("wallPostNew: " + message.toString());
     }
 
-    public void wallRepost(Integer groupId, WallPost message) {
+    public void wallRepost(Integer groupId, Wallpost message) {
         LOG.info("wallRepost: " + message.toString());
     }
 

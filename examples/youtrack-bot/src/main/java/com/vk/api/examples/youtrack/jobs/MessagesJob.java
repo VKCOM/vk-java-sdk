@@ -6,7 +6,7 @@ import com.vk.api.examples.youtrack.storage.DataStorage;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.messages.Message;
-import com.vk.api.sdk.objects.messages.responses.GetResponse;
+import com.vk.api.sdk.objects.messages.responses.GetByIdResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +24,7 @@ public class MessagesJob implements Job {
     public MessagesJob() throws ClientException, ApiException {
         lastMessageId = DataStorage.getInstance().getInt(LAST_MESSAGE_ID_KEY);
         if (lastMessageId == 0) {
-            GetResponse getResponse = Application.vk().messages().get(Application.actor()).count(1).execute();
+            GetByIdResponse getResponse = Application.vk().messages().getById(Application.actor(), lastMessageId).execute();
 
             if (!getResponse.getItems().isEmpty()) {
                 lastMessageId = getResponse.getItems().get(0).getId();
@@ -37,9 +37,8 @@ public class MessagesJob implements Job {
 
     @Override
     public void doJob() throws Exception {
-        GetResponse getResponse = Application.vk().messages()
-                .get(Application.actor())
-                .lastMessageId(lastMessageId)
+        GetByIdResponse getResponse = Application.vk().messages()
+                .getById(Application.actor(), lastMessageId)
                 .execute();
 
         for (Message message : getResponse.getItems()) {

@@ -5,10 +5,10 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.GroupAuthResponse;
 import com.vk.api.sdk.objects.UserAuthResponse;
+import com.vk.api.sdk.objects.groups.Filter;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
-import com.vk.api.sdk.queries.groups.GroupsGetFilter;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
@@ -42,7 +42,7 @@ public class RequestHandler extends AbstractHandler {
             switch (target) {
                 case "/group_callback":
                     Integer groupId = Integer.parseInt(baseRequest.getParameter("group_id"));
-                    GroupAuthResponse groupAuthResponse = vk.oauth().groupAuthorizationCodeFlow(clientId, clientSecret, getGroupRedirectUri(groupId), baseRequest.getParameter("code")).execute();
+                    GroupAuthResponse groupAuthResponse = vk.oAuth().groupAuthorizationCodeFlow(clientId, clientSecret, getGroupRedirectUri(groupId), baseRequest.getParameter("code")).execute();
                     GroupActor groupActor = new GroupActor(groupId, groupAuthResponse.getAccessTokens().get(groupId));
 
                     List<GroupFull> groups = vk.groups().getById(groupActor).groupId(groupId.toString()).execute();
@@ -55,9 +55,9 @@ public class RequestHandler extends AbstractHandler {
                     break;
 
                 case "/user_callback":
-                    UserAuthResponse userAuthResponse = vk.oauth().userAuthorizationCodeFlow(clientId, clientSecret, getUserRedirectUri(), baseRequest.getParameter("code")).execute();
+                    UserAuthResponse userAuthResponse = vk.oAuth().userAuthorizationCodeFlow(clientId, clientSecret, getUserRedirectUri(), baseRequest.getParameter("code")).execute();
                     UserActor userActor = new UserActor(userAuthResponse.getUserId(), userAuthResponse.getAccessToken());
-                    GetResponse getResponse = vk.groups().get(userActor).userId(userActor.getId()).filter(GroupsGetFilter.ADMIN).execute();
+                    GetResponse getResponse = vk.groups().get(userActor).userId(userActor.getId()).filter(Filter.ADMIN).execute();
                     if (!getResponse.getItems().isEmpty()) {
                         response.sendRedirect(getGroupOAuthUrl(getResponse.getItems().get(0)));
                     } else {

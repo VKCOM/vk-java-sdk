@@ -100,11 +100,11 @@ public class Application {
 
         ConfirmationCodeRequestHandler confirmationCodeRequestHandler = null;
 
-        GetCallbackServersResponse getCallbackServersResponse = vk.groups().getCallbackServers(actor).execute();
+        GetCallbackServersResponse getCallbackServersResponse = vk.groups().getCallbackServers(actor, actor.getGroupId()).execute();
         CallbackServer callbackServer = isServerExist(getCallbackServersResponse.getItems(), host);
 
         if (callbackServer == null) {
-            GetCallbackConfirmationCodeResponse getCallbackConfirmationCodeResponse = vk().groups().getCallbackConfirmationCode(actor).execute();
+            GetCallbackConfirmationCodeResponse getCallbackConfirmationCodeResponse = vk().groups().getCallbackConfirmationCode(actor, actor.getGroupId()).execute();
             String confirmationCode = getCallbackConfirmationCodeResponse.getCode();
             confirmationCodeRequestHandler = new ConfirmationCodeRequestHandler(confirmationCode);
         }
@@ -123,7 +123,7 @@ public class Application {
         server.start();
 
         if (callbackServer == null) {
-            AddCallbackServerResponse addServerResponse = vk.groups().addCallbackServer(actor, host, "YouTrack Bot").execute();
+            AddCallbackServerResponse addServerResponse = vk.groups().addCallbackServer(actor, actor.getGroupId(), host, "YouTrack Bot").execute();
             Integer serverId = addServerResponse.getServerId();
             vk.groups().setCallbackSettings(actor, serverId).messageNew(true).execute();
         }

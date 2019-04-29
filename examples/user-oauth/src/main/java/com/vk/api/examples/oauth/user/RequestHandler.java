@@ -55,7 +55,7 @@ public class RequestHandler extends AbstractHandler {
 
             case "/callback":
                 try {
-                    UserAuthResponse authResponse = vk.oauth().userAuthorizationCodeFlow(clientId, clientSecret, getRedirectUri(), baseRequest.getParameter("code")).execute();
+                    UserAuthResponse authResponse = vk.oAuth().userAuthorizationCodeFlow(clientId, clientSecret, getRedirectUri(), baseRequest.getParameter("code")).execute();
                     response.sendRedirect("/info?token=" + authResponse.getAccessToken() + "&user=" + authResponse.getUserId());
                 } catch (Exception e) {
                     response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
