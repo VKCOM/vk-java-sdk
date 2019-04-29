@@ -34,8 +34,8 @@ public class MessagesHandler {
     }
 
     public static void parseMessage(Integer groupId, Message message) {
-        Integer vkId = message.getUserId();
-        String[] args = message.getBody().split(" ");
+        Integer vkId = message.getFromId();
+        String[] args = message.getText().split(" ");
         String command = args[0];
 
         try {
@@ -63,7 +63,7 @@ public class MessagesHandler {
                     break;
 
                 case "search":
-                    String filter = message.getBody().substring(command.length() + 1);
+                    String filter = message.getText().substring(command.length() + 1);
                     new SearchTasksCommand(vkId, filter, 10).run();
                     break;
 
