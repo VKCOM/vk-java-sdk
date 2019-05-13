@@ -4,7 +4,6 @@ apply plugin: 'signing'
 dependencies {
     compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
 
     compile group: 'org.apache.commons', name: 'commons-text', version: commonsTextVersion
     compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
