@@ -1,33 +1,16 @@
 package com.vk.api.examples.group.bot;
 
 import com.vk.api.sdk.callback.longpoll.CallbackApiLongPoll;
-import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupChangePhoto;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupChangeSettings;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupJoin;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupLeave;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupOfficersEdit;
-import com.vk.api.sdk.callback.objects.market.CallbackMarketComment;
-import com.vk.api.sdk.callback.objects.market.CallbackMarketCommentDelete;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageAllow;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageDeny;
-import com.vk.api.sdk.callback.objects.photo.CallbackPhotoComment;
-import com.vk.api.sdk.callback.objects.photo.CallbackPhotoCommentDelete;
-import com.vk.api.sdk.callback.objects.poll.CallbackPollVoteNew;
-import com.vk.api.sdk.callback.objects.user.CallbackUserBlock;
-import com.vk.api.sdk.callback.objects.user.CallbackUserUnblock;
-import com.vk.api.sdk.callback.objects.video.CallbackVideoComment;
-import com.vk.api.sdk.callback.objects.video.CallbackVideoCommentDelete;
-import com.vk.api.sdk.callback.objects.wall.CallbackWallComment;
-import com.vk.api.sdk.callback.objects.wall.CallbackWallCommentDelete;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
+import com.vk.api.sdk.objects.callback.*;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.wall.WallComment;
 import com.vk.api.sdk.objects.wall.Wallpost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,11 +39,11 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("messageReply: " + message.toString());
     }
 
-    public void messageAllow(Integer groupId, CallbackMessageAllow message) {
+    public void messageAllow(Integer groupId, MessageAllow message) {
         LOG.info("messageAllow: " + message.toString());
     }
 
-    public void messageDeny(Integer groupId, CallbackMessageDeny message) {
+    public void messageDeny(Integer groupId, MessageDeny message) {
         LOG.info("messageDeny: " + message.toString());
     }
 
@@ -68,19 +51,19 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("photoNew: " + message.toString());
     }
 
-    public void photoCommentNew(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentNew(Integer groupId, PhotoComment message) {
         LOG.info("photoCommentNew: " + message.toString());
     }
 
-    public void photoCommentEdit(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentEdit(Integer groupId, PhotoComment message) {
         LOG.info("photoCommentEdit: " + message.toString());
     }
 
-    public void photoCommentRestore(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentRestore(Integer groupId, PhotoComment message) {
         LOG.info("photoCommentRestore: " + message.toString());
     }
 
-    public void photoCommentDelete(Integer groupId, CallbackPhotoCommentDelete message) {
+    public void photoCommentDelete(Integer groupId, PhotoCommentDelete message) {
         LOG.info("photoCommentDelete: " + message.toString());
     }
 
@@ -92,19 +75,19 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("videoNew: " + message.toString());
     }
 
-    public void videoCommentNew(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentNew(Integer groupId, VideoComment message) {
         LOG.info("videoCommentNew: " + message.toString());
     }
 
-    public void videoCommentEdit(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentEdit(Integer groupId, VideoComment message) {
         LOG.info("videoCommentEdit: " + message.toString());
     }
 
-    public void videoCommentRestore(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentRestore(Integer groupId, VideoComment message) {
         LOG.info("videoCommentRestore: " + message.toString());
     }
 
-    public void videoCommentDelete(Integer groupId, CallbackVideoCommentDelete message) {
+    public void videoCommentDelete(Integer groupId, VideoCommentDelete message) {
         LOG.info("videoCommentDelete: " + message.toString());
     }
 
@@ -116,19 +99,19 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("wallRepost: " + message.toString());
     }
 
-    public void wallReplyNew(Integer groupId, CallbackWallComment message) {
+    public void wallReplyNew(Integer groupId, WallComment message) {
         LOG.info("wallReplyNew: " + message.toString());
     }
 
-    public void wallReplyEdit(Integer groupId, CallbackWallComment message) {
+    public void wallReplyEdit(Integer groupId, WallComment message) {
         LOG.info("wallReplyEdit: " + message.toString());
     }
 
-    public void wallReplyRestore(Integer groupId, CallbackWallComment message) {
+    public void wallReplyRestore(Integer groupId, WallComment message) {
         LOG.info("wallReplyRestore: " + message.toString());
     }
 
-    public void wallReplyDelete(Integer groupId, CallbackWallCommentDelete message) {
+    public void wallReplyDelete(Integer groupId, WallCommentDelete message) {
         LOG.info("wallReplyDelete: " + message.toString());
     }
 
@@ -144,55 +127,55 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
         LOG.info("boardPostRestore: " + message.toString());
     }
 
-    public void boardPostDelete(Integer groupId, CallbackBoardPostDelete message) {
+    public void boardPostDelete(Integer groupId, BoardPostDelete message) {
         LOG.info("boardPostDelete: " + message.toString());
     }
 
-    public void marketCommentNew(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentNew(Integer groupId, MarketComment message) {
         LOG.info("marketCommentNew: " + message.toString());
     }
 
-    public void marketCommentEdit(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentEdit(Integer groupId, MarketComment message) {
         LOG.info("marketCommentEdit: " + message.toString());
     }
 
-    public void marketCommentRestore(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentRestore(Integer groupId, MarketComment message) {
         LOG.info("marketCommentRestore: " + message.toString());
     }
 
-    public void marketCommentDelete(Integer groupId, CallbackMarketCommentDelete message) {
+    public void marketCommentDelete(Integer groupId, MarketCommentDelete message) {
         LOG.info("marketCommentDelete: " + message.toString());
     }
 
-    public void groupLeave(Integer groupId, CallbackGroupLeave message) {
+    public void groupLeave(Integer groupId, GroupLeave message) {
         LOG.info("groupLeave: " + message.toString());
     }
 
-    public void groupJoin(Integer groupId, CallbackGroupJoin message) {
+    public void groupJoin(Integer groupId, GroupJoin message) {
         LOG.info("groupJoin: " + message.toString());
     }
 
-    public void groupChangeSettings(Integer groupId, CallbackGroupChangeSettings message) {
+    public void groupChangeSettings(Integer groupId, GroupChangeSettings message) {
         LOG.info("groupChangeSettings: " + message.toString());
     }
 
-    public void groupChangePhoto(Integer groupId, CallbackGroupChangePhoto message) {
+    public void groupChangePhoto(Integer groupId, GroupChangePhoto message) {
         LOG.info("groupChangePhoto: " + message.toString());
     }
 
-    public void groupOfficersEdit(Integer groupId, CallbackGroupOfficersEdit message) {
+    public void groupOfficersEdit(Integer groupId, GroupOfficersEdit message) {
         LOG.info("groupOfficersEdit: " + message.toString());
     }
 
-    public void pollVoteNew(Integer groupId, CallbackPollVoteNew message) {
+    public void pollVoteNew(Integer groupId, PollVoteNew message) {
         LOG.info("pollVoteNew: " + message.toString());
     }
 
-    public void userBlock(Integer groupId, CallbackUserBlock message) {
+    public void userBlock(Integer groupId, UserBlock message) {
         LOG.info("userBlock: " + message.toString());
     }
 
-    public void userUnblock(Integer groupId, CallbackUserUnblock message) {
+    public void userUnblock(Integer groupId, UserUnblock message) {
         LOG.info("userUnblock: " + message.toString());
     }
 }

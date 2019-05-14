@@ -20,7 +20,7 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      * @param actor actor with access token
      */
     public MessagesDeleteQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.delete", new TypeToken< Map< java.lang.Integer,com.vk.api.sdk.objects.base.BoolInt> >(){}.getType());
+        super(client, "messages.delete", new TypeToken< Map< Integer,com.vk.api.sdk.objects.base.BoolInt> >(){}.getType());
         accessToken(actor.getAccessToken());
     }
 
@@ -31,7 +31,7 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      * @param actor actor with access token
      */
     public MessagesDeleteQuery(VkApiClient client, GroupActor actor) {
-        super(client, "messages.delete", new TypeToken< Map< java.lang.Integer,com.vk.api.sdk.objects.base.BoolInt> >(){}.getType());
+        super(client, "messages.delete", new TypeToken< Map< Integer,com.vk.api.sdk.objects.base.BoolInt> >(){}.getType());
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
     }

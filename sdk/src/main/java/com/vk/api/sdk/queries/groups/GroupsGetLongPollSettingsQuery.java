@@ -49,16 +49,6 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
         return unsafeParam("group_id", value);
     }
 
-    /**
-     * Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
-     *
-     * @param value value of "enabled" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public GroupsGetLongPollSettingsQuery enabled(Boolean value) {
-        return unsafeParam("enabled", value);
-    }
-
     @Override
     protected GroupsGetLongPollSettingsQuery getThis() {
         return this;

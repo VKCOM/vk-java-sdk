@@ -10,6 +10,9 @@ import java.util.Objects;
  * Note object
  */
 public class Note {
+    @SerializedName("read_comments")
+    private Integer readComments;
+
     /**
      * Information whether current user can comment the note
      */
@@ -63,6 +66,15 @@ public class Note {
      */
     @SerializedName("view_url")
     private URL viewUrl;
+
+    public Integer getReadComments() {
+        return readComments;
+    }
+
+    public Note setReadComments(Integer readComments) {
+        this.readComments = readComments;
+        return this;
+    }
 
     public boolean canComment() {
         return canComment == BoolInt.YES;
@@ -146,7 +158,7 @@ public class Note {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, textWiki, comments, viewUrl, canComment, id, text, ownerId, title);
+        return Objects.hash(date, textWiki, comments, viewUrl, canComment, id, text, ownerId, title, readComments);
     }
 
     @Override
@@ -158,6 +170,7 @@ public class Note {
                 Objects.equals(canComment, note.canComment) &&
                 Objects.equals(comments, note.comments) &&
                 Objects.equals(ownerId, note.ownerId) &&
+                Objects.equals(readComments, note.readComments) &&
                 Objects.equals(viewUrl, note.viewUrl) &&
                 Objects.equals(id, note.id) &&
                 Objects.equals(text, note.text) &&
@@ -177,6 +190,7 @@ public class Note {
         sb.append(", canComment=").append(canComment);
         sb.append(", comments=").append(comments);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", readComments=").append(readComments);
         sb.append(", viewUrl=").append(viewUrl);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");

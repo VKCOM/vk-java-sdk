@@ -22,6 +22,12 @@ public class IsMemberExtendedResponse {
     private BoolInt invitation;
 
     /**
+     * Information whether user's invite to the group can be recalled
+     */
+    @SerializedName("can_recall")
+    private BoolInt canRecall;
+
+    /**
      * Information whether user has sent request to the group
      */
     @SerializedName("request")
@@ -43,6 +49,14 @@ public class IsMemberExtendedResponse {
         return invitation;
     }
 
+    public boolean canRecall() {
+        return canRecall == BoolInt.YES;
+    }
+
+    public BoolInt getCanRecall() {
+        return canRecall;
+    }
+
     public boolean isRequest() {
         return request == BoolInt.YES;
     }
@@ -53,7 +67,7 @@ public class IsMemberExtendedResponse {
 
     @Override
     public int hashCode() {
-        return Objects.hash(request, invitation, member);
+        return Objects.hash(canRecall, request, invitation, member);
     }
 
     @Override
@@ -63,7 +77,8 @@ public class IsMemberExtendedResponse {
         IsMemberExtendedResponse isMemberExtendedResponse = (IsMemberExtendedResponse) o;
         return Objects.equals(request, isMemberExtendedResponse.request) &&
                 Objects.equals(invitation, isMemberExtendedResponse.invitation) &&
-                Objects.equals(member, isMemberExtendedResponse.member);
+                Objects.equals(member, isMemberExtendedResponse.member) &&
+                Objects.equals(canRecall, isMemberExtendedResponse.canRecall);
     }
 
     @Override
@@ -77,6 +92,7 @@ public class IsMemberExtendedResponse {
         sb.append("request=").append(request);
         sb.append(", invitation=").append(invitation);
         sb.append(", member=").append(member);
+        sb.append(", canRecall=").append(canRecall);
         sb.append('}');
         return sb.toString();
     }

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.vk.api.sdk.callback.objects.messages.CallbackMessage;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageType;
+import com.vk.api.sdk.objects.callback.MessageType;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.slf4j.Logger;
@@ -46,7 +46,7 @@ public class ConfirmationCodeRequestHandler extends AbstractHandler {
             return;
         }
 
-        if (callback.getType() != CallbackMessageType.CONFIRMATION) {
+        if (callback.getType() != MessageType.CONFIRMATION) {
             return;
         }
 

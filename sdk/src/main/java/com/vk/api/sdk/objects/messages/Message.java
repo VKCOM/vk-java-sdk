@@ -101,6 +101,12 @@ public class Message {
     @SerializedName("random_id")
     private Integer randomId;
 
+    @SerializedName("ref")
+    private String ref;
+
+    @SerializedName("ref_source")
+    private String refSource;
+
     @SerializedName("reply_message")
     private ForeignMessage replyMessage;
 
@@ -276,6 +282,24 @@ public class Message {
         return this;
     }
 
+    public String getRef() {
+        return ref;
+    }
+
+    public Message setRef(String ref) {
+        this.ref = ref;
+        return this;
+    }
+
+    public String getRefSource() {
+        return refSource;
+    }
+
+    public Message setRefSource(String refSource) {
+        this.refSource = refSource;
+        return this;
+    }
+
     public ForeignMessage getReplyMessage() {
         return replyMessage;
     }
@@ -305,7 +329,7 @@ public class Message {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, peerId, keyboard, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, out, geo, important, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
+        return Objects.hash(date, peerId, keyboard, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, refSource, out, geo, important, ref, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
     }
 
     @Override
@@ -318,11 +342,13 @@ public class Message {
                 Objects.equals(attachments, message.attachments) &&
                 Objects.equals(fromId, message.fromId) &&
                 Objects.equals(isHidden, message.isHidden) &&
+                Objects.equals(refSource, message.refSource) &&
                 Objects.equals(conversationMessageId, message.conversationMessageId) &&
                 Objects.equals(out, message.out) &&
                 Objects.equals(peerId, message.peerId) &&
                 Objects.equals(geo, message.geo) &&
                 Objects.equals(important, message.important) &&
+                Objects.equals(ref, message.ref) &&
                 Objects.equals(updateTime, message.updateTime) &&
                 Objects.equals(deleted, message.deleted) &&
                 Objects.equals(payload, message.payload) &&
@@ -349,11 +375,13 @@ public class Message {
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
         sb.append(", isHidden=").append(isHidden);
+        sb.append(", refSource='").append(refSource).append("'");
         sb.append(", conversationMessageId=").append(conversationMessageId);
         sb.append(", out=").append(out);
         sb.append(", peerId=").append(peerId);
         sb.append(", geo=").append(geo);
         sb.append(", important=").append(important);
+        sb.append(", ref='").append(ref).append("'");
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleted=").append(deleted);
         sb.append(", payload='").append(payload).append("'");

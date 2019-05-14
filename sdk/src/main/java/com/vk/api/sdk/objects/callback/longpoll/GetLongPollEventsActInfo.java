@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.objects.longpoll;
+package com.vk.api.sdk.objects.callback.longpoll;
 
 import com.vk.api.sdk.queries.EnumParam;
 

@@ -2,7 +2,6 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public class CommentThread {
      * Information whether current user can comment the post
      */
     @SerializedName("can_post")
-    private BoolInt canPost;
+    private Boolean canPost;
 
     /**
      * Comments number
@@ -31,12 +30,13 @@ public class CommentThread {
     @SerializedName("items")
     private List<WallComment> items;
 
-    public boolean canPost() {
-        return canPost == BoolInt.YES;
+    public Boolean getCanPost() {
+        return canPost;
     }
 
-    public BoolInt getCanPost() {
-        return canPost;
+    public CommentThread setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
     }
 
     public Integer getCount() {

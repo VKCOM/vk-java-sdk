@@ -2,7 +2,7 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.callback.objects.group.CallbackGroupSettingsChange;
+import com.vk.api.sdk.objects.callback.groups.CallbackGroupSettingsChange;
 import com.vk.api.sdk.objects.groups.GroupAudio;
 import com.vk.api.sdk.objects.groups.GroupFullAgeLimits;
 import com.vk.api.sdk.objects.groups.GroupIsClosed;

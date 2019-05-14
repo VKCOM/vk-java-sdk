@@ -21,6 +21,15 @@ public class BanInfo {
     private String comment;
 
     /**
+     * Show comment for user
+     */
+    @SerializedName("comment_visible")
+    private Boolean commentVisible;
+
+    @SerializedName("is_closed")
+    private Boolean isClosed;
+
+    /**
      * Date when user has been added to blacklist in Unixtime
      */
     @SerializedName("date")
@@ -53,6 +62,24 @@ public class BanInfo {
         return this;
     }
 
+    public Boolean getCommentVisible() {
+        return commentVisible;
+    }
+
+    public BanInfo setCommentVisible(Boolean commentVisible) {
+        this.commentVisible = commentVisible;
+        return this;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public BanInfo setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
+        return this;
+    }
+
     public Integer getDate() {
         return date;
     }
@@ -82,7 +109,7 @@ public class BanInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, reason, endDate, adminId, comment);
+        return Objects.hash(date, reason, isClosed, endDate, adminId, comment, commentVisible);
     }
 
     @Override
@@ -94,7 +121,9 @@ public class BanInfo {
                 Objects.equals(endDate, banInfo.endDate) &&
                 Objects.equals(reason, banInfo.reason) &&
                 Objects.equals(adminId, banInfo.adminId) &&
-                Objects.equals(comment, banInfo.comment);
+                Objects.equals(comment, banInfo.comment) &&
+                Objects.equals(commentVisible, banInfo.commentVisible) &&
+                Objects.equals(isClosed, banInfo.isClosed);
     }
 
     @Override
@@ -110,6 +139,8 @@ public class BanInfo {
         sb.append(", reason=").append(reason);
         sb.append(", adminId=").append(adminId);
         sb.append(", comment='").append(comment).append("'");
+        sb.append(", commentVisible=").append(commentVisible);
+        sb.append(", isClosed=").append(isClosed);
         sb.append('}');
         return sb.toString();
     }

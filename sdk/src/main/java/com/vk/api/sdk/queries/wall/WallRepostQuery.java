@@ -64,6 +64,16 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
         return unsafeParam("mark_as_ads", value);
     }
 
+    /**
+     * Set mute notifications
+     *
+     * @param value value of "mute notifications" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallRepostQuery muteNotifications(Boolean value) {
+        return unsafeParam("mute_notifications", value);
+    }
+
     @Override
     protected WallRepostQuery getThis() {
         return this;

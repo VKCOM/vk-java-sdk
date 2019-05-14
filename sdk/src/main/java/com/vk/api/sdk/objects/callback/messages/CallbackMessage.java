@@ -1,6 +1,7 @@
-package com.vk.api.sdk.callback.objects.messages;
+package com.vk.api.sdk.objects.callback.messages;
 
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.callback.MessageType;
 
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
 public class CallbackMessage<T> {
 
     @SerializedName("type")
-    private CallbackMessageType type;
+    private MessageType type;
 
     @SerializedName("group_id")
     private Integer groupId;
@@ -21,7 +22,7 @@ public class CallbackMessage<T> {
     @SerializedName("secret")
     private String secret;
 
-    public CallbackMessageType getType() {
+    public MessageType getType() {
         return type;
     }
 

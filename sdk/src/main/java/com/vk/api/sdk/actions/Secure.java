@@ -9,6 +9,7 @@ import com.vk.api.sdk.queries.secure.SecureGetAppBalanceQuery;
 import com.vk.api.sdk.queries.secure.SecureGetSMSHistoryQuery;
 import com.vk.api.sdk.queries.secure.SecureGetTransactionsHistoryQuery;
 import com.vk.api.sdk.queries.secure.SecureGetUserLevelQuery;
+import com.vk.api.sdk.queries.secure.SecureGiveEventStickerQuery;
 import com.vk.api.sdk.queries.secure.SecureSendNotificationQuery;
 import com.vk.api.sdk.queries.secure.SecureSendSMSNotificationQuery;
 import com.vk.api.sdk.queries.secure.SecureSetCounterQuery;
@@ -99,6 +100,32 @@ public class Secure extends AbstractAction {
      */
     public SecureGetUserLevelQuery getUserLevel(ServiceActor actor, List<Integer> userIds) {
         return new SecureGetUserLevelQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * Opens the game achievement and gives the user a sticker
+     *
+     * @param actor vk actor
+     * @param achievementId
+     * @param userIds
+     * @return query
+     */
+    public SecureGiveEventStickerQuery giveEventSticker(ServiceActor actor, int achievementId,
+            Integer... userIds) {
+        return new SecureGiveEventStickerQuery(getClient(), actor, achievementId, userIds);
+    }
+
+    /**
+     * Opens the game achievement and gives the user a sticker
+     *
+     * @param actor vk actor
+     * @param achievementId
+     * @param userIds
+     * @return query
+     */
+    public SecureGiveEventStickerQuery giveEventSticker(ServiceActor actor, int achievementId,
+            List<Integer> userIds) {
+        return new SecureGiveEventStickerQuery(getClient(), actor, achievementId, userIds);
     }
 
     /**

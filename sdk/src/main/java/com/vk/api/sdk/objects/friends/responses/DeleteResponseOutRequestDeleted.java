@@ -19,4 +19,9 @@ public enum DeleteResponseOutRequestDeleted implements EnumParam {
     public String getValue() {
         return value.toString();
     }
+
+    @Override
+    public String toString() {
+        return value.toString().toLowerCase();
+    }
 }

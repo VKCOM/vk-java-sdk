@@ -8,7 +8,10 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum UtilsSource implements EnumParam {
     @SerializedName("vk_cc")
-    VK_CC("vk_cc");
+    VK_CC("vk_cc"),
+
+    @SerializedName("vk_link")
+    VK_LINK("vk_link");
 
     private final String value;
 
@@ -18,5 +21,10 @@ public enum UtilsSource implements EnumParam {
 
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return value.toLowerCase();
     }
 }

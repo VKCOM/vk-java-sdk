@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.vk.api.sdk.callback.objects.messages.CallbackMessage;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageType;
+import com.vk.api.sdk.objects.callback.MessageType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -23,7 +23,7 @@ public class ParseJsonTest {
         }.getType();
         CallbackMessage<JsonObject> callback = gson.fromJson(json, typeOfClass);
         Assert.assertNotNull(callback);
-        Assert.assertEquals(callback.getType(), CallbackMessageType.CONFIRMATION);
+        Assert.assertEquals(callback.getType(), MessageType.CONFIRMATION);
         Assert.assertEquals(callback.getGroupId(), new Integer(1));
     }
 }

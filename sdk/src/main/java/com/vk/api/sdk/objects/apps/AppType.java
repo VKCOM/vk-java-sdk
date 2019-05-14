@@ -37,4 +37,9 @@ public enum AppType implements EnumParam {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        return value.toLowerCase();
+    }
 }
