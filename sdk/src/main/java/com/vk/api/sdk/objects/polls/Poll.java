@@ -2,7 +2,7 @@ package com.vk.api.sdk.objects.polls;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.base.BoolInt;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +14,7 @@ public class Poll {
      * Information whether the pole is anonymous
      */
     @SerializedName("anonymous")
-    private BoolInt anonymous;
+    private boolean anonymous;
 
     /**
      * Current user's answer ID
@@ -56,10 +56,10 @@ public class Poll {
     private String votes;
 
     public boolean isAnonymous() {
-        return anonymous == BoolInt.YES;
+        return anonymous;
     }
 
-    public BoolInt getAnonymous() {
+    public boolean getAnonymous() {
         return anonymous;
     }
 
@@ -140,7 +140,7 @@ public class Poll {
                 Objects.equals(created, poll.created) &&
                 Objects.equals(ownerId, poll.ownerId) &&
                 Objects.equals(answers, poll.answers) &&
-                Objects.equals(anonymous, poll.anonymous) &&
+                anonymous == poll.anonymous &&
                 Objects.equals(votes, poll.votes) &&
                 Objects.equals(id, poll.id) &&
                 Objects.equals(answerId, poll.answerId);
