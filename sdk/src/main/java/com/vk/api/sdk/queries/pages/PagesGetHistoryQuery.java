@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.pages.WikipageVersion;
+import com.vk.api.sdk.objects.pages.WikipageHistory;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Pages.getHistory method
  */
-public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQuery, List<WikipageVersion>> {
+public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQuery, List<WikipageHistory>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQu
      * @param pageId value of "page id" parameter.
      */
     public PagesGetHistoryQuery(VkApiClient client, UserActor actor, int pageId) {
-        super(client, "pages.getHistory", Utils.buildParametrizedType(List.class, WikipageVersion.class));
+        super(client, "pages.getHistory", Utils.buildParametrizedType(List.class, WikipageHistory.class));
         accessToken(actor.getAccessToken());
         pageId(pageId);
     }

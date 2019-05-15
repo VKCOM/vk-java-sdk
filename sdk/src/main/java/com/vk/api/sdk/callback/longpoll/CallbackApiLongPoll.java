@@ -2,21 +2,20 @@ package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.callback.CallbackApi;
-import com.vk.api.sdk.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
+import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.objects.groups.LongPollServer;
-import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class CallbackApiLongPoll extends CallbackApi {
 
-    private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
+    private static final Logger LOG = LogManager.getLogger(CallbackApiLongPoll.class);
 
     private static final int DEFAULT_WAIT = 10;
 
@@ -58,7 +57,7 @@ public class CallbackApiLongPoll extends CallbackApi {
 
     public void run() throws ClientException, ApiException {
         LongPollServer longPollServer = getLongPollServer();
-        int lastTimeStamp = longPollServer.getTs();
+        int lastTimeStamp = Integer.parseInt(longPollServer.getTs());
         while (true) {
             try {
                 GetLongPollEventsResponse eventsResponse = client.longPoll().getEvents(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();

@@ -3,29 +3,14 @@ package com.vk.api.sdk.callback;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.vk.api.sdk.callback.objects.board.CallbackBoardPostDelete;
-import com.vk.api.sdk.callback.objects.group.*;
-import com.vk.api.sdk.callback.objects.market.CallbackMarketComment;
-import com.vk.api.sdk.callback.objects.market.CallbackMarketCommentDelete;
-import com.vk.api.sdk.callback.objects.messages.CallbackConfirmationMessage;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessage;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageAllow;
-import com.vk.api.sdk.callback.objects.messages.CallbackMessageDeny;
-import com.vk.api.sdk.callback.objects.photo.CallbackPhotoComment;
-import com.vk.api.sdk.callback.objects.photo.CallbackPhotoCommentDelete;
-import com.vk.api.sdk.callback.objects.poll.CallbackPollVoteNew;
-import com.vk.api.sdk.callback.objects.user.CallbackUserBlock;
-import com.vk.api.sdk.callback.objects.user.CallbackUserUnblock;
-import com.vk.api.sdk.callback.objects.video.CallbackVideoComment;
-import com.vk.api.sdk.callback.objects.video.CallbackVideoCommentDelete;
-import com.vk.api.sdk.callback.objects.wall.CallbackWallComment;
-import com.vk.api.sdk.callback.objects.wall.CallbackWallCommentDelete;
+import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
+import com.vk.api.sdk.objects.callback.*;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
-import com.vk.api.sdk.objects.wall.Wallpost;
+import com.vk.api.sdk.objects.wall.WallComment;
 import com.vk.api.sdk.objects.wall.Wallpost;
 import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +24,7 @@ import java.util.Map;
 /**
  * Created by Anton Tsivarev on 12.09.16.
  */
+@SuppressWarnings("unused")
 public class CallbackApi {
 
     private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
@@ -91,20 +77,20 @@ public class CallbackApi {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_EDIT, new TypeToken<CallbackMessage<Message>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MESSAGE_ALLOW, new TypeToken<CallbackMessage<CallbackMessageAllow>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_ALLOW, new TypeToken<CallbackMessage<MessageAllow>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MESSAGE_DENY, new TypeToken<CallbackMessage<CallbackMessageDeny>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_DENY, new TypeToken<CallbackMessage<MessageDeny>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_PHOTO_NEW, new TypeToken<CallbackMessage<Photo>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_PHOTO_COMMENT_NEW, new TypeToken<CallbackMessage<CallbackPhotoComment>>() {
+        types.put(CALLBACK_EVENT_PHOTO_COMMENT_NEW, new TypeToken<CallbackMessage<PhotoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_PHOTO_COMMENT_EDIT, new TypeToken<CallbackMessage<CallbackPhotoComment>>() {
+        types.put(CALLBACK_EVENT_PHOTO_COMMENT_EDIT, new TypeToken<CallbackMessage<PhotoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_PHOTO_COMMENT_RESTORE, new TypeToken<CallbackMessage<CallbackPhotoComment>>() {
+        types.put(CALLBACK_EVENT_PHOTO_COMMENT_RESTORE, new TypeToken<CallbackMessage<PhotoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_PHOTO_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackPhotoCommentDelete>>() {
+        types.put(CALLBACK_EVENT_PHOTO_COMMENT_DELETE, new TypeToken<CallbackMessage<PhotoCommentDelete>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_AUDIO_NEW, new TypeToken<CallbackMessage<Audio>>() {
@@ -112,13 +98,13 @@ public class CallbackApi {
 
         types.put(CALLBACK_EVENT_VIDEO_NEW, new TypeToken<CallbackMessage<Video>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_VIDEO_COMMENT_NEW, new TypeToken<CallbackMessage<CallbackVideoComment>>() {
+        types.put(CALLBACK_EVENT_VIDEO_COMMENT_NEW, new TypeToken<CallbackMessage<VideoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_VIDEO_COMMENT_EDIT, new TypeToken<CallbackMessage<CallbackVideoComment>>() {
+        types.put(CALLBACK_EVENT_VIDEO_COMMENT_EDIT, new TypeToken<CallbackMessage<VideoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_VIDEO_COMMENT_RESTORE, new TypeToken<CallbackMessage<CallbackVideoComment>>() {
+        types.put(CALLBACK_EVENT_VIDEO_COMMENT_RESTORE, new TypeToken<CallbackMessage<VideoComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_VIDEO_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackVideoCommentDelete>>() {
+        types.put(CALLBACK_EVENT_VIDEO_COMMENT_DELETE, new TypeToken<CallbackMessage<VideoCommentDelete>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_WALL_POST_NEW, new TypeToken<CallbackMessage<Wallpost>>() {
@@ -126,13 +112,13 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_WALL_REPOST, new TypeToken<CallbackMessage<Wallpost>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_WALL_REPLY_NEW, new TypeToken<CallbackMessage<CallbackWallComment>>() {
+        types.put(CALLBACK_EVENT_WALL_REPLY_NEW, new TypeToken<CallbackMessage<WallComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_WALL_REPLY_EDIT, new TypeToken<CallbackMessage<CallbackWallComment>>() {
+        types.put(CALLBACK_EVENT_WALL_REPLY_EDIT, new TypeToken<CallbackMessage<WallComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_WALL_REPLY_RESTORE, new TypeToken<CallbackMessage<CallbackWallComment>>() {
+        types.put(CALLBACK_EVENT_WALL_REPLY_RESTORE, new TypeToken<CallbackMessage<WallComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_WALL_REPLY_DELETE, new TypeToken<CallbackMessage<CallbackWallCommentDelete>>() {
+        types.put(CALLBACK_EVENT_WALL_REPLY_DELETE, new TypeToken<CallbackMessage<WallCommentDelete>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_BOARD_POST_NEW, new TypeToken<CallbackMessage<TopicComment>>() {
@@ -141,34 +127,34 @@ public class CallbackApi {
         }.getType());
         types.put(CALLBACK_EVENT_BOARD_POST_RESTORE, new TypeToken<CallbackMessage<TopicComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_BOARD_POST_DELETE, new TypeToken<CallbackMessage<CallbackBoardPostDelete>>() {
+        types.put(CALLBACK_EVENT_BOARD_POST_DELETE, new TypeToken<CallbackMessage<BoardPostDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_MARKET_COMMENT_NEW, new TypeToken<CallbackMessage<CallbackMarketComment>>() {
+        types.put(CALLBACK_EVENT_MARKET_COMMENT_NEW, new TypeToken<CallbackMessage<MarketComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MARKET_COMMENT_EDIT, new TypeToken<CallbackMessage<CallbackMarketComment>>() {
+        types.put(CALLBACK_EVENT_MARKET_COMMENT_EDIT, new TypeToken<CallbackMessage<MarketComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MARKET_COMMENT_RESTORE, new TypeToken<CallbackMessage<CallbackMarketComment>>() {
+        types.put(CALLBACK_EVENT_MARKET_COMMENT_RESTORE, new TypeToken<CallbackMessage<MarketComment>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MARKET_COMMENT_DELETE, new TypeToken<CallbackMessage<CallbackMarketCommentDelete>>() {
-        }.getType());
-
-        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<CallbackGroupLeave>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<CallbackGroupJoin>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_GROUP_CHANGE_SETTINGS, new TypeToken<CallbackMessage<CallbackGroupChangeSettings>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_GROUP_CHANGE_PHOTO, new TypeToken<CallbackMessage<CallbackGroupChangePhoto>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_GROUP_OFFICERS_EDIT, new TypeToken<CallbackMessage<CallbackGroupOfficersEdit>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_USER_BLOCK, new TypeToken<CallbackMessage<CallbackUserBlock>>() {
-        }.getType());
-        types.put(CALLBACK_EVENT_USER_UNBLOCK, new TypeToken<CallbackMessage<CallbackUserUnblock>>() {
+        types.put(CALLBACK_EVENT_MARKET_COMMENT_DELETE, new TypeToken<CallbackMessage<MarketCommentDelete>>() {
         }.getType());
 
-        types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<CallbackPollVoteNew>>() {
+        types.put(CALLBACK_EVENT_GROUP_LEAVE, new TypeToken<CallbackMessage<GroupLeave>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_JOIN, new TypeToken<CallbackMessage<GroupJoin>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_CHANGE_SETTINGS, new TypeToken<CallbackMessage<GroupChangeSettings>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_CHANGE_PHOTO, new TypeToken<CallbackMessage<GroupChangePhoto>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_GROUP_OFFICERS_EDIT, new TypeToken<CallbackMessage<GroupOfficersEdit>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_USER_BLOCK, new TypeToken<CallbackMessage<UserBlock>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_USER_UNBLOCK, new TypeToken<CallbackMessage<UserUnblock>>() {
+        }.getType());
+
+        types.put(CALLBACK_EVENT_POLL_VOTE_NEW, new TypeToken<CallbackMessage<PollVoteNew>>() {
         }.getType());
 
         CALLBACK_TYPES = Collections.unmodifiableMap(types);
@@ -201,17 +187,17 @@ public class CallbackApi {
         messageEdit(groupId, message);
     }
 
-    public void messageAllow(Integer groupId, CallbackMessageAllow message) {
+    public void messageAllow(Integer groupId, MessageAllow message) {
     }
 
-    public void messageAllow(Integer groupId, String secret, CallbackMessageAllow message) {
+    public void messageAllow(Integer groupId, String secret, MessageAllow message) {
         messageAllow(groupId, message);
     }
 
-    public void messageDeny(Integer groupId, CallbackMessageDeny message) {
+    public void messageDeny(Integer groupId, MessageDeny message) {
     }
 
-    public void messageDeny(Integer groupId, String secret, CallbackMessageDeny message) {
+    public void messageDeny(Integer groupId, String secret, MessageDeny message) {
         messageDeny(groupId, message);
     }
 
@@ -222,31 +208,31 @@ public class CallbackApi {
         photoNew(groupId, message);
     }
 
-    public void photoCommentNew(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentNew(Integer groupId, PhotoComment message) {
     }
 
-    public void photoCommentNew(Integer groupId, String secret, CallbackPhotoComment message) {
+    public void photoCommentNew(Integer groupId, String secret, PhotoComment message) {
         photoCommentNew(groupId, message);
     }
 
-    public void photoCommentEdit(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentEdit(Integer groupId, PhotoComment message) {
     }
 
-    public void photoCommentEdit(Integer groupId, String secret, CallbackPhotoComment message) {
+    public void photoCommentEdit(Integer groupId, String secret, PhotoComment message) {
         photoCommentEdit(groupId, message);
     }
 
-    public void photoCommentRestore(Integer groupId, CallbackPhotoComment message) {
+    public void photoCommentRestore(Integer groupId, PhotoComment message) {
     }
 
-    public void photoCommentRestore(Integer groupId, String secret, CallbackPhotoComment message) {
+    public void photoCommentRestore(Integer groupId, String secret, PhotoComment message) {
         photoCommentRestore(groupId, message);
     }
 
-    public void photoCommentDelete(Integer groupId, CallbackPhotoCommentDelete message) {
+    public void photoCommentDelete(Integer groupId, PhotoCommentDelete message) {
     }
 
-    public void photoCommentDelete(Integer groupId, String secret, CallbackPhotoCommentDelete message) {
+    public void photoCommentDelete(Integer groupId, String secret, PhotoCommentDelete message) {
         photoCommentDelete(groupId, message);
     }
 
@@ -264,31 +250,31 @@ public class CallbackApi {
         videoNew(groupId, message);
     }
 
-    public void videoCommentNew(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentNew(Integer groupId, VideoComment message) {
     }
 
-    public void videoCommentNew(Integer groupId, String secret, CallbackVideoComment message) {
+    public void videoCommentNew(Integer groupId, String secret, VideoComment message) {
         videoCommentNew(groupId, message);
     }
 
-    public void videoCommentEdit(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentEdit(Integer groupId, VideoComment message) {
     }
 
-    public void videoCommentEdit(Integer groupId, String secret, CallbackVideoComment message) {
+    public void videoCommentEdit(Integer groupId, String secret, VideoComment message) {
         videoCommentEdit(groupId, message);
     }
 
-    public void videoCommentRestore(Integer groupId, CallbackVideoComment message) {
+    public void videoCommentRestore(Integer groupId, VideoComment message) {
     }
 
-    public void videoCommentRestore(Integer groupId, String secret, CallbackVideoComment message) {
+    public void videoCommentRestore(Integer groupId, String secret, VideoComment message) {
         videoCommentRestore(groupId, message);
     }
 
-    public void videoCommentDelete(Integer groupId, CallbackVideoCommentDelete message) {
+    public void videoCommentDelete(Integer groupId, VideoCommentDelete message) {
     }
 
-    public void videoCommentDelete(Integer groupId, String secret, CallbackVideoCommentDelete message) {
+    public void videoCommentDelete(Integer groupId, String secret, VideoCommentDelete message) {
         videoCommentDelete(groupId, message);
     }
 
@@ -306,31 +292,31 @@ public class CallbackApi {
         wallRepost(groupId, message);
     }
 
-    public void wallReplyNew(Integer groupId, CallbackWallComment object) {
+    public void wallReplyNew(Integer groupId, WallComment object) {
     }
 
-    public void wallReplyNew(Integer groupId, String secret, CallbackWallComment object) {
+    public void wallReplyNew(Integer groupId, String secret, WallComment object) {
         wallReplyNew(groupId, object);
     }
 
-    public void wallReplyEdit(Integer groupId, CallbackWallComment message) {
+    public void wallReplyEdit(Integer groupId, WallComment message) {
     }
 
-    public void wallReplyEdit(Integer groupId, String secret, CallbackWallComment message) {
+    public void wallReplyEdit(Integer groupId, String secret, WallComment message) {
         wallReplyEdit(groupId, message);
     }
 
-    public void wallReplyRestore(Integer groupId, CallbackWallComment message) {
+    public void wallReplyRestore(Integer groupId, WallComment message) {
     }
 
-    public void wallReplyRestore(Integer groupId, String secret, CallbackWallComment message) {
+    public void wallReplyRestore(Integer groupId, String secret, WallComment message) {
         wallReplyRestore(groupId, message);
     }
 
-    public void wallReplyDelete(Integer groupId, CallbackWallCommentDelete message) {
+    public void wallReplyDelete(Integer groupId, WallCommentDelete message) {
     }
 
-    public void wallReplyDelete(Integer groupId, String secret, CallbackWallCommentDelete message) {
+    public void wallReplyDelete(Integer groupId, String secret, WallCommentDelete message) {
         wallReplyDelete(groupId, message);
     }
 
@@ -355,95 +341,95 @@ public class CallbackApi {
         boardPostRestore(groupId, message);
     }
 
-    public void boardPostDelete(Integer groupId, CallbackBoardPostDelete message) {
+    public void boardPostDelete(Integer groupId, BoardPostDelete message) {
     }
 
-    public void boardPostDelete(Integer groupId, String secret, CallbackBoardPostDelete message) {
+    public void boardPostDelete(Integer groupId, String secret, BoardPostDelete message) {
         boardPostDelete(groupId, message);
     }
 
-    public void marketCommentNew(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentNew(Integer groupId, MarketComment message) {
     }
 
-    public void marketCommentNew(Integer groupId, String secret, CallbackMarketComment message) {
+    public void marketCommentNew(Integer groupId, String secret, MarketComment message) {
         marketCommentNew(groupId, message);
     }
 
-    public void marketCommentEdit(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentEdit(Integer groupId, MarketComment message) {
     }
 
-    public void marketCommentEdit(Integer groupId, String secret, CallbackMarketComment message) {
+    public void marketCommentEdit(Integer groupId, String secret, MarketComment message) {
         marketCommentEdit(groupId, message);
     }
 
-    public void marketCommentRestore(Integer groupId, CallbackMarketComment message) {
+    public void marketCommentRestore(Integer groupId, MarketComment message) {
     }
 
-    public void marketCommentRestore(Integer groupId, String secret, CallbackMarketComment message) {
+    public void marketCommentRestore(Integer groupId, String secret, MarketComment message) {
         marketCommentRestore(groupId, message);
     }
 
-    public void marketCommentDelete(Integer groupId, CallbackMarketCommentDelete message) {
+    public void marketCommentDelete(Integer groupId, MarketCommentDelete message) {
     }
 
-    public void marketCommentDelete(Integer groupId, String secret, CallbackMarketCommentDelete message) {
+    public void marketCommentDelete(Integer groupId, String secret, MarketCommentDelete message) {
         marketCommentDelete(groupId, message);
     }
 
-    public void groupLeave(Integer groupId, CallbackGroupLeave message) {
+    public void groupLeave(Integer groupId, GroupLeave message) {
     }
 
-    public void groupLeave(Integer groupId, String secret, CallbackGroupLeave message) {
+    public void groupLeave(Integer groupId, String secret, GroupLeave message) {
         groupLeave(groupId, message);
     }
 
-    public void groupJoin(Integer groupId, CallbackGroupJoin message) {
+    public void groupJoin(Integer groupId, GroupJoin message) {
     }
 
-    public void groupJoin(Integer groupId, String secret, CallbackGroupJoin message) {
+    public void groupJoin(Integer groupId, String secret, GroupJoin message) {
         groupJoin(groupId, message);
     }
 
-    public void groupChangeSettings(Integer groupId, CallbackGroupChangeSettings message) {
+    public void groupChangeSettings(Integer groupId, GroupChangeSettings message) {
     }
 
-    public void groupChangeSettings(Integer groupId, String secret, CallbackGroupChangeSettings message) {
+    public void groupChangeSettings(Integer groupId, String secret, GroupChangeSettings message) {
         groupChangeSettings(groupId, message);
     }
 
-    public void groupChangePhoto(Integer groupId, CallbackGroupChangePhoto message) {
+    public void groupChangePhoto(Integer groupId, GroupChangePhoto message) {
     }
 
-    public void groupChangePhoto(Integer groupId, String secret, CallbackGroupChangePhoto message) {
+    public void groupChangePhoto(Integer groupId, String secret, GroupChangePhoto message) {
         groupChangePhoto(groupId, message);
     }
 
-    public void groupOfficersEdit(Integer groupId, CallbackGroupOfficersEdit message) {
+    public void groupOfficersEdit(Integer groupId, GroupOfficersEdit message) {
     }
 
-    public void groupOfficersEdit(Integer groupId, String secret, CallbackGroupOfficersEdit message) {
+    public void groupOfficersEdit(Integer groupId, String secret, GroupOfficersEdit message) {
         groupOfficersEdit(groupId, message);
     }
 
 
-    public void pollVoteNew(Integer groupId, CallbackPollVoteNew message) {
+    public void pollVoteNew(Integer groupId, PollVoteNew message) {
     }
 
-    public void pollVoteNew(Integer groupId, String secret, CallbackPollVoteNew message) {
+    public void pollVoteNew(Integer groupId, String secret, PollVoteNew message) {
         pollVoteNew(groupId, message);
     }
 
-    public void userBlock(Integer groupId, CallbackUserBlock message) {
+    public void userBlock(Integer groupId, UserBlock message) {
     }
 
-    public void userBlock(Integer groupId, String secret, CallbackUserBlock message) {
+    public void userBlock(Integer groupId, String secret, UserBlock message) {
         userBlock(groupId, message);
     }
 
-    public void userUnblock(Integer groupId, CallbackUserUnblock message) {
+    public void userUnblock(Integer groupId, UserUnblock message) {
     }
 
-    public void userUnblock(Integer groupId, String secret, CallbackUserUnblock message) {
+    public void userUnblock(Integer groupId, String secret, UserUnblock message) {
         userUnblock(groupId, message);
     }
 
@@ -462,7 +448,7 @@ public class CallbackApi {
     public boolean parse(JsonObject json) {
         String type = json.get("type").getAsString();
         if (type.equalsIgnoreCase(CALLBACK_EVENT_CONFIRMATION)) {
-            CallbackConfirmationMessage message = gson.fromJson(json, CallbackConfirmationMessage.class);
+            ConfirmationMessage message = gson.fromJson(json, ConfirmationMessage.class);
             confirmation(message.getGroupId(), message.getSecret());
             return true;
         }
@@ -489,11 +475,11 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_MESSAGE_ALLOW:
-                messageAllow(message.getGroupId(), message.getSecret(), (CallbackMessageAllow) message.getObject());
+                messageAllow(message.getGroupId(), message.getSecret(), (MessageAllow) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_DENY:
-                messageDeny(message.getGroupId(), message.getSecret(), (CallbackMessageDeny) message.getObject());
+                messageDeny(message.getGroupId(), message.getSecret(), (MessageDeny) message.getObject());
                 break;
 
             case CALLBACK_EVENT_PHOTO_NEW:
@@ -501,19 +487,19 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_PHOTO_COMMENT_NEW:
-                photoCommentNew(message.getGroupId(), message.getSecret(), (CallbackPhotoComment) message.getObject());
+                photoCommentNew(message.getGroupId(), message.getSecret(), (PhotoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_PHOTO_COMMENT_EDIT:
-                photoCommentEdit(message.getGroupId(), message.getSecret(), (CallbackPhotoComment) message.getObject());
+                photoCommentEdit(message.getGroupId(), message.getSecret(), (PhotoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_PHOTO_COMMENT_RESTORE:
-                photoCommentRestore(message.getGroupId(), message.getSecret(), (CallbackPhotoComment) message.getObject());
+                photoCommentRestore(message.getGroupId(), message.getSecret(), (PhotoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_PHOTO_COMMENT_DELETE:
-                photoCommentDelete(message.getGroupId(), message.getSecret(), (CallbackPhotoCommentDelete) message.getObject());
+                photoCommentDelete(message.getGroupId(), message.getSecret(), (PhotoCommentDelete) message.getObject());
                 break;
 
             case CALLBACK_EVENT_AUDIO_NEW:
@@ -525,19 +511,19 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_VIDEO_COMMENT_NEW:
-                videoCommentNew(message.getGroupId(), message.getSecret(), (CallbackVideoComment) message.getObject());
+                videoCommentNew(message.getGroupId(), message.getSecret(), (VideoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_VIDEO_COMMENT_EDIT:
-                videoCommentEdit(message.getGroupId(), message.getSecret(), (CallbackVideoComment) message.getObject());
+                videoCommentEdit(message.getGroupId(), message.getSecret(), (VideoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_VIDEO_COMMENT_RESTORE:
-                videoCommentRestore(message.getGroupId(), message.getSecret(), (CallbackVideoComment) message.getObject());
+                videoCommentRestore(message.getGroupId(), message.getSecret(), (VideoComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_VIDEO_COMMENT_DELETE:
-                videoCommentDelete(message.getGroupId(), message.getSecret(), (CallbackVideoCommentDelete) message.getObject());
+                videoCommentDelete(message.getGroupId(), message.getSecret(), (VideoCommentDelete) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_POST_NEW:
@@ -549,19 +535,19 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_NEW:
-                wallReplyNew(message.getGroupId(), message.getSecret(), (CallbackWallComment) message.getObject());
+                wallReplyNew(message.getGroupId(), message.getSecret(), (WallComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_EDIT:
-                wallReplyEdit(message.getGroupId(), message.getSecret(), (CallbackWallComment) message.getObject());
+                wallReplyEdit(message.getGroupId(), message.getSecret(), (WallComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_RESTORE:
-                wallReplyRestore(message.getGroupId(), message.getSecret(), (CallbackWallComment) message.getObject());
+                wallReplyRestore(message.getGroupId(), message.getSecret(), (WallComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_WALL_REPLY_DELETE:
-                wallReplyDelete(message.getGroupId(), message.getSecret(), (CallbackWallCommentDelete) message.getObject());
+                wallReplyDelete(message.getGroupId(), message.getSecret(), (WallCommentDelete) message.getObject());
                 break;
 
             case CALLBACK_EVENT_BOARD_POST_NEW:
@@ -577,55 +563,55 @@ public class CallbackApi {
                 break;
 
             case CALLBACK_EVENT_BOARD_POST_DELETE:
-                boardPostDelete(message.getGroupId(), message.getSecret(), (CallbackBoardPostDelete) message.getObject());
+                boardPostDelete(message.getGroupId(), message.getSecret(), (BoardPostDelete) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MARKET_COMMENT_NEW:
-                marketCommentNew(message.getGroupId(), message.getSecret(), (CallbackMarketComment) message.getObject());
+                marketCommentNew(message.getGroupId(), message.getSecret(), (MarketComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MARKET_COMMENT_EDIT:
-                marketCommentEdit(message.getGroupId(), message.getSecret(), (CallbackMarketComment) message.getObject());
+                marketCommentEdit(message.getGroupId(), message.getSecret(), (MarketComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MARKET_COMMENT_RESTORE:
-                marketCommentRestore(message.getGroupId(), message.getSecret(), (CallbackMarketComment) message.getObject());
+                marketCommentRestore(message.getGroupId(), message.getSecret(), (MarketComment) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MARKET_COMMENT_DELETE:
-                marketCommentDelete(message.getGroupId(), message.getSecret(), (CallbackMarketCommentDelete) message.getObject());
+                marketCommentDelete(message.getGroupId(), message.getSecret(), (MarketCommentDelete) message.getObject());
                 break;
 
             case CALLBACK_EVENT_GROUP_LEAVE:
-                groupLeave(message.getGroupId(), message.getSecret(), (CallbackGroupLeave) message.getObject());
+                groupLeave(message.getGroupId(), message.getSecret(), (GroupLeave) message.getObject());
                 break;
 
             case CALLBACK_EVENT_GROUP_JOIN:
-                groupJoin(message.getGroupId(), message.getSecret(), (CallbackGroupJoin) message.getObject());
+                groupJoin(message.getGroupId(), message.getSecret(), (GroupJoin) message.getObject());
                 break;
 
             case CALLBACK_EVENT_GROUP_CHANGE_SETTINGS:
-                groupChangeSettings(message.getGroupId(), message.getSecret(), (CallbackGroupChangeSettings) message.getObject());
+                groupChangeSettings(message.getGroupId(), message.getSecret(), (GroupChangeSettings) message.getObject());
                 break;
 
             case CALLBACK_EVENT_GROUP_CHANGE_PHOTO:
-                groupChangePhoto(message.getGroupId(), message.getSecret(), (CallbackGroupChangePhoto) message.getObject());
+                groupChangePhoto(message.getGroupId(), message.getSecret(), (GroupChangePhoto) message.getObject());
                 break;
 
             case CALLBACK_EVENT_GROUP_OFFICERS_EDIT:
-                groupOfficersEdit(message.getGroupId(), message.getSecret(), (CallbackGroupOfficersEdit) message.getObject());
+                groupOfficersEdit(message.getGroupId(), message.getSecret(), (GroupOfficersEdit) message.getObject());
                 break;
 
             case CALLBACK_EVENT_USER_BLOCK:
-                userBlock(message.getGroupId(), message.getSecret(), (CallbackUserBlock) message.getObject());
+                userBlock(message.getGroupId(), message.getSecret(), (UserBlock) message.getObject());
                 break;
 
             case CALLBACK_EVENT_USER_UNBLOCK:
-                userUnblock(message.getGroupId(), message.getSecret(), (CallbackUserUnblock) message.getObject());
+                userUnblock(message.getGroupId(), message.getSecret(), (UserUnblock) message.getObject());
                 break;
 
             case CALLBACK_EVENT_POLL_VOTE_NEW:
-                pollVoteNew(message.getGroupId(), message.getSecret(), (CallbackPollVoteNew) message.getObject());
+                pollVoteNew(message.getGroupId(), message.getSecret(), (PollVoteNew) message.getObject());
                 break;
 
             default:

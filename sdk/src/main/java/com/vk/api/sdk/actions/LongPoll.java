@@ -1,6 +1,6 @@
 package com.vk.api.sdk.actions;
 
-import com.vk.api.sdk.callback.longpoll.queries.GetLongPollEventsQuery;
+import com.vk.api.sdk.queries.longpoll.GetLongPollEventsQuery;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 

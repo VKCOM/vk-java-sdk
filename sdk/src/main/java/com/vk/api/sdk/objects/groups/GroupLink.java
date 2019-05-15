@@ -11,6 +11,12 @@ import java.util.Objects;
  */
 public class GroupLink {
     /**
+     * Link label
+     */
+    @SerializedName("name")
+    private String name;
+
+    /**
      * Link description
      */
     @SerializedName("desc")
@@ -39,6 +45,15 @@ public class GroupLink {
      */
     @SerializedName("url")
     private URL url;
+
+    public String getName() {
+        return name;
+    }
+
+    public GroupLink setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public String getDesc() {
         return desc;
@@ -85,7 +100,7 @@ public class GroupLink {
 
     @Override
     public int hashCode() {
-        return Objects.hash(editTitle, id, imageProcessing, url, desc);
+        return Objects.hash(editTitle, name, id, imageProcessing, url, desc);
     }
 
     @Override
@@ -95,6 +110,7 @@ public class GroupLink {
         GroupLink groupLink = (GroupLink) o;
         return Objects.equals(editTitle, groupLink.editTitle) &&
                 Objects.equals(imageProcessing, groupLink.imageProcessing) &&
+                Objects.equals(name, groupLink.name) &&
                 Objects.equals(id, groupLink.id) &&
                 Objects.equals(url, groupLink.url) &&
                 Objects.equals(desc, groupLink.desc);
@@ -110,6 +126,7 @@ public class GroupLink {
         final StringBuilder sb = new StringBuilder("GroupLink{");
         sb.append("editTitle=").append(editTitle);
         sb.append(", imageProcessing=").append(imageProcessing);
+        sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
         sb.append(", url=").append(url);
         sb.append(", desc='").append(desc).append("'");

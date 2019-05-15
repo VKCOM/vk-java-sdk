@@ -24,7 +24,7 @@ public class LongPollServer {
      * Number of the last event
      */
     @SerializedName("ts")
-    private Integer ts;
+    private String ts;
 
     public String getKey() {
         return key;
@@ -44,11 +44,11 @@ public class LongPollServer {
         return this;
     }
 
-    public Integer getTs() {
+    public String getTs() {
         return ts;
     }
 
-    public LongPollServer setTs(Integer ts) {
+    public LongPollServer setTs(String ts) {
         this.ts = ts;
         return this;
     }
@@ -78,7 +78,7 @@ public class LongPollServer {
         final StringBuilder sb = new StringBuilder("LongPollServer{");
         sb.append("server='").append(server).append("'");
         sb.append(", key='").append(key).append("'");
-        sb.append(", ts=").append(ts);
+        sb.append(", ts='").append(ts).append("'");
         sb.append('}');
         return sb.toString();
     }

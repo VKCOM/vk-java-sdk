@@ -2,7 +2,6 @@ package com.vk.api.sdk.httpclient;
 
 import com.vk.api.sdk.client.ClientResponse;
 import com.vk.api.sdk.client.TransportClient;
-import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
@@ -43,7 +42,7 @@ public class HttpTransportClient implements TransportClient {
     private static final String ENCODING = "UTF-8";
     private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded";
     private static final String CONTENT_TYPE_HEADER = "Content-Type";
-    private static final String USER_AGENT = "Java VK SDK/0.5.13";
+    private static final String USER_AGENT = "Java VK SDK/1.0";
 
     private static final String EMPTY_PAYLOAD = "-";
 

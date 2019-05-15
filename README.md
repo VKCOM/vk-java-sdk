@@ -164,7 +164,7 @@ OAuth 2.0 Authorization Code Flow allows calling methods from the server side.
 This flow includes two steps — obtaining an authorization code and exchanging the code for an access token. Primarily you should obtain the "code" ([manual](https://vk.com/dev/authcode_flow_user)) and then use this method to complete the flow:
 
 ```java
-UserAuthResponse authResponse = vk.oauth()
+UserAuthResponse authResponse = vk.oAuth()
     .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
@@ -182,7 +182,7 @@ See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/user-oau
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
 
 ```java
-GroupAuthGroupResponse authResponse = vk.oauth()
+GroupAuthGroupResponse authResponse = vk.oAuth()
     .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
@@ -200,7 +200,7 @@ Proceeding each of previous authorization flows you can receive a "need_validati
 ```java
 UserAuthResponse authResponse;
 try {
-    authResponse = vk.oauth()
+    authResponse = vk.oAuth()
         .userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
         .execute();
 } catch (OAuthException e) {
@@ -215,7 +215,7 @@ UserActor actor = new UserActor(authResponse.getUserId(), authResponse.getAccess
 This flow allows to interact with API service methods with "secure" prefix. Use this method:
 
 ```java
-ServiceClientCredentialsFlowResponse authResponse = vk.oauth()
+ServiceClientCredentialsFlowResponse authResponse = vk.oAuth()
     .serviceClientCredentialsFlow(APP_ID, CLIENT_SECRET)
     .execute();
     
