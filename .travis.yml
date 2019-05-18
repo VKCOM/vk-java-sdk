@@ -4,7 +4,7 @@ jdk:
 install:
   - cd ./sdk && gradle assemble -x signArchives
 script:
-  - cd ./sdk && gradle check
+  - gradle check
 after_success:
   - ./scripts/deploy.sh
 env:
