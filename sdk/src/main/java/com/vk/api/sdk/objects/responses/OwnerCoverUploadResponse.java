@@ -1,4 +1,4 @@
-package com.vk.api.sdk.objects.callback.longpoll.responses;
+package com.vk.api.sdk.objects.responses;
 
 import com.google.gson.annotations.SerializedName;
 
