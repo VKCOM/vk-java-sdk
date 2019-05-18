@@ -2,9 +2,9 @@ language: java
 jdk:
   - oraclejdk8
 install:
-  - gradle assemble -x signArchives
+  - cd ./sdk && gradle assemble -x signArchives
 script:
-  - gradle check
+  - cd ./sdk && gradle check
 after_success:
   - ./scripts/deploy.sh
 env:
