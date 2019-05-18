@@ -89,6 +89,10 @@ uploadArchives {
                         email 'a.tsivarev@corp.vk.com'
                     }
                 }
+		
+		properties {
+			autoReleaseAfterClose true
+		}
             }
         }
     }
