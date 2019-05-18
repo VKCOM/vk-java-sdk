@@ -6,7 +6,7 @@ install:
 script:
   - gradle check
 after_success:
-  - ./scripts/deploy.sh
+  - ../scripts/deploy.sh
 env:
   global:
   - secure: p3Ic1J88tmZ3ihuBoM8ZT9/T0yCBRVr8D1rqAaZ5VUhzym+r2ksX9g8epQt+8RmVaGqXpMD3/G4yT7yT+Xf3Br/OAmAu4DnkcXJ8qJZf1+xG7wpqjNqC0febQOlDp8xe5EyLJk1cMu775mNIjxm/HSbCOFVtYmrW/0/2VBI9IxPvguiSpGjYrhFseYseNyiJovcp0G36aIvSacGq/KYv7oEE1xBbDZpx491cTnP3Z0kc7NqDv5S210pa0MLFPywadTPzxOdAa2XBBS9EFTuDcPPYwgyoqRxp8s4ubtDv7NQJdNPvVD5nhBrT1iVKc6sXIfYv5tssjxTbW+3L1MQvcbc9ULX1UJSP3VIahWAfGBlgkLprlv+po0wZnEzriRxtHcU+4HhuEARpEZayKXF56IxBmp3jri6yzSX8d636i/Mnm4bpvtduLd0X07jCa/ongZbDbH21Wbc4135pxWxiYrWOr0hHY1esjdxaWcFAhmPYIWZv6t1aFVHQxrHRSgqTlU8lvfMrvimPInD+EWIxBrbTDAJ+qhyjxRNsJCgBTcgSbP1r9qb+BKh/8IbKLiVI3lYJD+meTxewx72jNfugX8YOuUqjqUXaT1sCj1m9p+Z+ZvZpsAjOk/HB9vU6fxJk89xn6HM2MbVWQ4vOLPyr4trNlA3YBhumfxI6nyHp1jQ=
