@@ -1,6 +1,20 @@
 apply plugin: 'maven'
 apply plugin: 'signing'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "name.remal:gradle-plugins:1.0.133"
+    }
+}
+apply plugin: 'name.remal.default-plugins'
+apply plugin: 'maven-publish'
+apply plugin: 'name.remal.maven-publish-nexus-staging'
+publishing.repositories.ossrh()
+
+
 dependencies {
     compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
