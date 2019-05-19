@@ -1,7 +1,7 @@
 dist: xenial
 language: java
 jdk:
-  - oraclejdk8
+  - oraclejdk11
 install:
   - cd ./sdk && gradle assemble -x signArchives
 script:
