@@ -1,6 +1,5 @@
 apply plugin: 'maven'
 apply plugin: 'signing'
-apply plugin: 'nexus-workflow'
 
 dependencies {
     compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
