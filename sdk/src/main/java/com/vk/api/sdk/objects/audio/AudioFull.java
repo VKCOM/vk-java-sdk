@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.audio;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * AudioFull object
  */
-public class AudioFull extends Audio {
+public class AudioFull extends Audio implements Validable {
     /**
      * Duration in seconds
      */
     @SerializedName("duration")
+    @Required
     private Integer duration;
 
     /**
      * Date when uploaded
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**

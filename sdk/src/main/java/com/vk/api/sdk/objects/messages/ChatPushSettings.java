@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * ChatPushSettings object
  */
-public class ChatPushSettings {
+public class ChatPushSettings implements Validable {
     /**
      * Time until that notifications are disabled
      */

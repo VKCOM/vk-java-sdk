@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.video.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserMin;
 import com.vk.api.sdk.objects.video.VideoFull;
@@ -11,20 +13,24 @@ import java.util.Objects;
 /**
  * GetExtendedResponse object
  */
-public class GetExtendedResponse {
+public class GetExtendedResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<VideoFull> items;
 
     @SerializedName("profiles")
+    @Required
     private List<UserMin> profiles;
 
     @SerializedName("groups")
+    @Required
     private List<GroupFull> groups;
 
     public Integer getCount() {

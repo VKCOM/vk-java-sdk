@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * StatsExtended object
  */
-public class StatsExtended {
+public class StatsExtended implements Validable {
     @SerializedName("cities")
     private List<StatsCity> cities;
 

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.docs;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * Doc object
  */
-public class Doc {
+public class Doc implements Validable {
     /**
      * Access key for the document
      */
@@ -20,18 +22,21 @@ public class Doc {
      * Date when file has been uploaded in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
      * File extension
      */
     @SerializedName("ext")
+    @Required
     private String ext;
 
     /**
      * Document ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("is_licensed")
@@ -50,18 +55,21 @@ public class Doc {
      * File size in bites
      */
     @SerializedName("size")
+    @Required
     private Integer size;
 
     /**
      * Document title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
      * Document type
      */
     @SerializedName("type")
+    @Required
     private Integer type;
 
     /**

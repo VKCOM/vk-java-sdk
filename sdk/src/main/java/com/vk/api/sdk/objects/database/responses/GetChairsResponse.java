@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.database.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BaseObject;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetChairsResponse object
  */
-public class GetChairsResponse {
+public class GetChairsResponse implements Validable {
     /**
      * Total number
      */

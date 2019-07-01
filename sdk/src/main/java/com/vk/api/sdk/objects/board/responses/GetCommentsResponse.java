@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.board.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.board.TopicPoll;
 import java.util.List;
@@ -10,14 +12,16 @@ import java.util.Objects;
 /**
  * GetCommentsResponse object
  */
-public class GetCommentsResponse {
+public class GetCommentsResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<TopicComment> items;
 
     @SerializedName("poll")

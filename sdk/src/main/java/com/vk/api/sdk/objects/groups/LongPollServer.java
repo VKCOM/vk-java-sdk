@@ -2,28 +2,33 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * LongPollServer object
  */
-public class LongPollServer {
+public class LongPollServer implements Validable {
     /**
      * Long Poll key
      */
     @SerializedName("key")
+    @Required
     private String key;
 
     /**
      * Long Poll server address
      */
     @SerializedName("server")
+    @Required
     private String server;
 
     /**
      * Number of the last event
      */
     @SerializedName("ts")
+    @Required
     private String ts;
 
     public String getKey() {

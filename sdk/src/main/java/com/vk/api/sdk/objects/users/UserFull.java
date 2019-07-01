@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
@@ -13,7 +14,7 @@ import java.util.Objects;
 /**
  * UserFull object
  */
-public class UserFull extends User {
+public class UserFull extends User implements Validable {
     /**
      * User nickname
      */
@@ -93,12 +94,6 @@ public class UserFull extends User {
     private BoolInt hasPhoto;
 
     /**
-     * Information whether the community has a "fire" pictogram.
-     */
-    @SerializedName("trending")
-    private BoolInt trending;
-
-    /**
      * Information whether the user specified his phone number
      */
     @SerializedName("has_mobile")
@@ -109,12 +104,6 @@ public class UserFull extends User {
      */
     @SerializedName("is_friend")
     private BoolInt isFriend;
-
-    /**
-     * Friend status for current user
-     */
-    @SerializedName("friend_status")
-    private Integer friendStatus;
 
     /**
      * Information whether current user can comment wall posts
@@ -229,12 +218,6 @@ public class UserFull extends User {
 
     @SerializedName("crop_photo")
     private CropPhoto cropPhoto;
-
-    /**
-     * Information whether the user is verified
-     */
-    @SerializedName("verified")
-    private BoolInt verified;
 
     /**
      * Number of user's followers
@@ -547,14 +530,6 @@ public class UserFull extends User {
         return hasPhoto;
     }
 
-    public boolean isTrending() {
-        return trending == BoolInt.YES;
-    }
-
-    public BoolInt getTrending() {
-        return trending;
-    }
-
     public boolean isHasMobile() {
         return hasMobile == BoolInt.YES;
     }
@@ -569,15 +544,6 @@ public class UserFull extends User {
 
     public BoolInt getIsFriend() {
         return isFriend;
-    }
-
-    public Integer getFriendStatus() {
-        return friendStatus;
-    }
-
-    public UserFull setFriendStatus(Integer friendStatus) {
-        this.friendStatus = friendStatus;
-        return this;
     }
 
     public boolean isWallComments() {
@@ -761,14 +727,6 @@ public class UserFull extends User {
     public UserFull setCropPhoto(CropPhoto cropPhoto) {
         this.cropPhoto = cropPhoto;
         return this;
-    }
-
-    public boolean isVerified() {
-        return verified == BoolInt.YES;
-    }
-
-    public BoolInt getVerified() {
-        return verified;
     }
 
     public Integer getFollowersCount() {
@@ -1084,7 +1042,7 @@ public class UserFull extends User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(trending, canSendFriendRequest, universityName, country, canSubscribePosts, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, friendStatus, twitter, music, universities, canSeeAudio, homeTown, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, canSubscribePodcasts, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, facultyName, followersCount, isHiddenFromFeed, facebookName, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, isSubscribedPodcasts, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, verified, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
+        return Objects.hash(canSendFriendRequest, universityName, country, canSubscribePosts, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, twitter, music, universities, canSeeAudio, homeTown, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, canSubscribePodcasts, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, facultyName, followersCount, isHiddenFromFeed, facebookName, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, isSubscribedPodcasts, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
     }
 
     @Override
@@ -1092,9 +1050,7 @@ public class UserFull extends User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserFull userFull = (UserFull) o;
-        return Objects.equals(trending, userFull.trending) &&
-                Objects.equals(country, userFull.country) &&
-                Objects.equals(friendStatus, userFull.friendStatus) &&
+        return Objects.equals(country, userFull.country) &&
                 Objects.equals(career, userFull.career) &&
                 Objects.equals(tv, userFull.tv) &&
                 Objects.equals(bdate, userFull.bdate) &&
@@ -1155,7 +1111,6 @@ public class UserFull extends User {
                 Objects.equals(maidenName, userFull.maidenName) &&
                 Objects.equals(wallComments, userFull.wallComments) &&
                 Objects.equals(facebook, userFull.facebook) &&
-                Objects.equals(verified, userFull.verified) &&
                 Objects.equals(universityName, userFull.universityName) &&
                 Objects.equals(educationStatus, userFull.educationStatus) &&
                 Objects.equals(canWritePrivateMessage, userFull.canWritePrivateMessage) &&
@@ -1177,9 +1132,7 @@ public class UserFull extends User {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserFull{");
-        sb.append("trending=").append(trending);
-        sb.append(", country=").append(country);
-        sb.append(", friendStatus=").append(friendStatus);
+        sb.append("country=").append(country);
         sb.append(", career=").append(career);
         sb.append(", tv='").append(tv).append("'");
         sb.append(", bdate='").append(bdate).append("'");
@@ -1240,7 +1193,6 @@ public class UserFull extends User {
         sb.append(", maidenName='").append(maidenName).append("'");
         sb.append(", wallComments=").append(wallComments);
         sb.append(", facebook='").append(facebook).append("'");
-        sb.append(", verified=").append(verified);
         sb.append(", universityName='").append(universityName).append("'");
         sb.append(", educationStatus='").append(educationStatus).append("'");
         sb.append(", canWritePrivateMessage=").append(canWritePrivateMessage);

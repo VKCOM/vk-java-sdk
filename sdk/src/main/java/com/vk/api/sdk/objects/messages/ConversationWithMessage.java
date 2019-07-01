@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * ConversationWithMessage object
  */
-public class ConversationWithMessage {
+public class ConversationWithMessage implements Validable {
     @SerializedName("conversation")
     private Conversation conversation;
 

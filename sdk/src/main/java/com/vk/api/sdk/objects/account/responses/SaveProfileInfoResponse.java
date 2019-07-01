@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.account.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.account.NameRequest;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * SaveProfileInfoResponse object
  */
-public class SaveProfileInfoResponse {
+public class SaveProfileInfoResponse implements Validable {
     /**
      * 1 if changes has been processed
      */

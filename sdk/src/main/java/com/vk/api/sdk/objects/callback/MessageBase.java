@@ -3,16 +3,20 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * MessageBase object
  */
-public class MessageBase {
+public class MessageBase implements Validable {
     @SerializedName("type")
+    @Required
     private MessageType type;
 
     @SerializedName("object")
+    @Required
     private JsonObject object;
 
     @SerializedName("group_id")

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * CommentReplies object
  */
-public class CommentReplies {
+public class CommentReplies implements Validable {
     /**
      * Information whether current user can comment the post
      */

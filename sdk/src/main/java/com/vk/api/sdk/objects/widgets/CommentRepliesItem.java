@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.Objects;
 
 /**
  * CommentRepliesItem object
  */
-public class CommentRepliesItem {
+public class CommentRepliesItem implements Validable {
     /**
      * Comment ID
      */

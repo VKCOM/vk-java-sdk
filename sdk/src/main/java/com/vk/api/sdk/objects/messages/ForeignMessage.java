@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.Geo;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * ForeignMessage object
  */
-public class ForeignMessage {
+public class ForeignMessage implements Validable {
     @SerializedName("attachments")
     private List<MessageAttachment> attachments;
 
@@ -23,6 +25,7 @@ public class ForeignMessage {
      * Date when the message was created
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -56,6 +59,7 @@ public class ForeignMessage {
      * Message text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**

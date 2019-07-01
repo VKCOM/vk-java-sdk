@@ -2,16 +2,19 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * MarketCommentDelete object
  */
-public class MarketCommentDelete {
+public class MarketCommentDelete implements Validable {
     @SerializedName("owner_id")
     private Integer ownerId;
 
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("user_id")

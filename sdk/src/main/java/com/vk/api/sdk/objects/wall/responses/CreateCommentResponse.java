@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.wall.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * CreateCommentResponse object
  */
-public class CreateCommentResponse {
+public class CreateCommentResponse implements Validable {
     /**
      * Created comment ID
      */

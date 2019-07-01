@@ -2,13 +2,15 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * CommentThread object
  */
-public class CommentThread {
+public class CommentThread implements Validable {
     /**
      * Information whether current user can comment the post
      */
@@ -19,6 +21,7 @@ public class CommentThread {
      * Comments number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     /**

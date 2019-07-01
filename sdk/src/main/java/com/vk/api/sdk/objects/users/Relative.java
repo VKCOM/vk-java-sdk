@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Relative object
  */
-public class Relative {
+public class Relative implements Validable {
     /**
      * Date of child birthday (format dd.mm.yyyy)
      */
@@ -30,6 +32,7 @@ public class Relative {
      * Relative type
      */
     @SerializedName("type")
+    @Required
     private RelativeType type;
 
     public String getBirthDate() {

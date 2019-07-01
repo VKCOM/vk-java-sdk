@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Image object
  */
-public class Image {
+public class Image implements Validable {
     /**
      * Height of the photo in px.
      */

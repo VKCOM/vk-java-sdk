@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.notifications;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.Geo;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.wall.WallpostAttachment;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * Feedback object
  */
-public class Feedback {
+public class Feedback implements Validable {
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
 

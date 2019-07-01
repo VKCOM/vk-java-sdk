@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.video;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.PropertyExists;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * VideoFull object
  */
-public class VideoFull {
+public class VideoFull implements Validable {
     /**
      * Video access key
      */

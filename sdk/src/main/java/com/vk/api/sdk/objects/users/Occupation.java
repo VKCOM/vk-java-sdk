@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Occupation object
  */
-public class Occupation {
+public class Occupation implements Validable {
     /**
      * ID of school, university, company group
      */

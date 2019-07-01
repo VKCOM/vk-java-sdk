@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.pages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.Objects;
@@ -9,11 +11,12 @@ import java.util.Objects;
 /**
  * WikipageFull object
  */
-public class WikipageFull {
+public class WikipageFull implements Validable {
     /**
      * Date when the page has been created in Unixtime
      */
     @SerializedName("created")
+    @Required
     private Integer created;
 
     /**
@@ -38,6 +41,7 @@ public class WikipageFull {
      * Date when the page has been edited in Unixtime
      */
     @SerializedName("edited")
+    @Required
     private Integer edited;
 
     /**
@@ -62,6 +66,7 @@ public class WikipageFull {
      * Page ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -74,6 +79,7 @@ public class WikipageFull {
      * Page title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
@@ -86,6 +92,7 @@ public class WikipageFull {
      * Views number
      */
     @SerializedName("views")
+    @Required
     private Integer views;
 
     /**

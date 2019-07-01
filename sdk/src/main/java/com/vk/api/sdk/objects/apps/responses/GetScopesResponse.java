@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.apps.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.Scope;
 import java.util.List;
 import java.util.Objects;
@@ -9,14 +11,16 @@ import java.util.Objects;
 /**
  * GetScopesResponse object
  */
-public class GetScopesResponse {
+public class GetScopesResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Scope> items;
 
     public Integer getCount() {

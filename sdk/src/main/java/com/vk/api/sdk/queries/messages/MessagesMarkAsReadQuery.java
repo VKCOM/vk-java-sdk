@@ -65,6 +65,27 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
         return unsafeParam("group_id", value);
     }
 
+    /**
+     * message_ids
+     * IDs of messages to mark as read.
+     *
+     * @param value value of "message ids" parameter. By default [].
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesMarkAsReadQuery messageIds(Integer... value) {
+        return unsafeParam("message_ids", value);
+    }
+
+    /**
+     * IDs of messages to mark as read.
+     *
+     * @param value value of "message ids" parameter. By default [].
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesMarkAsReadQuery messageIds(List<Integer> value) {
+        return unsafeParam("message_ids", value);
+    }
+
     @Override
     protected MessagesMarkAsReadQuery getThis() {
         return this;

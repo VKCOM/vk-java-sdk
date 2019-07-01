@@ -2,19 +2,23 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * ConfirmationMessage object
  */
-public class ConfirmationMessage {
+public class ConfirmationMessage implements Validable {
     @SerializedName("type")
+    @Required
     private MessageType type;
 
     @SerializedName("group_id")
     private Integer groupId;
 
     @SerializedName("secret")
+    @Required
     private String secret;
 
     public MessageType getType() {

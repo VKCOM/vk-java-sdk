@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * MutualFriend object
  */
-public class MutualFriend {
+public class MutualFriend implements Validable {
     /**
      * Total mutual friends number
      */

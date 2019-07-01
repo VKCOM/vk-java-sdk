@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.database;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * City object
  */
-public class City extends BaseObject {
+public class City extends BaseObject implements Validable {
     /**
      * Area title
      */

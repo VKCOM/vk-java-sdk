@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.apps.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetFriendsListResponse object
  */
-public class GetFriendsListResponse {
+public class GetFriendsListResponse implements Validable {
     /**
      * Total number
      */

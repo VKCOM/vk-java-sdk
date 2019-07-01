@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.CommentsInfo;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * WallpostFull object
  */
-public class WallpostFull extends Wallpost {
+public class WallpostFull extends Wallpost implements Validable {
     @SerializedName("copy_history")
     private List<Wallpost> copyHistory;
 

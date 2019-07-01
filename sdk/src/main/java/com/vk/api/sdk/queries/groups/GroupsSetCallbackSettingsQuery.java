@@ -100,6 +100,16 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Set message edit
+     *
+     * @param value value of "message edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageEdit(Boolean value) {
+        return unsafeParam("message_edit", value);
+    }
+
+    /**
      * Denied messages notifications ('0' — disabled, '1' — enabled).
      *
      * @param value value of "message deny" parameter.

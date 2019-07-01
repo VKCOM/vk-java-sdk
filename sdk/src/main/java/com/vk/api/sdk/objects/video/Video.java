@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.video;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import java.net.URL;
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * Video object
  */
-public class Video {
+public class Video implements Validable {
     /**
      * Video access key
      */

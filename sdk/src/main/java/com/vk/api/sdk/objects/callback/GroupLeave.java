@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * GroupLeave object
  */
-public class GroupLeave {
+public class GroupLeave implements Validable {
     @SerializedName("user_id")
     private Integer userId;
 

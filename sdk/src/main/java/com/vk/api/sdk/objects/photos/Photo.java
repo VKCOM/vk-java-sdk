@@ -2,13 +2,15 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Photo object
  */
-public class Photo {
+public class Photo implements Validable {
     /**
      * Access key for the photo
      */
@@ -25,6 +27,7 @@ public class Photo {
      * Date when uploaded
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -37,6 +40,7 @@ public class Photo {
      * Photo ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("images")

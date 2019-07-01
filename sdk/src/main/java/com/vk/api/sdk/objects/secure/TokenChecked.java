@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.secure;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Objects;
 
 /**
  * TokenChecked object
  */
-public class TokenChecked {
+public class TokenChecked implements Validable {
     /**
      * Date when access_token has been generated in Unixtime
      */

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.docs.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.docs.Doc;
 import com.vk.api.sdk.objects.docs.DocAttachmentType;
 import com.vk.api.sdk.objects.messages.AudioMessage;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * SaveResponse object
  */
-public class SaveResponse {
+public class SaveResponse implements Validable {
     @SerializedName("type")
     private DocAttachmentType type;
 

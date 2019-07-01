@@ -2,25 +2,30 @@ package com.vk.api.sdk.objects.market;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * MarketCategory object
  */
-public class MarketCategory {
+public class MarketCategory implements Validable {
     /**
      * Category ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Category name
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     @SerializedName("section")
+    @Required
     private Section section;
 
     public Integer getId() {

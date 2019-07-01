@@ -2,20 +2,24 @@ package com.vk.api.sdk.objects.stories.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetViewersResponse object
  */
-public class GetViewersResponse {
+public class GetViewersResponse implements Validable {
     /**
      * Viewers count
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Integer> items;
 
     public Integer getCount() {

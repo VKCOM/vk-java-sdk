@@ -2,22 +2,26 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * FriendsList object
  */
-public class FriendsList {
+public class FriendsList implements Validable {
     /**
      * List ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * List title
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     public Integer getId() {

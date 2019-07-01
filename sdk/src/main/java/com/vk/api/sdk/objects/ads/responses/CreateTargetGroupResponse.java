@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.ads.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * CreateTargetGroupResponse object
  */
-public class CreateTargetGroupResponse {
+public class CreateTargetGroupResponse implements Validable {
     /**
      * Group ID
      */

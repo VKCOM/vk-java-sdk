@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.leads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Checked object
  */
-public class Checked {
+public class Checked implements Validable {
     /**
      * Reason why user can't start the lead
      */

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.base.RepostsInfo;
@@ -14,7 +16,7 @@ import java.util.Objects;
 /**
  * WidgetComment object
  */
-public class WidgetComment {
+public class WidgetComment implements Validable {
     @SerializedName("attachments")
     private List<CommentAttachment> attachments;
 
@@ -31,6 +33,7 @@ public class WidgetComment {
      * Date when the comment has been added in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -43,6 +46,7 @@ public class WidgetComment {
      * Comment ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("likes")
@@ -67,6 +71,7 @@ public class WidgetComment {
      * Comment text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**

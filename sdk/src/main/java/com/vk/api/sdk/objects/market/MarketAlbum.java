@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.market;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.util.Objects;
 
 /**
  * MarketAlbum object
  */
-public class MarketAlbum {
+public class MarketAlbum implements Validable {
     /**
      * Items number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     /**
      * Market album ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -34,6 +38,7 @@ public class MarketAlbum {
      * Market album title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**

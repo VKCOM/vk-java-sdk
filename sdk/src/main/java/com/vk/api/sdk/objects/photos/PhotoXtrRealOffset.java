@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import java.net.URL;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * PhotoXtrRealOffset object
  */
-public class PhotoXtrRealOffset {
+public class PhotoXtrRealOffset implements Validable {
     /**
      * Access key for the photo
      */
@@ -27,6 +29,7 @@ public class PhotoXtrRealOffset {
      * Date when uploaded
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -45,6 +48,7 @@ public class PhotoXtrRealOffset {
      * Photo ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**

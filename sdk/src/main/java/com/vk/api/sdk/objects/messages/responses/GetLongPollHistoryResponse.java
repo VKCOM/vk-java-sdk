@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.messages.Chat;
 import com.vk.api.sdk.objects.messages.Conversation;
@@ -13,7 +14,7 @@ import java.util.Objects;
 /**
  * GetLongPollHistoryResponse object
  */
-public class GetLongPollHistoryResponse {
+public class GetLongPollHistoryResponse implements Validable {
     @SerializedName("history")
     private List<List<Integer>> history;
 

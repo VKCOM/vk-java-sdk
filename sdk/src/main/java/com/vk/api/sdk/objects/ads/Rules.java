@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Rules object
  */
-public class Rules {
+public class Rules implements Validable {
     @SerializedName("paragraphs")
     private List<Paragraphs> paragraphs;
 

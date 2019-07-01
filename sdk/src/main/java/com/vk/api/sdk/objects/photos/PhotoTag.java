@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * PhotoTag object
  */
-public class PhotoTag {
+public class PhotoTag implements Validable {
     /**
      * Date when tag has been added in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
      * Tag ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -43,30 +47,35 @@ public class PhotoTag {
      * Information whether the tag is reviewed
      */
     @SerializedName("viewed")
+    @Required
     private BoolInt viewed;
 
     /**
      * Coordinate X of the left upper corner
      */
     @SerializedName("x")
+    @Required
     private Float x;
 
     /**
      * Coordinate X of the right lower corner
      */
     @SerializedName("x2")
+    @Required
     private Float x2;
 
     /**
      * Coordinate Y of the left upper corner
      */
     @SerializedName("y")
+    @Required
     private Float y;
 
     /**
      * Coordinate Y of the right lower corner
      */
     @SerializedName("y2")
+    @Required
     private Float y2;
 
     public Integer getDate() {

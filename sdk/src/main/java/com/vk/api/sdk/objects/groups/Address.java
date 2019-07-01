@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Address object
  */
-public class Address {
+public class Address implements Validable {
     /**
      * Additional address to the place (6 floor, left door)
      */
@@ -42,6 +44,7 @@ public class Address {
      * Address id
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**

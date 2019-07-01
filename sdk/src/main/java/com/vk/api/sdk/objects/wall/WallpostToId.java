@@ -2,8 +2,8 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.CommentsInfo;
-import com.vk.api.sdk.objects.base.Geo;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.base.RepostsInfo;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * WallpostToId object
  */
-public class WallpostToId {
+public class WallpostToId implements Validable {
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
 

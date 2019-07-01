@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * Account object
  */
-public class Account {
+public class Account implements Validable {
     @SerializedName("access_role")
     private AccessRole accessRole;
 

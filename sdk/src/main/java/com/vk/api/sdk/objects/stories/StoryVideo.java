@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.stories;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.video.Video;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * StoryVideo object
  */
-public class StoryVideo extends Video {
+public class StoryVideo extends Video implements Validable {
     /**
      * Information whether story is private (0 - no, 1 - yes).
      */

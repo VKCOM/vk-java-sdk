@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.friends.RequestsXtrMessage;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetRequestsExtendedResponse object
  */
-public class GetRequestsExtendedResponse {
+public class GetRequestsExtendedResponse implements Validable {
     /**
      * Total requests number
      */

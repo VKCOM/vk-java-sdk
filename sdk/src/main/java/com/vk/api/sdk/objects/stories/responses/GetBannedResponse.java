@@ -2,20 +2,24 @@ package com.vk.api.sdk.objects.stories.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetBannedResponse object
  */
-public class GetBannedResponse {
+public class GetBannedResponse implements Validable {
     /**
      * Stories count
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Integer> items;
 
     public Integer getCount() {

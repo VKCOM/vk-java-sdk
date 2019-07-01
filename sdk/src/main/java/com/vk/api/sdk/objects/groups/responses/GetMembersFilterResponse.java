@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.MemberRole;
 import java.util.List;
 import java.util.Objects;
@@ -9,14 +11,16 @@ import java.util.Objects;
 /**
  * GetMembersFilterResponse object
  */
-public class GetMembersFilterResponse {
+public class GetMembersFilterResponse implements Validable {
     /**
      * Total members number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<MemberRole> items;
 
     public Integer getCount() {

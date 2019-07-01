@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.events;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFullMemberStatus;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * EventAttach object
  */
-public class EventAttach {
+public class EventAttach implements Validable {
     /**
      * address of event
      */
@@ -26,12 +28,14 @@ public class EventAttach {
      * array of friends ids
      */
     @SerializedName("friends")
+    @Required
     private List<Integer> friends;
 
     /**
      * event ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -50,6 +54,7 @@ public class EventAttach {
      * text of attach
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**

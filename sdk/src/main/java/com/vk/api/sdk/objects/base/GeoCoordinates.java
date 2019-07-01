@@ -2,16 +2,20 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * GeoCoordinates object
  */
-public class GeoCoordinates {
+public class GeoCoordinates implements Validable {
     @SerializedName("latitude")
+    @Required
     private Float latitude;
 
     @SerializedName("longitude")
+    @Required
     private Float longitude;
 
     public Float getLatitude() {

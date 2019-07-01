@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * AddListResponse object
  */
-public class AddListResponse {
+public class AddListResponse implements Validable {
     /**
      * List ID
      */

@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * ObjectCount object
  */
-public class ObjectCount {
+public class ObjectCount implements Validable {
     /**
      * Items count
      */

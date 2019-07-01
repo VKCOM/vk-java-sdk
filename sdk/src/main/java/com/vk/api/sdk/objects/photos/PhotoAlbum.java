@@ -2,16 +2,19 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * PhotoAlbum object
  */
-public class PhotoAlbum {
+public class PhotoAlbum implements Validable {
     /**
      * Date when the album has been created in Unixtime
      */
     @SerializedName("created")
+    @Required
     private Integer created;
 
     /**
@@ -24,6 +27,7 @@ public class PhotoAlbum {
      * Photo album ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -36,6 +40,7 @@ public class PhotoAlbum {
      * Photos number
      */
     @SerializedName("size")
+    @Required
     private Integer size;
 
     @SerializedName("thumb")
@@ -45,12 +50,14 @@ public class PhotoAlbum {
      * Photo album title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
      * Date when the album has been updated last time in Unixtime
      */
     @SerializedName("updated")
+    @Required
     private Integer updated;
 
     public Integer getCreated() {

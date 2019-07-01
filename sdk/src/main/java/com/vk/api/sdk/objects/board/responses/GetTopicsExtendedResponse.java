@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.board.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.board.DefaultOrder;
 import com.vk.api.sdk.objects.board.Topic;
@@ -12,14 +14,16 @@ import java.util.Objects;
 /**
  * GetTopicsExtendedResponse object
  */
-public class GetTopicsExtendedResponse {
+public class GetTopicsExtendedResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Topic> items;
 
     @SerializedName("default_order")
@@ -32,6 +36,7 @@ public class GetTopicsExtendedResponse {
     private BoolInt canAddTopics;
 
     @SerializedName("profiles")
+    @Required
     private List<UserMin> profiles;
 
     public Integer getCount() {

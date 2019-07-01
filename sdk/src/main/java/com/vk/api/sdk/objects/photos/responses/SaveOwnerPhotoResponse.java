@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.photos.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * SaveOwnerPhotoResponse object
  */
-public class SaveOwnerPhotoResponse {
+public class SaveOwnerPhotoResponse implements Validable {
     /**
      * Parameter for saveProfilePhoto method
      */

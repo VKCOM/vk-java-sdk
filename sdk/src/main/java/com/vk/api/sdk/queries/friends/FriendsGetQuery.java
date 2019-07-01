@@ -99,6 +99,16 @@ public class FriendsGetQuery extends AbstractQueryBuilder<FriendsGetQuery, GetRe
     }
 
     /**
+     * Set ref
+     *
+     * @param value value of "ref" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetQuery ref(String value) {
+        return unsafeParam("ref", value);
+    }
+
+    /**
      * fields
      * Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
      *

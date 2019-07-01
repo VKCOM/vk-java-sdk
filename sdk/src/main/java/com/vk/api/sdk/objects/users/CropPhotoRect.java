@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * CropPhotoRect object
  */
-public class CropPhotoRect {
+public class CropPhotoRect implements Validable {
     /**
      * Coordinate X of the left upper corner
      */

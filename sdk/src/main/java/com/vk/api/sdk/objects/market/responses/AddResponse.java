@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.market.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * AddResponse object
  */
-public class AddResponse {
+public class AddResponse implements Validable {
     /**
      * Item ID
      */

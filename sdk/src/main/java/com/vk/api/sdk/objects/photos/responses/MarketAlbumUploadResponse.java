@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.photos.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * MarketAlbumUploadResponse object
  */
-public class MarketAlbumUploadResponse {
+public class MarketAlbumUploadResponse implements Validable {
     /**
      * Community ID
      */

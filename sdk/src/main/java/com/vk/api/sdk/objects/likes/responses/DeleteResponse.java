@@ -2,16 +2,19 @@ package com.vk.api.sdk.objects.likes.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * DeleteResponse object
  */
-public class DeleteResponse {
+public class DeleteResponse implements Validable {
     /**
      * Total likes number
      */
     @SerializedName("likes")
+    @Required
     private Integer likes;
 
     public Integer getLikes() {

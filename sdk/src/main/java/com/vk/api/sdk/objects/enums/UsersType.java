@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
+ * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
  */
 public enum UsersType implements EnumParam {
     @SerializedName("porn")
@@ -16,8 +16,8 @@ public enum UsersType implements EnumParam {
     @SerializedName("insult")
     INSULT("insult"),
 
-    @SerializedName("advertisment")
-    ADVERTISMENT("advertisment");
+    @SerializedName("advertisement")
+    ADVERTISEMENT("advertisement");
 
     private final String value;
 

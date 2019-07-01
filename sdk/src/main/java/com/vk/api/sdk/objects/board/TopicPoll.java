@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.board;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.polls.Answer;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * TopicPoll object
  */
-public class TopicPoll {
+public class TopicPoll implements Validable {
     /**
      * Current user's answer ID
      */
@@ -18,12 +20,14 @@ public class TopicPoll {
     private Integer answerId;
 
     @SerializedName("answers")
+    @Required
     private List<Answer> answers;
 
     /**
      * Date when poll has been created in Unixtime
      */
     @SerializedName("created")
+    @Required
     private Integer created;
 
     /**
@@ -48,12 +52,14 @@ public class TopicPoll {
      * Poll question
      */
     @SerializedName("question")
+    @Required
     private String question;
 
     /**
      * Votes number
      */
     @SerializedName("votes")
+    @Required
     private String votes;
 
     public Integer getAnswerId() {

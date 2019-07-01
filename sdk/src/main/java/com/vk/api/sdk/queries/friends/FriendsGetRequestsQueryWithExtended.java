@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.FriendsSort;
 import com.vk.api.sdk.objects.friends.responses.GetRequestsExtendedResponse;
+import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
     /**
      * Number of friend requests to return (default 100, maximum 1000).
      *
-     * @param value value of "count" parameter. Minimum is 0.
+     * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public FriendsGetRequestsQueryWithExtended count(Integer value) {
@@ -102,6 +103,37 @@ public class FriendsGetRequestsQueryWithExtended extends AbstractQueryBuilder<Fr
      */
     public FriendsGetRequestsQueryWithExtended suggested(Boolean value) {
         return unsafeParam("suggested", value);
+    }
+
+    /**
+     * Set ref
+     *
+     * @param value value of "ref" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetRequestsQueryWithExtended ref(String value) {
+        return unsafeParam("ref", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetRequestsQueryWithExtended fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsGetRequestsQueryWithExtended fields(List<Fields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

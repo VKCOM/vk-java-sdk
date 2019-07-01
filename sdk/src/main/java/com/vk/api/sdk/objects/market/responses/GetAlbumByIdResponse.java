@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.market.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.market.MarketAlbum;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetAlbumByIdResponse object
  */
-public class GetAlbumByIdResponse {
+public class GetAlbumByIdResponse implements Validable {
     /**
      * Total number
      */

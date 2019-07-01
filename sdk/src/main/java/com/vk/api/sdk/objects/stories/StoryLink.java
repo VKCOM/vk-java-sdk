@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.stories;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * StoryLink object
  */
-public class StoryLink {
+public class StoryLink implements Validable {
     /**
      * Link text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**
      * Link URL
      */
     @SerializedName("url")
+    @Required
     private URL url;
 
     public String getText() {

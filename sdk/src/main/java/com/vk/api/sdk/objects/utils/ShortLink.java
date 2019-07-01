@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * ShortLink object
  */
-public class ShortLink {
+public class ShortLink implements Validable {
     /**
      * Access key for private stats
      */

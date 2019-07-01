@@ -2,13 +2,16 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * KeyboardButton object
  */
-public class KeyboardButton {
+public class KeyboardButton implements Validable {
     @SerializedName("action")
+    @Required
     private KeyboardButtonAction action;
 
     /**

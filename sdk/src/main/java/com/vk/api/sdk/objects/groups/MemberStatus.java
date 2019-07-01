@@ -2,17 +2,20 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * MemberStatus object
  */
-public class MemberStatus {
+public class MemberStatus implements Validable {
     /**
      * Information whether user is a member of the group
      */
     @SerializedName("member")
+    @Required
     private BoolInt member;
 
     /**

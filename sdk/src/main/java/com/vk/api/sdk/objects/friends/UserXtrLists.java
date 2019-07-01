@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * UserXtrLists object
  */
-public class UserXtrLists extends UserFull {
+public class UserXtrLists extends UserFull implements Validable {
     @SerializedName("lists")
     private List<Integer> lists;
 

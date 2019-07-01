@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * LastActivity object
  */
-public class LastActivity {
+public class LastActivity implements Validable {
     /**
      * Information whether user is online
      */
     @SerializedName("online")
+    @Required
     private BoolInt online;
 
     /**
      * Time when user was online in Unixtime
      */
     @SerializedName("time")
+    @Required
     private Integer time;
 
     public boolean isOnline() {

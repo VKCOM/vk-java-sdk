@@ -2,31 +2,39 @@ package com.vk.api.sdk.objects.stories;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * StoryStats object
  */
-public class StoryStats {
+public class StoryStats implements Validable {
     @SerializedName("answer")
+    @Required
     private StoryStatsStat answer;
 
     @SerializedName("bans")
+    @Required
     private StoryStatsStat bans;
 
     @SerializedName("open_link")
     private StoryStatsStat openLink;
 
     @SerializedName("replies")
+    @Required
     private StoryStatsStat replies;
 
     @SerializedName("shares")
+    @Required
     private StoryStatsStat shares;
 
     @SerializedName("subscribers")
+    @Required
     private StoryStatsStat subscribers;
 
     @SerializedName("views")
+    @Required
     private StoryStatsStat views;
 
     public StoryStatsStat getAnswer() {

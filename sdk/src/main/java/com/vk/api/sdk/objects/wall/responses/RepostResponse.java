@@ -2,14 +2,17 @@ package com.vk.api.sdk.objects.wall.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Objects;
 
 /**
  * RepostResponse object
  */
-public class RepostResponse {
+public class RepostResponse implements Validable {
     @SerializedName("success")
+    @Required
     private OkResponse success;
 
     /**

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.stories.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
@@ -10,20 +12,24 @@ import java.util.Objects;
 /**
  * GetBannedExtendedResponse object
  */
-public class GetBannedExtendedResponse {
+public class GetBannedExtendedResponse implements Validable {
     /**
      * Stories count
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Integer> items;
 
     @SerializedName("profiles")
+    @Required
     private List<UserFull> profiles;
 
     @SerializedName("groups")
+    @Required
     private List<GroupFull> groups;
 
     public Integer getCount() {

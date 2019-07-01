@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.leads.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * MetricHitResponse object
  */
-public class MetricHitResponse {
+public class MetricHitResponse implements Validable {
     /**
      * Information whether request has been processed successfully
      */

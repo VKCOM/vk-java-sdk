@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.orders;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Amount object
  */
-public class Amount {
+public class Amount implements Validable {
     @SerializedName("amounts")
     private List<AmountItem> amounts;
 

@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.orders;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * AmountItem object
  */
-public class AmountItem {
+public class AmountItem implements Validable {
     /**
      * Votes amount in user's currency
      */

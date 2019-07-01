@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.wall.CommentAttachment;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * CommentXtrPid object
  */
-public class CommentXtrPid {
+public class CommentXtrPid implements Validable {
     @SerializedName("attachments")
     private List<CommentAttachment> attachments;
 
@@ -18,6 +20,7 @@ public class CommentXtrPid {
      * Date when the comment has been added in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -30,6 +33,7 @@ public class CommentXtrPid {
      * Comment ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("likes")
@@ -39,6 +43,7 @@ public class CommentXtrPid {
      * Photo ID
      */
     @SerializedName("pid")
+    @Required
     private Integer pid;
 
     /**
@@ -57,6 +62,7 @@ public class CommentXtrPid {
      * Comment text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     public List<CommentAttachment> getAttachments() {

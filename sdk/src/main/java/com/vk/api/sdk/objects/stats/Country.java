@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.stats;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Country object
  */
-public class Country {
+public class Country implements Validable {
     /**
      * Country code
      */

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.ObjectCount;
@@ -11,7 +13,7 @@ import java.util.Objects;
 /**
  * PhotoFull object
  */
-public class PhotoFull {
+public class PhotoFull implements Validable {
     /**
      * Access key for the photo
      */
@@ -37,6 +39,7 @@ public class PhotoFull {
      * Date when uploaded
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -49,6 +52,7 @@ public class PhotoFull {
      * Photo ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("images")

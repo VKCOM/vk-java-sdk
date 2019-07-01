@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.Geo;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * PinnedMessage object
  */
-public class PinnedMessage {
+public class PinnedMessage implements Validable {
     @SerializedName("attachments")
     private List<MessageAttachment> attachments;
 
@@ -23,6 +25,7 @@ public class PinnedMessage {
      * Date when the message has been sent in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -31,8 +34,11 @@ public class PinnedMessage {
     @SerializedName("from_id")
     private Integer fromId;
 
+    /**
+     * Forwarded messages
+     */
     @SerializedName("fwd_messages")
-    private ForeignMessage fwdMessages;
+    private List<ForeignMessage> fwdMessages;
 
     @SerializedName("geo")
     private Geo geo;
@@ -41,6 +47,7 @@ public class PinnedMessage {
      * Message ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -56,6 +63,7 @@ public class PinnedMessage {
      * Message text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     public List<MessageAttachment> getAttachments() {
@@ -94,11 +102,11 @@ public class PinnedMessage {
         return this;
     }
 
-    public ForeignMessage getFwdMessages() {
+    public List<ForeignMessage> getFwdMessages() {
         return fwdMessages;
     }
 
-    public PinnedMessage setFwdMessages(ForeignMessage fwdMessages) {
+    public PinnedMessage setFwdMessages(List<ForeignMessage> fwdMessages) {
         this.fwdMessages = fwdMessages;
         return this;
     }

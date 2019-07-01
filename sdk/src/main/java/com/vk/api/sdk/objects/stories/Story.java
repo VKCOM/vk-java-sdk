@@ -2,15 +2,16 @@ package com.vk.api.sdk.objects.stories;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.photos.Photo;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * Story object
  */
-public class Story {
+public class Story implements Validable {
     /**
      * Access key for private object.
      */
@@ -48,9 +49,16 @@ public class Story {
     private Integer date;
 
     /**
+     * Story expiration time. Unixtime.
+     */
+    @SerializedName("expires_at")
+    private Integer expiresAt;
+
+    /**
      * Story ID.
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -102,7 +110,7 @@ public class Story {
      * Replies to current story.
      */
     @SerializedName("replies")
-    private List<Replies> replies;
+    private Replies replies;
 
     /**
      * Information whether current user has seen the story or not (0 - no, 1 - yes).
@@ -121,6 +129,30 @@ public class Story {
      */
     @SerializedName("views")
     private Integer views;
+
+    /**
+     * Does author have stories privacy restrictions
+     */
+    @SerializedName("is_restricted")
+    private Boolean isRestricted;
+
+    /**
+     * Is video without sound
+     */
+    @SerializedName("no_sound")
+    private Boolean noSound;
+
+    /**
+     * Information whether story has question sticker and current user can send question to the author
+     */
+    @SerializedName("can_ask")
+    private Boolean canAsk;
+
+    /**
+     * Information whether story has question sticker and current user can send anonymous question to the author
+     */
+    @SerializedName("can_ask_anonymous")
+    private Boolean canAskAnonymous;
 
     public String getAccessKey() {
         return accessKey;
@@ -169,6 +201,15 @@ public class Story {
 
     public Story setDate(Integer date) {
         this.date = date;
+        return this;
+    }
+
+    public Integer getExpiresAt() {
+        return expiresAt;
+    }
+
+    public Story setExpiresAt(Integer expiresAt) {
+        this.expiresAt = expiresAt;
         return this;
     }
 
@@ -262,11 +303,11 @@ public class Story {
         return this;
     }
 
-    public List<Replies> getReplies() {
+    public Replies getReplies() {
         return replies;
     }
 
-    public Story setReplies(List<Replies> replies) {
+    public Story setReplies(Replies replies) {
         this.replies = replies;
         return this;
     }
@@ -306,9 +347,45 @@ public class Story {
         return this;
     }
 
+    public Boolean getIsRestricted() {
+        return isRestricted;
+    }
+
+    public Story setIsRestricted(Boolean isRestricted) {
+        this.isRestricted = isRestricted;
+        return this;
+    }
+
+    public Boolean getNoSound() {
+        return noSound;
+    }
+
+    public Story setNoSound(Boolean noSound) {
+        this.noSound = noSound;
+        return this;
+    }
+
+    public Boolean getCanAsk() {
+        return canAsk;
+    }
+
+    public Story setCanAsk(Boolean canAsk) {
+        this.canAsk = canAsk;
+        return this;
+    }
+
+    public Boolean getCanAskAnonymous() {
+        return canAskAnonymous;
+    }
+
+    public Story setCanAskAnonymous(Boolean canAskAnonymous) {
+        this.canAskAnonymous = canAskAnonymous;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, canReply, canShare, link, photo, parentStoryId, video, ownerId, type, seen, parentStory, isDeleted, replies, accessKey, parentStoryOwnerId, canSee, canComment, id, isExpired, parentStoryAccessKey, views);
+        return Objects.hash(date, canReply, link, video, ownerId, type, seen, noSound, isDeleted, canSee, canComment, id, views, parentStoryAccessKey, canAskAnonymous, canShare, photo, parentStoryId, expiresAt, canAsk, parentStory, replies, accessKey, parentStoryOwnerId, isExpired, isRestricted);
     }
 
     @Override
@@ -317,26 +394,31 @@ public class Story {
         if (o == null || getClass() != o.getClass()) return false;
         Story story = (Story) o;
         return Objects.equals(date, story.date) &&
+                Objects.equals(canAsk, story.canAsk) &&
                 Objects.equals(ownerId, story.ownerId) &&
-                Objects.equals(canShare, story.canShare) &&
+                Objects.equals(isRestricted, story.isRestricted) &&
                 Objects.equals(link, story.link) &&
-                Objects.equals(photo, story.photo) &&
                 Objects.equals(video, story.video) &&
                 Objects.equals(type, story.type) &&
-                Objects.equals(parentStoryAccessKey, story.parentStoryAccessKey) &&
-                Objects.equals(canSee, story.canSee) &&
                 Objects.equals(seen, story.seen) &&
-                Objects.equals(parentStory, story.parentStory) &&
-                Objects.equals(parentStoryOwnerId, story.parentStoryOwnerId) &&
                 Objects.equals(parentStoryId, story.parentStoryId) &&
                 Objects.equals(canComment, story.canComment) &&
-                Objects.equals(canReply, story.canReply) &&
+                Objects.equals(canAskAnonymous, story.canAskAnonymous) &&
+                Objects.equals(expiresAt, story.expiresAt) &&
                 Objects.equals(isDeleted, story.isDeleted) &&
+                Objects.equals(id, story.id) &&
+                Objects.equals(views, story.views) &&
+                Objects.equals(canShare, story.canShare) &&
+                Objects.equals(photo, story.photo) &&
+                Objects.equals(noSound, story.noSound) &&
+                Objects.equals(parentStoryAccessKey, story.parentStoryAccessKey) &&
+                Objects.equals(canSee, story.canSee) &&
+                Objects.equals(parentStory, story.parentStory) &&
+                Objects.equals(parentStoryOwnerId, story.parentStoryOwnerId) &&
+                Objects.equals(canReply, story.canReply) &&
                 Objects.equals(isExpired, story.isExpired) &&
                 Objects.equals(replies, story.replies) &&
-                Objects.equals(accessKey, story.accessKey) &&
-                Objects.equals(id, story.id) &&
-                Objects.equals(views, story.views);
+                Objects.equals(accessKey, story.accessKey);
     }
 
     @Override
@@ -348,26 +430,31 @@ public class Story {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Story{");
         sb.append("date=").append(date);
+        sb.append(", canAsk=").append(canAsk);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", canShare=").append(canShare);
+        sb.append(", isRestricted=").append(isRestricted);
         sb.append(", link=").append(link);
-        sb.append(", photo=").append(photo);
         sb.append(", video=").append(video);
         sb.append(", type=").append(type);
-        sb.append(", parentStoryAccessKey='").append(parentStoryAccessKey).append("'");
-        sb.append(", canSee=").append(canSee);
         sb.append(", seen=").append(seen);
-        sb.append(", parentStory=").append(parentStory);
-        sb.append(", parentStoryOwnerId=").append(parentStoryOwnerId);
         sb.append(", parentStoryId=").append(parentStoryId);
         sb.append(", canComment=").append(canComment);
-        sb.append(", canReply=").append(canReply);
+        sb.append(", canAskAnonymous=").append(canAskAnonymous);
+        sb.append(", expiresAt=").append(expiresAt);
         sb.append(", isDeleted=").append(isDeleted);
+        sb.append(", id=").append(id);
+        sb.append(", views=").append(views);
+        sb.append(", canShare=").append(canShare);
+        sb.append(", photo=").append(photo);
+        sb.append(", noSound=").append(noSound);
+        sb.append(", parentStoryAccessKey='").append(parentStoryAccessKey).append("'");
+        sb.append(", canSee=").append(canSee);
+        sb.append(", parentStory=").append(parentStory);
+        sb.append(", parentStoryOwnerId=").append(parentStoryOwnerId);
+        sb.append(", canReply=").append(canReply);
         sb.append(", isExpired=").append(isExpired);
         sb.append(", replies=").append(replies);
         sb.append(", accessKey='").append(accessKey).append("'");
-        sb.append(", id=").append(id);
-        sb.append(", views=").append(views);
         sb.append('}');
         return sb.toString();
     }

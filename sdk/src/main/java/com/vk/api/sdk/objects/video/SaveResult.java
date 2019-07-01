@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.video;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * SaveResult object
  */
-public class SaveResult {
+public class SaveResult implements Validable {
     /**
      * Video description
      */

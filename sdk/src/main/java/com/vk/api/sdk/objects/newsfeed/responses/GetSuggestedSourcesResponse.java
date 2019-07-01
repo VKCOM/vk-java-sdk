@@ -3,13 +3,14 @@ package com.vk.api.sdk.objects.newsfeed.responses;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetSuggestedSourcesResponse object
  */
-public class GetSuggestedSourcesResponse {
+public class GetSuggestedSourcesResponse implements Validable {
     /**
      * Total number
      */

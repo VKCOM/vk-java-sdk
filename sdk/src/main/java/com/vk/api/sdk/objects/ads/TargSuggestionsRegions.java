@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * TargSuggestionsRegions object
  */
-public class TargSuggestionsRegions {
+public class TargSuggestionsRegions implements Validable {
     /**
      * Object ID
      */

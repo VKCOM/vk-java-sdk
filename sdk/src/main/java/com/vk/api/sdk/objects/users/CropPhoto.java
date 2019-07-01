@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.util.Objects;
 
 /**
  * CropPhoto object
  */
-public class CropPhoto {
+public class CropPhoto implements Validable {
     @SerializedName("crop")
     private CropPhotoCrop crop;
 

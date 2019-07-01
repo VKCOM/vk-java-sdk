@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.Country;
 import com.vk.api.sdk.objects.base.Sex;
@@ -12,7 +13,7 @@ import java.util.Objects;
 /**
  * UserSettings object
  */
-public class UserSettings {
+public class UserSettings implements Validable {
     /**
      * User's date of birth
      */

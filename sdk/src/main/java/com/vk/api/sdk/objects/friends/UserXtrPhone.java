@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.Objects;
 
 /**
  * UserXtrPhone object
  */
-public class UserXtrPhone extends UserFull {
+public class UserXtrPhone extends UserFull implements Validable {
     /**
      * User phone
      */

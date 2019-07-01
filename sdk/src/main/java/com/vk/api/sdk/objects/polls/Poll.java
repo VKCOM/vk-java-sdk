@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.polls;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.List;
 import java.util.Objects;
@@ -9,11 +11,12 @@ import java.util.Objects;
 /**
  * Poll object
  */
-public class Poll {
+public class Poll implements Validable {
     /**
      * Information whether the pole is anonymous
      */
     @SerializedName("anonymous")
+    @Required
     private BoolInt anonymous;
 
     /**
@@ -23,18 +26,21 @@ public class Poll {
     private Integer answerId;
 
     @SerializedName("answers")
+    @Required
     private List<Answer> answers;
 
     /**
      * Date when poll has been created in Unixtime
      */
     @SerializedName("created")
+    @Required
     private Integer created;
 
     /**
      * Poll ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -47,12 +53,14 @@ public class Poll {
      * Poll question
      */
     @SerializedName("question")
+    @Required
     private String question;
 
     /**
      * Votes number
      */
     @SerializedName("votes")
+    @Required
     private String votes;
 
     public boolean isAnonymous() {

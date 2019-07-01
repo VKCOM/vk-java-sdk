@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * Chat object
  */
-public class Chat {
+public class Chat implements Validable {
     /**
      * Chat creator ID
      */
@@ -21,6 +23,7 @@ public class Chat {
      * Chat ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -66,9 +69,11 @@ public class Chat {
      * Chat type
      */
     @SerializedName("type")
+    @Required
     private String type;
 
     @SerializedName("users")
+    @Required
     private List<Integer> users;
 
     public Integer getAdminId() {

@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * FriendStatus object
  */
-public class FriendStatus {
+public class FriendStatus implements Validable {
     @SerializedName("friend_status")
     private FriendStatusStatus friendStatus;
 

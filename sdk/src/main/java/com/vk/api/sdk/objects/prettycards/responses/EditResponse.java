@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.prettycards.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * EditResponse object
  */
-public class EditResponse {
+public class EditResponse implements Validable {
     /**
      * Owner ID of edited pretty card
      */

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.market;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.photos.Photo;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * MarketItemFull object
  */
-public class MarketItemFull extends MarketItem {
+public class MarketItemFull extends MarketItem implements Validable {
     @SerializedName("albums_ids")
     private List<Integer> albumsIds;
 

@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.streaming.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * GetServerUrlResponse object
  */
-public class GetServerUrlResponse {
+public class GetServerUrlResponse implements Validable {
     /**
      * Server host
      */

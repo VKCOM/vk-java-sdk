@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.Objects;
 
 /**
  * UserXtrRole object
  */
-public class UserXtrRole extends UserFull {
+public class UserXtrRole extends UserFull implements Validable {
     @SerializedName("role")
     private RoleOptions role;
 

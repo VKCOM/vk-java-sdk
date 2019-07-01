@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * JoinChatByInviteLinkResponse object
  */
-public class JoinChatByInviteLinkResponse {
+public class JoinChatByInviteLinkResponse implements Validable {
     @SerializedName("chat_id")
     private Integer chatId;
 

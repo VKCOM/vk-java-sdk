@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.prettycards;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.Image;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * PrettyCard object
  */
-public class PrettyCard {
+public class PrettyCard implements Validable {
     /**
      * Button key
      */
@@ -41,6 +43,7 @@ public class PrettyCard {
      * Photo ID (format "<owner_id>_<media_id>")
      */
     @SerializedName("photo")
+    @Required
     private String photo;
 
     /**
@@ -59,6 +62,7 @@ public class PrettyCard {
      * Title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     public String getButton() {

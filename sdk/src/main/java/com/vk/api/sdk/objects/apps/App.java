@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.apps;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.net.URL;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * App object
  */
-public class App {
+public class App implements Validable {
     /**
      * Official community's ID
      */
@@ -96,6 +98,7 @@ public class App {
      * Application ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -150,9 +153,11 @@ public class App {
      * Application title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     @SerializedName("type")
+    @Required
     private AppType type;
 
     public Integer getAuthorGroup() {

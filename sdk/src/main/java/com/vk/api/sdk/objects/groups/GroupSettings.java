@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * GroupSettings object
  */
-public class GroupSettings {
+public class GroupSettings implements Validable {
     /**
      * Community access settings
      */

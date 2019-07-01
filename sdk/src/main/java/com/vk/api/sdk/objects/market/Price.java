@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.market;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Price object
  */
-public class Price {
+public class Price implements Validable {
     /**
      * Amount
      */

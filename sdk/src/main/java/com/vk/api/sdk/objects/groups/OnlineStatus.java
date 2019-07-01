@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Online status of group
  */
-public class OnlineStatus {
+public class OnlineStatus implements Validable {
     /**
      * Estimated time of answer (for status = answer_mark)
      */
@@ -15,6 +17,7 @@ public class OnlineStatus {
     private Integer minutes;
 
     @SerializedName("status")
+    @Required
     private OnlineStatusType status;
 
     public Integer getMinutes() {

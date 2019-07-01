@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * UserXtrType object
  */
-public class UserXtrType extends User {
+public class UserXtrType extends User implements Validable {
     @SerializedName("type")
     private UserType type;
 

@@ -38,7 +38,7 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
     }
 
     /**
-     * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
+     * Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -2,28 +2,34 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * CallbackServer object
  */
-public class CallbackServer {
+public class CallbackServer implements Validable {
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("title")
+    @Required
     private String title;
 
     @SerializedName("creator_id")
     private Integer creatorId;
 
     @SerializedName("url")
+    @Required
     private String url;
 
     @SerializedName("secret_key")
     private String secretKey;
 
     @SerializedName("status")
+    @Required
     private CallbackServerStatus status;
 
     public Integer getId() {

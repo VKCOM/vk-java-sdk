@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.search.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.search.Hint;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetHintsResponse object
  */
-public class GetHintsResponse {
+public class GetHintsResponse implements Validable {
     @SerializedName("items")
     private List<Hint> items;
 

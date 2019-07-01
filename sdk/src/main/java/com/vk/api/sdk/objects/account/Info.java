@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * Info object
  */
-public class Info {
+public class Info implements Validable {
     /**
      * Two factor authentication is enabled
      */

@@ -2,34 +2,40 @@ package com.vk.api.sdk.objects.polls;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Answer object
  */
-public class Answer {
+public class Answer implements Validable {
     /**
      * Answer ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Answer rate in percents
      */
     @SerializedName("rate")
+    @Required
     private Float rate;
 
     /**
      * Answer text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**
      * Votes number
      */
     @SerializedName("votes")
+    @Required
     private Integer votes;
 
     public Integer getId() {
