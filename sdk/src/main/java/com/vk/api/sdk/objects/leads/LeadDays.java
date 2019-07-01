@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.leads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * LeadDays object
  */
-public class LeadDays {
+public class LeadDays implements Validable {
     /**
      * Completed offers number
      */

@@ -3,20 +3,24 @@ package com.vk.api.sdk.objects.users.responses;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetSubscriptionsExtendedResponse object
  */
-public class GetSubscriptionsExtendedResponse {
+public class GetSubscriptionsExtendedResponse implements Validable {
     /**
      * Total number of available results
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<JsonObject> items;
 
     public Integer getCount() {

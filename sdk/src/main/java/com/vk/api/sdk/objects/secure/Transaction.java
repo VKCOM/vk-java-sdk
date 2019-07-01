@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.secure;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Transaction object
  */
-public class Transaction {
+public class Transaction implements Validable {
     /**
      * Transaction date in Unixtime
      */

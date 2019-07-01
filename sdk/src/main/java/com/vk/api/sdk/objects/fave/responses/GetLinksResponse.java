@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.fave.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.fave.FavesLink;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * GetLinksResponse object
  */
-public class GetLinksResponse {
+public class GetLinksResponse implements Validable {
     /**
      * Total number
      */

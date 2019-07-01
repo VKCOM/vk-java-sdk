@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * UserXtrCounters object
  */
-public class UserXtrCounters extends UserFull {
+public class UserXtrCounters extends UserFull implements Validable {
     @SerializedName("counters")
     private UserCounters counters;
 

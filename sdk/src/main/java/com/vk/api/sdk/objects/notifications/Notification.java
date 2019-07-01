@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.notifications;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Notification object
  */
-public class Notification {
+public class Notification implements Validable {
     /**
      * Date when the event has been occured
      */

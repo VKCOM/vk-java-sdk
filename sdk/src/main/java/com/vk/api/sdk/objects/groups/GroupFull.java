@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Country;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * GroupFull object
  */
-public class GroupFull extends Group {
+public class GroupFull extends Group implements Validable {
     @SerializedName("market")
     private MarketInfo market;
 

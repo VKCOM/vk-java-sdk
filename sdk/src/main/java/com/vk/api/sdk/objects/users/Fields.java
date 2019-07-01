@@ -194,7 +194,16 @@ public enum Fields implements EnumParam {
     BLACKLISTED_BY_ME("blacklisted_by_me"),
 
     @SerializedName("can_subscribe_posts")
-    CAN_SUBSCRIBE_POSTS("can_subscribe_posts");
+    CAN_SUBSCRIBE_POSTS("can_subscribe_posts"),
+
+    @SerializedName("descriptions")
+    DESCRIPTIONS("descriptions"),
+
+    @SerializedName("trending")
+    TRENDING("trending"),
+
+    @SerializedName("mutual")
+    MUTUAL("mutual");
 
     private final String value;
 

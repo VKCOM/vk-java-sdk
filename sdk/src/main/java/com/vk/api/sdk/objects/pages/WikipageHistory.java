@@ -2,28 +2,33 @@ package com.vk.api.sdk.objects.pages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * WikipageHistory object
  */
-public class WikipageHistory {
+public class WikipageHistory implements Validable {
     /**
      * Version ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Page size in bytes
      */
     @SerializedName("length")
+    @Required
     private Integer length;
 
     /**
      * Date when the page has been edited in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**

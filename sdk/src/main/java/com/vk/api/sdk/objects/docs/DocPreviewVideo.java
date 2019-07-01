@@ -2,35 +2,41 @@ package com.vk.api.sdk.objects.docs;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * DocPreviewVideo object
  */
-public class DocPreviewVideo {
+public class DocPreviewVideo implements Validable {
     /**
      * Video file size in bites
      */
     @SerializedName("filesize")
+    @Required
     private Integer filesize;
 
     /**
      * Video's height in pixels
      */
     @SerializedName("height")
+    @Required
     private Integer height;
 
     /**
      * Video URL
      */
     @SerializedName("src")
+    @Required
     private URL src;
 
     /**
      * Video's width in pixels
      */
     @SerializedName("width")
+    @Required
     private Integer width;
 
     public Integer getFilesize() {

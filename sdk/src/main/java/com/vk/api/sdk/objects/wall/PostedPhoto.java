@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * PostedPhoto object
  */
-public class PostedPhoto {
+public class PostedPhoto implements Validable {
     /**
      * Photo ID
      */

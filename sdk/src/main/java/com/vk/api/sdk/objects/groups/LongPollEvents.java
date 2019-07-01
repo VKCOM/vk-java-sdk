@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * LongPollEvents object
  */
-public class LongPollEvents {
+public class LongPollEvents implements Validable {
     @SerializedName("audio_new")
     private BoolInt audioNew;
 

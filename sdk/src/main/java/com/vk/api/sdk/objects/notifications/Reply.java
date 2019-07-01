@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.notifications;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Reply object
  */
-public class Reply {
+public class Reply implements Validable {
     /**
      * Date when the reply has been created in Unixtime
      */

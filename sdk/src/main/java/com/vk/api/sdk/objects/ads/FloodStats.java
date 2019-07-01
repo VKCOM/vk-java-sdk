@@ -2,22 +2,26 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * FloodStats object
  */
-public class FloodStats {
+public class FloodStats implements Validable {
     /**
      * Requests left
      */
     @SerializedName("left")
+    @Required
     private Integer left;
 
     /**
      * Time to refresh in seconds
      */
     @SerializedName("refresh")
+    @Required
     private Integer refresh;
 
     public Integer getLeft() {

@@ -2,17 +2,20 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * GroupChangeSettings object
  */
-public class GroupChangeSettings {
+public class GroupChangeSettings implements Validable {
     @SerializedName("user_id")
     private Integer userId;
 
     @SerializedName("self")
+    @Required
     private BoolInt self;
 
     public Integer getUserId() {

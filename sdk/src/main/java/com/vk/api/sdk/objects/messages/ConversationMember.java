@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * ConversationMember object
  */
-public class ConversationMember {
+public class ConversationMember implements Validable {
     /**
      * Is it possible for user to kick this member
      */
@@ -23,8 +24,17 @@ public class ConversationMember {
     @SerializedName("is_owner")
     private Boolean isOwner;
 
+    @SerializedName("is_message_request")
+    private Boolean isMessageRequest;
+
     @SerializedName("join_date")
     private Integer joinDate;
+
+    /**
+     * Message request date
+     */
+    @SerializedName("request_date")
+    private Integer requestDate;
 
     @SerializedName("member_id")
     private Integer memberId;
@@ -65,12 +75,30 @@ public class ConversationMember {
         return this;
     }
 
+    public Boolean getIsMessageRequest() {
+        return isMessageRequest;
+    }
+
+    public ConversationMember setIsMessageRequest(Boolean isMessageRequest) {
+        this.isMessageRequest = isMessageRequest;
+        return this;
+    }
+
     public Integer getJoinDate() {
         return joinDate;
     }
 
     public ConversationMember setJoinDate(Integer joinDate) {
         this.joinDate = joinDate;
+        return this;
+    }
+
+    public Integer getRequestDate() {
+        return requestDate;
+    }
+
+    public ConversationMember setRequestDate(Integer requestDate) {
+        this.requestDate = requestDate;
         return this;
     }
 
@@ -85,7 +113,7 @@ public class ConversationMember {
 
     @Override
     public int hashCode() {
-        return Objects.hash(joinDate, invitedBy, isOwner, canKick, isAdmin, memberId);
+        return Objects.hash(isMessageRequest, joinDate, invitedBy, isOwner, canKick, requestDate, isAdmin, memberId);
     }
 
     @Override
@@ -98,7 +126,9 @@ public class ConversationMember {
                 Objects.equals(isOwner, conversationMember.isOwner) &&
                 Objects.equals(joinDate, conversationMember.joinDate) &&
                 Objects.equals(canKick, conversationMember.canKick) &&
-                Objects.equals(invitedBy, conversationMember.invitedBy);
+                Objects.equals(requestDate, conversationMember.requestDate) &&
+                Objects.equals(invitedBy, conversationMember.invitedBy) &&
+                Objects.equals(isMessageRequest, conversationMember.isMessageRequest);
     }
 
     @Override
@@ -114,7 +144,9 @@ public class ConversationMember {
         sb.append(", isOwner=").append(isOwner);
         sb.append(", joinDate=").append(joinDate);
         sb.append(", canKick=").append(canKick);
+        sb.append(", requestDate=").append(requestDate);
         sb.append(", invitedBy=").append(invitedBy);
+        sb.append(", isMessageRequest=").append(isMessageRequest);
         sb.append('}');
         return sb.toString();
     }

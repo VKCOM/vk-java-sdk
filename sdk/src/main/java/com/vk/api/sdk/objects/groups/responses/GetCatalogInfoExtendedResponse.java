@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupCategoryFull;
 import java.util.List;
 import java.util.Objects;
@@ -9,11 +11,12 @@ import java.util.Objects;
 /**
  * GetCatalogInfoExtendedResponse object
  */
-public class GetCatalogInfoExtendedResponse {
+public class GetCatalogInfoExtendedResponse implements Validable {
     /**
      * Information whether catalog is enabled for current user
      */
     @SerializedName("enabled")
+    @Required
     private Integer enabled;
 
     @SerializedName("categories")

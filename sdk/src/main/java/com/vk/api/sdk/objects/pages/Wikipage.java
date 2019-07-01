@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.pages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Wikipage object
  */
-public class Wikipage {
+public class Wikipage implements Validable {
     /**
      * Page creator ID
      */
@@ -42,18 +44,21 @@ public class Wikipage {
      * Page ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Page title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
      * Views number
      */
     @SerializedName("views")
+    @Required
     private Integer views;
 
     /**

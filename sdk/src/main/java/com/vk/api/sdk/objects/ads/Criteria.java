@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * Criteria object
  */
-public class Criteria {
+public class Criteria implements Validable {
     /**
      * Age from
      */

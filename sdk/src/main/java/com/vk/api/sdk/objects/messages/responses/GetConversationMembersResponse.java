@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.ChatRestrictions;
 import com.vk.api.sdk.objects.messages.ConversationMember;
@@ -12,14 +14,16 @@ import java.util.Objects;
 /**
  * GetConversationMembersResponse object
  */
-public class GetConversationMembersResponse {
+public class GetConversationMembersResponse implements Validable {
     /**
      * Chat members count
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<ConversationMember> items;
 
     @SerializedName("chat_restrictions")

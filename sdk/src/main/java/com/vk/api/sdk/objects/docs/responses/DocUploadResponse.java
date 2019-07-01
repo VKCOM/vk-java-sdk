@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.docs.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * DocUploadResponse object
  */
-public class DocUploadResponse {
+public class DocUploadResponse implements Validable {
     /**
      * Uploaded file data
      */

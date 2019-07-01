@@ -29,6 +29,10 @@ public class ExceptionMapper {
                 return new ApiServerException(error.getErrorMsg());
             case 11:
                 return new ApiEnabledInTestException(error.getErrorMsg());
+            case 12:
+                return new ApiCompileException(error.getErrorMsg());
+            case 13:
+                return new ApiRuntimeException(error.getErrorMsg());
             case 14:
                 return new ApiCaptchaException(error.getErrorMsg());
             case 15:
@@ -157,8 +161,12 @@ public class ExceptionMapper {
                 return new ApiMessagesDenySendException(error.getErrorMsg());
             case 902:
                 return new ApiMessagesPrivacyException(error.getErrorMsg());
+            case 1416:
+                return new ApiMarketVariantNotFoundException(error.getErrorMsg());
             case 1160:
                 return new ApiPhotoChangedException(error.getErrorMsg());
+            case 1417:
+                return new ApiMarketPropertyNotFoundException(error.getErrorMsg());
             case 907:
                 return new ApiMessagesTooOldPtsException(error.getErrorMsg());
             case 908:
@@ -175,8 +183,12 @@ public class ExceptionMapper {
                 return new ApiMessagesKeyboardInvalidException(error.getErrorMsg());
             case 912:
                 return new ApiMessagesChatBotFeatureException(error.getErrorMsg());
+            case 1425:
+                return new ApiMarketGroupingMustContainMoreThanOneItemException(error.getErrorMsg());
             case 913:
                 return new ApiMessagesTooLongForwardsException(error.getErrorMsg());
+            case 1426:
+                return new ApiMarketGroupingItemsMustHaveDistinctPropertiesException(error.getErrorMsg());
             case 914:
                 return new ApiMessagesTooLongMessageException(error.getErrorMsg());
             case 1170:
@@ -214,7 +226,9 @@ public class ExceptionMapper {
             case 171:
                 return new ApiFriendsListIdException(error.getErrorMsg());
             case 939:
-                return new ApiMessagesMessageRequestAlreadySendException(error.getErrorMsg());
+                return new ApiMessagesMessageRequestAlreadySentException(error.getErrorMsg());
+            case 940:
+                return new ApiMessagesTooManyPostsException(error.getErrorMsg());
             case 173:
                 return new ApiFriendsListLimitException(error.getErrorMsg());
             case 174:

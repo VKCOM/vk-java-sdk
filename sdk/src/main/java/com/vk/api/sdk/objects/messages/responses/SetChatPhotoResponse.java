@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.messages.Chat;
 import java.util.Objects;
 
 /**
  * SetChatPhotoResponse object
  */
-public class SetChatPhotoResponse {
+public class SetChatPhotoResponse implements Validable {
     /**
      * Service message ID
      */

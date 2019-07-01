@@ -2,13 +2,15 @@ package com.vk.api.sdk.objects.market;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * MarketItem object
  */
-public class MarketItem {
+public class MarketItem implements Validable {
     /**
      * Access key for the market item
      */
@@ -16,6 +18,7 @@ public class MarketItem {
     private String accessKey;
 
     @SerializedName("availability")
+    @Required
     private MarketItemAvailability availability;
 
     /**
@@ -25,24 +28,31 @@ public class MarketItem {
     private String buttonTitle;
 
     @SerializedName("category")
+    @Required
     private MarketCategory category;
 
     /**
      * Date when the item has been created in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
      * Item description
      */
     @SerializedName("description")
+    @Required
     private String description;
+
+    @SerializedName("external_id")
+    private String externalId;
 
     /**
      * Item ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("is_favorite")
@@ -55,6 +65,7 @@ public class MarketItem {
     private Integer ownerId;
 
     @SerializedName("price")
+    @Required
     private Price price;
 
     /**
@@ -67,6 +78,7 @@ public class MarketItem {
      * Item title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
@@ -126,6 +138,15 @@ public class MarketItem {
 
     public MarketItem setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public MarketItem setExternalId(String externalId) {
+        this.externalId = externalId;
         return this;
     }
 
@@ -194,7 +215,7 @@ public class MarketItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, thumbPhoto, buttonTitle, description, availability, ownerId, title, url, accessKey, price, id, category, isFavorite);
+        return Objects.hash(date, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, accessKey, price, id, category, isFavorite);
     }
 
     @Override
@@ -206,6 +227,7 @@ public class MarketItem {
                 Objects.equals(isFavorite, marketItem.isFavorite) &&
                 Objects.equals(ownerId, marketItem.ownerId) &&
                 Objects.equals(description, marketItem.description) &&
+                Objects.equals(externalId, marketItem.externalId) &&
                 Objects.equals(availability, marketItem.availability) &&
                 Objects.equals(title, marketItem.title) &&
                 Objects.equals(url, marketItem.url) &&
@@ -229,6 +251,7 @@ public class MarketItem {
         sb.append(", isFavorite=").append(isFavorite);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
+        sb.append(", externalId='").append(externalId).append("'");
         sb.append(", availability=").append(availability);
         sb.append(", title='").append(title).append("'");
         sb.append(", url=").append(url);

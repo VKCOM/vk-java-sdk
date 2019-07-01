@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * MessageActionPhoto object
  */
-public class MessageActionPhoto {
+public class MessageActionPhoto implements Validable {
     /**
      * URL of the preview image with 100px in width
      */

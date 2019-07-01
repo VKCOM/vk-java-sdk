@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Place object
  */
-public class Place {
+public class Place implements Validable {
     /**
      * Place address
      */

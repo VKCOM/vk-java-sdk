@@ -2,16 +2,14 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * PushSettings object
  */
-public class PushSettings {
-    @SerializedName("conversations")
-    private PushConversations conversations;
-
+public class PushSettings implements Validable {
     /**
      * Information whether notifications are disabled
      */
@@ -27,14 +25,8 @@ public class PushSettings {
     @SerializedName("settings")
     private PushParams settings;
 
-    public PushConversations getConversations() {
-        return conversations;
-    }
-
-    public PushSettings setConversations(PushConversations conversations) {
-        this.conversations = conversations;
-        return this;
-    }
+    @SerializedName("conversations")
+    private PushConversations conversations;
 
     public boolean isDisabled() {
         return disabled == BoolInt.YES;
@@ -59,6 +51,15 @@ public class PushSettings {
 
     public PushSettings setSettings(PushParams settings) {
         this.settings = settings;
+        return this;
+    }
+
+    public PushConversations getConversations() {
+        return conversations;
+    }
+
+    public PushSettings setConversations(PushConversations conversations) {
+        this.conversations = conversations;
         return this;
     }
 

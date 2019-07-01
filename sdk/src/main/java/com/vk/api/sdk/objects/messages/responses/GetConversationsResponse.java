@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.ConversationWithMessage;
 import com.vk.api.sdk.objects.users.UserFull;
@@ -11,11 +13,12 @@ import java.util.Objects;
 /**
  * GetConversationsResponse object
  */
-public class GetConversationsResponse {
+public class GetConversationsResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     /**
@@ -25,6 +28,7 @@ public class GetConversationsResponse {
     private Integer unreadCount;
 
     @SerializedName("items")
+    @Required
     private List<ConversationWithMessage> items;
 
     @SerializedName("profiles")

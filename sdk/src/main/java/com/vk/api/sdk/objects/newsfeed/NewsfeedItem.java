@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * NewsfeedItem object
  */
-public class NewsfeedItem {
+public class NewsfeedItem implements Validable {
     @SerializedName("type")
     private NewsfeedItemType type;
 

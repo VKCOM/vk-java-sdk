@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Offer object
  */
-public class Offer {
+public class Offer implements Validable {
     /**
      * Offer description
      */

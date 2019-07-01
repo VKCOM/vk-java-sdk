@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * AccountCounters object
  */
-public class AccountCounters {
+public class AccountCounters implements Validable {
     /**
      * New app requests number
      */

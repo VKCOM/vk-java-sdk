@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.stats;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Period object
  */
-public class Period {
+public class Period implements Validable {
     @SerializedName("activity")
     private Activity activity;
 

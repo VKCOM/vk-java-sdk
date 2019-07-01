@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.search;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.UserMin;
@@ -10,11 +12,12 @@ import java.util.Objects;
 /**
  * Hint object
  */
-public class Hint {
+public class Hint implements Validable {
     /**
      * Object description
      */
     @SerializedName("description")
+    @Required
     private String description;
 
     /**
@@ -30,9 +33,11 @@ public class Hint {
     private UserMin profile;
 
     @SerializedName("section")
+    @Required
     private HintSection section;
 
     @SerializedName("type")
+    @Required
     private HintType type;
 
     public String getDescription() {

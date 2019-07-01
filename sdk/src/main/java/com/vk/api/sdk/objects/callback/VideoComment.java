@@ -2,22 +2,27 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * VideoComment object
  */
-public class VideoComment {
+public class VideoComment implements Validable {
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("from_id")
     private Integer fromId;
 
     @SerializedName("date")
+    @Required
     private Integer date;
 
     @SerializedName("text")
+    @Required
     private String text;
 
     @SerializedName("video_owner_od")

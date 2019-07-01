@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * StatsSex object
  */
-public class StatsSex {
+public class StatsSex implements Validable {
     /**
      * Clicks rate
      */

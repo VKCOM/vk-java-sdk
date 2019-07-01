@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.User;
 import java.util.Objects;
 
 /**
  * OwnerXtrBanInfo object
  */
-public class OwnerXtrBanInfo {
+public class OwnerXtrBanInfo implements Validable {
     @SerializedName("ban_info")
     private BanInfo banInfo;
 

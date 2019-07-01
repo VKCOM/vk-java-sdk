@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.notes;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * Note object
  */
-public class Note {
+public class Note implements Validable {
     @SerializedName("read_comments")
     private Integer readComments;
 
@@ -23,18 +25,21 @@ public class Note {
      * Comments number
      */
     @SerializedName("comments")
+    @Required
     private Integer comments;
 
     /**
      * Date when the note has been created in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
      * Note ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -59,6 +64,7 @@ public class Note {
      * Note title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * PhotoXtrTagInfo object
  */
-public class PhotoXtrTagInfo {
+public class PhotoXtrTagInfo implements Validable {
     /**
      * Access key for the photo
      */
@@ -26,6 +28,7 @@ public class PhotoXtrTagInfo {
      * Date when uploaded
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -38,6 +41,7 @@ public class PhotoXtrTagInfo {
      * Photo ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**

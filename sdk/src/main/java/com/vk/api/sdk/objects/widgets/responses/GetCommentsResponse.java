@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.widgets.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.widgets.WidgetComment;
 import java.util.List;
 import java.util.Objects;
@@ -9,14 +11,16 @@ import java.util.Objects;
 /**
  * GetCommentsResponse object
  */
-public class GetCommentsResponse {
+public class GetCommentsResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("posts")
+    @Required
     private List<WidgetComment> posts;
 
     public Integer getCount() {

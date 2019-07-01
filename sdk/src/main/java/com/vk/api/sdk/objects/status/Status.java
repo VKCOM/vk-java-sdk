@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.status;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import java.util.Objects;
 
 /**
  * Status object
  */
-public class Status {
+public class Status implements Validable {
     @SerializedName("audio")
     private AudioFull audio;
 

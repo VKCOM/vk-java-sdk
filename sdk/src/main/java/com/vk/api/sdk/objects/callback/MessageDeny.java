@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * MessageDeny object
  */
-public class MessageDeny {
+public class MessageDeny implements Validable {
     @SerializedName("user_id")
     private Integer userId;
 

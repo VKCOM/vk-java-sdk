@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * PhotoUpload object
  */
-public class PhotoUpload {
+public class PhotoUpload implements Validable {
     /**
      * Album ID
      */

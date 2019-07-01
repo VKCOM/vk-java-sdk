@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.docs;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * DocPreview object
  */
-public class DocPreview {
+public class DocPreview implements Validable {
     @SerializedName("photo")
     private DocPreviewPhoto photo;
 

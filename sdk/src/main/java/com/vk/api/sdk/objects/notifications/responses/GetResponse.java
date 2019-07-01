@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.notifications.responses;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.apps.App;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.photos.Photo;
@@ -14,7 +15,7 @@ import java.util.Objects;
 /**
  * GetResponse object
  */
-public class GetResponse {
+public class GetResponse implements Validable {
     /**
      * Total number
      */

@@ -2,21 +2,25 @@ package com.vk.api.sdk.objects.account.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.account.Offer;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetActiveOffersResponse object
  */
-public class GetActiveOffersResponse {
+public class GetActiveOffersResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Offer> items;
 
     public Integer getCount() {

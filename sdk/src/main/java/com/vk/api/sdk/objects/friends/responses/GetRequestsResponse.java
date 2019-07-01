@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetRequestsResponse object
  */
-public class GetRequestsResponse {
+public class GetRequestsResponse implements Validable {
     /**
      * Total requests number
      */

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.wall.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.User;
@@ -12,14 +14,16 @@ import java.util.Objects;
 /**
  * GetCommentsExtendedResponse object
  */
-public class GetCommentsExtendedResponse {
+public class GetCommentsExtendedResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<WallComment> items;
 
     @SerializedName("show_reply_button")
@@ -44,9 +48,11 @@ public class GetCommentsExtendedResponse {
     private Integer currentLevelCount;
 
     @SerializedName("profiles")
+    @Required
     private List<User> profiles;
 
     @SerializedName("groups")
+    @Required
     private List<Group> groups;
 
     public Integer getCount() {

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.callback.groups.CallbackGroupSettingsChange;
 import com.vk.api.sdk.objects.groups.GroupAudio;
 import com.vk.api.sdk.objects.groups.GroupFullAgeLimits;
@@ -14,7 +15,7 @@ import java.util.Objects;
 /**
  * GroupSettingsChanges object
  */
-public class GroupSettingsChanges {
+public class GroupSettingsChanges implements Validable {
     @SerializedName("title")
     private CallbackGroupSettingsChange<String> title;
 

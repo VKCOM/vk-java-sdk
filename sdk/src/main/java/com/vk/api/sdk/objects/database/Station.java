@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.database;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Station object
  */
-public class Station {
+public class Station implements Validable {
     /**
      * City ID
      */
@@ -24,12 +26,14 @@ public class Station {
      * Station ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Station name
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     public Integer getCityId() {

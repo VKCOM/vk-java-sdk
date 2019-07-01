@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * DemostatsFormat object
  */
-public class DemostatsFormat {
+public class DemostatsFormat implements Validable {
     @SerializedName("age")
     private List<StatsAge> age;
 

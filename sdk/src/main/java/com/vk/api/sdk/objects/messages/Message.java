@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Geo;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * Message object
  */
-public class Message {
+public class Message implements Validable {
     @SerializedName("action")
     private MessageAction action;
 
@@ -33,6 +35,7 @@ public class Message {
      * Date when the message has been sent in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -60,6 +63,7 @@ public class Message {
      * Message ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -84,6 +88,7 @@ public class Message {
      * Information whether the message is outcoming
      */
     @SerializedName("out")
+    @Required
     private BoolInt out;
 
     @SerializedName("payload")
@@ -114,6 +119,7 @@ public class Message {
      * Message text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**

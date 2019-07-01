@@ -2,22 +2,26 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * PromotedPostReach object
  */
-public class PromotedPostReach {
+public class PromotedPostReach implements Validable {
     /**
      * Hides amount
      */
     @SerializedName("hide")
+    @Required
     private Integer hide;
 
     /**
      * Object ID from 'ids' parameter
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -30,6 +34,7 @@ public class PromotedPostReach {
      * Link clicks
      */
     @SerializedName("links")
+    @Required
     private Integer links;
 
     /**
@@ -48,6 +53,7 @@ public class PromotedPostReach {
      * Reports amount
      */
     @SerializedName("report")
+    @Required
     private Integer report;
 
     /**
@@ -60,6 +66,7 @@ public class PromotedPostReach {
      * 'Unsubscribe' events amount
      */
     @SerializedName("unsubscribe")
+    @Required
     private Integer unsubscribe;
 
     /**

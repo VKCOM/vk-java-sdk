@@ -2,32 +2,38 @@ package com.vk.api.sdk.objects.photos;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * PhotoSizes object
  */
-public class PhotoSizes {
+public class PhotoSizes implements Validable {
     /**
      * Height in px
      */
     @SerializedName("height")
+    @Required
     private Integer height;
 
     /**
      * URL of the image
      */
     @SerializedName("src")
+    @Required
     private URL src;
 
     @SerializedName("type")
+    @Required
     private PhotoSizesType type;
 
     /**
      * Width in px
      */
     @SerializedName("width")
+    @Required
     private Integer width;
 
     public Integer getHeight() {

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.users.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupsArray;
 import com.vk.api.sdk.objects.users.UsersArray;
 import java.util.Objects;
@@ -9,11 +11,13 @@ import java.util.Objects;
 /**
  * GetSubscriptionsResponse object
  */
-public class GetSubscriptionsResponse {
+public class GetSubscriptionsResponse implements Validable {
     @SerializedName("users")
+    @Required
     private UsersArray users;
 
     @SerializedName("groups")
+    @Required
     private GroupsArray groups;
 
     public UsersArray getUsers() {

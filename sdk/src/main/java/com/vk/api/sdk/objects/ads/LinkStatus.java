@@ -2,17 +2,20 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * LinkStatus object
  */
-public class LinkStatus {
+public class LinkStatus implements Validable {
     /**
      * Reject reason
      */
     @SerializedName("description")
+    @Required
     private String description;
 
     /**
@@ -25,6 +28,7 @@ public class LinkStatus {
      * Link status
      */
     @SerializedName("status")
+    @Required
     private String status;
 
     public String getDescription() {

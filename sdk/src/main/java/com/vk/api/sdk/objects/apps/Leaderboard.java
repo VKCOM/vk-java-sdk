@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.apps;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Leaderboard object
  */
-public class Leaderboard {
+public class Leaderboard implements Validable {
     /**
      * Level
      */

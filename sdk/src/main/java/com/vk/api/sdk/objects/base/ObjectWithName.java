@@ -2,22 +2,26 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * ObjectWithName object
  */
-public class ObjectWithName {
+public class ObjectWithName implements Validable {
     /**
      * Object ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Object name
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     public Integer getId() {

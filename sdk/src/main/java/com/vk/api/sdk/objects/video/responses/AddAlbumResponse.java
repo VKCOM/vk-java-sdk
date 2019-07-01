@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.video.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * AddAlbumResponse object
  */
-public class AddAlbumResponse {
+public class AddAlbumResponse implements Validable {
     /**
      * Created album ID
      */

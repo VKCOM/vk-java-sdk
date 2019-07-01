@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * UserBlock object
  */
-public class UserBlock {
+public class UserBlock implements Validable {
     @SerializedName("admin_id")
     private Integer adminId;
 
@@ -18,6 +20,7 @@ public class UserBlock {
     private Integer unblockDate;
 
     @SerializedName("reason")
+    @Required
     private Integer reason;
 
     @SerializedName("comment")

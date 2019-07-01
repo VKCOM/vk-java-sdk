@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * DeleteConversationResponse object
  */
-public class DeleteConversationResponse {
+public class DeleteConversationResponse implements Validable {
     /**
      * Id of the last message, that was deleted
      */

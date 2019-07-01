@@ -68,7 +68,7 @@ public class StoriesGetByIdQuery extends AbstractQueryBuilder<StoriesGetByIdQuer
     /**
      * '1' — to return additional fields for users and communities. Default value is 0.
      *
-     * @param value value of "extended" parameter. By default 0.
+     * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public StoriesGetByIdQuery extended(Boolean value) {

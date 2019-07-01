@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.orders;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Subscription object
  */
-public class Subscription {
+public class Subscription implements Validable {
     /**
      * Cancel reason
      */
@@ -24,6 +26,7 @@ public class Subscription {
      * Subscription ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -48,6 +51,7 @@ public class Subscription {
      * Subscription period
      */
     @SerializedName("period")
+    @Required
     private Integer period;
 
     /**
@@ -60,12 +64,14 @@ public class Subscription {
      * Subscription price
      */
     @SerializedName("price")
+    @Required
     private Integer price;
 
     /**
      * Subscription status
      */
     @SerializedName("status")
+    @Required
     private String status;
 
     /**

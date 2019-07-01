@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.notifications;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.board.Topic;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * NotificationsComment object
  */
-public class NotificationsComment {
+public class NotificationsComment implements Validable {
     /**
      * Date when the comment has been added in Unixtime
      */

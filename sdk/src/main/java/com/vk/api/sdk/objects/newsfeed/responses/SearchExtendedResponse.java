@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserFull;
 import com.vk.api.sdk.objects.wall.WallpostFull;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * SearchExtendedResponse object
  */
-public class SearchExtendedResponse {
+public class SearchExtendedResponse implements Validable {
     @SerializedName("items")
     private List<WallpostFull> items;
 

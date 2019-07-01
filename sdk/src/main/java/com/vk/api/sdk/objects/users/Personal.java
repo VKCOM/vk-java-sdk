@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Personal object
  */
-public class Personal {
+public class Personal implements Validable {
     /**
      * User's views on alcohol
      */

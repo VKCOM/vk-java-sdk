@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.wall.Wallpost;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * ItemDigest object
  */
-public class ItemDigest {
+public class ItemDigest implements Validable {
     @SerializedName("button_text")
     private String buttonText;
 

@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * ItemPhotoTag object
  */
-public class ItemPhotoTag {
+public class ItemPhotoTag implements Validable {
     @SerializedName("photo_tags")
     private ItemPhotoTagPhotoTags photoTags;
 

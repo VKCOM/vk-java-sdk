@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.friends.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
@@ -9,14 +11,16 @@ import java.util.Objects;
 /**
  * GetSuggestionsResponse object
  */
-public class GetSuggestionsResponse {
+public class GetSuggestionsResponse implements Validable {
     /**
      * Total results number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<UserFull> items;
 
     public Integer getCount() {

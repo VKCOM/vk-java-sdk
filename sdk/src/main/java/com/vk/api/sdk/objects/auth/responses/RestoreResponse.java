@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.auth.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * RestoreResponse object
  */
-public class RestoreResponse {
+public class RestoreResponse implements Validable {
     /**
      * 1 if success
      */

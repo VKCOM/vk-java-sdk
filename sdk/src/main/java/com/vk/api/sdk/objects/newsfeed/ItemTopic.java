@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.CommentsInfo;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * ItemTopic object
  */
-public class ItemTopic {
+public class ItemTopic implements Validable {
     @SerializedName("comments")
     private CommentsInfo comments;
 
@@ -26,6 +28,7 @@ public class ItemTopic {
      * Post text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     public CommentsInfo getComments() {

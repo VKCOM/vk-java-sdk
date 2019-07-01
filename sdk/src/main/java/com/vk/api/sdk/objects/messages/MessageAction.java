@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * MessageAction object
  */
-public class MessageAction {
+public class MessageAction implements Validable {
     /**
      * Message ID
      */
@@ -42,6 +44,7 @@ public class MessageAction {
     private String text;
 
     @SerializedName("type")
+    @Required
     private MessageActionStatus type;
 
     public Integer getConversationMessageId() {

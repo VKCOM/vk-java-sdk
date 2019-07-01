@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * StatsCity object
  */
-public class StatsCity {
+public class StatsCity implements Validable {
     /**
      * City ID
      */

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.photos.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.photos.PhotoXtrRealOffset;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * GetAllResponse object
  */
-public class GetAllResponse {
+public class GetAllResponse implements Validable {
     /**
      * Total number
      */

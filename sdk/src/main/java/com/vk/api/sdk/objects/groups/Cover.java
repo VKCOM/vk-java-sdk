@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Image;
 import java.util.List;
@@ -10,11 +12,12 @@ import java.util.Objects;
 /**
  * Cover object
  */
-public class Cover {
+public class Cover implements Validable {
     /**
      * Information whether cover is enabled
      */
     @SerializedName("enabled")
+    @Required
     private BoolInt enabled;
 
     @SerializedName("images")

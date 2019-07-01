@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.ObjectCount;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * WidgetPage object
  */
-public class WidgetPage {
+public class WidgetPage implements Validable {
     @SerializedName("comments")
     private ObjectCount comments;
 

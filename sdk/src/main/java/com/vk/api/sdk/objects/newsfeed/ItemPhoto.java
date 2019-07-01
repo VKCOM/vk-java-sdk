@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * ItemPhoto object
  */
-public class ItemPhoto {
+public class ItemPhoto implements Validable {
     @SerializedName("photos")
     private ItemPhotoPhotos photos;
 

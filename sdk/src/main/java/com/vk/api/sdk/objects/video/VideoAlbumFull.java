@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.video;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -9,11 +11,12 @@ import java.util.Objects;
 /**
  * VideoAlbumFull object
  */
-public class VideoAlbumFull {
+public class VideoAlbumFull implements Validable {
     /**
      * Total number of videos in album
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     /**
@@ -56,6 +59,7 @@ public class VideoAlbumFull {
      * Album title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**

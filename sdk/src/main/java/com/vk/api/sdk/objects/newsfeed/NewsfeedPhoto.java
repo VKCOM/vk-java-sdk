@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.ObjectCount;
@@ -11,7 +12,7 @@ import java.util.Objects;
 /**
  * NewsfeedPhoto object
  */
-public class NewsfeedPhoto extends Photo {
+public class NewsfeedPhoto extends Photo implements Validable {
     @SerializedName("likes")
     private Likes likes;
 

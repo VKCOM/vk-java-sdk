@@ -3,6 +3,8 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.Objects;
@@ -10,7 +12,7 @@ import java.util.Objects;
 /**
  * AdLayout object
  */
-public class AdLayout {
+public class AdLayout implements Validable {
     /**
      * Ad format
      */
@@ -24,18 +26,20 @@ public class AdLayout {
     private Integer campaignId;
 
     @SerializedName("cost_type")
-    private AdLayoutCostType costType;
+    private AdCostType costType;
 
     /**
      * Ad description
      */
     @SerializedName("description")
+    @Required
     private String description;
 
     /**
      * Ad ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -72,6 +76,7 @@ public class AdLayout {
      * Ad title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**
@@ -98,11 +103,11 @@ public class AdLayout {
         return this;
     }
 
-    public AdLayoutCostType getCostType() {
+    public AdCostType getCostType() {
         return costType;
     }
 
-    public AdLayout setCostType(AdLayoutCostType costType) {
+    public AdLayout setCostType(AdCostType costType) {
         this.costType = costType;
         return this;
     }

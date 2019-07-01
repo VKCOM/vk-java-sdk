@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Client object
  */
-public class Client {
+public class Client implements Validable {
     /**
      * Client's total limit, rubles
      */
@@ -24,12 +26,14 @@ public class Client {
      * Client ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Client name
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     public String getAllLimit() {

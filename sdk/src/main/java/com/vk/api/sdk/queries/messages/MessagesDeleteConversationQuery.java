@@ -56,26 +56,6 @@ public class MessagesDeleteConversationQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
-     * Offset needed to delete a specific subset of conversations.
-     *
-     * @param value value of "offset" parameter. Minimum is 0. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MessagesDeleteConversationQuery offset(Integer value) {
-        return unsafeParam("offset", value);
-    }
-
-    /**
-     * Number of conversations to delete. "NOTE: If the number of messages exceeds the maximum, the method shall be called several times."
-     *
-     * @param value value of "count" parameter. Maximum is 10000. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MessagesDeleteConversationQuery count(Integer value) {
-        return unsafeParam("count", value);
-    }
-
-    /**
      * Group ID (for group messages with user access token)
      *
      * @param value value of "group id" parameter. Minimum is 0.

@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Campaign object
  */
-public class Campaign {
+public class Campaign implements Validable {
     /**
      * Campaign's total limit, rubles
      */
@@ -24,12 +26,14 @@ public class Campaign {
      * Campaign ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Campaign title
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     /**
@@ -39,6 +43,7 @@ public class Campaign {
     private Integer startTime;
 
     @SerializedName("status")
+    @Required
     private CampaignStatus status;
 
     /**
@@ -48,6 +53,7 @@ public class Campaign {
     private Integer stopTime;
 
     @SerializedName("type")
+    @Required
     private CampaignType type;
 
     public String getAllLimit() {

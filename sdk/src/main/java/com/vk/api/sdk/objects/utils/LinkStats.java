@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * LinkStats object
  */
-public class LinkStats {
+public class LinkStats implements Validable {
     /**
      * Link key (characters after vk.cc/)
      */

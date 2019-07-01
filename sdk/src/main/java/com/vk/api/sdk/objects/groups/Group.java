@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * Group object
  */
-public class Group {
+public class Group implements Validable {
     @SerializedName("admin_level")
     private GroupAdminLevel adminLevel;
 

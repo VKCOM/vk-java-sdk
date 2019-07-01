@@ -158,7 +158,7 @@ public class Users extends AbstractAction {
      *
      * @param actor vk actor
      * @param userId ID of the user about whom a complaint is being made.
-     * @param type Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
+     * @param type Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
      * @return query
      */
     public UsersReportQuery report(UserActor actor, int userId, UsersType type) {

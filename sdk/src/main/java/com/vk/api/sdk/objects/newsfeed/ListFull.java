@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * ListFull object
  */
-public class ListFull extends List {
+public class ListFull extends List implements Validable {
     /**
      * Information whether reposts hiding is enabled
      */

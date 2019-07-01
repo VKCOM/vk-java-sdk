@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * WidgetLikes object
  */
-public class WidgetLikes {
+public class WidgetLikes implements Validable {
     /**
      * Likes number
      */

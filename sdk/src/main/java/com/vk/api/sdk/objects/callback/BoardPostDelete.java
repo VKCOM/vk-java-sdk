@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * BoardPostDelete object
  */
-public class BoardPostDelete {
+public class BoardPostDelete implements Validable {
     @SerializedName("topic_owner_id")
     private Integer topicOwnerId;
 
@@ -15,6 +17,7 @@ public class BoardPostDelete {
     private Integer topicId;
 
     @SerializedName("id")
+    @Required
     private Integer id;
 
     public Integer getTopicOwnerId() {

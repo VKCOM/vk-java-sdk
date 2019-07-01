@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * AudioMessage object
  */
-public class AudioMessage {
+public class AudioMessage implements Validable {
     /**
      * Access key for audio message
      */
@@ -20,12 +22,14 @@ public class AudioMessage {
      * Audio message duration in seconds
      */
     @SerializedName("duration")
+    @Required
     private Integer duration;
 
     /**
      * Audio message ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -47,6 +51,7 @@ public class AudioMessage {
     private Integer ownerId;
 
     @SerializedName("waveform")
+    @Required
     private List<Integer> waveform;
 
     public String getAccessKey() {

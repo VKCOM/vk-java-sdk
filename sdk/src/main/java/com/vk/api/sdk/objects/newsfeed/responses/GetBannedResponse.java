@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetBannedResponse object
  */
-public class GetBannedResponse {
+public class GetBannedResponse implements Validable {
     @SerializedName("groups")
     private List<Integer> groups;
 

@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.users;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Military object
  */
-public class Military {
+public class Military implements Validable {
     /**
      * Country ID
      */
@@ -30,6 +32,7 @@ public class Military {
      * Unit name
      */
     @SerializedName("unit")
+    @Required
     private String unit;
 
     /**

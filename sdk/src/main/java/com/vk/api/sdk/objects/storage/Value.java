@@ -2,16 +2,20 @@ package com.vk.api.sdk.objects.storage;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * Value object
  */
-public class Value {
+public class Value implements Validable {
     @SerializedName("key")
+    @Required
     private String key;
 
     @SerializedName("value")
+    @Required
     private String value;
 
     public String getKey() {

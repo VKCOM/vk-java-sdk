@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.docs.Doc;
@@ -12,7 +14,7 @@ import java.util.Objects;
 /**
  * HistoryMessageAttachment object
  */
-public class HistoryMessageAttachment {
+public class HistoryMessageAttachment implements Validable {
     @SerializedName("audio")
     private AudioFull audio;
 
@@ -38,6 +40,7 @@ public class HistoryMessageAttachment {
     private Link share;
 
     @SerializedName("type")
+    @Required
     private HistoryMessageAttachmentType type;
 
     @SerializedName("video")

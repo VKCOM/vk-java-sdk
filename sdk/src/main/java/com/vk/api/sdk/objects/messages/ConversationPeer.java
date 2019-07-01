@@ -2,19 +2,23 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * ConversationPeer object
  */
-public class ConversationPeer {
+public class ConversationPeer implements Validable {
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("local_id")
     private Integer localId;
 
     @SerializedName("type")
+    @Required
     private ConversationPeerType type;
 
     public Integer getId() {

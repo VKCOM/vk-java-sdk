@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * GroupJoin object
  */
-public class GroupJoin {
+public class GroupJoin implements Validable {
     @SerializedName("user_id")
     private Integer userId;
 

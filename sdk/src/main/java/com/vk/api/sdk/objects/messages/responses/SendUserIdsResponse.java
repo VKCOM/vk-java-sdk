@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.MessageError;
 import java.util.Objects;
 
 /**
  * SendUserIdsResponse object
  */
-public class SendUserIdsResponse {
+public class SendUserIdsResponse implements Validable {
     @SerializedName("peer_id")
     private Integer peerId;
 

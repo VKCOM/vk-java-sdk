@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.net.URL;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * Link object
  */
-public class Link {
+public class Link implements Validable {
     @SerializedName("application")
     private LinkApplication application;
 
@@ -68,6 +70,7 @@ public class Link {
      * Link URL
      */
     @SerializedName("url")
+    @Required
     private URL url;
 
     public LinkApplication getApplication() {

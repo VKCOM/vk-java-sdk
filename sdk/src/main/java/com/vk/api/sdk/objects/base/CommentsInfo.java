@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.base;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * CommentsInfo object
  */
-public class CommentsInfo {
+public class CommentsInfo implements Validable {
     /**
      * Information whether current user can comment the post
      */

@@ -2,12 +2,14 @@ package com.vk.api.sdk.objects.stories;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * StoryStatsStat object
  */
-public class StoryStatsStat {
+public class StoryStatsStat implements Validable {
     /**
      * Stat value
      */
@@ -15,6 +17,7 @@ public class StoryStatsStat {
     private Integer count;
 
     @SerializedName("state")
+    @Required
     private StoryStatsState state;
 
     public Integer getCount() {

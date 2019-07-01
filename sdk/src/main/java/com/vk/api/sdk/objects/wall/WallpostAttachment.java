@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.AudioFull;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.docs.Doc;
@@ -19,7 +21,7 @@ import java.util.Objects;
 /**
  * WallpostAttachment object
  */
-public class WallpostAttachment {
+public class WallpostAttachment implements Validable {
     /**
      * Access key for the audio
      */
@@ -72,6 +74,7 @@ public class WallpostAttachment {
     private PostedPhoto postedPhoto;
 
     @SerializedName("type")
+    @Required
     private WallpostAttachmentType type;
 
     @SerializedName("video")

@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.newsfeed;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.CommentsInfo;
 import com.vk.api.sdk.objects.base.Geo;
 import com.vk.api.sdk.objects.base.LikesInfo;
@@ -15,7 +16,7 @@ import java.util.Objects;
 /**
  * ItemWallpost object
  */
-public class ItemWallpost {
+public class ItemWallpost implements Validable {
     @SerializedName("activity")
     private EventActivity activity;
 

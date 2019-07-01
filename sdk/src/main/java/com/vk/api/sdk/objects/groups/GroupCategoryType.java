@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * GroupCategoryType object
  */
-public class GroupCategoryType {
+public class GroupCategoryType implements Validable {
     @SerializedName("id")
     private Integer id;
 

@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.board;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.wall.CommentAttachment;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +11,7 @@ import java.util.Objects;
 /**
  * TopicComment object
  */
-public class TopicComment {
+public class TopicComment implements Validable {
     @SerializedName("attachments")
     private List<CommentAttachment> attachments;
 
@@ -17,6 +19,7 @@ public class TopicComment {
      * Date when the comment has been added in Unixtime
      */
     @SerializedName("date")
+    @Required
     private Integer date;
 
     /**
@@ -29,6 +32,7 @@ public class TopicComment {
      * Comment ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -41,6 +45,7 @@ public class TopicComment {
      * Comment text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     public List<CommentAttachment> getAttachments() {

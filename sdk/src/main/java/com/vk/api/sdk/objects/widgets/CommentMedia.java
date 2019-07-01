@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.widgets;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * CommentMedia object
  */
-public class CommentMedia {
+public class CommentMedia implements Validable {
     /**
      * Media item ID
      */

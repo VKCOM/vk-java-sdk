@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.friends;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * Requests object
  */
-public class Requests {
+public class Requests implements Validable {
     /**
      * ID of the user by whom friend has been suggested
      */

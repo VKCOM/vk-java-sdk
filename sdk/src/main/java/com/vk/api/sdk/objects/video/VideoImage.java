@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.video;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Image;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * VideoImage object
  */
-public class VideoImage extends Image {
+public class VideoImage extends Image implements Validable {
     @SerializedName("with_padding")
     private BoolInt withPadding;
 

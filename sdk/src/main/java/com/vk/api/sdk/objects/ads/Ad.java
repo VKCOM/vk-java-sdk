@@ -3,13 +3,15 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * Ad object
  */
-public class Ad {
+public class Ad implements Validable {
     /**
      * Ad format
      */
@@ -29,6 +31,7 @@ public class Ad {
     private Integer allLimit;
 
     @SerializedName("approved")
+    @Required
     private AdApproved approved;
 
     /**
@@ -65,6 +68,12 @@ public class Ad {
     private Integer cpm;
 
     /**
+     * Cost of an action, kopecks
+     */
+    @SerializedName("cpa")
+    private Integer cpa;
+
+    /**
      * Information whether disclaimer is enabled
      */
     @SerializedName("disclaimer_medical")
@@ -86,6 +95,7 @@ public class Ad {
      * Ad ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -104,9 +114,11 @@ public class Ad {
      * Ad title
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     @SerializedName("status")
+    @Required
     private AdStatus status;
 
     /**
@@ -205,6 +217,15 @@ public class Ad {
         return this;
     }
 
+    public Integer getCpa() {
+        return cpa;
+    }
+
+    public Ad setCpa(Integer cpa) {
+        this.cpa = cpa;
+        return this;
+    }
+
     public boolean isDisclaimerMedical() {
         return disclaimerMedical == BoolInt.YES;
     }
@@ -283,7 +304,7 @@ public class Ad {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpm, impressionsLimit, allLimit, campaignId, category2Id, disclaimerMedical, category1Id, disclaimerSpecialist, video, disclaimerSupplements, adPlatform, approved, impressionsLimited, costType, cpc, name, id, adFormat, status);
+        return Objects.hash(cpm, impressionsLimit, allLimit, campaignId, category2Id, disclaimerMedical, category1Id, disclaimerSpecialist, video, disclaimerSupplements, adPlatform, approved, impressionsLimited, cpa, costType, cpc, name, id, adFormat, status);
     }
 
     @Override
@@ -301,6 +322,7 @@ public class Ad {
                 Objects.equals(approved, ad.approved) &&
                 Objects.equals(disclaimerSpecialist, ad.disclaimerSpecialist) &&
                 Objects.equals(adPlatform, ad.adPlatform) &&
+                Objects.equals(cpa, ad.cpa) &&
                 Objects.equals(cpc, ad.cpc) &&
                 Objects.equals(impressionsLimit, ad.impressionsLimit) &&
                 Objects.equals(name, ad.name) &&
@@ -330,6 +352,7 @@ public class Ad {
         sb.append(", approved=").append(approved);
         sb.append(", disclaimerSpecialist=").append(disclaimerSpecialist);
         sb.append(", adPlatform=").append(adPlatform);
+        sb.append(", cpa=").append(cpa);
         sb.append(", cpc=").append(cpc);
         sb.append(", impressionsLimit=").append(impressionsLimit);
         sb.append(", name='").append(name).append("'");

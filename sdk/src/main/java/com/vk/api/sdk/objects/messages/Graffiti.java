@@ -2,13 +2,15 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Graffiti object
  */
-public class Graffiti {
+public class Graffiti implements Validable {
     /**
      * Access key for graffiti
      */
@@ -19,12 +21,14 @@ public class Graffiti {
      * Graffiti height
      */
     @SerializedName("height")
+    @Required
     private Integer height;
 
     /**
      * Graffiti ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
@@ -37,12 +41,14 @@ public class Graffiti {
      * Graffiti URL
      */
     @SerializedName("url")
+    @Required
     private URL url;
 
     /**
      * Graffiti width
      */
     @SerializedName("width")
+    @Required
     private Integer width;
 
     public String getAccessKey() {

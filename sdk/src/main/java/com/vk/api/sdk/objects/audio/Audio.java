@@ -2,13 +2,15 @@ package com.vk.api.sdk.objects.audio;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Audio object
  */
-public class Audio {
+public class Audio implements Validable {
     /**
      * Access key for the audio
      */
@@ -19,12 +21,14 @@ public class Audio {
      * Artist name
      */
     @SerializedName("artist")
+    @Required
     private String artist;
 
     /**
      * Audio ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("is_explicit")
@@ -46,6 +50,7 @@ public class Audio {
      * Title
      */
     @SerializedName("title")
+    @Required
     private String title;
 
     /**

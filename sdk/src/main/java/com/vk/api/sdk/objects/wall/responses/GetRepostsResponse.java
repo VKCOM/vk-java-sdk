@@ -2,6 +2,8 @@ package com.vk.api.sdk.objects.wall.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.User;
 import com.vk.api.sdk.objects.wall.WallpostFull;
@@ -11,14 +13,17 @@ import java.util.Objects;
 /**
  * GetRepostsResponse object
  */
-public class GetRepostsResponse {
+public class GetRepostsResponse implements Validable {
     @SerializedName("items")
+    @Required
     private List<WallpostFull> items;
 
     @SerializedName("profiles")
+    @Required
     private List<User> profiles;
 
     @SerializedName("groups")
+    @Required
     private List<Group> groups;
 
     public List<WallpostFull> getItems() {

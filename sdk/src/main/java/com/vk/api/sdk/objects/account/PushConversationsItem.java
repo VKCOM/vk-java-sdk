@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.account;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * PushConversationsItem object
  */
-public class PushConversationsItem {
+public class PushConversationsItem implements Validable {
     /**
      * Time until that notifications are disabled in seconds
      */

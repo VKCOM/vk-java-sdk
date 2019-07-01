@@ -2,6 +2,7 @@ package com.vk.api.sdk.objects.messages.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.message.ChatPreview;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Objects;
 /**
  * GetChatPreviewResponse object
  */
-public class GetChatPreviewResponse {
+public class GetChatPreviewResponse implements Validable {
     @SerializedName("preview")
     private ChatPreview preview;
 

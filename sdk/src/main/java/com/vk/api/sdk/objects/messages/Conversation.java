@@ -2,24 +2,18 @@ package com.vk.api.sdk.objects.messages;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Conversation object
  */
-public class Conversation {
-    @SerializedName("current_keyboard")
-    private Keyboard currentKeyboard;
-
-    @SerializedName("important")
-    private Boolean important;
-
-    /**
-     * Last message user have read
-     */
-    @SerializedName("in_read")
-    private Integer inRead;
+public class Conversation implements Validable {
+    @SerializedName("peer")
+    @Required
+    private ConversationPeer peer;
 
     /**
      * ID of the last message in conversation
@@ -28,13 +22,10 @@ public class Conversation {
     private Integer lastMessageId;
 
     /**
-     * Ids of messages with mentions
+     * Last message user have read
      */
-    @SerializedName("mentions")
-    private List<Integer> mentions;
-
-    @SerializedName("message_request")
-    private ConversationMessageRequest messageRequest;
+    @SerializedName("in_read")
+    private Integer inRead;
 
     /**
      * Last outcoming message have been read by the opponent
@@ -42,42 +33,39 @@ public class Conversation {
     @SerializedName("out_read")
     private Integer outRead;
 
-    @SerializedName("peer")
-    private ConversationPeer peer;
-
-    @SerializedName("unanswered")
-    private Boolean unanswered;
-
     /**
      * Unread messages number
      */
     @SerializedName("unread_count")
     private Integer unreadCount;
 
-    public Keyboard getCurrentKeyboard() {
-        return currentKeyboard;
+    @SerializedName("important")
+    private Boolean important;
+
+    @SerializedName("unanswered")
+    private Boolean unanswered;
+
+    @SerializedName("special_service_type")
+    private ConversationSpecialServiceType specialServiceType;
+
+    @SerializedName("message_request")
+    private ConversationMessageRequest messageRequest;
+
+    /**
+     * Ids of messages with mentions
+     */
+    @SerializedName("mentions")
+    private List<Integer> mentions;
+
+    @SerializedName("current_keyboard")
+    private Keyboard currentKeyboard;
+
+    public ConversationPeer getPeer() {
+        return peer;
     }
 
-    public Conversation setCurrentKeyboard(Keyboard currentKeyboard) {
-        this.currentKeyboard = currentKeyboard;
-        return this;
-    }
-
-    public Boolean getImportant() {
-        return important;
-    }
-
-    public Conversation setImportant(Boolean important) {
-        this.important = important;
-        return this;
-    }
-
-    public Integer getInRead() {
-        return inRead;
-    }
-
-    public Conversation setInRead(Integer inRead) {
-        this.inRead = inRead;
+    public Conversation setPeer(ConversationPeer peer) {
+        this.peer = peer;
         return this;
     }
 
@@ -90,21 +78,12 @@ public class Conversation {
         return this;
     }
 
-    public List<Integer> getMentions() {
-        return mentions;
+    public Integer getInRead() {
+        return inRead;
     }
 
-    public Conversation setMentions(List<Integer> mentions) {
-        this.mentions = mentions;
-        return this;
-    }
-
-    public ConversationMessageRequest getMessageRequest() {
-        return messageRequest;
-    }
-
-    public Conversation setMessageRequest(ConversationMessageRequest messageRequest) {
-        this.messageRequest = messageRequest;
+    public Conversation setInRead(Integer inRead) {
+        this.inRead = inRead;
         return this;
     }
 
@@ -117,12 +96,21 @@ public class Conversation {
         return this;
     }
 
-    public ConversationPeer getPeer() {
-        return peer;
+    public Integer getUnreadCount() {
+        return unreadCount;
     }
 
-    public Conversation setPeer(ConversationPeer peer) {
-        this.peer = peer;
+    public Conversation setUnreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
+        return this;
+    }
+
+    public Boolean getImportant() {
+        return important;
+    }
+
+    public Conversation setImportant(Boolean important) {
+        this.important = important;
         return this;
     }
 
@@ -135,18 +123,45 @@ public class Conversation {
         return this;
     }
 
-    public Integer getUnreadCount() {
-        return unreadCount;
+    public ConversationSpecialServiceType getSpecialServiceType() {
+        return specialServiceType;
     }
 
-    public Conversation setUnreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
+    public Conversation setSpecialServiceType(ConversationSpecialServiceType specialServiceType) {
+        this.specialServiceType = specialServiceType;
+        return this;
+    }
+
+    public ConversationMessageRequest getMessageRequest() {
+        return messageRequest;
+    }
+
+    public Conversation setMessageRequest(ConversationMessageRequest messageRequest) {
+        this.messageRequest = messageRequest;
+        return this;
+    }
+
+    public List<Integer> getMentions() {
+        return mentions;
+    }
+
+    public Conversation setMentions(List<Integer> mentions) {
+        this.mentions = mentions;
+        return this;
+    }
+
+    public Keyboard getCurrentKeyboard() {
+        return currentKeyboard;
+    }
+
+    public Conversation setCurrentKeyboard(Keyboard currentKeyboard) {
+        this.currentKeyboard = currentKeyboard;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(important, outRead, peer, mentions, unanswered, currentKeyboard, unreadCount, inRead, lastMessageId, messageRequest);
+        return Objects.hash(important, outRead, peer, unanswered, mentions, currentKeyboard, unreadCount, inRead, lastMessageId, messageRequest, specialServiceType);
     }
 
     @Override
@@ -157,11 +172,12 @@ public class Conversation {
         return Objects.equals(important, conversation.important) &&
                 Objects.equals(lastMessageId, conversation.lastMessageId) &&
                 Objects.equals(unreadCount, conversation.unreadCount) &&
+                Objects.equals(specialServiceType, conversation.specialServiceType) &&
                 Objects.equals(inRead, conversation.inRead) &&
                 Objects.equals(peer, conversation.peer) &&
-                Objects.equals(currentKeyboard, conversation.currentKeyboard) &&
-                Objects.equals(mentions, conversation.mentions) &&
                 Objects.equals(unanswered, conversation.unanswered) &&
+                Objects.equals(mentions, conversation.mentions) &&
+                Objects.equals(currentKeyboard, conversation.currentKeyboard) &&
                 Objects.equals(outRead, conversation.outRead) &&
                 Objects.equals(messageRequest, conversation.messageRequest);
     }
@@ -177,11 +193,12 @@ public class Conversation {
         sb.append("important=").append(important);
         sb.append(", lastMessageId=").append(lastMessageId);
         sb.append(", unreadCount=").append(unreadCount);
+        sb.append(", specialServiceType='").append(specialServiceType).append("'");
         sb.append(", inRead=").append(inRead);
         sb.append(", peer=").append(peer);
-        sb.append(", currentKeyboard=").append(currentKeyboard);
-        sb.append(", mentions=").append(mentions);
         sb.append(", unanswered=").append(unanswered);
+        sb.append(", mentions=").append(mentions);
+        sb.append(", currentKeyboard=").append(currentKeyboard);
         sb.append(", outRead=").append(outRead);
         sb.append(", messageRequest='").append(messageRequest).append("'");
         sb.append('}');

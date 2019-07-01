@@ -2,12 +2,13 @@ package com.vk.api.sdk.objects.secure.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.Objects;
 
 /**
  * GiveEventStickerResponse object
  */
-public class GiveEventStickerResponse {
+public class GiveEventStickerResponse implements Validable {
     @SerializedName("user_id")
     private Integer userId;
 

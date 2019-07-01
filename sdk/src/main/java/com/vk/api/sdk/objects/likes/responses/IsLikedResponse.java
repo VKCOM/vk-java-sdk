@@ -2,23 +2,27 @@ package com.vk.api.sdk.objects.likes.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
 /**
  * IsLikedResponse object
  */
-public class IsLikedResponse {
+public class IsLikedResponse implements Validable {
     /**
      * Information whether user liked the object
      */
     @SerializedName("liked")
+    @Required
     private BoolInt liked;
 
     /**
      * Information whether user reposted the object
      */
     @SerializedName("copied")
+    @Required
     private BoolInt copied;
 
     public boolean isLiked() {

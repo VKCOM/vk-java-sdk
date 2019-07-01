@@ -85,6 +85,9 @@ public enum Fields implements EnumParam {
     @SerializedName("can_message")
     CAN_MESSAGE("can_message"),
 
+    @SerializedName("is_market_cart_enabled")
+    IS_MARKET_CART_ENABLED("is_market_cart_enabled"),
+
     @SerializedName("is_messages_blocked")
     IS_MESSAGES_BLOCKED("is_messages_blocked"),
 
@@ -131,7 +134,10 @@ public enum Fields implements EnumParam {
     CAN_SUBSCRIBE_POSTS("can_subscribe_posts"),
 
     @SerializedName("menu")
-    MENU("menu");
+    MENU("menu"),
+
+    @SerializedName("warning_notification")
+    WARNING_NOTIFICATION("warning_notification");
 
     private final String value;
 

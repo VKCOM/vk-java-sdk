@@ -2,16 +2,20 @@ package com.vk.api.sdk.objects.groups;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * TokenPermissionSetting object
  */
-public class TokenPermissionSetting {
+public class TokenPermissionSetting implements Validable {
     @SerializedName("name")
+    @Required
     private String name;
 
     @SerializedName("setting")
+    @Required
     private Integer setting;
 
     public String getName() {

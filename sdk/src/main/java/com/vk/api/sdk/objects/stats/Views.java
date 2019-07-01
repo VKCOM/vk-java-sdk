@@ -2,13 +2,14 @@ package com.vk.api.sdk.objects.stats;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Views stats
  */
-public class Views {
+public class Views implements Validable {
     @SerializedName("age")
     private List<SexAge> age;
 

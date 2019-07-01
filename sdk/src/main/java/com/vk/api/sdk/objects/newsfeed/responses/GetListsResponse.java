@@ -2,20 +2,24 @@ package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GetListsResponse object
  */
-public class GetListsResponse {
+public class GetListsResponse implements Validable {
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<com.vk.api.sdk.objects.newsfeed.List> items;
 
     public Integer getCount() {
