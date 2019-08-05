@@ -40,7 +40,7 @@ public class Application {
         resourceHandler.setResourceBase(Application.class.getResource("/static").getPath());
 
         VkApiClient vk = new VkApiClient(new HttpTransportClient());
-        handlers.setHandlers(new Handler[]{resourceHandler, new RequestHandler(vk, clientId, clientSecret, host)});
+        handlers.setHandlers(new Handler[]{resourceHandler, new RequestHandler(vk, clientId, clientSecret, host, port)});
 
         Server server = new Server(port);
         server.setHandler(handlers);
