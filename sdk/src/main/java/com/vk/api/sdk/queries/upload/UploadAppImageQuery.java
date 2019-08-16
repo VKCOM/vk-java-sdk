@@ -12,6 +12,11 @@ public class UploadAppImageQuery extends UploadQueryBuilder<UploadAppImageQuery,
         file(file);
     }
 
+    public UploadAppImageQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "image", UploadImageResponse.class);
+        file(file);
+    }
+
     @Override
     protected UploadAppImageQuery getThis() {
         return this;

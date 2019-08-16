@@ -16,6 +16,11 @@ public class UploadDocQuery extends UploadQueryBuilder<UploadDocQuery, DocUpload
         file(file);
     }
 
+    public UploadDocQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "file", DocUploadResponse.class);
+        file(file);
+    }
+
     @Override
     protected UploadDocQuery getThis() {
         return this;

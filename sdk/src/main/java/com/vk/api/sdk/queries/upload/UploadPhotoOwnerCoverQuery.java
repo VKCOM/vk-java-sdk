@@ -15,6 +15,11 @@ public class UploadPhotoOwnerCoverQuery extends UploadQueryBuilder<UploadPhotoOw
         file(file);
     }
 
+    public UploadPhotoOwnerCoverQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "photo", OwnerCoverUploadResponse.class);
+        file(file);
+    }
+
     @Override
     protected UploadPhotoOwnerCoverQuery getThis() {
         return this;

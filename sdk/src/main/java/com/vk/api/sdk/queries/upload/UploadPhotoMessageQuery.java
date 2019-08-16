@@ -15,6 +15,11 @@ public class UploadPhotoMessageQuery extends UploadQueryBuilder<UploadPhotoMessa
         file(file);
     }
 
+    public UploadPhotoMessageQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "photo", MessageUploadResponse.class);
+        file(file);
+    }
+
     @Override
     protected UploadPhotoMessageQuery getThis() {
         return this;

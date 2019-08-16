@@ -15,6 +15,10 @@ public class UploadVideoStoryQuery extends UploadQueryBuilder<UploadVideoStoryQu
         super(client, uploadUrl, "video_file", Story.class);
         file(file);
     }
+    public UploadVideoStoryQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "video_file", Story.class);
+        file(file);
+    }
 
     @Override
     protected UploadVideoStoryQuery getThis() {

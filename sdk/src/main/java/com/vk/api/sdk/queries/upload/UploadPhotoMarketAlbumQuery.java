@@ -14,6 +14,10 @@ public class UploadPhotoMarketAlbumQuery extends UploadQueryBuilder<UploadPhotoM
         super(client, uploadUrl, "photo", MarketAlbumUploadResponse.class);
         file(file);
     }
+    public UploadPhotoMarketAlbumQuery(VkApiClient client, String uploadUrl, byte[] file) {
+        super(client, uploadUrl, "photo", MarketAlbumUploadResponse.class);
+        file(file);
+    }
 
     @Override
     protected UploadPhotoMarketAlbumQuery getThis() {

@@ -27,7 +27,15 @@ public class Upload extends AbstractAction {
         return new UploadPhotoQuery(getClient(), uploadUrl, file);
     }
 
+    public UploadPhotoQuery photo(String uploadUrl, byte[] file) {
+        return new UploadPhotoQuery(getClient(), uploadUrl, file);
+    }
+
     public UploadPhotoMarketAlbumQuery photoMarketAlbum(String uploadUrl, File file) {
+        return new UploadPhotoMarketAlbumQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadPhotoMarketAlbumQuery photoMarketAlbum(String uploadUrl, byte[] file) {
         return new UploadPhotoMarketAlbumQuery(getClient(), uploadUrl, file);
     }
 
@@ -35,7 +43,15 @@ public class Upload extends AbstractAction {
         return new UploadPhotoMarketQuery(getClient(), uploadUrl, file);
     }
 
+    public UploadPhotoMarketQuery photoMarket(String uploadUrl, byte[] file) {
+        return new UploadPhotoMarketQuery(getClient(), uploadUrl, file);
+    }
+
     public UploadPhotoMessageQuery photoMessage(String uploadUrl, File file) {
+        return new UploadPhotoMessageQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadPhotoMessageQuery photoMessage(String uploadUrl, byte[] file) {
         return new UploadPhotoMessageQuery(getClient(), uploadUrl, file);
     }
 
@@ -43,7 +59,15 @@ public class Upload extends AbstractAction {
         return new UploadPhotoOwnerQuery(getClient(), uploadUrl, file);
     }
 
+    public UploadPhotoOwnerQuery photoOwner(String uploadUrl, byte[] file) {
+        return new UploadPhotoOwnerQuery(getClient(), uploadUrl, file);
+    }
+
     public UploadPhotoOwnerCoverQuery photoOwnerCover(String uploadUrl, File file) {
+        return new UploadPhotoOwnerCoverQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadPhotoOwnerCoverQuery photoOwnerCover(String uploadUrl, byte[] file) {
         return new UploadPhotoOwnerCoverQuery(getClient(), uploadUrl, file);
     }
 
@@ -51,7 +75,15 @@ public class Upload extends AbstractAction {
         return new UploadPhotoWallQuery(getClient(), uploadUrl, file);
     }
 
+    public UploadPhotoWallQuery photoWall(String uploadUrl, byte[] file) {
+        return new UploadPhotoWallQuery(getClient(), uploadUrl, file);
+    }
+
     public UploadVideoQuery video(String uploadUrl, File file) {
+        return new UploadVideoQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadVideoQuery video(String uploadUrl, byte[] file) {
         return new UploadVideoQuery(getClient(), uploadUrl, file);
     }
 
@@ -59,7 +91,15 @@ public class Upload extends AbstractAction {
         return new UploadAppImageQuery(getClient(), uploadUrl, file);
     }
 
+    public UploadAppImageQuery appImage(String uploadUrl, byte[] file) {
+        return new UploadAppImageQuery(getClient(), uploadUrl, file);
+    }
+
     public UploadDocQuery doc(String uploadUrl, File file) {
+        return new UploadDocQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadDocQuery doc(String uploadUrl, byte[] file) {
         return new UploadDocQuery(getClient(), uploadUrl, file);
     }
 
@@ -67,7 +107,15 @@ public class Upload extends AbstractAction {
         return new UploadPhotoStoryQuery(getClient(), uploadUrl, file).execute();
     }
 
+    public Story photoStory(String uploadUrl, byte[] file) throws ClientException, ApiException {
+        return new UploadPhotoStoryQuery(getClient(), uploadUrl, file).execute();
+    }
+
     public Story videoStory(String uploadUrl, File file) throws ClientException, ApiException {
+        return new UploadVideoStoryQuery(getClient(), uploadUrl, file).execute();
+    }
+
+    public Story videoStory(String uploadUrl, byte[] file) throws ClientException, ApiException {
         return new UploadVideoStoryQuery(getClient(), uploadUrl, file).execute();
     }
 }

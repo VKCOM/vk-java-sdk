@@ -17,6 +17,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
@@ -249,6 +250,23 @@ public class HttpTransportClient implements TransportClient {
         HttpEntity entity = MultipartEntityBuilder
                 .create()
                 .addPart(fileName, fileBody).build();
+
+        request.setEntity(entity);
+        return callWithStatusCheck(request);
+    }
+
+    @Override
+    public ClientResponse post(String url, String fileName, byte[] file) throws IOException {
+        HttpPost request = new HttpPost(url);
+        // Filename is not file name
+        // it means type of file that we send
+        // and pretty strange, that VK can't understand file's format without extension
+        // so it is'n best solution, but it works ok
+        String extension = fileName.equals("photo") ? ".jpeg" : ".mp4";
+        ByteArrayBody byteArrayBody = new ByteArrayBody(file, fileName + extension);
+        HttpEntity entity = MultipartEntityBuilder
+                .create()
+                .addPart(fileName, byteArrayBody).build();
 
         request.setEntity(entity);
         return callWithStatusCheck(request);

@@ -27,6 +27,8 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
     private File file;
 
+    private byte[] filePayload;
+
     public UploadQueryBuilder(VkApiClient client, String uploadUrl, String filename, Type type) {
         super(uploadUrl, client.getTransportClient(), client.getGson(), 0, type);
         this.filename = filename;
@@ -34,6 +36,10 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
     public T file(File value) {
         file = value;
+        return getThis();
+    }
+    public T file(byte[] value) {
+        filePayload = value;
         return getThis();
     }
 
@@ -65,6 +71,8 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
         try {
             if (file != null) {
                 response = getClient().post(getUrl(), filename, file);
+            } else  if (filename != null) {
+                response = getClient().post(getUrl(), filename, filePayload);
             } else {
                 response = getClient().post(getUrl());
             }
