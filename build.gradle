@@ -4,8 +4,8 @@ subprojects {
     group 'com.vk.api'
     version '1.0.5'
 
-    sourceCompatibility = 1.9
-    targetCompatibility = 1.9
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')
