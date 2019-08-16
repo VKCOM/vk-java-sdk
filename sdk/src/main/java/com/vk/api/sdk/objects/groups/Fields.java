@@ -136,8 +136,14 @@ public enum Fields implements EnumParam {
     @SerializedName("menu")
     MENU("menu"),
 
+    @SerializedName("floating_buttons")
+    FLOATING_BUTTONS("floating_buttons"),
+
     @SerializedName("warning_notification")
-    WARNING_NOTIFICATION("warning_notification");
+    WARNING_NOTIFICATION("warning_notification"),
+
+    @SerializedName("donut")
+    DONUT("donut");
 
     private final String value;
 

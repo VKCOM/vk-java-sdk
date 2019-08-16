@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Status of information about timetable
- */
+ * Status of information about timetable */
 public enum AddressWorkInfoStatus implements EnumParam {
     @SerializedName("no_information")
     NO_INFORMATION("no_information"),

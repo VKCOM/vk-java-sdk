@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Settings parameters
- */
+ * Settings parameters */
 public enum PushParamsSettings implements EnumParam {
     @SerializedName("on")
     ON("on"),

@@ -62,16 +62,6 @@ public class StoriesHideReplyQuery extends AbstractQueryBuilder<StoriesHideReply
         return unsafeParam("story_id", value);
     }
 
-    /**
-     * Access key for the private object.
-     *
-     * @param value value of "access key" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public StoriesHideReplyQuery accessKey(String value) {
-        return unsafeParam("access_key", value);
-    }
-
     @Override
     protected StoriesHideReplyQuery getThis() {
         return this;

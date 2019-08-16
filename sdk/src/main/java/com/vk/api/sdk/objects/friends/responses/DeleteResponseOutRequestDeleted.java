@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Returns 1 if out request has been canceled
- */
+ * Returns 1 if out request has been canceled */
 public enum DeleteResponseOutRequestDeleted implements EnumParam {
     @SerializedName("1")
     OK(1);

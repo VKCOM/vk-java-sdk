@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * User sex. Possible values: , * '1' – female,, * '2' – male.
- */
+ * User sex. Possible values: , * '1' – female,, * '2' – male. */
 public enum AccountSex implements EnumParam {
     @SerializedName("0")
     UNDEFINED(0),

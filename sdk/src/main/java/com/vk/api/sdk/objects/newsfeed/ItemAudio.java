@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ItemAudio object
  */
-public class ItemAudio implements Validable {
+public class ItemAudio extends ItemBase implements Validable {
     @SerializedName("audio")
     private ItemAudioAudio audio;
 

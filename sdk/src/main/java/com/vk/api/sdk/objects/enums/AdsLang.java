@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
- */
+ * Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English. */
 public enum AdsLang implements EnumParam {
     @SerializedName("ru")
     RUSSIAN("ru"),

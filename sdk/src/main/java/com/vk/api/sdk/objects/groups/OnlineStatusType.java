@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Type of online status of group
- */
+ * Type of online status of group */
 public enum OnlineStatusType implements EnumParam {
     @SerializedName("none")
     NONE("none"),

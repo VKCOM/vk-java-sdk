@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Account type
- */
+ * Account type */
 public enum AccountType implements EnumParam {
     @SerializedName("general")
     GENERAL("general"),

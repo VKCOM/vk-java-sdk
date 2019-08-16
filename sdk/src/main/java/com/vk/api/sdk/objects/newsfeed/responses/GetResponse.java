@@ -1,20 +1,22 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.newsfeed.NewsfeedItem;
 import com.vk.api.sdk.objects.users.UserFull;
+import com.vk.api.sdk.oneofs.NewsfeedNewsfeedItemOneOf;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * GetResponse object
  */
 public class GetResponse implements Validable {
     @SerializedName("items")
-    private List<NewsfeedItem> items;
+    private List<JsonObject> items;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
@@ -22,13 +24,8 @@ public class GetResponse implements Validable {
     @SerializedName("groups")
     private List<GroupFull> groups;
 
-    public List<NewsfeedItem> getItems() {
-        return items;
-    }
-
-    public GetResponse setItems(List<NewsfeedItem> items) {
-        this.items = items;
-        return this;
+    public List<NewsfeedNewsfeedItemOneOf> getItems() {
+        return items.stream().map(NewsfeedNewsfeedItemOneOf::new).collect(Collectors.toList());
     }
 
     public List<UserFull> getProfiles() {

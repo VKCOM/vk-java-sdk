@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * School type
- */
+ * School type */
 public enum TargSuggestionsSchoolsType implements EnumParam {
     @SerializedName("school")
     SCHOOL("school"),

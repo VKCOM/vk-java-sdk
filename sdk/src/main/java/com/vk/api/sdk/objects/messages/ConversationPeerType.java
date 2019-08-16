@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Peer type
- */
+ * Peer type */
 public enum ConversationPeerType implements EnumParam {
     @SerializedName("chat")
     CHAT("chat"),

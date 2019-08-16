@@ -10,6 +10,7 @@ import com.vk.api.sdk.queries.video.VideoCreateCommentQuery;
 import com.vk.api.sdk.queries.video.VideoDeleteAlbumQuery;
 import com.vk.api.sdk.queries.video.VideoDeleteCommentQuery;
 import com.vk.api.sdk.queries.video.VideoDeleteQuery;
+import com.vk.api.sdk.queries.video.VideoDuplicateQuery;
 import com.vk.api.sdk.queries.video.VideoEditAlbumQuery;
 import com.vk.api.sdk.queries.video.VideoEditCommentQuery;
 import com.vk.api.sdk.queries.video.VideoEditQuery;
@@ -120,6 +121,19 @@ public class Videos extends AbstractAction {
      */
     public VideoDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
         return new VideoDeleteCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ownerId
+     * @param videoId
+     * @param md5sum
+     * @param size
+     * @return query
+     */
+    public VideoDuplicateQuery duplicate(UserActor actor, int ownerId, int videoId, String md5sum,
+            int size) {
+        return new VideoDuplicateQuery(getClient(), actor, ownerId, videoId, md5sum, size);
     }
 
     /**

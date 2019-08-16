@@ -16,7 +16,7 @@ import java.util.Objects;
 /**
  * ItemWallpost object
  */
-public class ItemWallpost implements Validable {
+public class ItemWallpost extends ItemBase implements Validable {
     @SerializedName("activity")
     private EventActivity activity;
 

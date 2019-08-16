@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Friend request status
- */
+ * Friend request status */
 public enum AddResponse implements EnumParam {
     @SerializedName("1")
     SEND(1),

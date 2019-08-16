@@ -4,11 +4,13 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
- */
+ * Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages) */
 public enum MessagesFilter implements EnumParam {
     @SerializedName("all")
     ALL("all"),
+
+    @SerializedName("business_notify")
+    BUSINESS_NOTIFY("business_notify"),
 
     @SerializedName("important")
     IMPORTANT("important"),

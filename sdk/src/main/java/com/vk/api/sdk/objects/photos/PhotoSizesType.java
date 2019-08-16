@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Size type
- */
+ * Size type */
 public enum PhotoSizesType implements EnumParam {
     @SerializedName("s")
     S("s"),

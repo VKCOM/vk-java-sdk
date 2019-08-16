@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Action type
- */
+ * Action type */
 public enum LinkButtonActionType implements EnumParam {
     @SerializedName("open_url")
     OPEN_URL("open_url");

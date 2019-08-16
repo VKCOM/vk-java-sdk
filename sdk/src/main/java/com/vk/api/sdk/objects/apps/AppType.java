@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Application type
- */
+ * Application type */
 public enum AppType implements EnumParam {
     @SerializedName("app")
     APP("app"),

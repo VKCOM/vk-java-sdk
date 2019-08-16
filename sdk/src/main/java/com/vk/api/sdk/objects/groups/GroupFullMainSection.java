@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Main section of community
- */
+ * Main section of community */
 public enum GroupFullMainSection implements EnumParam {
     @SerializedName("0")
     ABSENT(0),

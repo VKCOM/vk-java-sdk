@@ -29,4 +29,9 @@ public class WSPingListener implements WebSocketListener {
     public void onError(Throwable t) {
         LOG.info("Websocket error " + t);
     }
+
+    @Override
+    public void onPingFrame(byte[] payload) {
+        webSocket.sendPongFrame(payload);
+    }
 }

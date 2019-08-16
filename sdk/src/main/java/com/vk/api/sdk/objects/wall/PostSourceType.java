@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Type of post source
- */
+ * Type of post source */
 public enum PostSourceType implements EnumParam {
     @SerializedName("vk")
     VK("vk"),

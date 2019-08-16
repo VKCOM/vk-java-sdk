@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Action status
- */
+ * Action status */
 public enum MessageActionStatus implements EnumParam {
     @SerializedName("chat_photo_update")
     CHAT_PHOTO_UPDATE("chat_photo_update"),

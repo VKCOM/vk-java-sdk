@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Campaign type
- */
+ * Campaign type */
 public enum CampaignType implements EnumParam {
     @SerializedName("normal")
     NORMAL("normal"),

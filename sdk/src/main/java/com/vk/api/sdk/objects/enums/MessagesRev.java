@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
- */
+ * Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order. */
 public enum MessagesRev implements EnumParam {
     @SerializedName("1")
     CHRONOLOGICAL(1),

@@ -259,6 +259,8 @@ public class ExceptionMapper {
                 return new ApiGroupHostNeed2faException(error.getErrorMsg());
             case 706:
                 return new ApiGroupTooManyAddressesException(error.getErrorMsg());
+            case 711:
+                return new ApiGroupAppIsNotInstalledInCommunityException(error.getErrorMsg());
             case 200:
                 return new ApiAccessAlbumException(error.getErrorMsg());
             case 201:

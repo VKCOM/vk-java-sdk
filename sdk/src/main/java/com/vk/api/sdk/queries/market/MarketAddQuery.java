@@ -20,18 +20,16 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param name value of "name" parameter.
      * @param description value of "description" parameter.
      * @param categoryId value of "category id" parameter. Minimum is 0.
-     * @param price value of "price" parameter. Minimum is 0.
      * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
     public MarketAddQuery(VkApiClient client, UserActor actor, int ownerId, String name,
-            String description, int categoryId, double price, int mainPhotoId) {
+            String description, int categoryId, int mainPhotoId) {
         super(client, "market.add", AddResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         name(name);
         description(description);
         categoryId(categoryId);
-        price(price);
         mainPhotoId(mainPhotoId);
     }
 
@@ -81,8 +79,18 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param value value of "price" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketAddQuery price(double value) {
+    public MarketAddQuery price(Number value) {
         return unsafeParam("price", value);
+    }
+
+    /**
+     * Set old price
+     *
+     * @param value value of "old price" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery oldPrice(Number value) {
+        return unsafeParam("old_price", value);
     }
 
     /**
@@ -143,6 +151,6 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("price", "main_photo_id", "name", "description", "owner_id", "category_id", "access_token");
+        return Arrays.asList("main_photo_id", "name", "description", "owner_id", "category_id", "access_token");
     }
 }

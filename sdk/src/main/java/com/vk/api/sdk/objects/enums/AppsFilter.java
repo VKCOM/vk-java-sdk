@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * 'installed' — to return list of installed apps (only for mobile platform).
- */
+ * 'installed' — to return list of installed apps (only for mobile platform). */
 public enum AppsFilter implements EnumParam {
     @SerializedName("favorite")
     FAVORITE("favorite"),

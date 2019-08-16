@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * ItemStoriesBlock object
  */
-public class ItemStoriesBlock implements Validable {
+public class ItemStoriesBlock extends ItemBase implements Validable {
     @SerializedName("block_type")
     private ItemStoriesBlockBlockType blockType;
 
@@ -22,9 +22,6 @@ public class ItemStoriesBlock implements Validable {
 
     @SerializedName("track_code")
     private String trackCode;
-
-    @SerializedName("type")
-    private ItemStoriesBlockType type;
 
     public ItemStoriesBlockBlockType getBlockType() {
         return blockType;
@@ -62,18 +59,9 @@ public class ItemStoriesBlock implements Validable {
         return this;
     }
 
-    public ItemStoriesBlockType getType() {
-        return type;
-    }
-
-    public ItemStoriesBlock setType(ItemStoriesBlockType type) {
-        this.type = type;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(trackCode, stories, blockType, title, type);
+        return Objects.hash(trackCode, stories, blockType, title);
     }
 
     @Override
@@ -84,8 +72,7 @@ public class ItemStoriesBlock implements Validable {
         return Objects.equals(blockType, itemStoriesBlock.blockType) &&
                 Objects.equals(stories, itemStoriesBlock.stories) &&
                 Objects.equals(trackCode, itemStoriesBlock.trackCode) &&
-                Objects.equals(title, itemStoriesBlock.title) &&
-                Objects.equals(type, itemStoriesBlock.type);
+                Objects.equals(title, itemStoriesBlock.title);
     }
 
     @Override
@@ -100,7 +87,6 @@ public class ItemStoriesBlock implements Validable {
         sb.append(", stories=").append(stories);
         sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", title='").append(title).append("'");
-        sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();
     }

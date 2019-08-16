@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: '1' — by number of mutual friends, '0' — by date
- */
+ * Sort order: '1' — by number of mutual friends, '0' — by date */
 public enum FriendsSort implements EnumParam {
     @SerializedName("0")
     DATE(0),

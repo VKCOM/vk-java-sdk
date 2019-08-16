@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * 1 if success
- */
+ * 1 if success */
 public enum RestoreResponseSuccess implements EnumParam {
     @SerializedName("1")
     OK(1);

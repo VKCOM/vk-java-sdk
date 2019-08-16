@@ -34,7 +34,7 @@ public class Link implements Validable {
      * Link ID
      */
     @SerializedName("id")
-    private Integer id;
+    private String id;
 
     @SerializedName("is_favorite")
     private Boolean isFavorite;
@@ -109,11 +109,11 @@ public class Link implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public Link setId(Integer id) {
+    public Link setId(String id) {
         this.id = id;
         return this;
     }
@@ -235,7 +235,7 @@ public class Link implements Validable {
         sb.append(", button=").append(button);
         sb.append(", application=").append(application);
         sb.append(", previewUrl=").append(previewUrl);
-        sb.append(", id=").append(id);
+        sb.append(", id='").append(id).append("'");
         sb.append('}');
         return sb.toString();
     }

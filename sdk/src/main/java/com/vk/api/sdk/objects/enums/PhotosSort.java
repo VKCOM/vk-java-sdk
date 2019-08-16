@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: 'asc' — old first, 'desc' — new first
- */
+ * Sort order: 'asc' — old first, 'desc' — new first */
 public enum PhotosSort implements EnumParam {
     @SerializedName("asc")
     OLD_FIRST("asc"),

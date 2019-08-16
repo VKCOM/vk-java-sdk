@@ -58,9 +58,9 @@ public class AdsCreateTargetGroupQuery extends AbstractQueryBuilder<AdsCreateTar
     }
 
     /**
-     * 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group. '0' — not to remove users.
+     * 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group.
      *
-     * @param value value of "lifetime" parameter. Maximum is 365. Minimum is 0.
+     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 0. By default 720.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AdsCreateTargetGroupQuery lifetime(Integer value) {

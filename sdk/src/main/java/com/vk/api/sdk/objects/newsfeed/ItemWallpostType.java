@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Post type
- */
+ * Post type */
 public enum ItemWallpostType implements EnumParam {
     @SerializedName("post")
     POST("post"),

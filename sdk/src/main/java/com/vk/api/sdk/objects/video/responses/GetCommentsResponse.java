@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.users.UserMin;
 import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
@@ -25,14 +23,6 @@ public class GetCommentsResponse implements Validable {
     @Required
     private List<WallComment> items;
 
-    @SerializedName("profiles")
-    @Required
-    private List<UserMin> profiles;
-
-    @SerializedName("groups")
-    @Required
-    private List<GroupFull> groups;
-
     public Integer getCount() {
         return count;
     }
@@ -51,27 +41,9 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getProfiles() {
-        return profiles;
-    }
-
-    public GetCommentsResponse setProfiles(List<UserMin> profiles) {
-        this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetCommentsResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, groups, items);
+        return Objects.hash(count, items);
     }
 
     @Override
@@ -80,8 +52,6 @@ public class GetCommentsResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsResponse getCommentsResponse = (GetCommentsResponse) o;
         return Objects.equals(count, getCommentsResponse.count) &&
-                Objects.equals(profiles, getCommentsResponse.profiles) &&
-                Objects.equals(groups, getCommentsResponse.groups) &&
                 Objects.equals(items, getCommentsResponse.items);
     }
 
@@ -94,8 +64,6 @@ public class GetCommentsResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
         sb.append("count=").append(count);
-        sb.append(", profiles=").append(profiles);
-        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

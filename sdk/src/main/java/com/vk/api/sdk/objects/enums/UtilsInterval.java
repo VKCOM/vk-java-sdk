@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Interval.
- */
+ * Interval. */
 public enum UtilsInterval implements EnumParam {
     @SerializedName("day")
     DAY("day"),

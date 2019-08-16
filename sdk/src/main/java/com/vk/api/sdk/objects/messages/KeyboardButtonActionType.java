@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Button type
- */
+ * Button type */
 public enum KeyboardButtonActionType implements EnumParam {
     @SerializedName("text")
     TEXT("text"),

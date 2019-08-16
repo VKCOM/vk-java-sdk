@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: 'asc' — chronological, 'desc' — reverse chronological
- */
+ * Sort order: 'asc' — chronological, 'desc' — reverse chronological */
 public enum WallSort implements EnumParam {
     @SerializedName("asc")
     CHRONOLOGICAL("asc"),

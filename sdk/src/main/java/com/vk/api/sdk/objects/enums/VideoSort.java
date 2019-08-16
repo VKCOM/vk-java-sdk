@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
- */
+ * Sort order: '1' — by duration, '2' — by relevance, '0' — by date added */
 public enum VideoSort implements EnumParam {
     @SerializedName("1")
     DURATION(1),

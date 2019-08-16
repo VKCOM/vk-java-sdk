@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Error code
- */
+ * Error code */
 public enum SendMessageErrorCode implements EnumParam {
     @SerializedName("1")
     NOTIFICATIONS_DISABLED(1),

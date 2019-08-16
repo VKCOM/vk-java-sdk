@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Information whether community is closed
- */
+ * Information whether community is closed */
 public enum GroupIsClosed implements EnumParam {
     @SerializedName("0")
     OPEN(0),

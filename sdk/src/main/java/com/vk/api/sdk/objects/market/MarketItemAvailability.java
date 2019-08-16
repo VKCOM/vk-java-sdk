@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Information whether the item is available
- */
+ * Information whether the item is available */
 public enum MarketItemAvailability implements EnumParam {
     @SerializedName("0")
     AVAILABLE(0),

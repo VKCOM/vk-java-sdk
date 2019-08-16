@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Relative type
- */
+ * Relative type */
 public enum RelativeType implements EnumParam {
     @SerializedName("parent")
     PARENT("parent"),

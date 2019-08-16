@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Doc attachment type
- */
+ * Doc attachment type */
 public enum DocAttachmentType implements EnumParam {
     @SerializedName("doc")
     DOC("doc"),

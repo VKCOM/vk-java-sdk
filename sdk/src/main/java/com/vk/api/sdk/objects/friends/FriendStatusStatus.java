@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Friend status with the user
- */
+ * Friend status with the user */
 public enum FriendStatusStatus implements EnumParam {
     @SerializedName("0")
     NOT_A_FRIEND(0),

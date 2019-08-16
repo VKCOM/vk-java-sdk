@@ -143,16 +143,22 @@ public class Story implements Validable {
     private Boolean noSound;
 
     /**
+     * Does video need to be muted
+     */
+    @SerializedName("need_mute")
+    private Boolean needMute;
+
+    /**
      * Information whether story has question sticker and current user can send question to the author
      */
     @SerializedName("can_ask")
-    private Boolean canAsk;
+    private BoolInt canAsk;
 
     /**
      * Information whether story has question sticker and current user can send anonymous question to the author
      */
     @SerializedName("can_ask_anonymous")
-    private Boolean canAskAnonymous;
+    private BoolInt canAskAnonymous;
 
     public String getAccessKey() {
         return accessKey;
@@ -365,27 +371,34 @@ public class Story implements Validable {
         return this;
     }
 
-    public Boolean getCanAsk() {
+    public Boolean getNeedMute() {
+        return needMute;
+    }
+
+    public Story setNeedMute(Boolean needMute) {
+        this.needMute = needMute;
+        return this;
+    }
+
+    public boolean canAsk() {
+        return canAsk == BoolInt.YES;
+    }
+
+    public BoolInt getCanAsk() {
         return canAsk;
     }
 
-    public Story setCanAsk(Boolean canAsk) {
-        this.canAsk = canAsk;
-        return this;
+    public boolean canAskAnonymous() {
+        return canAskAnonymous == BoolInt.YES;
     }
 
-    public Boolean getCanAskAnonymous() {
+    public BoolInt getCanAskAnonymous() {
         return canAskAnonymous;
-    }
-
-    public Story setCanAskAnonymous(Boolean canAskAnonymous) {
-        this.canAskAnonymous = canAskAnonymous;
-        return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, canReply, link, video, ownerId, type, seen, noSound, isDeleted, canSee, canComment, id, views, parentStoryAccessKey, canAskAnonymous, canShare, photo, parentStoryId, expiresAt, canAsk, parentStory, replies, accessKey, parentStoryOwnerId, isExpired, isRestricted);
+        return Objects.hash(date, canReply, link, video, ownerId, type, seen, noSound, isDeleted, needMute, canSee, canComment, id, views, parentStoryAccessKey, canAskAnonymous, canShare, photo, parentStoryId, expiresAt, canAsk, parentStory, replies, accessKey, parentStoryOwnerId, isExpired, isRestricted);
     }
 
     @Override
@@ -395,6 +408,7 @@ public class Story implements Validable {
         Story story = (Story) o;
         return Objects.equals(date, story.date) &&
                 Objects.equals(canAsk, story.canAsk) &&
+                Objects.equals(needMute, story.needMute) &&
                 Objects.equals(ownerId, story.ownerId) &&
                 Objects.equals(isRestricted, story.isRestricted) &&
                 Objects.equals(link, story.link) &&
@@ -431,6 +445,7 @@ public class Story implements Validable {
         final StringBuilder sb = new StringBuilder("Story{");
         sb.append("date=").append(date);
         sb.append(", canAsk=").append(canAsk);
+        sb.append(", needMute=").append(needMute);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", isRestricted=").append(isRestricted);
         sb.append(", link=").append(link);

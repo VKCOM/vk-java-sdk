@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+.
- */
+ * Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+. */
 public enum GroupsAgeLimits implements EnumParam {
     @SerializedName("1")
     _1(1),

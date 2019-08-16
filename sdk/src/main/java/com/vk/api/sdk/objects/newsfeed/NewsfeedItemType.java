@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Item type
- */
+ * Item type */
 public enum NewsfeedItemType implements EnumParam {
     @SerializedName("post")
     POST("post"),
@@ -32,7 +31,13 @@ public enum NewsfeedItemType implements EnumParam {
     VIDEO("video"),
 
     @SerializedName("topic")
-    TOPIC("topic");
+    TOPIC("topic"),
+
+    @SerializedName("digest")
+    DIGEST("digest"),
+
+    @SerializedName("stories")
+    STORIES("stories");
 
     private final String value;
 

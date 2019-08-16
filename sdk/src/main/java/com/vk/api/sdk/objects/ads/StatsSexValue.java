@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sex
- */
+ * Sex */
 public enum StatsSexValue implements EnumParam {
     @SerializedName("f")
     FEMALE("f"),

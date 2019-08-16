@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Returns 1 if incoming request has been declined
- */
+ * Returns 1 if incoming request has been declined */
 public enum DeleteResponseInRequestDeleted implements EnumParam {
     @SerializedName("1")
     OK(1);

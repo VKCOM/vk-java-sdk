@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Source of scope
- */
+ * Source of scope */
 public enum UtilsSource implements EnumParam {
     @SerializedName("vk_cc")
     VK_CC("vk_cc"),

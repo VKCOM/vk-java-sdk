@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Section title
- */
+ * Section title */
 public enum HintSection implements EnumParam {
     @SerializedName("groups")
     GROUPS("groups"),

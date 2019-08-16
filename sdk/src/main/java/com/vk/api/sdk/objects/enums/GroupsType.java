@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Community type. Possible values: 'group, page, event.'
- */
+ * Community type. Possible values: 'group, page, event.' */
 public enum GroupsType implements EnumParam {
     @SerializedName("group")
     GROUP("group"),

@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Statistic state
- */
+ * Statistic state */
 public enum StoryStatsState implements EnumParam {
     @SerializedName("on")
     ON("on"),

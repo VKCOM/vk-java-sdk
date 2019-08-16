@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Ad atatus
- */
+ * Ad atatus */
 public enum AdStatus implements EnumParam {
     @SerializedName("0")
     STOPPED(0),

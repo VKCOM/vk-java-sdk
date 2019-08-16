@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Review status
- */
+ * Review status */
 public enum AdApproved implements EnumParam {
     @SerializedName("0")
     NOT_MODERATED(0),

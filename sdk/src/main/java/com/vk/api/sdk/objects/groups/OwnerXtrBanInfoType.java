@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Owner type
- */
+ * Owner type */
 public enum OwnerXtrBanInfoType implements EnumParam {
     @SerializedName("group")
     GROUP("group"),

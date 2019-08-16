@@ -64,17 +64,6 @@ public class Database extends AbstractAction {
     }
 
     /**
-     * Returns a list of cities.
-     *
-     * @param actor vk actor
-     * @param countryId Country ID.
-     * @return query
-     */
-    public DatabaseGetCitiesQuery getCities(ServiceActor actor, int countryId) {
-        return new DatabaseGetCitiesQuery(getClient(), actor, countryId);
-    }
-
-    /**
      * Returns information about cities by their IDs.
      *
      * @param actor vk actor
@@ -101,16 +90,6 @@ public class Database extends AbstractAction {
      * @return query
      */
     public DatabaseGetCountriesQuery getCountries(UserActor actor) {
-        return new DatabaseGetCountriesQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of countries.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public DatabaseGetCountriesQuery getCountries(ServiceActor actor) {
         return new DatabaseGetCountriesQuery(getClient(), actor);
     }
 

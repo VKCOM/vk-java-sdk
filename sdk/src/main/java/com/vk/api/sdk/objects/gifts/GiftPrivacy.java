@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Gift privacy
- */
+ * Gift privacy */
 public enum GiftPrivacy implements EnumParam {
     @SerializedName("0")
     NAME_AND_MESSAGE_FOR_ALL(0),

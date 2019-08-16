@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Document type.
- */
+ * Document type. */
 public enum DocsType implements EnumParam {
     @SerializedName("audio_message")
     AUDIO_MESSAGE("audio_message"),

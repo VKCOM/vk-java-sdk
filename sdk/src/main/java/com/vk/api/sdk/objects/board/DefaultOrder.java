@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort type
- */
+ * Sort type */
 public enum DefaultOrder implements EnumParam {
     @SerializedName("1")
     DESC_UPDATED(1),

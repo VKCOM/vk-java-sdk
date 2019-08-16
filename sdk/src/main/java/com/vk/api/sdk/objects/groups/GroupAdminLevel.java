@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Level of current user's credentials as manager
- */
+ * Level of current user's credentials as manager */
 public enum GroupAdminLevel implements EnumParam {
     @SerializedName("1")
     MODERATOR(1),

@@ -4,14 +4,16 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Object type
- */
+ * Object type */
 public enum HintType implements EnumParam {
     @SerializedName("group")
     GROUP("group"),
 
     @SerializedName("profile")
-    PROFILE("profile");
+    PROFILE("profile"),
+
+    @SerializedName("vk_app")
+    VK_APP("vk_app");
 
     private final String value;
 

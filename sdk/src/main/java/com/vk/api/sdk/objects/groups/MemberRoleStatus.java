@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * User's credentials as community admin
- */
+ * User's credentials as community admin */
 public enum MemberRoleStatus implements EnumParam {
     @SerializedName("moderator")
     MODERATOR("moderator"),

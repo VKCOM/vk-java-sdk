@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * '0' — do not use reverse order, '1' — use reverse order
- */
+ * '0' — do not use reverse order, '1' — use reverse order */
 public enum MarketRev implements EnumParam {
     @SerializedName("0")
     NORMAL(0),

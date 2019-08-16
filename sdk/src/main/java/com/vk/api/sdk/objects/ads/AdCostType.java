@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Cost type
- */
+ * Cost type */
 public enum AdCostType implements EnumParam {
     @SerializedName("0")
     PER_CLICKS(0),

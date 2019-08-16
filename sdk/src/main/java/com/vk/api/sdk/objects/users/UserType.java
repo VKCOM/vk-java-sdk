@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Object type
- */
+ * Object type */
 public enum UserType implements EnumParam {
     @SerializedName("profile")
     PROFILE("profile");

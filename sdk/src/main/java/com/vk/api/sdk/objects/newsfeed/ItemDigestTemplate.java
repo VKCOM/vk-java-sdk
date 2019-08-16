@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * type of digest
- */
+ * type of digest */
 public enum ItemDigestTemplate implements EnumParam {
     @SerializedName("list")
     LIST("list"),

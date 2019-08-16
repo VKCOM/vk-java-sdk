@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * ItemDigest object
  */
-public class ItemDigest implements Validable {
+public class ItemDigest extends ItemBase implements Validable {
     @SerializedName("button_text")
     private String buttonText;
 
@@ -37,12 +37,6 @@ public class ItemDigest implements Validable {
 
     @SerializedName("track_code")
     private String trackCode;
-
-    /**
-     * type of digest
-     */
-    @SerializedName("type")
-    private ItemDigestType type;
 
     public String getButtonText() {
         return buttonText;
@@ -107,18 +101,9 @@ public class ItemDigest implements Validable {
         return this;
     }
 
-    public ItemDigestType getType() {
-        return type;
-    }
-
-    public ItemDigest setType(ItemDigestType type) {
-        this.type = type;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(template, trackCode, buttonText, mainPostIds, feedId, title, type, items);
+        return Objects.hash(template, trackCode, buttonText, mainPostIds, feedId, title, items);
     }
 
     @Override
@@ -131,7 +116,6 @@ public class ItemDigest implements Validable {
                 Objects.equals(trackCode, itemDigest.trackCode) &&
                 Objects.equals(buttonText, itemDigest.buttonText) &&
                 Objects.equals(title, itemDigest.title) &&
-                Objects.equals(type, itemDigest.type) &&
                 Objects.equals(items, itemDigest.items) &&
                 Objects.equals(feedId, itemDigest.feedId);
     }
@@ -149,7 +133,6 @@ public class ItemDigest implements Validable {
         sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", buttonText='").append(buttonText).append("'");
         sb.append(", title='").append(title).append("'");
-        sb.append(", type='").append(type).append("'");
         sb.append(", items=").append(items);
         sb.append(", feedId='").append(feedId).append("'");
         sb.append('}');

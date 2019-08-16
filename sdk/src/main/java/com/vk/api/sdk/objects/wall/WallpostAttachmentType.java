@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Attachment type
- */
+ * Attachment type */
 public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("photo")
     PHOTO("photo"),

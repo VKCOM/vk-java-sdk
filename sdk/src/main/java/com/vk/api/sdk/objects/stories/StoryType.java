@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Story type.
- */
+ * Story type. */
 public enum StoryType implements EnumParam {
     @SerializedName("photo")
     PHOTO("photo"),

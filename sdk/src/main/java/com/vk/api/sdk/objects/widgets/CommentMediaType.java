@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Media type
- */
+ * Media type */
 public enum CommentMediaType implements EnumParam {
     @SerializedName("audio")
     AUDIO("audio"),

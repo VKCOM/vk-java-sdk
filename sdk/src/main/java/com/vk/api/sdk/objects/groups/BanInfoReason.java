@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Ban reason
- */
+ * Ban reason */
 public enum BanInfoReason implements EnumParam {
     @SerializedName("0")
     OTHER(0),

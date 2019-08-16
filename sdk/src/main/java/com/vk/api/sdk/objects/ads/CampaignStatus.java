@@ -4,8 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Campaign status
- */
+ * Campaign status */
 public enum CampaignStatus implements EnumParam {
     @SerializedName("0")
     STOPPED(0),

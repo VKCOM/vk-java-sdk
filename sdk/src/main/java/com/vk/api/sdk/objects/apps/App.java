@@ -3,7 +3,6 @@ package com.vk.api.sdk.objects.apps;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.net.URL;
 import java.util.List;
@@ -12,18 +11,12 @@ import java.util.Objects;
 /**
  * App object
  */
-public class App implements Validable {
+public class App extends AppMin implements Validable {
     /**
      * Official community's ID
      */
     @SerializedName("author_group")
     private Integer authorGroup;
-
-    /**
-     * Application author's ID
-     */
-    @SerializedName("author_id")
-    private Integer authorId;
 
     /**
      * Application author's URL
@@ -69,37 +62,6 @@ public class App implements Validable {
      */
     @SerializedName("genre_id")
     private Integer genreId;
-
-    /**
-     * URL of the app icon with 139 px in width
-     */
-    @SerializedName("icon_139")
-    private URL icon139;
-
-    /**
-     * URL of the app icon with 150 px in width
-     */
-    @SerializedName("icon_150")
-    private URL icon150;
-
-    /**
-     * URL of the app icon with 279 px in width
-     */
-    @SerializedName("icon_278")
-    private URL icon278;
-
-    /**
-     * URL of the app icon with 75 px in width
-     */
-    @SerializedName("icon_75")
-    private URL icon75;
-
-    /**
-     * Application ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
 
     /**
      * Information whether the application is multilanguage
@@ -149,32 +111,12 @@ public class App implements Validable {
     @SerializedName("section")
     private String section;
 
-    /**
-     * Application title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    @SerializedName("type")
-    @Required
-    private AppType type;
-
     public Integer getAuthorGroup() {
         return authorGroup;
     }
 
     public App setAuthorGroup(Integer authorGroup) {
         this.authorGroup = authorGroup;
-        return this;
-    }
-
-    public Integer getAuthorId() {
-        return authorId;
-    }
-
-    public App setAuthorId(Integer authorId) {
-        this.authorId = authorId;
         return this;
     }
 
@@ -247,51 +189,6 @@ public class App implements Validable {
 
     public App setGenreId(Integer genreId) {
         this.genreId = genreId;
-        return this;
-    }
-
-    public URL getIcon139() {
-        return icon139;
-    }
-
-    public App setIcon139(URL icon139) {
-        this.icon139 = icon139;
-        return this;
-    }
-
-    public URL getIcon150() {
-        return icon150;
-    }
-
-    public App setIcon150(URL icon150) {
-        this.icon150 = icon150;
-        return this;
-    }
-
-    public URL getIcon278() {
-        return icon278;
-    }
-
-    public App setIcon278(URL icon278) {
-        this.icon278 = icon278;
-        return this;
-    }
-
-    public URL getIcon75() {
-        return icon75;
-    }
-
-    public App setIcon75(URL icon75) {
-        this.icon75 = icon75;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public App setId(Integer id) {
-        this.id = id;
         return this;
     }
 
@@ -376,27 +273,9 @@ public class App implements Validable {
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public App setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public AppType getType() {
-        return type;
-    }
-
-    public App setType(AppType type) {
-        this.type = type;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(genreId, isInCatalog, icon75, description, section, screenName, title, type, screenshots, icon139, icon278, authorUrl, genre, leaderboardType, authorGroup, id, international, icon150, membersCount, banner560, platformId, authorId, friends, catalogPosition, banner1120, publishedDate);
+        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, section, screenName, platformId, friends, screenshots, authorUrl, genre, catalogPosition, leaderboardType, authorGroup, banner1120, publishedDate, international);
     }
 
     @Override
@@ -406,30 +285,22 @@ public class App implements Validable {
         App app = (App) o;
         return Objects.equals(authorGroup, app.authorGroup) &&
                 Objects.equals(leaderboardType, app.leaderboardType) &&
-                Objects.equals(icon278, app.icon278) &&
-                Objects.equals(description, app.description) &&
-                Objects.equals(icon75, app.icon75) &&
-                Objects.equals(section, app.section) &&
-                Objects.equals(title, app.title) &&
-                Objects.equals(type, app.type) &&
-                Objects.equals(genreId, app.genreId) &&
-                Objects.equals(icon150, app.icon150) &&
-                Objects.equals(screenshots, app.screenshots) &&
-                Objects.equals(screenName, app.screenName) &&
-                Objects.equals(genre, app.genre) &&
-                Objects.equals(icon139, app.icon139) &&
-                Objects.equals(banner560, app.banner560) &&
-                Objects.equals(id, app.id) &&
-                Objects.equals(international, app.international) &&
-                Objects.equals(catalogPosition, app.catalogPosition) &&
                 Objects.equals(banner1120, app.banner1120) &&
+                Objects.equals(description, app.description) &&
+                Objects.equals(section, app.section) &&
                 Objects.equals(isInCatalog, app.isInCatalog) &&
                 Objects.equals(friends, app.friends) &&
+                Objects.equals(genreId, app.genreId) &&
+                Objects.equals(screenshots, app.screenshots) &&
                 Objects.equals(authorUrl, app.authorUrl) &&
+                Objects.equals(screenName, app.screenName) &&
+                Objects.equals(genre, app.genre) &&
                 Objects.equals(platformId, app.platformId) &&
+                Objects.equals(banner560, app.banner560) &&
                 Objects.equals(membersCount, app.membersCount) &&
-                Objects.equals(authorId, app.authorId) &&
-                Objects.equals(publishedDate, app.publishedDate);
+                Objects.equals(international, app.international) &&
+                Objects.equals(publishedDate, app.publishedDate) &&
+                Objects.equals(catalogPosition, app.catalogPosition);
     }
 
     @Override
@@ -442,30 +313,22 @@ public class App implements Validable {
         final StringBuilder sb = new StringBuilder("App{");
         sb.append("authorGroup=").append(authorGroup);
         sb.append(", leaderboardType=").append(leaderboardType);
-        sb.append(", icon278=").append(icon278);
-        sb.append(", description='").append(description).append("'");
-        sb.append(", icon75=").append(icon75);
-        sb.append(", section='").append(section).append("'");
-        sb.append(", title='").append(title).append("'");
-        sb.append(", type=").append(type);
-        sb.append(", genreId=").append(genreId);
-        sb.append(", icon150=").append(icon150);
-        sb.append(", screenshots=").append(screenshots);
-        sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", genre='").append(genre).append("'");
-        sb.append(", icon139=").append(icon139);
-        sb.append(", banner560=").append(banner560);
-        sb.append(", id=").append(id);
-        sb.append(", international=").append(international);
-        sb.append(", catalogPosition=").append(catalogPosition);
         sb.append(", banner1120=").append(banner1120);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", section='").append(section).append("'");
         sb.append(", isInCatalog=").append(isInCatalog);
         sb.append(", friends=").append(friends);
+        sb.append(", genreId=").append(genreId);
+        sb.append(", screenshots=").append(screenshots);
         sb.append(", authorUrl=").append(authorUrl);
+        sb.append(", screenName='").append(screenName).append("'");
+        sb.append(", genre='").append(genre).append("'");
         sb.append(", platformId=").append(platformId);
+        sb.append(", banner560=").append(banner560);
         sb.append(", membersCount=").append(membersCount);
-        sb.append(", authorId=").append(authorId);
+        sb.append(", international=").append(international);
         sb.append(", publishedDate=").append(publishedDate);
+        sb.append(", catalogPosition=").append(catalogPosition);
         sb.append('}');
         return sb.toString();
     }

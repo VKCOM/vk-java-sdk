@@ -32,6 +32,16 @@ public class FaveRemoveLinkQuery extends AbstractQueryBuilder<FaveRemoveLinkQuer
         return unsafeParam("link_id", value);
     }
 
+    /**
+     * Link URL
+     *
+     * @param value value of "link" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FaveRemoveLinkQuery link(String value) {
+        return unsafeParam("link", value);
+    }
+
     @Override
     protected FaveRemoveLinkQuery getThis() {
         return this;
