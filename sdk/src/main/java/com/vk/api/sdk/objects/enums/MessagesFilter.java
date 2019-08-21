@@ -10,6 +10,9 @@ public enum MessagesFilter implements EnumParam {
     @SerializedName("all")
     ALL("all"),
 
+    @SerializedName("business_notify")
+    BUSINESS_NOTIFY("business_notify"),
+
     @SerializedName("important")
     IMPORTANT("important"),
 

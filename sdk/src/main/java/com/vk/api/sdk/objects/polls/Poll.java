@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,11 +12,11 @@ import java.util.Objects;
  */
 public class Poll implements Validable {
     /**
-     * Information whether the pole is anonymous
+     * Information whether the field is anonymous
      */
     @SerializedName("anonymous")
     @Required
-    private BoolInt anonymous;
+    private Boolean anonymous;
 
     /**
      * Current user's answer ID
@@ -63,12 +62,13 @@ public class Poll implements Validable {
     @Required
     private String votes;
 
-    public boolean isAnonymous() {
-        return anonymous == BoolInt.YES;
+    public Boolean getAnonymous() {
+        return anonymous;
     }
 
-    public BoolInt getAnonymous() {
-        return anonymous;
+    public Poll setAnonymous(Boolean anonymous) {
+        this.anonymous = anonymous;
+        return this;
     }
 
     public Integer getAnswerId() {

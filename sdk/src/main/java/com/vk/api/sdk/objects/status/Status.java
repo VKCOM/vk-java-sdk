@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.status;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.audio.Audio;
 import java.util.Objects;
 
 /**
@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class Status implements Validable {
     @SerializedName("audio")
-    private AudioFull audio;
+    private Audio audio;
 
     /**
      * Status text
@@ -19,11 +19,11 @@ public class Status implements Validable {
     @SerializedName("text")
     private String text;
 
-    public AudioFull getAudio() {
+    public Audio getAudio() {
         return audio;
     }
 
-    public Status setAudio(AudioFull audio) {
+    public Status setAudio(Audio audio) {
         this.audio = audio;
         return this;
     }

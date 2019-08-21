@@ -70,6 +70,9 @@ public class Photo implements Validable {
     @SerializedName("post_id")
     private Integer postId;
 
+    @SerializedName("sizes")
+    private List<PhotoSizes> sizes;
+
     /**
      * Photo caption
      */
@@ -178,6 +181,15 @@ public class Photo implements Validable {
         return this;
     }
 
+    public List<PhotoSizes> getSizes() {
+        return sizes;
+    }
+
+    public Photo setSizes(List<PhotoSizes> sizes) {
+        this.sizes = sizes;
+        return this;
+    }
+
     public String getText() {
         return text;
     }
@@ -207,7 +219,7 @@ public class Photo implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, lng, albumId, postId, ownerId, userId, accessKey, width, id, text, lat, height);
+        return Objects.hash(date, images, lng, albumId, postId, ownerId, userId, sizes, accessKey, width, id, text, lat, height);
     }
 
     @Override
@@ -220,6 +232,7 @@ public class Photo implements Validable {
                 Objects.equals(ownerId, photo.ownerId) &&
                 Objects.equals(lng, photo.lng) &&
                 Objects.equals(postId, photo.postId) &&
+                Objects.equals(sizes, photo.sizes) &&
                 Objects.equals(userId, photo.userId) &&
                 Objects.equals(accessKey, photo.accessKey) &&
                 Objects.equals(width, photo.width) &&
@@ -243,6 +256,7 @@ public class Photo implements Validable {
         sb.append(", ownerId=").append(ownerId);
         sb.append(", lng=").append(lng);
         sb.append(", postId=").append(postId);
+        sb.append(", sizes=").append(sizes);
         sb.append(", userId=").append(userId);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", width=").append(width);

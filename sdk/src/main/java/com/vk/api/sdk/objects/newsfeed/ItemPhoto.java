@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ItemPhoto object
  */
-public class ItemPhoto implements Validable {
+public class ItemPhoto extends ItemBase implements Validable {
     @SerializedName("photos")
     private ItemPhotoPhotos photos;
 

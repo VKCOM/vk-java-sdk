@@ -11,7 +11,10 @@ public enum HintType implements EnumParam {
     GROUP("group"),
 
     @SerializedName("profile")
-    PROFILE("profile");
+    PROFILE("profile"),
+
+    @SerializedName("vk_app")
+    VK_APP("vk_app");
 
     private final String value;
 

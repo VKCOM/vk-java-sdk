@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +27,7 @@ public class GetCommentsResponse implements Validable {
      * Information whether current user can comment the post
      */
     @SerializedName("can_post")
-    private BoolInt canPost;
+    private Boolean canPost;
 
     /**
      * Information whether groups can comment the post
@@ -60,12 +59,13 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public boolean canPost() {
-        return canPost == BoolInt.YES;
+    public Boolean getCanPost() {
+        return canPost;
     }
 
-    public BoolInt getCanPost() {
-        return canPost;
+    public GetCommentsResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
     }
 
     public Boolean getGroupsCanPost() {

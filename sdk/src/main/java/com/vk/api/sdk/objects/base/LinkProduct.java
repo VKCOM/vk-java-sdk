@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.base;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.market.Price;
 import java.util.Objects;
 
@@ -11,7 +12,14 @@ import java.util.Objects;
  */
 public class LinkProduct implements Validable {
     @SerializedName("price")
+    @Required
     private Price price;
+
+    @SerializedName("merchant")
+    private String merchant;
+
+    @SerializedName("orders_count")
+    private Integer ordersCount;
 
     public Price getPrice() {
         return price;
@@ -22,9 +30,27 @@ public class LinkProduct implements Validable {
         return this;
     }
 
+    public String getMerchant() {
+        return merchant;
+    }
+
+    public LinkProduct setMerchant(String merchant) {
+        this.merchant = merchant;
+        return this;
+    }
+
+    public Integer getOrdersCount() {
+        return ordersCount;
+    }
+
+    public LinkProduct setOrdersCount(Integer ordersCount) {
+        this.ordersCount = ordersCount;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(price);
+        return Objects.hash(ordersCount, price, merchant);
     }
 
     @Override
@@ -32,7 +58,9 @@ public class LinkProduct implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkProduct linkProduct = (LinkProduct) o;
-        return Objects.equals(price, linkProduct.price);
+        return Objects.equals(ordersCount, linkProduct.ordersCount) &&
+                Objects.equals(price, linkProduct.price) &&
+                Objects.equals(merchant, linkProduct.merchant);
     }
 
     @Override
@@ -43,7 +71,9 @@ public class LinkProduct implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkProduct{");
-        sb.append("price=").append(price);
+        sb.append("ordersCount=").append(ordersCount);
+        sb.append(", price=").append(price);
+        sb.append(", merchant='").append(merchant).append("'");
         sb.append('}');
         return sb.toString();
     }

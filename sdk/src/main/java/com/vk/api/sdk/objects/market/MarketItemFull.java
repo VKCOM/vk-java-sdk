@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.RepostsInfo;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,9 @@ public class MarketItemFull extends MarketItem implements Validable {
 
     @SerializedName("likes")
     private Likes likes;
+
+    @SerializedName("reposts")
+    private RepostsInfo reposts;
 
     /**
      * Views number
@@ -83,6 +87,15 @@ public class MarketItemFull extends MarketItem implements Validable {
         return this;
     }
 
+    public RepostsInfo getReposts() {
+        return reposts;
+    }
+
+    public MarketItemFull setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
     public Integer getViewsCount() {
         return viewsCount;
     }
@@ -94,7 +107,7 @@ public class MarketItemFull extends MarketItem implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canRepost, viewsCount, albumsIds, canComment, photos, likes);
+        return Objects.hash(canRepost, viewsCount, albumsIds, canComment, photos, reposts, likes);
     }
 
     @Override
@@ -107,6 +120,7 @@ public class MarketItemFull extends MarketItem implements Validable {
                 Objects.equals(viewsCount, marketItemFull.viewsCount) &&
                 Objects.equals(albumsIds, marketItemFull.albumsIds) &&
                 Objects.equals(photos, marketItemFull.photos) &&
+                Objects.equals(reposts, marketItemFull.reposts) &&
                 Objects.equals(likes, marketItemFull.likes);
     }
 
@@ -123,6 +137,7 @@ public class MarketItemFull extends MarketItem implements Validable {
         sb.append(", viewsCount=").append(viewsCount);
         sb.append(", albumsIds=").append(albumsIds);
         sb.append(", photos=").append(photos);
+        sb.append(", reposts=").append(reposts);
         sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();

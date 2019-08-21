@@ -12,6 +12,18 @@ import java.util.Objects;
  */
 public class MemberStatusFull implements Validable {
     /**
+     * Information whether user can be invited
+     */
+    @SerializedName("can_invite")
+    private BoolInt canInvite;
+
+    /**
+     * Information whether user's invite to the group can be recalled
+     */
+    @SerializedName("can_recall")
+    private BoolInt canRecall;
+
+    /**
      * Information whether user has been invited to the group
      */
     @SerializedName("invitation")
@@ -35,6 +47,22 @@ public class MemberStatusFull implements Validable {
      */
     @SerializedName("user_id")
     private Integer userId;
+
+    public boolean canInvite() {
+        return canInvite == BoolInt.YES;
+    }
+
+    public BoolInt getCanInvite() {
+        return canInvite;
+    }
+
+    public boolean canRecall() {
+        return canRecall == BoolInt.YES;
+    }
+
+    public BoolInt getCanRecall() {
+        return canRecall;
+    }
 
     public boolean isInvitation() {
         return invitation == BoolInt.YES;
@@ -71,7 +99,7 @@ public class MemberStatusFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(request, invitation, member, userId);
+        return Objects.hash(canRecall, request, canInvite, invitation, member, userId);
     }
 
     @Override
@@ -79,10 +107,12 @@ public class MemberStatusFull implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MemberStatusFull memberStatusFull = (MemberStatusFull) o;
-        return Objects.equals(request, memberStatusFull.request) &&
+        return Objects.equals(canInvite, memberStatusFull.canInvite) &&
+                Objects.equals(request, memberStatusFull.request) &&
                 Objects.equals(userId, memberStatusFull.userId) &&
                 Objects.equals(invitation, memberStatusFull.invitation) &&
-                Objects.equals(member, memberStatusFull.member);
+                Objects.equals(member, memberStatusFull.member) &&
+                Objects.equals(canRecall, memberStatusFull.canRecall);
     }
 
     @Override
@@ -93,10 +123,12 @@ public class MemberStatusFull implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MemberStatusFull{");
-        sb.append("request=").append(request);
+        sb.append("canInvite=").append(canInvite);
+        sb.append(", request=").append(request);
         sb.append(", userId=").append(userId);
         sb.append(", invitation=").append(invitation);
         sb.append(", member=").append(member);
+        sb.append(", canRecall=").append(canRecall);
         sb.append('}');
         return sb.toString();
     }

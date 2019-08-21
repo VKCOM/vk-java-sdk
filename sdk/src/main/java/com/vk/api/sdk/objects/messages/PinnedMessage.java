@@ -66,6 +66,9 @@ public class PinnedMessage implements Validable {
     @Required
     private String text;
 
+    @SerializedName("keyboard")
+    private Keyboard keyboard;
+
     public List<MessageAttachment> getAttachments() {
         return attachments;
     }
@@ -156,9 +159,18 @@ public class PinnedMessage implements Validable {
         return this;
     }
 
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public PinnedMessage setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, geo, peerId, fwdMessages, attachments, conversationMessageId, replyMessage, id, text, fromId);
+        return Objects.hash(date, geo, peerId, keyboard, fwdMessages, attachments, conversationMessageId, replyMessage, id, text, fromId);
     }
 
     @Override
@@ -168,6 +180,7 @@ public class PinnedMessage implements Validable {
         PinnedMessage pinnedMessage = (PinnedMessage) o;
         return Objects.equals(date, pinnedMessage.date) &&
                 Objects.equals(geo, pinnedMessage.geo) &&
+                Objects.equals(keyboard, pinnedMessage.keyboard) &&
                 Objects.equals(attachments, pinnedMessage.attachments) &&
                 Objects.equals(fromId, pinnedMessage.fromId) &&
                 Objects.equals(fwdMessages, pinnedMessage.fwdMessages) &&
@@ -188,6 +201,7 @@ public class PinnedMessage implements Validable {
         final StringBuilder sb = new StringBuilder("PinnedMessage{");
         sb.append("date=").append(date);
         sb.append(", geo=").append(geo);
+        sb.append(", keyboard=").append(keyboard);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
         sb.append(", fwdMessages=").append(fwdMessages);

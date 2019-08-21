@@ -7,6 +7,7 @@ import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -30,6 +31,12 @@ public class VideoFull implements Validable {
      */
     @SerializedName("can_add")
     private BoolInt canAdd;
+
+    /**
+     * Information whether current user can add the video to favourites
+     */
+    @SerializedName("can_add_to_faves")
+    private BoolInt canAddToFaves;
 
     /**
      * Information whether current user can comment the video
@@ -76,35 +83,29 @@ public class VideoFull implements Validable {
     @SerializedName("files")
     private VideoFiles files;
 
-    /**
-     * URL of the first frame for the corresponding width.
-     */
-    @SerializedName("first_frame_130")
-    private URL firstFrame130;
+    @SerializedName("first_frame")
+    private List<VideoImage> firstFrame;
 
     /**
      * URL of the first frame for the corresponding width.
      */
-    @SerializedName("first_frame_160")
-    private URL firstFrame160;
+    @SerializedName("first_frame_640")
+    private URL firstFrame640;
 
     /**
      * URL of the first frame for the corresponding width.
      */
-    @SerializedName("first_frame_320")
-    private URL firstFrame320;
-
-    /**
-     * URL of the first frame for the corresponding width.
-     */
-    @SerializedName("first_frame_800")
-    private URL firstFrame800;
+    @SerializedName("first_frame_1280")
+    private URL firstFrame1280;
 
     /**
      * Video ID
      */
     @SerializedName("id")
     private Integer id;
+
+    @SerializedName("image")
+    private List<VideoImage> image;
 
     @SerializedName("likes")
     private Likes likes;
@@ -120,24 +121,6 @@ public class VideoFull implements Validable {
      */
     @SerializedName("owner_id")
     private Integer ownerId;
-
-    /**
-     * URL of the preview image with 130 px in width
-     */
-    @SerializedName("photo_130")
-    private URL photo130;
-
-    /**
-     * URL of the preview image with 320 px in width
-     */
-    @SerializedName("photo_320")
-    private URL photo320;
-
-    /**
-     * URL of the preview image with 800 px in width
-     */
-    @SerializedName("photo_800")
-    private URL photo800;
 
     /**
      * URL of the page with a player that can be used to play the video in the browser.
@@ -193,6 +176,14 @@ public class VideoFull implements Validable {
 
     public BoolInt getCanAdd() {
         return canAdd;
+    }
+
+    public boolean canAddToFaves() {
+        return canAddToFaves == BoolInt.YES;
+    }
+
+    public BoolInt getCanAddToFaves() {
+        return canAddToFaves;
     }
 
     public boolean canComment() {
@@ -264,39 +255,30 @@ public class VideoFull implements Validable {
         return this;
     }
 
-    public URL getFirstFrame130() {
-        return firstFrame130;
+    public List<VideoImage> getFirstFrame() {
+        return firstFrame;
     }
 
-    public VideoFull setFirstFrame130(URL firstFrame130) {
-        this.firstFrame130 = firstFrame130;
+    public VideoFull setFirstFrame(List<VideoImage> firstFrame) {
+        this.firstFrame = firstFrame;
         return this;
     }
 
-    public URL getFirstFrame160() {
-        return firstFrame160;
+    public URL getFirstFrame640() {
+        return firstFrame640;
     }
 
-    public VideoFull setFirstFrame160(URL firstFrame160) {
-        this.firstFrame160 = firstFrame160;
+    public VideoFull setFirstFrame640(URL firstFrame640) {
+        this.firstFrame640 = firstFrame640;
         return this;
     }
 
-    public URL getFirstFrame320() {
-        return firstFrame320;
+    public URL getFirstFrame1280() {
+        return firstFrame1280;
     }
 
-    public VideoFull setFirstFrame320(URL firstFrame320) {
-        this.firstFrame320 = firstFrame320;
-        return this;
-    }
-
-    public URL getFirstFrame800() {
-        return firstFrame800;
-    }
-
-    public VideoFull setFirstFrame800(URL firstFrame800) {
-        this.firstFrame800 = firstFrame800;
+    public VideoFull setFirstFrame1280(URL firstFrame1280) {
+        this.firstFrame1280 = firstFrame1280;
         return this;
     }
 
@@ -306,6 +288,15 @@ public class VideoFull implements Validable {
 
     public VideoFull setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public List<VideoImage> getImage() {
+        return image;
+    }
+
+    public VideoFull setImage(List<VideoImage> image) {
+        this.image = image;
         return this;
     }
 
@@ -328,33 +319,6 @@ public class VideoFull implements Validable {
 
     public VideoFull setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
-        return this;
-    }
-
-    public URL getPhoto130() {
-        return photo130;
-    }
-
-    public VideoFull setPhoto130(URL photo130) {
-        this.photo130 = photo130;
-        return this;
-    }
-
-    public URL getPhoto320() {
-        return photo320;
-    }
-
-    public VideoFull setPhoto320(URL photo320) {
-        this.photo320 = photo320;
-        return this;
-    }
-
-    public URL getPhoto800() {
-        return photo800;
-    }
-
-    public VideoFull setPhoto800(URL photo800) {
-        this.photo800 = photo800;
         return this;
     }
 
@@ -399,7 +363,7 @@ public class VideoFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, firstFrame320, canEdit, canAdd, description, ownerId, title, photo800, firstFrame800, duration, repeat, photo130, firstFrame160, canComment, id, addingDate, live, views, likes, player, comments, canRepost, firstFrame130, photo320, accessKey, files, processing);
+        return Objects.hash(date, firstFrame640, canEdit, canAdd, canAddToFaves, description, ownerId, title, duration, firstFrame, repeat, canComment, id, addingDate, live, views, likes, player, image, comments, canRepost, firstFrame1280, accessKey, files, processing);
     }
 
     @Override
@@ -408,32 +372,30 @@ public class VideoFull implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         VideoFull videoFull = (VideoFull) o;
         return Objects.equals(date, videoFull.date) &&
-                Objects.equals(firstFrame130, videoFull.firstFrame130) &&
+                Objects.equals(firstFrame1280, videoFull.firstFrame1280) &&
                 Objects.equals(addingDate, videoFull.addingDate) &&
+                Objects.equals(canAddToFaves, videoFull.canAddToFaves) &&
                 Objects.equals(ownerId, videoFull.ownerId) &&
                 Objects.equals(description, videoFull.description) &&
                 Objects.equals(title, videoFull.title) &&
                 Objects.equals(duration, videoFull.duration) &&
                 Objects.equals(canComment, videoFull.canComment) &&
-                Objects.equals(photo800, videoFull.photo800) &&
                 Objects.equals(repeat, videoFull.repeat) &&
                 Objects.equals(id, videoFull.id) &&
-                Objects.equals(photo320, videoFull.photo320) &&
                 Objects.equals(live, videoFull.live) &&
                 Objects.equals(views, videoFull.views) &&
                 Objects.equals(likes, videoFull.likes) &&
                 Objects.equals(player, videoFull.player) &&
+                Objects.equals(image, videoFull.image) &&
                 Objects.equals(comments, videoFull.comments) &&
-                Objects.equals(firstFrame160, videoFull.firstFrame160) &&
                 Objects.equals(canEdit, videoFull.canEdit) &&
                 Objects.equals(canRepost, videoFull.canRepost) &&
                 Objects.equals(accessKey, videoFull.accessKey) &&
                 Objects.equals(files, videoFull.files) &&
-                Objects.equals(firstFrame800, videoFull.firstFrame800) &&
-                Objects.equals(photo130, videoFull.photo130) &&
                 Objects.equals(processing, videoFull.processing) &&
                 Objects.equals(canAdd, videoFull.canAdd) &&
-                Objects.equals(firstFrame320, videoFull.firstFrame320);
+                Objects.equals(firstFrame, videoFull.firstFrame) &&
+                Objects.equals(firstFrame640, videoFull.firstFrame640);
     }
 
     @Override
@@ -445,32 +407,30 @@ public class VideoFull implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("VideoFull{");
         sb.append("date=").append(date);
-        sb.append(", firstFrame130=").append(firstFrame130);
+        sb.append(", firstFrame1280=").append(firstFrame1280);
         sb.append(", addingDate=").append(addingDate);
+        sb.append(", canAddToFaves=").append(canAddToFaves);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
         sb.append(", title='").append(title).append("'");
         sb.append(", duration=").append(duration);
         sb.append(", canComment=").append(canComment);
-        sb.append(", photo800=").append(photo800);
         sb.append(", repeat=").append(repeat);
         sb.append(", id=").append(id);
-        sb.append(", photo320=").append(photo320);
         sb.append(", live=").append(live);
         sb.append(", views=").append(views);
         sb.append(", likes=").append(likes);
         sb.append(", player=").append(player);
+        sb.append(", image=").append(image);
         sb.append(", comments=").append(comments);
-        sb.append(", firstFrame160=").append(firstFrame160);
         sb.append(", canEdit=").append(canEdit);
         sb.append(", canRepost=").append(canRepost);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", files=").append(files);
-        sb.append(", firstFrame800=").append(firstFrame800);
-        sb.append(", photo130=").append(photo130);
         sb.append(", processing=").append(processing);
         sb.append(", canAdd=").append(canAdd);
-        sb.append(", firstFrame320=").append(firstFrame320);
+        sb.append(", firstFrame=").append(firstFrame);
+        sb.append(", firstFrame640=").append(firstFrame640);
         sb.append('}');
         return sb.toString();
     }

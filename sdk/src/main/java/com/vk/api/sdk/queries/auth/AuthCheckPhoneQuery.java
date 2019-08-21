@@ -2,7 +2,6 @@ package com.vk.api.sdk.queries.auth;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
@@ -29,13 +28,10 @@ public class AuthCheckPhoneQuery extends AbstractQueryBuilder<AuthCheckPhoneQuer
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
-     * @param actor actor with access token
      * @param phone value of "phone" parameter.
      */
-    public AuthCheckPhoneQuery(VkApiClient client, ServiceActor actor, String phone) {
+    public AuthCheckPhoneQuery(VkApiClient client, String phone) {
         super(client, "auth.checkPhone", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        clientSecret(actor.getClientSecret());
         phone(phone);
     }
 
@@ -86,6 +82,6 @@ public class AuthCheckPhoneQuery extends AbstractQueryBuilder<AuthCheckPhoneQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("phone", "access_token");
+        return Arrays.asList("phone");
     }
 }

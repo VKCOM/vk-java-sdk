@@ -1,20 +1,22 @@
 package com.vk.api.sdk.objects.newsfeed.responses;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.newsfeed.NewsfeedItem;
 import com.vk.api.sdk.objects.users.UserFull;
+import com.vk.api.sdk.oneofs.NewsfeedNewsfeedItemOneOf;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * GetRecommendedResponse object
  */
 public class GetRecommendedResponse implements Validable {
     @SerializedName("items")
-    private List<NewsfeedItem> items;
+    private List<JsonObject> items;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
@@ -29,18 +31,13 @@ public class GetRecommendedResponse implements Validable {
     private String newOffset;
 
     /**
-     * New from value
+     * Next from value
      */
-    @SerializedName("new_from")
-    private String newFrom;
+    @SerializedName("next_from")
+    private String nextFrom;
 
-    public List<NewsfeedItem> getItems() {
-        return items;
-    }
-
-    public GetRecommendedResponse setItems(List<NewsfeedItem> items) {
-        this.items = items;
-        return this;
+    public List<NewsfeedNewsfeedItemOneOf> getItems() {
+        return items.stream().map(NewsfeedNewsfeedItemOneOf::new).collect(Collectors.toList());
     }
 
     public List<UserFull> getProfiles() {
@@ -70,18 +67,18 @@ public class GetRecommendedResponse implements Validable {
         return this;
     }
 
-    public String getNewFrom() {
-        return newFrom;
+    public String getNextFrom() {
+        return nextFrom;
     }
 
-    public GetRecommendedResponse setNewFrom(String newFrom) {
-        this.newFrom = newFrom;
+    public GetRecommendedResponse setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(newOffset, profiles, groups, items, newFrom);
+        return Objects.hash(newOffset, profiles, groups, nextFrom, items);
     }
 
     @Override
@@ -89,10 +86,10 @@ public class GetRecommendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetRecommendedResponse getRecommendedResponse = (GetRecommendedResponse) o;
-        return Objects.equals(newOffset, getRecommendedResponse.newOffset) &&
+        return Objects.equals(nextFrom, getRecommendedResponse.nextFrom) &&
+                Objects.equals(newOffset, getRecommendedResponse.newOffset) &&
                 Objects.equals(profiles, getRecommendedResponse.profiles) &&
                 Objects.equals(groups, getRecommendedResponse.groups) &&
-                Objects.equals(newFrom, getRecommendedResponse.newFrom) &&
                 Objects.equals(items, getRecommendedResponse.items);
     }
 
@@ -104,10 +101,10 @@ public class GetRecommendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRecommendedResponse{");
-        sb.append("newOffset='").append(newOffset).append("'");
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", newOffset='").append(newOffset).append("'");
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
-        sb.append(", newFrom='").append(newFrom).append("'");
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

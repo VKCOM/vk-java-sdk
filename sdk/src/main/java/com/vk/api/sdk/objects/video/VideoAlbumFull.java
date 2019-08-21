@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,18 +41,6 @@ public class VideoAlbumFull implements Validable {
      */
     @SerializedName("owner_id")
     private Integer ownerId;
-
-    /**
-     * URL of the preview image with 160px in width
-     */
-    @SerializedName("photo_160")
-    private URL photo160;
-
-    /**
-     * URL of the preview image with 320px in width
-     */
-    @SerializedName("photo_320")
-    private URL photo320;
 
     /**
      * Album title
@@ -113,24 +100,6 @@ public class VideoAlbumFull implements Validable {
         return this;
     }
 
-    public URL getPhoto160() {
-        return photo160;
-    }
-
-    public VideoAlbumFull setPhoto160(URL photo160) {
-        this.photo160 = photo160;
-        return this;
-    }
-
-    public URL getPhoto320() {
-        return photo320;
-    }
-
-    public VideoAlbumFull setPhoto320(URL photo320) {
-        this.photo320 = photo320;
-        return this;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -151,7 +120,7 @@ public class VideoAlbumFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSystem, image, updatedTime, photo160, photo320, count, id, ownerId, title);
+        return Objects.hash(isSystem, image, updatedTime, count, id, ownerId, title);
     }
 
     @Override
@@ -163,10 +132,8 @@ public class VideoAlbumFull implements Validable {
                 Objects.equals(isSystem, videoAlbumFull.isSystem) &&
                 Objects.equals(updatedTime, videoAlbumFull.updatedTime) &&
                 Objects.equals(ownerId, videoAlbumFull.ownerId) &&
-                Objects.equals(photo160, videoAlbumFull.photo160) &&
                 Objects.equals(count, videoAlbumFull.count) &&
                 Objects.equals(id, videoAlbumFull.id) &&
-                Objects.equals(photo320, videoAlbumFull.photo320) &&
                 Objects.equals(title, videoAlbumFull.title);
     }
 
@@ -182,10 +149,8 @@ public class VideoAlbumFull implements Validable {
         sb.append(", isSystem=").append(isSystem);
         sb.append(", updatedTime=").append(updatedTime);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", photo160=").append(photo160);
         sb.append(", count=").append(count);
         sb.append(", id=").append(id);
-        sb.append(", photo320=").append(photo320);
         sb.append(", title='").append(title).append("'");
         sb.append('}');
         return sb.toString();

@@ -20,6 +20,12 @@ public class HistoryAttachment implements Validable {
     @SerializedName("message_id")
     private Integer messageId;
 
+    /**
+     * Message author's ID
+     */
+    @SerializedName("from_id")
+    private Integer fromId;
+
     public HistoryMessageAttachment getAttachment() {
         return attachment;
     }
@@ -38,9 +44,18 @@ public class HistoryAttachment implements Validable {
         return this;
     }
 
+    public Integer getFromId() {
+        return fromId;
+    }
+
+    public HistoryAttachment setFromId(Integer fromId) {
+        this.fromId = fromId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(attachment, messageId);
+        return Objects.hash(attachment, messageId, fromId);
     }
 
     @Override
@@ -48,7 +63,8 @@ public class HistoryAttachment implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HistoryAttachment historyAttachment = (HistoryAttachment) o;
-        return Objects.equals(attachment, historyAttachment.attachment) &&
+        return Objects.equals(fromId, historyAttachment.fromId) &&
+                Objects.equals(attachment, historyAttachment.attachment) &&
                 Objects.equals(messageId, historyAttachment.messageId);
     }
 
@@ -60,7 +76,8 @@ public class HistoryAttachment implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("HistoryAttachment{");
-        sb.append("attachment=").append(attachment);
+        sb.append("fromId=").append(fromId);
+        sb.append(", attachment=").append(attachment);
         sb.append(", messageId=").append(messageId);
         sb.append('}');
         return sb.toString();
