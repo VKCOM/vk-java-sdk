@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ItemPhotoTag object
  */
-public class ItemPhotoTag implements Validable {
+public class ItemPhotoTag extends ItemBase implements Validable {
     @SerializedName("photo_tags")
     private ItemPhotoTagPhotoTags photoTags;
 

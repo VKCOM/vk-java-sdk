@@ -106,17 +106,6 @@ public class Leads extends AbstractAction {
     }
 
     /**
-     * Counts the metric event.
-     *
-     * @param actor vk actor
-     * @param data Metric data obtained in the lead interface.
-     * @return query
-     */
-    public LeadsMetricHitQuery metricHit(ServiceActor actor, String data) {
-        return new LeadsMetricHitQuery(getClient(), actor, data);
-    }
-
-    /**
      * Creates new session for the user passing the offer.
      *
      * @param actor vk actor

@@ -15,8 +15,8 @@ public class GetBannedExtendedResponse implements Validable {
     @SerializedName("groups")
     private List<UserFull> groups;
 
-    @SerializedName("members")
-    private List<GroupFull> members;
+    @SerializedName("profiles")
+    private List<GroupFull> profiles;
 
     public List<UserFull> getGroups() {
         return groups;
@@ -27,18 +27,18 @@ public class GetBannedExtendedResponse implements Validable {
         return this;
     }
 
-    public List<GroupFull> getMembers() {
-        return members;
+    public List<GroupFull> getProfiles() {
+        return profiles;
     }
 
-    public GetBannedExtendedResponse setMembers(List<GroupFull> members) {
-        this.members = members;
+    public GetBannedExtendedResponse setProfiles(List<GroupFull> profiles) {
+        this.profiles = profiles;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(members, groups);
+        return Objects.hash(profiles, groups);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class GetBannedExtendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetBannedExtendedResponse getBannedExtendedResponse = (GetBannedExtendedResponse) o;
-        return Objects.equals(members, getBannedExtendedResponse.members) &&
+        return Objects.equals(profiles, getBannedExtendedResponse.profiles) &&
                 Objects.equals(groups, getBannedExtendedResponse.groups);
     }
 
@@ -58,7 +58,7 @@ public class GetBannedExtendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetBannedExtendedResponse{");
-        sb.append("members=").append(members);
+        sb.append("profiles=").append(profiles);
         sb.append(", groups=").append(groups);
         sb.append('}');
         return sb.toString();

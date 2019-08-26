@@ -50,6 +50,12 @@ public class Personal implements Validable {
     private String religion;
 
     /**
+     * User's religion id
+     */
+    @SerializedName("religion_id")
+    private Integer religionId;
+
+    /**
      * User's views on smoking
      */
     @SerializedName("smoking")
@@ -118,6 +124,15 @@ public class Personal implements Validable {
         return this;
     }
 
+    public Integer getReligionId() {
+        return religionId;
+    }
+
+    public Personal setReligionId(Integer religionId) {
+        this.religionId = religionId;
+        return this;
+    }
+
     public Integer getSmoking() {
         return smoking;
     }
@@ -129,7 +144,7 @@ public class Personal implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(alcohol, peopleMain, smoking, political, lifeMain, langs, inspiredBy, religion);
+        return Objects.hash(alcohol, peopleMain, smoking, political, lifeMain, langs, inspiredBy, religionId, religion);
     }
 
     @Override
@@ -138,6 +153,7 @@ public class Personal implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Personal personal = (Personal) o;
         return Objects.equals(alcohol, personal.alcohol) &&
+                Objects.equals(religionId, personal.religionId) &&
                 Objects.equals(lifeMain, personal.lifeMain) &&
                 Objects.equals(peopleMain, personal.peopleMain) &&
                 Objects.equals(smoking, personal.smoking) &&
@@ -156,6 +172,7 @@ public class Personal implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Personal{");
         sb.append("alcohol=").append(alcohol);
+        sb.append(", religionId=").append(religionId);
         sb.append(", lifeMain=").append(lifeMain);
         sb.append(", peopleMain=").append(peopleMain);
         sb.append(", smoking=").append(smoking);

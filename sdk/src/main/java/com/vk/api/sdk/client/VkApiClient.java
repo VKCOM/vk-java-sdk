@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.vk.api.sdk.actions.Account;
 import com.vk.api.sdk.actions.Ads;
+import com.vk.api.sdk.actions.AppWidgets;
 import com.vk.api.sdk.actions.Apps;
 import com.vk.api.sdk.actions.Auth;
 import com.vk.api.sdk.actions.Board;
@@ -44,7 +45,7 @@ import com.vk.api.sdk.actions.Widgets;
 import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
-    private static final String API_VERSION = "5.100";
+    private static final String API_VERSION = "5.101";
 
     private static final String API_ADDRESS = "https://api.vk.com/method/";
 
@@ -127,6 +128,10 @@ public class VkApiClient {
 
     public Apps apps() {
         return new Apps(this);
+    }
+
+    public AppWidgets appWidgets() {
+        return new AppWidgets(this);
     }
 
     public Board board() {

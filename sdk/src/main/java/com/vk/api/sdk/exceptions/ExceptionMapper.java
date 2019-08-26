@@ -161,12 +161,8 @@ public class ExceptionMapper {
                 return new ApiMessagesDenySendException(error.getErrorMsg());
             case 902:
                 return new ApiMessagesPrivacyException(error.getErrorMsg());
-            case 1416:
-                return new ApiMarketVariantNotFoundException(error.getErrorMsg());
             case 1160:
                 return new ApiPhotoChangedException(error.getErrorMsg());
-            case 1417:
-                return new ApiMarketPropertyNotFoundException(error.getErrorMsg());
             case 907:
                 return new ApiMessagesTooOldPtsException(error.getErrorMsg());
             case 908:
@@ -183,12 +179,8 @@ public class ExceptionMapper {
                 return new ApiMessagesKeyboardInvalidException(error.getErrorMsg());
             case 912:
                 return new ApiMessagesChatBotFeatureException(error.getErrorMsg());
-            case 1425:
-                return new ApiMarketGroupingMustContainMoreThanOneItemException(error.getErrorMsg());
             case 913:
                 return new ApiMessagesTooLongForwardsException(error.getErrorMsg());
-            case 1426:
-                return new ApiMarketGroupingItemsMustHaveDistinctPropertiesException(error.getErrorMsg());
             case 914:
                 return new ApiMessagesTooLongMessageException(error.getErrorMsg());
             case 1170:
@@ -233,6 +225,8 @@ public class ExceptionMapper {
                 return new ApiFriendsListLimitException(error.getErrorMsg());
             case 174:
                 return new ApiFriendsAddYourselfException(error.getErrorMsg());
+            case 942:
+                return new ApiMessagesCantPinOneTimeStoryException(error.getErrorMsg());
             case 175:
                 return new ApiFriendsAddInEnemyException(error.getErrorMsg());
             case 176:
@@ -259,6 +253,8 @@ public class ExceptionMapper {
                 return new ApiGroupHostNeed2faException(error.getErrorMsg());
             case 706:
                 return new ApiGroupTooManyAddressesException(error.getErrorMsg());
+            case 711:
+                return new ApiGroupAppIsNotInstalledInCommunityException(error.getErrorMsg());
             case 200:
                 return new ApiAccessAlbumException(error.getErrorMsg());
             case 201:

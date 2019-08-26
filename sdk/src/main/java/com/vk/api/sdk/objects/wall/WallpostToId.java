@@ -52,6 +52,12 @@ public class WallpostToId implements Validable {
     @SerializedName("id")
     private Integer id;
 
+    /**
+     * Information whether the post in favorites list
+     */
+    @SerializedName("is_favorite")
+    private Boolean isFavorite;
+
     @SerializedName("likes")
     private LikesInfo likes;
 
@@ -160,6 +166,15 @@ public class WallpostToId implements Validable {
         return this;
     }
 
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+    public WallpostToId setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
+        return this;
+    }
+
     public LikesInfo getLikes() {
         return likes;
     }
@@ -234,7 +249,7 @@ public class WallpostToId implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, toId, attachments, comments, postType, postSource, postId, fromId, copyPostId, geo, signerId, copyOwnerId, id, text, reposts, likes);
+        return Objects.hash(date, toId, attachments, comments, postType, postSource, postId, fromId, copyPostId, geo, signerId, copyOwnerId, id, text, reposts, isFavorite, likes);
     }
 
     @Override
@@ -246,6 +261,7 @@ public class WallpostToId implements Validable {
                 Objects.equals(attachments, wallpostToId.attachments) &&
                 Objects.equals(comments, wallpostToId.comments) &&
                 Objects.equals(fromId, wallpostToId.fromId) &&
+                Objects.equals(isFavorite, wallpostToId.isFavorite) &&
                 Objects.equals(copyPostId, wallpostToId.copyPostId) &&
                 Objects.equals(signerId, wallpostToId.signerId) &&
                 Objects.equals(toId, wallpostToId.toId) &&
@@ -272,6 +288,7 @@ public class WallpostToId implements Validable {
         sb.append(", attachments=").append(attachments);
         sb.append(", comments=").append(comments);
         sb.append(", fromId=").append(fromId);
+        sb.append(", isFavorite=").append(isFavorite);
         sb.append(", copyPostId=").append(copyPostId);
         sb.append(", signerId=").append(signerId);
         sb.append(", toId=").append(toId);

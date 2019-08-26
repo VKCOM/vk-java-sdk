@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.LikesInfo;
+import com.vk.api.sdk.objects.comment.Thread;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,7 +65,7 @@ public class WallComment implements Validable {
     private String text;
 
     @SerializedName("thread")
-    private CommentThread thread;
+    private Thread thread;
 
     @SerializedName("post_id")
     private Integer postId;
@@ -159,11 +160,11 @@ public class WallComment implements Validable {
         return this;
     }
 
-    public CommentThread getThread() {
+    public Thread getThread() {
         return thread;
     }
 
-    public WallComment setThread(CommentThread thread) {
+    public WallComment setThread(Thread thread) {
         this.thread = thread;
         return this;
     }

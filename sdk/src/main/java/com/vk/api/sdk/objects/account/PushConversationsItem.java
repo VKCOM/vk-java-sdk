@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.account;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class PushConversationsItem implements Validable {
      * Information whether the sound are enabled
      */
     @SerializedName("sound")
+    @Required
     private BoolInt sound;
 
     public Integer getDisabledUntil() {

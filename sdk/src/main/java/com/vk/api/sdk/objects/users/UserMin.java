@@ -41,6 +41,12 @@ public class UserMin implements Validable {
     @SerializedName("last_name")
     private String lastName;
 
+    @SerializedName("can_access_closed")
+    private Boolean canAccessClosed;
+
+    @SerializedName("is_closed")
+    private Boolean isClosed;
+
     public String getDeactivated() {
         return deactivated;
     }
@@ -86,9 +92,27 @@ public class UserMin implements Validable {
         return this;
     }
 
+    public Boolean getCanAccessClosed() {
+        return canAccessClosed;
+    }
+
+    public UserMin setCanAccessClosed(Boolean canAccessClosed) {
+        this.canAccessClosed = canAccessClosed;
+        return this;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public UserMin setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, hidden, id, deactivated);
+        return Objects.hash(canAccessClosed, lastName, firstName, hidden, isClosed, id, deactivated);
     }
 
     @Override
@@ -96,11 +120,13 @@ public class UserMin implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserMin userMin = (UserMin) o;
-        return Objects.equals(hidden, userMin.hidden) &&
+        return Objects.equals(canAccessClosed, userMin.canAccessClosed) &&
+                Objects.equals(hidden, userMin.hidden) &&
                 Objects.equals(lastName, userMin.lastName) &&
                 Objects.equals(id, userMin.id) &&
                 Objects.equals(firstName, userMin.firstName) &&
-                Objects.equals(deactivated, userMin.deactivated);
+                Objects.equals(deactivated, userMin.deactivated) &&
+                Objects.equals(isClosed, userMin.isClosed);
     }
 
     @Override
@@ -111,11 +137,13 @@ public class UserMin implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserMin{");
-        sb.append("hidden=").append(hidden);
+        sb.append("canAccessClosed=").append(canAccessClosed);
+        sb.append(", hidden=").append(hidden);
         sb.append(", lastName='").append(lastName).append("'");
         sb.append(", id=").append(id);
         sb.append(", firstName='").append(firstName).append("'");
         sb.append(", deactivated='").append(deactivated).append("'");
+        sb.append(", isClosed=").append(isClosed);
         sb.append('}');
         return sb.toString();
     }

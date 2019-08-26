@@ -136,13 +136,13 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
+     * Set forward
      *
-     * @param value value of "forward messages" parameter.
+     * @param value value of "forward" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery forwardMessages(String value) {
-        return unsafeParam("forward_messages", value);
+    public MessagesSendQuery forward(String value) {
+        return unsafeParam("forward", value);
     }
 
     /**
@@ -224,6 +224,27 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery userIds(List<Integer> value) {
         return unsafeParam("user_ids", value);
+    }
+
+    /**
+     * forward_messages
+     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
+     *
+     * @param value value of "forward messages" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery forwardMessages(Integer... value) {
+        return unsafeParam("forward_messages", value);
+    }
+
+    /**
+     * ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
+     *
+     * @param value value of "forward messages" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery forwardMessages(List<Integer> value) {
+        return unsafeParam("forward_messages", value);
     }
 
     @Override

@@ -11,7 +11,16 @@ public enum KeyboardButtonActionType implements EnumParam {
     TEXT("text"),
 
     @SerializedName("start")
-    START("start");
+    START("start"),
+
+    @SerializedName("location")
+    LOCATION("location"),
+
+    @SerializedName("vkpay")
+    VKPAY("vkpay"),
+
+    @SerializedName("open_app")
+    OPEN_APP("open_app");
 
     private final String value;
 

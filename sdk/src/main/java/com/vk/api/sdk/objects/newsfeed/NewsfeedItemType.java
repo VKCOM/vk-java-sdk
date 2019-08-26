@@ -32,7 +32,13 @@ public enum NewsfeedItemType implements EnumParam {
     VIDEO("video"),
 
     @SerializedName("topic")
-    TOPIC("topic");
+    TOPIC("topic"),
+
+    @SerializedName("digest")
+    DIGEST("digest"),
+
+    @SerializedName("stories")
+    STORIES("stories");
 
     private final String value;
 

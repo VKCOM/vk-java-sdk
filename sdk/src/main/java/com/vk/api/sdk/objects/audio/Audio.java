@@ -12,12 +12,6 @@ import java.util.Objects;
  */
 public class Audio implements Validable {
     /**
-     * Access key for the audio
-     */
-    @SerializedName("access_key")
-    private String accessKey;
-
-    /**
      * Artist name
      */
     @SerializedName("artist")
@@ -30,21 +24,6 @@ public class Audio implements Validable {
     @SerializedName("id")
     @Required
     private Integer id;
-
-    @SerializedName("is_explicit")
-    private Boolean isExplicit;
-
-    @SerializedName("is_focus_track")
-    private Boolean isFocusTrack;
-
-    @SerializedName("is_licensed")
-    private Boolean isLicensed;
-
-    /**
-     * Audio owner's ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
 
     /**
      * Title
@@ -59,14 +38,36 @@ public class Audio implements Validable {
     @SerializedName("url")
     private URL url;
 
-    public String getAccessKey() {
-        return accessKey;
-    }
+    /**
+     * Duration in seconds
+     */
+    @SerializedName("duration")
+    @Required
+    private Integer duration;
 
-    public Audio setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
-        return this;
-    }
+    /**
+     * Date when uploaded
+     */
+    @SerializedName("date")
+    private Integer date;
+
+    /**
+     * Album ID
+     */
+    @SerializedName("album_id")
+    private Integer albumId;
+
+    /**
+     * Genre ID
+     */
+    @SerializedName("genre_id")
+    private Integer genreId;
+
+    /**
+     * Performer name
+     */
+    @SerializedName("performer")
+    private String performer;
 
     public String getArtist() {
         return artist;
@@ -83,42 +84,6 @@ public class Audio implements Validable {
 
     public Audio setId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    public Boolean getIsExplicit() {
-        return isExplicit;
-    }
-
-    public Audio setIsExplicit(Boolean isExplicit) {
-        this.isExplicit = isExplicit;
-        return this;
-    }
-
-    public Boolean getIsFocusTrack() {
-        return isFocusTrack;
-    }
-
-    public Audio setIsFocusTrack(Boolean isFocusTrack) {
-        this.isFocusTrack = isFocusTrack;
-        return this;
-    }
-
-    public Boolean getIsLicensed() {
-        return isLicensed;
-    }
-
-    public Audio setIsLicensed(Boolean isLicensed) {
-        this.isLicensed = isLicensed;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public Audio setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
         return this;
     }
 
@@ -140,9 +105,54 @@ public class Audio implements Validable {
         return this;
     }
 
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public Audio setDuration(Integer duration) {
+        this.duration = duration;
+        return this;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public Audio setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public Audio setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+        return this;
+    }
+
+    public Integer getGenreId() {
+        return genreId;
+    }
+
+    public Audio setGenreId(Integer genreId) {
+        this.genreId = genreId;
+        return this;
+    }
+
+    public String getPerformer() {
+        return performer;
+    }
+
+    public Audio setPerformer(String performer) {
+        this.performer = performer;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(isExplicit, isFocusTrack, artist, accessKey, isLicensed, id, ownerId, title, url);
+        return Objects.hash(duration, date, genreId, performer, artist, albumId, id, title, url);
     }
 
     @Override
@@ -150,15 +160,15 @@ public class Audio implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Audio audio = (Audio) o;
-        return Objects.equals(artist, audio.artist) &&
-                Objects.equals(ownerId, audio.ownerId) &&
-                Objects.equals(accessKey, audio.accessKey) &&
-                Objects.equals(isFocusTrack, audio.isFocusTrack) &&
-                Objects.equals(isLicensed, audio.isLicensed) &&
+        return Objects.equals(duration, audio.duration) &&
+                Objects.equals(date, audio.date) &&
+                Objects.equals(performer, audio.performer) &&
+                Objects.equals(artist, audio.artist) &&
+                Objects.equals(albumId, audio.albumId) &&
                 Objects.equals(id, audio.id) &&
                 Objects.equals(title, audio.title) &&
-                Objects.equals(isExplicit, audio.isExplicit) &&
-                Objects.equals(url, audio.url);
+                Objects.equals(url, audio.url) &&
+                Objects.equals(genreId, audio.genreId);
     }
 
     @Override
@@ -169,15 +179,15 @@ public class Audio implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Audio{");
-        sb.append("artist='").append(artist).append("'");
-        sb.append(", ownerId=").append(ownerId);
-        sb.append(", accessKey='").append(accessKey).append("'");
-        sb.append(", isFocusTrack=").append(isFocusTrack);
-        sb.append(", isLicensed=").append(isLicensed);
+        sb.append("duration=").append(duration);
+        sb.append(", date=").append(date);
+        sb.append(", performer='").append(performer).append("'");
+        sb.append(", artist='").append(artist).append("'");
+        sb.append(", albumId=").append(albumId);
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");
-        sb.append(", isExplicit=").append(isExplicit);
         sb.append(", url=").append(url);
+        sb.append(", genreId=").append(genreId);
         sb.append('}');
         return sb.toString();
     }

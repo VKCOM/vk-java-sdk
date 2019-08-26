@@ -3,11 +3,13 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.CommentsInfo;
 import com.vk.api.sdk.objects.base.Geo;
 import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.base.RepostsInfo;
 import com.vk.api.sdk.objects.wall.PostSource;
+import com.vk.api.sdk.objects.wall.Views;
 import com.vk.api.sdk.objects.wall.Wallpost;
 import com.vk.api.sdk.objects.wall.WallpostAttachment;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.Objects;
 /**
  * ItemWallpost object
  */
-public class ItemWallpost implements Validable {
+public class ItemWallpost extends ItemBase implements Validable {
     @SerializedName("activity")
     private EventActivity activity;
 
@@ -32,8 +34,20 @@ public class ItemWallpost implements Validable {
     @SerializedName("geo")
     private Geo geo;
 
+    /**
+     * Information whether the post in favorites list
+     */
+    @SerializedName("is_favorite")
+    private Boolean isFavorite;
+
     @SerializedName("likes")
     private LikesInfo likes;
+
+    /**
+     * Information whether the post is marked as ads
+     */
+    @SerializedName("marked_as_ads")
+    private BoolInt markedAsAds;
 
     /**
      * Post ID
@@ -51,10 +65,22 @@ public class ItemWallpost implements Validable {
     private RepostsInfo reposts;
 
     /**
+     * Post signer ID
+     */
+    @SerializedName("signer_id")
+    private Integer signerId;
+
+    /**
      * Post text
      */
     @SerializedName("text")
     private String text;
+
+    /**
+     * Count of views
+     */
+    @SerializedName("views")
+    private Views views;
 
     public EventActivity getActivity() {
         return activity;
@@ -101,6 +127,15 @@ public class ItemWallpost implements Validable {
         return this;
     }
 
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+    public ItemWallpost setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
+        return this;
+    }
+
     public LikesInfo getLikes() {
         return likes;
     }
@@ -108,6 +143,14 @@ public class ItemWallpost implements Validable {
     public ItemWallpost setLikes(LikesInfo likes) {
         this.likes = likes;
         return this;
+    }
+
+    public boolean isMarkedAsAds() {
+        return markedAsAds == BoolInt.YES;
+    }
+
+    public BoolInt getMarkedAsAds() {
+        return markedAsAds;
     }
 
     public Integer getPostId() {
@@ -146,6 +189,15 @@ public class ItemWallpost implements Validable {
         return this;
     }
 
+    public Integer getSignerId() {
+        return signerId;
+    }
+
+    public ItemWallpost setSignerId(Integer signerId) {
+        this.signerId = signerId;
+        return this;
+    }
+
     public String getText() {
         return text;
     }
@@ -155,9 +207,18 @@ public class ItemWallpost implements Validable {
         return this;
     }
 
+    public Views getViews() {
+        return views;
+    }
+
+    public ItemWallpost setViews(Views views) {
+        this.views = views;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(geo, attachments, comments, activity, postType, postSource, postId, text, reposts, copyHistory, likes);
+        return Objects.hash(attachments, comments, activity, postType, postSource, postId, geo, signerId, text, markedAsAds, reposts, views, isFavorite, copyHistory, likes);
     }
 
     @Override
@@ -165,16 +226,20 @@ public class ItemWallpost implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemWallpost itemWallpost = (ItemWallpost) o;
-        return Objects.equals(geo, itemWallpost.geo) &&
-                Objects.equals(attachments, itemWallpost.attachments) &&
+        return Objects.equals(attachments, itemWallpost.attachments) &&
                 Objects.equals(comments, itemWallpost.comments) &&
+                Objects.equals(isFavorite, itemWallpost.isFavorite) &&
                 Objects.equals(activity, itemWallpost.activity) &&
+                Objects.equals(signerId, itemWallpost.signerId) &&
+                Objects.equals(copyHistory, itemWallpost.copyHistory) &&
+                Objects.equals(geo, itemWallpost.geo) &&
                 Objects.equals(postId, itemWallpost.postId) &&
                 Objects.equals(postSource, itemWallpost.postSource) &&
+                Objects.equals(markedAsAds, itemWallpost.markedAsAds) &&
                 Objects.equals(postType, itemWallpost.postType) &&
                 Objects.equals(text, itemWallpost.text) &&
                 Objects.equals(reposts, itemWallpost.reposts) &&
-                Objects.equals(copyHistory, itemWallpost.copyHistory) &&
+                Objects.equals(views, itemWallpost.views) &&
                 Objects.equals(likes, itemWallpost.likes);
     }
 
@@ -186,16 +251,20 @@ public class ItemWallpost implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemWallpost{");
-        sb.append("geo=").append(geo);
-        sb.append(", attachments=").append(attachments);
+        sb.append("attachments=").append(attachments);
         sb.append(", comments=").append(comments);
+        sb.append(", isFavorite=").append(isFavorite);
         sb.append(", activity=").append(activity);
+        sb.append(", signerId=").append(signerId);
+        sb.append(", copyHistory=").append(copyHistory);
+        sb.append(", geo=").append(geo);
         sb.append(", postId=").append(postId);
         sb.append(", postSource=").append(postSource);
+        sb.append(", markedAsAds=").append(markedAsAds);
         sb.append(", postType=").append(postType);
         sb.append(", text='").append(text).append("'");
         sb.append(", reposts=").append(reposts);
-        sb.append(", copyHistory=").append(copyHistory);
+        sb.append(", views=").append(views);
         sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();

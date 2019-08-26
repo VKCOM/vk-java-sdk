@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.audio.Audio;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ public class ItemAudioAudio implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<AudioFull> items;
+    private List<Audio> items;
 
     public Integer getCount() {
         return count;
@@ -29,11 +29,11 @@ public class ItemAudioAudio implements Validable {
         return this;
     }
 
-    public List<AudioFull> getItems() {
+    public List<Audio> getItems() {
         return items;
     }
 
-    public ItemAudioAudio setItems(List<AudioFull> items) {
+    public ItemAudioAudio setItems(List<Audio> items) {
         this.items = items;
         return this;
     }

@@ -33,6 +33,12 @@ public class GroupXtrInvitedBy implements Validable {
     private BoolInt isAdmin;
 
     /**
+     * Information whether current user is advertiser
+     */
+    @SerializedName("is_advertiser")
+    private BoolInt isAdvertiser;
+
+    /**
      * Information whether community is closed
      */
     @SerializedName("is_closed")
@@ -112,6 +118,14 @@ public class GroupXtrInvitedBy implements Validable {
         return isAdmin;
     }
 
+    public boolean isAdvertiser() {
+        return isAdvertiser == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdvertiser() {
+        return isAdvertiser;
+    }
+
     public boolean isClosed() {
         return isClosed == BoolInt.YES;
     }
@@ -184,7 +198,7 @@ public class GroupXtrInvitedBy implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(invitedBy, adminLevel, photo100, isClosed, name, photo50, isAdmin, isMember, screenName, id, photo200, type);
+        return Objects.hash(invitedBy, isAdvertiser, adminLevel, photo50, isMember, isAdmin, screenName, photo200, type, photo100, isClosed, name, id);
     }
 
     @Override
@@ -192,16 +206,17 @@ public class GroupXtrInvitedBy implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupXtrInvitedBy groupXtrInvitedBy = (GroupXtrInvitedBy) o;
-        return Objects.equals(isAdmin, groupXtrInvitedBy.isAdmin) &&
-                Objects.equals(isMember, groupXtrInvitedBy.isMember) &&
+        return Objects.equals(isMember, groupXtrInvitedBy.isMember) &&
                 Objects.equals(photo50, groupXtrInvitedBy.photo50) &&
+                Objects.equals(invitedBy, groupXtrInvitedBy.invitedBy) &&
+                Objects.equals(type, groupXtrInvitedBy.type) &&
+                Objects.equals(isAdmin, groupXtrInvitedBy.isAdmin) &&
+                Objects.equals(isAdvertiser, groupXtrInvitedBy.isAdvertiser) &&
                 Objects.equals(screenName, groupXtrInvitedBy.screenName) &&
                 Objects.equals(adminLevel, groupXtrInvitedBy.adminLevel) &&
                 Objects.equals(name, groupXtrInvitedBy.name) &&
                 Objects.equals(id, groupXtrInvitedBy.id) &&
-                Objects.equals(invitedBy, groupXtrInvitedBy.invitedBy) &&
                 Objects.equals(photo100, groupXtrInvitedBy.photo100) &&
-                Objects.equals(type, groupXtrInvitedBy.type) &&
                 Objects.equals(photo200, groupXtrInvitedBy.photo200) &&
                 Objects.equals(isClosed, groupXtrInvitedBy.isClosed);
     }
@@ -214,16 +229,17 @@ public class GroupXtrInvitedBy implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupXtrInvitedBy{");
-        sb.append("isAdmin=").append(isAdmin);
-        sb.append(", isMember=").append(isMember);
+        sb.append("isMember=").append(isMember);
         sb.append(", photo50=").append(photo50);
+        sb.append(", invitedBy=").append(invitedBy);
+        sb.append(", type=").append(type);
+        sb.append(", isAdmin=").append(isAdmin);
+        sb.append(", isAdvertiser=").append(isAdvertiser);
         sb.append(", screenName='").append(screenName).append("'");
         sb.append(", adminLevel=").append(adminLevel);
         sb.append(", name='").append(name).append("'");
         sb.append(", id='").append(id).append("'");
-        sb.append(", invitedBy=").append(invitedBy);
         sb.append(", photo100=").append(photo100);
-        sb.append(", type=").append(type);
         sb.append(", photo200=").append(photo200);
         sb.append(", isClosed=").append(isClosed);
         sb.append('}');
