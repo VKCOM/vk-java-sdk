@@ -138,9 +138,6 @@ public class App extends AppMin implements Validable {
     @SerializedName("screen_name")
     private String screenName;
 
-    @SerializedName("screenshots")
-    private List<AppScreenshot> screenshots;
-
     /**
      * Application section name
      */
@@ -342,15 +339,6 @@ public class App extends AppMin implements Validable {
         return this;
     }
 
-    public List<AppScreenshot> getScreenshots() {
-        return screenshots;
-    }
-
-    public App setScreenshots(List<AppScreenshot> screenshots) {
-        this.screenshots = screenshots;
-        return this;
-    }
-
     public String getSection() {
         return section;
     }
@@ -362,7 +350,7 @@ public class App extends AppMin implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, authorId, _new, friends, screenshots, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, authorGroup, banner1120, publishedDate, international);
+        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, authorId, _new, friends, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, authorGroup, banner1120, publishedDate, international);
     }
 
     @Override
@@ -381,7 +369,6 @@ public class App extends AppMin implements Validable {
                 Objects.equals(isInCatalog, app.isInCatalog) &&
                 Objects.equals(friends, app.friends) &&
                 Objects.equals(genreId, app.genreId) &&
-                Objects.equals(screenshots, app.screenshots) &&
                 Objects.equals(authorUrl, app.authorUrl) &&
                 Objects.equals(pushEnabled, app.pushEnabled) &&
                 Objects.equals(screenName, app.screenName) &&
@@ -415,7 +402,6 @@ public class App extends AppMin implements Validable {
         sb.append(", isInCatalog=").append(isInCatalog);
         sb.append(", friends=").append(friends);
         sb.append(", genreId=").append(genreId);
-        sb.append(", screenshots=").append(screenshots);
         sb.append(", authorUrl=").append(authorUrl);
         sb.append(", pushEnabled=").append(pushEnabled);
         sb.append(", screenName='").append(screenName).append("'");
