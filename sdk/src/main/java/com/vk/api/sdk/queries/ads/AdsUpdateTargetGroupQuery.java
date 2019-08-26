@@ -82,7 +82,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     /**
      * 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
      *
-     * @param value value of "lifetime" parameter. Maximum is 365. Minimum is 0.
+     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 0. By default 720.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public AdsUpdateTargetGroupQuery lifetime(Integer value) {

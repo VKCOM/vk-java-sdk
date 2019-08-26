@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * ItemNote object
  */
-public class ItemNote implements Validable {
+public class ItemNote extends ItemBase implements Validable {
     @SerializedName("notes")
     private ItemNoteNotes notes;
 

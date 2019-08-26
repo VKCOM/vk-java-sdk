@@ -40,6 +40,9 @@ public enum MessageAttachmentType implements EnumParam {
     @SerializedName("wall_reply")
     WALL_REPLY("wall_reply"),
 
+    @SerializedName("article")
+    ARTICLE("article"),
+
     @SerializedName("graffiti")
     GRAFFITI("graffiti"),
 

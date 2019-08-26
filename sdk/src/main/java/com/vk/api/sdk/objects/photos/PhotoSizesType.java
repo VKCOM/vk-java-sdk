@@ -34,6 +34,9 @@ public enum PhotoSizesType implements EnumParam {
     @SerializedName("z")
     Z("z"),
 
+    @SerializedName("c")
+    C("c"),
+
     @SerializedName("w")
     W("w");
 

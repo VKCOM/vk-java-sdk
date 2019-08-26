@@ -21,9 +21,9 @@ public class PhotoSizes implements Validable {
     /**
      * URL of the image
      */
-    @SerializedName("src")
+    @SerializedName("url")
     @Required
-    private URL src;
+    private URL url;
 
     @SerializedName("type")
     @Required
@@ -45,12 +45,12 @@ public class PhotoSizes implements Validable {
         return this;
     }
 
-    public URL getSrc() {
-        return src;
+    public URL getUrl() {
+        return url;
     }
 
-    public PhotoSizes setSrc(URL src) {
-        this.src = src;
+    public PhotoSizes setUrl(URL url) {
+        this.url = url;
         return this;
     }
 
@@ -74,7 +74,7 @@ public class PhotoSizes implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(src, width, type, height);
+        return Objects.hash(width, type, url, height);
     }
 
     @Override
@@ -82,9 +82,9 @@ public class PhotoSizes implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoSizes photoSizes = (PhotoSizes) o;
-        return Objects.equals(src, photoSizes.src) &&
-                Objects.equals(width, photoSizes.width) &&
+        return Objects.equals(width, photoSizes.width) &&
                 Objects.equals(type, photoSizes.type) &&
+                Objects.equals(url, photoSizes.url) &&
                 Objects.equals(height, photoSizes.height);
     }
 
@@ -96,9 +96,9 @@ public class PhotoSizes implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoSizes{");
-        sb.append("src=").append(src);
-        sb.append(", width=").append(width);
+        sb.append("width=").append(width);
         sb.append(", type=").append(type);
+        sb.append(", url=").append(url);
         sb.append(", height=").append(height);
         sb.append('}');
         return sb.toString();

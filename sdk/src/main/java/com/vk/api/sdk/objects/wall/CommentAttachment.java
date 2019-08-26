@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.base.Sticker;
 import com.vk.api.sdk.objects.docs.Doc;
@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 public class CommentAttachment implements Validable {
     @SerializedName("audio")
-    private AudioFull audio;
+    private Audio audio;
 
     @SerializedName("doc")
     private Doc doc;
@@ -53,11 +53,11 @@ public class CommentAttachment implements Validable {
     @SerializedName("video")
     private Video video;
 
-    public AudioFull getAudio() {
+    public Audio getAudio() {
         return audio;
     }
 
-    public CommentAttachment setAudio(AudioFull audio) {
+    public CommentAttachment setAudio(Audio audio) {
         this.audio = audio;
         return this;
     }

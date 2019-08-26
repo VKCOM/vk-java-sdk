@@ -1,10 +1,10 @@
 package com.vk.api.sdk.objects.stories.responses;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.stories.PromoBlock;
 import com.vk.api.sdk.objects.stories.Story;
 import java.util.List;
 import java.util.Objects;
@@ -22,13 +22,10 @@ public class GetResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<List<Story>> items;
+    private List<Story> items;
 
-    /**
-     * Additional data for promo stories
-     */
     @SerializedName("promo_data")
-    private JsonObject promoData;
+    private PromoBlock promoData;
 
     public Integer getCount() {
         return count;
@@ -39,20 +36,20 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<List<Story>> getItems() {
+    public List<Story> getItems() {
         return items;
     }
 
-    public GetResponse setItems(List<List<Story>> items) {
+    public GetResponse setItems(List<Story> items) {
         this.items = items;
         return this;
     }
 
-    public JsonObject getPromoData() {
+    public PromoBlock getPromoData() {
         return promoData;
     }
 
-    public GetResponse setPromoData(JsonObject promoData) {
+    public GetResponse setPromoData(PromoBlock promoData) {
         this.promoData = promoData;
         return this;
     }

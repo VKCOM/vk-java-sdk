@@ -11,6 +11,12 @@ import java.util.Objects;
  */
 public class SaveResult implements Validable {
     /**
+     * Video access key
+     */
+    @SerializedName("access_key")
+    private String accessKey;
+
+    /**
      * Video description
      */
     @SerializedName("description")
@@ -39,6 +45,15 @@ public class SaveResult implements Validable {
      */
     @SerializedName("video_id")
     private Integer videoId;
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public SaveResult setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
+    }
 
     public String getDescription() {
         return description;
@@ -87,7 +102,7 @@ public class SaveResult implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(uploadUrl, description, videoId, ownerId, title);
+        return Objects.hash(uploadUrl, accessKey, description, videoId, ownerId, title);
     }
 
     @Override
@@ -96,6 +111,7 @@ public class SaveResult implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         SaveResult saveResult = (SaveResult) o;
         return Objects.equals(ownerId, saveResult.ownerId) &&
+                Objects.equals(accessKey, saveResult.accessKey) &&
                 Objects.equals(description, saveResult.description) &&
                 Objects.equals(uploadUrl, saveResult.uploadUrl) &&
                 Objects.equals(title, saveResult.title) &&
@@ -111,6 +127,7 @@ public class SaveResult implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SaveResult{");
         sb.append("ownerId=").append(ownerId);
+        sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", description='").append(description).append("'");
         sb.append(", uploadUrl=").append(uploadUrl);
         sb.append(", title='").append(title).append("'");

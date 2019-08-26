@@ -100,6 +100,16 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
     }
 
     /**
+     * Set group id
+     *
+     * @param value value of "group id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotificationsSendMessageQuery groupId(Integer value) {
+        return unsafeParam("group_id", value);
+    }
+
+    /**
      * user_ids
      * Set user ids
      *

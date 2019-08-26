@@ -13,19 +13,19 @@ public class SmsNotification implements Validable {
      * Application ID
      */
     @SerializedName("app_id")
-    private Integer appId;
+    private String appId;
 
     /**
      * Date when message has been sent in Unixtime
      */
     @SerializedName("date")
-    private Integer date;
+    private String date;
 
     /**
      * Notification ID
      */
     @SerializedName("id")
-    private Integer id;
+    private String id;
 
     /**
      * Messsage text
@@ -37,31 +37,31 @@ public class SmsNotification implements Validable {
      * User ID
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private String userId;
 
-    public Integer getAppId() {
+    public String getAppId() {
         return appId;
     }
 
-    public SmsNotification setAppId(Integer appId) {
+    public SmsNotification setAppId(String appId) {
         this.appId = appId;
         return this;
     }
 
-    public Integer getDate() {
+    public String getDate() {
         return date;
     }
 
-    public SmsNotification setDate(Integer date) {
+    public SmsNotification setDate(String date) {
         this.date = date;
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public SmsNotification setId(Integer id) {
+    public SmsNotification setId(String id) {
         this.id = id;
         return this;
     }
@@ -75,11 +75,11 @@ public class SmsNotification implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public SmsNotification setUserId(Integer userId) {
+    public SmsNotification setUserId(String userId) {
         this.userId = userId;
         return this;
     }
@@ -109,11 +109,11 @@ public class SmsNotification implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SmsNotification{");
-        sb.append("date=").append(date);
-        sb.append(", userId=").append(userId);
-        sb.append(", id=").append(id);
+        sb.append("date='").append(date).append("'");
+        sb.append(", userId='").append(userId).append("'");
+        sb.append(", id='").append(id).append("'");
         sb.append(", message='").append(message).append("'");
-        sb.append(", appId=").append(appId);
+        sb.append(", appId='").append(appId).append("'");
         sb.append('}');
         return sb.toString();
     }

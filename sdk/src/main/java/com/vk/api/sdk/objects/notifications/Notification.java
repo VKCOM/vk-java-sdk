@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 public class Notification implements Validable {
     /**
-     * Date when the event has been occured
+     * Date when the event has been occurred
      */
     @SerializedName("date")
     private Integer date;

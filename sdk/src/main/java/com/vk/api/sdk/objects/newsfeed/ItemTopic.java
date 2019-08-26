@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * ItemTopic object
  */
-public class ItemTopic implements Validable {
+public class ItemTopic extends ItemBase implements Validable {
     @SerializedName("comments")
     private CommentsInfo comments;
 

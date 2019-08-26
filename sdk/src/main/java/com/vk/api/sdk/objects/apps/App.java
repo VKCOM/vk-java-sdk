@@ -3,8 +3,7 @@ package com.vk.api.sdk.objects.apps;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -12,7 +11,7 @@ import java.util.Objects;
 /**
  * App object
  */
-public class App implements Validable {
+public class App extends AppMin implements Validable {
     /**
      * Official community's ID
      */
@@ -43,6 +42,36 @@ public class App implements Validable {
     @SerializedName("banner_560")
     private URL banner560;
 
+    /**
+     * URL of the app icon with 16 px in width
+     */
+    @SerializedName("icon_16")
+    private URL icon16;
+
+    /**
+     * Is new flag
+     */
+    @SerializedName("is_new")
+    private BoolInt isNew;
+
+    /**
+     * Is new flag
+     */
+    @SerializedName("new")
+    private BoolInt _new;
+
+    /**
+     * Is push enabled
+     */
+    @SerializedName("push_enabled")
+    private BoolInt pushEnabled;
+
+    /**
+     * Screen orientation
+     */
+    @SerializedName("screen_orientation")
+    private Integer screenOrientation;
+
     @SerializedName("friends")
     private List<Integer> friends;
 
@@ -71,41 +100,10 @@ public class App implements Validable {
     private Integer genreId;
 
     /**
-     * URL of the app icon with 139 px in width
-     */
-    @SerializedName("icon_139")
-    private URL icon139;
-
-    /**
-     * URL of the app icon with 150 px in width
-     */
-    @SerializedName("icon_150")
-    private URL icon150;
-
-    /**
-     * URL of the app icon with 279 px in width
-     */
-    @SerializedName("icon_278")
-    private URL icon278;
-
-    /**
-     * URL of the app icon with 75 px in width
-     */
-    @SerializedName("icon_75")
-    private URL icon75;
-
-    /**
-     * Application ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
      * Information whether the application is multilanguage
      */
     @SerializedName("international")
-    private Integer international;
+    private Boolean international;
 
     /**
      * Information whether application is in mobile catalog
@@ -126,7 +124,7 @@ public class App implements Validable {
      * Application ID in store
      */
     @SerializedName("platform_id")
-    private Integer platformId;
+    private String platformId;
 
     /**
      * Date when the application has been published in Unixtime
@@ -141,24 +139,13 @@ public class App implements Validable {
     private String screenName;
 
     @SerializedName("screenshots")
-    private List<Photo> screenshots;
+    private List<AppScreenshot> screenshots;
 
     /**
      * Application section name
      */
     @SerializedName("section")
     private String section;
-
-    /**
-     * Application title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    @SerializedName("type")
-    @Required
-    private AppType type;
 
     public Integer getAuthorGroup() {
         return authorGroup;
@@ -202,6 +189,48 @@ public class App implements Validable {
 
     public App setBanner560(URL banner560) {
         this.banner560 = banner560;
+        return this;
+    }
+
+    public URL getIcon16() {
+        return icon16;
+    }
+
+    public App setIcon16(URL icon16) {
+        this.icon16 = icon16;
+        return this;
+    }
+
+    public boolean isNew() {
+        return isNew == BoolInt.YES;
+    }
+
+    public BoolInt getIsNew() {
+        return isNew;
+    }
+
+    public boolean is_new() {
+        return _new == BoolInt.YES;
+    }
+
+    public BoolInt get_new() {
+        return _new;
+    }
+
+    public boolean isPushEnabled() {
+        return pushEnabled == BoolInt.YES;
+    }
+
+    public BoolInt getPushEnabled() {
+        return pushEnabled;
+    }
+
+    public Integer getScreenOrientation() {
+        return screenOrientation;
+    }
+
+    public App setScreenOrientation(Integer screenOrientation) {
+        this.screenOrientation = screenOrientation;
         return this;
     }
 
@@ -250,56 +279,11 @@ public class App implements Validable {
         return this;
     }
 
-    public URL getIcon139() {
-        return icon139;
-    }
-
-    public App setIcon139(URL icon139) {
-        this.icon139 = icon139;
-        return this;
-    }
-
-    public URL getIcon150() {
-        return icon150;
-    }
-
-    public App setIcon150(URL icon150) {
-        this.icon150 = icon150;
-        return this;
-    }
-
-    public URL getIcon278() {
-        return icon278;
-    }
-
-    public App setIcon278(URL icon278) {
-        this.icon278 = icon278;
-        return this;
-    }
-
-    public URL getIcon75() {
-        return icon75;
-    }
-
-    public App setIcon75(URL icon75) {
-        this.icon75 = icon75;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public App setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getInternational() {
+    public Boolean getInternational() {
         return international;
     }
 
-    public App setInternational(Integer international) {
+    public App setInternational(Boolean international) {
         this.international = international;
         return this;
     }
@@ -331,11 +315,11 @@ public class App implements Validable {
         return this;
     }
 
-    public Integer getPlatformId() {
+    public String getPlatformId() {
         return platformId;
     }
 
-    public App setPlatformId(Integer platformId) {
+    public App setPlatformId(String platformId) {
         this.platformId = platformId;
         return this;
     }
@@ -358,11 +342,11 @@ public class App implements Validable {
         return this;
     }
 
-    public List<Photo> getScreenshots() {
+    public List<AppScreenshot> getScreenshots() {
         return screenshots;
     }
 
-    public App setScreenshots(List<Photo> screenshots) {
+    public App setScreenshots(List<AppScreenshot> screenshots) {
         this.screenshots = screenshots;
         return this;
     }
@@ -376,27 +360,9 @@ public class App implements Validable {
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public App setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public AppType getType() {
-        return type;
-    }
-
-    public App setType(AppType type) {
-        this.type = type;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(genreId, isInCatalog, icon75, description, section, screenName, title, type, screenshots, icon139, icon278, authorUrl, genre, leaderboardType, authorGroup, id, international, icon150, membersCount, banner560, platformId, authorId, friends, catalogPosition, banner1120, publishedDate);
+        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, authorId, _new, friends, screenshots, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, authorGroup, banner1120, publishedDate, international);
     }
 
     @Override
@@ -404,32 +370,30 @@ public class App implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         App app = (App) o;
-        return Objects.equals(authorGroup, app.authorGroup) &&
+        return Objects.equals(_new, app._new) &&
+                Objects.equals(authorGroup, app.authorGroup) &&
                 Objects.equals(leaderboardType, app.leaderboardType) &&
-                Objects.equals(icon278, app.icon278) &&
-                Objects.equals(description, app.description) &&
-                Objects.equals(icon75, app.icon75) &&
-                Objects.equals(section, app.section) &&
-                Objects.equals(title, app.title) &&
-                Objects.equals(type, app.type) &&
-                Objects.equals(genreId, app.genreId) &&
-                Objects.equals(icon150, app.icon150) &&
-                Objects.equals(screenshots, app.screenshots) &&
-                Objects.equals(screenName, app.screenName) &&
-                Objects.equals(genre, app.genre) &&
-                Objects.equals(icon139, app.icon139) &&
-                Objects.equals(banner560, app.banner560) &&
-                Objects.equals(id, app.id) &&
-                Objects.equals(international, app.international) &&
-                Objects.equals(catalogPosition, app.catalogPosition) &&
+                Objects.equals(isNew, app.isNew) &&
+                Objects.equals(icon16, app.icon16) &&
                 Objects.equals(banner1120, app.banner1120) &&
+                Objects.equals(description, app.description) &&
+                Objects.equals(section, app.section) &&
                 Objects.equals(isInCatalog, app.isInCatalog) &&
                 Objects.equals(friends, app.friends) &&
+                Objects.equals(genreId, app.genreId) &&
+                Objects.equals(screenshots, app.screenshots) &&
                 Objects.equals(authorUrl, app.authorUrl) &&
+                Objects.equals(pushEnabled, app.pushEnabled) &&
+                Objects.equals(screenName, app.screenName) &&
+                Objects.equals(screenOrientation, app.screenOrientation) &&
+                Objects.equals(genre, app.genre) &&
                 Objects.equals(platformId, app.platformId) &&
+                Objects.equals(banner560, app.banner560) &&
                 Objects.equals(membersCount, app.membersCount) &&
                 Objects.equals(authorId, app.authorId) &&
-                Objects.equals(publishedDate, app.publishedDate);
+                Objects.equals(international, app.international) &&
+                Objects.equals(publishedDate, app.publishedDate) &&
+                Objects.equals(catalogPosition, app.catalogPosition);
     }
 
     @Override
@@ -440,32 +404,30 @@ public class App implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("App{");
-        sb.append("authorGroup=").append(authorGroup);
+        sb.append("_new=").append(_new);
+        sb.append(", authorGroup=").append(authorGroup);
         sb.append(", leaderboardType=").append(leaderboardType);
-        sb.append(", icon278=").append(icon278);
-        sb.append(", description='").append(description).append("'");
-        sb.append(", icon75=").append(icon75);
-        sb.append(", section='").append(section).append("'");
-        sb.append(", title='").append(title).append("'");
-        sb.append(", type=").append(type);
-        sb.append(", genreId=").append(genreId);
-        sb.append(", icon150=").append(icon150);
-        sb.append(", screenshots=").append(screenshots);
-        sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", genre='").append(genre).append("'");
-        sb.append(", icon139=").append(icon139);
-        sb.append(", banner560=").append(banner560);
-        sb.append(", id=").append(id);
-        sb.append(", international=").append(international);
-        sb.append(", catalogPosition=").append(catalogPosition);
+        sb.append(", isNew=").append(isNew);
+        sb.append(", icon16=").append(icon16);
         sb.append(", banner1120=").append(banner1120);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", section='").append(section).append("'");
         sb.append(", isInCatalog=").append(isInCatalog);
         sb.append(", friends=").append(friends);
+        sb.append(", genreId=").append(genreId);
+        sb.append(", screenshots=").append(screenshots);
         sb.append(", authorUrl=").append(authorUrl);
-        sb.append(", platformId=").append(platformId);
+        sb.append(", pushEnabled=").append(pushEnabled);
+        sb.append(", screenName='").append(screenName).append("'");
+        sb.append(", screenOrientation=").append(screenOrientation);
+        sb.append(", genre='").append(genre).append("'");
+        sb.append(", platformId='").append(platformId).append("'");
+        sb.append(", banner560=").append(banner560);
         sb.append(", membersCount=").append(membersCount);
         sb.append(", authorId=").append(authorId);
+        sb.append(", international=").append(international);
         sb.append(", publishedDate=").append(publishedDate);
+        sb.append(", catalogPosition=").append(catalogPosition);
         sb.append('}');
         return sb.toString();
     }

@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.users;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.audio.AudioFull;
+import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Country;
@@ -154,49 +154,13 @@ public class UserFull extends User implements Validable {
     private String homePhone;
 
     /**
-     * User's Skype nickname
-     */
-    @SerializedName("skype")
-    private String skype;
-
-    /**
-     * User's Facebook account
-     */
-    @SerializedName("facebook")
-    private String facebook;
-
-    /**
-     * User's Facebook name
-     */
-    @SerializedName("facebook_name")
-    private String facebookName;
-
-    /**
-     * User's Twitter account
-     */
-    @SerializedName("twitter")
-    private String twitter;
-
-    /**
-     * User's Livejournal account
-     */
-    @SerializedName("livejournal")
-    private String livejournal;
-
-    /**
-     * User's Instagram account
-     */
-    @SerializedName("instagram")
-    private String instagram;
-
-    /**
      * User's website
      */
     @SerializedName("site")
     private String site;
 
     @SerializedName("status_audio")
-    private AudioFull statusAudio;
+    private Audio statusAudio;
 
     /**
      * User's status
@@ -316,7 +280,7 @@ public class UserFull extends User implements Validable {
      * User relationship status
      */
     @SerializedName("relation")
-    private Integer relation;
+    private UserRelation relation;
 
     @SerializedName("relation_partner")
     private UserMin relationPartner;
@@ -324,68 +288,14 @@ public class UserFull extends User implements Validable {
     @SerializedName("personal")
     private Personal personal;
 
-    /**
-     * User's interests
-     */
-    @SerializedName("interests")
-    private String interests;
-
-    /**
-     * User's favorite music
-     */
-    @SerializedName("music")
-    private String music;
-
-    /**
-     * User's activities
-     */
-    @SerializedName("activities")
-    private String activities;
-
-    /**
-     * User's favorite movies
-     */
-    @SerializedName("movies")
-    private String movies;
-
-    /**
-     * User's favorite tv shows
-     */
-    @SerializedName("tv")
-    private String tv;
-
-    /**
-     * User's favorite books
-     */
-    @SerializedName("books")
-    private String books;
-
-    /**
-     * User's favorite games
-     */
-    @SerializedName("games")
-    private String games;
-
     @SerializedName("universities")
     private List<University> universities;
 
     @SerializedName("schools")
     private List<School> schools;
 
-    /**
-     * About me field
-     */
-    @SerializedName("about")
-    private String about;
-
     @SerializedName("relatives")
     private List<Relative> relatives;
-
-    /**
-     * Favorite quotes
-     */
-    @SerializedName("quotes")
-    private String quotes;
 
     /**
      * Information whether current user is subscribed to podcasts
@@ -612,60 +522,6 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public String getSkype() {
-        return skype;
-    }
-
-    public UserFull setSkype(String skype) {
-        this.skype = skype;
-        return this;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public UserFull setFacebook(String facebook) {
-        this.facebook = facebook;
-        return this;
-    }
-
-    public String getFacebookName() {
-        return facebookName;
-    }
-
-    public UserFull setFacebookName(String facebookName) {
-        this.facebookName = facebookName;
-        return this;
-    }
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-    public UserFull setTwitter(String twitter) {
-        this.twitter = twitter;
-        return this;
-    }
-
-    public String getLivejournal() {
-        return livejournal;
-    }
-
-    public UserFull setLivejournal(String livejournal) {
-        this.livejournal = livejournal;
-        return this;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public UserFull setInstagram(String instagram) {
-        this.instagram = instagram;
-        return this;
-    }
-
     public String getSite() {
         return site;
     }
@@ -675,11 +531,11 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public AudioFull getStatusAudio() {
+    public Audio getStatusAudio() {
         return statusAudio;
     }
 
-    public UserFull setStatusAudio(AudioFull statusAudio) {
+    public UserFull setStatusAudio(Audio statusAudio) {
         this.statusAudio = statusAudio;
         return this;
     }
@@ -878,11 +734,11 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public Integer getRelation() {
+    public UserRelation getRelation() {
         return relation;
     }
 
-    public UserFull setRelation(Integer relation) {
+    public UserFull setRelation(UserRelation relation) {
         this.relation = relation;
         return this;
     }
@@ -905,69 +761,6 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public String getInterests() {
-        return interests;
-    }
-
-    public UserFull setInterests(String interests) {
-        this.interests = interests;
-        return this;
-    }
-
-    public String getMusic() {
-        return music;
-    }
-
-    public UserFull setMusic(String music) {
-        this.music = music;
-        return this;
-    }
-
-    public String getActivities() {
-        return activities;
-    }
-
-    public UserFull setActivities(String activities) {
-        this.activities = activities;
-        return this;
-    }
-
-    public String getMovies() {
-        return movies;
-    }
-
-    public UserFull setMovies(String movies) {
-        this.movies = movies;
-        return this;
-    }
-
-    public String getTv() {
-        return tv;
-    }
-
-    public UserFull setTv(String tv) {
-        this.tv = tv;
-        return this;
-    }
-
-    public String getBooks() {
-        return books;
-    }
-
-    public UserFull setBooks(String books) {
-        this.books = books;
-        return this;
-    }
-
-    public String getGames() {
-        return games;
-    }
-
-    public UserFull setGames(String games) {
-        this.games = games;
-        return this;
-    }
-
     public List<University> getUniversities() {
         return universities;
     }
@@ -986,30 +779,12 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public String getAbout() {
-        return about;
-    }
-
-    public UserFull setAbout(String about) {
-        this.about = about;
-        return this;
-    }
-
     public List<Relative> getRelatives() {
         return relatives;
     }
 
     public UserFull setRelatives(List<Relative> relatives) {
         this.relatives = relatives;
-        return this;
-    }
-
-    public String getQuotes() {
-        return quotes;
-    }
-
-    public UserFull setQuotes(String quotes) {
-        this.quotes = quotes;
         return this;
     }
 
@@ -1042,7 +817,7 @@ public class UserFull extends User implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canSendFriendRequest, universityName, country, canSubscribePosts, career, tv, bdate, occupation, about, instagram, educationForm, faculty, relation, quotes, movies, twitter, music, universities, canSeeAudio, homeTown, graduation, photoMaxOrig, games, military, canSeeAllPosts, homePhone, livejournal, personal, relatives, educationStatus, lastSeen, canSubscribePodcasts, books, hasPhoto, mobilePhone, schools, domain, photo400Orig, facultyName, followersCount, isHiddenFromFeed, facebookName, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, isSubscribedPodcasts, maidenName, photo200, skype, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, facebook, photo200Orig, photoId, blacklistedByMe, site, blacklisted, activities, canWritePrivateMessage, interests);
+        return Objects.hash(canSendFriendRequest, universityName, country, canSubscribePosts, career, bdate, occupation, educationForm, faculty, relation, universities, canSeeAudio, homeTown, graduation, photoMaxOrig, military, canSeeAllPosts, homePhone, personal, relatives, educationStatus, lastSeen, canSubscribePodcasts, hasPhoto, mobilePhone, schools, domain, photo400Orig, facultyName, followersCount, isHiddenFromFeed, statusAudio, status, isFavorite, relationPartner, activity, city, cropPhoto, timezone, exports, university, isSubscribedPodcasts, maidenName, photo200, canPost, wallComments, nickname, photoMax, isFriend, commonCount, hasMobile, photo200Orig, photoId, blacklistedByMe, site, blacklisted, canWritePrivateMessage);
     }
 
     @Override
@@ -1052,38 +827,28 @@ public class UserFull extends User implements Validable {
         UserFull userFull = (UserFull) o;
         return Objects.equals(country, userFull.country) &&
                 Objects.equals(career, userFull.career) &&
-                Objects.equals(tv, userFull.tv) &&
                 Objects.equals(bdate, userFull.bdate) &&
                 Objects.equals(canSendFriendRequest, userFull.canSendFriendRequest) &&
                 Objects.equals(occupation, userFull.occupation) &&
                 Objects.equals(lastSeen, userFull.lastSeen) &&
                 Objects.equals(blacklistedByMe, userFull.blacklistedByMe) &&
-                Objects.equals(about, userFull.about) &&
-                Objects.equals(instagram, userFull.instagram) &&
                 Objects.equals(statusAudio, userFull.statusAudio) &&
                 Objects.equals(educationForm, userFull.educationForm) &&
                 Objects.equals(faculty, userFull.faculty) &&
                 Objects.equals(relation, userFull.relation) &&
-                Objects.equals(quotes, userFull.quotes) &&
-                Objects.equals(movies, userFull.movies) &&
                 Objects.equals(relationPartner, userFull.relationPartner) &&
-                Objects.equals(twitter, userFull.twitter) &&
-                Objects.equals(music, userFull.music) &&
                 Objects.equals(universities, userFull.universities) &&
                 Objects.equals(graduation, userFull.graduation) &&
                 Objects.equals(canSubscribePodcasts, userFull.canSubscribePodcasts) &&
-                Objects.equals(games, userFull.games) &&
                 Objects.equals(military, userFull.military) &&
                 Objects.equals(canSeeAllPosts, userFull.canSeeAllPosts) &&
                 Objects.equals(homePhone, userFull.homePhone) &&
                 Objects.equals(commonCount, userFull.commonCount) &&
-                Objects.equals(livejournal, userFull.livejournal) &&
                 Objects.equals(personal, userFull.personal) &&
                 Objects.equals(relatives, userFull.relatives) &&
                 Objects.equals(photoMax, userFull.photoMax) &&
                 Objects.equals(canSeeAudio, userFull.canSeeAudio) &&
                 Objects.equals(homeTown, userFull.homeTown) &&
-                Objects.equals(books, userFull.books) &&
                 Objects.equals(isSubscribedPodcasts, userFull.isSubscribedPodcasts) &&
                 Objects.equals(schools, userFull.schools) &&
                 Objects.equals(domain, userFull.domain) &&
@@ -1101,7 +866,6 @@ public class UserFull extends User implements Validable {
                 Objects.equals(canSubscribePosts, userFull.canSubscribePosts) &&
                 Objects.equals(hasPhoto, userFull.hasPhoto) &&
                 Objects.equals(photoMaxOrig, userFull.photoMaxOrig) &&
-                Objects.equals(skype, userFull.skype) &&
                 Objects.equals(facultyName, userFull.facultyName) &&
                 Objects.equals(mobilePhone, userFull.mobilePhone) &&
                 Objects.equals(nickname, userFull.nickname) &&
@@ -1110,17 +874,13 @@ public class UserFull extends User implements Validable {
                 Objects.equals(photo200, userFull.photo200) &&
                 Objects.equals(maidenName, userFull.maidenName) &&
                 Objects.equals(wallComments, userFull.wallComments) &&
-                Objects.equals(facebook, userFull.facebook) &&
                 Objects.equals(universityName, userFull.universityName) &&
                 Objects.equals(educationStatus, userFull.educationStatus) &&
                 Objects.equals(canWritePrivateMessage, userFull.canWritePrivateMessage) &&
                 Objects.equals(site, userFull.site) &&
                 Objects.equals(blacklisted, userFull.blacklisted) &&
-                Objects.equals(activities, userFull.activities) &&
                 Objects.equals(cropPhoto, userFull.cropPhoto) &&
                 Objects.equals(followersCount, userFull.followersCount) &&
-                Objects.equals(facebookName, userFull.facebookName) &&
-                Objects.equals(interests, userFull.interests) &&
                 Objects.equals(isFriend, userFull.isFriend);
     }
 
@@ -1134,38 +894,28 @@ public class UserFull extends User implements Validable {
         final StringBuilder sb = new StringBuilder("UserFull{");
         sb.append("country=").append(country);
         sb.append(", career=").append(career);
-        sb.append(", tv='").append(tv).append("'");
         sb.append(", bdate='").append(bdate).append("'");
         sb.append(", canSendFriendRequest=").append(canSendFriendRequest);
         sb.append(", occupation=").append(occupation);
         sb.append(", lastSeen=").append(lastSeen);
         sb.append(", blacklistedByMe=").append(blacklistedByMe);
-        sb.append(", about='").append(about).append("'");
-        sb.append(", instagram='").append(instagram).append("'");
         sb.append(", statusAudio=").append(statusAudio);
         sb.append(", educationForm='").append(educationForm).append("'");
         sb.append(", faculty=").append(faculty);
         sb.append(", relation=").append(relation);
-        sb.append(", quotes='").append(quotes).append("'");
-        sb.append(", movies='").append(movies).append("'");
         sb.append(", relationPartner=").append(relationPartner);
-        sb.append(", twitter='").append(twitter).append("'");
-        sb.append(", music='").append(music).append("'");
         sb.append(", universities=").append(universities);
         sb.append(", graduation=").append(graduation);
         sb.append(", canSubscribePodcasts=").append(canSubscribePodcasts);
-        sb.append(", games='").append(games).append("'");
         sb.append(", military=").append(military);
         sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
         sb.append(", homePhone='").append(homePhone).append("'");
         sb.append(", commonCount=").append(commonCount);
-        sb.append(", livejournal='").append(livejournal).append("'");
         sb.append(", personal=").append(personal);
         sb.append(", relatives=").append(relatives);
         sb.append(", photoMax=").append(photoMax);
         sb.append(", canSeeAudio=").append(canSeeAudio);
         sb.append(", homeTown='").append(homeTown).append("'");
-        sb.append(", books='").append(books).append("'");
         sb.append(", isSubscribedPodcasts=").append(isSubscribedPodcasts);
         sb.append(", schools=").append(schools);
         sb.append(", domain='").append(domain).append("'");
@@ -1183,7 +933,6 @@ public class UserFull extends User implements Validable {
         sb.append(", canSubscribePosts=").append(canSubscribePosts);
         sb.append(", hasPhoto=").append(hasPhoto);
         sb.append(", photoMaxOrig=").append(photoMaxOrig);
-        sb.append(", skype='").append(skype).append("'");
         sb.append(", facultyName='").append(facultyName).append("'");
         sb.append(", mobilePhone='").append(mobilePhone).append("'");
         sb.append(", nickname='").append(nickname).append("'");
@@ -1192,17 +941,13 @@ public class UserFull extends User implements Validable {
         sb.append(", photo200=").append(photo200);
         sb.append(", maidenName='").append(maidenName).append("'");
         sb.append(", wallComments=").append(wallComments);
-        sb.append(", facebook='").append(facebook).append("'");
         sb.append(", universityName='").append(universityName).append("'");
         sb.append(", educationStatus='").append(educationStatus).append("'");
         sb.append(", canWritePrivateMessage=").append(canWritePrivateMessage);
         sb.append(", site='").append(site).append("'");
         sb.append(", blacklisted=").append(blacklisted);
-        sb.append(", activities='").append(activities).append("'");
         sb.append(", cropPhoto=").append(cropPhoto);
         sb.append(", followersCount=").append(followersCount);
-        sb.append(", facebookName='").append(facebookName).append("'");
-        sb.append(", interests='").append(interests).append("'");
         sb.append(", isFriend=").append(isFriend);
         sb.append('}');
         return sb.toString();

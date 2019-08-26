@@ -30,6 +30,9 @@ public class NameRequest implements Validable {
     @SerializedName("status")
     private NameRequestStatus status;
 
+    @SerializedName("lang")
+    private String lang;
+
     public String getFirstName() {
         return firstName;
     }
@@ -66,9 +69,18 @@ public class NameRequest implements Validable {
         return this;
     }
 
+    public String getLang() {
+        return lang;
+    }
+
+    public NameRequest setLang(String lang) {
+        this.lang = lang;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, id, status);
+        return Objects.hash(lastName, firstName, id, lang, status);
     }
 
     @Override
@@ -78,6 +90,7 @@ public class NameRequest implements Validable {
         NameRequest nameRequest = (NameRequest) o;
         return Objects.equals(lastName, nameRequest.lastName) &&
                 Objects.equals(id, nameRequest.id) &&
+                Objects.equals(lang, nameRequest.lang) &&
                 Objects.equals(firstName, nameRequest.firstName) &&
                 Objects.equals(status, nameRequest.status);
     }
@@ -92,6 +105,7 @@ public class NameRequest implements Validable {
         final StringBuilder sb = new StringBuilder("NameRequest{");
         sb.append("lastName='").append(lastName).append("'");
         sb.append(", id=").append(id);
+        sb.append(", lang='").append(lang).append("'");
         sb.append(", firstName='").append(firstName).append("'");
         sb.append(", status=").append(status);
         sb.append('}');

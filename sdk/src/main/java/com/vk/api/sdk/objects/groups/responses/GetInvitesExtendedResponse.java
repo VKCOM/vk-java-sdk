@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.groups.GroupXtrInvitedBy;
 import com.vk.api.sdk.objects.users.UserMin;
 import java.util.List;
@@ -27,6 +28,10 @@ public class GetInvitesExtendedResponse implements Validable {
     @SerializedName("profiles")
     @Required
     private List<UserMin> profiles;
+
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -55,9 +60,18 @@ public class GetInvitesExtendedResponse implements Validable {
         return this;
     }
 
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetInvitesExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -67,6 +81,7 @@ public class GetInvitesExtendedResponse implements Validable {
         GetInvitesExtendedResponse getInvitesExtendedResponse = (GetInvitesExtendedResponse) o;
         return Objects.equals(count, getInvitesExtendedResponse.count) &&
                 Objects.equals(profiles, getInvitesExtendedResponse.profiles) &&
+                Objects.equals(groups, getInvitesExtendedResponse.groups) &&
                 Objects.equals(items, getInvitesExtendedResponse.items);
     }
 
@@ -80,6 +95,7 @@ public class GetInvitesExtendedResponse implements Validable {
         final StringBuilder sb = new StringBuilder("GetInvitesExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

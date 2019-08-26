@@ -2,7 +2,6 @@ package com.vk.api.sdk.queries.database;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.database.responses.GetCountriesResponse;
 import java.util.Arrays;
@@ -21,18 +20,6 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
     public DatabaseGetCountriesQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCountries", GetCountriesResponse.class);
         accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public DatabaseGetCountriesQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "database.getCountries", GetCountriesResponse.class);
-        accessToken(actor.getAccessToken());
-        clientSecret(actor.getClientSecret());
     }
 
     /**

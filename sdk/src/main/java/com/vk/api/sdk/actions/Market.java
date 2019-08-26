@@ -53,13 +53,12 @@ public class Market extends AbstractAction {
      * @param name Item name.
      * @param description Item description.
      * @param categoryId Item category ID.
-     * @param price Item price.
      * @param mainPhotoId Cover photo ID.
      * @return query
      */
     public MarketAddQuery add(UserActor actor, int ownerId, String name, String description,
-            int categoryId, double price, int mainPhotoId) {
-        return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId, price, mainPhotoId);
+            int categoryId, int mainPhotoId) {
+        return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId, mainPhotoId);
     }
 
     /**

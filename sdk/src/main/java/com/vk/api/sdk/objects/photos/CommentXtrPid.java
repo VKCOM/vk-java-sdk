@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.LikesInfo;
+import com.vk.api.sdk.objects.comment.Thread;
 import com.vk.api.sdk.objects.wall.CommentAttachment;
 import java.util.List;
 import java.util.Objects;
@@ -64,6 +65,12 @@ public class CommentXtrPid implements Validable {
     @SerializedName("text")
     @Required
     private String text;
+
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
+
+    @SerializedName("thread")
+    private Thread thread;
 
     public List<CommentAttachment> getAttachments() {
         return attachments;
@@ -146,9 +153,27 @@ public class CommentXtrPid implements Validable {
         return this;
     }
 
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
+
+    public CommentXtrPid setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+        return this;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public CommentXtrPid setThread(Thread thread) {
+        this.thread = thread;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, attachments, pid, id, text, fromId, replyToComment, replyToUser, likes);
+        return Objects.hash(date, parentsStack, attachments, pid, id, text, thread, fromId, replyToComment, replyToUser, likes);
     }
 
     @Override
@@ -161,9 +186,11 @@ public class CommentXtrPid implements Validable {
                 Objects.equals(fromId, commentXtrPid.fromId) &&
                 Objects.equals(replyToComment, commentXtrPid.replyToComment) &&
                 Objects.equals(replyToUser, commentXtrPid.replyToUser) &&
+                Objects.equals(parentsStack, commentXtrPid.parentsStack) &&
                 Objects.equals(pid, commentXtrPid.pid) &&
                 Objects.equals(id, commentXtrPid.id) &&
                 Objects.equals(text, commentXtrPid.text) &&
+                Objects.equals(thread, commentXtrPid.thread) &&
                 Objects.equals(likes, commentXtrPid.likes);
     }
 
@@ -180,9 +207,11 @@ public class CommentXtrPid implements Validable {
         sb.append(", fromId=").append(fromId);
         sb.append(", replyToComment=").append(replyToComment);
         sb.append(", replyToUser=").append(replyToUser);
+        sb.append(", parentsStack=").append(parentsStack);
         sb.append(", pid=").append(pid);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
+        sb.append(", thread=").append(thread);
         sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();

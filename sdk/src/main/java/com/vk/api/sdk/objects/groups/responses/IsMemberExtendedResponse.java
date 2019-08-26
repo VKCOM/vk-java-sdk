@@ -25,6 +25,12 @@ public class IsMemberExtendedResponse implements Validable {
     private BoolInt invitation;
 
     /**
+     * Information whether user can be invited
+     */
+    @SerializedName("can_invite")
+    private BoolInt canInvite;
+
+    /**
      * Information whether user's invite to the group can be recalled
      */
     @SerializedName("can_recall")
@@ -52,6 +58,14 @@ public class IsMemberExtendedResponse implements Validable {
         return invitation;
     }
 
+    public boolean canInvite() {
+        return canInvite == BoolInt.YES;
+    }
+
+    public BoolInt getCanInvite() {
+        return canInvite;
+    }
+
     public boolean canRecall() {
         return canRecall == BoolInt.YES;
     }
@@ -70,7 +84,7 @@ public class IsMemberExtendedResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canRecall, request, invitation, member);
+        return Objects.hash(canRecall, request, canInvite, invitation, member);
     }
 
     @Override
@@ -78,7 +92,8 @@ public class IsMemberExtendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         IsMemberExtendedResponse isMemberExtendedResponse = (IsMemberExtendedResponse) o;
-        return Objects.equals(request, isMemberExtendedResponse.request) &&
+        return Objects.equals(canInvite, isMemberExtendedResponse.canInvite) &&
+                Objects.equals(request, isMemberExtendedResponse.request) &&
                 Objects.equals(invitation, isMemberExtendedResponse.invitation) &&
                 Objects.equals(member, isMemberExtendedResponse.member) &&
                 Objects.equals(canRecall, isMemberExtendedResponse.canRecall);
@@ -92,7 +107,8 @@ public class IsMemberExtendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("IsMemberExtendedResponse{");
-        sb.append("request=").append(request);
+        sb.append("canInvite=").append(canInvite);
+        sb.append(", request=").append(request);
         sb.append(", invitation=").append(invitation);
         sb.append(", member=").append(member);
         sb.append(", canRecall=").append(canRecall);

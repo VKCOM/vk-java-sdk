@@ -3,18 +3,30 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.queries.fave.FaveAddGroupQuery;
+import com.vk.api.sdk.queries.fave.FaveAddArticleQuery;
 import com.vk.api.sdk.queries.fave.FaveAddLinkQuery;
-import com.vk.api.sdk.queries.fave.FaveAddUserQuery;
-import com.vk.api.sdk.queries.fave.FaveGetLinksQuery;
-import com.vk.api.sdk.queries.fave.FaveGetMarketItemsQuery;
-import com.vk.api.sdk.queries.fave.FaveGetPhotosQuery;
-import com.vk.api.sdk.queries.fave.FaveGetPostsQuery;
-import com.vk.api.sdk.queries.fave.FaveGetUsersQuery;
-import com.vk.api.sdk.queries.fave.FaveGetVideosQuery;
-import com.vk.api.sdk.queries.fave.FaveRemoveGroupQuery;
+import com.vk.api.sdk.queries.fave.FaveAddPageQuery;
+import com.vk.api.sdk.queries.fave.FaveAddPostQuery;
+import com.vk.api.sdk.queries.fave.FaveAddProductQuery;
+import com.vk.api.sdk.queries.fave.FaveAddTagQuery;
+import com.vk.api.sdk.queries.fave.FaveAddVideoQuery;
+import com.vk.api.sdk.queries.fave.FaveEditTagQuery;
+import com.vk.api.sdk.queries.fave.FaveGetPagesQuery;
+import com.vk.api.sdk.queries.fave.FaveGetQuery;
+import com.vk.api.sdk.queries.fave.FaveGetQueryWithExtended;
+import com.vk.api.sdk.queries.fave.FaveGetTagsQuery;
+import com.vk.api.sdk.queries.fave.FaveMarkSeenQuery;
+import com.vk.api.sdk.queries.fave.FaveRemoveArticleQuery;
 import com.vk.api.sdk.queries.fave.FaveRemoveLinkQuery;
-import com.vk.api.sdk.queries.fave.FaveRemoveUserQuery;
+import com.vk.api.sdk.queries.fave.FaveRemovePageQuery;
+import com.vk.api.sdk.queries.fave.FaveRemovePostQuery;
+import com.vk.api.sdk.queries.fave.FaveRemoveProductQuery;
+import com.vk.api.sdk.queries.fave.FaveRemoveTagQuery;
+import com.vk.api.sdk.queries.fave.FaveReorderTagsQuery;
+import com.vk.api.sdk.queries.fave.FaveSetPageTagsQuery;
+import com.vk.api.sdk.queries.fave.FaveSetTagsQuery;
+import com.vk.api.sdk.queries.fave.FaveTrackPageInteractionQuery;
+import java.util.List;
 
 /**
  * List of Fave methods
@@ -30,14 +42,12 @@ public class Fave extends AbstractAction {
     }
 
     /**
-     * Adds a community to user faves.
-     *
      * @param actor vk actor
-     * @param groupId Community ID.
+     * @param url
      * @return query
      */
-    public FaveAddGroupQuery addGroup(UserActor actor, int groupId) {
-        return new FaveAddGroupQuery(getClient(), actor, groupId);
+    public FaveAddArticleQuery addArticle(UserActor actor, String url) {
+        return new FaveAddArticleQuery(getClient(), actor, url);
     }
 
     /**
@@ -52,85 +62,109 @@ public class Fave extends AbstractAction {
     }
 
     /**
-     * Adds a profile to user faves.
-     *
      * @param actor vk actor
-     * @param userId Profile ID.
      * @return query
      */
-    public FaveAddUserQuery addUser(UserActor actor, int userId) {
-        return new FaveAddUserQuery(getClient(), actor, userId);
+    public FaveAddPageQuery addPage(UserActor actor) {
+        return new FaveAddPageQuery(getClient(), actor);
     }
 
     /**
-     * Returns a list of links that the current user has bookmarked.
-     *
      * @param actor vk actor
+     * @param ownerId
+     * @param id
      * @return query
      */
-    public FaveGetLinksQuery getLinks(UserActor actor) {
-        return new FaveGetLinksQuery(getClient(), actor);
+    public FaveAddPostQuery addPost(UserActor actor, int ownerId, int id) {
+        return new FaveAddPostQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * Returns market items bookmarked by current user.
-     *
      * @param actor vk actor
+     * @param ownerId
+     * @param id
      * @return query
      */
-    public FaveGetMarketItemsQuery getMarketItems(UserActor actor) {
-        return new FaveGetMarketItemsQuery(getClient(), actor);
+    public FaveAddProductQuery addProduct(UserActor actor, int ownerId, int id) {
+        return new FaveAddProductQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * Returns a list of photos that the current user has liked.
-     *
      * @param actor vk actor
      * @return query
      */
-    public FaveGetPhotosQuery getPhotos(UserActor actor) {
-        return new FaveGetPhotosQuery(getClient(), actor);
+    public FaveAddTagQuery addTag(UserActor actor) {
+        return new FaveAddTagQuery(getClient(), actor);
     }
 
     /**
-     * Returns a list of wall posts that the current user has liked.
-     *
      * @param actor vk actor
+     * @param ownerId
+     * @param id
      * @return query
      */
-    public FaveGetPostsQuery getPosts(UserActor actor) {
-        return new FaveGetPostsQuery(getClient(), actor);
+    public FaveAddVideoQuery addVideo(UserActor actor, int ownerId, int id) {
+        return new FaveAddVideoQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * Returns a list of users whom the current user has bookmarked.
-     *
      * @param actor vk actor
+     * @param id
+     * @param name
      * @return query
      */
-    public FaveGetUsersQuery getUsers(UserActor actor) {
-        return new FaveGetUsersQuery(getClient(), actor);
+    public FaveEditTagQuery editTag(UserActor actor, int id, String name) {
+        return new FaveEditTagQuery(getClient(), actor, id, name);
     }
 
     /**
-     * Returns a list of videos that the current user has liked.
-     *
      * @param actor vk actor
      * @return query
      */
-    public FaveGetVideosQuery getVideos(UserActor actor) {
-        return new FaveGetVideosQuery(getClient(), actor);
+    public FaveGetQueryWithExtended getExtended(UserActor actor) {
+        return new FaveGetQueryWithExtended(getClient(), actor);
     }
 
     /**
-     * Removes a community from user faves.
-     *
      * @param actor vk actor
-     * @param groupId Community ID.
      * @return query
      */
-    public FaveRemoveGroupQuery removeGroup(UserActor actor, int groupId) {
-        return new FaveRemoveGroupQuery(getClient(), actor, groupId);
+    public FaveGetQuery get(UserActor actor) {
+        return new FaveGetQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveGetPagesQuery getPages(UserActor actor) {
+        return new FaveGetPagesQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveGetTagsQuery getTags(UserActor actor) {
+        return new FaveGetTagsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveMarkSeenQuery markSeen(UserActor actor) {
+        return new FaveMarkSeenQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ownerId
+     * @param articleId
+     * @return query
+     */
+    public FaveRemoveArticleQuery removeArticle(UserActor actor, int ownerId, int articleId) {
+        return new FaveRemoveArticleQuery(getClient(), actor, ownerId, articleId);
     }
 
     /**
@@ -144,13 +178,81 @@ public class Fave extends AbstractAction {
     }
 
     /**
-     * Removes a profile from user faves.
-     *
      * @param actor vk actor
-     * @param userId Profile ID.
      * @return query
      */
-    public FaveRemoveUserQuery removeUser(UserActor actor, int userId) {
-        return new FaveRemoveUserQuery(getClient(), actor, userId);
+    public FaveRemovePageQuery removePage(UserActor actor) {
+        return new FaveRemovePageQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ownerId
+     * @param id
+     * @return query
+     */
+    public FaveRemovePostQuery removePost(UserActor actor, int ownerId, int id) {
+        return new FaveRemovePostQuery(getClient(), actor, ownerId, id);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ownerId
+     * @param id
+     * @return query
+     */
+    public FaveRemoveProductQuery removeProduct(UserActor actor, int ownerId, int id) {
+        return new FaveRemoveProductQuery(getClient(), actor, ownerId, id);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param id
+     * @return query
+     */
+    public FaveRemoveTagQuery removeTag(UserActor actor, int id) {
+        return new FaveRemoveTagQuery(getClient(), actor, id);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ids
+     * @return query
+     */
+    public FaveReorderTagsQuery reorderTags(UserActor actor, Integer... ids) {
+        return new FaveReorderTagsQuery(getClient(), actor, ids);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ids
+     * @return query
+     */
+    public FaveReorderTagsQuery reorderTags(UserActor actor, List<Integer> ids) {
+        return new FaveReorderTagsQuery(getClient(), actor, ids);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveSetPageTagsQuery setPageTags(UserActor actor) {
+        return new FaveSetPageTagsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveSetTagsQuery setTags(UserActor actor) {
+        return new FaveSetTagsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public FaveTrackPageInteractionQuery trackPageInteraction(UserActor actor) {
+        return new FaveTrackPageInteractionQuery(getClient(), actor);
     }
 }

@@ -19,32 +19,32 @@ public class VideoFiles implements Validable {
     /**
      * URL of the mpeg4 file with 1080p quality
      */
-    @SerializedName("mp_1080")
-    private URL mp1080;
+    @SerializedName("mp4_1080")
+    private URL mp41080;
 
     /**
      * URL of the mpeg4 file with 240p quality
      */
-    @SerializedName("mp_240")
-    private URL mp240;
+    @SerializedName("mp4_240")
+    private URL mp4240;
 
     /**
      * URL of the mpeg4 file with 360p quality
      */
-    @SerializedName("mp_360")
-    private URL mp360;
+    @SerializedName("mp4_360")
+    private URL mp4360;
 
     /**
      * URL of the mpeg4 file with 480p quality
      */
-    @SerializedName("mp_480")
-    private URL mp480;
+    @SerializedName("mp4_480")
+    private URL mp4480;
 
     /**
      * URL of the mpeg4 file with 720p quality
      */
-    @SerializedName("mp_720")
-    private URL mp720;
+    @SerializedName("mp4_720")
+    private URL mp4720;
 
     public URL getExternal() {
         return external;
@@ -55,54 +55,54 @@ public class VideoFiles implements Validable {
         return this;
     }
 
-    public URL getMp1080() {
-        return mp1080;
+    public URL getMp41080() {
+        return mp41080;
     }
 
-    public VideoFiles setMp1080(URL mp1080) {
-        this.mp1080 = mp1080;
+    public VideoFiles setMp41080(URL mp41080) {
+        this.mp41080 = mp41080;
         return this;
     }
 
-    public URL getMp240() {
-        return mp240;
+    public URL getMp4240() {
+        return mp4240;
     }
 
-    public VideoFiles setMp240(URL mp240) {
-        this.mp240 = mp240;
+    public VideoFiles setMp4240(URL mp4240) {
+        this.mp4240 = mp4240;
         return this;
     }
 
-    public URL getMp360() {
-        return mp360;
+    public URL getMp4360() {
+        return mp4360;
     }
 
-    public VideoFiles setMp360(URL mp360) {
-        this.mp360 = mp360;
+    public VideoFiles setMp4360(URL mp4360) {
+        this.mp4360 = mp4360;
         return this;
     }
 
-    public URL getMp480() {
-        return mp480;
+    public URL getMp4480() {
+        return mp4480;
     }
 
-    public VideoFiles setMp480(URL mp480) {
-        this.mp480 = mp480;
+    public VideoFiles setMp4480(URL mp4480) {
+        this.mp4480 = mp4480;
         return this;
     }
 
-    public URL getMp720() {
-        return mp720;
+    public URL getMp4720() {
+        return mp4720;
     }
 
-    public VideoFiles setMp720(URL mp720) {
-        this.mp720 = mp720;
+    public VideoFiles setMp4720(URL mp4720) {
+        this.mp4720 = mp4720;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mp720, external, mp240, mp360, mp480, mp1080);
+        return Objects.hash(mp41080, external, mp4720, mp4480, mp4360, mp4240);
     }
 
     @Override
@@ -110,12 +110,12 @@ public class VideoFiles implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VideoFiles videoFiles = (VideoFiles) o;
-        return Objects.equals(external, videoFiles.external) &&
-                Objects.equals(mp1080, videoFiles.mp1080) &&
-                Objects.equals(mp240, videoFiles.mp240) &&
-                Objects.equals(mp480, videoFiles.mp480) &&
-                Objects.equals(mp360, videoFiles.mp360) &&
-                Objects.equals(mp720, videoFiles.mp720);
+        return Objects.equals(mp4480, videoFiles.mp4480) &&
+                Objects.equals(mp4360, videoFiles.mp4360) &&
+                Objects.equals(external, videoFiles.external) &&
+                Objects.equals(mp41080, videoFiles.mp41080) &&
+                Objects.equals(mp4720, videoFiles.mp4720) &&
+                Objects.equals(mp4240, videoFiles.mp4240);
     }
 
     @Override
@@ -126,12 +126,12 @@ public class VideoFiles implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("VideoFiles{");
-        sb.append("external=").append(external);
-        sb.append(", mp1080=").append(mp1080);
-        sb.append(", mp240=").append(mp240);
-        sb.append(", mp480=").append(mp480);
-        sb.append(", mp360=").append(mp360);
-        sb.append(", mp720=").append(mp720);
+        sb.append("mp4480=").append(mp4480);
+        sb.append(", mp4360=").append(mp4360);
+        sb.append(", external=").append(external);
+        sb.append(", mp41080=").append(mp41080);
+        sb.append(", mp4720=").append(mp4720);
+        sb.append(", mp4240=").append(mp4240);
         sb.append('}');
         return sb.toString();
     }

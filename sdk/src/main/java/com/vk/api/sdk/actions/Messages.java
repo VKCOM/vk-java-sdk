@@ -860,7 +860,7 @@ public class Messages extends AbstractAction {
      * @param userIds IDs of message recipients (if new conversation shall be started).
      * @return query
      */
-    public MessagesSendQueryWithUserIds sendWithUserIds(UserActor actor, Integer... userIds) {
+    public MessagesSendQueryWithUserIds sendWithUserIds(UserActor actor, Integer[] userIds) {
         return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
     }
 
@@ -871,7 +871,7 @@ public class Messages extends AbstractAction {
      * @param userIds IDs of message recipients (if new conversation shall be started).
      * @return query
      */
-    public MessagesSendQueryWithUserIds sendWithUserIds(GroupActor actor, Integer... userIds) {
+    public MessagesSendQueryWithUserIds sendWithUserIds(GroupActor actor, Integer[] userIds) {
         return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
     }
 

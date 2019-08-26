@@ -133,9 +133,6 @@ public enum Fields implements EnumParam {
     @SerializedName("can_subscribe_posts")
     CAN_SUBSCRIBE_POSTS("can_subscribe_posts"),
 
-    @SerializedName("menu")
-    MENU("menu"),
-
     @SerializedName("warning_notification")
     WARNING_NOTIFICATION("warning_notification");
 
