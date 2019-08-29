@@ -345,7 +345,7 @@ Override methods from CallbackApi class for handling events
 public class CallbackApiHandler extends CallbackApi {
   @Override
   public void messageNew(Integer groupId, Message message) {
-    System.out.println(message.getBody());
+    System.out.println(message.getText());
   }
 }
 ```
