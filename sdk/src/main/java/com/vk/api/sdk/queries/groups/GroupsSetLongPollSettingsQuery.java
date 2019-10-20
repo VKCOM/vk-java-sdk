@@ -23,6 +23,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
         super(client, "groups.setLongPollSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
+        apiVersion(client.getVersion());
     }
 
     /**
@@ -37,6 +38,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
         groupId(groupId);
+        apiVersion(client.getVersion());
     }
 
     /**
