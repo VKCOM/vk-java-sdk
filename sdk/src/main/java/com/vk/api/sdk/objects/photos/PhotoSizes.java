@@ -21,7 +21,7 @@ public class PhotoSizes implements Validable {
     /**
      * URL of the image
      */
-    @SerializedName("url")
+    @SerializedName(value="url", alternate={"src"})
     @Required
     private URL url;
 
