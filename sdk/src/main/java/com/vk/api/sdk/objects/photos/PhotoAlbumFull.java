@@ -59,7 +59,7 @@ public class PhotoAlbumFull implements Validable {
     private Integer size;
 
     @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
+    private List<Image> sizes;
 
     /**
      * Thumb photo ID
@@ -77,7 +77,7 @@ public class PhotoAlbumFull implements Validable {
      * URL of the thumb image
      */
     @SerializedName("thumb_src")
-    private URL thumbSrc;
+    private String thumbSrc;
 
     /**
      * Photo album title
@@ -160,11 +160,11 @@ public class PhotoAlbumFull implements Validable {
         return this;
     }
 
-    public List<PhotoSizes> getSizes() {
+    public List<Image> getSizes() {
         return sizes;
     }
 
-    public PhotoAlbumFull setSizes(List<PhotoSizes> sizes) {
+    public PhotoAlbumFull setSizes(List<Image> sizes) {
         this.sizes = sizes;
         return this;
     }
@@ -186,11 +186,11 @@ public class PhotoAlbumFull implements Validable {
         return thumbIsLast;
     }
 
-    public URL getThumbSrc() {
+    public String getThumbSrc() {
         return thumbSrc;
     }
 
-    public PhotoAlbumFull setThumbSrc(URL thumbSrc) {
+    public PhotoAlbumFull setThumbSrc(String thumbSrc) {
         this.thumbSrc = thumbSrc;
         return this;
     }

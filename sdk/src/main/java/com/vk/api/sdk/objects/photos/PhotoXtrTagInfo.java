@@ -66,37 +66,37 @@ public class PhotoXtrTagInfo implements Validable {
      * URL of image with 1280 px width
      */
     @SerializedName("photo_1280")
-    private URL photo1280;
+    private String photo1280;
 
     /**
      * URL of image with 130 px width
      */
     @SerializedName("photo_130")
-    private URL photo130;
+    private String photo130;
 
     /**
      * URL of image with 2560 px width
      */
     @SerializedName("photo_2560")
-    private URL photo2560;
+    private String photo2560;
 
     /**
      * URL of image with 604 px width
      */
     @SerializedName("photo_604")
-    private URL photo604;
+    private String photo604;
 
     /**
      * URL of image with 75 px width
      */
     @SerializedName("photo_75")
-    private URL photo75;
+    private String photo75;
 
     /**
      * URL of image with 807 px width
      */
     @SerializedName("photo_807")
-    private URL photo807;
+    private String photo807;
 
     /**
      * ID of the tag creator
@@ -215,56 +215,56 @@ public class PhotoXtrTagInfo implements Validable {
         return this;
     }
 
-    public URL getPhoto1280() {
+    public String getPhoto1280() {
         return photo1280;
     }
 
-    public PhotoXtrTagInfo setPhoto1280(URL photo1280) {
+    public PhotoXtrTagInfo setPhoto1280(String photo1280) {
         this.photo1280 = photo1280;
         return this;
     }
 
-    public URL getPhoto130() {
+    public String getPhoto130() {
         return photo130;
     }
 
-    public PhotoXtrTagInfo setPhoto130(URL photo130) {
+    public PhotoXtrTagInfo setPhoto130(String photo130) {
         this.photo130 = photo130;
         return this;
     }
 
-    public URL getPhoto2560() {
+    public String getPhoto2560() {
         return photo2560;
     }
 
-    public PhotoXtrTagInfo setPhoto2560(URL photo2560) {
+    public PhotoXtrTagInfo setPhoto2560(String photo2560) {
         this.photo2560 = photo2560;
         return this;
     }
 
-    public URL getPhoto604() {
+    public String getPhoto604() {
         return photo604;
     }
 
-    public PhotoXtrTagInfo setPhoto604(URL photo604) {
+    public PhotoXtrTagInfo setPhoto604(String photo604) {
         this.photo604 = photo604;
         return this;
     }
 
-    public URL getPhoto75() {
+    public String getPhoto75() {
         return photo75;
     }
 
-    public PhotoXtrTagInfo setPhoto75(URL photo75) {
+    public PhotoXtrTagInfo setPhoto75(String photo75) {
         this.photo75 = photo75;
         return this;
     }
 
-    public URL getPhoto807() {
+    public String getPhoto807() {
         return photo807;
     }
 
-    public PhotoXtrTagInfo setPhoto807(URL photo807) {
+    public PhotoXtrTagInfo setPhoto807(String photo807) {
         this.photo807 = photo807;
         return this;
     }

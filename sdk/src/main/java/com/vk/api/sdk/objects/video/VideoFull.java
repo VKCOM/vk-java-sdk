@@ -114,7 +114,7 @@ public class VideoFull implements Validable {
      * URL of the page with a player that can be used to play the video in the browser.
      */
     @SerializedName("player")
-    private URL player;
+    private String player;
 
     /**
      * Returns if the video is processing
@@ -292,11 +292,11 @@ public class VideoFull implements Validable {
         return this;
     }
 
-    public URL getPlayer() {
+    public String getPlayer() {
         return player;
     }
 
-    public VideoFull setPlayer(URL player) {
+    public VideoFull setPlayer(String player) {
         this.player = player;
         return this;
     }

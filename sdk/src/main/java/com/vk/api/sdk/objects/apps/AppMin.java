@@ -33,25 +33,25 @@ public class AppMin implements Validable {
      * URL of the app icon with 139 px in width
      */
     @SerializedName("icon_139")
-    private URL icon139;
+    private String icon139;
 
     /**
      * URL of the app icon with 150 px in width
      */
     @SerializedName("icon_150")
-    private URL icon150;
+    private String icon150;
 
     /**
      * URL of the app icon with 278 px in width
      */
     @SerializedName("icon_278")
-    private URL icon278;
+    private String icon278;
 
     /**
      * URL of the app icon with 75 px in width
      */
     @SerializedName("icon_75")
-    private URL icon75;
+    private String icon75;
 
     public AppType getType() {
         return type;
@@ -80,38 +80,38 @@ public class AppMin implements Validable {
         return this;
     }
 
-    public URL getIcon139() {
+    public String getIcon139() {
         return icon139;
     }
 
-    public AppMin setIcon139(URL icon139) {
+    public AppMin setIcon139(String icon139) {
         this.icon139 = icon139;
         return this;
     }
 
-    public URL getIcon150() {
+    public String getIcon150() {
         return icon150;
     }
 
-    public AppMin setIcon150(URL icon150) {
+    public AppMin setIcon150(String icon150) {
         this.icon150 = icon150;
         return this;
     }
 
-    public URL getIcon278() {
+    public String getIcon278() {
         return icon278;
     }
 
-    public AppMin setIcon278(URL icon278) {
+    public AppMin setIcon278(String icon278) {
         this.icon278 = icon278;
         return this;
     }
 
-    public URL getIcon75() {
+    public String getIcon75() {
         return icon75;
     }
 
-    public AppMin setIcon75(URL icon75) {
+    public AppMin setIcon75(String icon75) {
         this.icon75 = icon75;
         return this;
     }

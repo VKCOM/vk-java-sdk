@@ -45,7 +45,7 @@ public class WidgetPage implements Validable {
      * URL of the preview image
      */
     @SerializedName("photo")
-    private URL photo;
+    private String photo;
 
     /**
      * Page title
@@ -113,11 +113,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public WidgetPage setPhoto(URL photo) {
+    public WidgetPage setPhoto(String photo) {
         this.photo = photo;
         return this;
     }

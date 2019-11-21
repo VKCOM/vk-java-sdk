@@ -14,13 +14,13 @@ public class UploadServer implements Validable {
      * Upload URL
      */
     @SerializedName("upload_url")
-    private URL uploadUrl;
+    private String uploadUrl;
 
-    public URL getUploadUrl() {
+    public String getUploadUrl() {
         return uploadUrl;
     }
 
-    public UploadServer setUploadUrl(URL uploadUrl) {
+    public UploadServer setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
     }

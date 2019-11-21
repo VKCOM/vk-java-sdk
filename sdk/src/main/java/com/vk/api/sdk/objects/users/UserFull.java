@@ -55,31 +55,31 @@ public class UserFull extends User implements Validable {
      * URL of square photo of the user with 200 pixels in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private String photo200;
 
     /**
      * URL of square photo of the user with maximum width
      */
     @SerializedName("photo_max")
-    private URL photoMax;
+    private String photoMax;
 
     /**
      * URL of user's photo with 200 pixels in width
      */
     @SerializedName("photo_200_orig")
-    private URL photo200Orig;
+    private String photo200Orig;
 
     /**
      * URL of user's photo with 400 pixels in width
      */
     @SerializedName("photo_400_orig")
-    private URL photo400Orig;
+    private String photo400Orig;
 
     /**
      * URL of user's photo of maximum size
      */
     @SerializedName("photo_max_orig")
-    private URL photoMaxOrig;
+    private String photoMaxOrig;
 
     /**
      * ID of the user's main photo
@@ -378,47 +378,47 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public URL getPhoto200() {
+    public String getPhoto200() {
         return photo200;
     }
 
-    public UserFull setPhoto200(URL photo200) {
+    public UserFull setPhoto200(String photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhotoMax() {
+    public String getPhotoMax() {
         return photoMax;
     }
 
-    public UserFull setPhotoMax(URL photoMax) {
+    public UserFull setPhotoMax(String photoMax) {
         this.photoMax = photoMax;
         return this;
     }
 
-    public URL getPhoto200Orig() {
+    public String getPhoto200Orig() {
         return photo200Orig;
     }
 
-    public UserFull setPhoto200Orig(URL photo200Orig) {
+    public UserFull setPhoto200Orig(String photo200Orig) {
         this.photo200Orig = photo200Orig;
         return this;
     }
 
-    public URL getPhoto400Orig() {
+    public String getPhoto400Orig() {
         return photo400Orig;
     }
 
-    public UserFull setPhoto400Orig(URL photo400Orig) {
+    public UserFull setPhoto400Orig(String photo400Orig) {
         this.photo400Orig = photo400Orig;
         return this;
     }
 
-    public URL getPhotoMaxOrig() {
+    public String getPhotoMaxOrig() {
         return photoMaxOrig;
     }
 
-    public UserFull setPhotoMaxOrig(URL photoMaxOrig) {
+    public UserFull setPhotoMaxOrig(String photoMaxOrig) {
         this.photoMaxOrig = photoMaxOrig;
         return this;
     }

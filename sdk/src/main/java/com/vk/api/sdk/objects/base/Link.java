@@ -52,7 +52,7 @@ public class Link implements Validable {
      * URL of the page with article preview
      */
     @SerializedName("preview_url")
-    private URL previewUrl;
+    private String previewUrl;
 
     @SerializedName("product")
     private LinkProduct product;
@@ -145,11 +145,11 @@ public class Link implements Validable {
         return this;
     }
 
-    public URL getPreviewUrl() {
+    public String getPreviewUrl() {
         return previewUrl;
     }
 
-    public Link setPreviewUrl(URL previewUrl) {
+    public Link setPreviewUrl(String previewUrl) {
         this.previewUrl = previewUrl;
         return this;
     }

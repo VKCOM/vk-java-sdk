@@ -20,7 +20,7 @@ public class PhotoUpload implements Validable {
      * URL to upload photo
      */
     @SerializedName("upload_url")
-    private URL uploadUrl;
+    private String uploadUrl;
 
     /**
      * User ID
@@ -37,11 +37,11 @@ public class PhotoUpload implements Validable {
         return this;
     }
 
-    public URL getUploadUrl() {
+    public String getUploadUrl() {
         return uploadUrl;
     }
 
-    public PhotoUpload setUploadUrl(URL uploadUrl) {
+    public PhotoUpload setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
     }

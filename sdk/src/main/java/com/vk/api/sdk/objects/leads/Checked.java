@@ -29,7 +29,7 @@ public class Checked implements Validable {
      * URL user should open to start the lead
      */
     @SerializedName("start_link")
-    private URL startLink;
+    private String startLink;
 
     public String getReason() {
         return reason;
@@ -58,11 +58,11 @@ public class Checked implements Validable {
         return this;
     }
 
-    public URL getStartLink() {
+    public String getStartLink() {
         return startLink;
     }
 
-    public Checked setStartLink(URL startLink) {
+    public Checked setStartLink(String startLink) {
         this.startLink = startLink;
         return this;
     }

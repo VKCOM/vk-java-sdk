@@ -26,7 +26,7 @@ public class ShortLink implements Validable {
      * Short link URL
      */
     @SerializedName("short_url")
-    private URL shortUrl;
+    private String shortUrl;
 
     /**
      * Full URL
@@ -52,11 +52,11 @@ public class ShortLink implements Validable {
         return this;
     }
 
-    public URL getShortUrl() {
+    public String getShortUrl() {
         return shortUrl;
     }
 
-    public ShortLink setShortUrl(URL shortUrl) {
+    public ShortLink setShortUrl(String shortUrl) {
         this.shortUrl = shortUrl;
         return this;
     }

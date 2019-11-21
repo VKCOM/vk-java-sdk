@@ -26,13 +26,13 @@ public class PostedPhoto implements Validable {
      * URL of the preview image with 130 px in width
      */
     @SerializedName("photo_130")
-    private URL photo130;
+    private String photo130;
 
     /**
      * URL of the preview image with 604 px in width
      */
     @SerializedName("photo_604")
-    private URL photo604;
+    private String photo604;
 
     public Integer getId() {
         return id;
@@ -52,20 +52,20 @@ public class PostedPhoto implements Validable {
         return this;
     }
 
-    public URL getPhoto130() {
+    public String getPhoto130() {
         return photo130;
     }
 
-    public PostedPhoto setPhoto130(URL photo130) {
+    public PostedPhoto setPhoto130(String photo130) {
         this.photo130 = photo130;
         return this;
     }
 
-    public URL getPhoto604() {
+    public String getPhoto604() {
         return photo604;
     }
 
-    public PostedPhoto setPhoto604(URL photo604) {
+    public PostedPhoto setPhoto604(String photo604) {
         this.photo604 = photo604;
         return this;
     }

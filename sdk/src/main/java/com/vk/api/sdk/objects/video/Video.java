@@ -119,7 +119,7 @@ public class Video implements Validable {
      * URL of the page with a player that can be used to play the video in the browser.
      */
     @SerializedName("player")
-    private URL player;
+    private String player;
 
     /**
      * Returns if the video is processing
@@ -309,11 +309,11 @@ public class Video implements Validable {
         return this;
     }
 
-    public URL getPlayer() {
+    public String getPlayer() {
         return player;
     }
 
-    public Video setPlayer(URL player) {
+    public Video setPlayer(String player) {
         this.player = player;
         return this;
     }

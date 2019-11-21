@@ -71,7 +71,7 @@ public class Note implements Validable {
      * URL of the page with note preview
      */
     @SerializedName("view_url")
-    private URL viewUrl;
+    private String viewUrl;
 
     public Integer getReadComments() {
         return readComments;
@@ -153,11 +153,11 @@ public class Note implements Validable {
         return this;
     }
 
-    public URL getViewUrl() {
+    public String getViewUrl() {
         return viewUrl;
     }
 
-    public Note setViewUrl(URL viewUrl) {
+    public Note setViewUrl(String viewUrl) {
         this.viewUrl = viewUrl;
         return this;
     }
