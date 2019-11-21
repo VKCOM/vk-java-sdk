@@ -57,7 +57,7 @@ public class WidgetPage implements Validable {
      * Page absolute URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public ObjectCount getComments() {
         return comments;
@@ -131,11 +131,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public WidgetPage setUrl(URL url) {
+    public WidgetPage setUrl(String url) {
         this.url = url;
         return this;
     }

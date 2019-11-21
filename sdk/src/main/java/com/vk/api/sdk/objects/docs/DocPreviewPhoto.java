@@ -3,7 +3,8 @@ package com.vk.api.sdk.objects.docs;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.photos.PhotoSizes;
+import com.vk.api.sdk.objects.photos.Image;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -12,13 +13,13 @@ import java.util.Objects;
  */
 public class DocPreviewPhoto implements Validable {
     @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
+    private List<Image> sizes;
 
-    public List<PhotoSizes> getSizes() {
+    public List<Image> getSizes() {
         return sizes;
     }
 
-    public DocPreviewPhoto setSizes(List<PhotoSizes> sizes) {
+    public DocPreviewPhoto setSizes(List<Image> sizes) {
         this.sizes = sizes;
         return this;
     }

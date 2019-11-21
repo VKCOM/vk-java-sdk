@@ -133,7 +133,7 @@ public class PhotoFullXtrRealOffset implements Validable {
     private ObjectCount reposts;
 
     @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
+    private List<Image> sizes;
 
     @SerializedName("tags")
     private ObjectCount tags;
@@ -339,11 +339,11 @@ public class PhotoFullXtrRealOffset implements Validable {
         return this;
     }
 
-    public List<PhotoSizes> getSizes() {
+    public List<Image> getSizes() {
         return sizes;
     }
 
-    public PhotoFullXtrRealOffset setSizes(List<PhotoSizes> sizes) {
+    public PhotoFullXtrRealOffset setSizes(List<Image> sizes) {
         this.sizes = sizes;
         return this;
     }

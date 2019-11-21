@@ -23,7 +23,7 @@ public class Image implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private String url;
 
     /**
      * Image width
@@ -41,11 +41,11 @@ public class Image implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Image setUrl(URL url) {
+    public Image setUrl(String url) {
         this.url = url;
         return this;
     }

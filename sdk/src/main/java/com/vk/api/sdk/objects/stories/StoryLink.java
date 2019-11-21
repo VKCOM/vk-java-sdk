@@ -23,7 +23,7 @@ public class StoryLink implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private String url;
 
     public String getText() {
         return text;
@@ -34,11 +34,11 @@ public class StoryLink implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public StoryLink setUrl(URL url) {
+    public StoryLink setUrl(String url) {
         this.url = url;
         return this;
     }

@@ -71,7 +71,7 @@ public class Link implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private String url;
 
     public LinkApplication getApplication() {
         return application;
@@ -181,11 +181,11 @@ public class Link implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Link setUrl(URL url) {
+    public Link setUrl(String url) {
         this.url = url;
         return this;
     }

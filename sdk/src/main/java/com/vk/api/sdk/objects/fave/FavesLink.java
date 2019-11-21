@@ -50,7 +50,7 @@ public class FavesLink implements Validable {
      * Link URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public String getDescription() {
         return description;
@@ -106,11 +106,11 @@ public class FavesLink implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public FavesLink setUrl(URL url) {
+    public FavesLink setUrl(String url) {
         this.url = url;
         return this;
     }

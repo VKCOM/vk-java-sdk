@@ -32,7 +32,7 @@ public class ShortLink implements Validable {
      * Full URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public String getAccessKey() {
         return accessKey;
@@ -61,11 +61,11 @@ public class ShortLink implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public ShortLink setUrl(URL url) {
+    public ShortLink setUrl(String url) {
         this.url = url;
         return this;
     }

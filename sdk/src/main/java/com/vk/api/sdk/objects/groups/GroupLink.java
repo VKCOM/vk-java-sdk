@@ -45,7 +45,7 @@ public class GroupLink implements Validable {
      * Link URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public String getName() {
         return name;
@@ -90,11 +90,11 @@ public class GroupLink implements Validable {
         return imageProcessing;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public GroupLink setUrl(URL url) {
+    public GroupLink setUrl(String url) {
         this.url = url;
         return this;
     }

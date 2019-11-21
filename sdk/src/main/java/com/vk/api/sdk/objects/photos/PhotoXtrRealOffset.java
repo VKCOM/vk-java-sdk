@@ -118,7 +118,7 @@ public class PhotoXtrRealOffset implements Validable {
     private Integer realOffset;
 
     @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
+    private List<Image> sizes;
 
     /**
      * Photo caption
@@ -286,11 +286,11 @@ public class PhotoXtrRealOffset implements Validable {
         return this;
     }
 
-    public List<PhotoSizes> getSizes() {
+    public List<Image> getSizes() {
         return sizes;
     }
 
-    public PhotoXtrRealOffset setSizes(List<PhotoSizes> sizes) {
+    public PhotoXtrRealOffset setSizes(List<Image> sizes) {
         this.sizes = sizes;
         return this;
     }

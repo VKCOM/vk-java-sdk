@@ -111,7 +111,7 @@ public class PhotoXtrTagInfo implements Validable {
     private Integer postId;
 
     @SerializedName("sizes")
-    private List<PhotoSizes> sizes;
+    private List<Image> sizes;
 
     /**
      * Date when tag has been added in Unixtime
@@ -287,11 +287,11 @@ public class PhotoXtrTagInfo implements Validable {
         return this;
     }
 
-    public List<PhotoSizes> getSizes() {
+    public List<Image> getSizes() {
         return sizes;
     }
 
-    public PhotoXtrTagInfo setSizes(List<PhotoSizes> sizes) {
+    public PhotoXtrTagInfo setSizes(List<Image> sizes) {
         this.sizes = sizes;
         return this;
     }

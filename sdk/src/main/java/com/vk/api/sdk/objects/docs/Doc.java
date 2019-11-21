@@ -76,7 +76,7 @@ public class Doc implements Validable {
      * File URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public String getAccessKey() {
         return accessKey;
@@ -167,11 +167,11 @@ public class Doc implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Doc setUrl(URL url) {
+    public Doc setUrl(String url) {
         this.url = url;
         return this;
     }
