@@ -67,6 +67,9 @@ public class WallpostAttachment implements Validable {
     @SerializedName("photos_list")
     private List<String> photosList;
 
+    @SerializedName("podcast")
+    private Podcast podcast;
+
     @SerializedName("poll")
     private Poll poll;
 
