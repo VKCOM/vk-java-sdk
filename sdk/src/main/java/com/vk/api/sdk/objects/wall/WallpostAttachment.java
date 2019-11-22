@@ -218,6 +218,15 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
+    public Podcast getPodcast() {
+        return podcast;
+    }
+
+    public WallpostAttachment setPodcast(Podcast podcast) {
+        this.podcast = podcast;
+        return this;
+    }
+
     public PostedPhoto getPostedPhoto() {
         return postedPhoto;
     }
@@ -247,7 +256,7 @@ public class WallpostAttachment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, postedPhoto, market, accessKey, photosList, doc, graffiti, audio, page, event);
+        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, podcast, postedPhoto, market, accessKey, photosList, doc, graffiti, audio, page, event);
     }
 
     @Override
@@ -272,6 +281,7 @@ public class WallpostAttachment implements Validable {
                 Objects.equals(graffiti, wallpostAttachment.graffiti) &&
                 Objects.equals(audio, wallpostAttachment.audio) &&
                 Objects.equals(page, wallpostAttachment.page) &&
+                Objects.equals(podcast, wallpostAttachment.podcast) &&
                 Objects.equals(event, wallpostAttachment.event);
     }
 
@@ -291,6 +301,7 @@ public class WallpostAttachment implements Validable {
         sb.append(", photo=").append(photo);
         sb.append(", photosList='").append(photosList).append("'");
         sb.append(", poll=").append(poll);
+        sb.append(", podcast=").append(podcast);
         sb.append(", video=").append(video);
         sb.append(", type=").append(type);
         sb.append(", postedPhoto=").append(postedPhoto);
