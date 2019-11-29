@@ -11,7 +11,7 @@ public class MessageWithClientInfo {
     @SerializedName("message")
     private Message message;
 
-    @SerializedName("client_info ")
+    @SerializedName("client_info")
     private ClientInfo clientInfo;
 
     public Message getMessage() {
