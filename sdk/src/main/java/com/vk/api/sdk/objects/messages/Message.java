@@ -78,6 +78,9 @@ public class Message implements Validable {
     @SerializedName("keyboard")
     private Keyboard keyboard;
 
+    @SerializedName("template")
+    private Template template;
+
     /**
      * Members number
      */
@@ -134,6 +137,15 @@ public class Message implements Validable {
 
     public Message setAction(MessageAction action) {
         this.action = action;
+        return this;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public Message setTemplate(Template template) {
+        this.template = template;
         return this;
     }
 
@@ -335,7 +347,7 @@ public class Message implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, peerId, keyboard, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, refSource, out, geo, important, ref, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
+        return Objects.hash(date, peerId, keyboard, template, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, refSource, out, geo, important, ref, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
     }
 
     @Override
@@ -345,6 +357,7 @@ public class Message implements Validable {
         Message message = (Message) o;
         return Objects.equals(date, message.date) &&
                 Objects.equals(keyboard, message.keyboard) &&
+                Objects.equals(template, message.template) &&
                 Objects.equals(attachments, message.attachments) &&
                 Objects.equals(fromId, message.fromId) &&
                 Objects.equals(isHidden, message.isHidden) &&
@@ -378,6 +391,7 @@ public class Message implements Validable {
         final StringBuilder sb = new StringBuilder("Message{");
         sb.append("date=").append(date);
         sb.append(", keyboard=").append(keyboard);
+        sb.append(", template=").append(template);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
         sb.append(", isHidden=").append(isHidden);

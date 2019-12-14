@@ -16,8 +16,15 @@ public class ClientInfo {
     @SerializedName("inline_keyboard")
     private Boolean inlineKeyboard;
 
+    @SerializedName("carousel")
+    private Boolean carousel;
+
     @SerializedName("lang_id")
     private Integer langId;
+
+    public Boolean isCarouselSuppor() {
+        return carousel;
+    }
 
     public boolean isKeyboardSupport(){
         return keyboard;
@@ -43,12 +50,13 @@ public class ClientInfo {
         return buttonActions == that.buttonActions &&
                 Objects.equals(keyboard, that.keyboard) &&
                 Objects.equals(inlineKeyboard, that.inlineKeyboard) &&
+                Objects.equals(carousel, that.carousel) &&
                 Objects.equals(langId, that.langId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(buttonActions, keyboard, inlineKeyboard, langId);
+        return Objects.hash(buttonActions, keyboard, inlineKeyboard, carousel, langId);
     }
 
     @Override
@@ -57,6 +65,7 @@ public class ClientInfo {
         sb.append("buttonActions=").append(buttonActions);
         sb.append(", keyboard=").append(keyboard);
         sb.append(", inlineKeyboard=").append(inlineKeyboard);
+        sb.append(", carousel=").append(carousel);
         sb.append(", langId=").append(langId);
         sb.append('}');
         return sb.toString();

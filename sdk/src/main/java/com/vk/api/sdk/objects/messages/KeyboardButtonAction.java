@@ -29,6 +29,12 @@ public class KeyboardButtonAction implements Validable {
     private String label;
 
     /**
+     * Link for button
+     */
+    @SerializedName("link")
+    private String link;
+
+    /**
      * Fragment value in app link like vk.com/app123456_{owner_id}#hash
      */
     @SerializedName("owner_id")
@@ -46,6 +52,15 @@ public class KeyboardButtonAction implements Validable {
     @SerializedName("type")
     @Required
     private KeyboardButtonActionType type;
+
+    public String getLink() {
+        return link;
+    }
+
+    public KeyboardButtonAction setLink(String link) {
+        this.link = link;
+        return this;
+    }
 
     public Integer getAppId() {
         return appId;
@@ -103,7 +118,7 @@ public class KeyboardButtonAction implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(payload, appId, label, ownerId, type, hash);
+        return Objects.hash(payload, appId, label, link, ownerId, type, hash);
     }
 
     @Override
@@ -114,6 +129,7 @@ public class KeyboardButtonAction implements Validable {
         return Objects.equals(payload, keyboardButtonAction.payload) &&
                 Objects.equals(ownerId, keyboardButtonAction.ownerId) &&
                 Objects.equals(label, keyboardButtonAction.label) &&
+                Objects.equals(link, keyboardButtonAction.link) &&
                 Objects.equals(type, keyboardButtonAction.type) &&
                 Objects.equals(appId, keyboardButtonAction.appId) &&
                 Objects.equals(hash, keyboardButtonAction.hash);
@@ -130,6 +146,7 @@ public class KeyboardButtonAction implements Validable {
         sb.append("payload='").append(payload).append("'");
         sb.append(", ownerId=").append(ownerId);
         sb.append(", label='").append(label).append("'");
+        sb.append(", link='").append(link).append("'");
         sb.append(", type='").append(type).append("'");
         sb.append(", appId=").append(appId);
         sb.append(", hash='").append(hash).append("'");
