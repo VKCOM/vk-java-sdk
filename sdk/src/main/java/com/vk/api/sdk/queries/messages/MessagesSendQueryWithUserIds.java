@@ -213,7 +213,7 @@ public class MessagesSendQueryWithUserIds extends AbstractQueryBuilder<MessagesS
      * @param value value of "template" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQueryWithUserIds mTemplate(Template value) {
+    public MessagesSendQueryWithUserIds template(Template value) {
         return unsafeParam("template", value);
     }
 
