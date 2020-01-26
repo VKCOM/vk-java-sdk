@@ -177,6 +177,12 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
         return unsafeParam("keyboard", value);
     }
 
+    /**
+     * Set template
+     *
+     * @param value value of "template" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
     public MessagesSendQuery template(Template value) {
         return unsafeParam("template", value);
     }
