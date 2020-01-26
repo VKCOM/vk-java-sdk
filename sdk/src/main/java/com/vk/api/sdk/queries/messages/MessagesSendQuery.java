@@ -5,6 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.Keyboard;
+import com.vk.api.sdk.objects.messages.Template;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -173,6 +175,10 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery keyboard(Keyboard value) {
         return unsafeParam("keyboard", value);
+    }
+
+    public MessagesSendQuery template(Template value) {
+        return unsafeParam("template", value);
     }
 
     /**
