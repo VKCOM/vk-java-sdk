@@ -24,6 +24,10 @@ public class ButtonActions extends HashSet<String>{
         return this.contains("location");
     }
 
+    public boolean isOpenLinkSupport(){
+        return this.contains("open_link");
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ButtonActions[");

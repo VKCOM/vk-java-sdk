@@ -21,7 +21,7 @@ public class SaveProfileInfoResponse implements Validable {
     private NameRequest nameRequest;
 
     public boolean isChanged() {
-        return changed == BoolInt.YES;
+        return changed == BoolInt.YESBOOL;
     }
 
     public BoolInt getChanged() {

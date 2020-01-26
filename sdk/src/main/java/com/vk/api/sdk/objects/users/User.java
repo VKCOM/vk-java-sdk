@@ -111,7 +111,7 @@ public class User extends UserMin implements Validable {
     }
 
     public boolean isOnline() {
-        return online == BoolInt.YES;
+        return online == BoolInt.YESBOOL;
     }
 
     public BoolInt getOnline() {
@@ -119,7 +119,7 @@ public class User extends UserMin implements Validable {
     }
 
     public boolean isOnlineMobile() {
-        return onlineMobile == BoolInt.YES;
+        return onlineMobile == BoolInt.YESBOOL;
     }
 
     public BoolInt getOnlineMobile() {
@@ -136,7 +136,7 @@ public class User extends UserMin implements Validable {
     }
 
     public boolean isVerified() {
-        return verified == BoolInt.YES;
+        return verified == BoolInt.YESBOOL;
     }
 
     public BoolInt getVerified() {
@@ -144,7 +144,7 @@ public class User extends UserMin implements Validable {
     }
 
     public boolean isTrending() {
-        return trending == BoolInt.YES;
+        return trending == BoolInt.YESBOOL;
     }
 
     public BoolInt getTrending() {

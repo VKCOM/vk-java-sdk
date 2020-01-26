@@ -90,7 +90,7 @@ public class TopicPoll implements Validable {
     }
 
     public boolean isClosed() {
-        return isClosed == BoolInt.YES;
+        return isClosed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsClosed() {

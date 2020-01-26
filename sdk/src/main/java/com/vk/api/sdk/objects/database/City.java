@@ -48,7 +48,7 @@ public class City extends BaseObject implements Validable {
     }
 
     public boolean isImportant() {
-        return important == BoolInt.YES;
+        return important == BoolInt.YESBOOL;
     }
 
     public BoolInt getImportant() {

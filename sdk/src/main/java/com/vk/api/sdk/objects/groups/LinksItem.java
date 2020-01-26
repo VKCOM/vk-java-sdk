@@ -63,7 +63,7 @@ public class LinksItem implements Validable {
     }
 
     public boolean isEditTitle() {
-        return editTitle == BoolInt.YES;
+        return editTitle == BoolInt.YESBOOL;
     }
 
     public BoolInt getEditTitle() {

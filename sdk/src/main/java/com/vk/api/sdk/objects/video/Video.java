@@ -101,7 +101,7 @@ public class Video implements Validable {
     private List<VideoImage> image;
 
     @SerializedName("is_favorite")
-    private Boolean isFavorite;
+    private BoolInt isFavorite;
 
     /**
      * Returns if the video is a live stream
@@ -167,7 +167,7 @@ public class Video implements Validable {
     }
 
     public boolean canAdd() {
-        return canAdd == BoolInt.YES;
+        return canAdd == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAdd() {
@@ -175,7 +175,7 @@ public class Video implements Validable {
     }
 
     public boolean canComment() {
-        return canComment == BoolInt.YES;
+        return canComment == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanComment() {
@@ -183,7 +183,7 @@ public class Video implements Validable {
     }
 
     public boolean canEdit() {
-        return canEdit == BoolInt.YES;
+        return canEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanEdit() {
@@ -191,7 +191,7 @@ public class Video implements Validable {
     }
 
     public boolean canLike() {
-        return canLike == BoolInt.YES;
+        return canLike == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanLike() {
@@ -199,7 +199,7 @@ public class Video implements Validable {
     }
 
     public boolean canRepost() {
-        return canRepost == BoolInt.YES;
+        return canRepost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanRepost() {
@@ -288,11 +288,11 @@ public class Video implements Validable {
     }
 
     public Boolean getIsFavorite() {
-        return isFavorite;
+        return isFavorite.getBoolean();
     }
 
     public Video setIsFavorite(Boolean isFavorite) {
-        this.isFavorite = isFavorite;
+        this.isFavorite = isFavorite ? BoolInt.YESBOOL : BoolInt.NOBOOL;
         return this;
     }
 

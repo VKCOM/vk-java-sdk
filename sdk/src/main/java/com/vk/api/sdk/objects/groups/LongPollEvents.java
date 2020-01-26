@@ -134,7 +134,7 @@ public class LongPollEvents implements Validable {
     private BoolInt wallRepost;
 
     public boolean isAudioNew() {
-        return audioNew == BoolInt.YES;
+        return audioNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getAudioNew() {
@@ -142,7 +142,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isBoardPostDelete() {
-        return boardPostDelete == BoolInt.YES;
+        return boardPostDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getBoardPostDelete() {
@@ -150,7 +150,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isBoardPostEdit() {
-        return boardPostEdit == BoolInt.YES;
+        return boardPostEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getBoardPostEdit() {
@@ -158,7 +158,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isBoardPostNew() {
-        return boardPostNew == BoolInt.YES;
+        return boardPostNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getBoardPostNew() {
@@ -166,7 +166,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isBoardPostRestore() {
-        return boardPostRestore == BoolInt.YES;
+        return boardPostRestore == BoolInt.YESBOOL;
     }
 
     public BoolInt getBoardPostRestore() {
@@ -174,7 +174,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isGroupChangePhoto() {
-        return groupChangePhoto == BoolInt.YES;
+        return groupChangePhoto == BoolInt.YESBOOL;
     }
 
     public BoolInt getGroupChangePhoto() {
@@ -182,7 +182,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isGroupChangeSettings() {
-        return groupChangeSettings == BoolInt.YES;
+        return groupChangeSettings == BoolInt.YESBOOL;
     }
 
     public BoolInt getGroupChangeSettings() {
@@ -190,7 +190,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isGroupJoin() {
-        return groupJoin == BoolInt.YES;
+        return groupJoin == BoolInt.YESBOOL;
     }
 
     public BoolInt getGroupJoin() {
@@ -198,7 +198,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isGroupLeave() {
-        return groupLeave == BoolInt.YES;
+        return groupLeave == BoolInt.YESBOOL;
     }
 
     public BoolInt getGroupLeave() {
@@ -206,7 +206,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isGroupOfficersEdit() {
-        return groupOfficersEdit == BoolInt.YES;
+        return groupOfficersEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getGroupOfficersEdit() {
@@ -214,7 +214,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isLeadFormsNew() {
-        return leadFormsNew == BoolInt.YES;
+        return leadFormsNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getLeadFormsNew() {
@@ -222,7 +222,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMarketCommentDelete() {
-        return marketCommentDelete == BoolInt.YES;
+        return marketCommentDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarketCommentDelete() {
@@ -230,7 +230,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMarketCommentEdit() {
-        return marketCommentEdit == BoolInt.YES;
+        return marketCommentEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarketCommentEdit() {
@@ -238,7 +238,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMarketCommentNew() {
-        return marketCommentNew == BoolInt.YES;
+        return marketCommentNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarketCommentNew() {
@@ -246,7 +246,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMarketCommentRestore() {
-        return marketCommentRestore == BoolInt.YES;
+        return marketCommentRestore == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarketCommentRestore() {
@@ -254,7 +254,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageAllow() {
-        return messageAllow == BoolInt.YES;
+        return messageAllow == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageAllow() {
@@ -262,7 +262,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageDeny() {
-        return messageDeny == BoolInt.YES;
+        return messageDeny == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageDeny() {
@@ -270,7 +270,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageNew() {
-        return messageNew == BoolInt.YES;
+        return messageNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageNew() {
@@ -278,7 +278,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageRead() {
-        return messageRead == BoolInt.YES;
+        return messageRead == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageRead() {
@@ -286,7 +286,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageReply() {
-        return messageReply == BoolInt.YES;
+        return messageReply == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageReply() {
@@ -294,7 +294,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessageTypingState() {
-        return messageTypingState == BoolInt.YES;
+        return messageTypingState == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessageTypingState() {
@@ -302,7 +302,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isMessagesEdit() {
-        return messagesEdit == BoolInt.YES;
+        return messagesEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getMessagesEdit() {
@@ -310,7 +310,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPhotoCommentDelete() {
-        return photoCommentDelete == BoolInt.YES;
+        return photoCommentDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getPhotoCommentDelete() {
@@ -318,7 +318,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPhotoCommentEdit() {
-        return photoCommentEdit == BoolInt.YES;
+        return photoCommentEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getPhotoCommentEdit() {
@@ -326,7 +326,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPhotoCommentNew() {
-        return photoCommentNew == BoolInt.YES;
+        return photoCommentNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getPhotoCommentNew() {
@@ -334,7 +334,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPhotoCommentRestore() {
-        return photoCommentRestore == BoolInt.YES;
+        return photoCommentRestore == BoolInt.YESBOOL;
     }
 
     public BoolInt getPhotoCommentRestore() {
@@ -342,7 +342,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPhotoNew() {
-        return photoNew == BoolInt.YES;
+        return photoNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getPhotoNew() {
@@ -350,7 +350,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isPollVoteNew() {
-        return pollVoteNew == BoolInt.YES;
+        return pollVoteNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getPollVoteNew() {
@@ -358,7 +358,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isUserBlock() {
-        return userBlock == BoolInt.YES;
+        return userBlock == BoolInt.YESBOOL;
     }
 
     public BoolInt getUserBlock() {
@@ -366,7 +366,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isUserUnblock() {
-        return userUnblock == BoolInt.YES;
+        return userUnblock == BoolInt.YESBOOL;
     }
 
     public BoolInt getUserUnblock() {
@@ -374,7 +374,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isVideoCommentDelete() {
-        return videoCommentDelete == BoolInt.YES;
+        return videoCommentDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideoCommentDelete() {
@@ -382,7 +382,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isVideoCommentEdit() {
-        return videoCommentEdit == BoolInt.YES;
+        return videoCommentEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideoCommentEdit() {
@@ -390,7 +390,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isVideoCommentNew() {
-        return videoCommentNew == BoolInt.YES;
+        return videoCommentNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideoCommentNew() {
@@ -398,7 +398,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isVideoCommentRestore() {
-        return videoCommentRestore == BoolInt.YES;
+        return videoCommentRestore == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideoCommentRestore() {
@@ -406,7 +406,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isVideoNew() {
-        return videoNew == BoolInt.YES;
+        return videoNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideoNew() {
@@ -414,7 +414,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallPostNew() {
-        return wallPostNew == BoolInt.YES;
+        return wallPostNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallPostNew() {
@@ -422,7 +422,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallReplyDelete() {
-        return wallReplyDelete == BoolInt.YES;
+        return wallReplyDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallReplyDelete() {
@@ -430,7 +430,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallReplyEdit() {
-        return wallReplyEdit == BoolInt.YES;
+        return wallReplyEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallReplyEdit() {
@@ -438,7 +438,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallReplyNew() {
-        return wallReplyNew == BoolInt.YES;
+        return wallReplyNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallReplyNew() {
@@ -446,7 +446,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallReplyRestore() {
-        return wallReplyRestore == BoolInt.YES;
+        return wallReplyRestore == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallReplyRestore() {
@@ -454,7 +454,7 @@ public class LongPollEvents implements Validable {
     }
 
     public boolean isWallRepost() {
-        return wallRepost == BoolInt.YES;
+        return wallRepost == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallRepost() {

@@ -185,7 +185,7 @@ public class AdLayout implements Validable {
     }
 
     public boolean isVideo() {
-        return video == BoolInt.YES;
+        return video == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideo() {

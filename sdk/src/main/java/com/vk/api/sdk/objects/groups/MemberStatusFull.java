@@ -49,7 +49,7 @@ public class MemberStatusFull implements Validable {
     private Integer userId;
 
     public boolean canInvite() {
-        return canInvite == BoolInt.YES;
+        return canInvite == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanInvite() {
@@ -57,7 +57,7 @@ public class MemberStatusFull implements Validable {
     }
 
     public boolean canRecall() {
-        return canRecall == BoolInt.YES;
+        return canRecall == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanRecall() {
@@ -65,7 +65,7 @@ public class MemberStatusFull implements Validable {
     }
 
     public boolean isInvitation() {
-        return invitation == BoolInt.YES;
+        return invitation == BoolInt.YESBOOL;
     }
 
     public BoolInt getInvitation() {
@@ -73,7 +73,7 @@ public class MemberStatusFull implements Validable {
     }
 
     public boolean isMember() {
-        return member == BoolInt.YES;
+        return member == BoolInt.YESBOOL;
     }
 
     public BoolInt getMember() {
@@ -81,7 +81,7 @@ public class MemberStatusFull implements Validable {
     }
 
     public boolean isRequest() {
-        return request == BoolInt.YES;
+        return request == BoolInt.YESBOOL;
     }
 
     public BoolInt getRequest() {

@@ -24,7 +24,7 @@ public class Cover implements Validable {
     private List<Image> images;
 
     public boolean isEnabled() {
-        return enabled == BoolInt.YES;
+        return enabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getEnabled() {

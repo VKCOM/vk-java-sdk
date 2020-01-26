@@ -47,7 +47,7 @@ public class Account implements Validable {
     }
 
     public boolean isAccountStatus() {
-        return accountStatus == BoolInt.YES;
+        return accountStatus == BoolInt.YESBOOL;
     }
 
     public BoolInt getAccountStatus() {

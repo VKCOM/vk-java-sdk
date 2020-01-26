@@ -43,7 +43,7 @@ public class IsMemberExtendedResponse implements Validable {
     private BoolInt request;
 
     public boolean isMember() {
-        return member == BoolInt.YES;
+        return member == BoolInt.YESBOOL;
     }
 
     public BoolInt getMember() {
@@ -51,7 +51,7 @@ public class IsMemberExtendedResponse implements Validable {
     }
 
     public boolean isInvitation() {
-        return invitation == BoolInt.YES;
+        return invitation == BoolInt.YESBOOL;
     }
 
     public BoolInt getInvitation() {
@@ -59,7 +59,7 @@ public class IsMemberExtendedResponse implements Validable {
     }
 
     public boolean canInvite() {
-        return canInvite == BoolInt.YES;
+        return canInvite == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanInvite() {
@@ -67,7 +67,7 @@ public class IsMemberExtendedResponse implements Validable {
     }
 
     public boolean canRecall() {
-        return canRecall == BoolInt.YES;
+        return canRecall == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanRecall() {
@@ -75,7 +75,7 @@ public class IsMemberExtendedResponse implements Validable {
     }
 
     public boolean isRequest() {
-        return request == BoolInt.YES;
+        return request == BoolInt.YESBOOL;
     }
 
     public BoolInt getRequest() {

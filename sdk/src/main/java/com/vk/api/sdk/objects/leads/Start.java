@@ -23,7 +23,7 @@ public class Start implements Validable {
     private String vkSid;
 
     public boolean isTestMode() {
-        return testMode == BoolInt.YES;
+        return testMode == BoolInt.YESBOOL;
     }
 
     public BoolInt getTestMode() {

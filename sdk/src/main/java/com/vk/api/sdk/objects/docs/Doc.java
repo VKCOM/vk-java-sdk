@@ -115,7 +115,7 @@ public class Doc implements Validable {
     }
 
     public boolean isLicensed() {
-        return isLicensed == BoolInt.YES;
+        return isLicensed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsLicensed() {

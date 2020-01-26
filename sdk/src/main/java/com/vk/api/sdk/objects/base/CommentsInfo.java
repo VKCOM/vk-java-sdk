@@ -28,7 +28,7 @@ public class CommentsInfo implements Validable {
     private Boolean groupsCanPost;
 
     public boolean canPost() {
-        return canPost == BoolInt.YES;
+        return canPost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPost() {

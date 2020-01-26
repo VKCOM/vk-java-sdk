@@ -26,7 +26,7 @@ public class IsLikedResponse implements Validable {
     private BoolInt copied;
 
     public boolean isLiked() {
-        return liked == BoolInt.YES;
+        return liked == BoolInt.YESBOOL;
     }
 
     public BoolInt getLiked() {
@@ -34,7 +34,7 @@ public class IsLikedResponse implements Validable {
     }
 
     public boolean isCopied() {
-        return copied == BoolInt.YES;
+        return copied == BoolInt.YESBOOL;
     }
 
     public BoolInt getCopied() {

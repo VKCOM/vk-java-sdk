@@ -170,7 +170,7 @@ public class Story implements Validable {
     }
 
     public boolean canComment() {
-        return canComment == BoolInt.YES;
+        return canComment == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanComment() {
@@ -178,7 +178,7 @@ public class Story implements Validable {
     }
 
     public boolean canReply() {
-        return canReply == BoolInt.YES;
+        return canReply == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanReply() {
@@ -186,7 +186,7 @@ public class Story implements Validable {
     }
 
     public boolean canSee() {
-        return canSee == BoolInt.YES;
+        return canSee == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSee() {
@@ -194,7 +194,7 @@ public class Story implements Validable {
     }
 
     public boolean canShare() {
-        return canShare == BoolInt.YES;
+        return canShare == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanShare() {
@@ -319,7 +319,7 @@ public class Story implements Validable {
     }
 
     public boolean isSeen() {
-        return seen == BoolInt.YES;
+        return seen == BoolInt.YESBOOL;
     }
 
     public BoolInt getSeen() {
@@ -381,7 +381,7 @@ public class Story implements Validable {
     }
 
     public boolean canAsk() {
-        return canAsk == BoolInt.YES;
+        return canAsk == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAsk() {
@@ -389,7 +389,7 @@ public class Story implements Validable {
     }
 
     public boolean canAskAnonymous() {
-        return canAskAnonymous == BoolInt.YES;
+        return canAskAnonymous == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAskAnonymous() {

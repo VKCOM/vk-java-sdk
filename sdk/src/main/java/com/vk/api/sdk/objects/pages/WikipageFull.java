@@ -126,7 +126,7 @@ public class WikipageFull implements Validable {
     }
 
     public boolean isCurrentUserCanEdit() {
-        return currentUserCanEdit == BoolInt.YES;
+        return currentUserCanEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getCurrentUserCanEdit() {
@@ -134,7 +134,7 @@ public class WikipageFull implements Validable {
     }
 
     public boolean isCurrentUserCanEditAccess() {
-        return currentUserCanEditAccess == BoolInt.YES;
+        return currentUserCanEditAccess == BoolInt.YESBOOL;
     }
 
     public BoolInt getCurrentUserCanEditAccess() {

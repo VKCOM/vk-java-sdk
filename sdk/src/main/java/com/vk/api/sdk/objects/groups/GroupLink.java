@@ -66,7 +66,7 @@ public class GroupLink implements Validable {
     }
 
     public boolean isEditTitle() {
-        return editTitle == BoolInt.YES;
+        return editTitle == BoolInt.YESBOOL;
     }
 
     public BoolInt getEditTitle() {
@@ -83,7 +83,7 @@ public class GroupLink implements Validable {
     }
 
     public boolean isImageProcessing() {
-        return imageProcessing == BoolInt.YES;
+        return imageProcessing == BoolInt.YESBOOL;
     }
 
     public BoolInt getImageProcessing() {

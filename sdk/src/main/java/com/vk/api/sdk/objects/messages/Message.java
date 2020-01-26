@@ -186,7 +186,7 @@ public class Message implements Validable {
     }
 
     public boolean isDeleted() {
-        return deleted == BoolInt.YES;
+        return deleted == BoolInt.YESBOOL;
     }
 
     public BoolInt getDeleted() {
@@ -266,7 +266,7 @@ public class Message implements Validable {
     }
 
     public boolean isOut() {
-        return out == BoolInt.YES;
+        return out == BoolInt.YESBOOL;
     }
 
     public BoolInt getOut() {

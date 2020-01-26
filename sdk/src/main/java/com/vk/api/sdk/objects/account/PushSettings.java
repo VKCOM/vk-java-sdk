@@ -29,7 +29,7 @@ public class PushSettings implements Validable {
     private PushConversations conversations;
 
     public boolean isDisabled() {
-        return disabled == BoolInt.YES;
+        return disabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getDisabled() {

@@ -178,7 +178,7 @@ public class GroupSettings implements Validable {
     }
 
     public boolean isObsceneFilter() {
-        return obsceneFilter == BoolInt.YES;
+        return obsceneFilter == BoolInt.YESBOOL;
     }
 
     public BoolInt getObsceneFilter() {
@@ -186,7 +186,7 @@ public class GroupSettings implements Validable {
     }
 
     public boolean isObsceneStopwords() {
-        return obsceneStopwords == BoolInt.YES;
+        return obsceneStopwords == BoolInt.YESBOOL;
     }
 
     public BoolInt getObsceneStopwords() {

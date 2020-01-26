@@ -15,7 +15,7 @@ public class VideoImage extends Image implements Validable {
     private BoolInt withPadding;
 
     public boolean isWithPadding() {
-        return withPadding == BoolInt.YES;
+        return withPadding == BoolInt.YESBOOL;
     }
 
     public BoolInt getWithPadding() {

@@ -100,7 +100,7 @@ public class PhotoAlbumFull implements Validable {
     private BoolInt uploadByAdminsOnly;
 
     public boolean canUpload() {
-        return canUpload == BoolInt.YES;
+        return canUpload == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanUpload() {
@@ -108,7 +108,7 @@ public class PhotoAlbumFull implements Validable {
     }
 
     public boolean isCommentsDisabled() {
-        return commentsDisabled == BoolInt.YES;
+        return commentsDisabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getCommentsDisabled() {
@@ -179,7 +179,7 @@ public class PhotoAlbumFull implements Validable {
     }
 
     public boolean isThumbIsLast() {
-        return thumbIsLast == BoolInt.YES;
+        return thumbIsLast == BoolInt.YESBOOL;
     }
 
     public BoolInt getThumbIsLast() {
@@ -214,7 +214,7 @@ public class PhotoAlbumFull implements Validable {
     }
 
     public boolean isUploadByAdminsOnly() {
-        return uploadByAdminsOnly == BoolInt.YES;
+        return uploadByAdminsOnly == BoolInt.YESBOOL;
     }
 
     public BoolInt getUploadByAdminsOnly() {

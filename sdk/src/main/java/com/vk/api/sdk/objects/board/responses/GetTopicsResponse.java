@@ -62,7 +62,7 @@ public class GetTopicsResponse implements Validable {
     }
 
     public boolean canAddTopics() {
-        return canAddTopics == BoolInt.YES;
+        return canAddTopics == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAddTopics() {

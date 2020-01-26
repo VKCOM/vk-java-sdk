@@ -113,7 +113,7 @@ public class Entry implements Validable {
     }
 
     public boolean isTestMode() {
-        return testMode == BoolInt.YES;
+        return testMode == BoolInt.YESBOOL;
     }
 
     public BoolInt getTestMode() {

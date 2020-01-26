@@ -146,7 +146,7 @@ public class ItemWallpost extends ItemBase implements Validable {
     }
 
     public boolean isMarkedAsAds() {
-        return markedAsAds == BoolInt.YES;
+        return markedAsAds == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarkedAsAds() {

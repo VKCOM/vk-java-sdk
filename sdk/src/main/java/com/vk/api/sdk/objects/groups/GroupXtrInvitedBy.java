@@ -111,7 +111,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isAdmin() {
-        return isAdmin == BoolInt.YES;
+        return isAdmin == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsAdmin() {
@@ -119,7 +119,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isAdvertiser() {
-        return isAdvertiser == BoolInt.YES;
+        return isAdvertiser == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsAdvertiser() {
@@ -127,7 +127,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isClosed() {
-        return isClosed == BoolInt.YES;
+        return isClosed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsClosed() {
@@ -135,7 +135,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isMember() {
-        return isMember == BoolInt.YES;
+        return isMember == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsMember() {

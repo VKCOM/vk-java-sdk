@@ -26,7 +26,7 @@ public class LastActivity implements Validable {
     private Integer time;
 
     public boolean isOnline() {
-        return online == BoolInt.YES;
+        return online == BoolInt.YESBOOL;
     }
 
     public BoolInt getOnline() {

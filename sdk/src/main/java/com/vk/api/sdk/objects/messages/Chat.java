@@ -95,7 +95,7 @@ public class Chat implements Validable {
     }
 
     public boolean isKicked() {
-        return kicked == BoolInt.YES;
+        return kicked == BoolInt.YESBOOL;
     }
 
     public BoolInt getKicked() {
@@ -103,7 +103,7 @@ public class Chat implements Validable {
     }
 
     public boolean isLeft() {
-        return left == BoolInt.YES;
+        return left == BoolInt.YESBOOL;
     }
 
     public BoolInt getLeft() {

@@ -199,7 +199,7 @@ public class App extends AppMin implements Validable {
     }
 
     public boolean isNew() {
-        return isNew == BoolInt.YES;
+        return isNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsNew() {
@@ -207,7 +207,7 @@ public class App extends AppMin implements Validable {
     }
 
     public boolean is_new() {
-        return _new == BoolInt.YES;
+        return _new == BoolInt.YESBOOL;
     }
 
     public BoolInt get_new() {
@@ -215,7 +215,7 @@ public class App extends AppMin implements Validable {
     }
 
     public boolean isPushEnabled() {
-        return pushEnabled == BoolInt.YES;
+        return pushEnabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getPushEnabled() {

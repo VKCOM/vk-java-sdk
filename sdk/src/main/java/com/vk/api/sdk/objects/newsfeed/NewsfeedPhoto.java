@@ -50,7 +50,7 @@ public class NewsfeedPhoto extends Photo implements Validable {
     }
 
     public boolean canComment() {
-        return canComment == BoolInt.YES;
+        return canComment == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanComment() {
@@ -58,7 +58,7 @@ public class NewsfeedPhoto extends Photo implements Validable {
     }
 
     public boolean canRepost() {
-        return canRepost == BoolInt.YES;
+        return canRepost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanRepost() {

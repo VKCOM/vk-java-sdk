@@ -25,7 +25,7 @@ public class MemberStatus implements Validable {
     private Integer userId;
 
     public boolean isMember() {
-        return member == BoolInt.YES;
+        return member == BoolInt.YESBOOL;
     }
 
     public BoolInt getMember() {

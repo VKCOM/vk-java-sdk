@@ -433,7 +433,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHasPhoto() {
-        return hasPhoto == BoolInt.YES;
+        return hasPhoto == BoolInt.YESBOOL;
     }
 
     public BoolInt getHasPhoto() {
@@ -441,7 +441,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHasMobile() {
-        return hasMobile == BoolInt.YES;
+        return hasMobile == BoolInt.YESBOOL;
     }
 
     public BoolInt getHasMobile() {
@@ -449,7 +449,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isFriend() {
-        return isFriend == BoolInt.YES;
+        return isFriend == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFriend() {
@@ -457,7 +457,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isWallComments() {
-        return wallComments == BoolInt.YES;
+        return wallComments == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallComments() {
@@ -465,7 +465,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canPost() {
-        return canPost == BoolInt.YES;
+        return canPost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPost() {
@@ -473,7 +473,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSeeAllPosts() {
-        return canSeeAllPosts == BoolInt.YES;
+        return canSeeAllPosts == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSeeAllPosts() {
@@ -481,7 +481,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSeeAudio() {
-        return canSeeAudio == BoolInt.YES;
+        return canSeeAudio == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSeeAudio() {
@@ -489,7 +489,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canWritePrivateMessage() {
-        return canWritePrivateMessage == BoolInt.YES;
+        return canWritePrivateMessage == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanWritePrivateMessage() {
@@ -497,7 +497,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSendFriendRequest() {
-        return canSendFriendRequest == BoolInt.YES;
+        return canSendFriendRequest == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSendFriendRequest() {
@@ -595,7 +595,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isBlacklisted() {
-        return blacklisted == BoolInt.YES;
+        return blacklisted == BoolInt.YESBOOL;
     }
 
     public BoolInt getBlacklisted() {
@@ -603,7 +603,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isBlacklistedByMe() {
-        return blacklistedByMe == BoolInt.YES;
+        return blacklistedByMe == BoolInt.YESBOOL;
     }
 
     public BoolInt getBlacklistedByMe() {
@@ -611,7 +611,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isFavorite() {
-        return isFavorite == BoolInt.YES;
+        return isFavorite == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFavorite() {
@@ -619,7 +619,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHiddenFromFeed() {
-        return isHiddenFromFeed == BoolInt.YES;
+        return isHiddenFromFeed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsHiddenFromFeed() {
