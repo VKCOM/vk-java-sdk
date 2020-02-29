@@ -3,6 +3,8 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -55,7 +57,7 @@ public class StatsFormat implements Validable {
      * Spent funds
      */
     @SerializedName("spent")
-    private Integer spent;
+    private Double spent;
 
     /**
      * Clickthoughs to the advertised site
@@ -144,11 +146,11 @@ public class StatsFormat implements Validable {
         return this;
     }
 
-    public Integer getSpent() {
+    public Double getSpent() {
         return spent;
     }
 
-    public StatsFormat setSpent(Integer spent) {
+    public StatsFormat setSpent(Double spent) {
         this.spent = spent;
         return this;
     }
