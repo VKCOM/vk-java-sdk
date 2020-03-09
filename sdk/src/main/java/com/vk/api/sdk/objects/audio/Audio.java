@@ -96,11 +96,11 @@ public class Audio implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Audio setUrl(URL url) {
+    public Audio setUrl(String url) {
         this.url = url;
         return this;
     }
