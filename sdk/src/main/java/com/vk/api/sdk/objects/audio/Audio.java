@@ -36,7 +36,7 @@ public class Audio implements Validable {
      * URL of mp3 file
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     /**
      * Duration in seconds
