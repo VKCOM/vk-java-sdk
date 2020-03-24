@@ -14,7 +14,10 @@ public enum StreamingEventType {
     COMMENT("comment"),
 
     @SerializedName("share")
-    SHARE("share");
+    SHARE("share"),
+
+    @SerializedName("topic_post")
+    TOPIC_POST("topic_post");
 
     private final String value;
 
