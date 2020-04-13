@@ -27,7 +27,7 @@ public class CommentReplies implements Validable {
     private List<CommentRepliesItem> replies;
 
     public boolean canPost() {
-        return canPost == BoolInt.YES;
+        return canPost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPost() {

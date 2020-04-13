@@ -85,7 +85,7 @@ public class GroupSettings implements Validable {
      * URL of the RSS feed
      */
     @SerializedName("rss")
-    private URL rss;
+    private String rss;
 
     /**
      * Community subject ID
@@ -178,7 +178,7 @@ public class GroupSettings implements Validable {
     }
 
     public boolean isObsceneFilter() {
-        return obsceneFilter == BoolInt.YES;
+        return obsceneFilter == BoolInt.YESBOOL;
     }
 
     public BoolInt getObsceneFilter() {
@@ -186,7 +186,7 @@ public class GroupSettings implements Validable {
     }
 
     public boolean isObsceneStopwords() {
-        return obsceneStopwords == BoolInt.YES;
+        return obsceneStopwords == BoolInt.YESBOOL;
     }
 
     public BoolInt getObsceneStopwords() {
@@ -238,11 +238,11 @@ public class GroupSettings implements Validable {
         return this;
     }
 
-    public URL getRss() {
+    public String getRss() {
         return rss;
     }
 
-    public GroupSettings setRss(URL rss) {
+    public GroupSettings setRss(String rss) {
         this.rss = rss;
         return this;
     }

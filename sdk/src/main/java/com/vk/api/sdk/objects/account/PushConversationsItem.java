@@ -49,7 +49,7 @@ public class PushConversationsItem implements Validable {
     }
 
     public boolean isSound() {
-        return sound == BoolInt.YES;
+        return sound == BoolInt.YESBOOL;
     }
 
     public BoolInt getSound() {

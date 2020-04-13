@@ -114,7 +114,7 @@ public class VideoFull implements Validable {
      * URL of the page with a player that can be used to play the video in the browser.
      */
     @SerializedName("player")
-    private URL player;
+    private String player;
 
     /**
      * Returns if the video is processing
@@ -159,7 +159,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean canAdd() {
-        return canAdd == BoolInt.YES;
+        return canAdd == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAdd() {
@@ -167,7 +167,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean canAddToFaves() {
-        return canAddToFaves == BoolInt.YES;
+        return canAddToFaves == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanAddToFaves() {
@@ -175,7 +175,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean canComment() {
-        return canComment == BoolInt.YES;
+        return canComment == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanComment() {
@@ -183,7 +183,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean canEdit() {
-        return canEdit == BoolInt.YES;
+        return canEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanEdit() {
@@ -191,7 +191,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean canRepost() {
-        return canRepost == BoolInt.YES;
+        return canRepost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanRepost() {
@@ -292,11 +292,11 @@ public class VideoFull implements Validable {
         return this;
     }
 
-    public URL getPlayer() {
+    public String getPlayer() {
         return player;
     }
 
-    public VideoFull setPlayer(URL player) {
+    public VideoFull setPlayer(String player) {
         this.player = player;
         return this;
     }
@@ -306,7 +306,7 @@ public class VideoFull implements Validable {
     }
 
     public boolean isRepeat() {
-        return repeat == BoolInt.YES;
+        return repeat == BoolInt.YESBOOL;
     }
 
     public BoolInt getRepeat() {

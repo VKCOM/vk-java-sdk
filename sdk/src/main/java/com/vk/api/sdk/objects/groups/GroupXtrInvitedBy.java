@@ -60,19 +60,19 @@ public class GroupXtrInvitedBy implements Validable {
      * URL of square photo of the community with 100 pixels in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private String photo100;
 
     /**
      * URL of square photo of the community with 200 pixels in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private String photo200;
 
     /**
      * URL of square photo of the community with 50 pixels in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private String photo50;
 
     /**
      * Domain of the community page
@@ -111,7 +111,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isAdmin() {
-        return isAdmin == BoolInt.YES;
+        return isAdmin == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsAdmin() {
@@ -119,7 +119,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isAdvertiser() {
-        return isAdvertiser == BoolInt.YES;
+        return isAdvertiser == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsAdvertiser() {
@@ -127,7 +127,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isClosed() {
-        return isClosed == BoolInt.YES;
+        return isClosed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsClosed() {
@@ -135,7 +135,7 @@ public class GroupXtrInvitedBy implements Validable {
     }
 
     public boolean isMember() {
-        return isMember == BoolInt.YES;
+        return isMember == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsMember() {
@@ -151,29 +151,29 @@ public class GroupXtrInvitedBy implements Validable {
         return this;
     }
 
-    public URL getPhoto100() {
+    public String getPhoto100() {
         return photo100;
     }
 
-    public GroupXtrInvitedBy setPhoto100(URL photo100) {
+    public GroupXtrInvitedBy setPhoto100(String photo100) {
         this.photo100 = photo100;
         return this;
     }
 
-    public URL getPhoto200() {
+    public String getPhoto200() {
         return photo200;
     }
 
-    public GroupXtrInvitedBy setPhoto200(URL photo200) {
+    public GroupXtrInvitedBy setPhoto200(String photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhoto50() {
+    public String getPhoto50() {
         return photo50;
     }
 
-    public GroupXtrInvitedBy setPhoto50(URL photo50) {
+    public GroupXtrInvitedBy setPhoto50(String photo50) {
         this.photo50 = photo50;
         return this;
     }

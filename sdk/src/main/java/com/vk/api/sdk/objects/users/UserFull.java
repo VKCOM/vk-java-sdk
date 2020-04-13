@@ -55,31 +55,31 @@ public class UserFull extends User implements Validable {
      * URL of square photo of the user with 200 pixels in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private String photo200;
 
     /**
      * URL of square photo of the user with maximum width
      */
     @SerializedName("photo_max")
-    private URL photoMax;
+    private String photoMax;
 
     /**
      * URL of user's photo with 200 pixels in width
      */
     @SerializedName("photo_200_orig")
-    private URL photo200Orig;
+    private String photo200Orig;
 
     /**
      * URL of user's photo with 400 pixels in width
      */
     @SerializedName("photo_400_orig")
-    private URL photo400Orig;
+    private String photo400Orig;
 
     /**
      * URL of user's photo of maximum size
      */
     @SerializedName("photo_max_orig")
-    private URL photoMaxOrig;
+    private String photoMaxOrig;
 
     /**
      * ID of the user's main photo
@@ -378,47 +378,47 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public URL getPhoto200() {
+    public String getPhoto200() {
         return photo200;
     }
 
-    public UserFull setPhoto200(URL photo200) {
+    public UserFull setPhoto200(String photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhotoMax() {
+    public String getPhotoMax() {
         return photoMax;
     }
 
-    public UserFull setPhotoMax(URL photoMax) {
+    public UserFull setPhotoMax(String photoMax) {
         this.photoMax = photoMax;
         return this;
     }
 
-    public URL getPhoto200Orig() {
+    public String getPhoto200Orig() {
         return photo200Orig;
     }
 
-    public UserFull setPhoto200Orig(URL photo200Orig) {
+    public UserFull setPhoto200Orig(String photo200Orig) {
         this.photo200Orig = photo200Orig;
         return this;
     }
 
-    public URL getPhoto400Orig() {
+    public String getPhoto400Orig() {
         return photo400Orig;
     }
 
-    public UserFull setPhoto400Orig(URL photo400Orig) {
+    public UserFull setPhoto400Orig(String photo400Orig) {
         this.photo400Orig = photo400Orig;
         return this;
     }
 
-    public URL getPhotoMaxOrig() {
+    public String getPhotoMaxOrig() {
         return photoMaxOrig;
     }
 
-    public UserFull setPhotoMaxOrig(URL photoMaxOrig) {
+    public UserFull setPhotoMaxOrig(String photoMaxOrig) {
         this.photoMaxOrig = photoMaxOrig;
         return this;
     }
@@ -433,7 +433,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHasPhoto() {
-        return hasPhoto == BoolInt.YES;
+        return hasPhoto == BoolInt.YESBOOL;
     }
 
     public BoolInt getHasPhoto() {
@@ -441,7 +441,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHasMobile() {
-        return hasMobile == BoolInt.YES;
+        return hasMobile == BoolInt.YESBOOL;
     }
 
     public BoolInt getHasMobile() {
@@ -449,7 +449,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isFriend() {
-        return isFriend == BoolInt.YES;
+        return isFriend == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFriend() {
@@ -457,7 +457,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isWallComments() {
-        return wallComments == BoolInt.YES;
+        return wallComments == BoolInt.YESBOOL;
     }
 
     public BoolInt getWallComments() {
@@ -465,7 +465,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canPost() {
-        return canPost == BoolInt.YES;
+        return canPost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPost() {
@@ -473,7 +473,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSeeAllPosts() {
-        return canSeeAllPosts == BoolInt.YES;
+        return canSeeAllPosts == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSeeAllPosts() {
@@ -481,7 +481,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSeeAudio() {
-        return canSeeAudio == BoolInt.YES;
+        return canSeeAudio == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSeeAudio() {
@@ -489,7 +489,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canWritePrivateMessage() {
-        return canWritePrivateMessage == BoolInt.YES;
+        return canWritePrivateMessage == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanWritePrivateMessage() {
@@ -497,7 +497,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean canSendFriendRequest() {
-        return canSendFriendRequest == BoolInt.YES;
+        return canSendFriendRequest == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSendFriendRequest() {
@@ -595,7 +595,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isBlacklisted() {
-        return blacklisted == BoolInt.YES;
+        return blacklisted == BoolInt.YESBOOL;
     }
 
     public BoolInt getBlacklisted() {
@@ -603,7 +603,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isBlacklistedByMe() {
-        return blacklistedByMe == BoolInt.YES;
+        return blacklistedByMe == BoolInt.YESBOOL;
     }
 
     public BoolInt getBlacklistedByMe() {
@@ -611,7 +611,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isFavorite() {
-        return isFavorite == BoolInt.YES;
+        return isFavorite == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFavorite() {
@@ -619,7 +619,7 @@ public class UserFull extends User implements Validable {
     }
 
     public boolean isHiddenFromFeed() {
-        return isHiddenFromFeed == BoolInt.YES;
+        return isHiddenFromFeed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsHiddenFromFeed() {

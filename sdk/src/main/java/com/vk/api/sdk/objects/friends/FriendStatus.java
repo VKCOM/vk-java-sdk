@@ -47,7 +47,7 @@ public class FriendStatus implements Validable {
     }
 
     public boolean isReadState() {
-        return readState == BoolInt.YES;
+        return readState == BoolInt.YESBOOL;
     }
 
     public BoolInt getReadState() {

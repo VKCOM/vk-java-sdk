@@ -22,7 +22,7 @@ public class LinkStatus implements Validable {
      * URL
      */
     @SerializedName("redirect_url")
-    private URL redirectUrl;
+    private String redirectUrl;
 
     /**
      * Link status
@@ -40,11 +40,11 @@ public class LinkStatus implements Validable {
         return this;
     }
 
-    public URL getRedirectUrl() {
+    public String getRedirectUrl() {
         return redirectUrl;
     }
 
-    public LinkStatus setRedirectUrl(URL redirectUrl) {
+    public LinkStatus setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
         return this;
     }

@@ -34,6 +34,9 @@ public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("app")
     APP("app"),
 
+    @SerializedName("podcast")
+    PODCAST("podcast"),
+
     @SerializedName("poll")
     POLL("poll"),
 

@@ -297,7 +297,7 @@ public class Criteria implements Validable {
     }
 
     public boolean isPaying() {
-        return paying == BoolInt.YES;
+        return paying == BoolInt.YESBOOL;
     }
 
     public BoolInt getPaying() {

@@ -248,7 +248,7 @@ public class UserSettingsXtr implements Validable {
     }
 
     public boolean isRelationPending() {
-        return relationPending == BoolInt.YES;
+        return relationPending == BoolInt.YESBOOL;
     }
 
     public BoolInt getRelationPending() {

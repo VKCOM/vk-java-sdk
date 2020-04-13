@@ -26,7 +26,7 @@ public class GroupLeave implements Validable {
     }
 
     public boolean isSelf() {
-        return self == BoolInt.YES;
+        return self == BoolInt.YESBOOL;
     }
 
     public BoolInt getSelf() {

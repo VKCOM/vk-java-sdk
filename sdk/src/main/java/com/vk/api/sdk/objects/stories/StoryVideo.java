@@ -18,7 +18,7 @@ public class StoryVideo extends Video implements Validable {
     private BoolInt isPrivate;
 
     public boolean isPrivate() {
-        return isPrivate == BoolInt.YES;
+        return isPrivate == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsPrivate() {

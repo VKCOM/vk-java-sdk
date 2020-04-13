@@ -46,7 +46,7 @@ public class GetAllResponse implements Validable {
     }
 
     public boolean isMore() {
-        return more == BoolInt.YES;
+        return more == BoolInt.YESBOOL;
     }
 
     public BoolInt getMore() {

@@ -124,7 +124,7 @@ public class PhotoTag implements Validable {
     }
 
     public boolean isViewed() {
-        return viewed == BoolInt.YES;
+        return viewed == BoolInt.YESBOOL;
     }
 
     public BoolInt getViewed() {

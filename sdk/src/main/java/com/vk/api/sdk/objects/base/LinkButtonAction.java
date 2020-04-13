@@ -17,7 +17,7 @@ public class LinkButtonAction implements Validable {
      * Action URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public LinkButtonActionType getType() {
         return type;
@@ -28,11 +28,11 @@ public class LinkButtonAction implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public LinkButtonAction setUrl(URL url) {
+    public LinkButtonAction setUrl(String url) {
         this.url = url;
         return this;
     }

@@ -20,19 +20,19 @@ public class Layout implements Validable {
      * URL of the preview image with 256 px in width
      */
     @SerializedName("thumb_256")
-    private URL thumb256;
+    private String thumb256;
 
     /**
      * URL of the preview image with 48 px in width
      */
     @SerializedName("thumb_48")
-    private URL thumb48;
+    private String thumb48;
 
     /**
      * URL of the preview image with 96 px in width
      */
     @SerializedName("thumb_96")
-    private URL thumb96;
+    private String thumb96;
 
     public Integer getId() {
         return id;
@@ -43,29 +43,29 @@ public class Layout implements Validable {
         return this;
     }
 
-    public URL getThumb256() {
+    public String getThumb256() {
         return thumb256;
     }
 
-    public Layout setThumb256(URL thumb256) {
+    public Layout setThumb256(String thumb256) {
         this.thumb256 = thumb256;
         return this;
     }
 
-    public URL getThumb48() {
+    public String getThumb48() {
         return thumb48;
     }
 
-    public Layout setThumb48(URL thumb48) {
+    public Layout setThumb48(String thumb48) {
         this.thumb48 = thumb48;
         return this;
     }
 
-    public URL getThumb96() {
+    public String getThumb96() {
         return thumb96;
     }
 
-    public Layout setThumb96(URL thumb96) {
+    public Layout setThumb96(String thumb96) {
         this.thumb96 = thumb96;
         return this;
     }

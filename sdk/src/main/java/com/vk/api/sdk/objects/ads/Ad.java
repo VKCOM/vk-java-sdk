@@ -227,7 +227,7 @@ public class Ad implements Validable {
     }
 
     public boolean isDisclaimerMedical() {
-        return disclaimerMedical == BoolInt.YES;
+        return disclaimerMedical == BoolInt.YESBOOL;
     }
 
     public BoolInt getDisclaimerMedical() {
@@ -235,7 +235,7 @@ public class Ad implements Validable {
     }
 
     public boolean isDisclaimerSpecialist() {
-        return disclaimerSpecialist == BoolInt.YES;
+        return disclaimerSpecialist == BoolInt.YESBOOL;
     }
 
     public BoolInt getDisclaimerSpecialist() {
@@ -243,7 +243,7 @@ public class Ad implements Validable {
     }
 
     public boolean isDisclaimerSupplements() {
-        return disclaimerSupplements == BoolInt.YES;
+        return disclaimerSupplements == BoolInt.YESBOOL;
     }
 
     public BoolInt getDisclaimerSupplements() {
@@ -269,7 +269,7 @@ public class Ad implements Validable {
     }
 
     public boolean isImpressionsLimited() {
-        return impressionsLimited == BoolInt.YES;
+        return impressionsLimited == BoolInt.YESBOOL;
     }
 
     public BoolInt getImpressionsLimited() {
@@ -295,7 +295,7 @@ public class Ad implements Validable {
     }
 
     public boolean isVideo() {
-        return video == BoolInt.YES;
+        return video == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideo() {

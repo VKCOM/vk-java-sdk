@@ -55,8 +55,8 @@ public class PhotoFull implements Validable {
     @Required
     private Integer id;
 
-    @SerializedName("images")
-    private List<Image> images;
+    @SerializedName("sizes")
+    private List<Image> sizes;
 
     /**
      * Latitude
@@ -128,7 +128,7 @@ public class PhotoFull implements Validable {
     }
 
     public boolean canComment() {
-        return canComment == BoolInt.YES;
+        return canComment == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanComment() {
@@ -171,12 +171,12 @@ public class PhotoFull implements Validable {
         return this;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<Image> getSizes() {
+        return sizes;
     }
 
-    public PhotoFull setImages(List<Image> images) {
-        this.images = images;
+    public PhotoFull setSizes(List<Image> sizes) {
+        this.sizes = sizes;
         return this;
     }
 
@@ -272,7 +272,7 @@ public class PhotoFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, comments, lng, albumId, postId, ownerId, userId, tags, accessKey, width, canComment, id, text, lat, reposts, height, likes);
+        return Objects.hash(date, sizes, comments, lng, albumId, postId, ownerId, userId, tags, accessKey, width, canComment, id, text, lat, reposts, height, likes);
     }
 
     @Override
@@ -281,7 +281,7 @@ public class PhotoFull implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         PhotoFull photoFull = (PhotoFull) o;
         return Objects.equals(date, photoFull.date) &&
-                Objects.equals(images, photoFull.images) &&
+                Objects.equals(sizes, photoFull.sizes) &&
                 Objects.equals(comments, photoFull.comments) &&
                 Objects.equals(ownerId, photoFull.ownerId) &&
                 Objects.equals(lng, photoFull.lng) &&
@@ -309,7 +309,7 @@ public class PhotoFull implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoFull{");
         sb.append("date=").append(date);
-        sb.append(", images=").append(images);
+        sb.append(", sizes=").append(sizes);
         sb.append(", comments=").append(comments);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", lng=").append(lng);

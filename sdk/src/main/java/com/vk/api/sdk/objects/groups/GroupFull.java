@@ -224,7 +224,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isFavorite() {
-        return isFavorite == BoolInt.YES;
+        return isFavorite == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFavorite() {
@@ -232,7 +232,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isSubscribed() {
-        return isSubscribed == BoolInt.YES;
+        return isSubscribed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsSubscribed() {
@@ -258,7 +258,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isVerified() {
-        return verified == BoolInt.YES;
+        return verified == BoolInt.YESBOOL;
     }
 
     public BoolInt getVerified() {
@@ -311,7 +311,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canPost() {
-        return canPost == BoolInt.YES;
+        return canPost == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPost() {
@@ -319,7 +319,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canSeeAllPosts() {
-        return canSeeAllPosts == BoolInt.YES;
+        return canSeeAllPosts == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSeeAllPosts() {
@@ -345,7 +345,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canCreateTopic() {
-        return canCreateTopic == BoolInt.YES;
+        return canCreateTopic == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanCreateTopic() {
@@ -353,7 +353,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canUploadVideo() {
-        return canUploadVideo == BoolInt.YES;
+        return canUploadVideo == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanUploadVideo() {
@@ -361,7 +361,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isHasPhoto() {
-        return hasPhoto == BoolInt.YES;
+        return hasPhoto == BoolInt.YESBOOL;
     }
 
     public BoolInt getHasPhoto() {
@@ -423,7 +423,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isTrending() {
-        return trending == BoolInt.YES;
+        return trending == BoolInt.YESBOOL;
     }
 
     public BoolInt getTrending() {
@@ -431,7 +431,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canMessage() {
-        return canMessage == BoolInt.YES;
+        return canMessage == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanMessage() {
@@ -439,7 +439,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean isMessagesBlocked() {
-        return isMessagesBlocked == BoolInt.YES;
+        return isMessagesBlocked == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsMessagesBlocked() {
@@ -447,7 +447,7 @@ public class GroupFull extends Group implements Validable {
     }
 
     public boolean canSendNotify() {
-        return canSendNotify == BoolInt.YES;
+        return canSendNotify == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanSendNotify() {

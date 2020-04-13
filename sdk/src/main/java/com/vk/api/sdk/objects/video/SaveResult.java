@@ -38,7 +38,7 @@ public class SaveResult implements Validable {
      * URL for the video uploading
      */
     @SerializedName("upload_url")
-    private URL uploadUrl;
+    private String uploadUrl;
 
     /**
      * Video ID
@@ -82,11 +82,11 @@ public class SaveResult implements Validable {
         return this;
     }
 
-    public URL getUploadUrl() {
+    public String getUploadUrl() {
         return uploadUrl;
     }
 
-    public SaveResult setUploadUrl(URL uploadUrl) {
+    public SaveResult setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
     }

@@ -64,7 +64,7 @@ public class WallpostFull extends Wallpost implements Validable {
     }
 
     public boolean canEdit() {
-        return canEdit == BoolInt.YES;
+        return canEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanEdit() {
@@ -81,7 +81,7 @@ public class WallpostFull extends Wallpost implements Validable {
     }
 
     public boolean canDelete() {
-        return canDelete == BoolInt.YES;
+        return canDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanDelete() {
@@ -89,7 +89,7 @@ public class WallpostFull extends Wallpost implements Validable {
     }
 
     public boolean canPin() {
-        return canPin == BoolInt.YES;
+        return canPin == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPin() {
@@ -115,7 +115,7 @@ public class WallpostFull extends Wallpost implements Validable {
     }
 
     public boolean isMarkedAsAds() {
-        return markedAsAds == BoolInt.YES;
+        return markedAsAds == BoolInt.YESBOOL;
     }
 
     public BoolInt getMarkedAsAds() {

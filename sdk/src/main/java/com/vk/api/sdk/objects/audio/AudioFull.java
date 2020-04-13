@@ -98,7 +98,7 @@ public class AudioFull extends Audio implements Validable {
     }
 
     public boolean isNoSearch() {
-        return noSearch == BoolInt.YES;
+        return noSearch == BoolInt.YESBOOL;
     }
 
     public BoolInt getNoSearch() {

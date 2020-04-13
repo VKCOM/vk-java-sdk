@@ -93,7 +93,7 @@ public class WidgetComment implements Validable {
     }
 
     public boolean canDelete() {
-        return canDelete == BoolInt.YES;
+        return canDelete == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanDelete() {

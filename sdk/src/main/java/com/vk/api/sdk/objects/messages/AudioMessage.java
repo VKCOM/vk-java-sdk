@@ -36,13 +36,13 @@ public class AudioMessage implements Validable {
      * MP3 file URL
      */
     @SerializedName("link_mp3")
-    private URL linkMp3;
+    private String linkMp3;
 
     /**
      * OGG file URL
      */
     @SerializedName("link_ogg")
-    private URL linkOgg;
+    private String linkOgg;
 
     /**
      * Audio message owner ID
@@ -81,20 +81,20 @@ public class AudioMessage implements Validable {
         return this;
     }
 
-    public URL getLinkMp3() {
+    public String getLinkMp3() {
         return linkMp3;
     }
 
-    public AudioMessage setLinkMp3(URL linkMp3) {
+    public AudioMessage setLinkMp3(String linkMp3) {
         this.linkMp3 = linkMp3;
         return this;
     }
 
-    public URL getLinkOgg() {
+    public String getLinkOgg() {
         return linkOgg;
     }
 
-    public AudioMessage setLinkOgg(URL linkOgg) {
+    public AudioMessage setLinkOgg(String linkOgg) {
         this.linkOgg = linkOgg;
         return this;
     }

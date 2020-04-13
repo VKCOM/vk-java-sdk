@@ -78,7 +78,7 @@ public class MarketInfo implements Validable {
     }
 
     public boolean isEnabled() {
-        return enabled == BoolInt.YES;
+        return enabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getEnabled() {

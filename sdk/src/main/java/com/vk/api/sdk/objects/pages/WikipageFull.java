@@ -86,7 +86,7 @@ public class WikipageFull implements Validable {
      * URL of the page preview
      */
     @SerializedName("view_url")
-    private URL viewUrl;
+    private String viewUrl;
 
     /**
      * Views number
@@ -126,7 +126,7 @@ public class WikipageFull implements Validable {
     }
 
     public boolean isCurrentUserCanEdit() {
-        return currentUserCanEdit == BoolInt.YES;
+        return currentUserCanEdit == BoolInt.YESBOOL;
     }
 
     public BoolInt getCurrentUserCanEdit() {
@@ -134,7 +134,7 @@ public class WikipageFull implements Validable {
     }
 
     public boolean isCurrentUserCanEditAccess() {
-        return currentUserCanEditAccess == BoolInt.YES;
+        return currentUserCanEditAccess == BoolInt.YESBOOL;
     }
 
     public BoolInt getCurrentUserCanEditAccess() {
@@ -204,11 +204,11 @@ public class WikipageFull implements Validable {
         return this;
     }
 
-    public URL getViewUrl() {
+    public String getViewUrl() {
         return viewUrl;
     }
 
-    public WikipageFull setViewUrl(URL viewUrl) {
+    public WikipageFull setViewUrl(String viewUrl) {
         this.viewUrl = viewUrl;
         return this;
     }

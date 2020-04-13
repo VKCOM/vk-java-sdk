@@ -119,151 +119,151 @@ public class LongPollServerSettings {
     private BoolInt groupOfficersEdit;
 
     public boolean isMessageNewEnabled() {
-        return messageNew == BoolInt.YES;
+        return messageNew == BoolInt.YESBOOL;
     }
 
     public boolean isMessageReplyEnabled() {
-        return messageReply == BoolInt.YES;
+        return messageReply == BoolInt.YESBOOL;
     }
 
     public boolean isMessageEditnabled() {
-        return messageEdit == BoolInt.YES;
+        return messageEdit == BoolInt.YESBOOL;
     }
 
     public boolean isMessageAllowEnabled() {
-        return messageAllow == BoolInt.YES;
+        return messageAllow == BoolInt.YESBOOL;
     }
 
     public boolean isMessageDenyEnabled() {
-        return messageDeny == BoolInt.YES;
+        return messageDeny == BoolInt.YESBOOL;
     }
 
     public boolean isPhotoNewEnabled() {
-        return photoNew == BoolInt.YES;
+        return photoNew == BoolInt.YESBOOL;
     }
 
     public boolean isAudioNewEnabled() {
-        return audioNew == BoolInt.YES;
+        return audioNew == BoolInt.YESBOOL;
     }
 
     public boolean isVideoNewEnabled() {
-        return videoNew == BoolInt.YES;
+        return videoNew == BoolInt.YESBOOL;
     }
 
     public boolean isWallReplyNewEnabled() {
-        return wallReplyNew == BoolInt.YES;
+        return wallReplyNew == BoolInt.YESBOOL;
     }
 
     public boolean isWallReplyEditEnabled() {
-        return wallReplyEdit == BoolInt.YES;
+        return wallReplyEdit == BoolInt.YESBOOL;
     }
 
     public boolean isWallReplyDeleteEnabled() {
-        return wallReplyDelete == BoolInt.YES;
+        return wallReplyDelete == BoolInt.YESBOOL;
     }
 
     public boolean isWallPostNewEnabled() {
-        return wallPostNew == BoolInt.YES;
+        return wallPostNew == BoolInt.YESBOOL;
     }
 
     public boolean isWallRespostEnabled() {
-        return wallRespost == BoolInt.YES;
+        return wallRespost == BoolInt.YESBOOL;
     }
 
     public boolean isBoardPostNewEnabled() {
-        return boardPostNew == BoolInt.YES;
+        return boardPostNew == BoolInt.YESBOOL;
     }
 
     public boolean isBoardPostEditEnabled() {
-        return boardPostEdit == BoolInt.YES;
+        return boardPostEdit == BoolInt.YESBOOL;
     }
 
     public boolean isBoardPostDeleteEnabled() {
-        return boardPostDelete == BoolInt.YES;
+        return boardPostDelete == BoolInt.YESBOOL;
     }
 
     public boolean isBoardPostRestoreEnabled() {
-        return boardPostRestore == BoolInt.YES;
+        return boardPostRestore == BoolInt.YESBOOL;
     }
 
     public boolean isPhotoCommentNewEnabled() {
-        return photoCommentNew == BoolInt.YES;
+        return photoCommentNew == BoolInt.YESBOOL;
     }
 
     public boolean isPhotoCommentEditEnabled() {
-        return photoCommentEdit == BoolInt.YES;
+        return photoCommentEdit == BoolInt.YESBOOL;
     }
 
     public boolean isPhotoCommentDeleteEnabled() {
-        return photoCommentDelete == BoolInt.YES;
+        return photoCommentDelete == BoolInt.YESBOOL;
     }
 
     public boolean isPhotoCommentRestoreEnabled() {
-        return photoCommentRestore == BoolInt.YES;
+        return photoCommentRestore == BoolInt.YESBOOL;
     }
 
     public boolean isVideoCommentNewEnabled() {
-        return videoCommentNew == BoolInt.YES;
+        return videoCommentNew == BoolInt.YESBOOL;
     }
 
     public boolean isVideoCommentEditEnabled() {
-        return videoCommentEdit == BoolInt.YES;
+        return videoCommentEdit == BoolInt.YESBOOL;
     }
 
     public boolean isVideoCommentDeleteEnabled() {
-        return videoCommentDelete == BoolInt.YES;
+        return videoCommentDelete == BoolInt.YESBOOL;
     }
 
     public boolean isVideoCommentRestoreEnabled() {
-        return videoCommentRestore == BoolInt.YES;
+        return videoCommentRestore == BoolInt.YESBOOL;
     }
 
     public boolean isMarketCommentNewEnabled() {
-        return marketCommentNew == BoolInt.YES;
+        return marketCommentNew == BoolInt.YESBOOL;
     }
 
     public boolean isMarketCommentEditEnabled() {
-        return marketCommentEdit == BoolInt.YES;
+        return marketCommentEdit == BoolInt.YESBOOL;
     }
 
     public boolean isMarketCommentDeleteEnabled() {
-        return marketCommentDelete == BoolInt.YES;
+        return marketCommentDelete == BoolInt.YESBOOL;
     }
 
     public boolean isMarketCommentRestoreEnabled() {
-        return marketCommentRestore == BoolInt.YES;
+        return marketCommentRestore == BoolInt.YESBOOL;
     }
 
     public boolean isPollVoteNewEnabled() {
-        return pollVoteNew == BoolInt.YES;
+        return pollVoteNew == BoolInt.YESBOOL;
     }
 
     public boolean isGroupJoinEnabled() {
-        return groupJoin == BoolInt.YES;
+        return groupJoin == BoolInt.YESBOOL;
     }
 
     public boolean isGroupLeaveEnabled() {
-        return groupLeave == BoolInt.YES;
+        return groupLeave == BoolInt.YESBOOL;
     }
 
     public boolean isUserBlockEnabled() {
-        return userBlock == BoolInt.YES;
+        return userBlock == BoolInt.YESBOOL;
     }
 
     public boolean isUserUnblockEnabled() {
-        return userUnblock == BoolInt.YES;
+        return userUnblock == BoolInt.YESBOOL;
     }
 
     public boolean isGroupChangeSettingsEnabled() {
-        return groupChangeSettings == BoolInt.YES;
+        return groupChangeSettings == BoolInt.YESBOOL;
     }
 
     public boolean isGroupChangePhotoEnabled() {
-        return groupChangePhoto == BoolInt.YES;
+        return groupChangePhoto == BoolInt.YESBOOL;
     }
 
     public boolean isGroupOfficersEditEnabled() {
-        return groupOfficersEdit == BoolInt.YES;
+        return groupOfficersEdit == BoolInt.YESBOOL;
     }
 
     @Override

@@ -28,25 +28,25 @@ public class App extends AppMin implements Validable {
      * Application author's URL
      */
     @SerializedName("author_url")
-    private URL authorUrl;
+    private String authorUrl;
 
     /**
      * URL of the app banner with 1120 px in width
      */
     @SerializedName("banner_1120")
-    private URL banner1120;
+    private String banner1120;
 
     /**
      * URL of the app banner with 560 px in width
      */
     @SerializedName("banner_560")
-    private URL banner560;
+    private String banner560;
 
     /**
      * URL of the app icon with 16 px in width
      */
     @SerializedName("icon_16")
-    private URL icon16;
+    private String icon16;
 
     /**
      * Is new flag
@@ -162,44 +162,44 @@ public class App extends AppMin implements Validable {
         return this;
     }
 
-    public URL getAuthorUrl() {
+    public String getAuthorUrl() {
         return authorUrl;
     }
 
-    public App setAuthorUrl(URL authorUrl) {
+    public App setAuthorUrl(String authorUrl) {
         this.authorUrl = authorUrl;
         return this;
     }
 
-    public URL getBanner1120() {
+    public String getBanner1120() {
         return banner1120;
     }
 
-    public App setBanner1120(URL banner1120) {
+    public App setBanner1120(String banner1120) {
         this.banner1120 = banner1120;
         return this;
     }
 
-    public URL getBanner560() {
+    public String getBanner560() {
         return banner560;
     }
 
-    public App setBanner560(URL banner560) {
+    public App setBanner560(String banner560) {
         this.banner560 = banner560;
         return this;
     }
 
-    public URL getIcon16() {
+    public String getIcon16() {
         return icon16;
     }
 
-    public App setIcon16(URL icon16) {
+    public App setIcon16(String icon16) {
         this.icon16 = icon16;
         return this;
     }
 
     public boolean isNew() {
-        return isNew == BoolInt.YES;
+        return isNew == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsNew() {
@@ -207,7 +207,7 @@ public class App extends AppMin implements Validable {
     }
 
     public boolean is_new() {
-        return _new == BoolInt.YES;
+        return _new == BoolInt.YESBOOL;
     }
 
     public BoolInt get_new() {
@@ -215,7 +215,7 @@ public class App extends AppMin implements Validable {
     }
 
     public boolean isPushEnabled() {
-        return pushEnabled == BoolInt.YES;
+        return pushEnabled == BoolInt.YESBOOL;
     }
 
     public BoolInt getPushEnabled() {

@@ -30,7 +30,7 @@ public class DocPreviewVideo implements Validable {
      */
     @SerializedName("src")
     @Required
-    private URL src;
+    private String src;
 
     /**
      * Video's width in pixels
@@ -57,11 +57,11 @@ public class DocPreviewVideo implements Validable {
         return this;
     }
 
-    public URL getSrc() {
+    public String getSrc() {
         return src;
     }
 
-    public DocPreviewVideo setSrc(URL src) {
+    public DocPreviewVideo setSrc(String src) {
         this.src = src;
         return this;
     }

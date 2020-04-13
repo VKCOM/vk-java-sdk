@@ -14,7 +14,7 @@ public class IsMessagesFromGroupAllowedResponse implements Validable {
     private BoolInt isAllowed;
 
     public boolean isAllowed() {
-        return isAllowed == BoolInt.YES;
+        return isAllowed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsAllowed() {

@@ -36,7 +36,7 @@ public class LikesInfo implements Validable {
     private Integer userLikes;
 
     public boolean canLike() {
-        return canLike == BoolInt.YES;
+        return canLike == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanLike() {
@@ -44,7 +44,7 @@ public class LikesInfo implements Validable {
     }
 
     public boolean canPublish() {
-        return canPublish == BoolInt.YES;
+        return canPublish == BoolInt.YESBOOL;
     }
 
     public BoolInt getCanPublish() {

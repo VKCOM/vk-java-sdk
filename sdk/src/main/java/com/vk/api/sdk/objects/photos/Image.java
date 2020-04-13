@@ -22,8 +22,8 @@ public class Image implements Validable {
     /**
      * Photo URL.
      */
-    @SerializedName("url")
-    private URL url;
+    @SerializedName(value="url", alternate={"src"})
+    private String url;
 
     /**
      * Width of the photo in px.
@@ -49,11 +49,11 @@ public class Image implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Image setUrl(URL url) {
+    public Image setUrl(String url) {
         this.url = url;
         return this;
     }

@@ -46,13 +46,13 @@ public class AdLayout implements Validable {
      * Image URL
      */
     @SerializedName("image_src")
-    private URL imageSrc;
+    private String imageSrc;
 
     /**
      * URL of the preview image in double size
      */
     @SerializedName("image_src_2x")
-    private URL imageSrc2x;
+    private String imageSrc2x;
 
     /**
      * Domain of advertised object
@@ -64,7 +64,7 @@ public class AdLayout implements Validable {
      * URL of advertised object
      */
     @SerializedName("link_url")
-    private URL linkUrl;
+    private String linkUrl;
 
     /**
      * link to preview an ad as it is shown on the website
@@ -130,20 +130,20 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public URL getImageSrc() {
+    public String getImageSrc() {
         return imageSrc;
     }
 
-    public AdLayout setImageSrc(URL imageSrc) {
+    public AdLayout setImageSrc(String imageSrc) {
         this.imageSrc = imageSrc;
         return this;
     }
 
-    public URL getImageSrc2x() {
+    public String getImageSrc2x() {
         return imageSrc2x;
     }
 
-    public AdLayout setImageSrc2x(URL imageSrc2x) {
+    public AdLayout setImageSrc2x(String imageSrc2x) {
         this.imageSrc2x = imageSrc2x;
         return this;
     }
@@ -157,11 +157,11 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public URL getLinkUrl() {
+    public String getLinkUrl() {
         return linkUrl;
     }
 
-    public AdLayout setLinkUrl(URL linkUrl) {
+    public AdLayout setLinkUrl(String linkUrl) {
         this.linkUrl = linkUrl;
         return this;
     }
@@ -185,7 +185,7 @@ public class AdLayout implements Validable {
     }
 
     public boolean isVideo() {
-        return video == BoolInt.YES;
+        return video == BoolInt.YESBOOL;
     }
 
     public BoolInt getVideo() {

@@ -31,7 +31,7 @@ public class Likes implements Validable {
     }
 
     public boolean isUserLikes() {
-        return userLikes == BoolInt.YES;
+        return userLikes == BoolInt.YESBOOL;
     }
 
     public BoolInt getUserLikes() {

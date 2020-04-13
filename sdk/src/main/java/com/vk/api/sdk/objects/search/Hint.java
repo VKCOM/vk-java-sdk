@@ -63,7 +63,7 @@ public class Hint implements Validable {
     }
 
     public boolean isGlobal() {
-        return global == BoolInt.YES;
+        return global == BoolInt.YESBOOL;
     }
 
     public BoolInt getGlobal() {

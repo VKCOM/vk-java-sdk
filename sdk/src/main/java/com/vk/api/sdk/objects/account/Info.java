@@ -53,7 +53,7 @@ public class Info implements Validable {
     private BoolInt ownPostsDefault;
 
     public boolean is_2faRequired() {
-        return _2faRequired == BoolInt.YES;
+        return _2faRequired == BoolInt.YESBOOL;
     }
 
     public BoolInt get_2faRequired() {
@@ -70,7 +70,7 @@ public class Info implements Validable {
     }
 
     public boolean isHttpsRequired() {
-        return httpsRequired == BoolInt.YES;
+        return httpsRequired == BoolInt.YESBOOL;
     }
 
     public BoolInt getHttpsRequired() {
@@ -78,7 +78,7 @@ public class Info implements Validable {
     }
 
     public boolean isIntro() {
-        return intro == BoolInt.YES;
+        return intro == BoolInt.YESBOOL;
     }
 
     public BoolInt getIntro() {
@@ -95,7 +95,7 @@ public class Info implements Validable {
     }
 
     public boolean isNoWallReplies() {
-        return noWallReplies == BoolInt.YES;
+        return noWallReplies == BoolInt.YESBOOL;
     }
 
     public BoolInt getNoWallReplies() {
@@ -103,7 +103,7 @@ public class Info implements Validable {
     }
 
     public boolean isOwnPostsDefault() {
-        return ownPostsDefault == BoolInt.YES;
+        return ownPostsDefault == BoolInt.YESBOOL;
     }
 
     public BoolInt getOwnPostsDefault() {

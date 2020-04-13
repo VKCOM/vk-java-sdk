@@ -44,7 +44,7 @@ public class Place implements Validable {
      * URL of the place's icon
      */
     @SerializedName("icon")
-    private URL icon;
+    private String icon;
 
     /**
      * Place ID
@@ -121,11 +121,11 @@ public class Place implements Validable {
         return this;
     }
 
-    public URL getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public Place setIcon(URL icon) {
+    public Place setIcon(String icon) {
         this.icon = icon;
         return this;
     }

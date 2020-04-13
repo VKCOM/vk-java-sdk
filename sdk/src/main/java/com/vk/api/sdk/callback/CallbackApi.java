@@ -7,6 +7,7 @@ import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.callback.*;
+import com.vk.api.sdk.objects.callback.messages.MessageWithClientInfo;
 import com.vk.api.sdk.objects.messages.Message;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
@@ -71,7 +72,7 @@ public class CallbackApi {
 
     static {
         Map<String, Type> types = new HashMap<>();
-        types.put(CALLBACK_EVENT_MESSAGE_NEW, new TypeToken<CallbackMessage<Message>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_NEW, new TypeToken<CallbackMessage<MessageWithClientInfo>>() {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_REPLY, new TypeToken<CallbackMessage<Message>>() {
         }.getType());
@@ -166,11 +167,11 @@ public class CallbackApi {
         gson = new Gson();
     }
 
-    public void messageNew(Integer groupId, Message message) {
+    public void messageNew(Integer groupId, MessageWithClientInfo messageWithClientInfo) {
     }
 
-    public void messageNew(Integer groupId, String secret, Message message) {
-        messageNew(groupId, message);
+    public void messageNew(Integer groupId, String secret, MessageWithClientInfo messageWithClientInfo) {
+        messageNew(groupId, messageWithClientInfo);
     }
 
     public void messageReply(Integer groupId, Message message) {
@@ -463,7 +464,7 @@ public class CallbackApi {
 
         switch (type) {
             case CALLBACK_EVENT_MESSAGE_NEW:
-                messageNew(message.getGroupId(), message.getSecret(), (Message) message.getObject());
+                messageNew(message.getGroupId(), message.getSecret(), (MessageWithClientInfo) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_REPLY:

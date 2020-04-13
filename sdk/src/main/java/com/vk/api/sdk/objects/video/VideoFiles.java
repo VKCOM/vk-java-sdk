@@ -14,88 +14,88 @@ public class VideoFiles implements Validable {
      * URL of the external player
      */
     @SerializedName("external")
-    private URL external;
+    private String external;
 
     /**
      * URL of the mpeg4 file with 1080p quality
      */
     @SerializedName("mp4_1080")
-    private URL mp41080;
+    private String mp41080;
 
     /**
      * URL of the mpeg4 file with 240p quality
      */
     @SerializedName("mp4_240")
-    private URL mp4240;
+    private String mp4240;
 
     /**
      * URL of the mpeg4 file with 360p quality
      */
     @SerializedName("mp4_360")
-    private URL mp4360;
+    private String mp4360;
 
     /**
      * URL of the mpeg4 file with 480p quality
      */
     @SerializedName("mp4_480")
-    private URL mp4480;
+    private String mp4480;
 
     /**
      * URL of the mpeg4 file with 720p quality
      */
     @SerializedName("mp4_720")
-    private URL mp4720;
+    private String mp4720;
 
-    public URL getExternal() {
+    public String getExternal() {
         return external;
     }
 
-    public VideoFiles setExternal(URL external) {
+    public VideoFiles setExternal(String external) {
         this.external = external;
         return this;
     }
 
-    public URL getMp41080() {
+    public String getMp41080() {
         return mp41080;
     }
 
-    public VideoFiles setMp41080(URL mp41080) {
+    public VideoFiles setMp41080(String mp41080) {
         this.mp41080 = mp41080;
         return this;
     }
 
-    public URL getMp4240() {
+    public String getMp4240() {
         return mp4240;
     }
 
-    public VideoFiles setMp4240(URL mp4240) {
+    public VideoFiles setMp4240(String mp4240) {
         this.mp4240 = mp4240;
         return this;
     }
 
-    public URL getMp4360() {
+    public String getMp4360() {
         return mp4360;
     }
 
-    public VideoFiles setMp4360(URL mp4360) {
+    public VideoFiles setMp4360(String mp4360) {
         this.mp4360 = mp4360;
         return this;
     }
 
-    public URL getMp4480() {
+    public String getMp4480() {
         return mp4480;
     }
 
-    public VideoFiles setMp4480(URL mp4480) {
+    public VideoFiles setMp4480(String mp4480) {
         this.mp4480 = mp4480;
         return this;
     }
 
-    public URL getMp4720() {
+    public String getMp4720() {
         return mp4720;
     }
 
-    public VideoFiles setMp4720(URL mp4720) {
+    public VideoFiles setMp4720(String mp4720) {
         this.mp4720 = mp4720;
         return this;
     }

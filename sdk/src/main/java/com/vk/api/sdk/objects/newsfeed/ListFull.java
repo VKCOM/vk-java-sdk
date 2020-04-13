@@ -20,7 +20,7 @@ public class ListFull extends List implements Validable {
     private java.util.List<Integer> sourceIds;
 
     public boolean isNoReposts() {
-        return noReposts == BoolInt.YES;
+        return noReposts == BoolInt.YESBOOL;
     }
 
     public BoolInt getNoReposts() {

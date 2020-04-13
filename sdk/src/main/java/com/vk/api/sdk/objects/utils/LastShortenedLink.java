@@ -26,7 +26,7 @@ public class LastShortenedLink implements Validable {
      * Short link URL
      */
     @SerializedName("short_url")
-    private URL shortUrl;
+    private String shortUrl;
 
     /**
      * Creation time in Unixtime
@@ -38,7 +38,7 @@ public class LastShortenedLink implements Validable {
      * Full URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     /**
      * Total views number
@@ -64,11 +64,11 @@ public class LastShortenedLink implements Validable {
         return this;
     }
 
-    public URL getShortUrl() {
+    public String getShortUrl() {
         return shortUrl;
     }
 
-    public LastShortenedLink setShortUrl(URL shortUrl) {
+    public LastShortenedLink setShortUrl(String shortUrl) {
         this.shortUrl = shortUrl;
         return this;
     }
@@ -82,11 +82,11 @@ public class LastShortenedLink implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public LastShortenedLink setUrl(URL url) {
+    public LastShortenedLink setUrl(String url) {
         this.url = url;
         return this;
     }

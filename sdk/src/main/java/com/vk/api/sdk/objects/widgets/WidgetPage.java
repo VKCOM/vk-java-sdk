@@ -45,7 +45,7 @@ public class WidgetPage implements Validable {
      * URL of the preview image
      */
     @SerializedName("photo")
-    private URL photo;
+    private String photo;
 
     /**
      * Page title
@@ -57,7 +57,7 @@ public class WidgetPage implements Validable {
      * Page absolute URL
      */
     @SerializedName("url")
-    private URL url;
+    private String url;
 
     public ObjectCount getComments() {
         return comments;
@@ -113,11 +113,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public WidgetPage setPhoto(URL photo) {
+    public WidgetPage setPhoto(String photo) {
         this.photo = photo;
         return this;
     }
@@ -131,11 +131,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public WidgetPage setUrl(URL url) {
+    public WidgetPage setUrl(String url) {
         this.url = url;
         return this;
     }

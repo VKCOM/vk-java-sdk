@@ -101,7 +101,7 @@ public class Topic implements Validable {
     }
 
     public boolean isClosed() {
-        return isClosed == BoolInt.YES;
+        return isClosed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsClosed() {
@@ -109,7 +109,7 @@ public class Topic implements Validable {
     }
 
     public boolean isFixed() {
-        return isFixed == BoolInt.YES;
+        return isFixed == BoolInt.YESBOOL;
     }
 
     public BoolInt getIsFixed() {

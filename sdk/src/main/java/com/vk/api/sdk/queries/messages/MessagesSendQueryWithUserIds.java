@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.messages.Keyboard;
+import com.vk.api.sdk.objects.messages.Template;
 import com.vk.api.sdk.objects.messages.responses.SendUserIdsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -204,6 +205,16 @@ public class MessagesSendQueryWithUserIds extends AbstractQueryBuilder<MessagesS
      */
     public MessagesSendQueryWithUserIds keyboard(Keyboard value) {
         return unsafeParam("keyboard", value);
+    }
+
+    /**
+     * Set template
+     *
+     * @param value value of "template" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQueryWithUserIds template(Template value) {
+        return unsafeParam("template", value);
     }
 
     /**
