@@ -11,7 +11,10 @@ public enum GroupsFilter implements EnumParam {
     FRIENDS("friends"),
 
     @SerializedName("unsure")
-    UNSURE("unsure");
+    UNSURE("unsure"),
+    
+    @SerializedName("managers")
+    MANAGERS("managers");
 
     private final String value;
 
