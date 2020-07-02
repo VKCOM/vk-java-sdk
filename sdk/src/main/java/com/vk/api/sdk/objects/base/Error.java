@@ -25,6 +25,9 @@ public class Error implements Validable {
     @SerializedName("request_params")
     private List<RequestParam> requestParams;
 
+    @SerializedName("redirect_uri")
+    private String redirectUri;
+
     public Integer getErrorCode() {
         return errorCode;
     }
@@ -52,9 +55,17 @@ public class Error implements Validable {
         return this;
     }
 
+    public String getRedirectUri() {
+        return redirectUri;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(requestParams, errorCode, errorMsg);
+        return Objects.hash(requestParams, errorCode, errorMsg, redirectUri);
     }
 
     @Override
@@ -64,7 +75,8 @@ public class Error implements Validable {
         Error error = (Error) o;
         return Objects.equals(errorMsg, error.errorMsg) &&
                 Objects.equals(requestParams, error.requestParams) &&
-                Objects.equals(errorCode, error.errorCode);
+                Objects.equals(errorCode, error.errorCode) &&
+                Objects.equals(redirectUri, error.redirectUri);
     }
 
     @Override
@@ -78,6 +90,7 @@ public class Error implements Validable {
         sb.append("errorMsg='").append(errorMsg).append("'");
         sb.append(", requestParams=").append(requestParams);
         sb.append(", errorCode=").append(errorCode);
+        sb.append(", redirectUri=").append(redirectUri);
         sb.append('}');
         return sb.toString();
     }
