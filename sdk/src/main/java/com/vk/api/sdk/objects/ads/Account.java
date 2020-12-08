@@ -28,6 +28,18 @@ public class Account implements Validable {
     @SerializedName("account_type")
     private AccountType accountType;
 
+    /**
+     * Account name
+     */
+    @SerializedName("account_name")
+    private String accountName;
+
+    /**
+     * Can user view account budget
+     */
+    @SerializedName("can_view_budget")
+    private Boolean canViewBudget;
+
     public AccessRole getAccessRole() {
         return accessRole;
     }
@@ -63,9 +75,27 @@ public class Account implements Validable {
         return this;
     }
 
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public Account setAccountName(String accountName) {
+        this.accountName = accountName;
+        return this;
+    }
+
+    public Boolean getCanViewBudget() {
+        return canViewBudget;
+    }
+
+    public Account setCanViewBudget(Boolean canViewBudget) {
+        this.canViewBudget = canViewBudget;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(accountStatus, accountId, accountType, accessRole);
+        return Objects.hash(accountStatus, accountId, canViewBudget, accountName, accountType, accessRole);
     }
 
     @Override
@@ -76,7 +106,9 @@ public class Account implements Validable {
         return Objects.equals(accountType, account.accountType) &&
                 Objects.equals(accountId, account.accountId) &&
                 Objects.equals(accessRole, account.accessRole) &&
-                Objects.equals(accountStatus, account.accountStatus);
+                Objects.equals(accountName, account.accountName) &&
+                Objects.equals(accountStatus, account.accountStatus) &&
+                Objects.equals(canViewBudget, account.canViewBudget);
     }
 
     @Override
@@ -90,7 +122,9 @@ public class Account implements Validable {
         sb.append("accountType=").append(accountType);
         sb.append(", accountId=").append(accountId);
         sb.append(", accessRole=").append(accessRole);
+        sb.append(", accountName='").append(accountName).append("'");
         sb.append(", accountStatus=").append(accountStatus);
+        sb.append(", canViewBudget=").append(canViewBudget);
         sb.append('}');
         return sb.toString();
     }

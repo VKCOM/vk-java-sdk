@@ -20,12 +20,6 @@ public class NewsfeedPhoto extends Photo implements Validable {
     private ObjectCount comments;
 
     /**
-     * Information whether current user can comment the photo
-     */
-    @SerializedName("can_comment")
-    private BoolInt canComment;
-
-    /**
      * Information whether current user can repost the photo
      */
     @SerializedName("can_repost")
@@ -49,14 +43,6 @@ public class NewsfeedPhoto extends Photo implements Validable {
         return this;
     }
 
-    public boolean canComment() {
-        return canComment == BoolInt.YES;
-    }
-
-    public BoolInt getCanComment() {
-        return canComment;
-    }
-
     public boolean canRepost() {
         return canRepost == BoolInt.YES;
     }
@@ -67,7 +53,7 @@ public class NewsfeedPhoto extends Photo implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(comments, canRepost, canComment, likes);
+        return Objects.hash(comments, canRepost, likes);
     }
 
     @Override
@@ -76,7 +62,6 @@ public class NewsfeedPhoto extends Photo implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         NewsfeedPhoto newsfeedPhoto = (NewsfeedPhoto) o;
         return Objects.equals(canRepost, newsfeedPhoto.canRepost) &&
-                Objects.equals(canComment, newsfeedPhoto.canComment) &&
                 Objects.equals(comments, newsfeedPhoto.comments) &&
                 Objects.equals(likes, newsfeedPhoto.likes);
     }
@@ -90,7 +75,6 @@ public class NewsfeedPhoto extends Photo implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("NewsfeedPhoto{");
         sb.append("canRepost=").append(canRepost);
-        sb.append(", canComment=").append(canComment);
         sb.append(", comments=").append(comments);
         sb.append(", likes=").append(likes);
         sb.append('}');

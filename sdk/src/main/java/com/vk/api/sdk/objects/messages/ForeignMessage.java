@@ -68,6 +68,18 @@ public class ForeignMessage implements Validable {
     @SerializedName("update_time")
     private Integer updateTime;
 
+    /**
+     * Was the audio message inside already listened by you
+     */
+    @SerializedName("was_listened")
+    private Boolean wasListened;
+
+    /**
+     * Additional data sent along with message for developer convenience
+     */
+    @SerializedName("payload")
+    private String payload;
+
     public List<MessageAttachment> getAttachments() {
         return attachments;
     }
@@ -167,9 +179,27 @@ public class ForeignMessage implements Validable {
         return this;
     }
 
+    public Boolean getWasListened() {
+        return wasListened;
+    }
+
+    public ForeignMessage setWasListened(Boolean wasListened) {
+        this.wasListened = wasListened;
+        return this;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public ForeignMessage setPayload(String payload) {
+        this.payload = payload;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, geo, peerId, fwdMessages, attachments, conversationMessageId, replyMessage, updateTime, id, text, fromId);
+        return Objects.hash(date, peerId, attachments, updateTime, fromId, geo, fwdMessages, conversationMessageId, payload, replyMessage, wasListened, id, text);
     }
 
     @Override
@@ -178,16 +208,18 @@ public class ForeignMessage implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ForeignMessage foreignMessage = (ForeignMessage) o;
         return Objects.equals(date, foreignMessage.date) &&
-                Objects.equals(geo, foreignMessage.geo) &&
-                Objects.equals(updateTime, foreignMessage.updateTime) &&
                 Objects.equals(attachments, foreignMessage.attachments) &&
                 Objects.equals(fromId, foreignMessage.fromId) &&
+                Objects.equals(wasListened, foreignMessage.wasListened) &&
+                Objects.equals(conversationMessageId, foreignMessage.conversationMessageId) &&
+                Objects.equals(peerId, foreignMessage.peerId) &&
+                Objects.equals(geo, foreignMessage.geo) &&
+                Objects.equals(updateTime, foreignMessage.updateTime) &&
+                Objects.equals(payload, foreignMessage.payload) &&
                 Objects.equals(fwdMessages, foreignMessage.fwdMessages) &&
                 Objects.equals(id, foreignMessage.id) &&
                 Objects.equals(text, foreignMessage.text) &&
-                Objects.equals(replyMessage, foreignMessage.replyMessage) &&
-                Objects.equals(conversationMessageId, foreignMessage.conversationMessageId) &&
-                Objects.equals(peerId, foreignMessage.peerId);
+                Objects.equals(replyMessage, foreignMessage.replyMessage);
     }
 
     @Override
@@ -199,16 +231,18 @@ public class ForeignMessage implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ForeignMessage{");
         sb.append("date=").append(date);
-        sb.append(", geo=").append(geo);
-        sb.append(", updateTime=").append(updateTime);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
+        sb.append(", wasListened=").append(wasListened);
+        sb.append(", conversationMessageId=").append(conversationMessageId);
+        sb.append(", peerId=").append(peerId);
+        sb.append(", geo=").append(geo);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", payload='").append(payload).append("'");
         sb.append(", fwdMessages=").append(fwdMessages);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", replyMessage=").append(replyMessage);
-        sb.append(", conversationMessageId=").append(conversationMessageId);
-        sb.append(", peerId=").append(peerId);
         sb.append('}');
         return sb.toString();
     }

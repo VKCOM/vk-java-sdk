@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.groups.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,6 +14,7 @@ public class GetCallbackConfirmationCodeResponse implements Validable {
      * Confirmation code
      */
     @SerializedName("code")
+    @Required
     private String code;
 
     public String getCode() {

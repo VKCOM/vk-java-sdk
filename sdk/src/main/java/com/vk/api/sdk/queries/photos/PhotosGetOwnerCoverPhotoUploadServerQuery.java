@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getOwnerCoverPhotoUploadServer method
  */
-public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuilder<PhotosGetOwnerCoverPhotoUploadServerQuery, UploadServer> {
+public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuilder<PhotosGetOwnerCoverPhotoUploadServerQuery, GetUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      */
     public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, UserActor actor,
             int groupId) {
-        super(client, "photos.getOwnerCoverPhotoUploadServer", UploadServer.class);
+        super(client, "photos.getOwnerCoverPhotoUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
@@ -35,7 +35,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      */
     public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor,
             int groupId) {
-        super(client, "photos.getOwnerCoverPhotoUploadServer", UploadServer.class);
+        super(client, "photos.getOwnerCoverPhotoUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
         groupId(groupId);

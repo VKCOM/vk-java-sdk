@@ -6,14 +6,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.groups.MemberStatusFull;
+import com.vk.api.sdk.objects.groups.responses.IsMemberUserIdsExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Groups.isMember method
  */
-public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder<GroupsIsMemberQueryWithUserIdsExtended, List<MemberStatusFull>> {
+public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder<GroupsIsMemberQueryWithUserIdsExtended, List<IsMemberUserIdsExtendedResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder
      */
     public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, UserActor actor,
             String groupId) {
-        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsExtendedResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
         extended(true);
@@ -38,7 +38,7 @@ public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder
      */
     public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, GroupActor actor,
             String groupId) {
-        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsExtendedResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
         extended(true);
@@ -53,7 +53,7 @@ public class GroupsIsMemberQueryWithUserIdsExtended extends AbstractQueryBuilder
      */
     public GroupsIsMemberQueryWithUserIdsExtended(VkApiClient client, ServiceActor actor,
             String groupId) {
-        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, MemberStatusFull.class));
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsExtendedResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         groupId(groupId);

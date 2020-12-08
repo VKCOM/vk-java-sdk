@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -45,7 +45,7 @@ public class GroupLink implements Validable {
      * Link URL
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
 
     public String getName() {
         return name;
@@ -90,11 +90,11 @@ public class GroupLink implements Validable {
         return imageProcessing;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public GroupLink setUrl(URL url) {
+    public GroupLink setUrl(URI url) {
         this.url = url;
         return this;
     }

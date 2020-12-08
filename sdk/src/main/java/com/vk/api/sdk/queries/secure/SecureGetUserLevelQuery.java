@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.objects.secure.Level;
+import com.vk.api.sdk.objects.secure.responses.GetUserLevelResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Secure.getUserLevel method
  */
-public class SecureGetUserLevelQuery extends AbstractSecureQueryBuilder<SecureGetUserLevelQuery, List<Level>> {
+public class SecureGetUserLevelQuery extends AbstractSecureQueryBuilder<SecureGetUserLevelQuery, List<GetUserLevelResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class SecureGetUserLevelQuery extends AbstractSecureQueryBuilder<SecureGe
      * @param userIds value of "user ids" parameter.
      */
     public SecureGetUserLevelQuery(VkApiClient client, ServiceActor actor, Integer... userIds) {
-        super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, Level.class));
+        super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, GetUserLevelResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         userIds(userIds);
@@ -34,7 +34,7 @@ public class SecureGetUserLevelQuery extends AbstractSecureQueryBuilder<SecureGe
      * @param userIds value of "user ids" parameter.
      */
     public SecureGetUserLevelQuery(VkApiClient client, ServiceActor actor, List<Integer> userIds) {
-        super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, Level.class));
+        super(client, "secure.getUserLevel", Utils.buildParametrizedType(List.class, GetUserLevelResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         userIds(userIds);

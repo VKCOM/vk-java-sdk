@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.stories;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,6 +14,7 @@ public class PromoBlock implements Validable {
      * Promo story title
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     /**

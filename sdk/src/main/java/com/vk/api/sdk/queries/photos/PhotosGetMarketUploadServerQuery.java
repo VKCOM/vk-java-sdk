@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.photos.responses.GetMarketUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getMarketUploadServer method
  */
-public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<PhotosGetMarketUploadServerQuery, UploadServer> {
+public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<PhotosGetMarketUploadServerQuery, GetMarketUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      * @param groupId value of "group id" parameter. Minimum is 0.
      */
     public PhotosGetMarketUploadServerQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "photos.getMarketUploadServer", UploadServer.class);
+        super(client, "photos.getMarketUploadServer", GetMarketUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }

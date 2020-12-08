@@ -63,6 +63,16 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
         return unsafeParam("owner_id", value);
     }
 
+    /**
+     * Set return tags
+     *
+     * @param value value of "return tags" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsGetQuery returnTags(Boolean value) {
+        return unsafeParam("return_tags", value);
+    }
+
     @Override
     protected DocsGetQuery getThis() {
         return this;

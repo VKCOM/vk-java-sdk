@@ -3,14 +3,13 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.docs.responses.AddResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Docs.add method
  */
-public class DocsAddQuery extends AbstractQueryBuilder<DocsAddQuery, AddResponse> {
+public class DocsAddQuery extends AbstractQueryBuilder<DocsAddQuery, Integer> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +19,7 @@ public class DocsAddQuery extends AbstractQueryBuilder<DocsAddQuery, AddResponse
      * @param docId value of "doc id" parameter. Minimum is 0.
      */
     public DocsAddQuery(VkApiClient client, UserActor actor, int ownerId, int docId) {
-        super(client, "docs.add", AddResponse.class);
+        super(client, "docs.add", Integer.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         docId(docId);

@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.FloodStats;
+import com.vk.api.sdk.objects.ads.responses.GetFloodStatsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getFloodStats method
  */
-public class AdsGetFloodStatsQuery extends AbstractQueryBuilder<AdsGetFloodStatsQuery, FloodStats> {
+public class AdsGetFloodStatsQuery extends AbstractQueryBuilder<AdsGetFloodStatsQuery, GetFloodStatsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class AdsGetFloodStatsQuery extends AbstractQueryBuilder<AdsGetFloodStats
      * @param accountId value of "account id" parameter.
      */
     public AdsGetFloodStatsQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getFloodStats", FloodStats.class);
+        super(client, "ads.getFloodStats", GetFloodStatsResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }

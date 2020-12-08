@@ -12,11 +12,14 @@ import java.util.Objects;
  */
 public class GetResponse implements Validable {
     /**
-     * Total number
+     * Total number of applications
      */
     @SerializedName("count")
     private Integer count;
 
+    /**
+     * List of applications
+     */
     @SerializedName("items")
     private List<App> items;
 

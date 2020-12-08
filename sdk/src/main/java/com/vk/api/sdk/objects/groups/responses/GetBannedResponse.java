@@ -1,14 +1,12 @@
 package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.oneofs.GroupsBannedItemOneOf;
+import com.vk.api.sdk.objects.groups.BannedItem;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * GetBannedResponse object
@@ -23,7 +21,7 @@ public class GetBannedResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<JsonObject> items;
+    private List<BannedItem> items;
 
     public Integer getCount() {
         return count;
@@ -34,8 +32,13 @@ public class GetBannedResponse implements Validable {
         return this;
     }
 
-    public List<GroupsBannedItemOneOf> getItems() {
-        return items.stream().map(GroupsBannedItemOneOf::new).collect(Collectors.toList());
+    public List<BannedItem> getItems() {
+        return items;
+    }
+
+    public GetBannedResponse setItems(List<BannedItem> items) {
+        this.items = items;
+        return this;
     }
 
     @Override

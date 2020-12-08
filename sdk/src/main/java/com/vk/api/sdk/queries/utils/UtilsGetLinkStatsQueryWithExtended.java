@@ -7,14 +7,14 @@ import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.UtilsInterval;
 import com.vk.api.sdk.objects.enums.UtilsSource;
-import com.vk.api.sdk.objects.utils.LinkStatsExtended;
+import com.vk.api.sdk.objects.utils.responses.GetLinkStatsExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Utils.getLinkStats method
  */
-public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<UtilsGetLinkStatsQueryWithExtended, LinkStatsExtended> {
+public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<UtilsGetLinkStatsQueryWithExtended, GetLinkStatsExtendedResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<Uti
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, UserActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStatsExtended.class);
+        super(client, "utils.getLinkStats", GetLinkStatsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         key(key);
         extended(true);
@@ -37,7 +37,7 @@ public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<Uti
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, GroupActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStatsExtended.class);
+        super(client, "utils.getLinkStats", GetLinkStatsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         key(key);
         extended(true);
@@ -51,7 +51,7 @@ public class UtilsGetLinkStatsQueryWithExtended extends AbstractQueryBuilder<Uti
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQueryWithExtended(VkApiClient client, ServiceActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStatsExtended.class);
+        super(client, "utils.getLinkStats", GetLinkStatsExtendedResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         key(key);

@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.account.AccountCounters;
+import com.vk.api.sdk.objects.account.responses.GetCountersResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Account.getCounters method
  */
-public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCountersQuery, AccountCounters> {
+public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCountersQuery, GetCountersResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCoun
      * @param actor actor with access token
      */
     public AccountGetCountersQuery(VkApiClient client, UserActor actor) {
-        super(client, "account.getCounters", AccountCounters.class);
+        super(client, "account.getCounters", GetCountersResponse.class);
         accessToken(actor.getAccessToken());
     }
 

@@ -11,7 +11,16 @@ public enum StoryType implements EnumParam {
     PHOTO("photo"),
 
     @SerializedName("video")
-    VIDEO("video");
+    VIDEO("video"),
+
+    @SerializedName("live_active")
+    LIVE_ACTIVE("live_active"),
+
+    @SerializedName("live_finished")
+    LIVE_FINISHED("live_finished"),
+
+    @SerializedName("birthday_invite")
+    BIRTHDAY_INVITE("birthday_invite");
 
     private final String value;
 

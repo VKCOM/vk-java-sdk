@@ -75,6 +75,12 @@ public class Message implements Validable {
     @SerializedName("is_hidden")
     private Boolean isHidden;
 
+    /**
+     * this message is cropped for bot
+     */
+    @SerializedName("is_cropped")
+    private Boolean isCropped;
+
     @SerializedName("keyboard")
     private Keyboard keyboard;
 
@@ -127,6 +133,18 @@ public class Message implements Validable {
      */
     @SerializedName("update_time")
     private Integer updateTime;
+
+    /**
+     * Was the audio message inside already listened by you
+     */
+    @SerializedName("was_listened")
+    private Boolean wasListened;
+
+    /**
+     * Date when the message has been pinned in Unixtime
+     */
+    @SerializedName("pinned_at")
+    private Integer pinnedAt;
 
     public MessageAction getAction() {
         return action;
@@ -235,6 +253,15 @@ public class Message implements Validable {
         return this;
     }
 
+    public Boolean getIsCropped() {
+        return isCropped;
+    }
+
+    public Message setIsCropped(Boolean isCropped) {
+        this.isCropped = isCropped;
+        return this;
+    }
+
     public Keyboard getKeyboard() {
         return keyboard;
     }
@@ -333,9 +360,27 @@ public class Message implements Validable {
         return this;
     }
 
+    public Boolean getWasListened() {
+        return wasListened;
+    }
+
+    public Message setWasListened(Boolean wasListened) {
+        this.wasListened = wasListened;
+        return this;
+    }
+
+    public Integer getPinnedAt() {
+        return pinnedAt;
+    }
+
+    public Message setPinnedAt(Integer pinnedAt) {
+        this.pinnedAt = pinnedAt;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, peerId, keyboard, membersCount, attachments, adminAuthorId, updateTime, fromId, isHidden, refSource, out, geo, important, ref, fwdMessages, randomId, deleted, conversationMessageId, payload, replyMessage, action, id, text);
+        return Objects.hash(date, peerId, attachments, adminAuthorId, out, pinnedAt, refSource, geo, ref, fwdMessages, randomId, conversationMessageId, payload, replyMessage, wasListened, action, id, text, keyboard, membersCount, isCropped, updateTime, fromId, isHidden, important, deleted);
     }
 
     @Override
@@ -344,27 +389,30 @@ public class Message implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
         return Objects.equals(date, message.date) &&
-                Objects.equals(keyboard, message.keyboard) &&
                 Objects.equals(attachments, message.attachments) &&
                 Objects.equals(fromId, message.fromId) &&
                 Objects.equals(isHidden, message.isHidden) &&
-                Objects.equals(refSource, message.refSource) &&
-                Objects.equals(conversationMessageId, message.conversationMessageId) &&
                 Objects.equals(out, message.out) &&
                 Objects.equals(peerId, message.peerId) &&
                 Objects.equals(geo, message.geo) &&
-                Objects.equals(important, message.important) &&
                 Objects.equals(ref, message.ref) &&
                 Objects.equals(updateTime, message.updateTime) &&
-                Objects.equals(deleted, message.deleted) &&
                 Objects.equals(payload, message.payload) &&
+                Objects.equals(pinnedAt, message.pinnedAt) &&
                 Objects.equals(action, message.action) &&
+                Objects.equals(id, message.id) &&
+                Objects.equals(text, message.text) &&
+                Objects.equals(keyboard, message.keyboard) &&
+                Objects.equals(isCropped, message.isCropped) &&
+                Objects.equals(wasListened, message.wasListened) &&
+                Objects.equals(refSource, message.refSource) &&
+                Objects.equals(conversationMessageId, message.conversationMessageId) &&
+                Objects.equals(important, message.important) &&
+                Objects.equals(deleted, message.deleted) &&
                 Objects.equals(adminAuthorId, message.adminAuthorId) &&
                 Objects.equals(fwdMessages, message.fwdMessages) &&
                 Objects.equals(membersCount, message.membersCount) &&
-                Objects.equals(id, message.id) &&
                 Objects.equals(randomId, message.randomId) &&
-                Objects.equals(text, message.text) &&
                 Objects.equals(replyMessage, message.replyMessage);
     }
 
@@ -377,27 +425,30 @@ public class Message implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Message{");
         sb.append("date=").append(date);
-        sb.append(", keyboard=").append(keyboard);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
         sb.append(", isHidden=").append(isHidden);
-        sb.append(", refSource='").append(refSource).append("'");
-        sb.append(", conversationMessageId=").append(conversationMessageId);
         sb.append(", out=").append(out);
         sb.append(", peerId=").append(peerId);
         sb.append(", geo=").append(geo);
-        sb.append(", important=").append(important);
         sb.append(", ref='").append(ref).append("'");
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", deleted=").append(deleted);
         sb.append(", payload='").append(payload).append("'");
+        sb.append(", pinnedAt=").append(pinnedAt);
         sb.append(", action=").append(action);
+        sb.append(", id=").append(id);
+        sb.append(", text='").append(text).append("'");
+        sb.append(", keyboard=").append(keyboard);
+        sb.append(", isCropped=").append(isCropped);
+        sb.append(", wasListened=").append(wasListened);
+        sb.append(", refSource='").append(refSource).append("'");
+        sb.append(", conversationMessageId=").append(conversationMessageId);
+        sb.append(", important=").append(important);
+        sb.append(", deleted=").append(deleted);
         sb.append(", adminAuthorId=").append(adminAuthorId);
         sb.append(", fwdMessages=").append(fwdMessages);
         sb.append(", membersCount=").append(membersCount);
-        sb.append(", id=").append(id);
         sb.append(", randomId=").append(randomId);
-        sb.append(", text='").append(text).append("'");
         sb.append(", replyMessage=").append(replyMessage);
         sb.append('}');
         return sb.toString();

@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.Stats;
+import com.vk.api.sdk.objects.ads.responses.GetStatisticsResponse;
 import com.vk.api.sdk.objects.enums.AdsIdsType;
 import com.vk.api.sdk.objects.enums.AdsPeriod;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Ads.getStatistics method
  */
-public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatisticsQuery, List<Stats>> {
+public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatisticsQuery, List<GetStatisticsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -28,7 +28,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      */
     public AdsGetStatisticsQuery(VkApiClient client, UserActor actor, int accountId,
             AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
-        super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, Stats.class));
+        super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, GetStatisticsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         idsType(idsType);
@@ -96,6 +96,27 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      */
     protected AdsGetStatisticsQuery dateTo(String value) {
         return unsafeParam("date_to", value);
+    }
+
+    /**
+     * stats_fields
+     * Additional fields to add to statistics
+     *
+     * @param value value of "stats fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetStatisticsQuery statsFields(String... value) {
+        return unsafeParam("stats_fields", value);
+    }
+
+    /**
+     * Additional fields to add to statistics
+     *
+     * @param value value of "stats fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetStatisticsQuery statsFields(List<String> value) {
+        return unsafeParam("stats_fields", value);
     }
 
     @Override

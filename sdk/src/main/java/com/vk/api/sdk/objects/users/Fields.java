@@ -4,6 +4,42 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 public enum Fields implements EnumParam {
+    @SerializedName("first_name_nom")
+    FIRST_NAME_NOM("first_name_nom"),
+
+    @SerializedName("first_name_gen")
+    FIRST_NAME_GEN("first_name_gen"),
+
+    @SerializedName("first_name_dat")
+    FIRST_NAME_DAT("first_name_dat"),
+
+    @SerializedName("first_name_acc")
+    FIRST_NAME_ACC("first_name_acc"),
+
+    @SerializedName("first_name_ins")
+    FIRST_NAME_INS("first_name_ins"),
+
+    @SerializedName("first_name_abl")
+    FIRST_NAME_ABL("first_name_abl"),
+
+    @SerializedName("last_name_nom")
+    LAST_NAME_NOM("last_name_nom"),
+
+    @SerializedName("last_name_gen")
+    LAST_NAME_GEN("last_name_gen"),
+
+    @SerializedName("last_name_dat")
+    LAST_NAME_DAT("last_name_dat"),
+
+    @SerializedName("last_name_acc")
+    LAST_NAME_ACC("last_name_acc"),
+
+    @SerializedName("last_name_ins")
+    LAST_NAME_INS("last_name_ins"),
+
+    @SerializedName("last_name_abl")
+    LAST_NAME_ABL("last_name_abl"),
+
     @SerializedName("photo_id")
     PHOTO_ID("photo_id"),
 
@@ -40,6 +76,9 @@ public enum Fields implements EnumParam {
     @SerializedName("photo_200")
     PHOTO_200("photo_200"),
 
+    @SerializedName("photo_400")
+    PHOTO_400("photo_400"),
+
     @SerializedName("photo_400_orig")
     PHOTO_400_ORIG("photo_400_orig"),
 
@@ -48,6 +87,9 @@ public enum Fields implements EnumParam {
 
     @SerializedName("photo_max_orig")
     PHOTO_MAX_ORIG("photo_max_orig"),
+
+    @SerializedName("photo_max_size")
+    PHOTO_MAX_SIZE("photo_max_size"),
 
     @SerializedName("online")
     ONLINE("online"),
@@ -203,7 +245,31 @@ public enum Fields implements EnumParam {
     TRENDING("trending"),
 
     @SerializedName("mutual")
-    MUTUAL("mutual");
+    MUTUAL("mutual"),
+
+    @SerializedName("friendship_weeks")
+    FRIENDSHIP_WEEKS("friendship_weeks"),
+
+    @SerializedName("can_invite_to_chats")
+    CAN_INVITE_TO_CHATS("can_invite_to_chats"),
+
+    @SerializedName("stories_archive_count")
+    STORIES_ARCHIVE_COUNT("stories_archive_count"),
+
+    @SerializedName("video_live_level")
+    VIDEO_LIVE_LEVEL("video_live_level"),
+
+    @SerializedName("video_live_count")
+    VIDEO_LIVE_COUNT("video_live_count"),
+
+    @SerializedName("clips_count")
+    CLIPS_COUNT("clips_count"),
+
+    @SerializedName("service_description")
+    SERVICE_DESCRIPTION("service_description"),
+
+    @SerializedName("is_dead")
+    IS_DEAD("is_dead");
 
     private final String value;
 

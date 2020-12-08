@@ -4,26 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.orders.Order;
+import com.vk.api.sdk.objects.orders.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Orders.get method
  */
-public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Order>> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public OrdersGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "orders.get", Utils.buildParametrizedType(List.class, Order.class));
-        accessToken(actor.getAccessToken());
-    }
-
+public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<GetResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -31,7 +19,7 @@ public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Or
      * @param actor actor with access token
      */
     public OrdersGetQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "orders.get", Utils.buildParametrizedType(List.class, Order.class));
+        super(client, "orders.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

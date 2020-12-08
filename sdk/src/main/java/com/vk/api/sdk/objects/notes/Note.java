@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -71,7 +71,7 @@ public class Note implements Validable {
      * URL of the page with note preview
      */
     @SerializedName("view_url")
-    private URL viewUrl;
+    private URI viewUrl;
 
     public Integer getReadComments() {
         return readComments;
@@ -153,11 +153,11 @@ public class Note implements Validable {
         return this;
     }
 
-    public URL getViewUrl() {
+    public URI getViewUrl() {
         return viewUrl;
     }
 
-    public Note setViewUrl(URL viewUrl) {
+    public Note setViewUrl(URI viewUrl) {
         this.viewUrl = viewUrl;
         return this;
     }

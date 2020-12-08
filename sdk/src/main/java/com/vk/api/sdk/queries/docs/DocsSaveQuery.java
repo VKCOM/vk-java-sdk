@@ -68,6 +68,16 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveRespo
         return unsafeParam("tags", value);
     }
 
+    /**
+     * Set return tags
+     *
+     * @param value value of "return tags" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsSaveQuery returnTags(Boolean value) {
+        return unsafeParam("return_tags", value);
+    }
+
     @Override
     protected DocsSaveQuery getThis() {
         return this;

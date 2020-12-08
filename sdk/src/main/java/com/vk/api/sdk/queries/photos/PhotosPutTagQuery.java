@@ -28,7 +28,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
     /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter. Minimum is 0.
+     * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public PhotosPutTagQuery ownerId(Integer value) {

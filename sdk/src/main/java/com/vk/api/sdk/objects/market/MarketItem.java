@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -35,7 +35,6 @@ public class MarketItem implements Validable {
      * Date when the item has been created in Unixtime
      */
     @SerializedName("date")
-    @Required
     private Integer date;
 
     /**
@@ -72,7 +71,7 @@ public class MarketItem implements Validable {
      * URL of the preview image
      */
     @SerializedName("thumb_photo")
-    private URL thumbPhoto;
+    private URI thumbPhoto;
 
     /**
      * Item title
@@ -85,7 +84,13 @@ public class MarketItem implements Validable {
      * URL to item
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
+
+    @SerializedName("variants_grouping_id")
+    private Integer variantsGroupingId;
+
+    @SerializedName("is_main_variant")
+    private Boolean isMainVariant;
 
     public String getAccessKey() {
         return accessKey;
@@ -186,11 +191,11 @@ public class MarketItem implements Validable {
         return this;
     }
 
-    public URL getThumbPhoto() {
+    public URI getThumbPhoto() {
         return thumbPhoto;
     }
 
-    public MarketItem setThumbPhoto(URL thumbPhoto) {
+    public MarketItem setThumbPhoto(URI thumbPhoto) {
         this.thumbPhoto = thumbPhoto;
         return this;
     }
@@ -204,18 +209,36 @@ public class MarketItem implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public MarketItem setUrl(URL url) {
+    public MarketItem setUrl(URI url) {
         this.url = url;
+        return this;
+    }
+
+    public Integer getVariantsGroupingId() {
+        return variantsGroupingId;
+    }
+
+    public MarketItem setVariantsGroupingId(Integer variantsGroupingId) {
+        this.variantsGroupingId = variantsGroupingId;
+        return this;
+    }
+
+    public Boolean getIsMainVariant() {
+        return isMainVariant;
+    }
+
+    public MarketItem setIsMainVariant(Boolean isMainVariant) {
+        this.isMainVariant = isMainVariant;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, accessKey, price, id, category, isFavorite);
+        return Objects.hash(date, variantsGroupingId, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, isMainVariant, accessKey, price, id, category, isFavorite);
     }
 
     @Override
@@ -228,10 +251,12 @@ public class MarketItem implements Validable {
                 Objects.equals(ownerId, marketItem.ownerId) &&
                 Objects.equals(description, marketItem.description) &&
                 Objects.equals(externalId, marketItem.externalId) &&
+                Objects.equals(isMainVariant, marketItem.isMainVariant) &&
                 Objects.equals(availability, marketItem.availability) &&
                 Objects.equals(title, marketItem.title) &&
                 Objects.equals(url, marketItem.url) &&
                 Objects.equals(thumbPhoto, marketItem.thumbPhoto) &&
+                Objects.equals(variantsGroupingId, marketItem.variantsGroupingId) &&
                 Objects.equals(price, marketItem.price) &&
                 Objects.equals(accessKey, marketItem.accessKey) &&
                 Objects.equals(buttonTitle, marketItem.buttonTitle) &&
@@ -252,10 +277,12 @@ public class MarketItem implements Validable {
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
         sb.append(", externalId='").append(externalId).append("'");
+        sb.append(", isMainVariant=").append(isMainVariant);
         sb.append(", availability=").append(availability);
         sb.append(", title='").append(title).append("'");
         sb.append(", url=").append(url);
         sb.append(", thumbPhoto=").append(thumbPhoto);
+        sb.append(", variantsGroupingId=").append(variantsGroupingId);
         sb.append(", price=").append(price);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", buttonTitle='").append(buttonTitle).append("'");

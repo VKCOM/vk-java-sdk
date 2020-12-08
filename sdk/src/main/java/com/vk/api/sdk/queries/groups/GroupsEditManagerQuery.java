@@ -48,7 +48,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     }
 
     /**
-     * Manager role. Possible values: *'moderator',, *'editor',, *'administrator'.
+     * Manager role. Possible values: *'moderator',, *'editor',, *'administrator',, *'advertiser'.
      *
      * @param value value of "role" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

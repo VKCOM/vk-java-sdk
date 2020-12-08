@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -23,7 +23,13 @@ public class PhotoSizes implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private URI url;
+
+    /**
+     * URL of the image
+     */
+    @SerializedName("src")
+    private URI src;
 
     @SerializedName("type")
     @Required
@@ -45,12 +51,21 @@ public class PhotoSizes implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public PhotoSizes setUrl(URL url) {
+    public PhotoSizes setUrl(URI url) {
         this.url = url;
+        return this;
+    }
+
+    public URI getSrc() {
+        return src;
+    }
+
+    public PhotoSizes setSrc(URI src) {
+        this.src = src;
         return this;
     }
 
@@ -74,7 +89,7 @@ public class PhotoSizes implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, type, url, height);
+        return Objects.hash(src, width, type, url, height);
     }
 
     @Override
@@ -82,7 +97,8 @@ public class PhotoSizes implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoSizes photoSizes = (PhotoSizes) o;
-        return Objects.equals(width, photoSizes.width) &&
+        return Objects.equals(src, photoSizes.src) &&
+                Objects.equals(width, photoSizes.width) &&
                 Objects.equals(type, photoSizes.type) &&
                 Objects.equals(url, photoSizes.url) &&
                 Objects.equals(height, photoSizes.height);
@@ -96,7 +112,8 @@ public class PhotoSizes implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoSizes{");
-        sb.append("width=").append(width);
+        sb.append("src=").append(src);
+        sb.append(", width=").append(width);
         sb.append(", type=").append(type);
         sb.append(", url=").append(url);
         sb.append(", height=").append(height);

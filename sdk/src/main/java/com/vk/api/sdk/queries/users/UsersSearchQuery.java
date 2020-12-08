@@ -297,16 +297,6 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     }
 
     /**
-     * Users' interests.
-     *
-     * @param value value of "interests" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public UsersSearchQuery interests(String value) {
-        return unsafeParam("interests", value);
-    }
-
-    /**
      * Name of the company where users work.
      *
      * @param value value of "company" parameter.

@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.base.RepostsInfo;
 import com.vk.api.sdk.objects.photos.Photo;
 import java.util.List;
@@ -43,6 +44,24 @@ public class MarketItemFull extends MarketItem implements Validable {
      */
     @SerializedName("views_count")
     private Integer viewsCount;
+
+    /**
+     * Object identifier in wishlist of viewer
+     */
+    @SerializedName("wishlist_item_id")
+    private Integer wishlistItemId;
+
+    /**
+     * Information for cancel and revert order
+     */
+    @SerializedName("cancel_info")
+    private Link cancelInfo;
+
+    /**
+     * User agreement info
+     */
+    @SerializedName("user_agreement_info")
+    private String userAgreementInfo;
 
     public List<Integer> getAlbumsIds() {
         return albumsIds;
@@ -105,9 +124,36 @@ public class MarketItemFull extends MarketItem implements Validable {
         return this;
     }
 
+    public Integer getWishlistItemId() {
+        return wishlistItemId;
+    }
+
+    public MarketItemFull setWishlistItemId(Integer wishlistItemId) {
+        this.wishlistItemId = wishlistItemId;
+        return this;
+    }
+
+    public Link getCancelInfo() {
+        return cancelInfo;
+    }
+
+    public MarketItemFull setCancelInfo(Link cancelInfo) {
+        this.cancelInfo = cancelInfo;
+        return this;
+    }
+
+    public String getUserAgreementInfo() {
+        return userAgreementInfo;
+    }
+
+    public MarketItemFull setUserAgreementInfo(String userAgreementInfo) {
+        this.userAgreementInfo = userAgreementInfo;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(canRepost, viewsCount, albumsIds, canComment, photos, reposts, likes);
+        return Objects.hash(userAgreementInfo, canRepost, wishlistItemId, cancelInfo, viewsCount, albumsIds, canComment, photos, reposts, likes);
     }
 
     @Override
@@ -117,10 +163,13 @@ public class MarketItemFull extends MarketItem implements Validable {
         MarketItemFull marketItemFull = (MarketItemFull) o;
         return Objects.equals(canRepost, marketItemFull.canRepost) &&
                 Objects.equals(canComment, marketItemFull.canComment) &&
+                Objects.equals(userAgreementInfo, marketItemFull.userAgreementInfo) &&
+                Objects.equals(wishlistItemId, marketItemFull.wishlistItemId) &&
                 Objects.equals(viewsCount, marketItemFull.viewsCount) &&
                 Objects.equals(albumsIds, marketItemFull.albumsIds) &&
                 Objects.equals(photos, marketItemFull.photos) &&
                 Objects.equals(reposts, marketItemFull.reposts) &&
+                Objects.equals(cancelInfo, marketItemFull.cancelInfo) &&
                 Objects.equals(likes, marketItemFull.likes);
     }
 
@@ -134,10 +183,13 @@ public class MarketItemFull extends MarketItem implements Validable {
         final StringBuilder sb = new StringBuilder("MarketItemFull{");
         sb.append("canRepost=").append(canRepost);
         sb.append(", canComment=").append(canComment);
+        sb.append(", userAgreementInfo='").append(userAgreementInfo).append("'");
+        sb.append(", wishlistItemId=").append(wishlistItemId);
         sb.append(", viewsCount=").append(viewsCount);
         sb.append(", albumsIds=").append(albumsIds);
         sb.append(", photos=").append(photos);
         sb.append(", reposts=").append(reposts);
+        sb.append(", cancelInfo=").append(cancelInfo);
         sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();

@@ -22,6 +22,12 @@ public class PhotoUploadResponse implements Validable {
     private String hash;
 
     /**
+     * Uploaded photo data
+     */
+    @SerializedName("photo")
+    private String photo;
+
+    /**
      * Uploaded photos data
      */
     @SerializedName("photos_list")
@@ -51,6 +57,15 @@ public class PhotoUploadResponse implements Validable {
         return this;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public PhotoUploadResponse setPhoto(String photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public String getPhotosList() {
         return photosList;
     }
@@ -71,7 +86,7 @@ public class PhotoUploadResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(server, photosList, aid, hash);
+        return Objects.hash(server, photo, photosList, aid, hash);
     }
 
     @Override
@@ -80,6 +95,7 @@ public class PhotoUploadResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         PhotoUploadResponse photoUploadResponse = (PhotoUploadResponse) o;
         return Objects.equals(server, photoUploadResponse.server) &&
+                Objects.equals(photo, photoUploadResponse.photo) &&
                 Objects.equals(photosList, photoUploadResponse.photosList) &&
                 Objects.equals(aid, photoUploadResponse.aid) &&
                 Objects.equals(hash, photoUploadResponse.hash);
@@ -94,6 +110,7 @@ public class PhotoUploadResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoUploadResponse{");
         sb.append("server=").append(server);
+        sb.append(", photo='").append(photo).append("'");
         sb.append(", photosList='").append(photosList).append("'");
         sb.append(", aid=").append(aid);
         sb.append(", hash='").append(hash).append("'");

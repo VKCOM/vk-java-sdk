@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.database.Station;
+import com.vk.api.sdk.objects.database.responses.GetMetroStationsByIdResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Database.getMetroStationsById method
  */
-public class DatabaseGetMetroStationsByIdQuery extends AbstractQueryBuilder<DatabaseGetMetroStationsByIdQuery, List<Station>> {
+public class DatabaseGetMetroStationsByIdQuery extends AbstractQueryBuilder<DatabaseGetMetroStationsByIdQuery, List<GetMetroStationsByIdResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class DatabaseGetMetroStationsByIdQuery extends AbstractQueryBuilder<Data
      * @param actor actor with access token
      */
     public DatabaseGetMetroStationsByIdQuery(VkApiClient client, UserActor actor) {
-        super(client, "database.getMetroStationsById", Utils.buildParametrizedType(List.class, Station.class));
+        super(client, "database.getMetroStationsById", Utils.buildParametrizedType(List.class, GetMetroStationsByIdResponse.class));
         accessToken(actor.getAccessToken());
     }
 
@@ -31,7 +31,7 @@ public class DatabaseGetMetroStationsByIdQuery extends AbstractQueryBuilder<Data
      * @param actor actor with access token
      */
     public DatabaseGetMetroStationsByIdQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "database.getMetroStationsById", Utils.buildParametrizedType(List.class, Station.class));
+        super(client, "database.getMetroStationsById", Utils.buildParametrizedType(List.class, GetMetroStationsByIdResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

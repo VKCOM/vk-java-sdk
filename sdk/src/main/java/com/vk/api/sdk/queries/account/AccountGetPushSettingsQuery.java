@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.account.PushSettings;
+import com.vk.api.sdk.objects.account.responses.GetPushSettingsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Account.getPushSettings method
  */
-public class AccountGetPushSettingsQuery extends AbstractQueryBuilder<AccountGetPushSettingsQuery, PushSettings> {
+public class AccountGetPushSettingsQuery extends AbstractQueryBuilder<AccountGetPushSettingsQuery, GetPushSettingsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class AccountGetPushSettingsQuery extends AbstractQueryBuilder<AccountGet
      * @param actor actor with access token
      */
     public AccountGetPushSettingsQuery(VkApiClient client, UserActor actor) {
-        super(client, "account.getPushSettings", PushSettings.class);
+        super(client, "account.getPushSettings", GetPushSettingsResponse.class);
         accessToken(actor.getAccessToken());
     }
 

@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.utils;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -26,7 +26,7 @@ public class LastShortenedLink implements Validable {
      * Short link URL
      */
     @SerializedName("short_url")
-    private URL shortUrl;
+    private URI shortUrl;
 
     /**
      * Creation time in Unixtime
@@ -38,7 +38,7 @@ public class LastShortenedLink implements Validable {
      * Full URL
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
 
     /**
      * Total views number
@@ -64,11 +64,11 @@ public class LastShortenedLink implements Validable {
         return this;
     }
 
-    public URL getShortUrl() {
+    public URI getShortUrl() {
         return shortUrl;
     }
 
-    public LastShortenedLink setShortUrl(URL shortUrl) {
+    public LastShortenedLink setShortUrl(URI shortUrl) {
         this.shortUrl = shortUrl;
         return this;
     }
@@ -82,11 +82,11 @@ public class LastShortenedLink implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public LastShortenedLink setUrl(URL url) {
+    public LastShortenedLink setUrl(URI url) {
         this.url = url;
         return this;
     }

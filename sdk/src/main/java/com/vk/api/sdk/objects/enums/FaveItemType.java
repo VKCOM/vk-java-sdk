@@ -7,6 +7,9 @@ public enum FaveItemType implements EnumParam {
     @SerializedName("article")
     ARTICLE("article"),
 
+    @SerializedName("clip")
+    CLIP("clip"),
+
     @SerializedName("link")
     LINK("link"),
 

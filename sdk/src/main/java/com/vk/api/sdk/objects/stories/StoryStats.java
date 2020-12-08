@@ -37,6 +37,10 @@ public class StoryStats implements Validable {
     @Required
     private StoryStatsStat views;
 
+    @SerializedName("likes")
+    @Required
+    private StoryStatsStat likes;
+
     public StoryStatsStat getAnswer() {
         return answer;
     }
@@ -100,9 +104,18 @@ public class StoryStats implements Validable {
         return this;
     }
 
+    public StoryStatsStat getLikes() {
+        return likes;
+    }
+
+    public StoryStats setLikes(StoryStatsStat likes) {
+        this.likes = likes;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(shares, answer, replies, subscribers, bans, openLink, views);
+        return Objects.hash(shares, answer, replies, subscribers, bans, openLink, views, likes);
     }
 
     @Override
@@ -116,7 +129,8 @@ public class StoryStats implements Validable {
                 Objects.equals(subscribers, storyStats.subscribers) &&
                 Objects.equals(openLink, storyStats.openLink) &&
                 Objects.equals(bans, storyStats.bans) &&
-                Objects.equals(views, storyStats.views);
+                Objects.equals(views, storyStats.views) &&
+                Objects.equals(likes, storyStats.likes);
     }
 
     @Override
@@ -134,6 +148,7 @@ public class StoryStats implements Validable {
         sb.append(", openLink=").append(openLink);
         sb.append(", bans=").append(bans);
         sb.append(", views=").append(views);
+        sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();
     }

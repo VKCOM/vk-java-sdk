@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.friends.MutualFriend;
+import com.vk.api.sdk.objects.friends.responses.GetMutualTargetUidsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Friends.getMutual method
  */
-public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<FriendsGetMutualQueryWithTargetUids, List<MutualFriend>> {
+public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<FriendsGetMutualQueryWithTargetUids, List<GetMutualTargetUidsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<Fr
      */
     public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor,
             Integer... targetUids) {
-        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, MutualFriend.class));
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, GetMutualTargetUidsResponse.class));
         accessToken(actor.getAccessToken());
         targetUids(targetUids);
     }
@@ -33,7 +33,7 @@ public class FriendsGetMutualQueryWithTargetUids extends AbstractQueryBuilder<Fr
      */
     public FriendsGetMutualQueryWithTargetUids(VkApiClient client, UserActor actor,
             List<Integer> targetUids) {
-        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, MutualFriend.class));
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, GetMutualTargetUidsResponse.class));
         accessToken(actor.getAccessToken());
         targetUids(targetUids);
     }

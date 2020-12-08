@@ -4,6 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.MessagesIntent;
+import com.vk.api.sdk.objects.messages.Forward;
 import com.vk.api.sdk.objects.messages.Keyboard;
 import java.util.Arrays;
 import java.util.List;
@@ -136,12 +138,12 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
-     * Set forward
+     * JSON describing the forwarded message or reply
      *
      * @param value value of "forward" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQuery forward(String value) {
+    public MessagesSendQuery forward(Forward value) {
         return unsafeParam("forward", value);
     }
 
@@ -176,6 +178,16 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
     }
 
     /**
+     * Set template
+     *
+     * @param value value of "template" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery template(String value) {
+        return unsafeParam("template", value);
+    }
+
+    /**
      * Set payload
      *
      * @param value value of "payload" parameter.
@@ -183,6 +195,16 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery payload(String value) {
         return unsafeParam("payload", value);
+    }
+
+    /**
+     * JSON describing the content source in the message
+     *
+     * @param value value of "content source" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery contentSource(String value) {
+        return unsafeParam("content_source", value);
     }
 
     /**
@@ -203,6 +225,47 @@ public class MessagesSendQuery extends AbstractQueryBuilder<MessagesSendQuery, I
      */
     public MessagesSendQuery disableMentions(Boolean value) {
         return unsafeParam("disable_mentions", value);
+    }
+
+    /**
+     * Set intent
+     *
+     * @param value value of "intent" parameter. By default default.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery intent(MessagesIntent value) {
+        return unsafeParam("intent", value);
+    }
+
+    /**
+     * Set subscribe id
+     *
+     * @param value value of "subscribe id" parameter. Maximum is 100. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery subscribeId(Integer value) {
+        return unsafeParam("subscribe_id", value);
+    }
+
+    /**
+     * peer_ids
+     * IDs of message recipients. (See peer_id)
+     *
+     * @param value value of "peer ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery peerIds(Integer... value) {
+        return unsafeParam("peer_ids", value);
+    }
+
+    /**
+     * IDs of message recipients. (See peer_id)
+     *
+     * @param value value of "peer ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesSendQuery peerIds(List<Integer> value) {
+        return unsafeParam("peer_ids", value);
     }
 
     /**

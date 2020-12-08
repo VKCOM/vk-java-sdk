@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.photos.responses.SaveMessagesPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.saveMessagesPhoto method
  */
-public class PhotosSaveMessagesPhotoQuery extends AbstractQueryBuilder<PhotosSaveMessagesPhotoQuery, List<Photo>> {
+public class PhotosSaveMessagesPhotoQuery extends AbstractQueryBuilder<PhotosSaveMessagesPhotoQuery, List<SaveMessagesPhotoResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class PhotosSaveMessagesPhotoQuery extends AbstractQueryBuilder<PhotosSav
      * @param photo value of "photo" parameter.
      */
     public PhotosSaveMessagesPhotoQuery(VkApiClient client, UserActor actor, String photo) {
-        super(client, "photos.saveMessagesPhoto", Utils.buildParametrizedType(List.class, Photo.class));
+        super(client, "photos.saveMessagesPhoto", Utils.buildParametrizedType(List.class, SaveMessagesPhotoResponse.class));
         accessToken(actor.getAccessToken());
         photo(photo);
     }
@@ -34,7 +34,7 @@ public class PhotosSaveMessagesPhotoQuery extends AbstractQueryBuilder<PhotosSav
      * @param photo value of "photo" parameter.
      */
     public PhotosSaveMessagesPhotoQuery(VkApiClient client, GroupActor actor, String photo) {
-        super(client, "photos.saveMessagesPhoto", Utils.buildParametrizedType(List.class, Photo.class));
+        super(client, "photos.saveMessagesPhoto", Utils.buildParametrizedType(List.class, SaveMessagesPhotoResponse.class));
         accessToken(actor.getAccessToken());
         photo(photo);
     }

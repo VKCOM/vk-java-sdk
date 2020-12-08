@@ -8,6 +8,7 @@ import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.docs.Doc;
 import com.vk.api.sdk.objects.events.EventAttach;
+import com.vk.api.sdk.objects.groups.GroupAttach;
 import com.vk.api.sdk.objects.market.MarketAlbum;
 import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.pages.WikipageFull;
@@ -42,6 +43,9 @@ public class WallpostAttachment implements Validable {
 
     @SerializedName("event")
     private EventAttach event;
+
+    @SerializedName("group")
+    private GroupAttach group;
 
     @SerializedName("graffiti")
     private Graffiti graffiti;
@@ -131,6 +135,15 @@ public class WallpostAttachment implements Validable {
 
     public WallpostAttachment setEvent(EventAttach event) {
         this.event = event;
+        return this;
+    }
+
+    public GroupAttach getGroup() {
+        return group;
+    }
+
+    public WallpostAttachment setGroup(GroupAttach group) {
+        this.group = group;
         return this;
     }
 
@@ -244,7 +257,7 @@ public class WallpostAttachment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, postedPhoto, market, accessKey, photosList, doc, graffiti, audio, page, event);
+        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, postedPhoto, market, accessKey, photosList, doc, graffiti, audio, page, event, group);
     }
 
     @Override
@@ -269,7 +282,8 @@ public class WallpostAttachment implements Validable {
                 Objects.equals(graffiti, wallpostAttachment.graffiti) &&
                 Objects.equals(audio, wallpostAttachment.audio) &&
                 Objects.equals(page, wallpostAttachment.page) &&
-                Objects.equals(event, wallpostAttachment.event);
+                Objects.equals(event, wallpostAttachment.event) &&
+                Objects.equals(group, wallpostAttachment.group);
     }
 
     @Override
@@ -298,6 +312,7 @@ public class WallpostAttachment implements Validable {
         sb.append(", audio=").append(audio);
         sb.append(", page=").append(page);
         sb.append(", event=").append(event);
+        sb.append(", group=").append(group);
         sb.append('}');
         return sb.toString();
     }

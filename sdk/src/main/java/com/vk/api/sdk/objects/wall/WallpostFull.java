@@ -39,6 +39,9 @@ public class WallpostFull extends Wallpost implements Validable {
     @SerializedName("can_pin")
     private BoolInt canPin;
 
+    @SerializedName("donut")
+    private WallpostDonut donut;
+
     /**
      * Information whether the post is pinned
      */
@@ -53,6 +56,12 @@ public class WallpostFull extends Wallpost implements Validable {
      */
     @SerializedName("marked_as_ads")
     private BoolInt markedAsAds;
+
+    /**
+     * Preview length control parameter
+     */
+    @SerializedName("short_text_rate")
+    private Float shortTextRate;
 
     public List<Wallpost> getCopyHistory() {
         return copyHistory;
@@ -96,6 +105,15 @@ public class WallpostFull extends Wallpost implements Validable {
         return canPin;
     }
 
+    public WallpostDonut getDonut() {
+        return donut;
+    }
+
+    public WallpostFull setDonut(WallpostDonut donut) {
+        this.donut = donut;
+        return this;
+    }
+
     public Integer getIsPinned() {
         return isPinned;
     }
@@ -122,9 +140,18 @@ public class WallpostFull extends Wallpost implements Validable {
         return markedAsAds;
     }
 
+    public Float getShortTextRate() {
+        return shortTextRate;
+    }
+
+    public WallpostFull setShortTextRate(Float shortTextRate) {
+        this.shortTextRate = shortTextRate;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(comments, createdBy, isPinned, canEdit, canDelete, markedAsAds, canPin, copyHistory);
+        return Objects.hash(comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, copyHistory);
     }
 
     @Override
@@ -132,8 +159,10 @@ public class WallpostFull extends Wallpost implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WallpostFull wallpostFull = (WallpostFull) o;
-        return Objects.equals(comments, wallpostFull.comments) &&
+        return Objects.equals(shortTextRate, wallpostFull.shortTextRate) &&
+                Objects.equals(comments, wallpostFull.comments) &&
                 Objects.equals(canDelete, wallpostFull.canDelete) &&
+                Objects.equals(donut, wallpostFull.donut) &&
                 Objects.equals(canEdit, wallpostFull.canEdit) &&
                 Objects.equals(markedAsAds, wallpostFull.markedAsAds) &&
                 Objects.equals(createdBy, wallpostFull.createdBy) &&
@@ -150,8 +179,10 @@ public class WallpostFull extends Wallpost implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WallpostFull{");
-        sb.append("comments=").append(comments);
+        sb.append("shortTextRate=").append(shortTextRate);
+        sb.append(", comments=").append(comments);
         sb.append(", canDelete=").append(canDelete);
+        sb.append(", donut=").append(donut);
         sb.append(", canEdit=").append(canEdit);
         sb.append(", markedAsAds=").append(markedAsAds);
         sb.append(", createdBy=").append(createdBy);

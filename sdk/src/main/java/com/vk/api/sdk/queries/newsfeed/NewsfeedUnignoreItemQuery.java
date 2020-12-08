@@ -60,6 +60,16 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
         return unsafeParam("item_id", value);
     }
 
+    /**
+     * Track code of unignored item
+     *
+     * @param value value of "track code" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NewsfeedUnignoreItemQuery trackCode(String value) {
+        return unsafeParam("track_code", value);
+    }
+
     @Override
     protected NewsfeedUnignoreItemQuery getThis() {
         return this;

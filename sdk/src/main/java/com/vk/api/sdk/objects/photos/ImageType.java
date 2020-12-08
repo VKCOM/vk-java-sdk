@@ -16,6 +16,9 @@ public enum ImageType implements EnumParam {
     @SerializedName("x")
     X("x"),
 
+    @SerializedName("l")
+    L("l"),
+
     @SerializedName("o")
     O("o"),
 

@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.LikesInfo;
 import com.vk.api.sdk.objects.wall.CommentAttachment;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +49,15 @@ public class TopicComment implements Validable {
     @SerializedName("text")
     @Required
     private String text;
+
+    /**
+     * Information whether current user can edit the comment
+     */
+    @SerializedName("can_edit")
+    private BoolInt canEdit;
+
+    @SerializedName("likes")
+    private LikesInfo likes;
 
     public List<CommentAttachment> getAttachments() {
         return attachments;
@@ -102,9 +113,26 @@ public class TopicComment implements Validable {
         return this;
     }
 
+    public boolean canEdit() {
+        return canEdit == BoolInt.YES;
+    }
+
+    public BoolInt getCanEdit() {
+        return canEdit;
+    }
+
+    public LikesInfo getLikes() {
+        return likes;
+    }
+
+    public TopicComment setLikes(LikesInfo likes) {
+        this.likes = likes;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, realOffset, attachments, id, text, fromId);
+        return Objects.hash(date, realOffset, attachments, canEdit, id, text, fromId, likes);
     }
 
     @Override
@@ -116,8 +144,10 @@ public class TopicComment implements Validable {
                 Objects.equals(realOffset, topicComment.realOffset) &&
                 Objects.equals(attachments, topicComment.attachments) &&
                 Objects.equals(fromId, topicComment.fromId) &&
+                Objects.equals(canEdit, topicComment.canEdit) &&
                 Objects.equals(id, topicComment.id) &&
-                Objects.equals(text, topicComment.text);
+                Objects.equals(text, topicComment.text) &&
+                Objects.equals(likes, topicComment.likes);
     }
 
     @Override
@@ -132,8 +162,10 @@ public class TopicComment implements Validable {
         sb.append(", realOffset=").append(realOffset);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
+        sb.append(", canEdit=").append(canEdit);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
+        sb.append(", likes=").append(likes);
         sb.append('}');
         return sb.toString();
     }

@@ -8,14 +8,14 @@ import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.UsersNameCase;
 import com.vk.api.sdk.objects.users.Fields;
-import com.vk.api.sdk.objects.users.UserXtrCounters;
+import com.vk.api.sdk.objects.users.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Users.get method
  */
-public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<UserXtrCounters>> {
+public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * @param actor actor with access token
      */
     public UsersGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
+        super(client, "users.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
     }
 
@@ -34,7 +34,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * @param actor actor with access token
      */
     public UsersGetQuery(VkApiClient client, GroupActor actor) {
-        super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
+        super(client, "users.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
     }
 
@@ -45,7 +45,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
      * @param actor actor with access token
      */
     public UsersGetQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "users.get", Utils.buildParametrizedType(List.class, UserXtrCounters.class));
+        super(client, "users.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }
@@ -83,7 +83,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
 
     /**
      * fields
-     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities',
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', 'can_invite_to_chats'
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -93,7 +93,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<User
     }
 
     /**
-     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities',
+     * Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'activity', 'can_write_private_message', 'can_see_all_posts', 'can_post', 'universities', 'can_invite_to_chats'
      *
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

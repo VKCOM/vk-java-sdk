@@ -19,14 +19,16 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param accountId value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
      * @param name value of "name" parameter.
+     * @param lifetime value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      */
     public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
-            int targetGroupId, String name) {
+            int targetGroupId, String name, int lifetime) {
         super(client, "ads.updateTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
         targetGroupId(targetGroupId);
         name(name);
+        lifetime(lifetime);
     }
 
     /**
@@ -80,12 +82,12 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
-     * 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
+     * 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' - automatic exclusion is off.
      *
-     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 0. By default 720.
+     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsUpdateTargetGroupQuery lifetime(Integer value) {
+    protected AdsUpdateTargetGroupQuery lifetime(int value) {
         return unsafeParam("lifetime", value);
     }
 
@@ -116,6 +118,6 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("target_group_id", "name", "account_id", "access_token");
+        return Arrays.asList("lifetime", "target_group_id", "name", "account_id", "access_token");
     }
 }

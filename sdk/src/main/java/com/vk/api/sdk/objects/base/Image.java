@@ -4,13 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
  * Image object
  */
 public class Image implements Validable {
+    @SerializedName("id")
+    private String id;
+
     /**
      * Image height
      */
@@ -23,7 +26,7 @@ public class Image implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private URI url;
 
     /**
      * Image width
@@ -31,6 +34,15 @@ public class Image implements Validable {
     @SerializedName("width")
     @Required
     private Integer width;
+
+    public String getId() {
+        return id;
+    }
+
+    public Image setId(String id) {
+        this.id = id;
+        return this;
+    }
 
     public Integer getHeight() {
         return height;
@@ -41,11 +53,11 @@ public class Image implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public Image setUrl(URL url) {
+    public Image setUrl(URI url) {
         this.url = url;
         return this;
     }
@@ -61,7 +73,7 @@ public class Image implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, url, height);
+        return Objects.hash(width, id, url, height);
     }
 
     @Override
@@ -70,6 +82,7 @@ public class Image implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Image image = (Image) o;
         return Objects.equals(width, image.width) &&
+                Objects.equals(id, image.id) &&
                 Objects.equals(url, image.url) &&
                 Objects.equals(height, image.height);
     }
@@ -83,6 +96,7 @@ public class Image implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Image{");
         sb.append("width=").append(width);
+        sb.append(", id='").append(id).append("'");
         sb.append(", url=").append(url);
         sb.append(", height=").append(height);
         sb.append('}');

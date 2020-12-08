@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.market.responses.DeleteCommentResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Market.deleteComment method
  */
-public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteCommentQuery, BoolInt> {
+public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteCommentQuery, DeleteCommentResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteC
      */
     public MarketDeleteCommentQuery(VkApiClient client, UserActor actor, int ownerId,
             int commentId) {
-        super(client, "market.deleteComment", BoolInt.class);
+        super(client, "market.deleteComment", DeleteCommentResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         commentId(commentId);

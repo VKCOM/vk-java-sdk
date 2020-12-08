@@ -1,7 +1,6 @@
 package com.vk.api.sdk.objects.notifications.responses;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.apps.App;
@@ -23,7 +22,7 @@ public class GetResponse implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<JsonObject> items;
+    private List<String> items;
 
     @SerializedName("profiles")
     private List<User> profiles;
@@ -61,11 +60,11 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<JsonObject> getItems() {
+    public List<String> getItems() {
         return items;
     }
 
-    public GetResponse setItems(List<JsonObject> items) {
+    public GetResponse setItems(List<String> items) {
         this.items = items;
         return this;
     }
@@ -178,7 +177,7 @@ public class GetResponse implements Validable {
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
         sb.append(", videos=").append(videos);
-        sb.append(", items=").append(items);
+        sb.append(", items='").append(items).append("'");
         sb.append(", photos=").append(photos);
         sb.append(", ttl=").append(ttl);
         sb.append(", apps=").append(apps);

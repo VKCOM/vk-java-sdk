@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.pages.Wikipage;
+import com.vk.api.sdk.objects.pages.responses.GetTitlesResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Pages.getTitles method
  */
-public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuery, List<Wikipage>> {
+public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuery, List<GetTitlesResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuer
      * @param actor actor with access token
      */
     public PagesGetTitlesQuery(VkApiClient client, UserActor actor) {
-        super(client, "pages.getTitles", Utils.buildParametrizedType(List.class, Wikipage.class));
+        super(client, "pages.getTitles", Utils.buildParametrizedType(List.class, GetTitlesResponse.class));
         accessToken(actor.getAccessToken());
     }
 

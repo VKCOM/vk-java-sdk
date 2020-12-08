@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.photos.responses.DeleteCommentResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.deleteComment method
  */
-public class PhotosDeleteCommentQuery extends AbstractQueryBuilder<PhotosDeleteCommentQuery, BoolInt> {
+public class PhotosDeleteCommentQuery extends AbstractQueryBuilder<PhotosDeleteCommentQuery, DeleteCommentResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PhotosDeleteCommentQuery extends AbstractQueryBuilder<PhotosDeleteC
      * @param commentId value of "comment id" parameter.
      */
     public PhotosDeleteCommentQuery(VkApiClient client, UserActor actor, int commentId) {
-        super(client, "photos.deleteComment", BoolInt.class);
+        super(client, "photos.deleteComment", DeleteCommentResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);
     }
