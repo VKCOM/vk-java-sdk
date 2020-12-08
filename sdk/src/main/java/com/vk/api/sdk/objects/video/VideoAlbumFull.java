@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.PropertyExists;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,10 +32,16 @@ public class VideoAlbumFull implements Validable {
     private List<VideoImage> image;
 
     /**
+     * Need blur album thumb or not
+     */
+    @SerializedName("image_blur")
+    private PropertyExists imageBlur;
+
+    /**
      * Information whether album is system
      */
     @SerializedName("is_system")
-    private Integer isSystem;
+    private PropertyExists isSystem;
 
     /**
      * Album owner's ID
@@ -82,13 +89,12 @@ public class VideoAlbumFull implements Validable {
         return this;
     }
 
-    public Integer getIsSystem() {
-        return isSystem;
+    public boolean isImageBlur() {
+        return imageBlur == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public VideoAlbumFull setIsSystem(Integer isSystem) {
-        this.isSystem = isSystem;
-        return this;
+    public boolean isSystem() {
+        return isSystem == PropertyExists.PROPERTY_EXISTS;
     }
 
     public Integer getOwnerId() {
@@ -120,7 +126,7 @@ public class VideoAlbumFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSystem, image, updatedTime, count, id, ownerId, title);
+        return Objects.hash(isSystem, image, updatedTime, imageBlur, count, id, ownerId, title);
     }
 
     @Override
@@ -131,6 +137,7 @@ public class VideoAlbumFull implements Validable {
         return Objects.equals(image, videoAlbumFull.image) &&
                 Objects.equals(isSystem, videoAlbumFull.isSystem) &&
                 Objects.equals(updatedTime, videoAlbumFull.updatedTime) &&
+                Objects.equals(imageBlur, videoAlbumFull.imageBlur) &&
                 Objects.equals(ownerId, videoAlbumFull.ownerId) &&
                 Objects.equals(count, videoAlbumFull.count) &&
                 Objects.equals(id, videoAlbumFull.id) &&
@@ -148,6 +155,7 @@ public class VideoAlbumFull implements Validable {
         sb.append("image=").append(image);
         sb.append(", isSystem=").append(isSystem);
         sb.append(", updatedTime=").append(updatedTime);
+        sb.append(", imageBlur=").append(imageBlur);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", count=").append(count);
         sb.append(", id=").append(id);

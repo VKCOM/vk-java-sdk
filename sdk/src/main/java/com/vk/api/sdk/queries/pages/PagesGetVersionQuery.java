@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.pages.WikipageFull;
+import com.vk.api.sdk.objects.pages.responses.GetVersionResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Pages.getVersion method
  */
-public class PagesGetVersionQuery extends AbstractQueryBuilder<PagesGetVersionQuery, WikipageFull> {
+public class PagesGetVersionQuery extends AbstractQueryBuilder<PagesGetVersionQuery, GetVersionResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PagesGetVersionQuery extends AbstractQueryBuilder<PagesGetVersionQu
      * @param versionId value of "version id" parameter.
      */
     public PagesGetVersionQuery(VkApiClient client, UserActor actor, int versionId) {
-        super(client, "pages.getVersion", WikipageFull.class);
+        super(client, "pages.getVersion", GetVersionResponse.class);
         accessToken(actor.getAccessToken());
         versionId(versionId);
     }

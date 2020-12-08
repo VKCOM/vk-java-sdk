@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.AdLayout;
+import com.vk.api.sdk.objects.ads.responses.GetAdsLayoutResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getAdsLayout method
  */
-public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQuery, List<AdLayout>> {
+public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQuery, List<GetAdsLayoutResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param accountId value of "account id" parameter.
      */
     public AdsGetAdsLayoutQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getAdsLayout", Utils.buildParametrizedType(List.class, AdLayout.class));
+        super(client, "ads.getAdsLayout", Utils.buildParametrizedType(List.class, GetAdsLayoutResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }

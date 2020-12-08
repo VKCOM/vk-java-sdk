@@ -17,14 +17,10 @@ public class StoriesDeleteQuery extends AbstractQueryBuilder<StoriesDeleteQuery,
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
-     * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesDeleteQuery(VkApiClient client, UserActor actor, int ownerId, int storyId) {
+    public StoriesDeleteQuery(VkApiClient client, UserActor actor) {
         super(client, "stories.delete", OkResponse.class);
         accessToken(actor.getAccessToken());
-        ownerId(ownerId);
-        storyId(storyId);
     }
 
     /**
@@ -32,14 +28,10 @@ public class StoriesDeleteQuery extends AbstractQueryBuilder<StoriesDeleteQuery,
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
-     * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesDeleteQuery(VkApiClient client, GroupActor actor, int ownerId, int storyId) {
+    public StoriesDeleteQuery(VkApiClient client, GroupActor actor) {
         super(client, "stories.delete", OkResponse.class);
         accessToken(actor.getAccessToken());
-        ownerId(ownerId);
-        storyId(storyId);
     }
 
     /**
@@ -48,7 +40,7 @@ public class StoriesDeleteQuery extends AbstractQueryBuilder<StoriesDeleteQuery,
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesDeleteQuery ownerId(int value) {
+    public StoriesDeleteQuery ownerId(Integer value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -58,8 +50,29 @@ public class StoriesDeleteQuery extends AbstractQueryBuilder<StoriesDeleteQuery,
      * @param value value of "story id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesDeleteQuery storyId(int value) {
+    public StoriesDeleteQuery storyId(Integer value) {
         return unsafeParam("story_id", value);
+    }
+
+    /**
+     * stories
+     * Set stories
+     *
+     * @param value value of "stories" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesDeleteQuery stories(String... value) {
+        return unsafeParam("stories", value);
+    }
+
+    /**
+     * Set stories
+     *
+     * @param value value of "stories" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesDeleteQuery stories(List<String> value) {
+        return unsafeParam("stories", value);
     }
 
     @Override
@@ -69,6 +82,6 @@ public class StoriesDeleteQuery extends AbstractQueryBuilder<StoriesDeleteQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("story_id", "owner_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

@@ -18,13 +18,15 @@ public class AdsCreateTargetGroupQuery extends AbstractQueryBuilder<AdsCreateTar
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param name value of "name" parameter.
+     * @param lifetime value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      */
     public AdsCreateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
-            String name) {
+            String name, int lifetime) {
         super(client, "ads.createTargetGroup", CreateTargetGroupResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
         name(name);
+        lifetime(lifetime);
     }
 
     /**
@@ -60,10 +62,10 @@ public class AdsCreateTargetGroupQuery extends AbstractQueryBuilder<AdsCreateTar
     /**
      * 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group.
      *
-     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 0. By default 720.
+     * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsCreateTargetGroupQuery lifetime(Integer value) {
+    protected AdsCreateTargetGroupQuery lifetime(int value) {
         return unsafeParam("lifetime", value);
     }
 
@@ -94,6 +96,6 @@ public class AdsCreateTargetGroupQuery extends AbstractQueryBuilder<AdsCreateTar
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("name", "account_id", "access_token");
+        return Arrays.asList("lifetime", "name", "account_id", "access_token");
     }
 }

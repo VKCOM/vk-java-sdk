@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.groups.GroupXtrInvitedBy;
 import com.vk.api.sdk.objects.users.UserMin;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public class GetInvitesExtendedResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<GroupXtrInvitedBy> items;
+    private List<GroupFull> items;
 
     @SerializedName("profiles")
     @Required
@@ -42,11 +41,11 @@ public class GetInvitesExtendedResponse implements Validable {
         return this;
     }
 
-    public List<GroupXtrInvitedBy> getItems() {
+    public List<GroupFull> getItems() {
         return items;
     }
 
-    public GetInvitesExtendedResponse setItems(List<GroupXtrInvitedBy> items) {
+    public GetInvitesExtendedResponse setItems(List<GroupFull> items) {
         this.items = items;
         return this;
     }

@@ -29,6 +29,12 @@ public class KeyboardButtonAction implements Validable {
     private String label;
 
     /**
+     * link for button
+     */
+    @SerializedName("link")
+    private String link;
+
+    /**
      * Fragment value in app link like vk.com/app123456_{owner_id}#hash
      */
     @SerializedName("owner_id")
@@ -45,7 +51,7 @@ public class KeyboardButtonAction implements Validable {
      */
     @SerializedName("type")
     @Required
-    private KeyboardButtonActionType type;
+    private TemplateActionTypeNames type;
 
     public Integer getAppId() {
         return appId;
@@ -74,6 +80,15 @@ public class KeyboardButtonAction implements Validable {
         return this;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public KeyboardButtonAction setLink(String link) {
+        this.link = link;
+        return this;
+    }
+
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -92,18 +107,18 @@ public class KeyboardButtonAction implements Validable {
         return this;
     }
 
-    public KeyboardButtonActionType getType() {
+    public TemplateActionTypeNames getType() {
         return type;
     }
 
-    public KeyboardButtonAction setType(KeyboardButtonActionType type) {
+    public KeyboardButtonAction setType(TemplateActionTypeNames type) {
         this.type = type;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(payload, appId, label, ownerId, type, hash);
+        return Objects.hash(payload, appId, link, label, ownerId, type, hash);
     }
 
     @Override
@@ -113,6 +128,7 @@ public class KeyboardButtonAction implements Validable {
         KeyboardButtonAction keyboardButtonAction = (KeyboardButtonAction) o;
         return Objects.equals(payload, keyboardButtonAction.payload) &&
                 Objects.equals(ownerId, keyboardButtonAction.ownerId) &&
+                Objects.equals(link, keyboardButtonAction.link) &&
                 Objects.equals(label, keyboardButtonAction.label) &&
                 Objects.equals(type, keyboardButtonAction.type) &&
                 Objects.equals(appId, keyboardButtonAction.appId) &&
@@ -129,8 +145,9 @@ public class KeyboardButtonAction implements Validable {
         final StringBuilder sb = new StringBuilder("KeyboardButtonAction{");
         sb.append("payload='").append(payload).append("'");
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", link='").append(link).append("'");
         sb.append(", label='").append(label).append("'");
-        sb.append(", type='").append(type).append("'");
+        sb.append(", type=").append(type);
         sb.append(", appId=").append(appId);
         sb.append(", hash='").append(hash).append("'");
         sb.append('}');

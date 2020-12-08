@@ -163,6 +163,16 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     }
 
     /**
+     * Set donut paid duration
+     *
+     * @param value value of "donut paid duration" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallPostQuery donutPaidDuration(Integer value) {
+        return unsafeParam("donut_paid_duration", value);
+    }
+
+    /**
      * Set mute notifications
      *
      * @param value value of "mute notifications" parameter.
@@ -170,6 +180,16 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      */
     public WallPostQuery muteNotifications(Boolean value) {
         return unsafeParam("mute_notifications", value);
+    }
+
+    /**
+     * Set copyright
+     *
+     * @param value value of "copyright" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallPostQuery copyright(String value) {
+        return unsafeParam("copyright", value);
     }
 
     /**

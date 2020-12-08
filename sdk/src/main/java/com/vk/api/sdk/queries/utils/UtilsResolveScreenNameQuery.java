@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.utils.DomainResolved;
+import com.vk.api.sdk.objects.utils.responses.ResolveScreenNameResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Utils.resolveScreenName method
  */
-public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResolveScreenNameQuery, DomainResolved> {
+public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResolveScreenNameQuery, ResolveScreenNameResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
      * @param screenName value of "screen name" parameter.
      */
     public UtilsResolveScreenNameQuery(VkApiClient client, UserActor actor, String screenName) {
-        super(client, "utils.resolveScreenName", DomainResolved.class);
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
         accessToken(actor.getAccessToken());
         screenName(screenName);
     }
@@ -34,7 +34,7 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
      * @param screenName value of "screen name" parameter.
      */
     public UtilsResolveScreenNameQuery(VkApiClient client, GroupActor actor, String screenName) {
-        super(client, "utils.resolveScreenName", DomainResolved.class);
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
         accessToken(actor.getAccessToken());
         screenName(screenName);
     }
@@ -47,7 +47,7 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
      * @param screenName value of "screen name" parameter.
      */
     public UtilsResolveScreenNameQuery(VkApiClient client, ServiceActor actor, String screenName) {
-        super(client, "utils.resolveScreenName", DomainResolved.class);
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         screenName(screenName);

@@ -3,8 +3,8 @@ package com.vk.api.sdk.objects.video;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Image;
+import com.vk.api.sdk.objects.base.PropertyExists;
 import java.util.Objects;
 
 /**
@@ -12,14 +12,10 @@ import java.util.Objects;
  */
 public class VideoImage extends Image implements Validable {
     @SerializedName("with_padding")
-    private BoolInt withPadding;
+    private PropertyExists withPadding;
 
     public boolean isWithPadding() {
-        return withPadding == BoolInt.YES;
-    }
-
-    public BoolInt getWithPadding() {
-        return withPadding;
+        return withPadding == PropertyExists.PROPERTY_EXISTS;
     }
 
     @Override

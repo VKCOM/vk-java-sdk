@@ -13,6 +13,9 @@ public enum Filter implements EnumParam {
     @SerializedName("moder")
     MODER("moder"),
 
+    @SerializedName("advertiser")
+    ADVERTISER("advertiser"),
+
     @SerializedName("groups")
     GROUPS("groups"),
 

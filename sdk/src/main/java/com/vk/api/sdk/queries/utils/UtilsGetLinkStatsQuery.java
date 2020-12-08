@@ -7,14 +7,14 @@ import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.UtilsInterval;
 import com.vk.api.sdk.objects.enums.UtilsSource;
-import com.vk.api.sdk.objects.utils.LinkStats;
+import com.vk.api.sdk.objects.utils.responses.GetLinkStatsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Utils.getLinkStats method
  */
-public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkStatsQuery, LinkStats> {
+public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkStatsQuery, GetLinkStatsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQuery(VkApiClient client, UserActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStats.class);
+        super(client, "utils.getLinkStats", GetLinkStatsResponse.class);
         accessToken(actor.getAccessToken());
         key(key);
     }
@@ -36,7 +36,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQuery(VkApiClient client, GroupActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStats.class);
+        super(client, "utils.getLinkStats", GetLinkStatsResponse.class);
         accessToken(actor.getAccessToken());
         key(key);
     }
@@ -49,7 +49,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param key value of "key" parameter.
      */
     public UtilsGetLinkStatsQuery(VkApiClient client, ServiceActor actor, String key) {
-        super(client, "utils.getLinkStats", LinkStats.class);
+        super(client, "utils.getLinkStats", GetLinkStatsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         key(key);

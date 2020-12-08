@@ -8,7 +8,7 @@ import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.ObjectCount;
 import com.vk.api.sdk.objects.base.PropertyExists;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -85,37 +85,37 @@ public class PhotoFullXtrRealOffset implements Validable {
      * URL of image with 1280 px width
      */
     @SerializedName("photo_1280")
-    private URL photo1280;
+    private URI photo1280;
 
     /**
      * URL of image with 130 px width
      */
     @SerializedName("photo_130")
-    private URL photo130;
+    private URI photo130;
 
     /**
      * URL of image with 2560 px width
      */
     @SerializedName("photo_2560")
-    private URL photo2560;
+    private URI photo2560;
 
     /**
      * URL of image with 604 px width
      */
     @SerializedName("photo_604")
-    private URL photo604;
+    private URI photo604;
 
     /**
      * URL of image with 75 px width
      */
     @SerializedName("photo_75")
-    private URL photo75;
+    private URI photo75;
 
     /**
      * URL of image with 807 px width
      */
     @SerializedName("photo_807")
-    private URL photo807;
+    private URI photo807;
 
     /**
      * Post ID
@@ -258,56 +258,56 @@ public class PhotoFullXtrRealOffset implements Validable {
         return this;
     }
 
-    public URL getPhoto1280() {
+    public URI getPhoto1280() {
         return photo1280;
     }
 
-    public PhotoFullXtrRealOffset setPhoto1280(URL photo1280) {
+    public PhotoFullXtrRealOffset setPhoto1280(URI photo1280) {
         this.photo1280 = photo1280;
         return this;
     }
 
-    public URL getPhoto130() {
+    public URI getPhoto130() {
         return photo130;
     }
 
-    public PhotoFullXtrRealOffset setPhoto130(URL photo130) {
+    public PhotoFullXtrRealOffset setPhoto130(URI photo130) {
         this.photo130 = photo130;
         return this;
     }
 
-    public URL getPhoto2560() {
+    public URI getPhoto2560() {
         return photo2560;
     }
 
-    public PhotoFullXtrRealOffset setPhoto2560(URL photo2560) {
+    public PhotoFullXtrRealOffset setPhoto2560(URI photo2560) {
         this.photo2560 = photo2560;
         return this;
     }
 
-    public URL getPhoto604() {
+    public URI getPhoto604() {
         return photo604;
     }
 
-    public PhotoFullXtrRealOffset setPhoto604(URL photo604) {
+    public PhotoFullXtrRealOffset setPhoto604(URI photo604) {
         this.photo604 = photo604;
         return this;
     }
 
-    public URL getPhoto75() {
+    public URI getPhoto75() {
         return photo75;
     }
 
-    public PhotoFullXtrRealOffset setPhoto75(URL photo75) {
+    public PhotoFullXtrRealOffset setPhoto75(URI photo75) {
         this.photo75 = photo75;
         return this;
     }
 
-    public URL getPhoto807() {
+    public URI getPhoto807() {
         return photo807;
     }
 
-    public PhotoFullXtrRealOffset setPhoto807(URL photo807) {
+    public PhotoFullXtrRealOffset setPhoto807(URI photo807) {
         this.photo807 = photo807;
         return this;
     }

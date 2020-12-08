@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.prettycards.PrettyCard;
+import com.vk.api.sdk.objects.prettycards.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for PrettyCards.getById method
  */
-public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGetByIdQuery, List<PrettyCard>> {
+public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGetByIdQuery, List<GetByIdResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,7 +22,7 @@ public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGet
      */
     public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, int ownerId,
             Integer... cardIds) {
-        super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, PrettyCard.class));
+        super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         cardIds(cardIds);
@@ -38,7 +38,7 @@ public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGet
      */
     public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, int ownerId,
             List<Integer> cardIds) {
-        super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, PrettyCard.class));
+        super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         cardIds(cardIds);

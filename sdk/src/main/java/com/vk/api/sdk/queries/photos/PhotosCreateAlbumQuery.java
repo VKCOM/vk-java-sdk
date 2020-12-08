@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.PhotoAlbumFull;
+import com.vk.api.sdk.objects.photos.responses.CreateAlbumResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.createAlbum method
  */
-public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlbumQuery, PhotoAlbumFull> {
+public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlbumQuery, CreateAlbumResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PhotosCreateAlbumQuery extends AbstractQueryBuilder<PhotosCreateAlb
      * @param title value of "title" parameter.
      */
     public PhotosCreateAlbumQuery(VkApiClient client, UserActor actor, String title) {
-        super(client, "photos.createAlbum", PhotoAlbumFull.class);
+        super(client, "photos.createAlbum", CreateAlbumResponse.class);
         accessToken(actor.getAccessToken());
         title(title);
     }

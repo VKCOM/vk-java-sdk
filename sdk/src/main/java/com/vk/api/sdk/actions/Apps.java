@@ -13,6 +13,8 @@ import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQueryWithExtended;
 import com.vk.api.sdk.queries.apps.AppsGetQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScopesQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScoreQuery;
+import com.vk.api.sdk.queries.apps.AppsPromoHasActiveGiftQuery;
+import com.vk.api.sdk.queries.apps.AppsPromoUseGiftQuery;
 import com.vk.api.sdk.queries.apps.AppsSendRequestQuery;
 
 /**
@@ -97,9 +99,8 @@ public class Apps extends AbstractAction {
      * @param type Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
      * @return query
      */
-    public AppsGetLeaderboardQueryWithExtended getLeaderboardExtended(UserActor actor,
-            AppsType type) {
-        return new AppsGetLeaderboardQueryWithExtended(getClient(), actor, type);
+    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, AppsType type) {
+        return new AppsGetLeaderboardQuery(getClient(), actor, type);
     }
 
     /**
@@ -109,8 +110,9 @@ public class Apps extends AbstractAction {
      * @param type Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
      * @return query
      */
-    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, AppsType type) {
-        return new AppsGetLeaderboardQuery(getClient(), actor, type);
+    public AppsGetLeaderboardQueryWithExtended getLeaderboardExtended(UserActor actor,
+            AppsType type) {
+        return new AppsGetLeaderboardQueryWithExtended(getClient(), actor, type);
     }
 
     /**
@@ -132,6 +134,24 @@ public class Apps extends AbstractAction {
      */
     public AppsGetScoreQuery getScore(UserActor actor, int userId) {
         return new AppsGetScoreQuery(getClient(), actor, userId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param promoId Id of game promo action
+     * @return query
+     */
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(UserActor actor, int promoId) {
+        return new AppsPromoHasActiveGiftQuery(getClient(), actor, promoId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param promoId Id of game promo action
+     * @return query
+     */
+    public AppsPromoUseGiftQuery promoUseGift(UserActor actor, int promoId) {
+        return new AppsPromoUseGiftQuery(getClient(), actor, promoId);
     }
 
     /**

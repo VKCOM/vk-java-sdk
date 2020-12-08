@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Fave.markSeen method
  */
-public class FaveMarkSeenQuery extends AbstractQueryBuilder<FaveMarkSeenQuery, BoolInt> {
+public class FaveMarkSeenQuery extends AbstractQueryBuilder<FaveMarkSeenQuery, BoolResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class FaveMarkSeenQuery extends AbstractQueryBuilder<FaveMarkSeenQuery, B
      * @param actor actor with access token
      */
     public FaveMarkSeenQuery(VkApiClient client, UserActor actor) {
-        super(client, "fave.markSeen", BoolInt.class);
+        super(client, "fave.markSeen", BoolResponse.class);
         accessToken(actor.getAccessToken());
     }
 

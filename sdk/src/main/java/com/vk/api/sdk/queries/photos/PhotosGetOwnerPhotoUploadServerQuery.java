@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getOwnerPhotoUploadServer method
  */
-public class PhotosGetOwnerPhotoUploadServerQuery extends AbstractQueryBuilder<PhotosGetOwnerPhotoUploadServerQuery, UploadServer> {
+public class PhotosGetOwnerPhotoUploadServerQuery extends AbstractQueryBuilder<PhotosGetOwnerPhotoUploadServerQuery, GetUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class PhotosGetOwnerPhotoUploadServerQuery extends AbstractQueryBuilder<P
      * @param actor actor with access token
      */
     public PhotosGetOwnerPhotoUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "photos.getOwnerPhotoUploadServer", UploadServer.class);
+        super(client, "photos.getOwnerPhotoUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 

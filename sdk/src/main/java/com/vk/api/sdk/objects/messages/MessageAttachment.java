@@ -7,11 +7,14 @@ import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.base.Sticker;
+import com.vk.api.sdk.objects.calls.Call;
 import com.vk.api.sdk.objects.docs.Doc;
 import com.vk.api.sdk.objects.gifts.Layout;
 import com.vk.api.sdk.objects.market.MarketAlbum;
 import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.polls.Poll;
+import com.vk.api.sdk.objects.stories.Story;
 import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
 import com.vk.api.sdk.objects.wall.WallpostFull;
@@ -26,6 +29,9 @@ public class MessageAttachment implements Validable {
 
     @SerializedName("audio_message")
     private AudioMessage audioMessage;
+
+    @SerializedName("call")
+    private Call call;
 
     @SerializedName("doc")
     private Doc doc;
@@ -51,6 +57,9 @@ public class MessageAttachment implements Validable {
     @SerializedName("sticker")
     private Sticker sticker;
 
+    @SerializedName("story")
+    private Story story;
+
     @SerializedName("type")
     @Required
     private MessageAttachmentType type;
@@ -63,6 +72,9 @@ public class MessageAttachment implements Validable {
 
     @SerializedName("wall_reply")
     private WallComment wallReply;
+
+    @SerializedName("poll")
+    private Poll poll;
 
     public Audio getAudio() {
         return audio;
@@ -79,6 +91,15 @@ public class MessageAttachment implements Validable {
 
     public MessageAttachment setAudioMessage(AudioMessage audioMessage) {
         this.audioMessage = audioMessage;
+        return this;
+    }
+
+    public Call getCall() {
+        return call;
+    }
+
+    public MessageAttachment setCall(Call call) {
+        this.call = call;
         return this;
     }
 
@@ -154,6 +175,15 @@ public class MessageAttachment implements Validable {
         return this;
     }
 
+    public Story getStory() {
+        return story;
+    }
+
+    public MessageAttachment setStory(Story story) {
+        this.story = story;
+        return this;
+    }
+
     public MessageAttachmentType getType() {
         return type;
     }
@@ -190,9 +220,18 @@ public class MessageAttachment implements Validable {
         return this;
     }
 
+    public Poll getPoll() {
+        return poll;
+    }
+
+    public MessageAttachment setPoll(Poll poll) {
+        this.poll = poll;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(gift, wallReply, marketMarketAlbum, link, sticker, photo, video, audioMessage, type, market, doc, graffiti, audio, wall);
+        return Objects.hash(gift, wallReply, marketMarketAlbum, link, sticker, photo, video, poll, audioMessage, type, call, market, doc, graffiti, audio, wall, story);
     }
 
     @Override
@@ -206,14 +245,17 @@ public class MessageAttachment implements Validable {
                 Objects.equals(sticker, messageAttachment.sticker) &&
                 Objects.equals(photo, messageAttachment.photo) &&
                 Objects.equals(video, messageAttachment.video) &&
+                Objects.equals(poll, messageAttachment.poll) &&
                 Objects.equals(audioMessage, messageAttachment.audioMessage) &&
                 Objects.equals(type, messageAttachment.type) &&
+                Objects.equals(call, messageAttachment.call) &&
                 Objects.equals(market, messageAttachment.market) &&
                 Objects.equals(wallReply, messageAttachment.wallReply) &&
                 Objects.equals(doc, messageAttachment.doc) &&
                 Objects.equals(graffiti, messageAttachment.graffiti) &&
                 Objects.equals(audio, messageAttachment.audio) &&
-                Objects.equals(wall, messageAttachment.wall);
+                Objects.equals(wall, messageAttachment.wall) &&
+                Objects.equals(story, messageAttachment.story);
     }
 
     @Override
@@ -230,14 +272,17 @@ public class MessageAttachment implements Validable {
         sb.append(", sticker=").append(sticker);
         sb.append(", photo=").append(photo);
         sb.append(", video=").append(video);
+        sb.append(", poll=").append(poll);
         sb.append(", audioMessage=").append(audioMessage);
         sb.append(", type=").append(type);
+        sb.append(", call=").append(call);
         sb.append(", market=").append(market);
         sb.append(", wallReply=").append(wallReply);
         sb.append(", doc=").append(doc);
         sb.append(", graffiti=").append(graffiti);
         sb.append(", audio=").append(audio);
         sb.append(", wall=").append(wall);
+        sb.append(", story=").append(story);
         sb.append('}');
         return sb.toString();
     }

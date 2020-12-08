@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +17,9 @@ public class AudioMessage implements Validable {
      */
     @SerializedName("access_key")
     private String accessKey;
+
+    @SerializedName("transcript_error")
+    private Integer transcriptError;
 
     /**
      * Audio message duration in seconds
@@ -36,13 +39,13 @@ public class AudioMessage implements Validable {
      * MP3 file URL
      */
     @SerializedName("link_mp3")
-    private URL linkMp3;
+    private URI linkMp3;
 
     /**
      * OGG file URL
      */
     @SerializedName("link_ogg")
-    private URL linkOgg;
+    private URI linkOgg;
 
     /**
      * Audio message owner ID
@@ -60,6 +63,15 @@ public class AudioMessage implements Validable {
 
     public AudioMessage setAccessKey(String accessKey) {
         this.accessKey = accessKey;
+        return this;
+    }
+
+    public Integer getTranscriptError() {
+        return transcriptError;
+    }
+
+    public AudioMessage setTranscriptError(Integer transcriptError) {
+        this.transcriptError = transcriptError;
         return this;
     }
 
@@ -81,20 +93,20 @@ public class AudioMessage implements Validable {
         return this;
     }
 
-    public URL getLinkMp3() {
+    public URI getLinkMp3() {
         return linkMp3;
     }
 
-    public AudioMessage setLinkMp3(URL linkMp3) {
+    public AudioMessage setLinkMp3(URI linkMp3) {
         this.linkMp3 = linkMp3;
         return this;
     }
 
-    public URL getLinkOgg() {
+    public URI getLinkOgg() {
         return linkOgg;
     }
 
-    public AudioMessage setLinkOgg(URL linkOgg) {
+    public AudioMessage setLinkOgg(URI linkOgg) {
         this.linkOgg = linkOgg;
         return this;
     }
@@ -119,7 +131,7 @@ public class AudioMessage implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration, accessKey, linkOgg, linkMp3, id, ownerId, waveform);
+        return Objects.hash(duration, transcriptError, accessKey, linkOgg, linkMp3, id, ownerId, waveform);
     }
 
     @Override
@@ -133,7 +145,8 @@ public class AudioMessage implements Validable {
                 Objects.equals(linkOgg, audioMessage.linkOgg) &&
                 Objects.equals(linkMp3, audioMessage.linkMp3) &&
                 Objects.equals(id, audioMessage.id) &&
-                Objects.equals(waveform, audioMessage.waveform);
+                Objects.equals(waveform, audioMessage.waveform) &&
+                Objects.equals(transcriptError, audioMessage.transcriptError);
     }
 
     @Override
@@ -151,6 +164,7 @@ public class AudioMessage implements Validable {
         sb.append(", linkMp3=").append(linkMp3);
         sb.append(", id=").append(id);
         sb.append(", waveform=").append(waveform);
+        sb.append(", transcriptError=").append(transcriptError);
         sb.append('}');
         return sb.toString();
     }

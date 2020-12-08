@@ -83,8 +83,8 @@ public class Newsfeed extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public NewsfeedGetBannedQueryWithExtended getBannedExtended(UserActor actor) {
-        return new NewsfeedGetBannedQueryWithExtended(getClient(), actor);
+    public NewsfeedGetBannedQuery getBanned(UserActor actor) {
+        return new NewsfeedGetBannedQuery(getClient(), actor);
     }
 
     /**
@@ -93,8 +93,8 @@ public class Newsfeed extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public NewsfeedGetBannedQuery getBanned(UserActor actor) {
-        return new NewsfeedGetBannedQuery(getClient(), actor);
+    public NewsfeedGetBannedQueryWithExtended getBannedExtended(UserActor actor) {
+        return new NewsfeedGetBannedQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -162,13 +162,10 @@ public class Newsfeed extends AbstractAction {
      *
      * @param actor vk actor
      * @param type Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
-     * @param ownerId Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
-     * @param itemId Item identifier
      * @return query
      */
-    public NewsfeedIgnoreItemQuery ignoreItem(UserActor actor, IgnoreItemType type, int ownerId,
-            int itemId) {
-        return new NewsfeedIgnoreItemQuery(getClient(), actor, type, ownerId, itemId);
+    public NewsfeedIgnoreItemQuery ignoreItem(UserActor actor, IgnoreItemType type) {
+        return new NewsfeedIgnoreItemQuery(getClient(), actor, type);
     }
 
     /**
@@ -180,26 +177,6 @@ public class Newsfeed extends AbstractAction {
      */
     public NewsfeedSaveListQuery saveList(UserActor actor, String title) {
         return new NewsfeedSaveListQuery(getClient(), actor, title);
-    }
-
-    /**
-     * Returns search results by statuses.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public NewsfeedSearchQueryWithExtended searchExtended(UserActor actor) {
-        return new NewsfeedSearchQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Returns search results by statuses.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public NewsfeedSearchQueryWithExtended searchExtended(ServiceActor actor) {
-        return new NewsfeedSearchQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -220,6 +197,26 @@ public class Newsfeed extends AbstractAction {
      */
     public NewsfeedSearchQuery search(ServiceActor actor) {
         return new NewsfeedSearchQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns search results by statuses.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public NewsfeedSearchQueryWithExtended searchExtended(UserActor actor) {
+        return new NewsfeedSearchQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns search results by statuses.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public NewsfeedSearchQueryWithExtended searchExtended(ServiceActor actor) {
+        return new NewsfeedSearchQueryWithExtended(getClient(), actor);
     }
 
     /**

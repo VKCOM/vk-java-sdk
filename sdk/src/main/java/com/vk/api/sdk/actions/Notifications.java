@@ -48,28 +48,6 @@ public class Notifications extends AbstractAction {
      * @param userIds
      * @return query
      */
-    public NotificationsSendMessageQuery sendMessage(UserActor actor, String message,
-            Integer... userIds) {
-        return new NotificationsSendMessageQuery(getClient(), actor, message, userIds);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param message
-     * @param userIds
-     * @return query
-     */
-    public NotificationsSendMessageQuery sendMessage(UserActor actor, String message,
-            List<Integer> userIds) {
-        return new NotificationsSendMessageQuery(getClient(), actor, message, userIds);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param message
-     * @param userIds
-     * @return query
-     */
     public NotificationsSendMessageQuery sendMessage(ServiceActor actor, String message,
             Integer... userIds) {
         return new NotificationsSendMessageQuery(getClient(), actor, message, userIds);

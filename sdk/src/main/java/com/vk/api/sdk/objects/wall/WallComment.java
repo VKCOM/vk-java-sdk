@@ -23,6 +23,9 @@ public class WallComment implements Validable {
     @Required
     private Integer date;
 
+    @SerializedName("donut")
+    private WallCommentDonut donut;
+
     /**
      * Author ID
      */
@@ -94,6 +97,15 @@ public class WallComment implements Validable {
 
     public WallComment setDate(Integer date) {
         this.date = date;
+        return this;
+    }
+
+    public WallCommentDonut getDonut() {
+        return donut;
+    }
+
+    public WallComment setDonut(WallCommentDonut donut) {
+        this.donut = donut;
         return this;
     }
 
@@ -207,7 +219,7 @@ public class WallComment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, attachments, thread, postId, ownerId, fromId, replyToComment, parentsStack, realOffset, deleted, id, text, replyToUser, likes);
+        return Objects.hash(date, attachments, thread, postId, ownerId, fromId, replyToComment, parentsStack, realOffset, deleted, donut, id, text, replyToUser, likes);
     }
 
     @Override
@@ -226,6 +238,7 @@ public class WallComment implements Validable {
                 Objects.equals(deleted, wallComment.deleted) &&
                 Objects.equals(postId, wallComment.postId) &&
                 Objects.equals(replyToUser, wallComment.replyToUser) &&
+                Objects.equals(donut, wallComment.donut) &&
                 Objects.equals(id, wallComment.id) &&
                 Objects.equals(text, wallComment.text) &&
                 Objects.equals(likes, wallComment.likes);
@@ -250,6 +263,7 @@ public class WallComment implements Validable {
         sb.append(", deleted=").append(deleted);
         sb.append(", postId=").append(postId);
         sb.append(", replyToUser=").append(replyToUser);
+        sb.append(", donut=").append(donut);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", likes=").append(likes);

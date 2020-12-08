@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -39,19 +39,19 @@ public class LinksItem implements Validable {
      * URL of square image of the link with 100 pixels in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private URI photo100;
 
     /**
      * URL of square image of the link with 50 pixels in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private URI photo50;
 
     /**
      * Link URL
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
 
     public String getDesc() {
         return desc;
@@ -88,29 +88,29 @@ public class LinksItem implements Validable {
         return this;
     }
 
-    public URL getPhoto100() {
+    public URI getPhoto100() {
         return photo100;
     }
 
-    public LinksItem setPhoto100(URL photo100) {
+    public LinksItem setPhoto100(URI photo100) {
         this.photo100 = photo100;
         return this;
     }
 
-    public URL getPhoto50() {
+    public URI getPhoto50() {
         return photo50;
     }
 
-    public LinksItem setPhoto50(URL photo50) {
+    public LinksItem setPhoto50(URI photo50) {
         this.photo50 = photo50;
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public LinksItem setUrl(URL url) {
+    public LinksItem setUrl(URI url) {
         this.url = url;
         return this;
     }

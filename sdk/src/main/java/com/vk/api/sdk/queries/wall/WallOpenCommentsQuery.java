@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Wall.openComments method
  */
-public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenCommentsQuery, BoolInt> {
+public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenCommentsQuery, BoolResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenComments
      * @param postId value of "post id" parameter. Minimum is 0.
      */
     public WallOpenCommentsQuery(VkApiClient client, UserActor actor, int ownerId, int postId) {
-        super(client, "wall.openComments", BoolInt.class);
+        super(client, "wall.openComments", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         postId(postId);
@@ -36,7 +36,7 @@ public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenComments
      * @param postId value of "post id" parameter. Minimum is 0.
      */
     public WallOpenCommentsQuery(VkApiClient client, GroupActor actor, int ownerId, int postId) {
-        super(client, "wall.openComments", BoolInt.class);
+        super(client, "wall.openComments", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         postId(postId);

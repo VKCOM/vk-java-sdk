@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.messages.PinnedMessage;
+import com.vk.api.sdk.objects.messages.responses.PinResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Messages.pin method
  */
-public class MessagesPinQuery extends AbstractQueryBuilder<MessagesPinQuery, PinnedMessage> {
+public class MessagesPinQuery extends AbstractQueryBuilder<MessagesPinQuery, PinResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class MessagesPinQuery extends AbstractQueryBuilder<MessagesPinQuery, Pin
      * @param peerId value of "peer id" parameter.
      */
     public MessagesPinQuery(VkApiClient client, UserActor actor, int peerId) {
-        super(client, "messages.pin", PinnedMessage.class);
+        super(client, "messages.pin", PinResponse.class);
         accessToken(actor.getAccessToken());
         peerId(peerId);
     }
@@ -33,7 +33,7 @@ public class MessagesPinQuery extends AbstractQueryBuilder<MessagesPinQuery, Pin
      * @param peerId value of "peer id" parameter.
      */
     public MessagesPinQuery(VkApiClient client, GroupActor actor, int peerId) {
-        super(client, "messages.pin", PinnedMessage.class);
+        super(client, "messages.pin", PinResponse.class);
         accessToken(actor.getAccessToken());
         peerId(peerId);
     }
@@ -49,13 +49,23 @@ public class MessagesPinQuery extends AbstractQueryBuilder<MessagesPinQuery, Pin
     }
 
     /**
-     * Set message id
+     * Message ID
      *
      * @param value value of "message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesPinQuery messageId(Integer value) {
         return unsafeParam("message_id", value);
+    }
+
+    /**
+     * Conversation message ID
+     *
+     * @param value value of "conversation message id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesPinQuery conversationMessageId(Integer value) {
+        return unsafeParam("conversation_message_id", value);
     }
 
     @Override

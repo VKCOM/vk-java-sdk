@@ -22,6 +22,7 @@ import com.vk.api.sdk.queries.fave.FaveRemovePageQuery;
 import com.vk.api.sdk.queries.fave.FaveRemovePostQuery;
 import com.vk.api.sdk.queries.fave.FaveRemoveProductQuery;
 import com.vk.api.sdk.queries.fave.FaveRemoveTagQuery;
+import com.vk.api.sdk.queries.fave.FaveRemoveVideoQuery;
 import com.vk.api.sdk.queries.fave.FaveReorderTagsQuery;
 import com.vk.api.sdk.queries.fave.FaveSetPageTagsQuery;
 import com.vk.api.sdk.queries.fave.FaveSetTagsQuery;
@@ -121,16 +122,16 @@ public class Fave extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public FaveGetQueryWithExtended getExtended(UserActor actor) {
-        return new FaveGetQueryWithExtended(getClient(), actor);
+    public FaveGetQuery get(UserActor actor) {
+        return new FaveGetQuery(getClient(), actor);
     }
 
     /**
      * @param actor vk actor
      * @return query
      */
-    public FaveGetQuery get(UserActor actor) {
-        return new FaveGetQuery(getClient(), actor);
+    public FaveGetQueryWithExtended getExtended(UserActor actor) {
+        return new FaveGetQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -212,6 +213,16 @@ public class Fave extends AbstractAction {
      */
     public FaveRemoveTagQuery removeTag(UserActor actor, int id) {
         return new FaveRemoveTagQuery(getClient(), actor, id);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ownerId
+     * @param id
+     * @return query
+     */
+    public FaveRemoveVideoQuery removeVideo(UserActor actor, int ownerId, int id) {
+        return new FaveRemoveVideoQuery(getClient(), actor, ownerId, id);
     }
 
     /**

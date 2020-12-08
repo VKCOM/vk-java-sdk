@@ -28,6 +28,12 @@ public class CountersGroup implements Validable {
     private Integer audios;
 
     /**
+     * Audio playlists number
+     */
+    @SerializedName("audio_playlists")
+    private Integer audioPlaylists;
+
+    /**
      * Docs number
      */
     @SerializedName("docs")
@@ -84,6 +90,15 @@ public class CountersGroup implements Validable {
         return this;
     }
 
+    public Integer getAudioPlaylists() {
+        return audioPlaylists;
+    }
+
+    public CountersGroup setAudioPlaylists(Integer audioPlaylists) {
+        this.audioPlaylists = audioPlaylists;
+        return this;
+    }
+
     public Integer getDocs() {
         return docs;
     }
@@ -131,7 +146,7 @@ public class CountersGroup implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(market, addresses, albums, docs, topics, audios, videos, photos);
+        return Objects.hash(market, addresses, albums, docs, topics, audios, audioPlaylists, videos, photos);
     }
 
     @Override
@@ -144,6 +159,7 @@ public class CountersGroup implements Validable {
                 Objects.equals(albums, countersGroup.albums) &&
                 Objects.equals(docs, countersGroup.docs) &&
                 Objects.equals(topics, countersGroup.topics) &&
+                Objects.equals(audioPlaylists, countersGroup.audioPlaylists) &&
                 Objects.equals(audios, countersGroup.audios) &&
                 Objects.equals(videos, countersGroup.videos) &&
                 Objects.equals(photos, countersGroup.photos);
@@ -162,6 +178,7 @@ public class CountersGroup implements Validable {
         sb.append(", albums=").append(albums);
         sb.append(", docs=").append(docs);
         sb.append(", topics=").append(topics);
+        sb.append(", audioPlaylists=").append(audioPlaylists);
         sb.append(", audios=").append(audios);
         sb.append(", videos=").append(videos);
         sb.append(", photos=").append(photos);

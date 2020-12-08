@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.notes;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.notes.Note;
+import com.vk.api.sdk.objects.notes.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Notes.getById method
  */
-public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, Note> {
+public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, GetByIdResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class NotesGetByIdQuery extends AbstractQueryBuilder<NotesGetByIdQuery, N
      * @param noteId value of "note id" parameter. Minimum is 0.
      */
     public NotesGetByIdQuery(VkApiClient client, UserActor actor, int noteId) {
-        super(client, "notes.getById", Note.class);
+        super(client, "notes.getById", GetByIdResponse.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);
     }

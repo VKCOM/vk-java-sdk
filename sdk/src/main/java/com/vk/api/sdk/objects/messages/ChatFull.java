@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,19 +42,19 @@ public class ChatFull implements Validable {
      * URL of the preview image with 100 px in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private URI photo100;
 
     /**
      * URL of the preview image with 200 px in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private URI photo200;
 
     /**
      * URL of the preview image with 50 px in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private URI photo50;
 
     @SerializedName("push_settings")
     private ChatPushSettings pushSettings;
@@ -110,29 +110,29 @@ public class ChatFull implements Validable {
         return left;
     }
 
-    public URL getPhoto100() {
+    public URI getPhoto100() {
         return photo100;
     }
 
-    public ChatFull setPhoto100(URL photo100) {
+    public ChatFull setPhoto100(URI photo100) {
         this.photo100 = photo100;
         return this;
     }
 
-    public URL getPhoto200() {
+    public URI getPhoto200() {
         return photo200;
     }
 
-    public ChatFull setPhoto200(URL photo200) {
+    public ChatFull setPhoto200(URI photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhoto50() {
+    public URI getPhoto50() {
         return photo50;
     }
 
-    public ChatFull setPhoto50(URL photo50) {
+    public ChatFull setPhoto50(URI photo50) {
         this.photo50 = photo50;
         return this;
     }

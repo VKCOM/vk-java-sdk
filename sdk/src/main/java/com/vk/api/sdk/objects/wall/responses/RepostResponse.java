@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Objects;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Objects;
 public class RepostResponse implements Validable {
     @SerializedName("success")
     @Required
-    private OkResponse success;
+    private Integer success;
 
     /**
      * Created post ID
@@ -28,16 +27,28 @@ public class RepostResponse implements Validable {
     private Integer repostsCount;
 
     /**
+     * Reposts to wall number
+     */
+    @SerializedName("wall_repost_count")
+    private Integer wallRepostCount;
+
+    /**
+     * Reposts to mail number
+     */
+    @SerializedName("mail_repost_count")
+    private Integer mailRepostCount;
+
+    /**
      * Reposts number
      */
     @SerializedName("likes_count")
     private Integer likesCount;
 
-    public OkResponse getSuccess() {
+    public Integer getSuccess() {
         return success;
     }
 
-    public RepostResponse setSuccess(OkResponse success) {
+    public RepostResponse setSuccess(Integer success) {
         this.success = success;
         return this;
     }
@@ -60,6 +71,24 @@ public class RepostResponse implements Validable {
         return this;
     }
 
+    public Integer getWallRepostCount() {
+        return wallRepostCount;
+    }
+
+    public RepostResponse setWallRepostCount(Integer wallRepostCount) {
+        this.wallRepostCount = wallRepostCount;
+        return this;
+    }
+
+    public Integer getMailRepostCount() {
+        return mailRepostCount;
+    }
+
+    public RepostResponse setMailRepostCount(Integer mailRepostCount) {
+        this.mailRepostCount = mailRepostCount;
+        return this;
+    }
+
     public Integer getLikesCount() {
         return likesCount;
     }
@@ -71,7 +100,7 @@ public class RepostResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(repostsCount, likesCount, success, postId);
+        return Objects.hash(repostsCount, likesCount, mailRepostCount, wallRepostCount, success, postId);
     }
 
     @Override
@@ -80,8 +109,10 @@ public class RepostResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         RepostResponse repostResponse = (RepostResponse) o;
         return Objects.equals(likesCount, repostResponse.likesCount) &&
+                Objects.equals(mailRepostCount, repostResponse.mailRepostCount) &&
                 Objects.equals(postId, repostResponse.postId) &&
                 Objects.equals(success, repostResponse.success) &&
+                Objects.equals(wallRepostCount, repostResponse.wallRepostCount) &&
                 Objects.equals(repostsCount, repostResponse.repostsCount);
     }
 
@@ -94,8 +125,10 @@ public class RepostResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("RepostResponse{");
         sb.append("likesCount=").append(likesCount);
+        sb.append(", mailRepostCount=").append(mailRepostCount);
         sb.append(", postId=").append(postId);
         sb.append(", success=").append(success);
+        sb.append(", wallRepostCount=").append(wallRepostCount);
         sb.append(", repostsCount=").append(repostsCount);
         sb.append('}');
         return sb.toString();

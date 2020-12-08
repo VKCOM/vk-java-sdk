@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.account.Info;
+import com.vk.api.sdk.objects.account.responses.GetInfoResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Account.getInfo method
  */
-public class AccountGetInfoQuery extends AbstractQueryBuilder<AccountGetInfoQuery, Info> {
+public class AccountGetInfoQuery extends AbstractQueryBuilder<AccountGetInfoQuery, GetInfoResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class AccountGetInfoQuery extends AbstractQueryBuilder<AccountGetInfoQuer
      * @param actor actor with access token
      */
     public AccountGetInfoQuery(VkApiClient client, UserActor actor) {
-        super(client, "account.getInfo", Info.class);
+        super(client, "account.getInfo", GetInfoResponse.class);
         accessToken(actor.getAccessToken());
     }
 

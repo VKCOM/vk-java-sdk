@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -22,7 +22,7 @@ public class LinkStatus implements Validable {
      * URL
      */
     @SerializedName("redirect_url")
-    private URL redirectUrl;
+    private URI redirectUrl;
 
     /**
      * Link status
@@ -40,11 +40,11 @@ public class LinkStatus implements Validable {
         return this;
     }
 
-    public URL getRedirectUrl() {
+    public URI getRedirectUrl() {
         return redirectUrl;
     }
 
-    public LinkStatus setRedirectUrl(URL redirectUrl) {
+    public LinkStatus setRedirectUrl(URI redirectUrl) {
         this.redirectUrl = redirectUrl;
         return this;
     }

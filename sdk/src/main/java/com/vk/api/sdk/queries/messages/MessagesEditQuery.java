@@ -4,27 +4,25 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.messages.responses.EditResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Messages.edit method
  */
-public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, BoolInt> {
+public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, EditResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param peerId value of "peer id" parameter.
-     * @param messageId value of "message id" parameter. Minimum is 0.
      */
-    public MessagesEditQuery(VkApiClient client, UserActor actor, int peerId, int messageId) {
-        super(client, "messages.edit", BoolInt.class);
+    public MessagesEditQuery(VkApiClient client, UserActor actor, int peerId) {
+        super(client, "messages.edit", EditResponse.class);
         accessToken(actor.getAccessToken());
         peerId(peerId);
-        messageId(messageId);
     }
 
     /**
@@ -33,14 +31,12 @@ public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, B
      * @param client VK API client
      * @param actor actor with access token
      * @param peerId value of "peer id" parameter.
-     * @param messageId value of "message id" parameter. Minimum is 0.
      */
-    public MessagesEditQuery(VkApiClient client, GroupActor actor, int peerId, int messageId) {
-        super(client, "messages.edit", BoolInt.class);
+    public MessagesEditQuery(VkApiClient client, GroupActor actor, int peerId) {
+        super(client, "messages.edit", EditResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
         peerId(peerId);
-        messageId(messageId);
     }
 
     /**
@@ -61,16 +57,6 @@ public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, B
      */
     public MessagesEditQuery message(String value) {
         return unsafeParam("message", value);
-    }
-
-    /**
-     * Set message id
-     *
-     * @param value value of "message id" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected MessagesEditQuery messageId(int value) {
-        return unsafeParam("message_id", value);
     }
 
     /**
@@ -143,6 +129,46 @@ public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, B
         return unsafeParam("dont_parse_links", value);
     }
 
+    /**
+     * Set message id
+     *
+     * @param value value of "message id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesEditQuery messageId(Integer value) {
+        return unsafeParam("message_id", value);
+    }
+
+    /**
+     * Set conversation message id
+     *
+     * @param value value of "conversation message id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesEditQuery conversationMessageId(Integer value) {
+        return unsafeParam("conversation_message_id", value);
+    }
+
+    /**
+     * Set template
+     *
+     * @param value value of "template" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesEditQuery template(String value) {
+        return unsafeParam("template", value);
+    }
+
+    /**
+     * Set keyboard
+     *
+     * @param value value of "keyboard" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesEditQuery keyboard(String value) {
+        return unsafeParam("keyboard", value);
+    }
+
     @Override
     protected MessagesEditQuery getThis() {
         return this;
@@ -150,6 +176,6 @@ public class MessagesEditQuery extends AbstractQueryBuilder<MessagesEditQuery, B
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("peer_id", "access_token", "message_id");
+        return Arrays.asList("peer_id", "access_token");
     }
 }

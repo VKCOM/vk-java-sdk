@@ -4,14 +4,15 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.stats.Period;
+import com.vk.api.sdk.objects.enums.StatsInterval;
+import com.vk.api.sdk.objects.stats.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Stats.get method
  */
-public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<Period>> {
+public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<GetResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +20,7 @@ public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<Peri
      * @param actor actor with access token
      */
     public StatsGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "stats.get", Utils.buildParametrizedType(List.class, Period.class));
+        super(client, "stats.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
     }
 
@@ -69,7 +70,7 @@ public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<Peri
      * @param value value of "interval" parameter. By default day.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StatsGetQuery interval(String value) {
+    public StatsGetQuery interval(StatsInterval value) {
         return unsafeParam("interval", value);
     }
 

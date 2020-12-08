@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.TargSuggestionsCities;
+import com.vk.api.sdk.objects.ads.responses.GetSuggestionsCitiesResponse;
 import com.vk.api.sdk.objects.enums.AdsLang;
 import com.vk.api.sdk.objects.enums.AdsSection;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Ads.getSuggestions method
  */
-public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGetSuggestionsQueryWithCities, List<TargSuggestionsCities>> {
+public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGetSuggestionsQueryWithCities, List<GetSuggestionsCitiesResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGe
      */
     public AdsGetSuggestionsQueryWithCities(VkApiClient client, UserActor actor, AdsSection section,
             String cities) {
-        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestionsCities.class));
+        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, GetSuggestionsCitiesResponse.class));
         accessToken(actor.getAccessToken());
         section(section);
         cities(cities);

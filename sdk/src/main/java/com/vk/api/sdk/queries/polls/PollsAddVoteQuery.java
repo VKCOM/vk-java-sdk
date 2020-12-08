@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.polls.responses.AddVoteResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Polls.addVote method
  */
-public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, BoolInt> {
+public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, AddVoteResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, B
      */
     public PollsAddVoteQuery(VkApiClient client, UserActor actor, int pollId,
             Integer... answerIds) {
-        super(client, "polls.addVote", BoolInt.class);
+        super(client, "polls.addVote", AddVoteResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);
@@ -37,7 +37,7 @@ public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, B
      */
     public PollsAddVoteQuery(VkApiClient client, UserActor actor, int pollId,
             List<Integer> answerIds) {
-        super(client, "polls.addVote", BoolInt.class);
+        super(client, "polls.addVote", AddVoteResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);
