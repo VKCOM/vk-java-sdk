@@ -267,6 +267,17 @@ public class Groups extends AbstractAction {
     }
 
     /**
+     * Edits a community.
+     *
+     * @param actor vk actor
+     * @param groupId Community ID.
+     * @return query
+     */
+    public GroupsEditQuery edit(GroupActor actor, int groupId) {
+        return new GroupsEditQuery(getClient(), actor, groupId);
+    }
+
+    /**
      * @param actor vk actor
      * @param groupId
      * @param addressId

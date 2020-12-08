@@ -75,6 +75,9 @@ public class Info implements Validable {
     @SerializedName("subscriptions")
     private List<Integer> subscriptions;
 
+    @SerializedName("newsfeed")
+    private JsonObject newsfeed;
+
     public boolean isWishlistsAePromoBannerShow() {
         return wishlistsAePromoBannerShow == BoolInt.YES;
     }
@@ -186,9 +189,18 @@ public class Info implements Validable {
         return this;
     }
 
+    public JsonObject getNewsfeed() {
+        return newsfeed;
+    }
+
+    public Info setNewsfeed(JsonObject newsfeed) {
+        this.newsfeed = newsfeed;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(showVkAppsIntro, country, subscriptions, noWallReplies, httpsRequired, linkRedirects, qrPromotion, intro, miniAppsAdsSlotId, lang, ownPostsDefault, _2faRequired, wishlistsAePromoBannerShow);
+        return Objects.hash(showVkAppsIntro, country, subscriptions, noWallReplies, httpsRequired, linkRedirects, qrPromotion, intro, miniAppsAdsSlotId, newsfeed, lang, ownPostsDefault, _2faRequired, wishlistsAePromoBannerShow);
     }
 
     @Override
@@ -208,6 +220,7 @@ public class Info implements Validable {
                 Objects.equals(ownPostsDefault, info.ownPostsDefault) &&
                 Objects.equals(intro, info.intro) &&
                 Objects.equals(qrPromotion, info.qrPromotion) &&
+                Objects.equals(newsfeed, info.newsfeed) &&
                 Objects.equals(lang, info.lang);
     }
 
@@ -231,6 +244,7 @@ public class Info implements Validable {
         sb.append(", ownPostsDefault=").append(ownPostsDefault);
         sb.append(", intro=").append(intro);
         sb.append(", qrPromotion=").append(qrPromotion);
+        sb.append(", newsfeed=").append(newsfeed);
         sb.append(", lang=").append(lang);
         sb.append('}');
         return sb.toString();

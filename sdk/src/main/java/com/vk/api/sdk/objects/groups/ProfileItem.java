@@ -30,6 +30,12 @@ public class ProfileItem implements Validable {
     @SerializedName("photo_100")
     private URI photo100;
 
+    /**
+     * User first name
+     */
+    @SerializedName("first_name")
+    private String firstName;
+
     public Integer getId() {
         return id;
     }
@@ -57,9 +63,18 @@ public class ProfileItem implements Validable {
         return this;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public ProfileItem setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, photo50, id);
+        return Objects.hash(firstName, photo100, photo50, id);
     }
 
     @Override
@@ -69,7 +84,8 @@ public class ProfileItem implements Validable {
         ProfileItem profileItem = (ProfileItem) o;
         return Objects.equals(photo50, profileItem.photo50) &&
                 Objects.equals(id, profileItem.id) &&
-                Objects.equals(photo100, profileItem.photo100);
+                Objects.equals(photo100, profileItem.photo100) &&
+                Objects.equals(firstName, profileItem.firstName);
     }
 
     @Override
@@ -83,6 +99,7 @@ public class ProfileItem implements Validable {
         sb.append("photo50=").append(photo50);
         sb.append(", id=").append(id);
         sb.append(", photo100=").append(photo100);
+        sb.append(", firstName='").append(firstName).append("'");
         sb.append('}');
         return sb.toString();
     }

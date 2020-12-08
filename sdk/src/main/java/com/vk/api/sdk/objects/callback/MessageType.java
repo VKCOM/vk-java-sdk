@@ -55,6 +55,9 @@ public enum MessageType implements EnumParam {
     @SerializedName("message_allow")
     MESSAGE_ALLOW("message_allow"),
 
+    @SerializedName("message_new")
+    MESSAGE_NEW("message_new"),
+
     @SerializedName("message_deny")
     MESSAGE_DENY("message_deny"),
 

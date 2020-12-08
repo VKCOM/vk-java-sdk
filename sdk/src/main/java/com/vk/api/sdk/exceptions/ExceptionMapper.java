@@ -89,6 +89,12 @@ public class ExceptionMapper {
                 return new ApiTimeoutException(error.getErrorMsg());
             case 37:
                 return new ApiUserBannedException(error.getErrorMsg());
+            case 38:
+                return new ApiUnknownApplicationException(error.getErrorMsg());
+            case 39:
+                return new ApiUnknownUserException(error.getErrorMsg());
+            case 40:
+                return new ApiUnknownGroupException(error.getErrorMsg());
             case 300:
                 return new ApiAlbumFullException(error.getErrorMsg());
             case 302:
