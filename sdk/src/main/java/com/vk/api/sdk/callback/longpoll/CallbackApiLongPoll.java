@@ -75,7 +75,7 @@ public class CallbackApiLongPoll extends CallbackApi {
 
     private GetLongPollServerResponse getLongPollServer() throws ClientException, ApiException {
         if (groupActor != null) {
-            client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
+            return client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
         }
 
         return client.groupsLongPoll().getLongPollServer(userActor, groupId).execute();
