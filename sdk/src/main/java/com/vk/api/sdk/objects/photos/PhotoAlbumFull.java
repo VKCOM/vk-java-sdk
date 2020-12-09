@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -77,7 +77,7 @@ public class PhotoAlbumFull implements Validable {
      * URL of the thumb image
      */
     @SerializedName("thumb_src")
-    private URL thumbSrc;
+    private URI thumbSrc;
 
     /**
      * Photo album title
@@ -186,11 +186,11 @@ public class PhotoAlbumFull implements Validable {
         return thumbIsLast;
     }
 
-    public URL getThumbSrc() {
+    public URI getThumbSrc() {
         return thumbSrc;
     }
 
-    public PhotoAlbumFull setThumbSrc(URL thumbSrc) {
+    public PhotoAlbumFull setThumbSrc(URI thumbSrc) {
         this.thumbSrc = thumbSrc;
         return this;
     }

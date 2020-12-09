@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.messages.LongpollParams;
+import com.vk.api.sdk.objects.messages.responses.GetLongPollServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Messages.getLongPollServer method
  */
-public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<MessagesGetLongPollServerQuery, LongpollParams> {
+public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<MessagesGetLongPollServerQuery, GetLongPollServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
      * @param actor actor with access token
      */
     public MessagesGetLongPollServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.getLongPollServer", LongpollParams.class);
+        super(client, "messages.getLongPollServer", GetLongPollServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -30,7 +30,7 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
      * @param actor actor with access token
      */
     public MessagesGetLongPollServerQuery(VkApiClient client, GroupActor actor) {
-        super(client, "messages.getLongPollServer", LongpollParams.class);
+        super(client, "messages.getLongPollServer", GetLongPollServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
     }

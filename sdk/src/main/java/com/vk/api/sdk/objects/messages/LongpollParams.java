@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -10,46 +11,31 @@ import java.util.Objects;
  */
 public class LongpollParams implements Validable {
     /**
+     * Server URL
+     */
+    @SerializedName("server")
+    @Required
+    private String server;
+
+    /**
      * Key
      */
     @SerializedName("key")
+    @Required
     private String key;
+
+    /**
+     * Timestamp
+     */
+    @SerializedName("ts")
+    @Required
+    private Integer ts;
 
     /**
      * Persistent timestamp
      */
     @SerializedName("pts")
     private Integer pts;
-
-    /**
-     * Server URL
-     */
-    @SerializedName("server")
-    private String server;
-
-    /**
-     * Timestamp
-     */
-    @SerializedName("ts")
-    private Integer ts;
-
-    public String getKey() {
-        return key;
-    }
-
-    public LongpollParams setKey(String key) {
-        this.key = key;
-        return this;
-    }
-
-    public Integer getPts() {
-        return pts;
-    }
-
-    public LongpollParams setPts(Integer pts) {
-        this.pts = pts;
-        return this;
-    }
 
     public String getServer() {
         return server;
@@ -60,12 +46,30 @@ public class LongpollParams implements Validable {
         return this;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public LongpollParams setKey(String key) {
+        this.key = key;
+        return this;
+    }
+
     public Integer getTs() {
         return ts;
     }
 
     public LongpollParams setTs(Integer ts) {
         this.ts = ts;
+        return this;
+    }
+
+    public Integer getPts() {
+        return pts;
+    }
+
+    public LongpollParams setPts(Integer pts) {
+        this.pts = pts;
         return this;
     }
 

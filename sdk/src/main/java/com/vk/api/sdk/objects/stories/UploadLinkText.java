@@ -62,7 +62,10 @@ public enum UploadLinkText implements EnumParam {
     INSTALL("install"),
 
     @SerializedName("read")
-    READ("read");
+    READ("read"),
+
+    @SerializedName("calendar")
+    CALENDAR("calendar");
 
     private final String value;
 

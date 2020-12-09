@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.status;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.Audio;
 import java.util.Objects;
 
@@ -10,23 +11,15 @@ import java.util.Objects;
  * Status object
  */
 public class Status implements Validable {
-    @SerializedName("audio")
-    private Audio audio;
-
     /**
      * Status text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
-    public Audio getAudio() {
-        return audio;
-    }
-
-    public Status setAudio(Audio audio) {
-        this.audio = audio;
-        return this;
-    }
+    @SerializedName("audio")
+    private Audio audio;
 
     public String getText() {
         return text;
@@ -37,9 +30,18 @@ public class Status implements Validable {
         return this;
     }
 
+    public Audio getAudio() {
+        return audio;
+    }
+
+    public Status setAudio(Audio audio) {
+        this.audio = audio;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(audio, text);
+        return Objects.hash(text, audio);
     }
 
     @Override
@@ -47,8 +49,8 @@ public class Status implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Status status = (Status) o;
-        return Objects.equals(audio, status.audio) &&
-                Objects.equals(text, status.text);
+        return Objects.equals(text, status.text) &&
+                Objects.equals(audio, status.audio);
     }
 
     @Override
@@ -59,8 +61,8 @@ public class Status implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Status{");
-        sb.append("audio=").append(audio);
-        sb.append(", text='").append(text).append("'");
+        sb.append("text='").append(text).append("'");
+        sb.append(", audio=").append(audio);
         sb.append('}');
         return sb.toString();
     }

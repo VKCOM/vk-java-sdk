@@ -3,7 +3,6 @@ package com.vk.api.sdk.objects.secure;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Objects;
 
 /**
@@ -26,7 +25,7 @@ public class TokenChecked implements Validable {
      * Returns if successfully processed
      */
     @SerializedName("success")
-    private OkResponse success;
+    private Integer success;
 
     /**
      * User ID
@@ -52,11 +51,11 @@ public class TokenChecked implements Validable {
         return this;
     }
 
-    public OkResponse getSuccess() {
+    public Integer getSuccess() {
         return success;
     }
 
-    public TokenChecked setSuccess(OkResponse success) {
+    public TokenChecked setSuccess(Integer success) {
         this.success = success;
         return this;
     }

@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Fave.removeArticle method
  */
-public class FaveRemoveArticleQuery extends AbstractQueryBuilder<FaveRemoveArticleQuery, BoolInt> {
+public class FaveRemoveArticleQuery extends AbstractQueryBuilder<FaveRemoveArticleQuery, BoolResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class FaveRemoveArticleQuery extends AbstractQueryBuilder<FaveRemoveArtic
      * @param articleId value of "article id" parameter. Minimum is 0.
      */
     public FaveRemoveArticleQuery(VkApiClient client, UserActor actor, int ownerId, int articleId) {
-        super(client, "fave.removeArticle", BoolInt.class);
+        super(client, "fave.removeArticle", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         articleId(articleId);

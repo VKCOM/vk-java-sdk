@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.widgets;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -26,7 +26,7 @@ public class CommentMedia implements Validable {
      * URL of the preview image (type=photo only)
      */
     @SerializedName("thumb_src")
-    private URL thumbSrc;
+    private URI thumbSrc;
 
     @SerializedName("type")
     private CommentMediaType type;
@@ -49,11 +49,11 @@ public class CommentMedia implements Validable {
         return this;
     }
 
-    public URL getThumbSrc() {
+    public URI getThumbSrc() {
         return thumbSrc;
     }
 
-    public CommentMedia setThumbSrc(URL thumbSrc) {
+    public CommentMedia setThumbSrc(URI thumbSrc) {
         this.thumbSrc = thumbSrc;
         return this;
     }

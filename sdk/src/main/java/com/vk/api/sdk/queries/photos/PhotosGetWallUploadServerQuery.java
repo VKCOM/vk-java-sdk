@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.PhotoUpload;
+import com.vk.api.sdk.objects.photos.responses.GetWallUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getWallUploadServer method
  */
-public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosGetWallUploadServerQuery, PhotoUpload> {
+public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosGetWallUploadServerQuery, GetWallUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosG
      * @param actor actor with access token
      */
     public PhotosGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "photos.getWallUploadServer", PhotoUpload.class);
+        super(client, "photos.getWallUploadServer", GetWallUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 

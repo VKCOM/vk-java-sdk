@@ -17,6 +17,21 @@ public class SearchResponse implements Validable {
     @SerializedName("suggested_queries")
     private List<String> suggestedQueries;
 
+    @SerializedName("next_from")
+    private String nextFrom;
+
+    /**
+     * Filtered number
+     */
+    @SerializedName("count")
+    private Integer count;
+
+    /**
+     * Total number
+     */
+    @SerializedName("total_count")
+    private Integer totalCount;
+
     public List<WallpostFull> getItems() {
         return items;
     }
@@ -35,9 +50,36 @@ public class SearchResponse implements Validable {
         return this;
     }
 
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public SearchResponse setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
+        return this;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public SearchResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public SearchResponse setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(suggestedQueries, items);
+        return Objects.hash(suggestedQueries, count, totalCount, nextFrom, items);
     }
 
     @Override
@@ -45,7 +87,10 @@ public class SearchResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SearchResponse searchResponse = (SearchResponse) o;
-        return Objects.equals(suggestedQueries, searchResponse.suggestedQueries) &&
+        return Objects.equals(nextFrom, searchResponse.nextFrom) &&
+                Objects.equals(totalCount, searchResponse.totalCount) &&
+                Objects.equals(suggestedQueries, searchResponse.suggestedQueries) &&
+                Objects.equals(count, searchResponse.count) &&
                 Objects.equals(items, searchResponse.items);
     }
 
@@ -57,7 +102,10 @@ public class SearchResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SearchResponse{");
-        sb.append("suggestedQueries='").append(suggestedQueries).append("'");
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", totalCount=").append(totalCount);
+        sb.append(", suggestedQueries='").append(suggestedQueries).append("'");
+        sb.append(", count=").append(count);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

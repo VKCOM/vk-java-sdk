@@ -18,16 +18,11 @@ public class NewsfeedIgnoreItemQuery extends AbstractQueryBuilder<NewsfeedIgnore
      * @param client VK API client
      * @param actor actor with access token
      * @param type value of "type" parameter.
-     * @param ownerId value of "owner id" parameter.
-     * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedIgnoreItemQuery(VkApiClient client, UserActor actor, IgnoreItemType type,
-            int ownerId, int itemId) {
+    public NewsfeedIgnoreItemQuery(VkApiClient client, UserActor actor, IgnoreItemType type) {
         super(client, "newsfeed.ignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
-        ownerId(ownerId);
-        itemId(itemId);
     }
 
     /**
@@ -43,20 +38,20 @@ public class NewsfeedIgnoreItemQuery extends AbstractQueryBuilder<NewsfeedIgnore
     /**
      * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedIgnoreItemQuery ownerId(int value) {
+    public NewsfeedIgnoreItemQuery ownerId(Integer value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
      * Item identifier
      *
-     * @param value value of "item id" parameter. Minimum is 0.
+     * @param value value of "item id" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedIgnoreItemQuery itemId(int value) {
+    public NewsfeedIgnoreItemQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
 
@@ -67,6 +62,6 @@ public class NewsfeedIgnoreItemQuery extends AbstractQueryBuilder<NewsfeedIgnore
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("item_id", "type", "owner_id", "access_token");
+        return Arrays.asList("type", "access_token");
     }
 }

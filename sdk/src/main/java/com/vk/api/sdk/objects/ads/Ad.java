@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
@@ -22,7 +22,7 @@ public class Ad implements Validable {
      * Ad platform
      */
     @SerializedName("ad_platform")
-    private JsonObject adPlatform;
+    private JsonPrimitive adPlatform;
 
     /**
      * Total limit
@@ -72,6 +72,18 @@ public class Ad implements Validable {
      */
     @SerializedName("cpa")
     private Integer cpa;
+
+    /**
+     * Cost of 1000 impressions optimized, kopecks
+     */
+    @SerializedName("ocpm")
+    private Integer ocpm;
+
+    /**
+     * Max cost of target actions for autobidding, kopecks
+     */
+    @SerializedName("autobidding_max_cost")
+    private Integer autobiddingMaxCost;
 
     /**
      * Information whether disclaimer is enabled
@@ -136,11 +148,11 @@ public class Ad implements Validable {
         return this;
     }
 
-    public JsonObject getAdPlatform() {
+    public JsonPrimitive getAdPlatform() {
         return adPlatform;
     }
 
-    public Ad setAdPlatform(JsonObject adPlatform) {
+    public Ad setAdPlatform(JsonPrimitive adPlatform) {
         this.adPlatform = adPlatform;
         return this;
     }
@@ -226,6 +238,24 @@ public class Ad implements Validable {
         return this;
     }
 
+    public Integer getOcpm() {
+        return ocpm;
+    }
+
+    public Ad setOcpm(Integer ocpm) {
+        this.ocpm = ocpm;
+        return this;
+    }
+
+    public Integer getAutobiddingMaxCost() {
+        return autobiddingMaxCost;
+    }
+
+    public Ad setAutobiddingMaxCost(Integer autobiddingMaxCost) {
+        this.autobiddingMaxCost = autobiddingMaxCost;
+        return this;
+    }
+
     public boolean isDisclaimerMedical() {
         return disclaimerMedical == BoolInt.YES;
     }
@@ -304,7 +334,7 @@ public class Ad implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpm, impressionsLimit, allLimit, campaignId, category2Id, disclaimerMedical, category1Id, disclaimerSpecialist, video, disclaimerSupplements, adPlatform, approved, impressionsLimited, cpa, costType, cpc, name, id, adFormat, status);
+        return Objects.hash(autobiddingMaxCost, cpm, impressionsLimit, ocpm, allLimit, campaignId, category2Id, disclaimerMedical, category1Id, disclaimerSpecialist, video, disclaimerSupplements, adPlatform, approved, impressionsLimited, cpa, costType, cpc, name, id, adFormat, status);
     }
 
     @Override
@@ -314,6 +344,8 @@ public class Ad implements Validable {
         Ad ad = (Ad) o;
         return Objects.equals(adFormat, ad.adFormat) &&
                 Objects.equals(cpm, ad.cpm) &&
+                Objects.equals(ocpm, ad.ocpm) &&
+                Objects.equals(autobiddingMaxCost, ad.autobiddingMaxCost) &&
                 Objects.equals(costType, ad.costType) &&
                 Objects.equals(video, ad.video) &&
                 Objects.equals(allLimit, ad.allLimit) &&
@@ -344,6 +376,8 @@ public class Ad implements Validable {
         final StringBuilder sb = new StringBuilder("Ad{");
         sb.append("adFormat=").append(adFormat);
         sb.append(", cpm=").append(cpm);
+        sb.append(", ocpm=").append(ocpm);
+        sb.append(", autobiddingMaxCost=").append(autobiddingMaxCost);
         sb.append(", costType=").append(costType);
         sb.append(", video=").append(video);
         sb.append(", allLimit=").append(allLimit);

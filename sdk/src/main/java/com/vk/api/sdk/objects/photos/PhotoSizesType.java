@@ -28,6 +28,12 @@ public enum PhotoSizesType implements EnumParam {
     @SerializedName("r")
     R("r"),
 
+    @SerializedName("k")
+    K("k"),
+
+    @SerializedName("l")
+    L("l"),
+
     @SerializedName("y")
     Y("y"),
 
@@ -38,7 +44,43 @@ public enum PhotoSizesType implements EnumParam {
     C("c"),
 
     @SerializedName("w")
-    W("w");
+    W("w"),
+
+    @SerializedName("a")
+    A("a"),
+
+    @SerializedName("b")
+    B("b"),
+
+    @SerializedName("e")
+    E("e"),
+
+    @SerializedName("i")
+    I("i"),
+
+    @SerializedName("d")
+    D("d"),
+
+    @SerializedName("j")
+    J("j"),
+
+    @SerializedName("temp")
+    TEMP("temp"),
+
+    @SerializedName("h")
+    H("h"),
+
+    @SerializedName("g")
+    G("g"),
+
+    @SerializedName("n")
+    N("n"),
+
+    @SerializedName("f")
+    F("f"),
+
+    @SerializedName("max")
+    MAX("max");
 
     private final String value;
 

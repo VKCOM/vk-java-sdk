@@ -93,6 +93,33 @@ public class UserCounters implements Validable {
     @SerializedName("videos")
     private Integer videos;
 
+    @SerializedName("new_photo_tags")
+    private Integer newPhotoTags;
+
+    @SerializedName("new_recognition_tags")
+    private Integer newRecognitionTags;
+
+    @SerializedName("mutual_friends")
+    private Integer mutualFriends;
+
+    @SerializedName("posts")
+    private Integer posts;
+
+    @SerializedName("articles")
+    private Integer articles;
+
+    @SerializedName("wishes")
+    private Integer wishes;
+
+    @SerializedName("podcasts")
+    private Integer podcasts;
+
+    @SerializedName("clips")
+    private Integer clips;
+
+    @SerializedName("clips_followers")
+    private Integer clipsFollowers;
+
     public Integer getAlbums() {
         return albums;
     }
@@ -219,9 +246,90 @@ public class UserCounters implements Validable {
         return this;
     }
 
+    public Integer getNewPhotoTags() {
+        return newPhotoTags;
+    }
+
+    public UserCounters setNewPhotoTags(Integer newPhotoTags) {
+        this.newPhotoTags = newPhotoTags;
+        return this;
+    }
+
+    public Integer getNewRecognitionTags() {
+        return newRecognitionTags;
+    }
+
+    public UserCounters setNewRecognitionTags(Integer newRecognitionTags) {
+        this.newRecognitionTags = newRecognitionTags;
+        return this;
+    }
+
+    public Integer getMutualFriends() {
+        return mutualFriends;
+    }
+
+    public UserCounters setMutualFriends(Integer mutualFriends) {
+        this.mutualFriends = mutualFriends;
+        return this;
+    }
+
+    public Integer getPosts() {
+        return posts;
+    }
+
+    public UserCounters setPosts(Integer posts) {
+        this.posts = posts;
+        return this;
+    }
+
+    public Integer getArticles() {
+        return articles;
+    }
+
+    public UserCounters setArticles(Integer articles) {
+        this.articles = articles;
+        return this;
+    }
+
+    public Integer getWishes() {
+        return wishes;
+    }
+
+    public UserCounters setWishes(Integer wishes) {
+        this.wishes = wishes;
+        return this;
+    }
+
+    public Integer getPodcasts() {
+        return podcasts;
+    }
+
+    public UserCounters setPodcasts(Integer podcasts) {
+        this.podcasts = podcasts;
+        return this;
+    }
+
+    public Integer getClips() {
+        return clips;
+    }
+
+    public UserCounters setClips(Integer clips) {
+        this.clips = clips;
+        return this;
+    }
+
+    public Integer getClipsFollowers() {
+        return clipsFollowers;
+    }
+
+    public UserCounters setClipsFollowers(Integer clipsFollowers) {
+        this.clipsFollowers = clipsFollowers;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(userVideos, albums, subscriptions, notes, groups, videos, photos, friends, userPhotos, onlineFriends, followers, pages, audios, gifts);
+        return Objects.hash(userVideos, albums, subscriptions, notes, clips, newRecognitionTags, groups, videos, photos, posts, mutualFriends, friends, userPhotos, newPhotoTags, onlineFriends, followers, pages, podcasts, audios, wishes, articles, clipsFollowers, gifts);
     }
 
     @Override
@@ -233,15 +341,24 @@ public class UserCounters implements Validable {
                 Objects.equals(subscriptions, userCounters.subscriptions) &&
                 Objects.equals(notes, userCounters.notes) &&
                 Objects.equals(onlineFriends, userCounters.onlineFriends) &&
+                Objects.equals(clips, userCounters.clips) &&
                 Objects.equals(userVideos, userCounters.userVideos) &&
                 Objects.equals(groups, userCounters.groups) &&
                 Objects.equals(videos, userCounters.videos) &&
+                Objects.equals(newPhotoTags, userCounters.newPhotoTags) &&
+                Objects.equals(newRecognitionTags, userCounters.newRecognitionTags) &&
                 Objects.equals(photos, userCounters.photos) &&
+                Objects.equals(posts, userCounters.posts) &&
                 Objects.equals(friends, userCounters.friends) &&
                 Objects.equals(userPhotos, userCounters.userPhotos) &&
                 Objects.equals(followers, userCounters.followers) &&
                 Objects.equals(pages, userCounters.pages) &&
+                Objects.equals(podcasts, userCounters.podcasts) &&
                 Objects.equals(audios, userCounters.audios) &&
+                Objects.equals(mutualFriends, userCounters.mutualFriends) &&
+                Objects.equals(wishes, userCounters.wishes) &&
+                Objects.equals(clipsFollowers, userCounters.clipsFollowers) &&
+                Objects.equals(articles, userCounters.articles) &&
                 Objects.equals(gifts, userCounters.gifts);
     }
 
@@ -257,15 +374,24 @@ public class UserCounters implements Validable {
         sb.append(", subscriptions=").append(subscriptions);
         sb.append(", notes=").append(notes);
         sb.append(", onlineFriends=").append(onlineFriends);
+        sb.append(", clips=").append(clips);
         sb.append(", userVideos=").append(userVideos);
         sb.append(", groups=").append(groups);
         sb.append(", videos=").append(videos);
+        sb.append(", newPhotoTags=").append(newPhotoTags);
+        sb.append(", newRecognitionTags=").append(newRecognitionTags);
         sb.append(", photos=").append(photos);
+        sb.append(", posts=").append(posts);
         sb.append(", friends=").append(friends);
         sb.append(", userPhotos=").append(userPhotos);
         sb.append(", followers=").append(followers);
         sb.append(", pages=").append(pages);
+        sb.append(", podcasts=").append(podcasts);
         sb.append(", audios=").append(audios);
+        sb.append(", mutualFriends=").append(mutualFriends);
+        sb.append(", wishes=").append(wishes);
+        sb.append(", clipsFollowers=").append(clipsFollowers);
+        sb.append(", articles=").append(articles);
         sb.append(", gifts=").append(gifts);
         sb.append('}');
         return sb.toString();

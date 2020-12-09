@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.PhotoUpload;
+import com.vk.api.sdk.objects.photos.responses.GetMessagesUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getMessagesUploadServer method
  */
-public class PhotosGetMessagesUploadServerQuery extends AbstractQueryBuilder<PhotosGetMessagesUploadServerQuery, PhotoUpload> {
+public class PhotosGetMessagesUploadServerQuery extends AbstractQueryBuilder<PhotosGetMessagesUploadServerQuery, GetMessagesUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PhotosGetMessagesUploadServerQuery extends AbstractQueryBuilder<Pho
      * @param actor actor with access token
      */
     public PhotosGetMessagesUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "photos.getMessagesUploadServer", PhotoUpload.class);
+        super(client, "photos.getMessagesUploadServer", GetMessagesUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -30,7 +30,7 @@ public class PhotosGetMessagesUploadServerQuery extends AbstractQueryBuilder<Pho
      * @param actor actor with access token
      */
     public PhotosGetMessagesUploadServerQuery(VkApiClient client, GroupActor actor) {
-        super(client, "photos.getMessagesUploadServer", PhotoUpload.class);
+        super(client, "photos.getMessagesUploadServer", GetMessagesUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 

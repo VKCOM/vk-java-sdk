@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.GroupsWorkInfoStatus;
-import com.vk.api.sdk.objects.groups.Address;
+import com.vk.api.sdk.objects.groups.responses.EditAddressResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Groups.editAddress method
  */
-public class GroupsEditAddressQuery extends AbstractQueryBuilder<GroupsEditAddressQuery, Address> {
+public class GroupsEditAddressQuery extends AbstractQueryBuilder<GroupsEditAddressQuery, EditAddressResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,7 +22,7 @@ public class GroupsEditAddressQuery extends AbstractQueryBuilder<GroupsEditAddre
      * @param addressId value of "address id" parameter. Minimum is 0.
      */
     public GroupsEditAddressQuery(VkApiClient client, UserActor actor, int groupId, int addressId) {
-        super(client, "groups.editAddress", Address.class);
+        super(client, "groups.editAddress", EditAddressResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
         addressId(addressId);
@@ -38,7 +38,7 @@ public class GroupsEditAddressQuery extends AbstractQueryBuilder<GroupsEditAddre
      */
     public GroupsEditAddressQuery(VkApiClient client, GroupActor actor, int groupId,
             int addressId) {
-        super(client, "groups.editAddress", Address.class);
+        super(client, "groups.editAddress", EditAddressResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
         groupId(groupId);

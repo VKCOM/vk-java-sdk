@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.Ad;
+import com.vk.api.sdk.objects.ads.responses.GetAdsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getAds method
  */
-public class AdsGetAdsQuery extends AbstractQueryBuilder<AdsGetAdsQuery, List<Ad>> {
+public class AdsGetAdsQuery extends AbstractQueryBuilder<AdsGetAdsQuery, List<GetAdsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class AdsGetAdsQuery extends AbstractQueryBuilder<AdsGetAdsQuery, List<Ad
      * @param accountId value of "account id" parameter.
      */
     public AdsGetAdsQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getAds", Utils.buildParametrizedType(List.class, Ad.class));
+        super(client, "ads.getAds", Utils.buildParametrizedType(List.class, GetAdsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }
@@ -73,6 +73,16 @@ public class AdsGetAdsQuery extends AbstractQueryBuilder<AdsGetAdsQuery, List<Ad
      */
     public AdsGetAdsQuery includeDeleted(Boolean value) {
         return unsafeParam("include_deleted", value);
+    }
+
+    /**
+     * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
+     *
+     * @param value value of "only deleted" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetAdsQuery onlyDeleted(Boolean value) {
+        return unsafeParam("only_deleted", value);
     }
 
     /**

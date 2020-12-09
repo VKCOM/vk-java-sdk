@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class GetListsResponse implements Validable {
     /**
-     * Total communities number
+     * Total number of friends lists
      */
     @SerializedName("count")
     @Required

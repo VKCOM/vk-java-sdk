@@ -8,6 +8,7 @@ import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.queries.friends.FriendsAddListQuery;
 import com.vk.api.sdk.queries.friends.FriendsAddQuery;
 import com.vk.api.sdk.queries.friends.FriendsAreFriendsQuery;
+import com.vk.api.sdk.queries.friends.FriendsAreFriendsQueryWithExtended;
 import com.vk.api.sdk.queries.friends.FriendsDeleteAllRequestsQuery;
 import com.vk.api.sdk.queries.friends.FriendsDeleteListQuery;
 import com.vk.api.sdk.queries.friends.FriendsDeleteQuery;
@@ -87,6 +88,30 @@ public class Friends extends AbstractAction {
     }
 
     /**
+     * Checks the current user's friendship status with other specified users.
+     *
+     * @param actor vk actor
+     * @param userIds IDs of the users whose friendship status to check.
+     * @return query
+     */
+    public FriendsAreFriendsQueryWithExtended areFriendsExtended(UserActor actor,
+            Integer... userIds) {
+        return new FriendsAreFriendsQueryWithExtended(getClient(), actor, userIds);
+    }
+
+    /**
+     * Checks the current user's friendship status with other specified users.
+     *
+     * @param actor vk actor
+     * @param userIds IDs of the users whose friendship status to check.
+     * @return query
+     */
+    public FriendsAreFriendsQueryWithExtended areFriendsExtended(UserActor actor,
+            List<Integer> userIds) {
+        return new FriendsAreFriendsQueryWithExtended(getClient(), actor, userIds);
+    }
+
+    /**
      * Declines a friend request or deletes a user from the current user's friend list.
      *
      * @param actor vk actor
@@ -143,6 +168,26 @@ public class Friends extends AbstractAction {
      * Returns a list of user IDs or detailed information about a user's friends.
      *
      * @param actor vk actor
+     * @return query
+     */
+    public FriendsGetQuery get(UserActor actor) {
+        return new FriendsGetQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user IDs or detailed information about a user's friends.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public FriendsGetQuery get(ServiceActor actor) {
+        return new FriendsGetQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user IDs or detailed information about a user's friends.
+     *
+     * @param actor vk actor
      * @param fields Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
      * @return query
      */
@@ -159,26 +204,6 @@ public class Friends extends AbstractAction {
      */
     public FriendsGetQueryWithFields getWithFields(ServiceActor actor, Fields... fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
-    }
-
-    /**
-     * Returns a list of user IDs or detailed information about a user's friends.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public FriendsGetQuery get(UserActor actor) {
-        return new FriendsGetQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of user IDs or detailed information about a user's friends.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public FriendsGetQuery get(ServiceActor actor) {
-        return new FriendsGetQuery(getClient(), actor);
     }
 
     /**
@@ -215,6 +240,18 @@ public class Friends extends AbstractAction {
      * Returns a list of user IDs of the mutual friends of two users.
      *
      * @param actor vk actor
+     * @param targetUids IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
+     * @return query
+     */
+    public FriendsGetMutualQueryWithTargetUids getMutualWithTargetUids(UserActor actor,
+            Integer... targetUids) {
+        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
+    }
+
+    /**
+     * Returns a list of user IDs of the mutual friends of two users.
+     *
+     * @param actor vk actor
      * @return query
      */
     public FriendsGetMutualQuery getMutual(UserActor actor) {
@@ -222,15 +259,13 @@ public class Friends extends AbstractAction {
     }
 
     /**
-     * Returns a list of user IDs of the mutual friends of two users.
+     * Returns a list of user IDs of a user's friends who are online.
      *
      * @param actor vk actor
-     * @param targetUids IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
      * @return query
      */
-    public FriendsGetMutualQueryWithTargetUids getMutualWithTargetUids(UserActor actor,
-            Integer... targetUids) {
-        return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
+    public FriendsGetOnlineQuery getOnline(UserActor actor) {
+        return new FriendsGetOnlineQuery(getClient(), actor);
     }
 
     /**
@@ -243,16 +278,6 @@ public class Friends extends AbstractAction {
     public FriendsGetOnlineQueryWithOnlineMobile getOnlineWithOnlineMobile(UserActor actor,
             Boolean onlineMobile) {
         return new FriendsGetOnlineQueryWithOnlineMobile(getClient(), actor, onlineMobile);
-    }
-
-    /**
-     * Returns a list of user IDs of a user's friends who are online.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public FriendsGetOnlineQuery getOnline(UserActor actor) {
-        return new FriendsGetOnlineQuery(getClient(), actor);
     }
 
     /**
@@ -279,22 +304,22 @@ public class Friends extends AbstractAction {
      * Returns information about the current user's incoming and outgoing friend requests.
      *
      * @param actor vk actor
-     * @param needMutual '1' — to return a list of mutual friends (up to 20), if any
      * @return query
      */
-    public FriendsGetRequestsQueryWithNeedMutual getRequestsWithNeedMutual(UserActor actor,
-            Boolean needMutual) {
-        return new FriendsGetRequestsQueryWithNeedMutual(getClient(), actor, needMutual);
+    public FriendsGetRequestsQuery getRequests(UserActor actor) {
+        return new FriendsGetRequestsQuery(getClient(), actor);
     }
 
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      *
      * @param actor vk actor
+     * @param needMutual '1' — to return a list of mutual friends (up to 20), if any
      * @return query
      */
-    public FriendsGetRequestsQuery getRequests(UserActor actor) {
-        return new FriendsGetRequestsQuery(getClient(), actor);
+    public FriendsGetRequestsQueryWithNeedMutual getRequestsWithNeedMutual(UserActor actor,
+            Boolean needMutual) {
+        return new FriendsGetRequestsQueryWithNeedMutual(getClient(), actor, needMutual);
     }
 
     /**

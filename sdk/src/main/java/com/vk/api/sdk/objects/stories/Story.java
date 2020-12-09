@@ -6,6 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.video.Video;
 import java.util.Objects;
 
 /**
@@ -37,10 +38,22 @@ public class Story implements Validable {
     private BoolInt canSee;
 
     /**
+     * Information whether current user can like the story.
+     */
+    @SerializedName("can_like")
+    private Boolean canLike;
+
+    /**
      * Information whether current user can share the story (0 - no, 1 - yes).
      */
     @SerializedName("can_share")
     private BoolInt canShare;
+
+    /**
+     * Information whether current user can hide the story (0 - no, 1 - yes).
+     */
+    @SerializedName("can_hide")
+    private BoolInt canHide;
 
     /**
      * Date when story has been added in Unixtime.
@@ -107,7 +120,7 @@ public class Story implements Validable {
     private Photo photo;
 
     /**
-     * Replies to current story.
+     * Replies counters to current story.
      */
     @SerializedName("replies")
     private Replies replies;
@@ -121,32 +134,17 @@ public class Story implements Validable {
     @SerializedName("type")
     private StoryType type;
 
+    @SerializedName("clickable_stickers")
+    private ClickableStickers clickableStickers;
+
     @SerializedName("video")
-    private StoryVideo video;
+    private Video video;
 
     /**
      * Views number.
      */
     @SerializedName("views")
     private Integer views;
-
-    /**
-     * Does author have stories privacy restrictions
-     */
-    @SerializedName("is_restricted")
-    private Boolean isRestricted;
-
-    /**
-     * Is video without sound
-     */
-    @SerializedName("no_sound")
-    private Boolean noSound;
-
-    /**
-     * Does video need to be muted
-     */
-    @SerializedName("need_mute")
-    private Boolean needMute;
 
     /**
      * Information whether story has question sticker and current user can send question to the author
@@ -159,6 +157,18 @@ public class Story implements Validable {
      */
     @SerializedName("can_ask_anonymous")
     private BoolInt canAskAnonymous;
+
+    @SerializedName("narratives_count")
+    private Integer narrativesCount;
+
+    @SerializedName("first_narrative_title")
+    private String firstNarrativeTitle;
+
+    @SerializedName("birthday_wish_user_id")
+    private Integer birthdayWishUserId;
+
+    @SerializedName("can_use_in_narrative")
+    private Boolean canUseInNarrative;
 
     public String getAccessKey() {
         return accessKey;
@@ -193,12 +203,29 @@ public class Story implements Validable {
         return canSee;
     }
 
+    public Boolean getCanLike() {
+        return canLike;
+    }
+
+    public Story setCanLike(Boolean canLike) {
+        this.canLike = canLike;
+        return this;
+    }
+
     public boolean canShare() {
         return canShare == BoolInt.YES;
     }
 
     public BoolInt getCanShare() {
         return canShare;
+    }
+
+    public boolean canHide() {
+        return canHide == BoolInt.YES;
+    }
+
+    public BoolInt getCanHide() {
+        return canHide;
     }
 
     public Integer getDate() {
@@ -335,11 +362,20 @@ public class Story implements Validable {
         return this;
     }
 
-    public StoryVideo getVideo() {
+    public ClickableStickers getClickableStickers() {
+        return clickableStickers;
+    }
+
+    public Story setClickableStickers(ClickableStickers clickableStickers) {
+        this.clickableStickers = clickableStickers;
+        return this;
+    }
+
+    public Video getVideo() {
         return video;
     }
 
-    public Story setVideo(StoryVideo video) {
+    public Story setVideo(Video video) {
         this.video = video;
         return this;
     }
@@ -350,33 +386,6 @@ public class Story implements Validable {
 
     public Story setViews(Integer views) {
         this.views = views;
-        return this;
-    }
-
-    public Boolean getIsRestricted() {
-        return isRestricted;
-    }
-
-    public Story setIsRestricted(Boolean isRestricted) {
-        this.isRestricted = isRestricted;
-        return this;
-    }
-
-    public Boolean getNoSound() {
-        return noSound;
-    }
-
-    public Story setNoSound(Boolean noSound) {
-        this.noSound = noSound;
-        return this;
-    }
-
-    public Boolean getNeedMute() {
-        return needMute;
-    }
-
-    public Story setNeedMute(Boolean needMute) {
-        this.needMute = needMute;
         return this;
     }
 
@@ -396,9 +405,45 @@ public class Story implements Validable {
         return canAskAnonymous;
     }
 
+    public Integer getNarrativesCount() {
+        return narrativesCount;
+    }
+
+    public Story setNarrativesCount(Integer narrativesCount) {
+        this.narrativesCount = narrativesCount;
+        return this;
+    }
+
+    public String getFirstNarrativeTitle() {
+        return firstNarrativeTitle;
+    }
+
+    public Story setFirstNarrativeTitle(String firstNarrativeTitle) {
+        this.firstNarrativeTitle = firstNarrativeTitle;
+        return this;
+    }
+
+    public Integer getBirthdayWishUserId() {
+        return birthdayWishUserId;
+    }
+
+    public Story setBirthdayWishUserId(Integer birthdayWishUserId) {
+        this.birthdayWishUserId = birthdayWishUserId;
+        return this;
+    }
+
+    public Boolean getCanUseInNarrative() {
+        return canUseInNarrative;
+    }
+
+    public Story setCanUseInNarrative(Boolean canUseInNarrative) {
+        this.canUseInNarrative = canUseInNarrative;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, canReply, link, video, ownerId, type, seen, noSound, isDeleted, needMute, canSee, canComment, id, views, parentStoryAccessKey, canAskAnonymous, canShare, photo, parentStoryId, expiresAt, canAsk, parentStory, replies, accessKey, parentStoryOwnerId, isExpired, isRestricted);
+        return Objects.hash(date, canReply, canLike, link, narrativesCount, video, ownerId, type, canHide, seen, isDeleted, canUseInNarrative, canSee, canComment, id, views, parentStoryAccessKey, canAskAnonymous, clickableStickers, canShare, photo, parentStoryId, expiresAt, firstNarrativeTitle, canAsk, parentStory, replies, accessKey, birthdayWishUserId, parentStoryOwnerId, isExpired);
     }
 
     @Override
@@ -408,27 +453,31 @@ public class Story implements Validable {
         Story story = (Story) o;
         return Objects.equals(date, story.date) &&
                 Objects.equals(canAsk, story.canAsk) &&
-                Objects.equals(needMute, story.needMute) &&
                 Objects.equals(ownerId, story.ownerId) &&
-                Objects.equals(isRestricted, story.isRestricted) &&
                 Objects.equals(link, story.link) &&
+                Objects.equals(birthdayWishUserId, story.birthdayWishUserId) &&
                 Objects.equals(video, story.video) &&
                 Objects.equals(type, story.type) &&
                 Objects.equals(seen, story.seen) &&
                 Objects.equals(parentStoryId, story.parentStoryId) &&
+                Objects.equals(clickableStickers, story.clickableStickers) &&
                 Objects.equals(canComment, story.canComment) &&
                 Objects.equals(canAskAnonymous, story.canAskAnonymous) &&
                 Objects.equals(expiresAt, story.expiresAt) &&
                 Objects.equals(isDeleted, story.isDeleted) &&
+                Objects.equals(canLike, story.canLike) &&
+                Objects.equals(firstNarrativeTitle, story.firstNarrativeTitle) &&
                 Objects.equals(id, story.id) &&
                 Objects.equals(views, story.views) &&
+                Objects.equals(narrativesCount, story.narrativesCount) &&
+                Objects.equals(canHide, story.canHide) &&
                 Objects.equals(canShare, story.canShare) &&
                 Objects.equals(photo, story.photo) &&
-                Objects.equals(noSound, story.noSound) &&
                 Objects.equals(parentStoryAccessKey, story.parentStoryAccessKey) &&
                 Objects.equals(canSee, story.canSee) &&
                 Objects.equals(parentStory, story.parentStory) &&
                 Objects.equals(parentStoryOwnerId, story.parentStoryOwnerId) &&
+                Objects.equals(canUseInNarrative, story.canUseInNarrative) &&
                 Objects.equals(canReply, story.canReply) &&
                 Objects.equals(isExpired, story.isExpired) &&
                 Objects.equals(replies, story.replies) &&
@@ -445,27 +494,31 @@ public class Story implements Validable {
         final StringBuilder sb = new StringBuilder("Story{");
         sb.append("date=").append(date);
         sb.append(", canAsk=").append(canAsk);
-        sb.append(", needMute=").append(needMute);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", isRestricted=").append(isRestricted);
         sb.append(", link=").append(link);
+        sb.append(", birthdayWishUserId=").append(birthdayWishUserId);
         sb.append(", video=").append(video);
         sb.append(", type=").append(type);
         sb.append(", seen=").append(seen);
         sb.append(", parentStoryId=").append(parentStoryId);
+        sb.append(", clickableStickers=").append(clickableStickers);
         sb.append(", canComment=").append(canComment);
         sb.append(", canAskAnonymous=").append(canAskAnonymous);
         sb.append(", expiresAt=").append(expiresAt);
         sb.append(", isDeleted=").append(isDeleted);
+        sb.append(", canLike=").append(canLike);
+        sb.append(", firstNarrativeTitle='").append(firstNarrativeTitle).append("'");
         sb.append(", id=").append(id);
         sb.append(", views=").append(views);
+        sb.append(", narrativesCount=").append(narrativesCount);
+        sb.append(", canHide=").append(canHide);
         sb.append(", canShare=").append(canShare);
         sb.append(", photo=").append(photo);
-        sb.append(", noSound=").append(noSound);
         sb.append(", parentStoryAccessKey='").append(parentStoryAccessKey).append("'");
         sb.append(", canSee=").append(canSee);
         sb.append(", parentStory=").append(parentStory);
         sb.append(", parentStoryOwnerId=").append(parentStoryOwnerId);
+        sb.append(", canUseInNarrative=").append(canUseInNarrative);
         sb.append(", canReply=").append(canReply);
         sb.append(", isExpired=").append(isExpired);
         sb.append(", replies=").append(replies);

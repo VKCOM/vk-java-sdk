@@ -7,6 +7,7 @@ import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.ObjectCount;
+import com.vk.api.sdk.objects.base.RepostsInfo;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,9 +32,6 @@ public class PhotoFull implements Validable {
      */
     @SerializedName("can_comment")
     private BoolInt canComment;
-
-    @SerializedName("comments")
-    private ObjectCount comments;
 
     /**
      * Date when uploaded
@@ -67,6 +65,12 @@ public class PhotoFull implements Validable {
     @SerializedName("likes")
     private Likes likes;
 
+    @SerializedName("reposts")
+    private RepostsInfo reposts;
+
+    @SerializedName("comments")
+    private ObjectCount comments;
+
     /**
      * Longitude
      */
@@ -84,9 +88,6 @@ public class PhotoFull implements Validable {
      */
     @SerializedName("post_id")
     private Integer postId;
-
-    @SerializedName("reposts")
-    private ObjectCount reposts;
 
     @SerializedName("tags")
     private ObjectCount tags;
@@ -133,15 +134,6 @@ public class PhotoFull implements Validable {
 
     public BoolInt getCanComment() {
         return canComment;
-    }
-
-    public ObjectCount getComments() {
-        return comments;
-    }
-
-    public PhotoFull setComments(ObjectCount comments) {
-        this.comments = comments;
-        return this;
     }
 
     public Integer getDate() {
@@ -198,6 +190,24 @@ public class PhotoFull implements Validable {
         return this;
     }
 
+    public RepostsInfo getReposts() {
+        return reposts;
+    }
+
+    public PhotoFull setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
+    public ObjectCount getComments() {
+        return comments;
+    }
+
+    public PhotoFull setComments(ObjectCount comments) {
+        this.comments = comments;
+        return this;
+    }
+
     public Float getLng() {
         return lng;
     }
@@ -222,15 +232,6 @@ public class PhotoFull implements Validable {
 
     public PhotoFull setPostId(Integer postId) {
         this.postId = postId;
-        return this;
-    }
-
-    public ObjectCount getReposts() {
-        return reposts;
-    }
-
-    public PhotoFull setReposts(ObjectCount reposts) {
-        this.reposts = reposts;
         return this;
     }
 

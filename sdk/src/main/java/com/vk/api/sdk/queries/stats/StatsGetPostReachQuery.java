@@ -4,27 +4,44 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.stats.WallpostStat;
+import com.vk.api.sdk.objects.stats.responses.GetPostReachResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Stats.getPostReach method
  */
-public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostReachQuery, List<WallpostStat>> {
+public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostReachQuery, List<GetPostReachResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param postId value of "post id" parameter. Minimum is 0.
+     * @param postIds value of "post ids" parameter.
      */
-    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, String ownerId, int postId) {
-        super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, WallpostStat.class));
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, String ownerId,
+            Integer... postIds) {
+        super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, GetPostReachResponse.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
-        postId(postId);
+        postIds(postIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter.
+     * @param postIds value of "post ids" parameter.
+     */
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, String ownerId,
+            List<Integer> postIds) {
+        super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, GetPostReachResponse.class));
+        accessToken(actor.getAccessToken());
+        ownerId(ownerId);
+        postIds(postIds);
     }
 
     /**
@@ -38,13 +55,24 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
     }
 
     /**
-     * Wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
+     * post_ids
+     * Wall posts id
      *
-     * @param value value of "post id" parameter. Minimum is 0.
+     * @param value value of "post ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StatsGetPostReachQuery postId(int value) {
-        return unsafeParam("post_id", value);
+    protected StatsGetPostReachQuery postIds(Integer... value) {
+        return unsafeParam("post_ids", value);
+    }
+
+    /**
+     * Wall posts id
+     *
+     * @param value value of "post ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected StatsGetPostReachQuery postIds(List<Integer> value) {
+        return unsafeParam("post_ids", value);
     }
 
     @Override
@@ -54,6 +82,6 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("post_id", "owner_id", "access_token");
+        return Arrays.asList("post_ids", "owner_id", "access_token");
     }
 }

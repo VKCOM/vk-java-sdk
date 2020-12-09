@@ -3,7 +3,6 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.wall.Wallpost;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,9 +10,6 @@ import java.util.Objects;
  * ItemDigest object
  */
 public class ItemDigest extends ItemBase implements Validable {
-    @SerializedName("button_text")
-    private String buttonText;
-
     /**
      * id of feed in digest
      */
@@ -21,7 +17,7 @@ public class ItemDigest extends ItemBase implements Validable {
     private String feedId;
 
     @SerializedName("items")
-    private List<Wallpost> items;
+    private List<ItemDigestItem> items;
 
     @SerializedName("main_post_ids")
     private List<String> mainPostIds;
@@ -32,20 +28,14 @@ public class ItemDigest extends ItemBase implements Validable {
     @SerializedName("template")
     private ItemDigestTemplate template;
 
-    @SerializedName("title")
-    private String title;
+    @SerializedName("header")
+    private ItemDigestHeader header;
+
+    @SerializedName("footer")
+    private ItemDigestFooter footer;
 
     @SerializedName("track_code")
     private String trackCode;
-
-    public String getButtonText() {
-        return buttonText;
-    }
-
-    public ItemDigest setButtonText(String buttonText) {
-        this.buttonText = buttonText;
-        return this;
-    }
 
     public String getFeedId() {
         return feedId;
@@ -56,11 +46,11 @@ public class ItemDigest extends ItemBase implements Validable {
         return this;
     }
 
-    public List<Wallpost> getItems() {
+    public List<ItemDigestItem> getItems() {
         return items;
     }
 
-    public ItemDigest setItems(List<Wallpost> items) {
+    public ItemDigest setItems(List<ItemDigestItem> items) {
         this.items = items;
         return this;
     }
@@ -83,12 +73,21 @@ public class ItemDigest extends ItemBase implements Validable {
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public ItemDigestHeader getHeader() {
+        return header;
     }
 
-    public ItemDigest setTitle(String title) {
-        this.title = title;
+    public ItemDigest setHeader(ItemDigestHeader header) {
+        this.header = header;
+        return this;
+    }
+
+    public ItemDigestFooter getFooter() {
+        return footer;
+    }
+
+    public ItemDigest setFooter(ItemDigestFooter footer) {
+        this.footer = footer;
         return this;
     }
 
@@ -103,7 +102,7 @@ public class ItemDigest extends ItemBase implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(template, trackCode, buttonText, mainPostIds, feedId, title, items);
+        return Objects.hash(template, trackCode, mainPostIds, footer, feedId, header, items);
     }
 
     @Override
@@ -113,9 +112,9 @@ public class ItemDigest extends ItemBase implements Validable {
         ItemDigest itemDigest = (ItemDigest) o;
         return Objects.equals(template, itemDigest.template) &&
                 Objects.equals(mainPostIds, itemDigest.mainPostIds) &&
+                Objects.equals(footer, itemDigest.footer) &&
+                Objects.equals(header, itemDigest.header) &&
                 Objects.equals(trackCode, itemDigest.trackCode) &&
-                Objects.equals(buttonText, itemDigest.buttonText) &&
-                Objects.equals(title, itemDigest.title) &&
                 Objects.equals(items, itemDigest.items) &&
                 Objects.equals(feedId, itemDigest.feedId);
     }
@@ -130,9 +129,9 @@ public class ItemDigest extends ItemBase implements Validable {
         final StringBuilder sb = new StringBuilder("ItemDigest{");
         sb.append("template='").append(template).append("'");
         sb.append(", mainPostIds='").append(mainPostIds).append("'");
+        sb.append(", footer=").append(footer);
+        sb.append(", header=").append(header);
         sb.append(", trackCode='").append(trackCode).append("'");
-        sb.append(", buttonText='").append(buttonText).append("'");
-        sb.append(", title='").append(title).append("'");
         sb.append(", items=").append(items);
         sb.append(", feedId='").append(feedId).append("'");
         sb.append('}');

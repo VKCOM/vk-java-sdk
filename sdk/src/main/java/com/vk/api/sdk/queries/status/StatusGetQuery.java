@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.status;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.status.Status;
+import com.vk.api.sdk.objects.status.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Status.get method
  */
-public class StatusGetQuery extends AbstractQueryBuilder<StatusGetQuery, Status> {
+public class StatusGetQuery extends AbstractQueryBuilder<StatusGetQuery, GetResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class StatusGetQuery extends AbstractQueryBuilder<StatusGetQuery, Status>
      * @param actor actor with access token
      */
     public StatusGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "status.get", Status.class);
+        super(client, "status.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }
 

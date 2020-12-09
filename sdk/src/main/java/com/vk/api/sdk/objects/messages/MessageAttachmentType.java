@@ -43,6 +43,12 @@ public enum MessageAttachmentType implements EnumParam {
     @SerializedName("article")
     ARTICLE("article"),
 
+    @SerializedName("poll")
+    POLL("poll"),
+
+    @SerializedName("call")
+    CALL("call"),
+
     @SerializedName("graffiti")
     GRAFFITI("graffiti"),
 

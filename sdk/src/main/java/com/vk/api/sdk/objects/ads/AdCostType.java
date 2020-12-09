@@ -14,7 +14,10 @@ public enum AdCostType implements EnumParam {
     PER_IMPRESSIONS(1),
 
     @SerializedName("2")
-    PER_ACTIONS(2);
+    PER_ACTIONS(2),
+
+    @SerializedName("3")
+    PER_IMPRESSIONS_OPTIMIZED(3);
 
     private final Integer value;
 

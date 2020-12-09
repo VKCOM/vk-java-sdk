@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.TargetGroup;
+import com.vk.api.sdk.objects.ads.responses.GetTargetGroupsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getTargetGroups method
  */
-public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGroupsQuery, List<TargetGroup>> {
+public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGroupsQuery, List<GetTargetGroupsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
      * @param accountId value of "account id" parameter.
      */
     public AdsGetTargetGroupsQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getTargetGroups", Utils.buildParametrizedType(List.class, TargetGroup.class));
+        super(client, "ads.getTargetGroups", Utils.buildParametrizedType(List.class, GetTargetGroupsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }

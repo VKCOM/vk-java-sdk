@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.pages.WikipageFull;
+import com.vk.api.sdk.objects.pages.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Pages.get method
  */
-public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageFull> {
+public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, WikipageF
      * @param actor actor with access token
      */
     public PagesGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "pages.get", WikipageFull.class);
+        super(client, "pages.get", GetResponse.class);
         accessToken(actor.getAccessToken());
     }
 

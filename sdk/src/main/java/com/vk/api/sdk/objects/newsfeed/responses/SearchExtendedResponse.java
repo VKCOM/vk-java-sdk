@@ -22,6 +22,12 @@ public class SearchExtendedResponse implements Validable {
     @SerializedName("groups")
     private List<GroupFull> groups;
 
+    @SerializedName("suggested_queries")
+    private List<String> suggestedQueries;
+
+    @SerializedName("next_from")
+    private String nextFrom;
+
     /**
      * Filtered number
      */
@@ -33,9 +39,6 @@ public class SearchExtendedResponse implements Validable {
      */
     @SerializedName("total_count")
     private Integer totalCount;
-
-    @SerializedName("next_from")
-    private String nextFrom;
 
     public List<WallpostFull> getItems() {
         return items;
@@ -64,6 +67,24 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
+    public List<String> getSuggestedQueries() {
+        return suggestedQueries;
+    }
+
+    public SearchExtendedResponse setSuggestedQueries(List<String> suggestedQueries) {
+        this.suggestedQueries = suggestedQueries;
+        return this;
+    }
+
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public SearchExtendedResponse setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
+        return this;
+    }
+
     public Integer getCount() {
         return count;
     }
@@ -82,18 +103,9 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
-    public String getNextFrom() {
-        return nextFrom;
-    }
-
-    public SearchExtendedResponse setNextFrom(String nextFrom) {
-        this.nextFrom = nextFrom;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(profiles, count, groups, totalCount, nextFrom, items);
+        return Objects.hash(suggestedQueries, profiles, count, groups, totalCount, nextFrom, items);
     }
 
     @Override
@@ -103,6 +115,7 @@ public class SearchExtendedResponse implements Validable {
         SearchExtendedResponse searchExtendedResponse = (SearchExtendedResponse) o;
         return Objects.equals(nextFrom, searchExtendedResponse.nextFrom) &&
                 Objects.equals(totalCount, searchExtendedResponse.totalCount) &&
+                Objects.equals(suggestedQueries, searchExtendedResponse.suggestedQueries) &&
                 Objects.equals(profiles, searchExtendedResponse.profiles) &&
                 Objects.equals(count, searchExtendedResponse.count) &&
                 Objects.equals(groups, searchExtendedResponse.groups) &&
@@ -119,6 +132,7 @@ public class SearchExtendedResponse implements Validable {
         final StringBuilder sb = new StringBuilder("SearchExtendedResponse{");
         sb.append("nextFrom='").append(nextFrom).append("'");
         sb.append(", totalCount=").append(totalCount);
+        sb.append(", suggestedQueries='").append(suggestedQueries).append("'");
         sb.append(", profiles=").append(profiles);
         sb.append(", count=").append(count);
         sb.append(", groups=").append(groups);

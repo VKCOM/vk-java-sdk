@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.PollsBackgroundId;
-import com.vk.api.sdk.objects.polls.Poll;
+import com.vk.api.sdk.objects.polls.responses.CreateResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Polls.create method
  */
-public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Poll> {
+public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, CreateResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
      * @param actor actor with access token
      */
     public PollsCreateQuery(VkApiClient client, UserActor actor) {
-        super(client, "polls.create", Poll.class);
+        super(client, "polls.create", CreateResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -101,6 +101,16 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Pol
      */
     public PollsCreateQuery backgroundId(PollsBackgroundId value) {
         return unsafeParam("background_id", value);
+    }
+
+    /**
+     * Set disable unvote
+     *
+     * @param value value of "disable unvote" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery disableUnvote(Boolean value) {
+        return unsafeParam("disable_unvote", value);
     }
 
     @Override

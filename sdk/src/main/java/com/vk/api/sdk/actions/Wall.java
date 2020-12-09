@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.queries.wall.WallCheckCopyrightLinkQuery;
 import com.vk.api.sdk.queries.wall.WallCloseCommentsQuery;
 import com.vk.api.sdk.queries.wall.WallCreateCommentQuery;
 import com.vk.api.sdk.queries.wall.WallDeleteCommentQuery;
@@ -12,8 +13,10 @@ import com.vk.api.sdk.queries.wall.WallDeleteQuery;
 import com.vk.api.sdk.queries.wall.WallEditAdsStealthQuery;
 import com.vk.api.sdk.queries.wall.WallEditCommentQuery;
 import com.vk.api.sdk.queries.wall.WallEditQuery;
-import com.vk.api.sdk.queries.wall.WallGetByIdQuery;
 import com.vk.api.sdk.queries.wall.WallGetByIdQueryWithExtended;
+import com.vk.api.sdk.queries.wall.WallGetByIdQueryWithLegacy;
+import com.vk.api.sdk.queries.wall.WallGetCommentQuery;
+import com.vk.api.sdk.queries.wall.WallGetCommentQueryWithExtended;
 import com.vk.api.sdk.queries.wall.WallGetCommentsQuery;
 import com.vk.api.sdk.queries.wall.WallGetCommentsQueryWithExtended;
 import com.vk.api.sdk.queries.wall.WallGetQuery;
@@ -44,6 +47,15 @@ public class Wall extends AbstractAction {
      */
     public Wall(VkApiClient client) {
         super(client);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param link
+     * @return query
+     */
+    public WallCheckCopyrightLinkQuery checkCopyrightLink(UserActor actor, String link) {
+        return new WallCheckCopyrightLinkQuery(getClient(), actor, link);
     }
 
     /**
@@ -189,6 +201,50 @@ public class Wall extends AbstractAction {
      * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
      * @return query
      */
+    public WallGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, String... posts) {
+        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    public WallGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, List<String> posts) {
+        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    public WallGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, String... posts) {
+        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    public WallGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, List<String> posts) {
+        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
     public WallGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
@@ -227,47 +283,25 @@ public class Wall extends AbstractAction {
     }
 
     /**
-     * Returns a list of posts from user or community walls by their IDs.
+     * Returns a comment on a post on a user wall or community wall.
      *
      * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @param commentId Comment ID.
      * @return query
      */
-    public WallGetByIdQuery getById(UserActor actor, String... posts) {
-        return new WallGetByIdQuery(getClient(), actor, posts);
+    public WallGetCommentQueryWithExtended getCommentExtended(UserActor actor, int commentId) {
+        return new WallGetCommentQueryWithExtended(getClient(), actor, commentId);
     }
 
     /**
-     * Returns a list of posts from user or community walls by their IDs.
+     * Returns a comment on a post on a user wall or community wall.
      *
      * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @param commentId Comment ID.
      * @return query
      */
-    public WallGetByIdQuery getById(UserActor actor, List<String> posts) {
-        return new WallGetByIdQuery(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
-    public WallGetByIdQuery getById(ServiceActor actor, String... posts) {
-        return new WallGetByIdQuery(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
-    public WallGetByIdQuery getById(ServiceActor actor, List<String> posts) {
-        return new WallGetByIdQuery(getClient(), actor, posts);
+    public WallGetCommentQuery getComment(UserActor actor, int commentId) {
+        return new WallGetCommentQuery(getClient(), actor, commentId);
     }
 
     /**
@@ -444,26 +478,6 @@ public class Wall extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public WallSearchQueryWithExtended searchExtended(UserActor actor) {
-        return new WallSearchQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Allows to search posts on user or community walls.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public WallSearchQueryWithExtended searchExtended(ServiceActor actor) {
-        return new WallSearchQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Allows to search posts on user or community walls.
-     *
-     * @param actor vk actor
-     * @return query
-     */
     public WallSearchQuery search(UserActor actor) {
         return new WallSearchQuery(getClient(), actor);
     }
@@ -476,6 +490,26 @@ public class Wall extends AbstractAction {
      */
     public WallSearchQuery search(ServiceActor actor) {
         return new WallSearchQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to search posts on user or community walls.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public WallSearchQueryWithExtended searchExtended(UserActor actor) {
+        return new WallSearchQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Allows to search posts on user or community walls.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public WallSearchQueryWithExtended searchExtended(ServiceActor actor) {
+        return new WallSearchQueryWithExtended(getClient(), actor);
     }
 
     /**

@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.photos.responses.SaveMarketAlbumPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.saveMarketAlbumPhoto method
  */
-public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<PhotosSaveMarketAlbumPhotoQuery, List<Photo>> {
+public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<PhotosSaveMarketAlbumPhotoQuery, List<SaveMarketAlbumPhotoResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -24,7 +24,7 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
      */
     public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, int groupId,
             String photo, int server, String hash) {
-        super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, Photo.class));
+        super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, SaveMarketAlbumPhotoResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
         photo(photo);

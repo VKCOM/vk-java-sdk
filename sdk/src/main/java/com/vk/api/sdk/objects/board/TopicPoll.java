@@ -14,14 +14,16 @@ import java.util.Objects;
  */
 public class TopicPoll implements Validable {
     /**
-     * Current user's answer ID
+     * Poll owner's ID
      */
-    @SerializedName("answer_id")
-    private Integer answerId;
+    @SerializedName("owner_id")
+    private Integer ownerId;
 
-    @SerializedName("answers")
-    @Required
-    private List<Answer> answers;
+    /**
+     * Poll ID
+     */
+    @SerializedName("poll_id")
+    private Integer pollId;
 
     /**
      * Date when poll has been created in Unixtime
@@ -37,18 +39,6 @@ public class TopicPoll implements Validable {
     private BoolInt isClosed;
 
     /**
-     * Poll owner's ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Poll ID
-     */
-    @SerializedName("poll_id")
-    private Integer pollId;
-
-    /**
      * Poll question
      */
     @SerializedName("question")
@@ -60,23 +50,33 @@ public class TopicPoll implements Validable {
      */
     @SerializedName("votes")
     @Required
-    private String votes;
+    private Integer votes;
 
-    public Integer getAnswerId() {
-        return answerId;
+    /**
+     * Current user's answer ID
+     */
+    @SerializedName("answer_id")
+    private Integer answerId;
+
+    @SerializedName("answers")
+    @Required
+    private List<Answer> answers;
+
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
-    public TopicPoll setAnswerId(Integer answerId) {
-        this.answerId = answerId;
+    public TopicPoll setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
-    public List<Answer> getAnswers() {
-        return answers;
+    public Integer getPollId() {
+        return pollId;
     }
 
-    public TopicPoll setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public TopicPoll setPollId(Integer pollId) {
+        this.pollId = pollId;
         return this;
     }
 
@@ -97,24 +97,6 @@ public class TopicPoll implements Validable {
         return isClosed;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public TopicPoll setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public Integer getPollId() {
-        return pollId;
-    }
-
-    public TopicPoll setPollId(Integer pollId) {
-        this.pollId = pollId;
-        return this;
-    }
-
     public String getQuestion() {
         return question;
     }
@@ -124,12 +106,30 @@ public class TopicPoll implements Validable {
         return this;
     }
 
-    public String getVotes() {
+    public Integer getVotes() {
         return votes;
     }
 
-    public TopicPoll setVotes(String votes) {
+    public TopicPoll setVotes(Integer votes) {
         this.votes = votes;
+        return this;
+    }
+
+    public Integer getAnswerId() {
+        return answerId;
+    }
+
+    public TopicPoll setAnswerId(Integer answerId) {
+        this.answerId = answerId;
+        return this;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public TopicPoll setAnswers(List<Answer> answers) {
+        this.answers = answers;
         return this;
     }
 
@@ -145,8 +145,8 @@ public class TopicPoll implements Validable {
         TopicPoll topicPoll = (TopicPoll) o;
         return Objects.equals(pollId, topicPoll.pollId) &&
                 Objects.equals(question, topicPoll.question) &&
-                Objects.equals(created, topicPoll.created) &&
                 Objects.equals(ownerId, topicPoll.ownerId) &&
+                Objects.equals(created, topicPoll.created) &&
                 Objects.equals(answers, topicPoll.answers) &&
                 Objects.equals(votes, topicPoll.votes) &&
                 Objects.equals(answerId, topicPoll.answerId) &&
@@ -163,10 +163,10 @@ public class TopicPoll implements Validable {
         final StringBuilder sb = new StringBuilder("TopicPoll{");
         sb.append("pollId=").append(pollId);
         sb.append(", question='").append(question).append("'");
-        sb.append(", created=").append(created);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", created=").append(created);
         sb.append(", answers=").append(answers);
-        sb.append(", votes='").append(votes).append("'");
+        sb.append(", votes=").append(votes);
         sb.append(", answerId=").append(answerId);
         sb.append(", isClosed=").append(isClosed);
         sb.append('}');

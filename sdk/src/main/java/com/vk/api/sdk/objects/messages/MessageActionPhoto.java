@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -14,43 +14,43 @@ public class MessageActionPhoto implements Validable {
      * URL of the preview image with 100px in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private URI photo100;
 
     /**
      * URL of the preview image with 200px in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private URI photo200;
 
     /**
      * URL of the preview image with 50px in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private URI photo50;
 
-    public URL getPhoto100() {
+    public URI getPhoto100() {
         return photo100;
     }
 
-    public MessageActionPhoto setPhoto100(URL photo100) {
+    public MessageActionPhoto setPhoto100(URI photo100) {
         this.photo100 = photo100;
         return this;
     }
 
-    public URL getPhoto200() {
+    public URI getPhoto200() {
         return photo200;
     }
 
-    public MessageActionPhoto setPhoto200(URL photo200) {
+    public MessageActionPhoto setPhoto200(URI photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhoto50() {
+    public URI getPhoto50() {
         return photo50;
     }
 
-    public MessageActionPhoto setPhoto50(URL photo50) {
+    public MessageActionPhoto setPhoto50(URI photo50) {
         this.photo50 = photo50;
         return this;
     }

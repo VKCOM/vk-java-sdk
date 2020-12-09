@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.friends.UserXtrPhone;
+import com.vk.api.sdk.objects.friends.responses.GetByPhonesResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Query for Friends.getByPhones method
  */
-public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPhonesQuery, List<UserXtrPhone>> {
+public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPhonesQuery, List<GetByPhonesResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class FriendsGetByPhonesQuery extends AbstractQueryBuilder<FriendsGetByPh
      * @param actor actor with access token
      */
     public FriendsGetByPhonesQuery(VkApiClient client, UserActor actor) {
-        super(client, "friends.getByPhones", Utils.buildParametrizedType(List.class, UserXtrPhone.class));
+        super(client, "friends.getByPhones", Utils.buildParametrizedType(List.class, GetByPhonesResponse.class));
         accessToken(actor.getAccessToken());
     }
 

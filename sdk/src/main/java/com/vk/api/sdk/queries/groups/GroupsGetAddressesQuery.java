@@ -115,7 +115,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * fields
      * Address fields
      *
-     * @param value value of "fields" parameter. By default [id, title, address, additional_address, country_id, city_id, metro_station_id, latitude, longitude, distance, work_info_status, timetable, phone, time_offset].
+     * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetAddressesQuery fields(Fields... value) {
@@ -125,7 +125,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
     /**
      * Address fields
      *
-     * @param value value of "fields" parameter. By default [id, title, address, additional_address, country_id, city_id, metro_station_id, latitude, longitude, distance, work_info_status, timetable, phone, time_offset].
+     * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetAddressesQuery fields(List<Fields> value) {

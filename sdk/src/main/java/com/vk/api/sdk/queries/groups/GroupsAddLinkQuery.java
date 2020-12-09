@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.groups.GroupLink;
+import com.vk.api.sdk.objects.groups.responses.AddLinkResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Groups.addLink method
  */
-public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery, GroupLink> {
+public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery, AddLinkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery,
      * @param link value of "link" parameter.
      */
     public GroupsAddLinkQuery(VkApiClient client, UserActor actor, int groupId, String link) {
-        super(client, "groups.addLink", GroupLink.class);
+        super(client, "groups.addLink", AddLinkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
         link(link);

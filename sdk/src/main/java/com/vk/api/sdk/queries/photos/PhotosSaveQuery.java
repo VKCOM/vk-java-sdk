@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.photos.responses.SaveResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.save method
  */
-public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<Photo>> {
+public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<SaveResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param actor actor with access token
      */
     public PhotosSaveQuery(VkApiClient client, UserActor actor) {
-        super(client, "photos.save", Utils.buildParametrizedType(List.class, Photo.class));
+        super(client, "photos.save", Utils.buildParametrizedType(List.class, SaveResponse.class));
         accessToken(actor.getAccessToken());
     }
 

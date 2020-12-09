@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.Campaign;
+import com.vk.api.sdk.objects.ads.responses.GetCampaignsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getCampaigns method
  */
-public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQuery, List<Campaign>> {
+public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQuery, List<GetCampaignsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
      * @param accountId value of "account id" parameter.
      */
     public AdsGetCampaignsQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getCampaigns", Utils.buildParametrizedType(List.class, Campaign.class));
+        super(client, "ads.getCampaigns", Utils.buildParametrizedType(List.class, GetCampaignsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }
@@ -63,6 +63,27 @@ public class AdsGetCampaignsQuery extends AbstractQueryBuilder<AdsGetCampaignsQu
      */
     public AdsGetCampaignsQuery campaignIds(String value) {
         return unsafeParam("campaign_ids", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetCampaignsQuery fields(String... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetCampaignsQuery fields(List<String> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

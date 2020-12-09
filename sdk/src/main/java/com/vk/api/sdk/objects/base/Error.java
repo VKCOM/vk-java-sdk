@@ -17,10 +17,22 @@ public class Error implements Validable {
     private Integer errorCode;
 
     /**
+     * Error subcode
+     */
+    @SerializedName("error_subcode")
+    private Integer errorSubcode;
+
+    /**
      * Error message
      */
     @SerializedName("error_msg")
     private String errorMsg;
+
+    /**
+     * Localized error message
+     */
+    @SerializedName("error_text")
+    private String errorText;
 
     @SerializedName("request_params")
     private List<RequestParam> requestParams;
@@ -34,12 +46,30 @@ public class Error implements Validable {
         return this;
     }
 
+    public Integer getErrorSubcode() {
+        return errorSubcode;
+    }
+
+    public Error setErrorSubcode(Integer errorSubcode) {
+        this.errorSubcode = errorSubcode;
+        return this;
+    }
+
     public String getErrorMsg() {
         return errorMsg;
     }
 
     public Error setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
+        return this;
+    }
+
+    public String getErrorText() {
+        return errorText;
+    }
+
+    public Error setErrorText(String errorText) {
+        this.errorText = errorText;
         return this;
     }
 
@@ -54,7 +84,7 @@ public class Error implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(requestParams, errorCode, errorMsg);
+        return Objects.hash(errorText, errorSubcode, requestParams, errorCode, errorMsg);
     }
 
     @Override
@@ -62,9 +92,11 @@ public class Error implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Error error = (Error) o;
-        return Objects.equals(errorMsg, error.errorMsg) &&
+        return Objects.equals(errorText, error.errorText) &&
+                Objects.equals(errorMsg, error.errorMsg) &&
                 Objects.equals(requestParams, error.requestParams) &&
-                Objects.equals(errorCode, error.errorCode);
+                Objects.equals(errorCode, error.errorCode) &&
+                Objects.equals(errorSubcode, error.errorSubcode);
     }
 
     @Override
@@ -75,9 +107,11 @@ public class Error implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Error{");
-        sb.append("errorMsg='").append(errorMsg).append("'");
+        sb.append("errorText='").append(errorText).append("'");
+        sb.append(", errorMsg='").append(errorMsg).append("'");
         sb.append(", requestParams=").append(requestParams);
         sb.append(", errorCode=").append(errorCode);
+        sb.append(", errorSubcode=").append(errorSubcode);
         sb.append('}');
         return sb.toString();
     }

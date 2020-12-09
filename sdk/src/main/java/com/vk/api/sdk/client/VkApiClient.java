@@ -16,7 +16,6 @@ import com.vk.api.sdk.actions.Friends;
 import com.vk.api.sdk.actions.Gifts;
 import com.vk.api.sdk.actions.Groups;
 import com.vk.api.sdk.actions.GroupsLongPoll;
-import com.vk.api.sdk.actions.Leads;
 import com.vk.api.sdk.actions.Likes;
 import com.vk.api.sdk.actions.LongPoll;
 import com.vk.api.sdk.actions.Market;
@@ -45,13 +44,13 @@ import com.vk.api.sdk.actions.Widgets;
 import org.apache.commons.lang3.StringUtils;
 
 public class VkApiClient {
-    private static final String API_VERSION = "5.101";
-
     private static final String API_ADDRESS = "https://api.vk.com/method/";
 
     private static final String OAUTH_ENDPOINT = "https://oauth.vk.com/";
 
     private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
+
+    private String apiVersion = "5.95";
 
     private TransportClient transportClient;
 
@@ -64,7 +63,7 @@ public class VkApiClient {
     private int retryAttemptsInternalServerErrorCount;
 
     public VkApiClient(TransportClient transportClient) {
-        this(transportClient, new GsonBuilder().create(), DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT);
+        this(transportClient, new GsonBuilder().disableHtmlEscaping().create(), DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT);
     }
 
     public VkApiClient(TransportClient transportClient, Gson gson,
@@ -107,7 +106,11 @@ public class VkApiClient {
     }
 
     public String getVersion() {
-        return API_VERSION;
+        return apiVersion;
+    }
+
+    public void setVersion(String version) {
+        this.apiVersion = version;
     }
 
     public OAuth oAuth() {
@@ -164,10 +167,6 @@ public class VkApiClient {
 
     public GroupsLongPoll groupsLongPoll() {
         return new GroupsLongPoll(this);
-    }
-
-    public Leads leads() {
-        return new Leads(this);
     }
 
     public Likes likes() {

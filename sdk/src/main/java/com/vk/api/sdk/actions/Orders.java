@@ -34,17 +34,6 @@ public class Orders extends AbstractAction {
      * @param subscriptionId
      * @return query
      */
-    public OrdersCancelSubscriptionQuery cancelSubscription(UserActor actor, int userId,
-            int subscriptionId) {
-        return new OrdersCancelSubscriptionQuery(getClient(), actor, userId, subscriptionId);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param userId
-     * @param subscriptionId
-     * @return query
-     */
     public OrdersCancelSubscriptionQuery cancelSubscription(ServiceActor actor, int userId,
             int subscriptionId) {
         return new OrdersCancelSubscriptionQuery(getClient(), actor, userId, subscriptionId);
@@ -58,31 +47,9 @@ public class Orders extends AbstractAction {
      * @param action action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
      * @return query
      */
-    public OrdersChangeStateQuery changeState(UserActor actor, int orderId, OrdersAction action) {
-        return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
-    }
-
-    /**
-     * Changes order status.
-     *
-     * @param actor vk actor
-     * @param orderId order ID.
-     * @param action action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
-     * @return query
-     */
     public OrdersChangeStateQuery changeState(ServiceActor actor, int orderId,
             OrdersAction action) {
         return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
-    }
-
-    /**
-     * Returns a list of orders.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public OrdersGetQuery get(UserActor actor) {
-        return new OrdersGetQuery(getClient(), actor);
     }
 
     /**
@@ -121,29 +88,8 @@ public class Orders extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public OrdersGetByIdQuery getById(UserActor actor) {
-        return new OrdersGetByIdQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns information about orders by their IDs.
-     *
-     * @param actor vk actor
-     * @return query
-     */
     public OrdersGetByIdQuery getById(ServiceActor actor) {
         return new OrdersGetByIdQuery(getClient(), actor);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param userId
-     * @param subscriptionId
-     * @return query
-     */
-    public OrdersGetUserSubscriptionByIdQuery getUserSubscriptionById(UserActor actor, int userId,
-            int subscriptionId) {
-        return new OrdersGetUserSubscriptionByIdQuery(getClient(), actor, userId, subscriptionId);
     }
 
     /**
@@ -162,29 +108,8 @@ public class Orders extends AbstractAction {
      * @param userId
      * @return query
      */
-    public OrdersGetUserSubscriptionsQuery getUserSubscriptions(UserActor actor, int userId) {
-        return new OrdersGetUserSubscriptionsQuery(getClient(), actor, userId);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param userId
-     * @return query
-     */
     public OrdersGetUserSubscriptionsQuery getUserSubscriptions(ServiceActor actor, int userId) {
         return new OrdersGetUserSubscriptionsQuery(getClient(), actor, userId);
-    }
-
-    /**
-     * @param actor vk actor
-     * @param userId
-     * @param subscriptionId
-     * @param price
-     * @return query
-     */
-    public OrdersUpdateSubscriptionQuery updateSubscription(UserActor actor, int userId,
-            int subscriptionId, int price) {
-        return new OrdersUpdateSubscriptionQuery(getClient(), actor, userId, subscriptionId, price);
     }
 
     /**

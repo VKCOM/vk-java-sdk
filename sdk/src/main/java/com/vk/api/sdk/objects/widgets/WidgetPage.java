@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.ObjectCount;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -45,7 +45,7 @@ public class WidgetPage implements Validable {
      * URL of the preview image
      */
     @SerializedName("photo")
-    private URL photo;
+    private URI photo;
 
     /**
      * Page title
@@ -57,7 +57,7 @@ public class WidgetPage implements Validable {
      * Page absolute URL
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
 
     public ObjectCount getComments() {
         return comments;
@@ -113,11 +113,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getPhoto() {
+    public URI getPhoto() {
         return photo;
     }
 
-    public WidgetPage setPhoto(URL photo) {
+    public WidgetPage setPhoto(URI photo) {
         this.photo = photo;
         return this;
     }
@@ -131,11 +131,11 @@ public class WidgetPage implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public WidgetPage setUrl(URL url) {
+    public WidgetPage setUrl(URI url) {
         this.url = url;
         return this;
     }

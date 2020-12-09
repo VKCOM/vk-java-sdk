@@ -2,6 +2,7 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.market.MarketAddAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketAddQuery;
@@ -12,13 +13,19 @@ import com.vk.api.sdk.queries.market.MarketDeleteCommentQuery;
 import com.vk.api.sdk.queries.market.MarketDeleteQuery;
 import com.vk.api.sdk.queries.market.MarketEditAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketEditCommentQuery;
+import com.vk.api.sdk.queries.market.MarketEditOrderQuery;
 import com.vk.api.sdk.queries.market.MarketEditQuery;
 import com.vk.api.sdk.queries.market.MarketGetAlbumByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQueryWithExtended;
-import com.vk.api.sdk.queries.market.MarketGetCategoriesQuery;
+import com.vk.api.sdk.queries.market.MarketGetCategoriesQueryWithNew;
 import com.vk.api.sdk.queries.market.MarketGetCommentsQuery;
+import com.vk.api.sdk.queries.market.MarketGetGroupOrdersQuery;
+import com.vk.api.sdk.queries.market.MarketGetOrderByIdQuery;
+import com.vk.api.sdk.queries.market.MarketGetOrderItemsQuery;
+import com.vk.api.sdk.queries.market.MarketGetOrdersQuery;
+import com.vk.api.sdk.queries.market.MarketGetOrdersQueryWithExtended;
 import com.vk.api.sdk.queries.market.MarketGetQuery;
 import com.vk.api.sdk.queries.market.MarketGetQueryWithExtended;
 import com.vk.api.sdk.queries.market.MarketRemoveFromAlbumQuery;
@@ -53,12 +60,11 @@ public class Market extends AbstractAction {
      * @param name Item name.
      * @param description Item description.
      * @param categoryId Item category ID.
-     * @param mainPhotoId Cover photo ID.
      * @return query
      */
     public MarketAddQuery add(UserActor actor, int ownerId, String name, String description,
-            int categoryId, int mainPhotoId) {
-        return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId, mainPhotoId);
+            int categoryId) {
+        return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId);
     }
 
     /**
@@ -193,6 +199,30 @@ public class Market extends AbstractAction {
     }
 
     /**
+     * Edit order
+     *
+     * @param actor vk actor
+     * @param userId
+     * @param orderId
+     * @return query
+     */
+    public MarketEditOrderQuery editOrder(UserActor actor, int userId, int orderId) {
+        return new MarketEditOrderQuery(getClient(), actor, userId, orderId);
+    }
+
+    /**
+     * Edit order
+     *
+     * @param actor vk actor
+     * @param userId
+     * @param orderId
+     * @return query
+     */
+    public MarketEditOrderQuery editOrder(GroupActor actor, int userId, int orderId) {
+        return new MarketEditOrderQuery(getClient(), actor, userId, orderId);
+    }
+
+    /**
      * Returns items list for a community.
      *
      * @param actor vk actor
@@ -257,28 +287,6 @@ public class Market extends AbstractAction {
      * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      * @return query
      */
-    public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... itemIds) {
-        return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
-    }
-
-    /**
-     * Returns information about market items by their ids.
-     *
-     * @param actor vk actor
-     * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
-     * @return query
-     */
-    public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> itemIds) {
-        return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
-    }
-
-    /**
-     * Returns information about market items by their ids.
-     *
-     * @param actor vk actor
-     * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
-     * @return query
-     */
     public MarketGetByIdQuery getById(UserActor actor, String... itemIds) {
         return new MarketGetByIdQuery(getClient(), actor, itemIds);
     }
@@ -295,13 +303,35 @@ public class Market extends AbstractAction {
     }
 
     /**
+     * Returns information about market items by their ids.
+     *
+     * @param actor vk actor
+     * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
+     * @return query
+     */
+    public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... itemIds) {
+        return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
+    }
+
+    /**
+     * Returns information about market items by their ids.
+     *
+     * @param actor vk actor
+     * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
+     * @return query
+     */
+    public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> itemIds) {
+        return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
+    }
+
+    /**
      * Returns a list of market categories.
      *
      * @param actor vk actor
      * @return query
      */
-    public MarketGetCategoriesQuery getCategories(UserActor actor) {
-        return new MarketGetCategoriesQuery(getClient(), actor);
+    public MarketGetCategoriesQueryWithNew getCategoriesNew(UserActor actor) {
+        return new MarketGetCategoriesQueryWithNew(getClient(), actor);
     }
 
     /**
@@ -314,6 +344,77 @@ public class Market extends AbstractAction {
      */
     public MarketGetCommentsQuery getComments(UserActor actor, int ownerId, int itemId) {
         return new MarketGetCommentsQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Get market orders
+     *
+     * @param actor vk actor
+     * @param groupId
+     * @return query
+     */
+    public MarketGetGroupOrdersQuery getGroupOrders(UserActor actor, int groupId) {
+        return new MarketGetGroupOrdersQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Get market orders
+     *
+     * @param actor vk actor
+     * @param groupId
+     * @return query
+     */
+    public MarketGetGroupOrdersQuery getGroupOrders(GroupActor actor, int groupId) {
+        return new MarketGetGroupOrdersQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Get order
+     *
+     * @param actor vk actor
+     * @param orderId
+     * @return query
+     */
+    public MarketGetOrderByIdQuery getOrderById(UserActor actor, int orderId) {
+        return new MarketGetOrderByIdQuery(getClient(), actor, orderId);
+    }
+
+    /**
+     * Get order
+     *
+     * @param actor vk actor
+     * @param orderId
+     * @return query
+     */
+    public MarketGetOrderByIdQuery getOrderById(GroupActor actor, int orderId) {
+        return new MarketGetOrderByIdQuery(getClient(), actor, orderId);
+    }
+
+    /**
+     * Get market items in the order
+     *
+     * @param actor vk actor
+     * @param orderId
+     * @return query
+     */
+    public MarketGetOrderItemsQuery getOrderItems(UserActor actor, int orderId) {
+        return new MarketGetOrderItemsQuery(getClient(), actor, orderId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public MarketGetOrdersQuery getOrders(UserActor actor) {
+        return new MarketGetOrdersQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public MarketGetOrdersQueryWithExtended getOrdersExtended(UserActor actor) {
+        return new MarketGetOrdersQueryWithExtended(getClient(), actor);
     }
 
     /**

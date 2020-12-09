@@ -2,15 +2,16 @@ package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getChatUploadServer method
  */
-public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosGetChatUploadServerQuery, UploadServer> {
+public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosGetChatUploadServerQuery, GetUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +20,20 @@ public class PhotosGetChatUploadServerQuery extends AbstractQueryBuilder<PhotosG
      * @param chatId value of "chat id" parameter. Minimum is 0.
      */
     public PhotosGetChatUploadServerQuery(VkApiClient client, UserActor actor, int chatId) {
-        super(client, "photos.getChatUploadServer", UploadServer.class);
+        super(client, "photos.getChatUploadServer", GetUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+        chatId(chatId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param chatId value of "chat id" parameter. Minimum is 0.
+     */
+    public PhotosGetChatUploadServerQuery(VkApiClient client, GroupActor actor, int chatId) {
+        super(client, "photos.getChatUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
     }

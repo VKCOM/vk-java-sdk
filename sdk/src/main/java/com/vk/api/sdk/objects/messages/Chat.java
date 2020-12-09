@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,19 +42,19 @@ public class Chat implements Validable {
      * URL of the preview image with 100 px in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private URI photo100;
 
     /**
      * URL of the preview image with 200 px in width
      */
     @SerializedName("photo_200")
-    private URL photo200;
+    private URI photo200;
 
     /**
      * URL of the preview image with 50 px in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private URI photo50;
 
     @SerializedName("push_settings")
     private ChatPushSettings pushSettings;
@@ -75,6 +75,12 @@ public class Chat implements Validable {
     @SerializedName("users")
     @Required
     private List<Integer> users;
+
+    /**
+     * If provided photo is default
+     */
+    @SerializedName("is_default_photo")
+    private Boolean isDefaultPhoto;
 
     public Integer getAdminId() {
         return adminId;
@@ -110,29 +116,29 @@ public class Chat implements Validable {
         return left;
     }
 
-    public URL getPhoto100() {
+    public URI getPhoto100() {
         return photo100;
     }
 
-    public Chat setPhoto100(URL photo100) {
+    public Chat setPhoto100(URI photo100) {
         this.photo100 = photo100;
         return this;
     }
 
-    public URL getPhoto200() {
+    public URI getPhoto200() {
         return photo200;
     }
 
-    public Chat setPhoto200(URL photo200) {
+    public Chat setPhoto200(URI photo200) {
         this.photo200 = photo200;
         return this;
     }
 
-    public URL getPhoto50() {
+    public URI getPhoto50() {
         return photo50;
     }
 
-    public Chat setPhoto50(URL photo50) {
+    public Chat setPhoto50(URI photo50) {
         this.photo50 = photo50;
         return this;
     }
@@ -173,9 +179,18 @@ public class Chat implements Validable {
         return this;
     }
 
+    public Boolean getIsDefaultPhoto() {
+        return isDefaultPhoto;
+    }
+
+    public Chat setIsDefaultPhoto(Boolean isDefaultPhoto) {
+        this.isDefaultPhoto = isDefaultPhoto;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, left, adminId, photo50, kicked, pushSettings, id, photo200, title, type, users);
+        return Objects.hash(photo100, left, adminId, photo50, kicked, pushSettings, id, photo200, title, type, users, isDefaultPhoto);
     }
 
     @Override
@@ -186,6 +201,7 @@ public class Chat implements Validable {
         return Objects.equals(photo50, chat.photo50) &&
                 Objects.equals(left, chat.left) &&
                 Objects.equals(pushSettings, chat.pushSettings) &&
+                Objects.equals(isDefaultPhoto, chat.isDefaultPhoto) &&
                 Objects.equals(adminId, chat.adminId) &&
                 Objects.equals(kicked, chat.kicked) &&
                 Objects.equals(id, chat.id) &&
@@ -207,6 +223,7 @@ public class Chat implements Validable {
         sb.append("photo50=").append(photo50);
         sb.append(", left=").append(left);
         sb.append(", pushSettings=").append(pushSettings);
+        sb.append(", isDefaultPhoto=").append(isDefaultPhoto);
         sb.append(", adminId=").append(adminId);
         sb.append(", kicked=").append(kicked);
         sb.append(", id=").append(id);

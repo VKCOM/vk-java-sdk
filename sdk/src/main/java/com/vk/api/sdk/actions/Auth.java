@@ -3,7 +3,6 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.queries.auth.AuthCheckPhoneQuery;
 import com.vk.api.sdk.queries.auth.AuthRestoreQuery;
 
 /**
@@ -17,27 +16,6 @@ public class Auth extends AbstractAction {
      */
     public Auth(VkApiClient client) {
         super(client);
-    }
-
-    /**
-     * Checks a user's phone number for correctness.
-     *
-     * @param actor vk actor
-     * @param phone Phone number.
-     * @return query
-     */
-    public AuthCheckPhoneQuery checkPhone(UserActor actor, String phone) {
-        return new AuthCheckPhoneQuery(getClient(), actor, phone);
-    }
-
-    /**
-     * Checks a user's phone number for correctness.
-     *
-     * @param phone Phone number.
-     * @return query
-     */
-    public AuthCheckPhoneQuery checkPhone(String phone) {
-        return new AuthCheckPhoneQuery(getClient(), phone);
     }
 
     /**
