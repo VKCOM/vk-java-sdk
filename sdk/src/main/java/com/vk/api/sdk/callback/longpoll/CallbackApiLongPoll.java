@@ -10,6 +10,7 @@ import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
 import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.objects.groups.LongPollServer;
+import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,7 +57,7 @@ public class CallbackApiLongPoll extends CallbackApi {
     }
 
     public void run() throws ClientException, ApiException {
-        LongPollServer longPollServer = getLongPollServer();
+        GetLongPollServerResponse longPollServer = getLongPollServer();
         int lastTimeStamp = Integer.parseInt(longPollServer.getTs());
         while (true) {
             try {
@@ -72,9 +73,9 @@ public class CallbackApiLongPoll extends CallbackApi {
         }
     }
 
-    private LongPollServer getLongPollServer() throws ClientException, ApiException {
+    private GetLongPollServerResponse getLongPollServer() throws ClientException, ApiException {
         if (groupActor != null) {
-            return client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
+            client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
         }
 
         return client.groupsLongPoll().getLongPollServer(userActor, groupId).execute();

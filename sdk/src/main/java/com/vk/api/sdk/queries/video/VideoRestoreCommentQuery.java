@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.video.responses.RestoreCommentResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Video.restoreComment method
  */
-public class VideoRestoreCommentQuery extends AbstractQueryBuilder<VideoRestoreCommentQuery, BoolInt> {
+public class VideoRestoreCommentQuery extends AbstractQueryBuilder<VideoRestoreCommentQuery, RestoreCommentResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class VideoRestoreCommentQuery extends AbstractQueryBuilder<VideoRestoreC
      * @param commentId value of "comment id" parameter.
      */
     public VideoRestoreCommentQuery(VkApiClient client, UserActor actor, int commentId) {
-        super(client, "video.restoreComment", BoolInt.class);
+        super(client, "video.restoreComment", RestoreCommentResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);
     }

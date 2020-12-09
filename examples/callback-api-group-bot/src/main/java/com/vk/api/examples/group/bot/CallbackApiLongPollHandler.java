@@ -36,7 +36,7 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
     }
 
     public void messageEdit(Integer groupId, Message message) {
-        LOG.info("messageReply: " + message.toString());
+        LOG.info("messageEdit: " + message.toString());
     }
 
     public void messageAllow(Integer groupId, MessageAllow message) {

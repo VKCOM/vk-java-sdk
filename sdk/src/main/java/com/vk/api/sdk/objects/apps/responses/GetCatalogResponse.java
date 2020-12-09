@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.apps.App;
+import com.vk.api.sdk.objects.users.UserMin;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +20,9 @@ public class GetCatalogResponse implements Validable {
 
     @SerializedName("items")
     private List<App> items;
+
+    @SerializedName("profiles")
+    private List<UserMin> profiles;
 
     public Integer getCount() {
         return count;
@@ -38,9 +42,18 @@ public class GetCatalogResponse implements Validable {
         return this;
     }
 
+    public List<UserMin> getProfiles() {
+        return profiles;
+    }
+
+    public GetCatalogResponse setProfiles(List<UserMin> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, items);
     }
 
     @Override
@@ -49,6 +62,7 @@ public class GetCatalogResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetCatalogResponse getCatalogResponse = (GetCatalogResponse) o;
         return Objects.equals(count, getCatalogResponse.count) &&
+                Objects.equals(profiles, getCatalogResponse.profiles) &&
                 Objects.equals(items, getCatalogResponse.items);
     }
 
@@ -61,6 +75,7 @@ public class GetCatalogResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCatalogResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

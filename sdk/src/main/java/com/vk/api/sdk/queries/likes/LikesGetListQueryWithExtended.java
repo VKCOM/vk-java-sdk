@@ -127,7 +127,7 @@ public class LikesGetListQueryWithExtended extends AbstractQueryBuilder<LikesGet
     /**
      * Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
      *
-     * @param value value of "count" parameter. Minimum is 0.
+     * @param value value of "count" parameter. Maximum is 1000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public LikesGetListQueryWithExtended count(Integer value) {

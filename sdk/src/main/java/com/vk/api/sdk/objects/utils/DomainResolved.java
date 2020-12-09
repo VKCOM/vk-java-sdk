@@ -15,6 +15,12 @@ public class DomainResolved implements Validable {
     @SerializedName("object_id")
     private Integer objectId;
 
+    /**
+     * Group ID
+     */
+    @SerializedName("group_id")
+    private Integer groupId;
+
     @SerializedName("type")
     private DomainResolvedType type;
 
@@ -24,6 +30,15 @@ public class DomainResolved implements Validable {
 
     public DomainResolved setObjectId(Integer objectId) {
         this.objectId = objectId;
+        return this;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public DomainResolved setGroupId(Integer groupId) {
+        this.groupId = groupId;
         return this;
     }
 
@@ -38,7 +53,7 @@ public class DomainResolved implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, objectId);
+        return Objects.hash(groupId, type, objectId);
     }
 
     @Override
@@ -46,7 +61,8 @@ public class DomainResolved implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DomainResolved domainResolved = (DomainResolved) o;
-        return Objects.equals(type, domainResolved.type) &&
+        return Objects.equals(groupId, domainResolved.groupId) &&
+                Objects.equals(type, domainResolved.type) &&
                 Objects.equals(objectId, domainResolved.objectId);
     }
 
@@ -58,7 +74,8 @@ public class DomainResolved implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DomainResolved{");
-        sb.append("type=").append(type);
+        sb.append("groupId=").append(groupId);
+        sb.append(", type=").append(type);
         sb.append(", objectId=").append(objectId);
         sb.append('}');
         return sb.toString();

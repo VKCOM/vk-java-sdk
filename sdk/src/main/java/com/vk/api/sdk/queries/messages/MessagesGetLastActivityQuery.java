@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.messages.LastActivity;
+import com.vk.api.sdk.objects.messages.responses.GetLastActivityResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Messages.getLastActivity method
  */
-public class MessagesGetLastActivityQuery extends AbstractQueryBuilder<MessagesGetLastActivityQuery, LastActivity> {
+public class MessagesGetLastActivityQuery extends AbstractQueryBuilder<MessagesGetLastActivityQuery, GetLastActivityResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class MessagesGetLastActivityQuery extends AbstractQueryBuilder<MessagesG
      * @param userId value of "user id" parameter.
      */
     public MessagesGetLastActivityQuery(VkApiClient client, UserActor actor, int userId) {
-        super(client, "messages.getLastActivity", LastActivity.class);
+        super(client, "messages.getLastActivity", GetLastActivityResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
     }

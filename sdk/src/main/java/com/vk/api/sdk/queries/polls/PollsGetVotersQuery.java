@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.PollsNameCase;
-import com.vk.api.sdk.objects.polls.Voters;
+import com.vk.api.sdk.objects.polls.responses.GetVotersResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Polls.getVoters method
  */
-public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuery, List<Voters>> {
+public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuery, List<GetVotersResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -24,7 +24,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      */
     public PollsGetVotersQuery(VkApiClient client, UserActor actor, int pollId,
             Integer... answerIds) {
-        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
+        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, GetVotersResponse.class));
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);
@@ -40,7 +40,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      */
     public PollsGetVotersQuery(VkApiClient client, UserActor actor, int pollId,
             List<Integer> answerIds) {
-        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, Voters.class));
+        super(client, "polls.getVoters", Utils.buildParametrizedType(List.class, GetVotersResponse.class));
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);

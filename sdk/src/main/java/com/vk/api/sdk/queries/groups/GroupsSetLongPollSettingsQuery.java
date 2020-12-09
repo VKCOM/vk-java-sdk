@@ -459,6 +459,106 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
         return unsafeParam("user_unblock", value);
     }
 
+    /**
+     * Set like add
+     *
+     * @param value value of "like add" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery likeAdd(Boolean value) {
+        return unsafeParam("like_add", value);
+    }
+
+    /**
+     * Set like remove
+     *
+     * @param value value of "like remove" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery likeRemove(Boolean value) {
+        return unsafeParam("like_remove", value);
+    }
+
+    /**
+     * Set message event
+     *
+     * @param value value of "message event" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery messageEvent(Boolean value) {
+        return unsafeParam("message_event", value);
+    }
+
+    /**
+     * Set donut subscription create
+     *
+     * @param value value of "donut subscription create" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutSubscriptionCreate(Boolean value) {
+        return unsafeParam("donut_subscription_create", value);
+    }
+
+    /**
+     * Set donut subscription prolonged
+     *
+     * @param value value of "donut subscription prolonged" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutSubscriptionProlonged(Boolean value) {
+        return unsafeParam("donut_subscription_prolonged", value);
+    }
+
+    /**
+     * Set donut subscription cancelled
+     *
+     * @param value value of "donut subscription cancelled" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutSubscriptionCancelled(Boolean value) {
+        return unsafeParam("donut_subscription_cancelled", value);
+    }
+
+    /**
+     * Set donut subscription price changed
+     *
+     * @param value value of "donut subscription price changed" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutSubscriptionPriceChanged(Boolean value) {
+        return unsafeParam("donut_subscription_price_changed", value);
+    }
+
+    /**
+     * Set donut subscription expired
+     *
+     * @param value value of "donut subscription expired" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutSubscriptionExpired(Boolean value) {
+        return unsafeParam("donut_subscription_expired", value);
+    }
+
+    /**
+     * Set donut money withdraw
+     *
+     * @param value value of "donut money withdraw" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutMoneyWithdraw(Boolean value) {
+        return unsafeParam("donut_money_withdraw", value);
+    }
+
+    /**
+     * Set donut money withdraw error
+     *
+     * @param value value of "donut money withdraw error" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetLongPollSettingsQuery donutMoneyWithdrawError(Boolean value) {
+        return unsafeParam("donut_money_withdraw_error", value);
+    }
+
     @Override
     protected GroupsSetLongPollSettingsQuery getThis() {
         return this;

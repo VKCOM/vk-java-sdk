@@ -31,6 +31,9 @@ public class ItemWallpost extends ItemBase implements Validable {
     @SerializedName("copy_history")
     private List<Wallpost> copyHistory;
 
+    @SerializedName("feedback")
+    private ItemWallpostFeedback feedback;
+
     @SerializedName("geo")
     private Geo geo;
 
@@ -82,6 +85,12 @@ public class ItemWallpost extends ItemBase implements Validable {
     @SerializedName("views")
     private Views views;
 
+    /**
+     * Preview length control parameter
+     */
+    @SerializedName("short_text_rate")
+    private Float shortTextRate;
+
     public EventActivity getActivity() {
         return activity;
     }
@@ -115,6 +124,15 @@ public class ItemWallpost extends ItemBase implements Validable {
 
     public ItemWallpost setCopyHistory(List<Wallpost> copyHistory) {
         this.copyHistory = copyHistory;
+        return this;
+    }
+
+    public ItemWallpostFeedback getFeedback() {
+        return feedback;
+    }
+
+    public ItemWallpost setFeedback(ItemWallpostFeedback feedback) {
+        this.feedback = feedback;
         return this;
     }
 
@@ -216,9 +234,18 @@ public class ItemWallpost extends ItemBase implements Validable {
         return this;
     }
 
+    public Float getShortTextRate() {
+        return shortTextRate;
+    }
+
+    public ItemWallpost setShortTextRate(Float shortTextRate) {
+        this.shortTextRate = shortTextRate;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(attachments, comments, activity, postType, postSource, postId, geo, signerId, text, markedAsAds, reposts, views, isFavorite, copyHistory, likes);
+        return Objects.hash(attachments, comments, activity, postType, shortTextRate, postSource, postId, feedback, geo, signerId, text, markedAsAds, reposts, views, isFavorite, copyHistory, likes);
     }
 
     @Override
@@ -232,7 +259,9 @@ public class ItemWallpost extends ItemBase implements Validable {
                 Objects.equals(activity, itemWallpost.activity) &&
                 Objects.equals(signerId, itemWallpost.signerId) &&
                 Objects.equals(copyHistory, itemWallpost.copyHistory) &&
+                Objects.equals(feedback, itemWallpost.feedback) &&
                 Objects.equals(geo, itemWallpost.geo) &&
+                Objects.equals(shortTextRate, itemWallpost.shortTextRate) &&
                 Objects.equals(postId, itemWallpost.postId) &&
                 Objects.equals(postSource, itemWallpost.postSource) &&
                 Objects.equals(markedAsAds, itemWallpost.markedAsAds) &&
@@ -257,7 +286,9 @@ public class ItemWallpost extends ItemBase implements Validable {
         sb.append(", activity=").append(activity);
         sb.append(", signerId=").append(signerId);
         sb.append(", copyHistory=").append(copyHistory);
+        sb.append(", feedback=").append(feedback);
         sb.append(", geo=").append(geo);
+        sb.append(", shortTextRate=").append(shortTextRate);
         sb.append(", postId=").append(postId);
         sb.append(", postSource=").append(postSource);
         sb.append(", markedAsAds=").append(markedAsAds);

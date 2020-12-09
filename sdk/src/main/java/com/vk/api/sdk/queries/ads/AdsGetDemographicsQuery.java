@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.DemoStats;
+import com.vk.api.sdk.objects.ads.responses.GetDemographicsResponse;
 import com.vk.api.sdk.objects.enums.AdsIdsType;
 import com.vk.api.sdk.objects.enums.AdsPeriod;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Ads.getDemographics method
  */
-public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemographicsQuery, List<DemoStats>> {
+public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemographicsQuery, List<GetDemographicsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -28,7 +28,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      */
     public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, int accountId,
             AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
-        super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, DemoStats.class));
+        super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, GetDemographicsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         idsType(idsType);

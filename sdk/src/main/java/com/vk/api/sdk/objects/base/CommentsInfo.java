@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.base;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.wall.WallpostCommentsDonut;
 import java.util.Objects;
 
 /**
@@ -26,6 +27,9 @@ public class CommentsInfo implements Validable {
      */
     @SerializedName("groups_can_post")
     private Boolean groupsCanPost;
+
+    @SerializedName("donut")
+    private WallpostCommentsDonut donut;
 
     public boolean canPost() {
         return canPost == BoolInt.YES;
@@ -53,9 +57,18 @@ public class CommentsInfo implements Validable {
         return this;
     }
 
+    public WallpostCommentsDonut getDonut() {
+        return donut;
+    }
+
+    public CommentsInfo setDonut(WallpostCommentsDonut donut) {
+        this.donut = donut;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(canPost, count, groupsCanPost);
+        return Objects.hash(canPost, donut, count, groupsCanPost);
     }
 
     @Override
@@ -63,7 +76,8 @@ public class CommentsInfo implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommentsInfo commentsInfo = (CommentsInfo) o;
-        return Objects.equals(count, commentsInfo.count) &&
+        return Objects.equals(donut, commentsInfo.donut) &&
+                Objects.equals(count, commentsInfo.count) &&
                 Objects.equals(groupsCanPost, commentsInfo.groupsCanPost) &&
                 Objects.equals(canPost, commentsInfo.canPost);
     }
@@ -76,7 +90,8 @@ public class CommentsInfo implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CommentsInfo{");
-        sb.append("count=").append(count);
+        sb.append("donut=").append(donut);
+        sb.append(", count=").append(count);
         sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", canPost=").append(canPost);
         sb.append('}');

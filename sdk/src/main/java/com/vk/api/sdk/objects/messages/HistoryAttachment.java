@@ -26,6 +26,12 @@ public class HistoryAttachment implements Validable {
     @SerializedName("from_id")
     private Integer fromId;
 
+    /**
+     * Forward level (optional)
+     */
+    @SerializedName("forward_level")
+    private Integer forwardLevel;
+
     public HistoryMessageAttachment getAttachment() {
         return attachment;
     }
@@ -53,9 +59,18 @@ public class HistoryAttachment implements Validable {
         return this;
     }
 
+    public Integer getForwardLevel() {
+        return forwardLevel;
+    }
+
+    public HistoryAttachment setForwardLevel(Integer forwardLevel) {
+        this.forwardLevel = forwardLevel;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(attachment, messageId, fromId);
+        return Objects.hash(attachment, messageId, fromId, forwardLevel);
     }
 
     @Override
@@ -65,7 +80,8 @@ public class HistoryAttachment implements Validable {
         HistoryAttachment historyAttachment = (HistoryAttachment) o;
         return Objects.equals(fromId, historyAttachment.fromId) &&
                 Objects.equals(attachment, historyAttachment.attachment) &&
-                Objects.equals(messageId, historyAttachment.messageId);
+                Objects.equals(messageId, historyAttachment.messageId) &&
+                Objects.equals(forwardLevel, historyAttachment.forwardLevel);
     }
 
     @Override
@@ -79,6 +95,7 @@ public class HistoryAttachment implements Validable {
         sb.append("fromId=").append(fromId);
         sb.append(", attachment=").append(attachment);
         sb.append(", messageId=").append(messageId);
+        sb.append(", forwardLevel=").append(forwardLevel);
         sb.append('}');
         return sb.toString();
     }

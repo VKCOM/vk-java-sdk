@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.photos.responses.SaveWallPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.saveWallPhoto method
  */
-public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWallPhotoQuery, List<Photo>> {
+public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWallPhotoQuery, List<SaveWallPhotoResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param photo value of "photo" parameter.
      */
     public PhotosSaveWallPhotoQuery(VkApiClient client, UserActor actor, String photo) {
-        super(client, "photos.saveWallPhoto", Utils.buildParametrizedType(List.class, Photo.class));
+        super(client, "photos.saveWallPhoto", Utils.buildParametrizedType(List.class, SaveWallPhotoResponse.class));
         accessToken(actor.getAccessToken());
         photo(photo);
     }

@@ -38,6 +38,12 @@ public class PhotoTag implements Validable {
     private String taggedName;
 
     /**
+     * Tagged description.
+     */
+    @SerializedName("description")
+    private String description;
+
+    /**
      * Tagged user ID
      */
     @SerializedName("user_id")
@@ -114,6 +120,15 @@ public class PhotoTag implements Validable {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public PhotoTag setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -169,7 +184,7 @@ public class PhotoTag implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, viewed, taggedName, x, y, y2, x2, id, placerId, userId);
+        return Objects.hash(date, viewed, taggedName, x, description, y, y2, x2, id, placerId, userId);
     }
 
     @Override
@@ -182,6 +197,7 @@ public class PhotoTag implements Validable {
                 Objects.equals(userId, photoTag.userId) &&
                 Objects.equals(viewed, photoTag.viewed) &&
                 Objects.equals(x, photoTag.x) &&
+                Objects.equals(description, photoTag.description) &&
                 Objects.equals(y, photoTag.y) &&
                 Objects.equals(y2, photoTag.y2) &&
                 Objects.equals(x2, photoTag.x2) &&
@@ -202,6 +218,7 @@ public class PhotoTag implements Validable {
         sb.append(", userId=").append(userId);
         sb.append(", viewed=").append(viewed);
         sb.append(", x=").append(x);
+        sb.append(", description='").append(description).append("'");
         sb.append(", y=").append(y);
         sb.append(", y2=").append(y2);
         sb.append(", x2=").append(x2);

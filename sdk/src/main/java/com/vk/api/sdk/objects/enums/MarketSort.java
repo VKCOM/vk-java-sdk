@@ -5,16 +5,16 @@ import com.vk.api.sdk.queries.EnumParam;
 
 public enum MarketSort implements EnumParam {
     @SerializedName("0")
-    _0(0),
+    DEFAULT(0),
 
     @SerializedName("1")
-    _1(1),
+    DATE(1),
 
     @SerializedName("2")
-    _2(2),
+    PRICE(2),
 
     @SerializedName("3")
-    _3(3);
+    RELEVANCE(3);
 
     private final Integer value;
 

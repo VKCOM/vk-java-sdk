@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.media.Restriction;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,6 +68,21 @@ public class Photo implements Validable {
     private Integer ownerId;
 
     /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_256")
+    private URI photo256;
+
+    /**
+     * Information whether current user can comment the photo
+     */
+    @SerializedName("can_comment")
+    private BoolInt canComment;
+
+    @SerializedName("place")
+    private String place;
+
+    /**
      * Post ID
      */
     @SerializedName("post_id")
@@ -90,6 +108,15 @@ public class Photo implements Validable {
      */
     @SerializedName("width")
     private Integer width;
+
+    /**
+     * Whether photo has attached tag links
+     */
+    @SerializedName("has_tags")
+    private Boolean hasTags;
+
+    @SerializedName("restrictions")
+    private Restriction restrictions;
 
     public String getAccessKey() {
         return accessKey;
@@ -172,6 +199,32 @@ public class Photo implements Validable {
         return this;
     }
 
+    public URI getPhoto256() {
+        return photo256;
+    }
+
+    public Photo setPhoto256(URI photo256) {
+        this.photo256 = photo256;
+        return this;
+    }
+
+    public boolean canComment() {
+        return canComment == BoolInt.YES;
+    }
+
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public Photo setPlace(String place) {
+        this.place = place;
+        return this;
+    }
+
     public Integer getPostId() {
         return postId;
     }
@@ -217,9 +270,27 @@ public class Photo implements Validable {
         return this;
     }
 
+    public Boolean getHasTags() {
+        return hasTags;
+    }
+
+    public Photo setHasTags(Boolean hasTags) {
+        this.hasTags = hasTags;
+        return this;
+    }
+
+    public Restriction getRestrictions() {
+        return restrictions;
+    }
+
+    public Photo setRestrictions(Restriction restrictions) {
+        this.restrictions = restrictions;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, lng, albumId, postId, ownerId, userId, sizes, accessKey, width, id, text, lat, height);
+        return Objects.hash(date, images, lng, restrictions, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
     }
 
     @Override
@@ -230,16 +301,21 @@ public class Photo implements Validable {
         return Objects.equals(date, photo.date) &&
                 Objects.equals(images, photo.images) &&
                 Objects.equals(ownerId, photo.ownerId) &&
+                Objects.equals(restrictions, photo.restrictions) &&
                 Objects.equals(lng, photo.lng) &&
+                Objects.equals(canComment, photo.canComment) &&
                 Objects.equals(postId, photo.postId) &&
                 Objects.equals(sizes, photo.sizes) &&
                 Objects.equals(userId, photo.userId) &&
                 Objects.equals(accessKey, photo.accessKey) &&
                 Objects.equals(width, photo.width) &&
                 Objects.equals(albumId, photo.albumId) &&
+                Objects.equals(hasTags, photo.hasTags) &&
                 Objects.equals(id, photo.id) &&
+                Objects.equals(place, photo.place) &&
                 Objects.equals(text, photo.text) &&
                 Objects.equals(lat, photo.lat) &&
+                Objects.equals(photo256, photo.photo256) &&
                 Objects.equals(height, photo.height);
     }
 
@@ -254,16 +330,21 @@ public class Photo implements Validable {
         sb.append("date=").append(date);
         sb.append(", images=").append(images);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", restrictions=").append(restrictions);
         sb.append(", lng=").append(lng);
+        sb.append(", canComment=").append(canComment);
         sb.append(", postId=").append(postId);
         sb.append(", sizes=").append(sizes);
         sb.append(", userId=").append(userId);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", width=").append(width);
         sb.append(", albumId=").append(albumId);
+        sb.append(", hasTags=").append(hasTags);
         sb.append(", id=").append(id);
+        sb.append(", place='").append(place).append("'");
         sb.append(", text='").append(text).append("'");
         sb.append(", lat=").append(lat);
+        sb.append(", photo256=").append(photo256);
         sb.append(", height=").append(height);
         sb.append('}');
         return sb.toString();

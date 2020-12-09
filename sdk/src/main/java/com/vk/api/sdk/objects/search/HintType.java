@@ -14,7 +14,13 @@ public enum HintType implements EnumParam {
     PROFILE("profile"),
 
     @SerializedName("vk_app")
-    VK_APP("vk_app");
+    VK_APP("vk_app"),
+
+    @SerializedName("app")
+    APP("app"),
+
+    @SerializedName("html5_game")
+    HTML5_GAME("html5_game");
 
     private final String value;
 

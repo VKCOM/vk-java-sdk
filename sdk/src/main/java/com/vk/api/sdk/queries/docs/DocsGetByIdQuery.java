@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.docs.Doc;
+import com.vk.api.sdk.objects.docs.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Docs.getById method
  */
-public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, List<Doc>> {
+public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, List<GetByIdResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * @param docs value of "docs" parameter.
      */
     public DocsGetByIdQuery(VkApiClient client, UserActor actor, String... docs) {
-        super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
+        super(client, "docs.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
         docs(docs);
     }
@@ -33,9 +33,19 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * @param docs value of "docs" parameter.
      */
     public DocsGetByIdQuery(VkApiClient client, UserActor actor, List<String> docs) {
-        super(client, "docs.getById", Utils.buildParametrizedType(List.class, Doc.class));
+        super(client, "docs.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
         docs(docs);
+    }
+
+    /**
+     * Set return tags
+     *
+     * @param value value of "return tags" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsGetByIdQuery returnTags(Boolean value) {
+        return unsafeParam("return_tags", value);
     }
 
     /**

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Objects;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Objects;
 public class DeleteResponse implements Validable {
     @SerializedName("success")
     @Required
-    private OkResponse success;
+    private Integer success;
 
     /**
      * Returns 1 if friend has been deleted
@@ -39,11 +38,11 @@ public class DeleteResponse implements Validable {
     @SerializedName("suggestion_deleted")
     private DeleteResponseSuggestionDeleted suggestionDeleted;
 
-    public OkResponse getSuccess() {
+    public Integer getSuccess() {
         return success;
     }
 
-    public DeleteResponse setSuccess(OkResponse success) {
+    public DeleteResponse setSuccess(Integer success) {
         this.success = success;
         return this;
     }

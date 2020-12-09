@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.market.responses.RestoreCommentResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Market.restoreComment method
  */
-public class MarketRestoreCommentQuery extends AbstractQueryBuilder<MarketRestoreCommentQuery, BoolInt> {
+public class MarketRestoreCommentQuery extends AbstractQueryBuilder<MarketRestoreCommentQuery, RestoreCommentResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class MarketRestoreCommentQuery extends AbstractQueryBuilder<MarketRestor
      */
     public MarketRestoreCommentQuery(VkApiClient client, UserActor actor, int ownerId,
             int commentId) {
-        super(client, "market.restoreComment", BoolInt.class);
+        super(client, "market.restoreComment", RestoreCommentResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         commentId(commentId);

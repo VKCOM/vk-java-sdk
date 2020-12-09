@@ -16,12 +16,6 @@ public class AccountCounters implements Validable {
     private Integer appRequests;
 
     /**
-     * New business notifications number
-     */
-    @SerializedName("business_notify")
-    private Integer businessNotify;
-
-    /**
      * New events number
      */
     @SerializedName("events")
@@ -52,18 +46,6 @@ public class AccountCounters implements Validable {
     private Integer friendsRecommendations;
 
     /**
-     * Unread friends notification number
-     */
-    @SerializedName("friends_unread")
-    private Integer friendsUnread;
-
-    /**
-     * Unread friends badge
-     */
-    @SerializedName("friends_unread_badge")
-    private Integer friendsUnreadBadge;
-
-    /**
      * New gifts number
      */
     @SerializedName("gifts")
@@ -75,20 +57,11 @@ public class AccountCounters implements Validable {
     @SerializedName("groups")
     private Integer groups;
 
-    /**
-     * Icon badge
-     */
-    @SerializedName("icon_badge")
-    private Integer iconBadge;
-
-    /**
-     * Menu notifications badge
-     */
-    @SerializedName("menu_notifications_badge")
-    private Integer menuNotificationsBadge;
-
     @SerializedName("menu_discover_badge")
     private Integer menuDiscoverBadge;
+
+    @SerializedName("menu_clips_badge")
+    private Integer menuClipsBadge;
 
     /**
      * New messages number
@@ -97,10 +70,10 @@ public class AccountCounters implements Validable {
     private Integer messages;
 
     /**
-     * New message requests number
+     * New memories number
      */
-    @SerializedName("message_requests")
-    private Integer messageRequests;
+    @SerializedName("memories")
+    private Integer memories;
 
     /**
      * New notes number
@@ -132,15 +105,6 @@ public class AccountCounters implements Validable {
 
     public AccountCounters setAppRequests(Integer appRequests) {
         this.appRequests = appRequests;
-        return this;
-    }
-
-    public Integer getBusinessNotify() {
-        return businessNotify;
-    }
-
-    public AccountCounters setBusinessNotify(Integer businessNotify) {
-        this.businessNotify = businessNotify;
         return this;
     }
 
@@ -189,24 +153,6 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getFriendsUnread() {
-        return friendsUnread;
-    }
-
-    public AccountCounters setFriendsUnread(Integer friendsUnread) {
-        this.friendsUnread = friendsUnread;
-        return this;
-    }
-
-    public Integer getFriendsUnreadBadge() {
-        return friendsUnreadBadge;
-    }
-
-    public AccountCounters setFriendsUnreadBadge(Integer friendsUnreadBadge) {
-        this.friendsUnreadBadge = friendsUnreadBadge;
-        return this;
-    }
-
     public Integer getGifts() {
         return gifts;
     }
@@ -225,30 +171,21 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getIconBadge() {
-        return iconBadge;
-    }
-
-    public AccountCounters setIconBadge(Integer iconBadge) {
-        this.iconBadge = iconBadge;
-        return this;
-    }
-
-    public Integer getMenuNotificationsBadge() {
-        return menuNotificationsBadge;
-    }
-
-    public AccountCounters setMenuNotificationsBadge(Integer menuNotificationsBadge) {
-        this.menuNotificationsBadge = menuNotificationsBadge;
-        return this;
-    }
-
     public Integer getMenuDiscoverBadge() {
         return menuDiscoverBadge;
     }
 
     public AccountCounters setMenuDiscoverBadge(Integer menuDiscoverBadge) {
         this.menuDiscoverBadge = menuDiscoverBadge;
+        return this;
+    }
+
+    public Integer getMenuClipsBadge() {
+        return menuClipsBadge;
+    }
+
+    public AccountCounters setMenuClipsBadge(Integer menuClipsBadge) {
+        this.menuClipsBadge = menuClipsBadge;
         return this;
     }
 
@@ -261,12 +198,12 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getMessageRequests() {
-        return messageRequests;
+    public Integer getMemories() {
+        return memories;
     }
 
-    public AccountCounters setMessageRequests(Integer messageRequests) {
-        this.messageRequests = messageRequests;
+    public AccountCounters setMemories(Integer memories) {
+        this.memories = memories;
         return this;
     }
 
@@ -308,7 +245,7 @@ public class AccountCounters implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(faves, notes, appRequests, groups, friendsSuggestions, photos, menuDiscoverBadge, friends, friendsUnreadBadge, friendsUnread, iconBadge, menuNotificationsBadge, messageRequests, messages, businessNotify, sdk, events, notifications, friendsRecommendations, gifts);
+        return Objects.hash(faves, notes, appRequests, groups, menuClipsBadge, friendsSuggestions, photos, menuDiscoverBadge, friends, memories, messages, sdk, events, notifications, friendsRecommendations, gifts);
     }
 
     @Override
@@ -317,19 +254,15 @@ public class AccountCounters implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         AccountCounters accountCounters = (AccountCounters) o;
         return Objects.equals(faves, accountCounters.faves) &&
-                Objects.equals(friendsUnread, accountCounters.friendsUnread) &&
+                Objects.equals(menuClipsBadge, accountCounters.menuClipsBadge) &&
                 Objects.equals(notes, accountCounters.notes) &&
-                Objects.equals(businessNotify, accountCounters.businessNotify) &&
-                Objects.equals(iconBadge, accountCounters.iconBadge) &&
                 Objects.equals(groups, accountCounters.groups) &&
                 Objects.equals(photos, accountCounters.photos) &&
                 Objects.equals(friends, accountCounters.friends) &&
-                Objects.equals(friendsUnreadBadge, accountCounters.friendsUnreadBadge) &&
                 Objects.equals(friendsRecommendations, accountCounters.friendsRecommendations) &&
                 Objects.equals(appRequests, accountCounters.appRequests) &&
                 Objects.equals(menuDiscoverBadge, accountCounters.menuDiscoverBadge) &&
-                Objects.equals(messageRequests, accountCounters.messageRequests) &&
-                Objects.equals(menuNotificationsBadge, accountCounters.menuNotificationsBadge) &&
+                Objects.equals(memories, accountCounters.memories) &&
                 Objects.equals(messages, accountCounters.messages) &&
                 Objects.equals(sdk, accountCounters.sdk) &&
                 Objects.equals(events, accountCounters.events) &&
@@ -347,19 +280,15 @@ public class AccountCounters implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AccountCounters{");
         sb.append("faves=").append(faves);
-        sb.append(", friendsUnread=").append(friendsUnread);
+        sb.append(", menuClipsBadge=").append(menuClipsBadge);
         sb.append(", notes=").append(notes);
-        sb.append(", businessNotify=").append(businessNotify);
-        sb.append(", iconBadge=").append(iconBadge);
         sb.append(", groups=").append(groups);
         sb.append(", photos=").append(photos);
         sb.append(", friends=").append(friends);
-        sb.append(", friendsUnreadBadge=").append(friendsUnreadBadge);
         sb.append(", friendsRecommendations=").append(friendsRecommendations);
         sb.append(", appRequests=").append(appRequests);
         sb.append(", menuDiscoverBadge=").append(menuDiscoverBadge);
-        sb.append(", messageRequests=").append(messageRequests);
-        sb.append(", menuNotificationsBadge=").append(menuNotificationsBadge);
+        sb.append(", memories=").append(memories);
         sb.append(", messages=").append(messages);
         sb.append(", sdk=").append(sdk);
         sb.append(", events=").append(events);

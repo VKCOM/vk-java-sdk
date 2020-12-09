@@ -3,6 +3,8 @@ package com.vk.api.sdk.queries.storage;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +25,29 @@ public class StorageGetKeysQuery extends AbstractQueryBuilder<StorageGetKeysQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StorageGetKeysQuery(VkApiClient client, GroupActor actor) {
+        super(client, "storage.getKeys", Utils.buildParametrizedType(List.class, String.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StorageGetKeysQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "storage.getKeys", Utils.buildParametrizedType(List.class, String.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * User id, whose variables names are returned if they were requested with a server method.
      *
      * @param value value of "user id" parameter. Minimum is 0.
@@ -30,16 +55,6 @@ public class StorageGetKeysQuery extends AbstractQueryBuilder<StorageGetKeysQuer
      */
     public StorageGetKeysQuery userId(Integer value) {
         return unsafeParam("user_id", value);
-    }
-
-    /**
-     * Set global
-     *
-     * @param value value of "global" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public StorageGetKeysQuery global(Boolean value) {
-        return unsafeParam("global", value);
     }
 
     /**

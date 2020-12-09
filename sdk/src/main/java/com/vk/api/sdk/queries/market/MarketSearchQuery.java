@@ -137,27 +137,6 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
         return unsafeParam("status", value);
     }
 
-    /**
-     * tags
-     * Comma-separated tag IDs list.
-     *
-     * @param value value of "tags" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MarketSearchQuery tags(Integer... value) {
-        return unsafeParam("tags", value);
-    }
-
-    /**
-     * Comma-separated tag IDs list.
-     *
-     * @param value value of "tags" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MarketSearchQuery tags(List<Integer> value) {
-        return unsafeParam("tags", value);
-    }
-
     @Override
     protected MarketSearchQuery getThis() {
         return this;

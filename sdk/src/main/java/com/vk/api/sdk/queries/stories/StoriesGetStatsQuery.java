@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.stories.StoryStats;
+import com.vk.api.sdk.objects.stories.responses.GetStatsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Stories.getStats method
  */
-public class StoriesGetStatsQuery extends AbstractQueryBuilder<StoriesGetStatsQuery, StoryStats> {
+public class StoriesGetStatsQuery extends AbstractQueryBuilder<StoriesGetStatsQuery, GetStatsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class StoriesGetStatsQuery extends AbstractQueryBuilder<StoriesGetStatsQu
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
     public StoriesGetStatsQuery(VkApiClient client, UserActor actor, int ownerId, int storyId) {
-        super(client, "stories.getStats", StoryStats.class);
+        super(client, "stories.getStats", GetStatsResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         storyId(storyId);
@@ -36,7 +36,7 @@ public class StoriesGetStatsQuery extends AbstractQueryBuilder<StoriesGetStatsQu
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
     public StoriesGetStatsQuery(VkApiClient client, GroupActor actor, int ownerId, int storyId) {
-        super(client, "stories.getStats", StoryStats.class);
+        super(client, "stories.getStats", GetStatsResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         storyId(storyId);

@@ -30,6 +30,12 @@ public class Price implements Validable {
     @SerializedName("text")
     private String text;
 
+    /**
+     * Textual representation of old price
+     */
+    @SerializedName("old_amount_text")
+    private String oldAmountText;
+
     public String getAmount() {
         return amount;
     }
@@ -75,9 +81,18 @@ public class Price implements Validable {
         return this;
     }
 
+    public String getOldAmountText() {
+        return oldAmountText;
+    }
+
+    public Price setOldAmountText(String oldAmountText) {
+        this.oldAmountText = oldAmountText;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(discountRate, amount, oldAmount, currency, text);
+        return Objects.hash(discountRate, amount, oldAmount, oldAmountText, currency, text);
     }
 
     @Override
@@ -89,7 +104,8 @@ public class Price implements Validable {
                 Objects.equals(oldAmount, price.oldAmount) &&
                 Objects.equals(currency, price.currency) &&
                 Objects.equals(text, price.text) &&
-                Objects.equals(discountRate, price.discountRate);
+                Objects.equals(discountRate, price.discountRate) &&
+                Objects.equals(oldAmountText, price.oldAmountText);
     }
 
     @Override
@@ -105,6 +121,7 @@ public class Price implements Validable {
         sb.append(", currency=").append(currency);
         sb.append(", text='").append(text).append("'");
         sb.append(", discountRate=").append(discountRate);
+        sb.append(", oldAmountText='").append(oldAmountText).append("'");
         sb.append('}');
         return sb.toString();
     }

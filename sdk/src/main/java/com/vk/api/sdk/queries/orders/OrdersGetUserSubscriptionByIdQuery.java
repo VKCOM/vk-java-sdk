@@ -3,31 +3,14 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.orders.Subscription;
+import com.vk.api.sdk.objects.orders.responses.GetUserSubscriptionByIdResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Orders.getUserSubscriptionById method
  */
-public class OrdersGetUserSubscriptionByIdQuery extends AbstractQueryBuilder<OrdersGetUserSubscriptionByIdQuery, Subscription> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
-     * @param subscriptionId value of "subscription id" parameter. Minimum is 0.
-     */
-    public OrdersGetUserSubscriptionByIdQuery(VkApiClient client, UserActor actor, int userId,
-            int subscriptionId) {
-        super(client, "orders.getUserSubscriptionById", Subscription.class);
-        accessToken(actor.getAccessToken());
-        userId(userId);
-        subscriptionId(subscriptionId);
-    }
-
+public class OrdersGetUserSubscriptionByIdQuery extends AbstractQueryBuilder<OrdersGetUserSubscriptionByIdQuery, GetUserSubscriptionByIdResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -38,7 +21,7 @@ public class OrdersGetUserSubscriptionByIdQuery extends AbstractQueryBuilder<Ord
      */
     public OrdersGetUserSubscriptionByIdQuery(VkApiClient client, ServiceActor actor, int userId,
             int subscriptionId) {
-        super(client, "orders.getUserSubscriptionById", Subscription.class);
+        super(client, "orders.getUserSubscriptionById", GetUserSubscriptionByIdResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         userId(userId);

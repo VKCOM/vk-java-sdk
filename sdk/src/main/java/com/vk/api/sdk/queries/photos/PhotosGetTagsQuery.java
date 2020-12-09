@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.PhotoTag;
+import com.vk.api.sdk.objects.photos.responses.GetTagsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getTags method
  */
-public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery, List<PhotoTag>> {
+public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery, List<GetTagsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery,
      * @param photoId value of "photo id" parameter.
      */
     public PhotosGetTagsQuery(VkApiClient client, UserActor actor, int photoId) {
-        super(client, "photos.getTags", Utils.buildParametrizedType(List.class, PhotoTag.class));
+        super(client, "photos.getTags", Utils.buildParametrizedType(List.class, GetTagsResponse.class));
         accessToken(actor.getAccessToken());
         photoId(photoId);
     }

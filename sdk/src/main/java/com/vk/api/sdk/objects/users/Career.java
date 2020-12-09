@@ -16,6 +16,12 @@ public class Career implements Validable {
     private Integer cityId;
 
     /**
+     * City name
+     */
+    @SerializedName("city_name")
+    private String cityName;
+
+    /**
      * Company name
      */
     @SerializedName("company")
@@ -63,6 +69,15 @@ public class Career implements Validable {
 
     public Career setCityId(Integer cityId) {
         this.cityId = cityId;
+        return this;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public Career setCityName(String cityName) {
+        this.cityName = cityName;
         return this;
     }
 
@@ -131,7 +146,7 @@ public class Career implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, company, from, until, id, position, cityId, countryId);
+        return Objects.hash(cityName, groupId, company, from, until, id, position, cityId, countryId);
     }
 
     @Override
@@ -139,7 +154,8 @@ public class Career implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Career career = (Career) o;
-        return Objects.equals(groupId, career.groupId) &&
+        return Objects.equals(cityName, career.cityName) &&
+                Objects.equals(groupId, career.groupId) &&
                 Objects.equals(company, career.company) &&
                 Objects.equals(from, career.from) &&
                 Objects.equals(until, career.until) &&
@@ -157,7 +173,8 @@ public class Career implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Career{");
-        sb.append("groupId=").append(groupId);
+        sb.append("cityName='").append(cityName).append("'");
+        sb.append(", groupId=").append(groupId);
         sb.append(", company='").append(company).append("'");
         sb.append(", from=").append(from);
         sb.append(", until=").append(until);

@@ -380,6 +380,26 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Set market order new
+     *
+     * @param value value of "market order new" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery marketOrderNew(Boolean value) {
+        return unsafeParam("market_order_new", value);
+    }
+
+    /**
+     * Set market order edit
+     *
+     * @param value value of "market order edit" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery marketOrderEdit(Boolean value) {
+        return unsafeParam("market_order_edit", value);
+    }
+
+    /**
      * A vote in a public poll has been added ('0' — disabled, '1' — enabled).
      *
      * @param value value of "poll vote new" parameter.
@@ -467,6 +487,106 @@ public class GroupsSetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsS
      */
     public GroupsSetCallbackSettingsQuery leadFormsNew(Boolean value) {
         return unsafeParam("lead_forms_new", value);
+    }
+
+    /**
+     * Set like add
+     *
+     * @param value value of "like add" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery likeAdd(Boolean value) {
+        return unsafeParam("like_add", value);
+    }
+
+    /**
+     * Set like remove
+     *
+     * @param value value of "like remove" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery likeRemove(Boolean value) {
+        return unsafeParam("like_remove", value);
+    }
+
+    /**
+     * Set message event
+     *
+     * @param value value of "message event" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery messageEvent(Boolean value) {
+        return unsafeParam("message_event", value);
+    }
+
+    /**
+     * Set donut subscription create
+     *
+     * @param value value of "donut subscription create" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutSubscriptionCreate(Boolean value) {
+        return unsafeParam("donut_subscription_create", value);
+    }
+
+    /**
+     * Set donut subscription prolonged
+     *
+     * @param value value of "donut subscription prolonged" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutSubscriptionProlonged(Boolean value) {
+        return unsafeParam("donut_subscription_prolonged", value);
+    }
+
+    /**
+     * Set donut subscription cancelled
+     *
+     * @param value value of "donut subscription cancelled" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutSubscriptionCancelled(Boolean value) {
+        return unsafeParam("donut_subscription_cancelled", value);
+    }
+
+    /**
+     * Set donut subscription price changed
+     *
+     * @param value value of "donut subscription price changed" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutSubscriptionPriceChanged(Boolean value) {
+        return unsafeParam("donut_subscription_price_changed", value);
+    }
+
+    /**
+     * Set donut subscription expired
+     *
+     * @param value value of "donut subscription expired" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutSubscriptionExpired(Boolean value) {
+        return unsafeParam("donut_subscription_expired", value);
+    }
+
+    /**
+     * Set donut money withdraw
+     *
+     * @param value value of "donut money withdraw" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutMoneyWithdraw(Boolean value) {
+        return unsafeParam("donut_money_withdraw", value);
+    }
+
+    /**
+     * Set donut money withdraw error
+     *
+     * @param value value of "donut money withdraw error" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsSetCallbackSettingsQuery donutMoneyWithdrawError(Boolean value) {
+        return unsafeParam("donut_money_withdraw_error", value);
     }
 
     @Override

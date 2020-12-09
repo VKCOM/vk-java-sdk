@@ -145,6 +145,16 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
     }
 
     /**
+     * Set donut paid duration
+     *
+     * @param value value of "donut paid duration" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallEditQuery donutPaidDuration(Integer value) {
+        return unsafeParam("donut_paid_duration", value);
+    }
+
+    /**
      * Set poster bkg id
      *
      * @param value value of "poster bkg id" parameter. Minimum is 0.
@@ -172,6 +182,16 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      */
     public WallEditQuery posterBkgAccessHash(String value) {
         return unsafeParam("poster_bkg_access_hash", value);
+    }
+
+    /**
+     * Set copyright
+     *
+     * @param value value of "copyright" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallEditQuery copyright(String value) {
+        return unsafeParam("copyright", value);
     }
 
     /**

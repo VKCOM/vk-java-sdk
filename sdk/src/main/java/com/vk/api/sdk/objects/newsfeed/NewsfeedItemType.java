@@ -22,9 +22,6 @@ public enum NewsfeedItemType implements EnumParam {
     @SerializedName("friend")
     FRIEND("friend"),
 
-    @SerializedName("note")
-    NOTE("note"),
-
     @SerializedName("audio")
     AUDIO("audio"),
 

@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.objects.secure.SmsNotification;
+import com.vk.api.sdk.objects.secure.responses.GetSMSHistoryResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Secure.getSMSHistory method
  */
-public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureGetSMSHistoryQuery, List<SmsNotification>> {
+public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureGetSMSHistoryQuery, List<GetSMSHistoryResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureG
      * @param actor actor with access token
      */
     public SecureGetSMSHistoryQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "secure.getSMSHistory", Utils.buildParametrizedType(List.class, SmsNotification.class));
+        super(client, "secure.getSMSHistory", Utils.buildParametrizedType(List.class, GetSMSHistoryResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

@@ -3,6 +3,8 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.UserSpecification;
+import com.vk.api.sdk.objects.ads.UserSpecificationCutted;
 import com.vk.api.sdk.objects.enums.AdsIdsType;
 import com.vk.api.sdk.objects.enums.AdsLinkType;
 import com.vk.api.sdk.objects.enums.AdsPeriod;
@@ -27,6 +29,8 @@ import com.vk.api.sdk.queries.ads.AdsGetCategoriesQuery;
 import com.vk.api.sdk.queries.ads.AdsGetClientsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetDemographicsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetFloodStatsQuery;
+import com.vk.api.sdk.queries.ads.AdsGetLookalikeRequestsQuery;
+import com.vk.api.sdk.queries.ads.AdsGetMusiciansQuery;
 import com.vk.api.sdk.queries.ads.AdsGetOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsGetPostsReachQuery;
 import com.vk.api.sdk.queries.ads.AdsGetRejectionReasonQuery;
@@ -44,7 +48,9 @@ import com.vk.api.sdk.queries.ads.AdsRemoveOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsUpdateAdsQuery;
 import com.vk.api.sdk.queries.ads.AdsUpdateCampaignsQuery;
 import com.vk.api.sdk.queries.ads.AdsUpdateClientsQuery;
+import com.vk.api.sdk.queries.ads.AdsUpdateOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsUpdateTargetGroupQuery;
+import java.util.List;
 
 /**
  * List of Ads methods
@@ -67,7 +73,21 @@ public class Ads extends AbstractAction {
      * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
      * @return query
      */
-    public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId, String data) {
+    public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId,
+            UserSpecificationCutted... data) {
+        return new AdsAddOfficeUsersQuery(getClient(), actor, accountId, data);
+    }
+
+    /**
+     * Adds managers and/or supervisors to advertising account.
+     *
+     * @param actor vk actor
+     * @param accountId Advertising account ID.
+     * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+     * @return query
+     */
+    public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId,
+            List<UserSpecificationCutted> data) {
         return new AdsAddOfficeUsersQuery(getClient(), actor, accountId, data);
     }
 
@@ -127,11 +147,12 @@ public class Ads extends AbstractAction {
      * @param actor vk actor
      * @param accountId Advertising account ID.
      * @param name Name of the target group — a string up to 64 characters long.
+     * @param lifetime 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group.
      * @return query
      */
-    public AdsCreateTargetGroupQuery createTargetGroup(UserActor actor, int accountId,
-            String name) {
-        return new AdsCreateTargetGroupQuery(getClient(), actor, accountId, name);
+    public AdsCreateTargetGroupQuery createTargetGroup(UserActor actor, int accountId, String name,
+            int lifetime) {
+        return new AdsCreateTargetGroupQuery(getClient(), actor, accountId, name, lifetime);
     }
 
     /**
@@ -298,6 +319,24 @@ public class Ads extends AbstractAction {
     }
 
     /**
+     * @param actor vk actor
+     * @param accountId
+     * @return query
+     */
+    public AdsGetLookalikeRequestsQuery getLookalikeRequests(UserActor actor, int accountId) {
+        return new AdsGetLookalikeRequestsQuery(getClient(), actor, accountId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param artistName
+     * @return query
+     */
+    public AdsGetMusiciansQuery getMusicians(UserActor actor, String artistName) {
+        return new AdsGetMusiciansQuery(getClient(), actor, artistName);
+    }
+
+    /**
      * Returns a list of managers and supervisors of advertising account.
      *
      * @param actor vk actor
@@ -356,12 +395,10 @@ public class Ads extends AbstractAction {
      *
      * @param actor vk actor
      * @param section Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
-     * @param cities IDs of cities where objects are searched in, separated with a comma.
      * @return query
      */
-    public AdsGetSuggestionsQueryWithCities getSuggestionsWithCities(UserActor actor,
-            AdsSection section, String cities) {
-        return new AdsGetSuggestionsQueryWithCities(getClient(), actor, section, cities);
+    public AdsGetSuggestionsQuery getSuggestions(UserActor actor, AdsSection section) {
+        return new AdsGetSuggestionsQuery(getClient(), actor, section);
     }
 
     /**
@@ -383,8 +420,9 @@ public class Ads extends AbstractAction {
      * @param section Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
      * @return query
      */
-    public AdsGetSuggestionsQuery getSuggestions(UserActor actor, AdsSection section) {
-        return new AdsGetSuggestionsQuery(getClient(), actor, section);
+    public AdsGetSuggestionsQueryWithSchools getSuggestionsSchools(UserActor actor,
+            AdsSection section) {
+        return new AdsGetSuggestionsQueryWithSchools(getClient(), actor, section);
     }
 
     /**
@@ -392,11 +430,12 @@ public class Ads extends AbstractAction {
      *
      * @param actor vk actor
      * @param section Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
+     * @param cities IDs of cities where objects are searched in, separated with a comma.
      * @return query
      */
-    public AdsGetSuggestionsQueryWithSchools getSuggestionsSchools(UserActor actor,
-            AdsSection section) {
-        return new AdsGetSuggestionsQueryWithSchools(getClient(), actor, section);
+    public AdsGetSuggestionsQueryWithCities getSuggestionsWithCities(UserActor actor,
+            AdsSection section, String cities) {
+        return new AdsGetSuggestionsQueryWithCities(getClient(), actor, section, cities);
     }
 
     /**
@@ -507,16 +546,43 @@ public class Ads extends AbstractAction {
     }
 
     /**
+     * Adds managers and/or supervisors to advertising account.
+     *
+     * @param actor vk actor
+     * @param accountId Advertising account ID.
+     * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+     * @return query
+     */
+    public AdsUpdateOfficeUsersQuery updateOfficeUsers(UserActor actor, int accountId,
+            UserSpecification... data) {
+        return new AdsUpdateOfficeUsersQuery(getClient(), actor, accountId, data);
+    }
+
+    /**
+     * Adds managers and/or supervisors to advertising account.
+     *
+     * @param actor vk actor
+     * @param accountId Advertising account ID.
+     * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+     * @return query
+     */
+    public AdsUpdateOfficeUsersQuery updateOfficeUsers(UserActor actor, int accountId,
+            List<UserSpecification> data) {
+        return new AdsUpdateOfficeUsersQuery(getClient(), actor, accountId, data);
+    }
+
+    /**
      * Edits a retarget group.
      *
      * @param actor vk actor
      * @param accountId Advertising account ID.
      * @param targetGroupId Group ID.
      * @param name New name of the target group — a string up to 64 characters long.
+     * @param lifetime 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' - automatic exclusion is off.
      * @return query
      */
     public AdsUpdateTargetGroupQuery updateTargetGroup(UserActor actor, int accountId,
-            int targetGroupId, String name) {
-        return new AdsUpdateTargetGroupQuery(getClient(), actor, accountId, targetGroupId, name);
+            int targetGroupId, String name, int lifetime) {
+        return new AdsUpdateTargetGroupQuery(getClient(), actor, accountId, targetGroupId, name, lifetime);
     }
 }

@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.stats.StatsGetPostReachQuery;
 import com.vk.api.sdk.queries.stats.StatsGetQuery;
 import com.vk.api.sdk.queries.stats.StatsTrackVisitorQuery;
+import java.util.List;
 
 /**
  * List of Stats methods
@@ -35,11 +36,25 @@ public class Stats extends AbstractAction {
      *
      * @param actor vk actor
      * @param ownerId post owner community id. Specify with "-" sign.
-     * @param postId wall post id. Note that stats are available only for '300' last (newest) posts on a community wall.
+     * @param postIds wall posts id
      * @return query
      */
-    public StatsGetPostReachQuery getPostReach(UserActor actor, String ownerId, int postId) {
-        return new StatsGetPostReachQuery(getClient(), actor, ownerId, postId);
+    public StatsGetPostReachQuery getPostReach(UserActor actor, String ownerId,
+            Integer... postIds) {
+        return new StatsGetPostReachQuery(getClient(), actor, ownerId, postIds);
+    }
+
+    /**
+     * Returns stats for a wall post.
+     *
+     * @param actor vk actor
+     * @param ownerId post owner community id. Specify with "-" sign.
+     * @param postIds wall posts id
+     * @return query
+     */
+    public StatsGetPostReachQuery getPostReach(UserActor actor, String ownerId,
+            List<Integer> postIds) {
+        return new StatsGetPostReachQuery(getClient(), actor, ownerId, postIds);
     }
 
     /**

@@ -87,6 +87,16 @@ public class StoriesGetPhotoUploadServerQuery extends AbstractQueryBuilder<Stori
     }
 
     /**
+     * Set clickable stickers
+     *
+     * @param value value of "clickable stickers" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesGetPhotoUploadServerQuery clickableStickers(String value) {
+        return unsafeParam("clickable_stickers", value);
+    }
+
+    /**
      * user_ids
      * List of users IDs who can see the story.
      *

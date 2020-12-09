@@ -61,7 +61,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
     /**
      * Number of results to return.
      *
-     * @param value value of "count" parameter. Minimum is 0.
+     * @param value value of "count" parameter. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public DocsSearchQuery count(Integer value) {
@@ -76,6 +76,16 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      */
     public DocsSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
+    }
+
+    /**
+     * Set return tags
+     *
+     * @param value value of "return tags" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public DocsSearchQuery returnTags(Boolean value) {
+        return unsafeParam("return_tags", value);
     }
 
     @Override

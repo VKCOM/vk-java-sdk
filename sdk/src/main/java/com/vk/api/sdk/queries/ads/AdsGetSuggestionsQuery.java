@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.TargSuggestions;
+import com.vk.api.sdk.objects.ads.responses.GetSuggestionsResponse;
 import com.vk.api.sdk.objects.enums.AdsLang;
 import com.vk.api.sdk.objects.enums.AdsSection;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Ads.getSuggestions method
  */
-public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestionsQuery, List<TargSuggestions>> {
+public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestionsQuery, List<GetSuggestionsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,7 +22,7 @@ public class AdsGetSuggestionsQuery extends AbstractQueryBuilder<AdsGetSuggestio
      * @param section value of "section" parameter.
      */
     public AdsGetSuggestionsQuery(VkApiClient client, UserActor actor, AdsSection section) {
-        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestions.class));
+        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, GetSuggestionsResponse.class));
         accessToken(actor.getAccessToken());
         section(section);
     }

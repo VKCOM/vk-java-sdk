@@ -5,11 +5,9 @@ import com.google.gson.JsonObject;
 import com.vk.api.sdk.objects.newsfeed.ItemAudio;
 import com.vk.api.sdk.objects.newsfeed.ItemDigest;
 import com.vk.api.sdk.objects.newsfeed.ItemFriend;
-import com.vk.api.sdk.objects.newsfeed.ItemNote;
 import com.vk.api.sdk.objects.newsfeed.ItemPhoto;
 import com.vk.api.sdk.objects.newsfeed.ItemPhotoTag;
 import com.vk.api.sdk.objects.newsfeed.ItemPromoButton;
-import com.vk.api.sdk.objects.newsfeed.ItemStoriesBlock;
 import com.vk.api.sdk.objects.newsfeed.ItemTopic;
 import com.vk.api.sdk.objects.newsfeed.ItemVideo;
 import com.vk.api.sdk.objects.newsfeed.ItemWallpost;
@@ -44,31 +42,23 @@ public class NewsfeedNewsfeedItemOneOf {
         return gson.fromJson(data.toString(), ItemFriend.class);
     }
 
-    public ItemNote getOneOf4() {
-        return gson.fromJson(data.toString(), ItemNote.class);
-    }
-
-    public ItemAudio getOneOf5() {
+    public ItemAudio getOneOf4() {
         return gson.fromJson(data.toString(), ItemAudio.class);
     }
 
-    public ItemVideo getOneOf6() {
+    public ItemVideo getOneOf5() {
         return gson.fromJson(data.toString(), ItemVideo.class);
     }
 
-    public ItemTopic getOneOf7() {
+    public ItemTopic getOneOf6() {
         return gson.fromJson(data.toString(), ItemTopic.class);
     }
 
-    public ItemDigest getOneOf8() {
+    public ItemDigest getOneOf7() {
         return gson.fromJson(data.toString(), ItemDigest.class);
     }
 
-    public ItemPromoButton getOneOf9() {
+    public ItemPromoButton getOneOf8() {
         return gson.fromJson(data.toString(), ItemPromoButton.class);
-    }
-
-    public ItemStoriesBlock getOneOf10() {
-        return gson.fromJson(data.toString(), ItemStoriesBlock.class);
     }
 }

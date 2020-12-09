@@ -69,6 +69,9 @@ public class School implements Validable {
     @SerializedName("year_to")
     private Integer yearTo;
 
+    @SerializedName("speciality")
+    private String speciality;
+
     public Integer getCity() {
         return city;
     }
@@ -159,9 +162,18 @@ public class School implements Validable {
         return this;
     }
 
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public School setSpeciality(String speciality) {
+        this.speciality = speciality;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(country, typeStr, city, yearFrom, name, className, id, yearGraduated, type, yearTo);
+        return Objects.hash(country, speciality, typeStr, city, yearFrom, name, className, id, yearGraduated, type, yearTo);
     }
 
     @Override
@@ -170,6 +182,7 @@ public class School implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         School school = (School) o;
         return Objects.equals(country, school.country) &&
+                Objects.equals(speciality, school.speciality) &&
                 Objects.equals(yearFrom, school.yearFrom) &&
                 Objects.equals(city, school.city) &&
                 Objects.equals(name, school.name) &&
@@ -190,6 +203,7 @@ public class School implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("School{");
         sb.append("country=").append(country);
+        sb.append(", speciality='").append(speciality).append("'");
         sb.append(", yearFrom=").append(yearFrom);
         sb.append(", city=").append(city);
         sb.append(", name='").append(name).append("'");

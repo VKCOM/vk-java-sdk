@@ -20,7 +20,16 @@ public enum NameRequestStatus implements EnumParam {
     WAS_ACCEPTED("was_accepted"),
 
     @SerializedName("was_declined")
-    WAS_DECLINED("was_declined");
+    WAS_DECLINED("was_declined"),
+
+    @SerializedName("declined_with_link")
+    DECLINED_WITH_LINK("declined_with_link"),
+
+    @SerializedName("response")
+    RESPONSE("response"),
+
+    @SerializedName("response_with_link")
+    RESPONSE_WITH_LINK("response_with_link");
 
     private final String value;
 

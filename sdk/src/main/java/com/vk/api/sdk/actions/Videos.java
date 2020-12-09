@@ -213,9 +213,8 @@ public class Videos extends AbstractAction {
      * @param videoId
      * @return query
      */
-    public VideoGetAlbumsByVideoQueryWithExtended getAlbumsByVideoExtended(UserActor actor,
-            int ownerId, int videoId) {
-        return new VideoGetAlbumsByVideoQueryWithExtended(getClient(), actor, ownerId, videoId);
+    public VideoGetAlbumsByVideoQuery getAlbumsByVideo(UserActor actor, int ownerId, int videoId) {
+        return new VideoGetAlbumsByVideoQuery(getClient(), actor, ownerId, videoId);
     }
 
     /**
@@ -224,19 +223,9 @@ public class Videos extends AbstractAction {
      * @param videoId
      * @return query
      */
-    public VideoGetAlbumsByVideoQuery getAlbumsByVideo(UserActor actor, int ownerId, int videoId) {
-        return new VideoGetAlbumsByVideoQuery(getClient(), actor, ownerId, videoId);
-    }
-
-    /**
-     * Returns a list of comments on a video.
-     *
-     * @param actor vk actor
-     * @param videoId Video ID.
-     * @return query
-     */
-    public VideoGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int videoId) {
-        return new VideoGetCommentsQueryWithExtended(getClient(), actor, videoId);
+    public VideoGetAlbumsByVideoQueryWithExtended getAlbumsByVideoExtended(UserActor actor,
+            int ownerId, int videoId) {
+        return new VideoGetAlbumsByVideoQueryWithExtended(getClient(), actor, ownerId, videoId);
     }
 
     /**
@@ -248,6 +237,17 @@ public class Videos extends AbstractAction {
      */
     public VideoGetCommentsQuery getComments(UserActor actor, int videoId) {
         return new VideoGetCommentsQuery(getClient(), actor, videoId);
+    }
+
+    /**
+     * Returns a list of comments on a video.
+     *
+     * @param actor vk actor
+     * @param videoId Video ID.
+     * @return query
+     */
+    public VideoGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int videoId) {
+        return new VideoGetCommentsQueryWithExtended(getClient(), actor, videoId);
     }
 
     /**
@@ -346,8 +346,8 @@ public class Videos extends AbstractAction {
      * @param q Search query string (e.g., 'The Beatles').
      * @return query
      */
-    public VideoSearchQueryWithExtended searchExtended(UserActor actor, String q) {
-        return new VideoSearchQueryWithExtended(getClient(), actor, q);
+    public VideoSearchQuery search(UserActor actor, String q) {
+        return new VideoSearchQuery(getClient(), actor, q);
     }
 
     /**
@@ -357,7 +357,7 @@ public class Videos extends AbstractAction {
      * @param q Search query string (e.g., 'The Beatles').
      * @return query
      */
-    public VideoSearchQuery search(UserActor actor, String q) {
-        return new VideoSearchQuery(getClient(), actor, q);
+    public VideoSearchQueryWithExtended searchExtended(UserActor actor, String q) {
+        return new VideoSearchQueryWithExtended(getClient(), actor, q);
     }
 }

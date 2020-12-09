@@ -1,6 +1,6 @@
 package com.vk.api.sdk.queries.database;
 
-import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Query for Database.getSchoolClasses method
  */
-public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<DatabaseGetSchoolClassesQuery, List<List<JsonObject>>> {
+public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<DatabaseGetSchoolClassesQuery, List<List<JsonPrimitive>>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
      * @param actor actor with access token
      */
     public DatabaseGetSchoolClassesQuery(VkApiClient client, UserActor actor) {
-        super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonObject.class)));
+        super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonPrimitive.class)));
         accessToken(actor.getAccessToken());
     }
 
@@ -31,7 +31,7 @@ public class DatabaseGetSchoolClassesQuery extends AbstractQueryBuilder<Database
      * @param actor actor with access token
      */
     public DatabaseGetSchoolClassesQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonObject.class)));
+        super(client, "database.getSchoolClasses", Utils.buildParametrizedType(List.class, Utils.buildParametrizedType(List.class, JsonPrimitive.class)));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

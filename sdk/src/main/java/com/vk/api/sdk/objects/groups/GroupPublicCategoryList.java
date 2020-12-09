@@ -16,8 +16,8 @@ public class GroupPublicCategoryList implements Validable {
     @SerializedName("name")
     private String name;
 
-    @SerializedName("subtypes_list")
-    private List<GroupCategoryType> subtypesList;
+    @SerializedName("subcategories")
+    private List<GroupCategoryType> subcategories;
 
     public Integer getId() {
         return id;
@@ -37,18 +37,18 @@ public class GroupPublicCategoryList implements Validable {
         return this;
     }
 
-    public List<GroupCategoryType> getSubtypesList() {
-        return subtypesList;
+    public List<GroupCategoryType> getSubcategories() {
+        return subcategories;
     }
 
-    public GroupPublicCategoryList setSubtypesList(List<GroupCategoryType> subtypesList) {
-        this.subtypesList = subtypesList;
+    public GroupPublicCategoryList setSubcategories(List<GroupCategoryType> subcategories) {
+        this.subcategories = subcategories;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, subtypesList, id);
+        return Objects.hash(name, id, subcategories);
     }
 
     @Override
@@ -57,8 +57,8 @@ public class GroupPublicCategoryList implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GroupPublicCategoryList groupPublicCategoryList = (GroupPublicCategoryList) o;
         return Objects.equals(name, groupPublicCategoryList.name) &&
-                Objects.equals(subtypesList, groupPublicCategoryList.subtypesList) &&
-                Objects.equals(id, groupPublicCategoryList.id);
+                Objects.equals(id, groupPublicCategoryList.id) &&
+                Objects.equals(subcategories, groupPublicCategoryList.subcategories);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class GroupPublicCategoryList implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupPublicCategoryList{");
         sb.append("name='").append(name).append("'");
-        sb.append(", subtypesList=").append(subtypesList);
         sb.append(", id=").append(id);
+        sb.append(", subcategories=").append(subcategories);
         sb.append('}');
         return sb.toString();
     }

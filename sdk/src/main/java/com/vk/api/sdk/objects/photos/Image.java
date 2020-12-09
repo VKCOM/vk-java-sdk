@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.photos;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -23,7 +23,7 @@ public class Image implements Validable {
      * Photo URL.
      */
     @SerializedName("url")
-    private URL url;
+    private URI url;
 
     /**
      * Width of the photo in px.
@@ -49,11 +49,11 @@ public class Image implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public Image setUrl(URL url) {
+    public Image setUrl(URI url) {
         this.url = url;
         return this;
     }

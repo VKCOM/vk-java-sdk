@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.TargSuggestionsSchools;
+import com.vk.api.sdk.objects.ads.responses.GetSuggestionsSchoolsResponse;
 import com.vk.api.sdk.objects.enums.AdsLang;
 import com.vk.api.sdk.objects.enums.AdsSection;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Query for Ads.getSuggestions method
  */
-public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsGetSuggestionsQueryWithSchools, List<TargSuggestionsSchools>> {
+public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsGetSuggestionsQueryWithSchools, List<GetSuggestionsSchoolsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      */
     public AdsGetSuggestionsQueryWithSchools(VkApiClient client, UserActor actor,
             AdsSection section) {
-        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, TargSuggestionsSchools.class));
+        super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, GetSuggestionsSchoolsResponse.class));
         accessToken(actor.getAccessToken());
         section(section);
     }

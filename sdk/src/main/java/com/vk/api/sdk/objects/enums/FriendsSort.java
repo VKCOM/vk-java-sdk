@@ -11,7 +11,10 @@ public enum FriendsSort implements EnumParam {
     DATE(0),
 
     @SerializedName("1")
-    MUTUAL(1);
+    MUTUAL(1),
+
+    @SerializedName("2")
+    ROTATE(2);
 
     private final Integer value;
 

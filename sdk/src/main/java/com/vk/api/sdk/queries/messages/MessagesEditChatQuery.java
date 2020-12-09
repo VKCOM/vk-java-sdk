@@ -18,13 +18,11 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
-     * @param title value of "title" parameter.
      */
-    public MessagesEditChatQuery(VkApiClient client, UserActor actor, int chatId, String title) {
+    public MessagesEditChatQuery(VkApiClient client, UserActor actor, int chatId) {
         super(client, "messages.editChat", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
-        title(title);
     }
 
     /**
@@ -33,13 +31,11 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
-     * @param title value of "title" parameter.
      */
-    public MessagesEditChatQuery(VkApiClient client, GroupActor actor, int chatId, String title) {
+    public MessagesEditChatQuery(VkApiClient client, GroupActor actor, int chatId) {
         super(client, "messages.editChat", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
-        title(title);
     }
 
     /**
@@ -58,7 +54,7 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesEditChatQuery title(String value) {
+    public MessagesEditChatQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -69,6 +65,6 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("title", "chat_id", "access_token");
+        return Arrays.asList("chat_id", "access_token");
     }
 }

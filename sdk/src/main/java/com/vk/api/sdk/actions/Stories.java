@@ -3,6 +3,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.queries.stories.StoriesBanOwnerQuery;
 import com.vk.api.sdk.queries.stories.StoriesDeleteQuery;
@@ -11,16 +12,16 @@ import com.vk.api.sdk.queries.stories.StoriesGetBannedQueryWithExtended;
 import com.vk.api.sdk.queries.stories.StoriesGetByIdQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetByIdQueryWithExtended;
 import com.vk.api.sdk.queries.stories.StoriesGetPhotoUploadServerQuery;
-import com.vk.api.sdk.queries.stories.StoriesGetQuery;
-import com.vk.api.sdk.queries.stories.StoriesGetQueryWithExtended;
-import com.vk.api.sdk.queries.stories.StoriesGetRepliesQuery;
-import com.vk.api.sdk.queries.stories.StoriesGetRepliesQueryWithExtended;
+import com.vk.api.sdk.queries.stories.StoriesGetQueryWithV5113;
+import com.vk.api.sdk.queries.stories.StoriesGetRepliesQueryWithV5113;
 import com.vk.api.sdk.queries.stories.StoriesGetStatsQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetVideoUploadServerQuery;
-import com.vk.api.sdk.queries.stories.StoriesGetViewersQuery;
-import com.vk.api.sdk.queries.stories.StoriesGetViewersQueryWithExtended;
+import com.vk.api.sdk.queries.stories.StoriesGetViewersQueryWithExtendedV5115;
 import com.vk.api.sdk.queries.stories.StoriesHideAllRepliesQuery;
 import com.vk.api.sdk.queries.stories.StoriesHideReplyQuery;
+import com.vk.api.sdk.queries.stories.StoriesSaveQuery;
+import com.vk.api.sdk.queries.stories.StoriesSearchQueryWithV5113;
+import com.vk.api.sdk.queries.stories.StoriesSendInteractionQuery;
 import com.vk.api.sdk.queries.stories.StoriesUnbanOwnerQuery;
 import java.util.List;
 
@@ -63,24 +64,20 @@ public class Stories extends AbstractAction {
      * Allows to delete story.
      *
      * @param actor vk actor
-     * @param ownerId Story owner's ID. Current user id is used by default.
-     * @param storyId Story ID.
      * @return query
      */
-    public StoriesDeleteQuery delete(UserActor actor, int ownerId, int storyId) {
-        return new StoriesDeleteQuery(getClient(), actor, ownerId, storyId);
+    public StoriesDeleteQuery delete(UserActor actor) {
+        return new StoriesDeleteQuery(getClient(), actor);
     }
 
     /**
      * Allows to delete story.
      *
      * @param actor vk actor
-     * @param ownerId Story owner's ID. Current user id is used by default.
-     * @param storyId Story ID.
      * @return query
      */
-    public StoriesDeleteQuery delete(GroupActor actor, int ownerId, int storyId) {
-        return new StoriesDeleteQuery(getClient(), actor, ownerId, storyId);
+    public StoriesDeleteQuery delete(GroupActor actor) {
+        return new StoriesDeleteQuery(getClient(), actor);
     }
 
     /**
@@ -89,8 +86,8 @@ public class Stories extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public StoriesGetQueryWithExtended getExtended(UserActor actor) {
-        return new StoriesGetQueryWithExtended(getClient(), actor);
+    public StoriesGetQueryWithV5113 getV5113(UserActor actor) {
+        return new StoriesGetQueryWithV5113(getClient(), actor);
     }
 
     /**
@@ -99,38 +96,8 @@ public class Stories extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public StoriesGetQueryWithExtended getExtended(GroupActor actor) {
-        return new StoriesGetQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Returns stories available for current user.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public StoriesGetQuery get(UserActor actor) {
-        return new StoriesGetQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns stories available for current user.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public StoriesGetQuery get(GroupActor actor) {
-        return new StoriesGetQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns list of sources hidden from current user's feed.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public StoriesGetBannedQueryWithExtended getBannedExtended(UserActor actor) {
-        return new StoriesGetBannedQueryWithExtended(getClient(), actor);
+    public StoriesGetQueryWithV5113 getV5113(GroupActor actor) {
+        return new StoriesGetQueryWithV5113(getClient(), actor);
     }
 
     /**
@@ -144,47 +111,13 @@ public class Stories extends AbstractAction {
     }
 
     /**
-     * Returns story by its ID.
+     * Returns list of sources hidden from current user's feed.
      *
      * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
      * @return query
      */
-    public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... stories) {
-        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> stories) {
-        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, String... stories) {
-        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, List<String> stories) {
-        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
+    public StoriesGetBannedQueryWithExtended getBannedExtended(UserActor actor) {
+        return new StoriesGetBannedQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -232,6 +165,50 @@ public class Stories extends AbstractAction {
     }
 
     /**
+     * Returns story by its ID.
+     *
+     * @param actor vk actor
+     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
+     * @return query
+     */
+    public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... stories) {
+        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
+    }
+
+    /**
+     * Returns story by its ID.
+     *
+     * @param actor vk actor
+     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
+     * @return query
+     */
+    public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> stories) {
+        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
+    }
+
+    /**
+     * Returns story by its ID.
+     *
+     * @param actor vk actor
+     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
+     * @return query
+     */
+    public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, String... stories) {
+        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
+    }
+
+    /**
+     * Returns story by its ID.
+     *
+     * @param actor vk actor
+     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
+     * @return query
+     */
+    public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, List<String> stories) {
+        return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
+    }
+
+    /**
      * Returns URL for uploading a story with photo.
      *
      * @param actor vk actor
@@ -259,9 +236,9 @@ public class Stories extends AbstractAction {
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetRepliesQueryWithExtended getRepliesExtended(UserActor actor, int ownerId,
+    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(UserActor actor, int ownerId,
             int storyId) {
-        return new StoriesGetRepliesQueryWithExtended(getClient(), actor, ownerId, storyId);
+        return new StoriesGetRepliesQueryWithV5113(getClient(), actor, ownerId, storyId);
     }
 
     /**
@@ -272,33 +249,9 @@ public class Stories extends AbstractAction {
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetRepliesQueryWithExtended getRepliesExtended(GroupActor actor, int ownerId,
+    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(GroupActor actor, int ownerId,
             int storyId) {
-        return new StoriesGetRepliesQueryWithExtended(getClient(), actor, ownerId, storyId);
-    }
-
-    /**
-     * Returns replies to the story.
-     *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
-     * @param storyId Story ID.
-     * @return query
-     */
-    public StoriesGetRepliesQuery getReplies(UserActor actor, int ownerId, int storyId) {
-        return new StoriesGetRepliesQuery(getClient(), actor, ownerId, storyId);
-    }
-
-    /**
-     * Returns replies to the story.
-     *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
-     * @param storyId Story ID.
-     * @return query
-     */
-    public StoriesGetRepliesQuery getReplies(GroupActor actor, int ownerId, int storyId) {
-        return new StoriesGetRepliesQuery(getClient(), actor, ownerId, storyId);
+        return new StoriesGetRepliesQueryWithV5113(getClient(), actor, ownerId, storyId);
     }
 
     /**
@@ -353,9 +306,9 @@ public class Stories extends AbstractAction {
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetViewersQueryWithExtended getViewersExtended(UserActor actor, int ownerId,
-            int storyId) {
-        return new StoriesGetViewersQueryWithExtended(getClient(), actor, ownerId, storyId);
+    public StoriesGetViewersQueryWithExtendedV5115 getViewersExtendedV5115(UserActor actor,
+            int ownerId, int storyId) {
+        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, ownerId, storyId);
     }
 
     /**
@@ -366,33 +319,9 @@ public class Stories extends AbstractAction {
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetViewersQueryWithExtended getViewersExtended(GroupActor actor, int ownerId,
-            int storyId) {
-        return new StoriesGetViewersQueryWithExtended(getClient(), actor, ownerId, storyId);
-    }
-
-    /**
-     * Returns a list of story viewers.
-     *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
-     * @param storyId Story ID.
-     * @return query
-     */
-    public StoriesGetViewersQuery getViewers(UserActor actor, int ownerId, int storyId) {
-        return new StoriesGetViewersQuery(getClient(), actor, ownerId, storyId);
-    }
-
-    /**
-     * Returns a list of story viewers.
-     *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
-     * @param storyId Story ID.
-     * @return query
-     */
-    public StoriesGetViewersQuery getViewers(GroupActor actor, int ownerId, int storyId) {
-        return new StoriesGetViewersQuery(getClient(), actor, ownerId, storyId);
+    public StoriesGetViewersQueryWithExtendedV5115 getViewersExtendedV5115(GroupActor actor,
+            int ownerId, int storyId) {
+        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, ownerId, storyId);
     }
 
     /**
@@ -439,6 +368,59 @@ public class Stories extends AbstractAction {
      */
     public StoriesHideReplyQuery hideReply(GroupActor actor, int ownerId, int storyId) {
         return new StoriesHideReplyQuery(getClient(), actor, ownerId, storyId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param uploadResults
+     * @return query
+     */
+    public StoriesSaveQuery save(UserActor actor, String... uploadResults) {
+        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param uploadResults
+     * @return query
+     */
+    public StoriesSaveQuery save(UserActor actor, List<String> uploadResults) {
+        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param uploadResults
+     * @return query
+     */
+    public StoriesSaveQuery save(GroupActor actor, String... uploadResults) {
+        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param uploadResults
+     * @return query
+     */
+    public StoriesSaveQuery save(GroupActor actor, List<String> uploadResults) {
+        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public StoriesSearchQueryWithV5113 searchV5113(UserActor actor) {
+        return new StoriesSearchQueryWithV5113(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param accessKey
+     * @return query
+     */
+    public StoriesSendInteractionQuery sendInteraction(ServiceActor actor, String accessKey) {
+        return new StoriesSendInteractionQuery(getClient(), actor, accessKey);
     }
 
     /**

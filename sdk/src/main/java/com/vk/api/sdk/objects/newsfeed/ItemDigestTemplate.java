@@ -11,7 +11,10 @@ public enum ItemDigestTemplate implements EnumParam {
     LIST("list"),
 
     @SerializedName("grid")
-    GRID("grid");
+    GRID("grid"),
+
+    @SerializedName("single")
+    SINGLE("single");
 
     private final String value;
 

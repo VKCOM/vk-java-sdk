@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.LinkStatus;
+import com.vk.api.sdk.objects.ads.responses.CheckLinkResponse;
 import com.vk.api.sdk.objects.enums.AdsLinkType;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Ads.checkLink method
  */
-public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, LinkStatus> {
+public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, CheckLinkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +23,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, L
      */
     public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId,
             AdsLinkType linkType, String linkUrl) {
-        super(client, "ads.checkLink", LinkStatus.class);
+        super(client, "ads.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
         linkType(linkType);

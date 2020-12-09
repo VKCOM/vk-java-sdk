@@ -4,47 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.notifications.SendMessageItem;
+import com.vk.api.sdk.objects.notifications.responses.SendMessageResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Notifications.sendMessage method
  */
-public class NotificationsSendMessageQuery extends AbstractQueryBuilder<NotificationsSendMessageQuery, List<SendMessageItem>> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param message value of "message" parameter.
-     * @param userIds value of "user ids" parameter.
-     */
-    public NotificationsSendMessageQuery(VkApiClient client, UserActor actor, String message,
-            Integer... userIds) {
-        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageItem.class));
-        accessToken(actor.getAccessToken());
-        message(message);
-        userIds(userIds);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param message value of "message" parameter.
-     * @param userIds value of "user ids" parameter.
-     */
-    public NotificationsSendMessageQuery(VkApiClient client, UserActor actor, String message,
-            List<Integer> userIds) {
-        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageItem.class));
-        accessToken(actor.getAccessToken());
-        message(message);
-        userIds(userIds);
-    }
-
+public class NotificationsSendMessageQuery extends AbstractQueryBuilder<NotificationsSendMessageQuery, List<SendMessageResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -55,7 +22,7 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      */
     public NotificationsSendMessageQuery(VkApiClient client, ServiceActor actor, String message,
             Integer... userIds) {
-        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageItem.class));
+        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         message(message);
@@ -72,7 +39,7 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      */
     public NotificationsSendMessageQuery(VkApiClient client, ServiceActor actor, String message,
             List<Integer> userIds) {
-        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageItem.class));
+        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         message(message);
@@ -107,6 +74,16 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      */
     public NotificationsSendMessageQuery groupId(Integer value) {
         return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Set random id
+     *
+     * @param value value of "random id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotificationsSendMessageQuery randomId(Integer value) {
+        return unsafeParam("random_id", value);
     }
 
     /**

@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.utils.ShortLink;
+import com.vk.api.sdk.objects.utils.responses.GetShortLinkResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Utils.getShortLink method
  */
-public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLinkQuery, ShortLink> {
+public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLinkQuery, GetShortLinkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, UserActor actor, String url) {
-        super(client, "utils.getShortLink", ShortLink.class);
+        super(client, "utils.getShortLink", GetShortLinkResponse.class);
         accessToken(actor.getAccessToken());
         url(url);
     }
@@ -34,7 +34,7 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, GroupActor actor, String url) {
-        super(client, "utils.getShortLink", ShortLink.class);
+        super(client, "utils.getShortLink", GetShortLinkResponse.class);
         accessToken(actor.getAccessToken());
         url(url);
     }
@@ -47,7 +47,7 @@ public class UtilsGetShortLinkQuery extends AbstractQueryBuilder<UtilsGetShortLi
      * @param url value of "url" parameter.
      */
     public UtilsGetShortLinkQuery(VkApiClient client, ServiceActor actor, String url) {
-        super(client, "utils.getShortLink", ShortLink.class);
+        super(client, "utils.getShortLink", GetShortLinkResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         url(url);

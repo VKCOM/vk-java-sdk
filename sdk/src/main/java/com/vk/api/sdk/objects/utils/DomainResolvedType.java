@@ -17,7 +17,13 @@ public enum DomainResolvedType implements EnumParam {
     APPLICATION("application"),
 
     @SerializedName("page")
-    PAGE("page");
+    PAGE("page"),
+
+    @SerializedName("vk_app")
+    VK_APP("vk_app"),
+
+    @SerializedName("community_application")
+    COMMUNITY_APPLICATION("community_application");
 
     private final String value;
 

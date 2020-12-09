@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.orders.Amount;
+import com.vk.api.sdk.objects.orders.responses.GetAmountResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Orders.getAmount method
  */
-public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQuery, Amount> {
+public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQuery, GetAmountResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      * @param votes value of "votes" parameter.
      */
     public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId, String... votes) {
-        super(client, "orders.getAmount", Amount.class);
+        super(client, "orders.getAmount", GetAmountResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
         votes(votes);
@@ -36,7 +36,7 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      */
     public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId,
             List<String> votes) {
-        super(client, "orders.getAmount", Amount.class);
+        super(client, "orders.getAmount", GetAmountResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
         votes(votes);

@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.photos.PhotoFull;
+import com.vk.api.sdk.objects.photos.responses.GetByIdExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Photos.getById method
  */
-public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosGetByIdQueryWithExtended, List<PhotoFull>> {
+public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosGetByIdQueryWithExtended, List<GetByIdExtendedResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
      * @param photos value of "photos" parameter.
      */
     public PhotosGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... photos) {
-        super(client, "photos.getById", Utils.buildParametrizedType(List.class, PhotoFull.class));
+        super(client, "photos.getById", Utils.buildParametrizedType(List.class, GetByIdExtendedResponse.class));
         accessToken(actor.getAccessToken());
         photos(photos);
         extended(true);
@@ -36,7 +36,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
      */
     public PhotosGetByIdQueryWithExtended(VkApiClient client, UserActor actor,
             List<String> photos) {
-        super(client, "photos.getById", Utils.buildParametrizedType(List.class, PhotoFull.class));
+        super(client, "photos.getById", Utils.buildParametrizedType(List.class, GetByIdExtendedResponse.class));
         accessToken(actor.getAccessToken());
         photos(photos);
         extended(true);
@@ -51,7 +51,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
      */
     public PhotosGetByIdQueryWithExtended(VkApiClient client, ServiceActor actor,
             String... photos) {
-        super(client, "photos.getById", Utils.buildParametrizedType(List.class, PhotoFull.class));
+        super(client, "photos.getById", Utils.buildParametrizedType(List.class, GetByIdExtendedResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         photos(photos);
@@ -67,7 +67,7 @@ public class PhotosGetByIdQueryWithExtended extends AbstractQueryBuilder<PhotosG
      */
     public PhotosGetByIdQueryWithExtended(VkApiClient client, ServiceActor actor,
             List<String> photos) {
-        super(client, "photos.getById", Utils.buildParametrizedType(List.class, PhotoFull.class));
+        super(client, "photos.getById", Utils.buildParametrizedType(List.class, GetByIdExtendedResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         photos(photos);
