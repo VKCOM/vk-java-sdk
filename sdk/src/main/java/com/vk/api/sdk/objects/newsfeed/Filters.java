@@ -38,7 +38,10 @@ public enum Filters implements EnumParam {
     GAMES_CAROUSEL("games_carousel"),
 
     @SerializedName("clip")
-    CLIP("clip");
+    CLIP("clip"),
+
+    @SerializedName("recommended_game")
+    RECOMMENDED_GAME("recommended_game");
 
     private final String value;
 

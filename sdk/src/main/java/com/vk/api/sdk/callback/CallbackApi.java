@@ -13,8 +13,8 @@ import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
 import com.vk.api.sdk.objects.wall.Wallpost;
 import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -27,7 +27,7 @@ import java.util.Map;
 @SuppressWarnings("unused")
 public class CallbackApi {
 
-    private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OAuthQueryBuilder.class);
     private static final String CALLBACK_EVENT_MESSAGE_NEW = "message_new";
     private static final String CALLBACK_EVENT_MESSAGE_REPLY = "message_reply";
     private static final String CALLBACK_EVENT_MESSAGE_ALLOW = "message_allow";

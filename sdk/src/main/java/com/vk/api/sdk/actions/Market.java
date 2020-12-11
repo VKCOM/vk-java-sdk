@@ -402,6 +402,17 @@ public class Market extends AbstractAction {
     }
 
     /**
+     * Get market items in the order
+     *
+     * @param actor vk actor
+     * @param orderId
+     * @return query
+     */
+    public MarketGetOrderItemsQuery getOrderItems(GroupActor actor, int orderId) {
+        return new MarketGetOrderItemsQuery(getClient(), actor, orderId);
+    }
+
+    /**
      * @param actor vk actor
      * @return query
      */

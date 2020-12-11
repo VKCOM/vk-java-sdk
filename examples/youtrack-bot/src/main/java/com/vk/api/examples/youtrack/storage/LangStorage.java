@@ -8,9 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by tsivarev on 07.09.16.
- */
 public class LangStorage {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataStorage.class);

@@ -13,7 +13,7 @@ public class GetLongPollServerResponse {
     private String server;
 
     @SerializedName("ts")
-    private Integer ts;
+    private String ts;
 
     public String getKey() {
         return key;
@@ -23,7 +23,7 @@ public class GetLongPollServerResponse {
         return server;
     }
 
-    public Integer getTs() {
+    public String getTs() {
         return ts;
     }
 

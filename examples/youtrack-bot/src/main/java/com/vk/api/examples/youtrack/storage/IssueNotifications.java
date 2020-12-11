@@ -3,9 +3,6 @@ package com.vk.api.examples.youtrack.storage;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by tsivarev on 07.09.16.
- */
 public class IssueNotifications {
 
     private static final Map<String, Long> MAP = new HashMap<>();

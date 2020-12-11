@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ public class MemberRole implements Validable {
      * User ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     @SerializedName("permissions")

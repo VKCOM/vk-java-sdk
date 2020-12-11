@@ -40,7 +40,7 @@ public class AdLayout implements Validable {
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private String id;
 
     /**
      * Image URL
@@ -121,11 +121,11 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public AdLayout setId(Integer id) {
+    public AdLayout setId(String id) {
         this.id = id;
         return this;
     }
@@ -230,7 +230,7 @@ public class AdLayout implements Validable {
         sb.append(", imageSrc2x=").append(imageSrc2x);
         sb.append(", description='").append(description).append("'");
         sb.append(", linkUrl=").append(linkUrl);
-        sb.append(", id=").append(id);
+        sb.append(", id='").append(id).append("'");
         sb.append(", video=").append(video);
         sb.append(", title='").append(title).append("'");
         sb.append(", imageSrc=").append(imageSrc);

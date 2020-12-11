@@ -29,7 +29,7 @@ public class GetCommentsResponse implements Validable {
     private List<GroupFull> groups;
 
     /**
-     * New from value
+     * Next from value
      */
     @SerializedName("next_from")
     private String nextFrom;

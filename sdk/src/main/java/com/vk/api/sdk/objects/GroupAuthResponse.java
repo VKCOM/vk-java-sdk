@@ -1,6 +1,5 @@
 package com.vk.api.sdk.objects;
 
-
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.deserializers.GroupAuthResponseDeserializer;

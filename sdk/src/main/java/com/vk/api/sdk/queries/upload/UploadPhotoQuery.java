@@ -20,4 +20,3 @@ public class UploadPhotoQuery extends UploadQueryBuilder<UploadPhotoQuery, Photo
         return this;
     }
 }
-

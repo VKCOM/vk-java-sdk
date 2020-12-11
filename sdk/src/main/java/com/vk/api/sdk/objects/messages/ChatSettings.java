@@ -14,6 +14,9 @@ public class ChatSettings implements Validable {
     @SerializedName("members_count")
     private Integer membersCount;
 
+    @SerializedName("friends_count")
+    private Integer friendsCount;
+
     @SerializedName("owner_id")
     private Integer ownerId;
 
@@ -71,6 +74,15 @@ public class ChatSettings implements Validable {
 
     public ChatSettings setMembersCount(Integer membersCount) {
         this.membersCount = membersCount;
+        return this;
+    }
+
+    public Integer getFriendsCount() {
+        return friendsCount;
+    }
+
+    public ChatSettings setFriendsCount(Integer friendsCount) {
+        this.friendsCount = friendsCount;
         return this;
     }
 
@@ -202,7 +214,7 @@ public class ChatSettings implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(membersCount, disappearingChatLink, photo, isDisappearing, acl, ownerId, title, pinnedMessage, adminIds, permissions, isGroupChannel, theme, state, activeIds, isService);
+        return Objects.hash(membersCount, disappearingChatLink, photo, isDisappearing, friendsCount, acl, ownerId, title, pinnedMessage, adminIds, permissions, isGroupChannel, theme, state, activeIds, isService);
     }
 
     @Override
@@ -210,7 +222,8 @@ public class ChatSettings implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChatSettings chatSettings = (ChatSettings) o;
-        return Objects.equals(isGroupChannel, chatSettings.isGroupChannel) &&
+        return Objects.equals(friendsCount, chatSettings.friendsCount) &&
+                Objects.equals(isGroupChannel, chatSettings.isGroupChannel) &&
                 Objects.equals(ownerId, chatSettings.ownerId) &&
                 Objects.equals(activeIds, chatSettings.activeIds) &&
                 Objects.equals(photo, chatSettings.photo) &&
@@ -235,7 +248,8 @@ public class ChatSettings implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ChatSettings{");
-        sb.append("isGroupChannel=").append(isGroupChannel);
+        sb.append("friendsCount=").append(friendsCount);
+        sb.append(", isGroupChannel=").append(isGroupChannel);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", activeIds=").append(activeIds);
         sb.append(", photo=").append(photo);

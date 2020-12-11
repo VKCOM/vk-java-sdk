@@ -41,7 +41,7 @@ public class GetAdsLayoutResponse implements Validable {
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private String id;
 
     /**
      * Image URL
@@ -122,11 +122,11 @@ public class GetAdsLayoutResponse implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public GetAdsLayoutResponse setId(Integer id) {
+    public GetAdsLayoutResponse setId(String id) {
         this.id = id;
         return this;
     }
@@ -231,7 +231,7 @@ public class GetAdsLayoutResponse implements Validable {
         sb.append(", imageSrc2x=").append(imageSrc2x);
         sb.append(", description='").append(description).append("'");
         sb.append(", linkUrl=").append(linkUrl);
-        sb.append(", id=").append(id);
+        sb.append(", id='").append(id).append("'");
         sb.append(", video=").append(video);
         sb.append(", title='").append(title).append("'");
         sb.append(", imageSrc=").append(imageSrc);

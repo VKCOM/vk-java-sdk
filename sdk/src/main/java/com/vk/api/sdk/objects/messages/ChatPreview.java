@@ -28,6 +28,9 @@ public class ChatPreview implements Validable {
     @SerializedName("title")
     private String title;
 
+    @SerializedName("is_member")
+    private Boolean isMember;
+
     public Integer getAdminId() {
         return adminId;
     }
@@ -82,9 +85,18 @@ public class ChatPreview implements Validable {
         return this;
     }
 
+    public Boolean getIsMember() {
+        return isMember;
+    }
+
+    public ChatPreview setIsMember(Boolean isMember) {
+        this.isMember = isMember;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(membersCount, joined, members, adminId, title, localId);
+        return Objects.hash(membersCount, joined, members, adminId, isMember, title, localId);
     }
 
     @Override
@@ -93,6 +105,7 @@ public class ChatPreview implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ChatPreview chatPreview = (ChatPreview) o;
         return Objects.equals(localId, chatPreview.localId) &&
+                Objects.equals(isMember, chatPreview.isMember) &&
                 Objects.equals(joined, chatPreview.joined) &&
                 Objects.equals(adminId, chatPreview.adminId) &&
                 Objects.equals(members, chatPreview.members) &&
@@ -109,6 +122,7 @@ public class ChatPreview implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ChatPreview{");
         sb.append("localId=").append(localId);
+        sb.append(", isMember=").append(isMember);
         sb.append(", joined=").append(joined);
         sb.append(", adminId=").append(adminId);
         sb.append(", members=").append(members);

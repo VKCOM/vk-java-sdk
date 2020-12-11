@@ -2,9 +2,6 @@ package com.vk.api.sdk.actions;
 
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.objects.stories.Story;
 import com.vk.api.sdk.queries.upload.*;
 
 import java.io.File;
@@ -25,6 +22,10 @@ public class Upload extends AbstractAction {
 
     public UploadPhotoQuery photo(String uploadUrl, File file) {
         return new UploadPhotoQuery(getClient(), uploadUrl, file);
+    }
+
+    public UploadPhotoStringQuery photoAsString(String uploadUrl, File file) {
+        return new UploadPhotoStringQuery(getClient(), uploadUrl, file);
     }
 
     public UploadPhotoMarketAlbumQuery photoMarketAlbum(String uploadUrl, File file) {
@@ -63,11 +64,11 @@ public class Upload extends AbstractAction {
         return new UploadDocQuery(getClient(), uploadUrl, file);
     }
 
-    public Story photoStory(String uploadUrl, File file) throws ClientException, ApiException {
-        return new UploadPhotoStoryQuery(getClient(), uploadUrl, file).execute();
+    public UploadPhotoStoryQuery photoStory(String uploadUrl, File file) {
+        return new UploadPhotoStoryQuery(getClient(), uploadUrl, file);
     }
 
-    public Story videoStory(String uploadUrl, File file) throws ClientException, ApiException {
-        return new UploadVideoStoryQuery(getClient(), uploadUrl, file).execute();
+    public UploadVideoStoryQuery videoStory(String uploadUrl, File file) {
+        return new UploadVideoStoryQuery(getClient(), uploadUrl, file);
     }
 }

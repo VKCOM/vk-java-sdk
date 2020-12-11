@@ -1,10 +1,7 @@
 package com.vk.api.sdk.objects;
 
-
-import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.exceptions.RequiredFieldException;
-import java.util.Objects;
 import java.lang.reflect.Field;
 import java.lang.annotation.Annotation;
 

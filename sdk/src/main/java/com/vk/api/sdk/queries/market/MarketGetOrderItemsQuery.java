@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.market;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.market.responses.GetOrderItemsResponse;
 import java.util.Arrays;
@@ -19,6 +20,19 @@ public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrde
      * @param orderId value of "order id" parameter. Minimum is 0.
      */
     public MarketGetOrderItemsQuery(VkApiClient client, UserActor actor, int orderId) {
+        super(client, "market.getOrderItems", GetOrderItemsResponse.class);
+        accessToken(actor.getAccessToken());
+        orderId(orderId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param orderId value of "order id" parameter. Minimum is 0.
+     */
+    public MarketGetOrderItemsQuery(VkApiClient client, GroupActor actor, int orderId) {
         super(client, "market.getOrderItems", GetOrderItemsResponse.class);
         accessToken(actor.getAccessToken());
         orderId(orderId);

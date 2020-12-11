@@ -15,7 +15,7 @@ public class ApiException extends Exception {
     }
 
     public ApiException(Integer code, String message) {
-       this(code, "Unknown", message);
+        this(code, "Unknown", message);
     }
 
     public ApiException(String message) {
@@ -29,6 +29,8 @@ public class ApiException extends Exception {
     public Integer getCode() {
         return code;
     }
+
+    public String getMessageRaw() { return message; }
 
     @Override
     public String getMessage() {

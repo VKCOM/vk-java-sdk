@@ -9,12 +9,12 @@ import java.util.Objects;
 public class GetLongPollEventsResponse {
 
     @SerializedName("ts")
-    private Integer ts;
+    private String ts;
 
     @SerializedName("updates")
     private List<JsonObject> updates;
 
-    public Integer getTs() {
+    public String getTs() {
         return ts;
     }
 

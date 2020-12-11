@@ -16,9 +16,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by tsivarev on 29.04.16.
- */
 public class YouTrackUsersStorage {
 
     private static final Logger LOG = LoggerFactory.getLogger(YouTrackUsersStorage.class);

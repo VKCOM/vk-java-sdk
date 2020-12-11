@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by tsivarev on 29.04.16.
- */
 public class MembersStorage {
 
     private static final Logger LOG = LoggerFactory.getLogger(MembersStorage.class);

@@ -11,8 +11,8 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
 import com.vk.api.sdk.exceptions.LongPollServerTsException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
 
-    private static final Logger LOG = LogManager.getLogger(LongPollQueryBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LongPollQueryBuilder.class);
     private static final Integer RETRY_ATTEMPTS = 3;
 
     private static final int INCORRECT_TS_VALUE_ERROR_CODE = 1;

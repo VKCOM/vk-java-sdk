@@ -2,8 +2,8 @@ package com.vk.api.sdk.streaming.clients.websocket;
 
 import org.asynchttpclient.ws.WebSocket;
 import org.asynchttpclient.ws.WebSocketListener;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  * Listener for ping messages
@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 public class WSPingListener implements WebSocketListener {
 
     private WebSocket webSocket;
-    private static final Logger LOG = LogManager.getLogger(WSMessageListener.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WSMessageListener.class);
 
     public void onOpen(WebSocket websocket) {
         webSocket = websocket;
@@ -26,12 +26,12 @@ public class WSPingListener implements WebSocketListener {
     }
 
     @Override
-    public void onPingFrame(byte[] payload){
-        webSocket.sendPongFrame(payload);
-    }
-    
-    @Override
     public void onError(Throwable t) {
         LOG.info("Websocket error " + t);
+    }
+
+    @Override
+    public void onPingFrame(byte[] payload) {
+        webSocket.sendPongFrame(payload);
     }
 }
