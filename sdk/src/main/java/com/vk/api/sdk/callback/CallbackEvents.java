@@ -12,7 +12,7 @@ import com.vk.api.sdk.objects.wall.Wallpost;
 
 import java.lang.reflect.Type;
 
-public enum CallbackEvent {
+public enum CallbackEvents {
 
     @SerializedName("message_new")
     MESSAGE_NEW(Message.class),
@@ -133,7 +133,7 @@ public enum CallbackEvent {
 
     private final Type type;
 
-    CallbackEvent(Type type) {
+    CallbackEvents(Type type) {
         this.type = type;
     }
 
