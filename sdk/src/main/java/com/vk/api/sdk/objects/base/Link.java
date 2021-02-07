@@ -4,8 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.link.TargetObject;
 import com.vk.api.sdk.objects.photos.Photo;
-import java.net.URL;
+import com.vk.api.sdk.objects.video.Video;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -52,7 +54,7 @@ public class Link implements Validable {
      * URL of the page with article preview
      */
     @SerializedName("preview_url")
-    private URL previewUrl;
+    private URI previewUrl;
 
     @SerializedName("product")
     private LinkProduct product;
@@ -71,7 +73,22 @@ public class Link implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URL url;
+    private URI url;
+
+    @SerializedName("target_object")
+    private TargetObject targetObject;
+
+    /**
+     * Information whether the current link is external
+     */
+    @SerializedName("is_external")
+    private Boolean isExternal;
+
+    /**
+     * Video from link
+     */
+    @SerializedName("video")
+    private Video video;
 
     public LinkApplication getApplication() {
         return application;
@@ -145,11 +162,11 @@ public class Link implements Validable {
         return this;
     }
 
-    public URL getPreviewUrl() {
+    public URI getPreviewUrl() {
         return previewUrl;
     }
 
-    public Link setPreviewUrl(URL previewUrl) {
+    public Link setPreviewUrl(URI previewUrl) {
         this.previewUrl = previewUrl;
         return this;
     }
@@ -181,18 +198,45 @@ public class Link implements Validable {
         return this;
     }
 
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
-    public Link setUrl(URL url) {
+    public Link setUrl(URI url) {
         this.url = url;
+        return this;
+    }
+
+    public TargetObject getTargetObject() {
+        return targetObject;
+    }
+
+    public Link setTargetObject(TargetObject targetObject) {
+        this.targetObject = targetObject;
+        return this;
+    }
+
+    public Boolean getIsExternal() {
+        return isExternal;
+    }
+
+    public Link setIsExternal(Boolean isExternal) {
+        this.isExternal = isExternal;
+        return this;
+    }
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public Link setVideo(Video video) {
+        this.video = video;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(product, previewUrl, rating, caption, description, photo, title, url, previewPage, button, application, id, isFavorite);
+        return Objects.hash(product, targetObject, previewUrl, isExternal, rating, caption, description, photo, video, title, url, previewPage, button, application, id, isFavorite);
     }
 
     @Override
@@ -203,10 +247,13 @@ public class Link implements Validable {
         return Objects.equals(product, link.product) &&
                 Objects.equals(isFavorite, link.isFavorite) &&
                 Objects.equals(previewPage, link.previewPage) &&
+                Objects.equals(targetObject, link.targetObject) &&
                 Objects.equals(rating, link.rating) &&
                 Objects.equals(caption, link.caption) &&
                 Objects.equals(description, link.description) &&
                 Objects.equals(photo, link.photo) &&
+                Objects.equals(isExternal, link.isExternal) &&
+                Objects.equals(video, link.video) &&
                 Objects.equals(title, link.title) &&
                 Objects.equals(url, link.url) &&
                 Objects.equals(button, link.button) &&
@@ -226,10 +273,13 @@ public class Link implements Validable {
         sb.append("product=").append(product);
         sb.append(", isFavorite=").append(isFavorite);
         sb.append(", previewPage='").append(previewPage).append("'");
+        sb.append(", targetObject=").append(targetObject);
         sb.append(", rating=").append(rating);
         sb.append(", caption='").append(caption).append("'");
         sb.append(", description='").append(description).append("'");
         sb.append(", photo=").append(photo);
+        sb.append(", isExternal=").append(isExternal);
+        sb.append(", video=").append(video);
         sb.append(", title='").append(title).append("'");
         sb.append(", url=").append(url);
         sb.append(", button=").append(button);

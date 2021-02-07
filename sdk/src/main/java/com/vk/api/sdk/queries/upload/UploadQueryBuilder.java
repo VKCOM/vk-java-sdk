@@ -10,9 +10,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.UploadException;
-import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.lang.reflect.Type;
 
 public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
 
-    private static final Logger LOG = LogManager.getLogger(UploadQueryBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UploadQueryBuilder.class);
 
     private String filename;
 
@@ -49,6 +48,10 @@ public abstract class UploadQueryBuilder<T, R> extends ApiRequest<R> {
             UploadException uploadException = new UploadException(0, textResponse, "");
             LOG.error("API error", uploadException);
             throw uploadException;
+        }
+
+        if (json.has("response")) {
+            json = json.get("response").getAsJsonObject();
         }
 
         try {

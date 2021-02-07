@@ -3,11 +3,10 @@ package com.vk.api.examples.oauth.user;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.UserAuthResponse;
-import com.vk.api.sdk.objects.users.UserXtrCounters;
+import com.vk.api.sdk.objects.users.responses.GetResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,23 +20,25 @@ public class RequestHandler extends AbstractHandler {
     private final String clientSecret;
     private final int clientId;
     private final String host;
+    private final Integer port;
     private final VkApiClient vk;
 
-    public RequestHandler(VkApiClient vk, int clientId, String clientSecret, String host) {
+    public RequestHandler(VkApiClient vk, int clientId, String clientSecret, String host, Integer port) {
         this.vk = vk;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.host = host;
+        this.port = port;
     }
 
     @Override
-    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException {
         switch (target) {
             case "/info":
                 try {
                     UserActor actor = new UserActor(Integer.parseInt(baseRequest.getParameter("user")), baseRequest.getParameter("token"));
-                    List<UserXtrCounters> getUsersResponse = vk.users().get(actor).userIds(baseRequest.getParameter("user")).execute();
-                    UserXtrCounters user = getUsersResponse.get(0);
+                    List<GetResponse> getUsersResponse = vk.users().get(actor).userIds(baseRequest.getParameter("user")).execute();
+                    GetResponse user = getUsersResponse.get(0);
 
                     response.setContentType("text/html;charset=utf-8");
                     response.setStatus(HttpServletResponse.SC_OK);
@@ -79,10 +80,10 @@ public class RequestHandler extends AbstractHandler {
     }
 
     private String getRedirectUri() {
-        return host + "/callback";
+        return String.format("http://%s:%d", host, port) + "/callback";
     }
 
-    private String getInfoPage(UserXtrCounters user) {
+    private String getInfoPage(GetResponse user) {
         return "Hello <a href='https://vk.com/id" + user.getId() + "'>" + user.getFirstName() + "</a>";
     }
 }

@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.polls.responses.DeleteVoteResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Polls.deleteVote method
  */
-public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQuery, BoolInt> {
+public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQuery, DeleteVoteResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQu
      * @param answerId value of "answer id" parameter. Minimum is 0.
      */
     public PollsDeleteVoteQuery(VkApiClient client, UserActor actor, int pollId, int answerId) {
-        super(client, "polls.deleteVote", BoolInt.class);
+        super(client, "polls.deleteVote", DeleteVoteResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerId(answerId);

@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.account;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -26,7 +26,7 @@ public class Offer implements Validable {
      * URL of the preview image
      */
     @SerializedName("img")
-    private URL img;
+    private URI img;
 
     /**
      * Instruction how to process the offer
@@ -64,6 +64,24 @@ public class Offer implements Validable {
     @SerializedName("title")
     private String title;
 
+    /**
+     * Currency amount
+     */
+    @SerializedName("currency_amount")
+    private Float currencyAmount;
+
+    /**
+     * Link id
+     */
+    @SerializedName("link_id")
+    private Integer linkId;
+
+    /**
+     * Link type
+     */
+    @SerializedName("link_type")
+    private OfferLinkType linkType;
+
     public String getDescription() {
         return description;
     }
@@ -82,11 +100,11 @@ public class Offer implements Validable {
         return this;
     }
 
-    public URL getImg() {
+    public URI getImg() {
         return img;
     }
 
-    public Offer setImg(URL img) {
+    public Offer setImg(URI img) {
         this.img = img;
         return this;
     }
@@ -145,9 +163,36 @@ public class Offer implements Validable {
         return this;
     }
 
+    public Float getCurrencyAmount() {
+        return currencyAmount;
+    }
+
+    public Offer setCurrencyAmount(Float currencyAmount) {
+        this.currencyAmount = currencyAmount;
+        return this;
+    }
+
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public Offer setLinkId(Integer linkId) {
+        this.linkId = linkId;
+        return this;
+    }
+
+    public OfferLinkType getLinkType() {
+        return linkType;
+    }
+
+    public Offer setLinkType(OfferLinkType linkType) {
+        this.linkType = linkType;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(img, instruction, price, description, shortDescription, id, tag, title, instructionHtml);
+        return Objects.hash(img, linkId, instruction, price, currencyAmount, description, linkType, shortDescription, id, tag, title, instructionHtml);
     }
 
     @Override
@@ -155,15 +200,18 @@ public class Offer implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Offer offer = (Offer) o;
-        return Objects.equals(shortDescription, offer.shortDescription) &&
+        return Objects.equals(linkType, offer.linkType) &&
+                Objects.equals(shortDescription, offer.shortDescription) &&
                 Objects.equals(img, offer.img) &&
+                Objects.equals(currencyAmount, offer.currencyAmount) &&
                 Objects.equals(instruction, offer.instruction) &&
                 Objects.equals(price, offer.price) &&
                 Objects.equals(description, offer.description) &&
                 Objects.equals(instructionHtml, offer.instructionHtml) &&
                 Objects.equals(id, offer.id) &&
                 Objects.equals(tag, offer.tag) &&
-                Objects.equals(title, offer.title);
+                Objects.equals(title, offer.title) &&
+                Objects.equals(linkId, offer.linkId);
     }
 
     @Override
@@ -174,8 +222,10 @@ public class Offer implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Offer{");
-        sb.append("shortDescription='").append(shortDescription).append("'");
+        sb.append("linkType='").append(linkType).append("'");
+        sb.append(", shortDescription='").append(shortDescription).append("'");
         sb.append(", img=").append(img);
+        sb.append(", currencyAmount=").append(currencyAmount);
         sb.append(", instruction='").append(instruction).append("'");
         sb.append(", price=").append(price);
         sb.append(", description='").append(description).append("'");
@@ -183,6 +233,7 @@ public class Offer implements Validable {
         sb.append(", id=").append(id);
         sb.append(", tag='").append(tag).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", linkId=").append(linkId);
         sb.append('}');
         return sb.toString();
     }

@@ -6,11 +6,12 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ApiServerException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.ExceptionMapper;
+import com.vk.api.sdk.exceptions.RequiredFieldException;
 import com.vk.api.sdk.objects.base.Error;
-import com.vk.api.sdk.queries.oauth.OAuthQueryBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import org.apache.http.Header;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import com.vk.api.sdk.objects.Validable;
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
@@ -21,7 +22,7 @@ import java.util.Map;
  */
 public abstract class ApiRequest<T> {
 
-    private static final Logger LOG = LogManager.getLogger(ApiRequest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ApiRequest.class);
 
     private TransportClient client;
 
@@ -33,6 +34,8 @@ public abstract class ApiRequest<T> {
 
     private int retryAttempts;
 
+    private Header[] headers = new Header[0];
+
     public ApiRequest(String url, TransportClient client, Gson gson, int retryAttempts, Type responseClass) {
         this.client = client;
         this.url = url;
@@ -41,7 +44,19 @@ public abstract class ApiRequest<T> {
         this.retryAttempts = retryAttempts;
     }
 
-    protected String getUrl() {
+    public ApiRequest<T> setHeaders(Header[] headers) {
+        if (headers != null) {
+            this.headers = headers;
+        }
+
+        return this;
+    }
+
+    protected Header[] getHeaders() {
+        return this.headers;
+    }
+
+    public String getUrl() {
         return url;
     }
 
@@ -98,17 +113,28 @@ public abstract class ApiRequest<T> {
         }
 
         try {
-            return gson.fromJson(response, responseClass);
+            T result = gson.fromJson(response, responseClass);
+            if (result instanceof Validable) {
+                try {
+                    Validable validable = (Validable) result;
+                    validable.validateRequired();
+                } catch (RequiredFieldException e) {
+                    throw new ClientException("JSON validate fail: " + textResponse + "\n" + e.toString());
+                } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
+                    throw new ClientException("JSON validate fail:" + textResponse + e.toString());
+                }
+            }
+
+            return result;
         } catch (JsonSyntaxException e) {
-            LOG.error("Invalid JSON: " + textResponse, e);
-            throw new ClientException("Can't parse json response");
+            throw new ClientException("Can't parse json response: " + textResponse + "\n" + e.toString());
         }
     }
 
     public String executeAsString() throws ClientException {
         ClientResponse response;
         try {
-            response = client.post(url, getBody());
+            response = client.post(url, getBody(), getHeaders());
         } catch (IOException e) {
             LOG.error("Problems with request: " + url, e);
             throw new ClientException("I/O exception");

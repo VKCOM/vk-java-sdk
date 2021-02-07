@@ -5,10 +5,10 @@ import com.vk.api.sdk.queries.EnumParam;
 
 public enum MarketStatus implements EnumParam {
     @SerializedName("0")
-    _0(0),
+    ACTIVE(0),
 
     @SerializedName("2")
-    _2(2);
+    DISABLED(2);
 
     private final Integer value;
 

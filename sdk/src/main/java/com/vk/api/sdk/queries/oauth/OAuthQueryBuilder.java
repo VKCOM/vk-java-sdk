@@ -10,9 +10,8 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.OAuthException;
 import com.vk.api.sdk.objects.oauth.Error;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.io.StringReader;
 import java.lang.reflect.Type;
@@ -22,7 +21,7 @@ import java.lang.reflect.Type;
  */
 public abstract class OAuthQueryBuilder<T, R> extends AbstractQueryBuilder<T, R> {
 
-    private static final Logger LOG = LogManager.getLogger(OAuthQueryBuilder.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OAuthQueryBuilder.class);
 
     public OAuthQueryBuilder(VkApiClient client, String endpoint, String method, Type type) {
         super(client, endpoint, method, type);

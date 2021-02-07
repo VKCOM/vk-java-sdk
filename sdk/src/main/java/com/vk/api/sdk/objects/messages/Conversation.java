@@ -15,6 +15,9 @@ public class Conversation implements Validable {
     @Required
     private ConversationPeer peer;
 
+    @SerializedName("sort_id")
+    private ConversationSortId sortId;
+
     /**
      * ID of the last message in conversation
      */
@@ -39,6 +42,15 @@ public class Conversation implements Validable {
     @SerializedName("unread_count")
     private Integer unreadCount;
 
+    /**
+     * Is this conversation uread
+     */
+    @SerializedName("is_marked_unread")
+    private Boolean isMarkedUnread;
+
+    @SerializedName("out_read_by")
+    private OutReadBy outReadBy;
+
     @SerializedName("important")
     private Boolean important;
 
@@ -48,8 +60,8 @@ public class Conversation implements Validable {
     @SerializedName("special_service_type")
     private ConversationSpecialServiceType specialServiceType;
 
-    @SerializedName("message_request")
-    private ConversationMessageRequest messageRequest;
+    @SerializedName("message_request_data")
+    private MessageRequestData messageRequestData;
 
     /**
      * Ids of messages with mentions
@@ -60,12 +72,30 @@ public class Conversation implements Validable {
     @SerializedName("current_keyboard")
     private Keyboard currentKeyboard;
 
+    @SerializedName("push_settings")
+    private PushSettings pushSettings;
+
+    @SerializedName("can_write")
+    private ConversationCanWrite canWrite;
+
+    @SerializedName("chat_settings")
+    private ChatSettings chatSettings;
+
     public ConversationPeer getPeer() {
         return peer;
     }
 
     public Conversation setPeer(ConversationPeer peer) {
         this.peer = peer;
+        return this;
+    }
+
+    public ConversationSortId getSortId() {
+        return sortId;
+    }
+
+    public Conversation setSortId(ConversationSortId sortId) {
+        this.sortId = sortId;
         return this;
     }
 
@@ -105,6 +135,24 @@ public class Conversation implements Validable {
         return this;
     }
 
+    public Boolean getIsMarkedUnread() {
+        return isMarkedUnread;
+    }
+
+    public Conversation setIsMarkedUnread(Boolean isMarkedUnread) {
+        this.isMarkedUnread = isMarkedUnread;
+        return this;
+    }
+
+    public OutReadBy getOutReadBy() {
+        return outReadBy;
+    }
+
+    public Conversation setOutReadBy(OutReadBy outReadBy) {
+        this.outReadBy = outReadBy;
+        return this;
+    }
+
     public Boolean getImportant() {
         return important;
     }
@@ -132,12 +180,12 @@ public class Conversation implements Validable {
         return this;
     }
 
-    public ConversationMessageRequest getMessageRequest() {
-        return messageRequest;
+    public MessageRequestData getMessageRequestData() {
+        return messageRequestData;
     }
 
-    public Conversation setMessageRequest(ConversationMessageRequest messageRequest) {
-        this.messageRequest = messageRequest;
+    public Conversation setMessageRequestData(MessageRequestData messageRequestData) {
+        this.messageRequestData = messageRequestData;
         return this;
     }
 
@@ -159,9 +207,36 @@ public class Conversation implements Validable {
         return this;
     }
 
+    public PushSettings getPushSettings() {
+        return pushSettings;
+    }
+
+    public Conversation setPushSettings(PushSettings pushSettings) {
+        this.pushSettings = pushSettings;
+        return this;
+    }
+
+    public ConversationCanWrite getCanWrite() {
+        return canWrite;
+    }
+
+    public Conversation setCanWrite(ConversationCanWrite canWrite) {
+        this.canWrite = canWrite;
+        return this;
+    }
+
+    public ChatSettings getChatSettings() {
+        return chatSettings;
+    }
+
+    public Conversation setChatSettings(ChatSettings chatSettings) {
+        this.chatSettings = chatSettings;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(important, outRead, peer, unanswered, mentions, currentKeyboard, unreadCount, inRead, lastMessageId, messageRequest, specialServiceType);
+        return Objects.hash(outRead, unanswered, unreadCount, outReadBy, canWrite, isMarkedUnread, messageRequestData, important, chatSettings, sortId, peer, mentions, currentKeyboard, inRead, lastMessageId, pushSettings, specialServiceType);
     }
 
     @Override
@@ -169,17 +244,23 @@ public class Conversation implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Conversation conversation = (Conversation) o;
-        return Objects.equals(important, conversation.important) &&
+        return Objects.equals(inRead, conversation.inRead) &&
+                Objects.equals(canWrite, conversation.canWrite) &&
+                Objects.equals(unanswered, conversation.unanswered) &&
+                Objects.equals(chatSettings, conversation.chatSettings) &&
+                Objects.equals(isMarkedUnread, conversation.isMarkedUnread) &&
+                Objects.equals(sortId, conversation.sortId) &&
+                Objects.equals(important, conversation.important) &&
                 Objects.equals(lastMessageId, conversation.lastMessageId) &&
                 Objects.equals(unreadCount, conversation.unreadCount) &&
                 Objects.equals(specialServiceType, conversation.specialServiceType) &&
-                Objects.equals(inRead, conversation.inRead) &&
+                Objects.equals(pushSettings, conversation.pushSettings) &&
                 Objects.equals(peer, conversation.peer) &&
-                Objects.equals(unanswered, conversation.unanswered) &&
                 Objects.equals(mentions, conversation.mentions) &&
                 Objects.equals(currentKeyboard, conversation.currentKeyboard) &&
+                Objects.equals(messageRequestData, conversation.messageRequestData) &&
                 Objects.equals(outRead, conversation.outRead) &&
-                Objects.equals(messageRequest, conversation.messageRequest);
+                Objects.equals(outReadBy, conversation.outReadBy);
     }
 
     @Override
@@ -190,17 +271,23 @@ public class Conversation implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Conversation{");
-        sb.append("important=").append(important);
+        sb.append("inRead=").append(inRead);
+        sb.append(", canWrite=").append(canWrite);
+        sb.append(", unanswered=").append(unanswered);
+        sb.append(", chatSettings=").append(chatSettings);
+        sb.append(", isMarkedUnread=").append(isMarkedUnread);
+        sb.append(", sortId=").append(sortId);
+        sb.append(", important=").append(important);
         sb.append(", lastMessageId=").append(lastMessageId);
         sb.append(", unreadCount=").append(unreadCount);
         sb.append(", specialServiceType='").append(specialServiceType).append("'");
-        sb.append(", inRead=").append(inRead);
+        sb.append(", pushSettings=").append(pushSettings);
         sb.append(", peer=").append(peer);
-        sb.append(", unanswered=").append(unanswered);
         sb.append(", mentions=").append(mentions);
         sb.append(", currentKeyboard=").append(currentKeyboard);
+        sb.append(", messageRequestData=").append(messageRequestData);
         sb.append(", outRead=").append(outRead);
-        sb.append(", messageRequest='").append(messageRequest).append("'");
+        sb.append(", outReadBy=").append(outReadBy);
         sb.append('}');
         return sb.toString();
     }

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.TargStats;
+import com.vk.api.sdk.objects.ads.responses.GetTargetingStatsResponse;
 import com.vk.api.sdk.objects.enums.AdsAdFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Query for Ads.getTargetingStats method
  */
-public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTargetingStatsQuery, TargStats> {
+public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTargetingStatsQuery, GetTargetingStatsResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -22,7 +22,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      */
     public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, int accountId,
             String linkUrl) {
-        super(client, "ads.getTargetingStats", TargStats.class);
+        super(client, "ads.getTargetingStats", GetTargetingStatsResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
         linkUrl(linkUrl);
@@ -126,6 +126,26 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      */
     public AdsGetTargetingStatsQuery linkDomain(String value) {
         return unsafeParam("link_domain", value);
+    }
+
+    /**
+     * Additionally return recommended cpc and cpm to reach 5,10..95 percents of audience.
+     *
+     * @param value value of "need precise" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery needPrecise(Boolean value) {
+        return unsafeParam("need_precise", value);
+    }
+
+    /**
+     * Impressions limit period in seconds, must be a multiple of 86400(day)
+     *
+     * @param value value of "impressions limit period" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery impressionsLimitPeriod(Integer value) {
+        return unsafeParam("impressions_limit_period", value);
     }
 
     @Override

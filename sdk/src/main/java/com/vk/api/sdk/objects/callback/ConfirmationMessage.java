@@ -18,7 +18,6 @@ public class ConfirmationMessage implements Validable {
     private Integer groupId;
 
     @SerializedName("secret")
-    @Required
     private String secret;
 
     public MessageType getType() {

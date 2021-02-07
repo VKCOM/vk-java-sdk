@@ -7,8 +7,11 @@ import com.vk.api.sdk.queries.polls.PollsAddVoteQuery;
 import com.vk.api.sdk.queries.polls.PollsCreateQuery;
 import com.vk.api.sdk.queries.polls.PollsDeleteVoteQuery;
 import com.vk.api.sdk.queries.polls.PollsEditQuery;
+import com.vk.api.sdk.queries.polls.PollsGetBackgroundsQuery;
 import com.vk.api.sdk.queries.polls.PollsGetByIdQuery;
+import com.vk.api.sdk.queries.polls.PollsGetPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.polls.PollsGetVotersQuery;
+import com.vk.api.sdk.queries.polls.PollsSavePhotoQuery;
 import java.util.List;
 
 /**
@@ -82,6 +85,14 @@ public class Polls extends AbstractAction {
     }
 
     /**
+     * @param actor vk actor
+     * @return query
+     */
+    public PollsGetBackgroundsQuery getBackgrounds(UserActor actor) {
+        return new PollsGetBackgroundsQuery(getClient(), actor);
+    }
+
+    /**
      * Returns detailed information about a poll by its ID.
      *
      * @param actor vk actor
@@ -90,6 +101,14 @@ public class Polls extends AbstractAction {
      */
     public PollsGetByIdQuery getById(UserActor actor, int pollId) {
         return new PollsGetByIdQuery(getClient(), actor, pollId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @return query
+     */
+    public PollsGetPhotoUploadServerQuery getPhotoUploadServer(UserActor actor) {
+        return new PollsGetPhotoUploadServerQuery(getClient(), actor);
     }
 
     /**
@@ -114,5 +133,15 @@ public class Polls extends AbstractAction {
      */
     public PollsGetVotersQuery getVoters(UserActor actor, int pollId, List<Integer> answerIds) {
         return new PollsGetVotersQuery(getClient(), actor, pollId, answerIds);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param photo
+     * @param hash
+     * @return query
+     */
+    public PollsSavePhotoQuery savePhoto(UserActor actor, String photo, String hash) {
+        return new PollsSavePhotoQuery(getClient(), actor, photo, hash);
     }
 }

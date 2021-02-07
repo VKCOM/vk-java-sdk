@@ -1,12 +1,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -40,19 +40,19 @@ public class AdLayout implements Validable {
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private String id;
 
     /**
      * Image URL
      */
     @SerializedName("image_src")
-    private URL imageSrc;
+    private URI imageSrc;
 
     /**
      * URL of the preview image in double size
      */
     @SerializedName("image_src_2x")
-    private URL imageSrc2x;
+    private URI imageSrc2x;
 
     /**
      * Domain of advertised object
@@ -64,13 +64,13 @@ public class AdLayout implements Validable {
      * URL of advertised object
      */
     @SerializedName("link_url")
-    private URL linkUrl;
+    private URI linkUrl;
 
     /**
      * link to preview an ad as it is shown on the website
      */
     @SerializedName("preview_link")
-    private JsonObject previewLink;
+    private JsonPrimitive previewLink;
 
     /**
      * Ad title
@@ -121,29 +121,29 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public AdLayout setId(Integer id) {
+    public AdLayout setId(String id) {
         this.id = id;
         return this;
     }
 
-    public URL getImageSrc() {
+    public URI getImageSrc() {
         return imageSrc;
     }
 
-    public AdLayout setImageSrc(URL imageSrc) {
+    public AdLayout setImageSrc(URI imageSrc) {
         this.imageSrc = imageSrc;
         return this;
     }
 
-    public URL getImageSrc2x() {
+    public URI getImageSrc2x() {
         return imageSrc2x;
     }
 
-    public AdLayout setImageSrc2x(URL imageSrc2x) {
+    public AdLayout setImageSrc2x(URI imageSrc2x) {
         this.imageSrc2x = imageSrc2x;
         return this;
     }
@@ -157,20 +157,20 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public URL getLinkUrl() {
+    public URI getLinkUrl() {
         return linkUrl;
     }
 
-    public AdLayout setLinkUrl(URL linkUrl) {
+    public AdLayout setLinkUrl(URI linkUrl) {
         this.linkUrl = linkUrl;
         return this;
     }
 
-    public JsonObject getPreviewLink() {
+    public JsonPrimitive getPreviewLink() {
         return previewLink;
     }
 
-    public AdLayout setPreviewLink(JsonObject previewLink) {
+    public AdLayout setPreviewLink(JsonPrimitive previewLink) {
         this.previewLink = previewLink;
         return this;
     }
@@ -230,7 +230,7 @@ public class AdLayout implements Validable {
         sb.append(", imageSrc2x=").append(imageSrc2x);
         sb.append(", description='").append(description).append("'");
         sb.append(", linkUrl=").append(linkUrl);
-        sb.append(", id=").append(id);
+        sb.append(", id='").append(id).append("'");
         sb.append(", video=").append(video);
         sb.append(", title='").append(title).append("'");
         sb.append(", imageSrc=").append(imageSrc);

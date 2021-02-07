@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.objects.secure.Transaction;
+import com.vk.api.sdk.objects.secure.responses.GetTransactionsHistoryResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Secure.getTransactionsHistory method
  */
-public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilder<SecureGetTransactionsHistoryQuery, List<Transaction>> {
+public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilder<SecureGetTransactionsHistoryQuery, List<GetTransactionsHistoryResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -19,7 +19,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
      * @param actor actor with access token
      */
     public SecureGetTransactionsHistoryQuery(VkApiClient client, ServiceActor actor) {
-        super(client, "secure.getTransactionsHistory", Utils.buildParametrizedType(List.class, Transaction.class));
+        super(client, "secure.getTransactionsHistory", Utils.buildParametrizedType(List.class, GetTransactionsHistoryResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
     }

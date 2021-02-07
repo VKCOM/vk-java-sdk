@@ -49,7 +49,7 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
     /**
      * Maximum number of results.
      *
-     * @param value value of "count" parameter. Minimum is 0. By default 20.
+     * @param value value of "count" parameter. Maximum is 255. Minimum is 1. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MessagesSearchConversationsQuery count(Integer value) {

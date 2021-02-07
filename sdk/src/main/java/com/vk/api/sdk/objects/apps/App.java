@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
-import java.net.URL;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,52 +13,34 @@ import java.util.Objects;
  */
 public class App extends AppMin implements Validable {
     /**
-     * Official community's ID
-     */
-    @SerializedName("author_group")
-    private Integer authorGroup;
-
-    /**
-     * Application author's ID
-     */
-    @SerializedName("author_id")
-    private Integer authorId;
-
-    /**
      * Application author's URL
      */
     @SerializedName("author_url")
-    private URL authorUrl;
+    private URI authorUrl;
 
     /**
      * URL of the app banner with 1120 px in width
      */
     @SerializedName("banner_1120")
-    private URL banner1120;
+    private URI banner1120;
 
     /**
      * URL of the app banner with 560 px in width
      */
     @SerializedName("banner_560")
-    private URL banner560;
+    private URI banner560;
 
     /**
      * URL of the app icon with 16 px in width
      */
     @SerializedName("icon_16")
-    private URL icon16;
+    private URI icon16;
 
     /**
      * Is new flag
      */
     @SerializedName("is_new")
     private BoolInt isNew;
-
-    /**
-     * Is new flag
-     */
-    @SerializedName("new")
-    private BoolInt _new;
 
     /**
      * Is push enabled
@@ -144,56 +126,38 @@ public class App extends AppMin implements Validable {
     @SerializedName("section")
     private String section;
 
-    public Integer getAuthorGroup() {
-        return authorGroup;
-    }
-
-    public App setAuthorGroup(Integer authorGroup) {
-        this.authorGroup = authorGroup;
-        return this;
-    }
-
-    public Integer getAuthorId() {
-        return authorId;
-    }
-
-    public App setAuthorId(Integer authorId) {
-        this.authorId = authorId;
-        return this;
-    }
-
-    public URL getAuthorUrl() {
+    public URI getAuthorUrl() {
         return authorUrl;
     }
 
-    public App setAuthorUrl(URL authorUrl) {
+    public App setAuthorUrl(URI authorUrl) {
         this.authorUrl = authorUrl;
         return this;
     }
 
-    public URL getBanner1120() {
+    public URI getBanner1120() {
         return banner1120;
     }
 
-    public App setBanner1120(URL banner1120) {
+    public App setBanner1120(URI banner1120) {
         this.banner1120 = banner1120;
         return this;
     }
 
-    public URL getBanner560() {
+    public URI getBanner560() {
         return banner560;
     }
 
-    public App setBanner560(URL banner560) {
+    public App setBanner560(URI banner560) {
         this.banner560 = banner560;
         return this;
     }
 
-    public URL getIcon16() {
+    public URI getIcon16() {
         return icon16;
     }
 
-    public App setIcon16(URL icon16) {
+    public App setIcon16(URI icon16) {
         this.icon16 = icon16;
         return this;
     }
@@ -204,14 +168,6 @@ public class App extends AppMin implements Validable {
 
     public BoolInt getIsNew() {
         return isNew;
-    }
-
-    public boolean is_new() {
-        return _new == BoolInt.YES;
-    }
-
-    public BoolInt get_new() {
-        return _new;
     }
 
     public boolean isPushEnabled() {
@@ -350,7 +306,7 @@ public class App extends AppMin implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, authorId, _new, friends, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, authorGroup, banner1120, publishedDate, international);
+        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, friends, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, banner1120, publishedDate, international);
     }
 
     @Override
@@ -358,9 +314,7 @@ public class App extends AppMin implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         App app = (App) o;
-        return Objects.equals(_new, app._new) &&
-                Objects.equals(authorGroup, app.authorGroup) &&
-                Objects.equals(leaderboardType, app.leaderboardType) &&
+        return Objects.equals(leaderboardType, app.leaderboardType) &&
                 Objects.equals(isNew, app.isNew) &&
                 Objects.equals(icon16, app.icon16) &&
                 Objects.equals(banner1120, app.banner1120) &&
@@ -377,7 +331,6 @@ public class App extends AppMin implements Validable {
                 Objects.equals(platformId, app.platformId) &&
                 Objects.equals(banner560, app.banner560) &&
                 Objects.equals(membersCount, app.membersCount) &&
-                Objects.equals(authorId, app.authorId) &&
                 Objects.equals(international, app.international) &&
                 Objects.equals(publishedDate, app.publishedDate) &&
                 Objects.equals(catalogPosition, app.catalogPosition);
@@ -391,9 +344,7 @@ public class App extends AppMin implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("App{");
-        sb.append("_new=").append(_new);
-        sb.append(", authorGroup=").append(authorGroup);
-        sb.append(", leaderboardType=").append(leaderboardType);
+        sb.append("leaderboardType=").append(leaderboardType);
         sb.append(", isNew=").append(isNew);
         sb.append(", icon16=").append(icon16);
         sb.append(", banner1120=").append(banner1120);
@@ -410,7 +361,6 @@ public class App extends AppMin implements Validable {
         sb.append(", platformId='").append(platformId).append("'");
         sb.append(", banner560=").append(banner560);
         sb.append(", membersCount=").append(membersCount);
-        sb.append(", authorId=").append(authorId);
         sb.append(", international=").append(international);
         sb.append(", publishedDate=").append(publishedDate);
         sb.append(", catalogPosition=").append(catalogPosition);

@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.enums.MessagesIntent;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromGroupQuery;
 import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
@@ -23,6 +24,10 @@ import com.vk.api.sdk.queries.messages.MessagesGetConversationsByIdQueryWithExte
 import com.vk.api.sdk.queries.messages.MessagesGetConversationsQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetHistoryAttachmentsQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetHistoryQuery;
+import com.vk.api.sdk.queries.messages.MessagesGetHistoryQueryWithExtended;
+import com.vk.api.sdk.queries.messages.MessagesGetImportantMessagesQuery;
+import com.vk.api.sdk.queries.messages.MessagesGetImportantMessagesQueryWithExtended;
+import com.vk.api.sdk.queries.messages.MessagesGetIntentUsersQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetInviteLinkQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLastActivityQuery;
 import com.vk.api.sdk.queries.messages.MessagesGetLongPollHistoryQuery;
@@ -38,6 +43,8 @@ import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesRestoreQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchConversationsQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchQuery;
+import com.vk.api.sdk.queries.messages.MessagesSearchQueryWithExtended;
+import com.vk.api.sdk.queries.messages.MessagesSendMessageEventAnswerQuery;
 import com.vk.api.sdk.queries.messages.MessagesSendQuery;
 import com.vk.api.sdk.queries.messages.MessagesSendQueryWithUserIds;
 import com.vk.api.sdk.queries.messages.MessagesSetActivityQuery;
@@ -88,6 +95,16 @@ public class Messages extends AbstractAction {
      * @return query
      */
     public MessagesCreateChatQuery createChat(UserActor actor) {
+        return new MessagesCreateChatQuery(getClient(), actor);
+    }
+
+    /**
+     * Creates a chat with several participants.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesCreateChatQuery createChat(GroupActor actor) {
         return new MessagesCreateChatQuery(getClient(), actor);
     }
 
@@ -169,11 +186,10 @@ public class Messages extends AbstractAction {
      *
      * @param actor vk actor
      * @param peerId Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @param messageId
      * @return query
      */
-    public MessagesEditQuery edit(UserActor actor, int peerId, int messageId) {
-        return new MessagesEditQuery(getClient(), actor, peerId, messageId);
+    public MessagesEditQuery edit(UserActor actor, int peerId) {
+        return new MessagesEditQuery(getClient(), actor, peerId);
     }
 
     /**
@@ -181,11 +197,10 @@ public class Messages extends AbstractAction {
      *
      * @param actor vk actor
      * @param peerId Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @param messageId
      * @return query
      */
-    public MessagesEditQuery edit(GroupActor actor, int peerId, int messageId) {
-        return new MessagesEditQuery(getClient(), actor, peerId, messageId);
+    public MessagesEditQuery edit(GroupActor actor, int peerId) {
+        return new MessagesEditQuery(getClient(), actor, peerId);
     }
 
     /**
@@ -193,11 +208,10 @@ public class Messages extends AbstractAction {
      *
      * @param actor vk actor
      * @param chatId Chat ID.
-     * @param title New title of the chat.
      * @return query
      */
-    public MessagesEditChatQuery editChat(UserActor actor, int chatId, String title) {
-        return new MessagesEditChatQuery(getClient(), actor, chatId, title);
+    public MessagesEditChatQuery editChat(UserActor actor, int chatId) {
+        return new MessagesEditChatQuery(getClient(), actor, chatId);
     }
 
     /**
@@ -205,11 +219,10 @@ public class Messages extends AbstractAction {
      *
      * @param actor vk actor
      * @param chatId Chat ID.
-     * @param title New title of the chat.
      * @return query
      */
-    public MessagesEditChatQuery editChat(GroupActor actor, int chatId, String title) {
-        return new MessagesEditChatQuery(getClient(), actor, chatId, title);
+    public MessagesEditChatQuery editChat(GroupActor actor, int chatId) {
+        return new MessagesEditChatQuery(getClient(), actor, chatId);
     }
 
     /**
@@ -262,54 +275,6 @@ public class Messages extends AbstractAction {
     public MessagesGetByConversationMessageIdQuery getByConversationMessageId(GroupActor actor,
             int peerId, List<Integer> conversationMessageIds) {
         return new MessagesGetByConversationMessageIdQuery(getClient(), actor, peerId, conversationMessageIds);
-    }
-
-    /**
-     * Returns messages by their IDs.
-     *
-     * @param actor vk actor
-     * @param messageIds Message IDs.
-     * @return query
-     */
-    public MessagesGetByIdQueryWithExtended getByIdExtended(UserActor actor,
-            Integer... messageIds) {
-        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
-    }
-
-    /**
-     * Returns messages by their IDs.
-     *
-     * @param actor vk actor
-     * @param messageIds Message IDs.
-     * @return query
-     */
-    public MessagesGetByIdQueryWithExtended getByIdExtended(UserActor actor,
-            List<Integer> messageIds) {
-        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
-    }
-
-    /**
-     * Returns messages by their IDs.
-     *
-     * @param actor vk actor
-     * @param messageIds Message IDs.
-     * @return query
-     */
-    public MessagesGetByIdQueryWithExtended getByIdExtended(GroupActor actor,
-            Integer... messageIds) {
-        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
-    }
-
-    /**
-     * Returns messages by their IDs.
-     *
-     * @param actor vk actor
-     * @param messageIds Message IDs.
-     * @return query
-     */
-    public MessagesGetByIdQueryWithExtended getByIdExtended(GroupActor actor,
-            List<Integer> messageIds) {
-        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
     }
 
     /**
@@ -354,6 +319,54 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetByIdQuery getById(GroupActor actor, List<Integer> messageIds) {
         return new MessagesGetByIdQuery(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     *
+     * @param actor vk actor
+     * @param messageIds Message IDs.
+     * @return query
+     */
+    public MessagesGetByIdQueryWithExtended getByIdExtended(UserActor actor,
+            Integer... messageIds) {
+        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     *
+     * @param actor vk actor
+     * @param messageIds Message IDs.
+     * @return query
+     */
+    public MessagesGetByIdQueryWithExtended getByIdExtended(UserActor actor,
+            List<Integer> messageIds) {
+        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     *
+     * @param actor vk actor
+     * @param messageIds Message IDs.
+     * @return query
+     */
+    public MessagesGetByIdQueryWithExtended getByIdExtended(GroupActor actor,
+            Integer... messageIds) {
+        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
+    }
+
+    /**
+     * Returns messages by their IDs.
+     *
+     * @param actor vk actor
+     * @param messageIds Message IDs.
+     * @return query
+     */
+    public MessagesGetByIdQueryWithExtended getByIdExtended(GroupActor actor,
+            List<Integer> messageIds) {
+        return new MessagesGetByIdQueryWithExtended(getClient(), actor, messageIds);
     }
 
     /**
@@ -414,6 +427,54 @@ public class Messages extends AbstractAction {
      * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      * @return query
      */
+    public MessagesGetConversationsByIdQuery getConversationsById(UserActor actor,
+            Integer... peerIds) {
+        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
+    }
+
+    /**
+     * Returns conversations by their IDs
+     *
+     * @param actor vk actor
+     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+     * @return query
+     */
+    public MessagesGetConversationsByIdQuery getConversationsById(UserActor actor,
+            List<Integer> peerIds) {
+        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
+    }
+
+    /**
+     * Returns conversations by their IDs
+     *
+     * @param actor vk actor
+     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+     * @return query
+     */
+    public MessagesGetConversationsByIdQuery getConversationsById(GroupActor actor,
+            Integer... peerIds) {
+        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
+    }
+
+    /**
+     * Returns conversations by their IDs
+     *
+     * @param actor vk actor
+     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+     * @return query
+     */
+    public MessagesGetConversationsByIdQuery getConversationsById(GroupActor actor,
+            List<Integer> peerIds) {
+        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
+    }
+
+    /**
+     * Returns conversations by their IDs
+     *
+     * @param actor vk actor
+     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+     * @return query
+     */
     public MessagesGetConversationsByIdQueryWithExtended getConversationsByIdExtended(
             UserActor actor, Integer... peerIds) {
         return new MessagesGetConversationsByIdQueryWithExtended(getClient(), actor, peerIds);
@@ -456,54 +517,6 @@ public class Messages extends AbstractAction {
     }
 
     /**
-     * Returns conversations by their IDs
-     *
-     * @param actor vk actor
-     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @return query
-     */
-    public MessagesGetConversationsByIdQuery getConversationsById(UserActor actor,
-            Integer... peerIds) {
-        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
-    }
-
-    /**
-     * Returns conversations by their IDs
-     *
-     * @param actor vk actor
-     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @return query
-     */
-    public MessagesGetConversationsByIdQuery getConversationsById(UserActor actor,
-            List<Integer> peerIds) {
-        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
-    }
-
-    /**
-     * Returns conversations by their IDs
-     *
-     * @param actor vk actor
-     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @return query
-     */
-    public MessagesGetConversationsByIdQuery getConversationsById(GroupActor actor,
-            Integer... peerIds) {
-        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
-    }
-
-    /**
-     * Returns conversations by their IDs
-     *
-     * @param actor vk actor
-     * @param peerIds Destination IDs. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
-     * @return query
-     */
-    public MessagesGetConversationsByIdQuery getConversationsById(GroupActor actor,
-            List<Integer> peerIds) {
-        return new MessagesGetConversationsByIdQuery(getClient(), actor, peerIds);
-    }
-
-    /**
      * Returns message history for the specified user or group chat.
      *
      * @param actor vk actor
@@ -521,6 +534,26 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetHistoryQuery getHistory(GroupActor actor) {
         return new MessagesGetHistoryQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns message history for the specified user or group chat.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetHistoryQueryWithExtended getHistoryExtended(UserActor actor) {
+        return new MessagesGetHistoryQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns message history for the specified user or group chat.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetHistoryQueryWithExtended getHistoryExtended(GroupActor actor) {
+        return new MessagesGetHistoryQueryWithExtended(getClient(), actor);
     }
 
     /**
@@ -543,6 +576,57 @@ public class Messages extends AbstractAction {
      */
     public MessagesGetHistoryAttachmentsQuery getHistoryAttachments(GroupActor actor, int peerId) {
         return new MessagesGetHistoryAttachmentsQuery(getClient(), actor, peerId);
+    }
+
+    /**
+     * Returns a list of user's important messages.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetImportantMessagesQuery getImportantMessages(UserActor actor) {
+        return new MessagesGetImportantMessagesQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user's important messages.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetImportantMessagesQuery getImportantMessages(GroupActor actor) {
+        return new MessagesGetImportantMessagesQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user's important messages.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetImportantMessagesQueryWithExtended getImportantMessagesExtended(
+            UserActor actor) {
+        return new MessagesGetImportantMessagesQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of user's important messages.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesGetImportantMessagesQueryWithExtended getImportantMessagesExtended(
+            GroupActor actor) {
+        return new MessagesGetImportantMessagesQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param intent
+     * @return query
+     */
+    public MessagesGetIntentUsersQuery getIntentUsers(GroupActor actor, MessagesIntent intent) {
+        return new MessagesGetIntentUsersQuery(getClient(), actor, intent);
     }
 
     /**
@@ -814,6 +898,26 @@ public class Messages extends AbstractAction {
     }
 
     /**
+     * Returns a list of the current user's private messages that match search criteria.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesSearchQueryWithExtended searchExtended(UserActor actor) {
+        return new MessagesSearchQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's private messages that match search criteria.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesSearchQueryWithExtended searchExtended(GroupActor actor) {
+        return new MessagesSearchQueryWithExtended(getClient(), actor);
+    }
+
+    /**
      * Returns a list of the current user's conversations that match search criteria.
      *
      * @param actor vk actor
@@ -837,6 +941,28 @@ public class Messages extends AbstractAction {
      * Sends a message.
      *
      * @param actor vk actor
+     * @param userIds IDs of message recipients (if new conversation shall be started).
+     * @return query
+     */
+    public MessagesSendQueryWithUserIds sendWithUserIds(UserActor actor, Integer[] userIds) {
+        return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
+    }
+
+    /**
+     * Sends a message.
+     *
+     * @param actor vk actor
+     * @param userIds IDs of message recipients (if new conversation shall be started).
+     * @return query
+     */
+    public MessagesSendQueryWithUserIds sendWithUserIds(GroupActor actor, Integer[] userIds) {
+        return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
+    }
+
+    /**
+     * Sends a message.
+     *
+     * @param actor vk actor
      * @return query
      */
     public MessagesSendQuery send(UserActor actor) {
@@ -854,25 +980,15 @@ public class Messages extends AbstractAction {
     }
 
     /**
-     * Sends a message.
-     *
      * @param actor vk actor
-     * @param userIds IDs of message recipients (if new conversation shall be started).
+     * @param eventId
+     * @param userId
+     * @param peerId
      * @return query
      */
-    public MessagesSendQueryWithUserIds sendWithUserIds(UserActor actor, Integer[] userIds) {
-        return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
-    }
-
-    /**
-     * Sends a message.
-     *
-     * @param actor vk actor
-     * @param userIds IDs of message recipients (if new conversation shall be started).
-     * @return query
-     */
-    public MessagesSendQueryWithUserIds sendWithUserIds(GroupActor actor, Integer[] userIds) {
-        return new MessagesSendQueryWithUserIds(getClient(), actor, userIds);
+    public MessagesSendMessageEventAnswerQuery sendMessageEventAnswer(GroupActor actor,
+            String eventId, int userId, int peerId) {
+        return new MessagesSendMessageEventAnswerQuery(getClient(), actor, eventId, userId, peerId);
     }
 
     /**

@@ -17,7 +17,7 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
      * @param key    secret key
      * @param ts     timestamp
      */
-    public GetLongPollEventsQuery(VkApiClient client, String url, String key, Integer ts) {
+    public GetLongPollEventsQuery(VkApiClient client, String url, String key, String ts) {
         super(client, url, GetLongPollEventsResponse.class);
         act(GetLongPollEventsActInfo.CHECK);
         key(key);
@@ -32,7 +32,7 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
         return unsafeParam("key", value);
     }
 
-    protected GetLongPollEventsQuery ts(Integer value) {
+    protected GetLongPollEventsQuery ts(String value) {
         return unsafeParam("ts", value);
     }
 

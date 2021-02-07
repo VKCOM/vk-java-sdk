@@ -1,6 +1,7 @@
 package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.LikesInfo;
@@ -20,6 +21,12 @@ public class Wallpost implements Validable {
 
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
+
+    /**
+     * Information about the source of the post
+     */
+    @SerializedName("copyright")
+    private PostCopyright copyright;
 
     /**
      * Date of publishing in Unixtime
@@ -72,15 +79,27 @@ public class Wallpost implements Validable {
     @SerializedName("owner_id")
     private Integer ownerId;
 
+    @SerializedName("poster")
+    private JsonObject poster;
+
+    /**
+     * If post type 'reply', contains original post ID
+     */
+    @SerializedName("post_id")
+    private Integer postId;
+
+    /**
+     * If post type 'reply', contains original parent IDs stack
+     */
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
+
     @SerializedName("post_source")
     private PostSource postSource;
 
     @SerializedName("post_type")
     private PostType postType;
 
-    /**
-     * Count of views
-     */
     @SerializedName("reposts")
     private RepostsInfo reposts;
 
@@ -117,6 +136,15 @@ public class Wallpost implements Validable {
 
     public Wallpost setAttachments(List<WallpostAttachment> attachments) {
         this.attachments = attachments;
+        return this;
+    }
+
+    public PostCopyright getCopyright() {
+        return copyright;
+    }
+
+    public Wallpost setCopyright(PostCopyright copyright) {
+        this.copyright = copyright;
         return this;
     }
 
@@ -201,6 +229,33 @@ public class Wallpost implements Validable {
         return this;
     }
 
+    public JsonObject getPoster() {
+        return poster;
+    }
+
+    public Wallpost setPoster(JsonObject poster) {
+        this.poster = poster;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public Wallpost setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
+
+    public Wallpost setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+        return this;
+    }
+
     public PostSource getPostSource() {
         return postSource;
     }
@@ -257,7 +312,7 @@ public class Wallpost implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, attachments, edited, postType, isArchived, postSource, ownerId, fromId, geo, signerId, accessKey, id, text, reposts, views, isFavorite, likes);
+        return Objects.hash(date, copyright, attachments, edited, postType, isArchived, postSource, postId, ownerId, fromId, geo, parentsStack, signerId, accessKey, id, text, poster, reposts, views, isFavorite, likes);
     }
 
     @Override
@@ -266,19 +321,23 @@ public class Wallpost implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Wallpost wallpost = (Wallpost) o;
         return Objects.equals(date, wallpost.date) &&
+                Objects.equals(copyright, wallpost.copyright) &&
                 Objects.equals(attachments, wallpost.attachments) &&
                 Objects.equals(fromId, wallpost.fromId) &&
                 Objects.equals(isFavorite, wallpost.isFavorite) &&
                 Objects.equals(signerId, wallpost.signerId) &&
                 Objects.equals(edited, wallpost.edited) &&
+                Objects.equals(parentsStack, wallpost.parentsStack) &&
                 Objects.equals(ownerId, wallpost.ownerId) &&
                 Objects.equals(geo, wallpost.geo) &&
                 Objects.equals(isArchived, wallpost.isArchived) &&
+                Objects.equals(postId, wallpost.postId) &&
                 Objects.equals(postSource, wallpost.postSource) &&
                 Objects.equals(accessKey, wallpost.accessKey) &&
                 Objects.equals(postType, wallpost.postType) &&
                 Objects.equals(id, wallpost.id) &&
                 Objects.equals(text, wallpost.text) &&
+                Objects.equals(poster, wallpost.poster) &&
                 Objects.equals(reposts, wallpost.reposts) &&
                 Objects.equals(views, wallpost.views) &&
                 Objects.equals(likes, wallpost.likes);
@@ -293,19 +352,23 @@ public class Wallpost implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Wallpost{");
         sb.append("date=").append(date);
+        sb.append(", copyright=").append(copyright);
         sb.append(", attachments=").append(attachments);
         sb.append(", fromId=").append(fromId);
         sb.append(", isFavorite=").append(isFavorite);
         sb.append(", signerId=").append(signerId);
         sb.append(", edited=").append(edited);
+        sb.append(", parentsStack=").append(parentsStack);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", geo=").append(geo);
         sb.append(", isArchived=").append(isArchived);
+        sb.append(", postId=").append(postId);
         sb.append(", postSource=").append(postSource);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", postType=").append(postType);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
+        sb.append(", poster=").append(poster);
         sb.append(", reposts=").append(reposts);
         sb.append(", views=").append(views);
         sb.append(", likes=").append(likes);

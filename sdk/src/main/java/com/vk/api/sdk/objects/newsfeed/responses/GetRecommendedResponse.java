@@ -25,12 +25,6 @@ public class GetRecommendedResponse implements Validable {
     private List<GroupFull> groups;
 
     /**
-     * New offset value
-     */
-    @SerializedName("new_offset")
-    private String newOffset;
-
-    /**
      * Next from value
      */
     @SerializedName("next_from")
@@ -58,15 +52,6 @@ public class GetRecommendedResponse implements Validable {
         return this;
     }
 
-    public String getNewOffset() {
-        return newOffset;
-    }
-
-    public GetRecommendedResponse setNewOffset(String newOffset) {
-        this.newOffset = newOffset;
-        return this;
-    }
-
     public String getNextFrom() {
         return nextFrom;
     }
@@ -78,7 +63,7 @@ public class GetRecommendedResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(newOffset, profiles, groups, nextFrom, items);
+        return Objects.hash(profiles, groups, nextFrom, items);
     }
 
     @Override
@@ -87,7 +72,6 @@ public class GetRecommendedResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetRecommendedResponse getRecommendedResponse = (GetRecommendedResponse) o;
         return Objects.equals(nextFrom, getRecommendedResponse.nextFrom) &&
-                Objects.equals(newOffset, getRecommendedResponse.newOffset) &&
                 Objects.equals(profiles, getRecommendedResponse.profiles) &&
                 Objects.equals(groups, getRecommendedResponse.groups) &&
                 Objects.equals(items, getRecommendedResponse.items);
@@ -102,7 +86,6 @@ public class GetRecommendedResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRecommendedResponse{");
         sb.append("nextFrom='").append(nextFrom).append("'");
-        sb.append(", newOffset='").append(newOffset).append("'");
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);

@@ -12,7 +12,6 @@ import com.vk.api.sdk.queries.users.UsersGetFollowersQueryWithFields;
 import com.vk.api.sdk.queries.users.UsersGetQuery;
 import com.vk.api.sdk.queries.users.UsersGetSubscriptionsQuery;
 import com.vk.api.sdk.queries.users.UsersGetSubscriptionsQueryWithExtended;
-import com.vk.api.sdk.queries.users.UsersIsAppUserQuery;
 import com.vk.api.sdk.queries.users.UsersReportQuery;
 import com.vk.api.sdk.queries.users.UsersSearchQuery;
 
@@ -63,6 +62,26 @@ public class Users extends AbstractAction {
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      *
      * @param actor vk actor
+     * @return query
+     */
+    public UsersGetFollowersQuery getFollowers(UserActor actor) {
+        return new UsersGetFollowersQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public UsersGetFollowersQuery getFollowers(ServiceActor actor) {
+        return new UsersGetFollowersQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+     *
+     * @param actor vk actor
      * @param fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
      * @return query
      */
@@ -81,26 +100,6 @@ public class Users extends AbstractAction {
     public UsersGetFollowersQueryWithFields getFollowersWithFields(ServiceActor actor,
             Fields... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
-    }
-
-    /**
-     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public UsersGetFollowersQuery getFollowers(UserActor actor) {
-        return new UsersGetFollowersQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public UsersGetFollowersQuery getFollowers(ServiceActor actor) {
-        return new UsersGetFollowersQuery(getClient(), actor);
     }
 
     /**
@@ -141,16 +140,6 @@ public class Users extends AbstractAction {
      */
     public UsersGetSubscriptionsQuery getSubscriptions(ServiceActor actor) {
         return new UsersGetSubscriptionsQuery(getClient(), actor);
-    }
-
-    /**
-     * Returns information whether a user installed the application.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public UsersIsAppUserQuery isAppUser(UserActor actor) {
-        return new UsersIsAppUserQuery(getClient(), actor);
     }
 
     /**

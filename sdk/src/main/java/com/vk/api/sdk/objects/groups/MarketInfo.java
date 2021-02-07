@@ -42,13 +42,13 @@ public class MarketInfo implements Validable {
      * Maximum price
      */
     @SerializedName("price_max")
-    private Integer priceMax;
+    private String priceMax;
 
     /**
      * Minimum price
      */
     @SerializedName("price_min")
-    private Integer priceMin;
+    private String priceMin;
 
     public Integer getContactId() {
         return contactId;
@@ -94,20 +94,20 @@ public class MarketInfo implements Validable {
         return this;
     }
 
-    public Integer getPriceMax() {
+    public String getPriceMax() {
         return priceMax;
     }
 
-    public MarketInfo setPriceMax(Integer priceMax) {
+    public MarketInfo setPriceMax(String priceMax) {
         this.priceMax = priceMax;
         return this;
     }
 
-    public Integer getPriceMin() {
+    public String getPriceMin() {
         return priceMin;
     }
 
-    public MarketInfo setPriceMin(Integer priceMin) {
+    public MarketInfo setPriceMin(String priceMin) {
         this.priceMin = priceMin;
         return this;
     }
@@ -142,10 +142,10 @@ public class MarketInfo implements Validable {
         sb.append("currencyText='").append(currencyText).append("'");
         sb.append(", currency=").append(currency);
         sb.append(", contactId=").append(contactId);
-        sb.append(", priceMin=").append(priceMin);
+        sb.append(", priceMin='").append(priceMin).append("'");
         sb.append(", mainAlbumId=").append(mainAlbumId);
         sb.append(", enabled=").append(enabled);
-        sb.append(", priceMax=").append(priceMax);
+        sb.append(", priceMax='").append(priceMax).append("'");
         sb.append('}');
         return sb.toString();
     }

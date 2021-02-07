@@ -322,4 +322,13 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
     public String getMethod() {
         return method;
     }
+
+    /**
+     * Get params
+     *
+     * @return parameters of method
+     */
+    public Map<String, String> getParams() {
+        return params;
+    }
 }

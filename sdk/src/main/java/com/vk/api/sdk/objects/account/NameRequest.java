@@ -30,8 +30,23 @@ public class NameRequest implements Validable {
     @SerializedName("status")
     private NameRequestStatus status;
 
+    /**
+     * Text to display to user
+     */
     @SerializedName("lang")
     private String lang;
+
+    /**
+     * href for link in lang field
+     */
+    @SerializedName("link_href")
+    private String linkHref;
+
+    /**
+     * label to display for link in lang field
+     */
+    @SerializedName("link_label")
+    private String linkLabel;
 
     public String getFirstName() {
         return firstName;
@@ -78,9 +93,27 @@ public class NameRequest implements Validable {
         return this;
     }
 
+    public String getLinkHref() {
+        return linkHref;
+    }
+
+    public NameRequest setLinkHref(String linkHref) {
+        this.linkHref = linkHref;
+        return this;
+    }
+
+    public String getLinkLabel() {
+        return linkLabel;
+    }
+
+    public NameRequest setLinkLabel(String linkLabel) {
+        this.linkLabel = linkLabel;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(lastName, firstName, id, lang, status);
+        return Objects.hash(linkLabel, lastName, firstName, id, lang, linkHref, status);
     }
 
     @Override
@@ -89,6 +122,8 @@ public class NameRequest implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         NameRequest nameRequest = (NameRequest) o;
         return Objects.equals(lastName, nameRequest.lastName) &&
+                Objects.equals(linkHref, nameRequest.linkHref) &&
+                Objects.equals(linkLabel, nameRequest.linkLabel) &&
                 Objects.equals(id, nameRequest.id) &&
                 Objects.equals(lang, nameRequest.lang) &&
                 Objects.equals(firstName, nameRequest.firstName) &&
@@ -104,6 +139,8 @@ public class NameRequest implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("NameRequest{");
         sb.append("lastName='").append(lastName).append("'");
+        sb.append(", linkHref='").append(linkHref).append("'");
+        sb.append(", linkLabel='").append(linkLabel).append("'");
         sb.append(", id=").append(id);
         sb.append(", lang='").append(lang).append("'");
         sb.append(", firstName='").append(firstName).append("'");

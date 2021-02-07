@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.Client;
+import com.vk.api.sdk.objects.ads.responses.GetClientsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getClients method
  */
-public class AdsGetClientsQuery extends AbstractQueryBuilder<AdsGetClientsQuery, List<Client>> {
+public class AdsGetClientsQuery extends AbstractQueryBuilder<AdsGetClientsQuery, List<GetClientsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class AdsGetClientsQuery extends AbstractQueryBuilder<AdsGetClientsQuery,
      * @param accountId value of "account id" parameter.
      */
     public AdsGetClientsQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getClients", Utils.buildParametrizedType(List.class, Client.class));
+        super(client, "ads.getClients", Utils.buildParametrizedType(List.class, GetClientsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
     }

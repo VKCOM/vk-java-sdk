@@ -37,9 +37,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Anton Tsivarev on 07.09.16.
- */
 public class Application {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
@@ -58,7 +55,7 @@ public class Application {
 
     private static String ytHost;
 
-    private static List<Job> jobs = new ArrayList<>();
+    private static final List<Job> jobs = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
         init();
@@ -94,8 +91,8 @@ public class Application {
     }
 
     private static void initServer(Properties properties) throws Exception {
-        Integer port = Integer.valueOf(properties.getProperty("server.port"));
         String host = properties.getProperty("server.host");
+        int port = Integer.parseInt(properties.getProperty("server.port"));
         HandlerCollection handlers = new HandlerCollection();
 
         ConfirmationCodeRequestHandler confirmationCodeRequestHandler = null;

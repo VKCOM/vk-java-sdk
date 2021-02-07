@@ -7,7 +7,7 @@ import com.vk.api.sdk.objects.GroupAuthResponse;
 import com.vk.api.sdk.objects.UserAuthResponse;
 import com.vk.api.sdk.objects.groups.Filter;
 import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.groups.responses.GetByIdLegacyResponse;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -18,9 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Anton Tsivarev on 15.10.16.
- */
 public class RequestHandler extends AbstractHandler {
 
     private final static String CONTENT_TYPE = "text/html;charset=utf-8";
@@ -45,7 +42,7 @@ public class RequestHandler extends AbstractHandler {
                     GroupAuthResponse groupAuthResponse = vk.oAuth().groupAuthorizationCodeFlow(clientId, clientSecret, getGroupRedirectUri(groupId), baseRequest.getParameter("code")).execute();
                     GroupActor groupActor = new GroupActor(groupId, groupAuthResponse.getAccessTokens().get(groupId));
 
-                    List<GroupFull> groups = vk.groups().getById(groupActor).groupId(groupId.toString()).execute();
+                    List<GetByIdLegacyResponse> groups = vk.groups().getByIdLegacy(groupActor).groupId(groupId.toString()).execute();
 
                     response.setContentType(CONTENT_TYPE);
                     response.setStatus(HttpServletResponse.SC_OK);

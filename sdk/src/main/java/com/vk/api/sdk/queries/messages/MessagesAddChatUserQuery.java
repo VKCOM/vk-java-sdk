@@ -44,6 +44,16 @@ public class MessagesAddChatUserQuery extends AbstractQueryBuilder<MessagesAddCh
         return unsafeParam("user_id", value);
     }
 
+    /**
+     * Set visible messages count
+     *
+     * @param value value of "visible messages count" parameter. Maximum is 1000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesAddChatUserQuery visibleMessagesCount(Integer value) {
+        return unsafeParam("visible_messages_count", value);
+    }
+
     @Override
     protected MessagesAddChatUserQuery getThis() {
         return this;

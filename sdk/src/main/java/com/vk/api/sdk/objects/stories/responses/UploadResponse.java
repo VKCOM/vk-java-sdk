@@ -3,30 +3,30 @@ package com.vk.api.sdk.objects.stories.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.stories.Story;
 import java.util.Objects;
 
 /**
  * UploadResponse object
  */
 public class UploadResponse implements Validable {
-    @SerializedName("story")
-    @Required
-    private Story story;
+    /**
+     * A string hash that is used in the stories.save method
+     */
+    @SerializedName("upload_result")
+    private String uploadResult;
 
-    public Story getStory() {
-        return story;
+    public String getUploadResult() {
+        return uploadResult;
     }
 
-    public UploadResponse setStory(Story story) {
-        this.story = story;
+    public UploadResponse setUploadResult(String uploadResult) {
+        this.uploadResult = uploadResult;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(story);
+        return Objects.hash(uploadResult);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class UploadResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UploadResponse uploadResponse = (UploadResponse) o;
-        return Objects.equals(story, uploadResponse.story);
+        return Objects.equals(uploadResult, uploadResponse.uploadResult);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UploadResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UploadResponse{");
-        sb.append("story=").append(story);
+        sb.append("uploadResult='").append(uploadResult).append("'");
         sb.append('}');
         return sb.toString();
     }

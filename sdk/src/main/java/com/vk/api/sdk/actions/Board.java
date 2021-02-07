@@ -157,6 +157,30 @@ public class Board extends AbstractAction {
      * @param topicId Topic ID.
      * @return query
      */
+    public BoardGetCommentsQuery getComments(UserActor actor, int groupId, int topicId) {
+        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
+    }
+
+    /**
+     * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
+     */
+    public BoardGetCommentsQuery getComments(ServiceActor actor, int groupId, int topicId) {
+        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
+    }
+
+    /**
+     * Returns a list of comments on a topic on a community's discussion board.
+     *
+     * @param actor vk actor
+     * @param groupId ID of the community that owns the discussion board.
+     * @param topicId Topic ID.
+     * @return query
+     */
     public BoardGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int groupId,
             int topicId) {
         return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
@@ -173,30 +197,6 @@ public class Board extends AbstractAction {
     public BoardGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor, int groupId,
             int topicId) {
         return new BoardGetCommentsQueryWithExtended(getClient(), actor, groupId, topicId);
-    }
-
-    /**
-     * Returns a list of comments on a topic on a community's discussion board.
-     *
-     * @param actor vk actor
-     * @param groupId ID of the community that owns the discussion board.
-     * @param topicId Topic ID.
-     * @return query
-     */
-    public BoardGetCommentsQuery getComments(UserActor actor, int groupId, int topicId) {
-        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
-    }
-
-    /**
-     * Returns a list of comments on a topic on a community's discussion board.
-     *
-     * @param actor vk actor
-     * @param groupId ID of the community that owns the discussion board.
-     * @param topicId Topic ID.
-     * @return query
-     */
-    public BoardGetCommentsQuery getComments(ServiceActor actor, int groupId, int topicId) {
-        return new BoardGetCommentsQuery(getClient(), actor, groupId, topicId);
     }
 
     /**

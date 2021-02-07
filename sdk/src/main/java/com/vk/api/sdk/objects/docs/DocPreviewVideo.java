@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -12,11 +12,18 @@ import java.util.Objects;
  */
 public class DocPreviewVideo implements Validable {
     /**
-     * Video file size in bites
+     * Video URL
      */
-    @SerializedName("filesize")
+    @SerializedName("src")
     @Required
-    private Integer filesize;
+    private URI src;
+
+    /**
+     * Video's width in pixels
+     */
+    @SerializedName("width")
+    @Required
+    private Integer width;
 
     /**
      * Video's height in pixels
@@ -26,42 +33,16 @@ public class DocPreviewVideo implements Validable {
     private Integer height;
 
     /**
-     * Video URL
+     * Video file size in bites
      */
-    @SerializedName("src")
-    @Required
-    private URL src;
+    @SerializedName("file_size")
+    private Integer fileSize;
 
-    /**
-     * Video's width in pixels
-     */
-    @SerializedName("width")
-    @Required
-    private Integer width;
-
-    public Integer getFilesize() {
-        return filesize;
-    }
-
-    public DocPreviewVideo setFilesize(Integer filesize) {
-        this.filesize = filesize;
-        return this;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public DocPreviewVideo setHeight(Integer height) {
-        this.height = height;
-        return this;
-    }
-
-    public URL getSrc() {
+    public URI getSrc() {
         return src;
     }
 
-    public DocPreviewVideo setSrc(URL src) {
+    public DocPreviewVideo setSrc(URI src) {
         this.src = src;
         return this;
     }
@@ -75,9 +56,27 @@ public class DocPreviewVideo implements Validable {
         return this;
     }
 
+    public Integer getHeight() {
+        return height;
+    }
+
+    public DocPreviewVideo setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
+    public Integer getFileSize() {
+        return fileSize;
+    }
+
+    public DocPreviewVideo setFileSize(Integer fileSize) {
+        this.fileSize = fileSize;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(src, width, filesize, height);
+        return Objects.hash(src, fileSize, width, height);
     }
 
     @Override
@@ -87,7 +86,7 @@ public class DocPreviewVideo implements Validable {
         DocPreviewVideo docPreviewVideo = (DocPreviewVideo) o;
         return Objects.equals(src, docPreviewVideo.src) &&
                 Objects.equals(width, docPreviewVideo.width) &&
-                Objects.equals(filesize, docPreviewVideo.filesize) &&
+                Objects.equals(fileSize, docPreviewVideo.fileSize) &&
                 Objects.equals(height, docPreviewVideo.height);
     }
 
@@ -101,7 +100,7 @@ public class DocPreviewVideo implements Validable {
         final StringBuilder sb = new StringBuilder("DocPreviewVideo{");
         sb.append("src=").append(src);
         sb.append(", width=").append(width);
-        sb.append(", filesize=").append(filesize);
+        sb.append(", fileSize=").append(fileSize);
         sb.append(", height=").append(height);
         sb.append('}');
         return sb.toString();

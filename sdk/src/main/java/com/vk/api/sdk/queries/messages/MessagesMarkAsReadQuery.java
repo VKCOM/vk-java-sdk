@@ -66,6 +66,16 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
     }
 
     /**
+     * Set mark conversation as read
+     *
+     * @param value value of "mark conversation as read" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesMarkAsReadQuery markConversationAsRead(Boolean value) {
+        return unsafeParam("mark_conversation_as_read", value);
+    }
+
+    /**
      * message_ids
      * IDs of messages to mark as read.
      *

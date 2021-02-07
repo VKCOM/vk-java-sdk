@@ -3,31 +3,14 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.orders.responses.CancelSubscriptionResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Orders.cancelSubscription method
  */
-public class OrdersCancelSubscriptionQuery extends AbstractQueryBuilder<OrdersCancelSubscriptionQuery, BoolInt> {
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
-     * @param subscriptionId value of "subscription id" parameter. Minimum is 0.
-     */
-    public OrdersCancelSubscriptionQuery(VkApiClient client, UserActor actor, int userId,
-            int subscriptionId) {
-        super(client, "orders.cancelSubscription", BoolInt.class);
-        accessToken(actor.getAccessToken());
-        userId(userId);
-        subscriptionId(subscriptionId);
-    }
-
+public class OrdersCancelSubscriptionQuery extends AbstractQueryBuilder<OrdersCancelSubscriptionQuery, CancelSubscriptionResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -38,7 +21,7 @@ public class OrdersCancelSubscriptionQuery extends AbstractQueryBuilder<OrdersCa
      */
     public OrdersCancelSubscriptionQuery(VkApiClient client, ServiceActor actor, int userId,
             int subscriptionId) {
-        super(client, "orders.cancelSubscription", BoolInt.class);
+        super(client, "orders.cancelSubscription", CancelSubscriptionResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         userId(userId);

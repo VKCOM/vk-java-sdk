@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.enums.GroupsSubtype;
 import com.vk.api.sdk.objects.enums.GroupsType;
-import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.groups.responses.CreateResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Groups.create method
  */
-public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, Group> {
+public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, CreateResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, G
      * @param title value of "title" parameter.
      */
     public GroupsCreateQuery(VkApiClient client, UserActor actor, String title) {
-        super(client, "groups.create", Group.class);
+        super(client, "groups.create", CreateResponse.class);
         accessToken(actor.getAccessToken());
         title(title);
     }

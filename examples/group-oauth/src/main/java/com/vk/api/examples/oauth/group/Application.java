@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * Created by Anton Tsivarev on 15.10.16.
- */
 public class Application {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
@@ -26,10 +23,10 @@ public class Application {
     }
 
     private static void initServer(Properties properties) throws Exception {
-        Integer port = Integer.valueOf(properties.getProperty("server.port"));
         String host = properties.getProperty("server.host");
+        int port = Integer.parseInt(properties.getProperty("server.port"));
 
-        Integer clientId = Integer.valueOf(properties.getProperty("client.id"));
+        int clientId = Integer.parseInt(properties.getProperty("client.id"));
         String clientSecret = properties.getProperty("client.secret");
 
         HandlerCollection handlers = new HandlerCollection();

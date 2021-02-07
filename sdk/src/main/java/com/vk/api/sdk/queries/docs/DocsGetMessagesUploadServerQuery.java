@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import com.vk.api.sdk.objects.enums.DocsType;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Query for Docs.getMessagesUploadServer method
  */
-public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsGetMessagesUploadServerQuery, UploadServer> {
+public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsGetMessagesUploadServerQuery, GetUploadServerResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsG
      * @param actor actor with access token
      */
     public DocsGetMessagesUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getMessagesUploadServer", UploadServer.class);
+        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -31,7 +31,7 @@ public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsG
      * @param actor actor with access token
      */
     public DocsGetMessagesUploadServerQuery(VkApiClient client, GroupActor actor) {
-        super(client, "docs.getMessagesUploadServer", UploadServer.class);
+        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
     }
 

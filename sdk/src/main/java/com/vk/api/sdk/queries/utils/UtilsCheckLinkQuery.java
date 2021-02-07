@@ -5,14 +5,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.utils.LinkChecked;
+import com.vk.api.sdk.objects.utils.responses.CheckLinkResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Utils.checkLink method
  */
-public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuery, LinkChecked> {
+public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuery, CheckLinkResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -21,7 +21,7 @@ public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuer
      * @param url value of "url" parameter.
      */
     public UtilsCheckLinkQuery(VkApiClient client, UserActor actor, String url) {
-        super(client, "utils.checkLink", LinkChecked.class);
+        super(client, "utils.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
         url(url);
     }
@@ -34,7 +34,7 @@ public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuer
      * @param url value of "url" parameter.
      */
     public UtilsCheckLinkQuery(VkApiClient client, GroupActor actor, String url) {
-        super(client, "utils.checkLink", LinkChecked.class);
+        super(client, "utils.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
         url(url);
     }
@@ -47,7 +47,7 @@ public class UtilsCheckLinkQuery extends AbstractQueryBuilder<UtilsCheckLinkQuer
      * @param url value of "url" parameter.
      */
     public UtilsCheckLinkQuery(VkApiClient client, ServiceActor actor, String url) {
-        super(client, "utils.checkLink", LinkChecked.class);
+        super(client, "utils.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         url(url);

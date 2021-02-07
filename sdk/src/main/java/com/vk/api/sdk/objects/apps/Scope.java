@@ -15,7 +15,7 @@ public class Scope implements Validable {
      */
     @SerializedName("name")
     @Required
-    private String name;
+    private ScopeName name;
 
     /**
      * Scope title
@@ -23,11 +23,11 @@ public class Scope implements Validable {
     @SerializedName("title")
     private String title;
 
-    public String getName() {
+    public ScopeName getName() {
         return name;
     }
 
-    public Scope setName(String name) {
+    public Scope setName(ScopeName name) {
         this.name = name;
         return this;
     }

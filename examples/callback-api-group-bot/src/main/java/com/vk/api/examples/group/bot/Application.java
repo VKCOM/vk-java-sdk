@@ -5,8 +5,6 @@ import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
-import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

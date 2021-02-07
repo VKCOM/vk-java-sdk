@@ -20,7 +20,10 @@ public enum PostSourceType implements EnumParam {
     RSS("rss"),
 
     @SerializedName("sms")
-    SMS("sms");
+    SMS("sms"),
+
+    @SerializedName("mvk")
+    MVK("mvk");
 
     private final String value;
 

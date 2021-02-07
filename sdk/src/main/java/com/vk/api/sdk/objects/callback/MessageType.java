@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 public enum MessageType implements EnumParam {
-
     @SerializedName("audio_new")
     AUDIO_NEW("audio_new"),
 
@@ -56,6 +55,9 @@ public enum MessageType implements EnumParam {
     @SerializedName("message_allow")
     MESSAGE_ALLOW("message_allow"),
 
+    @SerializedName("message_new")
+    MESSAGE_NEW("message_new"),
+
     @SerializedName("message_deny")
     MESSAGE_DENY("message_deny"),
 
@@ -64,9 +66,6 @@ public enum MessageType implements EnumParam {
 
     @SerializedName("message_reply")
     MESSAGE_REPLY("message_reply"),
-
-    @SerializedName("message_reply")
-    MESSAGE_NEW("message_reply"),
 
     @SerializedName("message_edit")
     MESSAGE_EDIT("message_edit"),

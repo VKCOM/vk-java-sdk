@@ -1,13 +1,19 @@
 apply plugin: 'maven'
 apply plugin: 'signing'
 
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
 dependencies {
     compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4jVersion
 
     compile group: 'org.apache.commons', name: 'commons-text', version: commonsTextVersion
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
     compile group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
     compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
     compile group: 'commons-io', name: 'commons-io', version: commonsIOVersion
@@ -90,10 +96,10 @@ uploadArchives {
                     }
                 }
 		
-		properties {
-			skipStagingRepositoryClose true
-			autoReleaseAfterClose true
-		}
+                properties {
+                    skipStagingRepositoryClose true
+                    autoReleaseAfterClose true
+                }
             }
         }
     }

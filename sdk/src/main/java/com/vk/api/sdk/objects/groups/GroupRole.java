@@ -11,7 +11,10 @@ public enum GroupRole implements EnumParam {
     EDITOR("editor"),
 
     @SerializedName("administrator")
-    ADMINISTRATOR("administrator");
+    ADMINISTRATOR("administrator"),
+
+    @SerializedName("advertiser")
+    ADVERTISER("advertiser");
 
     private final String value;
 

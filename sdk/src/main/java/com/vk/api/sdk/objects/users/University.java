@@ -75,6 +75,9 @@ public class University implements Validable {
     @SerializedName("name")
     private String name;
 
+    @SerializedName("university_group_id")
+    private Integer universityGroupId;
+
     public Integer getChair() {
         return chair;
     }
@@ -174,9 +177,18 @@ public class University implements Validable {
         return this;
     }
 
+    public Integer getUniversityGroupId() {
+        return universityGroupId;
+    }
+
+    public University setUniversityGroupId(Integer universityGroupId) {
+        this.universityGroupId = universityGroupId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(country, educationStatus, city, graduation, chairName, chair, name, facultyName, id, educationForm, faculty);
+        return Objects.hash(country, educationStatus, universityGroupId, city, graduation, chairName, chair, name, facultyName, id, educationForm, faculty);
     }
 
     @Override
@@ -186,6 +198,7 @@ public class University implements Validable {
         University university = (University) o;
         return Objects.equals(country, university.country) &&
                 Objects.equals(facultyName, university.facultyName) &&
+                Objects.equals(universityGroupId, university.universityGroupId) &&
                 Objects.equals(city, university.city) &&
                 Objects.equals(graduation, university.graduation) &&
                 Objects.equals(chair, university.chair) &&
@@ -207,6 +220,7 @@ public class University implements Validable {
         final StringBuilder sb = new StringBuilder("University{");
         sb.append("country=").append(country);
         sb.append(", facultyName='").append(facultyName).append("'");
+        sb.append(", universityGroupId=").append(universityGroupId);
         sb.append(", city=").append(city);
         sb.append(", graduation=").append(graduation);
         sb.append(", chair=").append(chair);

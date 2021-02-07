@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,12 +14,14 @@ public class SubjectItem implements Validable {
      * Subject ID
      */
     @SerializedName("id")
+    @Required
     private Integer id;
 
     /**
      * Subject title
      */
     @SerializedName("name")
+    @Required
     private String name;
 
     public Integer getId() {

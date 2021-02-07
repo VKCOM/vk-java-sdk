@@ -4,14 +4,14 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.friends.FriendStatus;
+import com.vk.api.sdk.objects.friends.responses.AreFriendsResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Friends.areFriends method
  */
-public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFriendsQuery, List<FriendStatus>> {
+public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFriendsQuery, List<AreFriendsResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -20,7 +20,7 @@ public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFrien
      * @param userIds value of "user ids" parameter.
      */
     public FriendsAreFriendsQuery(VkApiClient client, UserActor actor, Integer... userIds) {
-        super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, FriendStatus.class));
+        super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, AreFriendsResponse.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);
     }
@@ -33,7 +33,7 @@ public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFrien
      * @param userIds value of "user ids" parameter.
      */
     public FriendsAreFriendsQuery(VkApiClient client, UserActor actor, List<Integer> userIds) {
-        super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, FriendStatus.class));
+        super(client, "friends.areFriends", Utils.buildParametrizedType(List.class, AreFriendsResponse.class));
         accessToken(actor.getAccessToken());
         userIds(userIds);
     }
@@ -46,6 +46,16 @@ public class FriendsAreFriendsQuery extends AbstractQueryBuilder<FriendsAreFrien
      */
     public FriendsAreFriendsQuery needSign(Boolean value) {
         return unsafeParam("need_sign", value);
+    }
+
+    /**
+     * Return friend request read_state field
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public FriendsAreFriendsQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**

@@ -7,7 +7,7 @@ import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Sex;
 import com.vk.api.sdk.objects.friends.FriendStatusStatus;
 import com.vk.api.sdk.objects.friends.RequestsMutual;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -30,13 +30,16 @@ public class User extends UserMin implements Validable {
      * URL of square photo of the user with 50 pixels in width
      */
     @SerializedName("photo_50")
-    private URL photo50;
+    private URI photo50;
 
     /**
      * URL of square photo of the user with 100 pixels in width
      */
     @SerializedName("photo_100")
-    private URL photo100;
+    private URI photo100;
+
+    @SerializedName("online_info")
+    private OnlineInfo onlineInfo;
 
     /**
      * Information whether the user is online
@@ -92,21 +95,30 @@ public class User extends UserMin implements Validable {
         return this;
     }
 
-    public URL getPhoto50() {
+    public URI getPhoto50() {
         return photo50;
     }
 
-    public User setPhoto50(URL photo50) {
+    public User setPhoto50(URI photo50) {
         this.photo50 = photo50;
         return this;
     }
 
-    public URL getPhoto100() {
+    public URI getPhoto100() {
         return photo100;
     }
 
-    public User setPhoto100(URL photo100) {
+    public User setPhoto100(URI photo100) {
         this.photo100 = photo100;
+        return this;
+    }
+
+    public OnlineInfo getOnlineInfo() {
+        return onlineInfo;
+    }
+
+    public User setOnlineInfo(OnlineInfo onlineInfo) {
+        this.onlineInfo = onlineInfo;
         return this;
     }
 
@@ -171,7 +183,7 @@ public class User extends UserMin implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(trending, friendStatus, mutual, photo100, onlineApp, sex, verified, photo50, online, screenName, onlineMobile);
+        return Objects.hash(trending, friendStatus, mutual, photo100, onlineInfo, onlineApp, sex, verified, photo50, online, screenName, onlineMobile);
     }
 
     @Override
@@ -189,7 +201,8 @@ public class User extends UserMin implements Validable {
                 Objects.equals(onlineApp, user.onlineApp) &&
                 Objects.equals(verified, user.verified) &&
                 Objects.equals(online, user.online) &&
-                Objects.equals(photo100, user.photo100);
+                Objects.equals(photo100, user.photo100) &&
+                Objects.equals(onlineInfo, user.onlineInfo);
     }
 
     @Override
@@ -211,6 +224,7 @@ public class User extends UserMin implements Validable {
         sb.append(", verified=").append(verified);
         sb.append(", online=").append(online);
         sb.append(", photo100=").append(photo100);
+        sb.append(", onlineInfo=").append(onlineInfo);
         sb.append('}');
         return sb.toString();
     }

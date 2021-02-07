@@ -3,14 +3,14 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.UploadServer;
+import com.vk.api.sdk.objects.docs.GetUploadServer;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Docs.getUploadServer method
  */
-public class DocsGetUploadServerQuery extends AbstractQueryBuilder<DocsGetUploadServerQuery, UploadServer> {
+public class DocsGetUploadServerQuery extends AbstractQueryBuilder<DocsGetUploadServerQuery, GetUploadServer> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -18,7 +18,7 @@ public class DocsGetUploadServerQuery extends AbstractQueryBuilder<DocsGetUpload
      * @param actor actor with access token
      */
     public DocsGetUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getUploadServer", UploadServer.class);
+        super(client, "docs.getUploadServer", GetUploadServer.class);
         accessToken(actor.getAccessToken());
     }
 

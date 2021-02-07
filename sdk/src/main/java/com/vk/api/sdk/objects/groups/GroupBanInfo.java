@@ -21,6 +21,9 @@ public class GroupBanInfo implements Validable {
     @SerializedName("end_date")
     private Integer endDate;
 
+    @SerializedName("reason")
+    private BanInfoReason reason;
+
     public String getComment() {
         return comment;
     }
@@ -39,9 +42,18 @@ public class GroupBanInfo implements Validable {
         return this;
     }
 
+    public BanInfoReason getReason() {
+        return reason;
+    }
+
+    public GroupBanInfo setReason(BanInfoReason reason) {
+        this.reason = reason;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(endDate, comment);
+        return Objects.hash(reason, endDate, comment);
     }
 
     @Override
@@ -50,6 +62,7 @@ public class GroupBanInfo implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GroupBanInfo groupBanInfo = (GroupBanInfo) o;
         return Objects.equals(endDate, groupBanInfo.endDate) &&
+                Objects.equals(reason, groupBanInfo.reason) &&
                 Objects.equals(comment, groupBanInfo.comment);
     }
 
@@ -62,6 +75,7 @@ public class GroupBanInfo implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupBanInfo{");
         sb.append("endDate=").append(endDate);
+        sb.append(", reason=").append(reason);
         sb.append(", comment='").append(comment).append("'");
         sb.append('}');
         return sb.toString();

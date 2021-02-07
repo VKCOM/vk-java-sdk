@@ -2,20 +2,21 @@ package com.vk.api.sdk.callback.longpoll;
 
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.callback.CallbackApi;
+import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
-import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.objects.groups.LongPollServer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class CallbackApiLongPoll extends CallbackApi {
 
-    private static final Logger LOG = LogManager.getLogger(CallbackApiLongPoll.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CallbackApiLongPoll.class);
 
     private static final int DEFAULT_WAIT = 10;
 
@@ -57,11 +58,11 @@ public class CallbackApiLongPoll extends CallbackApi {
 
     public void run() throws ClientException, ApiException {
         LongPollServer longPollServer = getLongPollServer();
-        int lastTimeStamp = Integer.parseInt(longPollServer.getTs());
+        String lastTimeStamp = longPollServer.getTs();
         while (true) {
             try {
                 GetLongPollEventsResponse eventsResponse = client.longPoll().getEvents(longPollServer.getServer(), longPollServer.getKey(), lastTimeStamp).waitTime(waitTime).execute();
-                for (JsonObject jsonObject: eventsResponse.getUpdates()) {
+                for (JsonObject jsonObject : eventsResponse.getUpdates()) {
                     parse(jsonObject);
                 }
                 lastTimeStamp = eventsResponse.getTs();
@@ -73,11 +74,20 @@ public class CallbackApiLongPoll extends CallbackApi {
     }
 
     private LongPollServer getLongPollServer() throws ClientException, ApiException {
+        GetLongPollServerResponse response;
         if (groupActor != null) {
-            return client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
+            response = client.groupsLongPoll().getLongPollServer(groupActor, groupActor.getGroupId()).execute();
+        } else {
+            response = client.groupsLongPoll().getLongPollServer(userActor, groupId).execute();
         }
 
-        return client.groupsLongPoll().getLongPollServer(userActor, groupId).execute();
+
+        LongPollServer lp = new LongPollServer();
+        lp.setKey(response.getKey());
+        lp.setTs(response.getTs());
+        lp.setServer(response.getServer());
+
+        return lp;
     }
 
     protected VkApiClient getClient() {

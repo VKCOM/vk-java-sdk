@@ -5,7 +5,13 @@ import com.vk.api.sdk.queries.EnumParam;
 
 public enum VideoType implements EnumParam {
     @SerializedName("video")
-    VIDEO("video");
+    VIDEO("video"),
+
+    @SerializedName("music_video")
+    MUSIC_VIDEO("music_video"),
+
+    @SerializedName("movie")
+    MOVIE("movie");
 
     private final String value;
 

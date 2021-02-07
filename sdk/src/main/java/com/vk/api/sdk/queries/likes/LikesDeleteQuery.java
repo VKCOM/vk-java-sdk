@@ -57,6 +57,16 @@ public class LikesDeleteQuery extends AbstractQueryBuilder<LikesDeleteQuery, Del
         return unsafeParam("item_id", value);
     }
 
+    /**
+     * Access key required for an object owned by a private entity.
+     *
+     * @param value value of "access key" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public LikesDeleteQuery accessKey(String value) {
+        return unsafeParam("access_key", value);
+    }
+
     @Override
     protected LikesDeleteQuery getThis() {
         return this;

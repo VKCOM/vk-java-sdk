@@ -20,17 +20,15 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param name value of "name" parameter.
      * @param description value of "description" parameter.
      * @param categoryId value of "category id" parameter. Minimum is 0.
-     * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
     public MarketAddQuery(VkApiClient client, UserActor actor, int ownerId, String name,
-            String description, int categoryId, int mainPhotoId) {
+            String description, int categoryId) {
         super(client, "market.add", AddResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         name(name);
         description(description);
         categoryId(categoryId);
-        mainPhotoId(mainPhotoId);
     }
 
     /**
@@ -109,7 +107,7 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      * @param value value of "main photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketAddQuery mainPhotoId(int value) {
+    public MarketAddQuery mainPhotoId(Integer value) {
         return unsafeParam("main_photo_id", value);
     }
 
@@ -121,6 +119,46 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
      */
     public MarketAddQuery url(String value) {
         return unsafeParam("url", value);
+    }
+
+    /**
+     * Set dimension width
+     *
+     * @param value value of "dimension width" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery dimensionWidth(Integer value) {
+        return unsafeParam("dimension_width", value);
+    }
+
+    /**
+     * Set dimension height
+     *
+     * @param value value of "dimension height" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery dimensionHeight(Integer value) {
+        return unsafeParam("dimension_height", value);
+    }
+
+    /**
+     * Set dimension length
+     *
+     * @param value value of "dimension length" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery dimensionLength(Integer value) {
+        return unsafeParam("dimension_length", value);
+    }
+
+    /**
+     * Set weight
+     *
+     * @param value value of "weight" parameter. Maximum is 100000000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery weight(Integer value) {
+        return unsafeParam("weight", value);
     }
 
     /**
@@ -151,6 +189,6 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("main_photo_id", "name", "description", "owner_id", "category_id", "access_token");
+        return Arrays.asList("name", "description", "owner_id", "category_id", "access_token");
     }
 }

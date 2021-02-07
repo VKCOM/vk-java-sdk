@@ -17,7 +17,7 @@ public enum AdsAdFormat implements EnumParam {
     EXCLUSIVE_FORMAT(3),
 
     @SerializedName("4")
-    COMMUNITY__SQUARE_IMAGE(4),
+    COMMUNITY_SQUARE_IMAGE(4),
 
     @SerializedName("7")
     SPECIAL_APP_FORMAT(7);

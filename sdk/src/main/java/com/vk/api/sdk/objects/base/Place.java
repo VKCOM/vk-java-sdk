@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.base;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -44,7 +44,7 @@ public class Place implements Validable {
      * URL of the place's icon
      */
     @SerializedName("icon")
-    private URL icon;
+    private URI icon;
 
     /**
      * Place ID
@@ -121,11 +121,11 @@ public class Place implements Validable {
         return this;
     }
 
-    public URL getIcon() {
+    public URI getIcon() {
         return icon;
     }
 
-    public Place setIcon(URL icon) {
+    public Place setIcon(URI icon) {
         this.icon = icon;
         return this;
     }

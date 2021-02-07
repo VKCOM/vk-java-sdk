@@ -26,7 +26,10 @@ public enum AppType implements EnumParam {
     COMMUNITY_APP("community_app"),
 
     @SerializedName("html5_game")
-    HTML5_GAME("html5_game");
+    HTML5_GAME("html5_game"),
+
+    @SerializedName("mini_app")
+    MINI_APP("mini_app");
 
     private final String value;
 

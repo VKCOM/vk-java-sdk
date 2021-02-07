@@ -19,6 +19,9 @@ public enum Filters implements EnumParam {
     @SerializedName("friend")
     FRIEND("friend"),
 
+    @SerializedName("recommended_groups")
+    RECOMMENDED_GROUPS("recommended_groups"),
+
     @SerializedName("note")
     NOTE("note"),
 
@@ -26,7 +29,19 @@ public enum Filters implements EnumParam {
     AUDIO("audio"),
 
     @SerializedName("video")
-    VIDEO("video");
+    VIDEO("video"),
+
+    @SerializedName("audio_playlist")
+    AUDIO_PLAYLIST("audio_playlist"),
+
+    @SerializedName("games_carousel")
+    GAMES_CAROUSEL("games_carousel"),
+
+    @SerializedName("clip")
+    CLIP("clip"),
+
+    @SerializedName("recommended_game")
+    RECOMMENDED_GAME("recommended_game");
 
     private final String value;
 

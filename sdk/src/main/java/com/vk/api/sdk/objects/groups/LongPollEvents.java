@@ -55,6 +55,12 @@ public class LongPollEvents implements Validable {
     @SerializedName("market_comment_restore")
     private BoolInt marketCommentRestore;
 
+    @SerializedName("market_order_new")
+    private BoolInt marketOrderNew;
+
+    @SerializedName("market_order_edit")
+    private BoolInt marketOrderEdit;
+
     @SerializedName("message_allow")
     private BoolInt messageAllow;
 
@@ -73,8 +79,8 @@ public class LongPollEvents implements Validable {
     @SerializedName("message_typing_state")
     private BoolInt messageTypingState;
 
-    @SerializedName("messages_edit")
-    private BoolInt messagesEdit;
+    @SerializedName("message_edit")
+    private BoolInt messageEdit;
 
     @SerializedName("photo_comment_delete")
     private BoolInt photoCommentDelete;
@@ -132,6 +138,27 @@ public class LongPollEvents implements Validable {
 
     @SerializedName("wall_repost")
     private BoolInt wallRepost;
+
+    @SerializedName("donut_subscription_create")
+    private BoolInt donutSubscriptionCreate;
+
+    @SerializedName("donut_subscription_prolonged")
+    private BoolInt donutSubscriptionProlonged;
+
+    @SerializedName("donut_subscription_cancelled")
+    private BoolInt donutSubscriptionCancelled;
+
+    @SerializedName("donut_subscription_expired")
+    private BoolInt donutSubscriptionExpired;
+
+    @SerializedName("donut_subscription_price_changed")
+    private BoolInt donutSubscriptionPriceChanged;
+
+    @SerializedName("donut_money_withdraw")
+    private BoolInt donutMoneyWithdraw;
+
+    @SerializedName("donut_money_withdraw_error")
+    private BoolInt donutMoneyWithdrawError;
 
     public boolean isAudioNew() {
         return audioNew == BoolInt.YES;
@@ -253,6 +280,22 @@ public class LongPollEvents implements Validable {
         return marketCommentRestore;
     }
 
+    public boolean isMarketOrderNew() {
+        return marketOrderNew == BoolInt.YES;
+    }
+
+    public BoolInt getMarketOrderNew() {
+        return marketOrderNew;
+    }
+
+    public boolean isMarketOrderEdit() {
+        return marketOrderEdit == BoolInt.YES;
+    }
+
+    public BoolInt getMarketOrderEdit() {
+        return marketOrderEdit;
+    }
+
     public boolean isMessageAllow() {
         return messageAllow == BoolInt.YES;
     }
@@ -301,12 +344,12 @@ public class LongPollEvents implements Validable {
         return messageTypingState;
     }
 
-    public boolean isMessagesEdit() {
-        return messagesEdit == BoolInt.YES;
+    public boolean isMessageEdit() {
+        return messageEdit == BoolInt.YES;
     }
 
-    public BoolInt getMessagesEdit() {
-        return messagesEdit;
+    public BoolInt getMessageEdit() {
+        return messageEdit;
     }
 
     public boolean isPhotoCommentDelete() {
@@ -461,9 +504,65 @@ public class LongPollEvents implements Validable {
         return wallRepost;
     }
 
+    public boolean isDonutSubscriptionCreate() {
+        return donutSubscriptionCreate == BoolInt.YES;
+    }
+
+    public BoolInt getDonutSubscriptionCreate() {
+        return donutSubscriptionCreate;
+    }
+
+    public boolean isDonutSubscriptionProlonged() {
+        return donutSubscriptionProlonged == BoolInt.YES;
+    }
+
+    public BoolInt getDonutSubscriptionProlonged() {
+        return donutSubscriptionProlonged;
+    }
+
+    public boolean isDonutSubscriptionCancelled() {
+        return donutSubscriptionCancelled == BoolInt.YES;
+    }
+
+    public BoolInt getDonutSubscriptionCancelled() {
+        return donutSubscriptionCancelled;
+    }
+
+    public boolean isDonutSubscriptionExpired() {
+        return donutSubscriptionExpired == BoolInt.YES;
+    }
+
+    public BoolInt getDonutSubscriptionExpired() {
+        return donutSubscriptionExpired;
+    }
+
+    public boolean isDonutSubscriptionPriceChanged() {
+        return donutSubscriptionPriceChanged == BoolInt.YES;
+    }
+
+    public BoolInt getDonutSubscriptionPriceChanged() {
+        return donutSubscriptionPriceChanged;
+    }
+
+    public boolean isDonutMoneyWithdraw() {
+        return donutMoneyWithdraw == BoolInt.YES;
+    }
+
+    public BoolInt getDonutMoneyWithdraw() {
+        return donutMoneyWithdraw;
+    }
+
+    public boolean isDonutMoneyWithdrawError() {
+        return donutMoneyWithdrawError == BoolInt.YES;
+    }
+
+    public BoolInt getDonutMoneyWithdrawError() {
+        return donutMoneyWithdrawError;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(pollVoteNew, audioNew, wallReplyDelete, videoNew, photoNew, messageTypingState, messageRead, groupChangeSettings, groupOfficersEdit, userUnblock, boardPostNew, wallPostNew, wallReplyRestore, wallReplyNew, videoCommentEdit, boardPostDelete, marketCommentEdit, photoCommentDelete, marketCommentRestore, videoCommentDelete, marketCommentDelete, photoCommentRestore, messageDeny, groupJoin, videoCommentRestore, wallRepost, messageNew, userBlock, groupLeave, photoCommentNew, boardPostEdit, messagesEdit, wallReplyEdit, videoCommentNew, messageAllow, boardPostRestore, leadFormsNew, messageReply, marketCommentNew, groupChangePhoto, photoCommentEdit);
+        return Objects.hash(pollVoteNew, wallReplyDelete, videoNew, donutMoneyWithdraw, photoNew, donutMoneyWithdrawError, donutSubscriptionPriceChanged, groupOfficersEdit, wallReplyNew, photoCommentRestore, messageNew, donutSubscriptionCancelled, userBlock, donutSubscriptionProlonged, groupLeave, wallReplyEdit, messageAllow, leadFormsNew, marketOrderEdit, messageReply, photoCommentEdit, audioNew, messageTypingState, messageRead, groupChangeSettings, boardPostNew, userUnblock, wallPostNew, wallReplyRestore, videoCommentEdit, boardPostDelete, marketCommentEdit, photoCommentDelete, marketCommentRestore, videoCommentDelete, marketCommentDelete, messageDeny, groupJoin, messageEdit, videoCommentRestore, wallRepost, marketOrderNew, donutSubscriptionCreate, photoCommentNew, boardPostEdit, videoCommentNew, boardPostRestore, marketCommentNew, groupChangePhoto, donutSubscriptionExpired);
     }
 
     @Override
@@ -471,47 +570,56 @@ public class LongPollEvents implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LongPollEvents longPollEvents = (LongPollEvents) o;
-        return Objects.equals(wallReplyNew, longPollEvents.wallReplyNew) &&
-                Objects.equals(marketCommentDelete, longPollEvents.marketCommentDelete) &&
-                Objects.equals(messagesEdit, longPollEvents.messagesEdit) &&
+        return Objects.equals(marketOrderNew, longPollEvents.marketOrderNew) &&
+                Objects.equals(wallReplyNew, longPollEvents.wallReplyNew) &&
                 Objects.equals(photoCommentRestore, longPollEvents.photoCommentRestore) &&
                 Objects.equals(videoCommentNew, longPollEvents.videoCommentNew) &&
                 Objects.equals(groupJoin, longPollEvents.groupJoin) &&
-                Objects.equals(userBlock, longPollEvents.userBlock) &&
-                Objects.equals(pollVoteNew, longPollEvents.pollVoteNew) &&
+                Objects.equals(donutSubscriptionCancelled, longPollEvents.donutSubscriptionCancelled) &&
                 Objects.equals(audioNew, longPollEvents.audioNew) &&
                 Objects.equals(videoCommentEdit, longPollEvents.videoCommentEdit) &&
+                Objects.equals(donutSubscriptionProlonged, longPollEvents.donutSubscriptionProlonged) &&
                 Objects.equals(messageAllow, longPollEvents.messageAllow) &&
                 Objects.equals(marketCommentEdit, longPollEvents.marketCommentEdit) &&
                 Objects.equals(wallReplyEdit, longPollEvents.wallReplyEdit) &&
                 Objects.equals(messageNew, longPollEvents.messageNew) &&
+                Objects.equals(messageEdit, longPollEvents.messageEdit) &&
                 Objects.equals(messageDeny, longPollEvents.messageDeny) &&
                 Objects.equals(videoCommentRestore, longPollEvents.videoCommentRestore) &&
-                Objects.equals(userUnblock, longPollEvents.userUnblock) &&
-                Objects.equals(wallRepost, longPollEvents.wallRepost) &&
                 Objects.equals(messageRead, longPollEvents.messageRead) &&
                 Objects.equals(boardPostDelete, longPollEvents.boardPostDelete) &&
+                Objects.equals(marketOrderEdit, longPollEvents.marketOrderEdit) &&
+                Objects.equals(videoNew, longPollEvents.videoNew) &&
+                Objects.equals(marketCommentRestore, longPollEvents.marketCommentRestore) &&
+                Objects.equals(donutMoneyWithdraw, longPollEvents.donutMoneyWithdraw) &&
+                Objects.equals(boardPostNew, longPollEvents.boardPostNew) &&
+                Objects.equals(donutSubscriptionPriceChanged, longPollEvents.donutSubscriptionPriceChanged) &&
+                Objects.equals(boardPostRestore, longPollEvents.boardPostRestore) &&
+                Objects.equals(videoCommentDelete, longPollEvents.videoCommentDelete) &&
+                Objects.equals(groupLeave, longPollEvents.groupLeave) &&
+                Objects.equals(messageReply, longPollEvents.messageReply) &&
+                Objects.equals(donutSubscriptionExpired, longPollEvents.donutSubscriptionExpired) &&
+                Objects.equals(groupOfficersEdit, longPollEvents.groupOfficersEdit) &&
+                Objects.equals(marketCommentDelete, longPollEvents.marketCommentDelete) &&
+                Objects.equals(userBlock, longPollEvents.userBlock) &&
+                Objects.equals(pollVoteNew, longPollEvents.pollVoteNew) &&
+                Objects.equals(userUnblock, longPollEvents.userUnblock) &&
+                Objects.equals(wallRepost, longPollEvents.wallRepost) &&
                 Objects.equals(groupChangePhoto, longPollEvents.groupChangePhoto) &&
                 Objects.equals(wallReplyDelete, longPollEvents.wallReplyDelete) &&
-                Objects.equals(videoNew, longPollEvents.videoNew) &&
                 Objects.equals(wallReplyRestore, longPollEvents.wallReplyRestore) &&
-                Objects.equals(marketCommentRestore, longPollEvents.marketCommentRestore) &&
                 Objects.equals(photoNew, longPollEvents.photoNew) &&
                 Objects.equals(marketCommentNew, longPollEvents.marketCommentNew) &&
                 Objects.equals(photoCommentNew, longPollEvents.photoCommentNew) &&
                 Objects.equals(boardPostEdit, longPollEvents.boardPostEdit) &&
-                Objects.equals(boardPostNew, longPollEvents.boardPostNew) &&
+                Objects.equals(donutMoneyWithdrawError, longPollEvents.donutMoneyWithdrawError) &&
                 Objects.equals(wallPostNew, longPollEvents.wallPostNew) &&
-                Objects.equals(boardPostRestore, longPollEvents.boardPostRestore) &&
-                Objects.equals(videoCommentDelete, longPollEvents.videoCommentDelete) &&
-                Objects.equals(groupLeave, longPollEvents.groupLeave) &&
+                Objects.equals(donutSubscriptionCreate, longPollEvents.donutSubscriptionCreate) &&
                 Objects.equals(messageTypingState, longPollEvents.messageTypingState) &&
                 Objects.equals(photoCommentEdit, longPollEvents.photoCommentEdit) &&
                 Objects.equals(leadFormsNew, longPollEvents.leadFormsNew) &&
-                Objects.equals(messageReply, longPollEvents.messageReply) &&
                 Objects.equals(photoCommentDelete, longPollEvents.photoCommentDelete) &&
-                Objects.equals(groupChangeSettings, longPollEvents.groupChangeSettings) &&
-                Objects.equals(groupOfficersEdit, longPollEvents.groupOfficersEdit);
+                Objects.equals(groupChangeSettings, longPollEvents.groupChangeSettings);
     }
 
     @Override
@@ -522,47 +630,56 @@ public class LongPollEvents implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LongPollEvents{");
-        sb.append("wallReplyNew=").append(wallReplyNew);
-        sb.append(", marketCommentDelete=").append(marketCommentDelete);
-        sb.append(", messagesEdit=").append(messagesEdit);
+        sb.append("marketOrderNew=").append(marketOrderNew);
+        sb.append(", wallReplyNew=").append(wallReplyNew);
         sb.append(", photoCommentRestore=").append(photoCommentRestore);
         sb.append(", videoCommentNew=").append(videoCommentNew);
         sb.append(", groupJoin=").append(groupJoin);
-        sb.append(", userBlock=").append(userBlock);
-        sb.append(", pollVoteNew=").append(pollVoteNew);
+        sb.append(", donutSubscriptionCancelled=").append(donutSubscriptionCancelled);
         sb.append(", audioNew=").append(audioNew);
         sb.append(", videoCommentEdit=").append(videoCommentEdit);
+        sb.append(", donutSubscriptionProlonged=").append(donutSubscriptionProlonged);
         sb.append(", messageAllow=").append(messageAllow);
         sb.append(", marketCommentEdit=").append(marketCommentEdit);
         sb.append(", wallReplyEdit=").append(wallReplyEdit);
         sb.append(", messageNew=").append(messageNew);
+        sb.append(", messageEdit=").append(messageEdit);
         sb.append(", messageDeny=").append(messageDeny);
         sb.append(", videoCommentRestore=").append(videoCommentRestore);
-        sb.append(", userUnblock=").append(userUnblock);
-        sb.append(", wallRepost=").append(wallRepost);
         sb.append(", messageRead=").append(messageRead);
         sb.append(", boardPostDelete=").append(boardPostDelete);
+        sb.append(", marketOrderEdit=").append(marketOrderEdit);
+        sb.append(", videoNew=").append(videoNew);
+        sb.append(", marketCommentRestore=").append(marketCommentRestore);
+        sb.append(", donutMoneyWithdraw=").append(donutMoneyWithdraw);
+        sb.append(", boardPostNew=").append(boardPostNew);
+        sb.append(", donutSubscriptionPriceChanged=").append(donutSubscriptionPriceChanged);
+        sb.append(", boardPostRestore=").append(boardPostRestore);
+        sb.append(", videoCommentDelete=").append(videoCommentDelete);
+        sb.append(", groupLeave=").append(groupLeave);
+        sb.append(", messageReply=").append(messageReply);
+        sb.append(", donutSubscriptionExpired=").append(donutSubscriptionExpired);
+        sb.append(", groupOfficersEdit=").append(groupOfficersEdit);
+        sb.append(", marketCommentDelete=").append(marketCommentDelete);
+        sb.append(", userBlock=").append(userBlock);
+        sb.append(", pollVoteNew=").append(pollVoteNew);
+        sb.append(", userUnblock=").append(userUnblock);
+        sb.append(", wallRepost=").append(wallRepost);
         sb.append(", groupChangePhoto=").append(groupChangePhoto);
         sb.append(", wallReplyDelete=").append(wallReplyDelete);
-        sb.append(", videoNew=").append(videoNew);
         sb.append(", wallReplyRestore=").append(wallReplyRestore);
-        sb.append(", marketCommentRestore=").append(marketCommentRestore);
         sb.append(", photoNew=").append(photoNew);
         sb.append(", marketCommentNew=").append(marketCommentNew);
         sb.append(", photoCommentNew=").append(photoCommentNew);
         sb.append(", boardPostEdit=").append(boardPostEdit);
-        sb.append(", boardPostNew=").append(boardPostNew);
+        sb.append(", donutMoneyWithdrawError=").append(donutMoneyWithdrawError);
         sb.append(", wallPostNew=").append(wallPostNew);
-        sb.append(", boardPostRestore=").append(boardPostRestore);
-        sb.append(", videoCommentDelete=").append(videoCommentDelete);
-        sb.append(", groupLeave=").append(groupLeave);
+        sb.append(", donutSubscriptionCreate=").append(donutSubscriptionCreate);
         sb.append(", messageTypingState=").append(messageTypingState);
         sb.append(", photoCommentEdit=").append(photoCommentEdit);
         sb.append(", leadFormsNew=").append(leadFormsNew);
-        sb.append(", messageReply=").append(messageReply);
         sb.append(", photoCommentDelete=").append(photoCommentDelete);
         sb.append(", groupChangeSettings=").append(groupChangeSettings);
-        sb.append(", groupOfficersEdit=").append(groupOfficersEdit);
         sb.append('}');
         return sb.toString();
     }

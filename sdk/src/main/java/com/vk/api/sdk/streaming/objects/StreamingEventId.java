@@ -33,7 +33,6 @@ public class StreamingEventId {
     @SerializedName("topic_post_id")
     private Integer topicPostId;
 
-
     public Integer getPostOwnerId() {
         return postOwnerId;
     }
@@ -65,7 +64,6 @@ public class StreamingEventId {
     public Integer getTopicPostId() {
         return topicPostId;
     }
-
 
     @Override
     public boolean equals(Object o) {

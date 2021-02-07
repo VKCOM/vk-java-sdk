@@ -1,15 +1,19 @@
 package com.vk.api.sdk.queries.storage;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.storage.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Storage.get method
  */
-public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, String> {
+public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<GetResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -17,8 +21,31 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
      * @param actor actor with access token
      */
     public StorageGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "storage.get", String.class);
+        super(client, "storage.get", Utils.buildParametrizedType(List.class, GetResponse.class));
         accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StorageGetQuery(VkApiClient client, GroupActor actor) {
+        super(client, "storage.get", Utils.buildParametrizedType(List.class, GetResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StorageGetQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "storage.get", Utils.buildParametrizedType(List.class, GetResponse.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -39,16 +66,6 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, Strin
      */
     public StorageGetQuery userId(Integer value) {
         return unsafeParam("user_id", value);
-    }
-
-    /**
-     * Set global
-     *
-     * @param value value of "global" parameter. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public StorageGetQuery global(Boolean value) {
-        return unsafeParam("global", value);
     }
 
     /**
