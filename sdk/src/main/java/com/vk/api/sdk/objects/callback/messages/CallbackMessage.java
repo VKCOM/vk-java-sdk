@@ -1,28 +1,29 @@
 package com.vk.api.sdk.objects.callback.messages;
 
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.objects.callback.MessageType;
+import com.vk.api.sdk.callback.CallbackEvent;
 
 import java.util.Objects;
 
 /**
  * Created by Anton Tsivarev on 12.09.16.
  */
-public class CallbackMessage<T> {
+public class CallbackMessage {
 
     @SerializedName("type")
-    private MessageType type;
+    private CallbackEvent type;
 
     @SerializedName("group_id")
     private Integer groupId;
 
     @SerializedName("object")
-    private T object;
+    private JsonObject object;
 
     @SerializedName("secret")
     private String secret;
 
-    public MessageType getType() {
+    public CallbackEvent getType() {
         return type;
     }
 
@@ -30,7 +31,7 @@ public class CallbackMessage<T> {
         return groupId;
     }
 
-    public T getObject() {
+    public JsonObject getObject() {
         return object;
     }
 
@@ -42,7 +43,7 @@ public class CallbackMessage<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallbackMessage<?> that = (CallbackMessage<?>) o;
+        CallbackMessage that = (CallbackMessage) o;
         return type == that.type &&
                 Objects.equals(groupId, that.groupId) &&
                 Objects.equals(object, that.object) &&
