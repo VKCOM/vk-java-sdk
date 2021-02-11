@@ -14,9 +14,11 @@ import com.vk.api.sdk.objects.wall.Wallpost;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CallbackApi {
+public abstract class CallbackApi {
 
-    private final Logger LOG = LogManager.getLogger(CallbackApi.class);
+    private static final String IMPLEMENTATION_ERROR = "Method's logic is not implemented";
+
+    private static final Logger LOG = LogManager.getLogger(CallbackApi.class);
 
     private final Gson gson = new Gson();
 
@@ -24,99 +26,167 @@ public class CallbackApi {
 
     private String secretKey = null;
 
-    private <T> T designateObject(JsonObject object, CallbackEvent type) {
+    private <T> T designateObject(JsonObject object, CallbackEvents type) {
         return gson.fromJson(object, type.getType());
     }
 
-    public CallbackApi(String confirmationCode) {
+    protected CallbackApi(String confirmationCode) {
         this.confirmationCode = confirmationCode;
     }
 
-    public CallbackApi(String confirmationCode, String secretKey) {
+    protected CallbackApi(String confirmationCode, String secretKey) {
         this.confirmationCode = confirmationCode;
         this.secretKey = secretKey;
     }
 
-    // TODO: methods below should have some implementation contract
+    protected String confirmation() { return this.confirmationCode; }
 
-    public void messageNew(Integer groupId, Message message) {}
+    protected void messageNew(Integer groupId, Message message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void messageReply(Integer groupId, Message message) {}
+    protected void messageReply(Integer groupId, Message message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void messageEdit(Integer groupId, Message message) {}
+    protected void messageEdit(Integer groupId, Message message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void messageAllow(Integer groupId, MessageAllow message) {}
+    protected void messageAllow(Integer groupId, MessageAllow message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void messageDeny(Integer groupId, MessageDeny message) {}
+    protected void messageDeny(Integer groupId, MessageDeny message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void photoNew(Integer groupId, Photo message) {}
+    protected void photoNew(Integer groupId, Photo message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void photoCommentNew(Integer groupId, PhotoComment message) {}
+    protected void photoCommentNew(Integer groupId, PhotoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void photoCommentEdit(Integer groupId, PhotoComment message) {}
+    protected void photoCommentEdit(Integer groupId, PhotoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void photoCommentRestore(Integer groupId, PhotoComment message) {}
+    protected void photoCommentRestore(Integer groupId, PhotoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void photoCommentDelete(Integer groupId, PhotoCommentDelete message) {}
+    protected void photoCommentDelete(Integer groupId, PhotoCommentDelete message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void audioNew(Integer groupId, Audio message) {}
+    protected void audioNew(Integer groupId, Audio message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void videoNew(Integer groupId, Video message) {}
+    protected void videoNew(Integer groupId, Video message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void videoCommentNew(Integer groupId, VideoComment message) {}
+    protected void videoCommentNew(Integer groupId, VideoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void videoCommentEdit(Integer groupId, VideoComment message) {}
+    protected void videoCommentEdit(Integer groupId, VideoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void videoCommentRestore(Integer groupId, VideoComment message) {}
+    protected void videoCommentRestore(Integer groupId, VideoComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void videoCommentDelete(Integer groupId, VideoCommentDelete message) {}
+    protected void videoCommentDelete(Integer groupId, VideoCommentDelete message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallPostNew(Integer groupId, Wallpost message) {}
+    protected void wallPostNew(Integer groupId, Wallpost message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallRepost(Integer groupId, Wallpost message) {}
+    protected void wallRepost(Integer groupId, Wallpost message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallReplyNew(Integer groupId, WallComment object) {}
+    protected void wallReplyNew(Integer groupId, WallComment object) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallReplyEdit(Integer groupId, WallComment message) {}
+    protected void wallReplyEdit(Integer groupId, WallComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallReplyRestore(Integer groupId, WallComment message) {}
+    protected void wallReplyRestore(Integer groupId, WallComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void wallReplyDelete(Integer groupId, WallCommentDelete message) {}
+    protected void wallReplyDelete(Integer groupId, WallCommentDelete message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void boardPostNew(Integer groupId, TopicComment message) {}
+    protected void boardPostNew(Integer groupId, TopicComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void boardPostEdit(Integer groupId, TopicComment message) {}
+    protected void boardPostEdit(Integer groupId, TopicComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void boardPostRestore(Integer groupId, TopicComment message) {}
+    protected void boardPostRestore(Integer groupId, TopicComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void boardPostDelete(Integer groupId, BoardPostDelete message) {}
+    protected void boardPostDelete(Integer groupId, BoardPostDelete message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void marketCommentNew(Integer groupId, MarketComment message) {}
+    protected void marketCommentNew(Integer groupId, MarketComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void marketCommentEdit(Integer groupId, MarketComment message) {}
+    protected void marketCommentEdit(Integer groupId, MarketComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void marketCommentRestore(Integer groupId, MarketComment message) {}
+    protected void marketCommentRestore(Integer groupId, MarketComment message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void marketCommentDelete(Integer groupId, MarketCommentDelete message) {}
+    protected void marketCommentDelete(Integer groupId, MarketCommentDelete message) { LOG.error(IMPLEMENTATION_ERROR); }
 
-    public void groupLeave(Integer groupId, GroupLeave message) {}
+    protected void groupLeave(Integer groupId, GroupLeave message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void groupJoin(Integer groupId, GroupJoin message) {}
+    protected void groupJoin(Integer groupId, GroupJoin message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void groupChangeSettings(Integer groupId, GroupChangeSettings message) {}
+    protected void groupChangeSettings(Integer groupId, GroupChangeSettings message) { LOG.error(IMPLEMENTATION_ERROR); }
 
-    public void groupChangePhoto(Integer groupId, GroupChangePhoto message) {}
+    protected void groupChangePhoto(Integer groupId, GroupChangePhoto message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void groupOfficersEdit(Integer groupId, GroupOfficersEdit message) {}
+    protected void groupOfficersEdit(Integer groupId, GroupOfficersEdit message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void pollVoteNew(Integer groupId, PollVoteNew message) {}
+    protected void pollVoteNew(Integer groupId, PollVoteNew message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void userBlock(Integer groupId, UserBlock message) {}
+    protected void userBlock(Integer groupId, UserBlock message) {
+        LOG.error(IMPLEMENTATION_ERROR);
+    }
 
-    public void userUnblock(Integer groupId, UserUnblock message) {}
-
-    public String confirmation() {
-        return confirmationCode;
+    protected void userUnblock(Integer groupId, UserUnblock message) {
+        LOG.error(IMPLEMENTATION_ERROR);
     }
 
     public boolean parse(String json) {
@@ -124,14 +194,12 @@ public class CallbackApi {
     }
 
     public boolean parse(JsonObject json) {
+        return parse(gson.fromJson(json, CallbackMessage.class));
+    }
 
-        final CallbackMessage message = gson.fromJson(json, CallbackMessage.class);
+    public boolean parse(CallbackMessage message) {
 
-        // TODO: MOAR checks!
-        if (this.secretKey != null && !message.getSecret().isEmpty() && !this.secretKey.equals(message.getSecret())) {
-            LOG.error("Secret key is not matched");
-            return false;
-        }
+        // TODO: add check for secret key if needed
 
         switch (message.getType()) {
             case CONFIRMATION:
@@ -256,7 +324,6 @@ public class CallbackApi {
                 LOG.warn(String.format("Unsupported callback event: %s", message.getType()));
                 return false;
         }
-
         return true;
     }
 }
