@@ -2,7 +2,7 @@ package com.vk.api.sdk.objects.callback.messages;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
-import com.vk.api.sdk.callback.CallbackEvents;
+import com.vk.api.sdk.events.Events;
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
 public class CallbackMessage {
 
     @SerializedName("type")
-    private CallbackEvents type;
+    private Events type;
 
     @SerializedName("group_id")
     private Integer groupId;
@@ -23,7 +23,7 @@ public class CallbackMessage {
     @SerializedName("secret")
     private String secret;
 
-    public CallbackEvents getType() {
+    public Events getType() {
         return type;
     }
 
