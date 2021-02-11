@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback;
+package com.vk.api.sdk.events;
 
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.audio.Audio;
@@ -12,7 +12,7 @@ import com.vk.api.sdk.objects.wall.Wallpost;
 
 import java.lang.reflect.Type;
 
-public enum CallbackEvents {
+public enum Events {
 
     @SerializedName("message_new")
     MESSAGE_NEW(Message.class),
@@ -133,7 +133,7 @@ public enum CallbackEvents {
 
     private final Type type;
 
-    CallbackEvents(Type type) {
+    Events(Type type) {
         this.type = type;
     }
 

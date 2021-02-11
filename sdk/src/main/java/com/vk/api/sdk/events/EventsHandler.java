@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback;
+package com.vk.api.sdk.events;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -14,197 +14,179 @@ import com.vk.api.sdk.objects.wall.Wallpost;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public abstract class CallbackApi {
+public abstract class EventsHandler {
 
-    private static final String IMPLEMENTATION_ERROR = "Method's logic is not implemented";
+    private static final String OVERRIDING_ERR = "Method of handling event is not overridden";
 
-    private static final Logger LOG = LogManager.getLogger(CallbackApi.class);
+    private static final Logger LOG = LogManager.getLogger(EventsHandler.class);
 
-    private final Gson gson = new Gson();
+    protected final Gson gson = new Gson();
 
-    private final String confirmationCode;
-
-    private String secretKey = null;
-
-    private <T> T designateObject(JsonObject object, CallbackEvents type) {
+    private <T> T designateObject(JsonObject object, Events type) {
         return gson.fromJson(object, type.getType());
     }
 
-    protected CallbackApi(String confirmationCode) {
-        this.confirmationCode = confirmationCode;
+    protected String confirmation() {
+        LOG.error(OVERRIDING_ERR);
+        return null;
     }
-
-    protected CallbackApi(String confirmationCode, String secretKey) {
-        this.confirmationCode = confirmationCode;
-        this.secretKey = secretKey;
-    }
-
-    protected String confirmation() { return this.confirmationCode; }
 
     protected void messageNew(Integer groupId, Message message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void messageReply(Integer groupId, Message message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void messageEdit(Integer groupId, Message message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void messageAllow(Integer groupId, MessageAllow message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void messageDeny(Integer groupId, MessageDeny message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void photoNew(Integer groupId, Photo message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void photoCommentNew(Integer groupId, PhotoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void photoCommentEdit(Integer groupId, PhotoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void photoCommentRestore(Integer groupId, PhotoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void photoCommentDelete(Integer groupId, PhotoCommentDelete message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void audioNew(Integer groupId, Audio message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void videoNew(Integer groupId, Video message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void videoCommentNew(Integer groupId, VideoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void videoCommentEdit(Integer groupId, VideoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void videoCommentRestore(Integer groupId, VideoComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void videoCommentDelete(Integer groupId, VideoCommentDelete message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallPostNew(Integer groupId, Wallpost message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallRepost(Integer groupId, Wallpost message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallReplyNew(Integer groupId, WallComment object) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallReplyEdit(Integer groupId, WallComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallReplyRestore(Integer groupId, WallComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void wallReplyDelete(Integer groupId, WallCommentDelete message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void boardPostNew(Integer groupId, TopicComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void boardPostEdit(Integer groupId, TopicComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void boardPostRestore(Integer groupId, TopicComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void boardPostDelete(Integer groupId, BoardPostDelete message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void marketCommentNew(Integer groupId, MarketComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void marketCommentEdit(Integer groupId, MarketComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void marketCommentRestore(Integer groupId, MarketComment message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
-    protected void marketCommentDelete(Integer groupId, MarketCommentDelete message) { LOG.error(IMPLEMENTATION_ERROR); }
+    protected void marketCommentDelete(Integer groupId, MarketCommentDelete message) {
+        LOG.error(OVERRIDING_ERR);
+    }
 
     protected void groupLeave(Integer groupId, GroupLeave message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void groupJoin(Integer groupId, GroupJoin message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
-    protected void groupChangeSettings(Integer groupId, GroupChangeSettings message) { LOG.error(IMPLEMENTATION_ERROR); }
+    protected void groupChangeSettings(Integer groupId, GroupChangeSettings message) {
+        LOG.error(OVERRIDING_ERR);
+    }
 
     protected void groupChangePhoto(Integer groupId, GroupChangePhoto message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void groupOfficersEdit(Integer groupId, GroupOfficersEdit message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void pollVoteNew(Integer groupId, PollVoteNew message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void userBlock(Integer groupId, UserBlock message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
     protected void userUnblock(Integer groupId, UserUnblock message) {
-        LOG.error(IMPLEMENTATION_ERROR);
+        LOG.error(OVERRIDING_ERR);
     }
 
-    public boolean parse(String json) {
-        return parse(gson.fromJson(json, JsonObject.class));
-    }
-
-    public boolean parse(JsonObject json) {
-        return parse(gson.fromJson(json, CallbackMessage.class));
-    }
-
-    public boolean parse(CallbackMessage message) {
-
-        // TODO: add check for secret key if needed
-
+    protected String parse(CallbackMessage message) {
         switch (message.getType()) {
             case CONFIRMATION:
-                confirmation();
-                break;
+                return confirmation();
             case MESSAGE_NEW:
                 messageNew(message.getGroupId(), designateObject(message.getObject(), message.getType()));
                 break;
@@ -320,10 +302,9 @@ public abstract class CallbackApi {
                 pollVoteNew(message.getGroupId(), designateObject(message.getObject(), message.getType()));
                 break;
             default:
-                // TODO: use right log message
-                LOG.warn(String.format("Unsupported callback event: %s", message.getType()));
-                return false;
+                LOG.error("Unexpected callback event type received");
+                return null;
         }
-        return true;
+        return "OK";
     }
 }
