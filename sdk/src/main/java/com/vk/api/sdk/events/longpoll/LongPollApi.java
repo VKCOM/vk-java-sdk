@@ -10,6 +10,7 @@ import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsRespo
 import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import com.vk.api.sdk.objects.groups.LongPollServer;
 import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
+import org.apache.http.ConnectionClosedException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,8 +25,6 @@ abstract class LongPollApi extends EventsHandler {
     private final int waitTime;
 
     private volatile boolean isRunning = false;
-
-    private volatile boolean needReconnection = false;
 
     public LongPollApi(VkApiClient client, int waitTime) {
         this.client = client;
@@ -55,60 +54,68 @@ abstract class LongPollApi extends EventsHandler {
         }
     }
 
-    private void handleUpdates(LongPollServer lpServer) {
+    private void handleUpdates(LongPollServer lpServer) throws ConnectionClosedException {
         if (lpServer == null)
             LOG.error("Getting LongPoll server was failed");
+
         isRunning = true;
-        Executors.newSingleThreadExecutor().execute(
-                () -> {
-                    try {
-                        LOG.info("LongPoll handler started to handle events");
-                        GetLongPollEventsResponse eventsResponse;
-                        String timestamp = lpServer.getTs();
-                        while (isRunning) {
-                            eventsResponse = client.longPoll()
-                                    .getEvents(lpServer.getServer(), lpServer.getKey(), timestamp)
-                                    .waitTime(waitTime)
-                                    .execute();
-                            eventsResponse.getUpdates().forEach(e -> parse(gson.fromJson(e, CallbackMessage.class)));
-                            timestamp = eventsResponse.getTs();
-                        }
-                        LOG.info("LongPoll handler stopped to handle events");
-                    } catch (ApiException | ClientException e) {
-                        /*
-                        Actually instead of GetLongPollEventsResponse there might be returned error like:
-                        {"failed":1,"ts":30} or {"failed":2}, but it directly handled in execute() method.
-                        There are 2 ways: deserialize manually response from string OR do reconnection in each
-                        error case. There is second way - keep use typed object and reconnect when any error.
-                         */
-                        LOG.error("Getting LongPoll events was failed", e);
-                        LOG.info("LongPoll server reconnection...");
-                        needReconnection = true;
-                    }
-                }
-        );
+        try {
+            LOG.info("LongPoll handler started to handle events");
+            GetLongPollEventsResponse eventsResponse;
+            String timestamp = lpServer.getTs();
+            while (isRunning) {
+                eventsResponse = client.longPoll()
+                        .getEvents(lpServer.getServer(), lpServer.getKey(), timestamp)
+                        .waitTime(waitTime)
+                        .execute();
+                eventsResponse.getUpdates().forEach(e -> parse(gson.fromJson(e, CallbackMessage.class)));
+                timestamp = eventsResponse.getTs();
+            }
+            LOG.info("LongPoll handler stopped to handle events");
+        } catch (ApiException | ClientException e) {
+            /*
+            Actually instead of GetLongPollEventsResponse there might be returned error like:
+            {"failed":1,"ts":30} or {"failed":2}, but it directly handled in execute() method.
+            There are 2 ways: deserialize manually response from string OR do reconnection in each
+            error case. There is second way - keep use typed object and reconnect when any error.
+            */
+            LOG.error("Getting LongPoll events was failed", e);
+            throw new ConnectionClosedException();
+        }
         isRunning = false;
     }
 
     protected void run(GroupActor actor) {
-        LongPollServer lpServer = getLongPollServer(actor);
-        handleUpdates(lpServer);
-        if (needReconnection) {
-            run(actor);
-            needReconnection = false;
-        }
+        Executors.newSingleThreadExecutor().execute(
+                () -> {
+                    try {
+                        LongPollServer lpServer = getLongPollServer(actor);
+                        handleUpdates(lpServer);
+                    } catch (ConnectionClosedException e) {
+                        run(actor);
+                    }
+                }
+        );
     }
 
     protected void run(UserActor actor, int groupId) {
-        LongPollServer lpServer = getLongPollServer(actor, groupId);
-        handleUpdates(lpServer);
-        if (needReconnection) {
-            run(actor, groupId);
-            needReconnection = false;
-        }
+        Executors.newSingleThreadExecutor().execute(
+                () -> {
+                    try {
+                        LongPollServer lpServer = getLongPollServer(actor, groupId);
+                        handleUpdates(lpServer);
+                    } catch (ConnectionClosedException e) {
+                        run(actor, groupId);
+                    }
+                }
+        );
     }
 
-    public void stop() {
+    protected void stop() {
         isRunning = false;
+    }
+
+    protected boolean isRunning(){
+        return this.isRunning;
     }
 }
