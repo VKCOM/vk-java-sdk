@@ -11,14 +11,14 @@ import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import com.vk.api.sdk.objects.groups.LongPollServer;
 import com.vk.api.sdk.objects.groups.responses.GetLongPollServerResponse;
 import org.apache.http.ConnectionClosedException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import java.util.concurrent.Executors;
 
 abstract class LongPollApi extends EventsHandler {
 
-    private static final Logger LOG = LogManager.getLogger(LongPollApi.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LongPollApi.class);
 
     private final VkApiClient client;
 

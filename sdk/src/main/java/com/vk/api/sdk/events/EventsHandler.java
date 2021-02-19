@@ -11,14 +11,14 @@ import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
 import com.vk.api.sdk.objects.wall.Wallpost;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public abstract class EventsHandler {
 
     private static final String OVERRIDING_ERR = "Method of handling event is not overridden";
 
-    private static final Logger LOG = LogManager.getLogger(EventsHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventsHandler.class);
 
     protected final Gson gson = new Gson();
 

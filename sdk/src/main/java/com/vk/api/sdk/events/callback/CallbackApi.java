@@ -3,12 +3,12 @@ package com.vk.api.sdk.events.callback;
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.events.EventsHandler;
 import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public abstract class CallbackApi extends EventsHandler {
 
-    private static final Logger LOG = LogManager.getLogger(CallbackApi.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CallbackApi.class);
 
     private final String confirmationCode;
 
