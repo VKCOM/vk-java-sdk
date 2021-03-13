@@ -184,7 +184,7 @@ See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/user-oau
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
 
 ```java
-GroupAuthGroupResponse authResponse = vk.oAuth()
+GroupAuthResponse authResponse = vk.oAuth()
     .groupAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
     .execute();
 
