@@ -33,6 +33,7 @@ public class CallbackApi {
     private static final String CALLBACK_EVENT_MESSAGE_ALLOW = "message_allow";
     private static final String CALLBACK_EVENT_MESSAGE_DENY = "message_deny";
     private static final String CALLBACK_EVENT_MESSAGE_EDIT = "message_edit";
+    private static final String CALLBACK_EVENT_MESSAGE_EVENT = "message_event";
     private static final String CALLBACK_EVENT_PHOTO_NEW = "photo_new";
     private static final String CALLBACK_EVENT_PHOTO_COMMENT_NEW = "photo_comment_new";
     private static final String CALLBACK_EVENT_PHOTO_COMMENT_EDIT = "photo_comment_edit";
@@ -80,6 +81,8 @@ public class CallbackApi {
         types.put(CALLBACK_EVENT_MESSAGE_ALLOW, new TypeToken<CallbackMessage<MessageAllow>>() {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_DENY, new TypeToken<CallbackMessage<MessageDeny>>() {
+        }.getType());
+        types.put(CALLBACK_EVENT_MESSAGE_EVENT, new TypeToken<CallbackMessage<MessageEvent>>() {
         }.getType());
 
         types.put(CALLBACK_EVENT_PHOTO_NEW, new TypeToken<CallbackMessage<Photo>>() {
@@ -199,6 +202,13 @@ public class CallbackApi {
 
     public void messageDeny(Integer groupId, String secret, MessageDeny message) {
         messageDeny(groupId, message);
+    }
+
+    public void messageEvent(Integer groupId, MessageEvent message) {
+    }
+
+    public void messageEvent(Integer groupId, String secret, MessageEvent message) {
+        messageEvent(groupId, message);
     }
 
     public void photoNew(Integer groupId, Photo message) {
@@ -480,6 +490,10 @@ public class CallbackApi {
 
             case CALLBACK_EVENT_MESSAGE_DENY:
                 messageDeny(message.getGroupId(), message.getSecret(), (MessageDeny) message.getObject());
+                break;
+
+            case CALLBACK_EVENT_MESSAGE_EVENT:
+                messageEvent(message.getGroupId(), message.getSecret(), (MessageEvent) message.getObject());
                 break;
 
             case CALLBACK_EVENT_PHOTO_NEW:
