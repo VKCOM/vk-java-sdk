@@ -440,6 +440,9 @@ public class CallbackApi {
         confirmation(groupId);
     }
 
+    public void checkSecret(String secret) {
+    }
+
     public boolean parse(String json) {
         JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
         return parse(jsonObject);
@@ -460,6 +463,8 @@ public class CallbackApi {
         }
 
         CallbackMessage message = gson.fromJson(json, typeOfClass);
+
+        checkSecret(message.getSecret());
 
         switch (type) {
             case CALLBACK_EVENT_MESSAGE_NEW:
