@@ -3,7 +3,7 @@ package com.vk.api.sdk.events.longpoll;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 
-public abstract class UserLongPollApi extends LongPollApi {
+public class UserLongPollApi extends LongPollApi {
 
     private final UserActor actor;
 

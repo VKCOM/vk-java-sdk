@@ -6,7 +6,7 @@ import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-public abstract class CallbackApi extends EventsHandler {
+public class CallbackApi extends EventsHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(CallbackApi.class);
 
@@ -45,6 +45,7 @@ public abstract class CallbackApi extends EventsHandler {
         return parse(gson.fromJson(json, CallbackMessage.class));
     }
 
+    @Override
     public String parse(CallbackMessage message) {
         if (isSecretKeyValid(message.getSecret()))
             return super.parse(message);

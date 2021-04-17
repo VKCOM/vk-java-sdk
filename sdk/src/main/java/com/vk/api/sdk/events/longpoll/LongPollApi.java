@@ -26,7 +26,7 @@ abstract class LongPollApi extends EventsHandler {
 
     private volatile boolean isRunning = false;
 
-    public LongPollApi(VkApiClient client, int waitTime) {
+    protected LongPollApi(VkApiClient client, int waitTime) {
         this.client = client;
         this.waitTime = waitTime;
     }
@@ -111,11 +111,11 @@ abstract class LongPollApi extends EventsHandler {
         );
     }
 
-    protected void stop() {
+    public void stop() {
         isRunning = false;
     }
 
-    protected boolean isRunning(){
+    public boolean isRunning(){
         return this.isRunning;
     }
 }
