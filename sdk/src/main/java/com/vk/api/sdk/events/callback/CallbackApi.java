@@ -3,10 +3,10 @@ package com.vk.api.sdk.events.callback;
 import com.google.gson.JsonObject;
 import com.vk.api.sdk.events.EventsHandler;
 import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class CallbackApi extends EventsHandler {
+public abstract class CallbackApi extends EventsHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(CallbackApi.class);
 
@@ -27,12 +27,12 @@ public class CallbackApi extends EventsHandler {
         return this.confirmationCode;
     }
 
-    public CallbackApi(String confirmationCode) {
+    protected CallbackApi(String confirmationCode) {
         this.confirmationCode = confirmationCode;
         this.secretKey = null;
     }
 
-    public CallbackApi(String confirmationCode, String secretKey) {
+    protected CallbackApi(String confirmationCode, String secretKey) {
         this.confirmationCode = confirmationCode;
         this.secretKey = secretKey;
     }
