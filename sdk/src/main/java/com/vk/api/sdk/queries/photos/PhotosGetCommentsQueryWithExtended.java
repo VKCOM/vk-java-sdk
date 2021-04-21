@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.PhotosSort;
+import com.vk.api.sdk.objects.photos.GetCommentsSort;
 import com.vk.api.sdk.objects.photos.responses.GetCommentsExtendedResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -93,7 +93,7 @@ public class PhotosGetCommentsQueryWithExtended extends AbstractQueryBuilder<Pho
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetCommentsQueryWithExtended sort(PhotosSort value) {
+    public PhotosGetCommentsQueryWithExtended sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

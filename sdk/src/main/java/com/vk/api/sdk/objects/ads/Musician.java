@@ -24,6 +24,12 @@ public class Musician implements Validable {
     @Required
     private String name;
 
+    /**
+     * Music artist photo
+     */
+    @SerializedName("avatar")
+    private String avatar;
+
     public Integer getId() {
         return id;
     }
@@ -42,9 +48,18 @@ public class Musician implements Validable {
         return this;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public Musician setAvatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(name, id, avatar);
     }
 
     @Override
@@ -53,7 +68,8 @@ public class Musician implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Musician musician = (Musician) o;
         return Objects.equals(name, musician.name) &&
-                Objects.equals(id, musician.id);
+                Objects.equals(id, musician.id) &&
+                Objects.equals(avatar, musician.avatar);
     }
 
     @Override
@@ -66,6 +82,7 @@ public class Musician implements Validable {
         final StringBuilder sb = new StringBuilder("Musician{");
         sb.append("name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", avatar='").append(avatar).append("'");
         sb.append('}');
         return sb.toString();
     }

@@ -62,6 +62,9 @@ public class CreateResponse implements Validable {
     @SerializedName("can_share")
     private Boolean canShare;
 
+    @SerializedName("embed_hash")
+    private String embedHash;
+
     @SerializedName("photo")
     private Background photo;
 
@@ -223,6 +226,15 @@ public class CreateResponse implements Validable {
         return this;
     }
 
+    public String getEmbedHash() {
+        return embedHash;
+    }
+
+    public CreateResponse setEmbedHash(String embedHash) {
+        this.embedHash = embedHash;
+        return this;
+    }
+
     public Background getPhoto() {
         return photo;
     }
@@ -315,7 +327,7 @@ public class CreateResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, multiple, answers, photo, answerIds, ownerId, authorId, friends, background, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
+        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, multiple, answers, photo, answerIds, ownerId, authorId, friends, background, embedHash, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
     }
 
     @Override
@@ -324,6 +336,7 @@ public class CreateResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         CreateResponse createResponse = (CreateResponse) o;
         return Objects.equals(endDate, createResponse.endDate) &&
+                Objects.equals(embedHash, createResponse.embedHash) &&
                 Objects.equals(answerIds, createResponse.answerIds) &&
                 Objects.equals(question, createResponse.question) &&
                 Objects.equals(created, createResponse.created) &&
@@ -356,6 +369,7 @@ public class CreateResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CreateResponse{");
         sb.append("endDate=").append(endDate);
+        sb.append(", embedHash='").append(embedHash).append("'");
         sb.append(", answerIds=").append(answerIds);
         sb.append(", question='").append(question).append("'");
         sb.append(", created=").append(created);

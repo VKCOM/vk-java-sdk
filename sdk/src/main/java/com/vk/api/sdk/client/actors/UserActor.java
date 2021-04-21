@@ -1,5 +1,7 @@
 package com.vk.api.sdk.client.actors;
 
+import com.vk.api.sdk.client.Utils;
+
 import java.util.Objects;
 
 /**
@@ -9,10 +11,12 @@ public class UserActor implements Actor {
 
     private Integer userId;
     private String accessToken;
+    private String coveredAccessToken;
     private String phone;
 
     public UserActor(Integer userId, String accessToken) {
         this.accessToken = accessToken;
+        this.coveredAccessToken = Utils.coverAccessToken(accessToken);
         this.userId = userId;
     }
 
@@ -53,7 +57,7 @@ public class UserActor implements Actor {
     public String toString() {
         final StringBuilder sb = new StringBuilder("UserActor{");
         sb.append("userId=").append(userId);
-        sb.append(", accessToken='").append(accessToken).append('\'');
+        sb.append(", accessToken='").append(coveredAccessToken).append('\'');
         sb.append('}');
         return sb.toString();
     }

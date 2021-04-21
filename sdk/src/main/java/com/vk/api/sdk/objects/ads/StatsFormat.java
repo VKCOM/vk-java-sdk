@@ -16,6 +16,18 @@ public class StatsFormat implements Validable {
     private Integer clicks;
 
     /**
+     * Group clicks number
+     */
+    @SerializedName("link_owner_clicks")
+    private Integer linkOwnerClicks;
+
+    /**
+     * External clicks number
+     */
+    @SerializedName("link_external_clicks")
+    private Integer linkExternalClicks;
+
+    /**
      * Day as YYYY-MM-DD
      */
     @SerializedName("day")
@@ -87,6 +99,24 @@ public class StatsFormat implements Validable {
 
     public StatsFormat setClicks(Integer clicks) {
         this.clicks = clicks;
+        return this;
+    }
+
+    public Integer getLinkOwnerClicks() {
+        return linkOwnerClicks;
+    }
+
+    public StatsFormat setLinkOwnerClicks(Integer linkOwnerClicks) {
+        this.linkOwnerClicks = linkOwnerClicks;
+        return this;
+    }
+
+    public Integer getLinkExternalClicks() {
+        return linkExternalClicks;
+    }
+
+    public StatsFormat setLinkExternalClicks(Integer linkExternalClicks) {
+        this.linkExternalClicks = linkExternalClicks;
         return this;
     }
 
@@ -191,7 +221,7 @@ public class StatsFormat implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(videoViewsHalf, month, videoViewsFull, reach, spent, clicks, overall, videoClicksSite, impressions, joinRate, day, videoViews);
+        return Objects.hash(videoViewsHalf, videoViewsFull, reach, spent, impressions, linkOwnerClicks, month, clicks, overall, videoClicksSite, joinRate, linkExternalClicks, day, videoViews);
     }
 
     @Override
@@ -200,15 +230,17 @@ public class StatsFormat implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         StatsFormat statsFormat = (StatsFormat) o;
         return Objects.equals(videoViewsFull, statsFormat.videoViewsFull) &&
-                Objects.equals(month, statsFormat.month) &&
                 Objects.equals(reach, statsFormat.reach) &&
-                Objects.equals(videoViews, statsFormat.videoViews) &&
                 Objects.equals(spent, statsFormat.spent) &&
-                Objects.equals(clicks, statsFormat.clicks) &&
-                Objects.equals(overall, statsFormat.overall) &&
-                Objects.equals(videoClicksSite, statsFormat.videoClicksSite) &&
                 Objects.equals(impressions, statsFormat.impressions) &&
                 Objects.equals(videoViewsHalf, statsFormat.videoViewsHalf) &&
+                Objects.equals(linkExternalClicks, statsFormat.linkExternalClicks) &&
+                Objects.equals(month, statsFormat.month) &&
+                Objects.equals(videoViews, statsFormat.videoViews) &&
+                Objects.equals(clicks, statsFormat.clicks) &&
+                Objects.equals(linkOwnerClicks, statsFormat.linkOwnerClicks) &&
+                Objects.equals(overall, statsFormat.overall) &&
+                Objects.equals(videoClicksSite, statsFormat.videoClicksSite) &&
                 Objects.equals(day, statsFormat.day) &&
                 Objects.equals(joinRate, statsFormat.joinRate);
     }
@@ -222,15 +254,17 @@ public class StatsFormat implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsFormat{");
         sb.append("videoViewsFull=").append(videoViewsFull);
-        sb.append(", month='").append(month).append("'");
         sb.append(", reach=").append(reach);
-        sb.append(", videoViews=").append(videoViews);
         sb.append(", spent=").append(spent);
-        sb.append(", clicks=").append(clicks);
-        sb.append(", overall=").append(overall);
-        sb.append(", videoClicksSite=").append(videoClicksSite);
         sb.append(", impressions=").append(impressions);
         sb.append(", videoViewsHalf=").append(videoViewsHalf);
+        sb.append(", linkExternalClicks=").append(linkExternalClicks);
+        sb.append(", month='").append(month).append("'");
+        sb.append(", videoViews=").append(videoViews);
+        sb.append(", clicks=").append(clicks);
+        sb.append(", linkOwnerClicks=").append(linkOwnerClicks);
+        sb.append(", overall=").append(overall);
+        sb.append(", videoClicksSite=").append(videoClicksSite);
         sb.append(", day='").append(day).append("'");
         sb.append(", joinRate=").append(joinRate);
         sb.append('}');

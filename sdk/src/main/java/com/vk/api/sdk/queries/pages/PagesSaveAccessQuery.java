@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.PagesEdit;
-import com.vk.api.sdk.objects.enums.PagesView;
+import com.vk.api.sdk.objects.pages.SaveAccessEdit;
+import com.vk.api.sdk.objects.pages.SaveAccessView;
 import java.util.Arrays;
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param value value of "view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery view(PagesView value) {
+    public PagesSaveAccessQuery view(SaveAccessView value) {
         return unsafeParam("view", value);
     }
 
@@ -71,7 +71,7 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param value value of "edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery edit(PagesEdit value) {
+    public PagesSaveAccessQuery edit(SaveAccessEdit value) {
         return unsafeParam("edit", value);
     }
 

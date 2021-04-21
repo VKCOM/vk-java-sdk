@@ -24,7 +24,7 @@ public class GroupsGetCatalogInfoQueryWithExtended extends AbstractQueryBuilder<
     }
 
     /**
-     * 1 – to return communities count and three communities for preview. By default: 0.
+     * 1 - to return communities count and three communities for preview. By default: 0.
      *
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -34,7 +34,7 @@ public class GroupsGetCatalogInfoQueryWithExtended extends AbstractQueryBuilder<
     }
 
     /**
-     * 1 – to return subcategories info. By default: 0.
+     * 1 - to return subcategories info. By default: 0.
      *
      * @param value value of "subcategories" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

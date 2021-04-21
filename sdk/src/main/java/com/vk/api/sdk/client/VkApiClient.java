@@ -33,6 +33,7 @@ import com.vk.api.sdk.actions.Secure;
 import com.vk.api.sdk.actions.Stats;
 import com.vk.api.sdk.actions.Status;
 import com.vk.api.sdk.actions.Storage;
+import com.vk.api.sdk.actions.Store;
 import com.vk.api.sdk.actions.Stories;
 import com.vk.api.sdk.actions.Streaming;
 import com.vk.api.sdk.actions.Upload;
@@ -50,7 +51,7 @@ public class VkApiClient {
 
     private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
 
-    private String apiVersion = "5.95";
+    private String apiVersion = "5.130";
 
     private TransportClient transportClient;
 
@@ -113,104 +114,140 @@ public class VkApiClient {
         this.apiVersion = version;
     }
 
-    public OAuth oAuth() {
-        return new OAuth(this);
-    }
-
     public Account account() {
         return new Account(this);
-    }
-
-    public Ads ads() {
-        return new Ads(this);
-    }
-
-    public Auth auth() {
-        return new Auth(this);
-    }
-
-    public Apps apps() {
-        return new Apps(this);
-    }
-
-    public AppWidgets appWidgets() {
-        return new AppWidgets(this);
-    }
-
-    public Board board() {
-        return new Board(this);
-    }
-
-    public Database database() {
-        return new Database(this);
-    }
-
-    public Docs docs() {
-        return new Docs(this);
-    }
-
-    public Fave fave() {
-        return new Fave(this);
-    }
-
-    public Friends friends() {
-        return new Friends(this);
-    }
-
-    public Gifts gifts() {
-        return new Gifts(this);
-    }
-
-    public Groups groups() {
-        return new Groups(this);
-    }
-
-    public GroupsLongPoll groupsLongPoll() {
-        return new GroupsLongPoll(this);
-    }
-
-    public Likes likes() {
-        return new Likes(this);
-    }
-
-    public Market market() {
-        return new Market(this);
-    }
-
-    public Messages messages() {
-        return new Messages(this);
-    }
-
-    public Newsfeed newsfeed() {
-        return new Newsfeed(this);
-    }
-
-    public Notes notes() {
-        return new Notes(this);
-    }
-
-    public Notifications notifications() {
-        return new Notifications(this);
     }
 
     public Orders orders() {
         return new Orders(this);
     }
 
-    public Pages pages() {
-        return new Pages(this);
+    public Wall wall() {
+        return new Wall(this);
+    }
+
+    public Execute execute() {
+        return new Execute(this);
+    }
+
+    public Friends friends() {
+        return new Friends(this);
+    }
+
+    public LongPoll longPoll() {
+        return new LongPoll(this);
+    }
+
+    public Store store() {
+        return new Store(this);
+    }
+
+    public Upload upload() {
+        return new Upload(this);
+    }
+
+    public Users users() {
+        return new Users(this);
+    }
+
+    public Apps apps() {
+        return new Apps(this);
+    }
+
+    public Videos videos() {
+        return new Videos(this);
     }
 
     public Photos photos() {
         return new Photos(this);
     }
 
-    public Polls polls() {
-        return new Polls(this);
+    public Ads ads() {
+        return new Ads(this);
+    }
+
+    public Board board() {
+        return new Board(this);
+    }
+
+    public Widgets widgets() {
+        return new Widgets(this);
+    }
+
+    public GroupsLongPoll groupsLongPoll() {
+        return new GroupsLongPoll(this);
+    }
+
+    public Groups groups() {
+        return new Groups(this);
+    }
+
+    public Auth auth() {
+        return new Auth(this);
+    }
+
+    public Newsfeed newsfeed() {
+        return new Newsfeed(this);
     }
 
     public Search search() {
         return new Search(this);
+    }
+
+    public AppWidgets appWidgets() {
+        return new AppWidgets(this);
+    }
+
+    public Database database() {
+        return new Database(this);
+    }
+
+    public Stories stories() {
+        return new Stories(this);
+    }
+
+    public Notes notes() {
+        return new Notes(this);
+    }
+
+    public Status status() {
+        return new Status(this);
+    }
+
+    public Streaming streaming() {
+        return new Streaming(this);
+    }
+
+    public Messages messages() {
+        return new Messages(this);
+    }
+
+    public Fave fave() {
+        return new Fave(this);
+    }
+
+    public Market market() {
+        return new Market(this);
+    }
+
+    public OAuth oAuth() {
+        return new OAuth(this);
+    }
+
+    public Polls polls() {
+        return new Polls(this);
+    }
+
+    public Pages pages() {
+        return new Pages(this);
+    }
+
+    public Storage storage() {
+        return new Storage(this);
+    }
+
+    public Utils utils() {
+        return new Utils(this);
     }
 
     public Secure secure() {
@@ -221,51 +258,19 @@ public class VkApiClient {
         return new Stats(this);
     }
 
-    public Status status() {
-        return new Status(this);
+    public Gifts gifts() {
+        return new Gifts(this);
     }
 
-    public Stories stories() {
-        return new Stories(this);
+    public Docs docs() {
+        return new Docs(this);
     }
 
-    public Storage storage() {
-        return new Storage(this);
+    public Likes likes() {
+        return new Likes(this);
     }
 
-    public Streaming streaming() {
-        return new Streaming(this);
-    }
-
-    public Users users() {
-        return new Users(this);
-    }
-
-    public Upload upload() {
-        return new Upload(this);
-    }
-
-    public Utils utils() {
-        return new Utils(this);
-    }
-
-    public Videos videos() {
-        return new Videos(this);
-    }
-
-    public Wall wall() {
-        return new Wall(this);
-    }
-
-    public Widgets widgets() {
-        return new Widgets(this);
-    }
-
-    public LongPoll longPoll() {
-        return new LongPoll(this);
-    }
-
-    public Execute execute() {
-        return new Execute(this);
+    public Notifications notifications() {
+        return new Notifications(this);
     }
 }

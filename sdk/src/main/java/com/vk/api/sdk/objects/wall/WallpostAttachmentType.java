@@ -53,7 +53,19 @@ public enum WallpostAttachmentType implements EnumParam {
     MARKET("market"),
 
     @SerializedName("event")
-    EVENT("event");
+    EVENT("event"),
+
+    @SerializedName("donut_link")
+    DONUT_LINK("donut_link"),
+
+    @SerializedName("article")
+    ARTICLE("article"),
+
+    @SerializedName("textlive")
+    TEXTLIVE("textlive"),
+
+    @SerializedName("textpost")
+    TEXTPOST("textpost");
 
     private final String value;
 

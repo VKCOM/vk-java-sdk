@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.apps.GetLeaderboardType;
 import com.vk.api.sdk.objects.apps.responses.GetLeaderboardExtendedResponse;
-import com.vk.api.sdk.objects.enums.AppsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +19,8 @@ public class AppsGetLeaderboardQueryWithExtended extends AbstractQueryBuilder<Ap
      * @param actor actor with access token
      * @param type value of "type" parameter.
      */
-    public AppsGetLeaderboardQueryWithExtended(VkApiClient client, UserActor actor, AppsType type) {
+    public AppsGetLeaderboardQueryWithExtended(VkApiClient client, UserActor actor,
+            GetLeaderboardType type) {
         super(client, "apps.getLeaderboard", GetLeaderboardExtendedResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -32,7 +33,7 @@ public class AppsGetLeaderboardQueryWithExtended extends AbstractQueryBuilder<Ap
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsGetLeaderboardQueryWithExtended type(AppsType value) {
+    protected AppsGetLeaderboardQueryWithExtended type(GetLeaderboardType value) {
         return unsafeParam("type", value);
     }
 

@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.GroupsState;
+import com.vk.api.sdk.objects.groups.ToggleMarketState;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      * @param state value of "state" parameter.
      */
     public GroupsToggleMarketQuery(VkApiClient client, UserActor actor, int groupId,
-            GroupsState state) {
+            ToggleMarketState state) {
         super(client, "groups.toggleMarket", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -44,7 +44,7 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      * @param value value of "state" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsToggleMarketQuery state(GroupsState value) {
+    protected GroupsToggleMarketQuery state(ToggleMarketState value) {
         return unsafeParam("state", value);
     }
 

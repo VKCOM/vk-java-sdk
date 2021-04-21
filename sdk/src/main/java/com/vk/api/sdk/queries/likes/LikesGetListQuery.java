@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.LikesFilter;
-import com.vk.api.sdk.objects.enums.LikesFriendsOnly;
+import com.vk.api.sdk.objects.likes.GetListFilter;
+import com.vk.api.sdk.objects.likes.GetListFriendsOnly;
 import com.vk.api.sdk.objects.likes.Type;
 import com.vk.api.sdk.objects.likes.responses.GetListResponse;
 import java.util.Arrays;
@@ -88,7 +88,7 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public LikesGetListQuery filter(LikesFilter value) {
+    public LikesGetListQuery filter(GetListFilter value) {
         return unsafeParam("filter", value);
     }
 
@@ -98,7 +98,7 @@ public class LikesGetListQuery extends AbstractQueryBuilder<LikesGetListQuery, G
      * @param value value of "friends only" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public LikesGetListQuery friendsOnly(LikesFriendsOnly value) {
+    public LikesGetListQuery friendsOnly(GetListFriendsOnly value) {
         return unsafeParam("friends_only", value);
     }
 

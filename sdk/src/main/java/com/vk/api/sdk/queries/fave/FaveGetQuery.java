@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.FaveItemType;
+import com.vk.api.sdk.objects.fave.GetItemType;
 import com.vk.api.sdk.objects.fave.responses.GetResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -40,7 +40,7 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "item type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveGetQuery itemType(FaveItemType value) {
+    public FaveGetQuery itemType(GetItemType value) {
         return unsafeParam("item_type", value);
     }
 

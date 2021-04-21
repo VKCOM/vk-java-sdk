@@ -331,4 +331,8 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
     public Map<String, String> getParams() {
         return params;
     }
+
+    public String toString(){
+        return this.getMethod();
+    }
 }

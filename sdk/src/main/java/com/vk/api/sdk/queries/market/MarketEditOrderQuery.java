@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.objects.market.EditOrderPaymentStatus;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,6 +81,76 @@ public class MarketEditOrderQuery extends AbstractQueryBuilder<MarketEditOrderQu
      */
     public MarketEditOrderQuery status(Integer value) {
         return unsafeParam("status", value);
+    }
+
+    /**
+     * Set track number
+     *
+     * @param value value of "track number" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery trackNumber(String value) {
+        return unsafeParam("track_number", value);
+    }
+
+    /**
+     * Set payment status
+     *
+     * @param value value of "payment status" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery paymentStatus(EditOrderPaymentStatus value) {
+        return unsafeParam("payment_status", value);
+    }
+
+    /**
+     * Set delivery price
+     *
+     * @param value value of "delivery price" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery deliveryPrice(Integer value) {
+        return unsafeParam("delivery_price", value);
+    }
+
+    /**
+     * Set width
+     *
+     * @param value value of "width" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery width(Integer value) {
+        return unsafeParam("width", value);
+    }
+
+    /**
+     * Set length
+     *
+     * @param value value of "length" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery length(Integer value) {
+        return unsafeParam("length", value);
+    }
+
+    /**
+     * Set height
+     *
+     * @param value value of "height" parameter. Maximum is 100000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery height(Integer value) {
+        return unsafeParam("height", value);
+    }
+
+    /**
+     * Set weight
+     *
+     * @param value value of "weight" parameter. Maximum is 100000000. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketEditOrderQuery weight(Integer value) {
+        return unsafeParam("weight", value);
     }
 
     @Override

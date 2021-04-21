@@ -17,7 +17,13 @@ public enum CampaignType implements EnumParam {
     MOBILE_APPS("mobile_apps"),
 
     @SerializedName("promoted_posts")
-    PROMOTED_POSTS("promoted_posts");
+    PROMOTED_POSTS("promoted_posts"),
+
+    @SerializedName("adaptive_ads")
+    ADAPTIVE_ADS("adaptive_ads"),
+
+    @SerializedName("stories")
+    STORIES("stories");
 
     private final String value;
 

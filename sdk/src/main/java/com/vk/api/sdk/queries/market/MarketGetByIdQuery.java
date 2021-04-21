@@ -38,7 +38,7 @@ public class MarketGetByIdQuery extends AbstractQueryBuilder<MarketGetByIdQuery,
     }
 
     /**
-     * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
+     * '1' - to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

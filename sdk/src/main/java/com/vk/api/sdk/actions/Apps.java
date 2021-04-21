@@ -4,12 +4,13 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.AppsType;
+import com.vk.api.sdk.objects.apps.GetLeaderboardType;
 import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
 import com.vk.api.sdk.queries.apps.AppsGetFriendsListQuery;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQuery;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQueryWithExtended;
+import com.vk.api.sdk.queries.apps.AppsGetMiniAppPoliciesQuery;
 import com.vk.api.sdk.queries.apps.AppsGetQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScopesQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScoreQuery;
@@ -99,7 +100,7 @@ public class Apps extends AbstractAction {
      * @param type Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
      * @return query
      */
-    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, AppsType type) {
+    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, GetLeaderboardType type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
     }
 
@@ -111,8 +112,19 @@ public class Apps extends AbstractAction {
      * @return query
      */
     public AppsGetLeaderboardQueryWithExtended getLeaderboardExtended(UserActor actor,
-            AppsType type) {
+            GetLeaderboardType type) {
         return new AppsGetLeaderboardQueryWithExtended(getClient(), actor, type);
+    }
+
+    /**
+     * Returns policies and terms given to a mini app.
+     *
+     * @param actor vk actor
+     * @param appId Mini App ID
+     * @return query
+     */
+    public AppsGetMiniAppPoliciesQuery getMiniAppPolicies(UserActor actor, int appId) {
+        return new AppsGetMiniAppPoliciesQuery(getClient(), actor, appId);
     }
 
     /**

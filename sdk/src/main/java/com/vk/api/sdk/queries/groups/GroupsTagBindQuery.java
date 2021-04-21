@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
-import com.vk.api.sdk.objects.enums.GroupsAct;
+import com.vk.api.sdk.objects.groups.TagBindAct;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,11 +19,11 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
      * @param actor actor with access token
      * @param groupId value of "group id" parameter. Minimum is 0.
      * @param tagId value of "tag id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Maximum is 2000000000. Minimum is 0.
      * @param act value of "act" parameter.
      */
     public GroupsTagBindQuery(VkApiClient client, UserActor actor, int groupId, int tagId,
-            int userId, GroupsAct act) {
+            int userId, TagBindAct act) {
         super(client, "groups.tagBind", BoolResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -55,7 +55,7 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Maximum is 2000000000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsTagBindQuery userId(int value) {
@@ -68,7 +68,7 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
      * @param value value of "act" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsTagBindQuery act(GroupsAct value) {
+    protected GroupsTagBindQuery act(TagBindAct value) {
         return unsafeParam("act", value);
     }
 

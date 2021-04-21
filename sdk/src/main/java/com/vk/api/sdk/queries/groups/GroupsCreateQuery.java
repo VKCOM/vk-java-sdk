@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.GroupsSubtype;
-import com.vk.api.sdk.objects.enums.GroupsType;
+import com.vk.api.sdk.objects.groups.CreateSubtype;
+import com.vk.api.sdk.objects.groups.CreateType;
 import com.vk.api.sdk.objects.groups.responses.CreateResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -47,12 +47,12 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
     }
 
     /**
-     * Community type. Possible values: *'group' – group,, *'event' – event,, *'public' – public page
+     * Community type. Possible values: *'group' - group,, *'event' - event,, *'public' - public page
      *
      * @param value value of "type" parameter. By default group.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery type(GroupsType value) {
+    public GroupsCreateQuery type(CreateType value) {
         return unsafeParam("type", value);
     }
 
@@ -67,12 +67,12 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
     }
 
     /**
-     * Public page subtype. Possible values: *'1' – place or small business,, *'2' – company, organization or website,, *'3' – famous person or group of people,, *'4' – product or work of art.
+     * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
      *
      * @param value value of "subtype" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsCreateQuery subtype(GroupsSubtype value) {
+    public GroupsCreateQuery subtype(CreateSubtype value) {
         return unsafeParam("subtype", value);
     }
 

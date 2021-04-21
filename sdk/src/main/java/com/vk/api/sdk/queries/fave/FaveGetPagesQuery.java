@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.enums.FaveType;
+import com.vk.api.sdk.objects.fave.GetPagesType;
 import com.vk.api.sdk.objects.fave.responses.GetPagesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +50,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveGetPagesQuery type(FaveType value) {
+    public FaveGetPagesQuery type(GetPagesType value) {
         return unsafeParam("type", value);
     }
 

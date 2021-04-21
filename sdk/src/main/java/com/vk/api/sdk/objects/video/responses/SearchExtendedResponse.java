@@ -6,7 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserMin;
-import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class SearchExtendedResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<Video> items;
+    private List<VideoFull> items;
 
     @SerializedName("profiles")
     @Required
@@ -42,11 +42,11 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
-    public List<Video> getItems() {
+    public List<VideoFull> getItems() {
         return items;
     }
 
-    public SearchExtendedResponse setItems(List<Video> items) {
+    public SearchExtendedResponse setItems(List<VideoFull> items) {
         this.items = items;
         return this;
     }

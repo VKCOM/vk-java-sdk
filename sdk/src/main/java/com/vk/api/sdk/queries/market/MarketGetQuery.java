@@ -65,7 +65,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
     }
 
     /**
-     * '1' – method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
+     * '1' - method will return additional fields: 'likes, can_comment, car_repost, photos'. These parameters are not returned by default.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

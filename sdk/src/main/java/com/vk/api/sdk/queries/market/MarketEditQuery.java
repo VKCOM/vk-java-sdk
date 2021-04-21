@@ -21,11 +21,9 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
      * @param name value of "name" parameter.
      * @param description value of "description" parameter.
      * @param categoryId value of "category id" parameter. Minimum is 0.
-     * @param price value of "price" parameter. Minimum is 0.
-     * @param mainPhotoId value of "main photo id" parameter. Minimum is 0.
      */
     public MarketEditQuery(VkApiClient client, UserActor actor, int ownerId, int itemId,
-            String name, String description, int categoryId, double price, int mainPhotoId) {
+            String name, String description, int categoryId) {
         super(client, "market.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -33,8 +31,6 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
         name(name);
         description(description);
         categoryId(categoryId);
-        price(price);
-        mainPhotoId(mainPhotoId);
     }
 
     /**
@@ -93,7 +89,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
      * @param value value of "price" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketEditQuery price(double value) {
+    public MarketEditQuery price(Number value) {
         return unsafeParam("price", value);
     }
 
@@ -113,7 +109,7 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
      * @param value value of "main photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketEditQuery mainPhotoId(int value) {
+    public MarketEditQuery mainPhotoId(Integer value) {
         return unsafeParam("main_photo_id", value);
     }
 
@@ -155,6 +151,6 @@ public class MarketEditQuery extends AbstractQueryBuilder<MarketEditQuery, OkRes
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("price", "main_photo_id", "name", "item_id", "description", "owner_id", "category_id", "access_token");
+        return Arrays.asList("name", "item_id", "description", "owner_id", "category_id", "access_token");
     }
 }

@@ -19,7 +19,7 @@ import com.vk.api.sdk.queries.market.MarketGetAlbumByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQueryWithExtended;
-import com.vk.api.sdk.queries.market.MarketGetCategoriesQueryWithNew;
+import com.vk.api.sdk.queries.market.MarketGetCategoriesQuery;
 import com.vk.api.sdk.queries.market.MarketGetCommentsQuery;
 import com.vk.api.sdk.queries.market.MarketGetGroupOrdersQuery;
 import com.vk.api.sdk.queries.market.MarketGetOrderByIdQuery;
@@ -164,13 +164,11 @@ public class Market extends AbstractAction {
      * @param name Item name.
      * @param description Item description.
      * @param categoryId Item category ID.
-     * @param price Item price.
-     * @param mainPhotoId Cover photo ID.
      * @return query
      */
     public MarketEditQuery edit(UserActor actor, int ownerId, int itemId, String name,
-            String description, int categoryId, double price, int mainPhotoId) {
-        return new MarketEditQuery(getClient(), actor, ownerId, itemId, name, description, categoryId, price, mainPhotoId);
+            String description, int categoryId) {
+        return new MarketEditQuery(getClient(), actor, ownerId, itemId, name, description, categoryId);
     }
 
     /**
@@ -270,7 +268,7 @@ public class Market extends AbstractAction {
     }
 
     /**
-     * Returns community's collections list.
+     * Returns community's market collections list.
      *
      * @param actor vk actor
      * @param ownerId ID of an items owner community.
@@ -330,8 +328,8 @@ public class Market extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public MarketGetCategoriesQueryWithNew getCategoriesNew(UserActor actor) {
-        return new MarketGetCategoriesQueryWithNew(getClient(), actor);
+    public MarketGetCategoriesQuery getCategories(UserActor actor) {
+        return new MarketGetCategoriesQuery(getClient(), actor);
     }
 
     /**

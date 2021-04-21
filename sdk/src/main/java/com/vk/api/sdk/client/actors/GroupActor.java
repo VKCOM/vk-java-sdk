@@ -1,5 +1,7 @@
 package com.vk.api.sdk.client.actors;
 
+import com.vk.api.sdk.client.Utils;
+
 import java.util.Objects;
 
 /**
@@ -11,9 +13,12 @@ public class GroupActor implements Actor {
 
     private String accessToken;
 
+    private String coveredAccessToken;
+
     public GroupActor(Integer groupId, String accessToken) {
         this.accessToken = accessToken;
         this.groupId = groupId;
+        this.coveredAccessToken = Utils.coverAccessToken(accessToken);
     }
 
     @Override
@@ -48,7 +53,7 @@ public class GroupActor implements Actor {
     public String toString() {
         final StringBuilder sb = new StringBuilder("GroupActor{");
         sb.append("groupId=").append(groupId);
-        sb.append(", accessToken='").append(accessToken).append('\'');
+        sb.append(", accessToken='").append(coveredAccessToken).append('\'');
         sb.append('}');
         return sb.toString();
     }

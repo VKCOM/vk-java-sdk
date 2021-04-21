@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.apps.App;
 import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.notifications.NotificationItem;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.users.User;
 import com.vk.api.sdk.objects.video.Video;
@@ -22,7 +23,7 @@ public class GetResponse implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<String> items;
+    private List<NotificationItem> items;
 
     @SerializedName("profiles")
     private List<User> profiles;
@@ -60,11 +61,11 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<String> getItems() {
+    public List<NotificationItem> getItems() {
         return items;
     }
 
-    public GetResponse setItems(List<String> items) {
+    public GetResponse setItems(List<NotificationItem> items) {
         this.items = items;
         return this;
     }
@@ -177,7 +178,7 @@ public class GetResponse implements Validable {
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
         sb.append(", videos=").append(videos);
-        sb.append(", items='").append(items).append("'");
+        sb.append(", items=").append(items);
         sb.append(", photos=").append(photos);
         sb.append(", ttl=").append(ttl);
         sb.append(", apps=").append(apps);

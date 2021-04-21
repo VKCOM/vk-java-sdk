@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetSuggestionsLang;
+import com.vk.api.sdk.objects.ads.GetSuggestionsSection;
 import com.vk.api.sdk.objects.ads.responses.GetSuggestionsSchoolsResponse;
-import com.vk.api.sdk.objects.enums.AdsLang;
-import com.vk.api.sdk.objects.enums.AdsSection;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param section value of "section" parameter.
      */
     public AdsGetSuggestionsQueryWithSchools(VkApiClient client, UserActor actor,
-            AdsSection section) {
+            GetSuggestionsSection section) {
         super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, GetSuggestionsSchoolsResponse.class));
         accessToken(actor.getAccessToken());
         section(section);
@@ -34,7 +34,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "section" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetSuggestionsQueryWithSchools section(AdsSection value) {
+    protected AdsGetSuggestionsQueryWithSchools section(GetSuggestionsSection value) {
         return unsafeParam("section", value);
     }
 
@@ -84,7 +84,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "lang" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetSuggestionsQueryWithSchools lang(AdsLang value) {
+    public AdsGetSuggestionsQueryWithSchools lang(GetSuggestionsLang value) {
         return unsafeParam("lang", value);
     }
 

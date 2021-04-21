@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.FaveItemType;
+import com.vk.api.sdk.objects.fave.SetTagsItemType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "item type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveSetTagsQuery itemType(FaveItemType value) {
+    public FaveSetTagsQuery itemType(SetTagsItemType value) {
         return unsafeParam("item_type", value);
     }
 

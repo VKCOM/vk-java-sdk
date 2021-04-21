@@ -1,7 +1,6 @@
 package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
@@ -17,10 +16,16 @@ public class MessageBase implements Validable {
 
     @SerializedName("object")
     @Required
-    private JsonObject object;
+    private MessageData object;
 
     @SerializedName("group_id")
     private Integer groupId;
+
+    /**
+     * Unique event id. If it passed twice or more - you should ignore it.
+     */
+    @SerializedName("event_id")
+    private String eventId;
 
     public MessageType getType() {
         return type;
@@ -31,11 +36,11 @@ public class MessageBase implements Validable {
         return this;
     }
 
-    public JsonObject getObject() {
+    public MessageData getObject() {
         return object;
     }
 
-    public MessageBase setObject(JsonObject object) {
+    public MessageBase setObject(MessageData object) {
         this.object = object;
         return this;
     }
@@ -49,9 +54,18 @@ public class MessageBase implements Validable {
         return this;
     }
 
+    public String getEventId() {
+        return eventId;
+    }
+
+    public MessageBase setEventId(String eventId) {
+        this.eventId = eventId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(groupId, type, object);
+        return Objects.hash(eventId, groupId, type, object);
     }
 
     @Override
@@ -59,7 +73,8 @@ public class MessageBase implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageBase messageBase = (MessageBase) o;
-        return Objects.equals(groupId, messageBase.groupId) &&
+        return Objects.equals(eventId, messageBase.eventId) &&
+                Objects.equals(groupId, messageBase.groupId) &&
                 Objects.equals(type, messageBase.type) &&
                 Objects.equals(object, messageBase.object);
     }
@@ -72,7 +87,8 @@ public class MessageBase implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageBase{");
-        sb.append("groupId=").append(groupId);
+        sb.append("eventId='").append(eventId).append("'");
+        sb.append(", groupId=").append(groupId);
         sb.append(", type=").append(type);
         sb.append(", object=").append(object);
         sb.append('}');

@@ -5,8 +5,9 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.AppWidgetsImageType;
-import com.vk.api.sdk.objects.enums.AppWidgetsType;
+import com.vk.api.sdk.objects.appwidgets.GetAppImageUploadServerImageType;
+import com.vk.api.sdk.objects.appwidgets.GetGroupImageUploadServerImageType;
+import com.vk.api.sdk.objects.appwidgets.UpdateType;
 import com.vk.api.sdk.queries.appwidgets.AppWidgetsGetAppImageUploadServerQuery;
 import com.vk.api.sdk.queries.appwidgets.AppWidgetsGetAppImagesQuery;
 import com.vk.api.sdk.queries.appwidgets.AppWidgetsGetGroupImageUploadServerQuery;
@@ -38,7 +39,7 @@ public class AppWidgets extends AbstractAction {
      * @return query
      */
     public AppWidgetsGetAppImageUploadServerQuery getAppImageUploadServer(ServiceActor actor,
-            AppWidgetsImageType imageType) {
+            GetAppImageUploadServerImageType imageType) {
         return new AppWidgetsGetAppImageUploadServerQuery(getClient(), actor, imageType);
     }
 
@@ -80,7 +81,7 @@ public class AppWidgets extends AbstractAction {
      * @return query
      */
     public AppWidgetsGetGroupImageUploadServerQuery getGroupImageUploadServer(GroupActor actor,
-            AppWidgetsImageType imageType) {
+            GetGroupImageUploadServerImageType imageType) {
         return new AppWidgetsGetGroupImageUploadServerQuery(getClient(), actor, imageType);
     }
 
@@ -193,7 +194,7 @@ public class AppWidgets extends AbstractAction {
      * @param type
      * @return query
      */
-    public AppWidgetsUpdateQuery update(GroupActor actor, String code, AppWidgetsType type) {
+    public AppWidgetsUpdateQuery update(GroupActor actor, String code, UpdateType type) {
         return new AppWidgetsUpdateQuery(getClient(), actor, code, type);
     }
 }

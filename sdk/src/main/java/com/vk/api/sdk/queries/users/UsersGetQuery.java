@@ -6,8 +6,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.UsersNameCase;
 import com.vk.api.sdk.objects.users.Fields;
+import com.vk.api.sdk.objects.users.GetNameCase;
 import com.vk.api.sdk.objects.users.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +56,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery nameCase(UsersNameCase value) {
+    public UsersGetQuery nameCase(GetNameCase value) {
         return unsafeParam("name_case", value);
     }
 

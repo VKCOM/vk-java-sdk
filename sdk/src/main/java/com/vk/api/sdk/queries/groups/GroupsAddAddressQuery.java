@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.GroupsWorkInfoStatus;
+import com.vk.api.sdk.objects.groups.AddAddressWorkInfoStatus;
 import com.vk.api.sdk.objects.groups.responses.AddAddressResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -172,7 +172,7 @@ public class GroupsAddAddressQuery extends AbstractQueryBuilder<GroupsAddAddress
      * @param value value of "work info status" parameter. By default no_information.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsAddAddressQuery workInfoStatus(GroupsWorkInfoStatus value) {
+    public GroupsAddAddressQuery workInfoStatus(AddAddressWorkInfoStatus value) {
         return unsafeParam("work_info_status", value);
     }
 

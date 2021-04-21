@@ -5,9 +5,9 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.GroupsAct;
-import com.vk.api.sdk.objects.enums.GroupsFilter;
-import com.vk.api.sdk.objects.enums.GroupsState;
+import com.vk.api.sdk.objects.groups.GetMembersFilter;
+import com.vk.api.sdk.objects.groups.TagBindAct;
+import com.vk.api.sdk.objects.groups.ToggleMarketState;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.queries.groups.GroupsAddAddressQuery;
 import com.vk.api.sdk.queries.groups.GroupsAddCallbackServerQuery;
@@ -697,11 +697,11 @@ public class Groups extends AbstractAction {
      * Returns a list of community members.
      *
      * @param actor vk actor
-     * @param filter *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+     * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(UserActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
@@ -709,11 +709,11 @@ public class Groups extends AbstractAction {
      * Returns a list of community members.
      *
      * @param actor vk actor
-     * @param filter *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+     * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(GroupActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
@@ -721,11 +721,11 @@ public class Groups extends AbstractAction {
      * Returns a list of community members.
      *
      * @param actor vk actor
-     * @param filter *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+     * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(ServiceActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
@@ -1089,7 +1089,7 @@ public class Groups extends AbstractAction {
      * @return query
      */
     public GroupsTagBindQuery tagBind(UserActor actor, int groupId, int tagId, int userId,
-            GroupsAct act) {
+            TagBindAct act) {
         return new GroupsTagBindQuery(getClient(), actor, groupId, tagId, userId, act);
     }
 
@@ -1124,7 +1124,8 @@ public class Groups extends AbstractAction {
      * @param state
      * @return query
      */
-    public GroupsToggleMarketQuery toggleMarket(UserActor actor, int groupId, GroupsState state) {
+    public GroupsToggleMarketQuery toggleMarket(UserActor actor, int groupId,
+            ToggleMarketState state) {
         return new GroupsToggleMarketQuery(getClient(), actor, groupId, state);
     }
 

@@ -3,10 +3,10 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.account.SaveProfileInfoBdateVisibility;
+import com.vk.api.sdk.objects.account.SaveProfileInfoRelation;
+import com.vk.api.sdk.objects.account.SaveProfileInfoSex;
 import com.vk.api.sdk.objects.account.responses.SaveProfileInfoResponse;
-import com.vk.api.sdk.objects.enums.AccountBdateVisibility;
-import com.vk.api.sdk.objects.enums.AccountRelation;
-import com.vk.api.sdk.objects.enums.AccountSex;
 import java.util.Arrays;
 import java.util.List;
 
@@ -76,22 +76,22 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * User sex. Possible values: , * '1' – female,, * '2' – male.
+     * User sex. Possible values: , * '1' - female,, * '2' - male.
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery sex(AccountSex value) {
+    public AccountSaveProfileInfoQuery sex(SaveProfileInfoSex value) {
         return unsafeParam("sex", value);
     }
 
     /**
-     * User relationship status. Possible values: , * '1' – single,, * '2' – in a relationship,, * '3' – engaged,, * '4' – married,, * '5' – it's complicated,, * '6' – actively searching,, * '7' – in love,, * '0' – not specified.
+     * User relationship status. Possible values: , * '1' - single,, * '2' - in a relationship,, * '3' - engaged,, * '4' - married,, * '5' - it's complicated,, * '6' - actively searching,, * '7' - in love,, * '0' - not specified.
      *
      * @param value value of "relation" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery relation(AccountRelation value) {
+    public AccountSaveProfileInfoQuery relation(SaveProfileInfoRelation value) {
         return unsafeParam("relation", value);
     }
 
@@ -116,12 +116,12 @@ public class AccountSaveProfileInfoQuery extends AbstractQueryBuilder<AccountSav
     }
 
     /**
-     * Birth date visibility. Returned values: , * '1' – show birth date,, * '2' – show only month and day,, * '0' – hide birth date.
+     * Birth date visibility. Returned values: , * '1' - show birth date,, * '2' - show only month and day,, * '0' - hide birth date.
      *
      * @param value value of "bdate visibility" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AccountSaveProfileInfoQuery bdateVisibility(AccountBdateVisibility value) {
+    public AccountSaveProfileInfoQuery bdateVisibility(SaveProfileInfoBdateVisibility value) {
         return unsafeParam("bdate_visibility", value);
     }
 

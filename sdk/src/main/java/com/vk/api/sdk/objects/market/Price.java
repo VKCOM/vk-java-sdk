@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.market;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,9 +14,11 @@ public class Price implements Validable {
      * Amount
      */
     @SerializedName("amount")
+    @Required
     private String amount;
 
     @SerializedName("currency")
+    @Required
     private Currency currency;
 
     @SerializedName("discount_rate")
@@ -28,6 +31,7 @@ public class Price implements Validable {
      * Text
      */
     @SerializedName("text")
+    @Required
     private String text;
 
     /**

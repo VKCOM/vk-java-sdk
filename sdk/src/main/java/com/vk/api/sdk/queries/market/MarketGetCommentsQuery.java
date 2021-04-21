@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MarketSort;
+import com.vk.api.sdk.objects.market.GetCommentsSort;
 import com.vk.api.sdk.objects.market.responses.GetCommentsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -94,7 +94,7 @@ public class MarketGetCommentsQuery extends AbstractQueryBuilder<MarketGetCommen
      * @param value value of "sort" parameter. By default asc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketGetCommentsQuery sort(MarketSort value) {
+    public MarketGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

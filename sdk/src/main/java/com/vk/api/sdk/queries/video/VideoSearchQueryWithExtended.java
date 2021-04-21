@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.VideoSort;
+import com.vk.api.sdk.objects.video.SearchSort;
 import com.vk.api.sdk.objects.video.responses.SearchExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +42,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoSearchQueryWithExtended sort(VideoSort value) {
+    public VideoSearchQueryWithExtended sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
 

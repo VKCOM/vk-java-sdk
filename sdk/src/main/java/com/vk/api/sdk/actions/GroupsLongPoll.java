@@ -1,11 +1,8 @@
 package com.vk.api.sdk.actions;
 
-import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.queries.groups.*;
 
 /**

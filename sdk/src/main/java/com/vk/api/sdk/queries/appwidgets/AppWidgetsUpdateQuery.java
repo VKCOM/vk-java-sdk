@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.appwidgets.UpdateType;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.AppWidgetsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class AppWidgetsUpdateQuery extends AbstractQueryBuilder<AppWidgetsUpdate
      * @param type value of "type" parameter.
      */
     public AppWidgetsUpdateQuery(VkApiClient client, GroupActor actor, String code,
-            AppWidgetsType type) {
+            UpdateType type) {
         super(client, "appWidgets.update", OkResponse.class);
         accessToken(actor.getAccessToken());
         code(code);
@@ -44,7 +44,7 @@ public class AppWidgetsUpdateQuery extends AbstractQueryBuilder<AppWidgetsUpdate
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsUpdateQuery type(AppWidgetsType value) {
+    protected AppWidgetsUpdateQuery type(UpdateType value) {
         return unsafeParam("type", value);
     }
 

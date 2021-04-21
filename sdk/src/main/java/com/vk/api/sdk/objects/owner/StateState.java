@@ -14,7 +14,10 @@ public enum StateState implements EnumParam {
     HIDDEN(3),
 
     @SerializedName("4")
-    DELETED(4);
+    DELETED(4),
+
+    @SerializedName("5")
+    BLACKLISTED(5);
 
     private final Integer value;
 

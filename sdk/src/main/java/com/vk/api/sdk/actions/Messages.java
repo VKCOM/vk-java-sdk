@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MessagesIntent;
+import com.vk.api.sdk.objects.messages.GetIntentUsersIntent;
 import com.vk.api.sdk.queries.messages.MessagesAddChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesAllowMessagesFromGroupQuery;
 import com.vk.api.sdk.queries.messages.MessagesCreateChatQuery;
@@ -42,6 +42,7 @@ import com.vk.api.sdk.queries.messages.MessagesPinQuery;
 import com.vk.api.sdk.queries.messages.MessagesRemoveChatUserQuery;
 import com.vk.api.sdk.queries.messages.MessagesRestoreQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchConversationsQuery;
+import com.vk.api.sdk.queries.messages.MessagesSearchConversationsQueryWithExtended;
 import com.vk.api.sdk.queries.messages.MessagesSearchQuery;
 import com.vk.api.sdk.queries.messages.MessagesSearchQueryWithExtended;
 import com.vk.api.sdk.queries.messages.MessagesSendMessageEventAnswerQuery;
@@ -625,7 +626,8 @@ public class Messages extends AbstractAction {
      * @param intent
      * @return query
      */
-    public MessagesGetIntentUsersQuery getIntentUsers(GroupActor actor, MessagesIntent intent) {
+    public MessagesGetIntentUsersQuery getIntentUsers(GroupActor actor,
+            GetIntentUsersIntent intent) {
         return new MessagesGetIntentUsersQuery(getClient(), actor, intent);
     }
 
@@ -915,6 +917,28 @@ public class Messages extends AbstractAction {
      */
     public MessagesSearchQueryWithExtended searchExtended(GroupActor actor) {
         return new MessagesSearchQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's conversations that match search criteria.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesSearchConversationsQueryWithExtended searchConversationsExtended(
+            UserActor actor) {
+        return new MessagesSearchConversationsQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of the current user's conversations that match search criteria.
+     *
+     * @param actor vk actor
+     * @return query
+     */
+    public MessagesSearchConversationsQueryWithExtended searchConversationsExtended(
+            GroupActor actor) {
+        return new MessagesSearchConversationsQueryWithExtended(getClient(), actor);
     }
 
     /**

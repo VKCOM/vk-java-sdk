@@ -27,6 +27,18 @@ public class PushSettings implements Validable {
     @SerializedName("no_sound")
     private Boolean noSound;
 
+    /**
+     * Information whether the mentions are disabled
+     */
+    @SerializedName("disabled_mentions")
+    private Boolean disabledMentions;
+
+    /**
+     * Information whether the mass mentions (like '@all', '@online') are disabled
+     */
+    @SerializedName("disabled_mass_mentions")
+    private Boolean disabledMassMentions;
+
     public Boolean getDisabledForever() {
         return disabledForever;
     }
@@ -54,9 +66,27 @@ public class PushSettings implements Validable {
         return this;
     }
 
+    public Boolean getDisabledMentions() {
+        return disabledMentions;
+    }
+
+    public PushSettings setDisabledMentions(Boolean disabledMentions) {
+        this.disabledMentions = disabledMentions;
+        return this;
+    }
+
+    public Boolean getDisabledMassMentions() {
+        return disabledMassMentions;
+    }
+
+    public PushSettings setDisabledMassMentions(Boolean disabledMassMentions) {
+        this.disabledMassMentions = disabledMassMentions;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(disabledForever, noSound, disabledUntil);
+        return Objects.hash(disabledForever, noSound, disabledMassMentions, disabledUntil, disabledMentions);
     }
 
     @Override
@@ -65,8 +95,10 @@ public class PushSettings implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         PushSettings pushSettings = (PushSettings) o;
         return Objects.equals(disabledUntil, pushSettings.disabledUntil) &&
+                Objects.equals(disabledMassMentions, pushSettings.disabledMassMentions) &&
                 Objects.equals(disabledForever, pushSettings.disabledForever) &&
-                Objects.equals(noSound, pushSettings.noSound);
+                Objects.equals(noSound, pushSettings.noSound) &&
+                Objects.equals(disabledMentions, pushSettings.disabledMentions);
     }
 
     @Override
@@ -78,8 +110,10 @@ public class PushSettings implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PushSettings{");
         sb.append("disabledUntil=").append(disabledUntil);
+        sb.append(", disabledMassMentions=").append(disabledMassMentions);
         sb.append(", disabledForever=").append(disabledForever);
         sb.append(", noSound=").append(noSound);
+        sb.append(", disabledMentions=").append(disabledMentions);
         sb.append('}');
         return sb.toString();
     }

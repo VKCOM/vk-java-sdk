@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.enums.MessagesFilter;
+import com.vk.api.sdk.objects.messages.GetConversationsFilter;
 import com.vk.api.sdk.objects.messages.responses.GetConversationsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -63,7 +63,7 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
      * @param value value of "filter" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetConversationsQuery filter(MessagesFilter value) {
+    public MessagesGetConversationsQuery filter(GetConversationsFilter value) {
         return unsafeParam("filter", value);
     }
 

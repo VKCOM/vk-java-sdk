@@ -59,6 +59,9 @@ public class Poll implements Validable {
     @SerializedName("can_share")
     private Boolean canShare;
 
+    @SerializedName("embed_hash")
+    private String embedHash;
+
     @SerializedName("photo")
     private Background photo;
 
@@ -220,6 +223,15 @@ public class Poll implements Validable {
         return this;
     }
 
+    public String getEmbedHash() {
+        return embedHash;
+    }
+
+    public Poll setEmbedHash(String embedHash) {
+        this.embedHash = embedHash;
+        return this;
+    }
+
     public Background getPhoto() {
         return photo;
     }
@@ -312,7 +324,7 @@ public class Poll implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, multiple, answers, photo, answerIds, ownerId, authorId, friends, background, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
+        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, multiple, answers, photo, answerIds, ownerId, authorId, friends, background, embedHash, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
     }
 
     @Override
@@ -321,6 +333,7 @@ public class Poll implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Poll poll = (Poll) o;
         return Objects.equals(endDate, poll.endDate) &&
+                Objects.equals(embedHash, poll.embedHash) &&
                 Objects.equals(answerIds, poll.answerIds) &&
                 Objects.equals(question, poll.question) &&
                 Objects.equals(created, poll.created) &&
@@ -353,6 +366,7 @@ public class Poll implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Poll{");
         sb.append("endDate=").append(endDate);
+        sb.append(", embedHash='").append(embedHash).append("'");
         sb.append(", answerIds=").append(answerIds);
         sb.append(", question='").append(question).append("'");
         sb.append(", created=").append(created);

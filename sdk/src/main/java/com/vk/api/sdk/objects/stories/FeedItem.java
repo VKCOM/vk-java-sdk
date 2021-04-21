@@ -49,6 +49,15 @@ public class FeedItem implements Validable {
     @SerializedName("birthday_user_id")
     private Integer birthdayUserId;
 
+    @SerializedName("track_code")
+    private String trackCode;
+
+    @SerializedName("has_unseen")
+    private Boolean hasUnseen;
+
+    @SerializedName("name")
+    private String name;
+
     public FeedItemType getType() {
         return type;
     }
@@ -112,9 +121,36 @@ public class FeedItem implements Validable {
         return this;
     }
 
+    public String getTrackCode() {
+        return trackCode;
+    }
+
+    public FeedItem setTrackCode(String trackCode) {
+        this.trackCode = trackCode;
+        return this;
+    }
+
+    public Boolean getHasUnseen() {
+        return hasUnseen;
+    }
+
+    public FeedItem setHasUnseen(Boolean hasUnseen) {
+        this.hasUnseen = hasUnseen;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public FeedItem setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(app, stories, grouped, birthdayUserId, id, type, promoData);
+        return Objects.hash(app, trackCode, stories, grouped, birthdayUserId, hasUnseen, name, id, type, promoData);
     }
 
     @Override
@@ -126,9 +162,12 @@ public class FeedItem implements Validable {
                 Objects.equals(promoData, feedItem.promoData) &&
                 Objects.equals(stories, feedItem.stories) &&
                 Objects.equals(grouped, feedItem.grouped) &&
+                Objects.equals(name, feedItem.name) &&
+                Objects.equals(trackCode, feedItem.trackCode) &&
                 Objects.equals(id, feedItem.id) &&
                 Objects.equals(type, feedItem.type) &&
-                Objects.equals(birthdayUserId, feedItem.birthdayUserId);
+                Objects.equals(birthdayUserId, feedItem.birthdayUserId) &&
+                Objects.equals(hasUnseen, feedItem.hasUnseen);
     }
 
     @Override
@@ -143,9 +182,12 @@ public class FeedItem implements Validable {
         sb.append(", promoData=").append(promoData);
         sb.append(", stories=").append(stories);
         sb.append(", grouped=").append(grouped);
+        sb.append(", name='").append(name).append("'");
+        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", id='").append(id).append("'");
         sb.append(", type='").append(type).append("'");
         sb.append(", birthdayUserId=").append(birthdayUserId);
+        sb.append(", hasUnseen=").append(hasUnseen);
         sb.append('}');
         return sb.toString();
     }

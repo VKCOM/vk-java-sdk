@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.PollsNameCase;
+import com.vk.api.sdk.objects.polls.GetByIdNameCase;
 import com.vk.api.sdk.objects.polls.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +36,7 @@ public class PollsGetByIdQuery extends AbstractQueryBuilder<PollsGetByIdQuery, G
     }
 
     /**
-     * '1' – poll is in a board, '0' – poll is on a wall. '0' by default.
+     * '1' - poll is in a board, '0' - poll is on a wall. '0' by default.
      *
      * @param value value of "is board" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -81,7 +81,7 @@ public class PollsGetByIdQuery extends AbstractQueryBuilder<PollsGetByIdQuery, G
      * @param value value of "name case" parameter. By default nom.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsGetByIdQuery nameCase(PollsNameCase value) {
+    public PollsGetByIdQuery nameCase(GetByIdNameCase value) {
         return unsafeParam("name_case", value);
     }
 

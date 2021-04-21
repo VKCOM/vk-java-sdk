@@ -12,13 +12,6 @@ import java.util.Objects;
  */
 public class MarketAlbum implements Validable {
     /**
-     * Items number
-     */
-    @SerializedName("count")
-    @Required
-    private Integer count;
-
-    /**
      * Market album ID
      */
     @SerializedName("id")
@@ -31,9 +24,6 @@ public class MarketAlbum implements Validable {
     @SerializedName("owner_id")
     private Integer ownerId;
 
-    @SerializedName("photo")
-    private Photo photo;
-
     /**
      * Market album title
      */
@@ -42,19 +32,20 @@ public class MarketAlbum implements Validable {
     private String title;
 
     /**
+     * Items number
+     */
+    @SerializedName("count")
+    @Required
+    private Integer count;
+
+    @SerializedName("photo")
+    private Photo photo;
+
+    /**
      * Date when album has been updated last time in Unixtime
      */
     @SerializedName("updated_time")
     private Integer updatedTime;
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public MarketAlbum setCount(Integer count) {
-        this.count = count;
-        return this;
-    }
 
     public Integer getId() {
         return id;
@@ -74,21 +65,30 @@ public class MarketAlbum implements Validable {
         return this;
     }
 
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public MarketAlbum setPhoto(Photo photo) {
-        this.photo = photo;
-        return this;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public MarketAlbum setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public MarketAlbum setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public MarketAlbum setPhoto(Photo photo) {
+        this.photo = photo;
         return this;
     }
 

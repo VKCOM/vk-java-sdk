@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.appwidgets.GetAppImagesImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetAppImagesResponse;
-import com.vk.api.sdk.objects.enums.AppWidgetsImageType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsGetAppImagesQuery imageType(AppWidgetsImageType value) {
+    public AppWidgetsGetAppImagesQuery imageType(GetAppImagesImageType value) {
         return unsafeParam("image_type", value);
     }
 

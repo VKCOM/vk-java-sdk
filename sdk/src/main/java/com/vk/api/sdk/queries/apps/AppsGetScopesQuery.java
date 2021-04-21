@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.apps.GetScopesType;
 import com.vk.api.sdk.objects.apps.responses.GetScopesResponse;
-import com.vk.api.sdk.objects.enums.AppsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class AppsGetScopesQuery extends AbstractQueryBuilder<AppsGetScopesQuery,
      * @param value value of "type" parameter. By default user.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetScopesQuery type(AppsType value) {
+    public AppsGetScopesQuery type(GetScopesType value) {
         return unsafeParam("type", value);
     }
 

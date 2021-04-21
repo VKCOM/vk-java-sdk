@@ -68,7 +68,7 @@ public abstract class ApiRequest<T> {
         return client;
     }
 
-    protected Type getResponseClass() {
+    public Type getResponseClass() {
         return responseClass;
     }
 

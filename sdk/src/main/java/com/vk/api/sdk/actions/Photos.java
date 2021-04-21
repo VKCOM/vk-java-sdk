@@ -20,8 +20,8 @@ import com.vk.api.sdk.queries.photos.PhotosGetAlbumsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAllCommentsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAllQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAllQueryWithExtended;
-import com.vk.api.sdk.queries.photos.PhotosGetByIdQuery;
-import com.vk.api.sdk.queries.photos.PhotosGetByIdQueryWithExtended;
+import com.vk.api.sdk.queries.photos.PhotosGetByIdQueryWithLegacy;
+import com.vk.api.sdk.queries.photos.PhotosGetByIdQueryWithLegacyExtended;
 import com.vk.api.sdk.queries.photos.PhotosGetChatUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetCommentsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetCommentsQueryWithExtended;
@@ -290,8 +290,9 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQuery getById(UserActor actor, String... photos) {
-        return new PhotosGetByIdQuery(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(UserActor actor,
+            String... photos) {
+        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
     }
 
     /**
@@ -301,8 +302,9 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQuery getById(UserActor actor, List<String> photos) {
-        return new PhotosGetByIdQuery(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(UserActor actor,
+            List<String> photos) {
+        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
     }
 
     /**
@@ -312,8 +314,9 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQuery getById(ServiceActor actor, String... photos) {
-        return new PhotosGetByIdQuery(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(ServiceActor actor,
+            String... photos) {
+        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
     }
 
     /**
@@ -323,8 +326,9 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQuery getById(ServiceActor actor, List<String> photos) {
-        return new PhotosGetByIdQuery(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(ServiceActor actor,
+            List<String> photos) {
+        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
     }
 
     /**
@@ -334,8 +338,8 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, String... photos) {
+        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
     }
 
     /**
@@ -345,8 +349,8 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, List<String> photos) {
+        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
     }
 
     /**
@@ -356,8 +360,8 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, String... photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, String... photos) {
+        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
     }
 
     /**
@@ -367,8 +371,8 @@ public class Photos extends AbstractAction {
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, List<String> photos) {
-        return new PhotosGetByIdQueryWithExtended(getClient(), actor, photos);
+    public PhotosGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, List<String> photos) {
+        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
     }
 
     /**

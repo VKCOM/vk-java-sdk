@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.PollsNameCase;
+import com.vk.api.sdk.objects.polls.GetVotersNameCase;
 import com.vk.api.sdk.objects.polls.responses.GetVotersResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -112,7 +112,7 @@ public class PollsGetVotersQuery extends AbstractQueryBuilder<PollsGetVotersQuer
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsGetVotersQuery nameCase(PollsNameCase value) {
+    public PollsGetVotersQuery nameCase(GetVotersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

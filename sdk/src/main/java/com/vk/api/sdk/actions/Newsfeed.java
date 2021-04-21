@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.NewsfeedType;
 import com.vk.api.sdk.objects.newsfeed.IgnoreItemType;
+import com.vk.api.sdk.objects.newsfeed.UnsubscribeType;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedAddBanQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedDeleteBanQuery;
 import com.vk.api.sdk.queries.newsfeed.NewsfeedDeleteListQuery;
@@ -161,7 +161,7 @@ public class Newsfeed extends AbstractAction {
      * Hides an item from the newsfeed.
      *
      * @param actor vk actor
-     * @param type Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
+     * @param type Item type. Possible values: *'wall' - post on the wall,, *'tag' - tag on a photo,, *'profilephoto' - profile photo,, *'video' - video,, *'audio' - audio.
      * @return query
      */
     public NewsfeedIgnoreItemQuery ignoreItem(UserActor actor, IgnoreItemType type) {
@@ -223,8 +223,8 @@ public class Newsfeed extends AbstractAction {
      * Returns a hidden item to the newsfeed.
      *
      * @param actor vk actor
-     * @param type Item type. Possible values: *'wall' – post on the wall,, *'tag' – tag on a photo,, *'profilephoto' – profile photo,, *'video' – video,, *'audio' – audio.
-     * @param ownerId Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' – user , 'owner_id=-1' – community "
+     * @param type Item type. Possible values: *'wall' - post on the wall,, *'tag' - tag on a photo,, *'profilephoto' - profile photo,, *'video' - video,, *'audio' - audio.
+     * @param ownerId Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' - user , 'owner_id=-1' - community "
      * @param itemId Item identifier
      * @return query
      */
@@ -241,7 +241,7 @@ public class Newsfeed extends AbstractAction {
      * @param itemId Object ID.
      * @return query
      */
-    public NewsfeedUnsubscribeQuery unsubscribe(UserActor actor, NewsfeedType type, int itemId) {
+    public NewsfeedUnsubscribeQuery unsubscribe(UserActor actor, UnsubscribeType type, int itemId) {
         return new NewsfeedUnsubscribeQuery(getClient(), actor, type, itemId);
     }
 }

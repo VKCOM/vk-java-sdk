@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.Conversation;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +26,10 @@ public class GetConversationsByIdExtendedResponse implements Validable {
     private List<Conversation> items;
 
     @SerializedName("profiles")
-    private List<User> profiles;
+    private List<UserFull> profiles;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -45,18 +49,27 @@ public class GetConversationsByIdExtendedResponse implements Validable {
         return this;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetConversationsByIdExtendedResponse setProfiles(List<User> profiles) {
+    public GetConversationsByIdExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetConversationsByIdExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -66,6 +79,7 @@ public class GetConversationsByIdExtendedResponse implements Validable {
         GetConversationsByIdExtendedResponse getConversationsByIdExtendedResponse = (GetConversationsByIdExtendedResponse) o;
         return Objects.equals(count, getConversationsByIdExtendedResponse.count) &&
                 Objects.equals(profiles, getConversationsByIdExtendedResponse.profiles) &&
+                Objects.equals(groups, getConversationsByIdExtendedResponse.groups) &&
                 Objects.equals(items, getConversationsByIdExtendedResponse.items);
     }
 
@@ -79,6 +93,7 @@ public class GetConversationsByIdExtendedResponse implements Validable {
         final StringBuilder sb = new StringBuilder("GetConversationsByIdExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

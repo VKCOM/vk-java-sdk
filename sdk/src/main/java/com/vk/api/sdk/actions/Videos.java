@@ -21,7 +21,6 @@ import com.vk.api.sdk.queries.video.VideoGetAlbumsQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetCommentsQuery;
 import com.vk.api.sdk.queries.video.VideoGetCommentsQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoGetQuery;
-import com.vk.api.sdk.queries.video.VideoGetQueryWithExtended;
 import com.vk.api.sdk.queries.video.VideoRemoveFromAlbumQuery;
 import com.vk.api.sdk.queries.video.VideoReorderAlbumsQuery;
 import com.vk.api.sdk.queries.video.VideoReorderVideosQuery;
@@ -154,16 +153,6 @@ public class Videos extends AbstractAction {
      */
     public VideoEditCommentQuery editComment(UserActor actor, int commentId) {
         return new VideoEditCommentQuery(getClient(), actor, commentId);
-    }
-
-    /**
-     * Returns detailed information about videos.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public VideoGetQueryWithExtended getExtended(UserActor actor) {
-        return new VideoGetQueryWithExtended(getClient(), actor);
     }
 
     /**

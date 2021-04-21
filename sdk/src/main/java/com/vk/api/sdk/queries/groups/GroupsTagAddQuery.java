@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
-import com.vk.api.sdk.objects.enums.GroupsTagColor;
+import com.vk.api.sdk.objects.groups.TagAddTagColor;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class GroupsTagAddQuery extends AbstractQueryBuilder<GroupsTagAddQuery, B
      * @param value value of "tag color" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsTagAddQuery tagColor(GroupsTagColor value) {
+    public GroupsTagAddQuery tagColor(TagAddTagColor value) {
         return unsafeParam("tag_color", value);
     }
 

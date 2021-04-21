@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetStatisticsIdsType;
+import com.vk.api.sdk.objects.ads.GetStatisticsPeriod;
 import com.vk.api.sdk.objects.ads.responses.GetStatisticsResponse;
-import com.vk.api.sdk.objects.enums.AdsIdsType;
-import com.vk.api.sdk.objects.enums.AdsPeriod;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +27,8 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param dateTo value of "date to" parameter.
      */
     public AdsGetStatisticsQuery(VkApiClient client, UserActor actor, int accountId,
-            AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
+            GetStatisticsIdsType idsType, String ids, GetStatisticsPeriod period, String dateFrom,
+            String dateTo) {
         super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, GetStatisticsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -54,7 +55,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery idsType(AdsIdsType value) {
+    protected AdsGetStatisticsQuery idsType(GetStatisticsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -74,7 +75,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery period(AdsPeriod value) {
+    protected AdsGetStatisticsQuery period(GetStatisticsPeriod value) {
         return unsafeParam("period", value);
     }
 

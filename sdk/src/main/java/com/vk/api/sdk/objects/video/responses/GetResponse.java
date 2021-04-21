@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +23,13 @@ public class GetResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<Video> items;
+    private List<VideoFull> items;
+
+    @SerializedName("profiles")
+    private List<UserMin> profiles;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -32,18 +40,36 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<Video> getItems() {
+    public List<VideoFull> getItems() {
         return items;
     }
 
-    public GetResponse setItems(List<Video> items) {
+    public GetResponse setItems(List<VideoFull> items) {
         this.items = items;
+        return this;
+    }
+
+    public List<UserMin> getProfiles() {
+        return profiles;
+    }
+
+    public GetResponse setProfiles(List<UserMin> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -52,6 +78,8 @@ public class GetResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetResponse getResponse = (GetResponse) o;
         return Objects.equals(count, getResponse.count) &&
+                Objects.equals(profiles, getResponse.profiles) &&
+                Objects.equals(groups, getResponse.groups) &&
                 Objects.equals(items, getResponse.items);
     }
 
@@ -64,6 +92,8 @@ public class GetResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

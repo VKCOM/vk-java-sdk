@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.OrdersAction;
+import com.vk.api.sdk.objects.orders.ChangeStateAction;
 import com.vk.api.sdk.queries.orders.OrdersCancelSubscriptionQuery;
 import com.vk.api.sdk.queries.orders.OrdersChangeStateQuery;
 import com.vk.api.sdk.queries.orders.OrdersGetAmountQuery;
@@ -48,7 +48,7 @@ public class Orders extends AbstractAction {
      * @return query
      */
     public OrdersChangeStateQuery changeState(ServiceActor actor, int orderId,
-            OrdersAction action) {
+            ChangeStateAction action) {
         return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
     }
 

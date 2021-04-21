@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.NewsfeedNameCase;
+import com.vk.api.sdk.objects.newsfeed.GetBannedNameCase;
 import com.vk.api.sdk.objects.newsfeed.responses.GetBannedExtendedResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -41,7 +41,7 @@ public class NewsfeedGetBannedQueryWithExtended extends AbstractQueryBuilder<New
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetBannedQueryWithExtended nameCase(NewsfeedNameCase value) {
+    public NewsfeedGetBannedQueryWithExtended nameCase(GetBannedNameCase value) {
         return unsafeParam("name_case", value);
     }
 

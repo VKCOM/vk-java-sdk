@@ -25,8 +25,8 @@ public class VideoComment implements Validable {
     @Required
     private String text;
 
-    @SerializedName("video_owner_od")
-    private Integer videoOwnerOd;
+    @SerializedName("video_owner_id")
+    private Integer videoOwnerId;
 
     public Integer getId() {
         return id;
@@ -64,18 +64,18 @@ public class VideoComment implements Validable {
         return this;
     }
 
-    public Integer getVideoOwnerOd() {
-        return videoOwnerOd;
+    public Integer getVideoOwnerId() {
+        return videoOwnerId;
     }
 
-    public VideoComment setVideoOwnerOd(Integer videoOwnerOd) {
-        this.videoOwnerOd = videoOwnerOd;
+    public VideoComment setVideoOwnerId(Integer videoOwnerId) {
+        this.videoOwnerId = videoOwnerId;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, videoOwnerOd, id, text, fromId);
+        return Objects.hash(date, id, text, fromId, videoOwnerId);
     }
 
     @Override
@@ -85,9 +85,9 @@ public class VideoComment implements Validable {
         VideoComment videoComment = (VideoComment) o;
         return Objects.equals(date, videoComment.date) &&
                 Objects.equals(fromId, videoComment.fromId) &&
-                Objects.equals(videoOwnerOd, videoComment.videoOwnerOd) &&
                 Objects.equals(id, videoComment.id) &&
-                Objects.equals(text, videoComment.text);
+                Objects.equals(text, videoComment.text) &&
+                Objects.equals(videoOwnerId, videoComment.videoOwnerId);
     }
 
     @Override
@@ -100,9 +100,9 @@ public class VideoComment implements Validable {
         final StringBuilder sb = new StringBuilder("VideoComment{");
         sb.append("date=").append(date);
         sb.append(", fromId=").append(fromId);
-        sb.append(", videoOwnerOd=").append(videoOwnerOd);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
+        sb.append(", videoOwnerId=").append(videoOwnerId);
         sb.append('}');
         return sb.toString();
     }

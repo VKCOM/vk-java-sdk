@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.objects.enums.OrdersAction;
+import com.vk.api.sdk.objects.orders.ChangeStateAction;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param action value of "action" parameter.
      */
     public OrdersChangeStateQuery(VkApiClient client, ServiceActor actor, int orderId,
-            OrdersAction action) {
+            ChangeStateAction action) {
         super(client, "orders.changeState", String.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -44,7 +44,7 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param value value of "action" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersChangeStateQuery action(OrdersAction value) {
+    protected OrdersChangeStateQuery action(ChangeStateAction value) {
         return unsafeParam("action", value);
     }
 

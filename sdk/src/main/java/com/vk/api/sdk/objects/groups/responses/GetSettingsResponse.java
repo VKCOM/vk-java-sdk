@@ -1,7 +1,7 @@
 package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
@@ -73,7 +73,7 @@ public class GetSettingsResponse implements Validable {
     private BoolInt links;
 
     @SerializedName("sections_list")
-    private List<JsonObject> sectionsList;
+    private List<List<JsonPrimitive>> sectionsList;
 
     @SerializedName("main_section")
     private GroupFullMainSection mainSection;
@@ -114,7 +114,7 @@ public class GetSettingsResponse implements Validable {
     private BoolInt obsceneFilter;
 
     /**
-     * Information whether the stopwords filter is enabled
+     * Information whether the stop words filter is enabled
      */
     @SerializedName("obscene_stopwords")
     private BoolInt obsceneStopwords;
@@ -169,7 +169,7 @@ public class GetSettingsResponse implements Validable {
     private Integer startDate;
 
     /**
-     * Finish date in Unixtime format
+     * Finish date in Unix-time format
      */
     @SerializedName("finish_date")
     private Integer finishDate;
@@ -312,11 +312,11 @@ public class GetSettingsResponse implements Validable {
         return links;
     }
 
-    public List<JsonObject> getSectionsList() {
+    public List<List<JsonPrimitive>> getSectionsList() {
         return sectionsList;
     }
 
-    public GetSettingsResponse setSectionsList(List<JsonObject> sectionsList) {
+    public GetSettingsResponse setSectionsList(List<List<JsonPrimitive>> sectionsList) {
         this.sectionsList = sectionsList;
         return this;
     }

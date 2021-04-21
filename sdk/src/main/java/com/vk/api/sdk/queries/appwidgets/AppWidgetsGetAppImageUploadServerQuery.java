@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.appwidgets.GetAppImageUploadServerImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetAppImageUploadServerResponse;
-import com.vk.api.sdk.objects.enums.AppWidgetsImageType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class AppWidgetsGetAppImageUploadServerQuery extends AbstractQueryBuilder
      * @param imageType value of "image type" parameter.
      */
     public AppWidgetsGetAppImageUploadServerQuery(VkApiClient client, ServiceActor actor,
-            AppWidgetsImageType imageType) {
+            GetAppImageUploadServerImageType imageType) {
         super(client, "appWidgets.getAppImageUploadServer", GetAppImageUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -33,7 +33,8 @@ public class AppWidgetsGetAppImageUploadServerQuery extends AbstractQueryBuilder
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsGetAppImageUploadServerQuery imageType(AppWidgetsImageType value) {
+    protected AppWidgetsGetAppImageUploadServerQuery imageType(
+            GetAppImageUploadServerImageType value) {
         return unsafeParam("image_type", value);
     }
 

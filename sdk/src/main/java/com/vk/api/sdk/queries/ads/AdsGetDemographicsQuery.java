@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetDemographicsIdsType;
+import com.vk.api.sdk.objects.ads.GetDemographicsPeriod;
 import com.vk.api.sdk.objects.ads.responses.GetDemographicsResponse;
-import com.vk.api.sdk.objects.enums.AdsIdsType;
-import com.vk.api.sdk.objects.enums.AdsPeriod;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +27,8 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param dateTo value of "date to" parameter.
      */
     public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, int accountId,
-            AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
+            GetDemographicsIdsType idsType, String ids, GetDemographicsPeriod period,
+            String dateFrom, String dateTo) {
         super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, GetDemographicsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -54,7 +55,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery idsType(AdsIdsType value) {
+    protected AdsGetDemographicsQuery idsType(GetDemographicsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -74,7 +75,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery period(AdsPeriod value) {
+    protected AdsGetDemographicsQuery period(GetDemographicsPeriod value) {
         return unsafeParam("period", value);
     }
 

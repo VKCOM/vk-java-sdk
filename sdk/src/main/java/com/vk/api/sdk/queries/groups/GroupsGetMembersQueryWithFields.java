@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.GroupsFilter;
-import com.vk.api.sdk.objects.enums.GroupsSort;
+import com.vk.api.sdk.objects.groups.GetMembersFilter;
+import com.vk.api.sdk.objects.groups.GetMembersSort;
 import com.vk.api.sdk.objects.groups.responses.GetMembersFieldsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -110,7 +110,7 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
      * @param value value of "sort" parameter. By default id_asc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetMembersQueryWithFields sort(GroupsSort value) {
+    public GroupsGetMembersQueryWithFields sort(GetMembersSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -135,12 +135,12 @@ public class GroupsGetMembersQueryWithFields extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+     * *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetMembersQueryWithFields filter(GroupsFilter value) {
+    public GroupsGetMembersQueryWithFields filter(GetMembersFilter value) {
         return unsafeParam("filter", value);
     }
 

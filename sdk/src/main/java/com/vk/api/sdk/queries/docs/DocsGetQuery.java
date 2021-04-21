@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.docs.GetType;
 import com.vk.api.sdk.objects.docs.responses.GetResponse;
-import com.vk.api.sdk.objects.enums.DocsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * @param value value of "type" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public DocsGetQuery type(DocsType value) {
+    public DocsGetQuery type(GetType value) {
         return unsafeParam("type", value);
     }
 

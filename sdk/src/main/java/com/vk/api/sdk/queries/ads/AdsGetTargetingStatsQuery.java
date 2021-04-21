@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetTargetingStatsAdFormat;
 import com.vk.api.sdk.objects.ads.responses.GetTargetingStatsResponse;
-import com.vk.api.sdk.objects.enums.AdsAdFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "ad format" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetTargetingStatsQuery adFormat(AdsAdFormat value) {
+    public AdsGetTargetingStatsQuery adFormat(GetTargetingStatsAdFormat value) {
         return unsafeParam("ad_format", value);
     }
 
@@ -106,6 +106,16 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      */
     public AdsGetTargetingStatsQuery adPlatformNoAdNetwork(String value) {
         return unsafeParam("ad_platform_no_ad_network", value);
+    }
+
+    /**
+     * Set publisher platforms
+     *
+     * @param value value of "publisher platforms" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetTargetingStatsQuery publisherPlatforms(String value) {
+        return unsafeParam("publisher_platforms", value);
     }
 
     /**

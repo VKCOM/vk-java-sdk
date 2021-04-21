@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.objects.messages.SetActivityType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class MessagesSetActivityQuery extends AbstractQueryBuilder<MessagesSetAc
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSetActivityQuery type(String value) {
+    public MessagesSetActivityQuery type(SetActivityType value) {
         return unsafeParam("type", value);
     }
 

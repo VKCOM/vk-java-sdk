@@ -12,6 +12,12 @@ import java.util.Objects;
  */
 public class Audio implements Validable {
     /**
+     * Access key for the audio
+     */
+    @SerializedName("access_key")
+    private String accessKey;
+
+    /**
      * Artist name
      */
     @SerializedName("artist")
@@ -24,6 +30,12 @@ public class Audio implements Validable {
     @SerializedName("id")
     @Required
     private Integer id;
+
+    /**
+     * Audio owner's ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
 
     /**
      * Title
@@ -69,6 +81,15 @@ public class Audio implements Validable {
     @SerializedName("performer")
     private String performer;
 
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public Audio setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
+    }
+
     public String getArtist() {
         return artist;
     }
@@ -84,6 +105,15 @@ public class Audio implements Validable {
 
     public Audio setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public Audio setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
@@ -152,7 +182,7 @@ public class Audio implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(duration, date, genreId, performer, artist, albumId, id, title, url);
+        return Objects.hash(duration, date, genreId, performer, artist, accessKey, albumId, id, ownerId, title, url);
     }
 
     @Override
@@ -164,6 +194,8 @@ public class Audio implements Validable {
                 Objects.equals(date, audio.date) &&
                 Objects.equals(performer, audio.performer) &&
                 Objects.equals(artist, audio.artist) &&
+                Objects.equals(ownerId, audio.ownerId) &&
+                Objects.equals(accessKey, audio.accessKey) &&
                 Objects.equals(albumId, audio.albumId) &&
                 Objects.equals(id, audio.id) &&
                 Objects.equals(title, audio.title) &&
@@ -183,6 +215,8 @@ public class Audio implements Validable {
         sb.append(", date=").append(date);
         sb.append(", performer='").append(performer).append("'");
         sb.append(", artist='").append(artist).append("'");
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", albumId=").append(albumId);
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");

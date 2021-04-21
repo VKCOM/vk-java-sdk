@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MessagesRev;
+import com.vk.api.sdk.objects.messages.GetHistoryRev;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryExtendedResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -95,7 +95,7 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQueryWithExtended rev(MessagesRev value) {
+    public MessagesGetHistoryQueryWithExtended rev(GetHistoryRev value) {
         return unsafeParam("rev", value);
     }
 

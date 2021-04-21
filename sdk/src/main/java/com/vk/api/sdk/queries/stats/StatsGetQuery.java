@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.StatsInterval;
+import com.vk.api.sdk.objects.stats.GetInterval;
 import com.vk.api.sdk.objects.stats.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -70,7 +70,7 @@ public class StatsGetQuery extends AbstractQueryBuilder<StatsGetQuery, List<GetR
      * @param value value of "interval" parameter. By default day.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StatsGetQuery interval(StatsInterval value) {
+    public StatsGetQuery interval(GetInterval value) {
         return unsafeParam("interval", value);
     }
 

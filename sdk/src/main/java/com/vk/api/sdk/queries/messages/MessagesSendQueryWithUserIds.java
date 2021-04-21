@@ -5,9 +5,9 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MessagesIntent;
 import com.vk.api.sdk.objects.messages.Forward;
 import com.vk.api.sdk.objects.messages.Keyboard;
+import com.vk.api.sdk.objects.messages.SendIntent;
 import com.vk.api.sdk.objects.messages.responses.SendUserIdsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -264,7 +264,7 @@ public class MessagesSendQueryWithUserIds extends AbstractQueryBuilder<MessagesS
      * @param value value of "intent" parameter. By default default.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSendQueryWithUserIds intent(MessagesIntent value) {
+    public MessagesSendQueryWithUserIds intent(SendIntent value) {
         return unsafeParam("intent", value);
     }
 

@@ -3,12 +3,15 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.CheckLinkLinkType;
+import com.vk.api.sdk.objects.ads.GetDemographicsIdsType;
+import com.vk.api.sdk.objects.ads.GetDemographicsPeriod;
+import com.vk.api.sdk.objects.ads.GetPostsReachIdsType;
+import com.vk.api.sdk.objects.ads.GetStatisticsIdsType;
+import com.vk.api.sdk.objects.ads.GetStatisticsPeriod;
+import com.vk.api.sdk.objects.ads.GetSuggestionsSection;
 import com.vk.api.sdk.objects.ads.UserSpecification;
 import com.vk.api.sdk.objects.ads.UserSpecificationCutted;
-import com.vk.api.sdk.objects.enums.AdsIdsType;
-import com.vk.api.sdk.objects.enums.AdsLinkType;
-import com.vk.api.sdk.objects.enums.AdsPeriod;
-import com.vk.api.sdk.objects.enums.AdsSection;
 import com.vk.api.sdk.queries.ads.AdsAddOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsCheckLinkQuery;
 import com.vk.api.sdk.queries.ads.AdsCreateAdsQuery;
@@ -30,6 +33,7 @@ import com.vk.api.sdk.queries.ads.AdsGetClientsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetDemographicsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetFloodStatsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetLookalikeRequestsQuery;
+import com.vk.api.sdk.queries.ads.AdsGetMusiciansByIdsQuery;
 import com.vk.api.sdk.queries.ads.AdsGetMusiciansQuery;
 import com.vk.api.sdk.queries.ads.AdsGetOfficeUsersQuery;
 import com.vk.api.sdk.queries.ads.AdsGetPostsReachQuery;
@@ -100,7 +104,7 @@ public class Ads extends AbstractAction {
      * @param linkUrl Object URL.
      * @return query
      */
-    public AdsCheckLinkQuery checkLink(UserActor actor, int accountId, AdsLinkType linkType,
+    public AdsCheckLinkQuery checkLink(UserActor actor, int accountId, CheckLinkLinkType linkType,
             String linkUrl) {
         return new AdsCheckLinkQuery(getClient(), actor, accountId, linkType, linkUrl);
     }
@@ -303,7 +307,8 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsGetDemographicsQuery getDemographics(UserActor actor, int accountId,
-            AdsIdsType idsType, String ids, AdsPeriod period, String dateFrom, String dateTo) {
+            GetDemographicsIdsType idsType, String ids, GetDemographicsPeriod period,
+            String dateFrom, String dateTo) {
         return new AdsGetDemographicsQuery(getClient(), actor, accountId, idsType, ids, period, dateFrom, dateTo);
     }
 
@@ -337,6 +342,24 @@ public class Ads extends AbstractAction {
     }
 
     /**
+     * @param actor vk actor
+     * @param ids
+     * @return query
+     */
+    public AdsGetMusiciansByIdsQuery getMusiciansByIds(UserActor actor, Integer... ids) {
+        return new AdsGetMusiciansByIdsQuery(getClient(), actor, ids);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param ids
+     * @return query
+     */
+    public AdsGetMusiciansByIdsQuery getMusiciansByIds(UserActor actor, List<Integer> ids) {
+        return new AdsGetMusiciansByIdsQuery(getClient(), actor, ids);
+    }
+
+    /**
      * Returns a list of managers and supervisors of advertising account.
      *
      * @param actor vk actor
@@ -356,8 +379,8 @@ public class Ads extends AbstractAction {
      * @param ids IDs requested ads or campaigns, separated with a comma, depending on the value set in 'ids_type'. Maximum 100 objects.
      * @return query
      */
-    public AdsGetPostsReachQuery getPostsReach(UserActor actor, int accountId, AdsIdsType idsType,
-            String ids) {
+    public AdsGetPostsReachQuery getPostsReach(UserActor actor, int accountId,
+            GetPostsReachIdsType idsType, String ids) {
         return new AdsGetPostsReachQuery(getClient(), actor, accountId, idsType, ids);
     }
 
@@ -385,8 +408,9 @@ public class Ads extends AbstractAction {
      * @param dateTo Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
      * @return query
      */
-    public AdsGetStatisticsQuery getStatistics(UserActor actor, int accountId, AdsIdsType idsType,
-            String ids, AdsPeriod period, String dateFrom, String dateTo) {
+    public AdsGetStatisticsQuery getStatistics(UserActor actor, int accountId,
+            GetStatisticsIdsType idsType, String ids, GetStatisticsPeriod period, String dateFrom,
+            String dateTo) {
         return new AdsGetStatisticsQuery(getClient(), actor, accountId, idsType, ids, period, dateFrom, dateTo);
     }
 
@@ -397,7 +421,7 @@ public class Ads extends AbstractAction {
      * @param section Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
      * @return query
      */
-    public AdsGetSuggestionsQuery getSuggestions(UserActor actor, AdsSection section) {
+    public AdsGetSuggestionsQuery getSuggestions(UserActor actor, GetSuggestionsSection section) {
         return new AdsGetSuggestionsQuery(getClient(), actor, section);
     }
 
@@ -409,7 +433,7 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsGetSuggestionsQueryWithRegions getSuggestionsRegions(UserActor actor,
-            AdsSection section) {
+            GetSuggestionsSection section) {
         return new AdsGetSuggestionsQueryWithRegions(getClient(), actor, section);
     }
 
@@ -421,7 +445,7 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsGetSuggestionsQueryWithSchools getSuggestionsSchools(UserActor actor,
-            AdsSection section) {
+            GetSuggestionsSection section) {
         return new AdsGetSuggestionsQueryWithSchools(getClient(), actor, section);
     }
 
@@ -434,7 +458,7 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsGetSuggestionsQueryWithCities getSuggestionsWithCities(UserActor actor,
-            AdsSection section, String cities) {
+            GetSuggestionsSection section, String cities) {
         return new AdsGetSuggestionsQueryWithCities(getClient(), actor, section, cities);
     }
 

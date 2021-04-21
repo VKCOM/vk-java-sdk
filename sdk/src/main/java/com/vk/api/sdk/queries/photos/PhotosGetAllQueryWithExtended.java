@@ -64,7 +64,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * '1' – to return image sizes in [vk.com/dev/photo_sizes|special format].
+     * '1' - to return image sizes in [vk.com/dev/photo_sizes|special format].
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -74,7 +74,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * '1' – to return photos only from standard albums, '0' – to return all photos including those in service albums, e.g., 'My wall photos' (default)
+     * '1' - to return photos only from standard albums, '0' - to return all photos including those in service albums, e.g., 'My wall photos' (default)
      *
      * @param value value of "no service albums" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -84,7 +84,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * '1' – to show information about photos being hidden from the block above the wall.
+     * '1' - to show information about photos being hidden from the block above the wall.
      *
      * @param value value of "need hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -94,7 +94,7 @@ public class PhotosGetAllQueryWithExtended extends AbstractQueryBuilder<PhotosGe
     }
 
     /**
-     * '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
+     * '1' - not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
      *
      * @param value value of "skip hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

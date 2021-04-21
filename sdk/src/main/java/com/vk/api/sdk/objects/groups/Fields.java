@@ -64,11 +64,17 @@ public enum Fields implements EnumParam {
     @SerializedName("can_upload_video")
     CAN_UPLOAD_VIDEO("can_upload_video"),
 
+    @SerializedName("can_upload_clip")
+    CAN_UPLOAD_CLIP("can_upload_clip"),
+
     @SerializedName("can_see_all_posts")
     CAN_SEE_ALL_POSTS("can_see_all_posts"),
 
     @SerializedName("can_create_topic")
     CAN_CREATE_TOPIC("can_create_topic"),
+
+    @SerializedName("crop_photo")
+    CROP_PHOTO("crop_photo"),
 
     @SerializedName("activity")
     ACTIVITY("activity"),
@@ -160,6 +166,9 @@ public enum Fields implements EnumParam {
     @SerializedName("is_adult")
     IS_ADULT("is_adult"),
 
+    @SerializedName("is_hidden_from_feed")
+    IS_HIDDEN_FROM_FEED("is_hidden_from_feed"),
+
     @SerializedName("can_subscribe_posts")
     CAN_SUBSCRIBE_POSTS("can_subscribe_posts"),
 
@@ -182,7 +191,10 @@ public enum Fields implements EnumParam {
     CLIPS_COUNT("clips_count"),
 
     @SerializedName("is_business")
-    IS_BUSINESS("is_business");
+    IS_BUSINESS("is_business"),
+
+    @SerializedName("textlives_count")
+    TEXTLIVES_COUNT("textlives_count");
 
     private final String value;
 

@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.UsersType;
 import com.vk.api.sdk.objects.users.Fields;
+import com.vk.api.sdk.objects.users.ReportType;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQuery;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQueryWithFields;
 import com.vk.api.sdk.queries.users.UsersGetQuery;
@@ -147,10 +147,10 @@ public class Users extends AbstractAction {
      *
      * @param actor vk actor
      * @param userId ID of the user about whom a complaint is being made.
-     * @param type Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisement' – disruptive advertisements
+     * @param type Type of complaint: 'porn' - pornography, 'spam' - spamming, 'insult' - abusive behavior, 'advertisement' - disruptive advertisements
      * @return query
      */
-    public UsersReportQuery report(UserActor actor, int userId, UsersType type) {
+    public UsersReportQuery report(UserActor actor, int userId, ReportType type) {
         return new UsersReportQuery(getClient(), actor, userId, type);
     }
 

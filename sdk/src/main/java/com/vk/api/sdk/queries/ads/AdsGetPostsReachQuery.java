@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetPostsReachIdsType;
 import com.vk.api.sdk.objects.ads.responses.GetPostsReachResponse;
-import com.vk.api.sdk.objects.enums.AdsIdsType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReach
      * @param ids value of "ids" parameter.
      */
     public AdsGetPostsReachQuery(VkApiClient client, UserActor actor, int accountId,
-            AdsIdsType idsType, String ids) {
+            GetPostsReachIdsType idsType, String ids) {
         super(client, "ads.getPostsReach", Utils.buildParametrizedType(List.class, GetPostsReachResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -47,7 +47,7 @@ public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReach
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetPostsReachQuery idsType(AdsIdsType value) {
+    protected AdsGetPostsReachQuery idsType(GetPostsReachIdsType value) {
         return unsafeParam("ids_type", value);
     }
 

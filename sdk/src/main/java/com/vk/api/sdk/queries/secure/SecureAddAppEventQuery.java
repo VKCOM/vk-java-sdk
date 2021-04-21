@@ -39,7 +39,7 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
     }
 
     /**
-     * There are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
+     * There are 2 default activities: , * 1 - level. Works similar to ,, * 2 - points, saves points amount, Any other value is for saving completed missions
      *
      * @param value value of "activity id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -49,7 +49,7 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
     }
 
     /**
-     * Depends on activity_id: * 1 – number, current level number,, * 2 – number, current user's points amount, , Any other value is ignored
+     * Depends on activity_id: * 1 - number, current level number,, * 2 - number, current user's points amount, , Any other value is ignored
      *
      * @param value value of "value" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

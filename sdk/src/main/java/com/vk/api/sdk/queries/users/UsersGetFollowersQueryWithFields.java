@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.UsersNameCase;
 import com.vk.api.sdk.objects.users.Fields;
+import com.vk.api.sdk.objects.users.GetFollowersNameCase;
 import com.vk.api.sdk.objects.users.responses.GetFollowersFieldsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -103,7 +103,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQueryWithFields nameCase(UsersNameCase value) {
+    public UsersGetFollowersQueryWithFields nameCase(GetFollowersNameCase value) {
         return unsafeParam("name_case", value);
     }
 

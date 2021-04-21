@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.appwidgets.GetGroupImagesImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetGroupImagesResponse;
-import com.vk.api.sdk.objects.enums.AppWidgetsImageType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class AppWidgetsGetGroupImagesQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppWidgetsGetGroupImagesQuery imageType(AppWidgetsImageType value) {
+    public AppWidgetsGetGroupImagesQuery imageType(GetGroupImagesImageType value) {
         return unsafeParam("image_type", value);
     }
 

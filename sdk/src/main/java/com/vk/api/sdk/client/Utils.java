@@ -26,4 +26,10 @@ public class Utils {
             }
         };
     }
+
+    public static String coverAccessToken(String token) {
+        return String.format("%s...%s",
+                token.substring(0, 3),
+                token.substring(token.length() - 3));
+    }
 }

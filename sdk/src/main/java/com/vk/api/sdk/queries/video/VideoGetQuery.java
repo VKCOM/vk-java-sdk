@@ -93,6 +93,27 @@ public class VideoGetQuery extends AbstractQueryBuilder<VideoGetQuery, GetRespon
         return unsafeParam("videos", value);
     }
 
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetQuery fields(String... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoGetQuery fields(List<String> value) {
+        return unsafeParam("fields", value);
+    }
+
     @Override
     protected VideoGetQuery getThis() {
         return this;

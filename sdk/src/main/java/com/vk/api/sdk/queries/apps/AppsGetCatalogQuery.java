@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.apps.GetCatalogFilter;
+import com.vk.api.sdk.objects.apps.GetCatalogSort;
 import com.vk.api.sdk.objects.apps.responses.GetCatalogResponse;
-import com.vk.api.sdk.objects.enums.AppsFilter;
-import com.vk.api.sdk.objects.enums.AppsSort;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +48,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery sort(AppsSort value) {
+    public AppsGetCatalogQuery sort(GetCatalogSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -138,7 +138,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetCatalogQuery filter(AppsFilter value) {
+    public AppsGetCatalogQuery filter(GetCatalogFilter value) {
         return unsafeParam("filter", value);
     }
 

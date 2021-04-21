@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MessagesMediaType;
+import com.vk.api.sdk.objects.messages.GetHistoryAttachmentsMediaType;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryAttachmentsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -57,7 +57,7 @@ public class MessagesGetHistoryAttachmentsQuery extends AbstractQueryBuilder<Mes
      * @param value value of "media type" parameter. By default photo.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryAttachmentsQuery mediaType(MessagesMediaType value) {
+    public MessagesGetHistoryAttachmentsQuery mediaType(GetHistoryAttachmentsMediaType value) {
         return unsafeParam("media_type", value);
     }
 

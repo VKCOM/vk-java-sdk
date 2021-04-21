@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.MarketReason;
+import com.vk.api.sdk.objects.market.ReportReason;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
      * @param value value of "reason" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketReportQuery reason(MarketReason value) {
+    public MarketReportQuery reason(ReportReason value) {
         return unsafeParam("reason", value);
     }
 

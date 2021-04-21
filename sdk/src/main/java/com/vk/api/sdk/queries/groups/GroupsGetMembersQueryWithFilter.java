@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.GroupsFilter;
-import com.vk.api.sdk.objects.enums.GroupsSort;
+import com.vk.api.sdk.objects.groups.GetMembersFilter;
+import com.vk.api.sdk.objects.groups.GetMembersSort;
 import com.vk.api.sdk.objects.groups.responses.GetMembersFilterResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param actor actor with access token
      */
     public GroupsGetMembersQueryWithFilter(VkApiClient client, UserActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         accessToken(actor.getAccessToken());
         filter(filter);
@@ -36,7 +36,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param actor actor with access token
      */
     public GroupsGetMembersQueryWithFilter(VkApiClient client, GroupActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         accessToken(actor.getAccessToken());
         filter(filter);
@@ -49,7 +49,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param actor actor with access token
      */
     public GroupsGetMembersQueryWithFilter(VkApiClient client, ServiceActor actor,
-            GroupsFilter filter) {
+            GetMembersFilter filter) {
         super(client, "groups.getMembers", GetMembersFilterResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -72,7 +72,7 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
      * @param value value of "sort" parameter. By default id_asc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetMembersQueryWithFilter sort(GroupsSort value) {
+    public GroupsGetMembersQueryWithFilter sort(GetMembersSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -97,12 +97,12 @@ public class GroupsGetMembersQueryWithFilter extends AbstractQueryBuilder<Groups
     }
 
     /**
-     * *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
+     * *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetMembersQueryWithFilter filter(GroupsFilter value) {
+    protected GroupsGetMembersQueryWithFilter filter(GetMembersFilter value) {
         return unsafeParam("filter", value);
     }
 

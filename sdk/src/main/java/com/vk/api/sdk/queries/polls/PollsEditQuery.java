@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.PollsBackgroundId;
+import com.vk.api.sdk.objects.polls.EditBackgroundId;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,7 +66,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
     }
 
     /**
-     * Object containing answers that need to be edited,, key – answer id, value – new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
+     * Object containing answers that need to be edited,, key - answer id, value - new answer text. Example: {"382967099":"option1", "382967103":"option2"}"
      *
      * @param value value of "edit answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -111,7 +111,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "background id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsEditQuery backgroundId(PollsBackgroundId value) {
+    public PollsEditQuery backgroundId(EditBackgroundId value) {
         return unsafeParam("background_id", value);
     }
 

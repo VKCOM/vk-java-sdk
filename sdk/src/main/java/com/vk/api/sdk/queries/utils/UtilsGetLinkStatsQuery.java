@@ -5,8 +5,8 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.UtilsInterval;
-import com.vk.api.sdk.objects.enums.UtilsSource;
+import com.vk.api.sdk.objects.utils.GetLinkStatsInterval;
+import com.vk.api.sdk.objects.utils.GetLinkStatsSource;
 import com.vk.api.sdk.objects.utils.responses.GetLinkStatsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -71,7 +71,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param value value of "source" parameter. By default vk_cc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UtilsGetLinkStatsQuery source(UtilsSource value) {
+    public UtilsGetLinkStatsQuery source(GetLinkStatsSource value) {
         return unsafeParam("source", value);
     }
 
@@ -91,7 +91,7 @@ public class UtilsGetLinkStatsQuery extends AbstractQueryBuilder<UtilsGetLinkSta
      * @param value value of "interval" parameter. By default day.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UtilsGetLinkStatsQuery interval(UtilsInterval value) {
+    public UtilsGetLinkStatsQuery interval(GetLinkStatsInterval value) {
         return unsafeParam("interval", value);
     }
 

@@ -33,7 +33,7 @@ public class Secure extends AbstractAction {
      *
      * @param actor vk actor
      * @param userId ID of a user to save the data
-     * @param activityId there are 2 default activities: , * 1 – level. Works similar to ,, * 2 – points, saves points amount, Any other value is for saving completed missions
+     * @param activityId there are 2 default activities: , * 1 - level. Works similar to ,, * 2 - points, saves points amount, Any other value is for saving completed missions
      * @return query
      */
     public SecureAddAppEventQuery addAppEvent(ServiceActor actor, int userId, int activityId) {

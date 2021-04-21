@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetSuggestionsLang;
+import com.vk.api.sdk.objects.ads.GetSuggestionsSection;
 import com.vk.api.sdk.objects.ads.responses.GetSuggestionsCitiesResponse;
-import com.vk.api.sdk.objects.enums.AdsLang;
-import com.vk.api.sdk.objects.enums.AdsSection;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,8 +21,8 @@ public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGe
      * @param actor actor with access token
      * @param section value of "section" parameter.
      */
-    public AdsGetSuggestionsQueryWithCities(VkApiClient client, UserActor actor, AdsSection section,
-            String cities) {
+    public AdsGetSuggestionsQueryWithCities(VkApiClient client, UserActor actor,
+            GetSuggestionsSection section, String cities) {
         super(client, "ads.getSuggestions", Utils.buildParametrizedType(List.class, GetSuggestionsCitiesResponse.class));
         accessToken(actor.getAccessToken());
         section(section);
@@ -35,7 +35,7 @@ public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGe
      * @param value value of "section" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetSuggestionsQueryWithCities section(AdsSection value) {
+    protected AdsGetSuggestionsQueryWithCities section(GetSuggestionsSection value) {
         return unsafeParam("section", value);
     }
 
@@ -85,7 +85,7 @@ public class AdsGetSuggestionsQueryWithCities extends AbstractQueryBuilder<AdsGe
      * @param value value of "lang" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetSuggestionsQueryWithCities lang(AdsLang value) {
+    public AdsGetSuggestionsQueryWithCities lang(GetSuggestionsLang value) {
         return unsafeParam("lang", value);
     }
 

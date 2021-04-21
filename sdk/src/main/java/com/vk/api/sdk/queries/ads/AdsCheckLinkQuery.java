@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.CheckLinkLinkType;
 import com.vk.api.sdk.objects.ads.responses.CheckLinkResponse;
-import com.vk.api.sdk.objects.enums.AdsLinkType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
      * @param linkUrl value of "link url" parameter.
      */
     public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId,
-            AdsLinkType linkType, String linkUrl) {
+            CheckLinkLinkType linkType, String linkUrl) {
         super(client, "ads.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -46,7 +46,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
      * @param value value of "link type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery linkType(AdsLinkType value) {
+    protected AdsCheckLinkQuery linkType(CheckLinkLinkType value) {
         return unsafeParam("link_type", value);
     }
 

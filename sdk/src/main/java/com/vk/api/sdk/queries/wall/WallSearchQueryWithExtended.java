@@ -69,7 +69,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
-     * '1' – returns only page owner's posts.
+     * '1' - returns only page owner's posts.
      *
      * @param value value of "owners only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.stories.Story;
+import com.vk.api.sdk.objects.users.User;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +21,12 @@ public class SaveResponse implements Validable {
     @SerializedName("items")
     @Required
     private List<Story> items;
+
+    @SerializedName("profiles")
+    private List<User> profiles;
+
+    @SerializedName("groups")
+    private List<Group> groups;
 
     public Integer getCount() {
         return count;
@@ -38,9 +46,27 @@ public class SaveResponse implements Validable {
         return this;
     }
 
+    public List<User> getProfiles() {
+        return profiles;
+    }
+
+    public SaveResponse setProfiles(List<User> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public SaveResponse setGroups(List<Group> groups) {
+        this.groups = groups;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -49,6 +75,8 @@ public class SaveResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         SaveResponse saveResponse = (SaveResponse) o;
         return Objects.equals(count, saveResponse.count) &&
+                Objects.equals(profiles, saveResponse.profiles) &&
+                Objects.equals(groups, saveResponse.groups) &&
                 Objects.equals(items, saveResponse.items);
     }
 
@@ -61,6 +89,8 @@ public class SaveResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SaveResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

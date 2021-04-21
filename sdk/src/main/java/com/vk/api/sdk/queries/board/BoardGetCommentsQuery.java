@@ -4,8 +4,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.board.GetCommentsSort;
 import com.vk.api.sdk.objects.board.responses.GetCommentsResponse;
-import com.vk.api.sdk.objects.enums.BoardSort;
 import java.util.Arrays;
 import java.util.List;
 
@@ -120,7 +120,7 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetCommentsQuery sort(BoardSort value) {
+    public BoardGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

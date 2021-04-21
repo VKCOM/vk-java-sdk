@@ -30,6 +30,18 @@ public class PushConversationsItem implements Validable {
     @Required
     private BoolInt sound;
 
+    /**
+     * Information whether the mentions are disabled
+     */
+    @SerializedName("disabled_mentions")
+    private BoolInt disabledMentions;
+
+    /**
+     * Information whether the mass mentions (like '@all', '@online') are disabled. Can be affected by 'disabled_mentions'
+     */
+    @SerializedName("disabled_mass_mentions")
+    private BoolInt disabledMassMentions;
+
     public Integer getDisabledUntil() {
         return disabledUntil;
     }
@@ -56,9 +68,25 @@ public class PushConversationsItem implements Validable {
         return sound;
     }
 
+    public boolean isDisabledMentions() {
+        return disabledMentions == BoolInt.YES;
+    }
+
+    public BoolInt getDisabledMentions() {
+        return disabledMentions;
+    }
+
+    public boolean isDisabledMassMentions() {
+        return disabledMassMentions == BoolInt.YES;
+    }
+
+    public BoolInt getDisabledMassMentions() {
+        return disabledMassMentions;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(peerId, sound, disabledUntil);
+        return Objects.hash(peerId, sound, disabledMassMentions, disabledUntil, disabledMentions);
     }
 
     @Override
@@ -67,7 +95,9 @@ public class PushConversationsItem implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         PushConversationsItem pushConversationsItem = (PushConversationsItem) o;
         return Objects.equals(disabledUntil, pushConversationsItem.disabledUntil) &&
+                Objects.equals(disabledMassMentions, pushConversationsItem.disabledMassMentions) &&
                 Objects.equals(sound, pushConversationsItem.sound) &&
+                Objects.equals(disabledMentions, pushConversationsItem.disabledMentions) &&
                 Objects.equals(peerId, pushConversationsItem.peerId);
     }
 
@@ -80,7 +110,9 @@ public class PushConversationsItem implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PushConversationsItem{");
         sb.append("disabledUntil=").append(disabledUntil);
+        sb.append(", disabledMassMentions=").append(disabledMassMentions);
         sb.append(", sound=").append(sound);
+        sb.append(", disabledMentions=").append(disabledMentions);
         sb.append(", peerId=").append(peerId);
         sb.append('}');
         return sb.toString();

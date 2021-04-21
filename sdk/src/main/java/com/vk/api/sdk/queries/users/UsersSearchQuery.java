@@ -3,10 +3,10 @@ package com.vk.api.sdk.queries.users;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.UsersSex;
-import com.vk.api.sdk.objects.enums.UsersSort;
-import com.vk.api.sdk.objects.enums.UsersStatus;
 import com.vk.api.sdk.objects.users.Fields;
+import com.vk.api.sdk.objects.users.SearchSex;
+import com.vk.api.sdk.objects.users.SearchSort;
+import com.vk.api.sdk.objects.users.SearchStatus;
 import com.vk.api.sdk.objects.users.responses.SearchResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +42,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery sort(UsersSort value) {
+    public UsersSearchQuery sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -152,7 +152,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery sex(UsersSex value) {
+    public UsersSearchQuery sex(SearchSex value) {
         return unsafeParam("sex", value);
     }
 
@@ -162,7 +162,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "status" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery status(UsersStatus value) {
+    public UsersSearchQuery status(SearchStatus value) {
         return unsafeParam("status", value);
     }
 

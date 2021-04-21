@@ -4,6 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.notifications.SendMessageSendingMode;
 import com.vk.api.sdk.objects.notifications.responses.SendMessageResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -84,6 +85,16 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      */
     public NotificationsSendMessageQuery randomId(Integer value) {
         return unsafeParam("random_id", value);
+    }
+
+    /**
+     * Type of sending (delivering) notifications: 'immediately' — push and bell notifications will be delivered as soon as possible, 'delayed' — push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' — only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
+     *
+     * @param value value of "sending mode" parameter. By default immediately.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public NotificationsSendMessageQuery sendingMode(SendMessageSendingMode value) {
+        return unsafeParam("sending_mode", value);
     }
 
     /**

@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.PollsBackgroundId;
+import com.vk.api.sdk.objects.polls.CreateBackgroundId;
 import com.vk.api.sdk.objects.polls.responses.CreateResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +34,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
     }
 
     /**
-     * '1' – anonymous poll, participants list is hidden,, '0' – public poll, participants list is available,, Default value is '0'.
+     * '1' - anonymous poll, participants list is hidden,, '0' - public poll, participants list is available,, Default value is '0'.
      *
      * @param value value of "is anonymous" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -74,6 +74,16 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
     }
 
     /**
+     * Set app id
+     *
+     * @param value value of "app id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public PollsCreateQuery appId(Integer value) {
+        return unsafeParam("app_id", value);
+    }
+
+    /**
      * Available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
      *
      * @param value value of "add answers" parameter.
@@ -99,7 +109,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "background id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsCreateQuery backgroundId(PollsBackgroundId value) {
+    public PollsCreateQuery backgroundId(CreateBackgroundId value) {
         return unsafeParam("background_id", value);
     }
 

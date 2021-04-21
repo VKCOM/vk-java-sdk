@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.groups.GroupCategoryFull;
 import java.util.List;
 import java.util.Objects;
@@ -17,18 +18,17 @@ public class GetCatalogInfoExtendedResponse implements Validable {
      */
     @SerializedName("enabled")
     @Required
-    private Integer enabled;
+    private BoolInt enabled;
 
     @SerializedName("categories")
     private List<GroupCategoryFull> categories;
 
-    public Integer getEnabled() {
-        return enabled;
+    public boolean isEnabled() {
+        return enabled == BoolInt.YES;
     }
 
-    public GetCatalogInfoExtendedResponse setEnabled(Integer enabled) {
-        this.enabled = enabled;
-        return this;
+    public BoolInt getEnabled() {
+        return enabled;
     }
 
     public List<GroupCategoryFull> getCategories() {

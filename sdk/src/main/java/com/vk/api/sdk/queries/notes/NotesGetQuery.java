@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.notes;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.NotesSort;
+import com.vk.api.sdk.objects.notes.GetSort;
 import com.vk.api.sdk.objects.notes.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -59,7 +59,7 @@ public class NotesGetQuery extends AbstractQueryBuilder<NotesGetQuery, GetRespon
      * @param value value of "sort" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotesGetQuery sort(NotesSort value) {
+    public NotesGetQuery sort(GetSort value) {
         return unsafeParam("sort", value);
     }
 

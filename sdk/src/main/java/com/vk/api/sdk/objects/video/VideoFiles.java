@@ -47,6 +47,18 @@ public class VideoFiles implements Validable {
     private URI mp41080;
 
     /**
+     * URL of the mpeg4 file with 2K quality
+     */
+    @SerializedName("mp4_1440")
+    private URI mp41440;
+
+    /**
+     * URL of the mpeg4 file with 4K quality
+     */
+    @SerializedName("mp4_2160")
+    private URI mp42160;
+
+    /**
      * URL of the flv file with 320p quality
      */
     @SerializedName("flv_320")
@@ -106,6 +118,24 @@ public class VideoFiles implements Validable {
         return this;
     }
 
+    public URI getMp41440() {
+        return mp41440;
+    }
+
+    public VideoFiles setMp41440(URI mp41440) {
+        this.mp41440 = mp41440;
+        return this;
+    }
+
+    public URI getMp42160() {
+        return mp42160;
+    }
+
+    public VideoFiles setMp42160(URI mp42160) {
+        this.mp42160 = mp42160;
+        return this;
+    }
+
     public URI getFlv320() {
         return flv320;
     }
@@ -117,7 +147,7 @@ public class VideoFiles implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mp41080, external, mp4720, flv320, mp4480, mp4360, mp4240);
+        return Objects.hash(mp42160, mp41080, external, mp4720, flv320, mp4480, mp41440, mp4360, mp4240);
     }
 
     @Override
@@ -131,7 +161,9 @@ public class VideoFiles implements Validable {
                 Objects.equals(mp41080, videoFiles.mp41080) &&
                 Objects.equals(flv320, videoFiles.flv320) &&
                 Objects.equals(mp4720, videoFiles.mp4720) &&
-                Objects.equals(mp4240, videoFiles.mp4240);
+                Objects.equals(mp41440, videoFiles.mp41440) &&
+                Objects.equals(mp4240, videoFiles.mp4240) &&
+                Objects.equals(mp42160, videoFiles.mp42160);
     }
 
     @Override
@@ -148,7 +180,9 @@ public class VideoFiles implements Validable {
         sb.append(", mp41080=").append(mp41080);
         sb.append(", flv320=").append(flv320);
         sb.append(", mp4720=").append(mp4720);
+        sb.append(", mp41440=").append(mp41440);
         sb.append(", mp4240=").append(mp4240);
+        sb.append(", mp42160=").append(mp42160);
         sb.append('}');
         return sb.toString();
     }

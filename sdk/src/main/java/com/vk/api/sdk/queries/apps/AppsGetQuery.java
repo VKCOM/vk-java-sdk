@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.apps.GetNameCase;
+import com.vk.api.sdk.objects.apps.GetPlatform;
 import com.vk.api.sdk.objects.apps.responses.GetResponse;
-import com.vk.api.sdk.objects.enums.AppsNameCase;
-import com.vk.api.sdk.objects.enums.AppsPlatform;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -54,7 +54,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "platform" parameter. By default web.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery platform(AppsPlatform value) {
+    public AppsGetQuery platform(GetPlatform value) {
         return unsafeParam("platform", value);
     }
 
@@ -84,7 +84,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery nameCase(AppsNameCase value) {
+    public AppsGetQuery nameCase(GetNameCase value) {
         return unsafeParam("name_case", value);
     }
 

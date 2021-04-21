@@ -45,6 +45,9 @@ public class Call implements Validable {
     @SerializedName("video")
     private Boolean video;
 
+    @SerializedName("participants")
+    private Participants participants;
+
     public Integer getDuration() {
         return duration;
     }
@@ -99,9 +102,18 @@ public class Call implements Validable {
         return this;
     }
 
+    public Participants getParticipants() {
+        return participants;
+    }
+
+    public Call setParticipants(Participants participants) {
+        this.participants = participants;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(duration, receiverId, initiatorId, state, time, video);
+        return Objects.hash(duration, receiverId, initiatorId, state, time, video, participants);
     }
 
     @Override
@@ -114,7 +126,8 @@ public class Call implements Validable {
                 Objects.equals(receiverId, call.receiverId) &&
                 Objects.equals(state, call.state) &&
                 Objects.equals(time, call.time) &&
-                Objects.equals(video, call.video);
+                Objects.equals(video, call.video) &&
+                Objects.equals(participants, call.participants);
     }
 
     @Override
@@ -131,6 +144,7 @@ public class Call implements Validable {
         sb.append(", state=").append(state);
         sb.append(", time=").append(time);
         sb.append(", video=").append(video);
+        sb.append(", participants=").append(participants);
         sb.append('}');
         return sb.toString();
     }

@@ -24,6 +24,13 @@ public class Currency implements Validable {
     @Required
     private String name;
 
+    /**
+     * Currency title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
+
     public Integer getId() {
         return id;
     }
@@ -42,9 +49,18 @@ public class Currency implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Currency setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(name, id, title);
     }
 
     @Override
@@ -53,7 +69,8 @@ public class Currency implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Currency currency = (Currency) o;
         return Objects.equals(name, currency.name) &&
-                Objects.equals(id, currency.id);
+                Objects.equals(id, currency.id) &&
+                Objects.equals(title, currency.title);
     }
 
     @Override
@@ -66,6 +83,7 @@ public class Currency implements Validable {
         final StringBuilder sb = new StringBuilder("Currency{");
         sb.append("name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", title='").append(title).append("'");
         sb.append('}');
         return sb.toString();
     }

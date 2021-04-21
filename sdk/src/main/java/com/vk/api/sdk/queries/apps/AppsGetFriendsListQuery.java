@@ -3,8 +3,8 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.apps.GetFriendsListType;
 import com.vk.api.sdk.objects.apps.responses.GetFriendsListResponse;
-import com.vk.api.sdk.objects.enums.AppsType;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -60,7 +60,7 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * @param value value of "type" parameter. By default invite.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetFriendsListQuery type(AppsType value) {
+    public AppsGetFriendsListQuery type(GetFriendsListType value) {
         return unsafeParam("type", value);
     }
 

@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.enums.WallFilter;
+import com.vk.api.sdk.objects.wall.GetFilter;
 import com.vk.api.sdk.objects.wall.responses.GetExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -80,12 +80,12 @@ public class WallGetQueryWithExtended extends AbstractQueryBuilder<WallGetQueryW
     }
 
     /**
-     * Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
+     * Set filter
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetQueryWithExtended filter(WallFilter value) {
+    public WallGetQueryWithExtended filter(GetFilter value) {
         return unsafeParam("filter", value);
     }
 

@@ -3,9 +3,9 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.MarketRev;
-import com.vk.api.sdk.objects.enums.MarketSort;
-import com.vk.api.sdk.objects.enums.MarketStatus;
+import com.vk.api.sdk.objects.market.SearchRev;
+import com.vk.api.sdk.objects.market.SearchSort;
+import com.vk.api.sdk.objects.market.SearchStatus;
 import com.vk.api.sdk.objects.market.responses.SearchResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +40,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
     /**
      * Set album id
      *
-     * @param value value of "album id" parameter. Minimum is 0. By default 0.
+     * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public MarketSearchQuery albumId(Integer value) {
@@ -83,7 +83,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketSearchQuery sort(MarketSort value) {
+    public MarketSearchQuery sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
 
@@ -93,7 +93,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "rev" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketSearchQuery rev(MarketRev value) {
+    public MarketSearchQuery rev(SearchRev value) {
         return unsafeParam("rev", value);
     }
 
@@ -118,7 +118,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
     }
 
     /**
-     * '1' – to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
+     * '1' - to return additional fields: 'likes, can_comment, car_repost, photos'. By default: '0'.
      *
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
@@ -133,7 +133,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "status" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketSearchQuery status(MarketStatus value) {
+    public MarketSearchQuery status(SearchStatus value) {
         return unsafeParam("status", value);
     }
 

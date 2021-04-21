@@ -97,6 +97,9 @@ public class AddAddressResponse implements Validable {
     @SerializedName("work_info_status")
     private AddressWorkInfoStatus workInfoStatus;
 
+    @SerializedName("place_id")
+    private Integer placeId;
+
     public String getAdditionalAddress() {
         return additionalAddress;
     }
@@ -223,9 +226,18 @@ public class AddAddressResponse implements Validable {
         return this;
     }
 
+    public Integer getPlaceId() {
+        return placeId;
+    }
+
+    public AddAddressResponse setPlaceId(Integer placeId) {
+        this.placeId = placeId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(address, workInfoStatus, distance, latitude, metroStationId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, longitude);
+        return Objects.hash(address, workInfoStatus, distance, latitude, metroStationId, placeId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, longitude);
     }
 
     @Override
@@ -245,6 +257,7 @@ public class AddAddressResponse implements Validable {
                 Objects.equals(phone, addAddressResponse.phone) &&
                 Objects.equals(id, addAddressResponse.id) &&
                 Objects.equals(countryId, addAddressResponse.countryId) &&
+                Objects.equals(placeId, addAddressResponse.placeId) &&
                 Objects.equals(cityId, addAddressResponse.cityId) &&
                 Objects.equals(longitude, addAddressResponse.longitude);
     }
@@ -269,6 +282,7 @@ public class AddAddressResponse implements Validable {
         sb.append(", phone='").append(phone).append("'");
         sb.append(", id=").append(id);
         sb.append(", countryId=").append(countryId);
+        sb.append(", placeId=").append(placeId);
         sb.append(", cityId=").append(cityId);
         sb.append(", longitude=").append(longitude);
         sb.append('}');

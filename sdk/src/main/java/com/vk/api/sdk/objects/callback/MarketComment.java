@@ -24,8 +24,8 @@ public class MarketComment implements Validable {
     @SerializedName("text")
     private String text;
 
-    @SerializedName("market_owner_od")
-    private Integer marketOwnerOd;
+    @SerializedName("market_owner_id")
+    private Integer marketOwnerId;
 
     @SerializedName("photo_id")
     private Integer photoId;
@@ -66,12 +66,12 @@ public class MarketComment implements Validable {
         return this;
     }
 
-    public Integer getMarketOwnerOd() {
-        return marketOwnerOd;
+    public Integer getMarketOwnerId() {
+        return marketOwnerId;
     }
 
-    public MarketComment setMarketOwnerOd(Integer marketOwnerOd) {
-        this.marketOwnerOd = marketOwnerOd;
+    public MarketComment setMarketOwnerId(Integer marketOwnerId) {
+        this.marketOwnerId = marketOwnerId;
         return this;
     }
 
@@ -86,7 +86,7 @@ public class MarketComment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, photoId, marketOwnerOd, id, text, fromId);
+        return Objects.hash(date, marketOwnerId, photoId, id, text, fromId);
     }
 
     @Override
@@ -96,10 +96,10 @@ public class MarketComment implements Validable {
         MarketComment marketComment = (MarketComment) o;
         return Objects.equals(date, marketComment.date) &&
                 Objects.equals(fromId, marketComment.fromId) &&
-                Objects.equals(marketOwnerOd, marketComment.marketOwnerOd) &&
                 Objects.equals(photoId, marketComment.photoId) &&
                 Objects.equals(id, marketComment.id) &&
-                Objects.equals(text, marketComment.text);
+                Objects.equals(text, marketComment.text) &&
+                Objects.equals(marketOwnerId, marketComment.marketOwnerId);
     }
 
     @Override
@@ -112,10 +112,10 @@ public class MarketComment implements Validable {
         final StringBuilder sb = new StringBuilder("MarketComment{");
         sb.append("date=").append(date);
         sb.append(", fromId=").append(fromId);
-        sb.append(", marketOwnerOd=").append(marketOwnerOd);
         sb.append(", photoId=").append(photoId);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
+        sb.append(", marketOwnerId=").append(marketOwnerId);
         sb.append('}');
         return sb.toString();
     }

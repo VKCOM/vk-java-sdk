@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
-import com.vk.api.sdk.objects.enums.MessagesIntent;
+import com.vk.api.sdk.objects.messages.GetIntentUsersIntent;
 import com.vk.api.sdk.objects.messages.responses.GetIntentUsersResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +20,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param intent value of "intent" parameter.
      */
     public MessagesGetIntentUsersQuery(VkApiClient client, GroupActor actor,
-            MessagesIntent intent) {
+            GetIntentUsersIntent intent) {
         super(client, "messages.getIntentUsers", GetIntentUsersResponse.class);
         accessToken(actor.getAccessToken());
         intent(intent);
@@ -32,7 +32,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "intent" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetIntentUsersQuery intent(MessagesIntent value) {
+    protected MessagesGetIntentUsersQuery intent(GetIntentUsersIntent value) {
         return unsafeParam("intent", value);
     }
 

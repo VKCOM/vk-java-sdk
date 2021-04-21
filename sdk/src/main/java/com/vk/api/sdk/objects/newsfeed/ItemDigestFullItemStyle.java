@@ -8,7 +8,10 @@ public enum ItemDigestFullItemStyle implements EnumParam {
     DEFAULT("default"),
 
     @SerializedName("inversed")
-    INVERSED("inversed");
+    INVERSED("inversed"),
+
+    @SerializedName("spotlight")
+    SPOTLIGHT("spotlight");
 
     private final String value;
 

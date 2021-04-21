@@ -4,7 +4,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
-import com.vk.api.sdk.objects.enums.NewsfeedType;
+import com.vk.api.sdk.objects.newsfeed.UnsubscribeType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
      * @param type value of "type" parameter.
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public NewsfeedUnsubscribeQuery(VkApiClient client, UserActor actor, NewsfeedType type,
+    public NewsfeedUnsubscribeQuery(VkApiClient client, UserActor actor, UnsubscribeType type,
             int itemId) {
         super(client, "newsfeed.unsubscribe", OkResponse.class);
         accessToken(actor.getAccessToken());
@@ -34,7 +34,7 @@ public class NewsfeedUnsubscribeQuery extends AbstractQueryBuilder<NewsfeedUnsub
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnsubscribeQuery type(NewsfeedType value) {
+    protected NewsfeedUnsubscribeQuery type(UnsubscribeType value) {
         return unsafeParam("type", value);
     }
 

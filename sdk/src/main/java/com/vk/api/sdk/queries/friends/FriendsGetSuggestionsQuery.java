@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.FriendsNameCase;
+import com.vk.api.sdk.objects.friends.GetSuggestionsNameCase;
 import com.vk.api.sdk.objects.friends.responses.GetSuggestionsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -50,7 +50,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetSuggestionsQuery nameCase(FriendsNameCase value) {
+    public FriendsGetSuggestionsQuery nameCase(GetSuggestionsNameCase value) {
         return unsafeParam("name_case", value);
     }
 

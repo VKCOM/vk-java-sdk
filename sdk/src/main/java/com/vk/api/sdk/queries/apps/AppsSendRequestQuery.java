@@ -3,7 +3,7 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.enums.AppsType;
+import com.vk.api.sdk.objects.apps.SendRequestType;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,12 +45,12 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
     }
 
     /**
-     * Request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
+     * Request type. Values: 'invite' - if the request is sent to a user who does not have the app installed,, 'request' - if a user has already installed the app
      *
      * @param value value of "type" parameter. By default request.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsSendRequestQuery type(AppsType value) {
+    public AppsSendRequestQuery type(SendRequestType value) {
         return unsafeParam("type", value);
     }
 

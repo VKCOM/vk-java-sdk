@@ -5,7 +5,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.enums.WallSort;
+import com.vk.api.sdk.objects.wall.GetCommentsSort;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -103,7 +103,7 @@ public class WallGetCommentsQuery extends AbstractQueryBuilder<WallGetCommentsQu
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentsQuery sort(WallSort value) {
+    public WallGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
 

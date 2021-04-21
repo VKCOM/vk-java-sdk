@@ -70,7 +70,7 @@ public class MarketEditAlbumQuery extends AbstractQueryBuilder<MarketEditAlbumQu
     }
 
     /**
-     * Set as main ('1' – set, '0' – no).
+     * Set as main ('1' - set, '0' - no).
      *
      * @param value value of "main album" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.

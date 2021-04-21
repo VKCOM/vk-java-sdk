@@ -65,6 +65,16 @@ public class StoriesSaveQuery extends AbstractQueryBuilder<StoriesSaveQuery, Sav
     }
 
     /**
+     * Set extended
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesSaveQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
+    }
+
+    /**
      * upload_results
      * Set upload results
      *
@@ -83,6 +93,27 @@ public class StoriesSaveQuery extends AbstractQueryBuilder<StoriesSaveQuery, Sav
      */
     protected StoriesSaveQuery uploadResults(List<String> value) {
         return unsafeParam("upload_results", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesSaveQuery fields(String... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public StoriesSaveQuery fields(List<String> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

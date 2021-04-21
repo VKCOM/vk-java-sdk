@@ -4,9 +4,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.board.GetTopicsOrder;
+import com.vk.api.sdk.objects.board.GetTopicsPreview;
 import com.vk.api.sdk.objects.board.responses.GetTopicsExtendedResponse;
-import com.vk.api.sdk.objects.enums.BoardOrder;
-import com.vk.api.sdk.objects.enums.BoardPreview;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended order(BoardOrder value) {
+    public BoardGetTopicsQueryWithExtended order(GetTopicsOrder value) {
         return unsafeParam("order", value);
     }
 
@@ -99,7 +99,7 @@ public class BoardGetTopicsQueryWithExtended extends AbstractQueryBuilder<BoardG
      * @param value value of "preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public BoardGetTopicsQueryWithExtended preview(BoardPreview value) {
+    public BoardGetTopicsQueryWithExtended preview(GetTopicsPreview value) {
         return unsafeParam("preview", value);
     }
 
