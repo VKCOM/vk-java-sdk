@@ -2,7 +2,7 @@ package com.vk.api.sdk.streaming.queries;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.vk.api.sdk.callback.longpoll.LongPollQueryBuilder;
+import com.vk.api.sdk.events.longpoll.LongPollQueryBuilder;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.streaming.clients.VkStreamingApiClient;
 import com.vk.api.sdk.streaming.clients.actors.StreamingActor;

@@ -1,4 +1,4 @@
-package com.vk.api.sdk.callback.longpoll;
+package com.vk.api.sdk.events.longpoll;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
