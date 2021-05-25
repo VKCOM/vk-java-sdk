@@ -1,36 +1,36 @@
 package com.vk.api.sdk.objects.callback;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.client.InfoForBots;
+
 import java.util.Objects;
 
 /**
  * MessageData object
  */
-public class MessageData implements Validable {
+public class MessageData<T> implements Validable {
     @SerializedName("client_info")
     private InfoForBots clientInfo;
 
     @SerializedName("message")
-    private JsonObject message;
+    private T message;
 
     public InfoForBots getClientInfo() {
         return clientInfo;
     }
 
-    public MessageData setClientInfo(InfoForBots clientInfo) {
+    public MessageData<T> setClientInfo(InfoForBots clientInfo) {
         this.clientInfo = clientInfo;
         return this;
     }
 
-    public JsonObject getMessage() {
+    public T getMessage() {
         return message;
     }
 
-    public MessageData setMessage(JsonObject message) {
+    public MessageData<T> setMessage(T message) {
         this.message = message;
         return this;
     }
@@ -44,7 +44,7 @@ public class MessageData implements Validable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MessageData messageData = (MessageData) o;
+        MessageData<?> messageData = (MessageData<?>) o;
         return Objects.equals(clientInfo, messageData.clientInfo) &&
                 Objects.equals(message, messageData.message);
     }

@@ -455,11 +455,11 @@ public class CallbackApi {
 
         Type typeOfClass = CALLBACK_TYPES.get(type);
         if (typeOfClass == null) {
-            LOG.warn("Unsupported callback event", type);
+            LOG.warn("Unsupported callback event: {}", type);
             return false;
         }
 
-        CallbackMessage message = gson.fromJson(json, typeOfClass);
+        CallbackMessage<?> message = gson.fromJson(json, typeOfClass);
 
         switch (type) {
             case CALLBACK_EVENT_MESSAGE_NEW:
@@ -615,7 +615,7 @@ public class CallbackApi {
                 break;
 
             default:
-                LOG.warn("Unsupported callback event", type);
+                LOG.warn("Unsupported callback event: {}", type);
                 return false;
 
         }
