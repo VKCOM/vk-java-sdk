@@ -19,16 +19,20 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
+import org.apache.http.impl.client.DefaultServiceUnavailableRetryStrategy;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.slf4j.LoggerFactory;
+import org.apache.http.protocol.HttpContext;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +53,7 @@ public class HttpTransportClient implements TransportClient {
     protected static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     protected static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
     protected static final int DEFAULT_RETRY_INVALID_STATUS_COUNT = 3;
+    protected static final int DEFAULT_RETRY_INVALID_STATUS_INTERVAL_MS = 500;
     protected static final int FULL_CONNECTION_TIMEOUT_S = 60;
     protected static final int CONNECTION_TIMEOUT_MS = 5_000;
     protected static final int SOCKET_TIMEOUT_MS = FULL_CONNECTION_TIMEOUT_S * 1000;
@@ -57,17 +62,14 @@ public class HttpTransportClient implements TransportClient {
     protected static HttpTransportClient instance;
     protected static HttpClient httpClient;
 
-    protected int retryAttemptsNetworkErrorCount;
-    protected int retryAttemptsInvalidStatusCount;
+    protected int lastRetryAttemptsNetworkErrorCount;
+    protected int lastRetryAttemptsInvalidStatusCount;
 
     public HttpTransportClient() {
-        this(DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT, DEFAULT_RETRY_INVALID_STATUS_COUNT);
+        this(DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT, DEFAULT_RETRY_INVALID_STATUS_COUNT, DEFAULT_RETRY_INVALID_STATUS_INTERVAL_MS);
     }
 
-    public HttpTransportClient(int retryAttemptsNetworkErrorCount, int retryAttemptsInvalidStatusCount) {
-        this.retryAttemptsNetworkErrorCount = retryAttemptsNetworkErrorCount;
-        this.retryAttemptsInvalidStatusCount = retryAttemptsInvalidStatusCount;
-
+    public HttpTransportClient(int retryAttemptsNetworkErrorCount, int retryAttemptsInvalidStatusCount, int retryIntervalInvalidStatus) {
         CookieStore cookieStore = new BasicCookieStore();
         RequestConfig requestConfig = RequestConfig.custom()
                 .setSocketTimeout(SOCKET_TIMEOUT_MS)
@@ -86,6 +88,27 @@ public class HttpTransportClient implements TransportClient {
                 .setDefaultRequestConfig(requestConfig)
                 .setDefaultCookieStore(cookieStore)
                 .setUserAgent(USER_AGENT)
+                .setServiceUnavailableRetryStrategy(new DefaultServiceUnavailableRetryStrategy(retryAttemptsInvalidStatusCount, retryIntervalInvalidStatus) {
+
+                    @Override
+                    public boolean retryRequest(HttpResponse response, int executionCount, HttpContext context) {
+                        lastRetryAttemptsInvalidStatusCount = executionCount;
+
+                        return super.retryRequest(response, executionCount, context);
+                    }
+                })
+                .setRetryHandler(new DefaultHttpRequestRetryHandler(retryAttemptsNetworkErrorCount, true, Collections.singleton(SocketException.class)) {
+
+                    @Override
+                    public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
+                        lastRetryAttemptsNetworkErrorCount = executionCount;
+
+                        if (exception instanceof SocketException) {
+                            LOG.warn("Network troubles", exception);
+                        }
+                        return super.retryRequest(exception, executionCount, context);
+                    }
+                })
                 .build();
     }
 
@@ -106,57 +129,47 @@ public class HttpTransportClient implements TransportClient {
         return result;
     }
 
+    @Deprecated
     protected ClientResponse callWithStatusCheck(HttpRequestBase request) throws IOException {
-        ClientResponse response;
-        int attempts = 0;
-
-        do {
-            response = call(request);
-            attempts++;
-        } while (attempts < retryAttemptsInvalidStatusCount && isInvalidGatewayStatus(response.getStatusCode()));
-
-        return response;
+        return call(request);
     }
 
+    @Deprecated
     protected boolean isInvalidGatewayStatus(int status) {
         return status == HttpStatus.SC_BAD_GATEWAY || status == HttpStatus.SC_GATEWAY_TIMEOUT;
     }
 
     protected ClientResponse call(HttpRequestBase request) throws IOException {
-        SocketException exception = null;
-        for (int i = 0; i < retryAttemptsNetworkErrorCount; i++) {
-            try {
-                SUPERVISOR.addRequest(request);
+        SUPERVISOR.addRequest(request);
 
-                long startTime = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
 
-                HttpResponse response = httpClient.execute(request);
+        HttpResponse response = httpClient.execute(request);
 
-                long endTime = System.currentTimeMillis();
+        long endTime = System.currentTimeMillis();
 
-                long resultTime = endTime - startTime;
+        long resultTime = endTime - startTime;
 
-                try (InputStream content = response.getEntity().getContent()) {
-                    String result = IOUtils.toString(content, ENCODING);
-                    Map<String, String> responseHeaders = getHeaders(response.getAllHeaders());
-                    Map<String, String> requestHeaders = getHeaders(request.getAllHeaders());
-                    logRequest(request, requestHeaders, response, responseHeaders, result, resultTime);
-                    return new ClientResponse(response.getStatusLine().getStatusCode(), result, responseHeaders);
-                } finally {
-                    SUPERVISOR.removeRequest(request);
-                }
-            } catch (SocketException e) {
-                logRequest(request);
-                LOG.warn("Network troubles", e);
-                exception = e;
-            }
+        String result = null;
+        Map<String, String> responseHeaders = null;
+        Map<String, String> requestHeaders = null;
+
+        try (InputStream content = response.getEntity().getContent()) {
+            result = IOUtils.toString(content, ENCODING);
+            responseHeaders = getHeaders(response.getAllHeaders());
+            requestHeaders = getHeaders(request.getAllHeaders());
+            return new ClientResponse(response.getStatusLine().getStatusCode(), result, responseHeaders);
+        } finally {
+            logRequest(request, requestHeaders, response, responseHeaders, result, resultTime, lastRetryAttemptsInvalidStatusCount, lastRetryAttemptsNetworkErrorCount);
+            lastRetryAttemptsInvalidStatusCount = 0;
+            lastRetryAttemptsNetworkErrorCount = 0;
+            SUPERVISOR.removeRequest(request);
         }
-
-        throw exception;
     }
 
+    @Deprecated
     protected void logRequest(HttpRequestBase request) throws IOException {
-        logRequest(request, null, null, null, null, null);
+        logRequest(request, null, null, null, null, null, 0, 0);
     }
 
     protected String getRequestPayload(HttpRequestBase request) throws IOException {
@@ -179,7 +192,7 @@ public class HttpTransportClient implements TransportClient {
         return IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
     }
 
-    protected void logRequest(HttpRequestBase request, Map<String, String> requestHeaders, HttpResponse response, Map<String, String> responseHeaders, String body, Long time) throws IOException {
+    protected void logRequest(HttpRequestBase request, Map<String, String> requestHeaders, HttpResponse response, Map<String, String> responseHeaders, String body, Long time, int invalidStatusReturned, int networkErrors) throws IOException {
         if (LOG.isDebugEnabled()) {
             String payload = getRequestPayload(request);
 
@@ -189,7 +202,9 @@ public class HttpTransportClient implements TransportClient {
                     .append("\t").append("Method: ").append(request.getMethod()).append("\n")
                     .append("\t").append("URI: ").append(request.getURI()).append("\n")
                     .append("\t").append("Payload: ").append(payload).append("\n")
-                    .append("\t").append("Time: ").append(time != null ? time : "-").append("\n");
+                    .append("\t").append("Time: ").append(time != null ? time : "-").append("\n")
+                    .append("\t").append("Invalid Status Returned: ").append(invalidStatusReturned).append("\n")
+                    .append("\t").append("Network errors: ").append(networkErrors).append("\n");
 
             if (response != null) {
                 builder.append("Response:\n")
@@ -218,7 +233,7 @@ public class HttpTransportClient implements TransportClient {
     public ClientResponse get(String url, String contentType) throws IOException {
         HttpGet request = new HttpGet(url);
         request.setHeader(CONTENT_TYPE_HEADER, contentType);
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -228,7 +243,7 @@ public class HttpTransportClient implements TransportClient {
         for (Header header : headers) {
             request.setHeader(header);
         }
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -249,7 +264,7 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body, "UTF-8"));
         }
 
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -263,7 +278,7 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body, "UTF-8"));
         }
 
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -275,7 +290,7 @@ public class HttpTransportClient implements TransportClient {
                 .addPart(fileName, fileBody).build();
 
         request.setEntity(entity);
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -296,7 +311,7 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body));
         }
 
-        return callWithStatusCheck(request);
+        return call(request);
     }
 
     @Override
@@ -310,6 +325,6 @@ public class HttpTransportClient implements TransportClient {
             request.setEntity(new StringEntity(body));
         }
 
-        return callWithStatusCheck(request);
+        return call(request);
     }
 }
