@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.client.InfoForBots;
+import com.vk.api.sdk.objects.messages.Message;
+
 import java.util.Objects;
 
 /**
@@ -15,7 +17,7 @@ public class MessageData implements Validable {
     private InfoForBots clientInfo;
 
     @SerializedName("message")
-    private JsonObject message;
+    private Message message;
 
     public InfoForBots getClientInfo() {
         return clientInfo;
@@ -26,11 +28,11 @@ public class MessageData implements Validable {
         return this;
     }
 
-    public JsonObject getMessage() {
+    public Message getMessage() {
         return message;
     }
 
-    public MessageData setMessage(JsonObject message) {
+    public MessageData setMessage(Message message) {
         this.message = message;
         return this;
     }

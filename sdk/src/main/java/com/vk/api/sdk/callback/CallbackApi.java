@@ -71,11 +71,11 @@ public class CallbackApi {
 
     static {
         Map<String, Type> types = new HashMap<>();
-        types.put(CALLBACK_EVENT_MESSAGE_NEW, new TypeToken<CallbackMessage<Message>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_NEW, new TypeToken<CallbackMessage<MessageData>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MESSAGE_REPLY, new TypeToken<CallbackMessage<Message>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_REPLY, new TypeToken<CallbackMessage<MessageData>>() {
         }.getType());
-        types.put(CALLBACK_EVENT_MESSAGE_EDIT, new TypeToken<CallbackMessage<Message>>() {
+        types.put(CALLBACK_EVENT_MESSAGE_EDIT, new TypeToken<CallbackMessage<MessageData>>() {
         }.getType());
         types.put(CALLBACK_EVENT_MESSAGE_ALLOW, new TypeToken<CallbackMessage<MessageAllow>>() {
         }.getType());
@@ -166,24 +166,24 @@ public class CallbackApi {
         gson = new Gson();
     }
 
-    public void messageNew(Integer groupId, Message message) {
+    public void messageNew(Integer groupId, MessageData message) {
     }
 
-    public void messageNew(Integer groupId, String secret, Message message) {
+    public void messageNew(Integer groupId, String secret, MessageData message) {
         messageNew(groupId, message);
     }
 
-    public void messageReply(Integer groupId, Message message) {
+    public void messageReply(Integer groupId, MessageData message) {
     }
 
-    public void messageReply(Integer groupId, String secret, Message message) {
+    public void messageReply(Integer groupId, String secret, MessageData message) {
         messageReply(groupId, message);
     }
 
-    public void messageEdit(Integer groupId, Message message) {
+    public void messageEdit(Integer groupId, MessageData message) {
     }
 
-    public void messageEdit(Integer groupId, String secret, Message message) {
+    public void messageEdit(Integer groupId, String secret, MessageData message) {
         messageEdit(groupId, message);
     }
 
@@ -463,15 +463,15 @@ public class CallbackApi {
 
         switch (type) {
             case CALLBACK_EVENT_MESSAGE_NEW:
-                messageNew(message.getGroupId(), message.getSecret(), (Message) message.getObject());
+                messageNew(message.getGroupId(), message.getSecret(), (MessageData) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_REPLY:
-                messageReply(message.getGroupId(), message.getSecret(), (Message) message.getObject());
+                messageReply(message.getGroupId(), message.getSecret(), (MessageData) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_EDIT:
-                messageEdit(message.getGroupId(), message.getSecret(), (Message) message.getObject());
+                messageEdit(message.getGroupId(), message.getSecret(), (MessageData) message.getObject());
                 break;
 
             case CALLBACK_EVENT_MESSAGE_ALLOW:
