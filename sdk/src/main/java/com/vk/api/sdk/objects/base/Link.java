@@ -73,7 +73,7 @@ public class Link implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URI url;
+    private String url;
 
     @SerializedName("target_object")
     private TargetObject targetObject;
@@ -198,11 +198,11 @@ public class Link implements Validable {
         return this;
     }
 
-    public URI getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public Link setUrl(URI url) {
+    public Link setUrl(String url) {
         this.url = url;
         return this;
     }
