@@ -40,6 +40,12 @@ public class LinkButton implements Validable {
     private Integer curatorId;
 
     /**
+     * Video album id
+     */
+    @SerializedName("album_id")
+    private Integer albumId;
+
+    /**
      * Owner id
      */
     @SerializedName("owner_id")
@@ -99,6 +105,15 @@ public class LinkButton implements Validable {
         return this;
     }
 
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public LinkButton setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+        return this;
+    }
+
     public Integer getOwnerId() {
         return ownerId;
     }
@@ -128,7 +143,7 @@ public class LinkButton implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(blockId, curatorId, icon, action, style, sectionId, ownerId, title);
+        return Objects.hash(blockId, curatorId, icon, action, albumId, style, sectionId, ownerId, title);
     }
 
     @Override
@@ -141,6 +156,7 @@ public class LinkButton implements Validable {
                 Objects.equals(curatorId, linkButton.curatorId) &&
                 Objects.equals(icon, linkButton.icon) &&
                 Objects.equals(action, linkButton.action) &&
+                Objects.equals(albumId, linkButton.albumId) &&
                 Objects.equals(style, linkButton.style) &&
                 Objects.equals(title, linkButton.title) &&
                 Objects.equals(blockId, linkButton.blockId);
@@ -159,6 +175,7 @@ public class LinkButton implements Validable {
         sb.append(", curatorId=").append(curatorId);
         sb.append(", icon='").append(icon).append("'");
         sb.append(", action=").append(action);
+        sb.append(", albumId=").append(albumId);
         sb.append(", style=").append(style);
         sb.append(", title='").append(title).append("'");
         sb.append(", blockId='").append(blockId).append("'");

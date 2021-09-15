@@ -66,6 +66,16 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
         return unsafeParam("main_album", value);
     }
 
+    /**
+     * Set as hidden
+     *
+     * @param value value of "is hidden" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddAlbumQuery isHidden(Boolean value) {
+        return unsafeParam("is_hidden", value);
+    }
+
     @Override
     protected MarketAddAlbumQuery getThis() {
         return this;

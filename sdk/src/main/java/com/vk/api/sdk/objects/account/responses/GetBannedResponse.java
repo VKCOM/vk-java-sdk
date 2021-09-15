@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +25,7 @@ public class GetBannedResponse implements Validable {
     private List<Integer> items;
 
     @SerializedName("profiles")
-    private List<UserMin> profiles;
+    private List<UserFull> profiles;
 
     @SerializedName("groups")
     private List<Group> groups;
@@ -48,11 +48,11 @@ public class GetBannedResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetBannedResponse setProfiles(List<UserMin> profiles) {
+    public GetBannedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
         return this;
     }

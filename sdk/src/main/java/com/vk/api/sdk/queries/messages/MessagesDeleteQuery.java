@@ -67,6 +67,16 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
     }
 
     /**
+     * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+     *
+     * @param value value of "peer id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesDeleteQuery peerId(Integer value) {
+        return unsafeParam("peer_id", value);
+    }
+
+    /**
      * message_ids
      * Message IDs.
      *
@@ -85,6 +95,27 @@ public class MessagesDeleteQuery extends AbstractQueryBuilder<MessagesDeleteQuer
      */
     public MessagesDeleteQuery messageIds(List<Integer> value) {
         return unsafeParam("message_ids", value);
+    }
+
+    /**
+     * conversation_message_ids
+     * Conversation message IDs.
+     *
+     * @param value value of "conversation message ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesDeleteQuery conversationMessageIds(Integer... value) {
+        return unsafeParam("conversation_message_ids", value);
+    }
+
+    /**
+     * Conversation message IDs.
+     *
+     * @param value value of "conversation message ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MessagesDeleteQuery conversationMessageIds(List<Integer> value) {
+        return unsafeParam("conversation_message_ids", value);
     }
 
     @Override

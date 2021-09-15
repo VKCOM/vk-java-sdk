@@ -17,7 +17,7 @@ public class GroupsDeleteAddressQuery extends AbstractQueryBuilder<GroupsDeleteA
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param addressId value of "address id" parameter. Minimum is 0.
      */
     public GroupsDeleteAddressQuery(VkApiClient client, UserActor actor, int groupId,
@@ -33,7 +33,7 @@ public class GroupsDeleteAddressQuery extends AbstractQueryBuilder<GroupsDeleteA
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param addressId value of "address id" parameter. Minimum is 0.
      */
     public GroupsDeleteAddressQuery(VkApiClient client, GroupActor actor, int groupId,
@@ -48,7 +48,7 @@ public class GroupsDeleteAddressQuery extends AbstractQueryBuilder<GroupsDeleteA
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsDeleteAddressQuery groupId(int value) {

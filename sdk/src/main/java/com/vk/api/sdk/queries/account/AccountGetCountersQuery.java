@@ -23,6 +23,16 @@ public class AccountGetCountersQuery extends AbstractQueryBuilder<AccountGetCoun
     }
 
     /**
+     * User ID
+     *
+     * @param value value of "user id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AccountGetCountersQuery userId(Integer value) {
+        return unsafeParam("user_id", value);
+    }
+
+    /**
      * filter
      * Counters to be returned.
      *

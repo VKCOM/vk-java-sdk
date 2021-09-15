@@ -16,8 +16,8 @@ public class GroupsApproveRequestQuery extends AbstractQueryBuilder<GroupsApprov
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public GroupsApproveRequestQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
         super(client, "groups.approveRequest", OkResponse.class);
@@ -29,7 +29,7 @@ public class GroupsApproveRequestQuery extends AbstractQueryBuilder<GroupsApprov
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsApproveRequestQuery groupId(int value) {
@@ -39,7 +39,7 @@ public class GroupsApproveRequestQuery extends AbstractQueryBuilder<GroupsApprov
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsApproveRequestQuery userId(int value) {

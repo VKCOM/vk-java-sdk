@@ -27,6 +27,9 @@ public class SearchResponse implements Validable {
     @Required
     private List<MarketItem> items;
 
+    @SerializedName("variants")
+    private List<MarketItem> variants;
+
     public Integer getCount() {
         return count;
     }
@@ -54,9 +57,18 @@ public class SearchResponse implements Validable {
         return this;
     }
 
+    public List<MarketItem> getVariants() {
+        return variants;
+    }
+
+    public SearchResponse setVariants(List<MarketItem> variants) {
+        this.variants = variants;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, viewType, items);
+        return Objects.hash(count, viewType, variants, items);
     }
 
     @Override
@@ -66,6 +78,7 @@ public class SearchResponse implements Validable {
         SearchResponse searchResponse = (SearchResponse) o;
         return Objects.equals(count, searchResponse.count) &&
                 Objects.equals(viewType, searchResponse.viewType) &&
+                Objects.equals(variants, searchResponse.variants) &&
                 Objects.equals(items, searchResponse.items);
     }
 
@@ -79,6 +92,7 @@ public class SearchResponse implements Validable {
         final StringBuilder sb = new StringBuilder("SearchResponse{");
         sb.append("count=").append(count);
         sb.append(", viewType=").append(viewType);
+        sb.append(", variants=").append(variants);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

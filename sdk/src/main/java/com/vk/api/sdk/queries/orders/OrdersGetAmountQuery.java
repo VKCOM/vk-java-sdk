@@ -1,6 +1,7 @@
 package com.vk.api.sdk.queries.orders;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.orders.responses.GetAmountResponse;
@@ -10,17 +11,17 @@ import java.util.List;
 /**
  * Query for Orders.getAmount method
  */
-public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQuery, GetAmountResponse> {
+public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQuery, List<GetAmountResponse>> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param votes value of "votes" parameter.
      */
     public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId, String... votes) {
-        super(client, "orders.getAmount", GetAmountResponse.class);
+        super(client, "orders.getAmount", Utils.buildParametrizedType(List.class, GetAmountResponse.class));
         accessToken(actor.getAccessToken());
         userId(userId);
         votes(votes);
@@ -31,12 +32,12 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param votes value of "votes" parameter.
      */
     public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId,
             List<String> votes) {
-        super(client, "orders.getAmount", GetAmountResponse.class);
+        super(client, "orders.getAmount", Utils.buildParametrizedType(List.class, GetAmountResponse.class));
         accessToken(actor.getAccessToken());
         userId(userId);
         votes(votes);
@@ -45,7 +46,7 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected OrdersGetAmountQuery userId(int value) {

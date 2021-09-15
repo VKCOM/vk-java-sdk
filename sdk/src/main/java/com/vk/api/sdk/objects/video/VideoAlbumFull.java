@@ -11,19 +11,13 @@ import java.util.Objects;
 /**
  * VideoAlbumFull object
  */
-public class VideoAlbumFull implements Validable {
+public class VideoAlbumFull extends VideoAlbum implements Validable {
     /**
      * Total number of videos in album
      */
     @SerializedName("count")
     @Required
     private Integer count;
-
-    /**
-     * Album ID
-     */
-    @SerializedName("id")
-    private Integer id;
 
     /**
      * Album cover image in different sizes
@@ -44,19 +38,6 @@ public class VideoAlbumFull implements Validable {
     private PropertyExists isSystem;
 
     /**
-     * Album owner's ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Album title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    /**
      * Date when the album has been updated last time in Unixtime
      */
     @SerializedName("updated_time")
@@ -68,15 +49,6 @@ public class VideoAlbumFull implements Validable {
 
     public VideoAlbumFull setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public VideoAlbumFull setId(Integer id) {
-        this.id = id;
         return this;
     }
 
@@ -97,24 +69,6 @@ public class VideoAlbumFull implements Validable {
         return isSystem == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public VideoAlbumFull setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public VideoAlbumFull setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
     public Integer getUpdatedTime() {
         return updatedTime;
     }
@@ -126,7 +80,7 @@ public class VideoAlbumFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSystem, image, updatedTime, imageBlur, count, id, ownerId, title);
+        return Objects.hash(isSystem, image, updatedTime, imageBlur, count);
     }
 
     @Override
@@ -138,10 +92,7 @@ public class VideoAlbumFull implements Validable {
                 Objects.equals(isSystem, videoAlbumFull.isSystem) &&
                 Objects.equals(updatedTime, videoAlbumFull.updatedTime) &&
                 Objects.equals(imageBlur, videoAlbumFull.imageBlur) &&
-                Objects.equals(ownerId, videoAlbumFull.ownerId) &&
-                Objects.equals(count, videoAlbumFull.count) &&
-                Objects.equals(id, videoAlbumFull.id) &&
-                Objects.equals(title, videoAlbumFull.title);
+                Objects.equals(count, videoAlbumFull.count);
     }
 
     @Override
@@ -156,10 +107,7 @@ public class VideoAlbumFull implements Validable {
         sb.append(", isSystem=").append(isSystem);
         sb.append(", updatedTime=").append(updatedTime);
         sb.append(", imageBlur=").append(imageBlur);
-        sb.append(", ownerId=").append(ownerId);
         sb.append(", count=").append(count);
-        sb.append(", id=").append(id);
-        sb.append(", title='").append(title).append("'");
         sb.append('}');
         return sb.toString();
     }

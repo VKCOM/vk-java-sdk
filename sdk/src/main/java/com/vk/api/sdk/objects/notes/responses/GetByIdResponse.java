@@ -6,6 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -72,6 +73,12 @@ public class GetByIdResponse implements Validable {
      */
     @SerializedName("view_url")
     private URI viewUrl;
+
+    @SerializedName("privacy_view")
+    private List<String> privacyView;
+
+    @SerializedName("privacy_comment")
+    private List<String> privacyComment;
 
     public Integer getReadComments() {
         return readComments;
@@ -162,9 +169,27 @@ public class GetByIdResponse implements Validable {
         return this;
     }
 
+    public List<String> getPrivacyView() {
+        return privacyView;
+    }
+
+    public GetByIdResponse setPrivacyView(List<String> privacyView) {
+        this.privacyView = privacyView;
+        return this;
+    }
+
+    public List<String> getPrivacyComment() {
+        return privacyComment;
+    }
+
+    public GetByIdResponse setPrivacyComment(List<String> privacyComment) {
+        this.privacyComment = privacyComment;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, textWiki, comments, viewUrl, canComment, id, text, ownerId, title, readComments);
+        return Objects.hash(date, privacyView, textWiki, comments, privacyComment, viewUrl, canComment, id, text, ownerId, title, readComments);
     }
 
     @Override
@@ -176,12 +201,14 @@ public class GetByIdResponse implements Validable {
                 Objects.equals(canComment, getByIdResponse.canComment) &&
                 Objects.equals(comments, getByIdResponse.comments) &&
                 Objects.equals(ownerId, getByIdResponse.ownerId) &&
+                Objects.equals(privacyComment, getByIdResponse.privacyComment) &&
                 Objects.equals(readComments, getByIdResponse.readComments) &&
                 Objects.equals(viewUrl, getByIdResponse.viewUrl) &&
                 Objects.equals(id, getByIdResponse.id) &&
                 Objects.equals(text, getByIdResponse.text) &&
                 Objects.equals(textWiki, getByIdResponse.textWiki) &&
-                Objects.equals(title, getByIdResponse.title);
+                Objects.equals(title, getByIdResponse.title) &&
+                Objects.equals(privacyView, getByIdResponse.privacyView);
     }
 
     @Override
@@ -196,12 +223,14 @@ public class GetByIdResponse implements Validable {
         sb.append(", canComment=").append(canComment);
         sb.append(", comments=").append(comments);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", privacyComment='").append(privacyComment).append("'");
         sb.append(", readComments=").append(readComments);
         sb.append(", viewUrl=").append(viewUrl);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", textWiki='").append(textWiki).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", privacyView='").append(privacyView).append("'");
         sb.append('}');
         return sb.toString();
     }

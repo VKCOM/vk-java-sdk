@@ -42,6 +42,12 @@ public class GetUserSubscriptionByIdResponse implements Validable {
     private Integer nextBillTime;
 
     /**
+     * Subscription expiration time in Unixtime
+     */
+    @SerializedName("expire_time")
+    private Integer expireTime;
+
+    /**
      * Pending cancel state
      */
     @SerializedName("pending_cancel")
@@ -66,6 +72,30 @@ public class GetUserSubscriptionByIdResponse implements Validable {
     @SerializedName("price")
     @Required
     private Integer price;
+
+    /**
+     * Subscription name
+     */
+    @SerializedName("title")
+    private String title;
+
+    /**
+     * Subscription's application id
+     */
+    @SerializedName("app_id")
+    private Integer appId;
+
+    /**
+     * Subscription's application name
+     */
+    @SerializedName("application_name")
+    private String applicationName;
+
+    /**
+     * Item photo image url
+     */
+    @SerializedName("photo_url")
+    private String photoUrl;
 
     /**
      * Subscription status
@@ -137,6 +167,15 @@ public class GetUserSubscriptionByIdResponse implements Validable {
         return this;
     }
 
+    public Integer getExpireTime() {
+        return expireTime;
+    }
+
+    public GetUserSubscriptionByIdResponse setExpireTime(Integer expireTime) {
+        this.expireTime = expireTime;
+        return this;
+    }
+
     public Boolean getPendingCancel() {
         return pendingCancel;
     }
@@ -170,6 +209,42 @@ public class GetUserSubscriptionByIdResponse implements Validable {
 
     public GetUserSubscriptionByIdResponse setPrice(Integer price) {
         this.price = price;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public GetUserSubscriptionByIdResponse setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Integer getAppId() {
+        return appId;
+    }
+
+    public GetUserSubscriptionByIdResponse setAppId(Integer appId) {
+        this.appId = appId;
+        return this;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public GetUserSubscriptionByIdResponse setApplicationName(String applicationName) {
+        this.applicationName = applicationName;
+        return this;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public GetUserSubscriptionByIdResponse setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
         return this;
     }
 
@@ -211,7 +286,7 @@ public class GetUserSubscriptionByIdResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(pendingCancel, period, updateTime, trialExpireTime, itemId, createTime, price, testMode, nextBillTime, periodStartTime, id, cancelReason, status);
+        return Objects.hash(pendingCancel, period, updateTime, trialExpireTime, title, itemId, photoUrl, expireTime, createTime, price, testMode, appId, nextBillTime, periodStartTime, id, cancelReason, applicationName, status);
     }
 
     @Override
@@ -224,13 +299,18 @@ public class GetUserSubscriptionByIdResponse implements Validable {
                 Objects.equals(itemId, getUserSubscriptionByIdResponse.itemId) &&
                 Objects.equals(nextBillTime, getUserSubscriptionByIdResponse.nextBillTime) &&
                 Objects.equals(trialExpireTime, getUserSubscriptionByIdResponse.trialExpireTime) &&
+                Objects.equals(expireTime, getUserSubscriptionByIdResponse.expireTime) &&
                 Objects.equals(pendingCancel, getUserSubscriptionByIdResponse.pendingCancel) &&
+                Objects.equals(title, getUserSubscriptionByIdResponse.title) &&
                 Objects.equals(periodStartTime, getUserSubscriptionByIdResponse.periodStartTime) &&
                 Objects.equals(cancelReason, getUserSubscriptionByIdResponse.cancelReason) &&
                 Objects.equals(updateTime, getUserSubscriptionByIdResponse.updateTime) &&
+                Objects.equals(applicationName, getUserSubscriptionByIdResponse.applicationName) &&
                 Objects.equals(testMode, getUserSubscriptionByIdResponse.testMode) &&
                 Objects.equals(price, getUserSubscriptionByIdResponse.price) &&
                 Objects.equals(id, getUserSubscriptionByIdResponse.id) &&
+                Objects.equals(photoUrl, getUserSubscriptionByIdResponse.photoUrl) &&
+                Objects.equals(appId, getUserSubscriptionByIdResponse.appId) &&
                 Objects.equals(status, getUserSubscriptionByIdResponse.status);
     }
 
@@ -247,13 +327,18 @@ public class GetUserSubscriptionByIdResponse implements Validable {
         sb.append(", itemId='").append(itemId).append("'");
         sb.append(", nextBillTime=").append(nextBillTime);
         sb.append(", trialExpireTime=").append(trialExpireTime);
+        sb.append(", expireTime=").append(expireTime);
         sb.append(", pendingCancel=").append(pendingCancel);
+        sb.append(", title='").append(title).append("'");
         sb.append(", periodStartTime=").append(periodStartTime);
         sb.append(", cancelReason='").append(cancelReason).append("'");
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", applicationName='").append(applicationName).append("'");
         sb.append(", testMode=").append(testMode);
         sb.append(", price=").append(price);
         sb.append(", id=").append(id);
+        sb.append(", photoUrl='").append(photoUrl).append("'");
+        sb.append(", appId=").append(appId);
         sb.append(", status='").append(status).append("'");
         sb.append('}');
         return sb.toString();

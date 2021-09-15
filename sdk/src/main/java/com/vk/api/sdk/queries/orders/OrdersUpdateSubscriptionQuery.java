@@ -16,7 +16,7 @@ public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUp
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param subscriptionId value of "subscription id" parameter. Minimum is 0.
      * @param price value of "price" parameter. Minimum is 0.
      */
@@ -33,7 +33,7 @@ public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUp
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected OrdersUpdateSubscriptionQuery userId(int value) {

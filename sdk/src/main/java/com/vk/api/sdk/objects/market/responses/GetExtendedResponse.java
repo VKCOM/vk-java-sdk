@@ -20,6 +20,9 @@ public class GetExtendedResponse implements Validable {
     @SerializedName("items")
     private List<MarketItemFull> items;
 
+    @SerializedName("variants")
+    private List<MarketItemFull> variants;
+
     public Integer getCount() {
         return count;
     }
@@ -38,9 +41,18 @@ public class GetExtendedResponse implements Validable {
         return this;
     }
 
+    public List<MarketItemFull> getVariants() {
+        return variants;
+    }
+
+    public GetExtendedResponse setVariants(List<MarketItemFull> variants) {
+        this.variants = variants;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, variants, items);
     }
 
     @Override
@@ -49,6 +61,7 @@ public class GetExtendedResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetExtendedResponse getExtendedResponse = (GetExtendedResponse) o;
         return Objects.equals(count, getExtendedResponse.count) &&
+                Objects.equals(variants, getExtendedResponse.variants) &&
                 Objects.equals(items, getExtendedResponse.items);
     }
 
@@ -61,6 +74,7 @@ public class GetExtendedResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetExtendedResponse{");
         sb.append("count=").append(count);
+        sb.append(", variants=").append(variants);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

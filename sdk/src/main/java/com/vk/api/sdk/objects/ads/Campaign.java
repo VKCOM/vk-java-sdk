@@ -29,6 +29,24 @@ public class Campaign implements Validable {
     private Integer createTime;
 
     /**
+     * Campaign goal type
+     */
+    @SerializedName("goal_type")
+    private Integer goalType;
+
+    /**
+     * Campaign user goal type
+     */
+    @SerializedName("user_goal_type")
+    private Integer userGoalType;
+
+    /**
+     * Shows if Campaign Budget Optimization is on
+     */
+    @SerializedName("is_cbo_enabled")
+    private Boolean isCboEnabled;
+
+    /**
      * Campaign's day limit, rubles
      */
     @SerializedName("day_limit")
@@ -104,6 +122,33 @@ public class Campaign implements Validable {
 
     public Campaign setCreateTime(Integer createTime) {
         this.createTime = createTime;
+        return this;
+    }
+
+    public Integer getGoalType() {
+        return goalType;
+    }
+
+    public Campaign setGoalType(Integer goalType) {
+        this.goalType = goalType;
+        return this;
+    }
+
+    public Integer getUserGoalType() {
+        return userGoalType;
+    }
+
+    public Campaign setUserGoalType(Integer userGoalType) {
+        this.userGoalType = userGoalType;
+        return this;
+    }
+
+    public Boolean getIsCboEnabled() {
+        return isCboEnabled;
+    }
+
+    public Campaign setIsCboEnabled(Boolean isCboEnabled) {
+        this.isCboEnabled = isCboEnabled;
         return this;
     }
 
@@ -190,7 +235,7 @@ public class Campaign implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dayLimit, allLimit, createTime, name, viewsLimit, startTime, updateTime, stopTime, id, type, adsCount, status);
+        return Objects.hash(goalType, allLimit, viewsLimit, updateTime, type, dayLimit, createTime, isCboEnabled, name, stopTime, startTime, id, adsCount, userGoalType, status);
     }
 
     @Override
@@ -198,17 +243,20 @@ public class Campaign implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Campaign campaign = (Campaign) o;
-        return Objects.equals(allLimit, campaign.allLimit) &&
+        return Objects.equals(goalType, campaign.goalType) &&
+                Objects.equals(stopTime, campaign.stopTime) &&
+                Objects.equals(createTime, campaign.createTime) &&
+                Objects.equals(isCboEnabled, campaign.isCboEnabled) &&
+                Objects.equals(dayLimit, campaign.dayLimit) &&
+                Objects.equals(viewsLimit, campaign.viewsLimit) &&
+                Objects.equals(type, campaign.type) &&
+                Objects.equals(allLimit, campaign.allLimit) &&
                 Objects.equals(startTime, campaign.startTime) &&
                 Objects.equals(updateTime, campaign.updateTime) &&
                 Objects.equals(adsCount, campaign.adsCount) &&
-                Objects.equals(stopTime, campaign.stopTime) &&
-                Objects.equals(createTime, campaign.createTime) &&
-                Objects.equals(dayLimit, campaign.dayLimit) &&
                 Objects.equals(name, campaign.name) &&
                 Objects.equals(id, campaign.id) &&
-                Objects.equals(viewsLimit, campaign.viewsLimit) &&
-                Objects.equals(type, campaign.type) &&
+                Objects.equals(userGoalType, campaign.userGoalType) &&
                 Objects.equals(status, campaign.status);
     }
 
@@ -220,17 +268,20 @@ public class Campaign implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Campaign{");
-        sb.append("allLimit='").append(allLimit).append("'");
+        sb.append("goalType=").append(goalType);
+        sb.append(", stopTime=").append(stopTime);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", isCboEnabled=").append(isCboEnabled);
+        sb.append(", dayLimit='").append(dayLimit).append("'");
+        sb.append(", viewsLimit=").append(viewsLimit);
+        sb.append(", type=").append(type);
+        sb.append(", allLimit='").append(allLimit).append("'");
         sb.append(", startTime=").append(startTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", adsCount=").append(adsCount);
-        sb.append(", stopTime=").append(stopTime);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", dayLimit='").append(dayLimit).append("'");
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
-        sb.append(", viewsLimit=").append(viewsLimit);
-        sb.append(", type=").append(type);
+        sb.append(", userGoalType=").append(userGoalType);
         sb.append(", status=").append(status);
         sb.append('}');
         return sb.toString();

@@ -26,6 +26,9 @@ public class GetViewersExtendedV5115Response implements Validable {
     @SerializedName("hidden_reason")
     private String hiddenReason;
 
+    @SerializedName("next_from")
+    private String nextFrom;
+
     public Integer getCount() {
         return count;
     }
@@ -53,9 +56,18 @@ public class GetViewersExtendedV5115Response implements Validable {
         return this;
     }
 
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public GetViewersExtendedV5115Response setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, hiddenReason, items);
+        return Objects.hash(count, hiddenReason, nextFrom, items);
     }
 
     @Override
@@ -63,7 +75,8 @@ public class GetViewersExtendedV5115Response implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetViewersExtendedV5115Response getViewersExtendedV5115Response = (GetViewersExtendedV5115Response) o;
-        return Objects.equals(count, getViewersExtendedV5115Response.count) &&
+        return Objects.equals(nextFrom, getViewersExtendedV5115Response.nextFrom) &&
+                Objects.equals(count, getViewersExtendedV5115Response.count) &&
                 Objects.equals(items, getViewersExtendedV5115Response.items) &&
                 Objects.equals(hiddenReason, getViewersExtendedV5115Response.hiddenReason);
     }
@@ -76,7 +89,8 @@ public class GetViewersExtendedV5115Response implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetViewersExtendedV5115Response{");
-        sb.append("count=").append(count);
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", count=").append(count);
         sb.append(", items=").append(items);
         sb.append(", hiddenReason='").append(hiddenReason).append("'");
         sb.append('}');

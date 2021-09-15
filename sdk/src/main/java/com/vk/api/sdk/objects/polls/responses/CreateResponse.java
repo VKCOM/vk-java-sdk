@@ -15,7 +15,6 @@ import java.util.Objects;
  */
 public class CreateResponse implements Validable {
     @SerializedName("anonymous")
-    @Required
     private Boolean anonymous;
 
     @SerializedName("friends")

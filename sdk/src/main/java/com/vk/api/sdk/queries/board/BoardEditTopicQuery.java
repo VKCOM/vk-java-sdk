@@ -16,7 +16,7 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param title value of "title" parameter.
      */
@@ -32,7 +32,7 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
     /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected BoardEditTopicQuery groupId(int value) {

@@ -66,6 +66,16 @@ public class VideoSearchQuery extends AbstractQueryBuilder<VideoSearchQuery, Sea
     }
 
     /**
+     * Set live
+     *
+     * @param value value of "live" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public VideoSearchQuery live(Boolean value) {
+        return unsafeParam("live", value);
+    }
+
+    /**
      * Set search own
      *
      * @param value value of "search own" parameter.

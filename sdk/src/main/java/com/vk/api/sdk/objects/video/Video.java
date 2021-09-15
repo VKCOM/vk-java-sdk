@@ -7,7 +7,6 @@ import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Likes;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import com.vk.api.sdk.objects.base.RepostsInfo;
-import com.vk.api.sdk.objects.media.Restriction;
 import java.net.URI;
 import java.util.List;
 import java.util.Objects;
@@ -171,9 +170,6 @@ public class Video implements Validable {
      */
     @SerializedName("converting")
     private BoolInt converting;
-
-    @SerializedName("restriction")
-    private Restriction restriction;
 
     /**
      * 1 if video is added to user's albums
@@ -505,15 +501,6 @@ public class Video implements Validable {
         return converting;
     }
 
-    public Restriction getRestriction() {
-        return restriction;
-    }
-
-    public Video setRestriction(Restriction restriction) {
-        this.restriction = restriction;
-        return this;
-    }
-
     public boolean isAdded() {
         return added == BoolInt.YES;
     }
@@ -669,7 +656,7 @@ public class Video implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, added, converting, canLike, canEdit, canAdd, canAddToFaves, description, isPrivate, ownerId, liveNotify, title, type, liveStartTime, platform, duration, canSubscribe, isSubscribed, balance, firstFrame, repeat, canComment, id, addingDate, views, live, liveStatus, height, player, likes, trackCode, image, comments, contentRestrictedMessage, canRepost, contentRestricted, spectators, userId, localViews, canAttachLink, accessKey, width, restriction, processing, upcoming, reposts, isFavorite);
+        return Objects.hash(date, added, converting, canLike, canEdit, canAdd, canAddToFaves, description, isPrivate, ownerId, liveNotify, title, type, liveStartTime, platform, duration, canSubscribe, isSubscribed, balance, firstFrame, repeat, canComment, id, addingDate, views, live, liveStatus, height, player, likes, trackCode, image, comments, contentRestrictedMessage, canRepost, contentRestricted, spectators, userId, localViews, canAttachLink, accessKey, width, processing, upcoming, reposts, isFavorite);
     }
 
     @Override
@@ -716,7 +703,6 @@ public class Video implements Validable {
                 Objects.equals(userId, video.userId) &&
                 Objects.equals(accessKey, video.accessKey) &&
                 Objects.equals(width, video.width) &&
-                Objects.equals(restriction, video.restriction) &&
                 Objects.equals(processing, video.processing) &&
                 Objects.equals(isSubscribed, video.isSubscribed) &&
                 Objects.equals(trackCode, video.trackCode) &&
@@ -773,7 +759,6 @@ public class Video implements Validable {
         sb.append(", userId=").append(userId);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", width=").append(width);
-        sb.append(", restriction=").append(restriction);
         sb.append(", processing=").append(processing);
         sb.append(", isSubscribed=").append(isSubscribed);
         sb.append(", trackCode='").append(trackCode).append("'");

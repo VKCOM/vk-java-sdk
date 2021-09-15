@@ -16,7 +16,7 @@ public class MessagesDenyMessagesFromGroupQuery extends AbstractQueryBuilder<Mes
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public MessagesDenyMessagesFromGroupQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "messages.denyMessagesFromGroup", OkResponse.class);
@@ -27,7 +27,7 @@ public class MessagesDenyMessagesFromGroupQuery extends AbstractQueryBuilder<Mes
     /**
      * Group ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MessagesDenyMessagesFromGroupQuery groupId(int value) {

@@ -38,6 +38,18 @@ public class MarketAlbum implements Validable {
     @Required
     private Integer count;
 
+    /**
+     * Is album main for owner
+     */
+    @SerializedName("is_main")
+    private Boolean isMain;
+
+    /**
+     * Is album hidden
+     */
+    @SerializedName("is_hidden")
+    private Boolean isHidden;
+
     @SerializedName("photo")
     private Photo photo;
 
@@ -83,6 +95,24 @@ public class MarketAlbum implements Validable {
         return this;
     }
 
+    public Boolean getIsMain() {
+        return isMain;
+    }
+
+    public MarketAlbum setIsMain(Boolean isMain) {
+        this.isMain = isMain;
+        return this;
+    }
+
+    public Boolean getIsHidden() {
+        return isHidden;
+    }
+
+    public MarketAlbum setIsHidden(Boolean isHidden) {
+        this.isHidden = isHidden;
+        return this;
+    }
+
     public Photo getPhoto() {
         return photo;
     }
@@ -103,7 +133,7 @@ public class MarketAlbum implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(updatedTime, count, photo, id, ownerId, title);
+        return Objects.hash(updatedTime, isMain, count, photo, id, ownerId, title, isHidden);
     }
 
     @Override
@@ -113,7 +143,9 @@ public class MarketAlbum implements Validable {
         MarketAlbum marketAlbum = (MarketAlbum) o;
         return Objects.equals(updatedTime, marketAlbum.updatedTime) &&
                 Objects.equals(ownerId, marketAlbum.ownerId) &&
+                Objects.equals(isMain, marketAlbum.isMain) &&
                 Objects.equals(count, marketAlbum.count) &&
+                Objects.equals(isHidden, marketAlbum.isHidden) &&
                 Objects.equals(photo, marketAlbum.photo) &&
                 Objects.equals(id, marketAlbum.id) &&
                 Objects.equals(title, marketAlbum.title);
@@ -129,7 +161,9 @@ public class MarketAlbum implements Validable {
         final StringBuilder sb = new StringBuilder("MarketAlbum{");
         sb.append("updatedTime=").append(updatedTime);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", isMain=").append(isMain);
         sb.append(", count=").append(count);
+        sb.append(", isHidden=").append(isHidden);
         sb.append(", photo=").append(photo);
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");

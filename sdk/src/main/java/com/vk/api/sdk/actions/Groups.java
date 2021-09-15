@@ -27,7 +27,7 @@ import com.vk.api.sdk.queries.groups.GroupsEditQuery;
 import com.vk.api.sdk.queries.groups.GroupsEnableOnlineQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetAddressesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetBannedQuery;
-import com.vk.api.sdk.queries.groups.GroupsGetByIdQueryWithLegacy;
+import com.vk.api.sdk.queries.groups.GroupsGetByIdQueryWithObjectLegacy;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackConfirmationCodeQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackServersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackSettingsQuery;
@@ -43,7 +43,7 @@ import com.vk.api.sdk.queries.groups.GroupsGetMembersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFields;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFilter;
 import com.vk.api.sdk.queries.groups.GroupsGetQuery;
-import com.vk.api.sdk.queries.groups.GroupsGetQueryWithExtended;
+import com.vk.api.sdk.queries.groups.GroupsGetQueryWithObjectExtended;
 import com.vk.api.sdk.queries.groups.GroupsGetRequestsQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetRequestsQueryWithFields;
 import com.vk.api.sdk.queries.groups.GroupsGetSettingsQuery;
@@ -381,8 +381,8 @@ public class Groups extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public GroupsGetQueryWithExtended getExtended(UserActor actor) {
-        return new GroupsGetQueryWithExtended(getClient(), actor);
+    public GroupsGetQueryWithObjectExtended getObjectExtended(UserActor actor) {
+        return new GroupsGetQueryWithObjectExtended(getClient(), actor);
     }
 
     /**
@@ -435,8 +435,8 @@ public class Groups extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public GroupsGetByIdQueryWithLegacy getByIdLegacy(UserActor actor) {
-        return new GroupsGetByIdQueryWithLegacy(getClient(), actor);
+    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(UserActor actor) {
+        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
     }
 
     /**
@@ -445,8 +445,8 @@ public class Groups extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public GroupsGetByIdQueryWithLegacy getByIdLegacy(GroupActor actor) {
-        return new GroupsGetByIdQueryWithLegacy(getClient(), actor);
+    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(GroupActor actor) {
+        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
     }
 
     /**
@@ -455,8 +455,8 @@ public class Groups extends AbstractAction {
      * @param actor vk actor
      * @return query
      */
-    public GroupsGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor) {
-        return new GroupsGetByIdQueryWithLegacy(getClient(), actor);
+    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(ServiceActor actor) {
+        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
     }
 
     /**

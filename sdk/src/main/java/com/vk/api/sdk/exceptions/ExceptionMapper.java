@@ -73,6 +73,8 @@ public class ExceptionMapper {
                 return new ApiWallCheckLinkCantDetermineSourceException(error.getErrorMsg());
             case 33:
                 return new ApiNotImplementedYetException(error.getErrorMsg());
+            case 34:
+                return new ApiClientVersionDeprecatedException(error.getErrorMsg());
             case 35:
                 return new ApiClientUpdateNeededException(error.getErrorMsg());
             case 36:
@@ -105,8 +107,12 @@ public class ExceptionMapper {
                 return new ApiWeightedFloodException(error.getErrorMsg());
             case 602:
                 return new ApiAdsPartialSuccessException(error.getErrorMsg());
+            case 1114:
+                return new ApiAuthAnonymousTokenHasExpiredException(error.getErrorMsg());
             case 603:
                 return new ApiAdsSpecificException(error.getErrorMsg());
+            case 1116:
+                return new ApiAuthAnonymousTokenIsInvalidException(error.getErrorMsg());
             case 100:
                 return new ApiParamException(error.getErrorMsg());
             case 101:
@@ -303,8 +309,12 @@ public class ExceptionMapper {
                 return new ApiMarketItemHasBadLinksException(error.getErrorMsg());
             case 1409:
                 return new ApiMarketExtendedNotEnabledException(error.getErrorMsg());
+            case 1412:
+                return new ApiMarketGroupingItemsWithDifferentPropertiesException(error.getErrorMsg());
             case 900:
                 return new ApiMessagesUserBlockedException(error.getErrorMsg());
+            case 1413:
+                return new ApiMarketGroupingAlreadyHasSuchVariantException(error.getErrorMsg());
             case 901:
                 return new ApiMessagesDenySendException(error.getErrorMsg());
             case 902:
@@ -369,6 +379,8 @@ public class ExceptionMapper {
                 return new ApiMessagesCantChangeInviteLinkException(error.getErrorMsg());
             case 932:
                 return new ApiMessagesGroupPeerAccessException(error.getErrorMsg());
+            case 1446:
+                return new ApiMarketAlbumMainHiddenException(error.getErrorMsg());
             case 935:
                 return new ApiMessagesChatUserNotInChatException(error.getErrorMsg());
             case 936:
@@ -393,6 +405,8 @@ public class ExceptionMapper {
                 return new ApiMessagesCantEditPinnedYetException(error.getErrorMsg());
             case 950:
                 return new ApiMessagesPeerBlockedReasonByTimeException(error.getErrorMsg());
+            case 962:
+                return new ApiMessagesUserNotDonException(error.getErrorMsg());
             case 2000:
                 return new ApiCallbackApiServersLimitException(error.getErrorMsg());
             case 500:

@@ -12,7 +12,6 @@ import java.util.Objects;
  */
 public class Poll implements Validable {
     @SerializedName("anonymous")
-    @Required
     private Boolean anonymous;
 
     @SerializedName("friends")

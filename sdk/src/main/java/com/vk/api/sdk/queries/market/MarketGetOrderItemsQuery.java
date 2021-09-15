@@ -39,6 +39,16 @@ public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrde
     }
 
     /**
+     * Set user id
+     *
+     * @param value value of "user id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetOrderItemsQuery userId(Integer value) {
+        return unsafeParam("user_id", value);
+    }
+
+    /**
      * Set order id
      *
      * @param value value of "order id" parameter. Minimum is 0.

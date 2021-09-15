@@ -84,13 +84,13 @@ public class Market extends AbstractAction {
      *
      * @param actor vk actor
      * @param ownerId ID of an item owner community.
-     * @param itemId Item ID.
+     * @param itemIds
      * @param albumIds Collections IDs to add item to.
      * @return query
      */
-    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, int itemId,
+    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, Integer[] itemIds,
             Integer... albumIds) {
-        return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
+        return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemIds, albumIds);
     }
 
     /**
@@ -98,13 +98,13 @@ public class Market extends AbstractAction {
      *
      * @param actor vk actor
      * @param ownerId ID of an item owner community.
-     * @param itemId Item ID.
+     * @param itemIds
      * @param albumIds Collections IDs to add item to.
      * @return query
      */
-    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, int itemId,
+    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, List<Integer> itemIds,
             List<Integer> albumIds) {
-        return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
+        return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemIds, albumIds);
     }
 
     /**

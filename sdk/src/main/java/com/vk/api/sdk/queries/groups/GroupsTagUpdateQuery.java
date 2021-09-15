@@ -16,7 +16,7 @@ public class GroupsTagUpdateQuery extends AbstractQueryBuilder<GroupsTagUpdateQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param tagId value of "tag id" parameter. Minimum is 0.
      * @param tagName value of "tag name" parameter.
      */
@@ -32,7 +32,7 @@ public class GroupsTagUpdateQuery extends AbstractQueryBuilder<GroupsTagUpdateQu
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsTagUpdateQuery groupId(int value) {

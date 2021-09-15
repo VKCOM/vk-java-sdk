@@ -16,7 +16,7 @@ public class GroupsGetSettingsQuery extends AbstractQueryBuilder<GroupsGetSettin
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getSettings", GetSettingsResponse.class);
@@ -27,7 +27,7 @@ public class GroupsGetSettingsQuery extends AbstractQueryBuilder<GroupsGetSettin
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetSettingsQuery groupId(int value) {

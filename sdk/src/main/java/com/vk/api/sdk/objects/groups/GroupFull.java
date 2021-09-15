@@ -205,10 +205,10 @@ public class GroupFull extends Group implements Validable {
     private String site;
 
     @SerializedName("main_section")
-    private GroupFullMainSection mainSection;
+    private GroupFullSection mainSection;
 
     @SerializedName("secondary_section")
-    private Integer secondarySection;
+    private GroupFullSection secondarySection;
 
     /**
      * Information whether the community has a "fire" pictogram.
@@ -302,6 +302,9 @@ public class GroupFull extends Group implements Validable {
 
     @SerializedName("stories_archive_count")
     private Integer storiesArchiveCount;
+
+    @SerializedName("has_unseen_stories")
+    private Boolean hasUnseenStories;
 
     public MarketInfo getMarket() {
         return market;
@@ -614,20 +617,20 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
-    public GroupFullMainSection getMainSection() {
+    public GroupFullSection getMainSection() {
         return mainSection;
     }
 
-    public GroupFull setMainSection(GroupFullMainSection mainSection) {
+    public GroupFull setMainSection(GroupFullSection mainSection) {
         this.mainSection = mainSection;
         return this;
     }
 
-    public Integer getSecondarySection() {
+    public GroupFullSection getSecondarySection() {
         return secondarySection;
     }
 
-    public GroupFull setSecondarySection(Integer secondarySection) {
+    public GroupFull setSecondarySection(GroupFullSection secondarySection) {
         this.secondarySection = secondarySection;
         return this;
     }
@@ -781,9 +784,18 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
+    public Boolean getHasUnseenStories() {
+        return hasUnseenStories;
+    }
+
+    public GroupFull setHasUnseenStories(Boolean hasUnseenStories) {
+        this.hasUnseenStories = hasUnseenStories;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(trending, country, canSubscribePosts, addresses, canCreateTopic, invitedBy, banInfo, onlineStatus, cover, mainAlbumId, isSubscribed, canUploadVideo, storiesArchiveCount, links, membersCount, counters, requestsCount, canSeeAllPosts, canSuggest, canMessage, market, videoLiveCount, canUploadDoc, canSubscribePodcasts, hasPhoto, hasGroupChannel, fixedPost, isHiddenFromFeed, statusAudio, status, isFavorite, wikiPage, mainSection, activity, city, cropPhoto, isSubscribedPodcasts, description, memberStatus, canSendNotify, videoLiveLevel, clipsCount, hasMarketApp, canPost, isAdult, isMessagesBlocked, verified, secondarySection, ageLimits, site, usingVkpayMarketApp, liveCovers, wall, canUploadStory, contacts);
+        return Objects.hash(trending, country, canSubscribePosts, addresses, canCreateTopic, invitedBy, banInfo, onlineStatus, cover, mainAlbumId, isSubscribed, canUploadVideo, hasUnseenStories, storiesArchiveCount, links, membersCount, counters, requestsCount, canSeeAllPosts, canSuggest, canMessage, market, videoLiveCount, canUploadDoc, canSubscribePodcasts, hasPhoto, hasGroupChannel, fixedPost, isHiddenFromFeed, statusAudio, status, isFavorite, wikiPage, mainSection, activity, city, cropPhoto, isSubscribedPodcasts, description, memberStatus, canSendNotify, videoLiveLevel, clipsCount, hasMarketApp, canPost, isAdult, isMessagesBlocked, verified, secondarySection, ageLimits, site, usingVkpayMarketApp, liveCovers, wall, canUploadStory, contacts);
     }
 
     @Override
@@ -796,6 +808,7 @@ public class GroupFull extends Group implements Validable {
                 Objects.equals(requestsCount, groupFull.requestsCount) &&
                 Objects.equals(canUploadStory, groupFull.canUploadStory) &&
                 Objects.equals(addresses, groupFull.addresses) &&
+                Objects.equals(hasUnseenStories, groupFull.hasUnseenStories) &&
                 Objects.equals(statusAudio, groupFull.statusAudio) &&
                 Objects.equals(mainSection, groupFull.mainSection) &&
                 Objects.equals(isAdult, groupFull.isAdult) &&
@@ -861,6 +874,7 @@ public class GroupFull extends Group implements Validable {
         sb.append(", requestsCount=").append(requestsCount);
         sb.append(", canUploadStory=").append(canUploadStory);
         sb.append(", addresses=").append(addresses);
+        sb.append(", hasUnseenStories=").append(hasUnseenStories);
         sb.append(", statusAudio=").append(statusAudio);
         sb.append(", mainSection=").append(mainSection);
         sb.append(", isAdult=").append(isAdult);

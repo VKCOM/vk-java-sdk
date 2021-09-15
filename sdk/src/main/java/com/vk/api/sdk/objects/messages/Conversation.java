@@ -25,6 +25,12 @@ public class Conversation implements Validable {
     private Integer lastMessageId;
 
     /**
+     * Conversation message ID of the last message in conversation
+     */
+    @SerializedName("last_conversation_message_id")
+    private Integer lastConversationMessageId;
+
+    /**
      * Last message user have read
      */
     @SerializedName("in_read")
@@ -105,6 +111,15 @@ public class Conversation implements Validable {
 
     public Conversation setLastMessageId(Integer lastMessageId) {
         this.lastMessageId = lastMessageId;
+        return this;
+    }
+
+    public Integer getLastConversationMessageId() {
+        return lastConversationMessageId;
+    }
+
+    public Conversation setLastConversationMessageId(Integer lastConversationMessageId) {
+        this.lastConversationMessageId = lastConversationMessageId;
         return this;
     }
 
@@ -236,7 +251,7 @@ public class Conversation implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(outRead, unanswered, unreadCount, outReadBy, canWrite, isMarkedUnread, messageRequestData, important, chatSettings, sortId, peer, mentions, currentKeyboard, inRead, lastMessageId, pushSettings, specialServiceType);
+        return Objects.hash(outRead, unanswered, unreadCount, outReadBy, canWrite, isMarkedUnread, lastConversationMessageId, messageRequestData, important, chatSettings, sortId, peer, mentions, currentKeyboard, inRead, lastMessageId, pushSettings, specialServiceType);
     }
 
     @Override
@@ -260,6 +275,7 @@ public class Conversation implements Validable {
                 Objects.equals(currentKeyboard, conversation.currentKeyboard) &&
                 Objects.equals(messageRequestData, conversation.messageRequestData) &&
                 Objects.equals(outRead, conversation.outRead) &&
+                Objects.equals(lastConversationMessageId, conversation.lastConversationMessageId) &&
                 Objects.equals(outReadBy, conversation.outReadBy);
     }
 
@@ -287,6 +303,7 @@ public class Conversation implements Validable {
         sb.append(", currentKeyboard=").append(currentKeyboard);
         sb.append(", messageRequestData=").append(messageRequestData);
         sb.append(", outRead=").append(outRead);
+        sb.append(", lastConversationMessageId=").append(lastConversationMessageId);
         sb.append(", outReadBy=").append(outReadBy);
         sb.append('}');
         return sb.toString();

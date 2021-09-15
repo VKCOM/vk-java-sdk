@@ -6,6 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.App;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.UserMin;
 import java.util.Objects;
@@ -37,12 +38,14 @@ public class Hint implements Validable {
     private UserMin profile;
 
     @SerializedName("section")
-    @Required
     private HintSection section;
 
     @SerializedName("type")
     @Required
     private HintType type;
+
+    @SerializedName("link")
+    private Link link;
 
     public App getApp() {
         return app;
@@ -106,9 +109,18 @@ public class Hint implements Validable {
         return this;
     }
 
+    public Link getLink() {
+        return link;
+    }
+
+    public Hint setLink(Link link) {
+        this.link = link;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(app, profile, description, global, section, type, group);
+        return Objects.hash(app, profile, link, description, global, section, type, group);
     }
 
     @Override
@@ -118,6 +130,7 @@ public class Hint implements Validable {
         Hint hint = (Hint) o;
         return Objects.equals(app, hint.app) &&
                 Objects.equals(profile, hint.profile) &&
+                Objects.equals(link, hint.link) &&
                 Objects.equals(description, hint.description) &&
                 Objects.equals(global, hint.global) &&
                 Objects.equals(section, hint.section) &&
@@ -135,6 +148,7 @@ public class Hint implements Validable {
         final StringBuilder sb = new StringBuilder("Hint{");
         sb.append("app=").append(app);
         sb.append(", profile=").append(profile);
+        sb.append(", link=").append(link);
         sb.append(", description='").append(description).append("'");
         sb.append(", global=").append(global);
         sb.append(", section=").append(section);

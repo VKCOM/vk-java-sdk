@@ -17,15 +17,15 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
      * @param client VK API client
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param itemId value of "item id" parameter. Minimum is 0.
+     * @param itemIds value of "item ids" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId,
-            Integer... albumIds) {
+    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId,
+            Integer[] itemIds, Integer... albumIds) {
         super(client, "market.addToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
-        itemId(itemId);
+        itemIds(itemIds);
         albumIds(albumIds);
     }
 
@@ -35,15 +35,15 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
      * @param client VK API client
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
-     * @param itemId value of "item id" parameter. Minimum is 0.
+     * @param itemIds value of "item ids" parameter.
      * @param albumIds value of "album ids" parameter.
      */
-    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int itemId,
-            List<Integer> albumIds) {
+    public MarketAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId,
+            List<Integer> itemIds, List<Integer> albumIds) {
         super(client, "market.addToAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
-        itemId(itemId);
+        itemIds(itemIds);
         albumIds(albumIds);
     }
 
@@ -58,13 +58,24 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
     }
 
     /**
-     * Item ID.
+     * item_ids
+     * Set item ids
      *
-     * @param value value of "item id" parameter. Minimum is 0.
+     * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketAddToAlbumQuery itemId(int value) {
-        return unsafeParam("item_id", value);
+    protected MarketAddToAlbumQuery itemIds(Integer... value) {
+        return unsafeParam("item_ids", value);
+    }
+
+    /**
+     * Set item ids
+     *
+     * @param value value of "item ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    protected MarketAddToAlbumQuery itemIds(List<Integer> value) {
+        return unsafeParam("item_ids", value);
     }
 
     /**
@@ -95,6 +106,6 @@ public class MarketAddToAlbumQuery extends AbstractQueryBuilder<MarketAddToAlbum
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("item_id", "album_ids", "owner_id", "access_token");
+        return Arrays.asList("album_ids", "item_ids", "owner_id", "access_token");
     }
 }

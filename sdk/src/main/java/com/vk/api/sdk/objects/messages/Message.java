@@ -146,6 +146,12 @@ public class Message implements Validable {
     @SerializedName("pinned_at")
     private Integer pinnedAt;
 
+    /**
+     * Is silent message, push without sound
+     */
+    @SerializedName("is_silent")
+    private Boolean isSilent;
+
     public MessageAction getAction() {
         return action;
     }
@@ -378,9 +384,18 @@ public class Message implements Validable {
         return this;
     }
 
+    public Boolean getIsSilent() {
+        return isSilent;
+    }
+
+    public Message setIsSilent(Boolean isSilent) {
+        this.isSilent = isSilent;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, peerId, attachments, adminAuthorId, out, pinnedAt, refSource, geo, ref, fwdMessages, randomId, conversationMessageId, payload, replyMessage, wasListened, action, id, text, keyboard, membersCount, isCropped, updateTime, fromId, isHidden, important, deleted);
+        return Objects.hash(date, peerId, attachments, adminAuthorId, out, pinnedAt, refSource, geo, ref, fwdMessages, randomId, conversationMessageId, payload, replyMessage, wasListened, action, id, text, keyboard, membersCount, isCropped, updateTime, fromId, isHidden, important, deleted, isSilent);
     }
 
     @Override
@@ -405,6 +420,7 @@ public class Message implements Validable {
                 Objects.equals(keyboard, message.keyboard) &&
                 Objects.equals(isCropped, message.isCropped) &&
                 Objects.equals(wasListened, message.wasListened) &&
+                Objects.equals(isSilent, message.isSilent) &&
                 Objects.equals(refSource, message.refSource) &&
                 Objects.equals(conversationMessageId, message.conversationMessageId) &&
                 Objects.equals(important, message.important) &&
@@ -441,6 +457,7 @@ public class Message implements Validable {
         sb.append(", keyboard=").append(keyboard);
         sb.append(", isCropped=").append(isCropped);
         sb.append(", wasListened=").append(wasListened);
+        sb.append(", isSilent=").append(isSilent);
         sb.append(", refSource='").append(refSource).append("'");
         sb.append(", conversationMessageId=").append(conversationMessageId);
         sb.append(", important=").append(important);

@@ -281,6 +281,9 @@ public class UserFull extends User implements Validable {
     @SerializedName("stories_archive_count")
     private Integer storiesArchiveCount;
 
+    @SerializedName("has_unseen_stories")
+    private Boolean hasUnseenStories;
+
     @SerializedName("wall_default")
     private UserFullWallDefault wallDefault;
 
@@ -289,6 +292,12 @@ public class UserFull extends User implements Validable {
      */
     @SerializedName("can_call")
     private Boolean canCall;
+
+    /**
+     * Information whether group can call user
+     */
+    @SerializedName("can_call_from_group")
+    private Boolean canCallFromGroup;
 
     /**
      * Information whether current user can see the user's wishes
@@ -554,8 +563,26 @@ public class UserFull extends User implements Validable {
     @SerializedName("hash")
     private String hash;
 
-    @SerializedName("has_email")
-    private Boolean hasEmail;
+    /**
+     * Access to user profile is restricted for search engines
+     */
+    @SerializedName("is_no_index")
+    private Boolean isNoIndex;
+
+    /**
+     * Contact person ID
+     */
+    @SerializedName("contact_id")
+    private Integer contactId;
+
+    @SerializedName("is_message_request")
+    private Boolean isMessageRequest;
+
+    @SerializedName("descriptions")
+    private List<String> descriptions;
+
+    @SerializedName("lists")
+    private List<Integer> lists;
 
     public String getFirstNameNom() {
         return firstNameNom;
@@ -1052,6 +1079,15 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
+    public Boolean getHasUnseenStories() {
+        return hasUnseenStories;
+    }
+
+    public UserFull setHasUnseenStories(Boolean hasUnseenStories) {
+        this.hasUnseenStories = hasUnseenStories;
+        return this;
+    }
+
     public UserFullWallDefault getWallDefault() {
         return wallDefault;
     }
@@ -1067,6 +1103,15 @@ public class UserFull extends User implements Validable {
 
     public UserFull setCanCall(Boolean canCall) {
         this.canCall = canCall;
+        return this;
+    }
+
+    public Boolean getCanCallFromGroup() {
+        return canCallFromGroup;
+    }
+
+    public UserFull setCanCallFromGroup(Boolean canCallFromGroup) {
+        this.canCallFromGroup = canCallFromGroup;
         return this;
     }
 
@@ -1575,18 +1620,54 @@ public class UserFull extends User implements Validable {
         return this;
     }
 
-    public Boolean getHasEmail() {
-        return hasEmail;
+    public Boolean getIsNoIndex() {
+        return isNoIndex;
     }
 
-    public UserFull setHasEmail(Boolean hasEmail) {
-        this.hasEmail = hasEmail;
+    public UserFull setIsNoIndex(Boolean isNoIndex) {
+        this.isNoIndex = isNoIndex;
+        return this;
+    }
+
+    public Integer getContactId() {
+        return contactId;
+    }
+
+    public UserFull setContactId(Integer contactId) {
+        this.contactId = contactId;
+        return this;
+    }
+
+    public Boolean getIsMessageRequest() {
+        return isMessageRequest;
+    }
+
+    public UserFull setIsMessageRequest(Boolean isMessageRequest) {
+        this.isMessageRequest = isMessageRequest;
+        return this;
+    }
+
+    public List<String> getDescriptions() {
+        return descriptions;
+    }
+
+    public UserFull setDescriptions(List<String> descriptions) {
+        this.descriptions = descriptions;
+        return this;
+    }
+
+    public List<Integer> getLists() {
+        return lists;
+    }
+
+    public UserFull setLists(List<Integer> lists) {
+        this.lists = lists;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(canBeInvitedGroup, career, occupation, about, instagram, type, quotes, relation, movies, ownerState, twitter, music, universities, homeTown, graduation, games, storiesArchiveCount, lastNameIns, firstNameGen, counters, canSeeAllPosts, photoMediumRec, personal, educationStatus, videoLiveCount, books, lastSeen, canSubscribePodcasts, hasPhoto, mobilePhone, schools, domain, lastNameNom, facultyName, followersCount, hash, facebookName, statusAudio, status, activity, city, maidenName, photo200, videoLiveLevel, skype, canPost, photoMaxSize, canSeeGifts, nickname, wallDefault, commonCount, email, isVideoLiveNotificationsBlocked, photoBig, lastNameDat, facebook, videoLive, photoId, photo, photo200Orig, lastNameAcc, site, blacklisted, firstNameIns, interests, canSendFriendRequest, universityName, country, canSubscribePosts, tv, bdate, language, educationForm, faculty, canSeeAudio, photoMaxOrig, military, firstNameNom, lastNameAbl, isService, test, contactName, homePhone, livejournal, relatives, canUploadDoc, accessKey, photo400Orig, isHiddenFromFeed, lastNameGen, isFavorite, relationPartner, cropPhoto, timezone, exports, university, isSubscribedPodcasts, photoMedium, photo400, firstNameAcc, clipsCount, hasEmail, universityGroupId, firstNameDat, wallComments, photoMax, isFriend, canSeeWishes, hasMobile, blacklistedByMe, canCall, photoRec, activities, firstNameAbl, serviceDescription, canWritePrivateMessage);
+        return Objects.hash(canBeInvitedGroup, career, occupation, isNoIndex, about, instagram, type, quotes, relation, movies, ownerState, twitter, music, universities, homeTown, graduation, games, storiesArchiveCount, lastNameIns, firstNameGen, counters, contactId, canSeeAllPosts, photoMediumRec, personal, educationStatus, videoLiveCount, books, lastSeen, canSubscribePodcasts, hasPhoto, mobilePhone, schools, domain, lastNameNom, facultyName, followersCount, hash, facebookName, statusAudio, status, isMessageRequest, activity, city, maidenName, photo200, videoLiveLevel, skype, canPost, photoMaxSize, canSeeGifts, nickname, wallDefault, commonCount, email, isVideoLiveNotificationsBlocked, photoBig, lastNameDat, facebook, videoLive, photoId, photo, photo200Orig, lastNameAcc, site, blacklisted, firstNameIns, interests, canSendFriendRequest, universityName, country, canSubscribePosts, tv, bdate, language, educationForm, descriptions, faculty, canSeeAudio, photoMaxOrig, hasUnseenStories, military, firstNameNom, lastNameAbl, isService, canCallFromGroup, test, contactName, homePhone, livejournal, relatives, canUploadDoc, accessKey, lists, photo400Orig, isHiddenFromFeed, lastNameGen, isFavorite, relationPartner, cropPhoto, timezone, exports, university, isSubscribedPodcasts, photoMedium, photo400, firstNameAcc, clipsCount, universityGroupId, firstNameDat, wallComments, photoMax, isFriend, canSeeWishes, hasMobile, blacklistedByMe, canCall, photoRec, activities, firstNameAbl, serviceDescription, canWritePrivateMessage);
     }
 
     @Override
@@ -1600,6 +1681,7 @@ public class UserFull extends User implements Validable {
                 Objects.equals(occupation, userFull.occupation) &&
                 Objects.equals(about, userFull.about) &&
                 Objects.equals(photoBig, userFull.photoBig) &&
+                Objects.equals(hasUnseenStories, userFull.hasUnseenStories) &&
                 Objects.equals(instagram, userFull.instagram) &&
                 Objects.equals(type, userFull.type) &&
                 Objects.equals(statusAudio, userFull.statusAudio) &&
@@ -1618,6 +1700,7 @@ public class UserFull extends User implements Validable {
                 Objects.equals(lastNameNom, userFull.lastNameNom) &&
                 Objects.equals(games, userFull.games) &&
                 Objects.equals(canSeeAllPosts, userFull.canSeeAllPosts) &&
+                Objects.equals(canCallFromGroup, userFull.canCallFromGroup) &&
                 Objects.equals(canSeeWishes, userFull.canSeeWishes) &&
                 Objects.equals(commonCount, userFull.commonCount) &&
                 Objects.equals(counters, userFull.counters) &&
@@ -1662,9 +1745,11 @@ public class UserFull extends User implements Validable {
                 Objects.equals(lastSeen, userFull.lastSeen) &&
                 Objects.equals(blacklistedByMe, userFull.blacklistedByMe) &&
                 Objects.equals(language, userFull.language) &&
+                Objects.equals(descriptions, userFull.descriptions) &&
                 Objects.equals(educationForm, userFull.educationForm) &&
                 Objects.equals(faculty, userFull.faculty) &&
                 Objects.equals(canSubscribePodcasts, userFull.canSubscribePodcasts) &&
+                Objects.equals(isNoIndex, userFull.isNoIndex) &&
                 Objects.equals(military, userFull.military) &&
                 Objects.equals(lastNameGen, userFull.lastNameGen) &&
                 Objects.equals(firstNameNom, userFull.firstNameNom) &&
@@ -1673,10 +1758,12 @@ public class UserFull extends User implements Validable {
                 Objects.equals(videoLiveCount, userFull.videoLiveCount) &&
                 Objects.equals(livejournal, userFull.livejournal) &&
                 Objects.equals(relatives, userFull.relatives) &&
+                Objects.equals(isMessageRequest, userFull.isMessageRequest) &&
                 Objects.equals(photoMax, userFull.photoMax) &&
                 Objects.equals(canSeeAudio, userFull.canSeeAudio) &&
                 Objects.equals(firstNameIns, userFull.firstNameIns) &&
                 Objects.equals(homeTown, userFull.homeTown) &&
+                Objects.equals(lists, userFull.lists) &&
                 Objects.equals(canBeInvitedGroup, userFull.canBeInvitedGroup) &&
                 Objects.equals(ownerState, userFull.ownerState) &&
                 Objects.equals(videoLive, userFull.videoLive) &&
@@ -1689,13 +1776,13 @@ public class UserFull extends User implements Validable {
                 Objects.equals(university, userFull.university) &&
                 Objects.equals(firstNameDat, userFull.firstNameDat) &&
                 Objects.equals(canSubscribePosts, userFull.canSubscribePosts) &&
+                Objects.equals(contactId, userFull.contactId) &&
                 Objects.equals(photoMaxOrig, userFull.photoMaxOrig) &&
                 Objects.equals(facultyName, userFull.facultyName) &&
                 Objects.equals(lastNameDat, userFull.lastNameDat) &&
                 Objects.equals(mobilePhone, userFull.mobilePhone) &&
                 Objects.equals(isHiddenFromFeed, userFull.isHiddenFromFeed) &&
                 Objects.equals(canPost, userFull.canPost) &&
-                Objects.equals(hasEmail, userFull.hasEmail) &&
                 Objects.equals(photo400, userFull.photo400) &&
                 Objects.equals(maidenName, userFull.maidenName) &&
                 Objects.equals(wallComments, userFull.wallComments) &&
@@ -1726,6 +1813,7 @@ public class UserFull extends User implements Validable {
         sb.append(", occupation=").append(occupation);
         sb.append(", about='").append(about).append("'");
         sb.append(", photoBig='").append(photoBig).append("'");
+        sb.append(", hasUnseenStories=").append(hasUnseenStories);
         sb.append(", instagram='").append(instagram).append("'");
         sb.append(", type=").append(type);
         sb.append(", statusAudio=").append(statusAudio);
@@ -1744,6 +1832,7 @@ public class UserFull extends User implements Validable {
         sb.append(", lastNameNom='").append(lastNameNom).append("'");
         sb.append(", games='").append(games).append("'");
         sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
+        sb.append(", canCallFromGroup=").append(canCallFromGroup);
         sb.append(", canSeeWishes=").append(canSeeWishes);
         sb.append(", commonCount=").append(commonCount);
         sb.append(", counters=").append(counters);
@@ -1788,9 +1877,11 @@ public class UserFull extends User implements Validable {
         sb.append(", lastSeen=").append(lastSeen);
         sb.append(", blacklistedByMe=").append(blacklistedByMe);
         sb.append(", language='").append(language).append("'");
+        sb.append(", descriptions='").append(descriptions).append("'");
         sb.append(", educationForm='").append(educationForm).append("'");
         sb.append(", faculty=").append(faculty);
         sb.append(", canSubscribePodcasts=").append(canSubscribePodcasts);
+        sb.append(", isNoIndex=").append(isNoIndex);
         sb.append(", military=").append(military);
         sb.append(", lastNameGen='").append(lastNameGen).append("'");
         sb.append(", firstNameNom='").append(firstNameNom).append("'");
@@ -1799,10 +1890,12 @@ public class UserFull extends User implements Validable {
         sb.append(", videoLiveCount=").append(videoLiveCount);
         sb.append(", livejournal='").append(livejournal).append("'");
         sb.append(", relatives=").append(relatives);
+        sb.append(", isMessageRequest=").append(isMessageRequest);
         sb.append(", photoMax=").append(photoMax);
         sb.append(", canSeeAudio=").append(canSeeAudio);
         sb.append(", firstNameIns='").append(firstNameIns).append("'");
         sb.append(", homeTown='").append(homeTown).append("'");
+        sb.append(", lists=").append(lists);
         sb.append(", canBeInvitedGroup=").append(canBeInvitedGroup);
         sb.append(", ownerState=").append(ownerState);
         sb.append(", videoLive=").append(videoLive);
@@ -1815,13 +1908,13 @@ public class UserFull extends User implements Validable {
         sb.append(", university=").append(university);
         sb.append(", firstNameDat='").append(firstNameDat).append("'");
         sb.append(", canSubscribePosts=").append(canSubscribePosts);
+        sb.append(", contactId=").append(contactId);
         sb.append(", photoMaxOrig=").append(photoMaxOrig);
         sb.append(", facultyName='").append(facultyName).append("'");
         sb.append(", lastNameDat='").append(lastNameDat).append("'");
         sb.append(", mobilePhone='").append(mobilePhone).append("'");
         sb.append(", isHiddenFromFeed=").append(isHiddenFromFeed);
         sb.append(", canPost=").append(canPost);
-        sb.append(", hasEmail=").append(hasEmail);
         sb.append(", photo400='").append(photo400).append("'");
         sb.append(", maidenName='").append(maidenName).append("'");
         sb.append(", wallComments=").append(wallComments);

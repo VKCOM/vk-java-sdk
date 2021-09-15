@@ -26,7 +26,10 @@ public enum HintSection implements EnumParam {
     FRIENDS("friends"),
 
     @SerializedName("mutual_friends")
-    MUTUAL_FRIENDS("mutual_friends");
+    MUTUAL_FRIENDS("mutual_friends"),
+
+    @SerializedName("promo")
+    PROMO("promo");
 
     private final String value;
 

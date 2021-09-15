@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.media.Restriction;
 import com.vk.api.sdk.objects.photos.Image;
 import com.vk.api.sdk.objects.photos.PhotoSizes;
 import java.net.URI;
@@ -116,9 +115,6 @@ public class SaveMarketAlbumPhotoResponse implements Validable {
      */
     @SerializedName("has_tags")
     private Boolean hasTags;
-
-    @SerializedName("restrictions")
-    private Restriction restrictions;
 
     public String getAccessKey() {
         return accessKey;
@@ -281,18 +277,9 @@ public class SaveMarketAlbumPhotoResponse implements Validable {
         return this;
     }
 
-    public Restriction getRestrictions() {
-        return restrictions;
-    }
-
-    public SaveMarketAlbumPhotoResponse setRestrictions(Restriction restrictions) {
-        this.restrictions = restrictions;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, lng, restrictions, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
+        return Objects.hash(date, images, lng, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
     }
 
     @Override
@@ -303,7 +290,6 @@ public class SaveMarketAlbumPhotoResponse implements Validable {
         return Objects.equals(date, saveMarketAlbumPhotoResponse.date) &&
                 Objects.equals(images, saveMarketAlbumPhotoResponse.images) &&
                 Objects.equals(ownerId, saveMarketAlbumPhotoResponse.ownerId) &&
-                Objects.equals(restrictions, saveMarketAlbumPhotoResponse.restrictions) &&
                 Objects.equals(lng, saveMarketAlbumPhotoResponse.lng) &&
                 Objects.equals(canComment, saveMarketAlbumPhotoResponse.canComment) &&
                 Objects.equals(postId, saveMarketAlbumPhotoResponse.postId) &&
@@ -332,7 +318,6 @@ public class SaveMarketAlbumPhotoResponse implements Validable {
         sb.append("date=").append(date);
         sb.append(", images=").append(images);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", restrictions=").append(restrictions);
         sb.append(", lng=").append(lng);
         sb.append(", canComment=").append(canComment);
         sb.append(", postId=").append(postId);

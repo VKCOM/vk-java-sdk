@@ -15,7 +15,7 @@ public class AppsGetScoreQuery extends AbstractQueryBuilder<AppsGetScoreQuery, I
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public AppsGetScoreQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "apps.getScore", Integer.class);
@@ -26,7 +26,7 @@ public class AppsGetScoreQuery extends AbstractQueryBuilder<AppsGetScoreQuery, I
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AppsGetScoreQuery userId(int value) {

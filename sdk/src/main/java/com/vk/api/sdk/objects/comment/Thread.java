@@ -13,26 +13,20 @@ import java.util.Objects;
  */
 public class Thread implements Validable {
     /**
-     * Information whether current user can comment the post
-     */
-    @SerializedName("can_post")
-    private Boolean canPost;
-
-    /**
      * Comments number
      */
     @SerializedName("count")
     @Required
     private Integer count;
 
-    /**
-     * Information whether groups can comment the post
-     */
-    @SerializedName("groups_can_post")
-    private Boolean groupsCanPost;
-
     @SerializedName("items")
     private List<WallComment> items;
+
+    /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
 
     /**
      * Information whether recommended to display reply button
@@ -40,14 +34,11 @@ public class Thread implements Validable {
     @SerializedName("show_reply_button")
     private Boolean showReplyButton;
 
-    public Boolean getCanPost() {
-        return canPost;
-    }
-
-    public Thread setCanPost(Boolean canPost) {
-        this.canPost = canPost;
-        return this;
-    }
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
 
     public Integer getCount() {
         return count;
@@ -55,15 +46,6 @@ public class Thread implements Validable {
 
     public Thread setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public Boolean getGroupsCanPost() {
-        return groupsCanPost;
-    }
-
-    public Thread setGroupsCanPost(Boolean groupsCanPost) {
-        this.groupsCanPost = groupsCanPost;
         return this;
     }
 
@@ -76,12 +58,30 @@ public class Thread implements Validable {
         return this;
     }
 
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public Thread setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
+
     public Boolean getShowReplyButton() {
         return showReplyButton;
     }
 
     public Thread setShowReplyButton(Boolean showReplyButton) {
         this.showReplyButton = showReplyButton;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public Thread setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
         return this;
     }
 

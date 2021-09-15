@@ -16,7 +16,7 @@ public class GroupsUnbanQuery extends AbstractQueryBuilder<GroupsUnbanQuery, OkR
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsUnbanQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.unban", OkResponse.class);
@@ -27,7 +27,7 @@ public class GroupsUnbanQuery extends AbstractQueryBuilder<GroupsUnbanQuery, OkR
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsUnbanQuery groupId(int value) {

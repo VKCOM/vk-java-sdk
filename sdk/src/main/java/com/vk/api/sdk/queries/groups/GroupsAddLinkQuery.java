@@ -16,7 +16,7 @@ public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery,
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param link value of "link" parameter.
      */
     public GroupsAddLinkQuery(VkApiClient client, UserActor actor, int groupId, String link) {
@@ -29,7 +29,7 @@ public class GroupsAddLinkQuery extends AbstractQueryBuilder<GroupsAddLinkQuery,
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsAddLinkQuery groupId(int value) {

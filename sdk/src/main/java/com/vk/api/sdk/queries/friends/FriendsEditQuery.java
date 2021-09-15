@@ -16,7 +16,7 @@ public class FriendsEditQuery extends AbstractQueryBuilder<FriendsEditQuery, OkR
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public FriendsEditQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "friends.edit", OkResponse.class);
@@ -27,7 +27,7 @@ public class FriendsEditQuery extends AbstractQueryBuilder<FriendsEditQuery, OkR
     /**
      * ID of the user whose friend list is to be edited.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected FriendsEditQuery userId(int value) {

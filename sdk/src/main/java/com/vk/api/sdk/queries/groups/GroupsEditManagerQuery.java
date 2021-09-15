@@ -17,8 +17,8 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public GroupsEditManagerQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
         super(client, "groups.editManager", OkResponse.class);
@@ -30,7 +30,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsEditManagerQuery groupId(int value) {
@@ -40,7 +40,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsEditManagerQuery userId(int value) {

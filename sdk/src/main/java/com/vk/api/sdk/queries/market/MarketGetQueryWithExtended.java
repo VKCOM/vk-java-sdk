@@ -75,6 +75,46 @@ public class MarketGetQueryWithExtended extends AbstractQueryBuilder<MarketGetQu
         return unsafeParam("extended", value);
     }
 
+    /**
+     * Items update date from (format: yyyy-mm-dd)
+     *
+     * @param value value of "date from" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetQueryWithExtended dateFrom(String value) {
+        return unsafeParam("date_from", value);
+    }
+
+    /**
+     * Items update date to (format: yyyy-mm-dd)
+     *
+     * @param value value of "date to" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetQueryWithExtended dateTo(String value) {
+        return unsafeParam("date_to", value);
+    }
+
+    /**
+     * Add variants to response if exist
+     *
+     * @param value value of "need variants" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetQueryWithExtended needVariants(Boolean value) {
+        return unsafeParam("need_variants", value);
+    }
+
+    /**
+     * Add disabled items to response
+     *
+     * @param value value of "with disabled" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetQueryWithExtended withDisabled(Boolean value) {
+        return unsafeParam("with_disabled", value);
+    }
+
     @Override
     protected MarketGetQueryWithExtended getThis() {
         return this;

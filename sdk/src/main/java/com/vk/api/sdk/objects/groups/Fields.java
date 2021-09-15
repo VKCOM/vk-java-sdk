@@ -190,6 +190,9 @@ public enum Fields implements EnumParam {
     @SerializedName("clips_count")
     CLIPS_COUNT("clips_count"),
 
+    @SerializedName("has_unseen_stories")
+    HAS_UNSEEN_STORIES("has_unseen_stories"),
+
     @SerializedName("is_business")
     IS_BUSINESS("is_business"),
 

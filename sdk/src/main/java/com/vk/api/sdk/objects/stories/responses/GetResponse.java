@@ -7,7 +7,7 @@ import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.stories.PromoBlock;
 import com.vk.api.sdk.objects.stories.Story;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +30,7 @@ public class GetResponse implements Validable {
     private PromoBlock promoData;
 
     @SerializedName("profiles")
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
     @SerializedName("groups")
     private List<Group> groups;
@@ -65,11 +65,11 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetResponse setProfiles(List<User> profiles) {
+    public GetResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
         return this;
     }

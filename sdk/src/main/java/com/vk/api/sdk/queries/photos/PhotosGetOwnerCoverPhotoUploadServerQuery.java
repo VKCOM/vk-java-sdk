@@ -17,7 +17,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, UserActor actor,
             int groupId) {
@@ -31,7 +31,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor,
             int groupId) {
@@ -44,7 +44,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
     /**
      * ID of community that owns the album (if the photo will be uploaded to a community album).
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected PhotosGetOwnerCoverPhotoUploadServerQuery groupId(int value) {

@@ -19,7 +19,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public BoardGetTopicsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "board.getTopics", GetTopicsResponse.class);
@@ -32,7 +32,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public BoardGetTopicsQuery(VkApiClient client, ServiceActor actor, int groupId) {
         super(client, "board.getTopics", GetTopicsResponse.class);
@@ -44,7 +44,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
     /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected BoardGetTopicsQuery groupId(int value) {

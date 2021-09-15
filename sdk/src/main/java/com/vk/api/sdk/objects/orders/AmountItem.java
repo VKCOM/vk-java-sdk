@@ -13,7 +13,7 @@ public class AmountItem implements Validable {
      * Votes amount in user's currency
      */
     @SerializedName("amount")
-    private Integer amount;
+    private Float amount;
 
     /**
      * Amount description
@@ -27,11 +27,11 @@ public class AmountItem implements Validable {
     @SerializedName("votes")
     private String votes;
 
-    public Integer getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public AmountItem setAmount(Integer amount) {
+    public AmountItem setAmount(Float amount) {
         this.amount = amount;
         return this;
     }

@@ -67,6 +67,16 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
     }
 
     /**
+     * Public page subcategory ID.
+     *
+     * @param value value of "public subcategory" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsCreateQuery publicSubcategory(Integer value) {
+        return unsafeParam("public_subcategory", value);
+    }
+
+    /**
      * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
      *
      * @param value value of "subtype" parameter. Minimum is 0.

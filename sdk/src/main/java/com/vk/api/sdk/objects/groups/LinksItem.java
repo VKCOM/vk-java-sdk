@@ -12,6 +12,12 @@ import java.util.Objects;
  */
 public class LinksItem implements Validable {
     /**
+     * Link title
+     */
+    @SerializedName("name")
+    private String name;
+
+    /**
      * Link description
      */
     @SerializedName("desc")
@@ -30,12 +36,6 @@ public class LinksItem implements Validable {
     private Integer id;
 
     /**
-     * Link title
-     */
-    @SerializedName("name")
-    private String name;
-
-    /**
      * URL of square image of the link with 100 pixels in width
      */
     @SerializedName("photo_100")
@@ -52,6 +52,21 @@ public class LinksItem implements Validable {
      */
     @SerializedName("url")
     private URI url;
+
+    /**
+     * Information whether the image on processing
+     */
+    @SerializedName("image_processing")
+    private BoolInt imageProcessing;
+
+    public String getName() {
+        return name;
+    }
+
+    public LinksItem setName(String name) {
+        this.name = name;
+        return this;
+    }
 
     public String getDesc() {
         return desc;
@@ -76,15 +91,6 @@ public class LinksItem implements Validable {
 
     public LinksItem setId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public LinksItem setName(String name) {
-        this.name = name;
         return this;
     }
 
@@ -115,9 +121,17 @@ public class LinksItem implements Validable {
         return this;
     }
 
+    public boolean isImageProcessing() {
+        return imageProcessing == BoolInt.YES;
+    }
+
+    public BoolInt getImageProcessing() {
+        return imageProcessing;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, editTitle, name, photo50, id, url, desc);
+        return Objects.hash(photo100, editTitle, name, photo50, id, imageProcessing, url, desc);
     }
 
     @Override
@@ -127,6 +141,7 @@ public class LinksItem implements Validable {
         LinksItem linksItem = (LinksItem) o;
         return Objects.equals(editTitle, linksItem.editTitle) &&
                 Objects.equals(photo50, linksItem.photo50) &&
+                Objects.equals(imageProcessing, linksItem.imageProcessing) &&
                 Objects.equals(name, linksItem.name) &&
                 Objects.equals(id, linksItem.id) &&
                 Objects.equals(photo100, linksItem.photo100) &&
@@ -144,6 +159,7 @@ public class LinksItem implements Validable {
         final StringBuilder sb = new StringBuilder("LinksItem{");
         sb.append("editTitle=").append(editTitle);
         sb.append(", photo50=").append(photo50);
+        sb.append(", imageProcessing=").append(imageProcessing);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
         sb.append(", photo100=").append(photo100);

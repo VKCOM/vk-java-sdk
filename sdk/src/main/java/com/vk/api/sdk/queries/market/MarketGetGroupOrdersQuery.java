@@ -17,7 +17,7 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public MarketGetGroupOrdersQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "market.getGroupOrders", GetGroupOrdersResponse.class);
@@ -30,7 +30,7 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public MarketGetGroupOrdersQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "market.getGroupOrders", GetGroupOrdersResponse.class);
@@ -42,7 +42,7 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MarketGetGroupOrdersQuery groupId(int value) {

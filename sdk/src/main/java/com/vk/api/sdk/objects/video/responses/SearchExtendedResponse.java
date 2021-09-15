@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.users.User;
 import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +27,7 @@ public class SearchExtendedResponse implements Validable {
 
     @SerializedName("profiles")
     @Required
-    private List<UserMin> profiles;
+    private List<User> profiles;
 
     @SerializedName("groups")
     @Required
@@ -51,11 +51,11 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getProfiles() {
+    public List<User> getProfiles() {
         return profiles;
     }
 
-    public SearchExtendedResponse setProfiles(List<UserMin> profiles) {
+    public SearchExtendedResponse setProfiles(List<User> profiles) {
         this.profiles = profiles;
         return this;
     }

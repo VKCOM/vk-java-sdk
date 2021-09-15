@@ -18,7 +18,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetBannedQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getBanned", GetBannedResponse.class);
@@ -31,7 +31,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetBannedQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.getBanned", GetBannedResponse.class);
@@ -43,7 +43,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetBannedQuery groupId(int value) {

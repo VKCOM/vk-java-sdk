@@ -13,9 +13,6 @@ public enum GetCountersFilter implements EnumParam {
     @SerializedName("photos")
     PHOTOS("photos"),
 
-    @SerializedName("videos")
-    VIDEOS("videos"),
-
     @SerializedName("notes")
     NOTES("notes"),
 
@@ -32,7 +29,16 @@ public enum GetCountersFilter implements EnumParam {
     SDK("sdk"),
 
     @SerializedName("friends_suggestions")
-    FRIENDS_SUGGESTIONS("friends_suggestions");
+    FRIENDS_SUGGESTIONS("friends_suggestions"),
+
+    @SerializedName("notifications")
+    NOTIFICATIONS("notifications"),
+
+    @SerializedName("app_requests")
+    APP_REQUESTS("app_requests"),
+
+    @SerializedName("friends_recommendations")
+    FRIENDS_RECOMMENDATIONS("friends_recommendations");
 
     private final String value;
 

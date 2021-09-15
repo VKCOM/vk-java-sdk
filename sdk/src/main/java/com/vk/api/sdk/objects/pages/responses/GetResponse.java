@@ -108,6 +108,30 @@ public class GetResponse implements Validable {
     @SerializedName("who_can_view")
     private PrivacySettings whoCanView;
 
+    /**
+     * URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * Parent
+     */
+    @SerializedName("parent")
+    private String parent;
+
+    /**
+     * Parent2
+     */
+    @SerializedName("parent2")
+    private String parent2;
+
+    /**
+     * Owner ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
     public Integer getCreated() {
         return created;
     }
@@ -241,9 +265,45 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public URI getUrl() {
+        return url;
+    }
+
+    public GetResponse setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public GetResponse setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getParent2() {
+        return parent2;
+    }
+
+    public GetResponse setParent2(String parent2) {
+        this.parent2 = parent2;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public GetResponse setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, title, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views);
+        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views, parent2);
     }
 
     @Override
@@ -251,12 +311,15 @@ public class GetResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetResponse getResponse = (GetResponse) o;
-        return Objects.equals(whoCanView, getResponse.whoCanView) &&
+        return Objects.equals(parent, getResponse.parent) &&
+                Objects.equals(whoCanView, getResponse.whoCanView) &&
                 Objects.equals(edited, getResponse.edited) &&
                 Objects.equals(created, getResponse.created) &&
+                Objects.equals(ownerId, getResponse.ownerId) &&
                 Objects.equals(editorId, getResponse.editorId) &&
                 Objects.equals(source, getResponse.source) &&
                 Objects.equals(title, getResponse.title) &&
+                Objects.equals(url, getResponse.url) &&
                 Objects.equals(whoCanEdit, getResponse.whoCanEdit) &&
                 Objects.equals(currentUserCanEdit, getResponse.currentUserCanEdit) &&
                 Objects.equals(groupId, getResponse.groupId) &&
@@ -265,7 +328,8 @@ public class GetResponse implements Validable {
                 Objects.equals(html, getResponse.html) &&
                 Objects.equals(id, getResponse.id) &&
                 Objects.equals(currentUserCanEditAccess, getResponse.currentUserCanEditAccess) &&
-                Objects.equals(views, getResponse.views);
+                Objects.equals(views, getResponse.views) &&
+                Objects.equals(parent2, getResponse.parent2);
     }
 
     @Override
@@ -276,12 +340,15 @@ public class GetResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
-        sb.append("whoCanView=").append(whoCanView);
+        sb.append("parent='").append(parent).append("'");
+        sb.append(", whoCanView=").append(whoCanView);
         sb.append(", edited=").append(edited);
         sb.append(", created=").append(created);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", editorId=").append(editorId);
         sb.append(", source='").append(source).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", url=").append(url);
         sb.append(", whoCanEdit=").append(whoCanEdit);
         sb.append(", currentUserCanEdit=").append(currentUserCanEdit);
         sb.append(", groupId=").append(groupId);
@@ -291,6 +358,7 @@ public class GetResponse implements Validable {
         sb.append(", id=").append(id);
         sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
         sb.append(", views=").append(views);
+        sb.append(", parent2='").append(parent2).append("'");
         sb.append('}');
         return sb.toString();
     }

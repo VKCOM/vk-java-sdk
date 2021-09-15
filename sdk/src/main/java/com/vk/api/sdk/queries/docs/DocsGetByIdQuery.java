@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.docs.responses.GetByIdResponse;
 import java.util.Arrays;
@@ -33,6 +34,32 @@ public class DocsGetByIdQuery extends AbstractQueryBuilder<DocsGetByIdQuery, Lis
      * @param docs value of "docs" parameter.
      */
     public DocsGetByIdQuery(VkApiClient client, UserActor actor, List<String> docs) {
+        super(client, "docs.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
+        accessToken(actor.getAccessToken());
+        docs(docs);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param docs value of "docs" parameter.
+     */
+    public DocsGetByIdQuery(VkApiClient client, GroupActor actor, String... docs) {
+        super(client, "docs.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
+        accessToken(actor.getAccessToken());
+        docs(docs);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param docs value of "docs" parameter.
+     */
+    public DocsGetByIdQuery(VkApiClient client, GroupActor actor, List<String> docs) {
         super(client, "docs.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
         docs(docs);

@@ -18,7 +18,7 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetInvitedUsersQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getInvitedUsers", GetInvitedUsersResponse.class);
@@ -29,7 +29,7 @@ public class GroupsGetInvitedUsersQuery extends AbstractQueryBuilder<GroupsGetIn
     /**
      * Group ID to return invited users for.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetInvitedUsersQuery groupId(int value) {

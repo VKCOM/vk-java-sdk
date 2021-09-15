@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.orders.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,103 +14,108 @@ public class GetResponse implements Validable {
      * Amount
      */
     @SerializedName("amount")
-    private Integer amount;
+    @Required
+    private String amount;
 
     /**
      * App order ID
      */
     @SerializedName("app_order_id")
-    private Integer appOrderId;
+    private String appOrderId;
 
     /**
      * Cancel transaction ID
      */
     @SerializedName("cancel_transaction_id")
-    private Integer cancelTransactionId;
+    private String cancelTransactionId;
 
     /**
      * Date of creation in Unixtime
      */
     @SerializedName("date")
-    private Integer date;
+    @Required
+    private String date;
 
     /**
      * Order ID
      */
     @SerializedName("id")
-    private Integer id;
+    @Required
+    private String id;
 
     /**
      * Order item
      */
     @SerializedName("item")
+    @Required
     private String item;
 
     /**
      * Receiver ID
      */
     @SerializedName("receiver_id")
-    private Integer receiverId;
+    private String receiverId;
 
     /**
      * Order status
      */
     @SerializedName("status")
-    private String status;
+    @Required
+    private GetResponseStatus status;
 
     /**
      * Transaction ID
      */
     @SerializedName("transaction_id")
-    private Integer transactionId;
+    private String transactionId;
 
     /**
      * User ID
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private String userId;
 
-    public Integer getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public GetResponse setAmount(Integer amount) {
+    public GetResponse setAmount(String amount) {
         this.amount = amount;
         return this;
     }
 
-    public Integer getAppOrderId() {
+    public String getAppOrderId() {
         return appOrderId;
     }
 
-    public GetResponse setAppOrderId(Integer appOrderId) {
+    public GetResponse setAppOrderId(String appOrderId) {
         this.appOrderId = appOrderId;
         return this;
     }
 
-    public Integer getCancelTransactionId() {
+    public String getCancelTransactionId() {
         return cancelTransactionId;
     }
 
-    public GetResponse setCancelTransactionId(Integer cancelTransactionId) {
+    public GetResponse setCancelTransactionId(String cancelTransactionId) {
         this.cancelTransactionId = cancelTransactionId;
         return this;
     }
 
-    public Integer getDate() {
+    public String getDate() {
         return date;
     }
 
-    public GetResponse setDate(Integer date) {
+    public GetResponse setDate(String date) {
         this.date = date;
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public GetResponse setId(Integer id) {
+    public GetResponse setId(String id) {
         this.id = id;
         return this;
     }
@@ -123,38 +129,38 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public Integer getReceiverId() {
+    public String getReceiverId() {
         return receiverId;
     }
 
-    public GetResponse setReceiverId(Integer receiverId) {
+    public GetResponse setReceiverId(String receiverId) {
         this.receiverId = receiverId;
         return this;
     }
 
-    public String getStatus() {
+    public GetResponseStatus getStatus() {
         return status;
     }
 
-    public GetResponse setStatus(String status) {
+    public GetResponse setStatus(GetResponseStatus status) {
         this.status = status;
         return this;
     }
 
-    public Integer getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public GetResponse setTransactionId(Integer transactionId) {
+    public GetResponse setTransactionId(String transactionId) {
         this.transactionId = transactionId;
         return this;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public GetResponse setUserId(Integer userId) {
+    public GetResponse setUserId(String userId) {
         this.userId = userId;
         return this;
     }
@@ -189,15 +195,15 @@ public class GetResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
-        sb.append("date=").append(date);
-        sb.append(", transactionId=").append(transactionId);
-        sb.append(", cancelTransactionId=").append(cancelTransactionId);
-        sb.append(", amount=").append(amount);
+        sb.append("date='").append(date).append("'");
+        sb.append(", transactionId='").append(transactionId).append("'");
+        sb.append(", cancelTransactionId='").append(cancelTransactionId).append("'");
+        sb.append(", amount='").append(amount).append("'");
         sb.append(", item='").append(item).append("'");
-        sb.append(", userId=").append(userId);
-        sb.append(", receiverId=").append(receiverId);
-        sb.append(", id=").append(id);
-        sb.append(", appOrderId=").append(appOrderId);
+        sb.append(", userId='").append(userId).append("'");
+        sb.append(", receiverId='").append(receiverId).append("'");
+        sb.append(", id='").append(id).append("'");
+        sb.append(", appOrderId='").append(appOrderId).append("'");
         sb.append(", status='").append(status).append("'");
         sb.append('}');
         return sb.toString();

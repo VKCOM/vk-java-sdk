@@ -17,7 +17,7 @@ public class GroupsGetTagListQuery extends AbstractQueryBuilder<GroupsGetTagList
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetTagListQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getTagList", Utils.buildParametrizedType(List.class, GetTagListResponse.class));
@@ -28,7 +28,7 @@ public class GroupsGetTagListQuery extends AbstractQueryBuilder<GroupsGetTagList
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetTagListQuery groupId(int value) {

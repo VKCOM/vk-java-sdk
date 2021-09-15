@@ -16,7 +16,7 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param activityId value of "activity id" parameter. Minimum is 0.
      */
     public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor, int userId,
@@ -31,7 +31,7 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
     /**
      * ID of a user to save the data
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected SecureAddAppEventQuery userId(int value) {

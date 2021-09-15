@@ -27,6 +27,9 @@ public class SearchExtendedResponse implements Validable {
     @Required
     private List<MarketItemFull> items;
 
+    @SerializedName("variants")
+    private List<MarketItemFull> variants;
+
     public Integer getCount() {
         return count;
     }
@@ -54,9 +57,18 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
+    public List<MarketItemFull> getVariants() {
+        return variants;
+    }
+
+    public SearchExtendedResponse setVariants(List<MarketItemFull> variants) {
+        this.variants = variants;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, viewType, items);
+        return Objects.hash(count, viewType, variants, items);
     }
 
     @Override
@@ -66,6 +78,7 @@ public class SearchExtendedResponse implements Validable {
         SearchExtendedResponse searchExtendedResponse = (SearchExtendedResponse) o;
         return Objects.equals(count, searchExtendedResponse.count) &&
                 Objects.equals(viewType, searchExtendedResponse.viewType) &&
+                Objects.equals(variants, searchExtendedResponse.variants) &&
                 Objects.equals(items, searchExtendedResponse.items);
     }
 
@@ -79,6 +92,7 @@ public class SearchExtendedResponse implements Validable {
         final StringBuilder sb = new StringBuilder("SearchExtendedResponse{");
         sb.append("count=").append(count);
         sb.append(", viewType=").append(viewType);
+        sb.append(", variants=").append(variants);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

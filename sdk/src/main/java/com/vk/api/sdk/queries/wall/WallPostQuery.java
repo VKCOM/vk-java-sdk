@@ -3,6 +3,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.wall.PostTopicId;
 import com.vk.api.sdk.objects.wall.responses.PostResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -190,6 +191,16 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      */
     public WallPostQuery copyright(String value) {
         return unsafeParam("copyright", value);
+    }
+
+    /**
+     * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+     *
+     * @param value value of "topic id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public WallPostQuery topicId(PostTopicId value) {
+        return unsafeParam("topic_id", value);
     }
 
     /**

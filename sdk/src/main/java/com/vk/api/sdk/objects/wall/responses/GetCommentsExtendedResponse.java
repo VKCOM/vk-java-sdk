@@ -25,27 +25,6 @@ public class GetCommentsExtendedResponse implements Validable {
     @Required
     private List<WallComment> items;
 
-    @SerializedName("show_reply_button")
-    private Boolean showReplyButton;
-
-    /**
-     * Information whether current user can comment the post
-     */
-    @SerializedName("can_post")
-    private Boolean canPost;
-
-    /**
-     * Information whether groups can comment the post
-     */
-    @SerializedName("groups_can_post")
-    private Boolean groupsCanPost;
-
-    /**
-     * Count of replies of current level
-     */
-    @SerializedName("current_level_count")
-    private Integer currentLevelCount;
-
     @SerializedName("profiles")
     @Required
     private List<User> profiles;
@@ -53,6 +32,27 @@ public class GetCommentsExtendedResponse implements Validable {
     @SerializedName("groups")
     @Required
     private List<Group> groups;
+
+    /**
+     * Count of replies of current level
+     */
+    @SerializedName("current_level_count")
+    private Integer currentLevelCount;
+
+    /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
+
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
 
     public Integer getCount() {
         return count;
@@ -69,42 +69,6 @@ public class GetCommentsExtendedResponse implements Validable {
 
     public GetCommentsExtendedResponse setItems(List<WallComment> items) {
         this.items = items;
-        return this;
-    }
-
-    public Boolean getShowReplyButton() {
-        return showReplyButton;
-    }
-
-    public GetCommentsExtendedResponse setShowReplyButton(Boolean showReplyButton) {
-        this.showReplyButton = showReplyButton;
-        return this;
-    }
-
-    public Boolean getCanPost() {
-        return canPost;
-    }
-
-    public GetCommentsExtendedResponse setCanPost(Boolean canPost) {
-        this.canPost = canPost;
-        return this;
-    }
-
-    public Boolean getGroupsCanPost() {
-        return groupsCanPost;
-    }
-
-    public GetCommentsExtendedResponse setGroupsCanPost(Boolean groupsCanPost) {
-        this.groupsCanPost = groupsCanPost;
-        return this;
-    }
-
-    public Integer getCurrentLevelCount() {
-        return currentLevelCount;
-    }
-
-    public GetCommentsExtendedResponse setCurrentLevelCount(Integer currentLevelCount) {
-        this.currentLevelCount = currentLevelCount;
         return this;
     }
 
@@ -126,6 +90,42 @@ public class GetCommentsExtendedResponse implements Validable {
         return this;
     }
 
+    public Integer getCurrentLevelCount() {
+        return currentLevelCount;
+    }
+
+    public GetCommentsExtendedResponse setCurrentLevelCount(Integer currentLevelCount) {
+        this.currentLevelCount = currentLevelCount;
+        return this;
+    }
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public GetCommentsExtendedResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
+
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
+    }
+
+    public GetCommentsExtendedResponse setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public GetCommentsExtendedResponse setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
+        return this;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(canPost, count, profiles, groups, groupsCanPost, currentLevelCount, items, showReplyButton);
@@ -138,8 +138,8 @@ public class GetCommentsExtendedResponse implements Validable {
         GetCommentsExtendedResponse getCommentsExtendedResponse = (GetCommentsExtendedResponse) o;
         return Objects.equals(currentLevelCount, getCommentsExtendedResponse.currentLevelCount) &&
                 Objects.equals(count, getCommentsExtendedResponse.count) &&
-                Objects.equals(groupsCanPost, getCommentsExtendedResponse.groupsCanPost) &&
                 Objects.equals(profiles, getCommentsExtendedResponse.profiles) &&
+                Objects.equals(groupsCanPost, getCommentsExtendedResponse.groupsCanPost) &&
                 Objects.equals(groups, getCommentsExtendedResponse.groups) &&
                 Objects.equals(canPost, getCommentsExtendedResponse.canPost) &&
                 Objects.equals(showReplyButton, getCommentsExtendedResponse.showReplyButton) &&
@@ -156,8 +156,8 @@ public class GetCommentsExtendedResponse implements Validable {
         final StringBuilder sb = new StringBuilder("GetCommentsExtendedResponse{");
         sb.append("currentLevelCount=").append(currentLevelCount);
         sb.append(", count=").append(count);
-        sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", profiles=").append(profiles);
+        sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", groups=").append(groups);
         sb.append(", canPost=").append(canPost);
         sb.append(", showReplyButton=").append(showReplyButton);

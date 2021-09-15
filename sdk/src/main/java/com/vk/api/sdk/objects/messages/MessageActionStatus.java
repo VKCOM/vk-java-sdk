@@ -32,7 +32,10 @@ public enum MessageActionStatus implements EnumParam {
     CHAT_UNPIN_MESSAGE("chat_unpin_message"),
 
     @SerializedName("chat_invite_user_by_link")
-    CHAT_INVITE_USER_BY_LINK("chat_invite_user_by_link");
+    CHAT_INVITE_USER_BY_LINK("chat_invite_user_by_link"),
+
+    @SerializedName("chat_invite_user_by_message_request")
+    CHAT_INVITE_USER_BY_MESSAGE_REQUEST("chat_invite_user_by_message_request");
 
     private final String value;
 

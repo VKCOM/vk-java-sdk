@@ -38,7 +38,10 @@ public enum Type implements EnumParam {
     MARKET_COMMENT("market_comment"),
 
     @SerializedName("sitepage")
-    SITEPAGE("sitepage");
+    SITEPAGE("sitepage"),
+
+    @SerializedName("textpost")
+    TEXTPOST("textpost");
 
     private final String value;
 

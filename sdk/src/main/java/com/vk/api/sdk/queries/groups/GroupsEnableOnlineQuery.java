@@ -17,7 +17,7 @@ public class GroupsEnableOnlineQuery extends AbstractQueryBuilder<GroupsEnableOn
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsEnableOnlineQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.enableOnline", OkResponse.class);
@@ -30,7 +30,7 @@ public class GroupsEnableOnlineQuery extends AbstractQueryBuilder<GroupsEnableOn
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsEnableOnlineQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.enableOnline", OkResponse.class);
@@ -42,7 +42,7 @@ public class GroupsEnableOnlineQuery extends AbstractQueryBuilder<GroupsEnableOn
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsEnableOnlineQuery groupId(int value) {

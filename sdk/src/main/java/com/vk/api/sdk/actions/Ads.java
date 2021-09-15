@@ -78,20 +78,7 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId,
-            UserSpecificationCutted... data) {
-        return new AdsAddOfficeUsersQuery(getClient(), actor, accountId, data);
-    }
-
-    /**
-     * Adds managers and/or supervisors to advertising account.
-     *
-     * @param actor vk actor
-     * @param accountId Advertising account ID.
-     * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-     * @return query
-     */
-    public AdsAddOfficeUsersQuery addOfficeUsers(UserActor actor, int accountId,
-            List<UserSpecificationCutted> data) {
+            UserSpecificationCutted data) {
         return new AdsAddOfficeUsersQuery(getClient(), actor, accountId, data);
     }
 
@@ -578,20 +565,7 @@ public class Ads extends AbstractAction {
      * @return query
      */
     public AdsUpdateOfficeUsersQuery updateOfficeUsers(UserActor actor, int accountId,
-            UserSpecification... data) {
-        return new AdsUpdateOfficeUsersQuery(getClient(), actor, accountId, data);
-    }
-
-    /**
-     * Adds managers and/or supervisors to advertising account.
-     *
-     * @param actor vk actor
-     * @param accountId Advertising account ID.
-     * @param data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-     * @return query
-     */
-    public AdsUpdateOfficeUsersQuery updateOfficeUsers(UserActor actor, int accountId,
-            List<UserSpecification> data) {
+            UserSpecification data) {
         return new AdsUpdateOfficeUsersQuery(getClient(), actor, accountId, data);
     }
 

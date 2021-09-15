@@ -60,10 +60,22 @@ public class GetByIdLegacyResponse extends Wallpost implements Validable {
     private BoolInt markedAsAds;
 
     /**
+     * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+     */
+    @SerializedName("topic_id")
+    private GetByIdLegacyResponseTopicId topicId;
+
+    /**
      * Preview length control parameter
      */
     @SerializedName("short_text_rate")
     private Float shortTextRate;
+
+    /**
+     * Hash for sharing
+     */
+    @SerializedName("hash")
+    private String hash;
 
     public List<Wallpost> getCopyHistory() {
         return copyHistory;
@@ -142,6 +154,15 @@ public class GetByIdLegacyResponse extends Wallpost implements Validable {
         return markedAsAds;
     }
 
+    public GetByIdLegacyResponseTopicId getTopicId() {
+        return topicId;
+    }
+
+    public GetByIdLegacyResponse setTopicId(GetByIdLegacyResponseTopicId topicId) {
+        this.topicId = topicId;
+        return this;
+    }
+
     public Float getShortTextRate() {
         return shortTextRate;
     }
@@ -151,9 +172,18 @@ public class GetByIdLegacyResponse extends Wallpost implements Validable {
         return this;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
+    public GetByIdLegacyResponse setHash(String hash) {
+        this.hash = hash;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, copyHistory);
+        return Objects.hash(topicId, comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, hash, copyHistory);
     }
 
     @Override
@@ -167,7 +197,9 @@ public class GetByIdLegacyResponse extends Wallpost implements Validable {
                 Objects.equals(donut, getByIdLegacyResponse.donut) &&
                 Objects.equals(canEdit, getByIdLegacyResponse.canEdit) &&
                 Objects.equals(markedAsAds, getByIdLegacyResponse.markedAsAds) &&
+                Objects.equals(topicId, getByIdLegacyResponse.topicId) &&
                 Objects.equals(createdBy, getByIdLegacyResponse.createdBy) &&
+                Objects.equals(hash, getByIdLegacyResponse.hash) &&
                 Objects.equals(copyHistory, getByIdLegacyResponse.copyHistory) &&
                 Objects.equals(canPin, getByIdLegacyResponse.canPin) &&
                 Objects.equals(isPinned, getByIdLegacyResponse.isPinned);
@@ -187,7 +219,9 @@ public class GetByIdLegacyResponse extends Wallpost implements Validable {
         sb.append(", donut=").append(donut);
         sb.append(", canEdit=").append(canEdit);
         sb.append(", markedAsAds=").append(markedAsAds);
+        sb.append(", topicId=").append(topicId);
         sb.append(", createdBy=").append(createdBy);
+        sb.append(", hash='").append(hash).append("'");
         sb.append(", copyHistory=").append(copyHistory);
         sb.append(", canPin=").append(canPin);
         sb.append(", isPinned=").append(isPinned);

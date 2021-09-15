@@ -17,7 +17,7 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetLongPollSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.getLongPollSettings", GetLongPollSettingsResponse.class);
@@ -30,7 +30,7 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsGetLongPollSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.getLongPollSettings", GetLongPollSettingsResponse.class);
@@ -42,7 +42,7 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsGetLongPollSettingsQuery groupId(int value) {

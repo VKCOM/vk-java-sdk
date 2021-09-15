@@ -12,27 +12,27 @@ import java.util.Objects;
  * GetBannedExtendedResponse object
  */
 public class GetBannedExtendedResponse implements Validable {
-    @SerializedName("groups")
-    private List<UserFull> groups;
-
     @SerializedName("profiles")
-    private List<GroupFull> profiles;
+    private List<UserFull> profiles;
 
-    public List<UserFull> getGroups() {
-        return groups;
-    }
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
-    public GetBannedExtendedResponse setGroups(List<UserFull> groups) {
-        this.groups = groups;
-        return this;
-    }
-
-    public List<GroupFull> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetBannedExtendedResponse setProfiles(List<GroupFull> profiles) {
+    public GetBannedExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetBannedExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 

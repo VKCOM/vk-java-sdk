@@ -65,7 +65,16 @@ public enum WallpostAttachmentType implements EnumParam {
     TEXTLIVE("textlive"),
 
     @SerializedName("textpost")
-    TEXTPOST("textpost");
+    TEXTPOST("textpost"),
+
+    @SerializedName("situational_theme")
+    SITUATIONAL_THEME("situational_theme"),
+
+    @SerializedName("group")
+    GROUP("group"),
+
+    @SerializedName("sticker")
+    STICKER("sticker");
 
     private final String value;
 

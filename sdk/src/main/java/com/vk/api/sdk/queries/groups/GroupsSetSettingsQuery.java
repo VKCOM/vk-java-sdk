@@ -17,7 +17,7 @@ public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettin
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsSetSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "groups.setSettings", OkResponse.class);
@@ -30,7 +30,7 @@ public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettin
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public GroupsSetSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.setSettings", OkResponse.class);
@@ -42,7 +42,7 @@ public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettin
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsSetSettingsQuery groupId(int value) {

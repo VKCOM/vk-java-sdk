@@ -27,7 +27,7 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsGetQuery userId(Integer value) {

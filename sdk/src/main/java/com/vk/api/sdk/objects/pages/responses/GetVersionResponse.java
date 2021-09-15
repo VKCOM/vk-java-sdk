@@ -108,6 +108,30 @@ public class GetVersionResponse implements Validable {
     @SerializedName("who_can_view")
     private PrivacySettings whoCanView;
 
+    /**
+     * URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * Parent
+     */
+    @SerializedName("parent")
+    private String parent;
+
+    /**
+     * Parent2
+     */
+    @SerializedName("parent2")
+    private String parent2;
+
+    /**
+     * Owner ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
     public Integer getCreated() {
         return created;
     }
@@ -241,9 +265,45 @@ public class GetVersionResponse implements Validable {
         return this;
     }
 
+    public URI getUrl() {
+        return url;
+    }
+
+    public GetVersionResponse setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public GetVersionResponse setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getParent2() {
+        return parent2;
+    }
+
+    public GetVersionResponse setParent2(String parent2) {
+        this.parent2 = parent2;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public GetVersionResponse setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, title, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views);
+        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views, parent2);
     }
 
     @Override
@@ -251,12 +311,15 @@ public class GetVersionResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetVersionResponse getVersionResponse = (GetVersionResponse) o;
-        return Objects.equals(whoCanView, getVersionResponse.whoCanView) &&
+        return Objects.equals(parent, getVersionResponse.parent) &&
+                Objects.equals(whoCanView, getVersionResponse.whoCanView) &&
                 Objects.equals(edited, getVersionResponse.edited) &&
                 Objects.equals(created, getVersionResponse.created) &&
+                Objects.equals(ownerId, getVersionResponse.ownerId) &&
                 Objects.equals(editorId, getVersionResponse.editorId) &&
                 Objects.equals(source, getVersionResponse.source) &&
                 Objects.equals(title, getVersionResponse.title) &&
+                Objects.equals(url, getVersionResponse.url) &&
                 Objects.equals(whoCanEdit, getVersionResponse.whoCanEdit) &&
                 Objects.equals(currentUserCanEdit, getVersionResponse.currentUserCanEdit) &&
                 Objects.equals(groupId, getVersionResponse.groupId) &&
@@ -265,7 +328,8 @@ public class GetVersionResponse implements Validable {
                 Objects.equals(html, getVersionResponse.html) &&
                 Objects.equals(id, getVersionResponse.id) &&
                 Objects.equals(currentUserCanEditAccess, getVersionResponse.currentUserCanEditAccess) &&
-                Objects.equals(views, getVersionResponse.views);
+                Objects.equals(views, getVersionResponse.views) &&
+                Objects.equals(parent2, getVersionResponse.parent2);
     }
 
     @Override
@@ -276,12 +340,15 @@ public class GetVersionResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetVersionResponse{");
-        sb.append("whoCanView=").append(whoCanView);
+        sb.append("parent='").append(parent).append("'");
+        sb.append(", whoCanView=").append(whoCanView);
         sb.append(", edited=").append(edited);
         sb.append(", created=").append(created);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", editorId=").append(editorId);
         sb.append(", source='").append(source).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", url=").append(url);
         sb.append(", whoCanEdit=").append(whoCanEdit);
         sb.append(", currentUserCanEdit=").append(currentUserCanEdit);
         sb.append(", groupId=").append(groupId);
@@ -291,6 +358,7 @@ public class GetVersionResponse implements Validable {
         sb.append(", id=").append(id);
         sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
         sb.append(", views=").append(views);
+        sb.append(", parent2='").append(parent2).append("'");
         sb.append('}');
         return sb.toString();
     }

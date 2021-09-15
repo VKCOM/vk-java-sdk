@@ -18,7 +18,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public FriendsSearchQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "friends.search", SearchResponse.class);
@@ -29,7 +29,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected FriendsSearchQuery userId(int value) {

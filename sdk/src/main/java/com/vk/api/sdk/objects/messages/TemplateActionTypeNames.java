@@ -29,7 +29,13 @@ public enum TemplateActionTypeNames implements EnumParam {
     OPEN_LINK("open_link"),
 
     @SerializedName("callback")
-    CALLBACK("callback");
+    CALLBACK("callback"),
+
+    @SerializedName("intent_subscribe")
+    INTENT_SUBSCRIBE("intent_subscribe"),
+
+    @SerializedName("intent_unsubscribe")
+    INTENT_UNSUBSCRIBE("intent_unsubscribe");
 
     private final String value;
 

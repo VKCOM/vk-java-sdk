@@ -16,7 +16,7 @@ public class GroupsDeleteLinkQuery extends AbstractQueryBuilder<GroupsDeleteLink
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param linkId value of "link id" parameter. Minimum is 0.
      */
     public GroupsDeleteLinkQuery(VkApiClient client, UserActor actor, int groupId, int linkId) {
@@ -29,7 +29,7 @@ public class GroupsDeleteLinkQuery extends AbstractQueryBuilder<GroupsDeleteLink
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsDeleteLinkQuery groupId(int value) {

@@ -23,23 +23,7 @@ public class AdsUpdateOfficeUsersQuery extends AbstractQueryBuilder<AdsUpdateOff
      * @param data value of "data" parameter.
      */
     public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId,
-            UserSpecification... data) {
-        super(client, "ads.updateOfficeUsers", Utils.buildParametrizedType(List.class, UpdateOfficeUsersResponse.class));
-        accessToken(actor.getAccessToken());
-        accountId(accountId);
-        data(data);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param accountId value of "account id" parameter. Minimum is 0.
-     * @param data value of "data" parameter.
-     */
-    public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId,
-            List<UserSpecification> data) {
+            UserSpecification data) {
         super(client, "ads.updateOfficeUsers", Utils.buildParametrizedType(List.class, UpdateOfficeUsersResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -57,23 +41,12 @@ public class AdsUpdateOfficeUsersQuery extends AbstractQueryBuilder<AdsUpdateOff
     }
 
     /**
-     * data
      * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
      *
      * @param value value of "data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateOfficeUsersQuery data(UserSpecification... value) {
-        return unsafeParam("data", new Gson().toJson(value));
-    }
-
-    /**
-     * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
-     *
-     * @param value value of "data" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected AdsUpdateOfficeUsersQuery data(List<UserSpecification> value) {
+    protected AdsUpdateOfficeUsersQuery data(UserSpecification value) {
         return unsafeParam("data", new Gson().toJson(value));
     }
 

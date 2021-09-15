@@ -11,6 +11,7 @@ import com.vk.api.sdk.objects.events.EventAttach;
 import com.vk.api.sdk.objects.groups.GroupAttach;
 import com.vk.api.sdk.objects.market.MarketAlbum;
 import com.vk.api.sdk.objects.market.MarketItem;
+import com.vk.api.sdk.objects.notes.Note;
 import com.vk.api.sdk.objects.pages.WikipageFull;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.photos.PhotoAlbum;
@@ -60,7 +61,7 @@ public class WallpostAttachment implements Validable {
     private MarketAlbum marketAlbum;
 
     @SerializedName("note")
-    private AttachedNote note;
+    private Note note;
 
     @SerializedName("page")
     private WikipageFull page;
@@ -183,11 +184,11 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
-    public AttachedNote getNote() {
+    public Note getNote() {
         return note;
     }
 
-    public WallpostAttachment setNote(AttachedNote note) {
+    public WallpostAttachment setNote(Note note) {
         this.note = note;
         return this;
     }

@@ -18,7 +18,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
     public BoardGetCommentsQueryWithExtended(VkApiClient client, UserActor actor, int groupId,
@@ -35,7 +35,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
     public BoardGetCommentsQueryWithExtended(VkApiClient client, ServiceActor actor, int groupId,
@@ -51,7 +51,7 @@ public class BoardGetCommentsQueryWithExtended extends AbstractQueryBuilder<Boar
     /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected BoardGetCommentsQueryWithExtended groupId(int value) {

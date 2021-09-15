@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.orders.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -13,103 +14,108 @@ public class GetByIdResponse implements Validable {
      * Amount
      */
     @SerializedName("amount")
-    private Integer amount;
+    @Required
+    private String amount;
 
     /**
      * App order ID
      */
     @SerializedName("app_order_id")
-    private Integer appOrderId;
+    private String appOrderId;
 
     /**
      * Cancel transaction ID
      */
     @SerializedName("cancel_transaction_id")
-    private Integer cancelTransactionId;
+    private String cancelTransactionId;
 
     /**
      * Date of creation in Unixtime
      */
     @SerializedName("date")
-    private Integer date;
+    @Required
+    private String date;
 
     /**
      * Order ID
      */
     @SerializedName("id")
-    private Integer id;
+    @Required
+    private String id;
 
     /**
      * Order item
      */
     @SerializedName("item")
+    @Required
     private String item;
 
     /**
      * Receiver ID
      */
     @SerializedName("receiver_id")
-    private Integer receiverId;
+    private String receiverId;
 
     /**
      * Order status
      */
     @SerializedName("status")
-    private String status;
+    @Required
+    private GetByIdResponseStatus status;
 
     /**
      * Transaction ID
      */
     @SerializedName("transaction_id")
-    private Integer transactionId;
+    private String transactionId;
 
     /**
      * User ID
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private String userId;
 
-    public Integer getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public GetByIdResponse setAmount(Integer amount) {
+    public GetByIdResponse setAmount(String amount) {
         this.amount = amount;
         return this;
     }
 
-    public Integer getAppOrderId() {
+    public String getAppOrderId() {
         return appOrderId;
     }
 
-    public GetByIdResponse setAppOrderId(Integer appOrderId) {
+    public GetByIdResponse setAppOrderId(String appOrderId) {
         this.appOrderId = appOrderId;
         return this;
     }
 
-    public Integer getCancelTransactionId() {
+    public String getCancelTransactionId() {
         return cancelTransactionId;
     }
 
-    public GetByIdResponse setCancelTransactionId(Integer cancelTransactionId) {
+    public GetByIdResponse setCancelTransactionId(String cancelTransactionId) {
         this.cancelTransactionId = cancelTransactionId;
         return this;
     }
 
-    public Integer getDate() {
+    public String getDate() {
         return date;
     }
 
-    public GetByIdResponse setDate(Integer date) {
+    public GetByIdResponse setDate(String date) {
         this.date = date;
         return this;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public GetByIdResponse setId(Integer id) {
+    public GetByIdResponse setId(String id) {
         this.id = id;
         return this;
     }
@@ -123,38 +129,38 @@ public class GetByIdResponse implements Validable {
         return this;
     }
 
-    public Integer getReceiverId() {
+    public String getReceiverId() {
         return receiverId;
     }
 
-    public GetByIdResponse setReceiverId(Integer receiverId) {
+    public GetByIdResponse setReceiverId(String receiverId) {
         this.receiverId = receiverId;
         return this;
     }
 
-    public String getStatus() {
+    public GetByIdResponseStatus getStatus() {
         return status;
     }
 
-    public GetByIdResponse setStatus(String status) {
+    public GetByIdResponse setStatus(GetByIdResponseStatus status) {
         this.status = status;
         return this;
     }
 
-    public Integer getTransactionId() {
+    public String getTransactionId() {
         return transactionId;
     }
 
-    public GetByIdResponse setTransactionId(Integer transactionId) {
+    public GetByIdResponse setTransactionId(String transactionId) {
         this.transactionId = transactionId;
         return this;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public GetByIdResponse setUserId(Integer userId) {
+    public GetByIdResponse setUserId(String userId) {
         this.userId = userId;
         return this;
     }
@@ -189,15 +195,15 @@ public class GetByIdResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetByIdResponse{");
-        sb.append("date=").append(date);
-        sb.append(", transactionId=").append(transactionId);
-        sb.append(", cancelTransactionId=").append(cancelTransactionId);
-        sb.append(", amount=").append(amount);
+        sb.append("date='").append(date).append("'");
+        sb.append(", transactionId='").append(transactionId).append("'");
+        sb.append(", cancelTransactionId='").append(cancelTransactionId).append("'");
+        sb.append(", amount='").append(amount).append("'");
         sb.append(", item='").append(item).append("'");
-        sb.append(", userId=").append(userId);
-        sb.append(", receiverId=").append(receiverId);
-        sb.append(", id=").append(id);
-        sb.append(", appOrderId=").append(appOrderId);
+        sb.append(", userId='").append(userId).append("'");
+        sb.append(", receiverId='").append(receiverId).append("'");
+        sb.append(", id='").append(id).append("'");
+        sb.append(", appOrderId='").append(appOrderId).append("'");
         sb.append(", status='").append(status).append("'");
         sb.append('}');
         return sb.toString();

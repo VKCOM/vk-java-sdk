@@ -16,7 +16,7 @@ public class OrdersCancelSubscriptionQuery extends AbstractQueryBuilder<OrdersCa
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param subscriptionId value of "subscription id" parameter. Minimum is 0.
      */
     public OrdersCancelSubscriptionQuery(VkApiClient client, ServiceActor actor, int userId,
@@ -31,7 +31,7 @@ public class OrdersCancelSubscriptionQuery extends AbstractQueryBuilder<OrdersCa
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected OrdersCancelSubscriptionQuery userId(int value) {

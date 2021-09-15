@@ -20,7 +20,10 @@ public enum HintType implements EnumParam {
     APP("app"),
 
     @SerializedName("html5_game")
-    HTML5_GAME("html5_game");
+    HTML5_GAME("html5_game"),
+
+    @SerializedName("link")
+    LINK("link");
 
     private final String value;
 

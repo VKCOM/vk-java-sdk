@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.apps.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.App;
 import com.vk.api.sdk.objects.users.UserMin;
 import java.util.List;
@@ -16,9 +17,11 @@ public class GetCatalogResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<App> items;
 
     @SerializedName("profiles")

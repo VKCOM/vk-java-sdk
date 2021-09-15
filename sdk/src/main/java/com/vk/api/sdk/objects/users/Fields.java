@@ -64,6 +64,12 @@ public enum Fields implements EnumParam {
     @SerializedName("has_photo")
     HAS_PHOTO("has_photo"),
 
+    @SerializedName("photo")
+    PHOTO("photo"),
+
+    @SerializedName("photo_rec")
+    PHOTO_REC("photo_rec"),
+
     @SerializedName("photo_50")
     PHOTO_50("photo_50"),
 
@@ -81,6 +87,15 @@ public enum Fields implements EnumParam {
 
     @SerializedName("photo_400_orig")
     PHOTO_400_ORIG("photo_400_orig"),
+
+    @SerializedName("photo_big")
+    PHOTO_BIG("photo_big"),
+
+    @SerializedName("photo_medium")
+    PHOTO_MEDIUM("photo_medium"),
+
+    @SerializedName("photo_medium_rec")
+    PHOTO_MEDIUM_REC("photo_medium_rec"),
 
     @SerializedName("photo_max")
     PHOTO_MAX("photo_max"),
@@ -105,6 +120,9 @@ public enum Fields implements EnumParam {
 
     @SerializedName("contacts")
     CONTACTS("contacts"),
+
+    @SerializedName("language")
+    LANGUAGE("language"),
 
     @SerializedName("site")
     SITE("site"),
@@ -133,6 +151,9 @@ public enum Fields implements EnumParam {
     @SerializedName("common_count")
     COMMON_COUNT("common_count"),
 
+    @SerializedName("online_info")
+    ONLINE_INFO("online_info"),
+
     @SerializedName("occupation")
     OCCUPATION("occupation"),
 
@@ -157,8 +178,14 @@ public enum Fields implements EnumParam {
     @SerializedName("wall_comments")
     WALL_COMMENTS("wall_comments"),
 
+    @SerializedName("wall_default")
+    WALL_DEFAULT("wall_default"),
+
     @SerializedName("activities")
     ACTIVITIES("activities"),
+
+    @SerializedName("activity")
+    ACTIVITY("activity"),
 
     @SerializedName("interests")
     INTERESTS("interests"),
@@ -174,6 +201,9 @@ public enum Fields implements EnumParam {
 
     @SerializedName("books")
     BOOKS("books"),
+
+    @SerializedName("is_no_index")
+    IS_NO_INDEX("is_no_index"),
 
     @SerializedName("games")
     GAMES("games"),
@@ -193,11 +223,23 @@ public enum Fields implements EnumParam {
     @SerializedName("can_see_audio")
     CAN_SEE_AUDIO("can_see_audio"),
 
+    @SerializedName("can_see_gifts")
+    CAN_SEE_GIFTS("can_see_gifts"),
+
+    @SerializedName("work")
+    WORK("work"),
+
+    @SerializedName("places")
+    PLACES("places"),
+
     @SerializedName("can_write_private_message")
     CAN_WRITE_PRIVATE_MESSAGE("can_write_private_message"),
 
     @SerializedName("can_send_friend_request")
     CAN_SEND_FRIEND_REQUEST("can_send_friend_request"),
+
+    @SerializedName("can_upload_doc")
+    CAN_UPLOAD_DOC("can_upload_doc"),
 
     @SerializedName("is_favorite")
     IS_FAVORITE("is_favorite"),
@@ -256,6 +298,12 @@ public enum Fields implements EnumParam {
     @SerializedName("stories_archive_count")
     STORIES_ARCHIVE_COUNT("stories_archive_count"),
 
+    @SerializedName("has_unseen_stories")
+    HAS_UNSEEN_STORIES("has_unseen_stories"),
+
+    @SerializedName("video_live")
+    VIDEO_LIVE("video_live"),
+
     @SerializedName("video_live_level")
     VIDEO_LIVE_LEVEL("video_live_level"),
 
@@ -268,8 +316,14 @@ public enum Fields implements EnumParam {
     @SerializedName("service_description")
     SERVICE_DESCRIPTION("service_description"),
 
-    @SerializedName("is_dead")
-    IS_DEAD("is_dead");
+    @SerializedName("can_see_wishes")
+    CAN_SEE_WISHES("can_see_wishes"),
+
+    @SerializedName("is_subscribed_podcasts")
+    IS_SUBSCRIBED_PODCASTS("is_subscribed_podcasts"),
+
+    @SerializedName("can_subscribe_podcasts")
+    CAN_SUBSCRIBE_PODCASTS("can_subscribe_podcasts");
 
     private final String value;
 

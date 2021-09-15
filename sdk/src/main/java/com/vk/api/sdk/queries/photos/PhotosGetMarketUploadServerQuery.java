@@ -16,7 +16,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      */
     public PhotosGetMarketUploadServerQuery(VkApiClient client, UserActor actor, int groupId) {
         super(client, "photos.getMarketUploadServer", GetMarketUploadServerResponse.class);
@@ -27,7 +27,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected PhotosGetMarketUploadServerQuery groupId(int value) {

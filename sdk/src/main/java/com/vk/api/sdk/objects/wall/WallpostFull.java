@@ -58,10 +58,22 @@ public class WallpostFull extends Wallpost implements Validable {
     private BoolInt markedAsAds;
 
     /**
+     * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
+     */
+    @SerializedName("topic_id")
+    private WallpostFullTopicId topicId;
+
+    /**
      * Preview length control parameter
      */
     @SerializedName("short_text_rate")
     private Float shortTextRate;
+
+    /**
+     * Hash for sharing
+     */
+    @SerializedName("hash")
+    private String hash;
 
     public List<Wallpost> getCopyHistory() {
         return copyHistory;
@@ -140,6 +152,15 @@ public class WallpostFull extends Wallpost implements Validable {
         return markedAsAds;
     }
 
+    public WallpostFullTopicId getTopicId() {
+        return topicId;
+    }
+
+    public WallpostFull setTopicId(WallpostFullTopicId topicId) {
+        this.topicId = topicId;
+        return this;
+    }
+
     public Float getShortTextRate() {
         return shortTextRate;
     }
@@ -149,9 +170,18 @@ public class WallpostFull extends Wallpost implements Validable {
         return this;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
+    public WallpostFull setHash(String hash) {
+        this.hash = hash;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, copyHistory);
+        return Objects.hash(topicId, comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, hash, copyHistory);
     }
 
     @Override
@@ -165,7 +195,9 @@ public class WallpostFull extends Wallpost implements Validable {
                 Objects.equals(donut, wallpostFull.donut) &&
                 Objects.equals(canEdit, wallpostFull.canEdit) &&
                 Objects.equals(markedAsAds, wallpostFull.markedAsAds) &&
+                Objects.equals(topicId, wallpostFull.topicId) &&
                 Objects.equals(createdBy, wallpostFull.createdBy) &&
+                Objects.equals(hash, wallpostFull.hash) &&
                 Objects.equals(copyHistory, wallpostFull.copyHistory) &&
                 Objects.equals(canPin, wallpostFull.canPin) &&
                 Objects.equals(isPinned, wallpostFull.isPinned);
@@ -185,7 +217,9 @@ public class WallpostFull extends Wallpost implements Validable {
         sb.append(", donut=").append(donut);
         sb.append(", canEdit=").append(canEdit);
         sb.append(", markedAsAds=").append(markedAsAds);
+        sb.append(", topicId=").append(topicId);
         sb.append(", createdBy=").append(createdBy);
+        sb.append(", hash='").append(hash).append("'");
         sb.append(", copyHistory=").append(copyHistory);
         sb.append(", canPin=").append(canPin);
         sb.append(", isPinned=").append(isPinned);

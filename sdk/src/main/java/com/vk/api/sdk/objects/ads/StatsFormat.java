@@ -16,12 +16,6 @@ public class StatsFormat implements Validable {
     private Integer clicks;
 
     /**
-     * Group clicks number
-     */
-    @SerializedName("link_owner_clicks")
-    private Integer linkOwnerClicks;
-
-    /**
      * External clicks number
      */
     @SerializedName("link_external_clicks")
@@ -99,15 +93,6 @@ public class StatsFormat implements Validable {
 
     public StatsFormat setClicks(Integer clicks) {
         this.clicks = clicks;
-        return this;
-    }
-
-    public Integer getLinkOwnerClicks() {
-        return linkOwnerClicks;
-    }
-
-    public StatsFormat setLinkOwnerClicks(Integer linkOwnerClicks) {
-        this.linkOwnerClicks = linkOwnerClicks;
         return this;
     }
 
@@ -221,7 +206,7 @@ public class StatsFormat implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(videoViewsHalf, videoViewsFull, reach, spent, impressions, linkOwnerClicks, month, clicks, overall, videoClicksSite, joinRate, linkExternalClicks, day, videoViews);
+        return Objects.hash(videoViewsHalf, videoViewsFull, reach, spent, impressions, month, clicks, overall, videoClicksSite, joinRate, linkExternalClicks, day, videoViews);
     }
 
     @Override
@@ -238,7 +223,6 @@ public class StatsFormat implements Validable {
                 Objects.equals(month, statsFormat.month) &&
                 Objects.equals(videoViews, statsFormat.videoViews) &&
                 Objects.equals(clicks, statsFormat.clicks) &&
-                Objects.equals(linkOwnerClicks, statsFormat.linkOwnerClicks) &&
                 Objects.equals(overall, statsFormat.overall) &&
                 Objects.equals(videoClicksSite, statsFormat.videoClicksSite) &&
                 Objects.equals(day, statsFormat.day) &&
@@ -262,7 +246,6 @@ public class StatsFormat implements Validable {
         sb.append(", month='").append(month).append("'");
         sb.append(", videoViews=").append(videoViews);
         sb.append(", clicks=").append(clicks);
-        sb.append(", linkOwnerClicks=").append(linkOwnerClicks);
         sb.append(", overall=").append(overall);
         sb.append(", videoClicksSite=").append(videoClicksSite);
         sb.append(", day='").append(day).append("'");

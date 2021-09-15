@@ -17,7 +17,7 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param type value of "type" parameter.
      */
     public UsersReportQuery(VkApiClient client, UserActor actor, int userId, ReportType type) {
@@ -30,7 +30,7 @@ public class UsersReportQuery extends AbstractQueryBuilder<UsersReportQuery, OkR
     /**
      * ID of the user about whom a complaint is being made.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected UsersReportQuery userId(int value) {

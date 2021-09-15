@@ -18,12 +18,15 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      * @param docId value of "doc id" parameter. Minimum is 0.
+     * @param title value of "title" parameter.
      */
-    public DocsEditQuery(VkApiClient client, UserActor actor, int ownerId, int docId) {
+    public DocsEditQuery(VkApiClient client, UserActor actor, int ownerId, int docId,
+            String title) {
         super(client, "docs.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         docId(docId);
+        title(title);
     }
 
     /**
@@ -52,7 +55,7 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public DocsEditQuery title(String value) {
+    protected DocsEditQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -84,6 +87,6 @@ public class DocsEditQuery extends AbstractQueryBuilder<DocsEditQuery, OkRespons
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("owner_id", "doc_id", "access_token");
+        return Arrays.asList("title", "owner_id", "doc_id", "access_token");
     }
 }

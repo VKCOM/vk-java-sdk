@@ -36,26 +36,6 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
     }
 
     /**
-     * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
-     *
-     * @param value value of "ad ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public AdsGetAdsLayoutQuery adIds(String value) {
-        return unsafeParam("ad_ids", value);
-    }
-
-    /**
-     * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
-     *
-     * @param value value of "campaign ids" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public AdsGetAdsLayoutQuery campaignIds(String value) {
-        return unsafeParam("campaign_ids", value);
-    }
-
-    /**
      * 'For advertising agencies.' ID of the client ads are retrieved from.
      *
      * @param value value of "client id" parameter.
@@ -73,6 +53,36 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      */
     public AdsGetAdsLayoutQuery includeDeleted(Boolean value) {
         return unsafeParam("include_deleted", value);
+    }
+
+    /**
+     * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
+     *
+     * @param value value of "only deleted" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetAdsLayoutQuery onlyDeleted(Boolean value) {
+        return unsafeParam("only_deleted", value);
+    }
+
+    /**
+     * Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
+     *
+     * @param value value of "campaign ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetAdsLayoutQuery campaignIds(String value) {
+        return unsafeParam("campaign_ids", value);
+    }
+
+    /**
+     * Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
+     *
+     * @param value value of "ad ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public AdsGetAdsLayoutQuery adIds(String value) {
+        return unsafeParam("ad_ids", value);
     }
 
     /**

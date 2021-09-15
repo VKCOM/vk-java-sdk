@@ -17,7 +17,7 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param state value of "state" parameter.
      */
     public GroupsToggleMarketQuery(VkApiClient client, UserActor actor, int groupId,
@@ -31,7 +31,7 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsToggleMarketQuery groupId(int value) {
@@ -46,6 +46,16 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      */
     protected GroupsToggleMarketQuery state(ToggleMarketState value) {
         return unsafeParam("state", value);
+    }
+
+    /**
+     * Set ref
+     *
+     * @param value value of "ref" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public GroupsToggleMarketQuery ref(String value) {
+        return unsafeParam("ref", value);
     }
 
     @Override

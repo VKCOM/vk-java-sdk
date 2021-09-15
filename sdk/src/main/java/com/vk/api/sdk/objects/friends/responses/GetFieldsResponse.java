@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.friends.UserXtrLists;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ public class GetFieldsResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<UserXtrLists> items;
+    private List<UserFull> items;
 
     public Integer getCount() {
         return count;
@@ -32,11 +32,11 @@ public class GetFieldsResponse implements Validable {
         return this;
     }
 
-    public List<UserXtrLists> getItems() {
+    public List<UserFull> getItems() {
         return items;
     }
 
-    public GetFieldsResponse setItems(List<UserXtrLists> items) {
+    public GetFieldsResponse setItems(List<UserFull> items) {
         this.items = items;
         return this;
     }

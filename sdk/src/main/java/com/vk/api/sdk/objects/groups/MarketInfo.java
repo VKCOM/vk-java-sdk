@@ -5,12 +5,19 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.market.Currency;
+import com.vk.api.sdk.objects.market.Price;
 import java.util.Objects;
 
 /**
  * MarketInfo object
  */
 public class MarketInfo implements Validable {
+    /**
+     * Market type
+     */
+    @SerializedName("type")
+    private String type;
+
     /**
      * Contact person ID
      */
@@ -49,6 +56,18 @@ public class MarketInfo implements Validable {
      */
     @SerializedName("price_min")
     private String priceMin;
+
+    @SerializedName("min_order_price")
+    private Price minOrderPrice;
+
+    public String getType() {
+        return type;
+    }
+
+    public MarketInfo setType(String type) {
+        this.type = type;
+        return this;
+    }
 
     public Integer getContactId() {
         return contactId;
@@ -112,9 +131,18 @@ public class MarketInfo implements Validable {
         return this;
     }
 
+    public Price getMinOrderPrice() {
+        return minOrderPrice;
+    }
+
+    public MarketInfo setMinOrderPrice(Price minOrderPrice) {
+        this.minOrderPrice = minOrderPrice;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(priceMin, mainAlbumId, priceMax, currencyText, contactId, currency, enabled);
+        return Objects.hash(priceMin, mainAlbumId, priceMax, minOrderPrice, currencyText, contactId, currency, type, enabled);
     }
 
     @Override
@@ -122,8 +150,10 @@ public class MarketInfo implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarketInfo marketInfo = (MarketInfo) o;
-        return Objects.equals(currencyText, marketInfo.currencyText) &&
+        return Objects.equals(minOrderPrice, marketInfo.minOrderPrice) &&
+                Objects.equals(currencyText, marketInfo.currencyText) &&
                 Objects.equals(currency, marketInfo.currency) &&
+                Objects.equals(type, marketInfo.type) &&
                 Objects.equals(contactId, marketInfo.contactId) &&
                 Objects.equals(priceMin, marketInfo.priceMin) &&
                 Objects.equals(mainAlbumId, marketInfo.mainAlbumId) &&
@@ -139,8 +169,10 @@ public class MarketInfo implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MarketInfo{");
-        sb.append("currencyText='").append(currencyText).append("'");
+        sb.append("minOrderPrice=").append(minOrderPrice);
+        sb.append(", currencyText='").append(currencyText).append("'");
         sb.append(", currency=").append(currency);
+        sb.append(", type='").append(type).append("'");
         sb.append(", contactId=").append(contactId);
         sb.append(", priceMin='").append(priceMin).append("'");
         sb.append(", mainAlbumId=").append(mainAlbumId);

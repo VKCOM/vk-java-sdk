@@ -162,6 +162,16 @@ public class MarketAddQuery extends AbstractQueryBuilder<MarketAddQuery, AddResp
     }
 
     /**
+     * Set sku
+     *
+     * @param value value of "sku" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketAddQuery sku(String value) {
+        return unsafeParam("sku", value);
+    }
+
+    /**
      * photo_ids
      * IDs of additional photos.
      *

@@ -17,7 +17,7 @@ public class BoardDeleteCommentQuery extends AbstractQueryBuilder<BoardDeleteCom
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
@@ -35,7 +35,7 @@ public class BoardDeleteCommentQuery extends AbstractQueryBuilder<BoardDeleteCom
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
@@ -52,7 +52,7 @@ public class BoardDeleteCommentQuery extends AbstractQueryBuilder<BoardDeleteCom
     /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected BoardDeleteCommentQuery groupId(int value) {

@@ -10,6 +10,9 @@ public enum GetConversationsFilter implements EnumParam {
     @SerializedName("all")
     ALL("all"),
 
+    @SerializedName("archive")
+    ARCHIVE("archive"),
+
     @SerializedName("important")
     IMPORTANT("important"),
 

@@ -107,6 +107,30 @@ public class WikipageFull implements Validable {
     @SerializedName("who_can_view")
     private PrivacySettings whoCanView;
 
+    /**
+     * URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * Parent
+     */
+    @SerializedName("parent")
+    private String parent;
+
+    /**
+     * Parent2
+     */
+    @SerializedName("parent2")
+    private String parent2;
+
+    /**
+     * Owner ID
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
     public Integer getCreated() {
         return created;
     }
@@ -240,9 +264,45 @@ public class WikipageFull implements Validable {
         return this;
     }
 
+    public URI getUrl() {
+        return url;
+    }
+
+    public WikipageFull setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public WikipageFull setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getParent2() {
+        return parent2;
+    }
+
+    public WikipageFull setParent2(String parent2) {
+        this.parent2 = parent2;
+        return this;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public WikipageFull setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, title, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views);
+        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views, parent2);
     }
 
     @Override
@@ -250,12 +310,15 @@ public class WikipageFull implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WikipageFull wikipageFull = (WikipageFull) o;
-        return Objects.equals(whoCanView, wikipageFull.whoCanView) &&
+        return Objects.equals(parent, wikipageFull.parent) &&
+                Objects.equals(whoCanView, wikipageFull.whoCanView) &&
                 Objects.equals(edited, wikipageFull.edited) &&
                 Objects.equals(created, wikipageFull.created) &&
+                Objects.equals(ownerId, wikipageFull.ownerId) &&
                 Objects.equals(editorId, wikipageFull.editorId) &&
                 Objects.equals(source, wikipageFull.source) &&
                 Objects.equals(title, wikipageFull.title) &&
+                Objects.equals(url, wikipageFull.url) &&
                 Objects.equals(whoCanEdit, wikipageFull.whoCanEdit) &&
                 Objects.equals(currentUserCanEdit, wikipageFull.currentUserCanEdit) &&
                 Objects.equals(groupId, wikipageFull.groupId) &&
@@ -264,7 +327,8 @@ public class WikipageFull implements Validable {
                 Objects.equals(html, wikipageFull.html) &&
                 Objects.equals(id, wikipageFull.id) &&
                 Objects.equals(currentUserCanEditAccess, wikipageFull.currentUserCanEditAccess) &&
-                Objects.equals(views, wikipageFull.views);
+                Objects.equals(views, wikipageFull.views) &&
+                Objects.equals(parent2, wikipageFull.parent2);
     }
 
     @Override
@@ -275,12 +339,15 @@ public class WikipageFull implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WikipageFull{");
-        sb.append("whoCanView=").append(whoCanView);
+        sb.append("parent='").append(parent).append("'");
+        sb.append(", whoCanView=").append(whoCanView);
         sb.append(", edited=").append(edited);
         sb.append(", created=").append(created);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", editorId=").append(editorId);
         sb.append(", source='").append(source).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", url=").append(url);
         sb.append(", whoCanEdit=").append(whoCanEdit);
         sb.append(", currentUserCanEdit=").append(currentUserCanEdit);
         sb.append(", groupId=").append(groupId);
@@ -290,6 +357,7 @@ public class WikipageFull implements Validable {
         sb.append(", id=").append(id);
         sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
         sb.append(", views=").append(views);
+        sb.append(", parent2='").append(parent2).append("'");
         sb.append('}');
         return sb.toString();
     }

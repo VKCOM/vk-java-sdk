@@ -16,7 +16,7 @@ public class AccountSetNameInMenuQuery extends AbstractQueryBuilder<AccountSetNa
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public AccountSetNameInMenuQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "account.setNameInMenu", OkResponse.class);
@@ -27,7 +27,7 @@ public class AccountSetNameInMenuQuery extends AbstractQueryBuilder<AccountSetNa
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AccountSetNameInMenuQuery userId(int value) {

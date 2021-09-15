@@ -18,7 +18,7 @@ public class GroupsAddAddressQuery extends AbstractQueryBuilder<GroupsAddAddress
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param title value of "title" parameter.
      * @param address value of "address" parameter.
      * @param countryId value of "country id" parameter. Minimum is 1.
@@ -44,7 +44,7 @@ public class GroupsAddAddressQuery extends AbstractQueryBuilder<GroupsAddAddress
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param title value of "title" parameter.
      * @param address value of "address" parameter.
      * @param countryId value of "country id" parameter. Minimum is 1.
@@ -69,7 +69,7 @@ public class GroupsAddAddressQuery extends AbstractQueryBuilder<GroupsAddAddress
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsAddAddressQuery groupId(int value) {

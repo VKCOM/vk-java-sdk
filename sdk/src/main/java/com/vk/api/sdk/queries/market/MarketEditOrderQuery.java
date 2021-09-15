@@ -18,7 +18,7 @@ public class MarketEditOrderQuery extends AbstractQueryBuilder<MarketEditOrderQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param orderId value of "order id" parameter. Minimum is 0.
      */
     public MarketEditOrderQuery(VkApiClient client, UserActor actor, int userId, int orderId) {
@@ -33,7 +33,7 @@ public class MarketEditOrderQuery extends AbstractQueryBuilder<MarketEditOrderQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param orderId value of "order id" parameter. Minimum is 0.
      */
     public MarketEditOrderQuery(VkApiClient client, GroupActor actor, int userId, int orderId) {
@@ -46,7 +46,7 @@ public class MarketEditOrderQuery extends AbstractQueryBuilder<MarketEditOrderQu
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected MarketEditOrderQuery userId(int value) {

@@ -17,9 +17,9 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param tagId value of "tag id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter. Maximum is 2000000000. Minimum is 0.
+     * @param userId value of "user id" parameter. Maximum is 2000000000. Minimum is 1.
      * @param act value of "act" parameter.
      */
     public GroupsTagBindQuery(VkApiClient client, UserActor actor, int groupId, int tagId,
@@ -35,7 +35,7 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsTagBindQuery groupId(int value) {
@@ -55,7 +55,7 @@ public class GroupsTagBindQuery extends AbstractQueryBuilder<GroupsTagBindQuery,
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Maximum is 2000000000. Minimum is 0.
+     * @param value value of "user id" parameter. Maximum is 2000000000. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsTagBindQuery userId(int value) {

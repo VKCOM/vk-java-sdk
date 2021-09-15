@@ -1,7 +1,6 @@
 package com.vk.api.sdk.queries.photos;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
-import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
@@ -12,7 +11,7 @@ import java.util.List;
 /**
  * Query for Photos.saveOwnerCoverPhoto method
  */
-public class PhotosSaveOwnerCoverPhotoQuery extends AbstractQueryBuilder<PhotosSaveOwnerCoverPhotoQuery, List<SaveOwnerCoverPhotoResponse>> {
+public class PhotosSaveOwnerCoverPhotoQuery extends AbstractQueryBuilder<PhotosSaveOwnerCoverPhotoQuery, SaveOwnerCoverPhotoResponse> {
     /**
      * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
      *
@@ -23,7 +22,7 @@ public class PhotosSaveOwnerCoverPhotoQuery extends AbstractQueryBuilder<PhotosS
      */
     public PhotosSaveOwnerCoverPhotoQuery(VkApiClient client, UserActor actor, String hash,
             String photo) {
-        super(client, "photos.saveOwnerCoverPhoto", Utils.buildParametrizedType(List.class, SaveOwnerCoverPhotoResponse.class));
+        super(client, "photos.saveOwnerCoverPhoto", SaveOwnerCoverPhotoResponse.class);
         accessToken(actor.getAccessToken());
         hash(hash);
         photo(photo);
@@ -39,7 +38,7 @@ public class PhotosSaveOwnerCoverPhotoQuery extends AbstractQueryBuilder<PhotosS
      */
     public PhotosSaveOwnerCoverPhotoQuery(VkApiClient client, GroupActor actor, String hash,
             String photo) {
-        super(client, "photos.saveOwnerCoverPhoto", Utils.buildParametrizedType(List.class, SaveOwnerCoverPhotoResponse.class));
+        super(client, "photos.saveOwnerCoverPhoto", SaveOwnerCoverPhotoResponse.class);
         accessToken(actor.getAccessToken());
         hash(hash);
         photo(photo);

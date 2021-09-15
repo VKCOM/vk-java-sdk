@@ -24,22 +24,25 @@ public class GetCommentsResponse implements Validable {
     private List<WallComment> items;
 
     /**
+     * Count of replies of current level
+     */
+    @SerializedName("current_level_count")
+    private Integer currentLevelCount;
+
+    /**
      * Information whether current user can comment the post
      */
     @SerializedName("can_post")
     private Boolean canPost;
+
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
 
     /**
      * Information whether groups can comment the post
      */
     @SerializedName("groups_can_post")
     private Boolean groupsCanPost;
-
-    /**
-     * Count of replies of current level
-     */
-    @SerializedName("current_level_count")
-    private Integer currentLevelCount;
 
     public Integer getCount() {
         return count;
@@ -59,12 +62,30 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
+    public Integer getCurrentLevelCount() {
+        return currentLevelCount;
+    }
+
+    public GetCommentsResponse setCurrentLevelCount(Integer currentLevelCount) {
+        this.currentLevelCount = currentLevelCount;
+        return this;
+    }
+
     public Boolean getCanPost() {
         return canPost;
     }
 
     public GetCommentsResponse setCanPost(Boolean canPost) {
         this.canPost = canPost;
+        return this;
+    }
+
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
+    }
+
+    public GetCommentsResponse setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
         return this;
     }
 
@@ -77,18 +98,9 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public Integer getCurrentLevelCount() {
-        return currentLevelCount;
-    }
-
-    public GetCommentsResponse setCurrentLevelCount(Integer currentLevelCount) {
-        this.currentLevelCount = currentLevelCount;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(canPost, count, groupsCanPost, currentLevelCount, items);
+        return Objects.hash(canPost, count, groupsCanPost, currentLevelCount, items, showReplyButton);
     }
 
     @Override
@@ -100,6 +112,7 @@ public class GetCommentsResponse implements Validable {
                 Objects.equals(count, getCommentsResponse.count) &&
                 Objects.equals(groupsCanPost, getCommentsResponse.groupsCanPost) &&
                 Objects.equals(canPost, getCommentsResponse.canPost) &&
+                Objects.equals(showReplyButton, getCommentsResponse.showReplyButton) &&
                 Objects.equals(items, getCommentsResponse.items);
     }
 
@@ -115,6 +128,7 @@ public class GetCommentsResponse implements Validable {
         sb.append(", count=").append(count);
         sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", canPost=").append(canPost);
+        sb.append(", showReplyButton=").append(showReplyButton);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

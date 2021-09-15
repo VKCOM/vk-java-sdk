@@ -162,7 +162,25 @@ public class Apps extends AbstractAction {
      * @param promoId Id of game promo action
      * @return query
      */
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(ServiceActor actor, int promoId) {
+        return new AppsPromoHasActiveGiftQuery(getClient(), actor, promoId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param promoId Id of game promo action
+     * @return query
+     */
     public AppsPromoUseGiftQuery promoUseGift(UserActor actor, int promoId) {
+        return new AppsPromoUseGiftQuery(getClient(), actor, promoId);
+    }
+
+    /**
+     * @param actor vk actor
+     * @param promoId Id of game promo action
+     * @return query
+     */
+    public AppsPromoUseGiftQuery promoUseGift(ServiceActor actor, int promoId) {
         return new AppsPromoUseGiftQuery(getClient(), actor, promoId);
     }
 

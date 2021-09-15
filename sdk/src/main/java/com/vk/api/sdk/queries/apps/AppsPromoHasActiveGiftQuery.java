@@ -2,6 +2,7 @@ package com.vk.api.sdk.queries.apps;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
@@ -21,6 +22,20 @@ public class AppsPromoHasActiveGiftQuery extends AbstractQueryBuilder<AppsPromoH
     public AppsPromoHasActiveGiftQuery(VkApiClient client, UserActor actor, int promoId) {
         super(client, "apps.promoHasActiveGift", BoolResponse.class);
         accessToken(actor.getAccessToken());
+        promoId(promoId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param promoId value of "promo id" parameter. Minimum is 0.
+     */
+    public AppsPromoHasActiveGiftQuery(VkApiClient client, ServiceActor actor, int promoId) {
+        super(client, "apps.promoHasActiveGift", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
         promoId(promoId);
     }
 

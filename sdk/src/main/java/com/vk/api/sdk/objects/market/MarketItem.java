@@ -92,6 +92,9 @@ public class MarketItem implements Validable {
     @SerializedName("is_main_variant")
     private Boolean isMainVariant;
 
+    @SerializedName("sku")
+    private String sku;
+
     public String getAccessKey() {
         return accessKey;
     }
@@ -236,9 +239,18 @@ public class MarketItem implements Validable {
         return this;
     }
 
+    public String getSku() {
+        return sku;
+    }
+
+    public MarketItem setSku(String sku) {
+        this.sku = sku;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, variantsGroupingId, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, isMainVariant, accessKey, price, id, category, isFavorite);
+        return Objects.hash(date, variantsGroupingId, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, isMainVariant, accessKey, price, id, category, sku, isFavorite);
     }
 
     @Override
@@ -261,7 +273,8 @@ public class MarketItem implements Validable {
                 Objects.equals(accessKey, marketItem.accessKey) &&
                 Objects.equals(buttonTitle, marketItem.buttonTitle) &&
                 Objects.equals(id, marketItem.id) &&
-                Objects.equals(category, marketItem.category);
+                Objects.equals(category, marketItem.category) &&
+                Objects.equals(sku, marketItem.sku);
     }
 
     @Override
@@ -288,6 +301,7 @@ public class MarketItem implements Validable {
         sb.append(", buttonTitle='").append(buttonTitle).append("'");
         sb.append(", id=").append(id);
         sb.append(", category=").append(category);
+        sb.append(", sku='").append(sku).append("'");
         sb.append('}');
         return sb.toString();
     }

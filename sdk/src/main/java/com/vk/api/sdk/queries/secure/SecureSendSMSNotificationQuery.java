@@ -16,7 +16,7 @@ public class SecureSendSMSNotificationQuery extends AbstractSecureQueryBuilder<S
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      * @param message value of "message" parameter.
      */
     public SecureSendSMSNotificationQuery(VkApiClient client, ServiceActor actor, int userId,
@@ -31,7 +31,7 @@ public class SecureSendSMSNotificationQuery extends AbstractSecureQueryBuilder<S
     /**
      * ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected SecureSendSMSNotificationQuery userId(int value) {

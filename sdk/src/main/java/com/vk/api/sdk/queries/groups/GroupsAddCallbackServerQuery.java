@@ -17,7 +17,7 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param url value of "url" parameter.
      * @param title value of "title" parameter.
      */
@@ -35,7 +35,7 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param url value of "url" parameter.
      * @param title value of "title" parameter.
      */
@@ -52,7 +52,7 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected GroupsAddCallbackServerQuery groupId(int value) {

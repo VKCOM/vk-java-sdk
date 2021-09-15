@@ -63,6 +63,42 @@ public class CountersGroup implements Validable {
     @SerializedName("videos")
     private Integer videos;
 
+    /**
+     * Market services number
+     */
+    @SerializedName("market_services")
+    private Integer marketServices;
+
+    /**
+     * Podcasts number
+     */
+    @SerializedName("podcasts")
+    private Integer podcasts;
+
+    /**
+     * Articles number
+     */
+    @SerializedName("articles")
+    private Integer articles;
+
+    /**
+     * Narratives number
+     */
+    @SerializedName("narratives")
+    private Integer narratives;
+
+    /**
+     * Clips number
+     */
+    @SerializedName("clips")
+    private Integer clips;
+
+    /**
+     * Clips followers number
+     */
+    @SerializedName("clips_followers")
+    private Integer clipsFollowers;
+
     public Integer getAddresses() {
         return addresses;
     }
@@ -144,9 +180,63 @@ public class CountersGroup implements Validable {
         return this;
     }
 
+    public Integer getMarketServices() {
+        return marketServices;
+    }
+
+    public CountersGroup setMarketServices(Integer marketServices) {
+        this.marketServices = marketServices;
+        return this;
+    }
+
+    public Integer getPodcasts() {
+        return podcasts;
+    }
+
+    public CountersGroup setPodcasts(Integer podcasts) {
+        this.podcasts = podcasts;
+        return this;
+    }
+
+    public Integer getArticles() {
+        return articles;
+    }
+
+    public CountersGroup setArticles(Integer articles) {
+        this.articles = articles;
+        return this;
+    }
+
+    public Integer getNarratives() {
+        return narratives;
+    }
+
+    public CountersGroup setNarratives(Integer narratives) {
+        this.narratives = narratives;
+        return this;
+    }
+
+    public Integer getClips() {
+        return clips;
+    }
+
+    public CountersGroup setClips(Integer clips) {
+        this.clips = clips;
+        return this;
+    }
+
+    public Integer getClipsFollowers() {
+        return clipsFollowers;
+    }
+
+    public CountersGroup setClipsFollowers(Integer clipsFollowers) {
+        this.clipsFollowers = clipsFollowers;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(market, addresses, albums, docs, topics, audios, audioPlaylists, videos, photos);
+        return Objects.hash(addresses, albums, narratives, topics, clips, marketServices, videos, photos, market, podcasts, docs, audios, audioPlaylists, articles, clipsFollowers);
     }
 
     @Override
@@ -154,15 +244,21 @@ public class CountersGroup implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CountersGroup countersGroup = (CountersGroup) o;
-        return Objects.equals(market, countersGroup.market) &&
-                Objects.equals(addresses, countersGroup.addresses) &&
+        return Objects.equals(addresses, countersGroup.addresses) &&
                 Objects.equals(albums, countersGroup.albums) &&
-                Objects.equals(docs, countersGroup.docs) &&
+                Objects.equals(narratives, countersGroup.narratives) &&
                 Objects.equals(topics, countersGroup.topics) &&
+                Objects.equals(clips, countersGroup.clips) &&
                 Objects.equals(audioPlaylists, countersGroup.audioPlaylists) &&
-                Objects.equals(audios, countersGroup.audios) &&
                 Objects.equals(videos, countersGroup.videos) &&
-                Objects.equals(photos, countersGroup.photos);
+                Objects.equals(marketServices, countersGroup.marketServices) &&
+                Objects.equals(photos, countersGroup.photos) &&
+                Objects.equals(market, countersGroup.market) &&
+                Objects.equals(podcasts, countersGroup.podcasts) &&
+                Objects.equals(docs, countersGroup.docs) &&
+                Objects.equals(audios, countersGroup.audios) &&
+                Objects.equals(clipsFollowers, countersGroup.clipsFollowers) &&
+                Objects.equals(articles, countersGroup.articles);
     }
 
     @Override
@@ -173,15 +269,21 @@ public class CountersGroup implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CountersGroup{");
-        sb.append("market=").append(market);
-        sb.append(", addresses=").append(addresses);
+        sb.append("addresses=").append(addresses);
         sb.append(", albums=").append(albums);
-        sb.append(", docs=").append(docs);
+        sb.append(", narratives=").append(narratives);
         sb.append(", topics=").append(topics);
+        sb.append(", clips=").append(clips);
         sb.append(", audioPlaylists=").append(audioPlaylists);
-        sb.append(", audios=").append(audios);
         sb.append(", videos=").append(videos);
+        sb.append(", marketServices=").append(marketServices);
         sb.append(", photos=").append(photos);
+        sb.append(", market=").append(market);
+        sb.append(", podcasts=").append(podcasts);
+        sb.append(", docs=").append(docs);
+        sb.append(", audios=").append(audios);
+        sb.append(", clipsFollowers=").append(clipsFollowers);
+        sb.append(", articles=").append(articles);
         sb.append('}');
         return sb.toString();
     }

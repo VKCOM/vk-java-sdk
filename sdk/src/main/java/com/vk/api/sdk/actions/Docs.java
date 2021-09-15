@@ -60,10 +60,11 @@ public class Docs extends AbstractAction {
      * @param actor vk actor
      * @param ownerId User ID or community ID. Use a negative value to designate a community ID.
      * @param docId Document ID.
+     * @param title Document title.
      * @return query
      */
-    public DocsEditQuery edit(UserActor actor, int ownerId, int docId) {
-        return new DocsEditQuery(getClient(), actor, ownerId, docId);
+    public DocsEditQuery edit(UserActor actor, int ownerId, int docId, String title) {
+        return new DocsEditQuery(getClient(), actor, ownerId, docId, title);
     }
 
     /**
@@ -95,6 +96,28 @@ public class Docs extends AbstractAction {
      * @return query
      */
     public DocsGetByIdQuery getById(UserActor actor, List<String> docs) {
+        return new DocsGetByIdQuery(getClient(), actor, docs);
+    }
+
+    /**
+     * Returns information about documents by their IDs.
+     *
+     * @param actor vk actor
+     * @param docs Document IDs. Example: , "66748_91488,66748_91455",
+     * @return query
+     */
+    public DocsGetByIdQuery getById(GroupActor actor, String... docs) {
+        return new DocsGetByIdQuery(getClient(), actor, docs);
+    }
+
+    /**
+     * Returns information about documents by their IDs.
+     *
+     * @param actor vk actor
+     * @param docs Document IDs. Example: , "66748_91488,66748_91455",
+     * @return query
+     */
+    public DocsGetByIdQuery getById(GroupActor actor, List<String> docs) {
         return new DocsGetByIdQuery(getClient(), actor, docs);
     }
 

@@ -25,6 +25,9 @@ public class ItemDigestItem implements Validable {
     @SerializedName("access_key")
     private String accessKey;
 
+    @SerializedName("is_deleted")
+    private Boolean isDeleted;
+
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
 
@@ -133,6 +136,15 @@ public class ItemDigestItem implements Validable {
 
     public ItemDigestItem setAccessKey(String accessKey) {
         this.accessKey = accessKey;
+        return this;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public ItemDigestItem setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
         return this;
     }
 
@@ -318,7 +330,7 @@ public class ItemDigestItem implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, copyright, attachments, edited, postType, isArchived, postSource, postId, ownerId, fromId, geo, parentsStack, signerId, accessKey, id, text, poster, reposts, views, isFavorite, likes);
+        return Objects.hash(date, copyright, attachments, edited, postType, isArchived, postSource, postId, ownerId, fromId, geo, parentsStack, signerId, isDeleted, accessKey, id, text, poster, reposts, views, isFavorite, likes);
     }
 
     @Override
@@ -336,6 +348,7 @@ public class ItemDigestItem implements Validable {
                 Objects.equals(parentsStack, itemDigestItem.parentsStack) &&
                 Objects.equals(ownerId, itemDigestItem.ownerId) &&
                 Objects.equals(geo, itemDigestItem.geo) &&
+                Objects.equals(isDeleted, itemDigestItem.isDeleted) &&
                 Objects.equals(isArchived, itemDigestItem.isArchived) &&
                 Objects.equals(postId, itemDigestItem.postId) &&
                 Objects.equals(postSource, itemDigestItem.postSource) &&
@@ -367,6 +380,7 @@ public class ItemDigestItem implements Validable {
         sb.append(", parentsStack=").append(parentsStack);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", geo=").append(geo);
+        sb.append(", isDeleted=").append(isDeleted);
         sb.append(", isArchived=").append(isArchived);
         sb.append(", postId=").append(postId);
         sb.append(", postSource=").append(postSource);

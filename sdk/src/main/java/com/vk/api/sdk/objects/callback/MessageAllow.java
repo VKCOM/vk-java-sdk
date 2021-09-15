@@ -9,35 +9,35 @@ import java.util.Objects;
 /**
  * MessageAllow object
  */
-public class MessageAllow implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
+public class MessageAllow extends Base implements Validable {
+    @SerializedName("type")
+    private Type type;
 
-    @SerializedName("key")
+    @SerializedName("object")
     @Required
-    private String key;
+    private MessageAllowObject object;
 
-    public Integer getUserId() {
-        return userId;
+    public Type getType() {
+        return type;
     }
 
-    public MessageAllow setUserId(Integer userId) {
-        this.userId = userId;
+    public MessageAllow setType(Type type) {
+        this.type = type;
         return this;
     }
 
-    public String getKey() {
-        return key;
+    public MessageAllowObject getObject() {
+        return object;
     }
 
-    public MessageAllow setKey(String key) {
-        this.key = key;
+    public MessageAllow setObject(MessageAllowObject object) {
+        this.object = object;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, key);
+        return Objects.hash(type, object);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class MessageAllow implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageAllow messageAllow = (MessageAllow) o;
-        return Objects.equals(userId, messageAllow.userId) &&
-                Objects.equals(key, messageAllow.key);
+        return Objects.equals(type, messageAllow.type) &&
+                Objects.equals(object, messageAllow.object);
     }
 
     @Override
@@ -57,8 +57,8 @@ public class MessageAllow implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageAllow{");
-        sb.append("userId=").append(userId);
-        sb.append(", key='").append(key).append("'");
+        sb.append("type=").append(type);
+        sb.append(", object=").append(object);
         sb.append('}');
         return sb.toString();
     }

@@ -25,7 +25,7 @@ public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkRes
     /**
      * ID or screen name of the community.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     public GroupsJoinQuery groupId(Integer value) {

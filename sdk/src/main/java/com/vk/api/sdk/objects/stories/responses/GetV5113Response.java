@@ -6,7 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.stories.FeedItem;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class GetV5113Response implements Validable {
     private List<FeedItem> items;
 
     @SerializedName("profiles")
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
     @SerializedName("groups")
     private List<Group> groups;
@@ -49,11 +49,11 @@ public class GetV5113Response implements Validable {
         return this;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetV5113Response setProfiles(List<User> profiles) {
+    public GetV5113Response setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
         return this;
     }

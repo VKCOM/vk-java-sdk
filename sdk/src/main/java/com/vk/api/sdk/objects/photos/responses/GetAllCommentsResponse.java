@@ -3,7 +3,7 @@ package com.vk.api.sdk.objects.photos.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.photos.CommentXtrPid;
+import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ public class GetAllCommentsResponse implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<CommentXtrPid> items;
+    private List<WallComment> items;
 
     public Integer getCount() {
         return count;
@@ -29,11 +29,11 @@ public class GetAllCommentsResponse implements Validable {
         return this;
     }
 
-    public List<CommentXtrPid> getItems() {
+    public List<WallComment> getItems() {
         return items;
     }
 
-    public GetAllCommentsResponse setItems(List<CommentXtrPid> items) {
+    public GetAllCommentsResponse setItems(List<WallComment> items) {
         this.items = items;
         return this;
     }

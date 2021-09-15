@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.media.Restriction;
 import com.vk.api.sdk.objects.photos.Image;
 import com.vk.api.sdk.objects.photos.PhotoSizes;
 import java.net.URI;
@@ -116,9 +115,6 @@ public class SaveResponse implements Validable {
      */
     @SerializedName("has_tags")
     private Boolean hasTags;
-
-    @SerializedName("restrictions")
-    private Restriction restrictions;
 
     public String getAccessKey() {
         return accessKey;
@@ -281,18 +277,9 @@ public class SaveResponse implements Validable {
         return this;
     }
 
-    public Restriction getRestrictions() {
-        return restrictions;
-    }
-
-    public SaveResponse setRestrictions(Restriction restrictions) {
-        this.restrictions = restrictions;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, lng, restrictions, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
+        return Objects.hash(date, images, lng, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
     }
 
     @Override
@@ -303,7 +290,6 @@ public class SaveResponse implements Validable {
         return Objects.equals(date, saveResponse.date) &&
                 Objects.equals(images, saveResponse.images) &&
                 Objects.equals(ownerId, saveResponse.ownerId) &&
-                Objects.equals(restrictions, saveResponse.restrictions) &&
                 Objects.equals(lng, saveResponse.lng) &&
                 Objects.equals(canComment, saveResponse.canComment) &&
                 Objects.equals(postId, saveResponse.postId) &&
@@ -332,7 +318,6 @@ public class SaveResponse implements Validable {
         sb.append("date=").append(date);
         sb.append(", images=").append(images);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", restrictions=").append(restrictions);
         sb.append(", lng=").append(lng);
         sb.append(", canComment=").append(canComment);
         sb.append(", postId=").append(postId);

@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class AddLinkResponse implements Validable {
     /**
-     * Link label
+     * Link title
      */
     @SerializedName("name")
     private String name;
@@ -24,7 +24,7 @@ public class AddLinkResponse implements Validable {
     private String desc;
 
     /**
-     * Information whether the title can be edited
+     * Information whether the link title can be edited
      */
     @SerializedName("edit_title")
     private BoolInt editTitle;
@@ -36,16 +36,28 @@ public class AddLinkResponse implements Validable {
     private Integer id;
 
     /**
-     * Information whether the image on processing
+     * URL of square image of the link with 100 pixels in width
      */
-    @SerializedName("image_processing")
-    private BoolInt imageProcessing;
+    @SerializedName("photo_100")
+    private URI photo100;
+
+    /**
+     * URL of square image of the link with 50 pixels in width
+     */
+    @SerializedName("photo_50")
+    private URI photo50;
 
     /**
      * Link URL
      */
     @SerializedName("url")
     private URI url;
+
+    /**
+     * Information whether the image on processing
+     */
+    @SerializedName("image_processing")
+    private BoolInt imageProcessing;
 
     public String getName() {
         return name;
@@ -82,12 +94,22 @@ public class AddLinkResponse implements Validable {
         return this;
     }
 
-    public boolean isImageProcessing() {
-        return imageProcessing == BoolInt.YES;
+    public URI getPhoto100() {
+        return photo100;
     }
 
-    public BoolInt getImageProcessing() {
-        return imageProcessing;
+    public AddLinkResponse setPhoto100(URI photo100) {
+        this.photo100 = photo100;
+        return this;
+    }
+
+    public URI getPhoto50() {
+        return photo50;
+    }
+
+    public AddLinkResponse setPhoto50(URI photo50) {
+        this.photo50 = photo50;
+        return this;
     }
 
     public URI getUrl() {
@@ -99,9 +121,17 @@ public class AddLinkResponse implements Validable {
         return this;
     }
 
+    public boolean isImageProcessing() {
+        return imageProcessing == BoolInt.YES;
+    }
+
+    public BoolInt getImageProcessing() {
+        return imageProcessing;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(editTitle, name, id, imageProcessing, url, desc);
+        return Objects.hash(photo100, editTitle, name, photo50, id, imageProcessing, url, desc);
     }
 
     @Override
@@ -110,9 +140,11 @@ public class AddLinkResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         AddLinkResponse addLinkResponse = (AddLinkResponse) o;
         return Objects.equals(editTitle, addLinkResponse.editTitle) &&
+                Objects.equals(photo50, addLinkResponse.photo50) &&
                 Objects.equals(imageProcessing, addLinkResponse.imageProcessing) &&
                 Objects.equals(name, addLinkResponse.name) &&
                 Objects.equals(id, addLinkResponse.id) &&
+                Objects.equals(photo100, addLinkResponse.photo100) &&
                 Objects.equals(url, addLinkResponse.url) &&
                 Objects.equals(desc, addLinkResponse.desc);
     }
@@ -126,9 +158,11 @@ public class AddLinkResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddLinkResponse{");
         sb.append("editTitle=").append(editTitle);
+        sb.append(", photo50=").append(photo50);
         sb.append(", imageProcessing=").append(imageProcessing);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", photo100=").append(photo100);
         sb.append(", url=").append(url);
         sb.append(", desc='").append(desc).append("'");
         sb.append('}');

@@ -16,6 +16,7 @@ import com.vk.api.sdk.actions.Friends;
 import com.vk.api.sdk.actions.Gifts;
 import com.vk.api.sdk.actions.Groups;
 import com.vk.api.sdk.actions.GroupsLongPoll;
+import com.vk.api.sdk.actions.LeadForms;
 import com.vk.api.sdk.actions.Likes;
 import com.vk.api.sdk.actions.LongPoll;
 import com.vk.api.sdk.actions.Market;
@@ -51,7 +52,7 @@ public class VkApiClient {
 
     private static final int DEFAULT_RETRY_ATTEMPTS_INTERNAL_SERVER_ERROR_COUNT = 3;
 
-    private String apiVersion = "5.130";
+    private String apiVersion = "5.131";
 
     private TransportClient transportClient;
 
@@ -124,6 +125,10 @@ public class VkApiClient {
 
     public Wall wall() {
         return new Wall(this);
+    }
+
+    public LeadForms leadForms() {
+        return new LeadForms(this);
     }
 
     public Execute execute() {

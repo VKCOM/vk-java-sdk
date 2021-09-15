@@ -6,7 +6,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Image;
-import com.vk.api.sdk.objects.base.Sticker;
+import com.vk.api.sdk.objects.base.StickerNew;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,7 +65,7 @@ public class Product implements Validable {
     private String title;
 
     @SerializedName("stickers")
-    private List<Sticker> stickers;
+    private List<StickerNew> stickers;
 
     /**
      * Array of style sticker ids (for sticker pack styles)
@@ -166,11 +166,11 @@ public class Product implements Validable {
         return this;
     }
 
-    public List<Sticker> getStickers() {
+    public List<StickerNew> getStickers() {
         return stickers;
     }
 
-    public Product setStickers(List<Sticker> stickers) {
+    public Product setStickers(List<StickerNew> stickers) {
         this.stickers = stickers;
         return this;
     }

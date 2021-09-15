@@ -138,6 +138,16 @@ public class MarketSearchQueryWithExtended extends AbstractQueryBuilder<MarketSe
         return unsafeParam("status", value);
     }
 
+    /**
+     * Add variants to response if exist
+     *
+     * @param value value of "need variants" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketSearchQueryWithExtended needVariants(Boolean value) {
+        return unsafeParam("need_variants", value);
+    }
+
     @Override
     protected MarketSearchQueryWithExtended getThis() {
         return this;

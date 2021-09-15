@@ -16,7 +16,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public AppsSendRequestQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "apps.sendRequest", Integer.class);
@@ -27,7 +27,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
     /**
      * Id of the user to send a request
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AppsSendRequestQuery userId(int value) {

@@ -15,7 +15,7 @@ public class AccountGetAppPermissionsQuery extends AbstractQueryBuilder<AccountG
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 0.
+     * @param userId value of "user id" parameter. Minimum is 1.
      */
     public AccountGetAppPermissionsQuery(VkApiClient client, UserActor actor, int userId) {
         super(client, "account.getAppPermissions", Integer.class);
@@ -26,7 +26,7 @@ public class AccountGetAppPermissionsQuery extends AbstractQueryBuilder<AccountG
     /**
      * User ID whose settings information shall be got. By default: current user.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
     protected AccountGetAppPermissionsQuery userId(int value) {

@@ -10,7 +10,7 @@ import com.vk.api.sdk.objects.groups.GroupAccess;
 import com.vk.api.sdk.objects.groups.GroupAgeLimits;
 import com.vk.api.sdk.objects.groups.GroupAudio;
 import com.vk.api.sdk.objects.groups.GroupDocs;
-import com.vk.api.sdk.objects.groups.GroupFullMainSection;
+import com.vk.api.sdk.objects.groups.GroupFullSection;
 import com.vk.api.sdk.objects.groups.GroupPhotos;
 import com.vk.api.sdk.objects.groups.GroupPublicCategoryList;
 import com.vk.api.sdk.objects.groups.GroupSuggestedPrivacy;
@@ -76,10 +76,10 @@ public class GetSettingsResponse implements Validable {
     private List<List<JsonPrimitive>> sectionsList;
 
     @SerializedName("main_section")
-    private GroupFullMainSection mainSection;
+    private GroupFullSection mainSection;
 
     @SerializedName("secondary_section")
-    private Integer secondarySection;
+    private GroupFullSection secondarySection;
 
     @SerializedName("age_limits")
     private GroupAgeLimits ageLimits;
@@ -321,20 +321,20 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
-    public GroupFullMainSection getMainSection() {
+    public GroupFullSection getMainSection() {
         return mainSection;
     }
 
-    public GetSettingsResponse setMainSection(GroupFullMainSection mainSection) {
+    public GetSettingsResponse setMainSection(GroupFullSection mainSection) {
         this.mainSection = mainSection;
         return this;
     }
 
-    public Integer getSecondarySection() {
+    public GroupFullSection getSecondarySection() {
         return secondarySection;
     }
 
-    public GetSettingsResponse setSecondarySection(Integer secondarySection) {
+    public GetSettingsResponse setSecondarySection(GroupFullSection secondarySection) {
         this.secondarySection = secondarySection;
         return this;
     }

@@ -53,6 +53,26 @@ public class MarketGetOrdersQueryWithExtended extends AbstractQueryBuilder<Marke
         return unsafeParam("extended", value);
     }
 
+    /**
+     * Orders status updated date from (format: yyyy-mm-dd)
+     *
+     * @param value value of "date from" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetOrdersQueryWithExtended dateFrom(String value) {
+        return unsafeParam("date_from", value);
+    }
+
+    /**
+     * Orders status updated date to (format: yyyy-mm-dd)
+     *
+     * @param value value of "date to" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public MarketGetOrdersQueryWithExtended dateTo(String value) {
+        return unsafeParam("date_to", value);
+    }
+
     @Override
     protected MarketGetOrdersQueryWithExtended getThis() {
         return this;
