@@ -20,7 +20,13 @@ public enum KeyboardButtonActionType implements EnumParam {
     VKPAY("vkpay"),
 
     @SerializedName("open_app")
-    OPEN_APP("open_app");
+    OPEN_APP("open_app"),
+
+    @SerializedName("open_link")
+    OPEN_LINK("open_link"),
+
+    @SerializedName("callback")
+    CALLBACK("callback");
 
     private final String value;
 

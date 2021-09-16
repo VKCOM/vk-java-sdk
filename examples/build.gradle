@@ -1,3 +1,0 @@
-subprojects {
-    group 'com.vk.api.examples'
-}

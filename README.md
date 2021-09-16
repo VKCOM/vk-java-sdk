@@ -177,8 +177,6 @@ This takes your application ID, secure key, redirect URI, enumerated [scopes](ht
 
 When succeed, a UserActor object is created. You can call VK API methods on behalf of a user.
 
-See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/user-oauth).
-
 ### 7.2. Authorization Code Flow for Community
 
 The difference from the previous flow is that you send the groupId parameter to obtain the community's access token. Please read [the full manual](https://vk.com/dev/authcode_flow_group).
@@ -192,8 +190,6 @@ GroupActor actor = new GroupActor(groupId, authResponse.getAccessTokens().get(gr
 ```
 
 When succeed, a GroupActor object is created. You can call VK API methods on behalf of a community.
-
-See [example](https://github.com/VKCOM/vk-java-sdk/tree/master/examples/group-oauth).
 
 ### 7.3. Handling need_validation error
 
@@ -363,6 +359,7 @@ vk.groups().setLongPollSettings(groupActor).enabled(true)
                                            .execute();
 ```
 
+(WIP)
 Override methods from CallbackApiLongPoll class for handling events and create needed constructors
 
 ```java
@@ -394,9 +391,6 @@ the instance of it needs to be created and method ```run``` called
 CallbackApiLongPollHandler handler = new CallbackApiLongPollHandler(vk, groupActor);
 handler.run();
 ```
-
-An example of usage Callback API Long Poll can be found in ```examples``` as a group-bot which logs all events. 
-
 
 ## 13. Streaming API
 

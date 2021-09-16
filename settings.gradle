@@ -1,8 +1,2 @@
 rootProject.name = 'vk-java-sdk'
 include 'sdk'
-include 'examples'
-include 'examples:hello-bot'
-include 'examples:youtrack-bot'
-include 'examples:user-oauth'
-include 'examples:group-oauth'
-include 'examples:callback-api-group-bot'
