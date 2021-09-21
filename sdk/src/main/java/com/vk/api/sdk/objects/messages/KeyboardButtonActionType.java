@@ -22,6 +22,10 @@ public enum KeyboardButtonActionType implements EnumParam {
     @SerializedName("open_app")
     OPEN_APP("open_app"),
 
+    @SerializedName("callback")
+
+    CALLBACK("callback"),
+
     @SerializedName("open_link")
     OPEN_LINK("open_link");
 
