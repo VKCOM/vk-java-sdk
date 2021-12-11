@@ -18,7 +18,7 @@ subprojects {
     ext {
         commonsTextVersion = '1.6'
         slf4jVersion = '1.7.26'
-        log4jVersion = '2.11.2'
+        log4jVersion = '2.15.0'
         gsonVersion = '2.8.5'
         commonsTextVersion = '1.6'
         commonsIOVersion = '2.6'
