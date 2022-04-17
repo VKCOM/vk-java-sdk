@@ -36,7 +36,6 @@ public class GroupsGetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsG
     public GroupsGetLongPollSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
         super(client, "groups.getLongPollSettings", GetLongPollSettingsResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(actor.getGroupId());
         groupId(groupId);
     }
 
