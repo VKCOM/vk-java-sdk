@@ -363,17 +363,13 @@ vk.groups().setLongPollSettings(groupActor).enabled(true)
 Override methods from CallbackApiLongPoll class for handling events and create needed constructors
 
 ```java
-public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
-    public CallbackApiLongPollHandler(VkApiClient client, UserActor actor, Integer groupId) {
-      super(client, actor, groupId);
-    }
-
-    public CallbackApiLongPollHandler(VkApiClient client, GroupActor actor) {
-      super(client, actor);
+public class CallbackApiLongPollHandler extends GroupLongPollApi {
+    public CallbackApiLongPollHandler(VkApiClient client, GroupActor actor, int waitTime) {
+      super(client, actor, waitTime);
     }
 
     @Override
-    public void messageNew(Integer groupId, Message message) {
+    public void messageNew(Integer groupId, MessageObject message) {
       System.out.println("messageNew: " + message.toString());
     }
 
@@ -384,7 +380,7 @@ public class CallbackApiLongPollHandler extends CallbackApiLongPoll {
 }
 ```
 
-In order to use the created ```CallbackApiLongPollHandler``` which overrides methods from CallBackApiLongPoll,
+In order to use the created ```CallbackApiLongPollHandler``` which overrides methods from ```GroupLongPollApi```,
 the instance of it needs to be created and method ```run``` called
 
 ```java
