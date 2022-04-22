@@ -15,28 +15,28 @@ public class Error implements Validable {
      * Error code
      */
     @SerializedName("error_code")
-    private Integer errorCode;
+    protected Integer errorCode;
 
     /**
      * Error subcode
      */
     @SerializedName("error_subcode")
-    private Integer errorSubcode;
+    protected Integer errorSubcode;
 
     /**
      * Error message
      */
     @SerializedName("error_msg")
-    private String errorMsg;
+    protected String errorMsg;
 
     /**
      * Localized error message
      */
     @SerializedName("error_text")
-    private String errorText;
+    protected String errorText;
 
     @SerializedName("request_params")
-    private List<RequestParam> requestParams;
+    protected List<RequestParam> requestParams;
 
     public Integer getErrorCode() {
         return errorCode;
