@@ -1,5 +1,10 @@
 package com.vk.api.sdk.client;
 
+import com.vk.api.sdk.captcha.CaptchaHandlerAbstract;
+import com.vk.api.sdk.captcha.CaptchaResolveException;
+import com.vk.api.sdk.exceptions.ApiCaptchaExceptionCustom;
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.queries.EnumParam;
 
 import java.io.UnsupportedEncodingException;
@@ -332,7 +337,45 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return params;
     }
 
-    public String toString(){
+    public String toString() {
         return this.getMethod();
+    }
+
+
+    private CaptchaHandlerAbstract captchaHandler;
+
+    public T setCaptchaHandler(CaptchaHandlerAbstract captchaHandler) {
+        this.captchaHandler = captchaHandler;
+        return this.getThis();
+    }
+
+    @Override
+    public R execute() throws ApiException, ClientException {
+        for (int processRetry = 1; ; ) {
+            try {
+                return super.execute();
+            } catch (ApiCaptchaExceptionCustom captchaException) {
+                if (captchaHandler == null
+                        || captchaHandler.getMaxCaptchaProcessRetries() < 1
+                        || processRetry > captchaHandler.getMaxCaptchaProcessRetries()
+                ) throw captchaException; //no handler or counter > max - throw
+
+                //technical retries
+                for (int technicalResolveRetry = 1; ; ) {
+                    try {
+                        unsafeParam("captcha_key", captchaHandler.getCaptchaCode(captchaException.getCaptcha_sid(), captchaException.getCaptcha_img()));
+                        unsafeParam("captcha_sid", captchaException.getCaptcha_sid());
+                        processRetry++;
+                        break; //resolved, retry request via execute()
+                    } catch (CaptchaResolveException resolveException) {
+                        //not resolved
+                        if (technicalResolveRetry >= captchaHandler.getMaxTechnicalResolveRetries()) throw resolveException; //counter > max - throw
+                        resolveException.printStackTrace();
+                        technicalResolveRetry++;
+                        continue; //retry resolving
+                    }
+                }
+            }
+        }
     }
 }
