@@ -2,12 +2,9 @@ package com.vk.api.sdk.client;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ApiServerException;
-import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.exceptions.ExceptionMapper;
-import com.vk.api.sdk.exceptions.RequiredFieldException;
+import com.vk.api.sdk.exceptions.*;
 import com.vk.api.sdk.objects.base.Error;
+import com.vk.api.sdk.objects.base.ErrorWithCaptcha;
 import org.apache.http.Header;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -93,15 +90,15 @@ public abstract class ApiRequest<T> {
 
         if (json.has("error")) {
             JsonElement errorElement = json.get("error");
-            Error error;
+            ErrorWithCaptcha error;
             try {
-                error = gson.fromJson(errorElement, Error.class);
+                error = gson.fromJson(errorElement, ErrorWithCaptcha.class);
             } catch (JsonSyntaxException e) {
                 LOG.error("Invalid JSON: " + textResponse, e);
                 throw new ClientException("Can't parse json response");
             }
 
-            ApiException exception = ExceptionMapper.parseException(error);
+            ApiException exception = ExceptionMapperCustom.parseException(error);
 
             LOG.error("API error", exception);
             throw exception;
