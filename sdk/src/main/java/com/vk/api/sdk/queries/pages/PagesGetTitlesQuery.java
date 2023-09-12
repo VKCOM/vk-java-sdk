@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.pages.responses.GetTitlesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuery, List<GetTitlesResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,10 +28,12 @@ public class PagesGetTitlesQuery extends AbstractQueryBuilder<PagesGetTitlesQuer
     /**
      * ID of the community that owns the wiki page.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesGetTitlesQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PagesGetTitlesQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

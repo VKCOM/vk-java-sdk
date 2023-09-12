@@ -23,7 +23,7 @@ public class GradientPoint implements Validable {
      */
     @SerializedName("position")
     @Required
-    private Float position;
+    private Number position;
 
     public String getColor() {
         return color;
@@ -34,11 +34,11 @@ public class GradientPoint implements Validable {
         return this;
     }
 
-    public Float getPosition() {
+    public Number getPosition() {
         return position;
     }
 
-    public GradientPoint setPosition(Float position) {
+    public GradientPoint setPosition(Number position) {
         this.position = position;
         return this;
     }

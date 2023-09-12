@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,19 +27,22 @@ public class GroupsJoinQuery extends AbstractQueryBuilder<GroupsJoinQuery, OkRes
     /**
      * ID or screen name of the community.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsJoinQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public GroupsJoinQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
-     * Optional parameter which is taken into account when 'gid' belongs to the event: '1' — Perhaps I will attend, '0' — I will be there for sure (default), ,
+     * Optional parameter which is taken into account when 'gid' belongs to the event: '1' - Perhaps I will attend, '0' - I will be there for sure (default), ,
      *
      * @param value value of "not sure" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("not_sure")
     public GroupsJoinQuery notSure(String value) {
         return unsafeParam("not_sure", value);
     }

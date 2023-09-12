@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.apps;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -30,9 +31,11 @@ public class Leaderboard implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     public Integer getLevel() {
         return level;
@@ -61,11 +64,11 @@ public class Leaderboard implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public Leaderboard setUserId(Integer userId) {
+    public Leaderboard setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

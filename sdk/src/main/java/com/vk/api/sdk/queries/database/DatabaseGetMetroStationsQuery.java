@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetMetroStationsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class DatabaseGetMetroStationsQuery extends AbstractQueryBuilder<DatabaseGetMetroStationsQuery, GetMetroStationsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param cityId value of "city id" parameter. Minimum is 0.
      */
-    public DatabaseGetMetroStationsQuery(VkApiClient client, UserActor actor, int cityId) {
+    public DatabaseGetMetroStationsQuery(VkApiClient client, UserActor actor, Integer cityId) {
         super(client, "database.getMetroStations", GetMetroStationsResponse.class);
         accessToken(actor.getAccessToken());
         cityId(cityId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetMetroStationsQuery(VkApiClient client, UserActor actor) {
+        super(client, "database.getMetroStations", GetMetroStationsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param cityId value of "city id" parameter. Minimum is 0.
      */
-    public DatabaseGetMetroStationsQuery(VkApiClient client, ServiceActor actor, int cityId) {
+    public DatabaseGetMetroStationsQuery(VkApiClient client, ServiceActor actor, Integer cityId) {
         super(client, "database.getMetroStations", GetMetroStationsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         cityId(cityId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetMetroStationsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "database.getMetroStations", GetMetroStationsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,7 +70,8 @@ public class DatabaseGetMetroStationsQuery extends AbstractQueryBuilder<Database
      * @param value value of "city id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetMetroStationsQuery cityId(int value) {
+    @ApiParam("city_id")
+    public DatabaseGetMetroStationsQuery cityId(Integer value) {
         return unsafeParam("city_id", value);
     }
 
@@ -56,6 +81,7 @@ public class DatabaseGetMetroStationsQuery extends AbstractQueryBuilder<Database
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetMetroStationsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -66,6 +92,7 @@ public class DatabaseGetMetroStationsQuery extends AbstractQueryBuilder<Database
      * @param value value of "count" parameter. Maximum is 500. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetMetroStationsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -76,6 +103,7 @@ public class DatabaseGetMetroStationsQuery extends AbstractQueryBuilder<Database
      * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public DatabaseGetMetroStationsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }

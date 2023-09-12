@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.ads.AccessRole;
 import com.vk.api.sdk.objects.ads.AccountType;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
@@ -14,33 +15,39 @@ import java.util.Objects;
  */
 public class GetAccountsResponse implements Validable {
     @SerializedName("access_role")
+    @Required
     private AccessRole accessRole;
 
     /**
      * Account ID
      */
     @SerializedName("account_id")
+    @Required
     private Integer accountId;
-
-    /**
-     * Information whether account is active
-     */
-    @SerializedName("account_status")
-    private BoolInt accountStatus;
-
-    @SerializedName("account_type")
-    private AccountType accountType;
 
     /**
      * Account name
      */
     @SerializedName("account_name")
+    @Required
     private String accountName;
+
+    /**
+     * Information whether account is active
+     */
+    @SerializedName("account_status")
+    @Required
+    private BoolInt accountStatus;
+
+    @SerializedName("account_type")
+    @Required
+    private AccountType accountType;
 
     /**
      * Can user view account budget
      */
     @SerializedName("can_view_budget")
+    @Required
     private Boolean canViewBudget;
 
     public AccessRole getAccessRole() {
@@ -61,6 +68,15 @@ public class GetAccountsResponse implements Validable {
         return this;
     }
 
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public GetAccountsResponse setAccountName(String accountName) {
+        this.accountName = accountName;
+        return this;
+    }
+
     public boolean isAccountStatus() {
         return accountStatus == BoolInt.YES;
     }
@@ -75,15 +91,6 @@ public class GetAccountsResponse implements Validable {
 
     public GetAccountsResponse setAccountType(AccountType accountType) {
         this.accountType = accountType;
-        return this;
-    }
-
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public GetAccountsResponse setAccountName(String accountName) {
-        this.accountName = accountName;
         return this;
     }
 

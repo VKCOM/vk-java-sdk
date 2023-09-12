@@ -11,25 +11,16 @@ import java.util.Objects;
  */
 public class RestoreResponse implements Validable {
     /**
-     * 1 if success
-     */
-    @SerializedName("success")
-    private RestoreResponseSuccess success;
-
-    /**
      * Parameter needed to grant access by code
      */
     @SerializedName("sid")
     private String sid;
 
-    public RestoreResponseSuccess getSuccess() {
-        return success;
-    }
-
-    public RestoreResponse setSuccess(RestoreResponseSuccess success) {
-        this.success = success;
-        return this;
-    }
+    /**
+     * 1 if success
+     */
+    @SerializedName("success")
+    private RestoreResponseSuccess success;
 
     public String getSid() {
         return sid;
@@ -37,6 +28,15 @@ public class RestoreResponse implements Validable {
 
     public RestoreResponse setSid(String sid) {
         this.sid = sid;
+        return this;
+    }
+
+    public RestoreResponseSuccess getSuccess() {
+        return success;
+    }
+
+    public RestoreResponse setSuccess(RestoreResponseSuccess success) {
+        this.success = success;
         return this;
     }
 

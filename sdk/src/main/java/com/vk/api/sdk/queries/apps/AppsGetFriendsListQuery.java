@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.apps.GetFriendsListType;
 import com.vk.api.sdk.objects.apps.responses.GetFriendsListResponse;
 import com.vk.api.sdk.objects.users.Fields;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriendsListQuery, GetFriendsListResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public AppsGetFriendsListQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -41,6 +43,7 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * @param value value of "count" parameter. Maximum is 5000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public AppsGetFriendsListQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -51,27 +54,41 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AppsGetFriendsListQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
 
     /**
-     * List type. Possible values: * 'invite' — available for invites (don't play the game),, * 'request' — available for request (play the game). By default: 'invite'.
+     * List type. Possible values: * 'invite' - available for invites (don't play the game),, * 'request' - available for request (play the game). By default: 'invite'.
      *
      * @param value value of "type" parameter. By default invite.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public AppsGetFriendsListQuery type(GetFriendsListType value) {
         return unsafeParam("type", value);
+    }
+
+    /**
+     * Search query string (e.g., 'Vasya Babich').
+     *
+     * @param value value of "query" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("query")
+    public AppsGetFriendsListQuery query(String value) {
+        return unsafeParam("query", value);
     }
 
     /**
      * fields
      * Additional profile fields, see [vk.com/dev/fields|description].
      *
-     * @param value value of "fields" parameter.
+     * @param value value of "fields" parameter. By default [photo_200].
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetFriendsListQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -79,9 +96,10 @@ public class AppsGetFriendsListQuery extends AbstractQueryBuilder<AppsGetFriends
     /**
      * Additional profile fields, see [vk.com/dev/fields|description].
      *
-     * @param value value of "fields" parameter.
+     * @param value value of "fields" parameter. By default [photo_200].
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetFriendsListQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

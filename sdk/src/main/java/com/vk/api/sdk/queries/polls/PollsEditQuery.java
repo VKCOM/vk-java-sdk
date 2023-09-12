@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.polls.EditBackgroundId;
 import java.util.Arrays;
@@ -14,25 +15,38 @@ import java.util.List;
  */
 public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pollId value of "poll id" parameter. Minimum is 0.
      */
-    public PollsEditQuery(VkApiClient client, UserActor actor, int pollId) {
+    public PollsEditQuery(VkApiClient client, UserActor actor, Integer pollId) {
         super(client, "polls.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PollsEditQuery(VkApiClient client, UserActor actor) {
+        super(client, "polls.edit", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Poll owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsEditQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PollsEditQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -42,7 +56,8 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "poll id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsEditQuery pollId(int value) {
+    @ApiParam("poll_id")
+    public PollsEditQuery pollId(Integer value) {
         return unsafeParam("poll_id", value);
     }
 
@@ -52,6 +67,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "question" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("question")
     public PollsEditQuery question(String value) {
         return unsafeParam("question", value);
     }
@@ -62,6 +78,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "add answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("add_answers")
     public PollsEditQuery addAnswers(String value) {
         return unsafeParam("add_answers", value);
     }
@@ -72,6 +89,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "edit answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("edit_answers")
     public PollsEditQuery editAnswers(String value) {
         return unsafeParam("edit_answers", value);
     }
@@ -82,6 +100,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "delete answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("delete_answers")
     public PollsEditQuery deleteAnswers(String value) {
         return unsafeParam("delete_answers", value);
     }
@@ -92,6 +111,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "end date" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_date")
     public PollsEditQuery endDate(Integer value) {
         return unsafeParam("end_date", value);
     }
@@ -102,6 +122,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_id")
     public PollsEditQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
@@ -112,6 +133,7 @@ public class PollsEditQuery extends AbstractQueryBuilder<PollsEditQuery, OkRespo
      * @param value value of "background id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("background_id")
     public PollsEditQuery backgroundId(EditBackgroundId value) {
         return unsafeParam("background_id", value);
     }

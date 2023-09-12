@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.SaveWallPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWallPhotoQuery, List<SaveWallPhotoResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,22 +28,37 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosSaveWallPhotoQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.saveWallPhoto", Utils.buildParametrizedType(List.class, SaveWallPhotoResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user on whose wall the photo will be saved.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveWallPhotoQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public PhotosSaveWallPhotoQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * ID of community on whose wall the photo will be saved.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveWallPhotoQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosSaveWallPhotoQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -52,7 +68,8 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveWallPhotoQuery photo(String value) {
+    @ApiParam("photo")
+    public PhotosSaveWallPhotoQuery photo(String value) {
         return unsafeParam("photo", value);
     }
 
@@ -62,6 +79,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "server" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("server")
     public PhotosSaveWallPhotoQuery server(Integer value) {
         return unsafeParam("server", value);
     }
@@ -72,6 +90,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("hash")
     public PhotosSaveWallPhotoQuery hash(String value) {
         return unsafeParam("hash", value);
     }
@@ -82,6 +101,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public PhotosSaveWallPhotoQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -92,6 +112,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public PhotosSaveWallPhotoQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -102,6 +123,7 @@ public class PhotosSaveWallPhotoQuery extends AbstractQueryBuilder<PhotosSaveWal
      * @param value value of "caption" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("caption")
     public PhotosSaveWallPhotoQuery caption(String value) {
         return unsafeParam("caption", value);
     }

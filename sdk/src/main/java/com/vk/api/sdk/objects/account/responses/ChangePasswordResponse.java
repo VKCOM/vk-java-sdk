@@ -12,26 +12,17 @@ import java.util.Objects;
  */
 public class ChangePasswordResponse implements Validable {
     /**
-     * New token
-     */
-    @SerializedName("token")
-    @Required
-    private String token;
-
-    /**
      * New secret
      */
     @SerializedName("secret")
     private String secret;
 
-    public String getToken() {
-        return token;
-    }
-
-    public ChangePasswordResponse setToken(String token) {
-        this.token = token;
-        return this;
-    }
+    /**
+     * New token
+     */
+    @SerializedName("token")
+    @Required
+    private String token;
 
     public String getSecret() {
         return secret;
@@ -39,6 +30,15 @@ public class ChangePasswordResponse implements Validable {
 
     public ChangePasswordResponse setSecret(String secret) {
         this.secret = secret;
+        return this;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public ChangePasswordResponse setToken(String token) {
+        this.token = token;
         return this;
     }
 

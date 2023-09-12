@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.friends.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,25 +13,27 @@ import java.util.Objects;
  */
 public class GetOnlineOnlineMobileResponse implements Validable {
     @SerializedName("online")
-    private List<Integer> online;
+    @Required
+    private List<Long> online;
 
     @SerializedName("online_mobile")
-    private List<Integer> onlineMobile;
+    @Required
+    private List<Long> onlineMobile;
 
-    public List<Integer> getOnline() {
+    public List<Long> getOnline() {
         return online;
     }
 
-    public GetOnlineOnlineMobileResponse setOnline(List<Integer> online) {
+    public GetOnlineOnlineMobileResponse setOnline(List<Long> online) {
         this.online = online;
         return this;
     }
 
-    public List<Integer> getOnlineMobile() {
+    public List<Long> getOnlineMobile() {
         return onlineMobile;
     }
 
-    public GetOnlineOnlineMobileResponse setOnlineMobile(List<Integer> onlineMobile) {
+    public GetOnlineOnlineMobileResponse setOnlineMobile(List<Long> onlineMobile) {
         this.onlineMobile = onlineMobile;
         return this;
     }

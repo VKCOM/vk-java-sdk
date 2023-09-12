@@ -5,7 +5,6 @@ import com.vk.api.sdk.client.TransportClient;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.CookieStore;
@@ -21,8 +20,8 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +44,7 @@ public class HttpTransportClient implements TransportClient {
     protected static final String USER_AGENT = "Java VK SDK/1.0";
 
     protected static final String EMPTY_PAYLOAD = "-";
+    protected static final String EMPTY_BODY = "-";
 
     protected static final int MAX_SIMULTANEOUS_CONNECTIONS = 300;
     protected static final int DEFAULT_RETRY_ATTEMPTS_NETWORK_ERROR_COUNT = 3;
@@ -179,23 +179,30 @@ public class HttpTransportClient implements TransportClient {
         return IOUtils.toString(postRequest.getEntity().getContent(), StandardCharsets.UTF_8);
     }
 
+    protected String getURI(HttpRequestBase request) {
+
+        return request.getURI().toString();
+    }
+
     protected void logRequest(HttpRequestBase request, Map<String, String> requestHeaders, HttpResponse response, Map<String, String> responseHeaders, String body, Long time) throws IOException {
         if (LOG.isDebugEnabled()) {
-            String payload = getRequestPayload(request);
+            String modifiedPayload = coverSensitiveInfo(getRequestPayload(request));
+            String modifiedURI = coverSensitiveInfo(getURI(request));
+            String modifiedBody = coverSensitiveInfo(body);
 
             StringBuilder builder = new StringBuilder("\n")
                     .append("Request:\n")
                     .append("\t").append("Headers: ").append(requestHeaders != null ? requestHeaders : "-").append("\n")
                     .append("\t").append("Method: ").append(request.getMethod()).append("\n")
-                    .append("\t").append("URI: ").append(request.getURI()).append("\n")
-                    .append("\t").append("Payload: ").append(payload).append("\n")
+                    .append("\t").append("URI: ").append(modifiedURI).append("\n")
+                    .append("\t").append("Payload: ").append(modifiedPayload).append("\n")
                     .append("\t").append("Time: ").append(time != null ? time : "-").append("\n");
 
             if (response != null) {
                 builder.append("Response:\n")
                         .append("\t").append("Status: ").append(response.getStatusLine().toString()).append("\n")
                         .append("\t").append("Headers: ").append(responseHeaders != null ? responseHeaders : "-").append("\n")
-                        .append("\t").append("Body: ").append(body != null ? body : "-").append("\n");
+                        .append("\t").append("Body: ").append(modifiedBody != null ? modifiedBody : "-").append("\n");
             }
 
             LOG.debug(builder.toString());
@@ -207,6 +214,17 @@ public class HttpTransportClient implements TransportClient {
 
             LOG.info(builder.toString());
         }
+    }
+
+    protected String coverSensitiveInfo(String creds) {
+        return creds
+                .replaceFirst("access_token(=|:)([0-9a-f]{3})[0-9a-f]+([0-9a-f]{3})", "access_token$1$2...$3")
+                .replaceFirst("anonymous_token(=|:)([0-9a-f]{3})[0-9a-f]+([0-9a-f]{3})", "anonymous_token$1$2...$3")
+                .replaceFirst("client_secret(=|:)([0-9a-zA-z]{3})[0-9a-zA-Z]+([0-9a-zA-Z]{3})", "client_secret$1$2...$3")
+                .replaceFirst("login(=|:)([0-9a-z]{3})([0-9a-z_])+@([0-9a-z]+)(\\.[a-z]{3})", "login$1$2...$5")
+                .replaceFirst("password(=|:)([0-9a-zA-z]{3})[0-9a-zA-Z]+([0-9a-zA-Z]{3})", "password$1$2...$3")
+                .replaceFirst("hash(=|:)([0-9a-z]{3})[0-9a-z]+([0-9a-z]{3})", "hash$1$2...$3")
+                .replaceFirst("rhash(=|:)([0-9a-z]{3})[0-9a-z]+([0-9a-z]{3})", "rhash$1$2...$3");
     }
 
     @Override
@@ -233,7 +251,7 @@ public class HttpTransportClient implements TransportClient {
 
     @Override
     public ClientResponse post(String url) throws IOException {
-        return post(url, null);
+        return post(url, null, FORM_CONTENT_TYPE);
     }
 
     @Override
@@ -267,14 +285,12 @@ public class HttpTransportClient implements TransportClient {
     }
 
     @Override
-    public ClientResponse post(String url, String fileName, File file) throws IOException {
+    public ClientResponse post(String url, Map<String, File> files) throws IOException {
         HttpPost request = new HttpPost(url);
-        FileBody fileBody = new FileBody(file);
-        HttpEntity entity = MultipartEntityBuilder
-                .create()
-                .addPart(fileName, fileBody).build();
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        files.forEach((key, file) -> builder.addPart(key, new FileBody(file)));
+        request.setEntity(builder.build());
 
-        request.setEntity(entity);
         return callWithStatusCheck(request);
     }
 

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,18 +15,7 @@ import java.util.List;
  */
 public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAsReadQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesMarkAsReadQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.markAsRead", OkResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -37,12 +27,25 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesMarkAsReadQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.markAsRead", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesMarkAsReadQuery peerId(Integer value) {
+    @ApiParam("peer_id")
+    public MessagesMarkAsReadQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
@@ -52,6 +55,7 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
      * @param value value of "start message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_message_id")
     public MessagesMarkAsReadQuery startMessageId(Integer value) {
         return unsafeParam("start_message_id", value);
     }
@@ -59,10 +63,12 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
     /**
      * Group ID (for group messages with user access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesMarkAsReadQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesMarkAsReadQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -72,17 +78,30 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
      * @param value value of "mark conversation as read" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mark_conversation_as_read")
     public MessagesMarkAsReadQuery markConversationAsRead(Boolean value) {
         return unsafeParam("mark_conversation_as_read", value);
     }
 
     /**
-     * message_ids
+     * Set up to cmid
+     *
+     * @param value value of "up to cmid" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("up_to_cmid")
+    public MessagesMarkAsReadQuery upToCmid(Integer value) {
+        return unsafeParam("up_to_cmid", value);
+    }
+
+    /**
+     * messageIds
      * IDs of messages to mark as read.
      *
      * @param value value of "message ids" parameter. By default [].
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_ids")
     public MessagesMarkAsReadQuery messageIds(Integer... value) {
         return unsafeParam("message_ids", value);
     }
@@ -93,6 +112,7 @@ public class MessagesMarkAsReadQuery extends AbstractQueryBuilder<MessagesMarkAs
      * @param value value of "message ids" parameter. By default [].
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_ids")
     public MessagesMarkAsReadQuery messageIds(List<Integer> value) {
         return unsafeParam("message_ids", value);
     }

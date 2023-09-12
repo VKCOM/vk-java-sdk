@@ -15,14 +15,23 @@ public class PhotoCommentDelete implements Validable {
     @Required
     private Integer id;
 
+    /**
+     * Entity: owner
+     */
     @SerializedName("owner_id")
-    private Integer ownerId;
-
-    @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long ownerId;
 
     @SerializedName("photo_id")
+    @Required
     private Integer photoId;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getId() {
         return id;
@@ -33,21 +42,12 @@ public class PhotoCommentDelete implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PhotoCommentDelete setOwnerId(Integer ownerId) {
+    public PhotoCommentDelete setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
-        return this;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public PhotoCommentDelete setUserId(Integer userId) {
-        this.userId = userId;
         return this;
     }
 
@@ -57,6 +57,15 @@ public class PhotoCommentDelete implements Validable {
 
     public PhotoCommentDelete setPhotoId(Integer photoId) {
         this.photoId = photoId;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public PhotoCommentDelete setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

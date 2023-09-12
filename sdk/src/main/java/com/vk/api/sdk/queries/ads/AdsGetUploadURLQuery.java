@@ -4,6 +4,8 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.GetUploadURLAdFormat;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,25 +14,38 @@ import java.util.List;
  */
 public class AdsGetUploadURLQuery extends AbstractQueryBuilder<AdsGetUploadURLQuery, String> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param adFormat value of "ad format" parameter.
      */
-    public AdsGetUploadURLQuery(VkApiClient client, UserActor actor, int adFormat) {
+    public AdsGetUploadURLQuery(VkApiClient client, UserActor actor,
+            GetUploadURLAdFormat adFormat) {
         super(client, "ads.getUploadURL", String.class);
         accessToken(actor.getAccessToken());
         adFormat(adFormat);
     }
 
     /**
-     * Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetUploadURLQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getUploadURL", String.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Ad format: *1 - image and text,, *2 - big image,, *3 - exclusive format,, *4 - community, square image,, *7 - special app format.
      *
      * @param value value of "ad format" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetUploadURLQuery adFormat(int value) {
+    @ApiParam("ad_format")
+    public AdsGetUploadURLQuery adFormat(GetUploadURLAdFormat value) {
         return unsafeParam("ad_format", value);
     }
 
@@ -40,6 +55,7 @@ public class AdsGetUploadURLQuery extends AbstractQueryBuilder<AdsGetUploadURLQu
      * @param value value of "icon" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("icon")
     public AdsGetUploadURLQuery icon(Integer value) {
         return unsafeParam("icon", value);
     }

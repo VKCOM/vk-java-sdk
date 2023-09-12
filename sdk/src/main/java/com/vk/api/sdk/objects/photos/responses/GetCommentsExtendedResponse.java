@@ -22,11 +22,9 @@ public class GetCommentsExtendedResponse implements Validable {
     @Required
     private Integer count;
 
-    /**
-     * Real offset of the comments
-     */
-    @SerializedName("real_offset")
-    private Integer realOffset;
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
 
     @SerializedName("items")
     @Required
@@ -36,9 +34,11 @@ public class GetCommentsExtendedResponse implements Validable {
     @Required
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<GroupFull> groups;
+    /**
+     * Real offset of the comments
+     */
+    @SerializedName("real_offset")
+    private Integer realOffset;
 
     public Integer getCount() {
         return count;
@@ -49,12 +49,12 @@ public class GetCommentsExtendedResponse implements Validable {
         return this;
     }
 
-    public Integer getRealOffset() {
-        return realOffset;
+    public List<GroupFull> getGroups() {
+        return groups;
     }
 
-    public GetCommentsExtendedResponse setRealOffset(Integer realOffset) {
-        this.realOffset = realOffset;
+    public GetCommentsExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -76,12 +76,12 @@ public class GetCommentsExtendedResponse implements Validable {
         return this;
     }
 
-    public List<GroupFull> getGroups() {
-        return groups;
+    public Integer getRealOffset() {
+        return realOffset;
     }
 
-    public GetCommentsExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
+    public GetCommentsExtendedResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
         return this;
     }
 

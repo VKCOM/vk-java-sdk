@@ -13,15 +13,29 @@ import java.util.Objects;
  */
 public class PushConversationsItem implements Validable {
     /**
+     * Information whether the mass mentions (like '@all', '@online') are disabled. Can be affected by 'disabled_mentions'
+     */
+    @SerializedName("disabled_mass_mentions")
+    private BoolInt disabledMassMentions;
+
+    /**
+     * Information whether the mentions are disabled
+     */
+    @SerializedName("disabled_mentions")
+    private BoolInt disabledMentions;
+
+    /**
      * Time until that notifications are disabled in seconds
      */
     @SerializedName("disabled_until")
+    @Required
     private Integer disabledUntil;
 
     /**
      * Peer ID
      */
     @SerializedName("peer_id")
+    @Required
     private Integer peerId;
 
     /**
@@ -31,17 +45,21 @@ public class PushConversationsItem implements Validable {
     @Required
     private BoolInt sound;
 
-    /**
-     * Information whether the mentions are disabled
-     */
-    @SerializedName("disabled_mentions")
-    private BoolInt disabledMentions;
+    public boolean isDisabledMassMentions() {
+        return disabledMassMentions == BoolInt.YES;
+    }
 
-    /**
-     * Information whether the mass mentions (like '@all', '@online') are disabled. Can be affected by 'disabled_mentions'
-     */
-    @SerializedName("disabled_mass_mentions")
-    private BoolInt disabledMassMentions;
+    public BoolInt getDisabledMassMentions() {
+        return disabledMassMentions;
+    }
+
+    public boolean isDisabledMentions() {
+        return disabledMentions == BoolInt.YES;
+    }
+
+    public BoolInt getDisabledMentions() {
+        return disabledMentions;
+    }
 
     public Integer getDisabledUntil() {
         return disabledUntil;
@@ -67,22 +85,6 @@ public class PushConversationsItem implements Validable {
 
     public BoolInt getSound() {
         return sound;
-    }
-
-    public boolean isDisabledMentions() {
-        return disabledMentions == BoolInt.YES;
-    }
-
-    public BoolInt getDisabledMentions() {
-        return disabledMentions;
-    }
-
-    public boolean isDisabledMassMentions() {
-        return disabledMassMentions == BoolInt.YES;
-    }
-
-    public BoolInt getDisabledMassMentions() {
-        return disabledMassMentions;
     }
 
     @Override

@@ -5,34 +5,49 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Secure.sendNotification method
  */
-public class SecureSendNotificationQuery extends AbstractSecureQueryBuilder<SecureSendNotificationQuery, List<Integer>> {
+public class SecureSendNotificationQuery extends AbstractSecureQueryBuilder<SecureSendNotificationQuery, List<Long>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param message value of "message" parameter.
      */
     public SecureSendNotificationQuery(VkApiClient client, ServiceActor actor, String message) {
-        super(client, "secure.sendNotification", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "secure.sendNotification", Utils.buildParametrizedType(List.class, Long.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         message(message);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public SecureSendNotificationQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "secure.sendNotification", Utils.buildParametrizedType(List.class, Long.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureSendNotificationQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public SecureSendNotificationQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -42,18 +57,42 @@ public class SecureSendNotificationQuery extends AbstractSecureQueryBuilder<Secu
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureSendNotificationQuery message(String value) {
+    @ApiParam("message")
+    public SecureSendNotificationQuery message(String value) {
         return unsafeParam("message", value);
     }
 
     /**
-     * user_ids
+     * Set notification id
+     *
+     * @param value value of "notification id" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("notification_id")
+    public SecureSendNotificationQuery notificationId(Integer value) {
+        return unsafeParam("notification_id", value);
+    }
+
+    /**
+     * Set promo id
+     *
+     * @param value value of "promo id" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("promo_id")
+    public SecureSendNotificationQuery promoId(Integer value) {
+        return unsafeParam("promo_id", value);
+    }
+
+    /**
+     * userIds
      * Set user ids
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureSendNotificationQuery userIds(Integer... value) {
+    @ApiParam("user_ids")
+    public SecureSendNotificationQuery userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -63,7 +102,8 @@ public class SecureSendNotificationQuery extends AbstractSecureQueryBuilder<Secu
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureSendNotificationQuery userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    public SecureSendNotificationQuery userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 

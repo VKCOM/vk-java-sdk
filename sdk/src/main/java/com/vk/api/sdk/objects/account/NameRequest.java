@@ -23,19 +23,16 @@ public class NameRequest implements Validable {
     private Integer id;
 
     /**
-     * Last name in request
-     */
-    @SerializedName("last_name")
-    private String lastName;
-
-    @SerializedName("status")
-    private NameRequestStatus status;
-
-    /**
      * Text to display to user
      */
     @SerializedName("lang")
     private String lang;
+
+    /**
+     * Last name in request
+     */
+    @SerializedName("last_name")
+    private String lastName;
 
     /**
      * href for link in lang field
@@ -48,6 +45,9 @@ public class NameRequest implements Validable {
      */
     @SerializedName("link_label")
     private String linkLabel;
+
+    @SerializedName("status")
+    private NameRequestStatus status;
 
     public String getFirstName() {
         return firstName;
@@ -67,30 +67,21 @@ public class NameRequest implements Validable {
         return this;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public NameRequest setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public NameRequestStatus getStatus() {
-        return status;
-    }
-
-    public NameRequest setStatus(NameRequestStatus status) {
-        this.status = status;
-        return this;
-    }
-
     public String getLang() {
         return lang;
     }
 
     public NameRequest setLang(String lang) {
         this.lang = lang;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public NameRequest setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 
@@ -109,6 +100,15 @@ public class NameRequest implements Validable {
 
     public NameRequest setLinkLabel(String linkLabel) {
         this.linkLabel = linkLabel;
+        return this;
+    }
+
+    public NameRequestStatus getStatus() {
+        return status;
+    }
+
+    public NameRequest setStatus(NameRequestStatus status) {
+        this.status = status;
         return this;
     }
 

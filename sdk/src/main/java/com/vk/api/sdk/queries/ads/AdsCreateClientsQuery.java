@@ -5,26 +5,40 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.responses.CreateClientsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.createClients method
  */
-public class AdsCreateClientsQuery extends AbstractQueryBuilder<AdsCreateClientsQuery, List<Integer>> {
+public class AdsCreateClientsQuery extends AbstractQueryBuilder<AdsCreateClientsQuery, List<CreateClientsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param data value of "data" parameter.
      */
-    public AdsCreateClientsQuery(VkApiClient client, UserActor actor, int accountId, String data) {
-        super(client, "ads.createClients", Utils.buildParametrizedType(List.class, Integer.class));
+    public AdsCreateClientsQuery(VkApiClient client, UserActor actor, Integer accountId,
+            String data) {
+        super(client, "ads.createClients", Utils.buildParametrizedType(List.class, CreateClientsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         data(data);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsCreateClientsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.createClients", Utils.buildParametrizedType(List.class, CreateClientsResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -33,7 +47,8 @@ public class AdsCreateClientsQuery extends AbstractQueryBuilder<AdsCreateClients
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCreateClientsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsCreateClientsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -43,7 +58,8 @@ public class AdsCreateClientsQuery extends AbstractQueryBuilder<AdsCreateClients
      * @param value value of "data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCreateClientsQuery data(String value) {
+    @ApiParam("data")
+    public AdsCreateClientsQuery data(String value) {
         return unsafeParam("data", value);
     }
 

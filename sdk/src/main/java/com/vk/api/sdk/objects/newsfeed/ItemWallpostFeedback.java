@@ -12,40 +12,28 @@ import java.util.Objects;
  * ItemWallpostFeedback object
  */
 public class ItemWallpostFeedback implements Validable {
-    @SerializedName("type")
-    @Required
-    private ItemWallpostFeedbackType type;
+    @SerializedName("answers")
+    private List<ItemWallpostFeedbackAnswer> answers;
+
+    @SerializedName("descriptions")
+    private List<String> descriptions;
+
+    @SerializedName("gratitude")
+    private String gratitude;
 
     @SerializedName("question")
     @Required
     private String question;
 
-    @SerializedName("answers")
-    private List<ItemWallpostFeedbackAnswer> answers;
-
     @SerializedName("stars_count")
     private Integer starsCount;
 
-    @SerializedName("gratitude")
-    private String gratitude;
+    @SerializedName("track_code")
+    private String trackCode;
 
-    public ItemWallpostFeedbackType getType() {
-        return type;
-    }
-
-    public ItemWallpostFeedback setType(ItemWallpostFeedbackType type) {
-        this.type = type;
-        return this;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public ItemWallpostFeedback setQuestion(String question) {
-        this.question = question;
-        return this;
-    }
+    @SerializedName("type")
+    @Required
+    private ItemWallpostFeedbackType type;
 
     public List<ItemWallpostFeedbackAnswer> getAnswers() {
         return answers;
@@ -56,12 +44,12 @@ public class ItemWallpostFeedback implements Validable {
         return this;
     }
 
-    public Integer getStarsCount() {
-        return starsCount;
+    public List<String> getDescriptions() {
+        return descriptions;
     }
 
-    public ItemWallpostFeedback setStarsCount(Integer starsCount) {
-        this.starsCount = starsCount;
+    public ItemWallpostFeedback setDescriptions(List<String> descriptions) {
+        this.descriptions = descriptions;
         return this;
     }
 
@@ -74,9 +62,45 @@ public class ItemWallpostFeedback implements Validable {
         return this;
     }
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public ItemWallpostFeedback setQuestion(String question) {
+        this.question = question;
+        return this;
+    }
+
+    public Integer getStarsCount() {
+        return starsCount;
+    }
+
+    public ItemWallpostFeedback setStarsCount(Integer starsCount) {
+        this.starsCount = starsCount;
+        return this;
+    }
+
+    public String getTrackCode() {
+        return trackCode;
+    }
+
+    public ItemWallpostFeedback setTrackCode(String trackCode) {
+        this.trackCode = trackCode;
+        return this;
+    }
+
+    public ItemWallpostFeedbackType getType() {
+        return type;
+    }
+
+    public ItemWallpostFeedback setType(ItemWallpostFeedbackType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(question, starsCount, gratitude, answers, type);
+        return Objects.hash(trackCode, question, starsCount, gratitude, answers, type, descriptions);
     }
 
     @Override
@@ -85,10 +109,12 @@ public class ItemWallpostFeedback implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ItemWallpostFeedback itemWallpostFeedback = (ItemWallpostFeedback) o;
         return Objects.equals(question, itemWallpostFeedback.question) &&
-                Objects.equals(starsCount, itemWallpostFeedback.starsCount) &&
                 Objects.equals(gratitude, itemWallpostFeedback.gratitude) &&
+                Objects.equals(starsCount, itemWallpostFeedback.starsCount) &&
                 Objects.equals(answers, itemWallpostFeedback.answers) &&
-                Objects.equals(type, itemWallpostFeedback.type);
+                Objects.equals(trackCode, itemWallpostFeedback.trackCode) &&
+                Objects.equals(type, itemWallpostFeedback.type) &&
+                Objects.equals(descriptions, itemWallpostFeedback.descriptions);
     }
 
     @Override
@@ -100,10 +126,12 @@ public class ItemWallpostFeedback implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemWallpostFeedback{");
         sb.append("question='").append(question).append("'");
-        sb.append(", starsCount=").append(starsCount);
         sb.append(", gratitude='").append(gratitude).append("'");
+        sb.append(", starsCount=").append(starsCount);
         sb.append(", answers=").append(answers);
+        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", type=").append(type);
+        sb.append(", descriptions='").append(descriptions).append("'");
         sb.append('}');
         return sb.toString();
     }

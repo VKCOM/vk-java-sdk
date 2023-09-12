@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.market.GlobalSearchFilters;
 import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.market.ServicesViewType;
 import java.util.List;
@@ -21,8 +23,11 @@ public class SearchResponse implements Validable {
     @Required
     private Integer count;
 
-    @SerializedName("view_type")
-    private ServicesViewType viewType;
+    @SerializedName("filters")
+    private GlobalSearchFilters filters;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     @SerializedName("items")
     @Required
@@ -30,6 +35,10 @@ public class SearchResponse implements Validable {
 
     @SerializedName("variants")
     private List<MarketItem> variants;
+
+    @SerializedName("view_type")
+    @Required
+    private ServicesViewType viewType;
 
     public Integer getCount() {
         return count;
@@ -40,12 +49,21 @@ public class SearchResponse implements Validable {
         return this;
     }
 
-    public ServicesViewType getViewType() {
-        return viewType;
+    public GlobalSearchFilters getFilters() {
+        return filters;
     }
 
-    public SearchResponse setViewType(ServicesViewType viewType) {
-        this.viewType = viewType;
+    public SearchResponse setFilters(GlobalSearchFilters filters) {
+        this.filters = filters;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public SearchResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -67,9 +85,18 @@ public class SearchResponse implements Validable {
         return this;
     }
 
+    public ServicesViewType getViewType() {
+        return viewType;
+    }
+
+    public SearchResponse setViewType(ServicesViewType viewType) {
+        this.viewType = viewType;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, viewType, variants, items);
+        return Objects.hash(count, viewType, groups, filters, variants, items);
     }
 
     @Override
@@ -78,7 +105,9 @@ public class SearchResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         SearchResponse searchResponse = (SearchResponse) o;
         return Objects.equals(count, searchResponse.count) &&
+                Objects.equals(groups, searchResponse.groups) &&
                 Objects.equals(viewType, searchResponse.viewType) &&
+                Objects.equals(filters, searchResponse.filters) &&
                 Objects.equals(variants, searchResponse.variants) &&
                 Objects.equals(items, searchResponse.items);
     }
@@ -92,7 +121,9 @@ public class SearchResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SearchResponse{");
         sb.append("count=").append(count);
+        sb.append(", groups=").append(groups);
         sb.append(", viewType=").append(viewType);
+        sb.append(", filters=").append(filters);
         sb.append(", variants=").append(variants);
         sb.append(", items=").append(items);
         sb.append('}');

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.newsfeed.responses.GetListsExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class NewsfeedGetListsQueryWithExtended extends AbstractQueryBuilder<NewsfeedGetListsQueryWithExtended, GetListsExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,17 +31,19 @@ public class NewsfeedGetListsQueryWithExtended extends AbstractQueryBuilder<News
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected NewsfeedGetListsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * list_ids
+     * listIds
      * Numeric list identifiers.
      *
      * @param value value of "list ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("list_ids")
     public NewsfeedGetListsQueryWithExtended listIds(Integer... value) {
         return unsafeParam("list_ids", value);
     }
@@ -51,6 +54,7 @@ public class NewsfeedGetListsQueryWithExtended extends AbstractQueryBuilder<News
      * @param value value of "list ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("list_ids")
     public NewsfeedGetListsQueryWithExtended listIds(List<Integer> value) {
         return unsafeParam("list_ids", value);
     }

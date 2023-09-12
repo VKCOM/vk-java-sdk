@@ -4,6 +4,8 @@ package com.vk.api.sdk.objects.wall.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -14,7 +16,11 @@ public class CreateCommentResponse implements Validable {
      * Created comment ID
      */
     @SerializedName("comment_id")
+    @Required
     private Integer commentId;
+
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
 
     public Integer getCommentId() {
         return commentId;
@@ -25,9 +31,18 @@ public class CreateCommentResponse implements Validable {
         return this;
     }
 
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
+
+    public CreateCommentResponse setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(commentId);
+        return Objects.hash(parentsStack, commentId);
     }
 
     @Override
@@ -35,7 +50,8 @@ public class CreateCommentResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CreateCommentResponse createCommentResponse = (CreateCommentResponse) o;
-        return Objects.equals(commentId, createCommentResponse.commentId);
+        return Objects.equals(parentsStack, createCommentResponse.parentsStack) &&
+                Objects.equals(commentId, createCommentResponse.commentId);
     }
 
     @Override
@@ -46,7 +62,8 @@ public class CreateCommentResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CreateCommentResponse{");
-        sb.append("commentId=").append(commentId);
+        sb.append("parentsStack=").append(parentsStack);
+        sb.append(", commentId=").append(commentId);
         sb.append('}');
         return sb.toString();
     }

@@ -11,30 +11,32 @@ import java.util.Objects;
  * VideoComment object
  */
 public class VideoComment implements Validable {
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    @SerializedName("from_id")
-    private Integer fromId;
-
     @SerializedName("date")
     @Required
     private Integer date;
+
+    @SerializedName("from_id")
+    @Required
+    private Integer fromId;
+
+    @SerializedName("id")
+    @Required
+    private Integer id;
 
     @SerializedName("text")
     @Required
     private String text;
 
     @SerializedName("video_owner_id")
+    @Required
     private Integer videoOwnerId;
 
-    public Integer getId() {
-        return id;
+    public Integer getDate() {
+        return date;
     }
 
-    public VideoComment setId(Integer id) {
-        this.id = id;
+    public VideoComment setDate(Integer date) {
+        this.date = date;
         return this;
     }
 
@@ -47,12 +49,12 @@ public class VideoComment implements Validable {
         return this;
     }
 
-    public Integer getDate() {
-        return date;
+    public Integer getId() {
+        return id;
     }
 
-    public VideoComment setDate(Integer date) {
-        this.date = date;
+    public VideoComment setId(Integer id) {
+        this.id = id;
         return this;
     }
 

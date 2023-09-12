@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.status.StatusGetQuery;
 import com.vk.api.sdk.queries.status.StatusSetQuery;
 
@@ -23,9 +24,10 @@ public class Status extends AbstractAction {
     /**
      * Returns data required to show the status of a user or community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("status.get")
     public StatusGetQuery get(UserActor actor) {
         return new StatusGetQuery(getClient(), actor);
     }
@@ -33,9 +35,10 @@ public class Status extends AbstractAction {
     /**
      * Sets a new status for the current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("status.set")
     public StatusSetQuery set(UserActor actor) {
         return new StatusSetQuery(getClient(), actor);
     }

@@ -5,9 +5,10 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.ads.GetSuggestionsLang;
 import com.vk.api.sdk.objects.ads.GetSuggestionsSection;
 import com.vk.api.sdk.objects.ads.responses.GetSuggestionsSchoolsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.Lang;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsGetSuggestionsQueryWithSchools, List<GetSuggestionsSchoolsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,12 +31,13 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
     }
 
     /**
-     * Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
+     * Section, suggestions are retrieved in. Available values: *countries - request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions - requested list of regions. 'country' parameter is required. *cities - requested list of cities. 'country' parameter is required. *districts - requested list of districts. 'cities' parameter is required. *stations - requested list of subway stations. 'cities' parameter is required. *streets - requested list of streets. 'cities' parameter is required. *schools - requested list of educational organizations. 'cities' parameter is required. *interests - requested list of interests. *positions - requested list of positions (professions). *group_types - requested list of group types. *religions - requested list of religious commitments. *browsers - requested list of browsers and mobile devices.
      *
      * @param value value of "section" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetSuggestionsQueryWithSchools section(GetSuggestionsSection value) {
+    @ApiParam("section")
+    public AdsGetSuggestionsQueryWithSchools section(GetSuggestionsSection value) {
         return unsafeParam("section", value);
     }
 
@@ -45,6 +47,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ids")
     public AdsGetSuggestionsQueryWithSchools ids(String value) {
         return unsafeParam("ids", value);
     }
@@ -55,6 +58,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public AdsGetSuggestionsQueryWithSchools q(String value) {
         return unsafeParam("q", value);
     }
@@ -65,6 +69,7 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "country" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("country")
     public AdsGetSuggestionsQueryWithSchools country(Integer value) {
         return unsafeParam("country", value);
     }
@@ -75,17 +80,19 @@ public class AdsGetSuggestionsQueryWithSchools extends AbstractQueryBuilder<AdsG
      * @param value value of "cities" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("cities")
     public AdsGetSuggestionsQueryWithSchools cities(String value) {
         return unsafeParam("cities", value);
     }
 
     /**
-     * Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
+     * Language of the returned string values. Supported languages: *ru - Russian,, *ua - Ukrainian,, *en - English.
      *
      * @param value value of "lang" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AdsGetSuggestionsQueryWithSchools lang(GetSuggestionsLang value) {
+    @ApiParam("lang")
+    public AdsGetSuggestionsQueryWithSchools lang(Lang value) {
         return unsafeParam("lang", value);
     }
 

@@ -14,18 +14,7 @@ import java.util.List;
  */
 public class UtilsGetServerTimeQuery extends AbstractQueryBuilder<UtilsGetServerTimeQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public UtilsGetServerTimeQuery(VkApiClient client, UserActor actor) {
-        super(client, "utils.getServerTime", Integer.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -36,7 +25,18 @@ public class UtilsGetServerTimeQuery extends AbstractQueryBuilder<UtilsGetServer
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public UtilsGetServerTimeQuery(VkApiClient client, UserActor actor) {
+        super(client, "utils.getServerTime", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token

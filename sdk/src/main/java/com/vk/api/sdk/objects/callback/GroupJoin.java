@@ -4,26 +4,23 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * GroupJoin object
  */
 public class GroupJoin implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("join_type")
+    @Required
     private GroupJoinType joinType;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GroupJoin setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public GroupJoinType getJoinType() {
         return joinType;
@@ -31,6 +28,15 @@ public class GroupJoin implements Validable {
 
     public GroupJoin setJoinType(GroupJoinType joinType) {
         this.joinType = joinType;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GroupJoin setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

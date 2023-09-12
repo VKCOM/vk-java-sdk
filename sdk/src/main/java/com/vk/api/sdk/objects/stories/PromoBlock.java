@@ -12,6 +12,13 @@ import java.util.Objects;
  */
 public class PromoBlock implements Validable {
     /**
+     * Promo story from advice
+     */
+    @SerializedName("is_advice")
+    @Required
+    private Boolean isAdvice;
+
+    /**
      * Promo story title
      */
     @SerializedName("name")
@@ -19,22 +26,34 @@ public class PromoBlock implements Validable {
     private String name;
 
     /**
-     * RL of square photo of the story with 50 pixels in width
+     * Hide animation for promo story
      */
-    @SerializedName("photo_50")
-    private String photo50;
+    @SerializedName("not_animated")
+    @Required
+    private Boolean notAnimated;
 
     /**
      * RL of square photo of the story with 100 pixels in width
      */
     @SerializedName("photo_100")
+    @Required
     private String photo100;
 
     /**
-     * Hide animation for promo story
+     * RL of square photo of the story with 50 pixels in width
      */
-    @SerializedName("not_animated")
-    private Boolean notAnimated;
+    @SerializedName("photo_50")
+    @Required
+    private String photo50;
+
+    public Boolean getIsAdvice() {
+        return isAdvice;
+    }
+
+    public PromoBlock setIsAdvice(Boolean isAdvice) {
+        this.isAdvice = isAdvice;
+        return this;
+    }
 
     public String getName() {
         return name;
@@ -42,24 +61,6 @@ public class PromoBlock implements Validable {
 
     public PromoBlock setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public String getPhoto50() {
-        return photo50;
-    }
-
-    public PromoBlock setPhoto50(String photo50) {
-        this.photo50 = photo50;
-        return this;
-    }
-
-    public String getPhoto100() {
-        return photo100;
-    }
-
-    public PromoBlock setPhoto100(String photo100) {
-        this.photo100 = photo100;
         return this;
     }
 
@@ -72,9 +73,27 @@ public class PromoBlock implements Validable {
         return this;
     }
 
+    public String getPhoto100() {
+        return photo100;
+    }
+
+    public PromoBlock setPhoto100(String photo100) {
+        this.photo100 = photo100;
+        return this;
+    }
+
+    public String getPhoto50() {
+        return photo50;
+    }
+
+    public PromoBlock setPhoto50(String photo50) {
+        this.photo50 = photo50;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, notAnimated, name, photo50);
+        return Objects.hash(photo100, notAnimated, name, photo50, isAdvice);
     }
 
     @Override
@@ -84,6 +103,7 @@ public class PromoBlock implements Validable {
         PromoBlock promoBlock = (PromoBlock) o;
         return Objects.equals(photo50, promoBlock.photo50) &&
                 Objects.equals(name, promoBlock.name) &&
+                Objects.equals(isAdvice, promoBlock.isAdvice) &&
                 Objects.equals(notAnimated, promoBlock.notAnimated) &&
                 Objects.equals(photo100, promoBlock.photo100);
     }
@@ -98,6 +118,7 @@ public class PromoBlock implements Validable {
         final StringBuilder sb = new StringBuilder("PromoBlock{");
         sb.append("photo50='").append(photo50).append("'");
         sb.append(", name='").append(name).append("'");
+        sb.append(", isAdvice=").append(isAdvice);
         sb.append(", notAnimated=").append(notAnimated);
         sb.append(", photo100='").append(photo100).append("'");
         sb.append('}');

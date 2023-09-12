@@ -12,47 +12,34 @@ import java.util.Objects;
  * Lead object
  */
 public class Lead implements Validable {
-    @SerializedName("lead_id")
-    private Integer leadId;
-
-    @SerializedName("user_id")
-    private Integer userId;
-
-    @SerializedName("date")
-    @Required
-    private Integer date;
+    @SerializedName("ad_id")
+    private Integer adId;
 
     @SerializedName("answers")
     @Required
     private List<Answer> answers;
 
-    @SerializedName("ad_id")
-    private Integer adId;
+    @SerializedName("date")
+    @Required
+    private Integer date;
 
-    public Integer getLeadId() {
-        return leadId;
+    @SerializedName("lead_id")
+    @Required
+    private Integer leadId;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
+
+    public Integer getAdId() {
+        return adId;
     }
 
-    public Lead setLeadId(Integer leadId) {
-        this.leadId = leadId;
-        return this;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public Lead setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public Lead setDate(Integer date) {
-        this.date = date;
+    public Lead setAdId(Integer adId) {
+        this.adId = adId;
         return this;
     }
 
@@ -65,12 +52,30 @@ public class Lead implements Validable {
         return this;
     }
 
-    public Integer getAdId() {
-        return adId;
+    public Integer getDate() {
+        return date;
     }
 
-    public Lead setAdId(Integer adId) {
-        this.adId = adId;
+    public Lead setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getLeadId() {
+        return leadId;
+    }
+
+    public Lead setLeadId(Integer leadId) {
+        this.leadId = leadId;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public Lead setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

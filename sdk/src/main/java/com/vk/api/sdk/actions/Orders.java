@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.objects.orders.ChangeStateAction;
 import com.vk.api.sdk.queries.orders.OrdersCancelSubscriptionQuery;
 import com.vk.api.sdk.queries.orders.OrdersChangeStateQuery;
@@ -30,98 +31,163 @@ public class Orders extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param userId
      * @param subscriptionId
      * @return query
      */
-    public OrdersCancelSubscriptionQuery cancelSubscription(ServiceActor actor, int userId,
-            int subscriptionId) {
+    @ApiMethod("orders.cancelSubscription")
+    public OrdersCancelSubscriptionQuery cancelSubscription(ServiceActor actor, Long userId,
+            Integer subscriptionId) {
         return new OrdersCancelSubscriptionQuery(getClient(), actor, userId, subscriptionId);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.cancelSubscription")
+    public OrdersCancelSubscriptionQuery cancelSubscription(ServiceActor actor) {
+        return new OrdersCancelSubscriptionQuery(getClient(), actor);
     }
 
     /**
      * Changes order status.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param orderId order ID.
-     * @param action action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
+     * @param action action to be done with the order. Available actions: *cancel - to cancel unconfirmed order. *charge - to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund - to cancel confirmed order.
      * @return query
      */
-    public OrdersChangeStateQuery changeState(ServiceActor actor, int orderId,
+    @ApiMethod("orders.changeState")
+    public OrdersChangeStateQuery changeState(ServiceActor actor, Integer orderId,
             ChangeStateAction action) {
         return new OrdersChangeStateQuery(getClient(), actor, orderId, action);
     }
 
     /**
+     * Changes order status.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.changeState")
+    public OrdersChangeStateQuery changeState(ServiceActor actor) {
+        return new OrdersChangeStateQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a list of orders.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("orders.get")
     public OrdersGetQuery get(ServiceActor actor) {
         return new OrdersGetQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId
      * @param votes
      * @return query
      */
-    public OrdersGetAmountQuery getAmount(UserActor actor, int userId, String... votes) {
+    @ApiMethod("orders.getAmount")
+    public OrdersGetAmountQuery getAmount(UserActor actor, Long userId, String... votes) {
         return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId
      * @param votes
      * @return query
      */
-    public OrdersGetAmountQuery getAmount(UserActor actor, int userId, List<String> votes) {
+    @ApiMethod("orders.getAmount")
+    public OrdersGetAmountQuery getAmount(UserActor actor, Long userId, List<String> votes) {
         return new OrdersGetAmountQuery(getClient(), actor, userId, votes);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.getAmount")
+    public OrdersGetAmountQuery getAmount(UserActor actor) {
+        return new OrdersGetAmountQuery(getClient(), actor);
     }
 
     /**
      * Returns information about orders by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("orders.getById")
     public OrdersGetByIdQuery getById(ServiceActor actor) {
         return new OrdersGetByIdQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param userId
      * @param subscriptionId
      * @return query
      */
+    @ApiMethod("orders.getUserSubscriptionById")
     public OrdersGetUserSubscriptionByIdQuery getUserSubscriptionById(ServiceActor actor,
-            int userId, int subscriptionId) {
+            Long userId, Integer subscriptionId) {
         return new OrdersGetUserSubscriptionByIdQuery(getClient(), actor, userId, subscriptionId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.getUserSubscriptionById")
+    public OrdersGetUserSubscriptionByIdQuery getUserSubscriptionById(ServiceActor actor) {
+        return new OrdersGetUserSubscriptionByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
      * @param userId
      * @return query
      */
-    public OrdersGetUserSubscriptionsQuery getUserSubscriptions(ServiceActor actor, int userId) {
+    @ApiMethod("orders.getUserSubscriptions")
+    public OrdersGetUserSubscriptionsQuery getUserSubscriptions(ServiceActor actor, Long userId) {
         return new OrdersGetUserSubscriptionsQuery(getClient(), actor, userId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.getUserSubscriptions")
+    public OrdersGetUserSubscriptionsQuery getUserSubscriptions(ServiceActor actor) {
+        return new OrdersGetUserSubscriptionsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
      * @param userId
      * @param subscriptionId
      * @param price
      * @return query
      */
-    public OrdersUpdateSubscriptionQuery updateSubscription(ServiceActor actor, int userId,
-            int subscriptionId, int price) {
+    @ApiMethod("orders.updateSubscription")
+    public OrdersUpdateSubscriptionQuery updateSubscription(ServiceActor actor, Long userId,
+            Integer subscriptionId, Integer price) {
         return new OrdersUpdateSubscriptionQuery(getClient(), actor, userId, subscriptionId, price);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("orders.updateSubscription")
+    public OrdersUpdateSubscriptionQuery updateSubscription(ServiceActor actor) {
+        return new OrdersUpdateSubscriptionQuery(getClient(), actor);
     }
 }

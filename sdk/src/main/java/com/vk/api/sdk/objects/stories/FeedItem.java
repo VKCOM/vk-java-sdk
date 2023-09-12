@@ -14,20 +14,10 @@ import java.util.Objects;
  */
 public class FeedItem implements Validable {
     /**
-     * Type of Feed Item
+     * App, which stories has been grouped (for type app_grouped_stories)
      */
-    @SerializedName("type")
-    @Required
-    private FeedItemType type;
-
-    @SerializedName("id")
-    private String id;
-
-    /**
-     * Author stories
-     */
-    @SerializedName("stories")
-    private List<Story> stories;
+    @SerializedName("app")
+    private AppMin app;
 
     /**
      * Grouped stories of various authors (for types community_grouped_stories/app_grouped_stories type)
@@ -35,11 +25,20 @@ public class FeedItem implements Validable {
     @SerializedName("grouped")
     private List<FeedItem> grouped;
 
+    @SerializedName("has_unseen")
+    private Boolean hasUnseen;
+
+    @SerializedName("id")
+    private String id;
+
+    @SerializedName("name")
+    private String name;
+
     /**
-     * App, which stories has been grouped (for type app_grouped_stories)
+     * Entity: owner
      */
-    @SerializedName("app")
-    private AppMin app;
+    @SerializedName("owner_id")
+    private Long ownerId;
 
     /**
      * Additional data for promo stories (for type promo_stories)
@@ -47,42 +46,28 @@ public class FeedItem implements Validable {
     @SerializedName("promo_data")
     private PromoBlock promoData;
 
-    @SerializedName("birthday_user_id")
-    private Integer birthdayUserId;
+    /**
+     * Author stories
+     */
+    @SerializedName("stories")
+    private List<Story> stories;
 
     @SerializedName("track_code")
     private String trackCode;
 
-    @SerializedName("has_unseen")
-    private Boolean hasUnseen;
+    /**
+     * Type of Feed Item
+     */
+    @SerializedName("type")
+    @Required
+    private FeedItemType type;
 
-    @SerializedName("name")
-    private String name;
-
-    public FeedItemType getType() {
-        return type;
+    public AppMin getApp() {
+        return app;
     }
 
-    public FeedItem setType(FeedItemType type) {
-        this.type = type;
-        return this;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public FeedItem setId(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public List<Story> getStories() {
-        return stories;
-    }
-
-    public FeedItem setStories(List<Story> stories) {
-        this.stories = stories;
+    public FeedItem setApp(AppMin app) {
+        this.app = app;
         return this;
     }
 
@@ -95,48 +80,21 @@ public class FeedItem implements Validable {
         return this;
     }
 
-    public AppMin getApp() {
-        return app;
-    }
-
-    public FeedItem setApp(AppMin app) {
-        this.app = app;
-        return this;
-    }
-
-    public PromoBlock getPromoData() {
-        return promoData;
-    }
-
-    public FeedItem setPromoData(PromoBlock promoData) {
-        this.promoData = promoData;
-        return this;
-    }
-
-    public Integer getBirthdayUserId() {
-        return birthdayUserId;
-    }
-
-    public FeedItem setBirthdayUserId(Integer birthdayUserId) {
-        this.birthdayUserId = birthdayUserId;
-        return this;
-    }
-
-    public String getTrackCode() {
-        return trackCode;
-    }
-
-    public FeedItem setTrackCode(String trackCode) {
-        this.trackCode = trackCode;
-        return this;
-    }
-
     public Boolean getHasUnseen() {
         return hasUnseen;
     }
 
     public FeedItem setHasUnseen(Boolean hasUnseen) {
         this.hasUnseen = hasUnseen;
+        return this;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public FeedItem setId(String id) {
+        this.id = id;
         return this;
     }
 
@@ -149,9 +107,54 @@ public class FeedItem implements Validable {
         return this;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public FeedItem setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public PromoBlock getPromoData() {
+        return promoData;
+    }
+
+    public FeedItem setPromoData(PromoBlock promoData) {
+        this.promoData = promoData;
+        return this;
+    }
+
+    public List<Story> getStories() {
+        return stories;
+    }
+
+    public FeedItem setStories(List<Story> stories) {
+        this.stories = stories;
+        return this;
+    }
+
+    public String getTrackCode() {
+        return trackCode;
+    }
+
+    public FeedItem setTrackCode(String trackCode) {
+        this.trackCode = trackCode;
+        return this;
+    }
+
+    public FeedItemType getType() {
+        return type;
+    }
+
+    public FeedItem setType(FeedItemType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(app, trackCode, stories, grouped, birthdayUserId, hasUnseen, name, id, type, promoData);
+        return Objects.hash(app, trackCode, grouped, stories, hasUnseen, name, id, ownerId, type, promoData);
     }
 
     @Override
@@ -161,13 +164,13 @@ public class FeedItem implements Validable {
         FeedItem feedItem = (FeedItem) o;
         return Objects.equals(app, feedItem.app) &&
                 Objects.equals(promoData, feedItem.promoData) &&
-                Objects.equals(stories, feedItem.stories) &&
                 Objects.equals(grouped, feedItem.grouped) &&
+                Objects.equals(stories, feedItem.stories) &&
+                Objects.equals(ownerId, feedItem.ownerId) &&
                 Objects.equals(name, feedItem.name) &&
                 Objects.equals(trackCode, feedItem.trackCode) &&
                 Objects.equals(id, feedItem.id) &&
                 Objects.equals(type, feedItem.type) &&
-                Objects.equals(birthdayUserId, feedItem.birthdayUserId) &&
                 Objects.equals(hasUnseen, feedItem.hasUnseen);
     }
 
@@ -181,13 +184,13 @@ public class FeedItem implements Validable {
         final StringBuilder sb = new StringBuilder("FeedItem{");
         sb.append("app=").append(app);
         sb.append(", promoData=").append(promoData);
-        sb.append(", stories=").append(stories);
         sb.append(", grouped=").append(grouped);
+        sb.append(", stories=").append(stories);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", name='").append(name).append("'");
         sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", id='").append(id).append("'");
         sb.append(", type='").append(type).append("'");
-        sb.append(", birthdayUserId=").append(birthdayUserId);
         sb.append(", hasUnseen=").append(hasUnseen);
         sb.append('}');
         return sb.toString();

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,15 @@ import java.util.List;
  */
 public class VideoAddQuery extends AbstractQueryBuilder<VideoAddQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      */
-    public VideoAddQuery(VkApiClient client, UserActor actor, int videoId, int ownerId) {
+    public VideoAddQuery(VkApiClient client, UserActor actor, Integer videoId, Long ownerId) {
         super(client, "video.add", OkResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);
@@ -28,12 +30,25 @@ public class VideoAddQuery extends AbstractQueryBuilder<VideoAddQuery, OkRespons
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoAddQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.add", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Identifier of a user or community to add a video to. Use a negative value to designate a community ID.
      *
-     * @param value value of "target id" parameter.
+     * @param value value of "target id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoAddQuery targetId(Integer value) {
+    @ApiParam("target_id")
+    public VideoAddQuery targetId(Long value) {
         return unsafeParam("target_id", value);
     }
 
@@ -43,17 +58,20 @@ public class VideoAddQuery extends AbstractQueryBuilder<VideoAddQuery, OkRespons
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoAddQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoAddQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
     /**
      * ID of the user or community that owns the video. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoAddQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public VideoAddQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,16 +12,23 @@ import java.util.Objects;
  */
 public class GroupOfficersEdit implements Validable {
     @SerializedName("admin_id")
+    @Required
     private Integer adminId;
 
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("level_new")
+    @Required
+    private GroupOfficerRole levelNew;
 
     @SerializedName("level_old")
+    @Required
     private GroupOfficerRole levelOld;
 
-    @SerializedName("level_new")
-    private GroupOfficerRole levelNew;
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getAdminId() {
         return adminId;
@@ -31,12 +39,12 @@ public class GroupOfficersEdit implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public GroupOfficerRole getLevelNew() {
+        return levelNew;
     }
 
-    public GroupOfficersEdit setUserId(Integer userId) {
-        this.userId = userId;
+    public GroupOfficersEdit setLevelNew(GroupOfficerRole levelNew) {
+        this.levelNew = levelNew;
         return this;
     }
 
@@ -49,12 +57,12 @@ public class GroupOfficersEdit implements Validable {
         return this;
     }
 
-    public GroupOfficerRole getLevelNew() {
-        return levelNew;
+    public Long getUserId() {
+        return userId;
     }
 
-    public GroupOfficersEdit setLevelNew(GroupOfficerRole levelNew) {
-        this.levelNew = levelNew;
+    public GroupOfficersEdit setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

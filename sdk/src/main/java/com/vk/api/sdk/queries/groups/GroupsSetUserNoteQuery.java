@@ -3,7 +3,9 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +15,46 @@ import java.util.List;
  */
 public class GroupsSetUserNoteQuery extends AbstractQueryBuilder<GroupsSetUserNoteQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public GroupsSetUserNoteQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
+    public GroupsSetUserNoteQuery(VkApiClient client, GroupActor actor, Long groupId, Long userId) {
+        super(client, "groups.setUserNote", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+        groupId(groupId);
+        userId(userId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetUserNoteQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.setUserNote", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsSetUserNoteQuery(VkApiClient client, UserActor actor, Long groupId, Long userId) {
         super(client, "groups.setUserNote", BoolResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,22 +62,37 @@ public class GroupsSetUserNoteQuery extends AbstractQueryBuilder<GroupsSetUserNo
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetUserNoteQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.setUserNote", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsSetUserNoteQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsSetUserNoteQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsSetUserNoteQuery userId(int value) {
+    @ApiParam("user_id")
+    public GroupsSetUserNoteQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -53,6 +102,7 @@ public class GroupsSetUserNoteQuery extends AbstractQueryBuilder<GroupsSetUserNo
      * @param value value of "note" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("note")
     public GroupsSetUserNoteQuery note(String value) {
         return unsafeParam("note", value);
     }

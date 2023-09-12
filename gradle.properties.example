@@ -1,0 +1,6 @@
+ossrhUsername=
+ossrhPassword=
+signing.gnupg.executable=gpg
+signing.gnupg.useLegacyGpg=false
+signing.gnupg.keyId=
+signing.gnupg.passphrase=

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,39 @@ import java.util.List;
  */
 public class MessagesAllowMessagesFromGroupQuery extends AbstractQueryBuilder<MessagesAllowMessagesFromGroupQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public MessagesAllowMessagesFromGroupQuery(VkApiClient client, UserActor actor, int groupId) {
+    public MessagesAllowMessagesFromGroupQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "messages.allowMessagesFromGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesAllowMessagesFromGroupQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.allowMessagesFromGroup", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Group ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesAllowMessagesFromGroupQuery groupId(int value) {
+    @ApiParam("group_id")
+    public MessagesAllowMessagesFromGroupQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -41,6 +56,7 @@ public class MessagesAllowMessagesFromGroupQuery extends AbstractQueryBuilder<Me
      * @param value value of "key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("key")
     public MessagesAllowMessagesFromGroupQuery key(String value) {
         return unsafeParam("key", value);
     }

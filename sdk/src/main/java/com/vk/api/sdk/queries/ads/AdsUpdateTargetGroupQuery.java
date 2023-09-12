@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTargetGroupQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -22,8 +23,8 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param name value of "name" parameter.
      * @param lifetime value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      */
-    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
-            int targetGroupId, String name, int lifetime) {
+    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor, Integer accountId,
+            Integer targetGroupId, String name, Integer lifetime) {
         super(client, "ads.updateTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -33,12 +34,24 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsUpdateTargetGroupQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.updateTargetGroup", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateTargetGroupQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsUpdateTargetGroupQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -48,6 +61,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsUpdateTargetGroupQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
@@ -58,17 +72,19 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "target group id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateTargetGroupQuery targetGroupId(int value) {
+    @ApiParam("target_group_id")
+    public AdsUpdateTargetGroupQuery targetGroupId(Integer value) {
         return unsafeParam("target_group_id", value);
     }
 
     /**
-     * New name of the target group — a string up to 64 characters long.
+     * New name of the target group - a string up to 64 characters long.
      *
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateTargetGroupQuery name(String value) {
+    @ApiParam("name")
+    public AdsUpdateTargetGroupQuery name(String value) {
         return unsafeParam("name", value);
     }
 
@@ -78,6 +94,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "domain" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("domain")
     public AdsUpdateTargetGroupQuery domain(String value) {
         return unsafeParam("domain", value);
     }
@@ -88,7 +105,8 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "lifetime" parameter. Maximum is 720. Minimum is 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateTargetGroupQuery lifetime(int value) {
+    @ApiParam("lifetime")
+    public AdsUpdateTargetGroupQuery lifetime(Integer value) {
         return unsafeParam("lifetime", value);
     }
 
@@ -98,6 +116,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "target pixel id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("target_pixel_id")
     public AdsUpdateTargetGroupQuery targetPixelId(Integer value) {
         return unsafeParam("target_pixel_id", value);
     }
@@ -108,6 +127,7 @@ public class AdsUpdateTargetGroupQuery extends AbstractQueryBuilder<AdsUpdateTar
      * @param value value of "target pixel rules" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("target_pixel_rules")
     public AdsUpdateTargetGroupQuery targetPixelRules(String value) {
         return unsafeParam("target_pixel_rules", value);
     }

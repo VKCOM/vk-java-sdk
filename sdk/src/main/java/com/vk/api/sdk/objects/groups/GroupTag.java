@@ -11,6 +11,10 @@ import java.util.Objects;
  * GroupTag object
  */
 public class GroupTag implements Validable {
+    @SerializedName("color")
+    @Required
+    private GroupTagColor color;
+
     @SerializedName("id")
     @Required
     private Integer id;
@@ -19,12 +23,17 @@ public class GroupTag implements Validable {
     @Required
     private String name;
 
-    @SerializedName("color")
-    @Required
-    private GroupTagColor color;
-
     @SerializedName("uses")
     private Integer uses;
+
+    public GroupTagColor getColor() {
+        return color;
+    }
+
+    public GroupTag setColor(GroupTagColor color) {
+        this.color = color;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -41,15 +50,6 @@ public class GroupTag implements Validable {
 
     public GroupTag setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public GroupTagColor getColor() {
-        return color;
-    }
-
-    public GroupTag setColor(GroupTagColor color) {
-        this.color = color;
         return this;
     }
 

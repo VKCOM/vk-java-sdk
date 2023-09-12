@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,34 +15,17 @@ import java.util.List;
  */
 public class BoardRestoreCommentQuery extends AbstractQueryBuilder<BoardRestoreCommentQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param topicId value of "topic id" parameter. Minimum is 0.
-     * @param commentId value of "comment id" parameter. Minimum is 0.
-     */
-    public BoardRestoreCommentQuery(VkApiClient client, UserActor actor, int groupId, int topicId,
-            int commentId) {
-        super(client, "board.restoreComment", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-        topicId(topicId);
-        commentId(commentId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public BoardRestoreCommentQuery(VkApiClient client, GroupActor actor, int groupId, int topicId,
-            int commentId) {
+    public BoardRestoreCommentQuery(VkApiClient client, GroupActor actor, Long groupId,
+            Integer topicId, Integer commentId) {
         super(client, "board.restoreComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -51,12 +35,56 @@ public class BoardRestoreCommentQuery extends AbstractQueryBuilder<BoardRestoreC
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardRestoreCommentQuery(VkApiClient client, GroupActor actor) {
+        super(client, "board.restoreComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param topicId value of "topic id" parameter. Minimum is 0.
+     * @param commentId value of "comment id" parameter. Minimum is 0.
+     */
+    public BoardRestoreCommentQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer topicId, Integer commentId) {
+        super(client, "board.restoreComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        topicId(topicId);
+        commentId(commentId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardRestoreCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.restoreComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardRestoreCommentQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardRestoreCommentQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -66,7 +94,8 @@ public class BoardRestoreCommentQuery extends AbstractQueryBuilder<BoardRestoreC
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardRestoreCommentQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardRestoreCommentQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 
@@ -76,7 +105,8 @@ public class BoardRestoreCommentQuery extends AbstractQueryBuilder<BoardRestoreC
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardRestoreCommentQuery commentId(int value) {
+    @ApiParam("comment_id")
+    public BoardRestoreCommentQuery commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 

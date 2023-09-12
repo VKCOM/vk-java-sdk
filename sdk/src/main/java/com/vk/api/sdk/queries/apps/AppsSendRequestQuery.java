@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.apps.SendRequestType;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,39 @@ import java.util.List;
  */
 public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public AppsSendRequestQuery(VkApiClient client, UserActor actor, int userId) {
+    public AppsSendRequestQuery(VkApiClient client, UserActor actor, Long userId) {
         super(client, "apps.sendRequest", Integer.class);
         accessToken(actor.getAccessToken());
         userId(userId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppsSendRequestQuery(VkApiClient client, UserActor actor) {
+        super(client, "apps.sendRequest", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Id of the user to send a request
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsSendRequestQuery userId(int value) {
+    @ApiParam("user_id")
+    public AppsSendRequestQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -41,6 +56,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param value value of "text" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("text")
     public AppsSendRequestQuery text(String value) {
         return unsafeParam("text", value);
     }
@@ -51,6 +67,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param value value of "type" parameter. By default request.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public AppsSendRequestQuery type(SendRequestType value) {
         return unsafeParam("type", value);
     }
@@ -61,6 +78,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("name")
     public AppsSendRequestQuery name(String value) {
         return unsafeParam("name", value);
     }
@@ -71,6 +89,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param value value of "key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("key")
     public AppsSendRequestQuery key(String value) {
         return unsafeParam("key", value);
     }
@@ -81,6 +100,7 @@ public class AppsSendRequestQuery extends AbstractQueryBuilder<AppsSendRequestQu
      * @param value value of "separate" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("separate")
     public AppsSendRequestQuery separate(Boolean value) {
         return unsafeParam("separate", value);
     }

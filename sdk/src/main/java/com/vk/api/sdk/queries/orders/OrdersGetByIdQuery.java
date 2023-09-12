@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.orders.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class OrdersGetByIdQuery extends AbstractQueryBuilder<OrdersGetByIdQuery, List<GetByIdResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,27 +32,30 @@ public class OrdersGetByIdQuery extends AbstractQueryBuilder<OrdersGetByIdQuery,
      * @param value value of "order id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order_id")
     public OrdersGetByIdQuery orderId(Integer value) {
         return unsafeParam("order_id", value);
     }
 
     /**
-     * If this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+     * If this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("test_mode")
     public OrdersGetByIdQuery testMode(Boolean value) {
         return unsafeParam("test_mode", value);
     }
 
     /**
-     * order_ids
+     * orderIds
      * Order IDs (when information about several orders is requested).
      *
      * @param value value of "order ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order_ids")
     public OrdersGetByIdQuery orderIds(Integer... value) {
         return unsafeParam("order_ids", value);
     }
@@ -62,6 +66,7 @@ public class OrdersGetByIdQuery extends AbstractQueryBuilder<OrdersGetByIdQuery,
      * @param value value of "order ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order_ids")
     public OrdersGetByIdQuery orderIds(List<Integer> value) {
         return unsafeParam("order_ids", value);
     }

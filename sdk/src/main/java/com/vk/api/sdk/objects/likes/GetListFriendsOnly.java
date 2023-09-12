@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Specifies which users are returned: '1' — to return only the current user's friends, '0' — to return all users (default)
+ * Specifies which users are returned: '1' - to return only the current user's friends, '0' - to return all users (default)
  */
 public enum GetListFriendsOnly implements EnumParam {
     @SerializedName("0")

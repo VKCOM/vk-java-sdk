@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,27 +14,57 @@ import java.util.List;
  */
 public class PhotosMoveQuery extends AbstractQueryBuilder<PhotosMoveQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param targetAlbumId value of "target album id" parameter.
-     * @param photoId value of "photo id" parameter.
+     * @param photoIds value of "photo ids" parameter.
      */
-    public PhotosMoveQuery(VkApiClient client, UserActor actor, int targetAlbumId, int photoId) {
+    public PhotosMoveQuery(VkApiClient client, UserActor actor, Integer targetAlbumId,
+            Integer... photoIds) {
         super(client, "photos.move", OkResponse.class);
         accessToken(actor.getAccessToken());
         targetAlbumId(targetAlbumId);
-        photoId(photoId);
+        photoIds(photoIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param targetAlbumId value of "target album id" parameter.
+     * @param photoIds value of "photo ids" parameter.
+     */
+    public PhotosMoveQuery(VkApiClient client, UserActor actor, Integer targetAlbumId,
+            List<Integer> photoIds) {
+        super(client, "photos.move", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        targetAlbumId(targetAlbumId);
+        photoIds(photoIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosMoveQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.move", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosMoveQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosMoveQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,18 +74,32 @@ public class PhotosMoveQuery extends AbstractQueryBuilder<PhotosMoveQuery, OkRes
      * @param value value of "target album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosMoveQuery targetAlbumId(int value) {
+    @ApiParam("target_album_id")
+    public PhotosMoveQuery targetAlbumId(Integer value) {
         return unsafeParam("target_album_id", value);
     }
 
     /**
-     * Photo ID.
+     * photoIds
+     * Set photo ids
      *
-     * @param value value of "photo id" parameter.
+     * @param value value of "photo ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosMoveQuery photoId(int value) {
-        return unsafeParam("photo_id", value);
+    @ApiParam("photo_ids")
+    public PhotosMoveQuery photoIds(Integer... value) {
+        return unsafeParam("photo_ids", value);
+    }
+
+    /**
+     * Set photo ids
+     *
+     * @param value value of "photo ids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("photo_ids")
+    public PhotosMoveQuery photoIds(List<Integer> value) {
+        return unsafeParam("photo_ids", value);
     }
 
     @Override
@@ -64,6 +109,6 @@ public class PhotosMoveQuery extends AbstractQueryBuilder<PhotosMoveQuery, OkRes
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("photo_id", "target_album_id", "access_token");
+        return Arrays.asList("photo_ids", "target_album_id", "access_token");
     }
 }

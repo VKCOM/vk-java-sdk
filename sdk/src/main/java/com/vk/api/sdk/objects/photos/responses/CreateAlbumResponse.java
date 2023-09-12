@@ -16,6 +16,18 @@ import java.util.Objects;
  */
 public class CreateAlbumResponse implements Validable {
     /**
+     * album can delete
+     */
+    @SerializedName("can_delete")
+    private Boolean canDelete;
+
+    /**
+     * album can be selected to feed
+     */
+    @SerializedName("can_include_to_feed")
+    private Boolean canIncludeToFeed;
+
+    /**
      * Information whether current user can upload photo to the album
      */
     @SerializedName("can_upload")
@@ -28,10 +40,9 @@ public class CreateAlbumResponse implements Validable {
     private BoolInt commentsDisabled;
 
     /**
-     * Date when the album has been created in Unixtime
+     * Date when the album has been created in Unixtime, not set for system albums
      */
     @SerializedName("created")
-    @Required
     private Integer created;
 
     /**
@@ -48,10 +59,18 @@ public class CreateAlbumResponse implements Validable {
     private Integer id;
 
     /**
+     * Need show privacy lock at album
+     */
+    @SerializedName("is_locked")
+    private Boolean isLocked;
+
+    /**
      * Album owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * Photos number
@@ -89,10 +108,9 @@ public class CreateAlbumResponse implements Validable {
     private String title;
 
     /**
-     * Date when the album has been updated last time in Unixtime
+     * Date when the album has been updated last time in Unixtime, not set for system albums
      */
     @SerializedName("updated")
-    @Required
     private Integer updated;
 
     /**
@@ -100,6 +118,24 @@ public class CreateAlbumResponse implements Validable {
      */
     @SerializedName("upload_by_admins_only")
     private BoolInt uploadByAdminsOnly;
+
+    public Boolean getCanDelete() {
+        return canDelete;
+    }
+
+    public CreateAlbumResponse setCanDelete(Boolean canDelete) {
+        this.canDelete = canDelete;
+        return this;
+    }
+
+    public Boolean getCanIncludeToFeed() {
+        return canIncludeToFeed;
+    }
+
+    public CreateAlbumResponse setCanIncludeToFeed(Boolean canIncludeToFeed) {
+        this.canIncludeToFeed = canIncludeToFeed;
+        return this;
+    }
 
     public boolean canUpload() {
         return canUpload == BoolInt.YES;
@@ -144,11 +180,20 @@ public class CreateAlbumResponse implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getIsLocked() {
+        return isLocked;
+    }
+
+    public CreateAlbumResponse setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public CreateAlbumResponse setOwnerId(Integer ownerId) {
+    public CreateAlbumResponse setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -225,7 +270,7 @@ public class CreateAlbumResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(created, description, thumbSrc, ownerId, title, uploadByAdminsOnly, canUpload, size, sizes, commentsDisabled, id, thumbIsLast, updated, thumbId);
+        return Objects.hash(created, description, thumbSrc, canIncludeToFeed, ownerId, title, uploadByAdminsOnly, canUpload, size, sizes, commentsDisabled, isLocked, canDelete, id, thumbIsLast, updated, thumbId);
     }
 
     @Override
@@ -233,7 +278,9 @@ public class CreateAlbumResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CreateAlbumResponse createAlbumResponse = (CreateAlbumResponse) o;
-        return Objects.equals(thumbId, createAlbumResponse.thumbId) &&
+        return Objects.equals(isLocked, createAlbumResponse.isLocked) &&
+                Objects.equals(thumbId, createAlbumResponse.thumbId) &&
+                Objects.equals(canIncludeToFeed, createAlbumResponse.canIncludeToFeed) &&
                 Objects.equals(created, createAlbumResponse.created) &&
                 Objects.equals(ownerId, createAlbumResponse.ownerId) &&
                 Objects.equals(description, createAlbumResponse.description) &&
@@ -242,6 +289,7 @@ public class CreateAlbumResponse implements Validable {
                 Objects.equals(uploadByAdminsOnly, createAlbumResponse.uploadByAdminsOnly) &&
                 Objects.equals(size, createAlbumResponse.size) &&
                 Objects.equals(sizes, createAlbumResponse.sizes) &&
+                Objects.equals(canDelete, createAlbumResponse.canDelete) &&
                 Objects.equals(canUpload, createAlbumResponse.canUpload) &&
                 Objects.equals(commentsDisabled, createAlbumResponse.commentsDisabled) &&
                 Objects.equals(id, createAlbumResponse.id) &&
@@ -257,7 +305,9 @@ public class CreateAlbumResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CreateAlbumResponse{");
-        sb.append("thumbId=").append(thumbId);
+        sb.append("isLocked=").append(isLocked);
+        sb.append(", thumbId=").append(thumbId);
+        sb.append(", canIncludeToFeed=").append(canIncludeToFeed);
         sb.append(", created=").append(created);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
@@ -266,6 +316,7 @@ public class CreateAlbumResponse implements Validable {
         sb.append(", uploadByAdminsOnly=").append(uploadByAdminsOnly);
         sb.append(", size=").append(size);
         sb.append(", sizes=").append(sizes);
+        sb.append(", canDelete=").append(canDelete);
         sb.append(", canUpload=").append(canUpload);
         sb.append(", commentsDisabled=").append(commentsDisabled);
         sb.append(", id=").append(id);

@@ -11,21 +11,16 @@ import java.util.Objects;
  * MessageAllowObject object
  */
 public class MessageAllowObject implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("key")
     @Required
     private String key;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public MessageAllowObject setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public String getKey() {
         return key;
@@ -33,6 +28,15 @@ public class MessageAllowObject implements Validable {
 
     public MessageAllowObject setKey(String key) {
         this.key = key;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public MessageAllowObject setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

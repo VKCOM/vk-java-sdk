@@ -5,6 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.database.CityById;
+import com.vk.api.sdk.objects.database.Station;
 import com.vk.api.sdk.objects.groups.AddressTimetable;
 import com.vk.api.sdk.objects.groups.AddressWorkInfoStatus;
 import java.util.Objects;
@@ -26,10 +29,22 @@ public class EditAddressResponse implements Validable {
     private String address;
 
     /**
+     * City for address
+     */
+    @SerializedName("city")
+    private CityById city;
+
+    /**
      * City id of address
      */
     @SerializedName("city_id")
     private Integer cityId;
+
+    /**
+     * Country for address
+     */
+    @SerializedName("country")
+    private Country country;
 
     /**
      * Country id of address
@@ -54,13 +69,19 @@ public class EditAddressResponse implements Validable {
      * Address latitude
      */
     @SerializedName("latitude")
-    private Float latitude;
+    private Number latitude;
 
     /**
      * Address longitude
      */
     @SerializedName("longitude")
-    private Float longitude;
+    private Number longitude;
+
+    /**
+     * Metro for address
+     */
+    @SerializedName("metro_station")
+    private Station metroStation;
 
     /**
      * Metro id of address
@@ -73,6 +94,9 @@ public class EditAddressResponse implements Validable {
      */
     @SerializedName("phone")
     private String phone;
+
+    @SerializedName("place_id")
+    private Integer placeId;
 
     /**
      * Time offset int minutes from utc time
@@ -98,9 +122,6 @@ public class EditAddressResponse implements Validable {
     @SerializedName("work_info_status")
     private AddressWorkInfoStatus workInfoStatus;
 
-    @SerializedName("place_id")
-    private Integer placeId;
-
     public String getAdditionalAddress() {
         return additionalAddress;
     }
@@ -119,12 +140,30 @@ public class EditAddressResponse implements Validable {
         return this;
     }
 
+    public CityById getCity() {
+        return city;
+    }
+
+    public EditAddressResponse setCity(CityById city) {
+        this.city = city;
+        return this;
+    }
+
     public Integer getCityId() {
         return cityId;
     }
 
     public EditAddressResponse setCityId(Integer cityId) {
         this.cityId = cityId;
+        return this;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public EditAddressResponse setCountry(Country country) {
+        this.country = country;
         return this;
     }
 
@@ -155,21 +194,30 @@ public class EditAddressResponse implements Validable {
         return this;
     }
 
-    public Float getLatitude() {
+    public Number getLatitude() {
         return latitude;
     }
 
-    public EditAddressResponse setLatitude(Float latitude) {
+    public EditAddressResponse setLatitude(Number latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public Float getLongitude() {
+    public Number getLongitude() {
         return longitude;
     }
 
-    public EditAddressResponse setLongitude(Float longitude) {
+    public EditAddressResponse setLongitude(Number longitude) {
         this.longitude = longitude;
+        return this;
+    }
+
+    public Station getMetroStation() {
+        return metroStation;
+    }
+
+    public EditAddressResponse setMetroStation(Station metroStation) {
+        this.metroStation = metroStation;
         return this;
     }
 
@@ -188,6 +236,15 @@ public class EditAddressResponse implements Validable {
 
     public EditAddressResponse setPhone(String phone) {
         this.phone = phone;
+        return this;
+    }
+
+    public Integer getPlaceId() {
+        return placeId;
+    }
+
+    public EditAddressResponse setPlaceId(Integer placeId) {
+        this.placeId = placeId;
         return this;
     }
 
@@ -227,18 +284,9 @@ public class EditAddressResponse implements Validable {
         return this;
     }
 
-    public Integer getPlaceId() {
-        return placeId;
-    }
-
-    public EditAddressResponse setPlaceId(Integer placeId) {
-        this.placeId = placeId;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(address, workInfoStatus, distance, latitude, metroStationId, placeId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, longitude);
+        return Objects.hash(country, address, workInfoStatus, distance, city, latitude, metroStationId, placeId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, metroStation, longitude);
     }
 
     @Override
@@ -247,14 +295,17 @@ public class EditAddressResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         EditAddressResponse editAddressResponse = (EditAddressResponse) o;
         return Objects.equals(additionalAddress, editAddressResponse.additionalAddress) &&
+                Objects.equals(country, editAddressResponse.country) &&
                 Objects.equals(address, editAddressResponse.address) &&
                 Objects.equals(distance, editAddressResponse.distance) &&
                 Objects.equals(timeOffset, editAddressResponse.timeOffset) &&
+                Objects.equals(city, editAddressResponse.city) &&
                 Objects.equals(latitude, editAddressResponse.latitude) &&
                 Objects.equals(metroStationId, editAddressResponse.metroStationId) &&
                 Objects.equals(title, editAddressResponse.title) &&
                 Objects.equals(timetable, editAddressResponse.timetable) &&
                 Objects.equals(workInfoStatus, editAddressResponse.workInfoStatus) &&
+                Objects.equals(metroStation, editAddressResponse.metroStation) &&
                 Objects.equals(phone, editAddressResponse.phone) &&
                 Objects.equals(id, editAddressResponse.id) &&
                 Objects.equals(countryId, editAddressResponse.countryId) &&
@@ -272,14 +323,17 @@ public class EditAddressResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("EditAddressResponse{");
         sb.append("additionalAddress='").append(additionalAddress).append("'");
+        sb.append(", country=").append(country);
         sb.append(", address='").append(address).append("'");
         sb.append(", distance=").append(distance);
         sb.append(", timeOffset=").append(timeOffset);
+        sb.append(", city=").append(city);
         sb.append(", latitude=").append(latitude);
         sb.append(", metroStationId=").append(metroStationId);
         sb.append(", title='").append(title).append("'");
         sb.append(", timetable=").append(timetable);
         sb.append(", workInfoStatus=").append(workInfoStatus);
+        sb.append(", metroStation=").append(metroStation);
         sb.append(", phone='").append(phone).append("'");
         sb.append(", id=").append(id);
         sb.append(", countryId=").append(countryId);

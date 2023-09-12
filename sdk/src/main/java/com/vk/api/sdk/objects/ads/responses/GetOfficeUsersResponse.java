@@ -19,9 +19,11 @@ public class GetOfficeUsersResponse implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     public List<Accesses> getAccesses() {
         return accesses;
@@ -32,11 +34,11 @@ public class GetOfficeUsersResponse implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public GetOfficeUsersResponse setUserId(Integer userId) {
+    public GetOfficeUsersResponse setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

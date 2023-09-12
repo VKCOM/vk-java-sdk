@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetSchoolsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSchoolsQuery, GetSchoolsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param cityId value of "city id" parameter. Minimum is 0.
      */
-    public DatabaseGetSchoolsQuery(VkApiClient client, UserActor actor, int cityId) {
+    public DatabaseGetSchoolsQuery(VkApiClient client, UserActor actor, Integer cityId) {
         super(client, "database.getSchools", GetSchoolsResponse.class);
         accessToken(actor.getAccessToken());
         cityId(cityId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetSchoolsQuery(VkApiClient client, UserActor actor) {
+        super(client, "database.getSchools", GetSchoolsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param cityId value of "city id" parameter. Minimum is 0.
      */
-    public DatabaseGetSchoolsQuery(VkApiClient client, ServiceActor actor, int cityId) {
+    public DatabaseGetSchoolsQuery(VkApiClient client, ServiceActor actor, Integer cityId) {
         super(client, "database.getSchools", GetSchoolsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         cityId(cityId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetSchoolsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "database.getSchools", GetSchoolsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,6 +70,7 @@ public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSch
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public DatabaseGetSchoolsQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -56,7 +81,8 @@ public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSch
      * @param value value of "city id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetSchoolsQuery cityId(int value) {
+    @ApiParam("city_id")
+    public DatabaseGetSchoolsQuery cityId(Integer value) {
         return unsafeParam("city_id", value);
     }
 
@@ -66,6 +92,7 @@ public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSch
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetSchoolsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -76,6 +103,7 @@ public class DatabaseGetSchoolsQuery extends AbstractQueryBuilder<DatabaseGetSch
      * @param value value of "count" parameter. Maximum is 10000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetSchoolsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

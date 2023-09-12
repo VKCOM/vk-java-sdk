@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.auth.responses.RestoreResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,29 @@ import java.util.List;
  */
 public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, RestoreResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build open api request with various parameters
+     *
+     * @param client VK API client
+     * @param phone value of "phone" parameter.
+     * @param lastName value of "last name" parameter.
+     */
+    public AuthRestoreQuery(VkApiClient client, String phone, String lastName) {
+        super(client, "auth.restore", RestoreResponse.class);
+        phone(phone);
+        lastName(lastName);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build open api request with various parameters
+     *
+     * @param client VK API client
+     */
+    public AuthRestoreQuery(VkApiClient client) {
+        super(client, "auth.restore", RestoreResponse.class);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,20 +52,18 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
-     * @param phone value of "phone" parameter.
-     * @param lastName value of "last name" parameter.
+     * @param actor actor with access token
      */
-    public AuthRestoreQuery(VkApiClient client, String phone, String lastName) {
+    public AuthRestoreQuery(VkApiClient client, UserActor actor) {
         super(client, "auth.restore", RestoreResponse.class);
-        phone(phone);
-        lastName(lastName);
+        accessToken(actor.getAccessToken());
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -58,12 +79,25 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AuthRestoreQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "auth.restore", RestoreResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * User phone number.
      *
      * @param value value of "phone" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AuthRestoreQuery phone(String value) {
+    @ApiParam("phone")
+    public AuthRestoreQuery phone(String value) {
         return unsafeParam("phone", value);
     }
 
@@ -73,7 +107,8 @@ public class AuthRestoreQuery extends AbstractQueryBuilder<AuthRestoreQuery, Res
      * @param value value of "last name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AuthRestoreQuery lastName(String value) {
+    @ApiParam("last_name")
+    public AuthRestoreQuery lastName(String value) {
         return unsafeParam("last_name", value);
     }
 

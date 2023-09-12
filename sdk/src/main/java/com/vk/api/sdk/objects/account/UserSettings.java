@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.account;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.users.UserSettingsXtr;
 import java.net.URI;
 import java.util.Objects;
@@ -12,11 +13,31 @@ import java.util.Objects;
  * UserSettings object
  */
 public class UserSettings extends UserSettingsXtr implements Validable {
+    @SerializedName("can_access_closed")
+    private Boolean canAccessClosed;
+
     /**
-     * URL of square photo of the user with 200 pixels in width
+     * Returns if a profile is deleted or blocked
      */
-    @SerializedName("photo_200")
-    private URI photo200;
+    @SerializedName("deactivated")
+    private String deactivated;
+
+    /**
+     * Returns if a profile is hidden.
+     */
+    @SerializedName("hidden")
+    private Integer hidden;
+
+    /**
+     * User ID
+     * Entity: owner
+     */
+    @SerializedName("id")
+    @Required
+    private Long id;
+
+    @SerializedName("is_closed")
+    private Boolean isClosed;
 
     /**
      * flag about service account
@@ -24,12 +45,54 @@ public class UserSettings extends UserSettingsXtr implements Validable {
     @SerializedName("is_service_account")
     private Boolean isServiceAccount;
 
-    public URI getPhoto200() {
-        return photo200;
+    /**
+     * URL of square photo of the user with 200 pixels in width
+     */
+    @SerializedName("photo_200")
+    private URI photo200;
+
+    public Boolean getCanAccessClosed() {
+        return canAccessClosed;
     }
 
-    public UserSettings setPhoto200(URI photo200) {
-        this.photo200 = photo200;
+    public UserSettings setCanAccessClosed(Boolean canAccessClosed) {
+        this.canAccessClosed = canAccessClosed;
+        return this;
+    }
+
+    public String getDeactivated() {
+        return deactivated;
+    }
+
+    public UserSettings setDeactivated(String deactivated) {
+        this.deactivated = deactivated;
+        return this;
+    }
+
+    public Integer getHidden() {
+        return hidden;
+    }
+
+    public UserSettings setHidden(Integer hidden) {
+        this.hidden = hidden;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserSettings setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public UserSettings setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
         return this;
     }
 
@@ -42,9 +105,18 @@ public class UserSettings extends UserSettingsXtr implements Validable {
         return this;
     }
 
+    public URI getPhoto200() {
+        return photo200;
+    }
+
+    public UserSettings setPhoto200(URI photo200) {
+        this.photo200 = photo200;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo200, isServiceAccount);
+        return Objects.hash(canAccessClosed, hidden, isClosed, id, photo200, deactivated, isServiceAccount);
     }
 
     @Override
@@ -52,8 +124,13 @@ public class UserSettings extends UserSettingsXtr implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserSettings userSettings = (UserSettings) o;
-        return Objects.equals(isServiceAccount, userSettings.isServiceAccount) &&
-                Objects.equals(photo200, userSettings.photo200);
+        return Objects.equals(canAccessClosed, userSettings.canAccessClosed) &&
+                Objects.equals(hidden, userSettings.hidden) &&
+                Objects.equals(isServiceAccount, userSettings.isServiceAccount) &&
+                Objects.equals(id, userSettings.id) &&
+                Objects.equals(photo200, userSettings.photo200) &&
+                Objects.equals(deactivated, userSettings.deactivated) &&
+                Objects.equals(isClosed, userSettings.isClosed);
     }
 
     @Override
@@ -64,8 +141,13 @@ public class UserSettings extends UserSettingsXtr implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserSettings{");
-        sb.append("isServiceAccount=").append(isServiceAccount);
+        sb.append("canAccessClosed=").append(canAccessClosed);
+        sb.append(", hidden=").append(hidden);
+        sb.append(", isServiceAccount=").append(isServiceAccount);
+        sb.append(", id=").append(id);
         sb.append(", photo200=").append(photo200);
+        sb.append(", deactivated='").append(deactivated).append("'");
+        sb.append(", isClosed=").append(isClosed);
         sb.append('}');
         return sb.toString();
     }

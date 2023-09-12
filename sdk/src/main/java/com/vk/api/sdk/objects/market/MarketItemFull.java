@@ -16,11 +16,14 @@ import java.util.Objects;
  * MarketItemFull object
  */
 public class MarketItemFull extends MarketItem implements Validable {
+    /**
+     * Contains ad ID if it has
+     */
+    @SerializedName("ad_id")
+    private Integer adId;
+
     @SerializedName("albums_ids")
     private List<Integer> albumsIds;
-
-    @SerializedName("photos")
-    private List<Photo> photos;
 
     /**
      * Information whether current use can comment the item
@@ -29,16 +32,73 @@ public class MarketItemFull extends MarketItem implements Validable {
     private BoolInt canComment;
 
     /**
+     * Can item be deleted by current user?
+     */
+    @SerializedName("can_delete")
+    private Boolean canDelete;
+
+    /**
+     * Can the item be updated by current user?
+     */
+    @SerializedName("can_edit")
+    private Boolean canEdit;
+
+    /**
      * Information whether current use can repost the item
      */
     @SerializedName("can_repost")
     private BoolInt canRepost;
 
+    /**
+     * Can the item be converted from a product into a service?
+     */
+    @SerializedName("can_show_convert_to_service")
+    private Boolean canShowConvertToService;
+
+    /**
+     * Information for cancel and revert order
+     */
+    @SerializedName("cancel_info")
+    private Link cancelInfo;
+
     @SerializedName("likes")
     private Likes likes;
 
+    /**
+     * Count of product orders
+     */
+    @SerializedName("orders_count")
+    private Integer ordersCount;
+
+    /**
+     * Information about the group where the item is placed
+     */
+    @SerializedName("owner_info")
+    private ItemOwnerInfo ownerInfo;
+
+    @SerializedName("photos")
+    private List<Photo> photos;
+
+    /**
+     * Information about promotion of the item
+     */
+    @SerializedName("promotion")
+    private ItemPromotionInfo promotion;
+
+    /**
+     * Rating of product
+     */
+    @SerializedName("rating")
+    private Number rating;
+
     @SerializedName("reposts")
     private RepostsInfo reposts;
+
+    /**
+     * User agreement info
+     */
+    @SerializedName("user_agreement_info")
+    private String userAgreementInfo;
 
     /**
      * Views number
@@ -47,22 +107,25 @@ public class MarketItemFull extends MarketItem implements Validable {
     private Integer viewsCount;
 
     /**
+     * The amount of the discount if VK Pay is used for payment
+     */
+    @SerializedName("vk_pay_discount")
+    private Integer vkPayDiscount;
+
+    /**
      * Object identifier in wishlist of viewer
      */
     @SerializedName("wishlist_item_id")
     private Integer wishlistItemId;
 
-    /**
-     * Information for cancel and revert order
-     */
-    @SerializedName("cancel_info")
-    private Link cancelInfo;
+    public Integer getAdId() {
+        return adId;
+    }
 
-    /**
-     * User agreement info
-     */
-    @SerializedName("user_agreement_info")
-    private String userAgreementInfo;
+    public MarketItemFull setAdId(Integer adId) {
+        this.adId = adId;
+        return this;
+    }
 
     public List<Integer> getAlbumsIds() {
         return albumsIds;
@@ -70,15 +133,6 @@ public class MarketItemFull extends MarketItem implements Validable {
 
     public MarketItemFull setAlbumsIds(List<Integer> albumsIds) {
         this.albumsIds = albumsIds;
-        return this;
-    }
-
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public MarketItemFull setPhotos(List<Photo> photos) {
-        this.photos = photos;
         return this;
     }
 
@@ -90,6 +144,24 @@ public class MarketItemFull extends MarketItem implements Validable {
         return canComment;
     }
 
+    public Boolean getCanDelete() {
+        return canDelete;
+    }
+
+    public MarketItemFull setCanDelete(Boolean canDelete) {
+        this.canDelete = canDelete;
+        return this;
+    }
+
+    public Boolean getCanEdit() {
+        return canEdit;
+    }
+
+    public MarketItemFull setCanEdit(Boolean canEdit) {
+        this.canEdit = canEdit;
+        return this;
+    }
+
     public boolean canRepost() {
         return canRepost == BoolInt.YES;
     }
@@ -98,39 +170,12 @@ public class MarketItemFull extends MarketItem implements Validable {
         return canRepost;
     }
 
-    public Likes getLikes() {
-        return likes;
+    public Boolean getCanShowConvertToService() {
+        return canShowConvertToService;
     }
 
-    public MarketItemFull setLikes(Likes likes) {
-        this.likes = likes;
-        return this;
-    }
-
-    public RepostsInfo getReposts() {
-        return reposts;
-    }
-
-    public MarketItemFull setReposts(RepostsInfo reposts) {
-        this.reposts = reposts;
-        return this;
-    }
-
-    public Integer getViewsCount() {
-        return viewsCount;
-    }
-
-    public MarketItemFull setViewsCount(Integer viewsCount) {
-        this.viewsCount = viewsCount;
-        return this;
-    }
-
-    public Integer getWishlistItemId() {
-        return wishlistItemId;
-    }
-
-    public MarketItemFull setWishlistItemId(Integer wishlistItemId) {
-        this.wishlistItemId = wishlistItemId;
+    public MarketItemFull setCanShowConvertToService(Boolean canShowConvertToService) {
+        this.canShowConvertToService = canShowConvertToService;
         return this;
     }
 
@@ -143,6 +188,69 @@ public class MarketItemFull extends MarketItem implements Validable {
         return this;
     }
 
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public MarketItemFull setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public Integer getOrdersCount() {
+        return ordersCount;
+    }
+
+    public MarketItemFull setOrdersCount(Integer ordersCount) {
+        this.ordersCount = ordersCount;
+        return this;
+    }
+
+    public ItemOwnerInfo getOwnerInfo() {
+        return ownerInfo;
+    }
+
+    public MarketItemFull setOwnerInfo(ItemOwnerInfo ownerInfo) {
+        this.ownerInfo = ownerInfo;
+        return this;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public MarketItemFull setPhotos(List<Photo> photos) {
+        this.photos = photos;
+        return this;
+    }
+
+    public ItemPromotionInfo getPromotion() {
+        return promotion;
+    }
+
+    public MarketItemFull setPromotion(ItemPromotionInfo promotion) {
+        this.promotion = promotion;
+        return this;
+    }
+
+    public Number getRating() {
+        return rating;
+    }
+
+    public MarketItemFull setRating(Number rating) {
+        this.rating = rating;
+        return this;
+    }
+
+    public RepostsInfo getReposts() {
+        return reposts;
+    }
+
+    public MarketItemFull setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
     public String getUserAgreementInfo() {
         return userAgreementInfo;
     }
@@ -152,9 +260,36 @@ public class MarketItemFull extends MarketItem implements Validable {
         return this;
     }
 
+    public Integer getViewsCount() {
+        return viewsCount;
+    }
+
+    public MarketItemFull setViewsCount(Integer viewsCount) {
+        this.viewsCount = viewsCount;
+        return this;
+    }
+
+    public Integer getVkPayDiscount() {
+        return vkPayDiscount;
+    }
+
+    public MarketItemFull setVkPayDiscount(Integer vkPayDiscount) {
+        this.vkPayDiscount = vkPayDiscount;
+        return this;
+    }
+
+    public Integer getWishlistItemId() {
+        return wishlistItemId;
+    }
+
+    public MarketItemFull setWishlistItemId(Integer wishlistItemId) {
+        this.wishlistItemId = wishlistItemId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(userAgreementInfo, canRepost, wishlistItemId, cancelInfo, viewsCount, albumsIds, canComment, photos, reposts, likes);
+        return Objects.hash(canRepost, wishlistItemId, cancelInfo, canEdit, rating, viewsCount, ownerInfo, photos, userAgreementInfo, canShowConvertToService, ordersCount, adId, vkPayDiscount, albumsIds, canDelete, canComment, reposts, likes, promotion);
     }
 
     @Override
@@ -162,16 +297,25 @@ public class MarketItemFull extends MarketItem implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarketItemFull marketItemFull = (MarketItemFull) o;
-        return Objects.equals(canRepost, marketItemFull.canRepost) &&
+        return Objects.equals(ownerInfo, marketItemFull.ownerInfo) &&
+                Objects.equals(rating, marketItemFull.rating) &&
+                Objects.equals(canEdit, marketItemFull.canEdit) &&
+                Objects.equals(photos, marketItemFull.photos) &&
+                Objects.equals(canRepost, marketItemFull.canRepost) &&
+                Objects.equals(ordersCount, marketItemFull.ordersCount) &&
+                Objects.equals(adId, marketItemFull.adId) &&
                 Objects.equals(canComment, marketItemFull.canComment) &&
                 Objects.equals(userAgreementInfo, marketItemFull.userAgreementInfo) &&
+                Objects.equals(canDelete, marketItemFull.canDelete) &&
                 Objects.equals(wishlistItemId, marketItemFull.wishlistItemId) &&
+                Objects.equals(canShowConvertToService, marketItemFull.canShowConvertToService) &&
                 Objects.equals(viewsCount, marketItemFull.viewsCount) &&
+                Objects.equals(vkPayDiscount, marketItemFull.vkPayDiscount) &&
                 Objects.equals(albumsIds, marketItemFull.albumsIds) &&
-                Objects.equals(photos, marketItemFull.photos) &&
-                Objects.equals(reposts, marketItemFull.reposts) &&
                 Objects.equals(cancelInfo, marketItemFull.cancelInfo) &&
-                Objects.equals(likes, marketItemFull.likes);
+                Objects.equals(reposts, marketItemFull.reposts) &&
+                Objects.equals(likes, marketItemFull.likes) &&
+                Objects.equals(promotion, marketItemFull.promotion);
     }
 
     @Override
@@ -182,16 +326,25 @@ public class MarketItemFull extends MarketItem implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MarketItemFull{");
-        sb.append("canRepost=").append(canRepost);
+        sb.append("ownerInfo=").append(ownerInfo);
+        sb.append(", rating=").append(rating);
+        sb.append(", canEdit=").append(canEdit);
+        sb.append(", photos=").append(photos);
+        sb.append(", canRepost=").append(canRepost);
+        sb.append(", ordersCount=").append(ordersCount);
+        sb.append(", adId=").append(adId);
         sb.append(", canComment=").append(canComment);
         sb.append(", userAgreementInfo='").append(userAgreementInfo).append("'");
+        sb.append(", canDelete=").append(canDelete);
         sb.append(", wishlistItemId=").append(wishlistItemId);
+        sb.append(", canShowConvertToService=").append(canShowConvertToService);
         sb.append(", viewsCount=").append(viewsCount);
+        sb.append(", vkPayDiscount=").append(vkPayDiscount);
         sb.append(", albumsIds=").append(albumsIds);
-        sb.append(", photos=").append(photos);
-        sb.append(", reposts=").append(reposts);
         sb.append(", cancelInfo=").append(cancelInfo);
+        sb.append(", reposts=").append(reposts);
         sb.append(", likes=").append(likes);
+        sb.append(", promotion=").append(promotion);
         sb.append('}');
         return sb.toString();
     }

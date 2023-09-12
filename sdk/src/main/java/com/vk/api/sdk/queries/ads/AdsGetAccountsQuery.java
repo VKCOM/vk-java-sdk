@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class AdsGetAccountsQuery extends AbstractQueryBuilder<AdsGetAccountsQuery, List<GetAccountsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token

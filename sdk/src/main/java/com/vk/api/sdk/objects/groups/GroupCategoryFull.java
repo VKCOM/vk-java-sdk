@@ -30,9 +30,11 @@ public class GroupCategoryFull implements Validable {
      * Pages number
      */
     @SerializedName("page_count")
+    @Required
     private Integer pageCount;
 
     @SerializedName("page_previews")
+    @Required
     private List<Group> pagePreviews;
 
     @SerializedName("subcategories")

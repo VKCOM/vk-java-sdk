@@ -5,7 +5,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.addresses.Fields;
+import com.vk.api.sdk.objects.address.Fields;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.GetAddressesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -15,26 +16,39 @@ import java.util.List;
  */
 public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddressesQuery, GetAddressesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public GroupsGetAddressesQuery(VkApiClient client, UserActor actor, int groupId) {
+    public GroupsGetAddressesQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "groups.getAddresses", GetAddressesResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsGetAddressesQuery(VkApiClient client, ServiceActor actor, int groupId) {
+    public GroupsGetAddressesQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.getAddresses", GetAddressesResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsGetAddressesQuery(VkApiClient client, ServiceActor actor, Long groupId) {
         super(client, "groups.getAddresses", GetAddressesResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -42,12 +56,26 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetAddressesQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "groups.getAddresses", GetAddressesResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * ID or screen name of the community.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetAddressesQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsGetAddressesQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -57,6 +85,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "latitude" parameter. Maximum is 90. Minimum is -90.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public GroupsGetAddressesQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -67,6 +96,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "longitude" parameter. Maximum is 180. Minimum is -180.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public GroupsGetAddressesQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -77,6 +107,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public GroupsGetAddressesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -87,17 +118,19 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "count" parameter. Minimum is 0. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public GroupsGetAddressesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * address_ids
+     * addressIds
      * Set address ids
      *
      * @param value value of "address ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("address_ids")
     public GroupsGetAddressesQuery addressIds(Integer... value) {
         return unsafeParam("address_ids", value);
     }
@@ -108,6 +141,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "address ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("address_ids")
     public GroupsGetAddressesQuery addressIds(List<Integer> value) {
         return unsafeParam("address_ids", value);
     }
@@ -119,6 +153,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetAddressesQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -129,6 +164,7 @@ public class GroupsGetAddressesQuery extends AbstractQueryBuilder<GroupsGetAddre
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetAddressesQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

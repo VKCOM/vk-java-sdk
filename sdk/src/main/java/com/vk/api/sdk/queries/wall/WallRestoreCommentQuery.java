@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,38 @@ import java.util.List;
  */
 public class WallRestoreCommentQuery extends AbstractQueryBuilder<WallRestoreCommentQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param commentId value of "comment id" parameter.
      */
-    public WallRestoreCommentQuery(VkApiClient client, UserActor actor, int commentId) {
+    public WallRestoreCommentQuery(VkApiClient client, UserActor actor, Integer commentId) {
         super(client, "wall.restoreComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallRestoreCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "wall.restoreComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallRestoreCommentQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallRestoreCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -41,7 +55,8 @@ public class WallRestoreCommentQuery extends AbstractQueryBuilder<WallRestoreCom
      * @param value value of "comment id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallRestoreCommentQuery commentId(int value) {
+    @ApiParam("comment_id")
+    public WallRestoreCommentQuery commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 

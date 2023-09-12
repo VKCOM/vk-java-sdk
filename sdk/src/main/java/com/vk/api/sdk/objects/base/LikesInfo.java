@@ -12,9 +12,16 @@ import java.util.Objects;
  */
 public class LikesInfo implements Validable {
     /**
+     * Information whether author of the post/reply liked it
+     */
+    @SerializedName("author_liked")
+    private Boolean authorLiked;
+
+    /**
      * Information whether current user can like the post
      */
     @SerializedName("can_like")
+    @Required
     private BoolInt canLike;
 
     /**
@@ -31,10 +38,26 @@ public class LikesInfo implements Validable {
     private Integer count;
 
     /**
+     * Remove repost feature for post
+     */
+    @SerializedName("repost_disabled")
+    private Boolean repostDisabled;
+
+    /**
      * Information whether current uer has liked the post
      */
     @SerializedName("user_likes")
-    private Integer userLikes;
+    @Required
+    private BoolInt userLikes;
+
+    public Boolean getAuthorLiked() {
+        return authorLiked;
+    }
+
+    public LikesInfo setAuthorLiked(Boolean authorLiked) {
+        this.authorLiked = authorLiked;
+        return this;
+    }
 
     public boolean canLike() {
         return canLike == BoolInt.YES;
@@ -61,18 +84,26 @@ public class LikesInfo implements Validable {
         return this;
     }
 
-    public Integer getUserLikes() {
-        return userLikes;
+    public Boolean getRepostDisabled() {
+        return repostDisabled;
     }
 
-    public LikesInfo setUserLikes(Integer userLikes) {
-        this.userLikes = userLikes;
+    public LikesInfo setRepostDisabled(Boolean repostDisabled) {
+        this.repostDisabled = repostDisabled;
         return this;
+    }
+
+    public boolean isUserLikes() {
+        return userLikes == BoolInt.YES;
+    }
+
+    public BoolInt getUserLikes() {
+        return userLikes;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(canLike, canPublish, count, userLikes);
+        return Objects.hash(authorLiked, canLike, canPublish, repostDisabled, count, userLikes);
     }
 
     @Override
@@ -83,7 +114,9 @@ public class LikesInfo implements Validable {
         return Objects.equals(userLikes, likesInfo.userLikes) &&
                 Objects.equals(canPublish, likesInfo.canPublish) &&
                 Objects.equals(canLike, likesInfo.canLike) &&
-                Objects.equals(count, likesInfo.count);
+                Objects.equals(repostDisabled, likesInfo.repostDisabled) &&
+                Objects.equals(count, likesInfo.count) &&
+                Objects.equals(authorLiked, likesInfo.authorLiked);
     }
 
     @Override
@@ -97,7 +130,9 @@ public class LikesInfo implements Validable {
         sb.append("userLikes=").append(userLikes);
         sb.append(", canPublish=").append(canPublish);
         sb.append(", canLike=").append(canLike);
+        sb.append(", repostDisabled=").append(repostDisabled);
         sb.append(", count=").append(count);
+        sb.append(", authorLiked=").append(authorLiked);
         sb.append('}');
         return sb.toString();
     }

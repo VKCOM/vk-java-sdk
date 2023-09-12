@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,18 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PagesClearCacheQuery(VkApiClient client, UserActor actor) {
+        super(client, "pages.clearCache", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,12 +53,25 @@ public class PagesClearCacheQuery extends AbstractQueryBuilder<PagesClearCacheQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PagesClearCacheQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "pages.clearCache", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Address of the page where you need to refesh the cached version
      *
      * @param value value of "url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PagesClearCacheQuery url(String value) {
+    @ApiParam("url")
+    public PagesClearCacheQuery url(String value) {
         return unsafeParam("url", value);
     }
 

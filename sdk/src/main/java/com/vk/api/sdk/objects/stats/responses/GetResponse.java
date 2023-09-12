@@ -5,8 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.stats.Activity;
-import com.vk.api.sdk.objects.stats.Reach;
-import com.vk.api.sdk.objects.stats.Views;
+import com.vk.api.sdk.objects.stats.ReachOneOf;
+import com.vk.api.sdk.objects.stats.VisitorsOneOf;
 import java.util.Objects;
 
 /**
@@ -16,23 +16,17 @@ public class GetResponse implements Validable {
     @SerializedName("activity")
     private Activity activity;
 
-    /**
-     * Unix timestamp
-     */
     @SerializedName("period_from")
     private Integer periodFrom;
 
-    /**
-     * Unix timestamp
-     */
     @SerializedName("period_to")
     private Integer periodTo;
 
     @SerializedName("reach")
-    private Reach reach;
+    private ReachOneOf reach;
 
     @SerializedName("visitors")
-    private Views visitors;
+    private VisitorsOneOf visitors;
 
     public Activity getActivity() {
         return activity;
@@ -61,20 +55,20 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public Reach getReach() {
+    public ReachOneOf getReach() {
         return reach;
     }
 
-    public GetResponse setReach(Reach reach) {
+    public GetResponse setReach(ReachOneOf reach) {
         this.reach = reach;
         return this;
     }
 
-    public Views getVisitors() {
+    public VisitorsOneOf getVisitors() {
         return visitors;
     }
 
-    public GetResponse setVisitors(Views visitors) {
+    public GetResponse setVisitors(VisitorsOneOf visitors) {
         this.visitors = visitors;
         return this;
     }

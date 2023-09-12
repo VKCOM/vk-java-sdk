@@ -4,12 +4,19 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * TargetGroup object
  */
 public class TargetGroup implements Validable {
+    /**
+     * API source
+     */
+    @SerializedName("api_source")
+    private Boolean apiSource;
+
     /**
      * Audience
      */
@@ -23,16 +30,46 @@ public class TargetGroup implements Validable {
     private String domain;
 
     /**
+     * File source
+     */
+    @SerializedName("file_source")
+    private Boolean fileSource;
+
+    /**
      * Group ID
      */
     @SerializedName("id")
     private Integer id;
 
     /**
+     * Is audience
+     */
+    @SerializedName("is_audience")
+    private Boolean isAudience;
+
+    /**
+     * Is shared
+     */
+    @SerializedName("is_shared")
+    private Boolean isShared;
+
+    /**
+     * Last updated
+     */
+    @SerializedName("last_updated")
+    private Integer lastUpdated;
+
+    /**
      * Number of days for user to be in group
      */
     @SerializedName("lifetime")
     private Integer lifetime;
+
+    /**
+     * File source
+     */
+    @SerializedName("lookalike_source")
+    private Boolean lookalikeSource;
 
     /**
      * Group name
@@ -45,6 +82,27 @@ public class TargetGroup implements Validable {
      */
     @SerializedName("pixel")
     private String pixel;
+
+    /**
+     * Target Pixel id
+     */
+    @SerializedName("target_pixel_id")
+    private Integer targetPixelId;
+
+    /**
+     * Target Pixel rules
+     */
+    @SerializedName("target_pixel_rules")
+    private List<TargetGroupTargetPixelRule> targetPixelRules;
+
+    public Boolean getApiSource() {
+        return apiSource;
+    }
+
+    public TargetGroup setApiSource(Boolean apiSource) {
+        this.apiSource = apiSource;
+        return this;
+    }
 
     public Integer getAudienceCount() {
         return audienceCount;
@@ -64,6 +122,15 @@ public class TargetGroup implements Validable {
         return this;
     }
 
+    public Boolean getFileSource() {
+        return fileSource;
+    }
+
+    public TargetGroup setFileSource(Boolean fileSource) {
+        this.fileSource = fileSource;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -73,12 +140,48 @@ public class TargetGroup implements Validable {
         return this;
     }
 
+    public Boolean getIsAudience() {
+        return isAudience;
+    }
+
+    public TargetGroup setIsAudience(Boolean isAudience) {
+        this.isAudience = isAudience;
+        return this;
+    }
+
+    public Boolean getIsShared() {
+        return isShared;
+    }
+
+    public TargetGroup setIsShared(Boolean isShared) {
+        this.isShared = isShared;
+        return this;
+    }
+
+    public Integer getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public TargetGroup setLastUpdated(Integer lastUpdated) {
+        this.lastUpdated = lastUpdated;
+        return this;
+    }
+
     public Integer getLifetime() {
         return lifetime;
     }
 
     public TargetGroup setLifetime(Integer lifetime) {
         this.lifetime = lifetime;
+        return this;
+    }
+
+    public Boolean getLookalikeSource() {
+        return lookalikeSource;
+    }
+
+    public TargetGroup setLookalikeSource(Boolean lookalikeSource) {
+        this.lookalikeSource = lookalikeSource;
         return this;
     }
 
@@ -100,9 +203,27 @@ public class TargetGroup implements Validable {
         return this;
     }
 
+    public Integer getTargetPixelId() {
+        return targetPixelId;
+    }
+
+    public TargetGroup setTargetPixelId(Integer targetPixelId) {
+        this.targetPixelId = targetPixelId;
+        return this;
+    }
+
+    public List<TargetGroupTargetPixelRule> getTargetPixelRules() {
+        return targetPixelRules;
+    }
+
+    public TargetGroup setTargetPixelRules(List<TargetGroupTargetPixelRule> targetPixelRules) {
+        this.targetPixelRules = targetPixelRules;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(domain, audienceCount, lifetime, name, id, pixel);
+        return Objects.hash(apiSource, lifetime, fileSource, isAudience, lastUpdated, targetPixelId, domain, audienceCount, name, targetPixelRules, id, lookalikeSource, pixel, isShared);
     }
 
     @Override
@@ -110,9 +231,17 @@ public class TargetGroup implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TargetGroup targetGroup = (TargetGroup) o;
-        return Objects.equals(domain, targetGroup.domain) &&
-                Objects.equals(audienceCount, targetGroup.audienceCount) &&
+        return Objects.equals(apiSource, targetGroup.apiSource) &&
+                Objects.equals(lastUpdated, targetGroup.lastUpdated) &&
+                Objects.equals(targetPixelRules, targetGroup.targetPixelRules) &&
                 Objects.equals(lifetime, targetGroup.lifetime) &&
+                Objects.equals(fileSource, targetGroup.fileSource) &&
+                Objects.equals(targetPixelId, targetGroup.targetPixelId) &&
+                Objects.equals(isAudience, targetGroup.isAudience) &&
+                Objects.equals(domain, targetGroup.domain) &&
+                Objects.equals(isShared, targetGroup.isShared) &&
+                Objects.equals(lookalikeSource, targetGroup.lookalikeSource) &&
+                Objects.equals(audienceCount, targetGroup.audienceCount) &&
                 Objects.equals(name, targetGroup.name) &&
                 Objects.equals(id, targetGroup.id) &&
                 Objects.equals(pixel, targetGroup.pixel);
@@ -126,9 +255,17 @@ public class TargetGroup implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TargetGroup{");
-        sb.append("domain='").append(domain).append("'");
-        sb.append(", audienceCount=").append(audienceCount);
+        sb.append("apiSource=").append(apiSource);
+        sb.append(", lastUpdated=").append(lastUpdated);
+        sb.append(", targetPixelRules=").append(targetPixelRules);
         sb.append(", lifetime=").append(lifetime);
+        sb.append(", fileSource=").append(fileSource);
+        sb.append(", targetPixelId=").append(targetPixelId);
+        sb.append(", isAudience=").append(isAudience);
+        sb.append(", domain='").append(domain).append("'");
+        sb.append(", isShared=").append(isShared);
+        sb.append(", lookalikeSource=").append(lookalikeSource);
+        sb.append(", audienceCount=").append(audienceCount);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
         sb.append(", pixel='").append(pixel).append("'");

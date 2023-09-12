@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.database;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetCitiesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,14 @@ import java.util.List;
  */
 public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCitiesQuery, GetCitiesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param countryId value of "country id" parameter. Minimum is 0.
      */
-    public DatabaseGetCitiesQuery(VkApiClient client, UserActor actor, int countryId) {
+    public DatabaseGetCitiesQuery(VkApiClient client, UserActor actor) {
         super(client, "database.getCities", GetCitiesResponse.class);
         accessToken(actor.getAccessToken());
-        countryId(countryId);
     }
 
     /**
@@ -31,7 +30,8 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
      * @param value value of "country id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetCitiesQuery countryId(int value) {
+    @ApiParam("country_id")
+    public DatabaseGetCitiesQuery countryId(Integer value) {
         return unsafeParam("country_id", value);
     }
 
@@ -41,6 +41,7 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
      * @param value value of "region id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("region_id")
     public DatabaseGetCitiesQuery regionId(Integer value) {
         return unsafeParam("region_id", value);
     }
@@ -51,16 +52,18 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public DatabaseGetCitiesQuery q(String value) {
         return unsafeParam("q", value);
     }
 
     /**
-     * '1' — to return all cities in the country, '0' — to return major cities in the country (default),
+     * '1' - to return all cities in the country, '0' - to return major cities in the country (default),
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_all")
     public DatabaseGetCitiesQuery needAll(Boolean value) {
         return unsafeParam("need_all", value);
     }
@@ -71,6 +74,7 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetCitiesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -81,6 +85,7 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetCitiesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -92,6 +97,6 @@ public class DatabaseGetCitiesQuery extends AbstractQueryBuilder<DatabaseGetCiti
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("country_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

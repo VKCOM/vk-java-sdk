@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.messages.GetConversationsFilter;
 import com.vk.api.sdk.objects.messages.responses.GetConversationsResponse;
@@ -16,18 +17,7 @@ import java.util.List;
  */
 public class MessagesGetConversationsQuery extends AbstractQueryBuilder<MessagesGetConversationsQuery, GetConversationsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesGetConversationsQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.getConversations", GetConversationsResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -39,11 +29,23 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetConversationsQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getConversations", GetConversationsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Offset needed to return a specific subset of conversations.
      *
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MessagesGetConversationsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -54,26 +56,29 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesGetConversationsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
+     * Filter to apply: 'all' - all conversations, 'unread' - conversations with unread messages, 'important' - conversations, marked as important (only for community messages), 'unanswered' - conversations, marked as unanswered (only for community messages)
      *
      * @param value value of "filter" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public MessagesGetConversationsQuery filter(GetConversationsFilter value) {
         return unsafeParam("filter", value);
     }
 
     /**
-     * '1' — return extra information about users and communities
+     * '1' - return extra information about users and communities
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MessagesGetConversationsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -84,6 +89,7 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
      * @param value value of "start message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_message_id")
     public MessagesGetConversationsQuery startMessageId(Integer value) {
         return unsafeParam("start_message_id", value);
     }
@@ -91,10 +97,12 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetConversationsQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetConversationsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -105,6 +113,7 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetConversationsQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -115,6 +124,7 @@ public class MessagesGetConversationsQuery extends AbstractQueryBuilder<Messages
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetConversationsQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

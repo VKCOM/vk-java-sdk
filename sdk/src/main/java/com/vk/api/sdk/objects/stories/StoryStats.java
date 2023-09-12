@@ -19,7 +19,12 @@ public class StoryStats implements Validable {
     @Required
     private StoryStatsStat bans;
 
+    @SerializedName("likes")
+    @Required
+    private StoryStatsStat likes;
+
     @SerializedName("open_link")
+    @Required
     private StoryStatsStat openLink;
 
     @SerializedName("replies")
@@ -38,10 +43,6 @@ public class StoryStats implements Validable {
     @Required
     private StoryStatsStat views;
 
-    @SerializedName("likes")
-    @Required
-    private StoryStatsStat likes;
-
     public StoryStatsStat getAnswer() {
         return answer;
     }
@@ -57,6 +58,15 @@ public class StoryStats implements Validable {
 
     public StoryStats setBans(StoryStatsStat bans) {
         this.bans = bans;
+        return this;
+    }
+
+    public StoryStatsStat getLikes() {
+        return likes;
+    }
+
+    public StoryStats setLikes(StoryStatsStat likes) {
+        this.likes = likes;
         return this;
     }
 
@@ -102,15 +112,6 @@ public class StoryStats implements Validable {
 
     public StoryStats setViews(StoryStatsStat views) {
         this.views = views;
-        return this;
-    }
-
-    public StoryStatsStat getLikes() {
-        return likes;
-    }
-
-    public StoryStats setLikes(StoryStatsStat likes) {
-        this.likes = likes;
         return this;
     }
 

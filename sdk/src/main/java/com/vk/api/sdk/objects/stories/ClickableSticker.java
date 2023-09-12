@@ -17,8 +17,42 @@ import java.util.Objects;
  * ClickableSticker object
  */
 public class ClickableSticker implements Validable {
+    @SerializedName("app")
+    private AppMin app;
+
+    /**
+     * Additional context for app sticker
+     */
+    @SerializedName("app_context")
+    private String appContext;
+
+    @SerializedName("audio")
+    private Audio audio;
+
+    @SerializedName("audio_start_time")
+    private Integer audioStartTime;
+
     @SerializedName("clickable_area")
+    @Required
     private List<ClickableArea> clickableArea;
+
+    @SerializedName("clip_id")
+    private Integer clipId;
+
+    /**
+     * Color, hex format
+     */
+    @SerializedName("color")
+    private String color;
+
+    /**
+     * Whether current user has unread interaction with this app
+     */
+    @SerializedName("has_new_interactions")
+    private Boolean hasNewInteractions;
+
+    @SerializedName("hashtag")
+    private String hashtag;
 
     /**
      * Clickable sticker ID
@@ -27,23 +61,41 @@ public class ClickableSticker implements Validable {
     @Required
     private Integer id;
 
-    @SerializedName("hashtag")
-    private String hashtag;
+    /**
+     * Whether current user allowed broadcast notify from this app
+     */
+    @SerializedName("is_broadcast_notify_allowed")
+    private Boolean isBroadcastNotifyAllowed;
 
     @SerializedName("link_object")
     private Link linkObject;
 
+    @SerializedName("market_item")
+    private MarketItem marketItem;
+
     @SerializedName("mention")
     private String mention;
 
-    @SerializedName("tooltip_text")
-    private String tooltipText;
-
+    /**
+     * Entity: owner
+     */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    private Long ownerId;
 
-    @SerializedName("story_id")
-    private Integer storyId;
+    @SerializedName("place_id")
+    private Integer placeId;
+
+    @SerializedName("poll")
+    private Poll poll;
+
+    @SerializedName("post_id")
+    private Integer postId;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("post_owner_id")
+    private Long postOwnerId;
 
     @SerializedName("question")
     private String question;
@@ -51,42 +103,11 @@ public class ClickableSticker implements Validable {
     @SerializedName("question_button")
     private String questionButton;
 
-    @SerializedName("place_id")
-    private Integer placeId;
+    @SerializedName("situational_app_url")
+    private String situationalAppUrl;
 
-    @SerializedName("market_item")
-    private MarketItem marketItem;
-
-    @SerializedName("audio")
-    private Audio audio;
-
-    @SerializedName("audio_start_time")
-    private Integer audioStartTime;
-
-    @SerializedName("style")
-    private ClickableStickerStyle style;
-
-    @SerializedName("type")
-    @Required
-    private ClickableStickerType type;
-
-    @SerializedName("subtype")
-    private ClickableStickerSubtype subtype;
-
-    @SerializedName("post_owner_id")
-    private Integer postOwnerId;
-
-    @SerializedName("post_id")
-    private Integer postId;
-
-    @SerializedName("poll")
-    private Poll poll;
-
-    /**
-     * Color, hex format
-     */
-    @SerializedName("color")
-    private String color;
+    @SerializedName("situational_theme_id")
+    private Integer situationalThemeId;
 
     /**
      * Sticker ID
@@ -100,138 +121,37 @@ public class ClickableSticker implements Validable {
     @SerializedName("sticker_pack_id")
     private Integer stickerPackId;
 
-    @SerializedName("app")
-    private AppMin app;
+    @SerializedName("story_id")
+    private Integer storyId;
 
-    /**
-     * Additional context for app sticker
-     */
-    @SerializedName("app_context")
-    private String appContext;
+    @SerializedName("style")
+    private ClickableStickerStyle style;
 
-    /**
-     * Whether current user has unread interaction with this app
-     */
-    @SerializedName("has_new_interactions")
-    private Boolean hasNewInteractions;
+    @SerializedName("subtype")
+    private ClickableStickerSubtype subtype;
 
-    /**
-     * Whether current user allowed broadcast notify from this app
-     */
-    @SerializedName("is_broadcast_notify_allowed")
-    private Boolean isBroadcastNotifyAllowed;
+    @SerializedName("tooltip_text")
+    private String tooltipText;
 
-    @SerializedName("situational_theme_id")
-    private Integer situationalThemeId;
+    @SerializedName("type")
+    @Required
+    private ClickableStickerType type;
 
-    @SerializedName("situational_app_url")
-    private String situationalAppUrl;
-
-    public List<ClickableArea> getClickableArea() {
-        return clickableArea;
+    public AppMin getApp() {
+        return app;
     }
 
-    public ClickableSticker setClickableArea(List<ClickableArea> clickableArea) {
-        this.clickableArea = clickableArea;
+    public ClickableSticker setApp(AppMin app) {
+        this.app = app;
         return this;
     }
 
-    public Integer getId() {
-        return id;
+    public String getAppContext() {
+        return appContext;
     }
 
-    public ClickableSticker setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getHashtag() {
-        return hashtag;
-    }
-
-    public ClickableSticker setHashtag(String hashtag) {
-        this.hashtag = hashtag;
-        return this;
-    }
-
-    public Link getLinkObject() {
-        return linkObject;
-    }
-
-    public ClickableSticker setLinkObject(Link linkObject) {
-        this.linkObject = linkObject;
-        return this;
-    }
-
-    public String getMention() {
-        return mention;
-    }
-
-    public ClickableSticker setMention(String mention) {
-        this.mention = mention;
-        return this;
-    }
-
-    public String getTooltipText() {
-        return tooltipText;
-    }
-
-    public ClickableSticker setTooltipText(String tooltipText) {
-        this.tooltipText = tooltipText;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public ClickableSticker setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public Integer getStoryId() {
-        return storyId;
-    }
-
-    public ClickableSticker setStoryId(Integer storyId) {
-        this.storyId = storyId;
-        return this;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public ClickableSticker setQuestion(String question) {
-        this.question = question;
-        return this;
-    }
-
-    public String getQuestionButton() {
-        return questionButton;
-    }
-
-    public ClickableSticker setQuestionButton(String questionButton) {
-        this.questionButton = questionButton;
-        return this;
-    }
-
-    public Integer getPlaceId() {
-        return placeId;
-    }
-
-    public ClickableSticker setPlaceId(Integer placeId) {
-        this.placeId = placeId;
-        return this;
-    }
-
-    public MarketItem getMarketItem() {
-        return marketItem;
-    }
-
-    public ClickableSticker setMarketItem(MarketItem marketItem) {
-        this.marketItem = marketItem;
+    public ClickableSticker setAppContext(String appContext) {
+        this.appContext = appContext;
         return this;
     }
 
@@ -253,48 +173,111 @@ public class ClickableSticker implements Validable {
         return this;
     }
 
-    public ClickableStickerStyle getStyle() {
-        return style;
+    public List<ClickableArea> getClickableArea() {
+        return clickableArea;
     }
 
-    public ClickableSticker setStyle(ClickableStickerStyle style) {
-        this.style = style;
+    public ClickableSticker setClickableArea(List<ClickableArea> clickableArea) {
+        this.clickableArea = clickableArea;
         return this;
     }
 
-    public ClickableStickerType getType() {
-        return type;
+    public Integer getClipId() {
+        return clipId;
     }
 
-    public ClickableSticker setType(ClickableStickerType type) {
-        this.type = type;
+    public ClickableSticker setClipId(Integer clipId) {
+        this.clipId = clipId;
         return this;
     }
 
-    public ClickableStickerSubtype getSubtype() {
-        return subtype;
+    public String getColor() {
+        return color;
     }
 
-    public ClickableSticker setSubtype(ClickableStickerSubtype subtype) {
-        this.subtype = subtype;
+    public ClickableSticker setColor(String color) {
+        this.color = color;
         return this;
     }
 
-    public Integer getPostOwnerId() {
-        return postOwnerId;
+    public Boolean getHasNewInteractions() {
+        return hasNewInteractions;
     }
 
-    public ClickableSticker setPostOwnerId(Integer postOwnerId) {
-        this.postOwnerId = postOwnerId;
+    public ClickableSticker setHasNewInteractions(Boolean hasNewInteractions) {
+        this.hasNewInteractions = hasNewInteractions;
         return this;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public String getHashtag() {
+        return hashtag;
     }
 
-    public ClickableSticker setPostId(Integer postId) {
-        this.postId = postId;
+    public ClickableSticker setHashtag(String hashtag) {
+        this.hashtag = hashtag;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public ClickableSticker setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsBroadcastNotifyAllowed() {
+        return isBroadcastNotifyAllowed;
+    }
+
+    public ClickableSticker setIsBroadcastNotifyAllowed(Boolean isBroadcastNotifyAllowed) {
+        this.isBroadcastNotifyAllowed = isBroadcastNotifyAllowed;
+        return this;
+    }
+
+    public Link getLinkObject() {
+        return linkObject;
+    }
+
+    public ClickableSticker setLinkObject(Link linkObject) {
+        this.linkObject = linkObject;
+        return this;
+    }
+
+    public MarketItem getMarketItem() {
+        return marketItem;
+    }
+
+    public ClickableSticker setMarketItem(MarketItem marketItem) {
+        this.marketItem = marketItem;
+        return this;
+    }
+
+    public String getMention() {
+        return mention;
+    }
+
+    public ClickableSticker setMention(String mention) {
+        this.mention = mention;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public ClickableSticker setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public Integer getPlaceId() {
+        return placeId;
+    }
+
+    public ClickableSticker setPlaceId(Integer placeId) {
+        this.placeId = placeId;
         return this;
     }
 
@@ -307,12 +290,57 @@ public class ClickableSticker implements Validable {
         return this;
     }
 
-    public String getColor() {
-        return color;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public ClickableSticker setColor(String color) {
-        this.color = color;
+    public ClickableSticker setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public Long getPostOwnerId() {
+        return postOwnerId;
+    }
+
+    public ClickableSticker setPostOwnerId(Long postOwnerId) {
+        this.postOwnerId = postOwnerId;
+        return this;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public ClickableSticker setQuestion(String question) {
+        this.question = question;
+        return this;
+    }
+
+    public String getQuestionButton() {
+        return questionButton;
+    }
+
+    public ClickableSticker setQuestionButton(String questionButton) {
+        this.questionButton = questionButton;
+        return this;
+    }
+
+    public String getSituationalAppUrl() {
+        return situationalAppUrl;
+    }
+
+    public ClickableSticker setSituationalAppUrl(String situationalAppUrl) {
+        this.situationalAppUrl = situationalAppUrl;
+        return this;
+    }
+
+    public Integer getSituationalThemeId() {
+        return situationalThemeId;
+    }
+
+    public ClickableSticker setSituationalThemeId(Integer situationalThemeId) {
+        this.situationalThemeId = situationalThemeId;
         return this;
     }
 
@@ -334,63 +362,54 @@ public class ClickableSticker implements Validable {
         return this;
     }
 
-    public AppMin getApp() {
-        return app;
+    public Integer getStoryId() {
+        return storyId;
     }
 
-    public ClickableSticker setApp(AppMin app) {
-        this.app = app;
+    public ClickableSticker setStoryId(Integer storyId) {
+        this.storyId = storyId;
         return this;
     }
 
-    public String getAppContext() {
-        return appContext;
+    public ClickableStickerStyle getStyle() {
+        return style;
     }
 
-    public ClickableSticker setAppContext(String appContext) {
-        this.appContext = appContext;
+    public ClickableSticker setStyle(ClickableStickerStyle style) {
+        this.style = style;
         return this;
     }
 
-    public Boolean getHasNewInteractions() {
-        return hasNewInteractions;
+    public ClickableStickerSubtype getSubtype() {
+        return subtype;
     }
 
-    public ClickableSticker setHasNewInteractions(Boolean hasNewInteractions) {
-        this.hasNewInteractions = hasNewInteractions;
+    public ClickableSticker setSubtype(ClickableStickerSubtype subtype) {
+        this.subtype = subtype;
         return this;
     }
 
-    public Boolean getIsBroadcastNotifyAllowed() {
-        return isBroadcastNotifyAllowed;
+    public String getTooltipText() {
+        return tooltipText;
     }
 
-    public ClickableSticker setIsBroadcastNotifyAllowed(Boolean isBroadcastNotifyAllowed) {
-        this.isBroadcastNotifyAllowed = isBroadcastNotifyAllowed;
+    public ClickableSticker setTooltipText(String tooltipText) {
+        this.tooltipText = tooltipText;
         return this;
     }
 
-    public Integer getSituationalThemeId() {
-        return situationalThemeId;
+    public ClickableStickerType getType() {
+        return type;
     }
 
-    public ClickableSticker setSituationalThemeId(Integer situationalThemeId) {
-        this.situationalThemeId = situationalThemeId;
-        return this;
-    }
-
-    public String getSituationalAppUrl() {
-        return situationalAppUrl;
-    }
-
-    public ClickableSticker setSituationalAppUrl(String situationalAppUrl) {
-        this.situationalAppUrl = situationalAppUrl;
+    public ClickableSticker setType(ClickableStickerType type) {
+        this.type = type;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(storyId, hasNewInteractions, color, placeId, poll, ownerId, type, situationalAppUrl, mention, stickerId, subtype, clickableArea, id, audio, hashtag, situationalThemeId, app, isBroadcastNotifyAllowed, question, tooltipText, audioStartTime, postOwnerId, postId, questionButton, linkObject, appContext, style, marketItem, stickerPackId);
+        return Objects.hash(storyId, hasNewInteractions, color, placeId, poll, ownerId, type, situationalAppUrl, mention, stickerId, subtype, clickableArea, clipId, audio, id, hashtag, situationalThemeId, app, isBroadcastNotifyAllowed, question, tooltipText, audioStartTime, postOwnerId, postId, questionButton, linkObject, appContext, style, marketItem, stickerPackId);
     }
 
     @Override
@@ -413,11 +432,11 @@ public class ClickableSticker implements Validable {
                 Objects.equals(subtype, clickableSticker.subtype) &&
                 Objects.equals(situationalAppUrl, clickableSticker.situationalAppUrl) &&
                 Objects.equals(clickableArea, clickableSticker.clickableArea) &&
-                Objects.equals(id, clickableSticker.id) &&
                 Objects.equals(audio, clickableSticker.audio) &&
-                Objects.equals(questionButton, clickableSticker.questionButton) &&
-                Objects.equals(placeId, clickableSticker.placeId) &&
+                Objects.equals(id, clickableSticker.id) &&
                 Objects.equals(audioStartTime, clickableSticker.audioStartTime) &&
+                Objects.equals(placeId, clickableSticker.placeId) &&
+                Objects.equals(questionButton, clickableSticker.questionButton) &&
                 Objects.equals(hashtag, clickableSticker.hashtag) &&
                 Objects.equals(app, clickableSticker.app) &&
                 Objects.equals(hasNewInteractions, clickableSticker.hasNewInteractions) &&
@@ -426,6 +445,7 @@ public class ClickableSticker implements Validable {
                 Objects.equals(situationalThemeId, clickableSticker.situationalThemeId) &&
                 Objects.equals(linkObject, clickableSticker.linkObject) &&
                 Objects.equals(postId, clickableSticker.postId) &&
+                Objects.equals(clipId, clickableSticker.clipId) &&
                 Objects.equals(style, clickableSticker.style);
     }
 
@@ -452,11 +472,11 @@ public class ClickableSticker implements Validable {
         sb.append(", subtype='").append(subtype).append("'");
         sb.append(", situationalAppUrl='").append(situationalAppUrl).append("'");
         sb.append(", clickableArea=").append(clickableArea);
-        sb.append(", id=").append(id);
         sb.append(", audio=").append(audio);
-        sb.append(", questionButton='").append(questionButton).append("'");
-        sb.append(", placeId=").append(placeId);
+        sb.append(", id=").append(id);
         sb.append(", audioStartTime=").append(audioStartTime);
+        sb.append(", placeId=").append(placeId);
+        sb.append(", questionButton='").append(questionButton).append("'");
         sb.append(", hashtag='").append(hashtag).append("'");
         sb.append(", app=").append(app);
         sb.append(", hasNewInteractions=").append(hasNewInteractions);
@@ -465,6 +485,7 @@ public class ClickableSticker implements Validable {
         sb.append(", situationalThemeId=").append(situationalThemeId);
         sb.append(", linkObject=").append(linkObject);
         sb.append(", postId=").append(postId);
+        sb.append(", clipId=").append(clipId);
         sb.append(", style='").append(style).append("'");
         sb.append('}');
         return sb.toString();

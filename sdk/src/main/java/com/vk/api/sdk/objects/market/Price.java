@@ -18,6 +18,12 @@ public class Price implements Validable {
     @Required
     private String amount;
 
+    /**
+     * Amount to for price_type=2
+     */
+    @SerializedName("amount_to")
+    private String amountTo;
+
     @SerializedName("currency")
     @Required
     private Currency currency;
@@ -29,17 +35,23 @@ public class Price implements Validable {
     private String oldAmount;
 
     /**
+     * Textual representation of old price
+     */
+    @SerializedName("old_amount_text")
+    private String oldAmountText;
+
+    @SerializedName("price_type")
+    private PricePriceType priceType;
+
+    @SerializedName("price_unit")
+    private PricePriceUnit priceUnit;
+
+    /**
      * Text
      */
     @SerializedName("text")
     @Required
     private String text;
-
-    /**
-     * Textual representation of old price
-     */
-    @SerializedName("old_amount_text")
-    private String oldAmountText;
 
     public String getAmount() {
         return amount;
@@ -47,6 +59,15 @@ public class Price implements Validable {
 
     public Price setAmount(String amount) {
         this.amount = amount;
+        return this;
+    }
+
+    public String getAmountTo() {
+        return amountTo;
+    }
+
+    public Price setAmountTo(String amountTo) {
+        this.amountTo = amountTo;
         return this;
     }
 
@@ -77,15 +98,6 @@ public class Price implements Validable {
         return this;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public Price setText(String text) {
-        this.text = text;
-        return this;
-    }
-
     public String getOldAmountText() {
         return oldAmountText;
     }
@@ -95,9 +107,36 @@ public class Price implements Validable {
         return this;
     }
 
+    public PricePriceType getPriceType() {
+        return priceType;
+    }
+
+    public Price setPriceType(PricePriceType priceType) {
+        this.priceType = priceType;
+        return this;
+    }
+
+    public PricePriceUnit getPriceUnit() {
+        return priceUnit;
+    }
+
+    public Price setPriceUnit(PricePriceUnit priceUnit) {
+        this.priceUnit = priceUnit;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Price setText(String text) {
+        this.text = text;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(discountRate, amount, oldAmount, oldAmountText, currency, text);
+        return Objects.hash(priceUnit, discountRate, amount, amountTo, oldAmount, oldAmountText, priceType, currency, text);
     }
 
     @Override
@@ -105,12 +144,15 @@ public class Price implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Price price = (Price) o;
-        return Objects.equals(amount, price.amount) &&
+        return Objects.equals(priceUnit, price.priceUnit) &&
+                Objects.equals(amount, price.amount) &&
                 Objects.equals(oldAmount, price.oldAmount) &&
+                Objects.equals(priceType, price.priceType) &&
                 Objects.equals(currency, price.currency) &&
                 Objects.equals(text, price.text) &&
                 Objects.equals(discountRate, price.discountRate) &&
-                Objects.equals(oldAmountText, price.oldAmountText);
+                Objects.equals(oldAmountText, price.oldAmountText) &&
+                Objects.equals(amountTo, price.amountTo);
     }
 
     @Override
@@ -121,12 +163,15 @@ public class Price implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Price{");
-        sb.append("amount='").append(amount).append("'");
+        sb.append("priceUnit=").append(priceUnit);
+        sb.append(", amount='").append(amount).append("'");
         sb.append(", oldAmount='").append(oldAmount).append("'");
+        sb.append(", priceType=").append(priceType);
         sb.append(", currency=").append(currency);
         sb.append(", text='").append(text).append("'");
         sb.append(", discountRate=").append(discountRate);
         sb.append(", oldAmountText='").append(oldAmountText).append("'");
+        sb.append(", amountTo='").append(amountTo).append("'");
         sb.append('}');
         return sb.toString();
     }

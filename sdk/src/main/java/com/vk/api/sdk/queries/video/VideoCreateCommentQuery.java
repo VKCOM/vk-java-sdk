@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,35 +13,49 @@ import java.util.List;
  */
 public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCommentQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param videoId value of "video id" parameter.
+     * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoCreateCommentQuery(VkApiClient client, UserActor actor, int videoId) {
+    public VideoCreateCommentQuery(VkApiClient client, UserActor actor, Integer videoId) {
         super(client, "video.createComment", Integer.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoCreateCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.createComment", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoCreateCommentQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public VideoCreateCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
      * Video ID.
      *
-     * @param value value of "video id" parameter.
+     * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoCreateCommentQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoCreateCommentQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
@@ -50,16 +65,18 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public VideoCreateCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
 
     /**
-     * '1' — to post the comment from a community name (only if 'owner_id'<0)
+     * '1' - to post the comment from a community name (only if 'owner_id'<0)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("from_group")
     public VideoCreateCommentQuery fromGroup(Boolean value) {
         return unsafeParam("from_group", value);
     }
@@ -70,6 +87,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * @param value value of "reply to comment" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reply_to_comment")
     public VideoCreateCommentQuery replyToComment(Integer value) {
         return unsafeParam("reply_to_comment", value);
     }
@@ -80,6 +98,7 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * @param value value of "sticker id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sticker_id")
     public VideoCreateCommentQuery stickerId(Integer value) {
         return unsafeParam("sticker_id", value);
     }
@@ -90,27 +109,41 @@ public class VideoCreateCommentQuery extends AbstractQueryBuilder<VideoCreateCom
      * @param value value of "guid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("guid")
     public VideoCreateCommentQuery guid(String value) {
         return unsafeParam("guid", value);
     }
 
     /**
+     * Set track code
+     *
+     * @param value value of "track code" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("track_code")
+    public VideoCreateCommentQuery trackCode(String value) {
+        return unsafeParam("track_code", value);
+    }
+
+    /**
      * attachments
-     * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+     * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media attachment owner. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public VideoCreateCommentQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+     * List of objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media attachment owner. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public VideoCreateCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }

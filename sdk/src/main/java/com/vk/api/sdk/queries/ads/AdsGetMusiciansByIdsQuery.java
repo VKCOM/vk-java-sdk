@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetMusiciansResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,29 +14,40 @@ import java.util.List;
  */
 public class AdsGetMusiciansByIdsQuery extends AbstractQueryBuilder<AdsGetMusiciansByIdsQuery, GetMusiciansResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param ids value of "ids" parameter.
      */
-    public AdsGetMusiciansByIdsQuery(VkApiClient client, UserActor actor, Integer... ids) {
+    public AdsGetMusiciansByIdsQuery(VkApiClient client, UserActor actor, Long... ids) {
         super(client, "ads.getMusiciansByIds", GetMusiciansResponse.class);
         accessToken(actor.getAccessToken());
         ids(ids);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param ids value of "ids" parameter.
      */
-    public AdsGetMusiciansByIdsQuery(VkApiClient client, UserActor actor, List<Integer> ids) {
+    public AdsGetMusiciansByIdsQuery(VkApiClient client, UserActor actor, List<Long> ids) {
         super(client, "ads.getMusiciansByIds", GetMusiciansResponse.class);
         accessToken(actor.getAccessToken());
         ids(ids);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetMusiciansByIdsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getMusiciansByIds", GetMusiciansResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -45,7 +57,8 @@ public class AdsGetMusiciansByIdsQuery extends AbstractQueryBuilder<AdsGetMusici
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetMusiciansByIdsQuery ids(Integer... value) {
+    @ApiParam("ids")
+    public AdsGetMusiciansByIdsQuery ids(Long... value) {
         return unsafeParam("ids", value);
     }
 
@@ -55,7 +68,8 @@ public class AdsGetMusiciansByIdsQuery extends AbstractQueryBuilder<AdsGetMusici
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetMusiciansByIdsQuery ids(List<Integer> value) {
+    @ApiParam("ids")
+    public AdsGetMusiciansByIdsQuery ids(List<Long> value) {
         return unsafeParam("ids", value);
     }
 

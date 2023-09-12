@@ -39,7 +39,61 @@ public enum ScopeName implements EnumParam {
     STATS("stats"),
 
     @SerializedName("market")
-    MARKET("market");
+    MARKET("market"),
+
+    @SerializedName("stories")
+    STORIES("stories"),
+
+    @SerializedName("app_widget")
+    APP_WIDGET("app_widget"),
+
+    @SerializedName("messages")
+    MESSAGES("messages"),
+
+    @SerializedName("manage")
+    MANAGE("manage"),
+
+    @SerializedName("notify")
+    NOTIFY("notify"),
+
+    @SerializedName("audio")
+    AUDIO("audio"),
+
+    @SerializedName("support")
+    SUPPORT("support"),
+
+    @SerializedName("menu")
+    MENU("menu"),
+
+    @SerializedName("wallmenu")
+    WALLMENU("wallmenu"),
+
+    @SerializedName("ads")
+    ADS("ads"),
+
+    @SerializedName("offline")
+    OFFLINE("offline"),
+
+    @SerializedName("notifications")
+    NOTIFICATIONS("notifications"),
+
+    @SerializedName("email")
+    EMAIL("email"),
+
+    @SerializedName("adsweb")
+    ADSWEB("adsweb"),
+
+    @SerializedName("leads")
+    LEADS("leads"),
+
+    @SerializedName("group_messages")
+    GROUP_MESSAGES("group_messages"),
+
+    @SerializedName("exchange")
+    EXCHANGE("exchange"),
+
+    @SerializedName("phone")
+    PHONE("phone");
 
     private final String value;
 

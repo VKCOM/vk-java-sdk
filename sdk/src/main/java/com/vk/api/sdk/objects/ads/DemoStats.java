@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,7 +18,7 @@ public class DemoStats implements Validable {
     private Integer id;
 
     @SerializedName("stats")
-    private DemostatsFormat stats;
+    private List<DemostatsFormat> stats;
 
     @SerializedName("type")
     private ObjectType type;
@@ -31,11 +32,11 @@ public class DemoStats implements Validable {
         return this;
     }
 
-    public DemostatsFormat getStats() {
+    public List<DemostatsFormat> getStats() {
         return stats;
     }
 
-    public DemoStats setStats(DemostatsFormat stats) {
+    public DemoStats setStats(List<DemostatsFormat> stats) {
         this.stats = stats;
         return this;
     }

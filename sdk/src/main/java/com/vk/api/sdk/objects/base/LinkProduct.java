@@ -12,9 +12,17 @@ import java.util.Objects;
  * LinkProduct object
  */
 public class LinkProduct implements Validable {
-    @SerializedName("price")
-    @Required
-    private Price price;
+    @SerializedName("category")
+    private LinkProductCategory category;
+
+    @SerializedName("city")
+    private String city;
+
+    @SerializedName("distance")
+    private Integer distance;
+
+    @SerializedName("geo")
+    private GeoCoordinates geo;
 
     @SerializedName("merchant")
     private String merchant;
@@ -22,12 +30,49 @@ public class LinkProduct implements Validable {
     @SerializedName("orders_count")
     private Integer ordersCount;
 
-    public Price getPrice() {
-        return price;
+    @SerializedName("price")
+    @Required
+    private Price price;
+
+    @SerializedName("status")
+    private LinkProductStatus status;
+
+    @SerializedName("type")
+    private LinkProductType type;
+
+    public LinkProductCategory getCategory() {
+        return category;
     }
 
-    public LinkProduct setPrice(Price price) {
-        this.price = price;
+    public LinkProduct setCategory(LinkProductCategory category) {
+        this.category = category;
+        return this;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public LinkProduct setCity(String city) {
+        this.city = city;
+        return this;
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public LinkProduct setDistance(Integer distance) {
+        this.distance = distance;
+        return this;
+    }
+
+    public GeoCoordinates getGeo() {
+        return geo;
+    }
+
+    public LinkProduct setGeo(GeoCoordinates geo) {
+        this.geo = geo;
         return this;
     }
 
@@ -49,9 +94,36 @@ public class LinkProduct implements Validable {
         return this;
     }
 
+    public Price getPrice() {
+        return price;
+    }
+
+    public LinkProduct setPrice(Price price) {
+        this.price = price;
+        return this;
+    }
+
+    public LinkProductStatus getStatus() {
+        return status;
+    }
+
+    public LinkProduct setStatus(LinkProductStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    public LinkProductType getType() {
+        return type;
+    }
+
+    public LinkProduct setType(LinkProductType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(ordersCount, price, merchant);
+        return Objects.hash(geo, ordersCount, distance, city, price, merchant, category, type, status);
     }
 
     @Override
@@ -59,9 +131,15 @@ public class LinkProduct implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkProduct linkProduct = (LinkProduct) o;
-        return Objects.equals(ordersCount, linkProduct.ordersCount) &&
+        return Objects.equals(geo, linkProduct.geo) &&
+                Objects.equals(ordersCount, linkProduct.ordersCount) &&
+                Objects.equals(distance, linkProduct.distance) &&
+                Objects.equals(city, linkProduct.city) &&
                 Objects.equals(price, linkProduct.price) &&
-                Objects.equals(merchant, linkProduct.merchant);
+                Objects.equals(merchant, linkProduct.merchant) &&
+                Objects.equals(category, linkProduct.category) &&
+                Objects.equals(type, linkProduct.type) &&
+                Objects.equals(status, linkProduct.status);
     }
 
     @Override
@@ -72,9 +150,15 @@ public class LinkProduct implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkProduct{");
-        sb.append("ordersCount=").append(ordersCount);
+        sb.append("geo=").append(geo);
+        sb.append(", ordersCount=").append(ordersCount);
+        sb.append(", distance=").append(distance);
+        sb.append(", city='").append(city).append("'");
         sb.append(", price=").append(price);
         sb.append(", merchant='").append(merchant).append("'");
+        sb.append(", category=").append(category);
+        sb.append(", type='").append(type).append("'");
+        sb.append(", status=").append(status);
         sb.append('}');
         return sb.toString();
     }

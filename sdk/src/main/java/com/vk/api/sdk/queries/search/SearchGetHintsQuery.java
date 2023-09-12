@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.search;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.search.responses.GetHintsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuery, GetHintsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +30,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public SearchGetHintsQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -39,6 +41,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "offset" parameter. Maximum is 200. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public SearchGetHintsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -49,6 +52,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "limit" parameter. Maximum is 200. Minimum is 0. By default 9.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public SearchGetHintsQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }
@@ -56,9 +60,10 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
     /**
      * Set search global
      *
-     * @param value value of "search global" parameter. By default 1.
+     * @param value value of "search global" parameter. By default true.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("search_global")
     public SearchGetHintsQuery searchGlobal(Boolean value) {
         return unsafeParam("search_global", value);
     }
@@ -70,6 +75,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public SearchGetHintsQuery filters(String... value) {
         return unsafeParam("filters", value);
     }
@@ -80,6 +86,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public SearchGetHintsQuery filters(List<String> value) {
         return unsafeParam("filters", value);
     }
@@ -91,6 +98,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public SearchGetHintsQuery fields(String... value) {
         return unsafeParam("fields", value);
     }
@@ -101,6 +109,7 @@ public class SearchGetHintsQuery extends AbstractQueryBuilder<SearchGetHintsQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public SearchGetHintsQuery fields(List<String> value) {
         return unsafeParam("fields", value);
     }

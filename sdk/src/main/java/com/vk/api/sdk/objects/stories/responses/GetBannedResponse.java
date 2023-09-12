@@ -21,7 +21,7 @@ public class GetBannedResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<Integer> items;
+    private List<Long> items;
 
     public Integer getCount() {
         return count;
@@ -32,11 +32,11 @@ public class GetBannedResponse implements Validable {
         return this;
     }
 
-    public List<Integer> getItems() {
+    public List<Long> getItems() {
         return items;
     }
 
-    public GetBannedResponse setItems(List<Integer> items) {
+    public GetBannedResponse setItems(List<Long> items) {
         this.items = items;
         return this;
     }

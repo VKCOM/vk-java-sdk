@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,18 +14,29 @@ import java.util.List;
  */
 public class AdsDeleteAdsQuery extends AbstractQueryBuilder<AdsDeleteAdsQuery, List<Integer>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param ids value of "ids" parameter.
      */
-    public AdsDeleteAdsQuery(VkApiClient client, UserActor actor, int accountId, String ids) {
+    public AdsDeleteAdsQuery(VkApiClient client, UserActor actor, Integer accountId, String ids) {
         super(client, "ads.deleteAds", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         ids(ids);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsDeleteAdsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.deleteAds", Utils.buildParametrizedType(List.class, Integer.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -33,7 +45,8 @@ public class AdsDeleteAdsQuery extends AbstractQueryBuilder<AdsDeleteAdsQuery, L
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsDeleteAdsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsDeleteAdsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -43,7 +56,8 @@ public class AdsDeleteAdsQuery extends AbstractQueryBuilder<AdsDeleteAdsQuery, L
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsDeleteAdsQuery ids(String value) {
+    @ApiParam("ids")
+    public AdsDeleteAdsQuery ids(String value) {
         return unsafeParam("ids", value);
     }
 

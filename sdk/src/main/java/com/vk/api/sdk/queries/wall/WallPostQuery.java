@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.wall.PostTopicId;
 import com.vk.api.sdk.objects.wall.responses.PostResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,29 +28,33 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallPostQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallPostQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
-     * '1' — post will be available to friends only, '0' — post will be available to all users (default)
+     * '1' - post will be available to friends only, '0' - post will be available to all users (default)
      *
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("friends_only")
     public WallPostQuery friendsOnly(Boolean value) {
         return unsafeParam("friends_only", value);
     }
 
     /**
-     * For a community: '1' — post will be published by the community, '0' — post will be published by the user (default)
+     * For a community: '1' - post will be published by the community, '0' - post will be published by the user (default)
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("from_group")
     public WallPostQuery fromGroup(Boolean value) {
         return unsafeParam("from_group", value);
     }
@@ -60,6 +65,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public WallPostQuery message(String value) {
         return unsafeParam("message", value);
     }
@@ -70,16 +76,18 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "services" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("services")
     public WallPostQuery services(String value) {
         return unsafeParam("services", value);
     }
 
     /**
-     * Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
+     * Only for posts in communities with 'from_group' set to '1': '1' - post will be signed with the name of the posting user, '0' - post will not be signed (default)
      *
      * @param value value of "signed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("signed")
     public WallPostQuery signed(Boolean value) {
         return unsafeParam("signed", value);
     }
@@ -90,6 +98,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "publish date" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("publish_date")
     public WallPostQuery publishDate(Integer value) {
         return unsafeParam("publish_date", value);
     }
@@ -100,6 +109,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("lat")
     public WallPostQuery lat(Number value) {
         return unsafeParam("lat", value);
     }
@@ -110,6 +120,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("long")
     public WallPostQuery lng(Number value) {
         return unsafeParam("long", value);
     }
@@ -120,6 +131,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "place id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("place_id")
     public WallPostQuery placeId(Integer value) {
         return unsafeParam("place_id", value);
     }
@@ -130,6 +142,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("post_id")
     public WallPostQuery postId(Integer value) {
         return unsafeParam("post_id", value);
     }
@@ -140,6 +153,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "guid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("guid")
     public WallPostQuery guid(String value) {
         return unsafeParam("guid", value);
     }
@@ -150,6 +164,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "mark as ads" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mark_as_ads")
     public WallPostQuery markAsAds(Boolean value) {
         return unsafeParam("mark_as_ads", value);
     }
@@ -160,6 +175,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "close comments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("close_comments")
     public WallPostQuery closeComments(Boolean value) {
         return unsafeParam("close_comments", value);
     }
@@ -170,6 +186,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "donut paid duration" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_paid_duration")
     public WallPostQuery donutPaidDuration(Integer value) {
         return unsafeParam("donut_paid_duration", value);
     }
@@ -180,6 +197,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "mute notifications" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mute_notifications")
     public WallPostQuery muteNotifications(Boolean value) {
         return unsafeParam("mute_notifications", value);
     }
@@ -190,6 +208,7 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "copyright" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("copyright")
     public WallPostQuery copyright(String value) {
         return unsafeParam("copyright", value);
     }
@@ -200,29 +219,55 @@ public class WallPostQuery extends AbstractQueryBuilder<WallPostQuery, PostRespo
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("topic_id")
     public WallPostQuery topicId(PostTopicId value) {
         return unsafeParam("topic_id", value);
     }
 
     /**
      * attachments
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'page' - wiki-page, 'note' - note, 'poll' - poll, 'album' - photo album, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallPostQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, 'page' - wiki-page, 'note' - note, 'poll' - poll, 'album' - photo album, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallPostQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
+    }
+
+    /**
+     * primaryAttachments
+     * Set primary attachments
+     *
+     * @param value value of "primary attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("primary_attachments")
+    public WallPostQuery primaryAttachments(String... value) {
+        return unsafeParam("primary_attachments", value);
+    }
+
+    /**
+     * Set primary attachments
+     *
+     * @param value value of "primary attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("primary_attachments")
+    public WallPostQuery primaryAttachments(List<String> value) {
+        return unsafeParam("primary_attachments", value);
     }
 
     @Override

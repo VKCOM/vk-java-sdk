@@ -15,36 +15,11 @@ import java.util.Objects;
  * WallComment object
  */
 public class WallComment implements Validable {
-    /**
-     * Comment ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Author ID
-     */
-    @SerializedName("from_id")
-    private Integer fromId;
+    @SerializedName("attachments")
+    private List<WallpostAttachment> attachments;
 
     @SerializedName("can_edit")
     private BoolInt canEdit;
-
-    @SerializedName("post_id")
-    private Integer postId;
-
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    @SerializedName("parents_stack")
-    private List<Integer> parentsStack;
-
-    @SerializedName("photo_id")
-    private Integer photoId;
-
-    @SerializedName("video_id")
-    private Integer videoId;
 
     /**
      * Date when the comment has been added in Unixtime
@@ -53,21 +28,56 @@ public class WallComment implements Validable {
     @Required
     private Integer date;
 
-    /**
-     * Comment text
-     */
-    @SerializedName("text")
-    @Required
-    private String text;
-
-    @SerializedName("attachments")
-    private List<CommentAttachment> attachments;
+    @SerializedName("deleted")
+    private Boolean deleted;
 
     @SerializedName("donut")
     private WallCommentDonut donut;
 
+    /**
+     * Author ID
+     * Entity: owner
+     */
+    @SerializedName("from_id")
+    @Required
+    private Long fromId;
+
+    /**
+     * Comment ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
+
+    /**
+     * Whether post is by author of the post or not
+     */
+    @SerializedName("is_from_post_author")
+    private Boolean isFromPostAuthor;
+
     @SerializedName("likes")
     private LikesInfo likes;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    private Long ownerId;
+
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
+
+    @SerializedName("photo_id")
+    private Integer photoId;
+
+    /**
+     * Photo ID
+     */
+    @SerializedName("pid")
+    private Integer pid;
+
+    @SerializedName("post_id")
+    private Integer postId;
 
     /**
      * Real position of the comment
@@ -76,44 +86,37 @@ public class WallComment implements Validable {
     private Integer realOffset;
 
     /**
-     * Replied user ID
-     */
-    @SerializedName("reply_to_user")
-    private Integer replyToUser;
-
-    /**
      * Replied comment ID
      */
     @SerializedName("reply_to_comment")
     private Integer replyToComment;
 
+    /**
+     * Replied user ID
+     * Entity: owner
+     */
+    @SerializedName("reply_to_user")
+    private Long replyToUser;
+
+    /**
+     * Comment text
+     */
+    @SerializedName("text")
+    @Required
+    private String text;
+
     @SerializedName("thread")
     private Thread thread;
 
-    @SerializedName("deleted")
-    private Boolean deleted;
+    @SerializedName("video_id")
+    private Integer videoId;
 
-    /**
-     * Photo ID
-     */
-    @SerializedName("pid")
-    private Integer pid;
-
-    public Integer getId() {
-        return id;
+    public List<WallpostAttachment> getAttachments() {
+        return attachments;
     }
 
-    public WallComment setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getFromId() {
-        return fromId;
-    }
-
-    public WallComment setFromId(Integer fromId) {
-        this.fromId = fromId;
+    public WallComment setAttachments(List<WallpostAttachment> attachments) {
+        this.attachments = attachments;
         return this;
     }
 
@@ -125,20 +128,74 @@ public class WallComment implements Validable {
         return canEdit;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Integer getDate() {
+        return date;
     }
 
-    public WallComment setPostId(Integer postId) {
-        this.postId = postId;
+    public WallComment setDate(Integer date) {
+        this.date = date;
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public WallComment setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
+    public WallCommentDonut getDonut() {
+        return donut;
+    }
+
+    public WallComment setDonut(WallCommentDonut donut) {
+        this.donut = donut;
+        return this;
+    }
+
+    public Long getFromId() {
+        return fromId;
+    }
+
+    public WallComment setFromId(Long fromId) {
+        this.fromId = fromId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public WallComment setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsFromPostAuthor() {
+        return isFromPostAuthor;
+    }
+
+    public WallComment setIsFromPostAuthor(Boolean isFromPostAuthor) {
+        this.isFromPostAuthor = isFromPostAuthor;
+        return this;
+    }
+
+    public LikesInfo getLikes() {
+        return likes;
+    }
+
+    public WallComment setLikes(LikesInfo likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public WallComment setOwnerId(Integer ownerId) {
+    public WallComment setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -161,57 +218,21 @@ public class WallComment implements Validable {
         return this;
     }
 
-    public Integer getVideoId() {
-        return videoId;
+    public Integer getPid() {
+        return pid;
     }
 
-    public WallComment setVideoId(Integer videoId) {
-        this.videoId = videoId;
+    public WallComment setPid(Integer pid) {
+        this.pid = pid;
         return this;
     }
 
-    public Integer getDate() {
-        return date;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public WallComment setDate(Integer date) {
-        this.date = date;
-        return this;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public WallComment setText(String text) {
-        this.text = text;
-        return this;
-    }
-
-    public List<CommentAttachment> getAttachments() {
-        return attachments;
-    }
-
-    public WallComment setAttachments(List<CommentAttachment> attachments) {
-        this.attachments = attachments;
-        return this;
-    }
-
-    public WallCommentDonut getDonut() {
-        return donut;
-    }
-
-    public WallComment setDonut(WallCommentDonut donut) {
-        this.donut = donut;
-        return this;
-    }
-
-    public LikesInfo getLikes() {
-        return likes;
-    }
-
-    public WallComment setLikes(LikesInfo likes) {
-        this.likes = likes;
+    public WallComment setPostId(Integer postId) {
+        this.postId = postId;
         return this;
     }
 
@@ -224,21 +245,30 @@ public class WallComment implements Validable {
         return this;
     }
 
-    public Integer getReplyToUser() {
-        return replyToUser;
-    }
-
-    public WallComment setReplyToUser(Integer replyToUser) {
-        this.replyToUser = replyToUser;
-        return this;
-    }
-
     public Integer getReplyToComment() {
         return replyToComment;
     }
 
     public WallComment setReplyToComment(Integer replyToComment) {
         this.replyToComment = replyToComment;
+        return this;
+    }
+
+    public Long getReplyToUser() {
+        return replyToUser;
+    }
+
+    public WallComment setReplyToUser(Long replyToUser) {
+        this.replyToUser = replyToUser;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public WallComment setText(String text) {
+        this.text = text;
         return this;
     }
 
@@ -251,27 +281,18 @@ public class WallComment implements Validable {
         return this;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public Integer getVideoId() {
+        return videoId;
     }
 
-    public WallComment setDeleted(Boolean deleted) {
-        this.deleted = deleted;
-        return this;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public WallComment setPid(Integer pid) {
-        this.pid = pid;
+    public WallComment setVideoId(Integer videoId) {
+        this.videoId = videoId;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, attachments, canEdit, photoId, pid, videoId, thread, postId, ownerId, fromId, replyToComment, parentsStack, realOffset, deleted, donut, id, text, replyToUser, likes);
+        return Objects.hash(date, attachments, canEdit, photoId, pid, isFromPostAuthor, videoId, thread, postId, ownerId, fromId, replyToComment, parentsStack, realOffset, deleted, donut, id, text, replyToUser, likes);
     }
 
     @Override
@@ -280,8 +301,8 @@ public class WallComment implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         WallComment wallComment = (WallComment) o;
         return Objects.equals(date, wallComment.date) &&
-                Objects.equals(fromId, wallComment.fromId) &&
                 Objects.equals(attachments, wallComment.attachments) &&
+                Objects.equals(fromId, wallComment.fromId) &&
                 Objects.equals(replyToComment, wallComment.replyToComment) &&
                 Objects.equals(photoId, wallComment.photoId) &&
                 Objects.equals(parentsStack, wallComment.parentsStack) &&
@@ -295,9 +316,10 @@ public class WallComment implements Validable {
                 Objects.equals(replyToUser, wallComment.replyToUser) &&
                 Objects.equals(donut, wallComment.donut) &&
                 Objects.equals(id, wallComment.id) &&
+                Objects.equals(isFromPostAuthor, wallComment.isFromPostAuthor) &&
                 Objects.equals(text, wallComment.text) &&
-                Objects.equals(videoId, wallComment.videoId) &&
-                Objects.equals(likes, wallComment.likes);
+                Objects.equals(likes, wallComment.likes) &&
+                Objects.equals(videoId, wallComment.videoId);
     }
 
     @Override
@@ -309,8 +331,8 @@ public class WallComment implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WallComment{");
         sb.append("date=").append(date);
-        sb.append(", fromId=").append(fromId);
         sb.append(", attachments=").append(attachments);
+        sb.append(", fromId=").append(fromId);
         sb.append(", replyToComment=").append(replyToComment);
         sb.append(", photoId=").append(photoId);
         sb.append(", parentsStack=").append(parentsStack);
@@ -324,9 +346,10 @@ public class WallComment implements Validable {
         sb.append(", replyToUser=").append(replyToUser);
         sb.append(", donut=").append(donut);
         sb.append(", id=").append(id);
+        sb.append(", isFromPostAuthor=").append(isFromPostAuthor);
         sb.append(", text='").append(text).append("'");
-        sb.append(", videoId=").append(videoId);
         sb.append(", likes=").append(likes);
+        sb.append(", videoId=").append(videoId);
         sb.append('}');
         return sb.toString();
     }

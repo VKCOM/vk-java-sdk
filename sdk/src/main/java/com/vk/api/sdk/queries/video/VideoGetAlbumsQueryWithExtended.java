@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.video.responses.GetAlbumsExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoGetAlbumsQueryWithExtended, GetAlbumsExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,10 +28,12 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
     /**
      * ID of the user or community that owns the video album(s).
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoGetAlbumsQueryWithExtended ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public VideoGetAlbumsQueryWithExtended ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -40,6 +43,7 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public VideoGetAlbumsQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -50,16 +54,18 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public VideoGetAlbumsQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — to return additional information about album privacy settings for the current user
+     * '1' - to return additional information about album privacy settings for the current user
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected VideoGetAlbumsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -70,6 +76,7 @@ public class VideoGetAlbumsQueryWithExtended extends AbstractQueryBuilder<VideoG
      * @param value value of "need system" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_system")
     public VideoGetAlbumsQueryWithExtended needSystem(Boolean value) {
         return unsafeParam("need_system", value);
     }

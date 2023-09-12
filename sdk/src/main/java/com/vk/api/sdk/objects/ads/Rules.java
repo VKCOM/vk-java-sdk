@@ -2,45 +2,78 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * Rules object
  */
 public class Rules implements Validable {
-    @SerializedName("paragraphs")
-    private List<Paragraphs> paragraphs;
+    /**
+     * Content Html
+     */
+    @SerializedName("content_html")
+    private String contentHtml;
 
     /**
-     * Comment
+     * Help chat
      */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("help_chat")
+    private Boolean helpChat;
 
-    public List<Paragraphs> getParagraphs() {
-        return paragraphs;
+    /**
+     * Label
+     */
+    @SerializedName("help_label")
+    private String helpLabel;
+
+    /**
+     * Help url
+     */
+    @SerializedName("help_url")
+    private JsonPrimitive helpUrl;
+
+    public String getContentHtml() {
+        return contentHtml;
     }
 
-    public Rules setParagraphs(List<Paragraphs> paragraphs) {
-        this.paragraphs = paragraphs;
+    public Rules setContentHtml(String contentHtml) {
+        this.contentHtml = contentHtml;
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public Boolean getHelpChat() {
+        return helpChat;
     }
 
-    public Rules setTitle(String title) {
-        this.title = title;
+    public Rules setHelpChat(Boolean helpChat) {
+        this.helpChat = helpChat;
+        return this;
+    }
+
+    public String getHelpLabel() {
+        return helpLabel;
+    }
+
+    public Rules setHelpLabel(String helpLabel) {
+        this.helpLabel = helpLabel;
+        return this;
+    }
+
+    public JsonPrimitive getHelpUrl() {
+        return helpUrl;
+    }
+
+    public Rules setHelpUrl(JsonPrimitive helpUrl) {
+        this.helpUrl = helpUrl;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(paragraphs, title);
+        return Objects.hash(helpLabel, helpUrl, helpChat, contentHtml);
     }
 
     @Override
@@ -48,8 +81,10 @@ public class Rules implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rules rules = (Rules) o;
-        return Objects.equals(paragraphs, rules.paragraphs) &&
-                Objects.equals(title, rules.title);
+        return Objects.equals(helpUrl, rules.helpUrl) &&
+                Objects.equals(helpChat, rules.helpChat) &&
+                Objects.equals(helpLabel, rules.helpLabel) &&
+                Objects.equals(contentHtml, rules.contentHtml);
     }
 
     @Override
@@ -60,8 +95,10 @@ public class Rules implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Rules{");
-        sb.append("paragraphs=").append(paragraphs);
-        sb.append(", title='").append(title).append("'");
+        sb.append("helpUrl=").append(helpUrl);
+        sb.append(", helpChat=").append(helpChat);
+        sb.append(", helpLabel='").append(helpLabel).append("'");
+        sb.append(", contentHtml='").append(contentHtml).append("'");
         sb.append('}');
         return sb.toString();
     }

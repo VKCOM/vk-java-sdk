@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.Fields;
 import com.vk.api.sdk.objects.groups.Filter;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,19 +29,22 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public GroupsGetQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
-     * '1' — to return complete information about a user's communities, '0' — to return a list of community IDs without any additional fields (default),
+     * '1' - to return complete information about a user's communities, '0' - to return a list of community IDs without any additional fields (default),
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public GroupsGetQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -51,6 +55,7 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public GroupsGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -61,27 +66,30 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public GroupsGetQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
      * filter
-     * Types of communities to return: 'admin' — to return communities administered by the user , 'editor' — to return communities where the user is an administrator or editor, 'moder' — to return communities where the user is an administrator, editor, or moderator, 'groups' — to return only groups, 'publics' — to return only public pages, 'events' — to return only events
+     * Types of communities to return: 'admin' - to return communities administered by the user , 'editor' - to return communities where the user is an administrator or editor, 'moder' - to return communities where the user is an administrator, editor, or moderator, 'groups' - to return only groups, 'publics' - to return only public pages, 'events' - to return only events
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public GroupsGetQuery filter(Filter... value) {
         return unsafeParam("filter", value);
     }
 
     /**
-     * Types of communities to return: 'admin' — to return communities administered by the user , 'editor' — to return communities where the user is an administrator or editor, 'moder' — to return communities where the user is an administrator, editor, or moderator, 'groups' — to return only groups, 'publics' — to return only public pages, 'events' — to return only events
+     * Types of communities to return: 'admin' - to return communities administered by the user , 'editor' - to return communities where the user is an administrator or editor, 'moder' - to return communities where the user is an administrator, editor, or moderator, 'groups' - to return only groups, 'publics' - to return only public pages, 'events' - to return only events
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public GroupsGetQuery filter(List<Filter> value) {
         return unsafeParam("filter", value);
     }
@@ -93,6 +101,7 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -103,6 +112,7 @@ public class GroupsGetQuery extends AbstractQueryBuilder<GroupsGetQuery, GetResp
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

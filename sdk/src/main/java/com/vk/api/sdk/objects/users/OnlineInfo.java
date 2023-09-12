@@ -12,25 +12,6 @@ import java.util.Objects;
  */
 public class OnlineInfo implements Validable {
     /**
-     * Whether you can see real online status of user or not
-     */
-    @SerializedName("visible")
-    @Required
-    private Boolean visible;
-
-    /**
-     * Last time we saw user being active
-     */
-    @SerializedName("last_seen")
-    private Integer lastSeen;
-
-    /**
-     * Whether user is currently online or not
-     */
-    @SerializedName("is_online")
-    private Boolean isOnline;
-
-    /**
      * Application id from which user is currently online or was last seen online
      */
     @SerializedName("app_id")
@@ -43,37 +24,29 @@ public class OnlineInfo implements Validable {
     private Boolean isMobile;
 
     /**
+     * Whether user is currently online or not
+     */
+    @SerializedName("is_online")
+    private Boolean isOnline;
+
+    /**
+     * Last time we saw user being active
+     */
+    @SerializedName("last_seen")
+    private Integer lastSeen;
+
+    /**
      * In case user online is not visible, it indicates approximate timeframe of user online
      */
     @SerializedName("status")
     private OnlineInfoStatus status;
 
-    public Boolean getVisible() {
-        return visible;
-    }
-
-    public OnlineInfo setVisible(Boolean visible) {
-        this.visible = visible;
-        return this;
-    }
-
-    public Integer getLastSeen() {
-        return lastSeen;
-    }
-
-    public OnlineInfo setLastSeen(Integer lastSeen) {
-        this.lastSeen = lastSeen;
-        return this;
-    }
-
-    public Boolean getIsOnline() {
-        return isOnline;
-    }
-
-    public OnlineInfo setIsOnline(Boolean isOnline) {
-        this.isOnline = isOnline;
-        return this;
-    }
+    /**
+     * Whether you can see real online status of user or not
+     */
+    @SerializedName("visible")
+    @Required
+    private Boolean visible;
 
     public Integer getAppId() {
         return appId;
@@ -93,12 +66,39 @@ public class OnlineInfo implements Validable {
         return this;
     }
 
+    public Boolean getIsOnline() {
+        return isOnline;
+    }
+
+    public OnlineInfo setIsOnline(Boolean isOnline) {
+        this.isOnline = isOnline;
+        return this;
+    }
+
+    public Integer getLastSeen() {
+        return lastSeen;
+    }
+
+    public OnlineInfo setLastSeen(Integer lastSeen) {
+        this.lastSeen = lastSeen;
+        return this;
+    }
+
     public OnlineInfoStatus getStatus() {
         return status;
     }
 
     public OnlineInfo setStatus(OnlineInfoStatus status) {
         this.status = status;
+        return this;
+    }
+
+    public Boolean getVisible() {
+        return visible;
+    }
+
+    public OnlineInfo setVisible(Boolean visible) {
+        this.visible = visible;
         return this;
     }
 
@@ -113,8 +113,8 @@ public class OnlineInfo implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         OnlineInfo onlineInfo = (OnlineInfo) o;
         return Objects.equals(visible, onlineInfo.visible) &&
-                Objects.equals(lastSeen, onlineInfo.lastSeen) &&
                 Objects.equals(isMobile, onlineInfo.isMobile) &&
+                Objects.equals(lastSeen, onlineInfo.lastSeen) &&
                 Objects.equals(isOnline, onlineInfo.isOnline) &&
                 Objects.equals(appId, onlineInfo.appId) &&
                 Objects.equals(status, onlineInfo.status);
@@ -129,8 +129,8 @@ public class OnlineInfo implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("OnlineInfo{");
         sb.append("visible=").append(visible);
-        sb.append(", lastSeen=").append(lastSeen);
         sb.append(", isMobile=").append(isMobile);
+        sb.append(", lastSeen=").append(lastSeen);
         sb.append(", isOnline=").append(isOnline);
         sb.append(", appId=").append(appId);
         sb.append(", status='").append(status).append("'");

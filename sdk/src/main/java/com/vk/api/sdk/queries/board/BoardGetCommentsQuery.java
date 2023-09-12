@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.board.GetCommentsSort;
 import com.vk.api.sdk.objects.board.responses.GetCommentsResponse;
 import java.util.Arrays;
@@ -15,14 +16,16 @@ import java.util.List;
  */
 public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetCommentsQuery, GetCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardGetCommentsQuery(VkApiClient client, UserActor actor, int groupId, int topicId) {
+    public BoardGetCommentsQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer topicId) {
         super(client, "board.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -30,14 +33,27 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     */
+    public BoardGetCommentsQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardGetCommentsQuery(VkApiClient client, ServiceActor actor, int groupId, int topicId) {
+    public BoardGetCommentsQuery(VkApiClient client, ServiceActor actor, Long groupId,
+            Integer topicId) {
         super(client, "board.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -46,12 +62,26 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardGetCommentsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "board.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardGetCommentsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardGetCommentsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -61,16 +91,18 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardGetCommentsQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardGetCommentsQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 
     /**
-     * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
+     * '1' - to return the 'likes' field, '0' - not to return the 'likes' field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_likes")
     public BoardGetCommentsQuery needLikes(Boolean value) {
         return unsafeParam("need_likes", value);
     }
@@ -81,6 +113,7 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
      * @param value value of "start comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_comment_id")
     public BoardGetCommentsQuery startCommentId(Integer value) {
         return unsafeParam("start_comment_id", value);
     }
@@ -91,6 +124,7 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public BoardGetCommentsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -101,26 +135,29 @@ public class BoardGetCommentsQuery extends AbstractQueryBuilder<BoardGetComments
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public BoardGetCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — to return information about users who posted comments, '0' — to return no additional fields (default)
+     * '1' - to return information about users who posted comments, '0' - to return no additional fields (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public BoardGetCommentsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
+     * Sort order: 'asc' - by creation date in chronological order, 'desc' - by creation date in reverse chronological order,
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public BoardGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }

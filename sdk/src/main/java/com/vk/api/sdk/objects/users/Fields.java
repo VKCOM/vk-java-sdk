@@ -53,6 +53,9 @@ public enum Fields implements EnumParam {
     @SerializedName("bdate")
     BDATE("bdate"),
 
+    @SerializedName("bdate_visibility")
+    BDATE_VISIBILITY("bdate_visibility"),
+
     @SerializedName("city")
     CITY("city"),
 
@@ -106,6 +109,9 @@ public enum Fields implements EnumParam {
 
     @SerializedName("photo_max_size")
     PHOTO_MAX_SIZE("photo_max_size"),
+
+    @SerializedName("third_party_buttons")
+    THIRD_PARTY_BUTTONS("third_party_buttons"),
 
     @SerializedName("online")
     ONLINE("online"),
@@ -206,6 +212,9 @@ public enum Fields implements EnumParam {
     @SerializedName("is_no_index")
     IS_NO_INDEX("is_no_index"),
 
+    @SerializedName("no_index")
+    NO_INDEX("no_index"),
+
     @SerializedName("games")
     GAMES("games"),
 
@@ -242,6 +251,9 @@ public enum Fields implements EnumParam {
     @SerializedName("can_upload_doc")
     CAN_UPLOAD_DOC("can_upload_doc"),
 
+    @SerializedName("can_ban")
+    CAN_BAN("can_ban"),
+
     @SerializedName("is_favorite")
     IS_FAVORITE("is_favorite"),
 
@@ -262,6 +274,9 @@ public enum Fields implements EnumParam {
 
     @SerializedName("is_friend")
     IS_FRIEND("is_friend"),
+
+    @SerializedName("is_best_friend")
+    IS_BEST_FRIEND("is_best_friend"),
 
     @SerializedName("friend_status")
     FRIEND_STATUS("friend_status"),
@@ -324,7 +339,37 @@ public enum Fields implements EnumParam {
     IS_SUBSCRIBED_PODCASTS("is_subscribed_podcasts"),
 
     @SerializedName("can_subscribe_podcasts")
-    CAN_SUBSCRIBE_PODCASTS("can_subscribe_podcasts");
+    CAN_SUBSCRIBE_PODCASTS("can_subscribe_podcasts"),
+
+    @SerializedName("animated_avatar")
+    ANIMATED_AVATAR("animated_avatar"),
+
+    @SerializedName("owner_state")
+    OWNER_STATE("owner_state"),
+
+    @SerializedName("is_esia_verified")
+    IS_ESIA_VERIFIED("is_esia_verified"),
+
+    @SerializedName("is_esia_linked")
+    IS_ESIA_LINKED("is_esia_linked"),
+
+    @SerializedName("is_tinkoff_linked")
+    IS_TINKOFF_LINKED("is_tinkoff_linked"),
+
+    @SerializedName("is_tinkoff_verified")
+    IS_TINKOFF_VERIFIED("is_tinkoff_verified"),
+
+    @SerializedName("is_sber_verified")
+    IS_SBER_VERIFIED("is_sber_verified"),
+
+    @SerializedName("oauth_linked")
+    OAUTH_LINKED("oauth_linked"),
+
+    @SerializedName("oauth_verification")
+    OAUTH_VERIFICATION("oauth_verification"),
+
+    @SerializedName("is_sber_linked")
+    IS_SBER_LINKED("is_sber_linked");
 
     private final String value;
 

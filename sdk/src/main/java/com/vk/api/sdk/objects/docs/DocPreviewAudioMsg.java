@@ -24,12 +24,14 @@ public class DocPreviewAudioMsg implements Validable {
      * MP3 file URL
      */
     @SerializedName("link_mp3")
+    @Required
     private URI linkMp3;
 
     /**
      * OGG file URL
      */
     @SerializedName("link_ogg")
+    @Required
     private URI linkOgg;
 
     @SerializedName("waveform")

@@ -4,7 +4,6 @@ package com.vk.api.sdk.objects.wall;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.base.Place;
 import java.util.Objects;
 
 /**
@@ -17,9 +16,6 @@ public class Geo implements Validable {
     @SerializedName("coordinates")
     private String coordinates;
 
-    @SerializedName("place")
-    private Place place;
-
     /**
      * Information whether a map is showed
      */
@@ -30,7 +26,7 @@ public class Geo implements Validable {
      * Place type
      */
     @SerializedName("type")
-    private String type;
+    private GeoType type;
 
     public String getCoordinates() {
         return coordinates;
@@ -38,15 +34,6 @@ public class Geo implements Validable {
 
     public Geo setCoordinates(String coordinates) {
         this.coordinates = coordinates;
-        return this;
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public Geo setPlace(Place place) {
-        this.place = place;
         return this;
     }
 
@@ -59,18 +46,18 @@ public class Geo implements Validable {
         return this;
     }
 
-    public String getType() {
+    public GeoType getType() {
         return type;
     }
 
-    public Geo setType(String type) {
+    public Geo setType(GeoType type) {
         this.type = type;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(showmap, coordinates, place, type);
+        return Objects.hash(showmap, coordinates, type);
     }
 
     @Override
@@ -80,7 +67,6 @@ public class Geo implements Validable {
         Geo geo = (Geo) o;
         return Objects.equals(showmap, geo.showmap) &&
                 Objects.equals(coordinates, geo.coordinates) &&
-                Objects.equals(place, geo.place) &&
                 Objects.equals(type, geo.type);
     }
 
@@ -94,7 +80,6 @@ public class Geo implements Validable {
         final StringBuilder sb = new StringBuilder("Geo{");
         sb.append("showmap=").append(showmap);
         sb.append(", coordinates='").append(coordinates).append("'");
-        sb.append(", place=").append(place);
         sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();

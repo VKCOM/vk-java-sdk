@@ -35,12 +35,6 @@ public class GetCountersResponse implements Validable {
     private Integer friends;
 
     /**
-     * New friends suggestions number
-     */
-    @SerializedName("friends_suggestions")
-    private Integer friendsSuggestions;
-
-    /**
      * New friends recommendations number
      */
     @SerializedName("friends_recommendations")
@@ -58,23 +52,17 @@ public class GetCountersResponse implements Validable {
     @SerializedName("groups")
     private Integer groups;
 
-    @SerializedName("menu_discover_badge")
-    private Integer menuDiscoverBadge;
-
-    @SerializedName("menu_clips_badge")
-    private Integer menuClipsBadge;
+    /**
+     * New memories number
+     */
+    @SerializedName("memories")
+    private Integer memories;
 
     /**
      * New messages number
      */
     @SerializedName("messages")
     private Integer messages;
-
-    /**
-     * New memories number
-     */
-    @SerializedName("memories")
-    private Integer memories;
 
     /**
      * New notes number
@@ -93,12 +81,6 @@ public class GetCountersResponse implements Validable {
      */
     @SerializedName("photos")
     private Integer photos;
-
-    /**
-     * New sdk number
-     */
-    @SerializedName("sdk")
-    private Integer sdk;
 
     public Integer getAppRequests() {
         return appRequests;
@@ -136,15 +118,6 @@ public class GetCountersResponse implements Validable {
         return this;
     }
 
-    public Integer getFriendsSuggestions() {
-        return friendsSuggestions;
-    }
-
-    public GetCountersResponse setFriendsSuggestions(Integer friendsSuggestions) {
-        this.friendsSuggestions = friendsSuggestions;
-        return this;
-    }
-
     public Integer getFriendsRecommendations() {
         return friendsRecommendations;
     }
@@ -172,21 +145,12 @@ public class GetCountersResponse implements Validable {
         return this;
     }
 
-    public Integer getMenuDiscoverBadge() {
-        return menuDiscoverBadge;
+    public Integer getMemories() {
+        return memories;
     }
 
-    public GetCountersResponse setMenuDiscoverBadge(Integer menuDiscoverBadge) {
-        this.menuDiscoverBadge = menuDiscoverBadge;
-        return this;
-    }
-
-    public Integer getMenuClipsBadge() {
-        return menuClipsBadge;
-    }
-
-    public GetCountersResponse setMenuClipsBadge(Integer menuClipsBadge) {
-        this.menuClipsBadge = menuClipsBadge;
+    public GetCountersResponse setMemories(Integer memories) {
+        this.memories = memories;
         return this;
     }
 
@@ -196,15 +160,6 @@ public class GetCountersResponse implements Validable {
 
     public GetCountersResponse setMessages(Integer messages) {
         this.messages = messages;
-        return this;
-    }
-
-    public Integer getMemories() {
-        return memories;
-    }
-
-    public GetCountersResponse setMemories(Integer memories) {
-        this.memories = memories;
         return this;
     }
 
@@ -235,18 +190,9 @@ public class GetCountersResponse implements Validable {
         return this;
     }
 
-    public Integer getSdk() {
-        return sdk;
-    }
-
-    public GetCountersResponse setSdk(Integer sdk) {
-        this.sdk = sdk;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(faves, notes, appRequests, groups, menuClipsBadge, friendsSuggestions, photos, menuDiscoverBadge, friends, memories, messages, sdk, events, notifications, friendsRecommendations, gifts);
+        return Objects.hash(faves, notes, appRequests, memories, groups, messages, photos, events, friends, notifications, friendsRecommendations, gifts);
     }
 
     @Override
@@ -254,21 +200,17 @@ public class GetCountersResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCountersResponse getCountersResponse = (GetCountersResponse) o;
-        return Objects.equals(faves, getCountersResponse.faves) &&
-                Objects.equals(menuClipsBadge, getCountersResponse.menuClipsBadge) &&
-                Objects.equals(notes, getCountersResponse.notes) &&
-                Objects.equals(groups, getCountersResponse.groups) &&
-                Objects.equals(photos, getCountersResponse.photos) &&
-                Objects.equals(friends, getCountersResponse.friends) &&
-                Objects.equals(friendsRecommendations, getCountersResponse.friendsRecommendations) &&
+        return Objects.equals(friendsRecommendations, getCountersResponse.friendsRecommendations) &&
                 Objects.equals(appRequests, getCountersResponse.appRequests) &&
-                Objects.equals(menuDiscoverBadge, getCountersResponse.menuDiscoverBadge) &&
+                Objects.equals(faves, getCountersResponse.faves) &&
+                Objects.equals(notes, getCountersResponse.notes) &&
                 Objects.equals(memories, getCountersResponse.memories) &&
+                Objects.equals(groups, getCountersResponse.groups) &&
                 Objects.equals(messages, getCountersResponse.messages) &&
-                Objects.equals(sdk, getCountersResponse.sdk) &&
+                Objects.equals(photos, getCountersResponse.photos) &&
                 Objects.equals(events, getCountersResponse.events) &&
+                Objects.equals(friends, getCountersResponse.friends) &&
                 Objects.equals(notifications, getCountersResponse.notifications) &&
-                Objects.equals(friendsSuggestions, getCountersResponse.friendsSuggestions) &&
                 Objects.equals(gifts, getCountersResponse.gifts);
     }
 
@@ -280,21 +222,17 @@ public class GetCountersResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCountersResponse{");
-        sb.append("faves=").append(faves);
-        sb.append(", menuClipsBadge=").append(menuClipsBadge);
-        sb.append(", notes=").append(notes);
-        sb.append(", groups=").append(groups);
-        sb.append(", photos=").append(photos);
-        sb.append(", friends=").append(friends);
-        sb.append(", friendsRecommendations=").append(friendsRecommendations);
+        sb.append("friendsRecommendations=").append(friendsRecommendations);
         sb.append(", appRequests=").append(appRequests);
-        sb.append(", menuDiscoverBadge=").append(menuDiscoverBadge);
+        sb.append(", faves=").append(faves);
+        sb.append(", notes=").append(notes);
         sb.append(", memories=").append(memories);
+        sb.append(", groups=").append(groups);
         sb.append(", messages=").append(messages);
-        sb.append(", sdk=").append(sdk);
+        sb.append(", photos=").append(photos);
         sb.append(", events=").append(events);
+        sb.append(", friends=").append(friends);
         sb.append(", notifications=").append(notifications);
-        sb.append(", friendsSuggestions=").append(friendsSuggestions);
         sb.append(", gifts=").append(gifts);
         sb.append('}');
         return sb.toString();

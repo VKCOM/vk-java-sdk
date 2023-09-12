@@ -19,7 +19,7 @@ public class GetIntentUsersResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<Integer> items;
+    private List<Long> items;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
@@ -33,11 +33,11 @@ public class GetIntentUsersResponse implements Validable {
         return this;
     }
 
-    public List<Integer> getItems() {
+    public List<Long> getItems() {
         return items;
     }
 
-    public GetIntentUsersResponse setItems(List<Integer> items) {
+    public GetIntentUsersResponse setItems(List<Long> items) {
         this.items = items;
         return this;
     }

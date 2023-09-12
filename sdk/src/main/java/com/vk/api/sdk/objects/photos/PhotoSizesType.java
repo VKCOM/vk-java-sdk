@@ -8,6 +8,9 @@ import com.vk.api.sdk.queries.EnumParam;
  * Size type
  */
 public enum PhotoSizesType implements EnumParam {
+    @SerializedName("t")
+    T("t"),
+
     @SerializedName("s")
     S("s"),
 
@@ -81,7 +84,19 @@ public enum PhotoSizesType implements EnumParam {
     F("f"),
 
     @SerializedName("max")
-    MAX("max");
+    MAX("max"),
+
+    @SerializedName("base")
+    BASE("base"),
+
+    @SerializedName("u")
+    U("u"),
+
+    @SerializedName("v")
+    V("v"),
+
+    @SerializedName("orig")
+    ORIG("orig");
 
     private final String value;
 

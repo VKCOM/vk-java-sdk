@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.downloadedgames.DownloadedGamesGetPaidStatusQueryWithStatus;
 
 /**
@@ -20,9 +21,10 @@ public class DownloadedGames extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("downloadedGames.getPaidStatus")
     public DownloadedGamesGetPaidStatusQueryWithStatus getPaidStatusStatus(UserActor actor) {
         return new DownloadedGamesGetPaidStatusQueryWithStatus(getClient(), actor);
     }

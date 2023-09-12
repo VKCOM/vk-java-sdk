@@ -13,9 +13,42 @@ import java.util.Objects;
  * GetCommentResponse object
  */
 public class GetCommentResponse implements Validable {
+    /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
+
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
+
     @SerializedName("items")
     @Required
     private List<WallComment> items;
+
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public GetCommentResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public GetCommentResponse setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
+        return this;
+    }
 
     public List<WallComment> getItems() {
         return items;
@@ -26,9 +59,18 @@ public class GetCommentResponse implements Validable {
         return this;
     }
 
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
+    }
+
+    public GetCommentResponse setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(items);
+        return Objects.hash(canPost, groupsCanPost, items, showReplyButton);
     }
 
     @Override
@@ -36,7 +78,10 @@ public class GetCommentResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentResponse getCommentResponse = (GetCommentResponse) o;
-        return Objects.equals(items, getCommentResponse.items);
+        return Objects.equals(groupsCanPost, getCommentResponse.groupsCanPost) &&
+                Objects.equals(canPost, getCommentResponse.canPost) &&
+                Objects.equals(showReplyButton, getCommentResponse.showReplyButton) &&
+                Objects.equals(items, getCommentResponse.items);
     }
 
     @Override
@@ -47,7 +92,10 @@ public class GetCommentResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentResponse{");
-        sb.append("items=").append(items);
+        sb.append("groupsCanPost=").append(groupsCanPost);
+        sb.append(", canPost=").append(canPost);
+        sb.append(", showReplyButton=").append(showReplyButton);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

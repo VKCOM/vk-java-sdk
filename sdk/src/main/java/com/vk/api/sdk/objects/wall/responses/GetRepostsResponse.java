@@ -5,8 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserFull;
 import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
@@ -15,17 +15,26 @@ import java.util.Objects;
  * GetRepostsResponse object
  */
 public class GetRepostsResponse implements Validable {
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<WallpostFull> items;
 
     @SerializedName("profiles")
     @Required
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<Group> groups;
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetRepostsResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
 
     public List<WallpostFull> getItems() {
         return items;
@@ -36,21 +45,12 @@ public class GetRepostsResponse implements Validable {
         return this;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetRepostsResponse setProfiles(List<User> profiles) {
+    public GetRepostsResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public GetRepostsResponse setGroups(List<Group> groups) {
-        this.groups = groups;
         return this;
     }
 

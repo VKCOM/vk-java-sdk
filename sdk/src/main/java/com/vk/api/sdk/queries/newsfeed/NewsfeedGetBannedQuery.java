@@ -4,7 +4,8 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.newsfeed.GetBannedNameCase;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.newsfeed.responses.GetBannedResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class NewsfeedGetBannedQuery extends AbstractQueryBuilder<NewsfeedGetBannedQuery, GetBannedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,22 +27,24 @@ public class NewsfeedGetBannedQuery extends AbstractQueryBuilder<NewsfeedGetBann
     }
 
     /**
-     * '1' — return extra information about users and communities
+     * '1' - return extra information about users and communities
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public NewsfeedGetBannedQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetBannedQuery nameCase(GetBannedNameCase value) {
+    @ApiParam("name_case")
+    public NewsfeedGetBannedQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
@@ -52,6 +55,7 @@ public class NewsfeedGetBannedQuery extends AbstractQueryBuilder<NewsfeedGetBann
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetBannedQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -62,6 +66,7 @@ public class NewsfeedGetBannedQuery extends AbstractQueryBuilder<NewsfeedGetBann
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetBannedQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.widgets.responses.GetCommentsResponse;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetCommentsQuery, GetCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,7 +27,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -43,6 +44,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "widget api id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("widget_api_id")
     public WidgetsGetCommentsQuery widgetApiId(Integer value) {
         return unsafeParam("widget_api_id", value);
     }
@@ -53,6 +55,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("url")
     public WidgetsGetCommentsQuery url(String value) {
         return unsafeParam("url", value);
     }
@@ -63,6 +66,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("page_id")
     public WidgetsGetCommentsQuery pageId(String value) {
         return unsafeParam("page_id", value);
     }
@@ -73,6 +77,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "order" parameter. By default date.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order")
     public WidgetsGetCommentsQuery order(String value) {
         return unsafeParam("order", value);
     }
@@ -83,6 +88,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public WidgetsGetCommentsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -93,6 +99,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "count" parameter. Maximum is 200. Minimum is 10. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public WidgetsGetCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -104,6 +111,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WidgetsGetCommentsQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -114,6 +122,7 @@ public class WidgetsGetCommentsQuery extends AbstractQueryBuilder<WidgetsGetComm
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WidgetsGetCommentsQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

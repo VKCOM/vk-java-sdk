@@ -15,6 +15,7 @@ public class Military implements Validable {
      * Country ID
      */
     @SerializedName("country_id")
+    @Required
     private Integer countryId;
 
     /**
@@ -40,6 +41,7 @@ public class Military implements Validable {
      * Unit ID
      */
     @SerializedName("unit_id")
+    @Required
     private Integer unitId;
 
     /**

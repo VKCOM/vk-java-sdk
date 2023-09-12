@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.pages.responses.GetHistoryResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQuery, List<GetHistoryResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pageId value of "page id" parameter.
      */
-    public PagesGetHistoryQuery(VkApiClient client, UserActor actor, int pageId) {
+    public PagesGetHistoryQuery(VkApiClient client, UserActor actor, Integer pageId) {
         super(client, "pages.getHistory", Utils.buildParametrizedType(List.class, GetHistoryResponse.class));
         accessToken(actor.getAccessToken());
         pageId(pageId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PagesGetHistoryQuery(VkApiClient client, UserActor actor) {
+        super(client, "pages.getHistory", Utils.buildParametrizedType(List.class, GetHistoryResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,27 +44,32 @@ public class PagesGetHistoryQuery extends AbstractQueryBuilder<PagesGetHistoryQu
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PagesGetHistoryQuery pageId(int value) {
+    @ApiParam("page_id")
+    public PagesGetHistoryQuery pageId(Integer value) {
         return unsafeParam("page_id", value);
     }
 
     /**
      * ID of the community that owns the wiki page.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesGetHistoryQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PagesGetHistoryQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesGetHistoryQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public PagesGetHistoryQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 

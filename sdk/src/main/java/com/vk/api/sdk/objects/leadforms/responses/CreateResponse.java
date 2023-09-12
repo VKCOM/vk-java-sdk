@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class CreateResponse implements Validable {
     @SerializedName("form_id")
+    @Required
     private Integer formId;
 
     @SerializedName("url")

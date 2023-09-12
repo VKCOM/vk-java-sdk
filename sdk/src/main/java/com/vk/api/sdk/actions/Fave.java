@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.fave.FaveAddArticleQuery;
 import com.vk.api.sdk.queries.fave.FaveAddLinkQuery;
 import com.vk.api.sdk.queries.fave.FaveAddPageQuery;
@@ -44,226 +45,361 @@ public class Fave extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param url
      * @return query
      */
+    @ApiMethod("fave.addArticle")
     public FaveAddArticleQuery addArticle(UserActor actor, String url) {
         return new FaveAddArticleQuery(getClient(), actor, url);
     }
 
     /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.addArticle")
+    public FaveAddArticleQuery addArticle(UserActor actor) {
+        return new FaveAddArticleQuery(getClient(), actor);
+    }
+
+    /**
      * Adds a link to user faves.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param link Link URL.
      * @return query
      */
+    @ApiMethod("fave.addLink")
     public FaveAddLinkQuery addLink(UserActor actor, String link) {
         return new FaveAddLinkQuery(getClient(), actor, link);
     }
 
     /**
-     * @param actor vk actor
+     * Adds a link to user faves.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.addLink")
+    public FaveAddLinkQuery addLink(UserActor actor) {
+        return new FaveAddLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.addPage")
     public FaveAddPageQuery addPage(UserActor actor) {
         return new FaveAddPageQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveAddPostQuery addPost(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.addPost")
+    public FaveAddPostQuery addPost(UserActor actor, Long ownerId, Integer id) {
         return new FaveAddPostQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.addPost")
+    public FaveAddPostQuery addPost(UserActor actor) {
+        return new FaveAddPostQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveAddProductQuery addProduct(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.addProduct")
+    public FaveAddProductQuery addProduct(UserActor actor, Long ownerId, Integer id) {
         return new FaveAddProductQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.addProduct")
+    public FaveAddProductQuery addProduct(UserActor actor) {
+        return new FaveAddProductQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.addTag")
     public FaveAddTagQuery addTag(UserActor actor) {
         return new FaveAddTagQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveAddVideoQuery addVideo(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.addVideo")
+    public FaveAddVideoQuery addVideo(UserActor actor, Long ownerId, Integer id) {
         return new FaveAddVideoQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.addVideo")
+    public FaveAddVideoQuery addVideo(UserActor actor) {
+        return new FaveAddVideoQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param id
      * @param name
      * @return query
      */
-    public FaveEditTagQuery editTag(UserActor actor, int id, String name) {
+    @ApiMethod("fave.editTag")
+    public FaveEditTagQuery editTag(UserActor actor, Integer id, String name) {
         return new FaveEditTagQuery(getClient(), actor, id, name);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.editTag")
+    public FaveEditTagQuery editTag(UserActor actor) {
+        return new FaveEditTagQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.get")
     public FaveGetQuery get(UserActor actor) {
         return new FaveGetQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.get")
     public FaveGetQueryWithExtended getExtended(UserActor actor) {
         return new FaveGetQueryWithExtended(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.getPages")
     public FaveGetPagesQuery getPages(UserActor actor) {
         return new FaveGetPagesQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.getTags")
     public FaveGetTagsQuery getTags(UserActor actor) {
         return new FaveGetTagsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.markSeen")
     public FaveMarkSeenQuery markSeen(UserActor actor) {
         return new FaveMarkSeenQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param articleId
      * @return query
      */
-    public FaveRemoveArticleQuery removeArticle(UserActor actor, int ownerId, int articleId) {
+    @ApiMethod("fave.removeArticle")
+    public FaveRemoveArticleQuery removeArticle(UserActor actor, Long ownerId, Integer articleId) {
         return new FaveRemoveArticleQuery(getClient(), actor, ownerId, articleId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.removeArticle")
+    public FaveRemoveArticleQuery removeArticle(UserActor actor) {
+        return new FaveRemoveArticleQuery(getClient(), actor);
     }
 
     /**
      * Removes link from the user's faves.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.removeLink")
     public FaveRemoveLinkQuery removeLink(UserActor actor) {
         return new FaveRemoveLinkQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.removePage")
     public FaveRemovePageQuery removePage(UserActor actor) {
         return new FaveRemovePageQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveRemovePostQuery removePost(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.removePost")
+    public FaveRemovePostQuery removePost(UserActor actor, Long ownerId, Integer id) {
         return new FaveRemovePostQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.removePost")
+    public FaveRemovePostQuery removePost(UserActor actor) {
+        return new FaveRemovePostQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveRemoveProductQuery removeProduct(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.removeProduct")
+    public FaveRemoveProductQuery removeProduct(UserActor actor, Long ownerId, Integer id) {
         return new FaveRemoveProductQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.removeProduct")
+    public FaveRemoveProductQuery removeProduct(UserActor actor) {
+        return new FaveRemoveProductQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param id
      * @return query
      */
-    public FaveRemoveTagQuery removeTag(UserActor actor, int id) {
+    @ApiMethod("fave.removeTag")
+    public FaveRemoveTagQuery removeTag(UserActor actor, Integer id) {
         return new FaveRemoveTagQuery(getClient(), actor, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.removeTag")
+    public FaveRemoveTagQuery removeTag(UserActor actor) {
+        return new FaveRemoveTagQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param id
      * @return query
      */
-    public FaveRemoveVideoQuery removeVideo(UserActor actor, int ownerId, int id) {
+    @ApiMethod("fave.removeVideo")
+    public FaveRemoveVideoQuery removeVideo(UserActor actor, Long ownerId, Integer id) {
         return new FaveRemoveVideoQuery(getClient(), actor, ownerId, id);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.removeVideo")
+    public FaveRemoveVideoQuery removeVideo(UserActor actor) {
+        return new FaveRemoveVideoQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ids
      * @return query
      */
+    @ApiMethod("fave.reorderTags")
     public FaveReorderTagsQuery reorderTags(UserActor actor, Integer... ids) {
         return new FaveReorderTagsQuery(getClient(), actor, ids);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ids
      * @return query
      */
+    @ApiMethod("fave.reorderTags")
     public FaveReorderTagsQuery reorderTags(UserActor actor, List<Integer> ids) {
         return new FaveReorderTagsQuery(getClient(), actor, ids);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("fave.reorderTags")
+    public FaveReorderTagsQuery reorderTags(UserActor actor) {
+        return new FaveReorderTagsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.setPageTags")
     public FaveSetPageTagsQuery setPageTags(UserActor actor) {
         return new FaveSetPageTagsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.setTags")
     public FaveSetTagsQuery setTags(UserActor actor) {
         return new FaveSetTagsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("fave.trackPageInteraction")
     public FaveTrackPageInteractionQuery trackPageInteraction(UserActor actor) {
         return new FaveTrackPageInteractionQuery(getClient(), actor);
     }

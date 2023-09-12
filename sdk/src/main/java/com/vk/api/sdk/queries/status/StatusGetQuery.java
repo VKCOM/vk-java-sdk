@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.status;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.status.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StatusGetQuery extends AbstractQueryBuilder<StatusGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,20 +27,24 @@ public class StatusGetQuery extends AbstractQueryBuilder<StatusGetQuery, GetResp
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StatusGetQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public StatusGetQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StatusGetQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public StatusGetQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

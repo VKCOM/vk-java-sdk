@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.Audio;
-import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.base.Sticker;
 import com.vk.api.sdk.objects.calls.Call;
 import com.vk.api.sdk.objects.docs.Doc;
@@ -16,9 +15,7 @@ import com.vk.api.sdk.objects.market.MarketItem;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.polls.Poll;
 import com.vk.api.sdk.objects.stories.Story;
-import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
-import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.Objects;
 
 /**
@@ -43,9 +40,6 @@ public class MessageAttachment implements Validable {
     @SerializedName("graffiti")
     private Graffiti graffiti;
 
-    @SerializedName("link")
-    private Link link;
-
     @SerializedName("market")
     private MarketItem market;
 
@@ -54,6 +48,9 @@ public class MessageAttachment implements Validable {
 
     @SerializedName("photo")
     private Photo photo;
+
+    @SerializedName("poll")
+    private Poll poll;
 
     @SerializedName("sticker")
     private Sticker sticker;
@@ -65,17 +62,8 @@ public class MessageAttachment implements Validable {
     @Required
     private MessageAttachmentType type;
 
-    @SerializedName("video")
-    private Video video;
-
-    @SerializedName("wall")
-    private WallpostFull wall;
-
     @SerializedName("wall_reply")
     private WallComment wallReply;
-
-    @SerializedName("poll")
-    private Poll poll;
 
     public Audio getAudio() {
         return audio;
@@ -131,15 +119,6 @@ public class MessageAttachment implements Validable {
         return this;
     }
 
-    public Link getLink() {
-        return link;
-    }
-
-    public MessageAttachment setLink(Link link) {
-        this.link = link;
-        return this;
-    }
-
     public MarketItem getMarket() {
         return market;
     }
@@ -164,6 +143,15 @@ public class MessageAttachment implements Validable {
 
     public MessageAttachment setPhoto(Photo photo) {
         this.photo = photo;
+        return this;
+    }
+
+    public Poll getPoll() {
+        return poll;
+    }
+
+    public MessageAttachment setPoll(Poll poll) {
+        this.poll = poll;
         return this;
     }
 
@@ -194,24 +182,6 @@ public class MessageAttachment implements Validable {
         return this;
     }
 
-    public Video getVideo() {
-        return video;
-    }
-
-    public MessageAttachment setVideo(Video video) {
-        this.video = video;
-        return this;
-    }
-
-    public WallpostFull getWall() {
-        return wall;
-    }
-
-    public MessageAttachment setWall(WallpostFull wall) {
-        this.wall = wall;
-        return this;
-    }
-
     public WallComment getWallReply() {
         return wallReply;
     }
@@ -221,18 +191,9 @@ public class MessageAttachment implements Validable {
         return this;
     }
 
-    public Poll getPoll() {
-        return poll;
-    }
-
-    public MessageAttachment setPoll(Poll poll) {
-        this.poll = poll;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(gift, wallReply, marketMarketAlbum, link, sticker, photo, video, poll, audioMessage, type, call, market, doc, graffiti, audio, wall, story);
+        return Objects.hash(gift, wallReply, marketMarketAlbum, sticker, photo, poll, audioMessage, type, call, market, doc, graffiti, audio, story);
     }
 
     @Override
@@ -241,11 +202,9 @@ public class MessageAttachment implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         MessageAttachment messageAttachment = (MessageAttachment) o;
         return Objects.equals(gift, messageAttachment.gift) &&
-                Objects.equals(link, messageAttachment.link) &&
                 Objects.equals(marketMarketAlbum, messageAttachment.marketMarketAlbum) &&
                 Objects.equals(sticker, messageAttachment.sticker) &&
                 Objects.equals(photo, messageAttachment.photo) &&
-                Objects.equals(video, messageAttachment.video) &&
                 Objects.equals(poll, messageAttachment.poll) &&
                 Objects.equals(audioMessage, messageAttachment.audioMessage) &&
                 Objects.equals(type, messageAttachment.type) &&
@@ -255,7 +214,6 @@ public class MessageAttachment implements Validable {
                 Objects.equals(doc, messageAttachment.doc) &&
                 Objects.equals(graffiti, messageAttachment.graffiti) &&
                 Objects.equals(audio, messageAttachment.audio) &&
-                Objects.equals(wall, messageAttachment.wall) &&
                 Objects.equals(story, messageAttachment.story);
     }
 
@@ -268,11 +226,9 @@ public class MessageAttachment implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageAttachment{");
         sb.append("gift=").append(gift);
-        sb.append(", link=").append(link);
         sb.append(", marketMarketAlbum=").append(marketMarketAlbum);
         sb.append(", sticker=").append(sticker);
         sb.append(", photo=").append(photo);
-        sb.append(", video=").append(video);
         sb.append(", poll=").append(poll);
         sb.append(", audioMessage=").append(audioMessage);
         sb.append(", type=").append(type);
@@ -282,7 +238,6 @@ public class MessageAttachment implements Validable {
         sb.append(", doc=").append(doc);
         sb.append(", graffiti=").append(graffiti);
         sb.append(", audio=").append(audio);
-        sb.append(", wall=").append(wall);
         sb.append(", story=").append(story);
         sb.append('}');
         return sb.toString();

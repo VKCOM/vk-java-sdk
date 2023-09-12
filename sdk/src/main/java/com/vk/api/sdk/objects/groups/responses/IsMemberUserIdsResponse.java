@@ -21,9 +21,11 @@ public class IsMemberUserIdsResponse implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     public boolean isMember() {
         return member == BoolInt.YES;
@@ -33,11 +35,11 @@ public class IsMemberUserIdsResponse implements Validable {
         return member;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public IsMemberUserIdsResponse setUserId(Integer userId) {
+    public IsMemberUserIdsResponse setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

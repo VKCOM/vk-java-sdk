@@ -23,6 +23,7 @@ public class PhotoXtrTagInfo implements Validable {
      * Album ID
      */
     @SerializedName("album_id")
+    @Required
     private Integer albumId;
 
     /**
@@ -31,6 +32,12 @@ public class PhotoXtrTagInfo implements Validable {
     @SerializedName("date")
     @Required
     private Integer date;
+
+    /**
+     * Whether photo has attached tag links
+     */
+    @SerializedName("has_tags")
+    private Boolean hasTags;
 
     /**
      * Original photo height
@@ -49,19 +56,21 @@ public class PhotoXtrTagInfo implements Validable {
      * Latitude
      */
     @SerializedName("lat")
-    private Float lat;
+    private Number lat;
 
     /**
      * Longitude
      */
     @SerializedName("long")
-    private Float lng;
+    private Number lng;
 
     /**
      * Photo owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * URL of image with 1280 px width
@@ -134,9 +143,10 @@ public class PhotoXtrTagInfo implements Validable {
 
     /**
      * ID of the user who have uploaded the photo
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
 
     /**
      * Original photo width
@@ -171,6 +181,15 @@ public class PhotoXtrTagInfo implements Validable {
         return this;
     }
 
+    public Boolean getHasTags() {
+        return hasTags;
+    }
+
+    public PhotoXtrTagInfo setHasTags(Boolean hasTags) {
+        this.hasTags = hasTags;
+        return this;
+    }
+
     public Integer getHeight() {
         return height;
     }
@@ -189,29 +208,29 @@ public class PhotoXtrTagInfo implements Validable {
         return this;
     }
 
-    public Float getLat() {
+    public Number getLat() {
         return lat;
     }
 
-    public PhotoXtrTagInfo setLat(Float lat) {
+    public PhotoXtrTagInfo setLat(Number lat) {
         this.lat = lat;
         return this;
     }
 
-    public Float getLng() {
+    public Number getLng() {
         return lng;
     }
 
-    public PhotoXtrTagInfo setLng(Float lng) {
+    public PhotoXtrTagInfo setLng(Number lng) {
         this.lng = lng;
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PhotoXtrTagInfo setOwnerId(Integer ownerId) {
+    public PhotoXtrTagInfo setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -324,11 +343,11 @@ public class PhotoXtrTagInfo implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public PhotoXtrTagInfo setUserId(Integer userId) {
+    public PhotoXtrTagInfo setUserId(Long userId) {
         this.userId = userId;
         return this;
     }
@@ -344,7 +363,7 @@ public class PhotoXtrTagInfo implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, photo604, lng, tagId, photo807, photo1280, albumId, photo2560, placerId, postId, ownerId, userId, photo75, sizes, accessKey, photo130, width, tagCreated, id, text, lat, height);
+        return Objects.hash(date, photo604, lng, tagId, photo807, photo1280, albumId, photo2560, placerId, postId, ownerId, userId, photo75, sizes, accessKey, photo130, width, hasTags, tagCreated, id, text, lat, height);
     }
 
     @Override
@@ -370,6 +389,7 @@ public class PhotoXtrTagInfo implements Validable {
                 Objects.equals(photo130, photoXtrTagInfo.photo130) &&
                 Objects.equals(tagId, photoXtrTagInfo.tagId) &&
                 Objects.equals(albumId, photoXtrTagInfo.albumId) &&
+                Objects.equals(hasTags, photoXtrTagInfo.hasTags) &&
                 Objects.equals(id, photoXtrTagInfo.id) &&
                 Objects.equals(text, photoXtrTagInfo.text) &&
                 Objects.equals(lat, photoXtrTagInfo.lat) &&
@@ -402,6 +422,7 @@ public class PhotoXtrTagInfo implements Validable {
         sb.append(", photo130=").append(photo130);
         sb.append(", tagId=").append(tagId);
         sb.append(", albumId=").append(albumId);
+        sb.append(", hasTags=").append(hasTags);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", lat=").append(lat);

@@ -12,15 +12,16 @@ import java.util.Objects;
 public class UserId implements Validable {
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public UserId setUserId(Integer userId) {
+    public UserId setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

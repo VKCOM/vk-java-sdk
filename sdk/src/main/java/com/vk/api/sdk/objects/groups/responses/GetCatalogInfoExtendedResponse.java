@@ -14,23 +14,15 @@ import java.util.Objects;
  * GetCatalogInfoExtendedResponse object
  */
 public class GetCatalogInfoExtendedResponse implements Validable {
+    @SerializedName("categories")
+    private List<GroupCategoryFull> categories;
+
     /**
      * Information whether catalog is enabled for current user
      */
     @SerializedName("enabled")
     @Required
     private BoolInt enabled;
-
-    @SerializedName("categories")
-    private List<GroupCategoryFull> categories;
-
-    public boolean isEnabled() {
-        return enabled == BoolInt.YES;
-    }
-
-    public BoolInt getEnabled() {
-        return enabled;
-    }
 
     public List<GroupCategoryFull> getCategories() {
         return categories;
@@ -39,6 +31,14 @@ public class GetCatalogInfoExtendedResponse implements Validable {
     public GetCatalogInfoExtendedResponse setCategories(List<GroupCategoryFull> categories) {
         this.categories = categories;
         return this;
+    }
+
+    public boolean isEnabled() {
+        return enabled == BoolInt.YES;
+    }
+
+    public BoolInt getEnabled() {
+        return enabled;
     }
 
     @Override

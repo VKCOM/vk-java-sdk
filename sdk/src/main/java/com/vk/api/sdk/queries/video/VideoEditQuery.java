@@ -4,44 +4,59 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.video.responses.EditResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Video.edit method
  */
-public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkResponse> {
+public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, EditResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param videoId value of "video id" parameter.
+     * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoEditQuery(VkApiClient client, UserActor actor, int videoId) {
-        super(client, "video.edit", OkResponse.class);
+    public VideoEditQuery(VkApiClient client, UserActor actor, Integer videoId) {
+        super(client, "video.edit", EditResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoEditQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.edit", EditResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoEditQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public VideoEditQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
      * Video ID.
      *
-     * @param value value of "video id" parameter.
+     * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoEditQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoEditQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
@@ -51,6 +66,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("name")
     public VideoEditQuery name(String value) {
         return unsafeParam("name", value);
     }
@@ -61,6 +77,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param value value of "desc" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("desc")
     public VideoEditQuery desc(String value) {
         return unsafeParam("desc", value);
     }
@@ -71,27 +88,41 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param value value of "no comments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("no_comments")
     public VideoEditQuery noComments(Boolean value) {
         return unsafeParam("no_comments", value);
     }
 
     /**
-     * '1' — to repeat the playback of the video, '0' — to play the video once,
+     * '1' - to repeat the playback of the video, '0' - to play the video once,
      *
      * @param value value of "repeat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("repeat")
     public VideoEditQuery repeat(Boolean value) {
         return unsafeParam("repeat", value);
     }
 
     /**
-     * privacy_view
+     * Set ord info
+     *
+     * @param value value of "ord info" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("ord_info")
+    public VideoEditQuery ordInfo(String value) {
+        return unsafeParam("ord_info", value);
+    }
+
+    /**
+     * privacyView
      * Privacy settings in a [vk.com/dev/privacy_setting|special format]. Privacy setting is available for videos uploaded to own profile by user.
      *
      * @param value value of "privacy view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_view")
     public VideoEditQuery privacyView(String... value) {
         return unsafeParam("privacy_view", value);
     }
@@ -102,17 +133,19 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param value value of "privacy view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_view")
     public VideoEditQuery privacyView(List<String> value) {
         return unsafeParam("privacy_view", value);
     }
 
     /**
-     * privacy_comment
+     * privacyComment
      * Privacy settings for comments in a [vk.com/dev/privacy_setting|special format].
      *
      * @param value value of "privacy comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_comment")
     public VideoEditQuery privacyComment(String... value) {
         return unsafeParam("privacy_comment", value);
     }
@@ -123,6 +156,7 @@ public class VideoEditQuery extends AbstractQueryBuilder<VideoEditQuery, OkRespo
      * @param value value of "privacy comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_comment")
     public VideoEditQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }

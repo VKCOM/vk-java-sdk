@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.docs.responses.SearchResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,29 +15,25 @@ import java.util.List;
  */
 public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param q value of "q" parameter.
      */
-    public DocsSearchQuery(VkApiClient client, UserActor actor, String q) {
+    public DocsSearchQuery(VkApiClient client, GroupActor actor) {
         super(client, "docs.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
-        q(q);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param q value of "q" parameter.
      */
-    public DocsSearchQuery(VkApiClient client, GroupActor actor, String q) {
+    public DocsSearchQuery(VkApiClient client, UserActor actor) {
         super(client, "docs.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
-        q(q);
     }
 
     /**
@@ -45,7 +42,8 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DocsSearchQuery q(String value) {
+    @ApiParam("q")
+    public DocsSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
 
@@ -55,6 +53,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param value value of "search own" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("search_own")
     public DocsSearchQuery searchOwn(Boolean value) {
         return unsafeParam("search_own", value);
     }
@@ -65,6 +64,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param value value of "count" parameter. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DocsSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -75,6 +75,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DocsSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -85,6 +86,7 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
      * @param value value of "return tags" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_tags")
     public DocsSearchQuery returnTags(Boolean value) {
         return unsafeParam("return_tags", value);
     }
@@ -96,6 +98,6 @@ public class DocsSearchQuery extends AbstractQueryBuilder<DocsSearchQuery, Searc
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("q", "access_token");
+        return Arrays.asList("access_token");
     }
 }

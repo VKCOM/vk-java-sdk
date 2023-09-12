@@ -14,7 +14,7 @@ public class LinkApplicationStore implements Validable {
      * Store Id
      */
     @SerializedName("id")
-    private Float id;
+    private Number id;
 
     /**
      * Store name
@@ -22,11 +22,11 @@ public class LinkApplicationStore implements Validable {
     @SerializedName("name")
     private String name;
 
-    public Float getId() {
+    public Number getId() {
         return id;
     }
 
-    public LinkApplicationStore setId(Float id) {
+    public LinkApplicationStore setId(Number id) {
         this.id = id;
         return this;
     }

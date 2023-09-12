@@ -13,26 +13,26 @@ import java.util.Objects;
 public class GeoCoordinates implements Validable {
     @SerializedName("latitude")
     @Required
-    private Float latitude;
+    private Number latitude;
 
     @SerializedName("longitude")
     @Required
-    private Float longitude;
+    private Number longitude;
 
-    public Float getLatitude() {
+    public Number getLatitude() {
         return latitude;
     }
 
-    public GeoCoordinates setLatitude(Float latitude) {
+    public GeoCoordinates setLatitude(Number latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public Float getLongitude() {
+    public Number getLongitude() {
         return longitude;
     }
 
-    public GeoCoordinates setLongitude(Float longitude) {
+    public GeoCoordinates setLongitude(Number longitude) {
         this.longitude = longitude;
         return this;
     }

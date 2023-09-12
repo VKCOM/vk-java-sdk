@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class NewsfeedDeleteListQuery extends AbstractQueryBuilder<NewsfeedDeleteListQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param listId value of "list id" parameter. Minimum is 0.
      */
-    public NewsfeedDeleteListQuery(VkApiClient client, UserActor actor, int listId) {
+    public NewsfeedDeleteListQuery(VkApiClient client, UserActor actor, Integer listId) {
         super(client, "newsfeed.deleteList", OkResponse.class);
         accessToken(actor.getAccessToken());
         listId(listId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NewsfeedDeleteListQuery(VkApiClient client, UserActor actor) {
+        super(client, "newsfeed.deleteList", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,7 +43,8 @@ public class NewsfeedDeleteListQuery extends AbstractQueryBuilder<NewsfeedDelete
      * @param value value of "list id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedDeleteListQuery listId(int value) {
+    @ApiParam("list_id")
+    public NewsfeedDeleteListQuery listId(Integer value) {
         return unsafeParam("list_id", value);
     }
 

@@ -22,6 +22,7 @@ public class Error implements Validable {
      * Error description
      */
     @SerializedName("error_description")
+    @Required
     private String errorDescription;
 
     /**

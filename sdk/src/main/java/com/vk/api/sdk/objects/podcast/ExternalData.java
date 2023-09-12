@@ -11,10 +11,16 @@ import java.util.Objects;
  */
 public class ExternalData implements Validable {
     /**
-     * Url of the podcast page
+     * Podcast cover
      */
-    @SerializedName("url")
-    private String url;
+    @SerializedName("cover")
+    private Cover cover;
+
+    /**
+     * Name of the podcasts owner community
+     */
+    @SerializedName("owner_name")
+    private String ownerName;
 
     /**
      * Url of the podcasts owner community
@@ -29,23 +35,26 @@ public class ExternalData implements Validable {
     private String title;
 
     /**
-     * Name of the podcasts owner community
+     * Url of the podcast page
      */
-    @SerializedName("owner_name")
-    private String ownerName;
+    @SerializedName("url")
+    private String url;
 
-    /**
-     * Podcast cover
-     */
-    @SerializedName("cover")
-    private Cover cover;
-
-    public String getUrl() {
-        return url;
+    public Cover getCover() {
+        return cover;
     }
 
-    public ExternalData setUrl(String url) {
-        this.url = url;
+    public ExternalData setCover(Cover cover) {
+        this.cover = cover;
+        return this;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public ExternalData setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
         return this;
     }
 
@@ -67,21 +76,12 @@ public class ExternalData implements Validable {
         return this;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public String getUrl() {
+        return url;
     }
 
-    public ExternalData setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-        return this;
-    }
-
-    public Cover getCover() {
-        return cover;
-    }
-
-    public ExternalData setCover(Cover cover) {
-        this.cover = cover;
+    public ExternalData setUrl(String url) {
+        this.url = url;
         return this;
     }
 

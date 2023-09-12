@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.fave.GetItemType;
 import com.vk.api.sdk.objects.fave.responses.GetResponse;
 import com.vk.api.sdk.objects.users.Fields;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,11 +27,12 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
     }
 
     /**
-     * '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
+     * '1' - to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
      *
      * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public FaveGetQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -41,6 +43,7 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "item type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("item_type")
     public FaveGetQuery itemType(GetItemType value) {
         return unsafeParam("item_type", value);
     }
@@ -51,6 +54,7 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "tag id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tag_id")
     public FaveGetQuery tagId(Integer value) {
         return unsafeParam("tag_id", value);
     }
@@ -61,6 +65,7 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FaveGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -71,18 +76,9 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "count" parameter. Maximum is 100. Minimum is 1. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FaveGetQuery count(Integer value) {
         return unsafeParam("count", value);
-    }
-
-    /**
-     * Set fields
-     *
-     * @param value value of "fields" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public FaveGetQuery fields(Fields value) {
-        return unsafeParam("fields", value);
     }
 
     /**
@@ -91,8 +87,32 @@ public class FaveGetQuery extends AbstractQueryBuilder<FaveGetQuery, GetResponse
      * @param value value of "is from snackbar" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_from_snackbar")
     public FaveGetQuery isFromSnackbar(Boolean value) {
         return unsafeParam("is_from_snackbar", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public FaveGetQuery fields(Fields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public FaveGetQuery fields(List<Fields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override

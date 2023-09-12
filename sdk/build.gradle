@@ -1,44 +1,42 @@
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-if (JavaVersion.current().isJava8Compatible()) {
-    allprojects {
-        tasks.withType(Javadoc) {
-            options.addStringOption('Xdoclint:none', '-quiet')
-        }
-    }
+tasks.withType(Javadoc).configureEach {
+    // disable the crazy super-strict doclint tool in Java 8
+    //noinspection SpellCheckingInspection
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.register('wrapper', Wrapper) {
+    gradleVersion = '7.4'
 }
 
 dependencies {
-    compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
-    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    implementation group: 'com.google.code.gson', name: 'gson', version: gsonVersion
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
 
-    compile group: 'org.apache.commons', name: 'commons-text', version: commonsTextVersion
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
-    compile group: 'commons-io', name: 'commons-io', version: commonsIOVersion
-    compile group: 'org.asynchttpclient', name: 'async-http-client', version: asyncHttpClientVersion
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
-    compile group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
+    implementation group: 'org.apache.commons', name: 'commons-text', version: commonsTextVersion
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsLangVersion
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
+    implementation group: 'commons-io', name: 'commons-io', version: commonsIOVersion
+    implementation group: 'org.asynchttpclient', name: 'async-http-client', version: asyncHttpClientVersion
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: httpClientVersion
+    implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: httpClientVersion
 
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
-    testCompile group: 'org.testng', name: 'testng', version: testngVersion
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4jVersion
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4jVersion
+    testImplementation group: 'org.testng', name: 'testng', version: testngVersion
 }
 
 def releaseBuild = !version.endsWith('-SNAPSHOT')
 
-def safeProperty(String name) {
-    hasProperty(name) ? project.properties[name] : ''
-}
-
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
+tasks.register('javadocJar', Jar) {
+    archiveClassifier.set("javadoc")
     from javadoc
 }
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
+tasks.register('sourcesJar', Jar) {
+    archiveClassifier.set("sources")
     from sourceSets.main.allSource
 }
 
@@ -47,61 +45,70 @@ artifacts {
 }
 
 signing {
-    required { releaseBuild && gradle.taskGraph.hasTask("uploadArchives") }
-
-    sign configurations.archives
+    required { releaseBuild && gradle.taskGraph.hasTask("publishing") }
+    useGpgCmd()
+    sign publishing.publications
 }
 
-uploadArchives {
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
     repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            [userName: safeProperty('ossrhUsername'), password: safeProperty('ossrhPassword')].with { auth ->
-                repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-                    authentication auth
-                }
-
-                snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                    authentication auth
-                }
+        maven {
+            def releasesUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+            def snapshotsUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+            url = !releaseBuild ? snapshotsUrl : releasesUrl
+            credentials {
+                username = project.properties["ossrhUsername"].toString()
+                password = project.properties["ossrhPassword"].toString()
             }
-
-            pom.project {
-                name 'Java SDK for VK API'
-                packaging 'jar'
-
-                description 'Java library for VK API interaction, includes OAuth 2.0 authorization and API methods.'
-                url 'https://github.com/VKCOM/vk-java-sdk'
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = 'sdk'
+            pom {
+                name = 'Java SDK for VK API'
+                packaging = 'jar'
+                description = 'Java library for VK API interaction, includes OAuth 2.0 authorization and API methods.'
+                url = 'https://github.com/VKCOM/vk-java-sdk'
 
                 scm {
-                    connection 'scm:git@github.com:VKCOM/vk-java-sdk.git'
-                    developerConnection 'scm:git@github.com:VKCOM/vk-java-sdk.git'
-                    url 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                    url = 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                    connection = 'scm:git@github.com:VKCOM/vk-java-sdk.git'
+                    developerConnection = 'scm:git@github.com:VKCOM/vk-java-sdk.git'
                 }
 
                 licenses {
                     license {
-                        name 'The MIT License (MIT)'
-                        url 'http://opensource.org/licenses/MIT'
-                        distribution 'repo'
+                        name = 'The MIT License (MIT)'
+                        url = 'http://opensource.org/licenses/MIT'
+                        distribution = 'repo'
                     }
                 }
 
                 developers {
                     developer {
-                        id 'tsivarev'
-                        name 'Anton Tsivarev'
-                        email 'a.tsivarev@corp.vk.com'
+                        id = 'tsivarev'
+                        name = 'Anton Tsivarev'
+                        email = 'a.tsivarev@corp.vk.com'
                     }
-                }
-		
-                properties {
-                    skipStagingRepositoryClose true
-                    autoReleaseAfterClose true
+                    developer {
+                        id = 'aashurok'
+                        name = 'Aleksei Ashurok'
+                        email = 'a.ashurok@corp.vk.com'
+                    }
+                    developer {
+                        id = 'ppv-vldmr'
+                        name = 'Vladimir Popov'
+                        email = 'vv.popov@vk.team'
+                    }
                 }
             }
         }
     }
 }
-

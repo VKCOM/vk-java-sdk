@@ -19,12 +19,6 @@ public class RepostsInfo implements Validable {
     private Integer count;
 
     /**
-     * Wall reposts counter
-     */
-    @SerializedName("wall_count")
-    private Integer wallCount;
-
-    /**
      * Mail reposts counter
      */
     @SerializedName("mail_count")
@@ -34,7 +28,13 @@ public class RepostsInfo implements Validable {
      * Information whether current user has reposted the post
      */
     @SerializedName("user_reposted")
-    private Integer userReposted;
+    private BoolInt userReposted;
+
+    /**
+     * Wall reposts counter
+     */
+    @SerializedName("wall_count")
+    private Integer wallCount;
 
     public Integer getCount() {
         return count;
@@ -42,15 +42,6 @@ public class RepostsInfo implements Validable {
 
     public RepostsInfo setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public Integer getWallCount() {
-        return wallCount;
-    }
-
-    public RepostsInfo setWallCount(Integer wallCount) {
-        this.wallCount = wallCount;
         return this;
     }
 
@@ -63,12 +54,20 @@ public class RepostsInfo implements Validable {
         return this;
     }
 
-    public Integer getUserReposted() {
+    public boolean isUserReposted() {
+        return userReposted == BoolInt.YES;
+    }
+
+    public BoolInt getUserReposted() {
         return userReposted;
     }
 
-    public RepostsInfo setUserReposted(Integer userReposted) {
-        this.userReposted = userReposted;
+    public Integer getWallCount() {
+        return wallCount;
+    }
+
+    public RepostsInfo setWallCount(Integer wallCount) {
+        this.wallCount = wallCount;
         return this;
     }
 

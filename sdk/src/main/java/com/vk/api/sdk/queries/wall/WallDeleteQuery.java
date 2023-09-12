@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class WallDeleteQuery extends AbstractQueryBuilder<WallDeleteQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,10 +27,12 @@ public class WallDeleteQuery extends AbstractQueryBuilder<WallDeleteQuery, OkRes
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallDeleteQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallDeleteQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -39,6 +42,7 @@ public class WallDeleteQuery extends AbstractQueryBuilder<WallDeleteQuery, OkRes
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("post_id")
     public WallDeleteQuery postId(Integer value) {
         return unsafeParam("post_id", value);
     }

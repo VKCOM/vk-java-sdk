@@ -2,20 +2,18 @@ package com.vk.api.sdk.client;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ApiServerException;
-import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.exceptions.ExceptionMapper;
-import com.vk.api.sdk.exceptions.RequiredFieldException;
+import com.vk.api.sdk.exceptions.*;
 import com.vk.api.sdk.objects.base.Error;
 import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import com.vk.api.sdk.objects.Validable;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by tsivarev on 21.07.16.
@@ -34,7 +32,9 @@ public abstract class ApiRequest<T> {
 
     private int retryAttempts;
 
-    private Header[] headers = new Header[0];
+    private List<Header> headers = new ArrayList<>();
+
+    private Map<String, String> cookies = new HashMap<>();
 
     public ApiRequest(String url, TransportClient client, Gson gson, int retryAttempts, Type responseClass) {
         this.client = client;
@@ -44,16 +44,63 @@ public abstract class ApiRequest<T> {
         this.retryAttempts = retryAttempts;
     }
 
+    public ApiRequest<T> setCookie(String name, String value) {
+        this.cookies.put(name, value);
+        return this;
+    }
+    public ApiRequest<T> setCookies(Map<String, String> entries) {
+        this.cookies.putAll(entries);
+        return this;
+    }
+
+    public String getCookie(String name) {
+        return cookies.get(name);
+    }
+
+    private Header getCookies() {
+        return new BasicHeader("Cookie",
+                this.cookies.entrySet().stream()
+                        .map(entry -> String.format("%s=%s", entry.getKey(), entry.getValue()))
+                        .reduce("", (result, cookie) -> result + cookie + ";"));
+    }
+
     public ApiRequest<T> setHeaders(Header[] headers) {
         if (headers != null) {
-            this.headers = headers;
+            this.headers = Arrays.asList(headers);
         }
 
         return this;
     }
 
-    protected Header[] getHeaders() {
-        return this.headers;
+    public ApiRequest<T> addHeader(Header header) {
+        if (header != null) {
+            this.headers.add(header);
+        }
+
+        return this;
+    }
+
+    public ApiRequest<T> addHeaders(List<Header> headers) {
+        if (headers != null && !headers.isEmpty()) {
+            this.headers.addAll(headers);
+        }
+
+        return this;
+    }
+
+    public ApiRequest<T> setHeaders(List<Header> headers) {
+        if (headers != null) {
+            this.headers = new ArrayList<>(headers);
+        }
+
+        return this;
+    }
+
+    public Header[] getHeaders() {
+        List<Header> result = new ArrayList<>(this.headers);
+        result.addAll(Arrays.asList(getQueryHeaders()));
+        if(!cookies.isEmpty()) result.add(this.getCookies());
+        return result.toArray(new Header[0]);
     }
 
     public String getUrl() {
@@ -86,8 +133,36 @@ public abstract class ApiRequest<T> {
         throw exception;
     }
 
-    private T executeWithoutRetry() throws ClientException, ApiException {
-        String textResponse = executeAsString();
+    public ClientResponseTypeable<T> executeTypeable() throws ApiExtendedException, ClientException {
+        ApiExtendedException exception = null;
+        for (int i = 0; i < retryAttempts; i++) {
+            try {
+                return executeTypeableWithoutRetry();
+            } catch (ApiExtendedException e) {
+                LOG.warn("API Server error", e);
+                exception = e;
+            }
+        }
+
+        throw exception;
+    }
+
+    public T executeWithoutRetry() throws ClientException, ApiException {
+        return parseClientResponse(executeAsStringWithReturningFullInfo());
+    }
+
+    public ClientResponseTypeable<T> executeTypeableWithoutRetry() throws ClientException, ApiExtendedException {
+        ClientResponse response = executeAsStringWithReturningFullInfo();
+
+        return new ClientResponseTypeable<T>(
+                response.getStatusCode(),
+                parseClientResponse(response),
+                response.getHeaders()
+        );
+    }
+
+    private T parseClientResponse(ClientResponse clientResponse) throws ClientException, ApiExtendedException {
+        String textResponse = clientResponse.getContent();
         JsonReader jsonReader = new JsonReader(new StringReader(textResponse));
         JsonObject json = (JsonObject) new JsonParser().parse(jsonReader);
 
@@ -101,10 +176,17 @@ public abstract class ApiRequest<T> {
                 throw new ClientException("Can't parse json response");
             }
 
-            ApiException exception = ExceptionMapper.parseException(error);
+            ApiException apiException = ExceptionMapper.parseException(error);
+            ApiExtendedException extendedException = new ApiExtendedException(
+                    apiException.getCode(),
+                    clientResponse.getStatusCode(),
+                    clientResponse.getHeaders(),
+                    apiException.getDescription(),
+                    apiException.getMessageRaw()
+            );
 
-            LOG.error("API error", exception);
-            throw exception;
+            LOG.error("API error", extendedException);
+            throw extendedException;
         }
 
         JsonElement response = json;
@@ -131,7 +213,7 @@ public abstract class ApiRequest<T> {
         }
     }
 
-    public String executeAsString() throws ClientException {
+    public ClientResponse executeAsStringWithReturningFullInfo() throws ClientException {
         ClientResponse response;
         try {
             response = client.post(url, getBody(), getHeaders());
@@ -156,12 +238,16 @@ public abstract class ApiRequest<T> {
             throw new ClientException("Invalid content type");
         }
 
-        return response.getContent();
+        return response;
+    }
+
+    public String executeAsString() throws ClientException {
+        return executeAsStringWithReturningFullInfo().getContent();
     }
 
     public ClientResponse executeAsRaw() throws ClientException {
         try {
-            return client.post(url, getBody());
+            return client.post(url, getBody(), getHeaders());
         } catch (IOException e) {
             LOG.error("Problems with request: " + url, e);
             throw new ClientException("I/O exception");
@@ -169,4 +255,6 @@ public abstract class ApiRequest<T> {
     }
 
     protected abstract String getBody();
+
+    protected abstract Header[] getQueryHeaders();
 }

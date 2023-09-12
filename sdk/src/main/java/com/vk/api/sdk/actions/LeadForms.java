@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.leadforms.LeadFormsCreateQuery;
 import com.vk.api.sdk.queries.leadforms.LeadFormsDeleteQuery;
 import com.vk.api.sdk.queries.leadforms.LeadFormsGetLeadsQuery;
@@ -26,7 +27,7 @@ public class LeadForms extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param name
      * @param title
@@ -35,60 +36,111 @@ public class LeadForms extends AbstractAction {
      * @param policyLinkUrl
      * @return query
      */
-    public LeadFormsCreateQuery create(UserActor actor, int groupId, String name, String title,
+    @ApiMethod("leadForms.create")
+    public LeadFormsCreateQuery create(UserActor actor, Long groupId, String name, String title,
             String description, String questions, String policyLinkUrl) {
         return new LeadFormsCreateQuery(getClient(), actor, groupId, name, title, description, questions, policyLinkUrl);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.create")
+    public LeadFormsCreateQuery create(UserActor actor) {
+        return new LeadFormsCreateQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param formId
      * @return query
      */
-    public LeadFormsDeleteQuery delete(UserActor actor, int groupId, int formId) {
+    @ApiMethod("leadForms.delete")
+    public LeadFormsDeleteQuery delete(UserActor actor, Long groupId, Integer formId) {
         return new LeadFormsDeleteQuery(getClient(), actor, groupId, formId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.delete")
+    public LeadFormsDeleteQuery delete(UserActor actor) {
+        return new LeadFormsDeleteQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param formId
      * @return query
      */
-    public LeadFormsGetQuery get(UserActor actor, int groupId, int formId) {
+    @ApiMethod("leadForms.get")
+    public LeadFormsGetQuery get(UserActor actor, Long groupId, Integer formId) {
         return new LeadFormsGetQuery(getClient(), actor, groupId, formId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.get")
+    public LeadFormsGetQuery get(UserActor actor) {
+        return new LeadFormsGetQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param formId
      * @return query
      */
-    public LeadFormsGetLeadsQuery getLeads(UserActor actor, int groupId, int formId) {
+    @ApiMethod("leadForms.getLeads")
+    public LeadFormsGetLeadsQuery getLeads(UserActor actor, Long groupId, Integer formId) {
         return new LeadFormsGetLeadsQuery(getClient(), actor, groupId, formId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.getLeads")
+    public LeadFormsGetLeadsQuery getLeads(UserActor actor) {
+        return new LeadFormsGetLeadsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("leadForms.getUploadURL")
     public LeadFormsGetUploadURLQuery getUploadURL(UserActor actor) {
         return new LeadFormsGetUploadURLQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public LeadFormsListQuery list(UserActor actor, int groupId) {
+    @ApiMethod("leadForms.list")
+    public LeadFormsListQuery list(UserActor actor, Long groupId) {
         return new LeadFormsListQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.list")
+    public LeadFormsListQuery list(UserActor actor) {
+        return new LeadFormsListQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param formId
      * @param name
@@ -98,8 +150,18 @@ public class LeadForms extends AbstractAction {
      * @param policyLinkUrl
      * @return query
      */
-    public LeadFormsUpdateQuery update(UserActor actor, int groupId, int formId, String name,
+    @ApiMethod("leadForms.update")
+    public LeadFormsUpdateQuery update(UserActor actor, Long groupId, Integer formId, String name,
             String title, String description, String questions, String policyLinkUrl) {
         return new LeadFormsUpdateQuery(getClient(), actor, groupId, formId, name, title, description, questions, policyLinkUrl);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("leadForms.update")
+    public LeadFormsUpdateQuery update(UserActor actor) {
+        return new LeadFormsUpdateQuery(getClient(), actor);
     }
 }

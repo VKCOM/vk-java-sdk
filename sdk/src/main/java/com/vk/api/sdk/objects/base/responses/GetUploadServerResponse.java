@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.base.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URI;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public class GetUploadServerResponse implements Validable {
      * Upload URL
      */
     @SerializedName("upload_url")
+    @Required
     private URI uploadUrl;
 
     public URI getUploadUrl() {

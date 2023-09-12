@@ -4,8 +4,9 @@ package com.vk.api.sdk.objects.apps.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.Leaderboard;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.users.User;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,13 +18,15 @@ public class GetLeaderboardExtendedResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Leaderboard> items;
 
     @SerializedName("profiles")
-    private List<UserMin> profiles;
+    private List<User> profiles;
 
     public Integer getCount() {
         return count;
@@ -43,11 +46,11 @@ public class GetLeaderboardExtendedResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getProfiles() {
+    public List<User> getProfiles() {
         return profiles;
     }
 
-    public GetLeaderboardExtendedResponse setProfiles(List<UserMin> profiles) {
+    public GetLeaderboardExtendedResponse setProfiles(List<User> profiles) {
         this.profiles = profiles;
         return this;
     }

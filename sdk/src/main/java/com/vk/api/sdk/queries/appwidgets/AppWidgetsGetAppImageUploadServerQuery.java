@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.appwidgets.GetAppImageUploadServerImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetAppImageUploadServerResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class AppWidgetsGetAppImageUploadServerQuery extends AbstractQueryBuilder<AppWidgetsGetAppImageUploadServerQuery, GetAppImageUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,12 +30,25 @@ public class AppWidgetsGetAppImageUploadServerQuery extends AbstractQueryBuilder
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppWidgetsGetAppImageUploadServerQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "appWidgets.getAppImageUploadServer", GetAppImageUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Set image type
      *
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsGetAppImageUploadServerQuery imageType(
+    @ApiParam("image_type")
+    public AppWidgetsGetAppImageUploadServerQuery imageType(
             GetAppImageUploadServerImageType value) {
         return unsafeParam("image_type", value);
     }

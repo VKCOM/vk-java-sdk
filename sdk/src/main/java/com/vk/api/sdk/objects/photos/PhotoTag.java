@@ -20,6 +20,12 @@ public class PhotoTag implements Validable {
     private Integer date;
 
     /**
+     * Tagged description.
+     */
+    @SerializedName("description")
+    private String description;
+
+    /**
      * Tag ID
      */
     @SerializedName("id")
@@ -30,25 +36,23 @@ public class PhotoTag implements Validable {
      * ID of the tag creator
      */
     @SerializedName("placer_id")
+    @Required
     private Integer placerId;
 
     /**
      * Tag description
      */
     @SerializedName("tagged_name")
+    @Required
     private String taggedName;
 
     /**
-     * Tagged description.
-     */
-    @SerializedName("description")
-    private String description;
-
-    /**
      * Tagged user ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     /**
      * Information whether the tag is reviewed
@@ -62,28 +66,28 @@ public class PhotoTag implements Validable {
      */
     @SerializedName("x")
     @Required
-    private Float x;
+    private Number x;
 
     /**
      * Coordinate X of the right lower corner
      */
     @SerializedName("x2")
     @Required
-    private Float x2;
+    private Number x2;
 
     /**
      * Coordinate Y of the left upper corner
      */
     @SerializedName("y")
     @Required
-    private Float y;
+    private Number y;
 
     /**
      * Coordinate Y of the right lower corner
      */
     @SerializedName("y2")
     @Required
-    private Float y2;
+    private Number y2;
 
     public Integer getDate() {
         return date;
@@ -91,6 +95,15 @@ public class PhotoTag implements Validable {
 
     public PhotoTag setDate(Integer date) {
         this.date = date;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public PhotoTag setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -121,20 +134,11 @@ public class PhotoTag implements Validable {
         return this;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public PhotoTag setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public PhotoTag setUserId(Integer userId) {
+    public PhotoTag setUserId(Long userId) {
         this.userId = userId;
         return this;
     }
@@ -147,38 +151,38 @@ public class PhotoTag implements Validable {
         return viewed;
     }
 
-    public Float getX() {
+    public Number getX() {
         return x;
     }
 
-    public PhotoTag setX(Float x) {
+    public PhotoTag setX(Number x) {
         this.x = x;
         return this;
     }
 
-    public Float getX2() {
+    public Number getX2() {
         return x2;
     }
 
-    public PhotoTag setX2(Float x2) {
+    public PhotoTag setX2(Number x2) {
         this.x2 = x2;
         return this;
     }
 
-    public Float getY() {
+    public Number getY() {
         return y;
     }
 
-    public PhotoTag setY(Float y) {
+    public PhotoTag setY(Number y) {
         this.y = y;
         return this;
     }
 
-    public Float getY2() {
+    public Number getY2() {
         return y2;
     }
 
-    public PhotoTag setY2(Float y2) {
+    public PhotoTag setY2(Number y2) {
         this.y2 = y2;
         return this;
     }

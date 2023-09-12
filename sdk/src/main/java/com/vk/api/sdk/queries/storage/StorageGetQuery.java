@@ -7,6 +7,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.storage.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -16,18 +17,7 @@ import java.util.List;
  */
 public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<GetResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public StorageGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "storage.get", Utils.buildParametrizedType(List.class, GetResponse.class));
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,7 +28,18 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StorageGetQuery(VkApiClient client, UserActor actor) {
+        super(client, "storage.get", Utils.buildParametrizedType(List.class, GetResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -55,6 +56,7 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<
      * @param value value of "key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("key")
     public StorageGetQuery key(String value) {
         return unsafeParam("key", value);
     }
@@ -62,10 +64,12 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StorageGetQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public StorageGetQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -76,6 +80,7 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<
      * @param value value of "keys" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("keys")
     public StorageGetQuery keys(String... value) {
         return unsafeParam("keys", value);
     }
@@ -86,6 +91,7 @@ public class StorageGetQuery extends AbstractQueryBuilder<StorageGetQuery, List<
      * @param value value of "keys" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("keys")
     public StorageGetQuery keys(List<String> value) {
         return unsafeParam("keys", value);
     }

@@ -4,7 +4,10 @@ package com.vk.api.sdk.objects.apps.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.App;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,13 +19,27 @@ public class GetResponse implements Validable {
      * Total number of applications
      */
     @SerializedName("count")
+    @Required
     private Integer count;
+
+    /**
+     * List of groups, used only when extended=true
+     */
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     /**
      * List of applications
      */
     @SerializedName("items")
+    @Required
     private List<App> items;
+
+    /**
+     * List of friends profiles, used only when return_friends=true
+     */
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
 
     public Integer getCount() {
         return count;
@@ -30,6 +47,15 @@ public class GetResponse implements Validable {
 
     public GetResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -42,9 +68,18 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -53,6 +88,8 @@ public class GetResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetResponse getResponse = (GetResponse) o;
         return Objects.equals(count, getResponse.count) &&
+                Objects.equals(profiles, getResponse.profiles) &&
+                Objects.equals(groups, getResponse.groups) &&
                 Objects.equals(items, getResponse.items);
     }
 
@@ -65,6 +102,8 @@ public class GetResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

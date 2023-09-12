@@ -12,6 +12,15 @@ import java.util.Objects;
  * MarketCategoryTree object
  */
 public class MarketCategoryTree implements Validable {
+    @SerializedName("children")
+    private List<MarketCategoryTree> children;
+
+    /**
+     * Icon name
+     */
+    @SerializedName("icon_name")
+    private String iconName;
+
     /**
      * Category ID
      */
@@ -26,8 +35,32 @@ public class MarketCategoryTree implements Validable {
     @Required
     private String name;
 
-    @SerializedName("children")
-    private List<MarketCategoryTree> children;
+    /**
+     * SEO-friendly URL to page with category's items
+     */
+    @SerializedName("url")
+    private String url;
+
+    @SerializedName("view")
+    private MarketCategoryTreeView view;
+
+    public List<MarketCategoryTree> getChildren() {
+        return children;
+    }
+
+    public MarketCategoryTree setChildren(List<MarketCategoryTree> children) {
+        this.children = children;
+        return this;
+    }
+
+    public String getIconName() {
+        return iconName;
+    }
+
+    public MarketCategoryTree setIconName(String iconName) {
+        this.iconName = iconName;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -47,18 +80,27 @@ public class MarketCategoryTree implements Validable {
         return this;
     }
 
-    public List<MarketCategoryTree> getChildren() {
-        return children;
+    public String getUrl() {
+        return url;
     }
 
-    public MarketCategoryTree setChildren(List<MarketCategoryTree> children) {
-        this.children = children;
+    public MarketCategoryTree setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public MarketCategoryTreeView getView() {
+        return view;
+    }
+
+    public MarketCategoryTree setView(MarketCategoryTreeView view) {
+        this.view = view;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(children, name, id);
+        return Objects.hash(view, children, iconName, name, id, url);
     }
 
     @Override
@@ -66,9 +108,12 @@ public class MarketCategoryTree implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarketCategoryTree marketCategoryTree = (MarketCategoryTree) o;
-        return Objects.equals(children, marketCategoryTree.children) &&
+        return Objects.equals(view, marketCategoryTree.view) &&
+                Objects.equals(children, marketCategoryTree.children) &&
                 Objects.equals(name, marketCategoryTree.name) &&
-                Objects.equals(id, marketCategoryTree.id);
+                Objects.equals(id, marketCategoryTree.id) &&
+                Objects.equals(iconName, marketCategoryTree.iconName) &&
+                Objects.equals(url, marketCategoryTree.url);
     }
 
     @Override
@@ -79,9 +124,12 @@ public class MarketCategoryTree implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MarketCategoryTree{");
-        sb.append("children=").append(children);
+        sb.append("view=").append(view);
+        sb.append(", children=").append(children);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", iconName='").append(iconName).append("'");
+        sb.append(", url='").append(url).append("'");
         sb.append('}');
         return sb.toString();
     }

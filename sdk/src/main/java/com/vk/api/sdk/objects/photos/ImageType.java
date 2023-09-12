@@ -39,7 +39,10 @@ public enum ImageType implements EnumParam {
     Z("z"),
 
     @SerializedName("w")
-    W("w");
+    W("w"),
+
+    @SerializedName("base")
+    BASE("base");
 
     private final String value;
 

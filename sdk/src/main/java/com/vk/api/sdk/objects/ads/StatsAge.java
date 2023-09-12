@@ -9,42 +9,12 @@ import java.util.Objects;
 /**
  * StatsAge object
  */
-public class StatsAge implements Validable {
-    /**
-     * Clicks rate
-     */
-    @SerializedName("clicks_rate")
-    private Float clicksRate;
-
-    /**
-     * Impressions rate
-     */
-    @SerializedName("impressions_rate")
-    private Float impressionsRate;
-
+public class StatsAge extends DemographicStatsPeriodItemBase implements Validable {
     /**
      * Age interval
      */
     @SerializedName("value")
     private String value;
-
-    public Float getClicksRate() {
-        return clicksRate;
-    }
-
-    public StatsAge setClicksRate(Float clicksRate) {
-        this.clicksRate = clicksRate;
-        return this;
-    }
-
-    public Float getImpressionsRate() {
-        return impressionsRate;
-    }
-
-    public StatsAge setImpressionsRate(Float impressionsRate) {
-        this.impressionsRate = impressionsRate;
-        return this;
-    }
 
     public String getValue() {
         return value;
@@ -57,7 +27,7 @@ public class StatsAge implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(clicksRate, impressionsRate, value);
+        return Objects.hash(value);
     }
 
     @Override
@@ -65,9 +35,7 @@ public class StatsAge implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StatsAge statsAge = (StatsAge) o;
-        return Objects.equals(impressionsRate, statsAge.impressionsRate) &&
-                Objects.equals(value, statsAge.value) &&
-                Objects.equals(clicksRate, statsAge.clicksRate);
+        return Objects.equals(value, statsAge.value);
     }
 
     @Override
@@ -78,9 +46,7 @@ public class StatsAge implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsAge{");
-        sb.append("impressionsRate=").append(impressionsRate);
-        sb.append(", value='").append(value).append("'");
-        sb.append(", clicksRate=").append(clicksRate);
+        sb.append("value='").append(value).append("'");
         sb.append('}');
         return sb.toString();
     }

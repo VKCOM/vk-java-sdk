@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.database.DatabaseGetChairsQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetCitiesByIdQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetCitiesQuery;
@@ -14,7 +15,7 @@ import com.vk.api.sdk.queries.database.DatabaseGetFacultiesQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetMetroStationsByIdQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetMetroStationsQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetRegionsQuery;
-import com.vk.api.sdk.queries.database.DatabaseGetSchoolClassesQuery;
+import com.vk.api.sdk.queries.database.DatabaseGetSchoolClassesQueryWithNew;
 import com.vk.api.sdk.queries.database.DatabaseGetSchoolsQuery;
 import com.vk.api.sdk.queries.database.DatabaseGetUniversitiesQuery;
 
@@ -34,42 +35,67 @@ public class Database extends AbstractAction {
     /**
      * Returns list of chairs on a specified faculty.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param facultyId id of the faculty to get chairs from
      * @return query
      */
-    public DatabaseGetChairsQuery getChairs(UserActor actor, int facultyId) {
+    @ApiMethod("database.getChairs")
+    public DatabaseGetChairsQuery getChairs(UserActor actor, Integer facultyId) {
         return new DatabaseGetChairsQuery(getClient(), actor, facultyId);
     }
 
     /**
      * Returns list of chairs on a specified faculty.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getChairs")
+    public DatabaseGetChairsQuery getChairs(UserActor actor) {
+        return new DatabaseGetChairsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns list of chairs on a specified faculty.
+     *
+     * @param actor vk service actor
      * @param facultyId id of the faculty to get chairs from
      * @return query
      */
-    public DatabaseGetChairsQuery getChairs(ServiceActor actor, int facultyId) {
+    @ApiMethod("database.getChairs")
+    public DatabaseGetChairsQuery getChairs(ServiceActor actor, Integer facultyId) {
         return new DatabaseGetChairsQuery(getClient(), actor, facultyId);
+    }
+
+    /**
+     * Returns list of chairs on a specified faculty.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getChairs")
+    public DatabaseGetChairsQuery getChairs(ServiceActor actor) {
+        return new DatabaseGetChairsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of cities.
      *
-     * @param actor vk actor
-     * @param countryId Country ID.
+     * @param actor vk user actor
      * @return query
      */
-    public DatabaseGetCitiesQuery getCities(UserActor actor, int countryId) {
-        return new DatabaseGetCitiesQuery(getClient(), actor, countryId);
+    @ApiMethod("database.getCities")
+    public DatabaseGetCitiesQuery getCities(UserActor actor) {
+        return new DatabaseGetCitiesQuery(getClient(), actor);
     }
 
     /**
      * Returns information about cities by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("database.getCitiesById")
     public DatabaseGetCitiesByIdQuery getCitiesById(UserActor actor) {
         return new DatabaseGetCitiesByIdQuery(getClient(), actor);
     }
@@ -77,9 +103,10 @@ public class Database extends AbstractAction {
     /**
      * Returns information about cities by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("database.getCitiesById")
     public DatabaseGetCitiesByIdQuery getCitiesById(ServiceActor actor) {
         return new DatabaseGetCitiesByIdQuery(getClient(), actor);
     }
@@ -87,9 +114,10 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of countries.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("database.getCountries")
     public DatabaseGetCountriesQuery getCountries(UserActor actor) {
         return new DatabaseGetCountriesQuery(getClient(), actor);
     }
@@ -97,9 +125,10 @@ public class Database extends AbstractAction {
     /**
      * Returns information about countries by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("database.getCountriesById")
     public DatabaseGetCountriesByIdQuery getCountriesById(UserActor actor) {
         return new DatabaseGetCountriesByIdQuery(getClient(), actor);
     }
@@ -107,9 +136,10 @@ public class Database extends AbstractAction {
     /**
      * Returns information about countries by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("database.getCountriesById")
     public DatabaseGetCountriesByIdQuery getCountriesById(ServiceActor actor) {
         return new DatabaseGetCountriesByIdQuery(getClient(), actor);
     }
@@ -117,53 +147,102 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of faculties (i.e., university departments).
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param universityId University ID.
      * @return query
      */
-    public DatabaseGetFacultiesQuery getFaculties(UserActor actor, int universityId) {
+    @ApiMethod("database.getFaculties")
+    public DatabaseGetFacultiesQuery getFaculties(UserActor actor, Integer universityId) {
         return new DatabaseGetFacultiesQuery(getClient(), actor, universityId);
     }
 
     /**
      * Returns a list of faculties (i.e., university departments).
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getFaculties")
+    public DatabaseGetFacultiesQuery getFaculties(UserActor actor) {
+        return new DatabaseGetFacultiesQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of faculties (i.e., university departments).
+     *
+     * @param actor vk service actor
      * @param universityId University ID.
      * @return query
      */
-    public DatabaseGetFacultiesQuery getFaculties(ServiceActor actor, int universityId) {
+    @ApiMethod("database.getFaculties")
+    public DatabaseGetFacultiesQuery getFaculties(ServiceActor actor, Integer universityId) {
         return new DatabaseGetFacultiesQuery(getClient(), actor, universityId);
     }
 
     /**
+     * Returns a list of faculties (i.e., university departments).
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getFaculties")
+    public DatabaseGetFacultiesQuery getFaculties(ServiceActor actor) {
+        return new DatabaseGetFacultiesQuery(getClient(), actor);
+    }
+
+    /**
      * Get metro stations by city
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param cityId
      * @return query
      */
-    public DatabaseGetMetroStationsQuery getMetroStations(UserActor actor, int cityId) {
+    @ApiMethod("database.getMetroStations")
+    public DatabaseGetMetroStationsQuery getMetroStations(UserActor actor, Integer cityId) {
         return new DatabaseGetMetroStationsQuery(getClient(), actor, cityId);
     }
 
     /**
      * Get metro stations by city
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getMetroStations")
+    public DatabaseGetMetroStationsQuery getMetroStations(UserActor actor) {
+        return new DatabaseGetMetroStationsQuery(getClient(), actor);
+    }
+
+    /**
+     * Get metro stations by city
+     *
+     * @param actor vk service actor
      * @param cityId
      * @return query
      */
-    public DatabaseGetMetroStationsQuery getMetroStations(ServiceActor actor, int cityId) {
+    @ApiMethod("database.getMetroStations")
+    public DatabaseGetMetroStationsQuery getMetroStations(ServiceActor actor, Integer cityId) {
         return new DatabaseGetMetroStationsQuery(getClient(), actor, cityId);
+    }
+
+    /**
+     * Get metro stations by city
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getMetroStations")
+    public DatabaseGetMetroStationsQuery getMetroStations(ServiceActor actor) {
+        return new DatabaseGetMetroStationsQuery(getClient(), actor);
     }
 
     /**
      * Get metro station by his id
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("database.getMetroStationsById")
     public DatabaseGetMetroStationsByIdQuery getMetroStationsById(UserActor actor) {
         return new DatabaseGetMetroStationsByIdQuery(getClient(), actor);
     }
@@ -171,9 +250,10 @@ public class Database extends AbstractAction {
     /**
      * Get metro station by his id
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("database.getMetroStationsById")
     public DatabaseGetMetroStationsByIdQuery getMetroStationsById(ServiceActor actor) {
         return new DatabaseGetMetroStationsByIdQuery(getClient(), actor);
     }
@@ -181,73 +261,124 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of regions.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param countryId Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
      * @return query
      */
-    public DatabaseGetRegionsQuery getRegions(UserActor actor, int countryId) {
+    @ApiMethod("database.getRegions")
+    public DatabaseGetRegionsQuery getRegions(UserActor actor, Integer countryId) {
         return new DatabaseGetRegionsQuery(getClient(), actor, countryId);
     }
 
     /**
      * Returns a list of regions.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getRegions")
+    public DatabaseGetRegionsQuery getRegions(UserActor actor) {
+        return new DatabaseGetRegionsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of regions.
+     *
+     * @param actor vk service actor
      * @param countryId Country ID, received in [vk.com/dev/database.getCountries|database.getCountries] method.
      * @return query
      */
-    public DatabaseGetRegionsQuery getRegions(ServiceActor actor, int countryId) {
+    @ApiMethod("database.getRegions")
+    public DatabaseGetRegionsQuery getRegions(ServiceActor actor, Integer countryId) {
         return new DatabaseGetRegionsQuery(getClient(), actor, countryId);
     }
 
     /**
-     * Returns a list of school classes specified for the country.
+     * Returns a list of regions.
      *
-     * @param actor vk actor
-     * @return query
+     * @param actor vk service actor
+     * @return only actor query 
      */
-    public DatabaseGetSchoolClassesQuery getSchoolClasses(UserActor actor) {
-        return new DatabaseGetSchoolClassesQuery(getClient(), actor);
+    @ApiMethod("database.getRegions")
+    public DatabaseGetRegionsQuery getRegions(ServiceActor actor) {
+        return new DatabaseGetRegionsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of school classes specified for the country.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
-    public DatabaseGetSchoolClassesQuery getSchoolClasses(ServiceActor actor) {
-        return new DatabaseGetSchoolClassesQuery(getClient(), actor);
+    @ApiMethod("database.getSchoolClasses")
+    public DatabaseGetSchoolClassesQueryWithNew getSchoolClassesNew(UserActor actor) {
+        return new DatabaseGetSchoolClassesQueryWithNew(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of school classes specified for the country.
+     *
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("database.getSchoolClasses")
+    public DatabaseGetSchoolClassesQueryWithNew getSchoolClassesNew(ServiceActor actor) {
+        return new DatabaseGetSchoolClassesQueryWithNew(getClient(), actor);
     }
 
     /**
      * Returns a list of schools.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param cityId City ID.
      * @return query
      */
-    public DatabaseGetSchoolsQuery getSchools(UserActor actor, int cityId) {
+    @ApiMethod("database.getSchools")
+    public DatabaseGetSchoolsQuery getSchools(UserActor actor, Integer cityId) {
         return new DatabaseGetSchoolsQuery(getClient(), actor, cityId);
     }
 
     /**
      * Returns a list of schools.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getSchools")
+    public DatabaseGetSchoolsQuery getSchools(UserActor actor) {
+        return new DatabaseGetSchoolsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of schools.
+     *
+     * @param actor vk service actor
      * @param cityId City ID.
      * @return query
      */
-    public DatabaseGetSchoolsQuery getSchools(ServiceActor actor, int cityId) {
+    @ApiMethod("database.getSchools")
+    public DatabaseGetSchoolsQuery getSchools(ServiceActor actor, Integer cityId) {
         return new DatabaseGetSchoolsQuery(getClient(), actor, cityId);
+    }
+
+    /**
+     * Returns a list of schools.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("database.getSchools")
+    public DatabaseGetSchoolsQuery getSchools(ServiceActor actor) {
+        return new DatabaseGetSchoolsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of higher education institutions.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("database.getUniversities")
     public DatabaseGetUniversitiesQuery getUniversities(UserActor actor) {
         return new DatabaseGetUniversitiesQuery(getClient(), actor);
     }
@@ -255,9 +386,10 @@ public class Database extends AbstractAction {
     /**
      * Returns a list of higher education institutions.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("database.getUniversities")
     public DatabaseGetUniversitiesQuery getUniversities(ServiceActor actor) {
         return new DatabaseGetUniversitiesQuery(getClient(), actor);
     }

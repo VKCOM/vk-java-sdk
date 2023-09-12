@@ -36,7 +36,10 @@ public enum TemplateActionTypeNames implements EnumParam {
     INTENT_SUBSCRIBE("intent_subscribe"),
 
     @SerializedName("intent_unsubscribe")
-    INTENT_UNSUBSCRIBE("intent_unsubscribe");
+    INTENT_UNSUBSCRIBE("intent_unsubscribe"),
+
+    @SerializedName("open_modal_view")
+    OPEN_MODAL_VIEW("open_modal_view");
 
     private final String value;
 

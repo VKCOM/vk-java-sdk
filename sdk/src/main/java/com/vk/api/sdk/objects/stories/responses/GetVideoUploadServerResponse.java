@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.stories.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,12 +16,14 @@ public class GetVideoUploadServerResponse implements Validable {
      * Upload URL
      */
     @SerializedName("upload_url")
+    @Required
     private String uploadUrl;
 
     /**
      * Users ID who can to see story.
      */
     @SerializedName("user_ids")
+    @Required
     private List<Integer> userIds;
 
     public String getUploadUrl() {

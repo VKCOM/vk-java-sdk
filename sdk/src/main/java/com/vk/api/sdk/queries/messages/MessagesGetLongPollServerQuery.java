@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,18 +15,7 @@ import java.util.List;
  */
 public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<MessagesGetLongPollServerQuery, GetLongPollServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesGetLongPollServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.getLongPollServer", GetLongPollServerResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -37,11 +27,23 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
     }
 
     /**
-     * '1' — to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetLongPollServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getLongPollServer", GetLongPollServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * '1' - to return the 'pts' field, needed for the [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      *
      * @param value value of "need pts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_pts")
     public MessagesGetLongPollServerQuery needPts(Boolean value) {
         return unsafeParam("need_pts", value);
     }
@@ -49,10 +51,12 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
     /**
      * Group ID (for group messages with user access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollServerQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetLongPollServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -62,6 +66,7 @@ public class MessagesGetLongPollServerQuery extends AbstractQueryBuilder<Message
      * @param value value of "lp version" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("lp_version")
     public MessagesGetLongPollServerQuery lpVersion(Integer value) {
         return unsafeParam("lp_version", value);
     }

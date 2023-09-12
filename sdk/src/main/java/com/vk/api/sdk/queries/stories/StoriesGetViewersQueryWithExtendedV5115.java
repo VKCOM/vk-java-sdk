@@ -5,6 +5,8 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.stories.responses.GetViewersExtendedV5115Response;
 import java.util.Arrays;
 import java.util.List;
@@ -14,35 +16,31 @@ import java.util.List;
  */
 public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilder<StoriesGetViewersQueryWithExtendedV5115, GetViewersExtendedV5115Response> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesGetViewersQueryWithExtendedV5115(VkApiClient client, UserActor actor, int ownerId,
-            int storyId) {
+    public StoriesGetViewersQueryWithExtendedV5115(VkApiClient client, GroupActor actor,
+            Integer storyId) {
         super(client, "stories.getViewers", GetViewersExtendedV5115Response.class);
         accessToken(actor.getAccessToken());
-        ownerId(ownerId);
         storyId(storyId);
         extended(true);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesGetViewersQueryWithExtendedV5115(VkApiClient client, GroupActor actor,
-            int ownerId, int storyId) {
+    public StoriesGetViewersQueryWithExtendedV5115(VkApiClient client, UserActor actor,
+            Integer storyId) {
         super(client, "stories.getViewers", GetViewersExtendedV5115Response.class);
         accessToken(actor.getAccessToken());
-        ownerId(ownerId);
         storyId(storyId);
         extended(true);
     }
@@ -50,10 +48,12 @@ public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilde
     /**
      * Story owner ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetViewersQueryWithExtendedV5115 ownerId(int value) {
+    @ApiParam("owner_id")
+    public StoriesGetViewersQueryWithExtendedV5115 ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -63,7 +63,8 @@ public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilde
      * @param value value of "story id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetViewersQueryWithExtendedV5115 storyId(int value) {
+    @ApiParam("story_id")
+    public StoriesGetViewersQueryWithExtendedV5115 storyId(Integer value) {
         return unsafeParam("story_id", value);
     }
 
@@ -73,6 +74,7 @@ public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilde
      * @param value value of "count" parameter. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public StoriesGetViewersQueryWithExtendedV5115 count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -83,18 +85,43 @@ public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilde
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public StoriesGetViewersQueryWithExtendedV5115 offset(Integer value) {
         return unsafeParam("offset", value);
     }
 
     /**
-     * '1' — to return detailed information about photos
+     * '1' - to return detailed information about photos
      *
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public StoriesGetViewersQueryWithExtendedV5115 extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public StoriesGetViewersQueryWithExtendedV5115 fields(UserGroupFields... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public StoriesGetViewersQueryWithExtendedV5115 fields(List<UserGroupFields> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override
@@ -104,6 +131,6 @@ public class StoriesGetViewersQueryWithExtendedV5115 extends AbstractQueryBuilde
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("story_id", "owner_id", "access_token");
+        return Arrays.asList("story_id", "access_token");
     }
 }

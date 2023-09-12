@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.board;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class BoardUnfixTopicQuery extends AbstractQueryBuilder<BoardUnfixTopicQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 0.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardUnfixTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId) {
+    public BoardUnfixTopicQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer topicId) {
         super(client, "board.unfixTopic", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,12 +31,25 @@ public class BoardUnfixTopicQuery extends AbstractQueryBuilder<BoardUnfixTopicQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardUnfixTopicQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.unfixTopic", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardUnfixTopicQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardUnfixTopicQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +59,8 @@ public class BoardUnfixTopicQuery extends AbstractQueryBuilder<BoardUnfixTopicQu
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardUnfixTopicQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardUnfixTopicQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 

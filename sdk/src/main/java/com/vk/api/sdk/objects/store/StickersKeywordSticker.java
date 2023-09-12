@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.store;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,12 +15,14 @@ public class StickersKeywordSticker implements Validable {
      * Pack id
      */
     @SerializedName("pack_id")
+    @Required
     private Integer packId;
 
     /**
      * Sticker id
      */
     @SerializedName("sticker_id")
+    @Required
     private Integer stickerId;
 
     public Integer getPackId() {

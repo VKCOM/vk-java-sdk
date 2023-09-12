@@ -20,6 +20,9 @@ public class GetFollowersFieldsResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("friends_count")
+    private Integer friendsCount;
+
     @SerializedName("items")
     @Required
     private List<UserFull> items;
@@ -30,6 +33,15 @@ public class GetFollowersFieldsResponse implements Validable {
 
     public GetFollowersFieldsResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public Integer getFriendsCount() {
+        return friendsCount;
+    }
+
+    public GetFollowersFieldsResponse setFriendsCount(Integer friendsCount) {
+        this.friendsCount = friendsCount;
         return this;
     }
 
@@ -44,7 +56,7 @@ public class GetFollowersFieldsResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, friendsCount, items);
     }
 
     @Override
@@ -52,7 +64,8 @@ public class GetFollowersFieldsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetFollowersFieldsResponse getFollowersFieldsResponse = (GetFollowersFieldsResponse) o;
-        return Objects.equals(count, getFollowersFieldsResponse.count) &&
+        return Objects.equals(friendsCount, getFollowersFieldsResponse.friendsCount) &&
+                Objects.equals(count, getFollowersFieldsResponse.count) &&
                 Objects.equals(items, getFollowersFieldsResponse.items);
     }
 
@@ -64,7 +77,8 @@ public class GetFollowersFieldsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetFollowersFieldsResponse{");
-        sb.append("count=").append(count);
+        sb.append("friendsCount=").append(friendsCount);
+        sb.append(", count=").append(count);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

@@ -4,8 +4,6 @@ package com.vk.api.sdk.objects.ads;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.base.BoolInt;
-import com.vk.api.sdk.objects.base.PropertyExists;
 import java.util.Objects;
 
 /**
@@ -13,16 +11,22 @@ import java.util.Objects;
  */
 public class Criteria implements Validable {
     /**
+     * AB test
+     */
+    @SerializedName("ab_test")
+    private String abTest;
+
+    /**
      * Age from
      */
     @SerializedName("age_from")
-    private Integer ageFrom;
+    private String ageFrom;
 
     /**
      * Age to
      */
     @SerializedName("age_to")
-    private Integer ageTo;
+    private String ageTo;
 
     /**
      * Apps IDs
@@ -40,7 +44,13 @@ public class Criteria implements Validable {
      * Days to birthday
      */
     @SerializedName("birthday")
-    private Integer birthday;
+    private String birthday;
+
+    /**
+     * Browsers
+     */
+    @SerializedName("browsers")
+    private String browsers;
 
     /**
      * Cities IDs
@@ -55,10 +65,16 @@ public class Criteria implements Validable {
     private String citiesNot;
 
     /**
+     * Count
+     */
+    @SerializedName("count")
+    private String count;
+
+    /**
      * Country ID
      */
     @SerializedName("country")
-    private Integer country;
+    private String country;
 
     /**
      * Districts IDs
@@ -67,10 +83,64 @@ public class Criteria implements Validable {
     private String districts;
 
     /**
+     * Geo near
+     */
+    @SerializedName("geo_near")
+    private String geoNear;
+
+    /**
+     * Geo point type
+     */
+    @SerializedName("geo_point_type")
+    private String geoPointType;
+
+    /**
+     * Group types
+     */
+    @SerializedName("group_types")
+    private String groupTypes;
+
+    /**
      * Communities IDs
      */
     @SerializedName("groups")
     private String groups;
+
+    /**
+     * Groups active
+     */
+    @SerializedName("groups_active")
+    private String groupsActive;
+
+    /**
+     * Group active formula
+     */
+    @SerializedName("groups_active_formula")
+    private String groupsActiveFormula;
+
+    /**
+     * Groups active recommended ids
+     */
+    @SerializedName("groups_active_recommended")
+    private String groupsActiveRecommended;
+
+    /**
+     * Groups formula
+     */
+    @SerializedName("groups_formula")
+    private String groupsFormula;
+
+    /**
+     * Group not
+     */
+    @SerializedName("groups_not")
+    private String groupsNot;
+
+    /**
+     * Groups recommended ids
+     */
+    @SerializedName("groups_recommended")
+    private String groupsRecommended;
 
     /**
      * Interests categories IDs
@@ -79,16 +149,70 @@ public class Criteria implements Validable {
     private String interestCategories;
 
     /**
+     * Interest categories formula
+     */
+    @SerializedName("interest_categories_formula")
+    private String interestCategoriesFormula;
+
+    /**
      * Interests
      */
     @SerializedName("interests")
     private String interests;
 
     /**
+     * Key phrases
+     */
+    @SerializedName("key_phrases")
+    private String keyPhrases;
+
+    /**
+     * Key phrases days
+     */
+    @SerializedName("key_phrases_days")
+    private String keyPhrasesDays;
+
+    /**
+     * Mobile apps events formula
+     */
+    @SerializedName("mobile_apps_events_formula")
+    private String mobileAppsEventsFormula;
+
+    /**
+     * mobile_manufacturers
+     */
+    @SerializedName("mobile_manufacturers")
+    private String mobileManufacturers;
+
+    /**
+     * Mobile os max version
+     */
+    @SerializedName("mobile_os_max_version")
+    private String mobileOsMaxVersion;
+
+    /**
+     * Mobile os min version
+     */
+    @SerializedName("mobile_os_min_version")
+    private String mobileOsMinVersion;
+
+    /**
+     * Music artists formula
+     */
+    @SerializedName("music_artists_formula")
+    private String musicArtistsFormula;
+
+    /**
+     * operators
+     */
+    @SerializedName("operators")
+    private String operators;
+
+    /**
      * Information whether the user has proceeded VK payments before
      */
     @SerializedName("paying")
-    private BoolInt paying;
+    private String paying;
 
     /**
      * Positions IDs
@@ -97,19 +221,37 @@ public class Criteria implements Validable {
     private String positions;
 
     /**
+     * Price list audience type
+     */
+    @SerializedName("price_list_audience_type")
+    private String priceListAudienceType;
+
+    /**
+     * Price list id
+     */
+    @SerializedName("price_list_id")
+    private String priceListId;
+
+    /**
+     * Price list retargeting formula
+     */
+    @SerializedName("price_list_retargeting_formula")
+    private String priceListRetargetingFormula;
+
+    /**
      * Religions IDs
      */
     @SerializedName("religions")
     private String religions;
 
     /**
-     * Retargeting groups IDs
+     * Retargeting groups ids
      */
     @SerializedName("retargeting_groups")
     private String retargetingGroups;
 
     /**
-     * Retargeting groups IDs to except
+     * Retargeting groups NOT ids
      */
     @SerializedName("retargeting_groups_not")
     private String retargetingGroupsNot;
@@ -118,13 +260,13 @@ public class Criteria implements Validable {
      * School graduation year from
      */
     @SerializedName("school_from")
-    private Integer schoolFrom;
+    private String schoolFrom;
 
     /**
      * School graduation year to
      */
     @SerializedName("school_to")
-    private Integer schoolTo;
+    private String schoolTo;
 
     /**
      * Schools IDs
@@ -154,22 +296,34 @@ public class Criteria implements Validable {
     private String streets;
 
     /**
-     * Travellers only
+     * Suggested criteria
+     */
+    @SerializedName("suggested_criteria")
+    private String suggestedCriteria;
+
+    /**
+     * Tags
+     */
+    @SerializedName("tags")
+    private String tags;
+
+    /**
+     * Travellers
      */
     @SerializedName("travellers")
-    private PropertyExists travellers;
+    private String travellers;
 
     /**
      * University graduation year from
      */
     @SerializedName("uni_from")
-    private Integer uniFrom;
+    private String uniFrom;
 
     /**
      * University graduation year to
      */
     @SerializedName("uni_to")
-    private Integer uniTo;
+    private String uniTo;
 
     /**
      * Browsers
@@ -189,20 +343,35 @@ public class Criteria implements Validable {
     @SerializedName("user_os")
     private String userOs;
 
-    public Integer getAgeFrom() {
+    /**
+     * wifi_only
+     */
+    @SerializedName("wifi_only")
+    private String wifiOnly;
+
+    public String getAbTest() {
+        return abTest;
+    }
+
+    public Criteria setAbTest(String abTest) {
+        this.abTest = abTest;
+        return this;
+    }
+
+    public String getAgeFrom() {
         return ageFrom;
     }
 
-    public Criteria setAgeFrom(Integer ageFrom) {
+    public Criteria setAgeFrom(String ageFrom) {
         this.ageFrom = ageFrom;
         return this;
     }
 
-    public Integer getAgeTo() {
+    public String getAgeTo() {
         return ageTo;
     }
 
-    public Criteria setAgeTo(Integer ageTo) {
+    public Criteria setAgeTo(String ageTo) {
         this.ageTo = ageTo;
         return this;
     }
@@ -225,12 +394,21 @@ public class Criteria implements Validable {
         return this;
     }
 
-    public Integer getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public Criteria setBirthday(Integer birthday) {
+    public Criteria setBirthday(String birthday) {
         this.birthday = birthday;
+        return this;
+    }
+
+    public String getBrowsers() {
+        return browsers;
+    }
+
+    public Criteria setBrowsers(String browsers) {
+        this.browsers = browsers;
         return this;
     }
 
@@ -252,11 +430,20 @@ public class Criteria implements Validable {
         return this;
     }
 
-    public Integer getCountry() {
+    public String getCount() {
+        return count;
+    }
+
+    public Criteria setCount(String count) {
+        this.count = count;
+        return this;
+    }
+
+    public String getCountry() {
         return country;
     }
 
-    public Criteria setCountry(Integer country) {
+    public Criteria setCountry(String country) {
         this.country = country;
         return this;
     }
@@ -270,12 +457,93 @@ public class Criteria implements Validable {
         return this;
     }
 
+    public String getGeoNear() {
+        return geoNear;
+    }
+
+    public Criteria setGeoNear(String geoNear) {
+        this.geoNear = geoNear;
+        return this;
+    }
+
+    public String getGeoPointType() {
+        return geoPointType;
+    }
+
+    public Criteria setGeoPointType(String geoPointType) {
+        this.geoPointType = geoPointType;
+        return this;
+    }
+
+    public String getGroupTypes() {
+        return groupTypes;
+    }
+
+    public Criteria setGroupTypes(String groupTypes) {
+        this.groupTypes = groupTypes;
+        return this;
+    }
+
     public String getGroups() {
         return groups;
     }
 
     public Criteria setGroups(String groups) {
         this.groups = groups;
+        return this;
+    }
+
+    public String getGroupsActive() {
+        return groupsActive;
+    }
+
+    public Criteria setGroupsActive(String groupsActive) {
+        this.groupsActive = groupsActive;
+        return this;
+    }
+
+    public String getGroupsActiveFormula() {
+        return groupsActiveFormula;
+    }
+
+    public Criteria setGroupsActiveFormula(String groupsActiveFormula) {
+        this.groupsActiveFormula = groupsActiveFormula;
+        return this;
+    }
+
+    public String getGroupsActiveRecommended() {
+        return groupsActiveRecommended;
+    }
+
+    public Criteria setGroupsActiveRecommended(String groupsActiveRecommended) {
+        this.groupsActiveRecommended = groupsActiveRecommended;
+        return this;
+    }
+
+    public String getGroupsFormula() {
+        return groupsFormula;
+    }
+
+    public Criteria setGroupsFormula(String groupsFormula) {
+        this.groupsFormula = groupsFormula;
+        return this;
+    }
+
+    public String getGroupsNot() {
+        return groupsNot;
+    }
+
+    public Criteria setGroupsNot(String groupsNot) {
+        this.groupsNot = groupsNot;
+        return this;
+    }
+
+    public String getGroupsRecommended() {
+        return groupsRecommended;
+    }
+
+    public Criteria setGroupsRecommended(String groupsRecommended) {
+        this.groupsRecommended = groupsRecommended;
         return this;
     }
 
@@ -288,6 +556,15 @@ public class Criteria implements Validable {
         return this;
     }
 
+    public String getInterestCategoriesFormula() {
+        return interestCategoriesFormula;
+    }
+
+    public Criteria setInterestCategoriesFormula(String interestCategoriesFormula) {
+        this.interestCategoriesFormula = interestCategoriesFormula;
+        return this;
+    }
+
     public String getInterests() {
         return interests;
     }
@@ -297,12 +574,85 @@ public class Criteria implements Validable {
         return this;
     }
 
-    public boolean isPaying() {
-        return paying == BoolInt.YES;
+    public String getKeyPhrases() {
+        return keyPhrases;
     }
 
-    public BoolInt getPaying() {
+    public Criteria setKeyPhrases(String keyPhrases) {
+        this.keyPhrases = keyPhrases;
+        return this;
+    }
+
+    public String getKeyPhrasesDays() {
+        return keyPhrasesDays;
+    }
+
+    public Criteria setKeyPhrasesDays(String keyPhrasesDays) {
+        this.keyPhrasesDays = keyPhrasesDays;
+        return this;
+    }
+
+    public String getMobileAppsEventsFormula() {
+        return mobileAppsEventsFormula;
+    }
+
+    public Criteria setMobileAppsEventsFormula(String mobileAppsEventsFormula) {
+        this.mobileAppsEventsFormula = mobileAppsEventsFormula;
+        return this;
+    }
+
+    public String getMobileManufacturers() {
+        return mobileManufacturers;
+    }
+
+    public Criteria setMobileManufacturers(String mobileManufacturers) {
+        this.mobileManufacturers = mobileManufacturers;
+        return this;
+    }
+
+    public String getMobileOsMaxVersion() {
+        return mobileOsMaxVersion;
+    }
+
+    public Criteria setMobileOsMaxVersion(String mobileOsMaxVersion) {
+        this.mobileOsMaxVersion = mobileOsMaxVersion;
+        return this;
+    }
+
+    public String getMobileOsMinVersion() {
+        return mobileOsMinVersion;
+    }
+
+    public Criteria setMobileOsMinVersion(String mobileOsMinVersion) {
+        this.mobileOsMinVersion = mobileOsMinVersion;
+        return this;
+    }
+
+    public String getMusicArtistsFormula() {
+        return musicArtistsFormula;
+    }
+
+    public Criteria setMusicArtistsFormula(String musicArtistsFormula) {
+        this.musicArtistsFormula = musicArtistsFormula;
+        return this;
+    }
+
+    public String getOperators() {
+        return operators;
+    }
+
+    public Criteria setOperators(String operators) {
+        this.operators = operators;
+        return this;
+    }
+
+    public String getPaying() {
         return paying;
+    }
+
+    public Criteria setPaying(String paying) {
+        this.paying = paying;
+        return this;
     }
 
     public String getPositions() {
@@ -311,6 +661,33 @@ public class Criteria implements Validable {
 
     public Criteria setPositions(String positions) {
         this.positions = positions;
+        return this;
+    }
+
+    public String getPriceListAudienceType() {
+        return priceListAudienceType;
+    }
+
+    public Criteria setPriceListAudienceType(String priceListAudienceType) {
+        this.priceListAudienceType = priceListAudienceType;
+        return this;
+    }
+
+    public String getPriceListId() {
+        return priceListId;
+    }
+
+    public Criteria setPriceListId(String priceListId) {
+        this.priceListId = priceListId;
+        return this;
+    }
+
+    public String getPriceListRetargetingFormula() {
+        return priceListRetargetingFormula;
+    }
+
+    public Criteria setPriceListRetargetingFormula(String priceListRetargetingFormula) {
+        this.priceListRetargetingFormula = priceListRetargetingFormula;
         return this;
     }
 
@@ -341,20 +718,20 @@ public class Criteria implements Validable {
         return this;
     }
 
-    public Integer getSchoolFrom() {
+    public String getSchoolFrom() {
         return schoolFrom;
     }
 
-    public Criteria setSchoolFrom(Integer schoolFrom) {
+    public Criteria setSchoolFrom(String schoolFrom) {
         this.schoolFrom = schoolFrom;
         return this;
     }
 
-    public Integer getSchoolTo() {
+    public String getSchoolTo() {
         return schoolTo;
     }
 
-    public Criteria setSchoolTo(Integer schoolTo) {
+    public Criteria setSchoolTo(String schoolTo) {
         this.schoolTo = schoolTo;
         return this;
     }
@@ -404,24 +781,47 @@ public class Criteria implements Validable {
         return this;
     }
 
-    public boolean isTravellers() {
-        return travellers == PropertyExists.PROPERTY_EXISTS;
+    public String getSuggestedCriteria() {
+        return suggestedCriteria;
     }
 
-    public Integer getUniFrom() {
+    public Criteria setSuggestedCriteria(String suggestedCriteria) {
+        this.suggestedCriteria = suggestedCriteria;
+        return this;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public Criteria setTags(String tags) {
+        this.tags = tags;
+        return this;
+    }
+
+    public String getTravellers() {
+        return travellers;
+    }
+
+    public Criteria setTravellers(String travellers) {
+        this.travellers = travellers;
+        return this;
+    }
+
+    public String getUniFrom() {
         return uniFrom;
     }
 
-    public Criteria setUniFrom(Integer uniFrom) {
+    public Criteria setUniFrom(String uniFrom) {
         this.uniFrom = uniFrom;
         return this;
     }
 
-    public Integer getUniTo() {
+    public String getUniTo() {
         return uniTo;
     }
 
-    public Criteria setUniTo(Integer uniTo) {
+    public Criteria setUniTo(String uniTo) {
         this.uniTo = uniTo;
         return this;
     }
@@ -453,9 +853,18 @@ public class Criteria implements Validable {
         return this;
     }
 
+    public String getWifiOnly() {
+        return wifiOnly;
+    }
+
+    public Criteria setWifiOnly(String wifiOnly) {
+        this.wifiOnly = wifiOnly;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(birthday, retargetingGroups, country, streets, retargetingGroupsNot, districts, paying, userBrowsers, religions, citiesNot, ageTo, interestCategories, apps, userOs, cities, travellers, sex, userDevices, groups, positions, stations, uniFrom, uniTo, schools, schoolTo, ageFrom, statuses, appsNot, interests, schoolFrom);
+        return Objects.hash(country, streets, keyPhrases, retargetingGroupsNot, interestCategoriesFormula, groupsActive, groupsFormula, paying, musicArtistsFormula, userBrowsers, religions, interestCategories, cities, travellers, suggestedCriteria, userOs, geoNear, geoPointType, count, positions, stations, browsers, tags, uniTo, mobileOsMaxVersion, mobileAppsEventsFormula, schools, priceListRetargetingFormula, statuses, appsNot, mobileManufacturers, birthday, retargetingGroups, abTest, keyPhrasesDays, districts, operators, citiesNot, ageTo, apps, groupTypes, groupsActiveRecommended, sex, userDevices, groups, priceListId, groupsActiveFormula, groupsRecommended, priceListAudienceType, uniFrom, mobileOsMinVersion, wifiOnly, groupsNot, schoolTo, ageFrom, interests, schoolFrom);
     }
 
     @Override
@@ -463,35 +872,62 @@ public class Criteria implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Criteria criteria = (Criteria) o;
-        return Objects.equals(birthday, criteria.birthday) &&
-                Objects.equals(country, criteria.country) &&
+        return Objects.equals(country, criteria.country) &&
                 Objects.equals(userDevices, criteria.userDevices) &&
                 Objects.equals(streets, criteria.streets) &&
-                Objects.equals(retargetingGroupsNot, criteria.retargetingGroupsNot) &&
-                Objects.equals(districts, criteria.districts) &&
+                Objects.equals(groupTypes, criteria.groupTypes) &&
                 Objects.equals(schoolFrom, criteria.schoolFrom) &&
-                Objects.equals(uniTo, criteria.uniTo) &&
-                Objects.equals(ageFrom, criteria.ageFrom) &&
+                Objects.equals(groupsActiveFormula, criteria.groupsActiveFormula) &&
+                Objects.equals(geoNear, criteria.geoNear) &&
+                Objects.equals(mobileOsMinVersion, criteria.mobileOsMinVersion) &&
+                Objects.equals(groupsRecommended, criteria.groupsRecommended) &&
                 Objects.equals(citiesNot, criteria.citiesNot) &&
                 Objects.equals(paying, criteria.paying) &&
-                Objects.equals(userBrowsers, criteria.userBrowsers) &&
+                Objects.equals(wifiOnly, criteria.wifiOnly) &&
+                Objects.equals(groupsActive, criteria.groupsActive) &&
+                Objects.equals(abTest, criteria.abTest) &&
                 Objects.equals(religions, criteria.religions) &&
-                Objects.equals(ageTo, criteria.ageTo) &&
                 Objects.equals(interestCategories, criteria.interestCategories) &&
-                Objects.equals(apps, criteria.apps) &&
-                Objects.equals(retargetingGroups, criteria.retargetingGroups) &&
-                Objects.equals(userOs, criteria.userOs) &&
+                Objects.equals(keyPhrasesDays, criteria.keyPhrasesDays) &&
                 Objects.equals(cities, criteria.cities) &&
                 Objects.equals(travellers, criteria.travellers) &&
-                Objects.equals(sex, criteria.sex) &&
-                Objects.equals(groups, criteria.groups) &&
+                Objects.equals(count, criteria.count) &&
                 Objects.equals(appsNot, criteria.appsNot) &&
                 Objects.equals(positions, criteria.positions) &&
+                Objects.equals(priceListRetargetingFormula, criteria.priceListRetargetingFormula) &&
                 Objects.equals(stations, criteria.stations) &&
+                Objects.equals(browsers, criteria.browsers) &&
+                Objects.equals(tags, criteria.tags) &&
                 Objects.equals(schoolTo, criteria.schoolTo) &&
                 Objects.equals(schools, criteria.schools) &&
-                Objects.equals(uniFrom, criteria.uniFrom) &&
                 Objects.equals(statuses, criteria.statuses) &&
+                Objects.equals(mobileManufacturers, criteria.mobileManufacturers) &&
+                Objects.equals(birthday, criteria.birthday) &&
+                Objects.equals(musicArtistsFormula, criteria.musicArtistsFormula) &&
+                Objects.equals(retargetingGroupsNot, criteria.retargetingGroupsNot) &&
+                Objects.equals(mobileAppsEventsFormula, criteria.mobileAppsEventsFormula) &&
+                Objects.equals(districts, criteria.districts) &&
+                Objects.equals(uniTo, criteria.uniTo) &&
+                Objects.equals(ageFrom, criteria.ageFrom) &&
+                Objects.equals(suggestedCriteria, criteria.suggestedCriteria) &&
+                Objects.equals(groupsFormula, criteria.groupsFormula) &&
+                Objects.equals(operators, criteria.operators) &&
+                Objects.equals(userBrowsers, criteria.userBrowsers) &&
+                Objects.equals(groupsActiveRecommended, criteria.groupsActiveRecommended) &&
+                Objects.equals(ageTo, criteria.ageTo) &&
+                Objects.equals(priceListAudienceType, criteria.priceListAudienceType) &&
+                Objects.equals(apps, criteria.apps) &&
+                Objects.equals(mobileOsMaxVersion, criteria.mobileOsMaxVersion) &&
+                Objects.equals(retargetingGroups, criteria.retargetingGroups) &&
+                Objects.equals(userOs, criteria.userOs) &&
+                Objects.equals(keyPhrases, criteria.keyPhrases) &&
+                Objects.equals(sex, criteria.sex) &&
+                Objects.equals(groups, criteria.groups) &&
+                Objects.equals(groupsNot, criteria.groupsNot) &&
+                Objects.equals(priceListId, criteria.priceListId) &&
+                Objects.equals(interestCategoriesFormula, criteria.interestCategoriesFormula) &&
+                Objects.equals(uniFrom, criteria.uniFrom) &&
+                Objects.equals(geoPointType, criteria.geoPointType) &&
                 Objects.equals(interests, criteria.interests);
     }
 
@@ -503,35 +939,62 @@ public class Criteria implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Criteria{");
-        sb.append("birthday=").append(birthday);
-        sb.append(", country=").append(country);
+        sb.append("country='").append(country).append("'");
         sb.append(", userDevices='").append(userDevices).append("'");
         sb.append(", streets='").append(streets).append("'");
-        sb.append(", retargetingGroupsNot='").append(retargetingGroupsNot).append("'");
-        sb.append(", districts='").append(districts).append("'");
-        sb.append(", schoolFrom=").append(schoolFrom);
-        sb.append(", uniTo=").append(uniTo);
-        sb.append(", ageFrom=").append(ageFrom);
+        sb.append(", groupTypes='").append(groupTypes).append("'");
+        sb.append(", schoolFrom='").append(schoolFrom).append("'");
+        sb.append(", groupsActiveFormula='").append(groupsActiveFormula).append("'");
+        sb.append(", geoNear='").append(geoNear).append("'");
+        sb.append(", mobileOsMinVersion='").append(mobileOsMinVersion).append("'");
+        sb.append(", groupsRecommended='").append(groupsRecommended).append("'");
         sb.append(", citiesNot='").append(citiesNot).append("'");
-        sb.append(", paying=").append(paying);
-        sb.append(", userBrowsers='").append(userBrowsers).append("'");
+        sb.append(", paying='").append(paying).append("'");
+        sb.append(", wifiOnly='").append(wifiOnly).append("'");
+        sb.append(", groupsActive='").append(groupsActive).append("'");
+        sb.append(", abTest='").append(abTest).append("'");
         sb.append(", religions='").append(religions).append("'");
-        sb.append(", ageTo=").append(ageTo);
         sb.append(", interestCategories='").append(interestCategories).append("'");
-        sb.append(", apps='").append(apps).append("'");
-        sb.append(", retargetingGroups='").append(retargetingGroups).append("'");
-        sb.append(", userOs='").append(userOs).append("'");
+        sb.append(", keyPhrasesDays='").append(keyPhrasesDays).append("'");
         sb.append(", cities='").append(cities).append("'");
-        sb.append(", travellers=").append(travellers);
-        sb.append(", sex=").append(sex);
-        sb.append(", groups='").append(groups).append("'");
+        sb.append(", travellers='").append(travellers).append("'");
+        sb.append(", count='").append(count).append("'");
         sb.append(", appsNot='").append(appsNot).append("'");
         sb.append(", positions='").append(positions).append("'");
+        sb.append(", priceListRetargetingFormula='").append(priceListRetargetingFormula).append("'");
         sb.append(", stations='").append(stations).append("'");
-        sb.append(", schoolTo=").append(schoolTo);
+        sb.append(", browsers='").append(browsers).append("'");
+        sb.append(", tags='").append(tags).append("'");
+        sb.append(", schoolTo='").append(schoolTo).append("'");
         sb.append(", schools='").append(schools).append("'");
-        sb.append(", uniFrom=").append(uniFrom);
         sb.append(", statuses='").append(statuses).append("'");
+        sb.append(", mobileManufacturers='").append(mobileManufacturers).append("'");
+        sb.append(", birthday='").append(birthday).append("'");
+        sb.append(", musicArtistsFormula='").append(musicArtistsFormula).append("'");
+        sb.append(", retargetingGroupsNot='").append(retargetingGroupsNot).append("'");
+        sb.append(", mobileAppsEventsFormula='").append(mobileAppsEventsFormula).append("'");
+        sb.append(", districts='").append(districts).append("'");
+        sb.append(", uniTo='").append(uniTo).append("'");
+        sb.append(", ageFrom='").append(ageFrom).append("'");
+        sb.append(", suggestedCriteria='").append(suggestedCriteria).append("'");
+        sb.append(", groupsFormula='").append(groupsFormula).append("'");
+        sb.append(", operators='").append(operators).append("'");
+        sb.append(", userBrowsers='").append(userBrowsers).append("'");
+        sb.append(", groupsActiveRecommended='").append(groupsActiveRecommended).append("'");
+        sb.append(", ageTo='").append(ageTo).append("'");
+        sb.append(", priceListAudienceType='").append(priceListAudienceType).append("'");
+        sb.append(", apps='").append(apps).append("'");
+        sb.append(", mobileOsMaxVersion='").append(mobileOsMaxVersion).append("'");
+        sb.append(", retargetingGroups='").append(retargetingGroups).append("'");
+        sb.append(", userOs='").append(userOs).append("'");
+        sb.append(", keyPhrases='").append(keyPhrases).append("'");
+        sb.append(", sex=").append(sex);
+        sb.append(", groups='").append(groups).append("'");
+        sb.append(", groupsNot='").append(groupsNot).append("'");
+        sb.append(", priceListId='").append(priceListId).append("'");
+        sb.append(", interestCategoriesFormula='").append(interestCategoriesFormula).append("'");
+        sb.append(", uniFrom='").append(uniFrom).append("'");
+        sb.append(", geoPointType='").append(geoPointType).append("'");
         sb.append(", interests='").append(interests).append("'");
         sb.append('}');
         return sb.toString();

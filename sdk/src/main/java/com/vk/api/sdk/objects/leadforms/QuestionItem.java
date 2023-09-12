@@ -16,10 +16,6 @@ public class QuestionItem implements Validable {
     @Required
     private String key;
 
-    @SerializedName("type")
-    @Required
-    private QuestionItemType type;
-
     @SerializedName("label")
     private String label;
 
@@ -29,21 +25,16 @@ public class QuestionItem implements Validable {
     @SerializedName("options")
     private List<QuestionItemOption> options;
 
+    @SerializedName("type")
+    @Required
+    private QuestionItemType type;
+
     public String getKey() {
         return key;
     }
 
     public QuestionItem setKey(String key) {
         this.key = key;
-        return this;
-    }
-
-    public QuestionItemType getType() {
-        return type;
-    }
-
-    public QuestionItem setType(QuestionItemType type) {
-        this.type = type;
         return this;
     }
 
@@ -62,6 +53,15 @@ public class QuestionItem implements Validable {
 
     public QuestionItem setOptions(List<QuestionItemOption> options) {
         this.options = options;
+        return this;
+    }
+
+    public QuestionItemType getType() {
+        return type;
+    }
+
+    public QuestionItem setType(QuestionItemType type) {
+        this.type = type;
         return this;
     }
 

@@ -26,6 +26,7 @@ public class GetLongPollSettingsResponse implements Validable {
      * Shows whether Long Poll is enabled
      */
     @SerializedName("is_enabled")
+    @Required
     private Boolean isEnabled;
 
     public String getApiVersion() {

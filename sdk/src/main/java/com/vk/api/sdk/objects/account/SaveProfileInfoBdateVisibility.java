@@ -8,14 +8,14 @@ import com.vk.api.sdk.queries.EnumParam;
  * Birth date visibility. Returned values: , * '1' - show birth date,, * '2' - show only month and day,, * '0' - hide birth date.
  */
 public enum SaveProfileInfoBdateVisibility implements EnumParam {
+    @SerializedName("0")
+    HIDE(0),
+
     @SerializedName("1")
     SHOW(1),
 
     @SerializedName("2")
-    HIDE_YEAR(2),
-
-    @SerializedName("0")
-    HIDE(0);
+    HIDE_YEAR(2);
 
     private final Integer value;
 

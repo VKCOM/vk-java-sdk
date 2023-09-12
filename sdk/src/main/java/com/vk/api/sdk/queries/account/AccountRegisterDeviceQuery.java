@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegisterDeviceQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,12 +30,24 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AccountRegisterDeviceQuery(VkApiClient client, UserActor actor) {
+        super(client, "account.registerDevice", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
      *
      * @param value value of "token" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountRegisterDeviceQuery token(String value) {
+    @ApiParam("token")
+    public AccountRegisterDeviceQuery token(String value) {
         return unsafeParam("token", value);
     }
 
@@ -44,6 +57,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "device model" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("device_model")
     public AccountRegisterDeviceQuery deviceModel(String value) {
         return unsafeParam("device_model", value);
     }
@@ -54,6 +68,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "device year" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("device_year")
     public AccountRegisterDeviceQuery deviceYear(Integer value) {
         return unsafeParam("device_year", value);
     }
@@ -64,7 +79,8 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "device id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountRegisterDeviceQuery deviceId(String value) {
+    @ApiParam("device_id")
+    public AccountRegisterDeviceQuery deviceId(String value) {
         return unsafeParam("device_id", value);
     }
 
@@ -74,6 +90,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "system version" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("system_version")
     public AccountRegisterDeviceQuery systemVersion(String value) {
         return unsafeParam("system_version", value);
     }
@@ -84,6 +101,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("settings")
     public AccountRegisterDeviceQuery settings(String value) {
         return unsafeParam("settings", value);
     }
@@ -94,6 +112,7 @@ public class AccountRegisterDeviceQuery extends AbstractQueryBuilder<AccountRegi
      * @param value value of "sandbox" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sandbox")
     public AccountRegisterDeviceQuery sandbox(Boolean value) {
         return unsafeParam("sandbox", value);
     }

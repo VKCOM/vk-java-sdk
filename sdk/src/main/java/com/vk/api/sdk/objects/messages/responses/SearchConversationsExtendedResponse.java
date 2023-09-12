@@ -22,6 +22,9 @@ public class SearchConversationsExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<Conversation> items;
@@ -29,15 +32,21 @@ public class SearchConversationsExtendedResponse implements Validable {
     @SerializedName("profiles")
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    private List<GroupFull> groups;
-
     public Integer getCount() {
         return count;
     }
 
     public SearchConversationsExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public SearchConversationsExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -56,15 +65,6 @@ public class SearchConversationsExtendedResponse implements Validable {
 
     public SearchConversationsExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public SearchConversationsExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

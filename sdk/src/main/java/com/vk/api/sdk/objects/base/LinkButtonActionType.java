@@ -9,7 +9,25 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum LinkButtonActionType implements EnumParam {
     @SerializedName("open_url")
-    OPEN_URL("open_url");
+    OPEN_URL("open_url"),
+
+    @SerializedName("market_clear_recent_queries")
+    MARKET_CLEAR_RECENT_QUERIES("market_clear_recent_queries"),
+
+    @SerializedName("close_web_app")
+    CLOSE_WEB_APP("close_web_app"),
+
+    @SerializedName("open_search_tab")
+    OPEN_SEARCH_TAB("open_search_tab"),
+
+    @SerializedName("import_contacts")
+    IMPORT_CONTACTS("import_contacts"),
+
+    @SerializedName("add_friends")
+    ADD_FRIENDS("add_friends"),
+
+    @SerializedName("onboarding")
+    ONBOARDING("onboarding");
 
     private final String value;
 

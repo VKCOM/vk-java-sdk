@@ -2,12 +2,14 @@
 package com.vk.api.sdk.objects.likes.responses;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.users.SubscriptionsItem;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * GetListExtendedResponse object
@@ -22,7 +24,7 @@ public class GetListExtendedResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<UserMin> items;
+    private List<JsonObject> items;
 
     public Integer getCount() {
         return count;
@@ -33,13 +35,8 @@ public class GetListExtendedResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getItems() {
-        return items;
-    }
-
-    public GetListExtendedResponse setItems(List<UserMin> items) {
-        this.items = items;
-        return this;
+    public List<SubscriptionsItem> getItems() {
+        return items.stream().map(SubscriptionsItem::new).collect(Collectors.toList());
     }
 
     @Override

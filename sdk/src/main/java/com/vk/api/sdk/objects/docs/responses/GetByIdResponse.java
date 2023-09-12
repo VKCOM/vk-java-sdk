@@ -16,44 +16,10 @@ import java.util.Objects;
  */
 public class GetByIdResponse implements Validable {
     /**
-     * Document ID
+     * Access key for the document
      */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Document owner ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Document title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    /**
-     * File size in bites
-     */
-    @SerializedName("size")
-    @Required
-    private Integer size;
-
-    /**
-     * File extension
-     */
-    @SerializedName("ext")
-    @Required
-    private String ext;
-
-    /**
-     * File URL
-     */
-    @SerializedName("url")
-    private URI url;
+    @SerializedName("access_key")
+    private String accessKey;
 
     /**
      * Date when file has been uploaded in Unixtime
@@ -63,23 +29,39 @@ public class GetByIdResponse implements Validable {
     private Integer date;
 
     /**
-     * Document type
+     * File extension
      */
-    @SerializedName("type")
+    @SerializedName("ext")
     @Required
-    private Integer type;
+    private String ext;
 
-    @SerializedName("preview")
-    private DocPreview preview;
+    /**
+     * Document ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
 
     @SerializedName("is_licensed")
     private BoolInt isLicensed;
 
     /**
-     * Access key for the document
+     * Document owner ID
+     * Entity: owner
      */
-    @SerializedName("access_key")
-    private String accessKey;
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
+
+    @SerializedName("preview")
+    private DocPreview preview;
+
+    /**
+     * File size in bites
+     */
+    @SerializedName("size")
+    @Required
+    private Integer size;
 
     /**
      * Document tags
@@ -87,57 +69,32 @@ public class GetByIdResponse implements Validable {
     @SerializedName("tags")
     private List<String> tags;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Document title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
+
+    /**
+     * Document type
+     */
+    @SerializedName("type")
+    @Required
+    private Integer type;
+
+    /**
+     * File URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public GetByIdResponse setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public GetByIdResponse setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public GetByIdResponse setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public GetByIdResponse setSize(Integer size) {
-        this.size = size;
-        return this;
-    }
-
-    public String getExt() {
-        return ext;
-    }
-
-    public GetByIdResponse setExt(String ext) {
-        this.ext = ext;
-        return this;
-    }
-
-    public URI getUrl() {
-        return url;
-    }
-
-    public GetByIdResponse setUrl(URI url) {
-        this.url = url;
+    public GetByIdResponse setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
         return this;
     }
 
@@ -150,12 +107,38 @@ public class GetByIdResponse implements Validable {
         return this;
     }
 
-    public Integer getType() {
-        return type;
+    public String getExt() {
+        return ext;
     }
 
-    public GetByIdResponse setType(Integer type) {
-        this.type = type;
+    public GetByIdResponse setExt(String ext) {
+        this.ext = ext;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public GetByIdResponse setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isLicensed() {
+        return isLicensed == BoolInt.YES;
+    }
+
+    public BoolInt getIsLicensed() {
+        return isLicensed;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public GetByIdResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
@@ -168,20 +151,12 @@ public class GetByIdResponse implements Validable {
         return this;
     }
 
-    public boolean isLicensed() {
-        return isLicensed == BoolInt.YES;
+    public Integer getSize() {
+        return size;
     }
 
-    public BoolInt getIsLicensed() {
-        return isLicensed;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
-    }
-
-    public GetByIdResponse setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
+    public GetByIdResponse setSize(Integer size) {
+        this.size = size;
         return this;
     }
 
@@ -194,9 +169,36 @@ public class GetByIdResponse implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public GetByIdResponse setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public GetByIdResponse setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public GetByIdResponse setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(ext, date, preview, size, accessKey, isLicensed, id, ownerId, title, type, url, tags);
+        return Objects.hash(date, ext, preview, size, accessKey, isLicensed, id, ownerId, title, type, url, tags);
     }
 
     @Override
@@ -204,8 +206,8 @@ public class GetByIdResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetByIdResponse getByIdResponse = (GetByIdResponse) o;
-        return Objects.equals(ext, getByIdResponse.ext) &&
-                Objects.equals(date, getByIdResponse.date) &&
+        return Objects.equals(date, getByIdResponse.date) &&
+                Objects.equals(ext, getByIdResponse.ext) &&
                 Objects.equals(preview, getByIdResponse.preview) &&
                 Objects.equals(size, getByIdResponse.size) &&
                 Objects.equals(ownerId, getByIdResponse.ownerId) &&
@@ -226,8 +228,8 @@ public class GetByIdResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetByIdResponse{");
-        sb.append("ext='").append(ext).append("'");
-        sb.append(", date=").append(date);
+        sb.append("date=").append(date);
+        sb.append(", ext='").append(ext).append("'");
         sb.append(", preview=").append(preview);
         sb.append(", size=").append(size);
         sb.append(", ownerId=").append(ownerId);

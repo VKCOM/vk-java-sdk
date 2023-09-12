@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetLookalikeRequestsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLookalikeRequestsQuery, GetLookalikeRequestsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetLookalikeRequestsQuery(VkApiClient client, UserActor actor, int accountId) {
+    public AdsGetLookalikeRequestsQuery(VkApiClient client, UserActor actor, Integer accountId) {
         super(client, "ads.getLookalikeRequests", GetLookalikeRequestsResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetLookalikeRequestsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getLookalikeRequests", GetLookalikeRequestsResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,7 +43,8 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetLookalikeRequestsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetLookalikeRequestsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -41,6 +54,7 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsGetLookalikeRequestsQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
@@ -51,6 +65,7 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "requests ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("requests_ids")
     public AdsGetLookalikeRequestsQuery requestsIds(String value) {
         return unsafeParam("requests_ids", value);
     }
@@ -61,6 +76,7 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AdsGetLookalikeRequestsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -71,6 +87,7 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "limit" parameter. Maximum is 200. Minimum is 0. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public AdsGetLookalikeRequestsQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }
@@ -81,6 +98,7 @@ public class AdsGetLookalikeRequestsQuery extends AbstractQueryBuilder<AdsGetLoo
      * @param value value of "sort by" parameter. By default id.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort_by")
     public AdsGetLookalikeRequestsQuery sortBy(String value) {
         return unsafeParam("sort_by", value);
     }

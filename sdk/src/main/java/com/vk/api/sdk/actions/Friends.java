@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.queries.friends.FriendsAddListQuery;
 import com.vk.api.sdk.queries.friends.FriendsAddQuery;
@@ -48,9 +49,10 @@ public class Friends extends AbstractAction {
     /**
      * Approves or creates a friend request.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.add")
     public FriendsAddQuery add(UserActor actor) {
         return new FriendsAddQuery(getClient(), actor);
     }
@@ -58,66 +60,93 @@ public class Friends extends AbstractAction {
     /**
      * Creates a new friend list for the current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param name Name of the friend list.
      * @return query
      */
+    @ApiMethod("friends.addList")
     public FriendsAddListQuery addList(UserActor actor, String name) {
         return new FriendsAddListQuery(getClient(), actor, name);
     }
 
     /**
+     * Creates a new friend list for the current user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("friends.addList")
+    public FriendsAddListQuery addList(UserActor actor) {
+        return new FriendsAddListQuery(getClient(), actor);
+    }
+
+    /**
      * Checks the current user's friendship status with other specified users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userIds IDs of the users whose friendship status to check.
      * @return query
      */
-    public FriendsAreFriendsQuery areFriends(UserActor actor, Integer... userIds) {
+    @ApiMethod("friends.areFriends")
+    public FriendsAreFriendsQuery areFriends(UserActor actor, Long... userIds) {
         return new FriendsAreFriendsQuery(getClient(), actor, userIds);
     }
 
     /**
      * Checks the current user's friendship status with other specified users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userIds IDs of the users whose friendship status to check.
      * @return query
      */
-    public FriendsAreFriendsQuery areFriends(UserActor actor, List<Integer> userIds) {
+    @ApiMethod("friends.areFriends")
+    public FriendsAreFriendsQuery areFriends(UserActor actor, List<Long> userIds) {
         return new FriendsAreFriendsQuery(getClient(), actor, userIds);
     }
 
     /**
      * Checks the current user's friendship status with other specified users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("friends.areFriends")
+    public FriendsAreFriendsQuery areFriends(UserActor actor) {
+        return new FriendsAreFriendsQuery(getClient(), actor);
+    }
+
+    /**
+     * Checks the current user's friendship status with other specified users.
+     *
+     * @param actor vk user actor
      * @param userIds IDs of the users whose friendship status to check.
      * @return query
      */
-    public FriendsAreFriendsQueryWithExtended areFriendsExtended(UserActor actor,
-            Integer... userIds) {
+    @ApiMethod("friends.areFriends")
+    public FriendsAreFriendsQueryWithExtended areFriendsExtended(UserActor actor, Long... userIds) {
         return new FriendsAreFriendsQueryWithExtended(getClient(), actor, userIds);
     }
 
     /**
      * Checks the current user's friendship status with other specified users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userIds IDs of the users whose friendship status to check.
      * @return query
      */
+    @ApiMethod("friends.areFriends")
     public FriendsAreFriendsQueryWithExtended areFriendsExtended(UserActor actor,
-            List<Integer> userIds) {
+            List<Long> userIds) {
         return new FriendsAreFriendsQueryWithExtended(getClient(), actor, userIds);
     }
 
     /**
      * Declines a friend request or deletes a user from the current user's friend list.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.delete")
     public FriendsDeleteQuery delete(UserActor actor) {
         return new FriendsDeleteQuery(getClient(), actor);
     }
@@ -125,9 +154,10 @@ public class Friends extends AbstractAction {
     /**
      * Marks all incoming friend requests as viewed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.deleteAllRequests")
     public FriendsDeleteAllRequestsQuery deleteAllRequests(UserActor actor) {
         return new FriendsDeleteAllRequestsQuery(getClient(), actor);
     }
@@ -135,42 +165,79 @@ public class Friends extends AbstractAction {
     /**
      * Deletes a friend list of the current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param listId ID of the friend list to delete.
      * @return query
      */
-    public FriendsDeleteListQuery deleteList(UserActor actor, int listId) {
+    @ApiMethod("friends.deleteList")
+    public FriendsDeleteListQuery deleteList(UserActor actor, Integer listId) {
         return new FriendsDeleteListQuery(getClient(), actor, listId);
+    }
+
+    /**
+     * Deletes a friend list of the current user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("friends.deleteList")
+    public FriendsDeleteListQuery deleteList(UserActor actor) {
+        return new FriendsDeleteListQuery(getClient(), actor);
     }
 
     /**
      * Edits the friend lists of the selected user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId ID of the user whose friend list is to be edited.
      * @return query
      */
-    public FriendsEditQuery edit(UserActor actor, int userId) {
+    @ApiMethod("friends.edit")
+    public FriendsEditQuery edit(UserActor actor, Long userId) {
         return new FriendsEditQuery(getClient(), actor, userId);
+    }
+
+    /**
+     * Edits the friend lists of the selected user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("friends.edit")
+    public FriendsEditQuery edit(UserActor actor) {
+        return new FriendsEditQuery(getClient(), actor);
     }
 
     /**
      * Edits a friend list of the current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param listId Friend list ID.
      * @return query
      */
-    public FriendsEditListQuery editList(UserActor actor, int listId) {
+    @ApiMethod("friends.editList")
+    public FriendsEditListQuery editList(UserActor actor, Integer listId) {
         return new FriendsEditListQuery(getClient(), actor, listId);
+    }
+
+    /**
+     * Edits a friend list of the current user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("friends.editList")
+    public FriendsEditListQuery editList(UserActor actor) {
+        return new FriendsEditListQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.get")
     public FriendsGetQuery get(UserActor actor) {
         return new FriendsGetQuery(getClient(), actor);
     }
@@ -178,9 +245,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("friends.get")
     public FriendsGetQuery get(ServiceActor actor) {
         return new FriendsGetQuery(getClient(), actor);
     }
@@ -188,10 +256,11 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param fields Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
      * @return query
      */
+    @ApiMethod("friends.get")
     public FriendsGetQueryWithFields getWithFields(UserActor actor, Fields... fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
@@ -199,10 +268,11 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs or detailed information about a user's friends.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param fields Profile fields to return. Sample values: 'uid', 'first_name', 'last_name', 'nickname', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'domain', 'has_mobile', 'rate', 'contacts', 'education'.
      * @return query
      */
+    @ApiMethod("friends.get")
     public FriendsGetQueryWithFields getWithFields(ServiceActor actor, Fields... fields) {
         return new FriendsGetQueryWithFields(getClient(), actor, fields);
     }
@@ -210,9 +280,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of IDs of the current user's friends who installed the application.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getAppUsers")
     public FriendsGetAppUsersQuery getAppUsers(UserActor actor) {
         return new FriendsGetAppUsersQuery(getClient(), actor);
     }
@@ -220,9 +291,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getByPhones")
     public FriendsGetByPhonesQuery getByPhones(UserActor actor) {
         return new FriendsGetByPhonesQuery(getClient(), actor);
     }
@@ -230,9 +302,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of the user's friend lists.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getLists")
     public FriendsGetListsQuery getLists(UserActor actor) {
         return new FriendsGetListsQuery(getClient(), actor);
     }
@@ -240,21 +313,23 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs of the mutual friends of two users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param targetUids IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
      * @return query
      */
+    @ApiMethod("friends.getMutual")
     public FriendsGetMutualQueryWithTargetUids getMutualWithTargetUids(UserActor actor,
-            Integer... targetUids) {
+            Long... targetUids) {
         return new FriendsGetMutualQueryWithTargetUids(getClient(), actor, targetUids);
     }
 
     /**
      * Returns a list of user IDs of the mutual friends of two users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getMutual")
     public FriendsGetMutualQuery getMutual(UserActor actor) {
         return new FriendsGetMutualQuery(getClient(), actor);
     }
@@ -262,9 +337,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs of a user's friends who are online.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getOnline")
     public FriendsGetOnlineQuery getOnline(UserActor actor) {
         return new FriendsGetOnlineQuery(getClient(), actor);
     }
@@ -272,10 +348,11 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs of a user's friends who are online.
      *
-     * @param actor vk actor
-     * @param onlineMobile '1' — to return an additional 'online_mobile' field, '0' — (default),
+     * @param actor vk user actor
+     * @param onlineMobile '1' - to return an additional 'online_mobile' field, '0' - (default),
      * @return query
      */
+    @ApiMethod("friends.getOnline")
     public FriendsGetOnlineQueryWithOnlineMobile getOnlineWithOnlineMobile(UserActor actor,
             Boolean onlineMobile) {
         return new FriendsGetOnlineQueryWithOnlineMobile(getClient(), actor, onlineMobile);
@@ -284,9 +361,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of user IDs of the current user's recently added friends.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getRecent")
     public FriendsGetRecentQuery getRecent(UserActor actor) {
         return new FriendsGetRecentQuery(getClient(), actor);
     }
@@ -294,9 +372,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getRequests")
     public FriendsGetRequestsQueryWithExtended getRequestsExtended(UserActor actor) {
         return new FriendsGetRequestsQueryWithExtended(getClient(), actor);
     }
@@ -304,9 +383,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getRequests")
     public FriendsGetRequestsQuery getRequests(UserActor actor) {
         return new FriendsGetRequestsQuery(getClient(), actor);
     }
@@ -314,10 +394,11 @@ public class Friends extends AbstractAction {
     /**
      * Returns information about the current user's incoming and outgoing friend requests.
      *
-     * @param actor vk actor
-     * @param needMutual '1' — to return a list of mutual friends (up to 20), if any
+     * @param actor vk user actor
+     * @param needMutual '1' - to return a list of mutual friends (up to 20), if any
      * @return query
      */
+    @ApiMethod("friends.getRequests")
     public FriendsGetRequestsQueryWithNeedMutual getRequestsWithNeedMutual(UserActor actor,
             Boolean needMutual) {
         return new FriendsGetRequestsQueryWithNeedMutual(getClient(), actor, needMutual);
@@ -326,9 +407,10 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of profiles of users whom the current user may know.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("friends.getSuggestions")
     public FriendsGetSuggestionsQuery getSuggestions(UserActor actor) {
         return new FriendsGetSuggestionsQuery(getClient(), actor);
     }
@@ -336,11 +418,11 @@ public class Friends extends AbstractAction {
     /**
      * Returns a list of friends matching the search criteria.
      *
-     * @param actor vk actor
-     * @param userId User ID.
+     * @param actor vk user actor
      * @return query
      */
-    public FriendsSearchQuery search(UserActor actor, int userId) {
-        return new FriendsSearchQuery(getClient(), actor, userId);
+    @ApiMethod("friends.search")
+    public FriendsSearchQuery search(UserActor actor) {
+        return new FriendsSearchQuery(getClient(), actor);
     }
 }

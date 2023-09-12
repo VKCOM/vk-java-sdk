@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.GetOrdersResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQuery, GetOrdersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +30,7 @@ public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQu
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MarketGetOrdersQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -39,6 +41,7 @@ public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQu
      * @param value value of "count" parameter. Maximum is 10. Minimum is 0. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MarketGetOrdersQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -49,6 +52,7 @@ public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQu
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MarketGetOrdersQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -59,6 +63,7 @@ public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQu
      * @param value value of "date from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_from")
     public MarketGetOrdersQuery dateFrom(String value) {
         return unsafeParam("date_from", value);
     }
@@ -69,6 +74,7 @@ public class MarketGetOrdersQuery extends AbstractQueryBuilder<MarketGetOrdersQu
      * @param value value of "date to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_to")
     public MarketGetOrdersQuery dateTo(String value) {
         return unsafeParam("date_to", value);
     }

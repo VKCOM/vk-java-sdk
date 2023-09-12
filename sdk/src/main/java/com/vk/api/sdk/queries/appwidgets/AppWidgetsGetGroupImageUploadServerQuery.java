@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.appwidgets.GetGroupImageUploadServerImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetGroupImageUploadServerResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class AppWidgetsGetGroupImageUploadServerQuery extends AbstractQueryBuilder<AppWidgetsGetGroupImageUploadServerQuery, GetGroupImageUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,12 +29,24 @@ public class AppWidgetsGetGroupImageUploadServerQuery extends AbstractQueryBuild
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppWidgetsGetGroupImageUploadServerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "appWidgets.getGroupImageUploadServer", GetGroupImageUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set image type
      *
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsGetGroupImageUploadServerQuery imageType(
+    @ApiParam("image_type")
+    public AppWidgetsGetGroupImageUploadServerQuery imageType(
             GetGroupImageUploadServerImageType value) {
         return unsafeParam("image_type", value);
     }

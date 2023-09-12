@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetAlbumsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQuery, GetAlbumsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,7 +26,7 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -39,10 +40,12 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
     /**
      * ID of the user or community that owns the albums.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetAlbumsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosGetAlbumsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -52,6 +55,7 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public PhotosGetAlbumsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -62,47 +66,52 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public PhotosGetAlbumsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — to return system albums with negative IDs
+     * '1' - to return system albums with negative IDs
      *
      * @param value value of "need system" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_system")
     public PhotosGetAlbumsQuery needSystem(Boolean value) {
         return unsafeParam("need_system", value);
     }
 
     /**
-     * '1' — to return an additional 'thumb_src' field, '0' — (default)
+     * '1' - to return an additional 'thumb_src' field, '0' - (default)
      *
      * @param value value of "need covers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_covers")
     public PhotosGetAlbumsQuery needCovers(Boolean value) {
         return unsafeParam("need_covers", value);
     }
 
     /**
-     * '1' — to return photo sizes in a
+     * '1' - to return photo sizes in a
      *
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_sizes")
     public PhotosGetAlbumsQuery photoSizes(Boolean value) {
         return unsafeParam("photo_sizes", value);
     }
 
     /**
-     * album_ids
+     * albumIds
      * Album IDs.
      *
      * @param value value of "album ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_ids")
     public PhotosGetAlbumsQuery albumIds(Integer... value) {
         return unsafeParam("album_ids", value);
     }
@@ -113,6 +122,7 @@ public class PhotosGetAlbumsQuery extends AbstractQueryBuilder<PhotosGetAlbumsQu
      * @param value value of "album ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_ids")
     public PhotosGetAlbumsQuery albumIds(List<Integer> value) {
         return unsafeParam("album_ids", value);
     }

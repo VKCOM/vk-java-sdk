@@ -11,26 +11,31 @@ import java.util.Objects;
  * Info about user VK Donut subscription
  */
 public class GetSubscriptionResponse implements Validable {
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    @SerializedName("next_payment_date")
-    private Integer nextPaymentDate;
-
     @SerializedName("amount")
     @Required
     private Integer amount;
+
+    @SerializedName("next_payment_date")
+    @Required
+    private Integer nextPaymentDate;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
     @SerializedName("status")
     @Required
     private GetSubscriptionResponseStatus status;
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public GetSubscriptionResponse setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public GetSubscriptionResponse setAmount(Integer amount) {
+        this.amount = amount;
         return this;
     }
 
@@ -43,12 +48,12 @@ public class GetSubscriptionResponse implements Validable {
         return this;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Long getOwnerId() {
+        return ownerId;
     }
 
-    public GetSubscriptionResponse setAmount(Integer amount) {
-        this.amount = amount;
+    public GetSubscriptionResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 

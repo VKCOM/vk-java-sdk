@@ -14,9 +14,6 @@ import java.util.Objects;
  * Note object
  */
 public class Note implements Validable {
-    @SerializedName("read_comments")
-    private Integer readComments;
-
     /**
      * Information whether current user can comment the note
      */
@@ -46,9 +43,20 @@ public class Note implements Validable {
 
     /**
      * Note owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    @SerializedName("privacy_comment")
+    private List<String> privacyComment;
+
+    @SerializedName("privacy_view")
+    private List<String> privacyView;
+
+    @SerializedName("read_comments")
+    private Integer readComments;
 
     /**
      * Note text
@@ -73,22 +81,8 @@ public class Note implements Validable {
      * URL of the page with note preview
      */
     @SerializedName("view_url")
+    @Required
     private URI viewUrl;
-
-    @SerializedName("privacy_view")
-    private List<String> privacyView;
-
-    @SerializedName("privacy_comment")
-    private List<String> privacyComment;
-
-    public Integer getReadComments() {
-        return readComments;
-    }
-
-    public Note setReadComments(Integer readComments) {
-        this.readComments = readComments;
-        return this;
-    }
 
     public boolean canComment() {
         return canComment == BoolInt.YES;
@@ -125,12 +119,39 @@ public class Note implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public Note setOwnerId(Integer ownerId) {
+    public Note setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+        return this;
+    }
+
+    public List<String> getPrivacyComment() {
+        return privacyComment;
+    }
+
+    public Note setPrivacyComment(List<String> privacyComment) {
+        this.privacyComment = privacyComment;
+        return this;
+    }
+
+    public List<String> getPrivacyView() {
+        return privacyView;
+    }
+
+    public Note setPrivacyView(List<String> privacyView) {
+        this.privacyView = privacyView;
+        return this;
+    }
+
+    public Integer getReadComments() {
+        return readComments;
+    }
+
+    public Note setReadComments(Integer readComments) {
+        this.readComments = readComments;
         return this;
     }
 
@@ -167,24 +188,6 @@ public class Note implements Validable {
 
     public Note setViewUrl(URI viewUrl) {
         this.viewUrl = viewUrl;
-        return this;
-    }
-
-    public List<String> getPrivacyView() {
-        return privacyView;
-    }
-
-    public Note setPrivacyView(List<String> privacyView) {
-        this.privacyView = privacyView;
-        return this;
-    }
-
-    public List<String> getPrivacyComment() {
-        return privacyComment;
-    }
-
-    public Note setPrivacyComment(List<String> privacyComment) {
-        this.privacyComment = privacyComment;
         return this;
     }
 

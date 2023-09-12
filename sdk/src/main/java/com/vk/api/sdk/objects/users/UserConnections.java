@@ -12,13 +12,6 @@ import java.util.Objects;
  */
 public class UserConnections implements Validable {
     /**
-     * User's Skype nickname
-     */
-    @SerializedName("skype")
-    @Required
-    private String skype;
-
-    /**
      * User's Facebook account
      */
     @SerializedName("facebook")
@@ -32,11 +25,11 @@ public class UserConnections implements Validable {
     private String facebookName;
 
     /**
-     * User's Twitter account
+     * User's Instagram account
      */
-    @SerializedName("twitter")
+    @SerializedName("instagram")
     @Required
-    private String twitter;
+    private String instagram;
 
     /**
      * User's Livejournal account
@@ -45,20 +38,18 @@ public class UserConnections implements Validable {
     private String livejournal;
 
     /**
-     * User's Instagram account
+     * User's Skype nickname
      */
-    @SerializedName("instagram")
+    @SerializedName("skype")
     @Required
-    private String instagram;
+    private String skype;
 
-    public String getSkype() {
-        return skype;
-    }
-
-    public UserConnections setSkype(String skype) {
-        this.skype = skype;
-        return this;
-    }
+    /**
+     * User's Twitter account
+     */
+    @SerializedName("twitter")
+    @Required
+    private String twitter;
 
     public String getFacebook() {
         return facebook;
@@ -78,12 +69,12 @@ public class UserConnections implements Validable {
         return this;
     }
 
-    public String getTwitter() {
-        return twitter;
+    public String getInstagram() {
+        return instagram;
     }
 
-    public UserConnections setTwitter(String twitter) {
-        this.twitter = twitter;
+    public UserConnections setInstagram(String instagram) {
+        this.instagram = instagram;
         return this;
     }
 
@@ -96,12 +87,21 @@ public class UserConnections implements Validable {
         return this;
     }
 
-    public String getInstagram() {
-        return instagram;
+    public String getSkype() {
+        return skype;
     }
 
-    public UserConnections setInstagram(String instagram) {
-        this.instagram = instagram;
+    public UserConnections setSkype(String skype) {
+        this.skype = skype;
+        return this;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public UserConnections setTwitter(String twitter) {
+        this.twitter = twitter;
         return this;
     }
 

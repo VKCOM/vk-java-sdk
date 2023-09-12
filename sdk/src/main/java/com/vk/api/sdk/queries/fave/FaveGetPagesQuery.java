@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.fave.GetPagesType;
 import com.vk.api.sdk.objects.fave.responses.GetPagesResponse;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, GetPagesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "offset" parameter. Maximum is 10000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FaveGetPagesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -41,6 +43,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "count" parameter. Maximum is 500. Minimum is 1. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FaveGetPagesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -51,6 +54,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public FaveGetPagesQuery type(GetPagesType value) {
         return unsafeParam("type", value);
     }
@@ -61,6 +65,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "tag id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tag_id")
     public FaveGetPagesQuery tagId(Integer value) {
         return unsafeParam("tag_id", value);
     }
@@ -72,6 +77,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FaveGetPagesQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -82,6 +88,7 @@ public class FaveGetPagesQuery extends AbstractQueryBuilder<FaveGetPagesQuery, G
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FaveGetPagesQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

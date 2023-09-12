@@ -12,24 +12,15 @@ import java.util.Objects;
  * GetResponse object
  */
 public class GetResponse implements Validable {
+    @SerializedName("audio")
+    private Audio audio;
+
     /**
      * Status text
      */
     @SerializedName("text")
     @Required
     private String text;
-
-    @SerializedName("audio")
-    private Audio audio;
-
-    public String getText() {
-        return text;
-    }
-
-    public GetResponse setText(String text) {
-        this.text = text;
-        return this;
-    }
 
     public Audio getAudio() {
         return audio;
@@ -40,9 +31,18 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public GetResponse setText(String text) {
+        this.text = text;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(text, audio);
+        return Objects.hash(audio, text);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class GetResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetResponse getResponse = (GetResponse) o;
-        return Objects.equals(text, getResponse.text) &&
-                Objects.equals(audio, getResponse.audio);
+        return Objects.equals(audio, getResponse.audio) &&
+                Objects.equals(text, getResponse.text);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class GetResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetResponse{");
-        sb.append("text='").append(text).append("'");
-        sb.append(", audio=").append(audio);
+        sb.append("audio=").append(audio);
+        sb.append(", text='").append(text).append("'");
         sb.append('}');
         return sb.toString();
     }

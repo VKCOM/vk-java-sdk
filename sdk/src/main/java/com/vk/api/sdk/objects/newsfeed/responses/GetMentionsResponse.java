@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.wall.WallpostToId;
+import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public class GetMentionsResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<WallpostToId> items;
+    private List<WallpostFull> items;
 
     public Integer getCount() {
         return count;
@@ -33,11 +33,11 @@ public class GetMentionsResponse implements Validable {
         return this;
     }
 
-    public List<WallpostToId> getItems() {
+    public List<WallpostFull> getItems() {
         return items;
     }
 
-    public GetMentionsResponse setItems(List<WallpostToId> items) {
+    public GetMentionsResponse setItems(List<WallpostFull> items) {
         this.items = items;
         return this;
     }

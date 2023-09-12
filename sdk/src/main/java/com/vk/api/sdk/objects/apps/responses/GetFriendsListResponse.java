@@ -4,7 +4,7 @@ package com.vk.api.sdk.objects.apps.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.users.UserFull;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,10 +16,12 @@ public class GetFriendsListResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
-    private List<UserFull> items;
+    @Required
+    private List<Long> items;
 
     public Integer getCount() {
         return count;
@@ -30,11 +32,11 @@ public class GetFriendsListResponse implements Validable {
         return this;
     }
 
-    public List<UserFull> getItems() {
+    public List<Long> getItems() {
         return items;
     }
 
-    public GetFriendsListResponse setItems(List<UserFull> items) {
+    public GetFriendsListResponse setItems(List<Long> items) {
         this.items = items;
         return this;
     }

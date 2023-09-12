@@ -21,9 +21,6 @@ public class SearchExtendedResponse implements Validable {
     @Required
     private Integer count;
 
-    @SerializedName("view_type")
-    private ServicesViewType viewType;
-
     @SerializedName("items")
     @Required
     private List<MarketItemFull> items;
@@ -31,21 +28,16 @@ public class SearchExtendedResponse implements Validable {
     @SerializedName("variants")
     private List<MarketItemFull> variants;
 
+    @SerializedName("view_type")
+    @Required
+    private ServicesViewType viewType;
+
     public Integer getCount() {
         return count;
     }
 
     public SearchExtendedResponse setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public ServicesViewType getViewType() {
-        return viewType;
-    }
-
-    public SearchExtendedResponse setViewType(ServicesViewType viewType) {
-        this.viewType = viewType;
         return this;
     }
 
@@ -64,6 +56,15 @@ public class SearchExtendedResponse implements Validable {
 
     public SearchExtendedResponse setVariants(List<MarketItemFull> variants) {
         this.variants = variants;
+        return this;
+    }
+
+    public ServicesViewType getViewType() {
+        return viewType;
+    }
+
+    public SearchExtendedResponse setViewType(ServicesViewType viewType) {
+        this.viewType = viewType;
         return this;
     }
 

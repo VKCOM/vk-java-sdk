@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.fave.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.fave.Bookmark;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.users.UserFull;
@@ -18,16 +19,18 @@ public class GetExtendedResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<Group> groups;
+
     @SerializedName("items")
+    @Required
     private List<Bookmark> items;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
-
-    @SerializedName("groups")
-    private List<Group> groups;
 
     public Integer getCount() {
         return count;
@@ -35,6 +38,15 @@ public class GetExtendedResponse implements Validable {
 
     public GetExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public GetExtendedResponse setGroups(List<Group> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -53,15 +65,6 @@ public class GetExtendedResponse implements Validable {
 
     public GetExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public GetExtendedResponse setGroups(List<Group> groups) {
-        this.groups = groups;
         return this;
     }
 

@@ -2,7 +2,6 @@
 package com.vk.api.sdk.objects.wall;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.LikesInfo;
@@ -20,9 +19,6 @@ public class Wallpost implements Validable {
     @SerializedName("access_key")
     private String accessKey;
 
-    @SerializedName("is_deleted")
-    private Boolean isDeleted;
-
     @SerializedName("attachments")
     private List<WallpostAttachment> attachments;
 
@@ -38,6 +34,12 @@ public class Wallpost implements Validable {
     @SerializedName("date")
     private Integer date;
 
+    @SerializedName("deleted_details")
+    private String deletedDetails;
+
+    @SerializedName("deleted_reason")
+    private String deletedReason;
+
     /**
      * Date of editing in Unixtime
      */
@@ -46,9 +48,10 @@ public class Wallpost implements Validable {
 
     /**
      * Post author ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    private Long fromId;
 
     @SerializedName("geo")
     private Geo geo;
@@ -65,6 +68,9 @@ public class Wallpost implements Validable {
     @SerializedName("is_archived")
     private Boolean isArchived;
 
+    @SerializedName("is_deleted")
+    private Boolean isDeleted;
+
     /**
      * Information whether the post in favorites list
      */
@@ -79,24 +85,22 @@ public class Wallpost implements Validable {
 
     /**
      * Wall owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
-
-    @SerializedName("poster")
-    private JsonObject poster;
-
-    /**
-     * If post type 'reply', contains original post ID
-     */
-    @SerializedName("post_id")
-    private Integer postId;
+    private Long ownerId;
 
     /**
      * If post type 'reply', contains original parent IDs stack
      */
     @SerializedName("parents_stack")
     private List<Integer> parentsStack;
+
+    /**
+     * If post type 'reply', contains original post ID
+     */
+    @SerializedName("post_id")
+    private Integer postId;
 
     @SerializedName("post_source")
     private PostSource postSource;
@@ -109,9 +113,10 @@ public class Wallpost implements Validable {
 
     /**
      * Post signer ID
+     * Entity: owner
      */
     @SerializedName("signer_id")
-    private Integer signerId;
+    private Long signerId;
 
     /**
      * Post text
@@ -131,15 +136,6 @@ public class Wallpost implements Validable {
 
     public Wallpost setAccessKey(String accessKey) {
         this.accessKey = accessKey;
-        return this;
-    }
-
-    public Boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public Wallpost setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
         return this;
     }
 
@@ -170,6 +166,24 @@ public class Wallpost implements Validable {
         return this;
     }
 
+    public String getDeletedDetails() {
+        return deletedDetails;
+    }
+
+    public Wallpost setDeletedDetails(String deletedDetails) {
+        this.deletedDetails = deletedDetails;
+        return this;
+    }
+
+    public String getDeletedReason() {
+        return deletedReason;
+    }
+
+    public Wallpost setDeletedReason(String deletedReason) {
+        this.deletedReason = deletedReason;
+        return this;
+    }
+
     public Integer getEdited() {
         return edited;
     }
@@ -179,11 +193,11 @@ public class Wallpost implements Validable {
         return this;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public Wallpost setFromId(Integer fromId) {
+    public Wallpost setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -215,6 +229,15 @@ public class Wallpost implements Validable {
         return this;
     }
 
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public Wallpost setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
+    }
+
     public Boolean getIsFavorite() {
         return isFavorite;
     }
@@ -233,30 +256,12 @@ public class Wallpost implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public Wallpost setOwnerId(Integer ownerId) {
+    public Wallpost setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
-        return this;
-    }
-
-    public JsonObject getPoster() {
-        return poster;
-    }
-
-    public Wallpost setPoster(JsonObject poster) {
-        this.poster = poster;
-        return this;
-    }
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public Wallpost setPostId(Integer postId) {
-        this.postId = postId;
         return this;
     }
 
@@ -266,6 +271,15 @@ public class Wallpost implements Validable {
 
     public Wallpost setParentsStack(List<Integer> parentsStack) {
         this.parentsStack = parentsStack;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public Wallpost setPostId(Integer postId) {
+        this.postId = postId;
         return this;
     }
 
@@ -296,11 +310,11 @@ public class Wallpost implements Validable {
         return this;
     }
 
-    public Integer getSignerId() {
+    public Long getSignerId() {
         return signerId;
     }
 
-    public Wallpost setSignerId(Integer signerId) {
+    public Wallpost setSignerId(Long signerId) {
         this.signerId = signerId;
         return this;
     }
@@ -325,7 +339,7 @@ public class Wallpost implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, copyright, attachments, edited, postType, isArchived, postSource, postId, ownerId, fromId, geo, parentsStack, signerId, isDeleted, accessKey, id, text, poster, reposts, views, isFavorite, likes);
+        return Objects.hash(date, copyright, attachments, edited, postType, isArchived, deletedDetails, postSource, postId, ownerId, fromId, geo, deletedReason, parentsStack, signerId, isDeleted, accessKey, id, text, reposts, views, isFavorite, likes);
     }
 
     @Override
@@ -342,16 +356,17 @@ public class Wallpost implements Validable {
                 Objects.equals(edited, wallpost.edited) &&
                 Objects.equals(parentsStack, wallpost.parentsStack) &&
                 Objects.equals(ownerId, wallpost.ownerId) &&
+                Objects.equals(deletedDetails, wallpost.deletedDetails) &&
                 Objects.equals(geo, wallpost.geo) &&
                 Objects.equals(isDeleted, wallpost.isDeleted) &&
                 Objects.equals(isArchived, wallpost.isArchived) &&
                 Objects.equals(postId, wallpost.postId) &&
                 Objects.equals(postSource, wallpost.postSource) &&
                 Objects.equals(accessKey, wallpost.accessKey) &&
+                Objects.equals(deletedReason, wallpost.deletedReason) &&
                 Objects.equals(postType, wallpost.postType) &&
                 Objects.equals(id, wallpost.id) &&
                 Objects.equals(text, wallpost.text) &&
-                Objects.equals(poster, wallpost.poster) &&
                 Objects.equals(reposts, wallpost.reposts) &&
                 Objects.equals(views, wallpost.views) &&
                 Objects.equals(likes, wallpost.likes);
@@ -374,16 +389,17 @@ public class Wallpost implements Validable {
         sb.append(", edited=").append(edited);
         sb.append(", parentsStack=").append(parentsStack);
         sb.append(", ownerId=").append(ownerId);
+        sb.append(", deletedDetails='").append(deletedDetails).append("'");
         sb.append(", geo=").append(geo);
         sb.append(", isDeleted=").append(isDeleted);
         sb.append(", isArchived=").append(isArchived);
         sb.append(", postId=").append(postId);
         sb.append(", postSource=").append(postSource);
         sb.append(", accessKey='").append(accessKey).append("'");
+        sb.append(", deletedReason='").append(deletedReason).append("'");
         sb.append(", postType=").append(postType);
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
-        sb.append(", poster=").append(poster);
         sb.append(", reposts=").append(reposts);
         sb.append(", views=").append(views);
         sb.append(", likes=").append(likes);

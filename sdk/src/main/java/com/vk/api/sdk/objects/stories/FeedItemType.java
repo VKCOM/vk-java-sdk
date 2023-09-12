@@ -20,14 +20,11 @@ public enum FeedItemType implements EnumParam {
     @SerializedName("live_finished")
     LIVE_FINISHED("live_finished"),
 
-    @SerializedName("community_grouped_stories")
-    COMMUNITY_GROUPED_STORIES("community_grouped_stories"),
-
     @SerializedName("app_grouped_stories")
     APP_GROUPED_STORIES("app_grouped_stories"),
 
-    @SerializedName("birthday")
-    BIRTHDAY("birthday");
+    @SerializedName("discover")
+    DISCOVER("discover");
 
     private final String value;
 

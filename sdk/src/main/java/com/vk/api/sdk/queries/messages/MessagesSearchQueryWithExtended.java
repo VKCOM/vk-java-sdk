@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.SearchExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,19 +15,7 @@ import java.util.List;
  */
 public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<MessagesSearchQueryWithExtended, SearchExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesSearchQueryWithExtended(VkApiClient client, UserActor actor) {
-        super(client, "messages.search", SearchExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -39,11 +28,24 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesSearchQueryWithExtended(VkApiClient client, UserActor actor) {
+        super(client, "messages.search", SearchExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        extended(true);
+    }
+
+    /**
      * Search query string.
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public MessagesSearchQueryWithExtended q(String value) {
         return unsafeParam("q", value);
     }
@@ -51,10 +53,12 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
     /**
      * Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSearchQueryWithExtended peerId(Integer value) {
+    @ApiParam("peer_id")
+    public MessagesSearchQueryWithExtended peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
@@ -64,6 +68,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "date" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date")
     public MessagesSearchQueryWithExtended date(Integer value) {
         return unsafeParam("date", value);
     }
@@ -74,6 +79,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "preview length" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public MessagesSearchQueryWithExtended previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
@@ -84,6 +90,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MessagesSearchQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -94,6 +101,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesSearchQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -104,6 +112,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected MessagesSearchQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -111,10 +120,12 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSearchQueryWithExtended groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesSearchQueryWithExtended groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -125,6 +136,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesSearchQueryWithExtended fields(String... value) {
         return unsafeParam("fields", value);
     }
@@ -135,6 +147,7 @@ public class MessagesSearchQueryWithExtended extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesSearchQueryWithExtended fields(List<String> value) {
         return unsafeParam("fields", value);
     }

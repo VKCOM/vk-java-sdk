@@ -10,14 +10,17 @@ import java.util.Objects;
  * DonutSubscriptionCancelled object
  */
 public class DonutSubscriptionCancelled implements Validable {
+    /**
+     * Entity: owner
+     */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public DonutSubscriptionCancelled setUserId(Integer userId) {
+    public DonutSubscriptionCancelled setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,37 +15,18 @@ import java.util.List;
  */
 public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEditCallbackServerQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param serverId value of "server id" parameter. Minimum is 0.
      * @param url value of "url" parameter.
      * @param title value of "title" parameter.
      */
-    public GroupsEditCallbackServerQuery(VkApiClient client, UserActor actor, int groupId,
-            int serverId, String url, String title) {
-        super(client, "groups.editCallbackServer", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-        serverId(serverId);
-        url(url);
-        title(title);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param serverId value of "server id" parameter. Minimum is 0.
-     * @param url value of "url" parameter.
-     * @param title value of "title" parameter.
-     */
-    public GroupsEditCallbackServerQuery(VkApiClient client, GroupActor actor, int groupId,
-            int serverId, String url, String title) {
+    public GroupsEditCallbackServerQuery(VkApiClient client, GroupActor actor, Long groupId,
+            Integer serverId, String url, String title) {
         super(client, "groups.editCallbackServer", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -55,12 +37,58 @@ public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEd
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsEditCallbackServerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.editCallbackServer", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param serverId value of "server id" parameter. Minimum is 0.
+     * @param url value of "url" parameter.
+     * @param title value of "title" parameter.
+     */
+    public GroupsEditCallbackServerQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer serverId, String url, String title) {
+        super(client, "groups.editCallbackServer", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        serverId(serverId);
+        url(url);
+        title(title);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsEditCallbackServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.editCallbackServer", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditCallbackServerQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsEditCallbackServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -70,7 +98,8 @@ public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEd
      * @param value value of "server id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditCallbackServerQuery serverId(int value) {
+    @ApiParam("server_id")
+    public GroupsEditCallbackServerQuery serverId(Integer value) {
         return unsafeParam("server_id", value);
     }
 
@@ -80,7 +109,8 @@ public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEd
      * @param value value of "url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditCallbackServerQuery url(String value) {
+    @ApiParam("url")
+    public GroupsEditCallbackServerQuery url(String value) {
         return unsafeParam("url", value);
     }
 
@@ -90,7 +120,8 @@ public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEd
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditCallbackServerQuery title(String value) {
+    @ApiParam("title")
+    public GroupsEditCallbackServerQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -100,6 +131,7 @@ public class GroupsEditCallbackServerQuery extends AbstractQueryBuilder<GroupsEd
      * @param value value of "secret key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("secret_key")
     public GroupsEditCallbackServerQuery secretKey(String value) {
         return unsafeParam("secret_key", value);
     }

@@ -22,19 +22,18 @@ public class PhotoSizes implements Validable {
     /**
      * URL of the image
      */
-    @SerializedName("url")
-    @Required
-    private URI url;
-
-    /**
-     * URL of the image
-     */
     @SerializedName("src")
     private URI src;
 
     @SerializedName("type")
     @Required
     private PhotoSizesType type;
+
+    /**
+     * URL of the image
+     */
+    @SerializedName("url")
+    private URI url;
 
     /**
      * Width in px
@@ -49,15 +48,6 @@ public class PhotoSizes implements Validable {
 
     public PhotoSizes setHeight(Integer height) {
         this.height = height;
-        return this;
-    }
-
-    public URI getUrl() {
-        return url;
-    }
-
-    public PhotoSizes setUrl(URI url) {
-        this.url = url;
         return this;
     }
 
@@ -76,6 +66,15 @@ public class PhotoSizes implements Validable {
 
     public PhotoSizes setType(PhotoSizesType type) {
         this.type = type;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public PhotoSizes setUrl(URI url) {
+        this.url = url;
         return this;
     }
 

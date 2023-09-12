@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class GroupsGetTokenPermissionsQuery extends AbstractQueryBuilder<GroupsGetTokenPermissionsQuery, GetTokenPermissionsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token

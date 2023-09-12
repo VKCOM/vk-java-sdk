@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.responses.SearchResponse;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,7 +27,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -43,16 +44,18 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public NewsfeedSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
 
     /**
-     * '1' — to return additional information about the user or community that placed the post.
+     * '1' - to return additional information about the user or community that placed the post.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public NewsfeedSearchQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -63,6 +66,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 30.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -73,6 +77,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public NewsfeedSearchQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -83,6 +88,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public NewsfeedSearchQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -93,6 +99,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public NewsfeedSearchQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -103,6 +110,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public NewsfeedSearchQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -113,6 +121,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_from")
     public NewsfeedSearchQuery startFrom(String value) {
         return unsafeParam("start_from", value);
     }
@@ -124,6 +133,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedSearchQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -134,6 +144,7 @@ public class NewsfeedSearchQuery extends AbstractQueryBuilder<NewsfeedSearchQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedSearchQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

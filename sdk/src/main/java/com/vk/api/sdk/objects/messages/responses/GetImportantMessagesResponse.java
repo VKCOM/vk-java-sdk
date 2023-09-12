@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.Conversation;
 import com.vk.api.sdk.objects.messages.MessagesArray;
 import com.vk.api.sdk.objects.users.User;
@@ -16,6 +16,12 @@ import java.util.Objects;
  * GetImportantMessagesResponse object
  */
 public class GetImportantMessagesResponse implements Validable {
+    @SerializedName("conversations")
+    private List<Conversation> conversations;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("messages")
     @Required
     private MessagesArray messages;
@@ -23,11 +29,23 @@ public class GetImportantMessagesResponse implements Validable {
     @SerializedName("profiles")
     private List<User> profiles;
 
-    @SerializedName("groups")
-    private List<Group> groups;
+    public List<Conversation> getConversations() {
+        return conversations;
+    }
 
-    @SerializedName("conversations")
-    private List<Conversation> conversations;
+    public GetImportantMessagesResponse setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetImportantMessagesResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
 
     public MessagesArray getMessages() {
         return messages;
@@ -47,27 +65,9 @@ public class GetImportantMessagesResponse implements Validable {
         return this;
     }
 
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public GetImportantMessagesResponse setGroups(List<Group> groups) {
-        this.groups = groups;
-        return this;
-    }
-
-    public List<Conversation> getConversations() {
-        return conversations;
-    }
-
-    public GetImportantMessagesResponse setConversations(List<Conversation> conversations) {
-        this.conversations = conversations;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(profiles, messages, groups, conversations);
+        return Objects.hash(profiles, groups, messages, conversations);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class GetImportantMessagesResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetImportantMessagesResponse getImportantMessagesResponse = (GetImportantMessagesResponse) o;
         return Objects.equals(profiles, getImportantMessagesResponse.profiles) &&
-                Objects.equals(messages, getImportantMessagesResponse.messages) &&
                 Objects.equals(groups, getImportantMessagesResponse.groups) &&
+                Objects.equals(messages, getImportantMessagesResponse.messages) &&
                 Objects.equals(conversations, getImportantMessagesResponse.conversations);
     }
 
@@ -90,8 +90,8 @@ public class GetImportantMessagesResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetImportantMessagesResponse{");
         sb.append("profiles=").append(profiles);
-        sb.append(", messages=").append(messages);
         sb.append(", groups=").append(groups);
+        sb.append(", messages=").append(messages);
         sb.append(", conversations=").append(conversations);
         sb.append('}');
         return sb.toString();

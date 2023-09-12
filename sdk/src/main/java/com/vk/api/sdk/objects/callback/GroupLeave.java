@@ -11,20 +11,14 @@ import java.util.Objects;
  * GroupLeave object
  */
 public class GroupLeave implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("self")
     private BoolInt self;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GroupLeave setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
 
     public boolean isSelf() {
         return self == BoolInt.YES;
@@ -32,6 +26,15 @@ public class GroupLeave implements Validable {
 
     public BoolInt getSelf() {
         return self;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GroupLeave setUserId(Long userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override

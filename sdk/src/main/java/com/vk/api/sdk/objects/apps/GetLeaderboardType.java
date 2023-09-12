@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
+ * Leaderboard type. Possible values: *'level' - by level,, *'points' - by mission points,, *'score' - by score ().
  */
 public enum GetLeaderboardType implements EnumParam {
     @SerializedName("level")

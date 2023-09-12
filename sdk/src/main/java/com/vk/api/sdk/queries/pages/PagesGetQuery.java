@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.pages.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,10 +27,12 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetRespon
     /**
      * Page owner ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesGetQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PagesGetQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -39,26 +42,29 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetRespon
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("page_id")
     public PagesGetQuery pageId(Integer value) {
         return unsafeParam("page_id", value);
     }
 
     /**
-     * '1' — to return information about a global wiki page
+     * '1' - to return information about a global wiki page
      *
      * @param value value of "global" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("global")
     public PagesGetQuery global(Boolean value) {
         return unsafeParam("global", value);
     }
 
     /**
-     * '1' — resulting wiki page is a preview for the attached link
+     * '1' - resulting wiki page is a preview for the attached link
      *
      * @param value value of "site preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("site_preview")
     public PagesGetQuery sitePreview(Boolean value) {
         return unsafeParam("site_preview", value);
     }
@@ -69,6 +75,7 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetRespon
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("title")
     public PagesGetQuery title(String value) {
         return unsafeParam("title", value);
     }
@@ -79,16 +86,18 @@ public class PagesGetQuery extends AbstractQueryBuilder<PagesGetQuery, GetRespon
      * @param value value of "need source" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_source")
     public PagesGetQuery needSource(Boolean value) {
         return unsafeParam("need_source", value);
     }
 
     /**
-     * '1' — to return the page as HTML,
+     * '1' - to return the page as HTML,
      *
      * @param value value of "need html" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_html")
     public PagesGetQuery needHtml(Boolean value) {
         return unsafeParam("need_html", value);
     }

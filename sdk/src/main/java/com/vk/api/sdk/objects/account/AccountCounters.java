@@ -35,12 +35,6 @@ public class AccountCounters implements Validable {
     private Integer friends;
 
     /**
-     * New friends suggestions number
-     */
-    @SerializedName("friends_suggestions")
-    private Integer friendsSuggestions;
-
-    /**
      * New friends recommendations number
      */
     @SerializedName("friends_recommendations")
@@ -58,23 +52,17 @@ public class AccountCounters implements Validable {
     @SerializedName("groups")
     private Integer groups;
 
-    @SerializedName("menu_discover_badge")
-    private Integer menuDiscoverBadge;
-
-    @SerializedName("menu_clips_badge")
-    private Integer menuClipsBadge;
+    /**
+     * New memories number
+     */
+    @SerializedName("memories")
+    private Integer memories;
 
     /**
      * New messages number
      */
     @SerializedName("messages")
     private Integer messages;
-
-    /**
-     * New memories number
-     */
-    @SerializedName("memories")
-    private Integer memories;
 
     /**
      * New notes number
@@ -93,12 +81,6 @@ public class AccountCounters implements Validable {
      */
     @SerializedName("photos")
     private Integer photos;
-
-    /**
-     * New sdk number
-     */
-    @SerializedName("sdk")
-    private Integer sdk;
 
     public Integer getAppRequests() {
         return appRequests;
@@ -136,15 +118,6 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getFriendsSuggestions() {
-        return friendsSuggestions;
-    }
-
-    public AccountCounters setFriendsSuggestions(Integer friendsSuggestions) {
-        this.friendsSuggestions = friendsSuggestions;
-        return this;
-    }
-
     public Integer getFriendsRecommendations() {
         return friendsRecommendations;
     }
@@ -172,21 +145,12 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getMenuDiscoverBadge() {
-        return menuDiscoverBadge;
+    public Integer getMemories() {
+        return memories;
     }
 
-    public AccountCounters setMenuDiscoverBadge(Integer menuDiscoverBadge) {
-        this.menuDiscoverBadge = menuDiscoverBadge;
-        return this;
-    }
-
-    public Integer getMenuClipsBadge() {
-        return menuClipsBadge;
-    }
-
-    public AccountCounters setMenuClipsBadge(Integer menuClipsBadge) {
-        this.menuClipsBadge = menuClipsBadge;
+    public AccountCounters setMemories(Integer memories) {
+        this.memories = memories;
         return this;
     }
 
@@ -196,15 +160,6 @@ public class AccountCounters implements Validable {
 
     public AccountCounters setMessages(Integer messages) {
         this.messages = messages;
-        return this;
-    }
-
-    public Integer getMemories() {
-        return memories;
-    }
-
-    public AccountCounters setMemories(Integer memories) {
-        this.memories = memories;
         return this;
     }
 
@@ -235,18 +190,9 @@ public class AccountCounters implements Validable {
         return this;
     }
 
-    public Integer getSdk() {
-        return sdk;
-    }
-
-    public AccountCounters setSdk(Integer sdk) {
-        this.sdk = sdk;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(faves, notes, appRequests, groups, menuClipsBadge, friendsSuggestions, photos, menuDiscoverBadge, friends, memories, messages, sdk, events, notifications, friendsRecommendations, gifts);
+        return Objects.hash(faves, notes, appRequests, memories, groups, messages, photos, events, friends, notifications, friendsRecommendations, gifts);
     }
 
     @Override
@@ -254,21 +200,17 @@ public class AccountCounters implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountCounters accountCounters = (AccountCounters) o;
-        return Objects.equals(faves, accountCounters.faves) &&
-                Objects.equals(menuClipsBadge, accountCounters.menuClipsBadge) &&
-                Objects.equals(notes, accountCounters.notes) &&
-                Objects.equals(groups, accountCounters.groups) &&
-                Objects.equals(photos, accountCounters.photos) &&
-                Objects.equals(friends, accountCounters.friends) &&
-                Objects.equals(friendsRecommendations, accountCounters.friendsRecommendations) &&
+        return Objects.equals(friendsRecommendations, accountCounters.friendsRecommendations) &&
                 Objects.equals(appRequests, accountCounters.appRequests) &&
-                Objects.equals(menuDiscoverBadge, accountCounters.menuDiscoverBadge) &&
+                Objects.equals(faves, accountCounters.faves) &&
+                Objects.equals(notes, accountCounters.notes) &&
                 Objects.equals(memories, accountCounters.memories) &&
+                Objects.equals(groups, accountCounters.groups) &&
                 Objects.equals(messages, accountCounters.messages) &&
-                Objects.equals(sdk, accountCounters.sdk) &&
+                Objects.equals(photos, accountCounters.photos) &&
                 Objects.equals(events, accountCounters.events) &&
+                Objects.equals(friends, accountCounters.friends) &&
                 Objects.equals(notifications, accountCounters.notifications) &&
-                Objects.equals(friendsSuggestions, accountCounters.friendsSuggestions) &&
                 Objects.equals(gifts, accountCounters.gifts);
     }
 
@@ -280,21 +222,17 @@ public class AccountCounters implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AccountCounters{");
-        sb.append("faves=").append(faves);
-        sb.append(", menuClipsBadge=").append(menuClipsBadge);
-        sb.append(", notes=").append(notes);
-        sb.append(", groups=").append(groups);
-        sb.append(", photos=").append(photos);
-        sb.append(", friends=").append(friends);
-        sb.append(", friendsRecommendations=").append(friendsRecommendations);
+        sb.append("friendsRecommendations=").append(friendsRecommendations);
         sb.append(", appRequests=").append(appRequests);
-        sb.append(", menuDiscoverBadge=").append(menuDiscoverBadge);
+        sb.append(", faves=").append(faves);
+        sb.append(", notes=").append(notes);
         sb.append(", memories=").append(memories);
+        sb.append(", groups=").append(groups);
         sb.append(", messages=").append(messages);
-        sb.append(", sdk=").append(sdk);
+        sb.append(", photos=").append(photos);
         sb.append(", events=").append(events);
+        sb.append(", friends=").append(friends);
         sb.append(", notifications=").append(notifications);
-        sb.append(", friendsSuggestions=").append(friendsSuggestions);
         sb.append(", gifts=").append(gifts);
         sb.append('}');
         return sb.toString();

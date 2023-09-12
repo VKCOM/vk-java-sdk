@@ -4,20 +4,25 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * MessageDeny object
  */
 public class MessageDeny implements Validable {
+    /**
+     * Entity: owner
+     */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public MessageDeny setUserId(Integer userId) {
+    public MessageDeny setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

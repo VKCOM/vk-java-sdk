@@ -5,23 +5,32 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
+ * Object type: *'community' - community,, *'post' - community post,, *'application' - VK application,, *'video' - video,, *'site' - external site.
  */
 public enum CheckLinkLinkType implements EnumParam {
+    @SerializedName("application")
+    APPLICATION("application"),
+
     @SerializedName("community")
     COMMUNITY("community"),
+
+    @SerializedName("mobile_app")
+    MOBILE_APP("mobile_app"),
 
     @SerializedName("post")
     POST("post"),
 
-    @SerializedName("application")
-    APPLICATION("application"),
+    @SerializedName("site")
+    SITE("site"),
+
+    @SerializedName("user")
+    USER("user"),
+
+    @SerializedName("user_post")
+    USER_POST("user_post"),
 
     @SerializedName("video")
-    VIDEO("video"),
-
-    @SerializedName("site")
-    SITE("site");
+    VIDEO("video");
 
     private final String value;
 

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.wall.responses.CreateCommentResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,38 +15,62 @@ import java.util.List;
  */
 public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateCommentQuery, CreateCommentResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallCreateCommentQuery(VkApiClient client, UserActor actor, int postId) {
+    public WallCreateCommentQuery(VkApiClient client, GroupActor actor, Integer postId) {
         super(client, "wall.createComment", CreateCommentResponse.class);
         accessToken(actor.getAccessToken());
         postId(postId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallCreateCommentQuery(VkApiClient client, GroupActor actor) {
+        super(client, "wall.createComment", CreateCommentResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallCreateCommentQuery(VkApiClient client, GroupActor actor, int postId) {
+    public WallCreateCommentQuery(VkApiClient client, UserActor actor, Integer postId) {
         super(client, "wall.createComment", CreateCommentResponse.class);
         accessToken(actor.getAccessToken());
         postId(postId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallCreateCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "wall.createComment", CreateCommentResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallCreateCommentQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallCreateCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -55,17 +80,20 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallCreateCommentQuery postId(int value) {
+    @ApiParam("post_id")
+    public WallCreateCommentQuery postId(Integer value) {
         return unsafeParam("post_id", value);
     }
 
     /**
      * Group ID.
      *
-     * @param value value of "from group" parameter. Minimum is 0.
+     * @param value value of "from group" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallCreateCommentQuery fromGroup(Integer value) {
+    @ApiParam("from_group")
+    public WallCreateCommentQuery fromGroup(Long value) {
         return unsafeParam("from_group", value);
     }
 
@@ -75,6 +103,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public WallCreateCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
@@ -85,6 +114,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "reply to comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reply_to_comment")
     public WallCreateCommentQuery replyToComment(Integer value) {
         return unsafeParam("reply_to_comment", value);
     }
@@ -95,6 +125,7 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "sticker id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sticker_id")
     public WallCreateCommentQuery stickerId(Integer value) {
         return unsafeParam("sticker_id", value);
     }
@@ -105,27 +136,30 @@ public class WallCreateCommentQuery extends AbstractQueryBuilder<WallCreateComme
      * @param value value of "guid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("guid")
     public WallCreateCommentQuery guid(String value) {
         return unsafeParam("guid", value);
     }
 
     /**
      * attachments
-     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media ojbect: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. For example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallCreateCommentQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media ojbect: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. For example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallCreateCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }

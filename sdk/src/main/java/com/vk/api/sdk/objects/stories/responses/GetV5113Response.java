@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.stories.FeedItem;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
@@ -19,18 +19,24 @@ public class GetV5113Response implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<FeedItem> items;
 
+    @SerializedName("need_upload_screen")
+    private Boolean needUploadScreen;
+
+    @SerializedName("next_from")
+    private String nextFrom;
+
     @SerializedName("profiles")
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    private List<Group> groups;
-
-    @SerializedName("need_upload_screen")
-    private Boolean needUploadScreen;
+    @SerializedName("track_code")
+    private String trackCode;
 
     public Integer getCount() {
         return count;
@@ -38,6 +44,15 @@ public class GetV5113Response implements Validable {
 
     public GetV5113Response setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetV5113Response setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -50,24 +65,6 @@ public class GetV5113Response implements Validable {
         return this;
     }
 
-    public List<UserFull> getProfiles() {
-        return profiles;
-    }
-
-    public GetV5113Response setProfiles(List<UserFull> profiles) {
-        this.profiles = profiles;
-        return this;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public GetV5113Response setGroups(List<Group> groups) {
-        this.groups = groups;
-        return this;
-    }
-
     public Boolean getNeedUploadScreen() {
         return needUploadScreen;
     }
@@ -77,9 +74,36 @@ public class GetV5113Response implements Validable {
         return this;
     }
 
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public GetV5113Response setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
+        return this;
+    }
+
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetV5113Response setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
+    public String getTrackCode() {
+        return trackCode;
+    }
+
+    public GetV5113Response setTrackCode(String trackCode) {
+        this.trackCode = trackCode;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, needUploadScreen, groups, items);
+        return Objects.hash(trackCode, count, profiles, needUploadScreen, groups, nextFrom, items);
     }
 
     @Override
@@ -87,9 +111,11 @@ public class GetV5113Response implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetV5113Response getV5113Response = (GetV5113Response) o;
-        return Objects.equals(count, getV5113Response.count) &&
+        return Objects.equals(nextFrom, getV5113Response.nextFrom) &&
+                Objects.equals(count, getV5113Response.count) &&
                 Objects.equals(profiles, getV5113Response.profiles) &&
                 Objects.equals(groups, getV5113Response.groups) &&
+                Objects.equals(trackCode, getV5113Response.trackCode) &&
                 Objects.equals(needUploadScreen, getV5113Response.needUploadScreen) &&
                 Objects.equals(items, getV5113Response.items);
     }
@@ -102,9 +128,11 @@ public class GetV5113Response implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetV5113Response{");
-        sb.append("count=").append(count);
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", count=").append(count);
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
+        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", needUploadScreen=").append(needUploadScreen);
         sb.append(", items=").append(items);
         sb.append('}');

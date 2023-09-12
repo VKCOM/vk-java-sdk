@@ -11,21 +11,9 @@ import java.util.Objects;
  * MessageNew object
  */
 public class MessageNew extends Base implements Validable {
-    @SerializedName("type")
-    private Type type;
-
     @SerializedName("object")
     @Required
     private MessageObject object;
-
-    public Type getType() {
-        return type;
-    }
-
-    public MessageNew setType(Type type) {
-        this.type = type;
-        return this;
-    }
 
     public MessageObject getObject() {
         return object;
@@ -38,7 +26,7 @@ public class MessageNew extends Base implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, object);
+        return Objects.hash(object);
     }
 
     @Override
@@ -46,8 +34,7 @@ public class MessageNew extends Base implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageNew messageNew = (MessageNew) o;
-        return Objects.equals(type, messageNew.type) &&
-                Objects.equals(object, messageNew.object);
+        return Objects.equals(object, messageNew.object);
     }
 
     @Override
@@ -58,8 +45,7 @@ public class MessageNew extends Base implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageNew{");
-        sb.append("type=").append(type);
-        sb.append(", object=").append(object);
+        sb.append("object=").append(object);
         sb.append('}');
         return sb.toString();
     }

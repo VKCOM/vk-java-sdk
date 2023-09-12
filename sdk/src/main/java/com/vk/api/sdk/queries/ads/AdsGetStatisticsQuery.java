@@ -8,6 +8,7 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.GetStatisticsIdsType;
 import com.vk.api.sdk.objects.ads.GetStatisticsPeriod;
 import com.vk.api.sdk.objects.ads.responses.GetStatisticsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatisticsQuery, List<GetStatisticsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param dateFrom value of "date from" parameter.
      * @param dateTo value of "date to" parameter.
      */
-    public AdsGetStatisticsQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsGetStatisticsQuery(VkApiClient client, UserActor actor, Integer accountId,
             GetStatisticsIdsType idsType, String ids, GetStatisticsPeriod period, String dateFrom,
             String dateTo) {
         super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, GetStatisticsResponse.class));
@@ -41,22 +42,35 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetStatisticsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getStatistics", Utils.buildParametrizedType(List.class, GetStatisticsResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetStatisticsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
     /**
-     * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns,, *client — clients,, *office — account.
+     * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns,, *client - clients,, *office - account.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery idsType(GetStatisticsIdsType value) {
+    @ApiParam("ids_type")
+    public AdsGetStatisticsQuery idsType(GetStatisticsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -66,47 +80,52 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery ids(String value) {
+    @ApiParam("ids")
+    public AdsGetStatisticsQuery ids(String value) {
         return unsafeParam("ids", value);
     }
 
     /**
-     * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
+     * Data grouping by dates: *day - statistics by days,, *month - statistics by months,, *overall - overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
      *
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery period(GetStatisticsPeriod value) {
+    @ApiParam("period")
+    public AdsGetStatisticsQuery period(GetStatisticsPeriod value) {
         return unsafeParam("period", value);
     }
 
     /**
-     * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
+     * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - day it was created on,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - month it was created in,, *overall: 0.
      *
      * @param value value of "date from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery dateFrom(String value) {
+    @ApiParam("date_from")
+    public AdsGetStatisticsQuery dateFrom(String value) {
         return unsafeParam("date_from", value);
     }
 
     /**
-     * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+     * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - current day,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - current month,, *overall: 0.
      *
      * @param value value of "date to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetStatisticsQuery dateTo(String value) {
+    @ApiParam("date_to")
+    public AdsGetStatisticsQuery dateTo(String value) {
         return unsafeParam("date_to", value);
     }
 
     /**
-     * stats_fields
+     * statsFields
      * Additional fields to add to statistics
      *
      * @param value value of "stats fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("stats_fields")
     public AdsGetStatisticsQuery statsFields(String... value) {
         return unsafeParam("stats_fields", value);
     }
@@ -117,6 +136,7 @@ public class AdsGetStatisticsQuery extends AbstractQueryBuilder<AdsGetStatistics
      * @param value value of "stats fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("stats_fields")
     public AdsGetStatisticsQuery statsFields(List<String> value) {
         return unsafeParam("stats_fields", value);
     }

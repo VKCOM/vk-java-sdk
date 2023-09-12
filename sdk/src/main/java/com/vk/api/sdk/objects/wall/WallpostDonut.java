@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.wall;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,9 +12,22 @@ import java.util.Objects;
  */
 public class WallpostDonut implements Validable {
     /**
+     * Says whether group admin can post free copy of this donut post
+     */
+    @SerializedName("can_publish_free_copy")
+    private Boolean canPublishFreeCopy;
+
+    /**
+     * Says what user can edit in post about donut properties
+     */
+    @SerializedName("edit_mode")
+    private WallpostDonutEditMode editMode;
+
+    /**
      * Post only for dons
      */
     @SerializedName("is_donut")
+    @Required
     private Boolean isDonut;
 
     /**
@@ -28,17 +42,23 @@ public class WallpostDonut implements Validable {
     @SerializedName("placeholder")
     private WallpostDonutPlaceholder placeholder;
 
-    /**
-     * Says whether group admin can post free copy of this donut post
-     */
-    @SerializedName("can_publish_free_copy")
-    private Boolean canPublishFreeCopy;
+    public Boolean getCanPublishFreeCopy() {
+        return canPublishFreeCopy;
+    }
 
-    /**
-     * Says what user can edit in post about donut properties
-     */
-    @SerializedName("edit_mode")
-    private WallpostDonutEditMode editMode;
+    public WallpostDonut setCanPublishFreeCopy(Boolean canPublishFreeCopy) {
+        this.canPublishFreeCopy = canPublishFreeCopy;
+        return this;
+    }
+
+    public WallpostDonutEditMode getEditMode() {
+        return editMode;
+    }
+
+    public WallpostDonut setEditMode(WallpostDonutEditMode editMode) {
+        this.editMode = editMode;
+        return this;
+    }
 
     public Boolean getIsDonut() {
         return isDonut;
@@ -67,24 +87,6 @@ public class WallpostDonut implements Validable {
         return this;
     }
 
-    public Boolean getCanPublishFreeCopy() {
-        return canPublishFreeCopy;
-    }
-
-    public WallpostDonut setCanPublishFreeCopy(Boolean canPublishFreeCopy) {
-        this.canPublishFreeCopy = canPublishFreeCopy;
-        return this;
-    }
-
-    public WallpostDonutEditMode getEditMode() {
-        return editMode;
-    }
-
-    public WallpostDonut setEditMode(WallpostDonutEditMode editMode) {
-        this.editMode = editMode;
-        return this;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(isDonut, editMode, canPublishFreeCopy, paidDuration, placeholder);
@@ -96,8 +98,8 @@ public class WallpostDonut implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         WallpostDonut wallpostDonut = (WallpostDonut) o;
         return Objects.equals(isDonut, wallpostDonut.isDonut) &&
-                Objects.equals(placeholder, wallpostDonut.placeholder) &&
                 Objects.equals(editMode, wallpostDonut.editMode) &&
+                Objects.equals(placeholder, wallpostDonut.placeholder) &&
                 Objects.equals(canPublishFreeCopy, wallpostDonut.canPublishFreeCopy) &&
                 Objects.equals(paidDuration, wallpostDonut.paidDuration);
     }
@@ -111,8 +113,8 @@ public class WallpostDonut implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WallpostDonut{");
         sb.append("isDonut=").append(isDonut);
-        sb.append(", placeholder=").append(placeholder);
         sb.append(", editMode='").append(editMode).append("'");
+        sb.append(", placeholder=").append(placeholder);
         sb.append(", canPublishFreeCopy=").append(canPublishFreeCopy);
         sb.append(", paidDuration=").append(paidDuration);
         sb.append('}');

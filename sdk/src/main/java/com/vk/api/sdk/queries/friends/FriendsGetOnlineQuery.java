@@ -5,31 +5,34 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Friends.getOnline method
  */
-public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnlineQuery, List<Integer>> {
+public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnlineQuery, List<Long>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public FriendsGetOnlineQuery(VkApiClient client, UserActor actor) {
-        super(client, "friends.getOnline", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getOnline", Utils.buildParametrizedType(List.class, Long.class));
         accessToken(actor.getAccessToken());
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetOnlineQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public FriendsGetOnlineQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -39,26 +42,29 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
      * @param value value of "list id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("list_id")
     public FriendsGetOnlineQuery listId(Integer value) {
         return unsafeParam("list_id", value);
     }
 
     /**
-     * '1' — to return an additional 'online_mobile' field, '0' — (default),
+     * '1' - to return an additional 'online_mobile' field, '0' - (default),
      *
      * @param value value of "online mobile" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("online_mobile")
     public FriendsGetOnlineQuery onlineMobile(Boolean value) {
         return unsafeParam("online_mobile", value);
     }
 
     /**
-     * Sort order: 'random' — random order
+     * Sort order: 'random' - random order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order")
     public FriendsGetOnlineQuery order(String value) {
         return unsafeParam("order", value);
     }
@@ -69,6 +75,7 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FriendsGetOnlineQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -79,6 +86,7 @@ public class FriendsGetOnlineQuery extends AbstractQueryBuilder<FriendsGetOnline
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FriendsGetOnlineQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }

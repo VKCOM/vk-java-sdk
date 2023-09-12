@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.gifts.GiftsGetQuery;
 
 /**
@@ -22,9 +23,10 @@ public class Gifts extends AbstractAction {
     /**
      * Returns a list of user gifts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("gifts.get")
     public GiftsGetQuery get(UserActor actor) {
         return new GiftsGetQuery(getClient(), actor);
     }

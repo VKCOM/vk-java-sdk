@@ -16,10 +16,10 @@ public class InfoForBots implements Validable {
     private List<TemplateActionTypeNames> buttonActions;
 
     /**
-     * client has support keyboard
+     * client has support carousel
      */
-    @SerializedName("keyboard")
-    private Boolean keyboard;
+    @SerializedName("carousel")
+    private Boolean carousel;
 
     /**
      * client has support inline keyboard
@@ -28,10 +28,10 @@ public class InfoForBots implements Validable {
     private Boolean inlineKeyboard;
 
     /**
-     * client has support carousel
+     * client has support keyboard
      */
-    @SerializedName("carousel")
-    private Boolean carousel;
+    @SerializedName("keyboard")
+    private Boolean keyboard;
 
     /**
      * client or user language id
@@ -48,12 +48,12 @@ public class InfoForBots implements Validable {
         return this;
     }
 
-    public Boolean getKeyboard() {
-        return keyboard;
+    public Boolean getCarousel() {
+        return carousel;
     }
 
-    public InfoForBots setKeyboard(Boolean keyboard) {
-        this.keyboard = keyboard;
+    public InfoForBots setCarousel(Boolean carousel) {
+        this.carousel = carousel;
         return this;
     }
 
@@ -66,12 +66,12 @@ public class InfoForBots implements Validable {
         return this;
     }
 
-    public Boolean getCarousel() {
-        return carousel;
+    public Boolean getKeyboard() {
+        return keyboard;
     }
 
-    public InfoForBots setCarousel(Boolean carousel) {
-        this.carousel = carousel;
+    public InfoForBots setKeyboard(Boolean keyboard) {
+        this.keyboard = keyboard;
         return this;
     }
 

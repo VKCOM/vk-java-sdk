@@ -14,17 +14,32 @@ public class Voters implements Validable {
      * Answer ID
      */
     @SerializedName("answer_id")
-    private Integer answerId;
+    private Long answerId;
+
+    /**
+     * Answer offset
+     */
+    @SerializedName("answer_offset")
+    private String answerOffset;
 
     @SerializedName("users")
     private VotersUsers users;
 
-    public Integer getAnswerId() {
+    public Long getAnswerId() {
         return answerId;
     }
 
-    public Voters setAnswerId(Integer answerId) {
+    public Voters setAnswerId(Long answerId) {
         this.answerId = answerId;
+        return this;
+    }
+
+    public String getAnswerOffset() {
+        return answerOffset;
+    }
+
+    public Voters setAnswerOffset(String answerOffset) {
+        this.answerOffset = answerOffset;
         return this;
     }
 
@@ -39,7 +54,7 @@ public class Voters implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, users);
+        return Objects.hash(answerId, answerOffset, users);
     }
 
     @Override
@@ -47,7 +62,8 @@ public class Voters implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Voters voters = (Voters) o;
-        return Objects.equals(answerId, voters.answerId) &&
+        return Objects.equals(answerOffset, voters.answerOffset) &&
+                Objects.equals(answerId, voters.answerId) &&
                 Objects.equals(users, voters.users);
     }
 
@@ -59,7 +75,8 @@ public class Voters implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Voters{");
-        sb.append("answerId=").append(answerId);
+        sb.append("answerOffset='").append(answerOffset).append("'");
+        sb.append(", answerId=").append(answerId);
         sb.append(", users=").append(users);
         sb.append('}');
         return sb.toString();

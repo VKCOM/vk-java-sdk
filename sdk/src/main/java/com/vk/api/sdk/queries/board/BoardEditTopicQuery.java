@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.board;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,15 +14,16 @@ import java.util.List;
  */
 public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param title value of "title" parameter.
      */
-    public BoardEditTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId,
+    public BoardEditTopicQuery(VkApiClient client, UserActor actor, Long groupId, Integer topicId,
             String title) {
         super(client, "board.editTopic", OkResponse.class);
         accessToken(actor.getAccessToken());
@@ -31,12 +33,25 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardEditTopicQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.editTopic", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditTopicQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardEditTopicQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -46,7 +61,8 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditTopicQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardEditTopicQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 
@@ -56,7 +72,8 @@ public class BoardEditTopicQuery extends AbstractQueryBuilder<BoardEditTopicQuer
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditTopicQuery title(String value) {
+    @ApiParam("title")
+    public BoardEditTopicQuery title(String value) {
         return unsafeParam("title", value);
     }
 

@@ -4,6 +4,8 @@ package com.vk.api.sdk.queries.stories;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.stories.responses.GetV5113Response;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSearchQueryWithV5113, GetV5113Response> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +31,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public StoriesSearchQueryWithV5113 q(String value) {
         return unsafeParam("q", value);
     }
@@ -39,6 +42,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "place id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("place_id")
     public StoriesSearchQueryWithV5113 placeId(Integer value) {
         return unsafeParam("place_id", value);
     }
@@ -49,6 +53,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public StoriesSearchQueryWithV5113 latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -59,6 +64,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public StoriesSearchQueryWithV5113 longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -69,6 +75,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "radius" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("radius")
     public StoriesSearchQueryWithV5113 radius(Integer value) {
         return unsafeParam("radius", value);
     }
@@ -79,6 +86,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "mentioned id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mentioned_id")
     public StoriesSearchQueryWithV5113 mentionedId(Integer value) {
         return unsafeParam("mentioned_id", value);
     }
@@ -89,6 +97,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 1. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public StoriesSearchQueryWithV5113 count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -99,6 +108,7 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public StoriesSearchQueryWithV5113 extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -110,7 +120,8 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StoriesSearchQueryWithV5113 fields(String... value) {
+    @ApiParam("fields")
+    public StoriesSearchQueryWithV5113 fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
 
@@ -120,7 +131,8 @@ public class StoriesSearchQueryWithV5113 extends AbstractQueryBuilder<StoriesSea
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StoriesSearchQueryWithV5113 fields(List<String> value) {
+    @ApiParam("fields")
+    public StoriesSearchQueryWithV5113 fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }
 

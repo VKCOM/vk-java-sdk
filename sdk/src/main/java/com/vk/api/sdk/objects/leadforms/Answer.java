@@ -2,24 +2,31 @@
 package com.vk.api.sdk.objects.leadforms;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.oneofs.AnswerOneOf;
 import java.util.Objects;
 
 /**
  * Answer object
  */
 public class Answer implements Validable {
+    @SerializedName("answer")
+    @Required
+    private AnswerOneOf answer;
+
     @SerializedName("key")
     @Required
     private String key;
 
-    @SerializedName("answer")
-    @Required
-    private JsonObject answer;
+    public AnswerOneOf getAnswer() {
+        return answer;
+    }
+
+    public Answer setAnswer(AnswerOneOf answer) {
+        this.answer = answer;
+        return this;
+    }
 
     public String getKey() {
         return key;
@@ -28,10 +35,6 @@ public class Answer implements Validable {
     public Answer setKey(String key) {
         this.key = key;
         return this;
-    }
-
-    public AnswerOneOf getAnswer() {
-        return new AnswerOneOf(answer);
     }
 
     @Override

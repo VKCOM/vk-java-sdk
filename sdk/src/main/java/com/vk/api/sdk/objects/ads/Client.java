@@ -15,12 +15,14 @@ public class Client implements Validable {
      * Client's total limit, rubles
      */
     @SerializedName("all_limit")
+    @Required
     private String allLimit;
 
     /**
      * Client's day limit, rubles
      */
     @SerializedName("day_limit")
+    @Required
     private String dayLimit;
 
     /**
@@ -36,6 +38,12 @@ public class Client implements Validable {
     @SerializedName("name")
     @Required
     private String name;
+
+    /**
+     * Ord data
+     */
+    @SerializedName("ord_data")
+    private OrdData ordData;
 
     public String getAllLimit() {
         return allLimit;
@@ -73,9 +81,18 @@ public class Client implements Validable {
         return this;
     }
 
+    public OrdData getOrdData() {
+        return ordData;
+    }
+
+    public Client setOrdData(OrdData ordData) {
+        this.ordData = ordData;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(dayLimit, allLimit, name, id);
+        return Objects.hash(dayLimit, allLimit, ordData, name, id);
     }
 
     @Override
@@ -86,7 +103,8 @@ public class Client implements Validable {
         return Objects.equals(allLimit, client.allLimit) &&
                 Objects.equals(dayLimit, client.dayLimit) &&
                 Objects.equals(name, client.name) &&
-                Objects.equals(id, client.id);
+                Objects.equals(id, client.id) &&
+                Objects.equals(ordData, client.ordData);
     }
 
     @Override
@@ -101,6 +119,7 @@ public class Client implements Validable {
         sb.append(", dayLimit='").append(dayLimit).append("'");
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", ordData=").append(ordData);
         sb.append('}');
         return sb.toString();
     }

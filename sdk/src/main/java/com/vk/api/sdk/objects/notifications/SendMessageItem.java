@@ -10,11 +10,8 @@ import java.util.Objects;
  * SendMessageItem object
  */
 public class SendMessageItem implements Validable {
-    /**
-     * User ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("error")
+    private SendMessageError error;
 
     /**
      * Notification status
@@ -22,15 +19,19 @@ public class SendMessageItem implements Validable {
     @SerializedName("status")
     private Boolean status;
 
-    @SerializedName("error")
-    private SendMessageError error;
+    /**
+     * User ID
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
 
-    public Integer getUserId() {
-        return userId;
+    public SendMessageError getError() {
+        return error;
     }
 
-    public SendMessageItem setUserId(Integer userId) {
-        this.userId = userId;
+    public SendMessageItem setError(SendMessageError error) {
+        this.error = error;
         return this;
     }
 
@@ -43,12 +44,12 @@ public class SendMessageItem implements Validable {
         return this;
     }
 
-    public SendMessageError getError() {
-        return error;
+    public Long getUserId() {
+        return userId;
     }
 
-    public SendMessageItem setError(SendMessageError error) {
-        this.error = error;
+    public SendMessageItem setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

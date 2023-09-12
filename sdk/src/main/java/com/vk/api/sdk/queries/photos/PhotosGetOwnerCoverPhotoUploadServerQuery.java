@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,41 +15,37 @@ import java.util.List;
  */
 public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuilder<PhotosGetOwnerCoverPhotoUploadServerQuery, GetUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, UserActor actor,
-            int groupId) {
-        super(client, "photos.getOwnerCoverPhotoUploadServer", GetUploadServerResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor,
-            int groupId) {
+    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, GroupActor actor) {
         super(client, "photos.getOwnerCoverPhotoUploadServer", GetUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
-        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosGetOwnerCoverPhotoUploadServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.getOwnerCoverPhotoUploadServer", GetUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of community that owns the album (if the photo will be uploaded to a community album).
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosGetOwnerCoverPhotoUploadServerQuery groupId(int value) {
+    @ApiParam("group_id")
+    public PhotosGetOwnerCoverPhotoUploadServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -58,6 +55,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      * @param value value of "crop x" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_x")
     public PhotosGetOwnerCoverPhotoUploadServerQuery cropX(Integer value) {
         return unsafeParam("crop_x", value);
     }
@@ -68,6 +66,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      * @param value value of "crop y" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_y")
     public PhotosGetOwnerCoverPhotoUploadServerQuery cropY(Integer value) {
         return unsafeParam("crop_y", value);
     }
@@ -78,6 +77,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      * @param value value of "crop x2" parameter. Minimum is 0. By default 795.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_x2")
     public PhotosGetOwnerCoverPhotoUploadServerQuery cropX2(Integer value) {
         return unsafeParam("crop_x2", value);
     }
@@ -88,8 +88,20 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
      * @param value value of "crop y2" parameter. Minimum is 0. By default 200.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_y2")
     public PhotosGetOwnerCoverPhotoUploadServerQuery cropY2(Integer value) {
         return unsafeParam("crop_y2", value);
+    }
+
+    /**
+     * Set is video cover
+     *
+     * @param value value of "is video cover" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("is_video_cover")
+    public PhotosGetOwnerCoverPhotoUploadServerQuery isVideoCover(Boolean value) {
+        return unsafeParam("is_video_cover", value);
     }
 
     @Override
@@ -99,6 +111,6 @@ public class PhotosGetOwnerCoverPhotoUploadServerQuery extends AbstractQueryBuil
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

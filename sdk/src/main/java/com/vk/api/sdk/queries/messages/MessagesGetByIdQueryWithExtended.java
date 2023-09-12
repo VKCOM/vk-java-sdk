@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetByIdExtendedResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,64 +16,27 @@ import java.util.List;
  */
 public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<MessagesGetByIdQueryWithExtended, GetByIdExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param messageIds value of "message ids" parameter.
      */
-    public MessagesGetByIdQueryWithExtended(VkApiClient client, UserActor actor,
-            Integer... messageIds) {
-        super(client, "messages.getById", GetByIdExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        messageIds(messageIds);
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param messageIds value of "message ids" parameter.
-     */
-    public MessagesGetByIdQueryWithExtended(VkApiClient client, UserActor actor,
-            List<Integer> messageIds) {
-        super(client, "messages.getById", GetByIdExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        messageIds(messageIds);
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param messageIds value of "message ids" parameter.
-     */
-    public MessagesGetByIdQueryWithExtended(VkApiClient client, GroupActor actor,
-            Integer... messageIds) {
+    public MessagesGetByIdQueryWithExtended(VkApiClient client, GroupActor actor) {
         super(client, "messages.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
-        messageIds(messageIds);
         extended(true);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param messageIds value of "message ids" parameter.
      */
-    public MessagesGetByIdQueryWithExtended(VkApiClient client, GroupActor actor,
-            List<Integer> messageIds) {
+    public MessagesGetByIdQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "messages.getById", GetByIdExtendedResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(actor.getGroupId());
-        messageIds(messageIds);
         extended(true);
     }
 
@@ -82,6 +46,7 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
      * @param value value of "preview length" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public MessagesGetByIdQueryWithExtended previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
@@ -92,6 +57,7 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected MessagesGetByIdQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -99,21 +65,36 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetByIdQueryWithExtended groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetByIdQueryWithExtended groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
-     * message_ids
+     * Set peer id
+     *
+     * @param value value of "peer id" parameter. Entity - peer
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("peer_id")
+    public MessagesGetByIdQueryWithExtended peerId(Long value) {
+        return unsafeParam("peer_id", value);
+    }
+
+    /**
+     * messageIds
      * Message IDs.
      *
      * @param value value of "message ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetByIdQueryWithExtended messageIds(Integer... value) {
+    @ApiParam("message_ids")
+    public MessagesGetByIdQueryWithExtended messageIds(Integer... value) {
         return unsafeParam("message_ids", value);
     }
 
@@ -123,7 +104,8 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
      * @param value value of "message ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetByIdQueryWithExtended messageIds(List<Integer> value) {
+    @ApiParam("message_ids")
+    public MessagesGetByIdQueryWithExtended messageIds(List<Integer> value) {
         return unsafeParam("message_ids", value);
     }
 
@@ -134,6 +116,7 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetByIdQueryWithExtended fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -144,8 +127,32 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetByIdQueryWithExtended fields(List<Fields> value) {
         return unsafeParam("fields", value);
+    }
+
+    /**
+     * cmids
+     * Set cmids
+     *
+     * @param value value of "cmids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("cmids")
+    public MessagesGetByIdQueryWithExtended cmids(Integer... value) {
+        return unsafeParam("cmids", value);
+    }
+
+    /**
+     * Set cmids
+     *
+     * @param value value of "cmids" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("cmids")
+    public MessagesGetByIdQueryWithExtended cmids(List<Integer> value) {
+        return unsafeParam("cmids", value);
     }
 
     @Override
@@ -155,6 +162,6 @@ public class MessagesGetByIdQueryWithExtended extends AbstractQueryBuilder<Messa
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("message_ids", "access_token");
+        return Arrays.asList("access_token");
     }
 }

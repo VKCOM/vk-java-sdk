@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.oneofs.UsersSubscriptionsItemOneOf;
+import com.vk.api.sdk.objects.users.SubscriptionsItem;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -35,8 +35,8 @@ public class GetSubscriptionsExtendedResponse implements Validable {
         return this;
     }
 
-    public List<UsersSubscriptionsItemOneOf> getItems() {
-        return items.stream().map(UsersSubscriptionsItemOneOf::new).collect(Collectors.toList());
+    public List<SubscriptionsItem> getItems() {
+        return items.stream().map(SubscriptionsItem::new).collect(Collectors.toList());
     }
 
     @Override

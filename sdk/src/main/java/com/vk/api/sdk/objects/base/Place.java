@@ -57,13 +57,13 @@ public class Place implements Validable {
      * Place latitude
      */
     @SerializedName("latitude")
-    private Float latitude;
+    private Number latitude;
 
     /**
      * Place longitude
      */
     @SerializedName("longitude")
-    private Float longitude;
+    private Number longitude;
 
     /**
      * Place title
@@ -140,20 +140,20 @@ public class Place implements Validable {
         return this;
     }
 
-    public Float getLatitude() {
+    public Number getLatitude() {
         return latitude;
     }
 
-    public Place setLatitude(Float latitude) {
+    public Place setLatitude(Number latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public Float getLongitude() {
+    public Number getLongitude() {
         return longitude;
     }
 
-    public Place setLongitude(Float longitude) {
+    public Place setLongitude(Number longitude) {
         this.longitude = longitude;
         return this;
     }

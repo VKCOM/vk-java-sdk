@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.SearchResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,7 +26,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -42,6 +43,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public PhotosSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -52,6 +54,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("lat")
     public PhotosSearchQuery lat(Number value) {
         return unsafeParam("lat", value);
     }
@@ -62,6 +65,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("long")
     public PhotosSearchQuery lng(Number value) {
         return unsafeParam("long", value);
     }
@@ -72,6 +76,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public PhotosSearchQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -82,6 +87,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public PhotosSearchQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -92,6 +98,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "sort" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public PhotosSearchQuery sort(Integer value) {
         return unsafeParam("sort", value);
     }
@@ -102,6 +109,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public PhotosSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -112,6 +120,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public PhotosSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -122,6 +131,7 @@ public class PhotosSearchQuery extends AbstractQueryBuilder<PhotosSearchQuery, S
      * @param value value of "radius" parameter. Minimum is 0. By default 5000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("radius")
     public PhotosSearchQuery radius(Integer value) {
         return unsafeParam("radius", value);
     }

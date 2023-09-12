@@ -22,6 +22,18 @@ public class GetSuggestionsResponse implements Validable {
     @SerializedName("name")
     private String name;
 
+    /**
+     * Parent
+     */
+    @SerializedName("parent")
+    private String parent;
+
+    /**
+     * Object type
+     */
+    @SerializedName("type")
+    private String type;
+
     public Integer getId() {
         return id;
     }
@@ -40,9 +52,27 @@ public class GetSuggestionsResponse implements Validable {
         return this;
     }
 
+    public String getParent() {
+        return parent;
+    }
+
+    public GetSuggestionsResponse setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public GetSuggestionsResponse setType(String type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(parent, name, id, type);
     }
 
     @Override
@@ -50,8 +80,10 @@ public class GetSuggestionsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetSuggestionsResponse getSuggestionsResponse = (GetSuggestionsResponse) o;
-        return Objects.equals(name, getSuggestionsResponse.name) &&
-                Objects.equals(id, getSuggestionsResponse.id);
+        return Objects.equals(parent, getSuggestionsResponse.parent) &&
+                Objects.equals(name, getSuggestionsResponse.name) &&
+                Objects.equals(id, getSuggestionsResponse.id) &&
+                Objects.equals(type, getSuggestionsResponse.type);
     }
 
     @Override
@@ -62,8 +94,10 @@ public class GetSuggestionsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetSuggestionsResponse{");
-        sb.append("name='").append(name).append("'");
+        sb.append("parent='").append(parent).append("'");
+        sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.status;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StatusSetQuery extends AbstractQueryBuilder<StatusSetQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +30,7 @@ public class StatusSetQuery extends AbstractQueryBuilder<StatusSetQuery, OkRespo
      * @param value value of "text" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("text")
     public StatusSetQuery text(String value) {
         return unsafeParam("text", value);
     }
@@ -36,10 +38,12 @@ public class StatusSetQuery extends AbstractQueryBuilder<StatusSetQuery, OkRespo
     /**
      * Identifier of a community to set a status in. If left blank the status is set to current user.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public StatusSetQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public StatusSetQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

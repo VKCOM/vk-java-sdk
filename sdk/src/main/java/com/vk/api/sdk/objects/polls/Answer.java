@@ -16,14 +16,14 @@ public class Answer implements Validable {
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private Long id;
 
     /**
      * Answer rate in percents
      */
     @SerializedName("rate")
     @Required
-    private Float rate;
+    private Number rate;
 
     /**
      * Answer text
@@ -39,20 +39,20 @@ public class Answer implements Validable {
     @Required
     private Integer votes;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Answer setId(Integer id) {
+    public Answer setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public Float getRate() {
+    public Number getRate() {
         return rate;
     }
 
-    public Answer setRate(Float rate) {
+    public Answer setRate(Number rate) {
         this.rate = rate;
         return this;
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.appwidgets.GetGroupImagesImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetGroupImagesResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class AppWidgetsGetGroupImagesQuery extends AbstractQueryBuilder<AppWidgetsGetGroupImagesQuery, GetGroupImagesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class AppWidgetsGetGroupImagesQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AppWidgetsGetGroupImagesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -40,6 +42,7 @@ public class AppWidgetsGetGroupImagesQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public AppWidgetsGetGroupImagesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -50,6 +53,7 @@ public class AppWidgetsGetGroupImagesQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("image_type")
     public AppWidgetsGetGroupImagesQuery imageType(GetGroupImagesImageType value) {
         return unsafeParam("image_type", value);
     }

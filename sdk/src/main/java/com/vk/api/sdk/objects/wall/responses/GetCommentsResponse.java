@@ -14,15 +14,17 @@ import java.util.Objects;
  */
 public class GetCommentsResponse implements Validable {
     /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
+
+    /**
      * Total number
      */
     @SerializedName("count")
     @Required
     private Integer count;
-
-    @SerializedName("items")
-    @Required
-    private List<WallComment> items;
 
     /**
      * Count of replies of current level
@@ -31,19 +33,26 @@ public class GetCommentsResponse implements Validable {
     private Integer currentLevelCount;
 
     /**
-     * Information whether current user can comment the post
-     */
-    @SerializedName("can_post")
-    private Boolean canPost;
-
-    @SerializedName("show_reply_button")
-    private Boolean showReplyButton;
-
-    /**
      * Information whether groups can comment the post
      */
     @SerializedName("groups_can_post")
     private Boolean groupsCanPost;
+
+    @SerializedName("items")
+    @Required
+    private List<WallComment> items;
+
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public GetCommentsResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
 
     public Integer getCount() {
         return count;
@@ -51,15 +60,6 @@ public class GetCommentsResponse implements Validable {
 
     public GetCommentsResponse setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public List<WallComment> getItems() {
-        return items;
-    }
-
-    public GetCommentsResponse setItems(List<WallComment> items) {
-        this.items = items;
         return this;
     }
 
@@ -72,12 +72,21 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public Boolean getCanPost() {
-        return canPost;
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
     }
 
-    public GetCommentsResponse setCanPost(Boolean canPost) {
-        this.canPost = canPost;
+    public GetCommentsResponse setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
+        return this;
+    }
+
+    public List<WallComment> getItems() {
+        return items;
+    }
+
+    public GetCommentsResponse setItems(List<WallComment> items) {
+        this.items = items;
         return this;
     }
 
@@ -87,15 +96,6 @@ public class GetCommentsResponse implements Validable {
 
     public GetCommentsResponse setShowReplyButton(Boolean showReplyButton) {
         this.showReplyButton = showReplyButton;
-        return this;
-    }
-
-    public Boolean getGroupsCanPost() {
-        return groupsCanPost;
-    }
-
-    public GetCommentsResponse setGroupsCanPost(Boolean groupsCanPost) {
-        this.groupsCanPost = groupsCanPost;
         return this;
     }
 

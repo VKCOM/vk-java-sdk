@@ -12,16 +12,34 @@ import java.util.Objects;
  */
 public class Layout implements Validable {
     /**
+     * ID of the build of constructor gift
+     */
+    @SerializedName("build_id")
+    private String buildId;
+
+    /**
      * Gift ID
      */
     @SerializedName("id")
     private Integer id;
 
     /**
-     * URL of the preview image with 512 px in width
+     * Information whether gift represents a stickers style
      */
-    @SerializedName("thumb_512")
-    private URI thumb512;
+    @SerializedName("is_stickers_style")
+    private Boolean isStickersStyle;
+
+    /**
+     * Keywords used for search
+     */
+    @SerializedName("keywords")
+    private String keywords;
+
+    /**
+     * ID of the sticker pack, if the gift is representing one
+     */
+    @SerializedName("stickers_product_id")
+    private Integer stickersProductId;
 
     /**
      * URL of the preview image with 256 px in width
@@ -36,34 +54,25 @@ public class Layout implements Validable {
     private URI thumb48;
 
     /**
+     * URL of the preview image with 512 px in width
+     */
+    @SerializedName("thumb_512")
+    private URI thumb512;
+
+    /**
      * URL of the preview image with 96 px in width
      */
     @SerializedName("thumb_96")
     private URI thumb96;
 
-    /**
-     * ID of the sticker pack, if the gift is representing one
-     */
-    @SerializedName("stickers_product_id")
-    private Integer stickersProductId;
+    public String getBuildId() {
+        return buildId;
+    }
 
-    /**
-     * Information whether gift represents a stickers style
-     */
-    @SerializedName("is_stickers_style")
-    private Boolean isStickersStyle;
-
-    /**
-     * ID of the build of constructor gift
-     */
-    @SerializedName("build_id")
-    private String buildId;
-
-    /**
-     * Keywords used for search
-     */
-    @SerializedName("keywords")
-    private String keywords;
+    public Layout setBuildId(String buildId) {
+        this.buildId = buildId;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -74,12 +83,30 @@ public class Layout implements Validable {
         return this;
     }
 
-    public URI getThumb512() {
-        return thumb512;
+    public Boolean getIsStickersStyle() {
+        return isStickersStyle;
     }
 
-    public Layout setThumb512(URI thumb512) {
-        this.thumb512 = thumb512;
+    public Layout setIsStickersStyle(Boolean isStickersStyle) {
+        this.isStickersStyle = isStickersStyle;
+        return this;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public Layout setKeywords(String keywords) {
+        this.keywords = keywords;
+        return this;
+    }
+
+    public Integer getStickersProductId() {
+        return stickersProductId;
+    }
+
+    public Layout setStickersProductId(Integer stickersProductId) {
+        this.stickersProductId = stickersProductId;
         return this;
     }
 
@@ -101,48 +128,21 @@ public class Layout implements Validable {
         return this;
     }
 
+    public URI getThumb512() {
+        return thumb512;
+    }
+
+    public Layout setThumb512(URI thumb512) {
+        this.thumb512 = thumb512;
+        return this;
+    }
+
     public URI getThumb96() {
         return thumb96;
     }
 
     public Layout setThumb96(URI thumb96) {
         this.thumb96 = thumb96;
-        return this;
-    }
-
-    public Integer getStickersProductId() {
-        return stickersProductId;
-    }
-
-    public Layout setStickersProductId(Integer stickersProductId) {
-        this.stickersProductId = stickersProductId;
-        return this;
-    }
-
-    public Boolean getIsStickersStyle() {
-        return isStickersStyle;
-    }
-
-    public Layout setIsStickersStyle(Boolean isStickersStyle) {
-        this.isStickersStyle = isStickersStyle;
-        return this;
-    }
-
-    public String getBuildId() {
-        return buildId;
-    }
-
-    public Layout setBuildId(String buildId) {
-        this.buildId = buildId;
-        return this;
-    }
-
-    public String getKeywords() {
-        return keywords;
-    }
-
-    public Layout setKeywords(String keywords) {
-        this.keywords = keywords;
         return this;
     }
 
@@ -157,9 +157,9 @@ public class Layout implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Layout layout = (Layout) o;
         return Objects.equals(thumb96, layout.thumb96) &&
-                Objects.equals(stickersProductId, layout.stickersProductId) &&
                 Objects.equals(isStickersStyle, layout.isStickersStyle) &&
                 Objects.equals(keywords, layout.keywords) &&
+                Objects.equals(stickersProductId, layout.stickersProductId) &&
                 Objects.equals(buildId, layout.buildId) &&
                 Objects.equals(thumb48, layout.thumb48) &&
                 Objects.equals(id, layout.id) &&
@@ -176,9 +176,9 @@ public class Layout implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Layout{");
         sb.append("thumb96=").append(thumb96);
-        sb.append(", stickersProductId=").append(stickersProductId);
         sb.append(", isStickersStyle=").append(isStickersStyle);
         sb.append(", keywords='").append(keywords).append("'");
+        sb.append(", stickersProductId=").append(stickersProductId);
         sb.append(", buildId='").append(buildId).append("'");
         sb.append(", thumb48=").append(thumb48);
         sb.append(", id=").append(id);

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.account.responses.ChangePasswordResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChangePasswordQuery, ChangePasswordResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,11 +27,23 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AccountChangePasswordQuery(VkApiClient client, UserActor actor) {
+        super(client, "account.changePassword", ChangePasswordResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
      *
      * @param value value of "restore sid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("restore_sid")
     public AccountChangePasswordQuery restoreSid(String value) {
         return unsafeParam("restore_sid", value);
     }
@@ -41,6 +54,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
      * @param value value of "change password hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("change_password_hash")
     public AccountChangePasswordQuery changePasswordHash(String value) {
         return unsafeParam("change_password_hash", value);
     }
@@ -51,6 +65,7 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
      * @param value value of "old password" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("old_password")
     public AccountChangePasswordQuery oldPassword(String value) {
         return unsafeParam("old_password", value);
     }
@@ -61,7 +76,8 @@ public class AccountChangePasswordQuery extends AbstractQueryBuilder<AccountChan
      * @param value value of "new password" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountChangePasswordQuery newPassword(String value) {
+    @ApiParam("new_password")
+    public AccountChangePasswordQuery newPassword(String value) {
         return unsafeParam("new_password", value);
     }
 

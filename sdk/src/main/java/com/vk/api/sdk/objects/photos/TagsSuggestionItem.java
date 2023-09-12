@@ -11,17 +11,11 @@ import java.util.Objects;
  * TagsSuggestionItem object
  */
 public class TagsSuggestionItem implements Validable {
-    @SerializedName("title")
-    private String title;
+    @SerializedName("buttons")
+    private List<TagsSuggestionItemButton> buttons;
 
     @SerializedName("caption")
     private String caption;
-
-    @SerializedName("type")
-    private String type;
-
-    @SerializedName("buttons")
-    private List<TagsSuggestionItemButton> buttons;
 
     @SerializedName("photo")
     private Photo photo;
@@ -29,15 +23,21 @@ public class TagsSuggestionItem implements Validable {
     @SerializedName("tags")
     private List<PhotoTag> tags;
 
+    @SerializedName("title")
+    private String title;
+
     @SerializedName("track_code")
     private String trackCode;
 
-    public String getTitle() {
-        return title;
+    @SerializedName("type")
+    private String type;
+
+    public List<TagsSuggestionItemButton> getButtons() {
+        return buttons;
     }
 
-    public TagsSuggestionItem setTitle(String title) {
-        this.title = title;
+    public TagsSuggestionItem setButtons(List<TagsSuggestionItemButton> buttons) {
+        this.buttons = buttons;
         return this;
     }
 
@@ -47,24 +47,6 @@ public class TagsSuggestionItem implements Validable {
 
     public TagsSuggestionItem setCaption(String caption) {
         this.caption = caption;
-        return this;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public TagsSuggestionItem setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public List<TagsSuggestionItemButton> getButtons() {
-        return buttons;
-    }
-
-    public TagsSuggestionItem setButtons(List<TagsSuggestionItemButton> buttons) {
-        this.buttons = buttons;
         return this;
     }
 
@@ -86,12 +68,30 @@ public class TagsSuggestionItem implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public TagsSuggestionItem setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     public String getTrackCode() {
         return trackCode;
     }
 
     public TagsSuggestionItem setTrackCode(String trackCode) {
         this.trackCode = trackCode;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public TagsSuggestionItem setType(String type) {
+        this.type = type;
         return this;
     }
 

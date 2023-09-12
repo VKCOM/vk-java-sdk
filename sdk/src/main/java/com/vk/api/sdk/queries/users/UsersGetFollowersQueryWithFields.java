@@ -5,8 +5,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.users.Fields;
-import com.vk.api.sdk.objects.users.GetFollowersNameCase;
 import com.vk.api.sdk.objects.users.responses.GetFollowersFieldsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<UsersGetFollowersQueryWithFields, GetFollowersFieldsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,7 +29,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,7 +42,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -55,7 +56,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -71,10 +72,12 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQueryWithFields userId(Integer value) {
+    @ApiParam("user_id")
+    public UsersGetFollowersQueryWithFields userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -84,6 +87,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public UsersGetFollowersQueryWithFields offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -94,17 +98,19 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public UsersGetFollowersQueryWithFields count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQueryWithFields nameCase(GetFollowersNameCase value) {
+    @ApiParam("name_case")
+    public UsersGetFollowersQueryWithFields nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
@@ -115,6 +121,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     protected UsersGetFollowersQueryWithFields fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -125,6 +132,7 @@ public class UsersGetFollowersQueryWithFields extends AbstractQueryBuilder<Users
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     protected UsersGetFollowersQueryWithFields fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

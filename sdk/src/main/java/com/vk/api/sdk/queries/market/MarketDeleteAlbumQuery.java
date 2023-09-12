@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class MarketDeleteAlbumQuery extends AbstractQueryBuilder<MarketDeleteAlbumQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param albumId value of "album id" parameter. Minimum is 0.
      */
-    public MarketDeleteAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int albumId) {
+    public MarketDeleteAlbumQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer albumId) {
         super(client, "market.deleteAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +31,25 @@ public class MarketDeleteAlbumQuery extends AbstractQueryBuilder<MarketDeleteAlb
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketDeleteAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.deleteAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an collection owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketDeleteAlbumQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketDeleteAlbumQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +59,8 @@ public class MarketDeleteAlbumQuery extends AbstractQueryBuilder<MarketDeleteAlb
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketDeleteAlbumQuery albumId(int value) {
+    @ApiParam("album_id")
+    public MarketDeleteAlbumQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 

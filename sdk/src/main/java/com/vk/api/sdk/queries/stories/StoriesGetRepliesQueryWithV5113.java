@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.stories.responses.GetV5113Response;
 import java.util.Arrays;
@@ -15,15 +16,16 @@ import java.util.List;
  */
 public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<StoriesGetRepliesQueryWithV5113, GetV5113Response> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesGetRepliesQueryWithV5113(VkApiClient client, UserActor actor, int ownerId,
-            int storyId) {
+    public StoriesGetRepliesQueryWithV5113(VkApiClient client, GroupActor actor, Long ownerId,
+            Integer storyId) {
         super(client, "stories.getReplies", GetV5113Response.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -31,15 +33,16 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesGetRepliesQueryWithV5113(VkApiClient client, GroupActor actor, int ownerId,
-            int storyId) {
+    public StoriesGetRepliesQueryWithV5113(VkApiClient client, UserActor actor, Long ownerId,
+            Integer storyId) {
         super(client, "stories.getReplies", GetV5113Response.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -49,10 +52,12 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
     /**
      * Story owner ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetRepliesQueryWithV5113 ownerId(int value) {
+    @ApiParam("owner_id")
+    public StoriesGetRepliesQueryWithV5113 ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -62,7 +67,8 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
      * @param value value of "story id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetRepliesQueryWithV5113 storyId(int value) {
+    @ApiParam("story_id")
+    public StoriesGetRepliesQueryWithV5113 storyId(Integer value) {
         return unsafeParam("story_id", value);
     }
 
@@ -72,16 +78,18 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
      * @param value value of "access key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("access_key")
     public StoriesGetRepliesQueryWithV5113 accessKey(String value) {
         return unsafeParam("access_key", value);
     }
 
     /**
-     * '1' — to return additional fields for users and communities. Default value is 0.
+     * '1' - to return additional fields for users and communities. Default value is 0.
      *
      * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public StoriesGetRepliesQueryWithV5113 extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -93,6 +101,7 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetRepliesQueryWithV5113 fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -103,6 +112,7 @@ public class StoriesGetRepliesQueryWithV5113 extends AbstractQueryBuilder<Storie
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetRepliesQueryWithV5113 fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

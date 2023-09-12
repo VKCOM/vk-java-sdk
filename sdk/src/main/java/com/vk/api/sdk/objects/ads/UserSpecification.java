@@ -12,37 +12,32 @@ import java.util.Objects;
  * UserSpecification object
  */
 public class UserSpecification implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("client_ids")
+    private List<Integer> clientIds;
+
+    @SerializedName("grant_access_to_all_clients")
+    private Boolean grantAccessToAllClients;
 
     @SerializedName("role")
     @Required
     private AccessRolePublic role;
 
-    @SerializedName("grant_access_to_all_clients")
-    private Boolean grantAccessToAllClients;
-
-    @SerializedName("client_ids")
-    private List<Integer> clientIds;
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     @SerializedName("view_budget")
     private Boolean viewBudget;
 
-    public Integer getUserId() {
-        return userId;
+    public List<Integer> getClientIds() {
+        return clientIds;
     }
 
-    public UserSpecification setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public AccessRolePublic getRole() {
-        return role;
-    }
-
-    public UserSpecification setRole(AccessRolePublic role) {
-        this.role = role;
+    public UserSpecification setClientIds(List<Integer> clientIds) {
+        this.clientIds = clientIds;
         return this;
     }
 
@@ -55,12 +50,21 @@ public class UserSpecification implements Validable {
         return this;
     }
 
-    public List<Integer> getClientIds() {
-        return clientIds;
+    public AccessRolePublic getRole() {
+        return role;
     }
 
-    public UserSpecification setClientIds(List<Integer> clientIds) {
-        this.clientIds = clientIds;
+    public UserSpecification setRole(AccessRolePublic role) {
+        this.role = role;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public UserSpecification setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

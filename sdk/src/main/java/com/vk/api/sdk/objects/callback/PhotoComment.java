@@ -11,30 +11,32 @@ import java.util.Objects;
  * PhotoComment object
  */
 public class PhotoComment implements Validable {
+    @SerializedName("date")
+    @Required
+    private Integer date;
+
+    @SerializedName("from_id")
+    @Required
+    private Integer fromId;
+
     @SerializedName("id")
     @Required
     private Integer id;
 
-    @SerializedName("from_id")
-    private Integer fromId;
-
-    @SerializedName("date")
+    @SerializedName("photo_owner_id")
     @Required
-    private Integer date;
+    private Integer photoOwnerId;
 
     @SerializedName("text")
     @Required
     private String text;
 
-    @SerializedName("photo_owner_id")
-    private Integer photoOwnerId;
-
-    public Integer getId() {
-        return id;
+    public Integer getDate() {
+        return date;
     }
 
-    public PhotoComment setId(Integer id) {
-        this.id = id;
+    public PhotoComment setDate(Integer date) {
+        this.date = date;
         return this;
     }
 
@@ -47,21 +49,12 @@ public class PhotoComment implements Validable {
         return this;
     }
 
-    public Integer getDate() {
-        return date;
+    public Integer getId() {
+        return id;
     }
 
-    public PhotoComment setDate(Integer date) {
-        this.date = date;
-        return this;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public PhotoComment setText(String text) {
-        this.text = text;
+    public PhotoComment setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -71,6 +64,15 @@ public class PhotoComment implements Validable {
 
     public PhotoComment setPhotoOwnerId(Integer photoOwnerId) {
         this.photoOwnerId = photoOwnerId;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public PhotoComment setText(String text) {
+        this.text = text;
         return this;
     }
 

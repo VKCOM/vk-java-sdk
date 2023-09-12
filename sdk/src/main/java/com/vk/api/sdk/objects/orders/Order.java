@@ -22,6 +22,7 @@ public class Order implements Validable {
      * App order ID
      */
     @SerializedName("app_order_id")
+    @Required
     private String appOrderId;
 
     /**
@@ -55,6 +56,7 @@ public class Order implements Validable {
      * Receiver ID
      */
     @SerializedName("receiver_id")
+    @Required
     private String receiverId;
 
     /**
@@ -74,6 +76,7 @@ public class Order implements Validable {
      * User ID
      */
     @SerializedName("user_id")
+    @Required
     private String userId;
 
     public String getAmount() {

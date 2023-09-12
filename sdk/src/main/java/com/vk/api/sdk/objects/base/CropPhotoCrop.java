@@ -16,61 +16,61 @@ public class CropPhotoCrop implements Validable {
      */
     @SerializedName("x")
     @Required
-    private Float x;
-
-    /**
-     * Coordinate Y of the left upper corner
-     */
-    @SerializedName("y")
-    @Required
-    private Float y;
+    private Number x;
 
     /**
      * Coordinate X of the right lower corner
      */
     @SerializedName("x2")
     @Required
-    private Float x2;
+    private Number x2;
+
+    /**
+     * Coordinate Y of the left upper corner
+     */
+    @SerializedName("y")
+    @Required
+    private Number y;
 
     /**
      * Coordinate Y of the right lower corner
      */
     @SerializedName("y2")
     @Required
-    private Float y2;
+    private Number y2;
 
-    public Float getX() {
+    public Number getX() {
         return x;
     }
 
-    public CropPhotoCrop setX(Float x) {
+    public CropPhotoCrop setX(Number x) {
         this.x = x;
         return this;
     }
 
-    public Float getY() {
-        return y;
-    }
-
-    public CropPhotoCrop setY(Float y) {
-        this.y = y;
-        return this;
-    }
-
-    public Float getX2() {
+    public Number getX2() {
         return x2;
     }
 
-    public CropPhotoCrop setX2(Float x2) {
+    public CropPhotoCrop setX2(Number x2) {
         this.x2 = x2;
         return this;
     }
 
-    public Float getY2() {
+    public Number getY() {
+        return y;
+    }
+
+    public CropPhotoCrop setY(Number y) {
+        this.y = y;
+        return this;
+    }
+
+    public Number getY2() {
         return y2;
     }
 
-    public CropPhotoCrop setY2(Float y2) {
+    public CropPhotoCrop setY2(Number y2) {
         this.y2 = y2;
         return this;
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetWallUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosGetWallUploadServerQuery, GetWallUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,10 +27,12 @@ public class PhotosGetWallUploadServerQuery extends AbstractQueryBuilder<PhotosG
     /**
      * ID of community to whose wall the photo will be uploaded.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetWallUploadServerQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosGetWallUploadServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

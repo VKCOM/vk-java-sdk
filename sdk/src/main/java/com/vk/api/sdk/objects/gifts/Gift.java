@@ -18,9 +18,10 @@ public class Gift implements Validable {
 
     /**
      * Gift sender ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    private Long fromId;
 
     @SerializedName("gift")
     private Layout gift;
@@ -55,11 +56,11 @@ public class Gift implements Validable {
         return this;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public Gift setFromId(Integer fromId) {
+    public Gift setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }

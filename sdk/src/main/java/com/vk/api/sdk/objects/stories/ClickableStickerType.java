@@ -45,7 +45,13 @@ public enum ClickableStickerType implements EnumParam {
     APP("app"),
 
     @SerializedName("situational_theme")
-    SITUATIONAL_THEME("situational_theme");
+    SITUATIONAL_THEME("situational_theme"),
+
+    @SerializedName("playlist")
+    PLAYLIST("playlist"),
+
+    @SerializedName("clip")
+    CLIP("clip");
 
     private final String value;
 

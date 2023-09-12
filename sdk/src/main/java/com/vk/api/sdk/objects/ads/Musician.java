@@ -12,6 +12,12 @@ import java.util.Objects;
  */
 public class Musician implements Validable {
     /**
+     * Music artist photo
+     */
+    @SerializedName("avatar")
+    private String avatar;
+
+    /**
      * Targeting music artist ID
      */
     @SerializedName("id")
@@ -26,10 +32,20 @@ public class Musician implements Validable {
     private String name;
 
     /**
-     * Music artist photo
+     * Music artist ID as in VKMusic
      */
-    @SerializedName("avatar")
-    private String avatar;
+    @SerializedName("original_id")
+    @Required
+    private Long originalId;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public Musician setAvatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -49,18 +65,18 @@ public class Musician implements Validable {
         return this;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public Long getOriginalId() {
+        return originalId;
     }
 
-    public Musician setAvatar(String avatar) {
-        this.avatar = avatar;
+    public Musician setOriginalId(Long originalId) {
+        this.originalId = originalId;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id, avatar);
+        return Objects.hash(name, avatar, id, originalId);
     }
 
     @Override
@@ -69,8 +85,9 @@ public class Musician implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Musician musician = (Musician) o;
         return Objects.equals(name, musician.name) &&
+                Objects.equals(avatar, musician.avatar) &&
                 Objects.equals(id, musician.id) &&
-                Objects.equals(avatar, musician.avatar);
+                Objects.equals(originalId, musician.originalId);
     }
 
     @Override
@@ -82,8 +99,9 @@ public class Musician implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Musician{");
         sb.append("name='").append(name).append("'");
-        sb.append(", id=").append(id);
         sb.append(", avatar='").append(avatar).append("'");
+        sb.append(", id=").append(id);
+        sb.append(", originalId=").append(originalId);
         sb.append('}');
         return sb.toString();
     }

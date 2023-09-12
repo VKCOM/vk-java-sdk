@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.GetInvitesExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class GroupsGetInvitesQueryWithExtended extends AbstractQueryBuilder<GroupsGetInvitesQueryWithExtended, GetInvitesExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class GroupsGetInvitesQueryWithExtended extends AbstractQueryBuilder<Grou
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public GroupsGetInvitesQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -40,16 +42,18 @@ public class GroupsGetInvitesQueryWithExtended extends AbstractQueryBuilder<Grou
      * @param value value of "count" parameter. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public GroupsGetInvitesQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — to return additional [vk.com/dev/fields_groups|fields] for communities..
+     * '1' - to return additional [vk.com/dev/fields_groups|fields] for communities..
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected GroupsGetInvitesQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }

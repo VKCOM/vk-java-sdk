@@ -19,9 +19,6 @@ public class AudioMessage implements Validable {
     @SerializedName("access_key")
     private String accessKey;
 
-    @SerializedName("transcript_error")
-    private Integer transcriptError;
-
     /**
      * Audio message duration in seconds
      */
@@ -40,19 +37,26 @@ public class AudioMessage implements Validable {
      * MP3 file URL
      */
     @SerializedName("link_mp3")
+    @Required
     private URI linkMp3;
 
     /**
      * OGG file URL
      */
     @SerializedName("link_ogg")
+    @Required
     private URI linkOgg;
 
     /**
      * Audio message owner ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    @SerializedName("transcript_error")
+    private Integer transcriptError;
 
     @SerializedName("waveform")
     @Required
@@ -64,15 +68,6 @@ public class AudioMessage implements Validable {
 
     public AudioMessage setAccessKey(String accessKey) {
         this.accessKey = accessKey;
-        return this;
-    }
-
-    public Integer getTranscriptError() {
-        return transcriptError;
-    }
-
-    public AudioMessage setTranscriptError(Integer transcriptError) {
-        this.transcriptError = transcriptError;
         return this;
     }
 
@@ -112,12 +107,21 @@ public class AudioMessage implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public AudioMessage setOwnerId(Integer ownerId) {
+    public AudioMessage setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+        return this;
+    }
+
+    public Integer getTranscriptError() {
+        return transcriptError;
+    }
+
+    public AudioMessage setTranscriptError(Integer transcriptError) {
+        this.transcriptError = transcriptError;
         return this;
     }
 

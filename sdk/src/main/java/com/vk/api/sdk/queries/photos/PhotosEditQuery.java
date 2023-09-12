@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,38 @@ import java.util.List;
  */
 public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param photoId value of "photo id" parameter. Minimum is 0.
      */
-    public PhotosEditQuery(VkApiClient client, UserActor actor, int photoId) {
+    public PhotosEditQuery(VkApiClient client, UserActor actor, Integer photoId) {
         super(client, "photos.edit", OkResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosEditQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.edit", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosEditQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosEditQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -41,7 +55,8 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosEditQuery photoId(int value) {
+    @ApiParam("photo_id")
+    public PhotosEditQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
 
@@ -51,6 +66,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "caption" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("caption")
     public PhotosEditQuery caption(String value) {
         return unsafeParam("caption", value);
     }
@@ -61,6 +77,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public PhotosEditQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -71,6 +88,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public PhotosEditQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -81,6 +99,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "place str" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("place_str")
     public PhotosEditQuery placeStr(String value) {
         return unsafeParam("place_str", value);
     }
@@ -91,6 +110,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "foursquare id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("foursquare_id")
     public PhotosEditQuery foursquareId(String value) {
         return unsafeParam("foursquare_id", value);
     }
@@ -101,6 +121,7 @@ public class PhotosEditQuery extends AbstractQueryBuilder<PhotosEditQuery, OkRes
      * @param value value of "delete place" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("delete_place")
     public PhotosEditQuery deletePlace(Boolean value) {
         return unsafeParam("delete_place", value);
     }

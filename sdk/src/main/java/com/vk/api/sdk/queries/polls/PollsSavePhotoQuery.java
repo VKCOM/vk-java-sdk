@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.polls.responses.SavePhotoResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class PollsSavePhotoQuery extends AbstractQueryBuilder<PollsSavePhotoQuery, SavePhotoResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,12 +29,24 @@ public class PollsSavePhotoQuery extends AbstractQueryBuilder<PollsSavePhotoQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PollsSavePhotoQuery(VkApiClient client, UserActor actor) {
+        super(client, "polls.savePhoto", SavePhotoResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set photo
      *
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsSavePhotoQuery photo(String value) {
+    @ApiParam("photo")
+    public PollsSavePhotoQuery photo(String value) {
         return unsafeParam("photo", value);
     }
 
@@ -43,7 +56,8 @@ public class PollsSavePhotoQuery extends AbstractQueryBuilder<PollsSavePhotoQuer
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsSavePhotoQuery hash(String value) {
+    @ApiParam("hash")
+    public PollsSavePhotoQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 

@@ -14,14 +14,10 @@ import java.util.Objects;
  */
 public class Thread implements Validable {
     /**
-     * Comments number
+     * Information whether author commented the thread
      */
-    @SerializedName("count")
-    @Required
-    private Integer count;
-
-    @SerializedName("items")
-    private List<WallComment> items;
+    @SerializedName("author_replied")
+    private Boolean authorReplied;
 
     /**
      * Information whether current user can comment the post
@@ -30,10 +26,11 @@ public class Thread implements Validable {
     private Boolean canPost;
 
     /**
-     * Information whether recommended to display reply button
+     * Comments number
      */
-    @SerializedName("show_reply_button")
-    private Boolean showReplyButton;
+    @SerializedName("count")
+    @Required
+    private Integer count;
 
     /**
      * Information whether groups can comment the post
@@ -41,21 +38,21 @@ public class Thread implements Validable {
     @SerializedName("groups_can_post")
     private Boolean groupsCanPost;
 
-    public Integer getCount() {
-        return count;
+    @SerializedName("items")
+    private List<WallComment> items;
+
+    /**
+     * Information whether recommended to display reply button
+     */
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    public Boolean getAuthorReplied() {
+        return authorReplied;
     }
 
-    public Thread setCount(Integer count) {
-        this.count = count;
-        return this;
-    }
-
-    public List<WallComment> getItems() {
-        return items;
-    }
-
-    public Thread setItems(List<WallComment> items) {
-        this.items = items;
+    public Thread setAuthorReplied(Boolean authorReplied) {
+        this.authorReplied = authorReplied;
         return this;
     }
 
@@ -68,12 +65,12 @@ public class Thread implements Validable {
         return this;
     }
 
-    public Boolean getShowReplyButton() {
-        return showReplyButton;
+    public Integer getCount() {
+        return count;
     }
 
-    public Thread setShowReplyButton(Boolean showReplyButton) {
-        this.showReplyButton = showReplyButton;
+    public Thread setCount(Integer count) {
+        this.count = count;
         return this;
     }
 
@@ -86,9 +83,27 @@ public class Thread implements Validable {
         return this;
     }
 
+    public List<WallComment> getItems() {
+        return items;
+    }
+
+    public Thread setItems(List<WallComment> items) {
+        this.items = items;
+        return this;
+    }
+
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
+    }
+
+    public Thread setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(canPost, count, groupsCanPost, items, showReplyButton);
+        return Objects.hash(canPost, count, authorReplied, groupsCanPost, items, showReplyButton);
     }
 
     @Override
@@ -96,7 +111,8 @@ public class Thread implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Thread thread = (Thread) o;
-        return Objects.equals(count, thread.count) &&
+        return Objects.equals(authorReplied, thread.authorReplied) &&
+                Objects.equals(count, thread.count) &&
                 Objects.equals(groupsCanPost, thread.groupsCanPost) &&
                 Objects.equals(canPost, thread.canPost) &&
                 Objects.equals(showReplyButton, thread.showReplyButton) &&
@@ -111,7 +127,8 @@ public class Thread implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Thread{");
-        sb.append("count=").append(count);
+        sb.append("authorReplied=").append(authorReplied);
+        sb.append(", count=").append(count);
         sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", canPost=").append(canPost);
         sb.append(", showReplyButton=").append(showReplyButton);

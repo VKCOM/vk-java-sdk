@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetAllCommentsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAllCommentsQuery, GetAllCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,10 +27,12 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
     /**
      * ID of the user or community that owns the album(s).
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetAllCommentsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosGetAllCommentsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -39,16 +42,18 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public PhotosGetAllCommentsQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 
     /**
-     * '1' — to return an additional 'likes' field, '0' — (default)
+     * '1' - to return an additional 'likes' field, '0' - (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_likes")
     public PhotosGetAllCommentsQuery needLikes(Boolean value) {
         return unsafeParam("need_likes", value);
     }
@@ -59,6 +64,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public PhotosGetAllCommentsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -69,6 +75,7 @@ public class PhotosGetAllCommentsQuery extends AbstractQueryBuilder<PhotosGetAll
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public PhotosGetAllCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

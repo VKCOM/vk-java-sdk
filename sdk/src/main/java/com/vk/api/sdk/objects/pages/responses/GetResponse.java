@@ -23,9 +23,10 @@ public class GetResponse implements Validable {
 
     /**
      * Page creator ID
+     * Entity: owner
      */
     @SerializedName("creator_id")
-    private Integer creatorId;
+    private Long creatorId;
 
     /**
      * Information whether current user can edit the page
@@ -48,15 +49,18 @@ public class GetResponse implements Validable {
 
     /**
      * Last editor ID
+     * Entity: owner
      */
     @SerializedName("editor_id")
-    private Integer editorId;
+    private Long editorId;
 
     /**
      * Community ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    @Required
+    private Long groupId;
 
     /**
      * Page content, HTML
@@ -72,48 +76,11 @@ public class GetResponse implements Validable {
     private Integer id;
 
     /**
-     * Page content, wiki
+     * Owner ID
+     * Entity: owner
      */
-    @SerializedName("source")
-    private String source;
-
-    /**
-     * Page title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    /**
-     * URL of the page preview
-     */
-    @SerializedName("view_url")
-    private URI viewUrl;
-
-    /**
-     * Views number
-     */
-    @SerializedName("views")
-    @Required
-    private Integer views;
-
-    /**
-     * Edit settings of the page
-     */
-    @SerializedName("who_can_edit")
-    private PrivacySettings whoCanEdit;
-
-    /**
-     * View settings of the page
-     */
-    @SerializedName("who_can_view")
-    private PrivacySettings whoCanView;
-
-    /**
-     * URL
-     */
-    @SerializedName("url")
-    private URI url;
+    @SerializedName("owner_id")
+    private Long ownerId;
 
     /**
      * Parent
@@ -128,10 +95,51 @@ public class GetResponse implements Validable {
     private String parent2;
 
     /**
-     * Owner ID
+     * Page content, wiki
      */
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    @SerializedName("source")
+    private String source;
+
+    /**
+     * Page title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
+
+    /**
+     * URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * URL of the page preview
+     */
+    @SerializedName("view_url")
+    @Required
+    private URI viewUrl;
+
+    /**
+     * Views number
+     */
+    @SerializedName("views")
+    @Required
+    private Integer views;
+
+    /**
+     * Edit settings of the page
+     */
+    @SerializedName("who_can_edit")
+    @Required
+    private PrivacySettings whoCanEdit;
+
+    /**
+     * View settings of the page
+     */
+    @SerializedName("who_can_view")
+    @Required
+    private PrivacySettings whoCanView;
 
     public Integer getCreated() {
         return created;
@@ -142,11 +150,11 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public Integer getCreatorId() {
+    public Long getCreatorId() {
         return creatorId;
     }
 
-    public GetResponse setCreatorId(Integer creatorId) {
+    public GetResponse setCreatorId(Long creatorId) {
         this.creatorId = creatorId;
         return this;
     }
@@ -176,20 +184,20 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public Integer getEditorId() {
+    public Long getEditorId() {
         return editorId;
     }
 
-    public GetResponse setEditorId(Integer editorId) {
+    public GetResponse setEditorId(Long editorId) {
         this.editorId = editorId;
         return this;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public GetResponse setGroupId(Integer groupId) {
+    public GetResponse setGroupId(Long groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -212,6 +220,33 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public GetResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public GetResponse setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getParent2() {
+        return parent2;
+    }
+
+    public GetResponse setParent2(String parent2) {
+        this.parent2 = parent2;
+        return this;
+    }
+
     public String getSource() {
         return source;
     }
@@ -227,6 +262,15 @@ public class GetResponse implements Validable {
 
     public GetResponse setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public GetResponse setUrl(URI url) {
+        this.url = url;
         return this;
     }
 
@@ -266,45 +310,9 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public URI getUrl() {
-        return url;
-    }
-
-    public GetResponse setUrl(URI url) {
-        this.url = url;
-        return this;
-    }
-
-    public String getParent() {
-        return parent;
-    }
-
-    public GetResponse setParent(String parent) {
-        this.parent = parent;
-        return this;
-    }
-
-    public String getParent2() {
-        return parent2;
-    }
-
-    public GetResponse setParent2(String parent2) {
-        this.parent2 = parent2;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public GetResponse setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views, parent2);
+        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, parent2, views);
     }
 
     @Override
@@ -329,8 +337,8 @@ public class GetResponse implements Validable {
                 Objects.equals(html, getResponse.html) &&
                 Objects.equals(id, getResponse.id) &&
                 Objects.equals(currentUserCanEditAccess, getResponse.currentUserCanEditAccess) &&
-                Objects.equals(views, getResponse.views) &&
-                Objects.equals(parent2, getResponse.parent2);
+                Objects.equals(parent2, getResponse.parent2) &&
+                Objects.equals(views, getResponse.views);
     }
 
     @Override
@@ -358,8 +366,8 @@ public class GetResponse implements Validable {
         sb.append(", html='").append(html).append("'");
         sb.append(", id=").append(id);
         sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
-        sb.append(", views=").append(views);
         sb.append(", parent2='").append(parent2).append("'");
+        sb.append(", views=").append(views);
         sb.append('}');
         return sb.toString();
     }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
+ * Sort order: 'asc' - by creation date in chronological order, 'desc' - by creation date in reverse chronological order,
  */
 public enum GetCommentsSort implements EnumParam {
     @SerializedName("asc")

@@ -15,44 +15,10 @@ import java.util.Objects;
  */
 public class Doc implements Validable {
     /**
-     * Document ID
+     * Access key for the document
      */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Document owner ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Document title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    /**
-     * File size in bites
-     */
-    @SerializedName("size")
-    @Required
-    private Integer size;
-
-    /**
-     * File extension
-     */
-    @SerializedName("ext")
-    @Required
-    private String ext;
-
-    /**
-     * File URL
-     */
-    @SerializedName("url")
-    private URI url;
+    @SerializedName("access_key")
+    private String accessKey;
 
     /**
      * Date when file has been uploaded in Unixtime
@@ -62,23 +28,39 @@ public class Doc implements Validable {
     private Integer date;
 
     /**
-     * Document type
+     * File extension
      */
-    @SerializedName("type")
+    @SerializedName("ext")
     @Required
-    private Integer type;
+    private String ext;
 
-    @SerializedName("preview")
-    private DocPreview preview;
+    /**
+     * Document ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
 
     @SerializedName("is_licensed")
     private BoolInt isLicensed;
 
     /**
-     * Access key for the document
+     * Document owner ID
+     * Entity: owner
      */
-    @SerializedName("access_key")
-    private String accessKey;
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
+
+    @SerializedName("preview")
+    private DocPreview preview;
+
+    /**
+     * File size in bites
+     */
+    @SerializedName("size")
+    @Required
+    private Integer size;
 
     /**
      * Document tags
@@ -86,57 +68,32 @@ public class Doc implements Validable {
     @SerializedName("tags")
     private List<String> tags;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Document title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
+
+    /**
+     * Document type
+     */
+    @SerializedName("type")
+    @Required
+    private Integer type;
+
+    /**
+     * File URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public Doc setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public Doc setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Doc setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public Doc setSize(Integer size) {
-        this.size = size;
-        return this;
-    }
-
-    public String getExt() {
-        return ext;
-    }
-
-    public Doc setExt(String ext) {
-        this.ext = ext;
-        return this;
-    }
-
-    public URI getUrl() {
-        return url;
-    }
-
-    public Doc setUrl(URI url) {
-        this.url = url;
+    public Doc setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
         return this;
     }
 
@@ -149,12 +106,38 @@ public class Doc implements Validable {
         return this;
     }
 
-    public Integer getType() {
-        return type;
+    public String getExt() {
+        return ext;
     }
 
-    public Doc setType(Integer type) {
-        this.type = type;
+    public Doc setExt(String ext) {
+        this.ext = ext;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Doc setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isLicensed() {
+        return isLicensed == BoolInt.YES;
+    }
+
+    public BoolInt getIsLicensed() {
+        return isLicensed;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public Doc setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
@@ -167,20 +150,12 @@ public class Doc implements Validable {
         return this;
     }
 
-    public boolean isLicensed() {
-        return isLicensed == BoolInt.YES;
+    public Integer getSize() {
+        return size;
     }
 
-    public BoolInt getIsLicensed() {
-        return isLicensed;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
-    }
-
-    public Doc setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
+    public Doc setSize(Integer size) {
+        this.size = size;
         return this;
     }
 
@@ -193,9 +168,36 @@ public class Doc implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Doc setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public Doc setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public Doc setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(ext, date, preview, size, accessKey, isLicensed, id, ownerId, title, type, url, tags);
+        return Objects.hash(date, ext, preview, size, accessKey, isLicensed, id, ownerId, title, type, url, tags);
     }
 
     @Override
@@ -203,8 +205,8 @@ public class Doc implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Doc doc = (Doc) o;
-        return Objects.equals(ext, doc.ext) &&
-                Objects.equals(date, doc.date) &&
+        return Objects.equals(date, doc.date) &&
+                Objects.equals(ext, doc.ext) &&
                 Objects.equals(preview, doc.preview) &&
                 Objects.equals(size, doc.size) &&
                 Objects.equals(ownerId, doc.ownerId) &&
@@ -225,8 +227,8 @@ public class Doc implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Doc{");
-        sb.append("ext='").append(ext).append("'");
-        sb.append(", date=").append(date);
+        sb.append("date=").append(date);
+        sb.append(", ext='").append(ext).append("'");
         sb.append(", preview=").append(preview);
         sb.append(", size=").append(size);
         sb.append(", ownerId=").append(ownerId);

@@ -3,6 +3,7 @@ package com.vk.api.sdk.objects.callback.longpoll.responses;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Objects;
+import java.net.URI;
 
 public class GetLongPollServerResponse {
 
@@ -10,7 +11,7 @@ public class GetLongPollServerResponse {
     private String key;
 
     @SerializedName("server")
-    private String server;
+    private URI server;
 
     @SerializedName("ts")
     private String ts;
@@ -19,7 +20,7 @@ public class GetLongPollServerResponse {
         return key;
     }
 
-    public String getServer() {
+    public URI getServer() {
         return server;
     }
 
@@ -46,7 +47,7 @@ public class GetLongPollServerResponse {
     public String toString() {
         final StringBuilder sb = new StringBuilder("GetLongPollServerResponse{");
         sb.append("key='").append(key).append('\'');
-        sb.append(", server='").append(server).append('\'');
+        sb.append(", server='").append(server.toString()).append('\'');
         sb.append(", ts=").append(ts);
         sb.append('}');
         return sb.toString();

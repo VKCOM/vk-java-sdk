@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,18 +12,23 @@ import java.util.Objects;
  */
 public class LikeAddRemove implements Validable {
     @SerializedName("liker_id")
+    @Required
     private Integer likerId;
 
-    @SerializedName("object_type")
-    private LikeAddRemoveObjectType objectType;
-
-    @SerializedName("object_owner_id")
-    private Integer objectOwnerId;
-
     @SerializedName("object_id")
+    @Required
     private Integer objectId;
 
+    @SerializedName("object_owner_id")
+    @Required
+    private Integer objectOwnerId;
+
+    @SerializedName("object_type")
+    @Required
+    private LikeAddRemoveObjectType objectType;
+
     @SerializedName("post_id")
+    @Required
     private Integer postId;
 
     @SerializedName("thread_reply_id")
@@ -37,12 +43,12 @@ public class LikeAddRemove implements Validable {
         return this;
     }
 
-    public LikeAddRemoveObjectType getObjectType() {
-        return objectType;
+    public Integer getObjectId() {
+        return objectId;
     }
 
-    public LikeAddRemove setObjectType(LikeAddRemoveObjectType objectType) {
-        this.objectType = objectType;
+    public LikeAddRemove setObjectId(Integer objectId) {
+        this.objectId = objectId;
         return this;
     }
 
@@ -55,12 +61,12 @@ public class LikeAddRemove implements Validable {
         return this;
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public LikeAddRemoveObjectType getObjectType() {
+        return objectType;
     }
 
-    public LikeAddRemove setObjectId(Integer objectId) {
-        this.objectId = objectId;
+    public LikeAddRemove setObjectType(LikeAddRemoveObjectType objectType) {
+        this.objectType = objectType;
         return this;
     }
 

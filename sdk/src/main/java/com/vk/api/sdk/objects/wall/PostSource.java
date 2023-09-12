@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.wall;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.base.Link;
 import java.net.URI;
 import java.util.Objects;
 
@@ -16,6 +17,9 @@ public class PostSource implements Validable {
      */
     @SerializedName("data")
     private String data;
+
+    @SerializedName("link")
+    private Link link;
 
     /**
      * Platform name
@@ -38,6 +42,15 @@ public class PostSource implements Validable {
 
     public PostSource setData(String data) {
         this.data = data;
+        return this;
+    }
+
+    public Link getLink() {
+        return link;
+    }
+
+    public PostSource setLink(Link link) {
+        this.link = link;
         return this;
     }
 
@@ -70,7 +83,7 @@ public class PostSource implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(data, type, platform, url);
+        return Objects.hash(data, link, type, platform, url);
     }
 
     @Override
@@ -79,6 +92,7 @@ public class PostSource implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         PostSource postSource = (PostSource) o;
         return Objects.equals(data, postSource.data) &&
+                Objects.equals(link, postSource.link) &&
                 Objects.equals(type, postSource.type) &&
                 Objects.equals(platform, postSource.platform) &&
                 Objects.equals(url, postSource.url);
@@ -93,6 +107,7 @@ public class PostSource implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PostSource{");
         sb.append("data='").append(data).append("'");
+        sb.append(", link=").append(link);
         sb.append(", type=").append(type);
         sb.append(", platform='").append(platform).append("'");
         sb.append(", url=").append(url);

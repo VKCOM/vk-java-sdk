@@ -21,12 +21,12 @@ public class GetOrdersExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<Order> items;
-
-    @SerializedName("groups")
-    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -37,21 +37,21 @@ public class GetOrdersExtendedResponse implements Validable {
         return this;
     }
 
-    public List<Order> getItems() {
-        return items;
-    }
-
-    public GetOrdersExtendedResponse setItems(List<Order> items) {
-        this.items = items;
-        return this;
-    }
-
     public List<GroupFull> getGroups() {
         return groups;
     }
 
     public GetOrdersExtendedResponse setGroups(List<GroupFull> groups) {
         this.groups = groups;
+        return this;
+    }
+
+    public List<Order> getItems() {
+        return items;
+    }
+
+    public GetOrdersExtendedResponse setItems(List<Order> items) {
+        this.items = items;
         return this;
     }
 

@@ -24,6 +24,9 @@ public class GetFieldsResponse implements Validable {
     @Required
     private List<UserFull> items;
 
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
+
     public Integer getCount() {
         return count;
     }
@@ -42,9 +45,18 @@ public class GetFieldsResponse implements Validable {
         return this;
     }
 
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetFieldsResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, items);
     }
 
     @Override
@@ -53,6 +65,7 @@ public class GetFieldsResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetFieldsResponse getFieldsResponse = (GetFieldsResponse) o;
         return Objects.equals(count, getFieldsResponse.count) &&
+                Objects.equals(profiles, getFieldsResponse.profiles) &&
                 Objects.equals(items, getFieldsResponse.items);
     }
 
@@ -65,6 +78,7 @@ public class GetFieldsResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetFieldsResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

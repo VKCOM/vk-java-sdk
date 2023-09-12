@@ -4,7 +4,8 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.friends.SearchNameCase;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.friends.responses.SearchResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,25 +16,25 @@ import java.util.List;
  */
 public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
      */
-    public FriendsSearchQuery(VkApiClient client, UserActor actor, int userId) {
+    public FriendsSearchQuery(VkApiClient client, UserActor actor) {
         super(client, "friends.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
-        userId(userId);
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsSearchQuery userId(int value) {
+    @ApiParam("user_id")
+    public FriendsSearchQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -43,17 +44,19 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public FriendsSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
-     * @param value value of "name case" parameter. By default Nom.
+     * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsSearchQuery nameCase(SearchNameCase value) {
+    @ApiParam("name_case")
+    public FriendsSearchQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
@@ -63,6 +66,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FriendsSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -73,6 +77,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FriendsSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -84,6 +89,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FriendsSearchQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -94,6 +100,7 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FriendsSearchQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
@@ -105,6 +112,6 @@ public class FriendsSearchQuery extends AbstractQueryBuilder<FriendsSearchQuery,
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("user_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

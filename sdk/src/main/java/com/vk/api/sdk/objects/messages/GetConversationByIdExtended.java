@@ -13,20 +13,11 @@ import java.util.Objects;
  * GetConversationByIdExtended object
  */
 public class GetConversationByIdExtended extends GetConversationById implements Validable {
-    @SerializedName("profiles")
-    private List<UserFull> profiles;
-
     @SerializedName("groups")
     private List<GroupFull> groups;
 
-    public List<UserFull> getProfiles() {
-        return profiles;
-    }
-
-    public GetConversationByIdExtended setProfiles(List<UserFull> profiles) {
-        this.profiles = profiles;
-        return this;
-    }
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
 
     public List<GroupFull> getGroups() {
         return groups;
@@ -34,6 +25,15 @@ public class GetConversationByIdExtended extends GetConversationById implements 
 
     public GetConversationByIdExtended setGroups(List<GroupFull> groups) {
         this.groups = groups;
+        return this;
+    }
+
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetConversationByIdExtended setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
         return this;
     }
 

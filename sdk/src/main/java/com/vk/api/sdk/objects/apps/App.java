@@ -32,33 +32,6 @@ public class App extends AppMin implements Validable {
     private URI banner560;
 
     /**
-     * URL of the app icon with 16 px in width
-     */
-    @SerializedName("icon_16")
-    private URI icon16;
-
-    /**
-     * Is new flag
-     */
-    @SerializedName("is_new")
-    private BoolInt isNew;
-
-    /**
-     * Is push enabled
-     */
-    @SerializedName("push_enabled")
-    private BoolInt pushEnabled;
-
-    /**
-     * Screen orientation
-     */
-    @SerializedName("screen_orientation")
-    private Integer screenOrientation;
-
-    @SerializedName("friends")
-    private List<Integer> friends;
-
-    /**
      * Catalog position
      */
     @SerializedName("catalog_position")
@@ -69,6 +42,9 @@ public class App extends AppMin implements Validable {
      */
     @SerializedName("description")
     private String description;
+
+    @SerializedName("friends")
+    private List<Integer> friends;
 
     /**
      * Genre name
@@ -83,6 +59,12 @@ public class App extends AppMin implements Validable {
     private Integer genreId;
 
     /**
+     * URL of the app icon with 16 px in width
+     */
+    @SerializedName("icon_16")
+    private URI icon16;
+
+    /**
      * Information whether the application is multilanguage
      */
     @SerializedName("international")
@@ -93,6 +75,12 @@ public class App extends AppMin implements Validable {
      */
     @SerializedName("is_in_catalog")
     private Integer isInCatalog;
+
+    /**
+     * Is new flag
+     */
+    @SerializedName("is_new")
+    private BoolInt isNew;
 
     @SerializedName("leaderboard_type")
     private AppLeaderboardType leaderboardType;
@@ -114,6 +102,12 @@ public class App extends AppMin implements Validable {
      */
     @SerializedName("published_date")
     private Integer publishedDate;
+
+    /**
+     * Is push enabled
+     */
+    @SerializedName("push_enabled")
+    private BoolInt pushEnabled;
 
     /**
      * Screen name
@@ -154,49 +148,6 @@ public class App extends AppMin implements Validable {
         return this;
     }
 
-    public URI getIcon16() {
-        return icon16;
-    }
-
-    public App setIcon16(URI icon16) {
-        this.icon16 = icon16;
-        return this;
-    }
-
-    public boolean isNew() {
-        return isNew == BoolInt.YES;
-    }
-
-    public BoolInt getIsNew() {
-        return isNew;
-    }
-
-    public boolean isPushEnabled() {
-        return pushEnabled == BoolInt.YES;
-    }
-
-    public BoolInt getPushEnabled() {
-        return pushEnabled;
-    }
-
-    public Integer getScreenOrientation() {
-        return screenOrientation;
-    }
-
-    public App setScreenOrientation(Integer screenOrientation) {
-        this.screenOrientation = screenOrientation;
-        return this;
-    }
-
-    public List<Integer> getFriends() {
-        return friends;
-    }
-
-    public App setFriends(List<Integer> friends) {
-        this.friends = friends;
-        return this;
-    }
-
     public Integer getCatalogPosition() {
         return catalogPosition;
     }
@@ -212,6 +163,15 @@ public class App extends AppMin implements Validable {
 
     public App setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public List<Integer> getFriends() {
+        return friends;
+    }
+
+    public App setFriends(List<Integer> friends) {
+        this.friends = friends;
         return this;
     }
 
@@ -233,6 +193,15 @@ public class App extends AppMin implements Validable {
         return this;
     }
 
+    public URI getIcon16() {
+        return icon16;
+    }
+
+    public App setIcon16(URI icon16) {
+        this.icon16 = icon16;
+        return this;
+    }
+
     public Boolean getInternational() {
         return international;
     }
@@ -249,6 +218,14 @@ public class App extends AppMin implements Validable {
     public App setIsInCatalog(Integer isInCatalog) {
         this.isInCatalog = isInCatalog;
         return this;
+    }
+
+    public boolean isNew() {
+        return isNew == BoolInt.YES;
+    }
+
+    public BoolInt getIsNew() {
+        return isNew;
     }
 
     public AppLeaderboardType getLeaderboardType() {
@@ -287,6 +264,14 @@ public class App extends AppMin implements Validable {
         return this;
     }
 
+    public boolean isPushEnabled() {
+        return pushEnabled == BoolInt.YES;
+    }
+
+    public BoolInt getPushEnabled() {
+        return pushEnabled;
+    }
+
     public String getScreenName() {
         return screenName;
     }
@@ -307,7 +292,7 @@ public class App extends AppMin implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, friends, screenOrientation, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, banner1120, publishedDate, international);
+        return Objects.hash(genreId, isInCatalog, membersCount, description, banner560, icon16, section, isNew, screenName, platformId, friends, authorUrl, pushEnabled, genre, catalogPosition, leaderboardType, banner1120, publishedDate, international);
     }
 
     @Override
@@ -327,7 +312,6 @@ public class App extends AppMin implements Validable {
                 Objects.equals(authorUrl, app.authorUrl) &&
                 Objects.equals(pushEnabled, app.pushEnabled) &&
                 Objects.equals(screenName, app.screenName) &&
-                Objects.equals(screenOrientation, app.screenOrientation) &&
                 Objects.equals(genre, app.genre) &&
                 Objects.equals(platformId, app.platformId) &&
                 Objects.equals(banner560, app.banner560) &&
@@ -357,7 +341,6 @@ public class App extends AppMin implements Validable {
         sb.append(", authorUrl=").append(authorUrl);
         sb.append(", pushEnabled=").append(pushEnabled);
         sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", screenOrientation=").append(screenOrientation);
         sb.append(", genre='").append(genre).append("'");
         sb.append(", platformId='").append(platformId).append("'");
         sb.append(", banner560=").append(banner560);

@@ -20,7 +20,10 @@ public class LinkRating implements Validable {
      * Count of stars
      */
     @SerializedName("stars")
-    private Float stars;
+    private Number stars;
+
+    @SerializedName("type")
+    private LinkRatingType type;
 
     public Integer getReviewsCount() {
         return reviewsCount;
@@ -31,18 +34,27 @@ public class LinkRating implements Validable {
         return this;
     }
 
-    public Float getStars() {
+    public Number getStars() {
         return stars;
     }
 
-    public LinkRating setStars(Float stars) {
+    public LinkRating setStars(Number stars) {
         this.stars = stars;
+        return this;
+    }
+
+    public LinkRatingType getType() {
+        return type;
+    }
+
+    public LinkRating setType(LinkRatingType type) {
+        this.type = type;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stars, reviewsCount);
+        return Objects.hash(stars, reviewsCount, type);
     }
 
     @Override
@@ -51,6 +63,7 @@ public class LinkRating implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         LinkRating linkRating = (LinkRating) o;
         return Objects.equals(stars, linkRating.stars) &&
+                Objects.equals(type, linkRating.type) &&
                 Objects.equals(reviewsCount, linkRating.reviewsCount);
     }
 
@@ -63,6 +76,7 @@ public class LinkRating implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LinkRating{");
         sb.append("stars=").append(stars);
+        sb.append(", type='").append(type).append("'");
         sb.append(", reviewsCount=").append(reviewsCount);
         sb.append('}');
         return sb.toString();

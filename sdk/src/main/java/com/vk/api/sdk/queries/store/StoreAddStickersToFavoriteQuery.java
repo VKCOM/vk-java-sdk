@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.store;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StoreAddStickersToFavoriteQuery extends AbstractQueryBuilder<StoreAddStickersToFavoriteQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class StoreAddStickersToFavoriteQuery extends AbstractQueryBuilder<StoreA
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,13 +42,25 @@ public class StoreAddStickersToFavoriteQuery extends AbstractQueryBuilder<StoreA
     }
 
     /**
-     * sticker_ids
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StoreAddStickersToFavoriteQuery(VkApiClient client, UserActor actor) {
+        super(client, "store.addStickersToFavorite", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * stickerIds
      * Sticker IDs to be added
      *
      * @param value value of "sticker ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoreAddStickersToFavoriteQuery stickerIds(Integer... value) {
+    @ApiParam("sticker_ids")
+    public StoreAddStickersToFavoriteQuery stickerIds(Integer... value) {
         return unsafeParam("sticker_ids", value);
     }
 
@@ -57,7 +70,8 @@ public class StoreAddStickersToFavoriteQuery extends AbstractQueryBuilder<StoreA
      * @param value value of "sticker ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoreAddStickersToFavoriteQuery stickerIds(List<Integer> value) {
+    @ApiParam("sticker_ids")
+    public StoreAddStickersToFavoriteQuery stickerIds(List<Integer> value) {
         return unsafeParam("sticker_ids", value);
     }
 

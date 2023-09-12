@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class FaveTrackPageInteractionQuery extends AbstractQueryBuilder<FaveTrackPageInteractionQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,20 +27,24 @@ public class FaveTrackPageInteractionQuery extends AbstractQueryBuilder<FaveTrac
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveTrackPageInteractionQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public FaveTrackPageInteractionQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveTrackPageInteractionQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public FaveTrackPageInteractionQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

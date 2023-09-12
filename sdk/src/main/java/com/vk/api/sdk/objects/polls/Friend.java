@@ -11,15 +11,18 @@ import java.util.Objects;
  * Friend object
  */
 public class Friend implements Validable {
+    /**
+     * Entity: owner
+     */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Friend setId(Integer id) {
+    public Friend setId(Long id) {
         this.id = id;
         return this;
     }

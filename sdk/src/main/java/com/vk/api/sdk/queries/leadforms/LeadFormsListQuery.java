@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.leadforms.responses.ListResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,25 +15,39 @@ import java.util.List;
  */
 public class LeadFormsListQuery extends AbstractQueryBuilder<LeadFormsListQuery, List<ListResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public LeadFormsListQuery(VkApiClient client, UserActor actor, int groupId) {
+    public LeadFormsListQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "leadForms.list", Utils.buildParametrizedType(List.class, ListResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public LeadFormsListQuery(VkApiClient client, UserActor actor) {
+        super(client, "leadForms.list", Utils.buildParametrizedType(List.class, ListResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LeadFormsListQuery groupId(int value) {
+    @ApiParam("group_id")
+    public LeadFormsListQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

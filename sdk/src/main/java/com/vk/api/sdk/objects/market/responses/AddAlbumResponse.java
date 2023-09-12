@@ -11,10 +11,25 @@ import java.util.Objects;
  */
 public class AddAlbumResponse implements Validable {
     /**
+     * Albums count
+     */
+    @SerializedName("albums_count")
+    private Integer albumsCount;
+
+    /**
      * Album ID
      */
     @SerializedName("market_album_id")
     private Integer marketAlbumId;
+
+    public Integer getAlbumsCount() {
+        return albumsCount;
+    }
+
+    public AddAlbumResponse setAlbumsCount(Integer albumsCount) {
+        this.albumsCount = albumsCount;
+        return this;
+    }
 
     public Integer getMarketAlbumId() {
         return marketAlbumId;
@@ -27,7 +42,7 @@ public class AddAlbumResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketAlbumId);
+        return Objects.hash(albumsCount, marketAlbumId);
     }
 
     @Override
@@ -35,7 +50,8 @@ public class AddAlbumResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddAlbumResponse addAlbumResponse = (AddAlbumResponse) o;
-        return Objects.equals(marketAlbumId, addAlbumResponse.marketAlbumId);
+        return Objects.equals(marketAlbumId, addAlbumResponse.marketAlbumId) &&
+                Objects.equals(albumsCount, addAlbumResponse.albumsCount);
     }
 
     @Override
@@ -47,6 +63,7 @@ public class AddAlbumResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddAlbumResponse{");
         sb.append("marketAlbumId=").append(marketAlbumId);
+        sb.append(", albumsCount=").append(albumsCount);
         sb.append('}');
         return sb.toString();
     }

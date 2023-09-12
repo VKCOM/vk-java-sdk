@@ -25,9 +25,10 @@ public class MessageAction implements Validable {
 
     /**
      * User or email peer ID
+     * Entity: owner
      */
     @SerializedName("member_id")
-    private Integer memberId;
+    private Long memberId;
 
     /**
      * Message body of related message
@@ -66,11 +67,11 @@ public class MessageAction implements Validable {
         return this;
     }
 
-    public Integer getMemberId() {
+    public Long getMemberId() {
         return memberId;
     }
 
-    public MessageAction setMemberId(Integer memberId) {
+    public MessageAction setMemberId(Long memberId) {
         this.memberId = memberId;
         return this;
     }

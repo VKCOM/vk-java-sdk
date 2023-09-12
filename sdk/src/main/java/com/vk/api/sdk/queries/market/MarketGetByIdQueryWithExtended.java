@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.GetByIdExtendedResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketGetByIdQueryWithExtended, GetByIdExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -47,18 +48,20 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected MarketGetByIdQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * item_ids
+     * itemIds
      * Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      *
      * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetByIdQueryWithExtended itemIds(String... value) {
+    @ApiParam("item_ids")
+    public MarketGetByIdQueryWithExtended itemIds(String... value) {
         return unsafeParam("item_ids", value);
     }
 
@@ -68,7 +71,8 @@ public class MarketGetByIdQueryWithExtended extends AbstractQueryBuilder<MarketG
      * @param value value of "item ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetByIdQueryWithExtended itemIds(List<String> value) {
+    @ApiParam("item_ids")
+    public MarketGetByIdQueryWithExtended itemIds(List<String> value) {
         return unsafeParam("item_ids", value);
     }
 

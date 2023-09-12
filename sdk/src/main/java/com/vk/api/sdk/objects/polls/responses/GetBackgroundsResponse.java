@@ -34,14 +34,14 @@ public class GetBackgroundsResponse implements Validable {
     @SerializedName("id")
     private Integer id;
 
-    @SerializedName("name")
-    private String name;
-
     /**
      * Pattern tiles
      */
     @SerializedName("images")
     private List<Image> images;
+
+    @SerializedName("name")
+    private String name;
 
     /**
      * Gradient points
@@ -94,21 +94,21 @@ public class GetBackgroundsResponse implements Validable {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public GetBackgroundsResponse setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public List<Image> getImages() {
         return images;
     }
 
     public GetBackgroundsResponse setImages(List<Image> images) {
         this.images = images;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public GetBackgroundsResponse setName(String name) {
+        this.name = name;
         return this;
     }
 

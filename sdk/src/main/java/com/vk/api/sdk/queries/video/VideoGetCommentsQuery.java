@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.video.GetCommentsSort;
 import com.vk.api.sdk.objects.video.responses.GetCommentsResponse;
 import java.util.Arrays;
@@ -14,25 +15,38 @@ import java.util.List;
  */
 public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetCommentsQuery, GetCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoGetCommentsQuery(VkApiClient client, UserActor actor, int videoId) {
+    public VideoGetCommentsQuery(VkApiClient client, UserActor actor, Integer videoId) {
         super(client, "video.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoGetCommentsQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoGetCommentsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public VideoGetCommentsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -42,16 +56,18 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoGetCommentsQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoGetCommentsQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
     /**
-     * '1' — to return an additional 'likes' field
+     * '1' - to return an additional 'likes' field
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_likes")
     public VideoGetCommentsQuery needLikes(Boolean value) {
         return unsafeParam("need_likes", value);
     }
@@ -59,9 +75,10 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
     /**
      * Set start comment id
      *
-     * @param value value of "start comment id" parameter. Minimum is 0.
+     * @param value value of "start comment id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_comment_id")
     public VideoGetCommentsQuery startCommentId(Integer value) {
         return unsafeParam("start_comment_id", value);
     }
@@ -72,6 +89,7 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public VideoGetCommentsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -82,16 +100,18 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public VideoGetCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
+     * Sort order: 'asc' - oldest comment first, 'desc' - newest comment first
      *
-     * @param value value of "sort" parameter.
+     * @param value value of "sort" parameter. By default asc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public VideoGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
@@ -102,8 +122,31 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public VideoGetCommentsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
+    }
+
+    /**
+     * Set comment id
+     *
+     * @param value value of "comment id" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("comment_id")
+    public VideoGetCommentsQuery commentId(Integer value) {
+        return unsafeParam("comment_id", value);
+    }
+
+    /**
+     * Set thread items count
+     *
+     * @param value value of "thread items count" parameter. Maximum is 10. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("thread_items_count")
+    public VideoGetCommentsQuery threadItemsCount(Integer value) {
+        return unsafeParam("thread_items_count", value);
     }
 
     /**
@@ -113,6 +156,7 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public VideoGetCommentsQuery fields(String... value) {
         return unsafeParam("fields", value);
     }
@@ -123,6 +167,7 @@ public class VideoGetCommentsQuery extends AbstractQueryBuilder<VideoGetComments
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public VideoGetCommentsQuery fields(List<String> value) {
         return unsafeParam("fields", value);
     }

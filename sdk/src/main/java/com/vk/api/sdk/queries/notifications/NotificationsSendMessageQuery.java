@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.notifications.SendMessageSendingMode;
 import com.vk.api.sdk.objects.notifications.responses.SendMessageResponse;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class NotificationsSendMessageQuery extends AbstractQueryBuilder<NotificationsSendMessageQuery, List<SendMessageResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -23,7 +24,7 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param userIds value of "user ids" parameter.
      */
     public NotificationsSendMessageQuery(VkApiClient client, ServiceActor actor, String message,
-            Integer... userIds) {
+            Long... userIds) {
         super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -32,7 +33,7 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -40,12 +41,24 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param userIds value of "user ids" parameter.
      */
     public NotificationsSendMessageQuery(VkApiClient client, ServiceActor actor, String message,
-            List<Integer> userIds) {
+            List<Long> userIds) {
         super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         message(message);
         userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NotificationsSendMessageQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "notifications.sendMessage", Utils.buildParametrizedType(List.class, SendMessageResponse.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -54,7 +67,8 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotificationsSendMessageQuery message(String value) {
+    @ApiParam("message")
+    public NotificationsSendMessageQuery message(String value) {
         return unsafeParam("message", value);
     }
 
@@ -64,6 +78,7 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param value value of "fragment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fragment")
     public NotificationsSendMessageQuery fragment(String value) {
         return unsafeParam("fragment", value);
     }
@@ -71,10 +86,12 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
     /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotificationsSendMessageQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public NotificationsSendMessageQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -84,28 +101,31 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param value value of "random id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("random_id")
     public NotificationsSendMessageQuery randomId(Integer value) {
         return unsafeParam("random_id", value);
     }
 
     /**
-     * Type of sending (delivering) notifications: 'immediately' — push and bell notifications will be delivered as soon as possible, 'delayed' — push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' — only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
+     * Type of sending (delivering) notifications: 'immediately' - push and bell notifications will be delivered as soon as possible, 'delayed' - push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' - only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
      *
      * @param value value of "sending mode" parameter. By default immediately.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sending_mode")
     public NotificationsSendMessageQuery sendingMode(SendMessageSendingMode value) {
         return unsafeParam("sending_mode", value);
     }
 
     /**
-     * user_ids
+     * userIds
      * Set user ids
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotificationsSendMessageQuery userIds(Integer... value) {
+    @ApiParam("user_ids")
+    public NotificationsSendMessageQuery userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -115,7 +135,8 @@ public class NotificationsSendMessageQuery extends AbstractQueryBuilder<Notifica
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotificationsSendMessageQuery userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    public NotificationsSendMessageQuery userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 

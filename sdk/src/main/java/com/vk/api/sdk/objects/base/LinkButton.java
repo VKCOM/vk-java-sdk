@@ -17,10 +17,19 @@ public class LinkButton implements Validable {
     private LinkButtonAction action;
 
     /**
-     * Button title
+     * Video album id
      */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("album_id")
+    private Integer albumId;
+
+    /**
+     * artist id
+     */
+    @SerializedName("artist_id")
+    private String artistId;
+
+    @SerializedName("audio_id")
+    private Integer audioId;
 
     /**
      * Target block id
@@ -29,28 +38,13 @@ public class LinkButton implements Validable {
     private String blockId;
 
     /**
-     * Target section id
-     */
-    @SerializedName("section_id")
-    private String sectionId;
-
-    /**
      * curator id
      */
     @SerializedName("curator_id")
     private Integer curatorId;
 
-    /**
-     * Video album id
-     */
-    @SerializedName("album_id")
-    private Integer albumId;
-
-    /**
-     * Owner id
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    @SerializedName("hashtag")
+    private String hashtag;
 
     /**
      * Button icon name, e.g. 'phone' or 'gift'
@@ -58,8 +52,27 @@ public class LinkButton implements Validable {
     @SerializedName("icon")
     private String icon;
 
+    /**
+     * Owner id
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    private Long ownerId;
+
+    /**
+     * Target section id
+     */
+    @SerializedName("section_id")
+    private String sectionId;
+
     @SerializedName("style")
     private LinkButtonStyle style;
+
+    /**
+     * Button title
+     */
+    @SerializedName("title")
+    private String title;
 
     public LinkButtonAction getAction() {
         return action;
@@ -67,42 +80,6 @@ public class LinkButton implements Validable {
 
     public LinkButton setAction(LinkButtonAction action) {
         this.action = action;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public LinkButton setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getBlockId() {
-        return blockId;
-    }
-
-    public LinkButton setBlockId(String blockId) {
-        this.blockId = blockId;
-        return this;
-    }
-
-    public String getSectionId() {
-        return sectionId;
-    }
-
-    public LinkButton setSectionId(String sectionId) {
-        this.sectionId = sectionId;
-        return this;
-    }
-
-    public Integer getCuratorId() {
-        return curatorId;
-    }
-
-    public LinkButton setCuratorId(Integer curatorId) {
-        this.curatorId = curatorId;
         return this;
     }
 
@@ -115,12 +92,48 @@ public class LinkButton implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public String getArtistId() {
+        return artistId;
     }
 
-    public LinkButton setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public LinkButton setArtistId(String artistId) {
+        this.artistId = artistId;
+        return this;
+    }
+
+    public Integer getAudioId() {
+        return audioId;
+    }
+
+    public LinkButton setAudioId(Integer audioId) {
+        this.audioId = audioId;
+        return this;
+    }
+
+    public String getBlockId() {
+        return blockId;
+    }
+
+    public LinkButton setBlockId(String blockId) {
+        this.blockId = blockId;
+        return this;
+    }
+
+    public Integer getCuratorId() {
+        return curatorId;
+    }
+
+    public LinkButton setCuratorId(Integer curatorId) {
+        this.curatorId = curatorId;
+        return this;
+    }
+
+    public String getHashtag() {
+        return hashtag;
+    }
+
+    public LinkButton setHashtag(String hashtag) {
+        this.hashtag = hashtag;
         return this;
     }
 
@@ -133,6 +146,24 @@ public class LinkButton implements Validable {
         return this;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public LinkButton setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getSectionId() {
+        return sectionId;
+    }
+
+    public LinkButton setSectionId(String sectionId) {
+        this.sectionId = sectionId;
+        return this;
+    }
+
     public LinkButtonStyle getStyle() {
         return style;
     }
@@ -142,9 +173,18 @@ public class LinkButton implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public LinkButton setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(blockId, curatorId, icon, action, albumId, style, sectionId, ownerId, title);
+        return Objects.hash(blockId, curatorId, audioId, icon, action, albumId, style, artistId, sectionId, ownerId, title, hashtag);
     }
 
     @Override
@@ -160,7 +200,10 @@ public class LinkButton implements Validable {
                 Objects.equals(albumId, linkButton.albumId) &&
                 Objects.equals(style, linkButton.style) &&
                 Objects.equals(title, linkButton.title) &&
-                Objects.equals(blockId, linkButton.blockId);
+                Objects.equals(artistId, linkButton.artistId) &&
+                Objects.equals(blockId, linkButton.blockId) &&
+                Objects.equals(audioId, linkButton.audioId) &&
+                Objects.equals(hashtag, linkButton.hashtag);
     }
 
     @Override
@@ -179,7 +222,10 @@ public class LinkButton implements Validable {
         sb.append(", albumId=").append(albumId);
         sb.append(", style=").append(style);
         sb.append(", title='").append(title).append("'");
+        sb.append(", artistId='").append(artistId).append("'");
         sb.append(", blockId='").append(blockId).append("'");
+        sb.append(", audioId=").append(audioId);
+        sb.append(", hashtag='").append(hashtag).append("'");
         sb.append('}');
         return sb.toString();
     }

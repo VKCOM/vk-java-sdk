@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.GetTargetingStatsAdFormat;
 import com.vk.api.sdk.objects.ads.responses.GetTargetingStatsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,14 +15,14 @@ import java.util.List;
  */
 public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTargetingStatsQuery, GetTargetingStatsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param linkUrl value of "link url" parameter.
      */
-    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor, Integer accountId,
             String linkUrl) {
         super(client, "ads.getTargetingStats", GetTargetingStatsResponse.class);
         accessToken(actor.getAccessToken());
@@ -30,12 +31,24 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetTargetingStatsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getTargetingStats", GetTargetingStatsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetTargetingStatsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetTargetingStatsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -45,6 +58,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsGetTargetingStatsQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
@@ -55,6 +69,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "criteria" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("criteria")
     public AdsGetTargetingStatsQuery criteria(String value) {
         return unsafeParam("criteria", value);
     }
@@ -65,26 +80,29 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "ad id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_id")
     public AdsGetTargetingStatsQuery adId(Integer value) {
         return unsafeParam("ad_id", value);
     }
 
     /**
-     * Ad format. Possible values: *'1' — image and text,, *'2' — big image,, *'3' — exclusive format,, *'4' — community, square image,, *'7' — special app format,, *'8' — special community format,, *'9' — post in community,, *'10' — app board.
+     * Ad format. Possible values: *'1' - image and text,, *'2' - big image,, *'3' - exclusive format,, *'4' - community, square image,, *'7' - special app format,, *'8' - special community format,, *'9' - post in community,, *'10' - app board.
      *
      * @param value value of "ad format" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_format")
     public AdsGetTargetingStatsQuery adFormat(GetTargetingStatsAdFormat value) {
         return unsafeParam("ad_format", value);
     }
 
     /**
-     * Platforms to use for ad showing. Possible values: (for 'ad_format' = '1'), *'0' — VK and partner sites,, *'1' — VK only. (for 'ad_format' = '9'), *'all' — all platforms,, *'desktop' — desktop version,, *'mobile' — mobile version and apps.
+     * Platforms to use for ad showing. Possible values: (for 'ad_format' = '1'), *'0' - VK and partner sites,, *'1' - VK only. (for 'ad_format' = '9'), *'all' - all platforms,, *'desktop' - desktop version,, *'mobile' - mobile version and apps.
      *
      * @param value value of "ad platform" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_platform")
     public AdsGetTargetingStatsQuery adPlatform(String value) {
         return unsafeParam("ad_platform", value);
     }
@@ -95,6 +113,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "ad platform no wall" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_platform_no_wall")
     public AdsGetTargetingStatsQuery adPlatformNoWall(String value) {
         return unsafeParam("ad_platform_no_wall", value);
     }
@@ -105,6 +124,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "ad platform no ad network" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_platform_no_ad_network")
     public AdsGetTargetingStatsQuery adPlatformNoAdNetwork(String value) {
         return unsafeParam("ad_platform_no_ad_network", value);
     }
@@ -115,6 +135,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "publisher platforms" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("publisher_platforms")
     public AdsGetTargetingStatsQuery publisherPlatforms(String value) {
         return unsafeParam("publisher_platforms", value);
     }
@@ -125,7 +146,8 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "link url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetTargetingStatsQuery linkUrl(String value) {
+    @ApiParam("link_url")
+    public AdsGetTargetingStatsQuery linkUrl(String value) {
         return unsafeParam("link_url", value);
     }
 
@@ -135,6 +157,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "link domain" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("link_domain")
     public AdsGetTargetingStatsQuery linkDomain(String value) {
         return unsafeParam("link_domain", value);
     }
@@ -145,6 +168,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "need precise" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_precise")
     public AdsGetTargetingStatsQuery needPrecise(Boolean value) {
         return unsafeParam("need_precise", value);
     }
@@ -155,6 +179,7 @@ public class AdsGetTargetingStatsQuery extends AbstractQueryBuilder<AdsGetTarget
      * @param value value of "impressions limit period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("impressions_limit_period")
     public AdsGetTargetingStatsQuery impressionsLimitPeriod(Integer value) {
         return unsafeParam("impressions_limit_period", value);
     }

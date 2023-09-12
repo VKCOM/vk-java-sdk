@@ -12,21 +12,9 @@ import java.util.Objects;
  * MessageReply object
  */
 public class MessageReply extends Base implements Validable {
-    @SerializedName("type")
-    private Type type;
-
     @SerializedName("object")
     @Required
     private Message object;
-
-    public Type getType() {
-        return type;
-    }
-
-    public MessageReply setType(Type type) {
-        this.type = type;
-        return this;
-    }
 
     public Message getObject() {
         return object;
@@ -39,7 +27,7 @@ public class MessageReply extends Base implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, object);
+        return Objects.hash(object);
     }
 
     @Override
@@ -47,8 +35,7 @@ public class MessageReply extends Base implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageReply messageReply = (MessageReply) o;
-        return Objects.equals(type, messageReply.type) &&
-                Objects.equals(object, messageReply.object);
+        return Objects.equals(object, messageReply.object);
     }
 
     @Override
@@ -59,8 +46,7 @@ public class MessageReply extends Base implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageReply{");
-        sb.append("type=").append(type);
-        sb.append(", object=").append(object);
+        sb.append("object=").append(object);
         sb.append('}');
         return sb.toString();
     }

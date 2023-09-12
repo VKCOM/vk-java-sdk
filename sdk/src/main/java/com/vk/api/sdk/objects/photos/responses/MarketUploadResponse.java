@@ -24,9 +24,10 @@ public class MarketUploadResponse implements Validable {
 
     /**
      * Community ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    private Long groupId;
 
     /**
      * Uploading hash
@@ -64,11 +65,11 @@ public class MarketUploadResponse implements Validable {
         return this;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public MarketUploadResponse setGroupId(Integer groupId) {
+    public MarketUploadResponse setGroupId(Long groupId) {
         this.groupId = groupId;
         return this;
     }

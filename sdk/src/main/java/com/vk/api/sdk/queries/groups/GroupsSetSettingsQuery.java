@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,14 @@ import java.util.List;
  */
 public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettingsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public GroupsSetSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.setSettings", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsSetSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public GroupsSetSettingsQuery(VkApiClient client, GroupActor actor, Long groupId) {
         super(client, "groups.setSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -41,12 +30,51 @@ public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettin
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetSettingsQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.setSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsSetSettingsQuery(VkApiClient client, UserActor actor, Long groupId) {
+        super(client, "groups.setSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetSettingsQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.setSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsSetSettingsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsSetSettingsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -56,36 +84,40 @@ public class GroupsSetSettingsQuery extends AbstractQueryBuilder<GroupsSetSettin
      * @param value value of "messages" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("messages")
     public GroupsSetSettingsQuery messages(Boolean value) {
         return unsafeParam("messages", value);
     }
 
     /**
-     * Set bots capabilities
+     * By enabling bot abilities, you can send users messages with a customized keyboard attached as well as use other promotional abilities
      *
      * @param value value of "bots capabilities" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("bots_capabilities")
     public GroupsSetSettingsQuery botsCapabilities(Boolean value) {
         return unsafeParam("bots_capabilities", value);
     }
 
     /**
-     * Set bots start button
+     * If this setting is enabled, users will see a Start button when they start a chat with your community for the first time
      *
      * @param value value of "bots start button" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("bots_start_button")
     public GroupsSetSettingsQuery botsStartButton(Boolean value) {
         return unsafeParam("bots_start_button", value);
     }
 
     /**
-     * Set bots add to chat
+     * If this setting is enabled then users can add your community to a chat
      *
      * @param value value of "bots add to chat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("bots_add_to_chat")
     public GroupsSetSettingsQuery botsAddToChat(Boolean value) {
         return unsafeParam("bots_add_to_chat", value);
     }

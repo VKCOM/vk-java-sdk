@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,28 +15,15 @@ import java.util.List;
  */
 public class MessagesMarkAsAnsweredConversationQuery extends AbstractQueryBuilder<MessagesMarkAsAnsweredConversationQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param peerId value of "peer id" parameter.
-     */
-    public MessagesMarkAsAnsweredConversationQuery(VkApiClient client, UserActor actor,
-            int peerId) {
-        super(client, "messages.markAsAnsweredConversation", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        peerId(peerId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param peerId value of "peer id" parameter. Entity - peer
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param peerId value of "peer id" parameter.
      */
     public MessagesMarkAsAnsweredConversationQuery(VkApiClient client, GroupActor actor,
-            int peerId) {
+            Long peerId) {
         super(client, "messages.markAsAnsweredConversation", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -43,21 +31,62 @@ public class MessagesMarkAsAnsweredConversationQuery extends AbstractQueryBuilde
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesMarkAsAnsweredConversationQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.markAsAnsweredConversation", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param peerId value of "peer id" parameter. Entity - peer
+     *
+     */
+    public MessagesMarkAsAnsweredConversationQuery(VkApiClient client, UserActor actor,
+            Long peerId) {
+        super(client, "messages.markAsAnsweredConversation", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        peerId(peerId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesMarkAsAnsweredConversationQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.markAsAnsweredConversation", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of conversation to mark as important.
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesMarkAsAnsweredConversationQuery peerId(int value) {
+    @ApiParam("peer_id")
+    public MessagesMarkAsAnsweredConversationQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
     /**
-     * '1' — to mark as answered, '0' — to remove the mark
+     * '1' - to mark as answered, '0' - to remove the mark
      *
-     * @param value value of "answered" parameter. By default 1.
+     * @param value value of "answered" parameter. By default true.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("answered")
     public MessagesMarkAsAnsweredConversationQuery answered(Boolean value) {
         return unsafeParam("answered", value);
     }
@@ -65,10 +94,12 @@ public class MessagesMarkAsAnsweredConversationQuery extends AbstractQueryBuilde
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesMarkAsAnsweredConversationQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesMarkAsAnsweredConversationQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

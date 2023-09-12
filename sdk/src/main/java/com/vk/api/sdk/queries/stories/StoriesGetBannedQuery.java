@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.stories;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.stories.responses.GetBannedResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class StoriesGetBannedQuery extends AbstractQueryBuilder<StoriesGetBannedQuery, GetBannedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,11 +26,12 @@ public class StoriesGetBannedQuery extends AbstractQueryBuilder<StoriesGetBanned
     }
 
     /**
-     * '1' — to return additional fields for users and communities. Default value is 0.
+     * '1' - to return additional fields for users and communities. Default value is 0.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public StoriesGetBannedQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -41,6 +43,7 @@ public class StoriesGetBannedQuery extends AbstractQueryBuilder<StoriesGetBanned
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetBannedQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -51,6 +54,7 @@ public class StoriesGetBannedQuery extends AbstractQueryBuilder<StoriesGetBanned
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetBannedQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

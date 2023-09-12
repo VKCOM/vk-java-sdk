@@ -12,20 +12,26 @@ import java.util.Objects;
  */
 public class UserBlock implements Validable {
     @SerializedName("admin_id")
+    @Required
     private Integer adminId;
 
-    @SerializedName("user_id")
-    private Integer userId;
-
-    @SerializedName("unblock_date")
-    private Integer unblockDate;
+    @SerializedName("comment")
+    private String comment;
 
     @SerializedName("reason")
     @Required
     private Integer reason;
 
-    @SerializedName("comment")
-    private String comment;
+    @SerializedName("unblock_date")
+    @Required
+    private Integer unblockDate;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getAdminId() {
         return adminId;
@@ -36,21 +42,12 @@ public class UserBlock implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getComment() {
+        return comment;
     }
 
-    public UserBlock setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public Integer getUnblockDate() {
-        return unblockDate;
-    }
-
-    public UserBlock setUnblockDate(Integer unblockDate) {
-        this.unblockDate = unblockDate;
+    public UserBlock setComment(String comment) {
+        this.comment = comment;
         return this;
     }
 
@@ -63,12 +60,21 @@ public class UserBlock implements Validable {
         return this;
     }
 
-    public String getComment() {
-        return comment;
+    public Integer getUnblockDate() {
+        return unblockDate;
     }
 
-    public UserBlock setComment(String comment) {
-        this.comment = comment;
+    public UserBlock setUnblockDate(Integer unblockDate) {
+        this.unblockDate = unblockDate;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public UserBlock setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

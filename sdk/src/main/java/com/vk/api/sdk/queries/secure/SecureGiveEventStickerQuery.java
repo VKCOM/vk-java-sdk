@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.secure.responses.GiveEventStickerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,15 +15,15 @@ import java.util.List;
  */
 public class SecureGiveEventStickerQuery extends AbstractSecureQueryBuilder<SecureGiveEventStickerQuery, List<GiveEventStickerResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param achievementId value of "achievement id" parameter. Minimum is 0.
      * @param userIds value of "user ids" parameter.
      */
-    public SecureGiveEventStickerQuery(VkApiClient client, ServiceActor actor, int achievementId,
-            Integer... userIds) {
+    public SecureGiveEventStickerQuery(VkApiClient client, ServiceActor actor,
+            Integer achievementId, Long... userIds) {
         super(client, "secure.giveEventSticker", Utils.buildParametrizedType(List.class, GiveEventStickerResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -31,20 +32,32 @@ public class SecureGiveEventStickerQuery extends AbstractSecureQueryBuilder<Secu
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param achievementId value of "achievement id" parameter. Minimum is 0.
      * @param userIds value of "user ids" parameter.
      */
-    public SecureGiveEventStickerQuery(VkApiClient client, ServiceActor actor, int achievementId,
-            List<Integer> userIds) {
+    public SecureGiveEventStickerQuery(VkApiClient client, ServiceActor actor,
+            Integer achievementId, List<Long> userIds) {
         super(client, "secure.giveEventSticker", Utils.buildParametrizedType(List.class, GiveEventStickerResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         achievementId(achievementId);
         userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public SecureGiveEventStickerQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "secure.giveEventSticker", Utils.buildParametrizedType(List.class, GiveEventStickerResponse.class));
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -53,18 +66,20 @@ public class SecureGiveEventStickerQuery extends AbstractSecureQueryBuilder<Secu
      * @param value value of "achievement id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureGiveEventStickerQuery achievementId(int value) {
+    @ApiParam("achievement_id")
+    public SecureGiveEventStickerQuery achievementId(Integer value) {
         return unsafeParam("achievement_id", value);
     }
 
     /**
-     * user_ids
+     * userIds
      * Set user ids
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureGiveEventStickerQuery userIds(Integer... value) {
+    @ApiParam("user_ids")
+    public SecureGiveEventStickerQuery userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -74,7 +89,8 @@ public class SecureGiveEventStickerQuery extends AbstractSecureQueryBuilder<Secu
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureGiveEventStickerQuery userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    public SecureGiveEventStickerQuery userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 

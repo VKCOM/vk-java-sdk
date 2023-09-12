@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.docs.responses.SaveResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,20 +15,7 @@ import java.util.List;
  */
 public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param file value of "file" parameter.
-     */
-    public DocsSaveQuery(VkApiClient client, UserActor actor, String file) {
-        super(client, "docs.save", SaveResponse.class);
-        accessToken(actor.getAccessToken());
-        file(file);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -40,12 +28,48 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveRespo
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DocsSaveQuery(VkApiClient client, GroupActor actor) {
+        super(client, "docs.save", SaveResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param file value of "file" parameter.
+     */
+    public DocsSaveQuery(VkApiClient client, UserActor actor, String file) {
+        super(client, "docs.save", SaveResponse.class);
+        accessToken(actor.getAccessToken());
+        file(file);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DocsSaveQuery(VkApiClient client, UserActor actor) {
+        super(client, "docs.save", SaveResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * This parameter is returned when the file is [vk.com/dev/upload_files_2|uploaded to the server].
      *
      * @param value value of "file" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DocsSaveQuery file(String value) {
+    @ApiParam("file")
+    public DocsSaveQuery file(String value) {
         return unsafeParam("file", value);
     }
 
@@ -55,6 +79,7 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveRespo
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("title")
     public DocsSaveQuery title(String value) {
         return unsafeParam("title", value);
     }
@@ -65,6 +90,7 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveRespo
      * @param value value of "tags" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tags")
     public DocsSaveQuery tags(String value) {
         return unsafeParam("tags", value);
     }
@@ -75,6 +101,7 @@ public class DocsSaveQuery extends AbstractQueryBuilder<DocsSaveQuery, SaveRespo
      * @param value value of "return tags" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_tags")
     public DocsSaveQuery returnTags(Boolean value) {
         return unsafeParam("return_tags", value);
     }

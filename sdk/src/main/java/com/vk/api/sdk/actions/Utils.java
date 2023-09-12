@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.utils.UtilsCheckLinkQuery;
 import com.vk.api.sdk.queries.utils.UtilsDeleteFromLastShortenedQuery;
 import com.vk.api.sdk.queries.utils.UtilsGetLastShortenedLinksQuery;
@@ -31,10 +32,11 @@ public class Utils extends AbstractAction {
     /**
      * Checks whether a link is blocked in VK.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param url Link to check (e.g., 'http://google.com').
      * @return query
      */
+    @ApiMethod("utils.checkLink")
     public UtilsCheckLinkQuery checkLink(UserActor actor, String url) {
         return new UtilsCheckLinkQuery(getClient(), actor, url);
     }
@@ -42,10 +44,22 @@ public class Utils extends AbstractAction {
     /**
      * Checks whether a link is blocked in VK.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.checkLink")
+    public UtilsCheckLinkQuery checkLink(UserActor actor) {
+        return new UtilsCheckLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * Checks whether a link is blocked in VK.
+     *
+     * @param actor vk group actor
      * @param url Link to check (e.g., 'http://google.com').
      * @return query
      */
+    @ApiMethod("utils.checkLink")
     public UtilsCheckLinkQuery checkLink(GroupActor actor, String url) {
         return new UtilsCheckLinkQuery(getClient(), actor, url);
     }
@@ -53,31 +67,67 @@ public class Utils extends AbstractAction {
     /**
      * Checks whether a link is blocked in VK.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.checkLink")
+    public UtilsCheckLinkQuery checkLink(GroupActor actor) {
+        return new UtilsCheckLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * Checks whether a link is blocked in VK.
+     *
+     * @param actor vk service actor
      * @param url Link to check (e.g., 'http://google.com').
      * @return query
      */
+    @ApiMethod("utils.checkLink")
     public UtilsCheckLinkQuery checkLink(ServiceActor actor, String url) {
         return new UtilsCheckLinkQuery(getClient(), actor, url);
     }
 
     /**
+     * Checks whether a link is blocked in VK.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.checkLink")
+    public UtilsCheckLinkQuery checkLink(ServiceActor actor) {
+        return new UtilsCheckLinkQuery(getClient(), actor);
+    }
+
+    /**
      * Deletes shortened link from user's list.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.deleteFromLastShortened")
     public UtilsDeleteFromLastShortenedQuery deleteFromLastShortened(UserActor actor, String key) {
         return new UtilsDeleteFromLastShortenedQuery(getClient(), actor, key);
     }
 
     /**
+     * Deletes shortened link from user's list.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.deleteFromLastShortened")
+    public UtilsDeleteFromLastShortenedQuery deleteFromLastShortened(UserActor actor) {
+        return new UtilsDeleteFromLastShortenedQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a list of user's shortened links.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("utils.getLastShortenedLinks")
     public UtilsGetLastShortenedLinksQuery getLastShortenedLinks(UserActor actor) {
         return new UtilsGetLastShortenedLinksQuery(getClient(), actor);
     }
@@ -85,10 +135,11 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQueryWithExtended getLinkStatsExtended(UserActor actor, String key) {
         return new UtilsGetLinkStatsQueryWithExtended(getClient(), actor, key);
     }
@@ -96,10 +147,11 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQueryWithExtended getLinkStatsExtended(GroupActor actor, String key) {
         return new UtilsGetLinkStatsQueryWithExtended(getClient(), actor, key);
     }
@@ -107,10 +159,11 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQueryWithExtended getLinkStatsExtended(ServiceActor actor, String key) {
         return new UtilsGetLinkStatsQueryWithExtended(getClient(), actor, key);
     }
@@ -118,10 +171,11 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQuery getLinkStats(UserActor actor, String key) {
         return new UtilsGetLinkStatsQuery(getClient(), actor, key);
     }
@@ -129,10 +183,22 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getLinkStats")
+    public UtilsGetLinkStatsQuery getLinkStats(UserActor actor) {
+        return new UtilsGetLinkStatsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns stats data for shortened link.
+     *
+     * @param actor vk group actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQuery getLinkStats(GroupActor actor, String key) {
         return new UtilsGetLinkStatsQuery(getClient(), actor, key);
     }
@@ -140,20 +206,44 @@ public class Utils extends AbstractAction {
     /**
      * Returns stats data for shortened link.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getLinkStats")
+    public UtilsGetLinkStatsQuery getLinkStats(GroupActor actor) {
+        return new UtilsGetLinkStatsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns stats data for shortened link.
+     *
+     * @param actor vk service actor
      * @param key Link key (characters after vk.cc/).
      * @return query
      */
+    @ApiMethod("utils.getLinkStats")
     public UtilsGetLinkStatsQuery getLinkStats(ServiceActor actor, String key) {
         return new UtilsGetLinkStatsQuery(getClient(), actor, key);
     }
 
     /**
+     * Returns stats data for shortened link.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getLinkStats")
+    public UtilsGetLinkStatsQuery getLinkStats(ServiceActor actor) {
+        return new UtilsGetLinkStatsQuery(getClient(), actor);
+    }
+
+    /**
      * Returns the current time of the VK server.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("utils.getServerTime")
     public UtilsGetServerTimeQuery getServerTime(UserActor actor) {
         return new UtilsGetServerTimeQuery(getClient(), actor);
     }
@@ -161,9 +251,10 @@ public class Utils extends AbstractAction {
     /**
      * Returns the current time of the VK server.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("utils.getServerTime")
     public UtilsGetServerTimeQuery getServerTime(GroupActor actor) {
         return new UtilsGetServerTimeQuery(getClient(), actor);
     }
@@ -171,9 +262,10 @@ public class Utils extends AbstractAction {
     /**
      * Returns the current time of the VK server.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("utils.getServerTime")
     public UtilsGetServerTimeQuery getServerTime(ServiceActor actor) {
         return new UtilsGetServerTimeQuery(getClient(), actor);
     }
@@ -181,10 +273,11 @@ public class Utils extends AbstractAction {
     /**
      * Allows to receive a link shortened via vk.cc.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param url URL to be shortened.
      * @return query
      */
+    @ApiMethod("utils.getShortLink")
     public UtilsGetShortLinkQuery getShortLink(UserActor actor, String url) {
         return new UtilsGetShortLinkQuery(getClient(), actor, url);
     }
@@ -192,10 +285,22 @@ public class Utils extends AbstractAction {
     /**
      * Allows to receive a link shortened via vk.cc.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getShortLink")
+    public UtilsGetShortLinkQuery getShortLink(UserActor actor) {
+        return new UtilsGetShortLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to receive a link shortened via vk.cc.
+     *
+     * @param actor vk group actor
      * @param url URL to be shortened.
      * @return query
      */
+    @ApiMethod("utils.getShortLink")
     public UtilsGetShortLinkQuery getShortLink(GroupActor actor, String url) {
         return new UtilsGetShortLinkQuery(getClient(), actor, url);
     }
@@ -203,21 +308,45 @@ public class Utils extends AbstractAction {
     /**
      * Allows to receive a link shortened via vk.cc.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getShortLink")
+    public UtilsGetShortLinkQuery getShortLink(GroupActor actor) {
+        return new UtilsGetShortLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to receive a link shortened via vk.cc.
+     *
+     * @param actor vk service actor
      * @param url URL to be shortened.
      * @return query
      */
+    @ApiMethod("utils.getShortLink")
     public UtilsGetShortLinkQuery getShortLink(ServiceActor actor, String url) {
         return new UtilsGetShortLinkQuery(getClient(), actor, url);
     }
 
     /**
+     * Allows to receive a link shortened via vk.cc.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.getShortLink")
+    public UtilsGetShortLinkQuery getShortLink(ServiceActor actor) {
+        return new UtilsGetShortLinkQuery(getClient(), actor);
+    }
+
+    /**
      * Detects a type of object (e.g., user, community, application) and its ID by screen name.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param screenName Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
      * @return query
      */
+    @ApiMethod("utils.resolveScreenName")
     public UtilsResolveScreenNameQuery resolveScreenName(UserActor actor, String screenName) {
         return new UtilsResolveScreenNameQuery(getClient(), actor, screenName);
     }
@@ -225,10 +354,22 @@ public class Utils extends AbstractAction {
     /**
      * Detects a type of object (e.g., user, community, application) and its ID by screen name.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.resolveScreenName")
+    public UtilsResolveScreenNameQuery resolveScreenName(UserActor actor) {
+        return new UtilsResolveScreenNameQuery(getClient(), actor);
+    }
+
+    /**
+     * Detects a type of object (e.g., user, community, application) and its ID by screen name.
+     *
+     * @param actor vk group actor
      * @param screenName Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
      * @return query
      */
+    @ApiMethod("utils.resolveScreenName")
     public UtilsResolveScreenNameQuery resolveScreenName(GroupActor actor, String screenName) {
         return new UtilsResolveScreenNameQuery(getClient(), actor, screenName);
     }
@@ -236,11 +377,34 @@ public class Utils extends AbstractAction {
     /**
      * Detects a type of object (e.g., user, community, application) and its ID by screen name.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.resolveScreenName")
+    public UtilsResolveScreenNameQuery resolveScreenName(GroupActor actor) {
+        return new UtilsResolveScreenNameQuery(getClient(), actor);
+    }
+
+    /**
+     * Detects a type of object (e.g., user, community, application) and its ID by screen name.
+     *
+     * @param actor vk service actor
      * @param screenName Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
      * @return query
      */
+    @ApiMethod("utils.resolveScreenName")
     public UtilsResolveScreenNameQuery resolveScreenName(ServiceActor actor, String screenName) {
         return new UtilsResolveScreenNameQuery(getClient(), actor, screenName);
+    }
+
+    /**
+     * Detects a type of object (e.g., user, community, application) and its ID by screen name.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("utils.resolveScreenName")
+    public UtilsResolveScreenNameQuery resolveScreenName(ServiceActor actor) {
+        return new UtilsResolveScreenNameQuery(getClient(), actor);
     }
 }

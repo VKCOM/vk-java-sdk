@@ -20,7 +20,7 @@ public class NotificationItem implements Validable {
     private Feedback feedback;
 
     @SerializedName("parent")
-    private NotificationParent parent;
+    private Notification parent;
 
     @SerializedName("reply")
     private Reply reply;
@@ -49,11 +49,11 @@ public class NotificationItem implements Validable {
         return this;
     }
 
-    public NotificationParent getParent() {
+    public Notification getParent() {
         return parent;
     }
 
-    public NotificationItem setParent(NotificationParent parent) {
+    public NotificationItem setParent(Notification parent) {
         this.parent = parent;
         return this;
     }

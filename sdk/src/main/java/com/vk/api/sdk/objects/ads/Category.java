@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.base.ObjectWithName;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +27,7 @@ public class Category implements Validable {
     private String name;
 
     @SerializedName("subcategories")
-    private List<ObjectWithName> subcategories;
+    private List<Category> subcategories;
 
     public Integer getId() {
         return id;
@@ -48,11 +47,11 @@ public class Category implements Validable {
         return this;
     }
 
-    public List<ObjectWithName> getSubcategories() {
+    public List<Category> getSubcategories() {
         return subcategories;
     }
 
-    public Category setSubcategories(List<ObjectWithName> subcategories) {
+    public Category setSubcategories(List<Category> subcategories) {
         this.subcategories = subcategories;
         return this;
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,14 @@ import java.util.List;
  */
 public class GroupsEnableOnlineQuery extends AbstractQueryBuilder<GroupsEnableOnlineQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public GroupsEnableOnlineQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.enableOnline", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsEnableOnlineQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public GroupsEnableOnlineQuery(VkApiClient client, GroupActor actor, Long groupId) {
         super(client, "groups.enableOnline", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -41,12 +30,51 @@ public class GroupsEnableOnlineQuery extends AbstractQueryBuilder<GroupsEnableOn
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsEnableOnlineQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.enableOnline", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsEnableOnlineQuery(VkApiClient client, UserActor actor, Long groupId) {
+        super(client, "groups.enableOnline", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsEnableOnlineQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.enableOnline", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEnableOnlineQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsEnableOnlineQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

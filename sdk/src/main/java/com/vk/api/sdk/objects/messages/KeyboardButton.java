@@ -13,7 +13,7 @@ import java.util.Objects;
 public class KeyboardButton implements Validable {
     @SerializedName("action")
     @Required
-    private KeyboardButtonAction action;
+    private KeyboardButtonPropertyAction action;
 
     /**
      * Button color
@@ -21,11 +21,11 @@ public class KeyboardButton implements Validable {
     @SerializedName("color")
     private KeyboardButtonColor color;
 
-    public KeyboardButtonAction getAction() {
+    public KeyboardButtonPropertyAction getAction() {
         return action;
     }
 
-    public KeyboardButton setAction(KeyboardButtonAction action) {
+    public KeyboardButton setAction(KeyboardButtonPropertyAction action) {
         this.action = action;
         return this;
     }

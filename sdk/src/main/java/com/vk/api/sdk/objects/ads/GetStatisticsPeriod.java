@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
+ * Data grouping by dates: *day - statistics by days,, *month - statistics by months,, *overall - overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
  */
 public enum GetStatisticsPeriod implements EnumParam {
     @SerializedName("day")
@@ -15,7 +15,13 @@ public enum GetStatisticsPeriod implements EnumParam {
     MONTH("month"),
 
     @SerializedName("overall")
-    OVERALL("overall");
+    OVERALL("overall"),
+
+    @SerializedName("week")
+    WEEK("week"),
+
+    @SerializedName("year")
+    YEAR("year");
 
     private final String value;
 

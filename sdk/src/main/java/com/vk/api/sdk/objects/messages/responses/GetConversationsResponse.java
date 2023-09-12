@@ -22,11 +22,8 @@ public class GetConversationsResponse implements Validable {
     @Required
     private Integer count;
 
-    /**
-     * Unread dialogs number
-     */
-    @SerializedName("unread_count")
-    private Integer unreadCount;
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     @SerializedName("items")
     @Required
@@ -35,8 +32,11 @@ public class GetConversationsResponse implements Validable {
     @SerializedName("profiles")
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    private List<GroupFull> groups;
+    /**
+     * Unread dialogs number
+     */
+    @SerializedName("unread_count")
+    private Integer unreadCount;
 
     public Integer getCount() {
         return count;
@@ -47,12 +47,12 @@ public class GetConversationsResponse implements Validable {
         return this;
     }
 
-    public Integer getUnreadCount() {
-        return unreadCount;
+    public List<GroupFull> getGroups() {
+        return groups;
     }
 
-    public GetConversationsResponse setUnreadCount(Integer unreadCount) {
-        this.unreadCount = unreadCount;
+    public GetConversationsResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -74,12 +74,12 @@ public class GetConversationsResponse implements Validable {
         return this;
     }
 
-    public List<GroupFull> getGroups() {
-        return groups;
+    public Integer getUnreadCount() {
+        return unreadCount;
     }
 
-    public GetConversationsResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
+    public GetConversationsResponse setUnreadCount(Integer unreadCount) {
+        this.unreadCount = unreadCount;
         return this;
     }
 

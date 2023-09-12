@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetRegionsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetRegionsQuery, GetRegionsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
-    public DatabaseGetRegionsQuery(VkApiClient client, UserActor actor, int countryId) {
+    public DatabaseGetRegionsQuery(VkApiClient client, UserActor actor, Integer countryId) {
         super(client, "database.getRegions", GetRegionsResponse.class);
         accessToken(actor.getAccessToken());
         countryId(countryId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetRegionsQuery(VkApiClient client, UserActor actor) {
+        super(client, "database.getRegions", GetRegionsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param countryId value of "country id" parameter. Minimum is 0.
      */
-    public DatabaseGetRegionsQuery(VkApiClient client, ServiceActor actor, int countryId) {
+    public DatabaseGetRegionsQuery(VkApiClient client, ServiceActor actor, Integer countryId) {
         super(client, "database.getRegions", GetRegionsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         countryId(countryId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetRegionsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "database.getRegions", GetRegionsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,7 +70,8 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
      * @param value value of "country id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetRegionsQuery countryId(int value) {
+    @ApiParam("country_id")
+    public DatabaseGetRegionsQuery countryId(Integer value) {
         return unsafeParam("country_id", value);
     }
 
@@ -56,6 +81,7 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public DatabaseGetRegionsQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -66,6 +92,7 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetRegionsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -76,6 +103,7 @@ public class DatabaseGetRegionsQuery extends AbstractQueryBuilder<DatabaseGetReg
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetRegionsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

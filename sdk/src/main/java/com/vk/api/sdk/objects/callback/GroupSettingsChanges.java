@@ -17,17 +17,29 @@ import java.util.Objects;
  * GroupSettingsChanges object
  */
 public class GroupSettingsChanges implements Validable {
-    @SerializedName("title")
-    private CallbackGroupSettingsChange<String> title;
+    @SerializedName("access")
+    private CallbackGroupSettingsChange<GroupIsClosed> access;
+
+    @SerializedName("age_limits")
+    private CallbackGroupSettingsChange<GroupFullAgeLimits> ageLimits;
 
     @SerializedName("description")
     private CallbackGroupSettingsChange<String> description;
 
-    @SerializedName("access")
-    private CallbackGroupSettingsChange<GroupIsClosed> access;
+    @SerializedName("enable_audio")
+    private CallbackGroupSettingsChange<GroupAudio> enableAudio;
 
-    @SerializedName("screen_name")
-    private CallbackGroupSettingsChange<String> screenName;
+    @SerializedName("enable_market")
+    private CallbackGroupSettingsChange<GroupMarket> enableMarket;
+
+    @SerializedName("enable_photo")
+    private CallbackGroupSettingsChange<GroupPhotos> enablePhoto;
+
+    @SerializedName("enable_status_default")
+    private CallbackGroupSettingsChange<GroupWall> enableStatusDefault;
+
+    @SerializedName("enable_video")
+    private CallbackGroupSettingsChange<GroupVideo> enableVideo;
 
     @SerializedName("public_category")
     private CallbackGroupSettingsChange<Integer> publicCategory;
@@ -35,33 +47,31 @@ public class GroupSettingsChanges implements Validable {
     @SerializedName("public_subcategory")
     private CallbackGroupSettingsChange<Integer> publicSubcategory;
 
-    @SerializedName("age_limits")
-    private CallbackGroupSettingsChange<GroupFullAgeLimits> ageLimits;
+    @SerializedName("screen_name")
+    private CallbackGroupSettingsChange<String> screenName;
+
+    @SerializedName("title")
+    private CallbackGroupSettingsChange<String> title;
 
     @SerializedName("website")
     private CallbackGroupSettingsChange<String> website;
 
-    @SerializedName("enable_status_default")
-    private CallbackGroupSettingsChange<GroupWall> enableStatusDefault;
-
-    @SerializedName("enable_audio")
-    private CallbackGroupSettingsChange<GroupAudio> enableAudio;
-
-    @SerializedName("enable_video")
-    private CallbackGroupSettingsChange<GroupVideo> enableVideo;
-
-    @SerializedName("enable_photo")
-    private CallbackGroupSettingsChange<GroupPhotos> enablePhoto;
-
-    @SerializedName("enable_market")
-    private CallbackGroupSettingsChange<GroupMarket> enableMarket;
-
-    public CallbackGroupSettingsChange<String> getTitle() {
-        return title;
+    public CallbackGroupSettingsChange<GroupIsClosed> getAccess() {
+        return access;
     }
 
-    public GroupSettingsChanges setTitle(CallbackGroupSettingsChange<String> title) {
-        this.title = title;
+    public GroupSettingsChanges setAccess(CallbackGroupSettingsChange<GroupIsClosed> access) {
+        this.access = access;
+        return this;
+    }
+
+    public CallbackGroupSettingsChange<GroupFullAgeLimits> getAgeLimits() {
+        return ageLimits;
+    }
+
+    public GroupSettingsChanges setAgeLimits(
+            CallbackGroupSettingsChange<GroupFullAgeLimits> ageLimits) {
+        this.ageLimits = ageLimits;
         return this;
     }
 
@@ -74,21 +84,53 @@ public class GroupSettingsChanges implements Validable {
         return this;
     }
 
-    public CallbackGroupSettingsChange<GroupIsClosed> getAccess() {
-        return access;
+    public CallbackGroupSettingsChange<GroupAudio> getEnableAudio() {
+        return enableAudio;
     }
 
-    public GroupSettingsChanges setAccess(CallbackGroupSettingsChange<GroupIsClosed> access) {
-        this.access = access;
+    public GroupSettingsChanges setEnableAudio(
+            CallbackGroupSettingsChange<GroupAudio> enableAudio) {
+        this.enableAudio = enableAudio;
         return this;
     }
 
-    public CallbackGroupSettingsChange<String> getScreenName() {
-        return screenName;
+    public CallbackGroupSettingsChange<GroupMarket> getEnableMarket() {
+        return enableMarket;
     }
 
-    public GroupSettingsChanges setScreenName(CallbackGroupSettingsChange<String> screenName) {
-        this.screenName = screenName;
+    public GroupSettingsChanges setEnableMarket(
+            CallbackGroupSettingsChange<GroupMarket> enableMarket) {
+        this.enableMarket = enableMarket;
+        return this;
+    }
+
+    public CallbackGroupSettingsChange<GroupPhotos> getEnablePhoto() {
+        return enablePhoto;
+    }
+
+    public GroupSettingsChanges setEnablePhoto(
+            CallbackGroupSettingsChange<GroupPhotos> enablePhoto) {
+        this.enablePhoto = enablePhoto;
+        return this;
+    }
+
+    public CallbackGroupSettingsChange<GroupWall> getEnableStatusDefault() {
+        return enableStatusDefault;
+    }
+
+    public GroupSettingsChanges setEnableStatusDefault(
+            CallbackGroupSettingsChange<GroupWall> enableStatusDefault) {
+        this.enableStatusDefault = enableStatusDefault;
+        return this;
+    }
+
+    public CallbackGroupSettingsChange<GroupVideo> getEnableVideo() {
+        return enableVideo;
+    }
+
+    public GroupSettingsChanges setEnableVideo(
+            CallbackGroupSettingsChange<GroupVideo> enableVideo) {
+        this.enableVideo = enableVideo;
         return this;
     }
 
@@ -112,13 +154,21 @@ public class GroupSettingsChanges implements Validable {
         return this;
     }
 
-    public CallbackGroupSettingsChange<GroupFullAgeLimits> getAgeLimits() {
-        return ageLimits;
+    public CallbackGroupSettingsChange<String> getScreenName() {
+        return screenName;
     }
 
-    public GroupSettingsChanges setAgeLimits(
-            CallbackGroupSettingsChange<GroupFullAgeLimits> ageLimits) {
-        this.ageLimits = ageLimits;
+    public GroupSettingsChanges setScreenName(CallbackGroupSettingsChange<String> screenName) {
+        this.screenName = screenName;
+        return this;
+    }
+
+    public CallbackGroupSettingsChange<String> getTitle() {
+        return title;
+    }
+
+    public GroupSettingsChanges setTitle(CallbackGroupSettingsChange<String> title) {
+        this.title = title;
         return this;
     }
 
@@ -128,56 +178,6 @@ public class GroupSettingsChanges implements Validable {
 
     public GroupSettingsChanges setWebsite(CallbackGroupSettingsChange<String> website) {
         this.website = website;
-        return this;
-    }
-
-    public CallbackGroupSettingsChange<GroupWall> getEnableStatusDefault() {
-        return enableStatusDefault;
-    }
-
-    public GroupSettingsChanges setEnableStatusDefault(
-            CallbackGroupSettingsChange<GroupWall> enableStatusDefault) {
-        this.enableStatusDefault = enableStatusDefault;
-        return this;
-    }
-
-    public CallbackGroupSettingsChange<GroupAudio> getEnableAudio() {
-        return enableAudio;
-    }
-
-    public GroupSettingsChanges setEnableAudio(
-            CallbackGroupSettingsChange<GroupAudio> enableAudio) {
-        this.enableAudio = enableAudio;
-        return this;
-    }
-
-    public CallbackGroupSettingsChange<GroupVideo> getEnableVideo() {
-        return enableVideo;
-    }
-
-    public GroupSettingsChanges setEnableVideo(
-            CallbackGroupSettingsChange<GroupVideo> enableVideo) {
-        this.enableVideo = enableVideo;
-        return this;
-    }
-
-    public CallbackGroupSettingsChange<GroupPhotos> getEnablePhoto() {
-        return enablePhoto;
-    }
-
-    public GroupSettingsChanges setEnablePhoto(
-            CallbackGroupSettingsChange<GroupPhotos> enablePhoto) {
-        this.enablePhoto = enablePhoto;
-        return this;
-    }
-
-    public CallbackGroupSettingsChange<GroupMarket> getEnableMarket() {
-        return enableMarket;
-    }
-
-    public GroupSettingsChanges setEnableMarket(
-            CallbackGroupSettingsChange<GroupMarket> enableMarket) {
-        this.enableMarket = enableMarket;
         return this;
     }
 
@@ -194,9 +194,9 @@ public class GroupSettingsChanges implements Validable {
         return Objects.equals(enableStatusDefault, groupSettingsChanges.enableStatusDefault) &&
                 Objects.equals(website, groupSettingsChanges.website) &&
                 Objects.equals(access, groupSettingsChanges.access) &&
-                Objects.equals(publicCategory, groupSettingsChanges.publicCategory) &&
                 Objects.equals(enableAudio, groupSettingsChanges.enableAudio) &&
                 Objects.equals(enableMarket, groupSettingsChanges.enableMarket) &&
+                Objects.equals(publicCategory, groupSettingsChanges.publicCategory) &&
                 Objects.equals(publicSubcategory, groupSettingsChanges.publicSubcategory) &&
                 Objects.equals(description, groupSettingsChanges.description) &&
                 Objects.equals(title, groupSettingsChanges.title) &&
@@ -217,9 +217,9 @@ public class GroupSettingsChanges implements Validable {
         sb.append("enableStatusDefault=").append(enableStatusDefault);
         sb.append(", website='").append(website).append("'");
         sb.append(", access=").append(access);
-        sb.append(", publicCategory=").append(publicCategory);
         sb.append(", enableAudio=").append(enableAudio);
         sb.append(", enableMarket=").append(enableMarket);
+        sb.append(", publicCategory=").append(publicCategory);
         sb.append(", publicSubcategory=").append(publicSubcategory);
         sb.append(", description='").append(description).append("'");
         sb.append(", title='").append(title).append("'");

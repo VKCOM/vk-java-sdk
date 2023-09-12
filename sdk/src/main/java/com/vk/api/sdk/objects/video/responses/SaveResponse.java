@@ -25,9 +25,10 @@ public class SaveResponse implements Validable {
 
     /**
      * Video owner ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    private Long ownerId;
 
     /**
      * Video title
@@ -65,11 +66,11 @@ public class SaveResponse implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public SaveResponse setOwnerId(Integer ownerId) {
+    public SaveResponse setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }

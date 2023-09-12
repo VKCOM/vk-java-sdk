@@ -12,6 +12,13 @@ import java.util.Objects;
  */
 public class DocTypes implements Validable {
     /**
+     * Number of docs
+     */
+    @SerializedName("count")
+    @Required
+    private Integer count;
+
+    /**
      * Doc type ID
      */
     @SerializedName("id")
@@ -25,12 +32,14 @@ public class DocTypes implements Validable {
     @Required
     private String name;
 
-    /**
-     * Number of docs
-     */
-    @SerializedName("count")
-    @Required
-    private Integer count;
+    public Integer getCount() {
+        return count;
+    }
+
+    public DocTypes setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -50,18 +59,9 @@ public class DocTypes implements Validable {
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
-    public DocTypes setCount(Integer count) {
-        this.count = count;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(name, count, id);
+        return Objects.hash(count, name, id);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class DocTypes implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DocTypes docTypes = (DocTypes) o;
-        return Objects.equals(name, docTypes.name) &&
-                Objects.equals(count, docTypes.count) &&
+        return Objects.equals(count, docTypes.count) &&
+                Objects.equals(name, docTypes.name) &&
                 Objects.equals(id, docTypes.id);
     }
 
@@ -82,8 +82,8 @@ public class DocTypes implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("DocTypes{");
-        sb.append("name='").append(name).append("'");
-        sb.append(", count=").append(count);
+        sb.append("count=").append(count);
+        sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();

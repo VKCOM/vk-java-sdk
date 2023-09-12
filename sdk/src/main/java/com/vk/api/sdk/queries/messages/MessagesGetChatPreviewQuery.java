@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetChatPreviewResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGetChatPreviewQuery, GetChatPreviewResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,10 +28,11 @@ public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGe
     /**
      * Set peer id
      *
-     * @param value value of "peer id" parameter. Minimum is 0.
+     * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetChatPreviewQuery peerId(Integer value) {
+    @ApiParam("peer_id")
+    public MessagesGetChatPreviewQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
@@ -40,6 +42,7 @@ public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "link" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("link")
     public MessagesGetChatPreviewQuery link(String value) {
         return unsafeParam("link", value);
     }
@@ -51,6 +54,7 @@ public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetChatPreviewQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -61,6 +65,7 @@ public class MessagesGetChatPreviewQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetChatPreviewQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

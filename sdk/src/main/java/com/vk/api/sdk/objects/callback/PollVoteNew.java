@@ -4,29 +4,49 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
  * PollVoteNew object
  */
 public class PollVoteNew implements Validable {
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    @SerializedName("poll_id")
-    private Integer pollId;
-
     @SerializedName("option_id")
+    @Required
     private Integer optionId;
 
-    @SerializedName("user_id")
-    private Integer userId;
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
-    public Integer getOwnerId() {
+    @SerializedName("poll_id")
+    @Required
+    private Integer pollId;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
+
+    public Integer getOptionId() {
+        return optionId;
+    }
+
+    public PollVoteNew setOptionId(Integer optionId) {
+        this.optionId = optionId;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PollVoteNew setOwnerId(Integer ownerId) {
+    public PollVoteNew setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -40,20 +60,11 @@ public class PollVoteNew implements Validable {
         return this;
     }
 
-    public Integer getOptionId() {
-        return optionId;
-    }
-
-    public PollVoteNew setOptionId(Integer optionId) {
-        this.optionId = optionId;
-        return this;
-    }
-
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public PollVoteNew setUserId(Integer userId) {
+    public PollVoteNew setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

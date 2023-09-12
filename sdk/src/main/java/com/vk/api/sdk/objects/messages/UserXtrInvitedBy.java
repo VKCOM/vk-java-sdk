@@ -13,22 +13,38 @@ import java.util.Objects;
 public class UserXtrInvitedBy extends UserXtrType implements Validable {
     /**
      * ID of the inviter
+     * Entity: owner
      */
     @SerializedName("invited_by")
-    private Integer invitedBy;
+    private Long invitedBy;
 
-    public Integer getInvitedBy() {
+    /**
+     * Name of group
+     */
+    @SerializedName("name")
+    private String name;
+
+    public Long getInvitedBy() {
         return invitedBy;
     }
 
-    public UserXtrInvitedBy setInvitedBy(Integer invitedBy) {
+    public UserXtrInvitedBy setInvitedBy(Long invitedBy) {
         this.invitedBy = invitedBy;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public UserXtrInvitedBy setName(String name) {
+        this.name = name;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(invitedBy);
+        return Objects.hash(invitedBy, name);
     }
 
     @Override
@@ -36,7 +52,8 @@ public class UserXtrInvitedBy extends UserXtrType implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserXtrInvitedBy userXtrInvitedBy = (UserXtrInvitedBy) o;
-        return Objects.equals(invitedBy, userXtrInvitedBy.invitedBy);
+        return Objects.equals(name, userXtrInvitedBy.name) &&
+                Objects.equals(invitedBy, userXtrInvitedBy.invitedBy);
     }
 
     @Override
@@ -47,7 +64,8 @@ public class UserXtrInvitedBy extends UserXtrType implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserXtrInvitedBy{");
-        sb.append("invitedBy=").append(invitedBy);
+        sb.append("name='").append(name).append("'");
+        sb.append(", invitedBy=").append(invitedBy);
         sb.append('}');
         return sb.toString();
     }

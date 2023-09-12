@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,15 @@ import java.util.List;
  */
 public class MarketRestoreQuery extends AbstractQueryBuilder<MarketRestoreQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public MarketRestoreQuery(VkApiClient client, UserActor actor, int ownerId, int itemId) {
+    public MarketRestoreQuery(VkApiClient client, UserActor actor, Long ownerId, Integer itemId) {
         super(client, "market.restore", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +30,25 @@ public class MarketRestoreQuery extends AbstractQueryBuilder<MarketRestoreQuery,
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketRestoreQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.restore", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an item owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketRestoreQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketRestoreQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +58,8 @@ public class MarketRestoreQuery extends AbstractQueryBuilder<MarketRestoreQuery,
      * @param value value of "item id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketRestoreQuery itemId(int value) {
+    @ApiParam("item_id")
+    public MarketRestoreQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
 

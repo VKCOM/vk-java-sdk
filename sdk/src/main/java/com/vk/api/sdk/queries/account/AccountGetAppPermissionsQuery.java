@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,25 +13,25 @@ import java.util.List;
  */
 public class AccountGetAppPermissionsQuery extends AbstractQueryBuilder<AccountGetAppPermissionsQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
      */
-    public AccountGetAppPermissionsQuery(VkApiClient client, UserActor actor, int userId) {
+    public AccountGetAppPermissionsQuery(VkApiClient client, UserActor actor) {
         super(client, "account.getAppPermissions", Integer.class);
         accessToken(actor.getAccessToken());
-        userId(userId);
     }
 
     /**
      * User ID whose settings information shall be got. By default: current user.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountGetAppPermissionsQuery userId(int value) {
+    @ApiParam("user_id")
+    public AccountGetAppPermissionsQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -41,6 +42,6 @@ public class AccountGetAppPermissionsQuery extends AbstractQueryBuilder<AccountG
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("user_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

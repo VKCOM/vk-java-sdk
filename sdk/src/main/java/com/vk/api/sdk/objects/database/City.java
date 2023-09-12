@@ -19,16 +19,22 @@ public class City extends BaseObject implements Validable {
     private String area;
 
     /**
-     * Region title
+     * Country title
      */
-    @SerializedName("region")
-    private String region;
+    @SerializedName("country")
+    private String country;
 
     /**
      * Information whether the city is included in important cities list
      */
     @SerializedName("important")
     private BoolInt important;
+
+    /**
+     * Region title
+     */
+    @SerializedName("region")
+    private String region;
 
     public String getArea() {
         return area;
@@ -39,12 +45,12 @@ public class City extends BaseObject implements Validable {
         return this;
     }
 
-    public String getRegion() {
-        return region;
+    public String getCountry() {
+        return country;
     }
 
-    public City setRegion(String region) {
-        this.region = region;
+    public City setCountry(String country) {
+        this.country = country;
         return this;
     }
 
@@ -56,9 +62,18 @@ public class City extends BaseObject implements Validable {
         return important;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public City setRegion(String region) {
+        this.region = region;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(area, important, region);
+        return Objects.hash(area, important, country, region);
     }
 
     @Override
@@ -68,6 +83,7 @@ public class City extends BaseObject implements Validable {
         City city = (City) o;
         return Objects.equals(area, city.area) &&
                 Objects.equals(important, city.important) &&
+                Objects.equals(country, city.country) &&
                 Objects.equals(region, city.region);
     }
 
@@ -81,6 +97,7 @@ public class City extends BaseObject implements Validable {
         final StringBuilder sb = new StringBuilder("City{");
         sb.append("area='").append(area).append("'");
         sb.append(", important=").append(important);
+        sb.append(", country='").append(country).append("'");
         sb.append(", region='").append(region).append("'");
         sb.append('}');
         return sb.toString();

@@ -11,6 +11,10 @@ import java.util.Objects;
  * GetTagListResponse object
  */
 public class GetTagListResponse implements Validable {
+    @SerializedName("color")
+    @Required
+    private GetTagListResponseColor color;
+
     @SerializedName("id")
     @Required
     private Integer id;
@@ -19,12 +23,17 @@ public class GetTagListResponse implements Validable {
     @Required
     private String name;
 
-    @SerializedName("color")
-    @Required
-    private GetTagListResponseColor color;
-
     @SerializedName("uses")
     private Integer uses;
+
+    public GetTagListResponseColor getColor() {
+        return color;
+    }
+
+    public GetTagListResponse setColor(GetTagListResponseColor color) {
+        this.color = color;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -41,15 +50,6 @@ public class GetTagListResponse implements Validable {
 
     public GetTagListResponse setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public GetTagListResponseColor getColor() {
-        return color;
-    }
-
-    public GetTagListResponse setColor(GetTagListResponseColor color) {
-        this.color = color;
         return this;
     }
 

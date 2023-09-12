@@ -13,6 +13,13 @@ import java.util.Objects;
  */
 public class DocPreviewGraffiti implements Validable {
     /**
+     * Graffiti height
+     */
+    @SerializedName("height")
+    @Required
+    private Integer height;
+
+    /**
      * Graffiti file URL
      */
     @SerializedName("src")
@@ -26,12 +33,14 @@ public class DocPreviewGraffiti implements Validable {
     @Required
     private Integer width;
 
-    /**
-     * Graffiti height
-     */
-    @SerializedName("height")
-    @Required
-    private Integer height;
+    public Integer getHeight() {
+        return height;
+    }
+
+    public DocPreviewGraffiti setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
 
     public URI getSrc() {
         return src;
@@ -48,15 +57,6 @@ public class DocPreviewGraffiti implements Validable {
 
     public DocPreviewGraffiti setWidth(Integer width) {
         this.width = width;
-        return this;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public DocPreviewGraffiti setHeight(Integer height) {
-        this.height = height;
         return this;
     }
 

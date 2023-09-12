@@ -5,50 +5,56 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Friends.getMutual method
  */
-public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutualQuery, List<Integer>> {
+public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutualQuery, List<Long>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public FriendsGetMutualQuery(VkApiClient client, UserActor actor) {
-        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getMutual", Utils.buildParametrizedType(List.class, Long.class));
         accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of the user whose friends will be checked against the friends of the user specified in 'target_uid'.
      *
-     * @param value value of "source uid" parameter. Minimum is 0.
+     * @param value value of "source uid" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery sourceUid(Integer value) {
+    @ApiParam("source_uid")
+    public FriendsGetMutualQuery sourceUid(Long value) {
         return unsafeParam("source_uid", value);
     }
 
     /**
      * ID of the user whose friends will be checked against the friends of the user specified in 'source_uid'.
      *
-     * @param value value of "target uid" parameter. Minimum is 0.
+     * @param value value of "target uid" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery targetUid(Integer value) {
+    @ApiParam("target_uid")
+    public FriendsGetMutualQuery targetUid(Long value) {
         return unsafeParam("target_uid", value);
     }
 
     /**
-     * Sort order: 'random' — random order
+     * Sort order: 'random' - random order
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order")
     public FriendsGetMutualQuery order(String value) {
         return unsafeParam("order", value);
     }
@@ -59,6 +65,7 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FriendsGetMutualQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -69,18 +76,20 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FriendsGetMutualQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
 
     /**
-     * target_uids
+     * targetUids
      * IDs of the users whose friends will be checked against the friends of the user specified in 'source_uid'.
      *
      * @param value value of "target uids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery targetUids(Integer... value) {
+    @ApiParam("target_uids")
+    public FriendsGetMutualQuery targetUids(Long... value) {
         return unsafeParam("target_uids", value);
     }
 
@@ -90,7 +99,8 @@ public class FriendsGetMutualQuery extends AbstractQueryBuilder<FriendsGetMutual
      * @param value value of "target uids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetMutualQuery targetUids(List<Integer> value) {
+    @ApiParam("target_uids")
+    public FriendsGetMutualQuery targetUids(List<Long> value) {
         return unsafeParam("target_uids", value);
     }
 

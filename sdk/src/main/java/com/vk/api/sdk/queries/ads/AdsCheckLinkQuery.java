@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.CheckLinkLinkType;
 import com.vk.api.sdk.objects.ads.responses.CheckLinkResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, CheckLinkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -22,7 +23,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
      * @param linkType value of "link type" parameter.
      * @param linkUrl value of "link url" parameter.
      */
-    public AdsCheckLinkQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsCheckLinkQuery(VkApiClient client, UserActor actor, Integer accountId,
             CheckLinkLinkType linkType, String linkUrl) {
         super(client, "ads.checkLink", CheckLinkResponse.class);
         accessToken(actor.getAccessToken());
@@ -32,22 +33,35 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsCheckLinkQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.checkLink", CheckLinkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsCheckLinkQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
     /**
-     * Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
+     * Object type: *'community' - community,, *'post' - community post,, *'application' - VK application,, *'video' - video,, *'site' - external site.
      *
      * @param value value of "link type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery linkType(CheckLinkLinkType value) {
+    @ApiParam("link_type")
+    public AdsCheckLinkQuery linkType(CheckLinkLinkType value) {
         return unsafeParam("link_type", value);
     }
 
@@ -57,7 +71,8 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
      * @param value value of "link url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCheckLinkQuery linkUrl(String value) {
+    @ApiParam("link_url")
+    public AdsCheckLinkQuery linkUrl(String value) {
         return unsafeParam("link_url", value);
     }
 
@@ -67,6 +82,7 @@ public class AdsCheckLinkQuery extends AbstractQueryBuilder<AdsCheckLinkQuery, C
      * @param value value of "campaign id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("campaign_id")
     public AdsCheckLinkQuery campaignId(Integer value) {
         return unsafeParam("campaign_id", value);
     }

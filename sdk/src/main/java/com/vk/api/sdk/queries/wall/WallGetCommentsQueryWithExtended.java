@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.wall.GetCommentsSort;
 import com.vk.api.sdk.objects.wall.responses.GetCommentsExtendedResponse;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallGetCommentsQueryWithExtended, GetCommentsExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,7 +29,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -43,10 +44,12 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentsQueryWithExtended ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallGetCommentsQueryWithExtended ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -56,16 +59,18 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("post_id")
     public WallGetCommentsQueryWithExtended postId(Integer value) {
         return unsafeParam("post_id", value);
     }
 
     /**
-     * '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
+     * '1' - to return the 'likes' field, '0' - not to return the 'likes' field (default)
      *
      * @param value value of "need likes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_likes")
     public WallGetCommentsQueryWithExtended needLikes(Boolean value) {
         return unsafeParam("need_likes", value);
     }
@@ -76,6 +81,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "start comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_comment_id")
     public WallGetCommentsQueryWithExtended startCommentId(Integer value) {
         return unsafeParam("start_comment_id", value);
     }
@@ -86,6 +92,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public WallGetCommentsQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -96,16 +103,18 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public WallGetCommentsQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * Sort order: 'asc' — chronological, 'desc' — reverse chronological
+     * Sort order: 'asc' - chronological, 'desc' - reverse chronological
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public WallGetCommentsQueryWithExtended sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
@@ -116,6 +125,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public WallGetCommentsQueryWithExtended previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
@@ -126,6 +136,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected WallGetCommentsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -136,6 +147,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("comment_id")
     public WallGetCommentsQueryWithExtended commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
@@ -146,6 +158,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "thread items count" parameter. Maximum is 10. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("thread_items_count")
     public WallGetCommentsQueryWithExtended threadItemsCount(Integer value) {
         return unsafeParam("thread_items_count", value);
     }
@@ -157,6 +170,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallGetCommentsQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -167,6 +181,7 @@ public class WallGetCommentsQueryWithExtended extends AbstractQueryBuilder<WallG
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallGetCommentsQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

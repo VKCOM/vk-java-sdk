@@ -13,14 +13,6 @@ import java.util.Objects;
  * GetStickersKeywordsResponse object
  */
 public class GetStickersKeywordsResponse implements Validable {
-    @SerializedName("count")
-    @Required
-    private Integer count;
-
-    @SerializedName("dictionary")
-    @Required
-    private List<StickersKeyword> dictionary;
-
     /**
      * Total count of chunks to load
      */
@@ -33,23 +25,13 @@ public class GetStickersKeywordsResponse implements Validable {
     @SerializedName("chunks_hash")
     private String chunksHash;
 
-    public Integer getCount() {
-        return count;
-    }
+    @SerializedName("count")
+    @Required
+    private Integer count;
 
-    public GetStickersKeywordsResponse setCount(Integer count) {
-        this.count = count;
-        return this;
-    }
-
-    public List<StickersKeyword> getDictionary() {
-        return dictionary;
-    }
-
-    public GetStickersKeywordsResponse setDictionary(List<StickersKeyword> dictionary) {
-        this.dictionary = dictionary;
-        return this;
-    }
+    @SerializedName("dictionary")
+    @Required
+    private List<StickersKeyword> dictionary;
 
     public Integer getChunksCount() {
         return chunksCount;
@@ -66,6 +48,24 @@ public class GetStickersKeywordsResponse implements Validable {
 
     public GetStickersKeywordsResponse setChunksHash(String chunksHash) {
         this.chunksHash = chunksHash;
+        return this;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public GetStickersKeywordsResponse setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public List<StickersKeyword> getDictionary() {
+        return dictionary;
+    }
+
+    public GetStickersKeywordsResponse setDictionary(List<StickersKeyword> dictionary) {
+        this.dictionary = dictionary;
         return this;
     }
 

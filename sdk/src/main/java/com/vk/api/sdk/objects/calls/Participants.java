@@ -11,23 +11,14 @@ import java.util.Objects;
  * Participants object
  */
 public class Participants implements Validable {
-    @SerializedName("list")
-    private List<Integer> list;
-
     /**
      * Participants count
      */
     @SerializedName("count")
     private Integer count;
 
-    public List<Integer> getList() {
-        return list;
-    }
-
-    public Participants setList(List<Integer> list) {
-        this.list = list;
-        return this;
-    }
+    @SerializedName("list")
+    private List<Long> list;
 
     public Integer getCount() {
         return count;
@@ -35,6 +26,15 @@ public class Participants implements Validable {
 
     public Participants setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<Long> getList() {
+        return list;
+    }
+
+    public Participants setList(List<Long> list) {
+        this.list = list;
         return this;
     }
 

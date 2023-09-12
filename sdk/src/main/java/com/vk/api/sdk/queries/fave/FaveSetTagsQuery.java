@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.fave.SetTagsItemType;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "item type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("item_type")
     public FaveSetTagsQuery itemType(SetTagsItemType value) {
         return unsafeParam("item_type", value);
     }
@@ -37,10 +39,12 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
     /**
      * Set item owner id
      *
-     * @param value value of "item owner id" parameter.
+     * @param value value of "item owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FaveSetTagsQuery itemOwnerId(Integer value) {
+    @ApiParam("item_owner_id")
+    public FaveSetTagsQuery itemOwnerId(Long value) {
         return unsafeParam("item_owner_id", value);
     }
 
@@ -50,6 +54,7 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "item id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("item_id")
     public FaveSetTagsQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
@@ -60,6 +65,7 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "link id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("link_id")
     public FaveSetTagsQuery linkId(String value) {
         return unsafeParam("link_id", value);
     }
@@ -70,17 +76,19 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "link url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("link_url")
     public FaveSetTagsQuery linkUrl(String value) {
         return unsafeParam("link_url", value);
     }
 
     /**
-     * tag_ids
+     * tagIds
      * Set tag ids
      *
      * @param value value of "tag ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tag_ids")
     public FaveSetTagsQuery tagIds(Integer... value) {
         return unsafeParam("tag_ids", value);
     }
@@ -91,6 +99,7 @@ public class FaveSetTagsQuery extends AbstractQueryBuilder<FaveSetTagsQuery, OkR
      * @param value value of "tag ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tag_ids")
     public FaveSetTagsQuery tagIds(List<Integer> value) {
         return unsafeParam("tag_ids", value);
     }

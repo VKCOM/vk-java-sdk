@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.newsfeed.CommentsItem;
 import com.vk.api.sdk.objects.users.UserFull;
-import com.vk.api.sdk.oneofs.NewsfeedNewsfeedItemOneOf;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -17,17 +17,13 @@ import java.util.stream.Collectors;
  * GetCommentsResponse object
  */
 public class GetCommentsResponse implements Validable {
-    @SerializedName("items")
-    @Required
-    private List<JsonObject> items;
-
-    @SerializedName("profiles")
-    @Required
-    private List<UserFull> profiles;
-
     @SerializedName("groups")
     @Required
     private List<GroupFull> groups;
+
+    @SerializedName("items")
+    @Required
+    private List<JsonObject> items;
 
     /**
      * Next from value
@@ -35,18 +31,9 @@ public class GetCommentsResponse implements Validable {
     @SerializedName("next_from")
     private String nextFrom;
 
-    public List<NewsfeedNewsfeedItemOneOf> getItems() {
-        return items.stream().map(NewsfeedNewsfeedItemOneOf::new).collect(Collectors.toList());
-    }
-
-    public List<UserFull> getProfiles() {
-        return profiles;
-    }
-
-    public GetCommentsResponse setProfiles(List<UserFull> profiles) {
-        this.profiles = profiles;
-        return this;
-    }
+    @SerializedName("profiles")
+    @Required
+    private List<UserFull> profiles;
 
     public List<GroupFull> getGroups() {
         return groups;
@@ -57,12 +44,25 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
+    public List<CommentsItem> getItems() {
+        return items.stream().map(CommentsItem::new).collect(Collectors.toList());
+    }
+
     public String getNextFrom() {
         return nextFrom;
     }
 
     public GetCommentsResponse setNextFrom(String nextFrom) {
         this.nextFrom = nextFrom;
+        return this;
+    }
+
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetCommentsResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
         return this;
     }
 

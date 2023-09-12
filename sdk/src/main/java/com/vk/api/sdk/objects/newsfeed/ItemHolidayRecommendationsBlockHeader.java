@@ -13,11 +13,11 @@ import java.util.Objects;
  * ItemHolidayRecommendationsBlockHeader object
  */
 public class ItemHolidayRecommendationsBlockHeader implements Validable {
-    /**
-     * Title of the header
-     */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("action")
+    private LinkButtonAction action;
+
+    @SerializedName("image")
+    private List<Image> image;
 
     /**
      * Subtitle of the header
@@ -25,27 +25,18 @@ public class ItemHolidayRecommendationsBlockHeader implements Validable {
     @SerializedName("subtitle")
     private String subtitle;
 
-    @SerializedName("image")
-    private List<Image> image;
+    /**
+     * Title of the header
+     */
+    @SerializedName("title")
+    private String title;
 
-    @SerializedName("action")
-    private LinkButtonAction action;
-
-    public String getTitle() {
-        return title;
+    public LinkButtonAction getAction() {
+        return action;
     }
 
-    public ItemHolidayRecommendationsBlockHeader setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public ItemHolidayRecommendationsBlockHeader setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
+    public ItemHolidayRecommendationsBlockHeader setAction(LinkButtonAction action) {
+        this.action = action;
         return this;
     }
 
@@ -58,12 +49,21 @@ public class ItemHolidayRecommendationsBlockHeader implements Validable {
         return this;
     }
 
-    public LinkButtonAction getAction() {
-        return action;
+    public String getSubtitle() {
+        return subtitle;
     }
 
-    public ItemHolidayRecommendationsBlockHeader setAction(LinkButtonAction action) {
-        this.action = action;
+    public ItemHolidayRecommendationsBlockHeader setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemHolidayRecommendationsBlockHeader setTitle(String title) {
+        this.title = title;
         return this;
     }
 

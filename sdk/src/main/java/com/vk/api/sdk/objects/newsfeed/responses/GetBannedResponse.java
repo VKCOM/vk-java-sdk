@@ -12,25 +12,25 @@ import java.util.Objects;
  */
 public class GetBannedResponse implements Validable {
     @SerializedName("groups")
-    private List<Integer> groups;
+    private List<Long> groups;
 
     @SerializedName("members")
-    private List<Integer> members;
+    private List<Long> members;
 
-    public List<Integer> getGroups() {
+    public List<Long> getGroups() {
         return groups;
     }
 
-    public GetBannedResponse setGroups(List<Integer> groups) {
+    public GetBannedResponse setGroups(List<Long> groups) {
         this.groups = groups;
         return this;
     }
 
-    public List<Integer> getMembers() {
+    public List<Long> getMembers() {
         return members;
     }
 
-    public GetBannedResponse setMembers(List<Integer> members) {
+    public GetBannedResponse setMembers(List<Long> members) {
         this.members = members;
         return this;
     }

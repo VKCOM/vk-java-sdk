@@ -12,13 +12,6 @@ import java.util.Objects;
  */
 public class LongpollParams implements Validable {
     /**
-     * Server URL
-     */
-    @SerializedName("server")
-    @Required
-    private String server;
-
-    /**
      * Key
      */
     @SerializedName("key")
@@ -26,26 +19,24 @@ public class LongpollParams implements Validable {
     private String key;
 
     /**
-     * Timestamp
-     */
-    @SerializedName("ts")
-    @Required
-    private Integer ts;
-
-    /**
      * Persistent timestamp
      */
     @SerializedName("pts")
     private Integer pts;
 
-    public String getServer() {
-        return server;
-    }
+    /**
+     * Server URL
+     */
+    @SerializedName("server")
+    @Required
+    private String server;
 
-    public LongpollParams setServer(String server) {
-        this.server = server;
-        return this;
-    }
+    /**
+     * Timestamp
+     */
+    @SerializedName("ts")
+    @Required
+    private Integer ts;
 
     public String getKey() {
         return key;
@@ -56,21 +47,30 @@ public class LongpollParams implements Validable {
         return this;
     }
 
-    public Integer getTs() {
-        return ts;
-    }
-
-    public LongpollParams setTs(Integer ts) {
-        this.ts = ts;
-        return this;
-    }
-
     public Integer getPts() {
         return pts;
     }
 
     public LongpollParams setPts(Integer pts) {
         this.pts = pts;
+        return this;
+    }
+
+    public String getServer() {
+        return server;
+    }
+
+    public LongpollParams setServer(String server) {
+        this.server = server;
+        return this;
+    }
+
+    public Integer getTs() {
+        return ts;
+    }
+
+    public LongpollParams setTs(Integer ts) {
+        this.ts = ts;
         return this;
     }
 

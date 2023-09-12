@@ -15,7 +15,7 @@ public class OutReadBy implements Validable {
     private Integer count;
 
     @SerializedName("member_ids")
-    private List<Integer> memberIds;
+    private List<Long> memberIds;
 
     public Integer getCount() {
         return count;
@@ -26,11 +26,11 @@ public class OutReadBy implements Validable {
         return this;
     }
 
-    public List<Integer> getMemberIds() {
+    public List<Long> getMemberIds() {
         return memberIds;
     }
 
-    public OutReadBy setMemberIds(List<Integer> memberIds) {
+    public OutReadBy setMemberIds(List<Long> memberIds) {
         this.memberIds = memberIds;
         return this;
     }

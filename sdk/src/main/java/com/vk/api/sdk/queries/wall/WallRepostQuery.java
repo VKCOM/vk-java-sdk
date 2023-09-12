@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.wall.responses.RepostResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, RepostResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,12 +27,24 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallRepostQuery(VkApiClient client, UserActor actor) {
+        super(client, "wall.repost", RepostResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the object to be reposted on the wall. Example: "wall66748_3675"
      *
      * @param value value of "object" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallRepostQuery object(String value) {
+    @ApiParam("object")
+    public WallRepostQuery object(String value) {
         return unsafeParam("object", value);
     }
 
@@ -41,6 +54,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public WallRepostQuery message(String value) {
         return unsafeParam("message", value);
     }
@@ -48,10 +62,12 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
     /**
      * Target community ID when reposting to a community.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallRepostQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public WallRepostQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -61,6 +77,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
      * @param value value of "mark as ads" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mark_as_ads")
     public WallRepostQuery markAsAds(Boolean value) {
         return unsafeParam("mark_as_ads", value);
     }
@@ -71,6 +88,7 @@ public class WallRepostQuery extends AbstractQueryBuilder<WallRepostQuery, Repos
      * @param value value of "mute notifications" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mute_notifications")
     public WallRepostQuery muteNotifications(Boolean value) {
         return unsafeParam("mute_notifications", value);
     }

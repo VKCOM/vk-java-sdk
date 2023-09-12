@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.docs;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.docs.GetType;
 import com.vk.api.sdk.objects.docs.responses.GetResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DocsGetQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -40,6 +42,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DocsGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -50,6 +53,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * @param value value of "type" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public DocsGetQuery type(GetType value) {
         return unsafeParam("type", value);
     }
@@ -57,10 +61,12 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
     /**
      * ID of the user or community that owns the documents. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public DocsGetQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public DocsGetQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -70,6 +76,7 @@ public class DocsGetQuery extends AbstractQueryBuilder<DocsGetQuery, GetResponse
      * @param value value of "return tags" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_tags")
     public DocsGetQuery returnTags(Boolean value) {
         return unsafeParam("return_tags", value);
     }

@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.wall.WallCheckCopyrightLinkQuery;
 import com.vk.api.sdk.queries.wall.WallCloseCommentsQuery;
 import com.vk.api.sdk.queries.wall.WallCreateCommentQuery;
@@ -14,8 +15,8 @@ import com.vk.api.sdk.queries.wall.WallDeleteQuery;
 import com.vk.api.sdk.queries.wall.WallEditAdsStealthQuery;
 import com.vk.api.sdk.queries.wall.WallEditCommentQuery;
 import com.vk.api.sdk.queries.wall.WallEditQuery;
+import com.vk.api.sdk.queries.wall.WallGetByIdQuery;
 import com.vk.api.sdk.queries.wall.WallGetByIdQueryWithExtended;
-import com.vk.api.sdk.queries.wall.WallGetByIdQueryWithLegacy;
 import com.vk.api.sdk.queries.wall.WallGetCommentQuery;
 import com.vk.api.sdk.queries.wall.WallGetCommentQueryWithExtended;
 import com.vk.api.sdk.queries.wall.WallGetCommentsQuery;
@@ -51,62 +52,117 @@ public class Wall extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param link
      * @return query
      */
+    @ApiMethod("wall.checkCopyrightLink")
     public WallCheckCopyrightLinkQuery checkCopyrightLink(UserActor actor, String link) {
         return new WallCheckCopyrightLinkQuery(getClient(), actor, link);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.checkCopyrightLink")
+    public WallCheckCopyrightLinkQuery checkCopyrightLink(UserActor actor) {
+        return new WallCheckCopyrightLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param postId
      * @return query
      */
-    public WallCloseCommentsQuery closeComments(UserActor actor, int ownerId, int postId) {
+    @ApiMethod("wall.closeComments")
+    public WallCloseCommentsQuery closeComments(UserActor actor, Long ownerId, Integer postId) {
         return new WallCloseCommentsQuery(getClient(), actor, ownerId, postId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.closeComments")
+    public WallCloseCommentsQuery closeComments(UserActor actor) {
+        return new WallCloseCommentsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param ownerId
      * @param postId
      * @return query
      */
-    public WallCloseCommentsQuery closeComments(GroupActor actor, int ownerId, int postId) {
+    @ApiMethod("wall.closeComments")
+    public WallCloseCommentsQuery closeComments(GroupActor actor, Long ownerId, Integer postId) {
         return new WallCloseCommentsQuery(getClient(), actor, ownerId, postId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.closeComments")
+    public WallCloseCommentsQuery closeComments(GroupActor actor) {
+        return new WallCloseCommentsQuery(getClient(), actor);
     }
 
     /**
      * Adds a comment to a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param postId Post ID.
      * @return query
      */
-    public WallCreateCommentQuery createComment(UserActor actor, int postId) {
+    @ApiMethod("wall.createComment")
+    public WallCreateCommentQuery createComment(UserActor actor, Integer postId) {
         return new WallCreateCommentQuery(getClient(), actor, postId);
     }
 
     /**
      * Adds a comment to a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.createComment")
+    public WallCreateCommentQuery createComment(UserActor actor) {
+        return new WallCreateCommentQuery(getClient(), actor);
+    }
+
+    /**
+     * Adds a comment to a post on a user wall or community wall.
+     *
+     * @param actor vk group actor
      * @param postId Post ID.
      * @return query
      */
-    public WallCreateCommentQuery createComment(GroupActor actor, int postId) {
+    @ApiMethod("wall.createComment")
+    public WallCreateCommentQuery createComment(GroupActor actor, Integer postId) {
         return new WallCreateCommentQuery(getClient(), actor, postId);
+    }
+
+    /**
+     * Adds a comment to a post on a user wall or community wall.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.createComment")
+    public WallCreateCommentQuery createComment(GroupActor actor) {
+        return new WallCreateCommentQuery(getClient(), actor);
     }
 
     /**
      * Deletes a post from a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.delete")
     public WallDeleteQuery delete(UserActor actor) {
         return new WallDeleteQuery(getClient(), actor);
     }
@@ -114,53 +170,102 @@ public class Wall extends AbstractAction {
     /**
      * Deletes a comment on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public WallDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
+    @ApiMethod("wall.deleteComment")
+    public WallDeleteCommentQuery deleteComment(UserActor actor, Integer commentId) {
         return new WallDeleteCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Deletes a comment on a post on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.deleteComment")
+    public WallDeleteCommentQuery deleteComment(UserActor actor) {
+        return new WallDeleteCommentQuery(getClient(), actor);
     }
 
     /**
      * Edits a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param postId
      * @return query
      */
-    public WallEditQuery edit(UserActor actor, int postId) {
+    @ApiMethod("wall.edit")
+    public WallEditQuery edit(UserActor actor, Integer postId) {
         return new WallEditQuery(getClient(), actor, postId);
+    }
+
+    /**
+     * Edits a post on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.edit")
+    public WallEditQuery edit(UserActor actor) {
+        return new WallEditQuery(getClient(), actor);
     }
 
     /**
      * Allows to edit hidden post.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param postId Post ID. Used for publishing of scheduled and suggested posts.
      * @return query
      */
-    public WallEditAdsStealthQuery editAdsStealth(UserActor actor, int postId) {
+    @ApiMethod("wall.editAdsStealth")
+    public WallEditAdsStealthQuery editAdsStealth(UserActor actor, Integer postId) {
         return new WallEditAdsStealthQuery(getClient(), actor, postId);
+    }
+
+    /**
+     * Allows to edit hidden post.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.editAdsStealth")
+    public WallEditAdsStealthQuery editAdsStealth(UserActor actor) {
+        return new WallEditAdsStealthQuery(getClient(), actor);
     }
 
     /**
      * Edits a comment on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public WallEditCommentQuery editComment(UserActor actor, int commentId) {
+    @ApiMethod("wall.editComment")
+    public WallEditCommentQuery editComment(UserActor actor, Integer commentId) {
         return new WallEditCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Edits a comment on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.editComment")
+    public WallEditCommentQuery editComment(UserActor actor) {
+        return new WallEditCommentQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of posts on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.get")
     public WallGetQueryWithExtended getExtended(UserActor actor) {
         return new WallGetQueryWithExtended(getClient(), actor);
     }
@@ -168,9 +273,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.get")
     public WallGetQueryWithExtended getExtended(ServiceActor actor) {
         return new WallGetQueryWithExtended(getClient(), actor);
     }
@@ -178,9 +284,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.get")
     public WallGetQuery get(UserActor actor) {
         return new WallGetQuery(getClient(), actor);
     }
@@ -188,9 +295,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.get")
     public WallGetQuery get(ServiceActor actor) {
         return new WallGetQuery(getClient(), actor);
     }
@@ -198,54 +306,11 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
      * @return query
      */
-    public WallGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, String... posts) {
-        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
-    public WallGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, List<String> posts) {
-        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
-    public WallGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, String... posts) {
-        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
-    public WallGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, List<String> posts) {
-        return new WallGetByIdQueryWithLegacy(getClient(), actor, posts);
-    }
-
-    /**
-     * Returns a list of posts from user or community walls by their IDs.
-     *
-     * @param actor vk actor
-     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
-     * @return query
-     */
+    @ApiMethod("wall.getById")
     public WallGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
@@ -253,10 +318,11 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
      * @return query
      */
+    @ApiMethod("wall.getById")
     public WallGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
@@ -264,10 +330,11 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
      * @return query
      */
+    @ApiMethod("wall.getById")
     public WallGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, String... posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
@@ -275,42 +342,127 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of posts from user or community walls by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
      * @return query
      */
+    @ApiMethod("wall.getById")
     public WallGetByIdQueryWithExtended getByIdExtended(ServiceActor actor, List<String> posts) {
         return new WallGetByIdQueryWithExtended(getClient(), actor, posts);
     }
 
     /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk user actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(UserActor actor, String... posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk user actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(UserActor actor, List<String> posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(UserActor actor) {
+        return new WallGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk service actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(ServiceActor actor, String... posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk service actor
+     * @param posts User or community IDs and post IDs, separated by underscores. Use a negative value to designate a community ID. Example: "93388_21539,93388_20904,2943_4276,-1_1"
+     * @return query
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(ServiceActor actor, List<String> posts) {
+        return new WallGetByIdQuery(getClient(), actor, posts);
+    }
+
+    /**
+     * Returns a list of posts from user or community walls by their IDs.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.getById")
+    public WallGetByIdQuery getById(ServiceActor actor) {
+        return new WallGetByIdQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a comment on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public WallGetCommentQueryWithExtended getCommentExtended(UserActor actor, int commentId) {
+    @ApiMethod("wall.getComment")
+    public WallGetCommentQueryWithExtended getCommentExtended(UserActor actor, Integer commentId) {
         return new WallGetCommentQueryWithExtended(getClient(), actor, commentId);
     }
 
     /**
      * Returns a comment on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public WallGetCommentQuery getComment(UserActor actor, int commentId) {
+    @ApiMethod("wall.getComment")
+    public WallGetCommentQuery getComment(UserActor actor, Integer commentId) {
         return new WallGetCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Returns a comment on a post on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.getComment")
+    public WallGetCommentQuery getComment(UserActor actor) {
+        return new WallGetCommentQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.getComments")
     public WallGetCommentsQueryWithExtended getCommentsExtended(UserActor actor) {
         return new WallGetCommentsQueryWithExtended(getClient(), actor);
     }
@@ -318,9 +470,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.getComments")
     public WallGetCommentsQueryWithExtended getCommentsExtended(ServiceActor actor) {
         return new WallGetCommentsQueryWithExtended(getClient(), actor);
     }
@@ -328,9 +481,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.getComments")
     public WallGetCommentsQuery getComments(UserActor actor) {
         return new WallGetCommentsQuery(getClient(), actor);
     }
@@ -338,9 +492,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns a list of comments on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.getComments")
     public WallGetCommentsQuery getComments(ServiceActor actor) {
         return new WallGetCommentsQuery(getClient(), actor);
     }
@@ -348,9 +503,10 @@ public class Wall extends AbstractAction {
     /**
      * Returns information about reposts of a post on user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.getReposts")
     public WallGetRepostsQuery getReposts(UserActor actor) {
         return new WallGetRepostsQuery(getClient(), actor);
     }
@@ -358,50 +514,84 @@ public class Wall extends AbstractAction {
     /**
      * Returns information about reposts of a post on user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.getReposts")
     public WallGetRepostsQuery getReposts(ServiceActor actor) {
         return new WallGetRepostsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param postId
      * @return query
      */
-    public WallOpenCommentsQuery openComments(UserActor actor, int ownerId, int postId) {
+    @ApiMethod("wall.openComments")
+    public WallOpenCommentsQuery openComments(UserActor actor, Long ownerId, Integer postId) {
         return new WallOpenCommentsQuery(getClient(), actor, ownerId, postId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.openComments")
+    public WallOpenCommentsQuery openComments(UserActor actor) {
+        return new WallOpenCommentsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param ownerId
      * @param postId
      * @return query
      */
-    public WallOpenCommentsQuery openComments(GroupActor actor, int ownerId, int postId) {
+    @ApiMethod("wall.openComments")
+    public WallOpenCommentsQuery openComments(GroupActor actor, Long ownerId, Integer postId) {
         return new WallOpenCommentsQuery(getClient(), actor, ownerId, postId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.openComments")
+    public WallOpenCommentsQuery openComments(GroupActor actor) {
+        return new WallOpenCommentsQuery(getClient(), actor);
     }
 
     /**
      * Pins the post on wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param postId Post ID.
      * @return query
      */
-    public WallPinQuery pin(UserActor actor, int postId) {
+    @ApiMethod("wall.pin")
+    public WallPinQuery pin(UserActor actor, Integer postId) {
         return new WallPinQuery(getClient(), actor, postId);
+    }
+
+    /**
+     * Pins the post on wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.pin")
+    public WallPinQuery pin(UserActor actor) {
+        return new WallPinQuery(getClient(), actor);
     }
 
     /**
      * Adds a new post on a user wall or community wall. Can also be used to publish suggested or scheduled posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.post")
     public WallPostQuery post(UserActor actor) {
         return new WallPostQuery(getClient(), actor);
     }
@@ -409,55 +599,104 @@ public class Wall extends AbstractAction {
     /**
      * Allows to create hidden post which will not be shown on the community's wall and can be used for creating an ad with type "Community post".
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId User ID or community ID. Use a negative value to designate a community ID.
      * @return query
      */
-    public WallPostAdsStealthQuery postAdsStealth(UserActor actor, int ownerId) {
+    @ApiMethod("wall.postAdsStealth")
+    public WallPostAdsStealthQuery postAdsStealth(UserActor actor, Long ownerId) {
         return new WallPostAdsStealthQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * Allows to create hidden post which will not be shown on the community's wall and can be used for creating an ad with type "Community post".
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.postAdsStealth")
+    public WallPostAdsStealthQuery postAdsStealth(UserActor actor) {
+        return new WallPostAdsStealthQuery(getClient(), actor);
     }
 
     /**
      * Reports (submits a complaint about) a comment on a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user or community that owns the wall.
      * @param commentId Comment ID.
      * @return query
      */
-    public WallReportCommentQuery reportComment(UserActor actor, int ownerId, int commentId) {
+    @ApiMethod("wall.reportComment")
+    public WallReportCommentQuery reportComment(UserActor actor, Long ownerId, Integer commentId) {
         return new WallReportCommentQuery(getClient(), actor, ownerId, commentId);
+    }
+
+    /**
+     * Reports (submits a complaint about) a comment on a post on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.reportComment")
+    public WallReportCommentQuery reportComment(UserActor actor) {
+        return new WallReportCommentQuery(getClient(), actor);
     }
 
     /**
      * Reports (submits a complaint about) a post on a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user or community that owns the wall.
      * @param postId Post ID.
      * @return query
      */
-    public WallReportPostQuery reportPost(UserActor actor, int ownerId, int postId) {
+    @ApiMethod("wall.reportPost")
+    public WallReportPostQuery reportPost(UserActor actor, Long ownerId, Integer postId) {
         return new WallReportPostQuery(getClient(), actor, ownerId, postId);
+    }
+
+    /**
+     * Reports (submits a complaint about) a post on a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.reportPost")
+    public WallReportPostQuery reportPost(UserActor actor) {
+        return new WallReportPostQuery(getClient(), actor);
     }
 
     /**
      * Reposts (copies) an object to a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param object ID of the object to be reposted on the wall. Example: "wall66748_3675"
      * @return query
      */
+    @ApiMethod("wall.repost")
     public WallRepostQuery repost(UserActor actor, String object) {
         return new WallRepostQuery(getClient(), actor, object);
     }
 
     /**
+     * Reposts (copies) an object to a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.repost")
+    public WallRepostQuery repost(UserActor actor) {
+        return new WallRepostQuery(getClient(), actor);
+    }
+
+    /**
      * Restores a post deleted from a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.restore")
     public WallRestoreQuery restore(UserActor actor) {
         return new WallRestoreQuery(getClient(), actor);
     }
@@ -465,20 +704,33 @@ public class Wall extends AbstractAction {
     /**
      * Restores a comment deleted from a user wall or community wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public WallRestoreCommentQuery restoreComment(UserActor actor, int commentId) {
+    @ApiMethod("wall.restoreComment")
+    public WallRestoreCommentQuery restoreComment(UserActor actor, Integer commentId) {
         return new WallRestoreCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Restores a comment deleted from a user wall or community wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.restoreComment")
+    public WallRestoreCommentQuery restoreComment(UserActor actor) {
+        return new WallRestoreCommentQuery(getClient(), actor);
     }
 
     /**
      * Allows to search posts on user or community walls.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.search")
     public WallSearchQuery search(UserActor actor) {
         return new WallSearchQuery(getClient(), actor);
     }
@@ -486,9 +738,10 @@ public class Wall extends AbstractAction {
     /**
      * Allows to search posts on user or community walls.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.search")
     public WallSearchQuery search(ServiceActor actor) {
         return new WallSearchQuery(getClient(), actor);
     }
@@ -496,9 +749,10 @@ public class Wall extends AbstractAction {
     /**
      * Allows to search posts on user or community walls.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("wall.search")
     public WallSearchQueryWithExtended searchExtended(UserActor actor) {
         return new WallSearchQueryWithExtended(getClient(), actor);
     }
@@ -506,9 +760,10 @@ public class Wall extends AbstractAction {
     /**
      * Allows to search posts on user or community walls.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("wall.search")
     public WallSearchQueryWithExtended searchExtended(ServiceActor actor) {
         return new WallSearchQueryWithExtended(getClient(), actor);
     }
@@ -516,11 +771,23 @@ public class Wall extends AbstractAction {
     /**
      * Unpins the post on wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param postId Post ID.
      * @return query
      */
-    public WallUnpinQuery unpin(UserActor actor, int postId) {
+    @ApiMethod("wall.unpin")
+    public WallUnpinQuery unpin(UserActor actor, Integer postId) {
         return new WallUnpinQuery(getClient(), actor, postId);
+    }
+
+    /**
+     * Unpins the post on wall.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("wall.unpin")
+    public WallUnpinQuery unpin(UserActor actor) {
+        return new WallUnpinQuery(getClient(), actor);
     }
 }

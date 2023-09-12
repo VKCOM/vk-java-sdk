@@ -13,22 +13,13 @@ import java.util.Objects;
  * GetSubscriptionsResponse object
  */
 public class GetSubscriptionsResponse implements Validable {
-    @SerializedName("users")
-    @Required
-    private UsersArray users;
-
     @SerializedName("groups")
     @Required
     private GroupsArray groups;
 
-    public UsersArray getUsers() {
-        return users;
-    }
-
-    public GetSubscriptionsResponse setUsers(UsersArray users) {
-        this.users = users;
-        return this;
-    }
+    @SerializedName("users")
+    @Required
+    private UsersArray users;
 
     public GroupsArray getGroups() {
         return groups;
@@ -36,6 +27,15 @@ public class GetSubscriptionsResponse implements Validable {
 
     public GetSubscriptionsResponse setGroups(GroupsArray groups) {
         this.groups = groups;
+        return this;
+    }
+
+    public UsersArray getUsers() {
+        return users;
+    }
+
+    public GetSubscriptionsResponse setUsers(UsersArray users) {
+        this.users = users;
         return this;
     }
 

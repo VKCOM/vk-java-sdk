@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.prettycards.responses.GetByIdResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +15,15 @@ import java.util.List;
  */
 public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGetByIdQuery, List<GetByIdResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param cardIds value of "card ids" parameter.
      */
-    public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, int ownerId,
+    public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, Long ownerId,
             Integer... cardIds) {
         super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
@@ -30,14 +32,15 @@ public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGet
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param cardIds value of "card ids" parameter.
      */
-    public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, int ownerId,
+    public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor, Long ownerId,
             List<Integer> cardIds) {
         super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
         accessToken(actor.getAccessToken());
@@ -46,23 +49,37 @@ public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGet
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PrettyCardsGetByIdQuery(VkApiClient client, UserActor actor) {
+        super(client, "prettyCards.getById", Utils.buildParametrizedType(List.class, GetByIdResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsGetByIdQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public PrettyCardsGetByIdQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
-     * card_ids
+     * cardIds
      * Set card ids
      *
      * @param value value of "card ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsGetByIdQuery cardIds(Integer... value) {
+    @ApiParam("card_ids")
+    public PrettyCardsGetByIdQuery cardIds(Integer... value) {
         return unsafeParam("card_ids", value);
     }
 
@@ -72,7 +89,8 @@ public class PrettyCardsGetByIdQuery extends AbstractQueryBuilder<PrettyCardsGet
      * @param value value of "card ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsGetByIdQuery cardIds(List<Integer> value) {
+    @ApiParam("card_ids")
+    public PrettyCardsGetByIdQuery cardIds(List<Integer> value) {
         return unsafeParam("card_ids", value);
     }
 

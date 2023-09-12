@@ -16,9 +16,11 @@ import java.util.Objects;
 public class Chat implements Validable {
     /**
      * Chat creator ID
+     * Entity: owner
      */
     @SerializedName("admin_id")
-    private Integer adminId;
+    @Required
+    private Long adminId;
 
     /**
      * Chat ID
@@ -26,6 +28,18 @@ public class Chat implements Validable {
     @SerializedName("id")
     @Required
     private Integer id;
+
+    /**
+     * If provided photo is default
+     */
+    @SerializedName("is_default_photo")
+    private Boolean isDefaultPhoto;
+
+    /**
+     * If chat is group channel
+     */
+    @SerializedName("is_group_channel")
+    private Boolean isGroupChannel;
 
     /**
      * Shows that user has been kicked from the chat
@@ -38,6 +52,13 @@ public class Chat implements Validable {
      */
     @SerializedName("left")
     private BoolInt left;
+
+    /**
+     * Count members in a chat
+     */
+    @SerializedName("members_count")
+    @Required
+    private Integer membersCount;
 
     /**
      * URL of the preview image with 100 px in width
@@ -75,19 +96,13 @@ public class Chat implements Validable {
 
     @SerializedName("users")
     @Required
-    private List<Integer> users;
+    private List<Long> users;
 
-    /**
-     * If provided photo is default
-     */
-    @SerializedName("is_default_photo")
-    private Boolean isDefaultPhoto;
-
-    public Integer getAdminId() {
+    public Long getAdminId() {
         return adminId;
     }
 
-    public Chat setAdminId(Integer adminId) {
+    public Chat setAdminId(Long adminId) {
         this.adminId = adminId;
         return this;
     }
@@ -98,6 +113,24 @@ public class Chat implements Validable {
 
     public Chat setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsDefaultPhoto() {
+        return isDefaultPhoto;
+    }
+
+    public Chat setIsDefaultPhoto(Boolean isDefaultPhoto) {
+        this.isDefaultPhoto = isDefaultPhoto;
+        return this;
+    }
+
+    public Boolean getIsGroupChannel() {
+        return isGroupChannel;
+    }
+
+    public Chat setIsGroupChannel(Boolean isGroupChannel) {
+        this.isGroupChannel = isGroupChannel;
         return this;
     }
 
@@ -115,6 +148,15 @@ public class Chat implements Validable {
 
     public BoolInt getLeft() {
         return left;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public Chat setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
     }
 
     public URI getPhoto100() {
@@ -171,27 +213,18 @@ public class Chat implements Validable {
         return this;
     }
 
-    public List<Integer> getUsers() {
+    public List<Long> getUsers() {
         return users;
     }
 
-    public Chat setUsers(List<Integer> users) {
+    public Chat setUsers(List<Long> users) {
         this.users = users;
-        return this;
-    }
-
-    public Boolean getIsDefaultPhoto() {
-        return isDefaultPhoto;
-    }
-
-    public Chat setIsDefaultPhoto(Boolean isDefaultPhoto) {
-        this.isDefaultPhoto = isDefaultPhoto;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, left, adminId, photo50, kicked, pushSettings, id, photo200, title, type, users, isDefaultPhoto);
+        return Objects.hash(membersCount, photo50, kicked, photo200, title, type, users, photo100, left, isGroupChannel, adminId, pushSettings, id, isDefaultPhoto);
     }
 
     @Override
@@ -200,17 +233,19 @@ public class Chat implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Chat chat = (Chat) o;
         return Objects.equals(photo50, chat.photo50) &&
-                Objects.equals(left, chat.left) &&
-                Objects.equals(pushSettings, chat.pushSettings) &&
                 Objects.equals(isDefaultPhoto, chat.isDefaultPhoto) &&
-                Objects.equals(adminId, chat.adminId) &&
+                Objects.equals(isGroupChannel, chat.isGroupChannel) &&
                 Objects.equals(kicked, chat.kicked) &&
-                Objects.equals(id, chat.id) &&
-                Objects.equals(photo100, chat.photo100) &&
                 Objects.equals(title, chat.title) &&
                 Objects.equals(type, chat.type) &&
-                Objects.equals(photo200, chat.photo200) &&
-                Objects.equals(users, chat.users);
+                Objects.equals(users, chat.users) &&
+                Objects.equals(left, chat.left) &&
+                Objects.equals(pushSettings, chat.pushSettings) &&
+                Objects.equals(adminId, chat.adminId) &&
+                Objects.equals(membersCount, chat.membersCount) &&
+                Objects.equals(id, chat.id) &&
+                Objects.equals(photo100, chat.photo100) &&
+                Objects.equals(photo200, chat.photo200);
     }
 
     @Override
@@ -222,17 +257,19 @@ public class Chat implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Chat{");
         sb.append("photo50=").append(photo50);
-        sb.append(", left=").append(left);
-        sb.append(", pushSettings=").append(pushSettings);
         sb.append(", isDefaultPhoto=").append(isDefaultPhoto);
-        sb.append(", adminId=").append(adminId);
+        sb.append(", isGroupChannel=").append(isGroupChannel);
         sb.append(", kicked=").append(kicked);
-        sb.append(", id=").append(id);
-        sb.append(", photo100=").append(photo100);
         sb.append(", title='").append(title).append("'");
         sb.append(", type='").append(type).append("'");
-        sb.append(", photo200=").append(photo200);
         sb.append(", users=").append(users);
+        sb.append(", left=").append(left);
+        sb.append(", pushSettings=").append(pushSettings);
+        sb.append(", adminId=").append(adminId);
+        sb.append(", membersCount=").append(membersCount);
+        sb.append(", id=").append(id);
+        sb.append(", photo100=").append(photo100);
+        sb.append(", photo200=").append(photo200);
         sb.append('}');
         return sb.toString();
     }

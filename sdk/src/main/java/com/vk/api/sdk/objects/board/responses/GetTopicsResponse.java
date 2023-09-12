@@ -16,24 +16,34 @@ import java.util.Objects;
  */
 public class GetTopicsResponse implements Validable {
     /**
+     * Information whether current user can add topic
+     */
+    @SerializedName("can_add_topics")
+    @Required
+    private BoolInt canAddTopics;
+
+    /**
      * Total number
      */
     @SerializedName("count")
     @Required
     private Integer count;
 
+    @SerializedName("default_order")
+    @Required
+    private DefaultOrder defaultOrder;
+
     @SerializedName("items")
     @Required
     private List<Topic> items;
 
-    @SerializedName("default_order")
-    private DefaultOrder defaultOrder;
+    public boolean canAddTopics() {
+        return canAddTopics == BoolInt.YES;
+    }
 
-    /**
-     * Information whether current user can add topic
-     */
-    @SerializedName("can_add_topics")
-    private BoolInt canAddTopics;
+    public BoolInt getCanAddTopics() {
+        return canAddTopics;
+    }
 
     public Integer getCount() {
         return count;
@@ -41,15 +51,6 @@ public class GetTopicsResponse implements Validable {
 
     public GetTopicsResponse setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public List<Topic> getItems() {
-        return items;
-    }
-
-    public GetTopicsResponse setItems(List<Topic> items) {
-        this.items = items;
         return this;
     }
 
@@ -62,12 +63,13 @@ public class GetTopicsResponse implements Validable {
         return this;
     }
 
-    public boolean canAddTopics() {
-        return canAddTopics == BoolInt.YES;
+    public List<Topic> getItems() {
+        return items;
     }
 
-    public BoolInt getCanAddTopics() {
-        return canAddTopics;
+    public GetTopicsResponse setItems(List<Topic> items) {
+        this.items = items;
+        return this;
     }
 
     @Override

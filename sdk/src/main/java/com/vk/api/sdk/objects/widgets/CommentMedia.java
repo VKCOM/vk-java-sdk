@@ -19,9 +19,10 @@ public class CommentMedia implements Validable {
 
     /**
      * Media owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    private Long ownerId;
 
     /**
      * URL of the preview image (type=photo only)
@@ -41,11 +42,11 @@ public class CommentMedia implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public CommentMedia setOwnerId(Integer ownerId) {
+    public CommentMedia setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }

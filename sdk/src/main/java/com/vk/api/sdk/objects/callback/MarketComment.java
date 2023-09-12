@@ -11,19 +11,17 @@ import java.util.Objects;
  * MarketComment object
  */
 public class MarketComment implements Validable {
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    @SerializedName("from_id")
-    private Integer fromId;
-
     @SerializedName("date")
     @Required
     private Integer date;
 
-    @SerializedName("text")
-    private String text;
+    @SerializedName("from_id")
+    @Required
+    private Integer fromId;
+
+    @SerializedName("id")
+    @Required
+    private Integer id;
 
     @SerializedName("market_owner_id")
     private Integer marketOwnerId;
@@ -31,12 +29,15 @@ public class MarketComment implements Validable {
     @SerializedName("photo_id")
     private Integer photoId;
 
-    public Integer getId() {
-        return id;
+    @SerializedName("text")
+    private String text;
+
+    public Integer getDate() {
+        return date;
     }
 
-    public MarketComment setId(Integer id) {
-        this.id = id;
+    public MarketComment setDate(Integer date) {
+        this.date = date;
         return this;
     }
 
@@ -49,21 +50,12 @@ public class MarketComment implements Validable {
         return this;
     }
 
-    public Integer getDate() {
-        return date;
+    public Integer getId() {
+        return id;
     }
 
-    public MarketComment setDate(Integer date) {
-        this.date = date;
-        return this;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public MarketComment setText(String text) {
-        this.text = text;
+    public MarketComment setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -82,6 +74,15 @@ public class MarketComment implements Validable {
 
     public MarketComment setPhotoId(Integer photoId) {
         this.photoId = photoId;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public MarketComment setText(String text) {
+        this.text = text;
         return this;
     }
 

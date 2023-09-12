@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: '1' — by date registered, '0' — by rating
+ * Sort order: '1' - by date registered, '0' - by rating
  */
 public enum SearchSort implements EnumParam {
     @SerializedName("0")

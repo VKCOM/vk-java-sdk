@@ -11,16 +11,6 @@ import java.util.Objects;
  * ItemBase object
  */
 public class ItemBase implements Validable {
-    @SerializedName("type")
-    @Required
-    private NewsfeedItemType type;
-
-    /**
-     * Item source ID
-     */
-    @SerializedName("source_id")
-    private Integer sourceId;
-
     /**
      * Date when item has been added in Unixtime
      */
@@ -28,23 +18,26 @@ public class ItemBase implements Validable {
     @Required
     private Integer date;
 
-    public NewsfeedItemType getType() {
-        return type;
-    }
+    @SerializedName("feedback")
+    private ItemWallpostFeedback feedback;
 
-    public ItemBase setType(NewsfeedItemType type) {
-        this.type = type;
-        return this;
-    }
+    /**
+     * Preview length control parameter
+     */
+    @SerializedName("short_text_rate")
+    private Number shortTextRate;
 
-    public Integer getSourceId() {
-        return sourceId;
-    }
+    /**
+     * Item source ID
+     * Entity: owner
+     */
+    @SerializedName("source_id")
+    @Required
+    private Long sourceId;
 
-    public ItemBase setSourceId(Integer sourceId) {
-        this.sourceId = sourceId;
-        return this;
-    }
+    @SerializedName("type")
+    @Required
+    private NewsfeedItemType type;
 
     public Integer getDate() {
         return date;
@@ -55,9 +48,45 @@ public class ItemBase implements Validable {
         return this;
     }
 
+    public ItemWallpostFeedback getFeedback() {
+        return feedback;
+    }
+
+    public ItemBase setFeedback(ItemWallpostFeedback feedback) {
+        this.feedback = feedback;
+        return this;
+    }
+
+    public Number getShortTextRate() {
+        return shortTextRate;
+    }
+
+    public ItemBase setShortTextRate(Number shortTextRate) {
+        this.shortTextRate = shortTextRate;
+        return this;
+    }
+
+    public Long getSourceId() {
+        return sourceId;
+    }
+
+    public ItemBase setSourceId(Long sourceId) {
+        this.sourceId = sourceId;
+        return this;
+    }
+
+    public NewsfeedItemType getType() {
+        return type;
+    }
+
+    public ItemBase setType(NewsfeedItemType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, sourceId, type);
+        return Objects.hash(date, feedback, sourceId, shortTextRate, type);
     }
 
     @Override
@@ -66,6 +95,8 @@ public class ItemBase implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ItemBase itemBase = (ItemBase) o;
         return Objects.equals(date, itemBase.date) &&
+                Objects.equals(feedback, itemBase.feedback) &&
+                Objects.equals(shortTextRate, itemBase.shortTextRate) &&
                 Objects.equals(sourceId, itemBase.sourceId) &&
                 Objects.equals(type, itemBase.type);
     }
@@ -79,6 +110,8 @@ public class ItemBase implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemBase{");
         sb.append("date=").append(date);
+        sb.append(", feedback=").append(feedback);
+        sb.append(", shortTextRate=").append(shortTextRate);
         sb.append(", sourceId=").append(sourceId);
         sb.append(", type=").append(type);
         sb.append('}');

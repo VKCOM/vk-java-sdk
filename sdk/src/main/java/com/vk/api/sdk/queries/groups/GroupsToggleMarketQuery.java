@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.groups.ToggleMarketState;
 import java.util.Arrays;
@@ -14,14 +15,15 @@ import java.util.List;
  */
 public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMarketQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param state value of "state" parameter.
      */
-    public GroupsToggleMarketQuery(VkApiClient client, UserActor actor, int groupId,
+    public GroupsToggleMarketQuery(VkApiClient client, UserActor actor, Long groupId,
             ToggleMarketState state) {
         super(client, "groups.toggleMarket", OkResponse.class);
         accessToken(actor.getAccessToken());
@@ -30,12 +32,25 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsToggleMarketQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.toggleMarket", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsToggleMarketQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsToggleMarketQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -45,7 +60,8 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      * @param value value of "state" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsToggleMarketQuery state(ToggleMarketState value) {
+    @ApiParam("state")
+    public GroupsToggleMarketQuery state(ToggleMarketState value) {
         return unsafeParam("state", value);
     }
 
@@ -55,6 +71,7 @@ public class GroupsToggleMarketQuery extends AbstractQueryBuilder<GroupsToggleMa
      * @param value value of "ref" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ref")
     public GroupsToggleMarketQuery ref(String value) {
         return unsafeParam("ref", value);
     }

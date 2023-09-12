@@ -16,12 +16,18 @@ import java.util.Objects;
  * SearchExtendedResponse object
  */
 public class SearchExtendedResponse implements Validable {
+    @SerializedName("conversations")
+    private List<Conversation> conversations;
+
     /**
      * Total number
      */
     @SerializedName("count")
     @Required
     private Integer count;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
 
     @SerializedName("items")
     @Required
@@ -30,11 +36,14 @@ public class SearchExtendedResponse implements Validable {
     @SerializedName("profiles")
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    private List<GroupFull> groups;
+    public List<Conversation> getConversations() {
+        return conversations;
+    }
 
-    @SerializedName("conversations")
-    private List<Conversation> conversations;
+    public SearchExtendedResponse setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
+        return this;
+    }
 
     public Integer getCount() {
         return count;
@@ -42,6 +51,15 @@ public class SearchExtendedResponse implements Validable {
 
     public SearchExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public SearchExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -63,27 +81,9 @@ public class SearchExtendedResponse implements Validable {
         return this;
     }
 
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public SearchExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
-        return this;
-    }
-
-    public List<Conversation> getConversations() {
-        return conversations;
-    }
-
-    public SearchExtendedResponse setConversations(List<Conversation> conversations) {
-        this.conversations = conversations;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, groups, items, conversations);
+        return Objects.hash(count, profiles, groups, conversations, items);
     }
 
     @Override
@@ -94,8 +94,8 @@ public class SearchExtendedResponse implements Validable {
         return Objects.equals(count, searchExtendedResponse.count) &&
                 Objects.equals(profiles, searchExtendedResponse.profiles) &&
                 Objects.equals(groups, searchExtendedResponse.groups) &&
-                Objects.equals(items, searchExtendedResponse.items) &&
-                Objects.equals(conversations, searchExtendedResponse.conversations);
+                Objects.equals(conversations, searchExtendedResponse.conversations) &&
+                Objects.equals(items, searchExtendedResponse.items);
     }
 
     @Override
@@ -109,8 +109,8 @@ public class SearchExtendedResponse implements Validable {
         sb.append("count=").append(count);
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
-        sb.append(", items=").append(items);
         sb.append(", conversations=").append(conversations);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

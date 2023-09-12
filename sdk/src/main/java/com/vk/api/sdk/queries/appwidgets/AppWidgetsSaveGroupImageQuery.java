@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.appwidgets;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.appwidgets.responses.SaveGroupImageResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidgetsSaveGroupImageQuery, SaveGroupImageResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,12 +30,24 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppWidgetsSaveGroupImageQuery(VkApiClient client, GroupActor actor) {
+        super(client, "appWidgets.saveGroupImage", SaveGroupImageResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Parameter returned when photo is uploaded to server
      *
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsSaveGroupImageQuery hash(String value) {
+    @ApiParam("hash")
+    public AppWidgetsSaveGroupImageQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 
@@ -44,7 +57,8 @@ public class AppWidgetsSaveGroupImageQuery extends AbstractQueryBuilder<AppWidge
      * @param value value of "image" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppWidgetsSaveGroupImageQuery image(String value) {
+    @ApiParam("image")
+    public AppWidgetsSaveGroupImageQuery image(String value) {
         return unsafeParam("image", value);
     }
 

@@ -11,40 +11,23 @@ import java.util.Objects;
  */
 public class TargetObject implements Validable {
     /**
-     * Object type
-     */
-    @SerializedName("type")
-    private String type;
-
-    /**
-     * Owner ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
      * Item ID
      */
     @SerializedName("item_id")
     private Integer itemId;
 
-    public String getType() {
-        return type;
-    }
+    /**
+     * Owner ID
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    private Long ownerId;
 
-    public TargetObject setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public TargetObject setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
+    /**
+     * Object type
+     */
+    @SerializedName("type")
+    private String type;
 
     public Integer getItemId() {
         return itemId;
@@ -52,6 +35,24 @@ public class TargetObject implements Validable {
 
     public TargetObject setItemId(Integer itemId) {
         this.itemId = itemId;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public TargetObject setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public TargetObject setType(String type) {
+        this.type = type;
         return this;
     }
 

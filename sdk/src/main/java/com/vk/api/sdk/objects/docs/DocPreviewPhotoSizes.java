@@ -14,11 +14,22 @@ import java.util.Objects;
  */
 public class DocPreviewPhotoSizes implements Validable {
     /**
+     * Height in px
+     */
+    @SerializedName("height")
+    @Required
+    private Integer height;
+
+    /**
      * URL of the image
      */
     @SerializedName("src")
     @Required
     private URI src;
+
+    @SerializedName("type")
+    @Required
+    private PhotoSizesType type;
 
     /**
      * Width in px
@@ -26,35 +37,6 @@ public class DocPreviewPhotoSizes implements Validable {
     @SerializedName("width")
     @Required
     private Integer width;
-
-    /**
-     * Height in px
-     */
-    @SerializedName("height")
-    @Required
-    private Integer height;
-
-    @SerializedName("type")
-    @Required
-    private PhotoSizesType type;
-
-    public URI getSrc() {
-        return src;
-    }
-
-    public DocPreviewPhotoSizes setSrc(URI src) {
-        this.src = src;
-        return this;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public DocPreviewPhotoSizes setWidth(Integer width) {
-        this.width = width;
-        return this;
-    }
 
     public Integer getHeight() {
         return height;
@@ -65,12 +47,30 @@ public class DocPreviewPhotoSizes implements Validable {
         return this;
     }
 
+    public URI getSrc() {
+        return src;
+    }
+
+    public DocPreviewPhotoSizes setSrc(URI src) {
+        this.src = src;
+        return this;
+    }
+
     public PhotoSizesType getType() {
         return type;
     }
 
     public DocPreviewPhotoSizes setType(PhotoSizesType type) {
         this.type = type;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public DocPreviewPhotoSizes setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 

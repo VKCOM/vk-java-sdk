@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.pages.SaveAccessEdit;
 import com.vk.api.sdk.objects.pages.SaveAccessView;
 import java.util.Arrays;
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pageId value of "page id" parameter.
      */
-    public PagesSaveAccessQuery(VkApiClient client, UserActor actor, int pageId) {
+    public PagesSaveAccessQuery(VkApiClient client, UserActor actor, Integer pageId) {
         super(client, "pages.saveAccess", Integer.class);
         accessToken(actor.getAccessToken());
         pageId(pageId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PagesSaveAccessQuery(VkApiClient client, UserActor actor) {
+        super(client, "pages.saveAccess", Integer.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,46 +44,53 @@ public class PagesSaveAccessQuery extends AbstractQueryBuilder<PagesSaveAccessQu
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PagesSaveAccessQuery pageId(int value) {
+    @ApiParam("page_id")
+    public PagesSaveAccessQuery pageId(Integer value) {
         return unsafeParam("page_id", value);
     }
 
     /**
      * ID of the community that owns the wiki page.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PagesSaveAccessQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveAccessQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public PagesSaveAccessQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
-     * Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
+     * Who can view the wiki page: '1' - only community members, '2' - all users can view the page, '0' - only community managers
      *
      * @param value value of "view" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("view")
     public PagesSaveAccessQuery view(SaveAccessView value) {
         return unsafeParam("view", value);
     }
 
     /**
-     * Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
+     * Who can edit the wiki page: '1' - only community members, '2' - all users can edit the page, '0' - only community managers
      *
      * @param value value of "edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("edit")
     public PagesSaveAccessQuery edit(SaveAccessEdit value) {
         return unsafeParam("edit", value);
     }

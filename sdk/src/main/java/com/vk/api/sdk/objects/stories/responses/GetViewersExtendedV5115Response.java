@@ -20,12 +20,12 @@ public class GetViewersExtendedV5115Response implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("hidden_reason")
+    private String hiddenReason;
+
     @SerializedName("items")
     @Required
     private List<ViewersItem> items;
-
-    @SerializedName("hidden_reason")
-    private String hiddenReason;
 
     @SerializedName("next_from")
     private String nextFrom;
@@ -39,21 +39,21 @@ public class GetViewersExtendedV5115Response implements Validable {
         return this;
     }
 
-    public List<ViewersItem> getItems() {
-        return items;
-    }
-
-    public GetViewersExtendedV5115Response setItems(List<ViewersItem> items) {
-        this.items = items;
-        return this;
-    }
-
     public String getHiddenReason() {
         return hiddenReason;
     }
 
     public GetViewersExtendedV5115Response setHiddenReason(String hiddenReason) {
         this.hiddenReason = hiddenReason;
+        return this;
+    }
+
+    public List<ViewersItem> getItems() {
+        return items;
+    }
+
+    public GetViewersExtendedV5115Response setItems(List<ViewersItem> items) {
+        this.items = items;
         return this;
     }
 
@@ -78,8 +78,8 @@ public class GetViewersExtendedV5115Response implements Validable {
         GetViewersExtendedV5115Response getViewersExtendedV5115Response = (GetViewersExtendedV5115Response) o;
         return Objects.equals(nextFrom, getViewersExtendedV5115Response.nextFrom) &&
                 Objects.equals(count, getViewersExtendedV5115Response.count) &&
-                Objects.equals(items, getViewersExtendedV5115Response.items) &&
-                Objects.equals(hiddenReason, getViewersExtendedV5115Response.hiddenReason);
+                Objects.equals(hiddenReason, getViewersExtendedV5115Response.hiddenReason) &&
+                Objects.equals(items, getViewersExtendedV5115Response.items);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class GetViewersExtendedV5115Response implements Validable {
         final StringBuilder sb = new StringBuilder("GetViewersExtendedV5115Response{");
         sb.append("nextFrom='").append(nextFrom).append("'");
         sb.append(", count=").append(count);
-        sb.append(", items=").append(items);
         sb.append(", hiddenReason='").append(hiddenReason).append("'");
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

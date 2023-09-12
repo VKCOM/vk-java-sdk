@@ -11,27 +11,27 @@ import java.util.Objects;
  * MarketCommentDelete object
  */
 public class MarketCommentDelete implements Validable {
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
     @SerializedName("id")
     @Required
     private Integer id;
 
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("item_id")
+    @Required
     private Integer itemId;
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
-    public MarketCommentDelete setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getId() {
         return id;
@@ -42,21 +42,30 @@ public class MarketCommentDelete implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public MarketCommentDelete setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
     public Integer getItemId() {
         return itemId;
     }
 
     public MarketCommentDelete setItemId(Integer itemId) {
         this.itemId = itemId;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public MarketCommentDelete setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public MarketCommentDelete setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -70,8 +79,8 @@ public class MarketCommentDelete implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarketCommentDelete marketCommentDelete = (MarketCommentDelete) o;
-        return Objects.equals(userId, marketCommentDelete.userId) &&
-                Objects.equals(itemId, marketCommentDelete.itemId) &&
+        return Objects.equals(itemId, marketCommentDelete.itemId) &&
+                Objects.equals(userId, marketCommentDelete.userId) &&
                 Objects.equals(ownerId, marketCommentDelete.ownerId) &&
                 Objects.equals(id, marketCommentDelete.id);
     }
@@ -84,8 +93,8 @@ public class MarketCommentDelete implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MarketCommentDelete{");
-        sb.append("userId=").append(userId);
-        sb.append(", itemId=").append(itemId);
+        sb.append("itemId=").append(itemId);
+        sb.append(", userId=").append(userId);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", id=").append(id);
         sb.append('}');

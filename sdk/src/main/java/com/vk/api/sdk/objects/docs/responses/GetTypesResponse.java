@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.docs.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.docs.DocTypes;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +17,11 @@ public class GetTypesResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<DocTypes> items;
 
     public Integer getCount() {

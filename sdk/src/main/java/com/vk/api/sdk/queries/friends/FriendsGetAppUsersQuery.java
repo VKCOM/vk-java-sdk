@@ -11,15 +11,15 @@ import java.util.List;
 /**
  * Query for Friends.getAppUsers method
  */
-public class FriendsGetAppUsersQuery extends AbstractQueryBuilder<FriendsGetAppUsersQuery, List<Integer>> {
+public class FriendsGetAppUsersQuery extends AbstractQueryBuilder<FriendsGetAppUsersQuery, List<Long>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public FriendsGetAppUsersQuery(VkApiClient client, UserActor actor) {
-        super(client, "friends.getAppUsers", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getAppUsers", Utils.buildParametrizedType(List.class, Long.class));
         accessToken(actor.getAccessToken());
     }
 

@@ -4,17 +4,15 @@ import com.vk.api.sdk.client.Utils;
 
 import java.util.Objects;
 
-/**
- * Created by Anton Tsivarev on 29.03.16.
- */
-public class UserActor implements Actor {
+public class UserActor implements Actor<Long> {
 
-    private Integer userId;
+    private Long userId;
     private String accessToken;
     private String coveredAccessToken;
     private String phone;
+    private String password;
 
-    public UserActor(Integer userId, String accessToken) {
+    public UserActor(Long userId, String accessToken) {
         this.accessToken = accessToken;
         this.coveredAccessToken = Utils.coverAccessToken(accessToken);
         this.userId = userId;
@@ -26,7 +24,7 @@ public class UserActor implements Actor {
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return userId;
     }
 
@@ -37,6 +35,14 @@ public class UserActor implements Actor {
     public UserActor setPhone(String phone) {
         this.phone = phone;
         return this;
+    }
+
+    public UserActor setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+    public String getPassword() {
+        return this.password;
     }
 
     @Override

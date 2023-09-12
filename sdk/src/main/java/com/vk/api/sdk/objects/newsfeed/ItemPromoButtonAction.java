@@ -10,21 +10,21 @@ import java.util.Objects;
  * ItemPromoButtonAction object
  */
 public class ItemPromoButtonAction implements Validable {
-    @SerializedName("url")
-    private String url;
+    @SerializedName("target")
+    private String target;
 
     @SerializedName("type")
     private String type;
 
-    @SerializedName("target")
-    private String target;
+    @SerializedName("url")
+    private String url;
 
-    public String getUrl() {
-        return url;
+    public String getTarget() {
+        return target;
     }
 
-    public ItemPromoButtonAction setUrl(String url) {
-        this.url = url;
+    public ItemPromoButtonAction setTarget(String target) {
+        this.target = target;
         return this;
     }
 
@@ -37,12 +37,12 @@ public class ItemPromoButtonAction implements Validable {
         return this;
     }
 
-    public String getTarget() {
-        return target;
+    public String getUrl() {
+        return url;
     }
 
-    public ItemPromoButtonAction setTarget(String target) {
-        this.target = target;
+    public ItemPromoButtonAction setUrl(String url) {
+        this.url = url;
         return this;
     }
 

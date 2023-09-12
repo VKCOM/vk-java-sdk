@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.prettycards.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,15 +12,10 @@ import java.util.Objects;
  */
 public class DeleteResponse implements Validable {
     /**
-     * Owner ID of deleted pretty card
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
      * Card ID of deleted pretty card
      */
     @SerializedName("card_id")
+    @Required
     private String cardId;
 
     /**
@@ -28,14 +24,13 @@ public class DeleteResponse implements Validable {
     @SerializedName("error")
     private String error;
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public DeleteResponse setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
+    /**
+     * Owner ID of deleted pretty card
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
     public String getCardId() {
         return cardId;
@@ -52,6 +47,15 @@ public class DeleteResponse implements Validable {
 
     public DeleteResponse setError(String error) {
         this.error = error;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public DeleteResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 

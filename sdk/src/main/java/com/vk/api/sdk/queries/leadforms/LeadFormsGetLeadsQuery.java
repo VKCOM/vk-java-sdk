@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.leadforms;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.leadforms.responses.GetLeadsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class LeadFormsGetLeadsQuery extends AbstractQueryBuilder<LeadFormsGetLeadsQuery, GetLeadsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param formId value of "form id" parameter.
      */
-    public LeadFormsGetLeadsQuery(VkApiClient client, UserActor actor, int groupId, int formId) {
+    public LeadFormsGetLeadsQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer formId) {
         super(client, "leadForms.getLeads", GetLeadsResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,12 +31,25 @@ public class LeadFormsGetLeadsQuery extends AbstractQueryBuilder<LeadFormsGetLea
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public LeadFormsGetLeadsQuery(VkApiClient client, UserActor actor) {
+        super(client, "leadForms.getLeads", GetLeadsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LeadFormsGetLeadsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public LeadFormsGetLeadsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +59,8 @@ public class LeadFormsGetLeadsQuery extends AbstractQueryBuilder<LeadFormsGetLea
      * @param value value of "form id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LeadFormsGetLeadsQuery formId(int value) {
+    @ApiParam("form_id")
+    public LeadFormsGetLeadsQuery formId(Integer value) {
         return unsafeParam("form_id", value);
     }
 
@@ -53,6 +70,7 @@ public class LeadFormsGetLeadsQuery extends AbstractQueryBuilder<LeadFormsGetLea
      * @param value value of "limit" parameter. Maximum is 1000. Minimum is 1. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public LeadFormsGetLeadsQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }
@@ -63,6 +81,7 @@ public class LeadFormsGetLeadsQuery extends AbstractQueryBuilder<LeadFormsGetLea
      * @param value value of "next page token" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("next_page_token")
     public LeadFormsGetLeadsQuery nextPageToken(String value) {
         return unsafeParam("next_page_token", value);
     }

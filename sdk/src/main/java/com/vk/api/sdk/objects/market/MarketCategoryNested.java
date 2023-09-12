@@ -19,6 +19,12 @@ public class MarketCategoryNested implements Validable {
     private Integer id;
 
     /**
+     * Is v2 category
+     */
+    @SerializedName("is_v2")
+    private Boolean isV2;
+
+    /**
      * Category name
      */
     @SerializedName("name")
@@ -34,6 +40,15 @@ public class MarketCategoryNested implements Validable {
 
     public MarketCategoryNested setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsV2() {
+        return isV2;
+    }
+
+    public MarketCategoryNested setIsV2(Boolean isV2) {
+        this.isV2 = isV2;
         return this;
     }
 
@@ -57,7 +72,7 @@ public class MarketCategoryNested implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(parent, name, id);
+        return Objects.hash(parent, isV2, name, id);
     }
 
     @Override
@@ -67,7 +82,8 @@ public class MarketCategoryNested implements Validable {
         MarketCategoryNested marketCategoryNested = (MarketCategoryNested) o;
         return Objects.equals(parent, marketCategoryNested.parent) &&
                 Objects.equals(name, marketCategoryNested.name) &&
-                Objects.equals(id, marketCategoryNested.id);
+                Objects.equals(id, marketCategoryNested.id) &&
+                Objects.equals(isV2, marketCategoryNested.isV2);
     }
 
     @Override
@@ -81,6 +97,7 @@ public class MarketCategoryNested implements Validable {
         sb.append("parent=").append(parent);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", isV2=").append(isV2);
         sb.append('}');
         return sb.toString();
     }

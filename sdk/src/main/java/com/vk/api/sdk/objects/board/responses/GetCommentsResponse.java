@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.board.TopicComment;
-import com.vk.api.sdk.objects.board.TopicPoll;
+import com.vk.api.sdk.objects.polls.Poll;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +26,13 @@ public class GetCommentsResponse implements Validable {
     private List<TopicComment> items;
 
     @SerializedName("poll")
-    private TopicPoll poll;
+    private Poll poll;
+
+    /**
+     * Offset of comment
+     */
+    @SerializedName("real_offset")
+    private Integer realOffset;
 
     public Integer getCount() {
         return count;
@@ -46,18 +52,27 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public TopicPoll getPoll() {
+    public Poll getPoll() {
         return poll;
     }
 
-    public GetCommentsResponse setPoll(TopicPoll poll) {
+    public GetCommentsResponse setPoll(Poll poll) {
         this.poll = poll;
+        return this;
+    }
+
+    public Integer getRealOffset() {
+        return realOffset;
+    }
+
+    public GetCommentsResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, poll, items);
+        return Objects.hash(realOffset, count, poll, items);
     }
 
     @Override
@@ -65,7 +80,8 @@ public class GetCommentsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsResponse getCommentsResponse = (GetCommentsResponse) o;
-        return Objects.equals(count, getCommentsResponse.count) &&
+        return Objects.equals(realOffset, getCommentsResponse.realOffset) &&
+                Objects.equals(count, getCommentsResponse.count) &&
                 Objects.equals(poll, getCommentsResponse.poll) &&
                 Objects.equals(items, getCommentsResponse.items);
     }
@@ -78,7 +94,8 @@ public class GetCommentsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
-        sb.append("count=").append(count);
+        sb.append("realOffset=").append(realOffset);
+        sb.append(", count=").append(count);
         sb.append(", poll=").append(poll);
         sb.append(", items=").append(items);
         sb.append('}');

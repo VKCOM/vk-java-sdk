@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,18 +14,29 @@ import java.util.List;
  */
 public class FaveEditTagQuery extends AbstractQueryBuilder<FaveEditTagQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param id value of "id" parameter.
      * @param name value of "name" parameter.
      */
-    public FaveEditTagQuery(VkApiClient client, UserActor actor, int id, String name) {
+    public FaveEditTagQuery(VkApiClient client, UserActor actor, Integer id, String name) {
         super(client, "fave.editTag", OkResponse.class);
         accessToken(actor.getAccessToken());
         id(id);
         name(name);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public FaveEditTagQuery(VkApiClient client, UserActor actor) {
+        super(client, "fave.editTag", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -33,7 +45,8 @@ public class FaveEditTagQuery extends AbstractQueryBuilder<FaveEditTagQuery, OkR
      * @param value value of "id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FaveEditTagQuery id(int value) {
+    @ApiParam("id")
+    public FaveEditTagQuery id(Integer value) {
         return unsafeParam("id", value);
     }
 
@@ -43,7 +56,8 @@ public class FaveEditTagQuery extends AbstractQueryBuilder<FaveEditTagQuery, OkR
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FaveEditTagQuery name(String value) {
+    @ApiParam("name")
+    public FaveEditTagQuery name(String value) {
         return unsafeParam("name", value);
     }
 

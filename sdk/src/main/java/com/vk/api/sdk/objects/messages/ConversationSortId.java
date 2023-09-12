@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,12 +15,14 @@ public class ConversationSortId implements Validable {
      * Major id for sorting conversations
      */
     @SerializedName("major_id")
+    @Required
     private Integer majorId;
 
     /**
      * Minor id for sorting conversations
      */
     @SerializedName("minor_id")
+    @Required
     private Integer minorId;
 
     public Integer getMajorId() {

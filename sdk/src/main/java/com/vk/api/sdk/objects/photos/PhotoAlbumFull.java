@@ -15,6 +15,18 @@ import java.util.Objects;
  */
 public class PhotoAlbumFull implements Validable {
     /**
+     * album can delete
+     */
+    @SerializedName("can_delete")
+    private Boolean canDelete;
+
+    /**
+     * album can be selected to feed
+     */
+    @SerializedName("can_include_to_feed")
+    private Boolean canIncludeToFeed;
+
+    /**
      * Information whether current user can upload photo to the album
      */
     @SerializedName("can_upload")
@@ -27,10 +39,9 @@ public class PhotoAlbumFull implements Validable {
     private BoolInt commentsDisabled;
 
     /**
-     * Date when the album has been created in Unixtime
+     * Date when the album has been created in Unixtime, not set for system albums
      */
     @SerializedName("created")
-    @Required
     private Integer created;
 
     /**
@@ -47,10 +58,18 @@ public class PhotoAlbumFull implements Validable {
     private Integer id;
 
     /**
+     * Need show privacy lock at album
+     */
+    @SerializedName("is_locked")
+    private Boolean isLocked;
+
+    /**
      * Album owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * Photos number
@@ -88,10 +107,9 @@ public class PhotoAlbumFull implements Validable {
     private String title;
 
     /**
-     * Date when the album has been updated last time in Unixtime
+     * Date when the album has been updated last time in Unixtime, not set for system albums
      */
     @SerializedName("updated")
-    @Required
     private Integer updated;
 
     /**
@@ -99,6 +117,24 @@ public class PhotoAlbumFull implements Validable {
      */
     @SerializedName("upload_by_admins_only")
     private BoolInt uploadByAdminsOnly;
+
+    public Boolean getCanDelete() {
+        return canDelete;
+    }
+
+    public PhotoAlbumFull setCanDelete(Boolean canDelete) {
+        this.canDelete = canDelete;
+        return this;
+    }
+
+    public Boolean getCanIncludeToFeed() {
+        return canIncludeToFeed;
+    }
+
+    public PhotoAlbumFull setCanIncludeToFeed(Boolean canIncludeToFeed) {
+        this.canIncludeToFeed = canIncludeToFeed;
+        return this;
+    }
 
     public boolean canUpload() {
         return canUpload == BoolInt.YES;
@@ -143,11 +179,20 @@ public class PhotoAlbumFull implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getIsLocked() {
+        return isLocked;
+    }
+
+    public PhotoAlbumFull setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PhotoAlbumFull setOwnerId(Integer ownerId) {
+    public PhotoAlbumFull setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -224,7 +269,7 @@ public class PhotoAlbumFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(created, description, thumbSrc, ownerId, title, uploadByAdminsOnly, canUpload, size, sizes, commentsDisabled, id, thumbIsLast, updated, thumbId);
+        return Objects.hash(created, description, thumbSrc, canIncludeToFeed, ownerId, title, uploadByAdminsOnly, canUpload, size, sizes, commentsDisabled, isLocked, canDelete, id, thumbIsLast, updated, thumbId);
     }
 
     @Override
@@ -232,7 +277,9 @@ public class PhotoAlbumFull implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhotoAlbumFull photoAlbumFull = (PhotoAlbumFull) o;
-        return Objects.equals(thumbId, photoAlbumFull.thumbId) &&
+        return Objects.equals(isLocked, photoAlbumFull.isLocked) &&
+                Objects.equals(thumbId, photoAlbumFull.thumbId) &&
+                Objects.equals(canIncludeToFeed, photoAlbumFull.canIncludeToFeed) &&
                 Objects.equals(created, photoAlbumFull.created) &&
                 Objects.equals(ownerId, photoAlbumFull.ownerId) &&
                 Objects.equals(description, photoAlbumFull.description) &&
@@ -241,6 +288,7 @@ public class PhotoAlbumFull implements Validable {
                 Objects.equals(uploadByAdminsOnly, photoAlbumFull.uploadByAdminsOnly) &&
                 Objects.equals(size, photoAlbumFull.size) &&
                 Objects.equals(sizes, photoAlbumFull.sizes) &&
+                Objects.equals(canDelete, photoAlbumFull.canDelete) &&
                 Objects.equals(canUpload, photoAlbumFull.canUpload) &&
                 Objects.equals(commentsDisabled, photoAlbumFull.commentsDisabled) &&
                 Objects.equals(id, photoAlbumFull.id) &&
@@ -256,7 +304,9 @@ public class PhotoAlbumFull implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PhotoAlbumFull{");
-        sb.append("thumbId=").append(thumbId);
+        sb.append("isLocked=").append(isLocked);
+        sb.append(", thumbId=").append(thumbId);
+        sb.append(", canIncludeToFeed=").append(canIncludeToFeed);
         sb.append(", created=").append(created);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
@@ -265,6 +315,7 @@ public class PhotoAlbumFull implements Validable {
         sb.append(", uploadByAdminsOnly=").append(uploadByAdminsOnly);
         sb.append(", size=").append(size);
         sb.append(", sizes=").append(sizes);
+        sb.append(", canDelete=").append(canDelete);
         sb.append(", canUpload=").append(canUpload);
         sb.append(", commentsDisabled=").append(commentsDisabled);
         sb.append(", id=").append(id);

@@ -31,9 +31,11 @@ public class ForeignMessage implements Validable {
 
     /**
      * Message author's ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    @Required
+    private Long fromId;
 
     @SerializedName("fwd_messages")
     private List<ForeignMessage> fwdMessages;
@@ -48,10 +50,17 @@ public class ForeignMessage implements Validable {
     private Integer id;
 
     /**
+     * Additional data sent along with message for developer convenience
+     */
+    @SerializedName("payload")
+    private String payload;
+
+    /**
      * Peer ID
+     * Entity: peer
      */
     @SerializedName("peer_id")
-    private Integer peerId;
+    private Long peerId;
 
     @SerializedName("reply_message")
     private ForeignMessage replyMessage;
@@ -74,12 +83,6 @@ public class ForeignMessage implements Validable {
      */
     @SerializedName("was_listened")
     private Boolean wasListened;
-
-    /**
-     * Additional data sent along with message for developer convenience
-     */
-    @SerializedName("payload")
-    private String payload;
 
     public List<MessageAttachment> getAttachments() {
         return attachments;
@@ -108,11 +111,11 @@ public class ForeignMessage implements Validable {
         return this;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public ForeignMessage setFromId(Integer fromId) {
+    public ForeignMessage setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -144,11 +147,20 @@ public class ForeignMessage implements Validable {
         return this;
     }
 
-    public Integer getPeerId() {
+    public String getPayload() {
+        return payload;
+    }
+
+    public ForeignMessage setPayload(String payload) {
+        this.payload = payload;
+        return this;
+    }
+
+    public Long getPeerId() {
         return peerId;
     }
 
-    public ForeignMessage setPeerId(Integer peerId) {
+    public ForeignMessage setPeerId(Long peerId) {
         this.peerId = peerId;
         return this;
     }
@@ -186,15 +198,6 @@ public class ForeignMessage implements Validable {
 
     public ForeignMessage setWasListened(Boolean wasListened) {
         this.wasListened = wasListened;
-        return this;
-    }
-
-    public String getPayload() {
-        return payload;
-    }
-
-    public ForeignMessage setPayload(String payload) {
-        this.payload = payload;
         return this;
     }
 

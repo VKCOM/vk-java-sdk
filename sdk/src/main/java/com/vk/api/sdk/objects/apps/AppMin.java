@@ -12,24 +12,6 @@ import java.util.Objects;
  * AppMin object
  */
 public class AppMin implements Validable {
-    @SerializedName("type")
-    @Required
-    private AppType type;
-
-    /**
-     * Application ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Application title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
     /**
      * Application author's ID
      */
@@ -37,10 +19,10 @@ public class AppMin implements Validable {
     private Integer authorOwnerId;
 
     /**
-     * Is application installed
+     * Hex color code without hash sign
      */
-    @SerializedName("is_installed")
-    private Boolean isInstalled;
+    @SerializedName("background_loader_color")
+    private String backgroundLoaderColor;
 
     /**
      * URL of the app icon with 139 px in width
@@ -67,10 +49,23 @@ public class AppMin implements Validable {
     private URI icon576;
 
     /**
-     * Hex color code without hash sign
+     * URL of the app icon with 75 px in width
      */
-    @SerializedName("background_loader_color")
-    private String backgroundLoaderColor;
+    @SerializedName("icon_75")
+    private URI icon75;
+
+    /**
+     * Application ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
+
+    /**
+     * Is application installed
+     */
+    @SerializedName("is_installed")
+    private Boolean isInstalled;
 
     /**
      * SVG data
@@ -79,37 +74,21 @@ public class AppMin implements Validable {
     private String loaderIcon;
 
     /**
-     * URL of the app icon with 75 px in width
+     * Screen orientation
      */
-    @SerializedName("icon_75")
-    private URI icon75;
+    @SerializedName("screen_orientation")
+    private Integer screenOrientation;
 
-    public AppType getType() {
-        return type;
-    }
+    /**
+     * Application title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
 
-    public AppMin setType(AppType type) {
-        this.type = type;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public AppMin setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public AppMin setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("type")
+    @Required
+    private AppType type;
 
     public Integer getAuthorOwnerId() {
         return authorOwnerId;
@@ -120,12 +99,12 @@ public class AppMin implements Validable {
         return this;
     }
 
-    public Boolean getIsInstalled() {
-        return isInstalled;
+    public String getBackgroundLoaderColor() {
+        return backgroundLoaderColor;
     }
 
-    public AppMin setIsInstalled(Boolean isInstalled) {
-        this.isInstalled = isInstalled;
+    public AppMin setBackgroundLoaderColor(String backgroundLoaderColor) {
+        this.backgroundLoaderColor = backgroundLoaderColor;
         return this;
     }
 
@@ -165,12 +144,30 @@ public class AppMin implements Validable {
         return this;
     }
 
-    public String getBackgroundLoaderColor() {
-        return backgroundLoaderColor;
+    public URI getIcon75() {
+        return icon75;
     }
 
-    public AppMin setBackgroundLoaderColor(String backgroundLoaderColor) {
-        this.backgroundLoaderColor = backgroundLoaderColor;
+    public AppMin setIcon75(URI icon75) {
+        this.icon75 = icon75;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public AppMin setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsInstalled() {
+        return isInstalled;
+    }
+
+    public AppMin setIsInstalled(Boolean isInstalled) {
+        this.isInstalled = isInstalled;
         return this;
     }
 
@@ -183,18 +180,36 @@ public class AppMin implements Validable {
         return this;
     }
 
-    public URI getIcon75() {
-        return icon75;
+    public Integer getScreenOrientation() {
+        return screenOrientation;
     }
 
-    public AppMin setIcon75(URI icon75) {
-        this.icon75 = icon75;
+    public AppMin setScreenOrientation(Integer screenOrientation) {
+        this.screenOrientation = screenOrientation;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public AppMin setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public AppType getType() {
+        return type;
+    }
+
+    public AppMin setType(AppType type) {
+        this.type = type;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(icon139, icon75, icon576, icon278, loaderIcon, isInstalled, authorOwnerId, id, type, title, backgroundLoaderColor, icon150);
+        return Objects.hash(icon75, loaderIcon, isInstalled, title, type, icon139, screenOrientation, icon576, icon278, authorOwnerId, id, backgroundLoaderColor, icon150);
     }
 
     @Override
@@ -202,18 +217,19 @@ public class AppMin implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AppMin appMin = (AppMin) o;
-        return Objects.equals(isInstalled, appMin.isInstalled) &&
-                Objects.equals(authorOwnerId, appMin.authorOwnerId) &&
-                Objects.equals(icon278, appMin.icon278) &&
+        return Objects.equals(icon278, appMin.icon278) &&
                 Objects.equals(loaderIcon, appMin.loaderIcon) &&
                 Objects.equals(icon576, appMin.icon576) &&
-                Objects.equals(backgroundLoaderColor, appMin.backgroundLoaderColor) &&
-                Objects.equals(icon139, appMin.icon139) &&
                 Objects.equals(icon75, appMin.icon75) &&
-                Objects.equals(id, appMin.id) &&
-                Objects.equals(type, appMin.type) &&
                 Objects.equals(title, appMin.title) &&
-                Objects.equals(icon150, appMin.icon150);
+                Objects.equals(type, appMin.type) &&
+                Objects.equals(icon150, appMin.icon150) &&
+                Objects.equals(isInstalled, appMin.isInstalled) &&
+                Objects.equals(authorOwnerId, appMin.authorOwnerId) &&
+                Objects.equals(backgroundLoaderColor, appMin.backgroundLoaderColor) &&
+                Objects.equals(screenOrientation, appMin.screenOrientation) &&
+                Objects.equals(icon139, appMin.icon139) &&
+                Objects.equals(id, appMin.id);
     }
 
     @Override
@@ -224,18 +240,19 @@ public class AppMin implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AppMin{");
-        sb.append("isInstalled=").append(isInstalled);
-        sb.append(", authorOwnerId=").append(authorOwnerId);
-        sb.append(", icon278=").append(icon278);
+        sb.append("icon278=").append(icon278);
         sb.append(", loaderIcon='").append(loaderIcon).append("'");
         sb.append(", icon576=").append(icon576);
-        sb.append(", backgroundLoaderColor='").append(backgroundLoaderColor).append("'");
-        sb.append(", icon139=").append(icon139);
         sb.append(", icon75=").append(icon75);
-        sb.append(", id=").append(id);
-        sb.append(", type=").append(type);
         sb.append(", title='").append(title).append("'");
+        sb.append(", type=").append(type);
         sb.append(", icon150=").append(icon150);
+        sb.append(", isInstalled=").append(isInstalled);
+        sb.append(", authorOwnerId=").append(authorOwnerId);
+        sb.append(", backgroundLoaderColor='").append(backgroundLoaderColor).append("'");
+        sb.append(", screenOrientation=").append(screenOrientation);
+        sb.append(", icon139=").append(icon139);
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

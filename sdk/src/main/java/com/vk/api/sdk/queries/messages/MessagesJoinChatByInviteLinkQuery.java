@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.JoinChatByInviteLinkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class MessagesJoinChatByInviteLinkQuery extends AbstractQueryBuilder<MessagesJoinChatByInviteLinkQuery, JoinChatByInviteLinkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,12 +27,24 @@ public class MessagesJoinChatByInviteLinkQuery extends AbstractQueryBuilder<Mess
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesJoinChatByInviteLinkQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.joinChatByInviteLink", JoinChatByInviteLinkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Invitation link.
      *
      * @param value value of "link" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesJoinChatByInviteLinkQuery link(String value) {
+    @ApiParam("link")
+    public MessagesJoinChatByInviteLinkQuery link(String value) {
         return unsafeParam("link", value);
     }
 

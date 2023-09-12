@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.board;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,17 @@ import java.util.List;
  */
 public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditCommentQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public BoardEditCommentQuery(VkApiClient client, UserActor actor, int groupId, int topicId,
-            int commentId) {
+    public BoardEditCommentQuery(VkApiClient client, UserActor actor, Long groupId, Integer topicId,
+            Integer commentId) {
         super(client, "board.editComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -31,12 +33,25 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardEditCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.editComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditCommentQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardEditCommentQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -46,7 +61,8 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditCommentQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardEditCommentQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 
@@ -56,7 +72,8 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardEditCommentQuery commentId(int value) {
+    @ApiParam("comment_id")
+    public BoardEditCommentQuery commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 
@@ -66,27 +83,30 @@ public class BoardEditCommentQuery extends AbstractQueryBuilder<BoardEditComment
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public BoardEditCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
 
     /**
      * attachments
-     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media object: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public BoardEditCommentQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media object: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media owner. '<media_id>' - Media ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public BoardEditCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }

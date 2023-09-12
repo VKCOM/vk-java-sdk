@@ -11,27 +11,12 @@ import java.util.Objects;
  * RepostResponse object
  */
 public class RepostResponse implements Validable {
-    @SerializedName("success")
-    @Required
-    private Integer success;
-
-    /**
-     * Created post ID
-     */
-    @SerializedName("post_id")
-    private Integer postId;
-
     /**
      * Reposts number
      */
-    @SerializedName("reposts_count")
-    private Integer repostsCount;
-
-    /**
-     * Reposts to wall number
-     */
-    @SerializedName("wall_repost_count")
-    private Integer wallRepostCount;
+    @SerializedName("likes_count")
+    @Required
+    private Integer likesCount;
 
     /**
      * Reposts to mail number
@@ -40,17 +25,44 @@ public class RepostResponse implements Validable {
     private Integer mailRepostCount;
 
     /**
+     * Created post ID
+     */
+    @SerializedName("post_id")
+    @Required
+    private Integer postId;
+
+    /**
      * Reposts number
      */
-    @SerializedName("likes_count")
-    private Integer likesCount;
+    @SerializedName("reposts_count")
+    @Required
+    private Integer repostsCount;
 
-    public Integer getSuccess() {
-        return success;
+    @SerializedName("success")
+    @Required
+    private Integer success;
+
+    /**
+     * Reposts to wall number
+     */
+    @SerializedName("wall_repost_count")
+    private Integer wallRepostCount;
+
+    public Integer getLikesCount() {
+        return likesCount;
     }
 
-    public RepostResponse setSuccess(Integer success) {
-        this.success = success;
+    public RepostResponse setLikesCount(Integer likesCount) {
+        this.likesCount = likesCount;
+        return this;
+    }
+
+    public Integer getMailRepostCount() {
+        return mailRepostCount;
+    }
+
+    public RepostResponse setMailRepostCount(Integer mailRepostCount) {
+        this.mailRepostCount = mailRepostCount;
         return this;
     }
 
@@ -72,30 +84,21 @@ public class RepostResponse implements Validable {
         return this;
     }
 
+    public Integer getSuccess() {
+        return success;
+    }
+
+    public RepostResponse setSuccess(Integer success) {
+        this.success = success;
+        return this;
+    }
+
     public Integer getWallRepostCount() {
         return wallRepostCount;
     }
 
     public RepostResponse setWallRepostCount(Integer wallRepostCount) {
         this.wallRepostCount = wallRepostCount;
-        return this;
-    }
-
-    public Integer getMailRepostCount() {
-        return mailRepostCount;
-    }
-
-    public RepostResponse setMailRepostCount(Integer mailRepostCount) {
-        this.mailRepostCount = mailRepostCount;
-        return this;
-    }
-
-    public Integer getLikesCount() {
-        return likesCount;
-    }
-
-    public RepostResponse setLikesCount(Integer likesCount) {
-        this.likesCount = likesCount;
         return this;
     }
 

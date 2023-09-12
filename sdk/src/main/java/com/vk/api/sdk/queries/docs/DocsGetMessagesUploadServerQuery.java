@@ -5,8 +5,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.docs.GetMessagesUploadServerType;
+import com.vk.api.sdk.objects.docs.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,18 +16,7 @@ import java.util.List;
  */
 public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsGetMessagesUploadServerQuery, GetUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public DocsGetMessagesUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -37,11 +27,23 @@ public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsG
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DocsGetMessagesUploadServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "docs.getMessagesUploadServer", GetUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Document type.
      *
      * @param value value of "type" parameter. By default doc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public DocsGetMessagesUploadServerQuery type(GetMessagesUploadServerType value) {
         return unsafeParam("type", value);
     }
@@ -52,6 +54,7 @@ public class DocsGetMessagesUploadServerQuery extends AbstractQueryBuilder<DocsG
      * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("peer_id")
     public DocsGetMessagesUploadServerQuery peerId(Integer value) {
         return unsafeParam("peer_id", value);
     }

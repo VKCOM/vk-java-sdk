@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetConversationMembersResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,26 +16,14 @@ import java.util.List;
  */
 public class MessagesGetConversationMembersQuery extends AbstractQueryBuilder<MessagesGetConversationMembersQuery, GetConversationMembersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param peerId value of "peer id" parameter.
-     */
-    public MessagesGetConversationMembersQuery(VkApiClient client, UserActor actor, int peerId) {
-        super(client, "messages.getConversationMembers", GetConversationMembersResponse.class);
-        accessToken(actor.getAccessToken());
-        peerId(peerId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param peerId value of "peer id" parameter. Entity - peer
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param peerId value of "peer id" parameter.
      */
-    public MessagesGetConversationMembersQuery(VkApiClient client, GroupActor actor, int peerId) {
+    public MessagesGetConversationMembersQuery(VkApiClient client, GroupActor actor, Long peerId) {
         super(client, "messages.getConversationMembers", GetConversationMembersResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -42,22 +31,96 @@ public class MessagesGetConversationMembersQuery extends AbstractQueryBuilder<Me
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetConversationMembersQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.getConversationMembers", GetConversationMembersResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param peerId value of "peer id" parameter. Entity - peer
+     *
+     */
+    public MessagesGetConversationMembersQuery(VkApiClient client, UserActor actor, Long peerId) {
+        super(client, "messages.getConversationMembers", GetConversationMembersResponse.class);
+        accessToken(actor.getAccessToken());
+        peerId(peerId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetConversationMembersQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getConversationMembers", GetConversationMembersResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Peer ID.
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetConversationMembersQuery peerId(int value) {
+    @ApiParam("peer_id")
+    public MessagesGetConversationMembersQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
+    }
+
+    /**
+     * Set offset
+     *
+     * @param value value of "offset" parameter. Minimum is 0. By default 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("offset")
+    public MessagesGetConversationMembersQuery offset(Integer value) {
+        return unsafeParam("offset", value);
+    }
+
+    /**
+     * Set count
+     *
+     * @param value value of "count" parameter. Maximum is 1000. Minimum is 1. By default 20.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("count")
+    public MessagesGetConversationMembersQuery count(Integer value) {
+        return unsafeParam("count", value);
+    }
+
+    /**
+     * Extended flag
+     *
+     * @param value value of "extended" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("extended")
+    public MessagesGetConversationMembersQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetConversationMembersQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetConversationMembersQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -68,6 +131,7 @@ public class MessagesGetConversationMembersQuery extends AbstractQueryBuilder<Me
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetConversationMembersQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -78,6 +142,7 @@ public class MessagesGetConversationMembersQuery extends AbstractQueryBuilder<Me
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetConversationMembersQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.groups.GroupRole;
 import java.util.Arrays;
@@ -14,14 +15,16 @@ import java.util.List;
  */
 public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManagerQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public GroupsEditManagerQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
+    public GroupsEditManagerQuery(VkApiClient client, UserActor actor, Long groupId, Long userId) {
         super(client, "groups.editManager", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -29,22 +32,37 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsEditManagerQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.editManager", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditManagerQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsEditManagerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsEditManagerQuery userId(int value) {
+    @ApiParam("user_id")
+    public GroupsEditManagerQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -54,16 +72,29 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
      * @param value value of "role" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("role")
     public GroupsEditManagerQuery role(GroupRole value) {
         return unsafeParam("role", value);
     }
 
     /**
-     * '1' — to show the manager in Contacts block of the community.
+     * '1' — allow the manager to accept community calls.
+     *
+     * @param value value of "is call operator" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("is_call_operator")
+    public GroupsEditManagerQuery isCallOperator(Boolean value) {
+        return unsafeParam("is_call_operator", value);
+    }
+
+    /**
+     * '1' - to show the manager in Contacts block of the community.
      *
      * @param value value of "is contact" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_contact")
     public GroupsEditManagerQuery isContact(Boolean value) {
         return unsafeParam("is_contact", value);
     }
@@ -74,6 +105,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
      * @param value value of "contact position" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("contact_position")
     public GroupsEditManagerQuery contactPosition(String value) {
         return unsafeParam("contact_position", value);
     }
@@ -84,6 +116,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
      * @param value value of "contact phone" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("contact_phone")
     public GroupsEditManagerQuery contactPhone(String value) {
         return unsafeParam("contact_phone", value);
     }
@@ -94,6 +127,7 @@ public class GroupsEditManagerQuery extends AbstractQueryBuilder<GroupsEditManag
      * @param value value of "contact email" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("contact_email")
     public GroupsEditManagerQuery contactEmail(String value) {
         return unsafeParam("contact_email", value);
     }

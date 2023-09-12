@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -16,29 +17,36 @@ public class ConversationMember implements Validable {
     @SerializedName("can_kick")
     private Boolean canKick;
 
+    /**
+     * Entity: owner
+     */
     @SerializedName("invited_by")
-    private Integer invitedBy;
+    private Long invitedBy;
 
     @SerializedName("is_admin")
     private Boolean isAdmin;
 
-    @SerializedName("is_owner")
-    private Boolean isOwner;
-
     @SerializedName("is_message_request")
     private Boolean isMessageRequest;
 
+    @SerializedName("is_owner")
+    private Boolean isOwner;
+
     @SerializedName("join_date")
     private Integer joinDate;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("member_id")
+    @Required
+    private Long memberId;
 
     /**
      * Message request date
      */
     @SerializedName("request_date")
     private Integer requestDate;
-
-    @SerializedName("member_id")
-    private Integer memberId;
 
     public Boolean getCanKick() {
         return canKick;
@@ -49,11 +57,11 @@ public class ConversationMember implements Validable {
         return this;
     }
 
-    public Integer getInvitedBy() {
+    public Long getInvitedBy() {
         return invitedBy;
     }
 
-    public ConversationMember setInvitedBy(Integer invitedBy) {
+    public ConversationMember setInvitedBy(Long invitedBy) {
         this.invitedBy = invitedBy;
         return this;
     }
@@ -67,21 +75,21 @@ public class ConversationMember implements Validable {
         return this;
     }
 
-    public Boolean getIsOwner() {
-        return isOwner;
-    }
-
-    public ConversationMember setIsOwner(Boolean isOwner) {
-        this.isOwner = isOwner;
-        return this;
-    }
-
     public Boolean getIsMessageRequest() {
         return isMessageRequest;
     }
 
     public ConversationMember setIsMessageRequest(Boolean isMessageRequest) {
         this.isMessageRequest = isMessageRequest;
+        return this;
+    }
+
+    public Boolean getIsOwner() {
+        return isOwner;
+    }
+
+    public ConversationMember setIsOwner(Boolean isOwner) {
+        this.isOwner = isOwner;
         return this;
     }
 
@@ -94,21 +102,21 @@ public class ConversationMember implements Validable {
         return this;
     }
 
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public ConversationMember setMemberId(Long memberId) {
+        this.memberId = memberId;
+        return this;
+    }
+
     public Integer getRequestDate() {
         return requestDate;
     }
 
     public ConversationMember setRequestDate(Integer requestDate) {
         this.requestDate = requestDate;
-        return this;
-    }
-
-    public Integer getMemberId() {
-        return memberId;
-    }
-
-    public ConversationMember setMemberId(Integer memberId) {
-        this.memberId = memberId;
         return this;
     }
 

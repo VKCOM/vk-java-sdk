@@ -15,13 +15,14 @@ import java.util.Objects;
  */
 public class Message implements Validable {
     @SerializedName("action")
-    private MessageAction action;
+    private ActionOneOf action;
 
     /**
      * Only for messages from community. Contains user ID of community admin, who sent this message.
+     * Entity: owner
      */
     @SerializedName("admin_author_id")
-    private Integer adminAuthorId;
+    private Long adminAuthorId;
 
     @SerializedName("attachments")
     private List<MessageAttachment> attachments;
@@ -47,13 +48,12 @@ public class Message implements Validable {
 
     /**
      * Message author's ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    @Required
+    private Long fromId;
 
-    /**
-     * Forwarded messages
-     */
     @SerializedName("fwd_messages")
     private List<ForeignMessage> fwdMessages;
 
@@ -73,17 +73,29 @@ public class Message implements Validable {
     @SerializedName("important")
     private Boolean important;
 
-    @SerializedName("is_hidden")
-    private Boolean isHidden;
-
     /**
      * this message is cropped for bot
      */
     @SerializedName("is_cropped")
     private Boolean isCropped;
 
+    @SerializedName("is_hidden")
+    private Boolean isHidden;
+
+    /**
+     * Is silent message, push without sound
+     */
+    @SerializedName("is_silent")
+    private Boolean isSilent;
+
     @SerializedName("keyboard")
     private Keyboard keyboard;
+
+    /**
+     * Last reaction id set on this message
+     */
+    @SerializedName("last_reaction_id")
+    private Integer lastReactionId;
 
     /**
      * Members number
@@ -103,15 +115,35 @@ public class Message implements Validable {
 
     /**
      * Peer ID
+     * Entity: peer
      */
     @SerializedName("peer_id")
-    private Integer peerId;
+    @Required
+    private Long peerId;
+
+    /**
+     * Date when the message has been pinned in Unixtime
+     */
+    @SerializedName("pinned_at")
+    private Integer pinnedAt;
 
     /**
      * ID used for sending messages. It returned only for outgoing messages
      */
     @SerializedName("random_id")
     private Integer randomId;
+
+    /**
+     * Reaction id set on message
+     */
+    @SerializedName("reaction_id")
+    private Integer reactionId;
+
+    /**
+     * Actual reactions counters on this message
+     */
+    @SerializedName("reactions")
+    private List<ReactionCounterResponseItem> reactions;
 
     @SerializedName("ref")
     private String ref;
@@ -141,32 +173,20 @@ public class Message implements Validable {
     @SerializedName("was_listened")
     private Boolean wasListened;
 
-    /**
-     * Date when the message has been pinned in Unixtime
-     */
-    @SerializedName("pinned_at")
-    private Integer pinnedAt;
-
-    /**
-     * Is silent message, push without sound
-     */
-    @SerializedName("is_silent")
-    private Boolean isSilent;
-
-    public MessageAction getAction() {
+    public ActionOneOf getAction() {
         return action;
     }
 
-    public Message setAction(MessageAction action) {
+    public Message setAction(ActionOneOf action) {
         this.action = action;
         return this;
     }
 
-    public Integer getAdminAuthorId() {
+    public Long getAdminAuthorId() {
         return adminAuthorId;
     }
 
-    public Message setAdminAuthorId(Integer adminAuthorId) {
+    public Message setAdminAuthorId(Long adminAuthorId) {
         this.adminAuthorId = adminAuthorId;
         return this;
     }
@@ -206,11 +226,11 @@ public class Message implements Validable {
         return deleted;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public Message setFromId(Integer fromId) {
+    public Message setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -251,15 +271,6 @@ public class Message implements Validable {
         return this;
     }
 
-    public Boolean getIsHidden() {
-        return isHidden;
-    }
-
-    public Message setIsHidden(Boolean isHidden) {
-        this.isHidden = isHidden;
-        return this;
-    }
-
     public Boolean getIsCropped() {
         return isCropped;
     }
@@ -269,12 +280,39 @@ public class Message implements Validable {
         return this;
     }
 
+    public Boolean getIsHidden() {
+        return isHidden;
+    }
+
+    public Message setIsHidden(Boolean isHidden) {
+        this.isHidden = isHidden;
+        return this;
+    }
+
+    public Boolean getIsSilent() {
+        return isSilent;
+    }
+
+    public Message setIsSilent(Boolean isSilent) {
+        this.isSilent = isSilent;
+        return this;
+    }
+
     public Keyboard getKeyboard() {
         return keyboard;
     }
 
     public Message setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
+        return this;
+    }
+
+    public Integer getLastReactionId() {
+        return lastReactionId;
+    }
+
+    public Message setLastReactionId(Integer lastReactionId) {
+        this.lastReactionId = lastReactionId;
         return this;
     }
 
@@ -304,12 +342,21 @@ public class Message implements Validable {
         return this;
     }
 
-    public Integer getPeerId() {
+    public Long getPeerId() {
         return peerId;
     }
 
-    public Message setPeerId(Integer peerId) {
+    public Message setPeerId(Long peerId) {
         this.peerId = peerId;
+        return this;
+    }
+
+    public Integer getPinnedAt() {
+        return pinnedAt;
+    }
+
+    public Message setPinnedAt(Integer pinnedAt) {
+        this.pinnedAt = pinnedAt;
         return this;
     }
 
@@ -319,6 +366,24 @@ public class Message implements Validable {
 
     public Message setRandomId(Integer randomId) {
         this.randomId = randomId;
+        return this;
+    }
+
+    public Integer getReactionId() {
+        return reactionId;
+    }
+
+    public Message setReactionId(Integer reactionId) {
+        this.reactionId = reactionId;
+        return this;
+    }
+
+    public List<ReactionCounterResponseItem> getReactions() {
+        return reactions;
+    }
+
+    public Message setReactions(List<ReactionCounterResponseItem> reactions) {
+        this.reactions = reactions;
         return this;
     }
 
@@ -376,27 +441,9 @@ public class Message implements Validable {
         return this;
     }
 
-    public Integer getPinnedAt() {
-        return pinnedAt;
-    }
-
-    public Message setPinnedAt(Integer pinnedAt) {
-        this.pinnedAt = pinnedAt;
-        return this;
-    }
-
-    public Boolean getIsSilent() {
-        return isSilent;
-    }
-
-    public Message setIsSilent(Boolean isSilent) {
-        this.isSilent = isSilent;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(date, peerId, attachments, adminAuthorId, out, pinnedAt, refSource, geo, ref, fwdMessages, randomId, conversationMessageId, payload, replyMessage, wasListened, action, id, text, keyboard, membersCount, isCropped, updateTime, fromId, isHidden, important, deleted, isSilent);
+        return Objects.hash(date, peerId, attachments, adminAuthorId, out, pinnedAt, refSource, geo, ref, fwdMessages, randomId, conversationMessageId, payload, replyMessage, reactionId, wasListened, action, id, text, keyboard, membersCount, isCropped, lastReactionId, updateTime, fromId, isHidden, important, deleted, reactions, isSilent);
     }
 
     @Override
@@ -413,6 +460,7 @@ public class Message implements Validable {
                 Objects.equals(geo, message.geo) &&
                 Objects.equals(ref, message.ref) &&
                 Objects.equals(updateTime, message.updateTime) &&
+                Objects.equals(reactionId, message.reactionId) &&
                 Objects.equals(payload, message.payload) &&
                 Objects.equals(pinnedAt, message.pinnedAt) &&
                 Objects.equals(action, message.action) &&
@@ -426,9 +474,11 @@ public class Message implements Validable {
                 Objects.equals(conversationMessageId, message.conversationMessageId) &&
                 Objects.equals(important, message.important) &&
                 Objects.equals(deleted, message.deleted) &&
+                Objects.equals(lastReactionId, message.lastReactionId) &&
                 Objects.equals(adminAuthorId, message.adminAuthorId) &&
                 Objects.equals(fwdMessages, message.fwdMessages) &&
                 Objects.equals(membersCount, message.membersCount) &&
+                Objects.equals(reactions, message.reactions) &&
                 Objects.equals(randomId, message.randomId) &&
                 Objects.equals(replyMessage, message.replyMessage);
     }
@@ -450,6 +500,7 @@ public class Message implements Validable {
         sb.append(", geo=").append(geo);
         sb.append(", ref='").append(ref).append("'");
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", reactionId=").append(reactionId);
         sb.append(", payload='").append(payload).append("'");
         sb.append(", pinnedAt=").append(pinnedAt);
         sb.append(", action=").append(action);
@@ -463,9 +514,11 @@ public class Message implements Validable {
         sb.append(", conversationMessageId=").append(conversationMessageId);
         sb.append(", important=").append(important);
         sb.append(", deleted=").append(deleted);
+        sb.append(", lastReactionId=").append(lastReactionId);
         sb.append(", adminAuthorId=").append(adminAuthorId);
         sb.append(", fwdMessages=").append(fwdMessages);
         sb.append(", membersCount=").append(membersCount);
+        sb.append(", reactions=").append(reactions);
         sb.append(", randomId=").append(randomId);
         sb.append(", replyMessage=").append(replyMessage);
         sb.append('}');

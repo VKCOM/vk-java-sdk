@@ -17,6 +17,12 @@ public class ItemDigest extends ItemBase implements Validable {
     @SerializedName("feed_id")
     private String feedId;
 
+    @SerializedName("footer")
+    private ItemDigestFooter footer;
+
+    @SerializedName("header")
+    private ItemDigestHeader header;
+
     @SerializedName("items")
     private List<ItemDigestItem> items;
 
@@ -29,21 +35,30 @@ public class ItemDigest extends ItemBase implements Validable {
     @SerializedName("template")
     private ItemDigestTemplate template;
 
-    @SerializedName("header")
-    private ItemDigestHeader header;
-
-    @SerializedName("footer")
-    private ItemDigestFooter footer;
-
-    @SerializedName("track_code")
-    private String trackCode;
-
     public String getFeedId() {
         return feedId;
     }
 
     public ItemDigest setFeedId(String feedId) {
         this.feedId = feedId;
+        return this;
+    }
+
+    public ItemDigestFooter getFooter() {
+        return footer;
+    }
+
+    public ItemDigest setFooter(ItemDigestFooter footer) {
+        this.footer = footer;
+        return this;
+    }
+
+    public ItemDigestHeader getHeader() {
+        return header;
+    }
+
+    public ItemDigest setHeader(ItemDigestHeader header) {
+        this.header = header;
         return this;
     }
 
@@ -74,36 +89,9 @@ public class ItemDigest extends ItemBase implements Validable {
         return this;
     }
 
-    public ItemDigestHeader getHeader() {
-        return header;
-    }
-
-    public ItemDigest setHeader(ItemDigestHeader header) {
-        this.header = header;
-        return this;
-    }
-
-    public ItemDigestFooter getFooter() {
-        return footer;
-    }
-
-    public ItemDigest setFooter(ItemDigestFooter footer) {
-        this.footer = footer;
-        return this;
-    }
-
-    public String getTrackCode() {
-        return trackCode;
-    }
-
-    public ItemDigest setTrackCode(String trackCode) {
-        this.trackCode = trackCode;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(template, trackCode, mainPostIds, footer, feedId, header, items);
+        return Objects.hash(template, mainPostIds, footer, feedId, header, items);
     }
 
     @Override
@@ -115,7 +103,6 @@ public class ItemDigest extends ItemBase implements Validable {
                 Objects.equals(mainPostIds, itemDigest.mainPostIds) &&
                 Objects.equals(footer, itemDigest.footer) &&
                 Objects.equals(header, itemDigest.header) &&
-                Objects.equals(trackCode, itemDigest.trackCode) &&
                 Objects.equals(items, itemDigest.items) &&
                 Objects.equals(feedId, itemDigest.feedId);
     }
@@ -132,7 +119,6 @@ public class ItemDigest extends ItemBase implements Validable {
         sb.append(", mainPostIds='").append(mainPostIds).append("'");
         sb.append(", footer=").append(footer);
         sb.append(", header=").append(header);
-        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", items=").append(items);
         sb.append(", feedId='").append(feedId).append("'");
         sb.append('}');

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,29 +15,51 @@ import java.util.List;
  */
 public class MessagesRemoveChatUserQuery extends AbstractQueryBuilder<MessagesRemoveChatUserQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      */
-    public MessagesRemoveChatUserQuery(VkApiClient client, UserActor actor, int chatId) {
+    public MessagesRemoveChatUserQuery(VkApiClient client, GroupActor actor, Integer chatId) {
         super(client, "messages.removeChatUser", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesRemoveChatUserQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.removeChatUser", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      */
-    public MessagesRemoveChatUserQuery(VkApiClient client, GroupActor actor, int chatId) {
+    public MessagesRemoveChatUserQuery(VkApiClient client, UserActor actor, Integer chatId) {
         super(client, "messages.removeChatUser", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesRemoveChatUserQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.removeChatUser", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -45,27 +68,32 @@ public class MessagesRemoveChatUserQuery extends AbstractQueryBuilder<MessagesRe
      * @param value value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesRemoveChatUserQuery chatId(int value) {
+    @ApiParam("chat_id")
+    public MessagesRemoveChatUserQuery chatId(Integer value) {
         return unsafeParam("chat_id", value);
     }
 
     /**
      * ID of the user to be removed from the chat.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesRemoveChatUserQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public MessagesRemoveChatUserQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Set member id
      *
-     * @param value value of "member id" parameter.
+     * @param value value of "member id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesRemoveChatUserQuery memberId(Integer value) {
+    @ApiParam("member_id")
+    public MessagesRemoveChatUserQuery memberId(Long value) {
         return unsafeParam("member_id", value);
     }
 

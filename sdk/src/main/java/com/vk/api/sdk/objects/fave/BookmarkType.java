@@ -18,7 +18,10 @@ public enum BookmarkType implements EnumParam {
     ARTICLE("article"),
 
     @SerializedName("link")
-    LINK("link");
+    LINK("link"),
+
+    @SerializedName("clip")
+    CLIP("clip");
 
     private final String value;
 

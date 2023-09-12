@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +15,16 @@ import java.util.List;
  */
 public class StoriesHideReplyQuery extends AbstractQueryBuilder<StoriesHideReplyQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesHideReplyQuery(VkApiClient client, UserActor actor, int ownerId, int storyId) {
+    public StoriesHideReplyQuery(VkApiClient client, GroupActor actor, Long ownerId,
+            Integer storyId) {
         super(client, "stories.hideReply", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -29,27 +32,53 @@ public class StoriesHideReplyQuery extends AbstractQueryBuilder<StoriesHideReply
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     */
+    public StoriesHideReplyQuery(VkApiClient client, GroupActor actor) {
+        super(client, "stories.hideReply", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param storyId value of "story id" parameter. Minimum is 0.
      */
-    public StoriesHideReplyQuery(VkApiClient client, GroupActor actor, int ownerId, int storyId) {
+    public StoriesHideReplyQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer storyId) {
         super(client, "stories.hideReply", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         storyId(storyId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StoriesHideReplyQuery(VkApiClient client, UserActor actor) {
+        super(client, "stories.hideReply", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of the user whose replies should be hidden.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesHideReplyQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public StoriesHideReplyQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -59,7 +88,8 @@ public class StoriesHideReplyQuery extends AbstractQueryBuilder<StoriesHideReply
      * @param value value of "story id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesHideReplyQuery storyId(int value) {
+    @ApiParam("story_id")
+    public StoriesHideReplyQuery storyId(Integer value) {
         return unsafeParam("story_id", value);
     }
 

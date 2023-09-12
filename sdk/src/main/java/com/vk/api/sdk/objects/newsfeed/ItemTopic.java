@@ -23,6 +23,7 @@ public class ItemTopic extends ItemBase implements Validable {
      * Topic post ID
      */
     @SerializedName("post_id")
+    @Required
     private Integer postId;
 
     /**

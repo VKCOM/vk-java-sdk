@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.notes;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.notes.GetCommentsSort;
 import com.vk.api.sdk.objects.notes.responses.GetCommentsResponse;
 import java.util.Arrays;
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetCommentsQuery, GetCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
      */
-    public NotesGetCommentsQuery(VkApiClient client, UserActor actor, int noteId) {
+    public NotesGetCommentsQuery(VkApiClient client, UserActor actor, Integer noteId) {
         super(client, "notes.getComments", GetCommentsResponse.class);
         accessToken(actor.getAccessToken());
         noteId(noteId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NotesGetCommentsQuery(VkApiClient client, UserActor actor) {
+        super(client, "notes.getComments", GetCommentsResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,17 +44,20 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
      * @param value value of "note id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotesGetCommentsQuery noteId(int value) {
+    @ApiParam("note_id")
+    public NotesGetCommentsQuery noteId(Integer value) {
         return unsafeParam("note_id", value);
     }
 
     /**
      * Note owner ID.
      *
-     * @param value value of "owner id" parameter. Minimum is 0.
+     * @param value value of "owner id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotesGetCommentsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public NotesGetCommentsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -52,6 +67,7 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
      * @param value value of "sort" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public NotesGetCommentsQuery sort(GetCommentsSort value) {
         return unsafeParam("sort", value);
     }
@@ -62,6 +78,7 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public NotesGetCommentsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -72,6 +89,7 @@ public class NotesGetCommentsQuery extends AbstractQueryBuilder<NotesGetComments
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NotesGetCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

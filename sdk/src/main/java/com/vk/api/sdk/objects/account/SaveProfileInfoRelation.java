@@ -8,6 +8,9 @@ import com.vk.api.sdk.queries.EnumParam;
  * User relationship status. Possible values: , * '1' - single,, * '2' - in a relationship,, * '3' - engaged,, * '4' - married,, * '5' - it's complicated,, * '6' - actively searching,, * '7' - in love,, * '0' - not specified.
  */
 public enum SaveProfileInfoRelation implements EnumParam {
+    @SerializedName("0")
+    NOT_SPECIFIED(0),
+
     @SerializedName("1")
     SINGLE(1),
 
@@ -29,8 +32,8 @@ public enum SaveProfileInfoRelation implements EnumParam {
     @SerializedName("7")
     IN_LOVE(7),
 
-    @SerializedName("0")
-    NOT_SPECIFIED(0);
+    @SerializedName("8")
+    IN_A_CIVIL_UNION(8);
 
     private final Integer value;
 

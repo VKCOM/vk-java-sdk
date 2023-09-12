@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.leadforms.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Objects;
  */
 public class DeleteResponse implements Validable {
     @SerializedName("form_id")
+    @Required
     private Integer formId;
 
     public Integer getFormId() {

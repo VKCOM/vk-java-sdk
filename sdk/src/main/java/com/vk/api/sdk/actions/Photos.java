@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.photos.PhotosConfirmTagQuery;
 import com.vk.api.sdk.queries.photos.PhotosCopyQuery;
 import com.vk.api.sdk.queries.photos.PhotosCreateAlbumQuery;
@@ -20,9 +21,7 @@ import com.vk.api.sdk.queries.photos.PhotosGetAlbumsCountQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAlbumsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAllCommentsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetAllQuery;
-import com.vk.api.sdk.queries.photos.PhotosGetAllQueryWithExtended;
-import com.vk.api.sdk.queries.photos.PhotosGetByIdQueryWithLegacy;
-import com.vk.api.sdk.queries.photos.PhotosGetByIdQueryWithLegacyExtended;
+import com.vk.api.sdk.queries.photos.PhotosGetByIdQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetChatUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetCommentsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetCommentsQueryWithExtended;
@@ -33,11 +32,9 @@ import com.vk.api.sdk.queries.photos.PhotosGetNewTagsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetOwnerCoverPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetOwnerPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetQuery;
-import com.vk.api.sdk.queries.photos.PhotosGetQueryWithExtended;
 import com.vk.api.sdk.queries.photos.PhotosGetTagsQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosGetUserPhotosQuery;
-import com.vk.api.sdk.queries.photos.PhotosGetUserPhotosQueryWithExtended;
 import com.vk.api.sdk.queries.photos.PhotosGetWallUploadServerQuery;
 import com.vk.api.sdk.queries.photos.PhotosMakeCoverQuery;
 import com.vk.api.sdk.queries.photos.PhotosMoveQuery;
@@ -75,121 +72,230 @@ public class Photos extends AbstractAction {
     /**
      * Confirms a tag on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @param tagId Tag ID.
      * @return query
      */
-    public PhotosConfirmTagQuery confirmTag(UserActor actor, String photoId, int tagId) {
+    @ApiMethod("photos.confirmTag")
+    public PhotosConfirmTagQuery confirmTag(UserActor actor, String photoId, Integer tagId) {
         return new PhotosConfirmTagQuery(getClient(), actor, photoId, tagId);
+    }
+
+    /**
+     * Confirms a tag on a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.confirmTag")
+    public PhotosConfirmTagQuery confirmTag(UserActor actor) {
+        return new PhotosConfirmTagQuery(getClient(), actor);
     }
 
     /**
      * Allows to copy a photo to the "Saved photos" album
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId photo's owner ID
      * @param photoId photo ID
      * @return query
      */
-    public PhotosCopyQuery copy(UserActor actor, int ownerId, int photoId) {
+    @ApiMethod("photos.copy")
+    public PhotosCopyQuery copy(UserActor actor, Long ownerId, Integer photoId) {
         return new PhotosCopyQuery(getClient(), actor, ownerId, photoId);
+    }
+
+    /**
+     * Allows to copy a photo to the "Saved photos" album
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.copy")
+    public PhotosCopyQuery copy(UserActor actor) {
+        return new PhotosCopyQuery(getClient(), actor);
     }
 
     /**
      * Creates an empty photo album.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param title Album title.
      * @return query
      */
+    @ApiMethod("photos.createAlbum")
     public PhotosCreateAlbumQuery createAlbum(UserActor actor, String title) {
         return new PhotosCreateAlbumQuery(getClient(), actor, title);
     }
 
     /**
+     * Creates an empty photo album.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.createAlbum")
+    public PhotosCreateAlbumQuery createAlbum(UserActor actor) {
+        return new PhotosCreateAlbumQuery(getClient(), actor);
+    }
+
+    /**
      * Adds a new comment on the photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosCreateCommentQuery createComment(UserActor actor, int photoId) {
+    @ApiMethod("photos.createComment")
+    public PhotosCreateCommentQuery createComment(UserActor actor, Integer photoId) {
         return new PhotosCreateCommentQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Adds a new comment on the photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.createComment")
+    public PhotosCreateCommentQuery createComment(UserActor actor) {
+        return new PhotosCreateCommentQuery(getClient(), actor);
     }
 
     /**
      * Deletes a photo.
      *
-     * @param actor vk actor
-     * @param photoId Photo ID.
+     * @param actor vk user actor
      * @return query
      */
-    public PhotosDeleteQuery delete(UserActor actor, int photoId) {
-        return new PhotosDeleteQuery(getClient(), actor, photoId);
+    @ApiMethod("photos.delete")
+    public PhotosDeleteQuery delete(UserActor actor) {
+        return new PhotosDeleteQuery(getClient(), actor);
     }
 
     /**
      * Deletes a photo album belonging to the current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param albumId Album ID.
      * @return query
      */
-    public PhotosDeleteAlbumQuery deleteAlbum(UserActor actor, int albumId) {
+    @ApiMethod("photos.deleteAlbum")
+    public PhotosDeleteAlbumQuery deleteAlbum(UserActor actor, Integer albumId) {
         return new PhotosDeleteAlbumQuery(getClient(), actor, albumId);
+    }
+
+    /**
+     * Deletes a photo album belonging to the current user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.deleteAlbum")
+    public PhotosDeleteAlbumQuery deleteAlbum(UserActor actor) {
+        return new PhotosDeleteAlbumQuery(getClient(), actor);
     }
 
     /**
      * Deletes a comment on the photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public PhotosDeleteCommentQuery deleteComment(UserActor actor, int commentId) {
+    @ApiMethod("photos.deleteComment")
+    public PhotosDeleteCommentQuery deleteComment(UserActor actor, Integer commentId) {
         return new PhotosDeleteCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Deletes a comment on the photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.deleteComment")
+    public PhotosDeleteCommentQuery deleteComment(UserActor actor) {
+        return new PhotosDeleteCommentQuery(getClient(), actor);
     }
 
     /**
      * Edits the caption of a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosEditQuery edit(UserActor actor, int photoId) {
+    @ApiMethod("photos.edit")
+    public PhotosEditQuery edit(UserActor actor, Integer photoId) {
         return new PhotosEditQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Edits the caption of a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.edit")
+    public PhotosEditQuery edit(UserActor actor) {
+        return new PhotosEditQuery(getClient(), actor);
     }
 
     /**
      * Edits information about a photo album.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param albumId ID of the photo album to be edited.
      * @return query
      */
-    public PhotosEditAlbumQuery editAlbum(UserActor actor, int albumId) {
+    @ApiMethod("photos.editAlbum")
+    public PhotosEditAlbumQuery editAlbum(UserActor actor, Integer albumId) {
         return new PhotosEditAlbumQuery(getClient(), actor, albumId);
+    }
+
+    /**
+     * Edits information about a photo album.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.editAlbum")
+    public PhotosEditAlbumQuery editAlbum(UserActor actor) {
+        return new PhotosEditAlbumQuery(getClient(), actor);
     }
 
     /**
      * Edits a comment on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId Comment ID.
      * @return query
      */
-    public PhotosEditCommentQuery editComment(UserActor actor, int commentId) {
+    @ApiMethod("photos.editComment")
+    public PhotosEditCommentQuery editComment(UserActor actor, Integer commentId) {
         return new PhotosEditCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Edits a comment on a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.editComment")
+    public PhotosEditCommentQuery editComment(UserActor actor) {
+        return new PhotosEditCommentQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of a user's or community's photos.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.get")
     public PhotosGetQuery get(UserActor actor) {
         return new PhotosGetQuery(getClient(), actor);
     }
@@ -197,39 +303,21 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photos.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("photos.get")
     public PhotosGetQuery get(ServiceActor actor) {
         return new PhotosGetQuery(getClient(), actor);
     }
 
     /**
-     * Returns a list of a user's or community's photos.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public PhotosGetQueryWithExtended getExtended(UserActor actor) {
-        return new PhotosGetQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of a user's or community's photos.
-     *
-     * @param actor vk actor
-     * @return query
-     */
-    public PhotosGetQueryWithExtended getExtended(ServiceActor actor) {
-        return new PhotosGetQueryWithExtended(getClient(), actor);
-    }
-
-    /**
      * Returns a list of a user's or community's photo albums.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getAlbums")
     public PhotosGetAlbumsQuery getAlbums(UserActor actor) {
         return new PhotosGetAlbumsQuery(getClient(), actor);
     }
@@ -237,9 +325,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of a user's or community's photo albums.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("photos.getAlbums")
     public PhotosGetAlbumsQuery getAlbums(ServiceActor actor) {
         return new PhotosGetAlbumsQuery(getClient(), actor);
     }
@@ -247,9 +336,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns the number of photo albums belonging to a user or community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getAlbumsCount")
     public PhotosGetAlbumsCountQuery getAlbumsCount(UserActor actor) {
         return new PhotosGetAlbumsCountQuery(getClient(), actor);
     }
@@ -257,19 +347,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos belonging to a user or community, in reverse chronological order.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
-    public PhotosGetAllQueryWithExtended getAllExtended(UserActor actor) {
-        return new PhotosGetAllQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of photos belonging to a user or community, in reverse chronological order.
-     *
-     * @param actor vk actor
-     * @return query
-     */
+    @ApiMethod("photos.getAll")
     public PhotosGetAllQuery getAll(UserActor actor) {
         return new PhotosGetAllQuery(getClient(), actor);
     }
@@ -277,9 +358,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of comments on a specific photo album or all albums of the user sorted in reverse chronological order.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getAllComments")
     public PhotosGetAllCommentsQuery getAllComments(UserActor actor) {
         return new PhotosGetAllCommentsQuery(getClient(), actor);
     }
@@ -287,168 +369,209 @@ public class Photos extends AbstractAction {
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(UserActor actor,
-            String... photos) {
-        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(UserActor actor, String... photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(UserActor actor,
-            List<String> photos) {
-        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(UserActor actor, List<String> photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
-     * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
-     * @return query
+     * @param actor vk user actor
+     * @return only actor query 
      */
-    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(ServiceActor actor,
-            String... photos) {
-        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(UserActor actor) {
+        return new PhotosGetByIdQuery(getClient(), actor);
     }
 
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithLegacyExtended getByIdLegacyExtended(ServiceActor actor,
-            List<String> photos) {
-        return new PhotosGetByIdQueryWithLegacyExtended(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(ServiceActor actor, String... photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
      * @return query
      */
-    public PhotosGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, String... photos) {
-        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(ServiceActor actor, List<String> photos) {
+        return new PhotosGetByIdQuery(getClient(), actor, photos);
     }
 
     /**
      * Returns information about photos by their IDs.
      *
-     * @param actor vk actor
-     * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
-     * @return query
+     * @param actor vk service actor
+     * @return only actor query 
      */
-    public PhotosGetByIdQueryWithLegacy getByIdLegacy(UserActor actor, List<String> photos) {
-        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
-    }
-
-    /**
-     * Returns information about photos by their IDs.
-     *
-     * @param actor vk actor
-     * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
-     * @return query
-     */
-    public PhotosGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, String... photos) {
-        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
-    }
-
-    /**
-     * Returns information about photos by their IDs.
-     *
-     * @param actor vk actor
-     * @param photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
-     * @return query
-     */
-    public PhotosGetByIdQueryWithLegacy getByIdLegacy(ServiceActor actor, List<String> photos) {
-        return new PhotosGetByIdQueryWithLegacy(getClient(), actor, photos);
+    @ApiMethod("photos.getById")
+    public PhotosGetByIdQuery getById(ServiceActor actor) {
+        return new PhotosGetByIdQuery(getClient(), actor);
     }
 
     /**
      * Returns an upload link for chat cover pictures.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param chatId ID of the chat for which you want to upload a cover photo.
      * @return query
      */
-    public PhotosGetChatUploadServerQuery getChatUploadServer(UserActor actor, int chatId) {
+    @ApiMethod("photos.getChatUploadServer")
+    public PhotosGetChatUploadServerQuery getChatUploadServer(UserActor actor, Integer chatId) {
         return new PhotosGetChatUploadServerQuery(getClient(), actor, chatId);
     }
 
     /**
      * Returns an upload link for chat cover pictures.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getChatUploadServer")
+    public PhotosGetChatUploadServerQuery getChatUploadServer(UserActor actor) {
+        return new PhotosGetChatUploadServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns an upload link for chat cover pictures.
+     *
+     * @param actor vk group actor
      * @param chatId ID of the chat for which you want to upload a cover photo.
      * @return query
      */
-    public PhotosGetChatUploadServerQuery getChatUploadServer(GroupActor actor, int chatId) {
+    @ApiMethod("photos.getChatUploadServer")
+    public PhotosGetChatUploadServerQuery getChatUploadServer(GroupActor actor, Integer chatId) {
         return new PhotosGetChatUploadServerQuery(getClient(), actor, chatId);
+    }
+
+    /**
+     * Returns an upload link for chat cover pictures.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getChatUploadServer")
+    public PhotosGetChatUploadServerQuery getChatUploadServer(GroupActor actor) {
+        return new PhotosGetChatUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of comments on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosGetCommentsQuery getComments(UserActor actor, int photoId) {
+    @ApiMethod("photos.getComments")
+    public PhotosGetCommentsQuery getComments(UserActor actor, Integer photoId) {
         return new PhotosGetCommentsQuery(getClient(), actor, photoId);
     }
 
     /**
      * Returns a list of comments on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getComments")
+    public PhotosGetCommentsQuery getComments(UserActor actor) {
+        return new PhotosGetCommentsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of comments on a photo.
+     *
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosGetCommentsQueryWithExtended getCommentsExtended(UserActor actor, int photoId) {
+    @ApiMethod("photos.getComments")
+    public PhotosGetCommentsQueryWithExtended getCommentsExtended(UserActor actor,
+            Integer photoId) {
         return new PhotosGetCommentsQueryWithExtended(getClient(), actor, photoId);
     }
 
     /**
      * Returns the server address for market album photo upload.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
+    @ApiMethod("photos.getMarketAlbumUploadServer")
     public PhotosGetMarketAlbumUploadServerQuery getMarketAlbumUploadServer(UserActor actor,
-            int groupId) {
+            Long groupId) {
         return new PhotosGetMarketAlbumUploadServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns the server address for market album photo upload.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getMarketAlbumUploadServer")
+    public PhotosGetMarketAlbumUploadServerQuery getMarketAlbumUploadServer(UserActor actor) {
+        return new PhotosGetMarketAlbumUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns the server address for market photo upload.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public PhotosGetMarketUploadServerQuery getMarketUploadServer(UserActor actor, int groupId) {
+    @ApiMethod("photos.getMarketUploadServer")
+    public PhotosGetMarketUploadServerQuery getMarketUploadServer(UserActor actor, Long groupId) {
         return new PhotosGetMarketUploadServerQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns the server address for market photo upload.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getMarketUploadServer")
+    public PhotosGetMarketUploadServerQuery getMarketUploadServer(UserActor actor) {
+        return new PhotosGetMarketUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns the server address for photo upload in a private message for a user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getMessagesUploadServer")
     public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(UserActor actor) {
         return new PhotosGetMessagesUploadServerQuery(getClient(), actor);
     }
@@ -456,9 +579,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns the server address for photo upload in a private message for a user.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("photos.getMessagesUploadServer")
     public PhotosGetMessagesUploadServerQuery getMessagesUploadServer(GroupActor actor) {
         return new PhotosGetMessagesUploadServerQuery(getClient(), actor);
     }
@@ -466,9 +590,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos with tags that have not been viewed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getNewTags")
     public PhotosGetNewTagsQuery getNewTags(UserActor actor) {
         return new PhotosGetNewTagsQuery(getClient(), actor);
     }
@@ -476,33 +601,34 @@ public class Photos extends AbstractAction {
     /**
      * Returns the server address for owner cover upload.
      *
-     * @param actor vk actor
-     * @param groupId ID of community that owns the album (if the photo will be uploaded to a community album).
+     * @param actor vk user actor
      * @return query
      */
-    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(UserActor actor,
-            int groupId) {
-        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, groupId);
+    @ApiMethod("photos.getOwnerCoverPhotoUploadServer")
+    public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(
+            UserActor actor) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns the server address for owner cover upload.
      *
-     * @param actor vk actor
-     * @param groupId ID of community that owns the album (if the photo will be uploaded to a community album).
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("photos.getOwnerCoverPhotoUploadServer")
     public PhotosGetOwnerCoverPhotoUploadServerQuery getOwnerCoverPhotoUploadServer(
-            GroupActor actor, int groupId) {
-        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor, groupId);
+            GroupActor actor) {
+        return new PhotosGetOwnerCoverPhotoUploadServerQuery(getClient(), actor);
     }
 
     /**
      * Returns an upload server address for a profile or community photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getOwnerPhotoUploadServer")
     public PhotosGetOwnerPhotoUploadServerQuery getOwnerPhotoUploadServer(UserActor actor) {
         return new PhotosGetOwnerPhotoUploadServerQuery(getClient(), actor);
     }
@@ -510,20 +636,33 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of tags on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosGetTagsQuery getTags(UserActor actor, int photoId) {
+    @ApiMethod("photos.getTags")
+    public PhotosGetTagsQuery getTags(UserActor actor, Integer photoId) {
         return new PhotosGetTagsQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Returns a list of tags on a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.getTags")
+    public PhotosGetTagsQuery getTags(UserActor actor) {
+        return new PhotosGetTagsQuery(getClient(), actor);
     }
 
     /**
      * Returns the server address for photo upload.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getUploadServer")
     public PhotosGetUploadServerQuery getUploadServer(UserActor actor) {
         return new PhotosGetUploadServerQuery(getClient(), actor);
     }
@@ -531,19 +670,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos in which a user is tagged.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
-    public PhotosGetUserPhotosQueryWithExtended getUserPhotosExtended(UserActor actor) {
-        return new PhotosGetUserPhotosQueryWithExtended(getClient(), actor);
-    }
-
-    /**
-     * Returns a list of photos in which a user is tagged.
-     *
-     * @param actor vk actor
-     * @return query
-     */
+    @ApiMethod("photos.getUserPhotos")
     public PhotosGetUserPhotosQuery getUserPhotos(UserActor actor) {
         return new PhotosGetUserPhotosQuery(getClient(), actor);
     }
@@ -551,9 +681,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns the server address for photo upload onto a user's wall.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.getWallUploadServer")
     public PhotosGetWallUploadServerQuery getWallUploadServer(UserActor actor) {
         return new PhotosGetWallUploadServerQuery(getClient(), actor);
     }
@@ -561,124 +692,259 @@ public class Photos extends AbstractAction {
     /**
      * Makes a photo into an album cover.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosMakeCoverQuery makeCover(UserActor actor, int photoId) {
+    @ApiMethod("photos.makeCover")
+    public PhotosMakeCoverQuery makeCover(UserActor actor, Integer photoId) {
         return new PhotosMakeCoverQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Makes a photo into an album cover.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.makeCover")
+    public PhotosMakeCoverQuery makeCover(UserActor actor) {
+        return new PhotosMakeCoverQuery(getClient(), actor);
     }
 
     /**
      * Moves a photo from one album to another.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param targetAlbumId ID of the album to which the photo will be moved.
-     * @param photoId Photo ID.
+     * @param photoIds
      * @return query
      */
-    public PhotosMoveQuery move(UserActor actor, int targetAlbumId, int photoId) {
-        return new PhotosMoveQuery(getClient(), actor, targetAlbumId, photoId);
+    @ApiMethod("photos.move")
+    public PhotosMoveQuery move(UserActor actor, Integer targetAlbumId, Integer... photoIds) {
+        return new PhotosMoveQuery(getClient(), actor, targetAlbumId, photoIds);
+    }
+
+    /**
+     * Moves a photo from one album to another.
+     *
+     * @param actor vk user actor
+     * @param targetAlbumId ID of the album to which the photo will be moved.
+     * @param photoIds
+     * @return query
+     */
+    @ApiMethod("photos.move")
+    public PhotosMoveQuery move(UserActor actor, Integer targetAlbumId, List<Integer> photoIds) {
+        return new PhotosMoveQuery(getClient(), actor, targetAlbumId, photoIds);
+    }
+
+    /**
+     * Moves a photo from one album to another.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.move")
+    public PhotosMoveQuery move(UserActor actor) {
+        return new PhotosMoveQuery(getClient(), actor);
     }
 
     /**
      * Adds a tag on the photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @param userId ID of the user to be tagged.
      * @return query
      */
-    public PhotosPutTagQuery putTag(UserActor actor, int photoId, int userId) {
+    @ApiMethod("photos.putTag")
+    public PhotosPutTagQuery putTag(UserActor actor, Integer photoId, Long userId) {
         return new PhotosPutTagQuery(getClient(), actor, photoId, userId);
+    }
+
+    /**
+     * Adds a tag on the photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.putTag")
+    public PhotosPutTagQuery putTag(UserActor actor) {
+        return new PhotosPutTagQuery(getClient(), actor);
     }
 
     /**
      * Removes a tag from a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @param tagId Tag ID.
      * @return query
      */
-    public PhotosRemoveTagQuery removeTag(UserActor actor, int photoId, int tagId) {
+    @ApiMethod("photos.removeTag")
+    public PhotosRemoveTagQuery removeTag(UserActor actor, Integer photoId, Integer tagId) {
         return new PhotosRemoveTagQuery(getClient(), actor, photoId, tagId);
+    }
+
+    /**
+     * Removes a tag from a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.removeTag")
+    public PhotosRemoveTagQuery removeTag(UserActor actor) {
+        return new PhotosRemoveTagQuery(getClient(), actor);
     }
 
     /**
      * Reorders the album in the list of user albums.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param albumId Album ID.
      * @return query
      */
-    public PhotosReorderAlbumsQuery reorderAlbums(UserActor actor, int albumId) {
+    @ApiMethod("photos.reorderAlbums")
+    public PhotosReorderAlbumsQuery reorderAlbums(UserActor actor, Integer albumId) {
         return new PhotosReorderAlbumsQuery(getClient(), actor, albumId);
+    }
+
+    /**
+     * Reorders the album in the list of user albums.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.reorderAlbums")
+    public PhotosReorderAlbumsQuery reorderAlbums(UserActor actor) {
+        return new PhotosReorderAlbumsQuery(getClient(), actor);
     }
 
     /**
      * Reorders the photo in the list of photos of the user album.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosReorderPhotosQuery reorderPhotos(UserActor actor, int photoId) {
+    @ApiMethod("photos.reorderPhotos")
+    public PhotosReorderPhotosQuery reorderPhotos(UserActor actor, Integer photoId) {
         return new PhotosReorderPhotosQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Reorders the photo in the list of photos of the user album.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.reorderPhotos")
+    public PhotosReorderPhotosQuery reorderPhotos(UserActor actor) {
+        return new PhotosReorderPhotosQuery(getClient(), actor);
     }
 
     /**
      * Reports (submits a complaint about) a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user or community that owns the photo.
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosReportQuery report(UserActor actor, int ownerId, int photoId) {
+    @ApiMethod("photos.report")
+    public PhotosReportQuery report(UserActor actor, Long ownerId, Integer photoId) {
         return new PhotosReportQuery(getClient(), actor, ownerId, photoId);
+    }
+
+    /**
+     * Reports (submits a complaint about) a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.report")
+    public PhotosReportQuery report(UserActor actor) {
+        return new PhotosReportQuery(getClient(), actor);
     }
 
     /**
      * Reports (submits a complaint about) a comment on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user or community that owns the photo.
      * @param commentId ID of the comment being reported.
      * @return query
      */
-    public PhotosReportCommentQuery reportComment(UserActor actor, int ownerId, int commentId) {
+    @ApiMethod("photos.reportComment")
+    public PhotosReportCommentQuery reportComment(UserActor actor, Long ownerId,
+            Integer commentId) {
         return new PhotosReportCommentQuery(getClient(), actor, ownerId, commentId);
+    }
+
+    /**
+     * Reports (submits a complaint about) a comment on a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.reportComment")
+    public PhotosReportCommentQuery reportComment(UserActor actor) {
+        return new PhotosReportCommentQuery(getClient(), actor);
     }
 
     /**
      * Restores a deleted photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photoId Photo ID.
      * @return query
      */
-    public PhotosRestoreQuery restore(UserActor actor, int photoId) {
+    @ApiMethod("photos.restore")
+    public PhotosRestoreQuery restore(UserActor actor, Integer photoId) {
         return new PhotosRestoreQuery(getClient(), actor, photoId);
+    }
+
+    /**
+     * Restores a deleted photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.restore")
+    public PhotosRestoreQuery restore(UserActor actor) {
+        return new PhotosRestoreQuery(getClient(), actor);
     }
 
     /**
      * Restores a deleted comment on a photo.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param commentId ID of the deleted comment.
      * @return query
      */
-    public PhotosRestoreCommentQuery restoreComment(UserActor actor, int commentId) {
+    @ApiMethod("photos.restoreComment")
+    public PhotosRestoreCommentQuery restoreComment(UserActor actor, Integer commentId) {
         return new PhotosRestoreCommentQuery(getClient(), actor, commentId);
+    }
+
+    /**
+     * Restores a deleted comment on a photo.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.restoreComment")
+    public PhotosRestoreCommentQuery restoreComment(UserActor actor) {
+        return new PhotosRestoreCommentQuery(getClient(), actor);
     }
 
     /**
      * Saves photos after successful uploading.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.save")
     public PhotosSaveQuery save(UserActor actor) {
         return new PhotosSaveQuery(getClient(), actor);
     }
@@ -686,39 +952,64 @@ public class Photos extends AbstractAction {
     /**
      * Saves market album photos after successful uploading.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param photo Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @param server Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @param hash Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @return query
      */
-    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(UserActor actor, int groupId,
-            String photo, int server, String hash) {
+    @ApiMethod("photos.saveMarketAlbumPhoto")
+    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(UserActor actor, Long groupId,
+            String photo, Integer server, String hash) {
         return new PhotosSaveMarketAlbumPhotoQuery(getClient(), actor, groupId, photo, server, hash);
+    }
+
+    /**
+     * Saves market album photos after successful uploading.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.saveMarketAlbumPhoto")
+    public PhotosSaveMarketAlbumPhotoQuery saveMarketAlbumPhoto(UserActor actor) {
+        return new PhotosSaveMarketAlbumPhotoQuery(getClient(), actor);
     }
 
     /**
      * Saves market photos after successful uploading.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photo Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @param server Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @param hash Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
      * @return query
      */
-    public PhotosSaveMarketPhotoQuery saveMarketPhoto(UserActor actor, String photo, int server,
+    @ApiMethod("photos.saveMarketPhoto")
+    public PhotosSaveMarketPhotoQuery saveMarketPhoto(UserActor actor, String photo, Integer server,
             String hash) {
         return new PhotosSaveMarketPhotoQuery(getClient(), actor, photo, server, hash);
     }
 
     /**
+     * Saves market photos after successful uploading.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.saveMarketPhoto")
+    public PhotosSaveMarketPhotoQuery saveMarketPhoto(UserActor actor) {
+        return new PhotosSaveMarketPhotoQuery(getClient(), actor);
+    }
+
+    /**
      * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photo Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
      * @return query
      */
+    @ApiMethod("photos.saveMessagesPhoto")
     public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(UserActor actor, String photo) {
         return new PhotosSaveMessagesPhotoQuery(getClient(), actor, photo);
     }
@@ -726,46 +1017,66 @@ public class Photos extends AbstractAction {
     /**
      * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.saveMessagesPhoto")
+    public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(UserActor actor) {
+        return new PhotosSaveMessagesPhotoQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+     *
+     * @param actor vk group actor
      * @param photo Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
      * @return query
      */
+    @ApiMethod("photos.saveMessagesPhoto")
     public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(GroupActor actor, String photo) {
         return new PhotosSaveMessagesPhotoQuery(getClient(), actor, photo);
     }
 
     /**
-     * Saves cover photo after successful uploading.
+     * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
      *
-     * @param actor vk actor
-     * @param hash Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-     * @param photo Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-     * @return query
+     * @param actor vk group actor
+     * @return only actor query 
      */
-    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(UserActor actor, String hash,
-            String photo) {
-        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, hash, photo);
+    @ApiMethod("photos.saveMessagesPhoto")
+    public PhotosSaveMessagesPhotoQuery saveMessagesPhoto(GroupActor actor) {
+        return new PhotosSaveMessagesPhotoQuery(getClient(), actor);
     }
 
     /**
      * Saves cover photo after successful uploading.
      *
-     * @param actor vk actor
-     * @param hash Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
-     * @param photo Parameter returned when photos are [vk.com/dev/upload_files|uploaded to server].
+     * @param actor vk user actor
      * @return query
      */
-    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(GroupActor actor, String hash,
-            String photo) {
-        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor, hash, photo);
+    @ApiMethod("photos.saveOwnerCoverPhoto")
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(UserActor actor) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves cover photo after successful uploading.
+     *
+     * @param actor vk group actor
+     * @return query
+     */
+    @ApiMethod("photos.saveOwnerCoverPhoto")
+    public PhotosSaveOwnerCoverPhotoQuery saveOwnerCoverPhoto(GroupActor actor) {
+        return new PhotosSaveOwnerCoverPhotoQuery(getClient(), actor);
     }
 
     /**
      * Saves a profile or community photo. Upload URL can be got with the [vk.com/dev/photos.getOwnerPhotoUploadServer|photos.getOwnerPhotoUploadServer] method.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.saveOwnerPhoto")
     public PhotosSaveOwnerPhotoQuery saveOwnerPhoto(UserActor actor) {
         return new PhotosSaveOwnerPhotoQuery(getClient(), actor);
     }
@@ -773,20 +1084,33 @@ public class Photos extends AbstractAction {
     /**
      * Saves a photo to a user's or community's wall after being uploaded.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param photo Parameter returned when the the photo is [vk.com/dev/upload_files|uploaded to the server].
      * @return query
      */
+    @ApiMethod("photos.saveWallPhoto")
     public PhotosSaveWallPhotoQuery saveWallPhoto(UserActor actor, String photo) {
         return new PhotosSaveWallPhotoQuery(getClient(), actor, photo);
     }
 
     /**
+     * Saves a photo to a user's or community's wall after being uploaded.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("photos.saveWallPhoto")
+    public PhotosSaveWallPhotoQuery saveWallPhoto(UserActor actor) {
+        return new PhotosSaveWallPhotoQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a list of photos.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("photos.search")
     public PhotosSearchQuery search(UserActor actor) {
         return new PhotosSearchQuery(getClient(), actor);
     }
@@ -794,9 +1118,10 @@ public class Photos extends AbstractAction {
     /**
      * Returns a list of photos.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("photos.search")
     public PhotosSearchQuery search(ServiceActor actor) {
         return new PhotosSearchQuery(getClient(), actor);
     }

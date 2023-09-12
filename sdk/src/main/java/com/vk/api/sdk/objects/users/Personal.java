@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.users;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.database.LanguageFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +26,12 @@ public class Personal implements Validable {
 
     @SerializedName("langs")
     private List<String> langs;
+
+    /**
+     * User's languages with full info
+     */
+    @SerializedName("langs_full")
+    private List<LanguageFull> langsFull;
 
     /**
      * User's personal priority in life
@@ -89,6 +96,15 @@ public class Personal implements Validable {
         return this;
     }
 
+    public List<LanguageFull> getLangsFull() {
+        return langsFull;
+    }
+
+    public Personal setLangsFull(List<LanguageFull> langsFull) {
+        this.langsFull = langsFull;
+        return this;
+    }
+
     public Integer getLifeMain() {
         return lifeMain;
     }
@@ -145,7 +161,7 @@ public class Personal implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(alcohol, peopleMain, smoking, political, lifeMain, langs, inspiredBy, religionId, religion);
+        return Objects.hash(alcohol, langsFull, peopleMain, smoking, political, lifeMain, langs, inspiredBy, religionId, religion);
     }
 
     @Override
@@ -160,6 +176,7 @@ public class Personal implements Validable {
                 Objects.equals(smoking, personal.smoking) &&
                 Objects.equals(political, personal.political) &&
                 Objects.equals(langs, personal.langs) &&
+                Objects.equals(langsFull, personal.langsFull) &&
                 Objects.equals(inspiredBy, personal.inspiredBy) &&
                 Objects.equals(religion, personal.religion);
     }
@@ -179,6 +196,7 @@ public class Personal implements Validable {
         sb.append(", smoking=").append(smoking);
         sb.append(", political=").append(political);
         sb.append(", langs='").append(langs).append("'");
+        sb.append(", langsFull=").append(langsFull);
         sb.append(", inspiredBy='").append(inspiredBy).append("'");
         sb.append(", religion='").append(religion).append("'");
         sb.append('}');

@@ -12,21 +12,49 @@ import java.util.Objects;
  * ChatSettings object
  */
 public class ChatSettings implements Validable {
-    @SerializedName("members_count")
-    private Integer membersCount;
+    @SerializedName("acl")
+    @Required
+    private ChatSettingsAcl acl;
+
+    @SerializedName("active_ids")
+    private List<Long> activeIds;
+
+    /**
+     * Ids of chat admins
+     */
+    @SerializedName("admin_ids")
+    private List<Long> adminIds;
+
+    @SerializedName("disappearing_chat_link")
+    private String disappearingChatLink;
 
     @SerializedName("friends_count")
     private Integer friendsCount;
 
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    @SerializedName("is_disappearing")
+    private Boolean isDisappearing;
+
+    @SerializedName("is_group_channel")
+    private Boolean isGroupChannel;
+
+    @SerializedName("is_service")
+    private Boolean isService;
+
+    @SerializedName("members_count")
+    private Integer membersCount;
 
     /**
-     * Chat title
+     * Entity: owner
      */
-    @SerializedName("title")
+    @SerializedName("owner_id")
     @Required
-    private String title;
+    private Long ownerId;
+
+    @SerializedName("permissions")
+    private ChatSettingsPermissions permissions;
+
+    @SerializedName("photo")
+    private ChatSettingsPhoto photo;
 
     @SerializedName("pinned_message")
     private PinnedMessage pinnedMessage;
@@ -35,46 +63,49 @@ public class ChatSettings implements Validable {
     @Required
     private ChatSettingsState state;
 
-    @SerializedName("photo")
-    private ChatSettingsPhoto photo;
-
-    /**
-     * Ids of chat admins
-     */
-    @SerializedName("admin_ids")
-    private List<Integer> adminIds;
-
-    @SerializedName("active_ids")
-    private List<Integer> activeIds;
-
-    @SerializedName("is_group_channel")
-    private Boolean isGroupChannel;
-
-    @SerializedName("acl")
-    @Required
-    private ChatSettingsAcl acl;
-
-    @SerializedName("permissions")
-    private ChatSettingsPermissions permissions;
-
-    @SerializedName("is_disappearing")
-    private Boolean isDisappearing;
-
     @SerializedName("theme")
     private String theme;
 
-    @SerializedName("disappearing_chat_link")
-    private String disappearingChatLink;
+    /**
+     * Chat title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
 
-    @SerializedName("is_service")
-    private Boolean isService;
-
-    public Integer getMembersCount() {
-        return membersCount;
+    public ChatSettingsAcl getAcl() {
+        return acl;
     }
 
-    public ChatSettings setMembersCount(Integer membersCount) {
-        this.membersCount = membersCount;
+    public ChatSettings setAcl(ChatSettingsAcl acl) {
+        this.acl = acl;
+        return this;
+    }
+
+    public List<Long> getActiveIds() {
+        return activeIds;
+    }
+
+    public ChatSettings setActiveIds(List<Long> activeIds) {
+        this.activeIds = activeIds;
+        return this;
+    }
+
+    public List<Long> getAdminIds() {
+        return adminIds;
+    }
+
+    public ChatSettings setAdminIds(List<Long> adminIds) {
+        this.adminIds = adminIds;
+        return this;
+    }
+
+    public String getDisappearingChatLink() {
+        return disappearingChatLink;
+    }
+
+    public ChatSettings setDisappearingChatLink(String disappearingChatLink) {
+        this.disappearingChatLink = disappearingChatLink;
         return this;
     }
 
@@ -87,21 +118,66 @@ public class ChatSettings implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getIsDisappearing() {
+        return isDisappearing;
+    }
+
+    public ChatSettings setIsDisappearing(Boolean isDisappearing) {
+        this.isDisappearing = isDisappearing;
+        return this;
+    }
+
+    public Boolean getIsGroupChannel() {
+        return isGroupChannel;
+    }
+
+    public ChatSettings setIsGroupChannel(Boolean isGroupChannel) {
+        this.isGroupChannel = isGroupChannel;
+        return this;
+    }
+
+    public Boolean getIsService() {
+        return isService;
+    }
+
+    public ChatSettings setIsService(Boolean isService) {
+        this.isService = isService;
+        return this;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public ChatSettings setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public ChatSettings setOwnerId(Integer ownerId) {
+    public ChatSettings setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public ChatSettingsPermissions getPermissions() {
+        return permissions;
     }
 
-    public ChatSettings setTitle(String title) {
-        this.title = title;
+    public ChatSettings setPermissions(ChatSettingsPermissions permissions) {
+        this.permissions = permissions;
+        return this;
+    }
+
+    public ChatSettingsPhoto getPhoto() {
+        return photo;
+    }
+
+    public ChatSettings setPhoto(ChatSettingsPhoto photo) {
+        this.photo = photo;
         return this;
     }
 
@@ -123,69 +199,6 @@ public class ChatSettings implements Validable {
         return this;
     }
 
-    public ChatSettingsPhoto getPhoto() {
-        return photo;
-    }
-
-    public ChatSettings setPhoto(ChatSettingsPhoto photo) {
-        this.photo = photo;
-        return this;
-    }
-
-    public List<Integer> getAdminIds() {
-        return adminIds;
-    }
-
-    public ChatSettings setAdminIds(List<Integer> adminIds) {
-        this.adminIds = adminIds;
-        return this;
-    }
-
-    public List<Integer> getActiveIds() {
-        return activeIds;
-    }
-
-    public ChatSettings setActiveIds(List<Integer> activeIds) {
-        this.activeIds = activeIds;
-        return this;
-    }
-
-    public Boolean getIsGroupChannel() {
-        return isGroupChannel;
-    }
-
-    public ChatSettings setIsGroupChannel(Boolean isGroupChannel) {
-        this.isGroupChannel = isGroupChannel;
-        return this;
-    }
-
-    public ChatSettingsAcl getAcl() {
-        return acl;
-    }
-
-    public ChatSettings setAcl(ChatSettingsAcl acl) {
-        this.acl = acl;
-        return this;
-    }
-
-    public ChatSettingsPermissions getPermissions() {
-        return permissions;
-    }
-
-    public ChatSettings setPermissions(ChatSettingsPermissions permissions) {
-        this.permissions = permissions;
-        return this;
-    }
-
-    public Boolean getIsDisappearing() {
-        return isDisappearing;
-    }
-
-    public ChatSettings setIsDisappearing(Boolean isDisappearing) {
-        this.isDisappearing = isDisappearing;
-        return this;
-    }
-
     public String getTheme() {
         return theme;
     }
@@ -195,21 +208,12 @@ public class ChatSettings implements Validable {
         return this;
     }
 
-    public String getDisappearingChatLink() {
-        return disappearingChatLink;
+    public String getTitle() {
+        return title;
     }
 
-    public ChatSettings setDisappearingChatLink(String disappearingChatLink) {
-        this.disappearingChatLink = disappearingChatLink;
-        return this;
-    }
-
-    public Boolean getIsService() {
-        return isService;
-    }
-
-    public ChatSettings setIsService(Boolean isService) {
-        this.isService = isService;
+    public ChatSettings setTitle(String title) {
+        this.title = title;
         return this;
     }
 
@@ -225,8 +229,8 @@ public class ChatSettings implements Validable {
         ChatSettings chatSettings = (ChatSettings) o;
         return Objects.equals(friendsCount, chatSettings.friendsCount) &&
                 Objects.equals(isGroupChannel, chatSettings.isGroupChannel) &&
-                Objects.equals(ownerId, chatSettings.ownerId) &&
                 Objects.equals(activeIds, chatSettings.activeIds) &&
+                Objects.equals(ownerId, chatSettings.ownerId) &&
                 Objects.equals(photo, chatSettings.photo) &&
                 Objects.equals(acl, chatSettings.acl) &&
                 Objects.equals(title, chatSettings.title) &&
@@ -235,8 +239,8 @@ public class ChatSettings implements Validable {
                 Objects.equals(isDisappearing, chatSettings.isDisappearing) &&
                 Objects.equals(permissions, chatSettings.permissions) &&
                 Objects.equals(disappearingChatLink, chatSettings.disappearingChatLink) &&
-                Objects.equals(membersCount, chatSettings.membersCount) &&
                 Objects.equals(adminIds, chatSettings.adminIds) &&
+                Objects.equals(membersCount, chatSettings.membersCount) &&
                 Objects.equals(theme, chatSettings.theme) &&
                 Objects.equals(state, chatSettings.state);
     }
@@ -251,8 +255,8 @@ public class ChatSettings implements Validable {
         final StringBuilder sb = new StringBuilder("ChatSettings{");
         sb.append("friendsCount=").append(friendsCount);
         sb.append(", isGroupChannel=").append(isGroupChannel);
-        sb.append(", ownerId=").append(ownerId);
         sb.append(", activeIds=").append(activeIds);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", photo=").append(photo);
         sb.append(", acl=").append(acl);
         sb.append(", title='").append(title).append("'");
@@ -261,8 +265,8 @@ public class ChatSettings implements Validable {
         sb.append(", isDisappearing=").append(isDisappearing);
         sb.append(", permissions=").append(permissions);
         sb.append(", disappearingChatLink='").append(disappearingChatLink).append("'");
-        sb.append(", membersCount=").append(membersCount);
         sb.append(", adminIds=").append(adminIds);
+        sb.append(", membersCount=").append(membersCount);
         sb.append(", theme='").append(theme).append("'");
         sb.append(", state=").append(state);
         sb.append('}');

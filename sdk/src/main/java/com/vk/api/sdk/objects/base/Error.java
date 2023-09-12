@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.base;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,19 +16,20 @@ public class Error implements Validable {
      * Error code
      */
     @SerializedName("error_code")
+    @Required
     private Integer errorCode;
-
-    /**
-     * Error subcode
-     */
-    @SerializedName("error_subcode")
-    private Integer errorSubcode;
 
     /**
      * Error message
      */
     @SerializedName("error_msg")
     private String errorMsg;
+
+    /**
+     * Error subcode
+     */
+    @SerializedName("error_subcode")
+    private Integer errorSubcode;
 
     /**
      * Localized error message
@@ -47,21 +49,21 @@ public class Error implements Validable {
         return this;
     }
 
-    public Integer getErrorSubcode() {
-        return errorSubcode;
-    }
-
-    public Error setErrorSubcode(Integer errorSubcode) {
-        this.errorSubcode = errorSubcode;
-        return this;
-    }
-
     public String getErrorMsg() {
         return errorMsg;
     }
 
     public Error setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
+        return this;
+    }
+
+    public Integer getErrorSubcode() {
+        return errorSubcode;
+    }
+
+    public Error setErrorSubcode(Integer errorSubcode) {
+        this.errorSubcode = errorSubcode;
         return this;
     }
 

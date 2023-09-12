@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.stories;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSendInteractionQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,12 +28,25 @@ public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSen
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StoriesSendInteractionQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "stories.sendInteraction", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Set access key
      *
      * @param value value of "access key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesSendInteractionQuery accessKey(String value) {
+    @ApiParam("access_key")
+    public StoriesSendInteractionQuery accessKey(String value) {
         return unsafeParam("access_key", value);
     }
 
@@ -42,6 +56,7 @@ public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSen
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public StoriesSendInteractionQuery message(String value) {
         return unsafeParam("message", value);
     }
@@ -52,6 +67,7 @@ public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSen
      * @param value value of "is broadcast" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_broadcast")
     public StoriesSendInteractionQuery isBroadcast(Boolean value) {
         return unsafeParam("is_broadcast", value);
     }
@@ -62,6 +78,7 @@ public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSen
      * @param value value of "is anonymous" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_anonymous")
     public StoriesSendInteractionQuery isAnonymous(Boolean value) {
         return unsafeParam("is_anonymous", value);
     }
@@ -72,6 +89,7 @@ public class StoriesSendInteractionQuery extends AbstractQueryBuilder<StoriesSen
      * @param value value of "unseen marker" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("unseen_marker")
     public StoriesSendInteractionQuery unseenMarker(Boolean value) {
         return unsafeParam("unseen_marker", value);
     }

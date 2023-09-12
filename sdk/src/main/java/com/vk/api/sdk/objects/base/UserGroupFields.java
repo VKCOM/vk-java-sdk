@@ -44,6 +44,9 @@ public enum UserGroupFields implements EnumParam {
     @SerializedName("books")
     BOOKS("books"),
 
+    @SerializedName("can_ban")
+    CAN_BAN("can_ban"),
+
     @SerializedName("can_create_topic")
     CAN_CREATE_TOPIC("can_create_topic"),
 
@@ -155,6 +158,9 @@ public enum UserGroupFields implements EnumParam {
     @SerializedName("is_friend")
     IS_FRIEND("is_friend"),
 
+    @SerializedName("is_best_friend")
+    IS_BEST_FRIEND("is_best_friend"),
+
     @SerializedName("is_hidden_from_feed")
     IS_HIDDEN_FROM_FEED("is_hidden_from_feed"),
 
@@ -251,6 +257,9 @@ public enum UserGroupFields implements EnumParam {
     @SerializedName("photo_max_orig")
     PHOTO_MAX_ORIG("photo_max_orig"),
 
+    @SerializedName("photo_avg_color")
+    PHOTO_AVG_COLOR("photo_avg_color"),
+
     @SerializedName("quotes")
     QUOTES("quotes"),
 
@@ -302,8 +311,53 @@ public enum UserGroupFields implements EnumParam {
     @SerializedName("wiki_page")
     WIKI_PAGE("wiki_page"),
 
+    @SerializedName("first_name")
+    FIRST_NAME("first_name"),
+
+    @SerializedName("first_name_acc")
+    FIRST_NAME_ACC("first_name_acc"),
+
+    @SerializedName("first_name_dat")
+    FIRST_NAME_DAT("first_name_dat"),
+
+    @SerializedName("first_name_gen")
+    FIRST_NAME_GEN("first_name_gen"),
+
+    @SerializedName("last_name")
+    LAST_NAME("last_name"),
+
+    @SerializedName("last_name_acc")
+    LAST_NAME_ACC("last_name_acc"),
+
+    @SerializedName("last_name_dat")
+    LAST_NAME_DAT("last_name_dat"),
+
+    @SerializedName("last_name_gen")
+    LAST_NAME_GEN("last_name_gen"),
+
+    @SerializedName("can_subscribe_stories")
+    CAN_SUBSCRIBE_STORIES("can_subscribe_stories"),
+
+    @SerializedName("is_subscribed_stories")
+    IS_SUBSCRIBED_STORIES("is_subscribed_stories"),
+
     @SerializedName("vk_admin_status")
-    VK_ADMIN_STATUS("vk_admin_status");
+    VK_ADMIN_STATUS("vk_admin_status"),
+
+    @SerializedName("can_upload_story")
+    CAN_UPLOAD_STORY("can_upload_story"),
+
+    @SerializedName("clips_count")
+    CLIPS_COUNT("clips_count"),
+
+    @SerializedName("image_status")
+    IMAGE_STATUS("image_status"),
+
+    @SerializedName("is_nft")
+    IS_NFT("is_nft"),
+
+    @SerializedName("is_nft_photo")
+    IS_NFT_PHOTO("is_nft_photo");
 
     private final String value;
 

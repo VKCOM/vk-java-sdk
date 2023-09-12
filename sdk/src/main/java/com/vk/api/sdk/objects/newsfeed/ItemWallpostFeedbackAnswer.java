@@ -11,22 +11,13 @@ import java.util.Objects;
  * ItemWallpostFeedbackAnswer object
  */
 public class ItemWallpostFeedbackAnswer implements Validable {
-    @SerializedName("title")
-    @Required
-    private String title;
-
     @SerializedName("id")
     @Required
     private String id;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public ItemWallpostFeedbackAnswer setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("title")
+    @Required
+    private String title;
 
     public String getId() {
         return id;
@@ -34,6 +25,15 @@ public class ItemWallpostFeedbackAnswer implements Validable {
 
     public ItemWallpostFeedbackAnswer setId(String id) {
         this.id = id;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemWallpostFeedbackAnswer setTitle(String title) {
+        this.title = title;
         return this;
     }
 

@@ -13,29 +13,52 @@ import java.util.Objects;
  */
 public class LookalikeRequest implements Validable {
     /**
+     * Lookalike request seed audience size
+     */
+    @SerializedName("audience_count")
+    private Integer audienceCount;
+
+    /**
+     * Lookalike request create time, as Unixtime
+     */
+    @SerializedName("create_time")
+    @Required
+    private Integer createTime;
+
+    /**
      * Lookalike request ID
      */
     @SerializedName("id")
     @Required
     private Integer id;
 
-    /**
-     * Lookalike request create time, as Unixtime
-     */
-    @SerializedName("create_time")
-    private Integer createTime;
-
-    /**
-     * Lookalike request update time, as Unixtime
-     */
-    @SerializedName("update_time")
-    private Integer updateTime;
+    @SerializedName("save_audience_levels")
+    private List<LookalikeRequestSaveAudienceLevel> saveAudienceLevels;
 
     /**
      * Time by which lookalike request would be deleted, as Unixtime
      */
     @SerializedName("scheduled_delete_time")
     private Integer scheduledDeleteTime;
+
+    /**
+     * Lookalike request seed name (retargeting group name)
+     */
+    @SerializedName("source_name")
+    private String sourceName;
+
+    /**
+     * Retargeting group id, which was used as lookalike seed
+     */
+    @SerializedName("source_retargeting_group_id")
+    private Integer sourceRetargetingGroupId;
+
+    /**
+     * Lookalike request source type
+     */
+    @SerializedName("source_type")
+    @Required
+    private LookalikeRequestSourceType sourceType;
 
     /**
      * Lookalike request status
@@ -45,38 +68,18 @@ public class LookalikeRequest implements Validable {
     private LookalikeRequestStatus status;
 
     /**
-     * Lookalike request source type
+     * Lookalike request update time, as Unixtime
      */
-    @SerializedName("source_type")
-    private LookalikeRequestSourceType sourceType;
+    @SerializedName("update_time")
+    @Required
+    private Integer updateTime;
 
-    /**
-     * Retargeting group id, which was used as lookalike seed
-     */
-    @SerializedName("source_retargeting_group_id")
-    private Integer sourceRetargetingGroupId;
-
-    /**
-     * Lookalike request seed name (retargeting group name)
-     */
-    @SerializedName("source_name")
-    private String sourceName;
-
-    /**
-     * Lookalike request seed audience size
-     */
-    @SerializedName("audience_count")
-    private Integer audienceCount;
-
-    @SerializedName("save_audience_levels")
-    private List<LookalikeRequestSaveAudienceLevel> saveAudienceLevels;
-
-    public Integer getId() {
-        return id;
+    public Integer getAudienceCount() {
+        return audienceCount;
     }
 
-    public LookalikeRequest setId(Integer id) {
-        this.id = id;
+    public LookalikeRequest setAudienceCount(Integer audienceCount) {
+        this.audienceCount = audienceCount;
         return this;
     }
 
@@ -89,66 +92,12 @@ public class LookalikeRequest implements Validable {
         return this;
     }
 
-    public Integer getUpdateTime() {
-        return updateTime;
+    public Integer getId() {
+        return id;
     }
 
-    public LookalikeRequest setUpdateTime(Integer updateTime) {
-        this.updateTime = updateTime;
-        return this;
-    }
-
-    public Integer getScheduledDeleteTime() {
-        return scheduledDeleteTime;
-    }
-
-    public LookalikeRequest setScheduledDeleteTime(Integer scheduledDeleteTime) {
-        this.scheduledDeleteTime = scheduledDeleteTime;
-        return this;
-    }
-
-    public LookalikeRequestStatus getStatus() {
-        return status;
-    }
-
-    public LookalikeRequest setStatus(LookalikeRequestStatus status) {
-        this.status = status;
-        return this;
-    }
-
-    public LookalikeRequestSourceType getSourceType() {
-        return sourceType;
-    }
-
-    public LookalikeRequest setSourceType(LookalikeRequestSourceType sourceType) {
-        this.sourceType = sourceType;
-        return this;
-    }
-
-    public Integer getSourceRetargetingGroupId() {
-        return sourceRetargetingGroupId;
-    }
-
-    public LookalikeRequest setSourceRetargetingGroupId(Integer sourceRetargetingGroupId) {
-        this.sourceRetargetingGroupId = sourceRetargetingGroupId;
-        return this;
-    }
-
-    public String getSourceName() {
-        return sourceName;
-    }
-
-    public LookalikeRequest setSourceName(String sourceName) {
-        this.sourceName = sourceName;
-        return this;
-    }
-
-    public Integer getAudienceCount() {
-        return audienceCount;
-    }
-
-    public LookalikeRequest setAudienceCount(Integer audienceCount) {
-        this.audienceCount = audienceCount;
+    public LookalikeRequest setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -162,6 +111,60 @@ public class LookalikeRequest implements Validable {
         return this;
     }
 
+    public Integer getScheduledDeleteTime() {
+        return scheduledDeleteTime;
+    }
+
+    public LookalikeRequest setScheduledDeleteTime(Integer scheduledDeleteTime) {
+        this.scheduledDeleteTime = scheduledDeleteTime;
+        return this;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public LookalikeRequest setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+        return this;
+    }
+
+    public Integer getSourceRetargetingGroupId() {
+        return sourceRetargetingGroupId;
+    }
+
+    public LookalikeRequest setSourceRetargetingGroupId(Integer sourceRetargetingGroupId) {
+        this.sourceRetargetingGroupId = sourceRetargetingGroupId;
+        return this;
+    }
+
+    public LookalikeRequestSourceType getSourceType() {
+        return sourceType;
+    }
+
+    public LookalikeRequest setSourceType(LookalikeRequestSourceType sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+
+    public LookalikeRequestStatus getStatus() {
+        return status;
+    }
+
+    public LookalikeRequest setStatus(LookalikeRequestStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    public Integer getUpdateTime() {
+        return updateTime;
+    }
+
+    public LookalikeRequest setUpdateTime(Integer updateTime) {
+        this.updateTime = updateTime;
+        return this;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(scheduledDeleteTime, createTime, sourceType, sourceRetargetingGroupId, saveAudienceLevels, audienceCount, updateTime, id, sourceName, status);
@@ -172,8 +175,8 @@ public class LookalikeRequest implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LookalikeRequest lookalikeRequest = (LookalikeRequest) o;
-        return Objects.equals(updateTime, lookalikeRequest.updateTime) &&
-                Objects.equals(saveAudienceLevels, lookalikeRequest.saveAudienceLevels) &&
+        return Objects.equals(saveAudienceLevels, lookalikeRequest.saveAudienceLevels) &&
+                Objects.equals(updateTime, lookalikeRequest.updateTime) &&
                 Objects.equals(createTime, lookalikeRequest.createTime) &&
                 Objects.equals(audienceCount, lookalikeRequest.audienceCount) &&
                 Objects.equals(scheduledDeleteTime, lookalikeRequest.scheduledDeleteTime) &&
@@ -192,8 +195,8 @@ public class LookalikeRequest implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LookalikeRequest{");
-        sb.append("updateTime=").append(updateTime);
-        sb.append(", saveAudienceLevels=").append(saveAudienceLevels);
+        sb.append("saveAudienceLevels=").append(saveAudienceLevels);
+        sb.append(", updateTime=").append(updateTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", audienceCount=").append(audienceCount);
         sb.append(", scheduledDeleteTime=").append(scheduledDeleteTime);

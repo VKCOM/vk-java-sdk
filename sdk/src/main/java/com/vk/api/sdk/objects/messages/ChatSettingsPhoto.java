@@ -12,10 +12,16 @@ import java.util.Objects;
  */
 public class ChatSettingsPhoto implements Validable {
     /**
-     * URL of the preview image with 50px in width
+     * If provided photo is default call photo
      */
-    @SerializedName("photo_50")
-    private URI photo50;
+    @SerializedName("is_default_call_photo")
+    private Boolean isDefaultCallPhoto;
+
+    /**
+     * If provided photo is default
+     */
+    @SerializedName("is_default_photo")
+    private Boolean isDefaultPhoto;
 
     /**
      * URL of the preview image with 100px in width
@@ -30,17 +36,26 @@ public class ChatSettingsPhoto implements Validable {
     private URI photo200;
 
     /**
-     * If provided photo is default
+     * URL of the preview image with 50px in width
      */
-    @SerializedName("is_default_photo")
-    private Boolean isDefaultPhoto;
+    @SerializedName("photo_50")
+    private URI photo50;
 
-    public URI getPhoto50() {
-        return photo50;
+    public Boolean getIsDefaultCallPhoto() {
+        return isDefaultCallPhoto;
     }
 
-    public ChatSettingsPhoto setPhoto50(URI photo50) {
-        this.photo50 = photo50;
+    public ChatSettingsPhoto setIsDefaultCallPhoto(Boolean isDefaultCallPhoto) {
+        this.isDefaultCallPhoto = isDefaultCallPhoto;
+        return this;
+    }
+
+    public Boolean getIsDefaultPhoto() {
+        return isDefaultPhoto;
+    }
+
+    public ChatSettingsPhoto setIsDefaultPhoto(Boolean isDefaultPhoto) {
+        this.isDefaultPhoto = isDefaultPhoto;
         return this;
     }
 
@@ -62,18 +77,18 @@ public class ChatSettingsPhoto implements Validable {
         return this;
     }
 
-    public Boolean getIsDefaultPhoto() {
-        return isDefaultPhoto;
+    public URI getPhoto50() {
+        return photo50;
     }
 
-    public ChatSettingsPhoto setIsDefaultPhoto(Boolean isDefaultPhoto) {
-        this.isDefaultPhoto = isDefaultPhoto;
+    public ChatSettingsPhoto setPhoto50(URI photo50) {
+        this.photo50 = photo50;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(photo100, photo50, photo200, isDefaultPhoto);
+        return Objects.hash(photo100, isDefaultCallPhoto, photo50, photo200, isDefaultPhoto);
     }
 
     @Override
@@ -84,7 +99,8 @@ public class ChatSettingsPhoto implements Validable {
         return Objects.equals(photo50, chatSettingsPhoto.photo50) &&
                 Objects.equals(isDefaultPhoto, chatSettingsPhoto.isDefaultPhoto) &&
                 Objects.equals(photo100, chatSettingsPhoto.photo100) &&
-                Objects.equals(photo200, chatSettingsPhoto.photo200);
+                Objects.equals(photo200, chatSettingsPhoto.photo200) &&
+                Objects.equals(isDefaultCallPhoto, chatSettingsPhoto.isDefaultCallPhoto);
     }
 
     @Override
@@ -99,6 +115,7 @@ public class ChatSettingsPhoto implements Validable {
         sb.append(", isDefaultPhoto=").append(isDefaultPhoto);
         sb.append(", photo100=").append(photo100);
         sb.append(", photo200=").append(photo200);
+        sb.append(", isDefaultCallPhoto=").append(isDefaultCallPhoto);
         sb.append('}');
         return sb.toString();
     }

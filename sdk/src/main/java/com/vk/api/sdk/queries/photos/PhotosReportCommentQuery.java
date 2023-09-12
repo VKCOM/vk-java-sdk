@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.photos.ReportCommentReason;
 import java.util.Arrays;
@@ -14,15 +15,16 @@ import java.util.List;
  */
 public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportCommentQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public PhotosReportCommentQuery(VkApiClient client, UserActor actor, int ownerId,
-            int commentId) {
+    public PhotosReportCommentQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer commentId) {
         super(client, "photos.reportComment", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -30,12 +32,25 @@ public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportC
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosReportCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.reportComment", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosReportCommentQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public PhotosReportCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -45,7 +60,8 @@ public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportC
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosReportCommentQuery commentId(int value) {
+    @ApiParam("comment_id")
+    public PhotosReportCommentQuery commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 
@@ -55,6 +71,7 @@ public class PhotosReportCommentQuery extends AbstractQueryBuilder<PhotosReportC
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reason")
     public PhotosReportCommentQuery reason(ReportCommentReason value) {
         return unsafeParam("reason", value);
     }

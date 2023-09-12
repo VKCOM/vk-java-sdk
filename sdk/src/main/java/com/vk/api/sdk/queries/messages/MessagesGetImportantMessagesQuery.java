@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.messages.responses.GetImportantMessagesResponse;
 import java.util.Arrays;
@@ -15,18 +16,7 @@ import java.util.List;
  */
 public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<MessagesGetImportantMessagesQuery, GetImportantMessagesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesGetImportantMessagesQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.getImportantMessages", GetImportantMessagesResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,11 +28,23 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetImportantMessagesQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getImportantMessages", GetImportantMessagesResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Amount of needed important messages.
      *
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesGetImportantMessagesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -53,6 +55,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MessagesGetImportantMessagesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -63,6 +66,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "start message id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_message_id")
     public MessagesGetImportantMessagesQuery startMessageId(Integer value) {
         return unsafeParam("start_message_id", value);
     }
@@ -73,6 +77,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public MessagesGetImportantMessagesQuery previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
@@ -83,6 +88,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MessagesGetImportantMessagesQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -90,10 +96,12 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetImportantMessagesQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetImportantMessagesQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -104,6 +112,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetImportantMessagesQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -114,6 +123,7 @@ public class MessagesGetImportantMessagesQuery extends AbstractQueryBuilder<Mess
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetImportantMessagesQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

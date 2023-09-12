@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetAllResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, GetAllResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,19 +27,22 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
     /**
      * ID of a user or community that owns the photos. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetAllQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosGetAllQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
-     * '1' — to return detailed information about photos
+     * '1' - to return detailed information about photos
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public PhotosGetAllQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -49,6 +53,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public PhotosGetAllQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -59,6 +64,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public PhotosGetAllQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -69,6 +75,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "photo sizes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_sizes")
     public PhotosGetAllQuery photoSizes(Boolean value) {
         return unsafeParam("photo_sizes", value);
     }
@@ -79,6 +86,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "no service albums" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("no_service_albums")
     public PhotosGetAllQuery noServiceAlbums(Boolean value) {
         return unsafeParam("no_service_albums", value);
     }
@@ -89,6 +97,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "need hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_hidden")
     public PhotosGetAllQuery needHidden(Boolean value) {
         return unsafeParam("need_hidden", value);
     }
@@ -99,6 +108,7 @@ public class PhotosGetAllQuery extends AbstractQueryBuilder<PhotosGetAllQuery, G
      * @param value value of "skip hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("skip_hidden")
     public PhotosGetAllQuery skipHidden(Boolean value) {
         return unsafeParam("skip_hidden", value);
     }

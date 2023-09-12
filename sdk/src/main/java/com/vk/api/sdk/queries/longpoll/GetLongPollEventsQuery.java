@@ -4,6 +4,7 @@ import com.vk.api.sdk.events.longpoll.LongPollQueryBuilder;
 import com.vk.api.sdk.objects.callback.longpoll.responses.GetLongPollEventsResponse;
 import com.vk.api.sdk.objects.callback.longpoll.GetLongPollEventsActInfo;
 import com.vk.api.sdk.client.VkApiClient;
+import java.net.URI;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public class GetLongPollEventsQuery extends LongPollQueryBuilder<GetLongPollEven
      * @param key    secret key
      * @param ts     timestamp
      */
-    public GetLongPollEventsQuery(VkApiClient client, String url, String key, String ts) {
+    public GetLongPollEventsQuery(VkApiClient client, URI url, String key, String ts) {
         super(client, url, GetLongPollEventsResponse.class);
         act(GetLongPollEventsActInfo.CHECK);
         key(key);

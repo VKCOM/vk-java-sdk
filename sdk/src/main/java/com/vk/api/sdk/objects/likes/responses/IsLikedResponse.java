@@ -13,26 +13,18 @@ import java.util.Objects;
  */
 public class IsLikedResponse implements Validable {
     /**
-     * Information whether user liked the object
-     */
-    @SerializedName("liked")
-    @Required
-    private BoolInt liked;
-
-    /**
      * Information whether user reposted the object
      */
     @SerializedName("copied")
     @Required
     private BoolInt copied;
 
-    public boolean isLiked() {
-        return liked == BoolInt.YES;
-    }
-
-    public BoolInt getLiked() {
-        return liked;
-    }
+    /**
+     * Information whether user liked the object
+     */
+    @SerializedName("liked")
+    @Required
+    private BoolInt liked;
 
     public boolean isCopied() {
         return copied == BoolInt.YES;
@@ -40,6 +32,14 @@ public class IsLikedResponse implements Validable {
 
     public BoolInt getCopied() {
         return copied;
+    }
+
+    public boolean isLiked() {
+        return liked == BoolInt.YES;
+    }
+
+    public BoolInt getLiked() {
+        return liked;
     }
 
     @Override

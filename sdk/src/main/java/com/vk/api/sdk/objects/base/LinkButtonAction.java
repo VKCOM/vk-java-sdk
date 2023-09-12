@@ -5,13 +5,15 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URI;
 import java.util.Objects;
 
 /**
  * LinkButtonAction object
  */
 public class LinkButtonAction implements Validable {
+    @SerializedName("consume_reason")
+    private String consumeReason;
+
     @SerializedName("type")
     @Required
     private LinkButtonActionType type;
@@ -20,10 +22,16 @@ public class LinkButtonAction implements Validable {
      * Action URL
      */
     @SerializedName("url")
-    private URI url;
+    private String url;
 
-    @SerializedName("consume_reason")
-    private String consumeReason;
+    public String getConsumeReason() {
+        return consumeReason;
+    }
+
+    public LinkButtonAction setConsumeReason(String consumeReason) {
+        this.consumeReason = consumeReason;
+        return this;
+    }
 
     public LinkButtonActionType getType() {
         return type;
@@ -34,21 +42,12 @@ public class LinkButtonAction implements Validable {
         return this;
     }
 
-    public URI getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public LinkButtonAction setUrl(URI url) {
+    public LinkButtonAction setUrl(String url) {
         this.url = url;
-        return this;
-    }
-
-    public String getConsumeReason() {
-        return consumeReason;
-    }
-
-    public LinkButtonAction setConsumeReason(String consumeReason) {
-        this.consumeReason = consumeReason;
         return this;
     }
 
@@ -77,7 +76,7 @@ public class LinkButtonAction implements Validable {
         final StringBuilder sb = new StringBuilder("LinkButtonAction{");
         sb.append("consumeReason='").append(consumeReason).append("'");
         sb.append(", type=").append(type);
-        sb.append(", url=").append(url);
+        sb.append(", url='").append(url).append("'");
         sb.append('}');
         return sb.toString();
     }

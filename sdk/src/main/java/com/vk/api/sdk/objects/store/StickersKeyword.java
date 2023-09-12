@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.StickerNew;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,42 +13,24 @@ import java.util.Objects;
  * StickersKeyword object
  */
 public class StickersKeyword implements Validable {
-    @SerializedName("words")
-    @Required
-    private List<String> words;
-
-    @SerializedName("user_stickers")
-    private StickersKeywordStickers userStickers;
-
     @SerializedName("promoted_stickers")
-    private StickersKeywordStickers promotedStickers;
+    private List<StickerNew> promotedStickers;
 
     @SerializedName("stickers")
     private List<StickersKeywordSticker> stickers;
 
-    public List<String> getWords() {
-        return words;
-    }
+    @SerializedName("user_stickers")
+    private List<StickerNew> userStickers;
 
-    public StickersKeyword setWords(List<String> words) {
-        this.words = words;
-        return this;
-    }
+    @SerializedName("words")
+    @Required
+    private List<String> words;
 
-    public StickersKeywordStickers getUserStickers() {
-        return userStickers;
-    }
-
-    public StickersKeyword setUserStickers(StickersKeywordStickers userStickers) {
-        this.userStickers = userStickers;
-        return this;
-    }
-
-    public StickersKeywordStickers getPromotedStickers() {
+    public List<StickerNew> getPromotedStickers() {
         return promotedStickers;
     }
 
-    public StickersKeyword setPromotedStickers(StickersKeywordStickers promotedStickers) {
+    public StickersKeyword setPromotedStickers(List<StickerNew> promotedStickers) {
         this.promotedStickers = promotedStickers;
         return this;
     }
@@ -58,6 +41,24 @@ public class StickersKeyword implements Validable {
 
     public StickersKeyword setStickers(List<StickersKeywordSticker> stickers) {
         this.stickers = stickers;
+        return this;
+    }
+
+    public List<StickerNew> getUserStickers() {
+        return userStickers;
+    }
+
+    public StickersKeyword setUserStickers(List<StickerNew> userStickers) {
+        this.userStickers = userStickers;
+        return this;
+    }
+
+    public List<String> getWords() {
+        return words;
+    }
+
+    public StickersKeyword setWords(List<String> words) {
+        this.words = words;
         return this;
     }
 

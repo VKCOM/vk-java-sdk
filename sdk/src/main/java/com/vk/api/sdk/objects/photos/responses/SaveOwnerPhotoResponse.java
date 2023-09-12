@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.photos.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,12 +15,14 @@ public class SaveOwnerPhotoResponse implements Validable {
      * Photo hash
      */
     @SerializedName("photo_hash")
+    @Required
     private String photoHash;
 
     /**
      * Uploaded image url
      */
     @SerializedName("photo_src")
+    @Required
     private String photoSrc;
 
     /**
@@ -35,16 +38,16 @@ public class SaveOwnerPhotoResponse implements Validable {
     private String photoSrcSmall;
 
     /**
-     * Returns 1 if profile photo is saved
-     */
-    @SerializedName("saved")
-    private Integer saved;
-
-    /**
      * Created post ID
      */
     @SerializedName("post_id")
     private Integer postId;
+
+    /**
+     * Returns 1 if profile photo is saved
+     */
+    @SerializedName("saved")
+    private Integer saved;
 
     public String getPhotoHash() {
         return photoHash;
@@ -82,21 +85,21 @@ public class SaveOwnerPhotoResponse implements Validable {
         return this;
     }
 
-    public Integer getSaved() {
-        return saved;
-    }
-
-    public SaveOwnerPhotoResponse setSaved(Integer saved) {
-        this.saved = saved;
-        return this;
-    }
-
     public Integer getPostId() {
         return postId;
     }
 
     public SaveOwnerPhotoResponse setPostId(Integer postId) {
         this.postId = postId;
+        return this;
+    }
+
+    public Integer getSaved() {
+        return saved;
+    }
+
+    public SaveOwnerPhotoResponse setSaved(Integer saved) {
+        this.saved = saved;
         return this;
     }
 

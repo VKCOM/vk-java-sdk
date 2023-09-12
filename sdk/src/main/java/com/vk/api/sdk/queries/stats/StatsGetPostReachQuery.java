@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.stats.responses.GetPostReachResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,15 +15,15 @@ import java.util.List;
  */
 public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostReachQuery, List<GetPostReachResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      * @param postIds value of "post ids" parameter.
      */
-    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, String ownerId,
-            Integer... postIds) {
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Long... postIds) {
         super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, GetPostReachResponse.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -30,19 +31,30 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param ownerId value of "owner id" parameter.
      * @param postIds value of "post ids" parameter.
      */
-    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, String ownerId,
-            List<Integer> postIds) {
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor, Long ownerId,
+            List<Long> postIds) {
         super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, GetPostReachResponse.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         postIds(postIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public StatsGetPostReachQuery(VkApiClient client, UserActor actor) {
+        super(client, "stats.getPostReach", Utils.buildParametrizedType(List.class, GetPostReachResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -51,18 +63,20 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
      * @param value value of "owner id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StatsGetPostReachQuery ownerId(String value) {
+    @ApiParam("owner_id")
+    public StatsGetPostReachQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
-     * post_ids
+     * postIds
      * Wall posts id
      *
      * @param value value of "post ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StatsGetPostReachQuery postIds(Integer... value) {
+    @ApiParam("post_ids")
+    public StatsGetPostReachQuery postIds(Long... value) {
         return unsafeParam("post_ids", value);
     }
 
@@ -72,7 +86,8 @@ public class StatsGetPostReachQuery extends AbstractQueryBuilder<StatsGetPostRea
      * @param value value of "post ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StatsGetPostReachQuery postIds(List<Integer> value) {
+    @ApiParam("post_ids")
+    public StatsGetPostReachQuery postIds(List<Long> value) {
         return unsafeParam("post_ids", value);
     }
 

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,70 +12,89 @@ import java.util.Objects;
  */
 public class ChatSettingsAcl implements Validable {
     /**
+     * Can you init group call in the chat
+     */
+    @SerializedName("can_call")
+    @Required
+    private Boolean canCall;
+
+    /**
      * Can you change photo, description and name
      */
     @SerializedName("can_change_info")
+    @Required
     private Boolean canChangeInfo;
 
     /**
      * Can you change invite link for this chat
      */
     @SerializedName("can_change_invite_link")
+    @Required
     private Boolean canChangeInviteLink;
 
     /**
      * Can you pin/unpin message for this chat
      */
     @SerializedName("can_change_pin")
+    @Required
     private Boolean canChangePin;
-
-    /**
-     * Can you invite other peers in chat
-     */
-    @SerializedName("can_invite")
-    private Boolean canInvite;
-
-    /**
-     * Can you promote simple users to chat admins
-     */
-    @SerializedName("can_promote_users")
-    private Boolean canPromoteUsers;
-
-    /**
-     * Can you see invite link for this chat
-     */
-    @SerializedName("can_see_invite_link")
-    private Boolean canSeeInviteLink;
-
-    /**
-     * Can you moderate (delete) other users' messages
-     */
-    @SerializedName("can_moderate")
-    private Boolean canModerate;
-
-    /**
-     * Can you copy chat
-     */
-    @SerializedName("can_copy_chat")
-    private Boolean canCopyChat;
-
-    /**
-     * Can you init group call in the chat
-     */
-    @SerializedName("can_call")
-    private Boolean canCall;
-
-    /**
-     * Can you use mass mentions
-     */
-    @SerializedName("can_use_mass_mentions")
-    private Boolean canUseMassMentions;
 
     /**
      * Can you change chat service type
      */
     @SerializedName("can_change_service_type")
     private Boolean canChangeServiceType;
+
+    /**
+     * Can you copy chat
+     */
+    @SerializedName("can_copy_chat")
+    @Required
+    private Boolean canCopyChat;
+
+    /**
+     * Can you invite other peers in chat
+     */
+    @SerializedName("can_invite")
+    @Required
+    private Boolean canInvite;
+
+    /**
+     * Can you moderate (delete) other users' messages
+     */
+    @SerializedName("can_moderate")
+    @Required
+    private Boolean canModerate;
+
+    /**
+     * Can you promote simple users to chat admins
+     */
+    @SerializedName("can_promote_users")
+    @Required
+    private Boolean canPromoteUsers;
+
+    /**
+     * Can you see invite link for this chat
+     */
+    @SerializedName("can_see_invite_link")
+    @Required
+    private Boolean canSeeInviteLink;
+
+    /**
+     * Can you use mass mentions
+     */
+    @SerializedName("can_use_mass_mentions")
+    @Required
+    private Boolean canUseMassMentions;
+
+    public Boolean getCanCall() {
+        return canCall;
+    }
+
+    public ChatSettingsAcl setCanCall(Boolean canCall) {
+        this.canCall = canCall;
+        return this;
+    }
 
     public Boolean getCanChangeInfo() {
         return canChangeInfo;
@@ -103,12 +123,39 @@ public class ChatSettingsAcl implements Validable {
         return this;
     }
 
+    public Boolean getCanChangeServiceType() {
+        return canChangeServiceType;
+    }
+
+    public ChatSettingsAcl setCanChangeServiceType(Boolean canChangeServiceType) {
+        this.canChangeServiceType = canChangeServiceType;
+        return this;
+    }
+
+    public Boolean getCanCopyChat() {
+        return canCopyChat;
+    }
+
+    public ChatSettingsAcl setCanCopyChat(Boolean canCopyChat) {
+        this.canCopyChat = canCopyChat;
+        return this;
+    }
+
     public Boolean getCanInvite() {
         return canInvite;
     }
 
     public ChatSettingsAcl setCanInvite(Boolean canInvite) {
         this.canInvite = canInvite;
+        return this;
+    }
+
+    public Boolean getCanModerate() {
+        return canModerate;
+    }
+
+    public ChatSettingsAcl setCanModerate(Boolean canModerate) {
+        this.canModerate = canModerate;
         return this;
     }
 
@@ -130,48 +177,12 @@ public class ChatSettingsAcl implements Validable {
         return this;
     }
 
-    public Boolean getCanModerate() {
-        return canModerate;
-    }
-
-    public ChatSettingsAcl setCanModerate(Boolean canModerate) {
-        this.canModerate = canModerate;
-        return this;
-    }
-
-    public Boolean getCanCopyChat() {
-        return canCopyChat;
-    }
-
-    public ChatSettingsAcl setCanCopyChat(Boolean canCopyChat) {
-        this.canCopyChat = canCopyChat;
-        return this;
-    }
-
-    public Boolean getCanCall() {
-        return canCall;
-    }
-
-    public ChatSettingsAcl setCanCall(Boolean canCall) {
-        this.canCall = canCall;
-        return this;
-    }
-
     public Boolean getCanUseMassMentions() {
         return canUseMassMentions;
     }
 
     public ChatSettingsAcl setCanUseMassMentions(Boolean canUseMassMentions) {
         this.canUseMassMentions = canUseMassMentions;
-        return this;
-    }
-
-    public Boolean getCanChangeServiceType() {
-        return canChangeServiceType;
-    }
-
-    public ChatSettingsAcl setCanChangeServiceType(Boolean canChangeServiceType) {
-        this.canChangeServiceType = canChangeServiceType;
         return this;
     }
 

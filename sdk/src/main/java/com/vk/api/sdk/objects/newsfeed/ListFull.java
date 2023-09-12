@@ -18,7 +18,7 @@ public class ListFull extends List implements Validable {
     private BoolInt noReposts;
 
     @SerializedName("source_ids")
-    private java.util.List<Integer> sourceIds;
+    private java.util.List<Long> sourceIds;
 
     public boolean isNoReposts() {
         return noReposts == BoolInt.YES;
@@ -28,11 +28,11 @@ public class ListFull extends List implements Validable {
         return noReposts;
     }
 
-    public java.util.List<Integer> getSourceIds() {
+    public java.util.List<Long> getSourceIds() {
         return sourceIds;
     }
 
-    public ListFull setSourceIds(java.util.List<Integer> sourceIds) {
+    public ListFull setSourceIds(java.util.List<Long> sourceIds) {
         this.sourceIds = sourceIds;
         return this;
     }

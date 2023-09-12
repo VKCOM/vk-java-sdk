@@ -19,9 +19,10 @@ public class PostedPhoto implements Validable {
 
     /**
      * Photo owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    private Long ownerId;
 
     /**
      * URL of the preview image with 130 px in width
@@ -44,11 +45,11 @@ public class PostedPhoto implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PostedPhoto setOwnerId(Integer ownerId) {
+    public PostedPhoto setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }

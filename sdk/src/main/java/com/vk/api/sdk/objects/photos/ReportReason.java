@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse
+ * Reason for the complaint: '0' - spam, '1' - child pornography, '2' - extremism, '3' - violence, '4' - drug propaganda, '5' - adult material, '6' - insult, abuse, '8' - suicide calls
  */
 public enum ReportReason implements EnumParam {
     @SerializedName("0")
@@ -27,7 +27,10 @@ public enum ReportReason implements EnumParam {
     ADULT_MATERIAL(5),
 
     @SerializedName("6")
-    INSULT_ABUSE(6);
+    INSULT_ABUSE(6),
+
+    @SerializedName("8")
+    SUICIDE_CALLS(8);
 
     private final Integer value;
 

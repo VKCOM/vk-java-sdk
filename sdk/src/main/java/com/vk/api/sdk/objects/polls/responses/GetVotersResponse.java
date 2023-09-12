@@ -15,17 +15,32 @@ public class GetVotersResponse implements Validable {
      * Answer ID
      */
     @SerializedName("answer_id")
-    private Integer answerId;
+    private Long answerId;
+
+    /**
+     * Answer offset
+     */
+    @SerializedName("answer_offset")
+    private String answerOffset;
 
     @SerializedName("users")
     private VotersUsers users;
 
-    public Integer getAnswerId() {
+    public Long getAnswerId() {
         return answerId;
     }
 
-    public GetVotersResponse setAnswerId(Integer answerId) {
+    public GetVotersResponse setAnswerId(Long answerId) {
         this.answerId = answerId;
+        return this;
+    }
+
+    public String getAnswerOffset() {
+        return answerOffset;
+    }
+
+    public GetVotersResponse setAnswerOffset(String answerOffset) {
+        this.answerOffset = answerOffset;
         return this;
     }
 
@@ -40,7 +55,7 @@ public class GetVotersResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, users);
+        return Objects.hash(answerId, answerOffset, users);
     }
 
     @Override
@@ -48,7 +63,8 @@ public class GetVotersResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetVotersResponse getVotersResponse = (GetVotersResponse) o;
-        return Objects.equals(answerId, getVotersResponse.answerId) &&
+        return Objects.equals(answerOffset, getVotersResponse.answerOffset) &&
+                Objects.equals(answerId, getVotersResponse.answerId) &&
                 Objects.equals(users, getVotersResponse.users);
     }
 
@@ -60,7 +76,8 @@ public class GetVotersResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetVotersResponse{");
-        sb.append("answerId=").append(answerId);
+        sb.append("answerOffset='").append(answerOffset).append("'");
+        sb.append(", answerId=").append(answerId);
         sb.append(", users=").append(users);
         sb.append('}');
         return sb.toString();

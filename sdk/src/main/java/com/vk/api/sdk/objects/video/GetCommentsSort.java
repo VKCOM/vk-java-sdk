@@ -5,14 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
+ * Sort order: 'asc' - oldest comment first, 'desc' - newest comment first
  */
 public enum GetCommentsSort implements EnumParam {
     @SerializedName("asc")
     OLDEST_COMMENT_FIRST("asc"),
 
     @SerializedName("desc")
-    NEWEST_COMMENT_FIRST("desc");
+    NEWEST_COMMENT_FIRST("desc"),
+
+    @SerializedName("interest")
+    MOST_INTERESTING_COMMENTS_FIRST("interest");
 
     private final String value;
 

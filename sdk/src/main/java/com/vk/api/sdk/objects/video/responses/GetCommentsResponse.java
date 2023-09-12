@@ -14,15 +14,48 @@ import java.util.Objects;
  */
 public class GetCommentsResponse implements Validable {
     /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
+
+    /**
      * Total number
      */
     @SerializedName("count")
     @Required
     private Integer count;
 
+    /**
+     * Count of replies of current level
+     */
+    @SerializedName("current_level_count")
+    private Integer currentLevelCount;
+
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
+
     @SerializedName("items")
     @Required
     private List<WallComment> items;
+
+    @SerializedName("real_offset")
+    private Integer realOffset;
+
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public GetCommentsResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
 
     public Integer getCount() {
         return count;
@@ -30,6 +63,24 @@ public class GetCommentsResponse implements Validable {
 
     public GetCommentsResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public Integer getCurrentLevelCount() {
+        return currentLevelCount;
+    }
+
+    public GetCommentsResponse setCurrentLevelCount(Integer currentLevelCount) {
+        this.currentLevelCount = currentLevelCount;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public GetCommentsResponse setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
         return this;
     }
 
@@ -42,9 +93,27 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
+    public Integer getRealOffset() {
+        return realOffset;
+    }
+
+    public GetCommentsResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
+    }
+
+    public GetCommentsResponse setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(realOffset, canPost, count, groupsCanPost, currentLevelCount, items, showReplyButton);
     }
 
     @Override
@@ -52,7 +121,12 @@ public class GetCommentsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsResponse getCommentsResponse = (GetCommentsResponse) o;
-        return Objects.equals(count, getCommentsResponse.count) &&
+        return Objects.equals(currentLevelCount, getCommentsResponse.currentLevelCount) &&
+                Objects.equals(realOffset, getCommentsResponse.realOffset) &&
+                Objects.equals(count, getCommentsResponse.count) &&
+                Objects.equals(groupsCanPost, getCommentsResponse.groupsCanPost) &&
+                Objects.equals(canPost, getCommentsResponse.canPost) &&
+                Objects.equals(showReplyButton, getCommentsResponse.showReplyButton) &&
                 Objects.equals(items, getCommentsResponse.items);
     }
 
@@ -64,7 +138,12 @@ public class GetCommentsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
-        sb.append("count=").append(count);
+        sb.append("currentLevelCount=").append(currentLevelCount);
+        sb.append(", realOffset=").append(realOffset);
+        sb.append(", count=").append(count);
+        sb.append(", groupsCanPost=").append(groupsCanPost);
+        sb.append(", canPost=").append(canPost);
+        sb.append(", showReplyButton=").append(showReplyButton);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

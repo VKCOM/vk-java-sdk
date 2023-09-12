@@ -21,7 +21,10 @@ public enum GetInfoFields implements EnumParam {
     INTRO("intro"),
 
     @SerializedName("lang")
-    LANG("lang");
+    LANG("lang"),
+
+    @SerializedName("audio_autoplay")
+    AUDIO_AUTOPLAY("audio_autoplay");
 
     private final String value;
 

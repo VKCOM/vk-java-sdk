@@ -17,12 +17,8 @@ public class SexAge implements Validable {
     @SerializedName("count")
     private Integer count;
 
-    /**
-     * Sex/age value
-     */
-    @SerializedName("value")
-    @Required
-    private String value;
+    @SerializedName("count_subscribers")
+    private Integer countSubscribers;
 
     @SerializedName("reach")
     private Integer reach;
@@ -30,8 +26,12 @@ public class SexAge implements Validable {
     @SerializedName("reach_subscribers")
     private Integer reachSubscribers;
 
-    @SerializedName("count_subscribers")
-    private Integer countSubscribers;
+    /**
+     * Sex/age value
+     */
+    @SerializedName("value")
+    @Required
+    private String value;
 
     public Integer getCount() {
         return count;
@@ -42,12 +42,12 @@ public class SexAge implements Validable {
         return this;
     }
 
-    public String getValue() {
-        return value;
+    public Integer getCountSubscribers() {
+        return countSubscribers;
     }
 
-    public SexAge setValue(String value) {
-        this.value = value;
+    public SexAge setCountSubscribers(Integer countSubscribers) {
+        this.countSubscribers = countSubscribers;
         return this;
     }
 
@@ -69,12 +69,12 @@ public class SexAge implements Validable {
         return this;
     }
 
-    public Integer getCountSubscribers() {
-        return countSubscribers;
+    public String getValue() {
+        return value;
     }
 
-    public SexAge setCountSubscribers(Integer countSubscribers) {
-        this.countSubscribers = countSubscribers;
+    public SexAge setValue(String value) {
+        this.value = value;
         return this;
     }
 
@@ -89,8 +89,8 @@ public class SexAge implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         SexAge sexAge = (SexAge) o;
         return Objects.equals(reachSubscribers, sexAge.reachSubscribers) &&
-                Objects.equals(reach, sexAge.reach) &&
                 Objects.equals(countSubscribers, sexAge.countSubscribers) &&
+                Objects.equals(reach, sexAge.reach) &&
                 Objects.equals(count, sexAge.count) &&
                 Objects.equals(value, sexAge.value);
     }
@@ -104,8 +104,8 @@ public class SexAge implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SexAge{");
         sb.append("reachSubscribers=").append(reachSubscribers);
-        sb.append(", reach=").append(reach);
         sb.append(", countSubscribers=").append(countSubscribers);
+        sb.append(", reach=").append(reach);
         sb.append(", count=").append(count);
         sb.append(", value='").append(value).append("'");
         sb.append('}');

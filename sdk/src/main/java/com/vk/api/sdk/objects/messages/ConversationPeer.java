@@ -11,9 +11,12 @@ import java.util.Objects;
  * ConversationPeer object
  */
 public class ConversationPeer implements Validable {
+    /**
+     * Entity: peer
+     */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private Long id;
 
     @SerializedName("local_id")
     private Integer localId;
@@ -22,11 +25,11 @@ public class ConversationPeer implements Validable {
     @Required
     private ConversationPeerType type;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public ConversationPeer setId(Integer id) {
+    public ConversationPeer setId(Long id) {
         this.id = id;
         return this;
     }

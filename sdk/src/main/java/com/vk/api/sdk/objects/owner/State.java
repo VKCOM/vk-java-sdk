@@ -10,23 +10,14 @@ import java.util.Objects;
  * State object
  */
 public class State implements Validable {
-    @SerializedName("state")
-    private StateState state;
-
     /**
      * wiki text to describe user state
      */
     @SerializedName("description")
     private String description;
 
-    public StateState getState() {
-        return state;
-    }
-
-    public State setState(StateState state) {
-        this.state = state;
-        return this;
-    }
+    @SerializedName("state")
+    private StateState state;
 
     public String getDescription() {
         return description;
@@ -34,6 +25,15 @@ public class State implements Validable {
 
     public State setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public StateState getState() {
+        return state;
+    }
+
+    public State setState(StateState state) {
+        this.state = state;
         return this;
     }
 

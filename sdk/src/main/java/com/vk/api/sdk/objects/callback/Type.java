@@ -53,6 +53,12 @@ public enum Type implements EnumParam {
     @SerializedName("market_comment_restore")
     MARKET_COMMENT_RESTORE("market_comment_restore"),
 
+    @SerializedName("market_order_new")
+    MARKET_ORDER_NEW("market_order_new"),
+
+    @SerializedName("market_order_edit")
+    MARKET_ORDER_EDIT("market_order_edit"),
+
     @SerializedName("message_new")
     MESSAGE_NEW("message_new"),
 
@@ -76,6 +82,9 @@ public enum Type implements EnumParam {
 
     @SerializedName("messages_edit")
     MESSAGES_EDIT("messages_edit"),
+
+    @SerializedName("message_reaction_event")
+    MESSAGE_REACTION_EVENT("message_reaction_event"),
 
     @SerializedName("photo_new")
     PHOTO_NEW("photo_new"),

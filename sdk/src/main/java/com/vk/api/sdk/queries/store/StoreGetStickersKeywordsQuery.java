@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.store;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.store.responses.GetStickersKeywordsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGetStickersKeywordsQuery, GetStickersKeywordsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +30,7 @@ public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGet
      * @param value value of "aliases" parameter. By default true.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("aliases")
     public StoreGetStickersKeywordsQuery aliases(Boolean value) {
         return unsafeParam("aliases", value);
     }
@@ -39,6 +41,7 @@ public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGet
      * @param value value of "all products" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("all_products")
     public StoreGetStickersKeywordsQuery allProducts(Boolean value) {
         return unsafeParam("all_products", value);
     }
@@ -49,17 +52,19 @@ public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGet
      * @param value value of "need stickers" parameter. By default true.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_stickers")
     public StoreGetStickersKeywordsQuery needStickers(Boolean value) {
         return unsafeParam("need_stickers", value);
     }
 
     /**
-     * stickers_ids
+     * stickersIds
      * Set stickers ids
      *
      * @param value value of "stickers ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("stickers_ids")
     public StoreGetStickersKeywordsQuery stickersIds(Integer... value) {
         return unsafeParam("stickers_ids", value);
     }
@@ -70,17 +75,19 @@ public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGet
      * @param value value of "stickers ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("stickers_ids")
     public StoreGetStickersKeywordsQuery stickersIds(List<Integer> value) {
         return unsafeParam("stickers_ids", value);
     }
 
     /**
-     * products_ids
+     * productsIds
      * Set products ids
      *
      * @param value value of "products ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("products_ids")
     public StoreGetStickersKeywordsQuery productsIds(Integer... value) {
         return unsafeParam("products_ids", value);
     }
@@ -91,6 +98,7 @@ public class StoreGetStickersKeywordsQuery extends AbstractQueryBuilder<StoreGet
      * @param value value of "products ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("products_ids")
     public StoreGetStickersKeywordsQuery productsIds(List<Integer> value) {
         return unsafeParam("products_ids", value);
     }

@@ -4,7 +4,10 @@ package com.vk.api.sdk.objects.stickers;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.Image;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,7 +18,11 @@ public class ImageSet implements Validable {
      * Base URL for images in set
      */
     @SerializedName("base_url")
+    @Required
     private URI baseUrl;
+
+    @SerializedName("images")
+    private List<Image> images;
 
     /**
      * Version number to be appended to the image URL
@@ -32,6 +39,15 @@ public class ImageSet implements Validable {
         return this;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public ImageSet setImages(List<Image> images) {
+        this.images = images;
+        return this;
+    }
+
     public Integer getVersion() {
         return version;
     }
@@ -43,7 +59,7 @@ public class ImageSet implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(baseUrl, version);
+        return Objects.hash(images, baseUrl, version);
     }
 
     @Override
@@ -51,7 +67,8 @@ public class ImageSet implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ImageSet imageSet = (ImageSet) o;
-        return Objects.equals(baseUrl, imageSet.baseUrl) &&
+        return Objects.equals(images, imageSet.images) &&
+                Objects.equals(baseUrl, imageSet.baseUrl) &&
                 Objects.equals(version, imageSet.version);
     }
 
@@ -63,7 +80,8 @@ public class ImageSet implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ImageSet{");
-        sb.append("baseUrl=").append(baseUrl);
+        sb.append("images=").append(images);
+        sb.append(", baseUrl=").append(baseUrl);
         sb.append(", version=").append(version);
         sb.append('}');
         return sb.toString();

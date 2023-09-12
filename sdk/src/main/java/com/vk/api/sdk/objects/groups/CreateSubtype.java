@@ -8,6 +8,9 @@ import com.vk.api.sdk.queries.EnumParam;
  * Public page subtype. Possible values: *'1' - place or small business,, *'2' - company, organization or website,, *'3' - famous person or group of people,, *'4' - product or work of art.
  */
 public enum CreateSubtype implements EnumParam {
+    @SerializedName("0")
+    NONE(0),
+
     @SerializedName("1")
     PLACE_OR_BUSINESS(1),
 

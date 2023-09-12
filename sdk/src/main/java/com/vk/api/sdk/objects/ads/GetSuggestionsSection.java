@@ -5,20 +5,53 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Section, suggestions are retrieved in. Available values: *countries — request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions — requested list of regions. 'country' parameter is required. *cities — requested list of cities. 'country' parameter is required. *districts — requested list of districts. 'cities' parameter is required. *stations — requested list of subway stations. 'cities' parameter is required. *streets — requested list of streets. 'cities' parameter is required. *schools — requested list of educational organizations. 'cities' parameter is required. *interests — requested list of interests. *positions — requested list of positions (professions). *group_types — requested list of group types. *religions — requested list of religious commitments. *browsers — requested list of browsers and mobile devices.
+ * Section, suggestions are retrieved in. Available values: *countries - request of a list of countries. If q is not set or blank, a short list of countries is shown. Otherwise, a full list of countries is shown. *regions - requested list of regions. 'country' parameter is required. *cities - requested list of cities. 'country' parameter is required. *districts - requested list of districts. 'cities' parameter is required. *stations - requested list of subway stations. 'cities' parameter is required. *streets - requested list of streets. 'cities' parameter is required. *schools - requested list of educational organizations. 'cities' parameter is required. *interests - requested list of interests. *positions - requested list of positions (professions). *group_types - requested list of group types. *religions - requested list of religious commitments. *browsers - requested list of browsers and mobile devices.
  */
 public enum GetSuggestionsSection implements EnumParam {
-    @SerializedName("countries")
-    COUNTRIES("countries"),
-
-    @SerializedName("regions")
-    REGIONS("regions"),
+    @SerializedName("browsers")
+    BROWSERS("browsers"),
 
     @SerializedName("cities")
     CITIES("cities"),
 
+    @SerializedName("cities_regions")
+    CITIES_REGIONS("cities_regions"),
+
+    @SerializedName("countries")
+    COUNTRIES("countries"),
+
     @SerializedName("districts")
     DISTRICTS("districts"),
+
+    @SerializedName("group_types")
+    GROUP_TYPES("group_types"),
+
+    @SerializedName("interest_categories")
+    INTEREST_CATEGORIES("interest_categories"),
+
+    @SerializedName("interest_categories_v2")
+    INTEREST_CATEGORIES_V2("interest_categories_v2"),
+
+    @SerializedName("interests")
+    INTERESTS("interests"),
+
+    @SerializedName("operators")
+    OPERATORS("operators"),
+
+    @SerializedName("positions")
+    POSITIONS("positions"),
+
+    @SerializedName("price_lists")
+    PRICE_LISTS("price_lists"),
+
+    @SerializedName("regions")
+    REGIONS("regions"),
+
+    @SerializedName("religions")
+    RELIGIONS("religions"),
+
+    @SerializedName("schools")
+    SCHOOLS("schools"),
 
     @SerializedName("stations")
     STATIONS("stations"),
@@ -26,23 +59,17 @@ public enum GetSuggestionsSection implements EnumParam {
     @SerializedName("streets")
     STREETS("streets"),
 
-    @SerializedName("schools")
-    SCHOOLS("schools"),
+    @SerializedName("user_browsers")
+    USER_BROWSERS("user_browsers"),
 
-    @SerializedName("interests")
-    INTERESTS("interests"),
+    @SerializedName("user_devices")
+    USER_DEVICES("user_devices"),
 
-    @SerializedName("positions")
-    POSITIONS("positions"),
+    @SerializedName("user_operating_systems")
+    USER_OPERATING_SYSTEMS("user_operating_systems"),
 
-    @SerializedName("group_types")
-    GROUP_TYPES("group_types"),
-
-    @SerializedName("religions")
-    RELIGIONS("religions"),
-
-    @SerializedName("browsers")
-    BROWSERS("browsers");
+    @SerializedName("user_os")
+    USER_OS("user_os");
 
     private final String value;
 

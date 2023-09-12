@@ -23,16 +23,46 @@ public class CountersGroup implements Validable {
     private Integer albums;
 
     /**
-     * Audios number
+     * Articles number
      */
-    @SerializedName("audios")
-    private Integer audios;
+    @SerializedName("articles")
+    private Integer articles;
 
     /**
      * Audio playlists number
      */
     @SerializedName("audio_playlists")
     private Integer audioPlaylists;
+
+    /**
+     * Audios number
+     */
+    @SerializedName("audios")
+    private Integer audios;
+
+    /**
+     * Clips number
+     */
+    @SerializedName("clips")
+    private Long clips;
+
+    /**
+     * Clips followers number
+     */
+    @SerializedName("clips_followers")
+    private Long clipsFollowers;
+
+    /**
+     * Clips likes number
+     */
+    @SerializedName("clips_likes")
+    private Long clipsLikes;
+
+    /**
+     * Clips views number
+     */
+    @SerializedName("clips_views")
+    private Long clipsViews;
 
     /**
      * Docs number
@@ -47,40 +77,10 @@ public class CountersGroup implements Validable {
     private Integer market;
 
     /**
-     * Photos number
-     */
-    @SerializedName("photos")
-    private Integer photos;
-
-    /**
-     * Topics number
-     */
-    @SerializedName("topics")
-    private Integer topics;
-
-    /**
-     * Videos number
-     */
-    @SerializedName("videos")
-    private Integer videos;
-
-    /**
      * Market services number
      */
     @SerializedName("market_services")
     private Integer marketServices;
-
-    /**
-     * Podcasts number
-     */
-    @SerializedName("podcasts")
-    private Integer podcasts;
-
-    /**
-     * Articles number
-     */
-    @SerializedName("articles")
-    private Integer articles;
 
     /**
      * Narratives number
@@ -89,16 +89,40 @@ public class CountersGroup implements Validable {
     private Integer narratives;
 
     /**
-     * Clips number
+     * Photos number
      */
-    @SerializedName("clips")
-    private Integer clips;
+    @SerializedName("photos")
+    private Integer photos;
 
     /**
-     * Clips followers number
+     * Podcasts number
      */
-    @SerializedName("clips_followers")
-    private Integer clipsFollowers;
+    @SerializedName("podcasts")
+    private Integer podcasts;
+
+    /**
+     * Topics number
+     */
+    @SerializedName("topics")
+    private Integer topics;
+
+    /**
+     * Playlists number
+     */
+    @SerializedName("video_playlists")
+    private Integer videoPlaylists;
+
+    /**
+     * Videos number
+     */
+    @SerializedName("videos")
+    private Integer videos;
+
+    /**
+     * Videos followers number
+     */
+    @SerializedName("videos_followers")
+    private Long videosFollowers;
 
     public Integer getAddresses() {
         return addresses;
@@ -118,12 +142,12 @@ public class CountersGroup implements Validable {
         return this;
     }
 
-    public Integer getAudios() {
-        return audios;
+    public Integer getArticles() {
+        return articles;
     }
 
-    public CountersGroup setAudios(Integer audios) {
-        this.audios = audios;
+    public CountersGroup setArticles(Integer articles) {
+        this.articles = articles;
         return this;
     }
 
@@ -133,6 +157,51 @@ public class CountersGroup implements Validable {
 
     public CountersGroup setAudioPlaylists(Integer audioPlaylists) {
         this.audioPlaylists = audioPlaylists;
+        return this;
+    }
+
+    public Integer getAudios() {
+        return audios;
+    }
+
+    public CountersGroup setAudios(Integer audios) {
+        this.audios = audios;
+        return this;
+    }
+
+    public Long getClips() {
+        return clips;
+    }
+
+    public CountersGroup setClips(Long clips) {
+        this.clips = clips;
+        return this;
+    }
+
+    public Long getClipsFollowers() {
+        return clipsFollowers;
+    }
+
+    public CountersGroup setClipsFollowers(Long clipsFollowers) {
+        this.clipsFollowers = clipsFollowers;
+        return this;
+    }
+
+    public Long getClipsLikes() {
+        return clipsLikes;
+    }
+
+    public CountersGroup setClipsLikes(Long clipsLikes) {
+        this.clipsLikes = clipsLikes;
+        return this;
+    }
+
+    public Long getClipsViews() {
+        return clipsViews;
+    }
+
+    public CountersGroup setClipsViews(Long clipsViews) {
+        this.clipsViews = clipsViews;
         return this;
     }
 
@@ -154,57 +223,12 @@ public class CountersGroup implements Validable {
         return this;
     }
 
-    public Integer getPhotos() {
-        return photos;
-    }
-
-    public CountersGroup setPhotos(Integer photos) {
-        this.photos = photos;
-        return this;
-    }
-
-    public Integer getTopics() {
-        return topics;
-    }
-
-    public CountersGroup setTopics(Integer topics) {
-        this.topics = topics;
-        return this;
-    }
-
-    public Integer getVideos() {
-        return videos;
-    }
-
-    public CountersGroup setVideos(Integer videos) {
-        this.videos = videos;
-        return this;
-    }
-
     public Integer getMarketServices() {
         return marketServices;
     }
 
     public CountersGroup setMarketServices(Integer marketServices) {
         this.marketServices = marketServices;
-        return this;
-    }
-
-    public Integer getPodcasts() {
-        return podcasts;
-    }
-
-    public CountersGroup setPodcasts(Integer podcasts) {
-        this.podcasts = podcasts;
-        return this;
-    }
-
-    public Integer getArticles() {
-        return articles;
-    }
-
-    public CountersGroup setArticles(Integer articles) {
-        this.articles = articles;
         return this;
     }
 
@@ -217,27 +241,63 @@ public class CountersGroup implements Validable {
         return this;
     }
 
-    public Integer getClips() {
-        return clips;
+    public Integer getPhotos() {
+        return photos;
     }
 
-    public CountersGroup setClips(Integer clips) {
-        this.clips = clips;
+    public CountersGroup setPhotos(Integer photos) {
+        this.photos = photos;
         return this;
     }
 
-    public Integer getClipsFollowers() {
-        return clipsFollowers;
+    public Integer getPodcasts() {
+        return podcasts;
     }
 
-    public CountersGroup setClipsFollowers(Integer clipsFollowers) {
-        this.clipsFollowers = clipsFollowers;
+    public CountersGroup setPodcasts(Integer podcasts) {
+        this.podcasts = podcasts;
+        return this;
+    }
+
+    public Integer getTopics() {
+        return topics;
+    }
+
+    public CountersGroup setTopics(Integer topics) {
+        this.topics = topics;
+        return this;
+    }
+
+    public Integer getVideoPlaylists() {
+        return videoPlaylists;
+    }
+
+    public CountersGroup setVideoPlaylists(Integer videoPlaylists) {
+        this.videoPlaylists = videoPlaylists;
+        return this;
+    }
+
+    public Integer getVideos() {
+        return videos;
+    }
+
+    public CountersGroup setVideos(Integer videos) {
+        this.videos = videos;
+        return this;
+    }
+
+    public Long getVideosFollowers() {
+        return videosFollowers;
+    }
+
+    public CountersGroup setVideosFollowers(Long videosFollowers) {
+        this.videosFollowers = videosFollowers;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(addresses, albums, narratives, topics, clips, marketServices, videos, photos, market, podcasts, docs, audios, audioPlaylists, articles, clipsFollowers);
+        return Objects.hash(clipsLikes, addresses, albums, narratives, videosFollowers, clips, topics, marketServices, videos, photos, videoPlaylists, clipsViews, market, podcasts, docs, audios, audioPlaylists, articles, clipsFollowers);
     }
 
     @Override
@@ -248,15 +308,19 @@ public class CountersGroup implements Validable {
         return Objects.equals(addresses, countersGroup.addresses) &&
                 Objects.equals(albums, countersGroup.albums) &&
                 Objects.equals(narratives, countersGroup.narratives) &&
-                Objects.equals(topics, countersGroup.topics) &&
                 Objects.equals(clips, countersGroup.clips) &&
+                Objects.equals(topics, countersGroup.topics) &&
                 Objects.equals(audioPlaylists, countersGroup.audioPlaylists) &&
+                Objects.equals(clipsViews, countersGroup.clipsViews) &&
                 Objects.equals(videos, countersGroup.videos) &&
                 Objects.equals(marketServices, countersGroup.marketServices) &&
                 Objects.equals(photos, countersGroup.photos) &&
+                Objects.equals(clipsLikes, countersGroup.clipsLikes) &&
+                Objects.equals(videoPlaylists, countersGroup.videoPlaylists) &&
                 Objects.equals(market, countersGroup.market) &&
                 Objects.equals(podcasts, countersGroup.podcasts) &&
                 Objects.equals(docs, countersGroup.docs) &&
+                Objects.equals(videosFollowers, countersGroup.videosFollowers) &&
                 Objects.equals(audios, countersGroup.audios) &&
                 Objects.equals(clipsFollowers, countersGroup.clipsFollowers) &&
                 Objects.equals(articles, countersGroup.articles);
@@ -273,15 +337,19 @@ public class CountersGroup implements Validable {
         sb.append("addresses=").append(addresses);
         sb.append(", albums=").append(albums);
         sb.append(", narratives=").append(narratives);
-        sb.append(", topics=").append(topics);
         sb.append(", clips=").append(clips);
+        sb.append(", topics=").append(topics);
         sb.append(", audioPlaylists=").append(audioPlaylists);
+        sb.append(", clipsViews=").append(clipsViews);
         sb.append(", videos=").append(videos);
         sb.append(", marketServices=").append(marketServices);
         sb.append(", photos=").append(photos);
+        sb.append(", clipsLikes=").append(clipsLikes);
+        sb.append(", videoPlaylists=").append(videoPlaylists);
         sb.append(", market=").append(market);
         sb.append(", podcasts=").append(podcasts);
         sb.append(", docs=").append(docs);
+        sb.append(", videosFollowers=").append(videosFollowers);
         sb.append(", audios=").append(audios);
         sb.append(", clipsFollowers=").append(clipsFollowers);
         sb.append(", articles=").append(articles);

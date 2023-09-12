@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.adsweb.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.adsweb.GetAdCategoriesResponseCategoriesCategory;
 import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;

@@ -5,26 +5,39 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.ads.responses.CreateAdsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.createAds method
  */
-public class AdsCreateAdsQuery extends AbstractQueryBuilder<AdsCreateAdsQuery, List<Integer>> {
+public class AdsCreateAdsQuery extends AbstractQueryBuilder<AdsCreateAdsQuery, List<CreateAdsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param data value of "data" parameter.
      */
-    public AdsCreateAdsQuery(VkApiClient client, UserActor actor, int accountId, String data) {
-        super(client, "ads.createAds", Utils.buildParametrizedType(List.class, Integer.class));
+    public AdsCreateAdsQuery(VkApiClient client, UserActor actor, Integer accountId, String data) {
+        super(client, "ads.createAds", Utils.buildParametrizedType(List.class, CreateAdsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         data(data);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsCreateAdsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.createAds", Utils.buildParametrizedType(List.class, CreateAdsResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -33,7 +46,8 @@ public class AdsCreateAdsQuery extends AbstractQueryBuilder<AdsCreateAdsQuery, L
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCreateAdsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsCreateAdsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -43,7 +57,8 @@ public class AdsCreateAdsQuery extends AbstractQueryBuilder<AdsCreateAdsQuery, L
      * @param value value of "data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsCreateAdsQuery data(String value) {
+    @ApiParam("data")
+    public AdsCreateAdsQuery data(String value) {
         return unsafeParam("data", value);
     }
 

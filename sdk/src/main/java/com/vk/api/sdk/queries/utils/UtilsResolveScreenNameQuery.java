@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.utils.responses.ResolveScreenNameResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -15,20 +16,7 @@ import java.util.List;
  */
 public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResolveScreenNameQuery, ResolveScreenNameResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param screenName value of "screen name" parameter.
-     */
-    public UtilsResolveScreenNameQuery(VkApiClient client, UserActor actor, String screenName) {
-        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
-        accessToken(actor.getAccessToken());
-        screenName(screenName);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,7 +29,42 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public UtilsResolveScreenNameQuery(VkApiClient client, GroupActor actor) {
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param screenName value of "screen name" parameter.
+     */
+    public UtilsResolveScreenNameQuery(VkApiClient client, UserActor actor, String screenName) {
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
+        accessToken(actor.getAccessToken());
+        screenName(screenName);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public UtilsResolveScreenNameQuery(VkApiClient client, UserActor actor) {
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -55,12 +78,25 @@ public class UtilsResolveScreenNameQuery extends AbstractQueryBuilder<UtilsResol
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public UtilsResolveScreenNameQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "utils.resolveScreenName", ResolveScreenNameResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
      *
      * @param value value of "screen name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected UtilsResolveScreenNameQuery screenName(String value) {
+    @ApiParam("screen_name")
+    public UtilsResolveScreenNameQuery screenName(String value) {
         return unsafeParam("screen_name", value);
     }
 

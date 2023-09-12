@@ -13,11 +13,29 @@ import java.util.Objects;
  * OrderItem object
  */
 public class OrderItem implements Validable {
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    /**
+     * Extended field. Can current viewer add review for this ordered item
+     */
+    @SerializedName("can_add_review")
+    private Boolean canAddReview;
+
+    @SerializedName("item")
+    @Required
+    private MarketItem item;
 
     @SerializedName("item_id")
+    @Required
     private Integer itemId;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
+
+    @SerializedName("photo")
+    private Photo photo;
 
     @SerializedName("price")
     @Required
@@ -27,25 +45,27 @@ public class OrderItem implements Validable {
     @Required
     private Integer quantity;
 
-    @SerializedName("item")
-    @Required
-    private MarketItem item;
-
     @SerializedName("title")
     private String title;
-
-    @SerializedName("photo")
-    private Photo photo;
 
     @SerializedName("variants")
     private List<String> variants;
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public Boolean getCanAddReview() {
+        return canAddReview;
     }
 
-    public OrderItem setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public OrderItem setCanAddReview(Boolean canAddReview) {
+        this.canAddReview = canAddReview;
+        return this;
+    }
+
+    public MarketItem getItem() {
+        return item;
+    }
+
+    public OrderItem setItem(MarketItem item) {
+        this.item = item;
         return this;
     }
 
@@ -55,6 +75,24 @@ public class OrderItem implements Validable {
 
     public OrderItem setItemId(Integer itemId) {
         this.itemId = itemId;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public OrderItem setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public OrderItem setPhoto(Photo photo) {
+        this.photo = photo;
         return this;
     }
 
@@ -76,30 +114,12 @@ public class OrderItem implements Validable {
         return this;
     }
 
-    public MarketItem getItem() {
-        return item;
-    }
-
-    public OrderItem setItem(MarketItem item) {
-        this.item = item;
-        return this;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public OrderItem setTitle(String title) {
         this.title = title;
-        return this;
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public OrderItem setPhoto(Photo photo) {
-        this.photo = photo;
         return this;
     }
 
@@ -114,7 +134,7 @@ public class OrderItem implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemId, item, quantity, price, photo, variants, ownerId, title);
+        return Objects.hash(itemId, item, quantity, price, photo, canAddReview, variants, ownerId, title);
     }
 
     @Override
@@ -124,6 +144,7 @@ public class OrderItem implements Validable {
         OrderItem orderItem = (OrderItem) o;
         return Objects.equals(item, orderItem.item) &&
                 Objects.equals(quantity, orderItem.quantity) &&
+                Objects.equals(canAddReview, orderItem.canAddReview) &&
                 Objects.equals(itemId, orderItem.itemId) &&
                 Objects.equals(ownerId, orderItem.ownerId) &&
                 Objects.equals(price, orderItem.price) &&
@@ -142,6 +163,7 @@ public class OrderItem implements Validable {
         final StringBuilder sb = new StringBuilder("OrderItem{");
         sb.append("item=").append(item);
         sb.append(", quantity=").append(quantity);
+        sb.append(", canAddReview=").append(canAddReview);
         sb.append(", itemId=").append(itemId);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", price=").append(price);

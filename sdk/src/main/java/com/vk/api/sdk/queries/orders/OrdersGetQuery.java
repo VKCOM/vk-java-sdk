@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.orders.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<GetResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Ge
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public OrdersGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -41,16 +43,18 @@ public class OrdersGetQuery extends AbstractQueryBuilder<OrdersGetQuery, List<Ge
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public OrdersGetQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * If this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+     * If this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("test_mode")
     public OrdersGetQuery testMode(Boolean value) {
         return unsafeParam("test_mode", value);
     }

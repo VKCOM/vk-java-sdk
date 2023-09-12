@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Sort order. Possible values: *'0' — default sorting (similar the full version of the site),, *'1' — by growth speed,, *'2'— by the "day attendance/members number" ratio,, *'3' — by the "Likes number/members number" ratio,, *'4' — by the "comments number/members number" ratio,, *'5' — by the "boards entries number/members number" ratio.
+ * Sort order. Possible values: *'0' - default sorting (similar the full version of the site),, *'1' - by growth speed,, *'2'- by the "day attendance/members number" ratio,, *'3' - by the "Likes number/members number" ratio,, *'4' - by the "comments number/members number" ratio,, *'5' - by the "boards entries number/members number" ratio.
  */
 public enum SearchSort implements EnumParam {
     @SerializedName("0")
@@ -24,7 +24,10 @@ public enum SearchSort implements EnumParam {
     COMMENTS(4),
 
     @SerializedName("5")
-    ENTRIES(5);
+    ENTRIES(5),
+
+    @SerializedName("6")
+    MEMBERS(6);
 
     private final Integer value;
 

@@ -11,45 +11,29 @@ import java.util.Objects;
  * CallbackServer object
  */
 public class CallbackServer implements Validable {
+    @SerializedName("creator_id")
+    @Required
+    private Integer creatorId;
+
     @SerializedName("id")
     @Required
     private Integer id;
 
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    @SerializedName("creator_id")
-    private Integer creatorId;
-
-    @SerializedName("url")
-    @Required
-    private String url;
-
     @SerializedName("secret_key")
+    @Required
     private String secretKey;
 
     @SerializedName("status")
     @Required
     private CallbackServerStatus status;
 
-    public Integer getId() {
-        return id;
-    }
+    @SerializedName("title")
+    @Required
+    private String title;
 
-    public CallbackServer setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public CallbackServer setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("url")
+    @Required
+    private String url;
 
     public Integer getCreatorId() {
         return creatorId;
@@ -60,12 +44,12 @@ public class CallbackServer implements Validable {
         return this;
     }
 
-    public String getUrl() {
-        return url;
+    public Integer getId() {
+        return id;
     }
 
-    public CallbackServer setUrl(String url) {
-        this.url = url;
+    public CallbackServer setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -84,6 +68,24 @@ public class CallbackServer implements Validable {
 
     public CallbackServer setStatus(CallbackServerStatus status) {
         this.status = status;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public CallbackServer setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public CallbackServer setUrl(String url) {
+        this.url = url;
         return this;
     }
 

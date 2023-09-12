@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.notes;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,12 +28,24 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NotesAddQuery(VkApiClient client, UserActor actor) {
+        super(client, "notes.add", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Note title.
      *
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotesAddQuery title(String value) {
+    @ApiParam("title")
+    public NotesAddQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -42,17 +55,19 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
      * @param value value of "text" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotesAddQuery text(String value) {
+    @ApiParam("text")
+    public NotesAddQuery text(String value) {
         return unsafeParam("text", value);
     }
 
     /**
-     * privacy_view
+     * privacyView
      * Set privacy view
      *
      * @param value value of "privacy view" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_view")
     public NotesAddQuery privacyView(String... value) {
         return unsafeParam("privacy_view", value);
     }
@@ -63,17 +78,19 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
      * @param value value of "privacy view" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_view")
     public NotesAddQuery privacyView(List<String> value) {
         return unsafeParam("privacy_view", value);
     }
 
     /**
-     * privacy_comment
+     * privacyComment
      * Set privacy comment
      *
      * @param value value of "privacy comment" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_comment")
     public NotesAddQuery privacyComment(String... value) {
         return unsafeParam("privacy_comment", value);
     }
@@ -84,6 +101,7 @@ public class NotesAddQuery extends AbstractQueryBuilder<NotesAddQuery, Integer> 
      * @param value value of "privacy comment" parameter. By default all.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy_comment")
     public NotesAddQuery privacyComment(List<String> value) {
         return unsafeParam("privacy_comment", value);
     }

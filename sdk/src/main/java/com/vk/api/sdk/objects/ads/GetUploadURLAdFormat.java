@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
+ * Ad format: *1 - image and text,, *2 - big image,, *3 - exclusive format,, *4 - community, square image,, *7 - special app format.
  */
 public enum GetUploadURLAdFormat implements EnumParam {
     @SerializedName("1")
@@ -14,14 +14,17 @@ public enum GetUploadURLAdFormat implements EnumParam {
     @SerializedName("2")
     BIG_IMAGE(2),
 
-    @SerializedName("3")
-    EXCLUSIVE_FORMAT(3),
-
     @SerializedName("4")
     COMMUNITY_SQUARE_IMAGE(4),
 
     @SerializedName("7")
-    SPECIAL_APP_FORMAT(7);
+    SPECIAL_APP_FORMAT(7),
+
+    @SerializedName("10")
+    EXCLUSIVE_FORMAT(10),
+
+    @SerializedName("11")
+    ADAPTIVE(11);
 
     private final Integer value;
 

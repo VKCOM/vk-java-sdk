@@ -16,22 +16,53 @@ public class HistoryAttachment implements Validable {
     private HistoryMessageAttachment attachment;
 
     /**
-     * Message ID
+     * Conversation Message ID
      */
-    @SerializedName("message_id")
-    private Integer messageId;
+    @SerializedName("cmid")
+    private Integer cmid;
 
     /**
-     * Message author's ID
+     * Message sending time
      */
-    @SerializedName("from_id")
-    private Integer fromId;
+    @SerializedName("date")
+    @Required
+    private Integer date;
 
     /**
      * Forward level (optional)
      */
     @SerializedName("forward_level")
     private Integer forwardLevel;
+
+    /**
+     * Message author's ID
+     * Entity: owner
+     */
+    @SerializedName("from_id")
+    @Required
+    private Long fromId;
+
+    /**
+     * Message Exipire ttl
+     */
+    @SerializedName("message_expire_ttl")
+    private Integer messageExpireTtl;
+
+    /**
+     * Message ID
+     */
+    @SerializedName("message_id")
+    @Required
+    private Integer messageId;
+
+    /**
+     * Attachment position in the Message
+     */
+    @SerializedName("position")
+    private Integer position;
+
+    @SerializedName("was_listened")
+    private Boolean wasListened;
 
     public HistoryMessageAttachment getAttachment() {
         return attachment;
@@ -42,21 +73,21 @@ public class HistoryAttachment implements Validable {
         return this;
     }
 
-    public Integer getMessageId() {
-        return messageId;
+    public Integer getCmid() {
+        return cmid;
     }
 
-    public HistoryAttachment setMessageId(Integer messageId) {
-        this.messageId = messageId;
+    public HistoryAttachment setCmid(Integer cmid) {
+        this.cmid = cmid;
         return this;
     }
 
-    public Integer getFromId() {
-        return fromId;
+    public Integer getDate() {
+        return date;
     }
 
-    public HistoryAttachment setFromId(Integer fromId) {
-        this.fromId = fromId;
+    public HistoryAttachment setDate(Integer date) {
+        this.date = date;
         return this;
     }
 
@@ -69,9 +100,54 @@ public class HistoryAttachment implements Validable {
         return this;
     }
 
+    public Long getFromId() {
+        return fromId;
+    }
+
+    public HistoryAttachment setFromId(Long fromId) {
+        this.fromId = fromId;
+        return this;
+    }
+
+    public Integer getMessageExpireTtl() {
+        return messageExpireTtl;
+    }
+
+    public HistoryAttachment setMessageExpireTtl(Integer messageExpireTtl) {
+        this.messageExpireTtl = messageExpireTtl;
+        return this;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public HistoryAttachment setMessageId(Integer messageId) {
+        this.messageId = messageId;
+        return this;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public HistoryAttachment setPosition(Integer position) {
+        this.position = position;
+        return this;
+    }
+
+    public Boolean getWasListened() {
+        return wasListened;
+    }
+
+    public HistoryAttachment setWasListened(Boolean wasListened) {
+        this.wasListened = wasListened;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(attachment, messageId, fromId, forwardLevel);
+        return Objects.hash(date, attachment, messageExpireTtl, wasListened, messageId, cmid, position, fromId, forwardLevel);
     }
 
     @Override
@@ -79,9 +155,14 @@ public class HistoryAttachment implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HistoryAttachment historyAttachment = (HistoryAttachment) o;
-        return Objects.equals(fromId, historyAttachment.fromId) &&
+        return Objects.equals(date, historyAttachment.date) &&
+                Objects.equals(fromId, historyAttachment.fromId) &&
                 Objects.equals(attachment, historyAttachment.attachment) &&
+                Objects.equals(messageExpireTtl, historyAttachment.messageExpireTtl) &&
+                Objects.equals(wasListened, historyAttachment.wasListened) &&
                 Objects.equals(messageId, historyAttachment.messageId) &&
+                Objects.equals(cmid, historyAttachment.cmid) &&
+                Objects.equals(position, historyAttachment.position) &&
                 Objects.equals(forwardLevel, historyAttachment.forwardLevel);
     }
 
@@ -93,9 +174,14 @@ public class HistoryAttachment implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("HistoryAttachment{");
-        sb.append("fromId=").append(fromId);
+        sb.append("date=").append(date);
+        sb.append(", fromId=").append(fromId);
         sb.append(", attachment=").append(attachment);
+        sb.append(", messageExpireTtl=").append(messageExpireTtl);
+        sb.append(", wasListened=").append(wasListened);
         sb.append(", messageId=").append(messageId);
+        sb.append(", cmid=").append(cmid);
+        sb.append(", position=").append(position);
         sb.append(", forwardLevel=").append(forwardLevel);
         sb.append('}');
         return sb.toString();

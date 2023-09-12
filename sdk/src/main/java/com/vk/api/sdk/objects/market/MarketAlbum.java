@@ -13,6 +13,13 @@ import java.util.Objects;
  */
 public class MarketAlbum implements Validable {
     /**
+     * Items number
+     */
+    @SerializedName("count")
+    @Required
+    private Integer count;
+
+    /**
      * Market album ID
      */
     @SerializedName("id")
@@ -20,10 +27,33 @@ public class MarketAlbum implements Validable {
     private Integer id;
 
     /**
+     * Is album needed to be blurred (18+) or not
+     */
+    @SerializedName("is_blur_enabled")
+    private Boolean isBlurEnabled;
+
+    /**
+     * Is album hidden
+     */
+    @SerializedName("is_hidden")
+    private Boolean isHidden;
+
+    /**
+     * Is album main for owner
+     */
+    @SerializedName("is_main")
+    private Boolean isMain;
+
+    /**
      * Market album owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    @SerializedName("photo")
+    private Photo photo;
 
     /**
      * Market album title
@@ -33,59 +63,17 @@ public class MarketAlbum implements Validable {
     private String title;
 
     /**
-     * Items number
+     * Type of album
      */
-    @SerializedName("count")
-    @Required
-    private Integer count;
-
-    /**
-     * Is album main for owner
-     */
-    @SerializedName("is_main")
-    private Boolean isMain;
-
-    /**
-     * Is album hidden
-     */
-    @SerializedName("is_hidden")
-    private Boolean isHidden;
-
-    @SerializedName("photo")
-    private Photo photo;
+    @SerializedName("type")
+    private MarketAlbumType type;
 
     /**
      * Date when album has been updated last time in Unixtime
      */
     @SerializedName("updated_time")
+    @Required
     private Integer updatedTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public MarketAlbum setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public MarketAlbum setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public MarketAlbum setTitle(String title) {
-        this.title = title;
-        return this;
-    }
 
     public Integer getCount() {
         return count;
@@ -96,12 +84,21 @@ public class MarketAlbum implements Validable {
         return this;
     }
 
-    public Boolean getIsMain() {
-        return isMain;
+    public Integer getId() {
+        return id;
     }
 
-    public MarketAlbum setIsMain(Boolean isMain) {
-        this.isMain = isMain;
+    public MarketAlbum setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsBlurEnabled() {
+        return isBlurEnabled;
+    }
+
+    public MarketAlbum setIsBlurEnabled(Boolean isBlurEnabled) {
+        this.isBlurEnabled = isBlurEnabled;
         return this;
     }
 
@@ -114,12 +111,48 @@ public class MarketAlbum implements Validable {
         return this;
     }
 
+    public Boolean getIsMain() {
+        return isMain;
+    }
+
+    public MarketAlbum setIsMain(Boolean isMain) {
+        this.isMain = isMain;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public MarketAlbum setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     public Photo getPhoto() {
         return photo;
     }
 
     public MarketAlbum setPhoto(Photo photo) {
         this.photo = photo;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public MarketAlbum setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public MarketAlbumType getType() {
+        return type;
+    }
+
+    public MarketAlbum setType(MarketAlbumType type) {
+        this.type = type;
         return this;
     }
 
@@ -134,7 +167,7 @@ public class MarketAlbum implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(updatedTime, isMain, count, photo, id, ownerId, title, isHidden);
+        return Objects.hash(updatedTime, isBlurEnabled, isMain, count, photo, id, ownerId, title, type, isHidden);
     }
 
     @Override
@@ -149,7 +182,9 @@ public class MarketAlbum implements Validable {
                 Objects.equals(isHidden, marketAlbum.isHidden) &&
                 Objects.equals(photo, marketAlbum.photo) &&
                 Objects.equals(id, marketAlbum.id) &&
-                Objects.equals(title, marketAlbum.title);
+                Objects.equals(isBlurEnabled, marketAlbum.isBlurEnabled) &&
+                Objects.equals(title, marketAlbum.title) &&
+                Objects.equals(type, marketAlbum.type);
     }
 
     @Override
@@ -167,7 +202,9 @@ public class MarketAlbum implements Validable {
         sb.append(", isHidden=").append(isHidden);
         sb.append(", photo=").append(photo);
         sb.append(", id=").append(id);
+        sb.append(", isBlurEnabled=").append(isBlurEnabled);
         sb.append(", title='").append(title).append("'");
+        sb.append(", type=").append(type);
         sb.append('}');
         return sb.toString();
     }

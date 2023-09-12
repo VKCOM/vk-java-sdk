@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.callback;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,13 +12,19 @@ import java.util.Objects;
  */
 public class UserUnblock implements Validable {
     @SerializedName("admin_id")
+    @Required
     private Integer adminId;
 
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("by_end_date")
+    @Required
     private Integer byEndDate;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getAdminId() {
         return adminId;
@@ -28,21 +35,21 @@ public class UserUnblock implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public UserUnblock setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
     public Integer getByEndDate() {
         return byEndDate;
     }
 
     public UserUnblock setByEndDate(Integer byEndDate) {
         this.byEndDate = byEndDate;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public UserUnblock setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

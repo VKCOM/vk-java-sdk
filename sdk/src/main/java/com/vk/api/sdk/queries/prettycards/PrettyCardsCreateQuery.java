@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.prettycards;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.prettycards.responses.CreateResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,17 @@ import java.util.List;
  */
 public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCreateQuery, CreateResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param photo value of "photo" parameter.
      * @param title value of "title" parameter.
      * @param link value of "link" parameter.
      */
-    public PrettyCardsCreateQuery(VkApiClient client, UserActor actor, int ownerId, String photo,
+    public PrettyCardsCreateQuery(VkApiClient client, UserActor actor, Long ownerId, String photo,
             String title, String link) {
         super(client, "prettyCards.create", CreateResponse.class);
         accessToken(actor.getAccessToken());
@@ -33,12 +35,25 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PrettyCardsCreateQuery(VkApiClient client, UserActor actor) {
+        super(client, "prettyCards.create", CreateResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsCreateQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public PrettyCardsCreateQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -48,7 +63,8 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsCreateQuery photo(String value) {
+    @ApiParam("photo")
+    public PrettyCardsCreateQuery photo(String value) {
         return unsafeParam("photo", value);
     }
 
@@ -58,7 +74,8 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsCreateQuery title(String value) {
+    @ApiParam("title")
+    public PrettyCardsCreateQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -68,7 +85,8 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "link" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsCreateQuery link(String value) {
+    @ApiParam("link")
+    public PrettyCardsCreateQuery link(String value) {
         return unsafeParam("link", value);
     }
 
@@ -78,6 +96,7 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "price" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("price")
     public PrettyCardsCreateQuery price(String value) {
         return unsafeParam("price", value);
     }
@@ -88,6 +107,7 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "price old" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("price_old")
     public PrettyCardsCreateQuery priceOld(String value) {
         return unsafeParam("price_old", value);
     }
@@ -98,6 +118,7 @@ public class PrettyCardsCreateQuery extends AbstractQueryBuilder<PrettyCardsCrea
      * @param value value of "button" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("button")
     public PrettyCardsCreateQuery button(String value) {
         return unsafeParam("button", value);
     }

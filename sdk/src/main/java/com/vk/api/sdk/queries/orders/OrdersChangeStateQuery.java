@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.orders.ChangeStateAction;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,14 @@ import java.util.List;
  */
 public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeStateQuery, String> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param orderId value of "order id" parameter. Minimum is 0.
      * @param action value of "action" parameter.
      */
-    public OrdersChangeStateQuery(VkApiClient client, ServiceActor actor, int orderId,
+    public OrdersChangeStateQuery(VkApiClient client, ServiceActor actor, Integer orderId,
             ChangeStateAction action) {
         super(client, "orders.changeState", String.class);
         accessToken(actor.getAccessToken());
@@ -30,22 +31,36 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public OrdersChangeStateQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "orders.changeState", String.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Order ID.
      *
      * @param value value of "order id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersChangeStateQuery orderId(int value) {
+    @ApiParam("order_id")
+    public OrdersChangeStateQuery orderId(Integer value) {
         return unsafeParam("order_id", value);
     }
 
     /**
-     * Action to be done with the order. Available actions: *cancel — to cancel unconfirmed order. *charge — to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund — to cancel confirmed order.
+     * Action to be done with the order. Available actions: *cancel - to cancel unconfirmed order. *charge - to confirm unconfirmed order. Applies only if processing of [vk.com/dev/payments_status|order_change_state] notification failed. *refund - to cancel confirmed order.
      *
      * @param value value of "action" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersChangeStateQuery action(ChangeStateAction value) {
+    @ApiParam("action")
+    public OrdersChangeStateQuery action(ChangeStateAction value) {
         return unsafeParam("action", value);
     }
 
@@ -55,16 +70,18 @@ public class OrdersChangeStateQuery extends AbstractQueryBuilder<OrdersChangeSta
      * @param value value of "app order id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("app_order_id")
     public OrdersChangeStateQuery appOrderId(Integer value) {
         return unsafeParam("app_order_id", value);
     }
 
     /**
-     * If this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+     * If this parameter is set to 1, this method returns a list of test mode orders. By default - 0.
      *
      * @param value value of "test mode" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("test_mode")
     public OrdersChangeStateQuery testMode(Boolean value) {
         return unsafeParam("test_mode", value);
     }

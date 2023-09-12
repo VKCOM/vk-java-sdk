@@ -34,14 +34,14 @@ public class SavePhotoResponse implements Validable {
     @SerializedName("id")
     private Integer id;
 
-    @SerializedName("name")
-    private String name;
-
     /**
      * Pattern tiles
      */
     @SerializedName("images")
     private List<Image> images;
+
+    @SerializedName("name")
+    private String name;
 
     /**
      * Gradient points
@@ -94,21 +94,21 @@ public class SavePhotoResponse implements Validable {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public SavePhotoResponse setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public List<Image> getImages() {
         return images;
     }
 
     public SavePhotoResponse setImages(List<Image> images) {
         this.images = images;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public SavePhotoResponse setName(String name) {
+        this.name = name;
         return this;
     }
 

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.SaveMarketPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveMarketPhotoQuery, List<SaveMarketPhotoResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -22,8 +23,8 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param server value of "server" parameter.
      * @param hash value of "hash" parameter.
      */
-    public PhotosSaveMarketPhotoQuery(VkApiClient client, UserActor actor, String photo, int server,
-            String hash) {
+    public PhotosSaveMarketPhotoQuery(VkApiClient client, UserActor actor, String photo,
+            Integer server, String hash) {
         super(client, "photos.saveMarketPhoto", Utils.buildParametrizedType(List.class, SaveMarketPhotoResponse.class));
         accessToken(actor.getAccessToken());
         photo(photo);
@@ -32,12 +33,25 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosSaveMarketPhotoQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.saveMarketPhoto", Utils.buildParametrizedType(List.class, SaveMarketPhotoResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveMarketPhotoQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosSaveMarketPhotoQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -47,7 +61,8 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketPhotoQuery photo(String value) {
+    @ApiParam("photo")
+    public PhotosSaveMarketPhotoQuery photo(String value) {
         return unsafeParam("photo", value);
     }
 
@@ -57,7 +72,8 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param value value of "server" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketPhotoQuery server(int value) {
+    @ApiParam("server")
+    public PhotosSaveMarketPhotoQuery server(Integer value) {
         return unsafeParam("server", value);
     }
 
@@ -67,7 +83,8 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketPhotoQuery hash(String value) {
+    @ApiParam("hash")
+    public PhotosSaveMarketPhotoQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 
@@ -77,6 +94,7 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param value value of "crop data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_data")
     public PhotosSaveMarketPhotoQuery cropData(String value) {
         return unsafeParam("crop_data", value);
     }
@@ -87,6 +105,7 @@ public class PhotosSaveMarketPhotoQuery extends AbstractQueryBuilder<PhotosSaveM
      * @param value value of "crop hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_hash")
     public PhotosSaveMarketPhotoQuery cropHash(String value) {
         return unsafeParam("crop_hash", value);
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.GetUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,18 +15,7 @@ import java.util.List;
  */
 public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWallUploadServerQuery, GetUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public DocsGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
-        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -37,12 +27,25 @@ public class DocsGetWallUploadServerQuery extends AbstractQueryBuilder<DocsGetWa
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DocsGetWallUploadServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "docs.getWallUploadServer", GetUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID (if the document will be uploaded to the community).
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public DocsGetWallUploadServerQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public DocsGetWallUploadServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

@@ -13,19 +13,6 @@ import java.util.Objects;
  */
 public class IsMemberExtendedResponse implements Validable {
     /**
-     * Information whether user is a member of the group
-     */
-    @SerializedName("member")
-    @Required
-    private BoolInt member;
-
-    /**
-     * Information whether user has been invited to the group
-     */
-    @SerializedName("invitation")
-    private BoolInt invitation;
-
-    /**
      * Information whether user can be invited
      */
     @SerializedName("can_invite")
@@ -38,26 +25,23 @@ public class IsMemberExtendedResponse implements Validable {
     private BoolInt canRecall;
 
     /**
+     * Information whether user has been invited to the group
+     */
+    @SerializedName("invitation")
+    private BoolInt invitation;
+
+    /**
+     * Information whether user is a member of the group
+     */
+    @SerializedName("member")
+    @Required
+    private BoolInt member;
+
+    /**
      * Information whether user has sent request to the group
      */
     @SerializedName("request")
     private BoolInt request;
-
-    public boolean isMember() {
-        return member == BoolInt.YES;
-    }
-
-    public BoolInt getMember() {
-        return member;
-    }
-
-    public boolean isInvitation() {
-        return invitation == BoolInt.YES;
-    }
-
-    public BoolInt getInvitation() {
-        return invitation;
-    }
 
     public boolean canInvite() {
         return canInvite == BoolInt.YES;
@@ -73,6 +57,22 @@ public class IsMemberExtendedResponse implements Validable {
 
     public BoolInt getCanRecall() {
         return canRecall;
+    }
+
+    public boolean isInvitation() {
+        return invitation == BoolInt.YES;
+    }
+
+    public BoolInt getInvitation() {
+        return invitation;
+    }
+
+    public boolean isMember() {
+        return member == BoolInt.YES;
+    }
+
+    public BoolInt getMember() {
+        return member;
     }
 
     public boolean isRequest() {

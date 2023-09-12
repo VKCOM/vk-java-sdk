@@ -19,6 +19,12 @@ public class TopicComment implements Validable {
     private List<CommentAttachment> attachments;
 
     /**
+     * Information whether current user can edit the comment
+     */
+    @SerializedName("can_edit")
+    private BoolInt canEdit;
+
+    /**
      * Date when the comment has been added in Unixtime
      */
     @SerializedName("date")
@@ -27,9 +33,11 @@ public class TopicComment implements Validable {
 
     /**
      * Author ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    @Required
+    private Long fromId;
 
     /**
      * Comment ID
@@ -37,6 +45,9 @@ public class TopicComment implements Validable {
     @SerializedName("id")
     @Required
     private Integer id;
+
+    @SerializedName("likes")
+    private LikesInfo likes;
 
     /**
      * Real position of the comment
@@ -51,15 +62,6 @@ public class TopicComment implements Validable {
     @Required
     private String text;
 
-    /**
-     * Information whether current user can edit the comment
-     */
-    @SerializedName("can_edit")
-    private BoolInt canEdit;
-
-    @SerializedName("likes")
-    private LikesInfo likes;
-
     public List<CommentAttachment> getAttachments() {
         return attachments;
     }
@@ -67,6 +69,14 @@ public class TopicComment implements Validable {
     public TopicComment setAttachments(List<CommentAttachment> attachments) {
         this.attachments = attachments;
         return this;
+    }
+
+    public boolean canEdit() {
+        return canEdit == BoolInt.YES;
+    }
+
+    public BoolInt getCanEdit() {
+        return canEdit;
     }
 
     public Integer getDate() {
@@ -78,11 +88,11 @@ public class TopicComment implements Validable {
         return this;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public TopicComment setFromId(Integer fromId) {
+    public TopicComment setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -93,6 +103,15 @@ public class TopicComment implements Validable {
 
     public TopicComment setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public LikesInfo getLikes() {
+        return likes;
+    }
+
+    public TopicComment setLikes(LikesInfo likes) {
+        this.likes = likes;
         return this;
     }
 
@@ -111,23 +130,6 @@ public class TopicComment implements Validable {
 
     public TopicComment setText(String text) {
         this.text = text;
-        return this;
-    }
-
-    public boolean canEdit() {
-        return canEdit == BoolInt.YES;
-    }
-
-    public BoolInt getCanEdit() {
-        return canEdit;
-    }
-
-    public LikesInfo getLikes() {
-        return likes;
-    }
-
-    public TopicComment setLikes(LikesInfo likes) {
-        this.likes = likes;
         return this;
     }
 

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.fave;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,15 @@ import java.util.List;
  */
 public class FaveRemoveVideoQuery extends AbstractQueryBuilder<FaveRemoveVideoQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param id value of "id" parameter.
      */
-    public FaveRemoveVideoQuery(VkApiClient client, UserActor actor, int ownerId, int id) {
+    public FaveRemoveVideoQuery(VkApiClient client, UserActor actor, Long ownerId, Integer id) {
         super(client, "fave.removeVideo", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +30,25 @@ public class FaveRemoveVideoQuery extends AbstractQueryBuilder<FaveRemoveVideoQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public FaveRemoveVideoQuery(VkApiClient client, UserActor actor) {
+        super(client, "fave.removeVideo", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FaveRemoveVideoQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public FaveRemoveVideoQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +58,8 @@ public class FaveRemoveVideoQuery extends AbstractQueryBuilder<FaveRemoveVideoQu
      * @param value value of "id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FaveRemoveVideoQuery id(int value) {
+    @ApiParam("id")
+    public FaveRemoveVideoQuery id(Integer value) {
         return unsafeParam("id", value);
     }
 

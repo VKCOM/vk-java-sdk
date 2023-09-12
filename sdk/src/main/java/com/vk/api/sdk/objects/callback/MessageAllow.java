@@ -11,21 +11,9 @@ import java.util.Objects;
  * MessageAllow object
  */
 public class MessageAllow extends Base implements Validable {
-    @SerializedName("type")
-    private Type type;
-
     @SerializedName("object")
     @Required
     private MessageAllowObject object;
-
-    public Type getType() {
-        return type;
-    }
-
-    public MessageAllow setType(Type type) {
-        this.type = type;
-        return this;
-    }
 
     public MessageAllowObject getObject() {
         return object;
@@ -38,7 +26,7 @@ public class MessageAllow extends Base implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, object);
+        return Objects.hash(object);
     }
 
     @Override
@@ -46,8 +34,7 @@ public class MessageAllow extends Base implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MessageAllow messageAllow = (MessageAllow) o;
-        return Objects.equals(type, messageAllow.type) &&
-                Objects.equals(object, messageAllow.object);
+        return Objects.equals(object, messageAllow.object);
     }
 
     @Override
@@ -58,8 +45,7 @@ public class MessageAllow extends Base implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MessageAllow{");
-        sb.append("type=").append(type);
-        sb.append(", object=").append(object);
+        sb.append("object=").append(object);
         sb.append('}');
         return sb.toString();
     }

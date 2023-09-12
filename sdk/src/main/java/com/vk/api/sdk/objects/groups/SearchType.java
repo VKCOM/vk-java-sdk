@@ -8,14 +8,14 @@ import com.vk.api.sdk.queries.EnumParam;
  * Community type. Possible values: 'group, page, event.'
  */
 public enum SearchType implements EnumParam {
+    @SerializedName("event")
+    EVENT("event"),
+
     @SerializedName("group")
     GROUP("group"),
 
     @SerializedName("page")
-    PAGE("page"),
-
-    @SerializedName("event")
-    EVENT("event");
+    PAGE("page");
 
     private final String value;
 

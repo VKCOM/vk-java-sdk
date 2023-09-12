@@ -7,8 +7,9 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.users.Fields;
-import com.vk.api.sdk.objects.users.GetNameCase;
 import com.vk.api.sdk.objects.users.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -18,18 +19,7 @@ import java.util.List;
  */
 public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public UsersGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "users.get", Utils.buildParametrizedType(List.class, GetResponse.class));
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -40,7 +30,18 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public UsersGetQuery(VkApiClient client, UserActor actor) {
+        super(client, "users.get", Utils.buildParametrizedType(List.class, GetResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -52,22 +53,24 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetQuery nameCase(GetNameCase value) {
+    @ApiParam("name_case")
+    public UsersGetQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
     /**
-     * user_ids
+     * userIds
      * User IDs or screen names ('screen_name'). By default, current user ID.
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("user_ids")
     public UsersGetQuery userIds(String... value) {
         return unsafeParam("user_ids", value);
     }
@@ -78,6 +81,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("user_ids")
     public UsersGetQuery userIds(List<String> value) {
         return unsafeParam("user_ids", value);
     }
@@ -89,6 +93,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -99,6 +104,7 @@ public class UsersGetQuery extends AbstractQueryBuilder<UsersGetQuery, List<GetR
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

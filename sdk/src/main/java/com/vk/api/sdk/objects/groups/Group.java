@@ -14,64 +14,8 @@ import java.util.Objects;
  * Group object
  */
 public class Group implements Validable {
-    /**
-     * Community ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Community name
-     */
-    @SerializedName("name")
-    @Required
-    private String name;
-
-    /**
-     * Domain of the community page
-     */
-    @SerializedName("screen_name")
-    private String screenName;
-
-    @SerializedName("is_closed")
-    private GroupIsClosed isClosed;
-
-    @SerializedName("type")
-    private GroupType type;
-
-    /**
-     * Information whether current user is administrator
-     */
-    @SerializedName("is_admin")
-    private BoolInt isAdmin;
-
     @SerializedName("admin_level")
     private GroupAdminLevel adminLevel;
-
-    /**
-     * Information whether current user is member
-     */
-    @SerializedName("is_member")
-    private BoolInt isMember;
-
-    /**
-     * Information whether current user is advertiser
-     */
-    @SerializedName("is_advertiser")
-    private BoolInt isAdvertiser;
-
-    /**
-     * Start date in Unixtime format
-     */
-    @SerializedName("start_date")
-    private Integer startDate;
-
-    /**
-     * Finish date in Unixtime format
-     */
-    @SerializedName("finish_date")
-    private Integer finishDate;
 
     /**
      * Information whether community is banned
@@ -80,10 +24,54 @@ public class Group implements Validable {
     private String deactivated;
 
     /**
-     * URL of square photo of the community with 50 pixels in width
+     * Established date
      */
-    @SerializedName("photo_50")
-    private URI photo50;
+    @SerializedName("est_date")
+    private String estDate;
+
+    /**
+     * Finish date in Unixtime format
+     */
+    @SerializedName("finish_date")
+    private Integer finishDate;
+
+    /**
+     * Community ID
+     * Entity: groups
+     */
+    @SerializedName("id")
+    @Required
+    private Long id;
+
+    /**
+     * Information whether current user is administrator
+     */
+    @SerializedName("is_admin")
+    private BoolInt isAdmin;
+
+    /**
+     * Information whether current user is advertiser
+     */
+    @SerializedName("is_advertiser")
+    private BoolInt isAdvertiser;
+
+    @SerializedName("is_closed")
+    private GroupIsClosed isClosed;
+
+    /**
+     * Information whether current user is member
+     */
+    @SerializedName("is_member")
+    private BoolInt isMember;
+
+    @SerializedName("is_video_live_notifications_blocked")
+    private BoolInt isVideoLiveNotificationsBlocked;
+
+    /**
+     * Community name
+     */
+    @SerializedName("name")
+    private String name;
 
     /**
      * URL of square photo of the community with 100 pixels in width
@@ -116,6 +104,12 @@ public class Group implements Validable {
     private URI photo400Orig;
 
     /**
+     * URL of square photo of the community with 50 pixels in width
+     */
+    @SerializedName("photo_50")
+    private URI photo50;
+
+    /**
      * URL of square photo of the community with max pixels in width
      */
     @SerializedName("photo_max")
@@ -127,11 +121,8 @@ public class Group implements Validable {
     @SerializedName("photo_max_orig")
     private URI photoMaxOrig;
 
-    /**
-     * Established date
-     */
-    @SerializedName("est_date")
-    private String estDate;
+    @SerializedName("photo_max_size")
+    private PhotoSize photoMaxSize;
 
     /**
      * Public date label
@@ -139,67 +130,29 @@ public class Group implements Validable {
     @SerializedName("public_date_label")
     private String publicDateLabel;
 
-    @SerializedName("photo_max_size")
-    private PhotoSize photoMaxSize;
+    /**
+     * Domain of the community page
+     */
+    @SerializedName("screen_name")
+    private String screenName;
 
-    @SerializedName("is_video_live_notifications_blocked")
-    private BoolInt isVideoLiveNotificationsBlocked;
+    /**
+     * Start date in Unixtime format
+     */
+    @SerializedName("start_date")
+    private Integer startDate;
+
+    @SerializedName("type")
+    private GroupType type;
+
+    /**
+     * Information whether community is verified
+     */
+    @SerializedName("verified")
+    private BoolInt verified;
 
     @SerializedName("video_live")
     private LiveInfo videoLive;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public Group setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Group setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public Group setScreenName(String screenName) {
-        this.screenName = screenName;
-        return this;
-    }
-
-    public GroupIsClosed getIsClosed() {
-        return isClosed;
-    }
-
-    public Group setIsClosed(GroupIsClosed isClosed) {
-        this.isClosed = isClosed;
-        return this;
-    }
-
-    public GroupType getType() {
-        return type;
-    }
-
-    public Group setType(GroupType type) {
-        this.type = type;
-        return this;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin == BoolInt.YES;
-    }
-
-    public BoolInt getIsAdmin() {
-        return isAdmin;
-    }
 
     public GroupAdminLevel getAdminLevel() {
         return adminLevel;
@@ -207,40 +160,6 @@ public class Group implements Validable {
 
     public Group setAdminLevel(GroupAdminLevel adminLevel) {
         this.adminLevel = adminLevel;
-        return this;
-    }
-
-    public boolean isMember() {
-        return isMember == BoolInt.YES;
-    }
-
-    public BoolInt getIsMember() {
-        return isMember;
-    }
-
-    public boolean isAdvertiser() {
-        return isAdvertiser == BoolInt.YES;
-    }
-
-    public BoolInt getIsAdvertiser() {
-        return isAdvertiser;
-    }
-
-    public Integer getStartDate() {
-        return startDate;
-    }
-
-    public Group setStartDate(Integer startDate) {
-        this.startDate = startDate;
-        return this;
-    }
-
-    public Integer getFinishDate() {
-        return finishDate;
-    }
-
-    public Group setFinishDate(Integer finishDate) {
-        this.finishDate = finishDate;
         return this;
     }
 
@@ -253,12 +172,80 @@ public class Group implements Validable {
         return this;
     }
 
-    public URI getPhoto50() {
-        return photo50;
+    public String getEstDate() {
+        return estDate;
     }
 
-    public Group setPhoto50(URI photo50) {
-        this.photo50 = photo50;
+    public Group setEstDate(String estDate) {
+        this.estDate = estDate;
+        return this;
+    }
+
+    public Integer getFinishDate() {
+        return finishDate;
+    }
+
+    public Group setFinishDate(Integer finishDate) {
+        this.finishDate = finishDate;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Group setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isAdvertiser() {
+        return isAdvertiser == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdvertiser() {
+        return isAdvertiser;
+    }
+
+    public GroupIsClosed getIsClosed() {
+        return isClosed;
+    }
+
+    public Group setIsClosed(GroupIsClosed isClosed) {
+        this.isClosed = isClosed;
+        return this;
+    }
+
+    public boolean isMember() {
+        return isMember == BoolInt.YES;
+    }
+
+    public BoolInt getIsMember() {
+        return isMember;
+    }
+
+    public boolean isVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Group setName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -307,6 +294,15 @@ public class Group implements Validable {
         return this;
     }
 
+    public URI getPhoto50() {
+        return photo50;
+    }
+
+    public Group setPhoto50(URI photo50) {
+        this.photo50 = photo50;
+        return this;
+    }
+
     public URI getPhotoMax() {
         return photoMax;
     }
@@ -325,12 +321,12 @@ public class Group implements Validable {
         return this;
     }
 
-    public String getEstDate() {
-        return estDate;
+    public PhotoSize getPhotoMaxSize() {
+        return photoMaxSize;
     }
 
-    public Group setEstDate(String estDate) {
-        this.estDate = estDate;
+    public Group setPhotoMaxSize(PhotoSize photoMaxSize) {
+        this.photoMaxSize = photoMaxSize;
         return this;
     }
 
@@ -343,21 +339,39 @@ public class Group implements Validable {
         return this;
     }
 
-    public PhotoSize getPhotoMaxSize() {
-        return photoMaxSize;
+    public String getScreenName() {
+        return screenName;
     }
 
-    public Group setPhotoMaxSize(PhotoSize photoMaxSize) {
-        this.photoMaxSize = photoMaxSize;
+    public Group setScreenName(String screenName) {
+        this.screenName = screenName;
         return this;
     }
 
-    public boolean isVideoLiveNotificationsBlocked() {
-        return isVideoLiveNotificationsBlocked == BoolInt.YES;
+    public Integer getStartDate() {
+        return startDate;
     }
 
-    public BoolInt getIsVideoLiveNotificationsBlocked() {
-        return isVideoLiveNotificationsBlocked;
+    public Group setStartDate(Integer startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public GroupType getType() {
+        return type;
+    }
+
+    public Group setType(GroupType type) {
+        this.type = type;
+        return this;
+    }
+
+    public boolean isVerified() {
+        return verified == BoolInt.YES;
+    }
+
+    public BoolInt getVerified() {
+        return verified;
     }
 
     public LiveInfo getVideoLive() {
@@ -371,7 +385,7 @@ public class Group implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(estDate, isAdvertiser, adminLevel, photo50, photo400, screenName, photo200, isMember, type, deactivated, publicDateLabel, photoMaxSize, photoMaxOrig, photoMax, id, isVideoLiveNotificationsBlocked, videoLive, photo200Orig, isAdmin, photo100, isClosed, photo400Orig, name, finishDate, startDate);
+        return Objects.hash(estDate, isAdvertiser, adminLevel, photo50, photo400, screenName, photo200, isMember, type, deactivated, publicDateLabel, photoMaxSize, photoMaxOrig, photoMax, id, isVideoLiveNotificationsBlocked, verified, videoLive, photo200Orig, isAdmin, photo100, isClosed, photo400Orig, name, finishDate, startDate);
     }
 
     @Override
@@ -385,19 +399,20 @@ public class Group implements Validable {
                 Objects.equals(isAdmin, group.isAdmin) &&
                 Objects.equals(photoMaxOrig, group.photoMaxOrig) &&
                 Objects.equals(photoMaxSize, group.photoMaxSize) &&
-                Objects.equals(screenName, group.screenName) &&
-                Objects.equals(isAdvertiser, group.isAdvertiser) &&
                 Objects.equals(finishDate, group.finishDate) &&
+                Objects.equals(isAdvertiser, group.isAdvertiser) &&
+                Objects.equals(screenName, group.screenName) &&
                 Objects.equals(adminLevel, group.adminLevel) &&
                 Objects.equals(estDate, group.estDate) &&
                 Objects.equals(id, group.id) &&
                 Objects.equals(photo100, group.photo100) &&
                 Objects.equals(photo200, group.photo200) &&
                 Objects.equals(isClosed, group.isClosed) &&
-                Objects.equals(startDate, group.startDate) &&
                 Objects.equals(photo400, group.photo400) &&
+                Objects.equals(startDate, group.startDate) &&
                 Objects.equals(isVideoLiveNotificationsBlocked, group.isVideoLiveNotificationsBlocked) &&
                 Objects.equals(isMember, group.isMember) &&
+                Objects.equals(verified, group.verified) &&
                 Objects.equals(publicDateLabel, group.publicDateLabel) &&
                 Objects.equals(photoMax, group.photoMax) &&
                 Objects.equals(name, group.name) &&
@@ -420,19 +435,20 @@ public class Group implements Validable {
         sb.append(", isAdmin=").append(isAdmin);
         sb.append(", photoMaxOrig=").append(photoMaxOrig);
         sb.append(", photoMaxSize=").append(photoMaxSize);
-        sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", isAdvertiser=").append(isAdvertiser);
         sb.append(", finishDate=").append(finishDate);
+        sb.append(", isAdvertiser=").append(isAdvertiser);
+        sb.append(", screenName='").append(screenName).append("'");
         sb.append(", adminLevel=").append(adminLevel);
         sb.append(", estDate='").append(estDate).append("'");
         sb.append(", id=").append(id);
         sb.append(", photo100=").append(photo100);
         sb.append(", photo200=").append(photo200);
         sb.append(", isClosed=").append(isClosed);
-        sb.append(", startDate=").append(startDate);
         sb.append(", photo400=").append(photo400);
+        sb.append(", startDate=").append(startDate);
         sb.append(", isVideoLiveNotificationsBlocked=").append(isVideoLiveNotificationsBlocked);
         sb.append(", isMember=").append(isMember);
+        sb.append(", verified=").append(verified);
         sb.append(", publicDateLabel='").append(publicDateLabel).append("'");
         sb.append(", photoMax=").append(photoMax);
         sb.append(", name='").append(name).append("'");

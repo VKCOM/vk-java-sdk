@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.notifications.NotificationsGetQuery;
 import com.vk.api.sdk.queries.notifications.NotificationsMarkAsViewedQuery;
 import com.vk.api.sdk.queries.notifications.NotificationsSendMessageQuery;
@@ -26,9 +27,10 @@ public class Notifications extends AbstractAction {
     /**
      * Returns a list of notifications about other users' feedback to the current user's wall posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("notifications.get")
     public NotificationsGetQuery get(UserActor actor) {
         return new NotificationsGetQuery(getClient(), actor);
     }
@@ -36,32 +38,44 @@ public class Notifications extends AbstractAction {
     /**
      * Resets the counter of new notifications about other users' feedback to the current user's wall posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("notifications.markAsViewed")
     public NotificationsMarkAsViewedQuery markAsViewed(UserActor actor) {
         return new NotificationsMarkAsViewedQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param message
      * @param userIds
      * @return query
      */
+    @ApiMethod("notifications.sendMessage")
     public NotificationsSendMessageQuery sendMessage(ServiceActor actor, String message,
-            Integer... userIds) {
+            Long... userIds) {
         return new NotificationsSendMessageQuery(getClient(), actor, message, userIds);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param message
      * @param userIds
      * @return query
      */
+    @ApiMethod("notifications.sendMessage")
     public NotificationsSendMessageQuery sendMessage(ServiceActor actor, String message,
-            List<Integer> userIds) {
+            List<Long> userIds) {
         return new NotificationsSendMessageQuery(getClient(), actor, message, userIds);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("notifications.sendMessage")
+    public NotificationsSendMessageQuery sendMessage(ServiceActor actor) {
+        return new NotificationsSendMessageQuery(getClient(), actor);
     }
 }

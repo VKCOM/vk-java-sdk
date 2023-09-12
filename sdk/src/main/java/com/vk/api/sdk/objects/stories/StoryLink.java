@@ -5,13 +5,18 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import java.net.URI;
 import java.util.Objects;
 
 /**
  * StoryLink object
  */
 public class StoryLink implements Validable {
+    /**
+     * How to open url
+     */
+    @SerializedName("link_url_target")
+    private String linkUrlTarget;
+
     /**
      * Link text
      */
@@ -24,7 +29,16 @@ public class StoryLink implements Validable {
      */
     @SerializedName("url")
     @Required
-    private URI url;
+    private String url;
+
+    public String getLinkUrlTarget() {
+        return linkUrlTarget;
+    }
+
+    public StoryLink setLinkUrlTarget(String linkUrlTarget) {
+        this.linkUrlTarget = linkUrlTarget;
+        return this;
+    }
 
     public String getText() {
         return text;
@@ -35,18 +49,18 @@ public class StoryLink implements Validable {
         return this;
     }
 
-    public URI getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public StoryLink setUrl(URI url) {
+    public StoryLink setUrl(String url) {
         this.url = url;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, url);
+        return Objects.hash(text, linkUrlTarget, url);
     }
 
     @Override
@@ -55,6 +69,7 @@ public class StoryLink implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         StoryLink storyLink = (StoryLink) o;
         return Objects.equals(text, storyLink.text) &&
+                Objects.equals(linkUrlTarget, storyLink.linkUrlTarget) &&
                 Objects.equals(url, storyLink.url);
     }
 
@@ -67,7 +82,8 @@ public class StoryLink implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StoryLink{");
         sb.append("text='").append(text).append("'");
-        sb.append(", url=").append(url);
+        sb.append(", linkUrlTarget='").append(linkUrlTarget).append("'");
+        sb.append(", url='").append(url).append("'");
         sb.append('}');
         return sb.toString();
     }

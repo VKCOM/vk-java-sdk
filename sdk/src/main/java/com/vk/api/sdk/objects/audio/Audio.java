@@ -19,11 +19,30 @@ public class Audio implements Validable {
     private String accessKey;
 
     /**
+     * Album ID
+     */
+    @SerializedName("album_id")
+    private Integer albumId;
+
+    /**
      * Artist name
      */
     @SerializedName("artist")
     @Required
     private String artist;
+
+    /**
+     * Date when uploaded
+     */
+    @SerializedName("date")
+    private Integer date;
+
+    /**
+     * Duration in seconds
+     */
+    @SerializedName("duration")
+    @Required
+    private Integer duration;
 
     /**
      * Audio ID
@@ -34,9 +53,17 @@ public class Audio implements Validable {
 
     /**
      * Audio owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    /**
+     * Performer name
+     */
+    @SerializedName("performer")
+    private String performer;
 
     /**
      * Title
@@ -51,43 +78,21 @@ public class Audio implements Validable {
     @SerializedName("url")
     private URI url;
 
-    /**
-     * Duration in seconds
-     */
-    @SerializedName("duration")
-    @Required
-    private Integer duration;
-
-    /**
-     * Date when uploaded
-     */
-    @SerializedName("date")
-    private Integer date;
-
-    /**
-     * Album ID
-     */
-    @SerializedName("album_id")
-    private Integer albumId;
-
-    /**
-     * Genre ID
-     */
-    @SerializedName("genre_id")
-    private Integer genreId;
-
-    /**
-     * Performer name
-     */
-    @SerializedName("performer")
-    private String performer;
-
     public String getAccessKey() {
         return accessKey;
     }
 
     public Audio setAccessKey(String accessKey) {
         this.accessKey = accessKey;
+        return this;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public Audio setAlbumId(Integer albumId) {
+        this.albumId = albumId;
         return this;
     }
 
@@ -100,6 +105,24 @@ public class Audio implements Validable {
         return this;
     }
 
+    public Integer getDate() {
+        return date;
+    }
+
+    public Audio setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public Audio setDuration(Integer duration) {
+        this.duration = duration;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -109,12 +132,21 @@ public class Audio implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public Audio setOwnerId(Integer ownerId) {
+    public Audio setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getPerformer() {
+        return performer;
+    }
+
+    public Audio setPerformer(String performer) {
+        this.performer = performer;
         return this;
     }
 
@@ -136,54 +168,9 @@ public class Audio implements Validable {
         return this;
     }
 
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public Audio setDuration(Integer duration) {
-        this.duration = duration;
-        return this;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public Audio setDate(Integer date) {
-        this.date = date;
-        return this;
-    }
-
-    public Integer getAlbumId() {
-        return albumId;
-    }
-
-    public Audio setAlbumId(Integer albumId) {
-        this.albumId = albumId;
-        return this;
-    }
-
-    public Integer getGenreId() {
-        return genreId;
-    }
-
-    public Audio setGenreId(Integer genreId) {
-        this.genreId = genreId;
-        return this;
-    }
-
-    public String getPerformer() {
-        return performer;
-    }
-
-    public Audio setPerformer(String performer) {
-        this.performer = performer;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(duration, date, genreId, performer, artist, accessKey, albumId, id, ownerId, title, url);
+        return Objects.hash(date, duration, performer, artist, accessKey, albumId, id, ownerId, title, url);
     }
 
     @Override
@@ -191,8 +178,8 @@ public class Audio implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Audio audio = (Audio) o;
-        return Objects.equals(duration, audio.duration) &&
-                Objects.equals(date, audio.date) &&
+        return Objects.equals(date, audio.date) &&
+                Objects.equals(duration, audio.duration) &&
                 Objects.equals(performer, audio.performer) &&
                 Objects.equals(artist, audio.artist) &&
                 Objects.equals(ownerId, audio.ownerId) &&
@@ -200,8 +187,7 @@ public class Audio implements Validable {
                 Objects.equals(albumId, audio.albumId) &&
                 Objects.equals(id, audio.id) &&
                 Objects.equals(title, audio.title) &&
-                Objects.equals(url, audio.url) &&
-                Objects.equals(genreId, audio.genreId);
+                Objects.equals(url, audio.url);
     }
 
     @Override
@@ -212,8 +198,8 @@ public class Audio implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Audio{");
-        sb.append("duration=").append(duration);
-        sb.append(", date=").append(date);
+        sb.append("date=").append(date);
+        sb.append(", duration=").append(duration);
         sb.append(", performer='").append(performer).append("'");
         sb.append(", artist='").append(artist).append("'");
         sb.append(", ownerId=").append(ownerId);
@@ -222,7 +208,6 @@ public class Audio implements Validable {
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");
         sb.append(", url=").append(url);
-        sb.append(", genreId=").append(genreId);
         sb.append('}');
         return sb.toString();
     }

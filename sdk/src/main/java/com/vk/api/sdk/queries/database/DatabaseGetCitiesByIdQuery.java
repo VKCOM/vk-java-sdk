@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetCitiesByIdResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGetCitiesByIdQuery, List<GetCitiesByIdResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,7 +27,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,12 +39,13 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
     }
 
     /**
-     * city_ids
+     * cityIds
      * City IDs.
      *
      * @param value value of "city ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("city_ids")
     public DatabaseGetCitiesByIdQuery cityIds(Integer... value) {
         return unsafeParam("city_ids", value);
     }
@@ -54,6 +56,7 @@ public class DatabaseGetCitiesByIdQuery extends AbstractQueryBuilder<DatabaseGet
      * @param value value of "city ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("city_ids")
     public DatabaseGetCitiesByIdQuery cityIds(List<Integer> value) {
         return unsafeParam("city_ids", value);
     }

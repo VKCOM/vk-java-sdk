@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.secure.responses.CheckTokenResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class SecureCheckTokenQuery extends AbstractSecureQueryBuilder<SecureCheckTokenQuery, CheckTokenResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class SecureCheckTokenQuery extends AbstractSecureQueryBuilder<SecureChec
      * @param value value of "token" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("token")
     public SecureCheckTokenQuery token(String value) {
         return unsafeParam("token", value);
     }
@@ -40,6 +42,7 @@ public class SecureCheckTokenQuery extends AbstractSecureQueryBuilder<SecureChec
      * @param value value of "ip" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ip")
     public SecureCheckTokenQuery ip(String value) {
         return unsafeParam("ip", value);
     }

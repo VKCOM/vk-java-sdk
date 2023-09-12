@@ -1,17 +1,13 @@
 package com.vk.api.sdk.client;
 
 import com.vk.api.sdk.queries.EnumParam;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,6 +19,7 @@ import static java.util.Arrays.asList;
 public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
 
     private final Map<String, String> params = new HashMap<String, String>();
+    private final List<Header> headers = new ArrayList<>();
 
     private String method;
 
@@ -256,6 +253,17 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
      * @param value value of parameter
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    public T unsafeParam(String key, Long value) {
+        return unsafeParam(key, Long.toString(value));
+    }
+
+    /**
+     * Set parameter
+     *
+     * @param key   name of parameter
+     * @param value value of parameter
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
     public T unsafeParam(String key, EnumParam value) {
         return unsafeParam(key, value.getValue());
     }
@@ -282,9 +290,37 @@ public abstract class AbstractQueryBuilder<T, R> extends ApiRequest<R> {
         return unsafeParam(key, fields.stream().map(EnumParam::getValue).collect(Collectors.joining(",")));
     }
 
+    /**
+     * Add header to request
+     *
+     * @param header Header to be added to the request
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T withHeader(BasicHeader header) {
+        headers.add(header);
+        return getThis();
+    }
+
+    /**
+     * Add multiple headers to request
+     *
+     * @param list List of headers which need to be added to request
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T withHeaders(List<BasicHeader> list) {
+        headers.addAll(list);
+        return getThis();
+    }
+
     @Override
     protected String getBody() {
         return mapToGetString(build());
+    }
+
+    @Override
+    protected Header[] getQueryHeaders() {
+        List<Header> result = new ArrayList<>(this.headers);
+        return result.toArray(new Header[0]);
     }
 
     /**

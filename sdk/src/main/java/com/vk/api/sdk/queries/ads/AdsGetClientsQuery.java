@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetClientsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class AdsGetClientsQuery extends AbstractQueryBuilder<AdsGetClientsQuery, List<GetClientsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetClientsQuery(VkApiClient client, UserActor actor, int accountId) {
+    public AdsGetClientsQuery(VkApiClient client, UserActor actor, Integer accountId) {
         super(client, "ads.getClients", Utils.buildParametrizedType(List.class, GetClientsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetClientsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getClients", Utils.buildParametrizedType(List.class, GetClientsResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,7 +44,8 @@ public class AdsGetClientsQuery extends AbstractQueryBuilder<AdsGetClientsQuery,
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetClientsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetClientsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 

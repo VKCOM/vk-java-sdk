@@ -8,6 +8,7 @@ import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Image;
 import com.vk.api.sdk.objects.base.StickerNew;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,18 +17,44 @@ import java.util.Objects;
  */
 public class Product implements Validable {
     /**
+     * Information whether the product is active (1 - yes, 0 - no)
+     */
+    @SerializedName("active")
+    private BoolInt active;
+
+    /**
+     * Id of the base pack (for sticker pack styles)
+     */
+    @SerializedName("base_id")
+    private Integer baseId;
+
+    /**
+     * Product copyright information
+     */
+    @SerializedName("copyright")
+    private String copyright;
+
+    @SerializedName("description_lang_key")
+    private String descriptionLangKey;
+
+    /**
+     * Information whether the product is an animated sticker pack (for stickers product type)
+     */
+    @SerializedName("has_animation")
+    private Boolean hasAnimation;
+
+    /**
+     * Array of icon images or icon set object of the product (for stickers product type)
+     */
+    @SerializedName("icon")
+    private ProductIcon icon;
+
+    /**
      * Id of the product
      */
     @SerializedName("id")
     @Required
     private Integer id;
-
-    /**
-     * Product type
-     */
-    @SerializedName("type")
-    @Required
-    private ProductType type;
 
     /**
      * Information whether sticker product wasn't used after being purchased
@@ -36,16 +63,19 @@ public class Product implements Validable {
     private Boolean isNew;
 
     /**
-     * Information whether the product is purchased (1 - yes, 0 - no)
+     * Information whether sticker pack is a vmoji pack
      */
-    @SerializedName("purchased")
-    private BoolInt purchased;
+    @SerializedName("is_vmoji")
+    private Boolean isVmoji;
+
+    @SerializedName("payment_region")
+    private String paymentRegion;
 
     /**
-     * Information whether the product is active (1 - yes, 0 - no)
+     * Array of preview images of the product (for stickers product type)
      */
-    @SerializedName("active")
-    private BoolInt active;
+    @SerializedName("previews")
+    private List<Image> previews;
 
     /**
      * Information whether the product is promoted (1 - yes, 0 - no)
@@ -60,13 +90,19 @@ public class Product implements Validable {
     private Integer purchaseDate;
 
     /**
-     * Title of the product
+     * Information whether the product is purchased (1 - yes, 0 - no)
      */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("purchased")
+    private BoolInt purchased;
 
     @SerializedName("stickers")
     private List<StickerNew> stickers;
+
+    /**
+     * Array of style ids available for the sticker pack
+     */
+    @SerializedName("style_ids")
+    private List<Integer> styleIds;
 
     /**
      * Array of style sticker ids (for sticker pack styles)
@@ -75,28 +111,82 @@ public class Product implements Validable {
     private List<Integer> styleStickerIds;
 
     /**
-     * Array of icon images or icon set object of the product (for stickers product type)
-     */
-    @SerializedName("icon")
-    private List<Image> icon;
-
-    /**
-     * Array of preview images of the product (for stickers product type)
-     */
-    @SerializedName("previews")
-    private List<Image> previews;
-
-    /**
-     * Information whether the product is an animated sticker pack (for stickers product type)
-     */
-    @SerializedName("has_animation")
-    private Boolean hasAnimation;
-
-    /**
      * Subtitle of the product
      */
     @SerializedName("subtitle")
     private String subtitle;
+
+    /**
+     * Title of the product
+     */
+    @SerializedName("title")
+    private String title;
+
+    @SerializedName("title_lang_key")
+    private String titleLangKey;
+
+    /**
+     * Product type
+     */
+    @SerializedName("type")
+    @Required
+    private ProductType type;
+
+    @SerializedName("url")
+    private URI url;
+
+    public boolean isActive() {
+        return active == BoolInt.YES;
+    }
+
+    public BoolInt getActive() {
+        return active;
+    }
+
+    public Integer getBaseId() {
+        return baseId;
+    }
+
+    public Product setBaseId(Integer baseId) {
+        this.baseId = baseId;
+        return this;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public Product setCopyright(String copyright) {
+        this.copyright = copyright;
+        return this;
+    }
+
+    public String getDescriptionLangKey() {
+        return descriptionLangKey;
+    }
+
+    public Product setDescriptionLangKey(String descriptionLangKey) {
+        this.descriptionLangKey = descriptionLangKey;
+        return this;
+    }
+
+    public Boolean getHasAnimation() {
+        return hasAnimation;
+    }
+
+    public Product setHasAnimation(Boolean hasAnimation) {
+        this.hasAnimation = hasAnimation;
+        return this;
+    }
+
+    public ProductIcon getIcon() {
+        return icon;
+    }
+
+    public Product setIcon(ProductIcon icon) {
+        this.icon = icon;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -104,15 +194,6 @@ public class Product implements Validable {
 
     public Product setId(Integer id) {
         this.id = id;
-        return this;
-    }
-
-    public ProductType getType() {
-        return type;
-    }
-
-    public Product setType(ProductType type) {
-        this.type = type;
         return this;
     }
 
@@ -125,20 +206,31 @@ public class Product implements Validable {
         return this;
     }
 
-    public boolean isPurchased() {
-        return purchased == BoolInt.YES;
+    public Boolean getIsVmoji() {
+        return isVmoji;
     }
 
-    public BoolInt getPurchased() {
-        return purchased;
+    public Product setIsVmoji(Boolean isVmoji) {
+        this.isVmoji = isVmoji;
+        return this;
     }
 
-    public boolean isActive() {
-        return active == BoolInt.YES;
+    public String getPaymentRegion() {
+        return paymentRegion;
     }
 
-    public BoolInt getActive() {
-        return active;
+    public Product setPaymentRegion(String paymentRegion) {
+        this.paymentRegion = paymentRegion;
+        return this;
+    }
+
+    public List<Image> getPreviews() {
+        return previews;
+    }
+
+    public Product setPreviews(List<Image> previews) {
+        this.previews = previews;
+        return this;
     }
 
     public boolean isPromoted() {
@@ -158,13 +250,12 @@ public class Product implements Validable {
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public boolean isPurchased() {
+        return purchased == BoolInt.YES;
     }
 
-    public Product setTitle(String title) {
-        this.title = title;
-        return this;
+    public BoolInt getPurchased() {
+        return purchased;
     }
 
     public List<StickerNew> getStickers() {
@@ -173,6 +264,15 @@ public class Product implements Validable {
 
     public Product setStickers(List<StickerNew> stickers) {
         this.stickers = stickers;
+        return this;
+    }
+
+    public List<Integer> getStyleIds() {
+        return styleIds;
+    }
+
+    public Product setStyleIds(List<Integer> styleIds) {
+        this.styleIds = styleIds;
         return this;
     }
 
@@ -185,33 +285,6 @@ public class Product implements Validable {
         return this;
     }
 
-    public List<Image> getIcon() {
-        return icon;
-    }
-
-    public Product setIcon(List<Image> icon) {
-        this.icon = icon;
-        return this;
-    }
-
-    public List<Image> getPreviews() {
-        return previews;
-    }
-
-    public Product setPreviews(List<Image> previews) {
-        this.previews = previews;
-        return this;
-    }
-
-    public Boolean getHasAnimation() {
-        return hasAnimation;
-    }
-
-    public Product setHasAnimation(Boolean hasAnimation) {
-        this.hasAnimation = hasAnimation;
-        return this;
-    }
-
     public String getSubtitle() {
         return subtitle;
     }
@@ -221,9 +294,45 @@ public class Product implements Validable {
         return this;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Product setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getTitleLangKey() {
+        return titleLangKey;
+    }
+
+    public Product setTitleLangKey(String titleLangKey) {
+        this.titleLangKey = titleLangKey;
+        return this;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public Product setType(ProductType type) {
+        this.type = type;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public Product setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(purchaseDate, hasAnimation, icon, active, isNew, type, promoted, title, purchased, styleStickerIds, subtitle, previews, stickers, id);
+        return Objects.hash(copyright, purchaseDate, hasAnimation, icon, active, baseId, isNew, promoted, title, type, url, styleIds, descriptionLangKey, purchased, isVmoji, styleStickerIds, subtitle, previews, stickers, paymentRegion, id, titleLangKey);
     }
 
     @Override
@@ -231,15 +340,23 @@ public class Product implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(isNew, product.isNew) &&
+        return Objects.equals(copyright, product.copyright) &&
+                Objects.equals(baseId, product.baseId) &&
+                Objects.equals(isNew, product.isNew) &&
                 Objects.equals(icon, product.icon) &&
                 Objects.equals(active, product.active) &&
-                Objects.equals(type, product.type) &&
+                Objects.equals(paymentRegion, product.paymentRegion) &&
+                Objects.equals(titleLangKey, product.titleLangKey) &&
                 Objects.equals(promoted, product.promoted) &&
                 Objects.equals(title, product.title) &&
+                Objects.equals(type, product.type) &&
                 Objects.equals(hasAnimation, product.hasAnimation) &&
+                Objects.equals(url, product.url) &&
+                Objects.equals(isVmoji, product.isVmoji) &&
                 Objects.equals(purchased, product.purchased) &&
                 Objects.equals(styleStickerIds, product.styleStickerIds) &&
+                Objects.equals(styleIds, product.styleIds) &&
+                Objects.equals(descriptionLangKey, product.descriptionLangKey) &&
                 Objects.equals(subtitle, product.subtitle) &&
                 Objects.equals(previews, product.previews) &&
                 Objects.equals(stickers, product.stickers) &&
@@ -255,15 +372,23 @@ public class Product implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Product{");
-        sb.append("isNew=").append(isNew);
+        sb.append("copyright='").append(copyright).append("'");
+        sb.append(", baseId=").append(baseId);
+        sb.append(", isNew=").append(isNew);
         sb.append(", icon=").append(icon);
         sb.append(", active=").append(active);
-        sb.append(", type='").append(type).append("'");
+        sb.append(", paymentRegion='").append(paymentRegion).append("'");
+        sb.append(", titleLangKey='").append(titleLangKey).append("'");
         sb.append(", promoted=").append(promoted);
         sb.append(", title='").append(title).append("'");
+        sb.append(", type='").append(type).append("'");
         sb.append(", hasAnimation=").append(hasAnimation);
+        sb.append(", url=").append(url);
+        sb.append(", isVmoji=").append(isVmoji);
         sb.append(", purchased=").append(purchased);
         sb.append(", styleStickerIds=").append(styleStickerIds);
+        sb.append(", styleIds=").append(styleIds);
+        sb.append(", descriptionLangKey='").append(descriptionLangKey).append("'");
         sb.append(", subtitle='").append(subtitle).append("'");
         sb.append(", previews=").append(previews);
         sb.append(", stickers=").append(stickers);

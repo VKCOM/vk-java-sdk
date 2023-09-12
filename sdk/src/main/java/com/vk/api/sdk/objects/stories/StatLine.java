@@ -11,24 +11,15 @@ import java.util.Objects;
  * StatLine object
  */
 public class StatLine implements Validable {
-    @SerializedName("name")
-    @Required
-    private String name;
-
     @SerializedName("counter")
     private Integer counter;
 
     @SerializedName("is_unavailable")
     private Boolean isUnavailable;
 
-    public String getName() {
-        return name;
-    }
-
-    public StatLine setName(String name) {
-        this.name = name;
-        return this;
-    }
+    @SerializedName("name")
+    @Required
+    private String name;
 
     public Integer getCounter() {
         return counter;
@@ -45,6 +36,15 @@ public class StatLine implements Validable {
 
     public StatLine setIsUnavailable(Boolean isUnavailable) {
         this.isUnavailable = isUnavailable;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public StatLine setName(String name) {
+        this.name = name;
         return this;
     }
 

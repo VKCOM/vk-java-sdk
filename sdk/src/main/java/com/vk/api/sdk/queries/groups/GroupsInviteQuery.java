@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,38 +14,75 @@ import java.util.List;
  */
 public class GroupsInviteQuery extends AbstractQueryBuilder<GroupsInviteQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public GroupsInviteQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
+    public GroupsInviteQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "groups.invite", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
-        userId(userId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsInviteQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.invite", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsInviteQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsInviteQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsInviteQuery userId(int value) {
+    @ApiParam("user_id")
+    public GroupsInviteQuery userId(Long value) {
         return unsafeParam("user_id", value);
+    }
+
+    /**
+     * userIdsList
+     * User IDs.
+     *
+     * @param value value of "user ids list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("user_ids_list")
+    public GroupsInviteQuery userIdsList(Long... value) {
+        return unsafeParam("user_ids_list", value);
+    }
+
+    /**
+     * User IDs.
+     *
+     * @param value value of "user ids list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("user_ids_list")
+    public GroupsInviteQuery userIdsList(List<Long> value) {
+        return unsafeParam("user_ids_list", value);
     }
 
     @Override
@@ -54,6 +92,6 @@ public class GroupsInviteQuery extends AbstractQueryBuilder<GroupsInviteQuery, O
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "user_id", "access_token");
+        return Arrays.asList("group_id", "access_token");
     }
 }

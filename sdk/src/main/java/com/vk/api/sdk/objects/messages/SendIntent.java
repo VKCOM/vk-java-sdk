@@ -23,6 +23,9 @@ public enum SendIntent implements EnumParam {
     @SerializedName("default")
     DEFAULT("default"),
 
+    @SerializedName("finance_notification")
+    FINANCE_NOTIFICATION("finance_notification"),
+
     @SerializedName("game_notification")
     GAME_NOTIFICATION("game_notification"),
 

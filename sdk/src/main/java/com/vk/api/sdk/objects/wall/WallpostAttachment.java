@@ -17,8 +17,8 @@ import com.vk.api.sdk.objects.pages.WikipageFull;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.photos.PhotoAlbum;
 import com.vk.api.sdk.objects.polls.Poll;
-import com.vk.api.sdk.objects.video.Video;
-import java.util.List;
+import com.vk.api.sdk.objects.video.VideoAlbumFull;
+import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.Objects;
 
 /**
@@ -40,17 +40,20 @@ public class WallpostAttachment implements Validable {
     @SerializedName("audio")
     private Audio audio;
 
+    @SerializedName("clip")
+    private VideoFull clip;
+
     @SerializedName("doc")
     private Doc doc;
 
     @SerializedName("event")
     private EventAttach event;
 
-    @SerializedName("group")
-    private GroupAttach group;
-
     @SerializedName("graffiti")
     private Graffiti graffiti;
+
+    @SerializedName("group")
+    private GroupAttach group;
 
     @SerializedName("link")
     private Link link;
@@ -70,9 +73,6 @@ public class WallpostAttachment implements Validable {
     @SerializedName("photo")
     private Photo photo;
 
-    @SerializedName("photos_list")
-    private List<String> photosList;
-
     @SerializedName("poll")
     private Poll poll;
 
@@ -84,7 +84,10 @@ public class WallpostAttachment implements Validable {
     private WallpostAttachmentType type;
 
     @SerializedName("video")
-    private Video video;
+    private VideoFull video;
+
+    @SerializedName("video_playlist")
+    private VideoAlbumFull videoPlaylist;
 
     public String getAccessKey() {
         return accessKey;
@@ -122,6 +125,15 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
+    public VideoFull getClip() {
+        return clip;
+    }
+
+    public WallpostAttachment setClip(VideoFull clip) {
+        this.clip = clip;
+        return this;
+    }
+
     public Doc getDoc() {
         return doc;
     }
@@ -140,21 +152,21 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
-    public GroupAttach getGroup() {
-        return group;
-    }
-
-    public WallpostAttachment setGroup(GroupAttach group) {
-        this.group = group;
-        return this;
-    }
-
     public Graffiti getGraffiti() {
         return graffiti;
     }
 
     public WallpostAttachment setGraffiti(Graffiti graffiti) {
         this.graffiti = graffiti;
+        return this;
+    }
+
+    public GroupAttach getGroup() {
+        return group;
+    }
+
+    public WallpostAttachment setGroup(GroupAttach group) {
+        this.group = group;
         return this;
     }
 
@@ -212,15 +224,6 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
-    public List<String> getPhotosList() {
-        return photosList;
-    }
-
-    public WallpostAttachment setPhotosList(List<String> photosList) {
-        this.photosList = photosList;
-        return this;
-    }
-
     public Poll getPoll() {
         return poll;
     }
@@ -248,18 +251,27 @@ public class WallpostAttachment implements Validable {
         return this;
     }
 
-    public Video getVideo() {
+    public VideoFull getVideo() {
         return video;
     }
 
-    public WallpostAttachment setVideo(Video video) {
+    public WallpostAttachment setVideo(VideoFull video) {
         this.video = video;
+        return this;
+    }
+
+    public VideoAlbumFull getVideoPlaylist() {
+        return videoPlaylist;
+    }
+
+    public WallpostAttachment setVideoPlaylist(VideoAlbumFull videoPlaylist) {
+        this.videoPlaylist = videoPlaylist;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, postedPhoto, market, accessKey, photosList, doc, graffiti, audio, page, event, group);
+        return Objects.hash(app, note, album, link, photo, marketAlbum, poll, video, type, postedPhoto, market, videoPlaylist, accessKey, doc, graffiti, audio, page, event, clip, group);
     }
 
     @Override
@@ -273,11 +285,11 @@ public class WallpostAttachment implements Validable {
                 Objects.equals(album, wallpostAttachment.album) &&
                 Objects.equals(link, wallpostAttachment.link) &&
                 Objects.equals(photo, wallpostAttachment.photo) &&
-                Objects.equals(photosList, wallpostAttachment.photosList) &&
                 Objects.equals(poll, wallpostAttachment.poll) &&
                 Objects.equals(video, wallpostAttachment.video) &&
                 Objects.equals(type, wallpostAttachment.type) &&
                 Objects.equals(postedPhoto, wallpostAttachment.postedPhoto) &&
+                Objects.equals(videoPlaylist, wallpostAttachment.videoPlaylist) &&
                 Objects.equals(market, wallpostAttachment.market) &&
                 Objects.equals(accessKey, wallpostAttachment.accessKey) &&
                 Objects.equals(doc, wallpostAttachment.doc) &&
@@ -285,6 +297,7 @@ public class WallpostAttachment implements Validable {
                 Objects.equals(audio, wallpostAttachment.audio) &&
                 Objects.equals(page, wallpostAttachment.page) &&
                 Objects.equals(event, wallpostAttachment.event) &&
+                Objects.equals(clip, wallpostAttachment.clip) &&
                 Objects.equals(group, wallpostAttachment.group);
     }
 
@@ -302,11 +315,11 @@ public class WallpostAttachment implements Validable {
         sb.append(", album=").append(album);
         sb.append(", link=").append(link);
         sb.append(", photo=").append(photo);
-        sb.append(", photosList='").append(photosList).append("'");
         sb.append(", poll=").append(poll);
         sb.append(", video=").append(video);
         sb.append(", type=").append(type);
         sb.append(", postedPhoto=").append(postedPhoto);
+        sb.append(", videoPlaylist=").append(videoPlaylist);
         sb.append(", market=").append(market);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", doc=").append(doc);
@@ -314,6 +327,7 @@ public class WallpostAttachment implements Validable {
         sb.append(", audio=").append(audio);
         sb.append(", page=").append(page);
         sb.append(", event=").append(event);
+        sb.append(", clip=").append(clip);
         sb.append(", group=").append(group);
         sb.append('}');
         return sb.toString();

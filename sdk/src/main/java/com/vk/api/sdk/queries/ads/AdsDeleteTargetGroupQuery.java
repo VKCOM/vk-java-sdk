@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,19 +14,30 @@ import java.util.List;
  */
 public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTargetGroupQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param targetGroupId value of "target group id" parameter.
      */
-    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor, int accountId,
-            int targetGroupId) {
+    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor, Integer accountId,
+            Integer targetGroupId) {
         super(client, "ads.deleteTargetGroup", OkResponse.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
         targetGroupId(targetGroupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsDeleteTargetGroupQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.deleteTargetGroup", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -34,7 +46,8 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsDeleteTargetGroupQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsDeleteTargetGroupQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -44,6 +57,7 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsDeleteTargetGroupQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
@@ -54,7 +68,8 @@ public class AdsDeleteTargetGroupQuery extends AbstractQueryBuilder<AdsDeleteTar
      * @param value value of "target group id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsDeleteTargetGroupQuery targetGroupId(int value) {
+    @ApiParam("target_group_id")
+    public AdsDeleteTargetGroupQuery targetGroupId(Integer value) {
         return unsafeParam("target_group_id", value);
     }
 

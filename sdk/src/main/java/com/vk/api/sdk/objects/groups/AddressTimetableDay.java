@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -26,12 +27,14 @@ public class AddressTimetableDay implements Validable {
      * Close time in minutes
      */
     @SerializedName("close_time")
+    @Required
     private Integer closeTime;
 
     /**
      * Open time in minutes
      */
     @SerializedName("open_time")
+    @Required
     private Integer openTime;
 
     public Integer getBreakCloseTime() {

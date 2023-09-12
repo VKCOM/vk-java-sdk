@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,27 +14,38 @@ import java.util.List;
  */
 public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param albumId value of "album id" parameter. Minimum is 0.
-     * @param title value of "title" parameter.
      */
-    public VideoEditAlbumQuery(VkApiClient client, UserActor actor, int albumId, String title) {
+    public VideoEditAlbumQuery(VkApiClient client, UserActor actor, Integer albumId) {
         super(client, "video.editAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);
-        title(title);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoEditAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.editAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * Community ID (if the album edited is owned by a community).
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoEditAlbumQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public VideoEditAlbumQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +55,8 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoEditAlbumQuery albumId(int value) {
+    @ApiParam("album_id")
+    public VideoEditAlbumQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 
@@ -53,7 +66,8 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoEditAlbumQuery title(String value) {
+    @ApiParam("title")
+    public VideoEditAlbumQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -64,6 +78,7 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
      * @param value value of "privacy" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy")
     public VideoEditAlbumQuery privacy(String... value) {
         return unsafeParam("privacy", value);
     }
@@ -74,6 +89,7 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
      * @param value value of "privacy" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("privacy")
     public VideoEditAlbumQuery privacy(List<String> value) {
         return unsafeParam("privacy", value);
     }
@@ -85,6 +101,6 @@ public class VideoEditAlbumQuery extends AbstractQueryBuilder<VideoEditAlbumQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("album_id", "title", "access_token");
+        return Arrays.asList("album_id", "access_token");
     }
 }

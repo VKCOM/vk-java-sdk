@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.SaveResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<SaveResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public PhotosSaveQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -37,10 +39,12 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
     /**
      * ID of the community to save photos to.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosSaveQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosSaveQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -50,6 +54,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "server" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("server")
     public PhotosSaveQuery server(Integer value) {
         return unsafeParam("server", value);
     }
@@ -60,6 +65,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "photos list" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photos_list")
     public PhotosSaveQuery photosList(String value) {
         return unsafeParam("photos_list", value);
     }
@@ -70,6 +76,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("hash")
     public PhotosSaveQuery hash(String value) {
         return unsafeParam("hash", value);
     }
@@ -80,6 +87,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "latitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("latitude")
     public PhotosSaveQuery latitude(Number value) {
         return unsafeParam("latitude", value);
     }
@@ -90,6 +98,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "longitude" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longitude")
     public PhotosSaveQuery longitude(Number value) {
         return unsafeParam("longitude", value);
     }
@@ -100,6 +109,7 @@ public class PhotosSaveQuery extends AbstractQueryBuilder<PhotosSaveQuery, List<
      * @param value value of "caption" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("caption")
     public PhotosSaveQuery caption(String value) {
         return unsafeParam("caption", value);
     }

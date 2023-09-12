@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Ad format. Possible values: *'1' — image and text,, *'2' — big image,, *'3' — exclusive format,, *'4' — community, square image,, *'7' — special app format,, *'8' — special community format,, *'9' — post in community,, *'10' — app board.
+ * Ad format. Possible values: *'1' - image and text,, *'2' - big image,, *'3' - exclusive format,, *'4' - community, square image,, *'7' - special app format,, *'8' - special community format,, *'9' - post in community,, *'10' - app board.
  */
 public enum GetTargetingStatsAdFormat implements EnumParam {
     @SerializedName("1")
@@ -14,23 +14,23 @@ public enum GetTargetingStatsAdFormat implements EnumParam {
     @SerializedName("2")
     BIG_IMAGE(2),
 
-    @SerializedName("3")
-    EXCLUSIVE_FORMAT(3),
-
     @SerializedName("4")
-    COMMUNITY_SQUARE_IMAGE(4),
+    EXCLUSIVE_FORMAT(4),
 
     @SerializedName("7")
-    SPECIAL_APP_FORMAT(7),
+    COMMUNITY_SQUARE_IMAGE(7),
 
-    @SerializedName("8")
-    SPECIAL_COMMUNITY_FORMAT(8),
+    @SerializedName("10")
+    SPECIAL_APP_FORMAT(10),
+
+    @SerializedName("6")
+    SPECIAL_COMMUNITY_FORMAT(6),
 
     @SerializedName("9")
     POST_IN_COMMUNITY(9),
 
-    @SerializedName("10")
-    APP_BOARD(10);
+    @SerializedName("11")
+    APP_BOARD(11);
 
     private final Integer value;
 

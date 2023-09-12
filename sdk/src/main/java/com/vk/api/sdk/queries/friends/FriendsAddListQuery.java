@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.friends.responses.AddListResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuery, AddListResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,23 +27,36 @@ public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public FriendsAddListQuery(VkApiClient client, UserActor actor) {
+        super(client, "friends.addList", AddListResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Name of the friend list.
      *
      * @param value value of "name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected FriendsAddListQuery name(String value) {
+    @ApiParam("name")
+    public FriendsAddListQuery name(String value) {
         return unsafeParam("name", value);
     }
 
     /**
-     * user_ids
+     * userIds
      * IDs of users to be added to the friend list.
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsAddListQuery userIds(Integer... value) {
+    @ApiParam("user_ids")
+    public FriendsAddListQuery userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -52,7 +66,8 @@ public class FriendsAddListQuery extends AbstractQueryBuilder<FriendsAddListQuer
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsAddListQuery userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    public FriendsAddListQuery userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 

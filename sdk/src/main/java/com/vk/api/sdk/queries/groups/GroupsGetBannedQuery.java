@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.groups.responses.GetBannedResponse;
 import java.util.Arrays;
@@ -15,26 +16,14 @@ import java.util.List;
  */
 public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQuery, GetBannedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public GroupsGetBannedQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.getBanned", GetBannedResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsGetBannedQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public GroupsGetBannedQuery(VkApiClient client, GroupActor actor, Long groupId) {
         super(client, "groups.getBanned", GetBannedResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -42,12 +31,51 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetBannedQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.getBanned", GetBannedResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsGetBannedQuery(VkApiClient client, UserActor actor, Long groupId) {
+        super(client, "groups.getBanned", GetBannedResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetBannedQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.getBanned", GetBannedResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetBannedQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsGetBannedQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -57,6 +85,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public GroupsGetBannedQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -67,6 +96,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public GroupsGetBannedQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -74,10 +104,12 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
     /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsGetBannedQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public GroupsGetBannedQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -88,6 +120,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetBannedQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -98,6 +131,7 @@ public class GroupsGetBannedQuery extends AbstractQueryBuilder<GroupsGetBannedQu
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetBannedQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

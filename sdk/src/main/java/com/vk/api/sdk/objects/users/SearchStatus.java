@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Relationship status: '1' — Not married, '2' — In a relationship, '3' — Engaged, '4' — Married, '5' — It's complicated, '6' — Actively searching, '7' — In love
+ * Relationship status: '0' - Not specified, '1' - Not married, '2' - In a relationship, '3' - Engaged, '4' - Married, '5' - It's complicated, '6' - Actively searching, '7' - In love, '8' - In a civil union
  */
 public enum SearchStatus implements EnumParam {
     @SerializedName("0")
@@ -30,7 +30,10 @@ public enum SearchStatus implements EnumParam {
     ACTIVELY_SEARCHING(6),
 
     @SerializedName("7")
-    IN_LOVE(7);
+    IN_LOVE(7),
+
+    @SerializedName("8")
+    CIVIL_UNION(8);
 
     private final Integer value;
 

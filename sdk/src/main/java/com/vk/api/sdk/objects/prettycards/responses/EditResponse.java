@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.prettycards.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,25 +12,19 @@ import java.util.Objects;
  */
 public class EditResponse implements Validable {
     /**
-     * Owner ID of edited pretty card
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
      * Card ID of edited pretty card
      */
     @SerializedName("card_id")
+    @Required
     private String cardId;
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public EditResponse setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
+    /**
+     * Owner ID of edited pretty card
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
     public String getCardId() {
         return cardId;
@@ -37,6 +32,15 @@ public class EditResponse implements Validable {
 
     public EditResponse setCardId(String cardId) {
         this.cardId = cardId;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public EditResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 

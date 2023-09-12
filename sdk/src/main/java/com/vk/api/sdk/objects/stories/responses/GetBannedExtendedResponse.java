@@ -21,6 +21,10 @@ public class GetBannedExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<Integer> items;
@@ -29,16 +33,21 @@ public class GetBannedExtendedResponse implements Validable {
     @Required
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<GroupFull> groups;
-
     public Integer getCount() {
         return count;
     }
 
     public GetBannedExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetBannedExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -57,15 +66,6 @@ public class GetBannedExtendedResponse implements Validable {
 
     public GetBannedExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetBannedExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

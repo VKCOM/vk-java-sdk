@@ -11,19 +11,29 @@ import java.util.Objects;
  */
 public class DomainResolved implements Validable {
     /**
+     * Group ID
+     * Entity: groups
+     */
+    @SerializedName("group_id")
+    private Long groupId;
+
+    /**
      * Object ID
      */
     @SerializedName("object_id")
     private Integer objectId;
 
-    /**
-     * Group ID
-     */
-    @SerializedName("group_id")
-    private Integer groupId;
-
     @SerializedName("type")
     private DomainResolvedType type;
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public DomainResolved setGroupId(Long groupId) {
+        this.groupId = groupId;
+        return this;
+    }
 
     public Integer getObjectId() {
         return objectId;
@@ -31,15 +41,6 @@ public class DomainResolved implements Validable {
 
     public DomainResolved setObjectId(Integer objectId) {
         this.objectId = objectId;
-        return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public DomainResolved setGroupId(Integer groupId) {
-        this.groupId = groupId;
         return this;
     }
 

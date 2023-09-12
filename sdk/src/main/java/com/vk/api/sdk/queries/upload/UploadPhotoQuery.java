@@ -4,15 +4,15 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.objects.photos.responses.PhotoUploadResponse;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * Created by tsivarev on 22.07.16.
  */
 public class UploadPhotoQuery extends UploadQueryBuilder<UploadPhotoQuery, PhotoUploadResponse> {
 
-    public UploadPhotoQuery(VkApiClient client, String uploadUrl, File file) {
-        super(client, uploadUrl, "photo", PhotoUploadResponse.class);
-        file(file);
+    public UploadPhotoQuery(VkApiClient client, String uploadUrl, Map<String, File> files) {
+        super(client, uploadUrl, files, PhotoUploadResponse.class);
     }
 
     @Override

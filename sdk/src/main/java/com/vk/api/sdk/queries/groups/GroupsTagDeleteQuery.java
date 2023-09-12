@@ -3,7 +3,9 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +15,44 @@ import java.util.List;
  */
 public class GroupsTagDeleteQuery extends AbstractQueryBuilder<GroupsTagDeleteQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param tagId value of "tag id" parameter. Minimum is 0.
      */
-    public GroupsTagDeleteQuery(VkApiClient client, UserActor actor, int groupId, int tagId) {
+    public GroupsTagDeleteQuery(VkApiClient client, GroupActor actor, Long groupId, Integer tagId) {
+        super(client, "groups.tagDelete", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+        groupId(groupId);
+        tagId(tagId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsTagDeleteQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.tagDelete", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param tagId value of "tag id" parameter. Minimum is 0.
+     */
+    public GroupsTagDeleteQuery(VkApiClient client, UserActor actor, Long groupId, Integer tagId) {
         super(client, "groups.tagDelete", BoolResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,12 +60,25 @@ public class GroupsTagDeleteQuery extends AbstractQueryBuilder<GroupsTagDeleteQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsTagDeleteQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.tagDelete", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsTagDeleteQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsTagDeleteQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +88,8 @@ public class GroupsTagDeleteQuery extends AbstractQueryBuilder<GroupsTagDeleteQu
      * @param value value of "tag id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsTagDeleteQuery tagId(int value) {
+    @ApiParam("tag_id")
+    public GroupsTagDeleteQuery tagId(Integer value) {
         return unsafeParam("tag_id", value);
     }
 

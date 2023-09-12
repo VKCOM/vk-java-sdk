@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.GetGroupOrdersResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,39 +15,36 @@ import java.util.List;
  */
 public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGroupOrdersQuery, GetGroupOrdersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public MarketGetGroupOrdersQuery(VkApiClient client, UserActor actor, int groupId) {
+    public MarketGetGroupOrdersQuery(VkApiClient client, GroupActor actor) {
         super(client, "market.getGroupOrders", GetGroupOrdersResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(groupId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public MarketGetGroupOrdersQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public MarketGetGroupOrdersQuery(VkApiClient client, UserActor actor) {
         super(client, "market.getGroupOrders", GetGroupOrdersResponse.class);
         accessToken(actor.getAccessToken());
-        groupId(actor.getGroupId());
-        groupId(groupId);
     }
 
     /**
-     * Set group id
+     * ID or groups domain
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Entity - groups
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetGroupOrdersQuery groupId(int value) {
+    @ApiParam("group_id")
+    public MarketGetGroupOrdersQuery groupId(String value) {
         return unsafeParam("group_id", value);
     }
 
@@ -56,6 +54,7 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MarketGetGroupOrdersQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -66,6 +65,7 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
      * @param value value of "count" parameter. Maximum is 50. Minimum is 1. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MarketGetGroupOrdersQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -77,6 +77,6 @@ public class MarketGetGroupOrdersQuery extends AbstractQueryBuilder<MarketGetGro
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("group_id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

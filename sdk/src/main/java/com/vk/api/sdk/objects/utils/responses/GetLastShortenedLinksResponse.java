@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.utils.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.utils.LastShortenedLink;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +17,11 @@ public class GetLastShortenedLinksResponse implements Validable {
      * Total number of available results
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<LastShortenedLink> items;
 
     public Integer getCount() {

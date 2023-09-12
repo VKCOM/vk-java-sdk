@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.adsweb.AdswebGetAdCategoriesQuery;
 import com.vk.api.sdk.queries.adsweb.AdswebGetAdUnitCodeQuery;
 import com.vk.api.sdk.queries.adsweb.AdswebGetAdUnitsQuery;
@@ -25,51 +26,92 @@ public class Adsweb extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param officeId
      * @return query
      */
-    public AdswebGetAdCategoriesQuery getAdCategories(UserActor actor, int officeId) {
+    @ApiMethod("adsweb.getAdCategories")
+    public AdswebGetAdCategoriesQuery getAdCategories(UserActor actor, Integer officeId) {
         return new AdswebGetAdCategoriesQuery(getClient(), actor, officeId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("adsweb.getAdCategories")
+    public AdswebGetAdCategoriesQuery getAdCategories(UserActor actor) {
+        return new AdswebGetAdCategoriesQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("adsweb.getAdUnitCode")
     public AdswebGetAdUnitCodeQuery getAdUnitCode(UserActor actor) {
         return new AdswebGetAdUnitCodeQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param officeId
      * @return query
      */
-    public AdswebGetAdUnitsQuery getAdUnits(UserActor actor, int officeId) {
+    @ApiMethod("adsweb.getAdUnits")
+    public AdswebGetAdUnitsQuery getAdUnits(UserActor actor, Integer officeId) {
         return new AdswebGetAdUnitsQuery(getClient(), actor, officeId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("adsweb.getAdUnits")
+    public AdswebGetAdUnitsQuery getAdUnits(UserActor actor) {
+        return new AdswebGetAdUnitsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param officeId
      * @return query
      */
-    public AdswebGetFraudHistoryQuery getFraudHistory(UserActor actor, int officeId) {
+    @ApiMethod("adsweb.getFraudHistory")
+    public AdswebGetFraudHistoryQuery getFraudHistory(UserActor actor, Integer officeId) {
         return new AdswebGetFraudHistoryQuery(getClient(), actor, officeId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("adsweb.getFraudHistory")
+    public AdswebGetFraudHistoryQuery getFraudHistory(UserActor actor) {
+        return new AdswebGetFraudHistoryQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param officeId
      * @return query
      */
-    public AdswebGetSitesQuery getSites(UserActor actor, int officeId) {
+    @ApiMethod("adsweb.getSites")
+    public AdswebGetSitesQuery getSites(UserActor actor, Integer officeId) {
         return new AdswebGetSitesQuery(getClient(), actor, officeId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("adsweb.getSites")
+    public AdswebGetSitesQuery getSites(UserActor actor) {
+        return new AdswebGetSitesQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param officeId
      * @param idsType
      * @param ids
@@ -78,8 +120,18 @@ public class Adsweb extends AbstractAction {
      * @param dateTo
      * @return query
      */
-    public AdswebGetStatisticsQuery getStatistics(UserActor actor, int officeId, String idsType,
+    @ApiMethod("adsweb.getStatistics")
+    public AdswebGetStatisticsQuery getStatistics(UserActor actor, Integer officeId, String idsType,
             String ids, String period, String dateFrom, String dateTo) {
         return new AdswebGetStatisticsQuery(getClient(), actor, officeId, idsType, ids, period, dateFrom, dateTo);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("adsweb.getStatistics")
+    public AdswebGetStatisticsQuery getStatistics(UserActor actor) {
+        return new AdswebGetStatisticsQuery(getClient(), actor);
     }
 }

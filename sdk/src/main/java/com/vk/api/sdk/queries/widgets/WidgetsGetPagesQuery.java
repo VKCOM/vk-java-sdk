@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.widgets.responses.GetPagesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQuery, GetPagesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,7 +26,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -42,6 +43,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param value value of "widget api id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("widget_api_id")
     public WidgetsGetPagesQuery widgetApiId(Integer value) {
         return unsafeParam("widget_api_id", value);
     }
@@ -52,6 +54,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param value value of "order" parameter. By default friend_likes.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order")
     public WidgetsGetPagesQuery order(String value) {
         return unsafeParam("order", value);
     }
@@ -62,6 +65,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param value value of "period" parameter. By default week.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("period")
     public WidgetsGetPagesQuery period(String value) {
         return unsafeParam("period", value);
     }
@@ -72,6 +76,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public WidgetsGetPagesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -82,6 +87,7 @@ public class WidgetsGetPagesQuery extends AbstractQueryBuilder<WidgetsGetPagesQu
      * @param value value of "count" parameter. Maximum is 200. Minimum is 10. By default 10.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public WidgetsGetPagesQuery count(Integer value) {
         return unsafeParam("count", value);
     }

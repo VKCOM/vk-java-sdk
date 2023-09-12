@@ -4,36 +4,48 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.polls.responses.DeleteVoteResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Polls.deleteVote method
  */
-public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQuery, DeleteVoteResponse> {
+public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pollId value of "poll id" parameter. Minimum is 0.
-     * @param answerId value of "answer id" parameter. Minimum is 0.
      */
-    public PollsDeleteVoteQuery(VkApiClient client, UserActor actor, int pollId, int answerId) {
-        super(client, "polls.deleteVote", DeleteVoteResponse.class);
+    public PollsDeleteVoteQuery(VkApiClient client, UserActor actor, Integer pollId) {
+        super(client, "polls.deleteVote", BoolResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
-        answerId(answerId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PollsDeleteVoteQuery(VkApiClient client, UserActor actor) {
+        super(client, "polls.deleteVote", BoolResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of the user or community that owns the poll. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsDeleteVoteQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PollsDeleteVoteQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,18 +55,9 @@ public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQu
      * @param value value of "poll id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsDeleteVoteQuery pollId(int value) {
+    @ApiParam("poll_id")
+    public PollsDeleteVoteQuery pollId(Integer value) {
         return unsafeParam("poll_id", value);
-    }
-
-    /**
-     * Answer ID.
-     *
-     * @param value value of "answer id" parameter. Minimum is 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected PollsDeleteVoteQuery answerId(int value) {
-        return unsafeParam("answer_id", value);
     }
 
     /**
@@ -63,6 +66,7 @@ public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQu
      * @param value value of "is board" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_board")
     public PollsDeleteVoteQuery isBoard(Boolean value) {
         return unsafeParam("is_board", value);
     }
@@ -74,6 +78,6 @@ public class PollsDeleteVoteQuery extends AbstractQueryBuilder<PollsDeleteVoteQu
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("poll_id", "answer_id", "access_token");
+        return Arrays.asList("poll_id", "access_token");
     }
 }

@@ -21,7 +21,16 @@ public enum PostType implements EnumParam {
     POSTPONE("postpone"),
 
     @SerializedName("suggest")
-    SUGGEST("suggest");
+    SUGGEST("suggest"),
+
+    @SerializedName("post_ads")
+    POST_ADS("post_ads"),
+
+    @SerializedName("photo")
+    PHOTO("photo"),
+
+    @SerializedName("video")
+    VIDEO("video");
 
     private final String value;
 

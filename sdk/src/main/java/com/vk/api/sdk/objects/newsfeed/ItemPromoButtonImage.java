@@ -10,23 +10,14 @@ import java.util.Objects;
  * ItemPromoButtonImage object
  */
 public class ItemPromoButtonImage implements Validable {
-    @SerializedName("width")
-    private Integer width;
-
     @SerializedName("height")
     private Integer height;
 
     @SerializedName("url")
     private String url;
 
-    public Integer getWidth() {
-        return width;
-    }
-
-    public ItemPromoButtonImage setWidth(Integer width) {
-        this.width = width;
-        return this;
-    }
+    @SerializedName("width")
+    private Integer width;
 
     public Integer getHeight() {
         return height;
@@ -43,6 +34,15 @@ public class ItemPromoButtonImage implements Validable {
 
     public ItemPromoButtonImage setUrl(String url) {
         this.url = url;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public ItemPromoButtonImage setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 

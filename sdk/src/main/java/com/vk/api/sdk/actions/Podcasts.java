@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.podcasts.PodcastsSearchPodcastQuery;
 
 /**
@@ -21,20 +22,40 @@ public class Podcasts extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param searchString
      * @return query
      */
+    @ApiMethod("podcasts.searchPodcast")
     public PodcastsSearchPodcastQuery searchPodcast(UserActor actor, String searchString) {
         return new PodcastsSearchPodcastQuery(getClient(), actor, searchString);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("podcasts.searchPodcast")
+    public PodcastsSearchPodcastQuery searchPodcast(UserActor actor) {
+        return new PodcastsSearchPodcastQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param searchString
      * @return query
      */
+    @ApiMethod("podcasts.searchPodcast")
     public PodcastsSearchPodcastQuery searchPodcast(GroupActor actor, String searchString) {
         return new PodcastsSearchPodcastQuery(getClient(), actor, searchString);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("podcasts.searchPodcast")
+    public PodcastsSearchPodcastQuery searchPodcast(GroupActor actor) {
+        return new PodcastsSearchPodcastQuery(getClient(), actor);
     }
 }

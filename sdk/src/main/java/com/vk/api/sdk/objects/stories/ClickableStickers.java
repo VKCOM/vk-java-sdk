@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.stories;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,12 +13,15 @@ import java.util.Objects;
  */
 public class ClickableStickers implements Validable {
     @SerializedName("clickable_stickers")
+    @Required
     private List<ClickableSticker> clickableStickers;
 
     @SerializedName("original_height")
+    @Required
     private Integer originalHeight;
 
     @SerializedName("original_width")
+    @Required
     private Integer originalWidth;
 
     public List<ClickableSticker> getClickableStickers() {

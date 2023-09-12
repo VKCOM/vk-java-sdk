@@ -4,6 +4,8 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
+import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.queries.polls.PollsAddVoteQuery;
 import com.vk.api.sdk.queries.polls.PollsCreateQuery;
 import com.vk.api.sdk.queries.polls.PollsDeleteVoteQuery;
@@ -12,6 +14,7 @@ import com.vk.api.sdk.queries.polls.PollsGetBackgroundsQuery;
 import com.vk.api.sdk.queries.polls.PollsGetByIdQuery;
 import com.vk.api.sdk.queries.polls.PollsGetPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.polls.PollsGetVotersQuery;
+import com.vk.api.sdk.queries.polls.PollsGetVotersQueryWithFields;
 import com.vk.api.sdk.queries.polls.PollsSavePhotoQuery;
 import java.util.List;
 
@@ -31,33 +34,47 @@ public class Polls extends AbstractAction {
     /**
      * Adds the current user's vote to the selected answer in the poll.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId Poll ID.
      * @param answerIds
      * @return query
      */
-    public PollsAddVoteQuery addVote(UserActor actor, int pollId, Integer... answerIds) {
+    @ApiMethod("polls.addVote")
+    public PollsAddVoteQuery addVote(UserActor actor, Integer pollId, Long... answerIds) {
         return new PollsAddVoteQuery(getClient(), actor, pollId, answerIds);
     }
 
     /**
      * Adds the current user's vote to the selected answer in the poll.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId Poll ID.
      * @param answerIds
      * @return query
      */
-    public PollsAddVoteQuery addVote(UserActor actor, int pollId, List<Integer> answerIds) {
+    @ApiMethod("polls.addVote")
+    public PollsAddVoteQuery addVote(UserActor actor, Integer pollId, List<Long> answerIds) {
         return new PollsAddVoteQuery(getClient(), actor, pollId, answerIds);
+    }
+
+    /**
+     * Adds the current user's vote to the selected answer in the poll.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.addVote")
+    public PollsAddVoteQuery addVote(UserActor actor) {
+        return new PollsAddVoteQuery(getClient(), actor);
     }
 
     /**
      * Creates polls that can be attached to the users' or communities' posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("polls.create")
     public PollsCreateQuery create(UserActor actor) {
         return new PollsCreateQuery(getClient(), actor);
     }
@@ -65,30 +82,54 @@ public class Polls extends AbstractAction {
     /**
      * Deletes the current user's vote from the selected answer in the poll.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId Poll ID.
-     * @param answerId Answer ID.
      * @return query
      */
-    public PollsDeleteVoteQuery deleteVote(UserActor actor, int pollId, int answerId) {
-        return new PollsDeleteVoteQuery(getClient(), actor, pollId, answerId);
+    @ApiMethod("polls.deleteVote")
+    public PollsDeleteVoteQuery deleteVote(UserActor actor, Integer pollId) {
+        return new PollsDeleteVoteQuery(getClient(), actor, pollId);
+    }
+
+    /**
+     * Deletes the current user's vote from the selected answer in the poll.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.deleteVote")
+    public PollsDeleteVoteQuery deleteVote(UserActor actor) {
+        return new PollsDeleteVoteQuery(getClient(), actor);
     }
 
     /**
      * Edits created polls
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId edited poll's id
      * @return query
      */
-    public PollsEditQuery edit(UserActor actor, int pollId) {
+    @ApiMethod("polls.edit")
+    public PollsEditQuery edit(UserActor actor, Integer pollId) {
         return new PollsEditQuery(getClient(), actor, pollId);
     }
 
     /**
-     * @param actor vk actor
+     * Edits created polls
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.edit")
+    public PollsEditQuery edit(UserActor actor) {
+        return new PollsEditQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("polls.getBackgrounds")
     public PollsGetBackgroundsQuery getBackgrounds(UserActor actor) {
         return new PollsGetBackgroundsQuery(getClient(), actor);
     }
@@ -96,18 +137,31 @@ public class Polls extends AbstractAction {
     /**
      * Returns detailed information about a poll by its ID.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId Poll ID.
      * @return query
      */
-    public PollsGetByIdQuery getById(UserActor actor, int pollId) {
+    @ApiMethod("polls.getById")
+    public PollsGetByIdQuery getById(UserActor actor, Integer pollId) {
         return new PollsGetByIdQuery(getClient(), actor, pollId);
     }
 
     /**
-     * @param actor vk actor
+     * Returns detailed information about a poll by its ID.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.getById")
+    public PollsGetByIdQuery getById(UserActor actor) {
+        return new PollsGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("polls.getPhotoUploadServer")
     public PollsGetPhotoUploadServerQuery getPhotoUploadServer(UserActor actor) {
         return new PollsGetPhotoUploadServerQuery(getClient(), actor);
     }
@@ -115,34 +169,87 @@ public class Polls extends AbstractAction {
     /**
      * Returns a list of IDs of users who selected specific answers in the poll.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @param pollId Poll ID.
+     * @param answerIds Answer IDs.
+     * @param fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
+     * @return query
+     */
+    @ApiMethod("polls.getVoters")
+    public PollsGetVotersQueryWithFields getVotersWithFields(UserActor actor, Integer pollId,
+            Long[] answerIds, Fields... fields) {
+        return new PollsGetVotersQueryWithFields(getClient(), actor, pollId, answerIds, fields);
+    }
+
+    /**
+     * Returns a list of IDs of users who selected specific answers in the poll.
+     *
+     * @param actor vk user actor
+     * @param pollId Poll ID.
+     * @param answerIds Answer IDs.
+     * @param fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
+     * @return query
+     */
+    @ApiMethod("polls.getVoters")
+    public PollsGetVotersQueryWithFields getVotersWithFields(UserActor actor, Integer pollId,
+            List<Long> answerIds, List<Fields> fields) {
+        return new PollsGetVotersQueryWithFields(getClient(), actor, pollId, answerIds, fields);
+    }
+
+    /**
+     * Returns a list of IDs of users who selected specific answers in the poll.
+     *
+     * @param actor vk user actor
      * @param pollId Poll ID.
      * @param answerIds Answer IDs.
      * @return query
      */
-    public PollsGetVotersQuery getVoters(UserActor actor, int pollId, Integer... answerIds) {
+    @ApiMethod("polls.getVoters")
+    public PollsGetVotersQuery getVoters(UserActor actor, Integer pollId, Long... answerIds) {
         return new PollsGetVotersQuery(getClient(), actor, pollId, answerIds);
     }
 
     /**
      * Returns a list of IDs of users who selected specific answers in the poll.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pollId Poll ID.
      * @param answerIds Answer IDs.
      * @return query
      */
-    public PollsGetVotersQuery getVoters(UserActor actor, int pollId, List<Integer> answerIds) {
+    @ApiMethod("polls.getVoters")
+    public PollsGetVotersQuery getVoters(UserActor actor, Integer pollId, List<Long> answerIds) {
         return new PollsGetVotersQuery(getClient(), actor, pollId, answerIds);
     }
 
     /**
-     * @param actor vk actor
+     * Returns a list of IDs of users who selected specific answers in the poll.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.getVoters")
+    public PollsGetVotersQuery getVoters(UserActor actor) {
+        return new PollsGetVotersQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param photo
      * @param hash
      * @return query
      */
+    @ApiMethod("polls.savePhoto")
     public PollsSavePhotoQuery savePhoto(UserActor actor, String photo, String hash) {
         return new PollsSavePhotoQuery(getClient(), actor, photo, hash);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("polls.savePhoto")
+    public PollsSavePhotoQuery savePhoto(UserActor actor) {
+        return new PollsSavePhotoQuery(getClient(), actor);
     }
 }

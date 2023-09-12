@@ -11,10 +11,16 @@ import java.util.Objects;
  */
 public class ChatSettingsPermissions implements Validable {
     /**
-     * Who can invite users to chat
+     * Who can make calls
      */
-    @SerializedName("invite")
-    private ChatSettingsPermissionsInvite invite;
+    @SerializedName("call")
+    private ChatSettingsPermissionsCall call;
+
+    /**
+     * Who can change admins
+     */
+    @SerializedName("change_admins")
+    private ChatSettingsPermissionsChangeAdmins changeAdmins;
 
     /**
      * Who can change chat info
@@ -29,10 +35,10 @@ public class ChatSettingsPermissions implements Validable {
     private ChatSettingsPermissionsChangePin changePin;
 
     /**
-     * Who can use mass mentions
+     * Who can invite users to chat
      */
-    @SerializedName("use_mass_mentions")
-    private ChatSettingsPermissionsUseMassMentions useMassMentions;
+    @SerializedName("invite")
+    private ChatSettingsPermissionsInvite invite;
 
     /**
      * Who can see invite link
@@ -41,23 +47,27 @@ public class ChatSettingsPermissions implements Validable {
     private ChatSettingsPermissionsSeeInviteLink seeInviteLink;
 
     /**
-     * Who can make calls
+     * Who can use mass mentions
      */
-    @SerializedName("call")
-    private ChatSettingsPermissionsCall call;
+    @SerializedName("use_mass_mentions")
+    private ChatSettingsPermissionsUseMassMentions useMassMentions;
 
-    /**
-     * Who can change admins
-     */
-    @SerializedName("change_admins")
-    private ChatSettingsPermissionsChangeAdmins changeAdmins;
-
-    public ChatSettingsPermissionsInvite getInvite() {
-        return invite;
+    public ChatSettingsPermissionsCall getCall() {
+        return call;
     }
 
-    public ChatSettingsPermissions setInvite(ChatSettingsPermissionsInvite invite) {
-        this.invite = invite;
+    public ChatSettingsPermissions setCall(ChatSettingsPermissionsCall call) {
+        this.call = call;
+        return this;
+    }
+
+    public ChatSettingsPermissionsChangeAdmins getChangeAdmins() {
+        return changeAdmins;
+    }
+
+    public ChatSettingsPermissions setChangeAdmins(
+            ChatSettingsPermissionsChangeAdmins changeAdmins) {
+        this.changeAdmins = changeAdmins;
         return this;
     }
 
@@ -79,13 +89,12 @@ public class ChatSettingsPermissions implements Validable {
         return this;
     }
 
-    public ChatSettingsPermissionsUseMassMentions getUseMassMentions() {
-        return useMassMentions;
+    public ChatSettingsPermissionsInvite getInvite() {
+        return invite;
     }
 
-    public ChatSettingsPermissions setUseMassMentions(
-            ChatSettingsPermissionsUseMassMentions useMassMentions) {
-        this.useMassMentions = useMassMentions;
+    public ChatSettingsPermissions setInvite(ChatSettingsPermissionsInvite invite) {
+        this.invite = invite;
         return this;
     }
 
@@ -99,22 +108,13 @@ public class ChatSettingsPermissions implements Validable {
         return this;
     }
 
-    public ChatSettingsPermissionsCall getCall() {
-        return call;
+    public ChatSettingsPermissionsUseMassMentions getUseMassMentions() {
+        return useMassMentions;
     }
 
-    public ChatSettingsPermissions setCall(ChatSettingsPermissionsCall call) {
-        this.call = call;
-        return this;
-    }
-
-    public ChatSettingsPermissionsChangeAdmins getChangeAdmins() {
-        return changeAdmins;
-    }
-
-    public ChatSettingsPermissions setChangeAdmins(
-            ChatSettingsPermissionsChangeAdmins changeAdmins) {
-        this.changeAdmins = changeAdmins;
+    public ChatSettingsPermissions setUseMassMentions(
+            ChatSettingsPermissionsUseMassMentions useMassMentions) {
+        this.useMassMentions = useMassMentions;
         return this;
     }
 
@@ -128,8 +128,8 @@ public class ChatSettingsPermissions implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ChatSettingsPermissions chatSettingsPermissions = (ChatSettingsPermissions) o;
-        return Objects.equals(changeInfo, chatSettingsPermissions.changeInfo) &&
-                Objects.equals(call, chatSettingsPermissions.call) &&
+        return Objects.equals(call, chatSettingsPermissions.call) &&
+                Objects.equals(changeInfo, chatSettingsPermissions.changeInfo) &&
                 Objects.equals(useMassMentions, chatSettingsPermissions.useMassMentions) &&
                 Objects.equals(changePin, chatSettingsPermissions.changePin) &&
                 Objects.equals(changeAdmins, chatSettingsPermissions.changeAdmins) &&
@@ -145,8 +145,8 @@ public class ChatSettingsPermissions implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ChatSettingsPermissions{");
-        sb.append("changeInfo='").append(changeInfo).append("'");
-        sb.append(", call='").append(call).append("'");
+        sb.append("call='").append(call).append("'");
+        sb.append(", changeInfo='").append(changeInfo).append("'");
         sb.append(", useMassMentions='").append(useMassMentions).append("'");
         sb.append(", changePin='").append(changePin).append("'");
         sb.append(", changeAdmins='").append(changeAdmins).append("'");

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetTagsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,25 +15,38 @@ import java.util.List;
  */
 public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery, List<GetTagsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param photoId value of "photo id" parameter.
      */
-    public PhotosGetTagsQuery(VkApiClient client, UserActor actor, int photoId) {
+    public PhotosGetTagsQuery(VkApiClient client, UserActor actor, Integer photoId) {
         super(client, "photos.getTags", Utils.buildParametrizedType(List.class, GetTagsResponse.class));
         accessToken(actor.getAccessToken());
         photoId(photoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosGetTagsQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.getTags", Utils.buildParametrizedType(List.class, GetTagsResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetTagsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosGetTagsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -42,7 +56,8 @@ public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery,
      * @param value value of "photo id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosGetTagsQuery photoId(int value) {
+    @ApiParam("photo_id")
+    public PhotosGetTagsQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
 
@@ -52,6 +67,7 @@ public class PhotosGetTagsQuery extends AbstractQueryBuilder<PhotosGetTagsQuery,
      * @param value value of "access key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("access_key")
     public PhotosGetTagsQuery accessKey(String value) {
         return unsafeParam("access_key", value);
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.pages.PagesClearCacheQuery;
 import com.vk.api.sdk.queries.pages.PagesGetHistoryQuery;
 import com.vk.api.sdk.queries.pages.PagesGetQuery;
@@ -30,10 +31,11 @@ public class Pages extends AbstractAction {
     /**
      * Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param url Address of the page where you need to refesh the cached version
      * @return query
      */
+    @ApiMethod("pages.clearCache")
     public PagesClearCacheQuery clearCache(UserActor actor, String url) {
         return new PagesClearCacheQuery(getClient(), actor, url);
     }
@@ -41,20 +43,44 @@ public class Pages extends AbstractAction {
     /**
      * Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.clearCache")
+    public PagesClearCacheQuery clearCache(UserActor actor) {
+        return new PagesClearCacheQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
+     *
+     * @param actor vk service actor
      * @param url Address of the page where you need to refesh the cached version
      * @return query
      */
+    @ApiMethod("pages.clearCache")
     public PagesClearCacheQuery clearCache(ServiceActor actor, String url) {
         return new PagesClearCacheQuery(getClient(), actor, url);
     }
 
     /**
+     * Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.clearCache")
+    public PagesClearCacheQuery clearCache(ServiceActor actor) {
+        return new PagesClearCacheQuery(getClient(), actor);
+    }
+
+    /**
      * Returns information about a wiki page.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("pages.get")
     public PagesGetQuery get(UserActor actor) {
         return new PagesGetQuery(getClient(), actor);
     }
@@ -62,20 +88,33 @@ public class Pages extends AbstractAction {
     /**
      * Returns a list of all previous versions of a wiki page.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pageId Wiki page ID.
      * @return query
      */
-    public PagesGetHistoryQuery getHistory(UserActor actor, int pageId) {
+    @ApiMethod("pages.getHistory")
+    public PagesGetHistoryQuery getHistory(UserActor actor, Integer pageId) {
         return new PagesGetHistoryQuery(getClient(), actor, pageId);
+    }
+
+    /**
+     * Returns a list of all previous versions of a wiki page.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.getHistory")
+    public PagesGetHistoryQuery getHistory(UserActor actor) {
+        return new PagesGetHistoryQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of wiki pages in a group.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("pages.getTitles")
     public PagesGetTitlesQuery getTitles(UserActor actor) {
         return new PagesGetTitlesQuery(getClient(), actor);
     }
@@ -83,31 +122,56 @@ public class Pages extends AbstractAction {
     /**
      * Returns the text of one of the previous versions of a wiki page.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param versionId
      * @return query
      */
-    public PagesGetVersionQuery getVersion(UserActor actor, int versionId) {
+    @ApiMethod("pages.getVersion")
+    public PagesGetVersionQuery getVersion(UserActor actor, Integer versionId) {
         return new PagesGetVersionQuery(getClient(), actor, versionId);
+    }
+
+    /**
+     * Returns the text of one of the previous versions of a wiki page.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.getVersion")
+    public PagesGetVersionQuery getVersion(UserActor actor) {
+        return new PagesGetVersionQuery(getClient(), actor);
     }
 
     /**
      * Returns HTML representation of the wiki markup.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param text Text of the wiki page.
      * @return query
      */
+    @ApiMethod("pages.parseWiki")
     public PagesParseWikiQuery parseWiki(UserActor actor, String text) {
         return new PagesParseWikiQuery(getClient(), actor, text);
     }
 
     /**
+     * Returns HTML representation of the wiki markup.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.parseWiki")
+    public PagesParseWikiQuery parseWiki(UserActor actor) {
+        return new PagesParseWikiQuery(getClient(), actor);
+    }
+
+    /**
      * Saves the text of a wiki page.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("pages.save")
     public PagesSaveQuery save(UserActor actor) {
         return new PagesSaveQuery(getClient(), actor);
     }
@@ -115,11 +179,23 @@ public class Pages extends AbstractAction {
     /**
      * Saves modified read and edit access settings for a wiki page.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param pageId Wiki page ID.
      * @return query
      */
-    public PagesSaveAccessQuery saveAccess(UserActor actor, int pageId) {
+    @ApiMethod("pages.saveAccess")
+    public PagesSaveAccessQuery saveAccess(UserActor actor, Integer pageId) {
         return new PagesSaveAccessQuery(getClient(), actor, pageId);
+    }
+
+    /**
+     * Saves modified read and edit access settings for a wiki page.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("pages.saveAccess")
+    public PagesSaveAccessQuery saveAccess(UserActor actor) {
+        return new PagesSaveAccessQuery(getClient(), actor);
     }
 }

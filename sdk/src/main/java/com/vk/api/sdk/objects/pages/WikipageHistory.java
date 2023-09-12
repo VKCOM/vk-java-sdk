@@ -12,6 +12,27 @@ import java.util.Objects;
  */
 public class WikipageHistory implements Validable {
     /**
+     * Date when the page has been edited in Unixtime
+     */
+    @SerializedName("date")
+    @Required
+    private Integer date;
+
+    /**
+     * Last editor ID
+     */
+    @SerializedName("editor_id")
+    @Required
+    private Integer editorId;
+
+    /**
+     * Last editor name
+     */
+    @SerializedName("editor_name")
+    @Required
+    private String editorName;
+
+    /**
      * Version ID
      */
     @SerializedName("id")
@@ -24,43 +45,6 @@ public class WikipageHistory implements Validable {
     @SerializedName("length")
     @Required
     private Integer length;
-
-    /**
-     * Date when the page has been edited in Unixtime
-     */
-    @SerializedName("date")
-    @Required
-    private Integer date;
-
-    /**
-     * Last editor ID
-     */
-    @SerializedName("editor_id")
-    private Integer editorId;
-
-    /**
-     * Last editor name
-     */
-    @SerializedName("editor_name")
-    private String editorName;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public WikipageHistory setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getLength() {
-        return length;
-    }
-
-    public WikipageHistory setLength(Integer length) {
-        this.length = length;
-        return this;
-    }
 
     public Integer getDate() {
         return date;
@@ -86,6 +70,24 @@ public class WikipageHistory implements Validable {
 
     public WikipageHistory setEditorName(String editorName) {
         this.editorName = editorName;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public WikipageHistory setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public WikipageHistory setLength(Integer length) {
+        this.length = length;
         return this;
     }
 

@@ -4,9 +4,9 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.SearchRev;
 import com.vk.api.sdk.objects.market.SearchSort;
-import com.vk.api.sdk.objects.market.SearchStatus;
 import com.vk.api.sdk.objects.market.responses.SearchResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -16,25 +16,39 @@ import java.util.List;
  */
 public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      */
-    public MarketSearchQuery(VkApiClient client, UserActor actor, int ownerId) {
+    public MarketSearchQuery(VkApiClient client, UserActor actor, Long ownerId) {
         super(client, "market.search", SearchResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketSearchQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.search", SearchResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an items owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketSearchQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketSearchQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -44,6 +58,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public MarketSearchQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -54,6 +69,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public MarketSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -64,6 +80,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "price from" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("price_from")
     public MarketSearchQuery priceFrom(Integer value) {
         return unsafeParam("price_from", value);
     }
@@ -74,6 +91,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "price to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("price_to")
     public MarketSearchQuery priceTo(Integer value) {
         return unsafeParam("price_to", value);
     }
@@ -84,16 +102,18 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "sort" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public MarketSearchQuery sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
 
     /**
-     * '0' — do not use reverse order, '1' — use reverse order
+     * '0' - do not use reverse order, '1' - use reverse order
      *
      * @param value value of "rev" parameter. Minimum is 0. By default 1.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("rev")
     public MarketSearchQuery rev(SearchRev value) {
         return unsafeParam("rev", value);
     }
@@ -104,6 +124,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MarketSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -114,6 +135,7 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MarketSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -124,18 +146,9 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MarketSearchQuery extended(Boolean value) {
         return unsafeParam("extended", value);
-    }
-
-    /**
-     * Set status
-     *
-     * @param value value of "status" parameter. Minimum is 0. By default 0.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public MarketSearchQuery status(SearchStatus value) {
-        return unsafeParam("status", value);
     }
 
     /**
@@ -144,8 +157,32 @@ public class MarketSearchQuery extends AbstractQueryBuilder<MarketSearchQuery, S
      * @param value value of "need variants" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_variants")
     public MarketSearchQuery needVariants(Boolean value) {
         return unsafeParam("need_variants", value);
+    }
+
+    /**
+     * status
+     * Set status
+     *
+     * @param value value of "status" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("status")
+    public MarketSearchQuery status(Integer... value) {
+        return unsafeParam("status", value);
+    }
+
+    /**
+     * Set status
+     *
+     * @param value value of "status" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("status")
+    public MarketSearchQuery status(List<Integer> value) {
+        return unsafeParam("status", value);
     }
 
     @Override

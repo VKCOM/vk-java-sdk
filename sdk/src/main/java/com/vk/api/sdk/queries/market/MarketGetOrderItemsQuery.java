@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.GetOrderItemsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,38 +15,62 @@ import java.util.List;
  */
 public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrderItemsQuery, GetOrderItemsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param orderId value of "order id" parameter. Minimum is 0.
      */
-    public MarketGetOrderItemsQuery(VkApiClient client, UserActor actor, int orderId) {
+    public MarketGetOrderItemsQuery(VkApiClient client, GroupActor actor, Integer orderId) {
         super(client, "market.getOrderItems", GetOrderItemsResponse.class);
         accessToken(actor.getAccessToken());
         orderId(orderId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketGetOrderItemsQuery(VkApiClient client, GroupActor actor) {
+        super(client, "market.getOrderItems", GetOrderItemsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param orderId value of "order id" parameter. Minimum is 0.
      */
-    public MarketGetOrderItemsQuery(VkApiClient client, GroupActor actor, int orderId) {
+    public MarketGetOrderItemsQuery(VkApiClient client, UserActor actor, Integer orderId) {
         super(client, "market.getOrderItems", GetOrderItemsResponse.class);
         accessToken(actor.getAccessToken());
         orderId(orderId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketGetOrderItemsQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.getOrderItems", GetOrderItemsResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MarketGetOrderItemsQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public MarketGetOrderItemsQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -55,7 +80,8 @@ public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrde
      * @param value value of "order id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetOrderItemsQuery orderId(int value) {
+    @ApiParam("order_id")
+    public MarketGetOrderItemsQuery orderId(Integer value) {
         return unsafeParam("order_id", value);
     }
 
@@ -65,6 +91,7 @@ public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrde
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MarketGetOrderItemsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -75,6 +102,7 @@ public class MarketGetOrderItemsQuery extends AbstractQueryBuilder<MarketGetOrde
      * @param value value of "count" parameter. Minimum is 0. By default 50.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MarketGetOrderItemsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

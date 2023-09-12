@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteBanQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -24,13 +25,14 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
     }
 
     /**
-     * user_ids
+     * userIds
      * Set user ids
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedDeleteBanQuery userIds(Integer... value) {
+    @ApiParam("user_ids")
+    public NewsfeedDeleteBanQuery userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -40,18 +42,20 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedDeleteBanQuery userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    public NewsfeedDeleteBanQuery userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 
     /**
-     * group_ids
+     * groupIds
      * Set group ids
      *
      * @param value value of "group ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedDeleteBanQuery groupIds(Integer... value) {
+    @ApiParam("group_ids")
+    public NewsfeedDeleteBanQuery groupIds(Long... value) {
         return unsafeParam("group_ids", value);
     }
 
@@ -61,7 +65,8 @@ public class NewsfeedDeleteBanQuery extends AbstractQueryBuilder<NewsfeedDeleteB
      * @param value value of "group ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedDeleteBanQuery groupIds(List<Integer> value) {
+    @ApiParam("group_ids")
+    public NewsfeedDeleteBanQuery groupIds(List<Long> value) {
         return unsafeParam("group_ids", value);
     }
 

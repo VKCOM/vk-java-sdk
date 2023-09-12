@@ -19,6 +19,12 @@ public class MemberRole implements Validable {
     @Required
     private Integer id;
 
+    /**
+     * Allow the manager to accept community calls.
+     */
+    @SerializedName("is_call_operator")
+    private Boolean isCallOperator;
+
     @SerializedName("permissions")
     private List<MemberRolePermission> permissions;
 
@@ -31,6 +37,15 @@ public class MemberRole implements Validable {
 
     public MemberRole setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsCallOperator() {
+        return isCallOperator;
+    }
+
+    public MemberRole setIsCallOperator(Boolean isCallOperator) {
+        this.isCallOperator = isCallOperator;
         return this;
     }
 
@@ -54,7 +69,7 @@ public class MemberRole implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(role, permissions, id);
+        return Objects.hash(role, isCallOperator, permissions, id);
     }
 
     @Override
@@ -63,6 +78,7 @@ public class MemberRole implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         MemberRole memberRole = (MemberRole) o;
         return Objects.equals(role, memberRole.role) &&
+                Objects.equals(isCallOperator, memberRole.isCallOperator) &&
                 Objects.equals(permissions, memberRole.permissions) &&
                 Objects.equals(id, memberRole.id);
     }
@@ -76,6 +92,7 @@ public class MemberRole implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MemberRole{");
         sb.append("role=").append(role);
+        sb.append(", isCallOperator=").append(isCallOperator);
         sb.append(", permissions=").append(permissions);
         sb.append(", id=").append(id);
         sb.append('}');

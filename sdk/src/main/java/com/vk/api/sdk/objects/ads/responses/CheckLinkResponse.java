@@ -16,7 +16,6 @@ public class CheckLinkResponse implements Validable {
      * Reject reason
      */
     @SerializedName("description")
-    @Required
     private String description;
 
     /**

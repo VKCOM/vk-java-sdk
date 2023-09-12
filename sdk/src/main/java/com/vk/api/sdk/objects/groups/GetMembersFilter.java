@@ -8,17 +8,17 @@ import com.vk.api.sdk.queries.EnumParam;
  * *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
  */
 public enum GetMembersFilter implements EnumParam {
+    @SerializedName("donut")
+    DONUT("donut"),
+
     @SerializedName("friends")
     FRIENDS("friends"),
-
-    @SerializedName("unsure")
-    UNSURE("unsure"),
 
     @SerializedName("managers")
     MANAGERS("managers"),
 
-    @SerializedName("donut")
-    DONUT("donut");
+    @SerializedName("unsure")
+    UNSURE("unsure");
 
     private final String value;
 

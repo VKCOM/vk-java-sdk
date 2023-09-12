@@ -18,7 +18,7 @@ public class RequestsMutual implements Validable {
     private Integer count;
 
     @SerializedName("users")
-    private List<Integer> users;
+    private List<Long> users;
 
     public Integer getCount() {
         return count;
@@ -29,11 +29,11 @@ public class RequestsMutual implements Validable {
         return this;
     }
 
-    public List<Integer> getUsers() {
+    public List<Long> getUsers() {
         return users;
     }
 
-    public RequestsMutual setUsers(List<Integer> users) {
+    public RequestsMutual setUsers(List<Long> users) {
         this.users = users;
         return this;
     }

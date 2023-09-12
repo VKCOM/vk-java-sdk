@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetInviteLinkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,13 @@ import java.util.List;
  */
 public class MessagesGetInviteLinkQuery extends AbstractQueryBuilder<MessagesGetInviteLinkQuery, GetInviteLinkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param peerId value of "peer id" parameter. Minimum is 0.
+     * @param peerId value of "peer id" parameter.
      */
-    public MessagesGetInviteLinkQuery(VkApiClient client, UserActor actor, int peerId) {
-        super(client, "messages.getInviteLink", GetInviteLinkResponse.class);
-        accessToken(actor.getAccessToken());
-        peerId(peerId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param peerId value of "peer id" parameter. Minimum is 0.
-     */
-    public MessagesGetInviteLinkQuery(VkApiClient client, GroupActor actor, int peerId) {
+    public MessagesGetInviteLinkQuery(VkApiClient client, GroupActor actor, Long peerId) {
         super(client, "messages.getInviteLink", GetInviteLinkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -41,21 +29,59 @@ public class MessagesGetInviteLinkQuery extends AbstractQueryBuilder<MessagesGet
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetInviteLinkQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.getInviteLink", GetInviteLinkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param peerId value of "peer id" parameter.
+     */
+    public MessagesGetInviteLinkQuery(VkApiClient client, UserActor actor, Long peerId) {
+        super(client, "messages.getInviteLink", GetInviteLinkResponse.class);
+        accessToken(actor.getAccessToken());
+        peerId(peerId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetInviteLinkQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getInviteLink", GetInviteLinkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Destination ID.
      *
-     * @param value value of "peer id" parameter. Minimum is 0.
+     * @param value value of "peer id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetInviteLinkQuery peerId(int value) {
+    @ApiParam("peer_id")
+    public MessagesGetInviteLinkQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
     /**
-     * 1 — to generate new link (revoke previous), 0 — to return previous link.
+     * 1 - to generate new link (revoke previous), 0 - to return previous link.
      *
      * @param value value of "reset" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reset")
     public MessagesGetInviteLinkQuery reset(Boolean value) {
         return unsafeParam("reset", value);
     }
@@ -63,10 +89,12 @@ public class MessagesGetInviteLinkQuery extends AbstractQueryBuilder<MessagesGet
     /**
      * Group ID
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetInviteLinkQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetInviteLinkQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

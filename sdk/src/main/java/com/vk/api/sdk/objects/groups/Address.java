@@ -5,6 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.database.CityById;
+import com.vk.api.sdk.objects.database.Station;
 import java.util.Objects;
 
 /**
@@ -24,10 +27,22 @@ public class Address implements Validable {
     private String address;
 
     /**
+     * City for address
+     */
+    @SerializedName("city")
+    private CityById city;
+
+    /**
      * City id of address
      */
     @SerializedName("city_id")
     private Integer cityId;
+
+    /**
+     * Country for address
+     */
+    @SerializedName("country")
+    private Country country;
 
     /**
      * Country id of address
@@ -52,13 +67,19 @@ public class Address implements Validable {
      * Address latitude
      */
     @SerializedName("latitude")
-    private Float latitude;
+    private Number latitude;
 
     /**
      * Address longitude
      */
     @SerializedName("longitude")
-    private Float longitude;
+    private Number longitude;
+
+    /**
+     * Metro for address
+     */
+    @SerializedName("metro_station")
+    private Station metroStation;
 
     /**
      * Metro id of address
@@ -71,6 +92,9 @@ public class Address implements Validable {
      */
     @SerializedName("phone")
     private String phone;
+
+    @SerializedName("place_id")
+    private Integer placeId;
 
     /**
      * Time offset int minutes from utc time
@@ -96,9 +120,6 @@ public class Address implements Validable {
     @SerializedName("work_info_status")
     private AddressWorkInfoStatus workInfoStatus;
 
-    @SerializedName("place_id")
-    private Integer placeId;
-
     public String getAdditionalAddress() {
         return additionalAddress;
     }
@@ -117,12 +138,30 @@ public class Address implements Validable {
         return this;
     }
 
+    public CityById getCity() {
+        return city;
+    }
+
+    public Address setCity(CityById city) {
+        this.city = city;
+        return this;
+    }
+
     public Integer getCityId() {
         return cityId;
     }
 
     public Address setCityId(Integer cityId) {
         this.cityId = cityId;
+        return this;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public Address setCountry(Country country) {
+        this.country = country;
         return this;
     }
 
@@ -153,21 +192,30 @@ public class Address implements Validable {
         return this;
     }
 
-    public Float getLatitude() {
+    public Number getLatitude() {
         return latitude;
     }
 
-    public Address setLatitude(Float latitude) {
+    public Address setLatitude(Number latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public Float getLongitude() {
+    public Number getLongitude() {
         return longitude;
     }
 
-    public Address setLongitude(Float longitude) {
+    public Address setLongitude(Number longitude) {
         this.longitude = longitude;
+        return this;
+    }
+
+    public Station getMetroStation() {
+        return metroStation;
+    }
+
+    public Address setMetroStation(Station metroStation) {
+        this.metroStation = metroStation;
         return this;
     }
 
@@ -186,6 +234,15 @@ public class Address implements Validable {
 
     public Address setPhone(String phone) {
         this.phone = phone;
+        return this;
+    }
+
+    public Integer getPlaceId() {
+        return placeId;
+    }
+
+    public Address setPlaceId(Integer placeId) {
+        this.placeId = placeId;
         return this;
     }
 
@@ -225,18 +282,9 @@ public class Address implements Validable {
         return this;
     }
 
-    public Integer getPlaceId() {
-        return placeId;
-    }
-
-    public Address setPlaceId(Integer placeId) {
-        this.placeId = placeId;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(address, workInfoStatus, distance, latitude, metroStationId, placeId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, longitude);
+        return Objects.hash(country, address, workInfoStatus, distance, city, latitude, metroStationId, placeId, timeOffset, cityId, title, countryId, timetable, phone, additionalAddress, id, metroStation, longitude);
     }
 
     @Override
@@ -245,14 +293,17 @@ public class Address implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
         return Objects.equals(additionalAddress, address.additionalAddress) &&
+                Objects.equals(country, address.country) &&
                 Objects.equals(address, address.address) &&
                 Objects.equals(distance, address.distance) &&
                 Objects.equals(timeOffset, address.timeOffset) &&
+                Objects.equals(city, address.city) &&
                 Objects.equals(latitude, address.latitude) &&
                 Objects.equals(metroStationId, address.metroStationId) &&
                 Objects.equals(title, address.title) &&
                 Objects.equals(timetable, address.timetable) &&
                 Objects.equals(workInfoStatus, address.workInfoStatus) &&
+                Objects.equals(metroStation, address.metroStation) &&
                 Objects.equals(phone, address.phone) &&
                 Objects.equals(id, address.id) &&
                 Objects.equals(countryId, address.countryId) &&
@@ -270,14 +321,17 @@ public class Address implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Address{");
         sb.append("additionalAddress='").append(additionalAddress).append("'");
+        sb.append(", country=").append(country);
         sb.append(", address='").append(address).append("'");
         sb.append(", distance=").append(distance);
         sb.append(", timeOffset=").append(timeOffset);
+        sb.append(", city=").append(city);
         sb.append(", latitude=").append(latitude);
         sb.append(", metroStationId=").append(metroStationId);
         sb.append(", title='").append(title).append("'");
         sb.append(", timetable=").append(timetable);
         sb.append(", workInfoStatus=").append(workInfoStatus);
+        sb.append(", metroStation=").append(metroStation);
         sb.append(", phone='").append(phone).append("'");
         sb.append(", id=").append(id);
         sb.append(", countryId=").append(countryId);

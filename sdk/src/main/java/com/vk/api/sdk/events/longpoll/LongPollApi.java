@@ -38,7 +38,7 @@ abstract class LongPollApi extends EventsHandler {
                 .setServer(lpServerResponse.getServer());
     }
 
-    private LongPollServer getLongPollServer(UserActor actor, int groupId) {
+    private LongPollServer getLongPollServer(UserActor actor, Long groupId) {
         try {
             return initServer(client.groupsLongPoll().getLongPollServer(actor, groupId).execute());
         } catch (ApiException | ClientException e) {
@@ -98,7 +98,7 @@ abstract class LongPollApi extends EventsHandler {
         );
     }
 
-    protected void run(UserActor actor, int groupId) {
+    protected void run(UserActor actor, Long groupId) {
         Executors.newSingleThreadExecutor().execute(
                 () -> {
                     try {

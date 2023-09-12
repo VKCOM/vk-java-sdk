@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.board;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class BoardDeleteTopicQuery extends AbstractQueryBuilder<BoardDeleteTopicQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param topicId value of "topic id" parameter. Minimum is 0.
      */
-    public BoardDeleteTopicQuery(VkApiClient client, UserActor actor, int groupId, int topicId) {
+    public BoardDeleteTopicQuery(VkApiClient client, UserActor actor, Long groupId,
+            Integer topicId) {
         super(client, "board.deleteTopic", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,12 +31,25 @@ public class BoardDeleteTopicQuery extends AbstractQueryBuilder<BoardDeleteTopic
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardDeleteTopicQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.deleteTopic", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardDeleteTopicQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardDeleteTopicQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +59,8 @@ public class BoardDeleteTopicQuery extends AbstractQueryBuilder<BoardDeleteTopic
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardDeleteTopicQuery topicId(int value) {
+    @ApiParam("topic_id")
+    public BoardDeleteTopicQuery topicId(Integer value) {
         return unsafeParam("topic_id", value);
     }
 

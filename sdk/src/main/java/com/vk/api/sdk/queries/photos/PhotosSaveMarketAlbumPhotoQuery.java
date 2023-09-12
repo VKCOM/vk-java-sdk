@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.SaveMarketAlbumPhotoResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,17 +15,18 @@ import java.util.List;
  */
 public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<PhotosSaveMarketAlbumPhotoQuery, List<SaveMarketAlbumPhotoResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param photo value of "photo" parameter.
      * @param server value of "server" parameter. Minimum is 0.
      * @param hash value of "hash" parameter.
      */
-    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, int groupId,
-            String photo, int server, String hash) {
+    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor, Long groupId,
+            String photo, Integer server, String hash) {
         super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, SaveMarketAlbumPhotoResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -34,12 +36,25 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosSaveMarketAlbumPhotoQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.saveMarketAlbumPhoto", Utils.buildParametrizedType(List.class, SaveMarketAlbumPhotoResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketAlbumPhotoQuery groupId(int value) {
+    @ApiParam("group_id")
+    public PhotosSaveMarketAlbumPhotoQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -49,7 +64,8 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
      * @param value value of "photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketAlbumPhotoQuery photo(String value) {
+    @ApiParam("photo")
+    public PhotosSaveMarketAlbumPhotoQuery photo(String value) {
         return unsafeParam("photo", value);
     }
 
@@ -59,7 +75,8 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
      * @param value value of "server" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketAlbumPhotoQuery server(int value) {
+    @ApiParam("server")
+    public PhotosSaveMarketAlbumPhotoQuery server(Integer value) {
         return unsafeParam("server", value);
     }
 
@@ -69,7 +86,8 @@ public class PhotosSaveMarketAlbumPhotoQuery extends AbstractQueryBuilder<Photos
      * @param value value of "hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosSaveMarketAlbumPhotoQuery hash(String value) {
+    @ApiParam("hash")
+    public PhotosSaveMarketAlbumPhotoQuery hash(String value) {
         return unsafeParam("hash", value);
     }
 

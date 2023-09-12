@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,14 +13,15 @@ import java.util.List;
  */
 public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param photoId value of "photo id" parameter. Minimum is 0.
-     * @param userId value of "user id" parameter.
+     * @param userId value of "user id" parameter. Entity - owner
+     *
      */
-    public PhotosPutTagQuery(VkApiClient client, UserActor actor, int photoId, int userId) {
+    public PhotosPutTagQuery(VkApiClient client, UserActor actor, Integer photoId, Long userId) {
         super(client, "photos.putTag", Integer.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);
@@ -27,12 +29,25 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosPutTagQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.putTag", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosPutTagQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosPutTagQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -42,17 +57,20 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosPutTagQuery photoId(int value) {
+    @ApiParam("photo_id")
+    public PhotosPutTagQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
 
     /**
      * ID of the user to be tagged.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosPutTagQuery userId(int value) {
+    @ApiParam("user_id")
+    public PhotosPutTagQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -62,6 +80,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "x" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("x")
     public PhotosPutTagQuery x(Number value) {
         return unsafeParam("x", value);
     }
@@ -72,6 +91,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "y" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("y")
     public PhotosPutTagQuery y(Number value) {
         return unsafeParam("y", value);
     }
@@ -82,6 +102,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "x2" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("x2")
     public PhotosPutTagQuery x2(Number value) {
         return unsafeParam("x2", value);
     }
@@ -92,6 +113,7 @@ public class PhotosPutTagQuery extends AbstractQueryBuilder<PhotosPutTagQuery, I
      * @param value value of "y2" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("y2")
     public PhotosPutTagQuery y2(Number value) {
         return unsafeParam("y2", value);
     }

@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.Conversation;
 import com.vk.api.sdk.objects.messages.MessagesArray;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,45 +16,18 @@ import java.util.Objects;
  * GetImportantMessagesExtendedResponse object
  */
 public class GetImportantMessagesExtendedResponse implements Validable {
+    @SerializedName("conversations")
+    private List<Conversation> conversations;
+
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("messages")
     @Required
     private MessagesArray messages;
 
     @SerializedName("profiles")
-    private List<User> profiles;
-
-    @SerializedName("groups")
-    private List<Group> groups;
-
-    @SerializedName("conversations")
-    private List<Conversation> conversations;
-
-    public MessagesArray getMessages() {
-        return messages;
-    }
-
-    public GetImportantMessagesExtendedResponse setMessages(MessagesArray messages) {
-        this.messages = messages;
-        return this;
-    }
-
-    public List<User> getProfiles() {
-        return profiles;
-    }
-
-    public GetImportantMessagesExtendedResponse setProfiles(List<User> profiles) {
-        this.profiles = profiles;
-        return this;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public GetImportantMessagesExtendedResponse setGroups(List<Group> groups) {
-        this.groups = groups;
-        return this;
-    }
+    private List<UserFull> profiles;
 
     public List<Conversation> getConversations() {
         return conversations;
@@ -65,9 +38,36 @@ public class GetImportantMessagesExtendedResponse implements Validable {
         return this;
     }
 
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetImportantMessagesExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
+
+    public MessagesArray getMessages() {
+        return messages;
+    }
+
+    public GetImportantMessagesExtendedResponse setMessages(MessagesArray messages) {
+        this.messages = messages;
+        return this;
+    }
+
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetImportantMessagesExtendedResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(profiles, messages, groups, conversations);
+        return Objects.hash(profiles, groups, messages, conversations);
     }
 
     @Override
@@ -76,8 +76,8 @@ public class GetImportantMessagesExtendedResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetImportantMessagesExtendedResponse getImportantMessagesExtendedResponse = (GetImportantMessagesExtendedResponse) o;
         return Objects.equals(profiles, getImportantMessagesExtendedResponse.profiles) &&
-                Objects.equals(messages, getImportantMessagesExtendedResponse.messages) &&
                 Objects.equals(groups, getImportantMessagesExtendedResponse.groups) &&
+                Objects.equals(messages, getImportantMessagesExtendedResponse.messages) &&
                 Objects.equals(conversations, getImportantMessagesExtendedResponse.conversations);
     }
 
@@ -90,8 +90,8 @@ public class GetImportantMessagesExtendedResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetImportantMessagesExtendedResponse{");
         sb.append("profiles=").append(profiles);
-        sb.append(", messages=").append(messages);
         sb.append(", groups=").append(groups);
+        sb.append(", messages=").append(messages);
         sb.append(", conversations=").append(conversations);
         sb.append('}');
         return sb.toString();

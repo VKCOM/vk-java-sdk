@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetAdsLayoutResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQuery, List<GetAdsLayoutResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetAdsLayoutQuery(VkApiClient client, UserActor actor, int accountId) {
+    public AdsGetAdsLayoutQuery(VkApiClient client, UserActor actor, Integer accountId) {
         super(client, "ads.getAdsLayout", Utils.buildParametrizedType(List.class, GetAdsLayoutResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetAdsLayoutQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getAdsLayout", Utils.buildParametrizedType(List.class, GetAdsLayoutResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,7 +44,8 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetAdsLayoutQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetAdsLayoutQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -42,26 +55,29 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsGetAdsLayoutQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
 
     /**
-     * Flag that specifies whether archived ads shall be shown. *0 — show only active ads,, *1 — show all ads.
+     * Flag that specifies whether archived ads shall be shown. *0 - show only active ads,, *1 - show all ads.
      *
      * @param value value of "include deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("include_deleted")
     public AdsGetAdsLayoutQuery includeDeleted(Boolean value) {
         return unsafeParam("include_deleted", value);
     }
 
     /**
-     * Flag that specifies whether to show only archived ads: *0 — show all ads,, *1 — show only archived ads. Available when include_deleted flag is *1
+     * Flag that specifies whether to show only archived ads: *0 - show all ads,, *1 - show only archived ads. Available when include_deleted flag is *1
      *
      * @param value value of "only deleted" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("only_deleted")
     public AdsGetAdsLayoutQuery onlyDeleted(Boolean value) {
         return unsafeParam("only_deleted", value);
     }
@@ -72,6 +88,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "campaign ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("campaign_ids")
     public AdsGetAdsLayoutQuery campaignIds(String value) {
         return unsafeParam("campaign_ids", value);
     }
@@ -82,6 +99,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "ad ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_ids")
     public AdsGetAdsLayoutQuery adIds(String value) {
         return unsafeParam("ad_ids", value);
     }
@@ -92,6 +110,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "limit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public AdsGetAdsLayoutQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }
@@ -102,6 +121,7 @@ public class AdsGetAdsLayoutQuery extends AbstractQueryBuilder<AdsGetAdsLayoutQu
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AdsGetAdsLayoutQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }

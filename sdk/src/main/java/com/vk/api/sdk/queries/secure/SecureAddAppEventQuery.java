@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.secure;
 import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,29 +14,40 @@ import java.util.List;
  */
 public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAddAppEventQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
      * @param activityId value of "activity id" parameter. Minimum is 0.
      */
-    public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor, int userId,
-            int activityId) {
+    public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor, Integer activityId) {
         super(client, "secure.addAppEvent", OkResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
-        userId(userId);
         activityId(activityId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public SecureAddAppEventQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "secure.addAppEvent", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
      * ID of a user to save the data
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureAddAppEventQuery userId(int value) {
+    @ApiParam("user_id")
+    public SecureAddAppEventQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -45,7 +57,8 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
      * @param value value of "activity id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected SecureAddAppEventQuery activityId(int value) {
+    @ApiParam("activity_id")
+    public SecureAddAppEventQuery activityId(Integer value) {
         return unsafeParam("activity_id", value);
     }
 
@@ -55,6 +68,7 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
      * @param value value of "value" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("value")
     public SecureAddAppEventQuery value(Integer value) {
         return unsafeParam("value", value);
     }
@@ -66,6 +80,6 @@ public class SecureAddAppEventQuery extends AbstractSecureQueryBuilder<SecureAdd
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("activity_id", "user_id", "access_token");
+        return Arrays.asList("activity_id", "access_token");
     }
 }

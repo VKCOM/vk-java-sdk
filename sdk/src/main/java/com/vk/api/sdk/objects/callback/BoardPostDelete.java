@@ -11,22 +11,24 @@ import java.util.Objects;
  * BoardPostDelete object
  */
 public class BoardPostDelete implements Validable {
-    @SerializedName("topic_owner_id")
-    private Integer topicOwnerId;
-
-    @SerializedName("topic_id")
-    private Integer topicId;
-
     @SerializedName("id")
     @Required
     private Integer id;
 
-    public Integer getTopicOwnerId() {
-        return topicOwnerId;
+    @SerializedName("topic_id")
+    @Required
+    private Integer topicId;
+
+    @SerializedName("topic_owner_id")
+    @Required
+    private Integer topicOwnerId;
+
+    public Integer getId() {
+        return id;
     }
 
-    public BoardPostDelete setTopicOwnerId(Integer topicOwnerId) {
-        this.topicOwnerId = topicOwnerId;
+    public BoardPostDelete setId(Integer id) {
+        this.id = id;
         return this;
     }
 
@@ -39,12 +41,12 @@ public class BoardPostDelete implements Validable {
         return this;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getTopicOwnerId() {
+        return topicOwnerId;
     }
 
-    public BoardPostDelete setId(Integer id) {
-        this.id = id;
+    public BoardPostDelete setTopicOwnerId(Integer topicOwnerId) {
+        this.topicOwnerId = topicOwnerId;
         return this;
     }
 
@@ -59,8 +61,8 @@ public class BoardPostDelete implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         BoardPostDelete boardPostDelete = (BoardPostDelete) o;
         return Objects.equals(topicOwnerId, boardPostDelete.topicOwnerId) &&
-                Objects.equals(topicId, boardPostDelete.topicId) &&
-                Objects.equals(id, boardPostDelete.id);
+                Objects.equals(id, boardPostDelete.id) &&
+                Objects.equals(topicId, boardPostDelete.topicId);
     }
 
     @Override
@@ -72,8 +74,8 @@ public class BoardPostDelete implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("BoardPostDelete{");
         sb.append("topicOwnerId=").append(topicOwnerId);
-        sb.append(", topicId=").append(topicId);
         sb.append(", id=").append(id);
+        sb.append(", topicId=").append(topicId);
         sb.append('}');
         return sb.toString();
     }

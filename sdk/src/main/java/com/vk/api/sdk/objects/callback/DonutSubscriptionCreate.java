@@ -11,24 +11,19 @@ import java.util.Objects;
  * DonutSubscriptionCreate object
  */
 public class DonutSubscriptionCreate implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("amount")
     @Required
     private Integer amount;
 
     @SerializedName("amount_without_fee")
-    private Float amountWithoutFee;
+    @Required
+    private Number amountWithoutFee;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public DonutSubscriptionCreate setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
 
     public Integer getAmount() {
         return amount;
@@ -39,12 +34,21 @@ public class DonutSubscriptionCreate implements Validable {
         return this;
     }
 
-    public Float getAmountWithoutFee() {
+    public Number getAmountWithoutFee() {
         return amountWithoutFee;
     }
 
-    public DonutSubscriptionCreate setAmountWithoutFee(Float amountWithoutFee) {
+    public DonutSubscriptionCreate setAmountWithoutFee(Number amountWithoutFee) {
         this.amountWithoutFee = amountWithoutFee;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public DonutSubscriptionCreate setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

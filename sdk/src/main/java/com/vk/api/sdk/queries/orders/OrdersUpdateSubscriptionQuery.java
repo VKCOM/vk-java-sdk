@@ -4,26 +4,28 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
-import com.vk.api.sdk.objects.orders.responses.UpdateSubscriptionResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Orders.updateSubscription method
  */
-public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUpdateSubscriptionQuery, UpdateSubscriptionResponse> {
+public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUpdateSubscriptionQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @param subscriptionId value of "subscription id" parameter. Minimum is 0.
      * @param price value of "price" parameter. Minimum is 0.
      */
-    public OrdersUpdateSubscriptionQuery(VkApiClient client, ServiceActor actor, int userId,
-            int subscriptionId, int price) {
-        super(client, "orders.updateSubscription", UpdateSubscriptionResponse.class);
+    public OrdersUpdateSubscriptionQuery(VkApiClient client, ServiceActor actor, Long userId,
+            Integer subscriptionId, Integer price) {
+        super(client, "orders.updateSubscription", BoolResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         userId(userId);
@@ -32,12 +34,26 @@ public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUp
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public OrdersUpdateSubscriptionQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "orders.updateSubscription", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersUpdateSubscriptionQuery userId(int value) {
+    @ApiParam("user_id")
+    public OrdersUpdateSubscriptionQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -47,7 +63,8 @@ public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUp
      * @param value value of "subscription id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersUpdateSubscriptionQuery subscriptionId(int value) {
+    @ApiParam("subscription_id")
+    public OrdersUpdateSubscriptionQuery subscriptionId(Integer value) {
         return unsafeParam("subscription_id", value);
     }
 
@@ -57,7 +74,8 @@ public class OrdersUpdateSubscriptionQuery extends AbstractQueryBuilder<OrdersUp
      * @param value value of "price" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersUpdateSubscriptionQuery price(int value) {
+    @ApiParam("price")
+    public OrdersUpdateSubscriptionQuery price(Integer value) {
         return unsafeParam("price", value);
     }
 

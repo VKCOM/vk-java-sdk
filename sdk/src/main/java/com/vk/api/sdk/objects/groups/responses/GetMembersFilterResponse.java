@@ -24,6 +24,12 @@ public class GetMembersFilterResponse implements Validable {
     @Required
     private List<MemberRole> items;
 
+    /**
+     * Encoded string for a next page
+     */
+    @SerializedName("next_from")
+    private String nextFrom;
+
     public Integer getCount() {
         return count;
     }
@@ -42,9 +48,18 @@ public class GetMembersFilterResponse implements Validable {
         return this;
     }
 
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public GetMembersFilterResponse setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, nextFrom, items);
     }
 
     @Override
@@ -52,7 +67,8 @@ public class GetMembersFilterResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetMembersFilterResponse getMembersFilterResponse = (GetMembersFilterResponse) o;
-        return Objects.equals(count, getMembersFilterResponse.count) &&
+        return Objects.equals(nextFrom, getMembersFilterResponse.nextFrom) &&
+                Objects.equals(count, getMembersFilterResponse.count) &&
                 Objects.equals(items, getMembersFilterResponse.items);
     }
 
@@ -64,7 +80,8 @@ public class GetMembersFilterResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetMembersFilterResponse{");
-        sb.append("count=").append(count);
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", count=").append(count);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

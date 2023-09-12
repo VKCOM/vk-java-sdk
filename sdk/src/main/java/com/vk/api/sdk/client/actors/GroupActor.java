@@ -4,18 +4,15 @@ import com.vk.api.sdk.client.Utils;
 
 import java.util.Objects;
 
-/**
- * Created by Anton Tsivarev on 29.03.16.
- */
-public class GroupActor implements Actor {
+public class GroupActor implements Actor<Long> {
 
-    private Integer groupId;
+    private Long groupId;
 
     private String accessToken;
 
     private String coveredAccessToken;
 
-    public GroupActor(Integer groupId, String accessToken) {
+    public GroupActor(Long groupId, String accessToken) {
         this.accessToken = accessToken;
         this.groupId = groupId;
         this.coveredAccessToken = Utils.coverAccessToken(accessToken);
@@ -27,11 +24,11 @@ public class GroupActor implements Actor {
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return -groupId;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.account.NameRequest;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
@@ -16,6 +17,7 @@ public class SaveProfileInfoResponse implements Validable {
      * 1 if changes has been processed
      */
     @SerializedName("changed")
+    @Required
     private BoolInt changed;
 
     @SerializedName("name_request")

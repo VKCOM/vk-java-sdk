@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.newsfeed.IgnoreItemType;
 import java.util.Arrays;
@@ -14,16 +15,17 @@ import java.util.List;
  */
 public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnignoreItemQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param type value of "type" parameter.
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
     public NewsfeedUnignoreItemQuery(VkApiClient client, UserActor actor, IgnoreItemType type,
-            int ownerId, int itemId) {
+            Long ownerId, Integer itemId) {
         super(client, "newsfeed.unignoreItem", OkResponse.class);
         accessToken(actor.getAccessToken());
         type(type);
@@ -32,22 +34,36 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NewsfeedUnignoreItemQuery(VkApiClient client, UserActor actor) {
+        super(client, "newsfeed.unignoreItem", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Item type. Possible values: *'wall' - post on the wall,, *'tag' - tag on a photo,, *'profilephoto' - profile photo,, *'video' - video,, *'audio' - audio.
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnignoreItemQuery type(IgnoreItemType value) {
+    @ApiParam("type")
+    public NewsfeedUnignoreItemQuery type(IgnoreItemType value) {
         return unsafeParam("type", value);
     }
 
     /**
      * Item owner's identifier (user or community), "Note that community id must be negative. 'owner_id=1' - user , 'owner_id=-1' - community "
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnignoreItemQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public NewsfeedUnignoreItemQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -57,7 +73,8 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
      * @param value value of "item id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedUnignoreItemQuery itemId(int value) {
+    @ApiParam("item_id")
+    public NewsfeedUnignoreItemQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
 
@@ -67,6 +84,7 @@ public class NewsfeedUnignoreItemQuery extends AbstractQueryBuilder<NewsfeedUnig
      * @param value value of "track code" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("track_code")
     public NewsfeedUnignoreItemQuery trackCode(String value) {
         return unsafeParam("track_code", value);
     }

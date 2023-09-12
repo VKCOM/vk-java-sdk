@@ -6,11 +6,12 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 import com.vk.api.sdk.client.ApiRequest;
+import com.vk.api.sdk.client.ClientResponse;
+import com.vk.api.sdk.client.ClientResponseTypeable;
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
-import com.vk.api.sdk.exceptions.LongPollServerKeyExpiredException;
-import com.vk.api.sdk.exceptions.LongPollServerTsException;
+import com.vk.api.sdk.exceptions.*;
+import org.apache.http.Header;
+import org.apache.http.message.BasicHeader;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -18,11 +19,9 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.net.URI;
 
 public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
 
@@ -36,8 +35,10 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
 
     private final Map<String, String> params = new HashMap<>();
 
-    public LongPollQueryBuilder(VkApiClient client, String url, Type type) {
-        super(url, client.getTransportClient(), client.getGson(), RETRY_ATTEMPTS, type);
+    private final List<Header> headers = new ArrayList<>();
+
+    public LongPollQueryBuilder(VkApiClient client, URI url, Type type) {
+        super(url.toString(), client.getTransportClient(), client.getGson(), RETRY_ATTEMPTS, type);
     }
 
     private static String escape(String data) {
@@ -67,9 +68,37 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
                 .collect(Collectors.joining("&"));
     }
 
+    /**
+     * Add header to request
+     *
+     * @param header Header to be added to the request
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T withHeader(BasicHeader header) {
+        headers.add(header);
+        return getThis();
+    }
+
+    /**
+     * Add multiple headers to request
+     *
+     * @param list List of headers which need to be added to request
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    public T withHeaders(List<BasicHeader> list) {
+        headers.addAll(list);
+        return getThis();
+    }
+
     @Override
     protected String getBody() {
         return mapToGetString(build());
+    }
+
+    @Override
+    protected Header[] getQueryHeaders() {
+        List<Header> result = new ArrayList<>(this.headers);
+        return result.toArray(new Header[0]);
     }
 
     protected abstract T getThis();
@@ -86,7 +115,22 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
 
     @Override
     public R execute() throws ApiException, ClientException {
-        String textResponse = executeAsString();
+        return parseClientResponse(executeAsStringWithReturningFullInfo());
+    }
+
+    @Override
+    public ClientResponseTypeable<R> executeTypeable() throws ApiExtendedException, ClientException {
+        ClientResponse response = executeAsStringWithReturningFullInfo();
+
+        return new ClientResponseTypeable<R>(
+                response.getStatusCode(),
+                parseClientResponse(response),
+                response.getHeaders()
+        );
+    }
+
+    private R parseClientResponse(ClientResponse response) throws ClientException, ApiExtendedException {
+        String textResponse = response.getContent();
         JsonReader jsonReader = new JsonReader(new StringReader(textResponse));
         JsonObject json = (JsonObject) new JsonParser().parse(jsonReader);
         if (json.has(FAILED_CODE)) {
@@ -95,9 +139,17 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
             switch (code) {
                 case INCORRECT_TS_VALUE_ERROR_CODE:
                     int ts = json.getAsJsonPrimitive("ts").getAsInt();
-                    throw new LongPollServerTsException("\'ts\' value is incorrect, minimal value is 1, maximal value is " + ts);
+                    throw new LongPollServerTsException(
+                            response.getStatusCode(),
+                            "\'ts\' value is incorrect, minimal value is 1, maximal value is " + ts,
+                            response.getHeaders()
+                    );
                 case TOKEN_EXPIRED_ERROR_CODE:
-                    throw new LongPollServerKeyExpiredException("Try to generate a new key.");
+                    throw new LongPollServerKeyExpiredException(
+                            response.getStatusCode(),
+                            "Try to generate a new key.",
+                            response.getHeaders()
+                    );
                 default:
                     throw new ClientException("Unknown LongPollServer exception, something went wrong.");
             }
@@ -110,6 +162,5 @@ public abstract class LongPollQueryBuilder<T, R> extends ApiRequest<R> {
             throw new ClientException("Can't parse json response");
         }
     }
-
 }
 

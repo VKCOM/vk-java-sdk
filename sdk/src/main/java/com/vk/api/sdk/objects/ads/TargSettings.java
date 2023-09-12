@@ -11,32 +11,32 @@ import java.util.Objects;
  */
 public class TargSettings extends Criteria implements Validable {
     /**
-     * Ad ID
-     */
-    @SerializedName("id")
-    private Integer id;
-
-    /**
      * Campaign ID
      */
     @SerializedName("campaign_id")
-    private Integer campaignId;
+    private String campaignId;
 
-    public Integer getId() {
-        return id;
-    }
+    /**
+     * Ad ID
+     */
+    @SerializedName("id")
+    private String id;
 
-    public TargSettings setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public Integer getCampaignId() {
+    public String getCampaignId() {
         return campaignId;
     }
 
-    public TargSettings setCampaignId(Integer campaignId) {
+    public TargSettings setCampaignId(String campaignId) {
         this.campaignId = campaignId;
+        return this;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public TargSettings setId(String id) {
+        this.id = id;
         return this;
     }
 
@@ -62,8 +62,8 @@ public class TargSettings extends Criteria implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TargSettings{");
-        sb.append("id=").append(id);
-        sb.append(", campaignId=").append(campaignId);
+        sb.append("id='").append(id).append("'");
+        sb.append(", campaignId='").append(campaignId).append("'");
         sb.append('}');
         return sb.toString();
     }

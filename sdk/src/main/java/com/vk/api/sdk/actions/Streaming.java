@@ -4,7 +4,11 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.streaming.StreamingGetServerUrlQuery;
+import com.vk.api.sdk.queries.streaming.StreamingGetSettingsQuery;
+import com.vk.api.sdk.queries.streaming.StreamingGetStatsQuery;
+import com.vk.api.sdk.queries.streaming.StreamingGetStemQuery;
 import com.vk.api.sdk.queries.streaming.StreamingSetSettingsQuery;
 
 /**
@@ -23,17 +27,56 @@ public class Streaming extends AbstractAction {
     /**
      * Allows to receive data for the connection to Streaming API.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("streaming.getServerUrl")
     public StreamingGetServerUrlQuery getServerUrl(ServiceActor actor) {
         return new StreamingGetServerUrlQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("streaming.getSettings")
+    public StreamingGetSettingsQuery getSettings(ServiceActor actor) {
+        return new StreamingGetSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("streaming.getStats")
+    public StreamingGetStatsQuery getStats(ServiceActor actor) {
+        return new StreamingGetStatsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param word
+     * @return query
+     */
+    @ApiMethod("streaming.getStem")
+    public StreamingGetStemQuery getStem(ServiceActor actor, String word) {
+        return new StreamingGetStemQuery(getClient(), actor, word);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("streaming.getStem")
+    public StreamingGetStemQuery getStem(ServiceActor actor) {
+        return new StreamingGetStemQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("streaming.setSettings")
     public StreamingSetSettingsQuery setSettings(ServiceActor actor) {
         return new StreamingSetSettingsQuery(getClient(), actor);
     }

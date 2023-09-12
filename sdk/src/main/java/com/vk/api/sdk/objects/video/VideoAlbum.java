@@ -20,9 +20,14 @@ public class VideoAlbum implements Validable {
 
     /**
      * Album owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    @SerializedName("response_type")
+    private VideoAlbumResponseType responseType;
 
     /**
      * Album title
@@ -30,6 +35,12 @@ public class VideoAlbum implements Validable {
     @SerializedName("title")
     @Required
     private String title;
+
+    /**
+     * Album trackcode
+     */
+    @SerializedName("track_code")
+    private String trackCode;
 
     public Integer getId() {
         return id;
@@ -40,12 +51,21 @@ public class VideoAlbum implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public VideoAlbum setOwnerId(Integer ownerId) {
+    public VideoAlbum setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+        return this;
+    }
+
+    public VideoAlbumResponseType getResponseType() {
+        return responseType;
+    }
+
+    public VideoAlbum setResponseType(VideoAlbumResponseType responseType) {
+        this.responseType = responseType;
         return this;
     }
 
@@ -58,9 +78,18 @@ public class VideoAlbum implements Validable {
         return this;
     }
 
+    public String getTrackCode() {
+        return trackCode;
+    }
+
+    public VideoAlbum setTrackCode(String trackCode) {
+        this.trackCode = trackCode;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, ownerId, title);
+        return Objects.hash(trackCode, responseType, id, ownerId, title);
     }
 
     @Override
@@ -69,6 +98,8 @@ public class VideoAlbum implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         VideoAlbum videoAlbum = (VideoAlbum) o;
         return Objects.equals(ownerId, videoAlbum.ownerId) &&
+                Objects.equals(responseType, videoAlbum.responseType) &&
+                Objects.equals(trackCode, videoAlbum.trackCode) &&
                 Objects.equals(id, videoAlbum.id) &&
                 Objects.equals(title, videoAlbum.title);
     }
@@ -82,6 +113,8 @@ public class VideoAlbum implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("VideoAlbum{");
         sb.append("ownerId=").append(ownerId);
+        sb.append(", responseType='").append(responseType).append("'");
+        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");
         sb.append('}');

@@ -15,27 +15,18 @@ import java.util.Objects;
  * GetSubscriptionsResponse object
  */
 public class GetSubscriptionsResponse implements Validable {
-    @SerializedName("subscriptions")
-    @Required
-    private List<DonatorSubscriptionInfo> subscriptions;
-
     @SerializedName("count")
     private Integer count;
-
-    @SerializedName("profiles")
-    private List<UserFull> profiles;
 
     @SerializedName("groups")
     private List<GroupFull> groups;
 
-    public List<DonatorSubscriptionInfo> getSubscriptions() {
-        return subscriptions;
-    }
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
 
-    public GetSubscriptionsResponse setSubscriptions(List<DonatorSubscriptionInfo> subscriptions) {
-        this.subscriptions = subscriptions;
-        return this;
-    }
+    @SerializedName("subscriptions")
+    @Required
+    private List<DonatorSubscriptionInfo> subscriptions;
 
     public Integer getCount() {
         return count;
@@ -43,6 +34,15 @@ public class GetSubscriptionsResponse implements Validable {
 
     public GetSubscriptionsResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetSubscriptionsResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -55,12 +55,12 @@ public class GetSubscriptionsResponse implements Validable {
         return this;
     }
 
-    public List<GroupFull> getGroups() {
-        return groups;
+    public List<DonatorSubscriptionInfo> getSubscriptions() {
+        return subscriptions;
     }
 
-    public GetSubscriptionsResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
+    public GetSubscriptionsResponse setSubscriptions(List<DonatorSubscriptionInfo> subscriptions) {
+        this.subscriptions = subscriptions;
         return this;
     }
 

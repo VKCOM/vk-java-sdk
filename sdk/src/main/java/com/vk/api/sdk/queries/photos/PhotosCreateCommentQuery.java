@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,25 +13,38 @@ import java.util.List;
  */
 public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateCommentQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param photoId value of "photo id" parameter.
      */
-    public PhotosCreateCommentQuery(VkApiClient client, UserActor actor, int photoId) {
+    public PhotosCreateCommentQuery(VkApiClient client, UserActor actor, Integer photoId) {
         super(client, "photos.createComment", Integer.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosCreateCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.createComment", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosCreateCommentQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosCreateCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -40,7 +54,8 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "photo id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosCreateCommentQuery photoId(int value) {
+    @ApiParam("photo_id")
+    public PhotosCreateCommentQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
 
@@ -50,16 +65,18 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public PhotosCreateCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
 
     /**
-     * '1' — to post a comment from the community
+     * '1' - to post a comment from the community
      *
      * @param value value of "from group" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("from_group")
     public PhotosCreateCommentQuery fromGroup(Boolean value) {
         return unsafeParam("from_group", value);
     }
@@ -70,6 +87,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "reply to comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reply_to_comment")
     public PhotosCreateCommentQuery replyToComment(Integer value) {
         return unsafeParam("reply_to_comment", value);
     }
@@ -80,6 +98,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "sticker id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sticker_id")
     public PhotosCreateCommentQuery stickerId(Integer value) {
         return unsafeParam("sticker_id", value);
     }
@@ -90,6 +109,7 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "access key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("access_key")
     public PhotosCreateCommentQuery accessKey(String value) {
         return unsafeParam("access_key", value);
     }
@@ -100,27 +120,30 @@ public class PhotosCreateCommentQuery extends AbstractQueryBuilder<PhotosCreateC
      * @param value value of "guid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("guid")
     public PhotosCreateCommentQuery guid(String value) {
         return unsafeParam("guid", value);
     }
 
     /**
      * attachments
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - Media attachment owner ID. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public PhotosCreateCommentQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - Media attachment owner ID. '<media_id>' - Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public PhotosCreateCommentQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
     }

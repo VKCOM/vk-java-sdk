@@ -6,6 +6,10 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.ObjectCount;
+import com.vk.api.sdk.objects.base.PropertyExists;
+import com.vk.api.sdk.objects.base.RepostsInfo;
 import com.vk.api.sdk.objects.photos.Image;
 import com.vk.api.sdk.objects.photos.PhotoSizes;
 import java.net.URI;
@@ -26,7 +30,17 @@ public class SaveMarketPhotoResponse implements Validable {
      * Album ID
      */
     @SerializedName("album_id")
+    @Required
     private Integer albumId;
+
+    /**
+     * Information whether current user can comment the photo
+     */
+    @SerializedName("can_comment")
+    private BoolInt canComment;
+
+    @SerializedName("comments")
+    private ObjectCount comments;
 
     /**
      * Date when uploaded
@@ -36,10 +50,23 @@ public class SaveMarketPhotoResponse implements Validable {
     private Integer date;
 
     /**
+     * Whether photo has attached tag links
+     */
+    @SerializedName("has_tags")
+    @Required
+    private Boolean hasTags;
+
+    /**
      * Original photo height
      */
     @SerializedName("height")
     private Integer height;
+
+    /**
+     * Returns if the photo is hidden above the wall
+     */
+    @SerializedName("hidden")
+    private PropertyExists hidden;
 
     /**
      * Photo ID
@@ -55,31 +82,30 @@ public class SaveMarketPhotoResponse implements Validable {
      * Latitude
      */
     @SerializedName("lat")
-    private Float lat;
+    private Number lat;
+
+    @SerializedName("likes")
+    private Likes likes;
 
     /**
      * Longitude
      */
     @SerializedName("long")
-    private Float lng;
+    private Number lng;
 
     /**
      * Photo owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * URL of image with 2560 px width
      */
     @SerializedName("photo_256")
     private URI photo256;
-
-    /**
-     * Information whether current user can comment the photo
-     */
-    @SerializedName("can_comment")
-    private BoolInt canComment;
 
     @SerializedName("place")
     private String place;
@@ -90,8 +116,23 @@ public class SaveMarketPhotoResponse implements Validable {
     @SerializedName("post_id")
     private Integer postId;
 
+    /**
+     * Real position of the photo
+     */
+    @SerializedName("real_offset")
+    private Integer realOffset;
+
+    @SerializedName("reposts")
+    private RepostsInfo reposts;
+
     @SerializedName("sizes")
     private List<PhotoSizes> sizes;
+
+    @SerializedName("square_crop")
+    private String squareCrop;
+
+    @SerializedName("tags")
+    private ObjectCount tags;
 
     /**
      * Photo caption
@@ -101,21 +142,22 @@ public class SaveMarketPhotoResponse implements Validable {
 
     /**
      * ID of the user who have uploaded the photo
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
+
+    /**
+     * Sets vertical alignment of a photo
+     */
+    @SerializedName("vertical_align")
+    private SaveMarketPhotoResponseVerticalAlign verticalAlign;
 
     /**
      * Original photo width
      */
     @SerializedName("width")
     private Integer width;
-
-    /**
-     * Whether photo has attached tag links
-     */
-    @SerializedName("has_tags")
-    private Boolean hasTags;
 
     public String getAccessKey() {
         return accessKey;
@@ -135,12 +177,38 @@ public class SaveMarketPhotoResponse implements Validable {
         return this;
     }
 
+    public boolean canComment() {
+        return canComment == BoolInt.YES;
+    }
+
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
+    public ObjectCount getComments() {
+        return comments;
+    }
+
+    public SaveMarketPhotoResponse setComments(ObjectCount comments) {
+        this.comments = comments;
+        return this;
+    }
+
     public Integer getDate() {
         return date;
     }
 
     public SaveMarketPhotoResponse setDate(Integer date) {
         this.date = date;
+        return this;
+    }
+
+    public Boolean getHasTags() {
+        return hasTags;
+    }
+
+    public SaveMarketPhotoResponse setHasTags(Boolean hasTags) {
+        this.hasTags = hasTags;
         return this;
     }
 
@@ -151,6 +219,10 @@ public class SaveMarketPhotoResponse implements Validable {
     public SaveMarketPhotoResponse setHeight(Integer height) {
         this.height = height;
         return this;
+    }
+
+    public boolean isHidden() {
+        return hidden == PropertyExists.PROPERTY_EXISTS;
     }
 
     public Integer getId() {
@@ -171,29 +243,38 @@ public class SaveMarketPhotoResponse implements Validable {
         return this;
     }
 
-    public Float getLat() {
+    public Number getLat() {
         return lat;
     }
 
-    public SaveMarketPhotoResponse setLat(Float lat) {
+    public SaveMarketPhotoResponse setLat(Number lat) {
         this.lat = lat;
         return this;
     }
 
-    public Float getLng() {
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public SaveMarketPhotoResponse setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public Number getLng() {
         return lng;
     }
 
-    public SaveMarketPhotoResponse setLng(Float lng) {
+    public SaveMarketPhotoResponse setLng(Number lng) {
         this.lng = lng;
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public SaveMarketPhotoResponse setOwnerId(Integer ownerId) {
+    public SaveMarketPhotoResponse setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -205,14 +286,6 @@ public class SaveMarketPhotoResponse implements Validable {
     public SaveMarketPhotoResponse setPhoto256(URI photo256) {
         this.photo256 = photo256;
         return this;
-    }
-
-    public boolean canComment() {
-        return canComment == BoolInt.YES;
-    }
-
-    public BoolInt getCanComment() {
-        return canComment;
     }
 
     public String getPlace() {
@@ -233,12 +306,48 @@ public class SaveMarketPhotoResponse implements Validable {
         return this;
     }
 
+    public Integer getRealOffset() {
+        return realOffset;
+    }
+
+    public SaveMarketPhotoResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public RepostsInfo getReposts() {
+        return reposts;
+    }
+
+    public SaveMarketPhotoResponse setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
     public List<PhotoSizes> getSizes() {
         return sizes;
     }
 
     public SaveMarketPhotoResponse setSizes(List<PhotoSizes> sizes) {
         this.sizes = sizes;
+        return this;
+    }
+
+    public String getSquareCrop() {
+        return squareCrop;
+    }
+
+    public SaveMarketPhotoResponse setSquareCrop(String squareCrop) {
+        this.squareCrop = squareCrop;
+        return this;
+    }
+
+    public ObjectCount getTags() {
+        return tags;
+    }
+
+    public SaveMarketPhotoResponse setTags(ObjectCount tags) {
+        this.tags = tags;
         return this;
     }
 
@@ -251,12 +360,22 @@ public class SaveMarketPhotoResponse implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public SaveMarketPhotoResponse setUserId(Integer userId) {
+    public SaveMarketPhotoResponse setUserId(Long userId) {
         this.userId = userId;
+        return this;
+    }
+
+    public SaveMarketPhotoResponseVerticalAlign getVerticalAlign() {
+        return verticalAlign;
+    }
+
+    public SaveMarketPhotoResponse setVerticalAlign(
+            SaveMarketPhotoResponseVerticalAlign verticalAlign) {
+        this.verticalAlign = verticalAlign;
         return this;
     }
 
@@ -269,18 +388,9 @@ public class SaveMarketPhotoResponse implements Validable {
         return this;
     }
 
-    public Boolean getHasTags() {
-        return hasTags;
-    }
-
-    public SaveMarketPhotoResponse setHasTags(Boolean hasTags) {
-        this.hasTags = hasTags;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(date, images, lng, albumId, photo256, postId, ownerId, userId, sizes, accessKey, width, hasTags, canComment, id, place, text, lat, height);
+        return Objects.hash(date, hidden, albumId, ownerId, realOffset, sizes, hasTags, canComment, id, place, text, squareCrop, lat, height, likes, verticalAlign, images, comments, lng, photo256, postId, userId, tags, accessKey, width, reposts);
     }
 
     @Override
@@ -289,23 +399,31 @@ public class SaveMarketPhotoResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         SaveMarketPhotoResponse saveMarketPhotoResponse = (SaveMarketPhotoResponse) o;
         return Objects.equals(date, saveMarketPhotoResponse.date) &&
-                Objects.equals(images, saveMarketPhotoResponse.images) &&
+                Objects.equals(hidden, saveMarketPhotoResponse.hidden) &&
                 Objects.equals(ownerId, saveMarketPhotoResponse.ownerId) &&
                 Objects.equals(lng, saveMarketPhotoResponse.lng) &&
                 Objects.equals(canComment, saveMarketPhotoResponse.canComment) &&
-                Objects.equals(postId, saveMarketPhotoResponse.postId) &&
                 Objects.equals(sizes, saveMarketPhotoResponse.sizes) &&
+                Objects.equals(id, saveMarketPhotoResponse.id) &&
+                Objects.equals(place, saveMarketPhotoResponse.place) &&
+                Objects.equals(text, saveMarketPhotoResponse.text) &&
+                Objects.equals(lat, saveMarketPhotoResponse.lat) &&
+                Objects.equals(height, saveMarketPhotoResponse.height) &&
+                Objects.equals(likes, saveMarketPhotoResponse.likes) &&
+                Objects.equals(images, saveMarketPhotoResponse.images) &&
+                Objects.equals(comments, saveMarketPhotoResponse.comments) &&
+                Objects.equals(verticalAlign, saveMarketPhotoResponse.verticalAlign) &&
+                Objects.equals(tags, saveMarketPhotoResponse.tags) &&
+                Objects.equals(realOffset, saveMarketPhotoResponse.realOffset) &&
+                Objects.equals(postId, saveMarketPhotoResponse.postId) &&
                 Objects.equals(userId, saveMarketPhotoResponse.userId) &&
                 Objects.equals(accessKey, saveMarketPhotoResponse.accessKey) &&
                 Objects.equals(width, saveMarketPhotoResponse.width) &&
                 Objects.equals(albumId, saveMarketPhotoResponse.albumId) &&
                 Objects.equals(hasTags, saveMarketPhotoResponse.hasTags) &&
-                Objects.equals(id, saveMarketPhotoResponse.id) &&
-                Objects.equals(place, saveMarketPhotoResponse.place) &&
-                Objects.equals(text, saveMarketPhotoResponse.text) &&
-                Objects.equals(lat, saveMarketPhotoResponse.lat) &&
+                Objects.equals(squareCrop, saveMarketPhotoResponse.squareCrop) &&
                 Objects.equals(photo256, saveMarketPhotoResponse.photo256) &&
-                Objects.equals(height, saveMarketPhotoResponse.height);
+                Objects.equals(reposts, saveMarketPhotoResponse.reposts);
     }
 
     @Override
@@ -317,23 +435,31 @@ public class SaveMarketPhotoResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("SaveMarketPhotoResponse{");
         sb.append("date=").append(date);
-        sb.append(", images=").append(images);
+        sb.append(", hidden=").append(hidden);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", lng=").append(lng);
         sb.append(", canComment=").append(canComment);
-        sb.append(", postId=").append(postId);
         sb.append(", sizes=").append(sizes);
+        sb.append(", id=").append(id);
+        sb.append(", place='").append(place).append("'");
+        sb.append(", text='").append(text).append("'");
+        sb.append(", lat=").append(lat);
+        sb.append(", height=").append(height);
+        sb.append(", likes=").append(likes);
+        sb.append(", images=").append(images);
+        sb.append(", comments=").append(comments);
+        sb.append(", verticalAlign='").append(verticalAlign).append("'");
+        sb.append(", tags=").append(tags);
+        sb.append(", realOffset=").append(realOffset);
+        sb.append(", postId=").append(postId);
         sb.append(", userId=").append(userId);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", width=").append(width);
         sb.append(", albumId=").append(albumId);
         sb.append(", hasTags=").append(hasTags);
-        sb.append(", id=").append(id);
-        sb.append(", place='").append(place).append("'");
-        sb.append(", text='").append(text).append("'");
-        sb.append(", lat=").append(lat);
+        sb.append(", squareCrop='").append(squareCrop).append("'");
         sb.append(", photo256=").append(photo256);
-        sb.append(", height=").append(height);
+        sb.append(", reposts=").append(reposts);
         sb.append('}');
         return sb.toString();
     }

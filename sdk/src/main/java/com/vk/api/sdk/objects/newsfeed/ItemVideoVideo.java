@@ -4,7 +4,7 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class ItemVideoVideo implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<Video> items;
+    private List<VideoFull> items;
 
     public Integer getCount() {
         return count;
@@ -30,11 +30,11 @@ public class ItemVideoVideo implements Validable {
         return this;
     }
 
-    public List<Video> getItems() {
+    public List<VideoFull> getItems() {
         return items;
     }
 
-    public ItemVideoVideo setItems(List<Video> items) {
+    public ItemVideoVideo setItems(List<VideoFull> items) {
         this.items = items;
         return this;
     }

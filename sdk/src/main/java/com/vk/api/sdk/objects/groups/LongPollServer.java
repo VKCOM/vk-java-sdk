@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import java.net.URI;
 import java.util.Objects;
 
 /**
@@ -23,7 +24,7 @@ public class LongPollServer implements Validable {
      */
     @SerializedName("server")
     @Required
-    private String server;
+    private URI server;
 
     /**
      * Number of the last event
@@ -41,11 +42,11 @@ public class LongPollServer implements Validable {
         return this;
     }
 
-    public String getServer() {
+    public URI getServer() {
         return server;
     }
 
-    public LongPollServer setServer(String server) {
+    public LongPollServer setServer(URI server) {
         this.server = server;
         return this;
     }
@@ -82,7 +83,7 @@ public class LongPollServer implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LongPollServer{");
-        sb.append("server='").append(server).append("'");
+        sb.append("server=").append(server);
         sb.append(", key='").append(key).append("'");
         sb.append(", ts='").append(ts).append("'");
         sb.append('}');

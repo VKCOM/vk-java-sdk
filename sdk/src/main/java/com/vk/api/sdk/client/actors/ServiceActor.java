@@ -1,27 +1,29 @@
 package com.vk.api.sdk.client.actors;
 
+import com.vk.api.sdk.client.Utils;
+
 import java.util.Objects;
 
-/**
- * Created by Anton Tsivarev on 29.03.16.
- */
-public class ServiceActor implements Actor {
+public class ServiceActor implements Actor<Integer> {
 
     private Integer appId;
-
     private String clientSecret;
-
+    private String coveredClientSecret;
     private String accessToken;
+    private String coveredAccessToken;
 
     public ServiceActor(Integer appId, String accessToken) {
         this.accessToken = accessToken;
+        this.coveredAccessToken = Utils.coverAccessToken(accessToken);
         this.appId = appId;
     }
 
     public ServiceActor(Integer appId, String clientSecret, String accessToken) {
         this.accessToken = accessToken;
+        this.coveredAccessToken = Utils.coverAccessToken(accessToken);
         this.appId = appId;
         this.clientSecret = clientSecret;
+        this.coveredClientSecret = Utils.coverAccessToken(clientSecret);
     }
 
     public String getClientSecret() {
@@ -57,8 +59,8 @@ public class ServiceActor implements Actor {
     public String toString() {
         final StringBuilder sb = new StringBuilder("ServiceActor{");
         sb.append("appId=").append(appId);
-        sb.append(", clientSecret='").append(clientSecret).append('\'');
-        sb.append(", accessToken='").append(accessToken).append('\'');
+        sb.append(", clientSecret='").append(coveredClientSecret).append('\'');
+        sb.append(", accessToken='").append(coveredAccessToken).append('\'');
         sb.append('}');
         return sb.toString();
     }

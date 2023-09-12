@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetLastActivityResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,39 @@ import java.util.List;
  */
 public class MessagesGetLastActivityQuery extends AbstractQueryBuilder<MessagesGetLastActivityQuery, GetLastActivityResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter.
+     * @param userId value of "user id" parameter. Entity - owner
+     *
      */
-    public MessagesGetLastActivityQuery(VkApiClient client, UserActor actor, int userId) {
+    public MessagesGetLastActivityQuery(VkApiClient client, UserActor actor, Long userId) {
         super(client, "messages.getLastActivity", GetLastActivityResponse.class);
         accessToken(actor.getAccessToken());
         userId(userId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetLastActivityQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getLastActivity", GetLastActivityResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * User ID.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetLastActivityQuery userId(int value) {
+    @ApiParam("user_id")
+    public MessagesGetLastActivityQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 

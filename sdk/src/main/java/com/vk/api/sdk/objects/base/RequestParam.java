@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.base;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,12 +15,14 @@ public class RequestParam implements Validable {
      * Parameter name
      */
     @SerializedName("key")
+    @Required
     private String key;
 
     /**
      * Parameter value
      */
     @SerializedName("value")
+    @Required
     private String value;
 
     public String getKey() {

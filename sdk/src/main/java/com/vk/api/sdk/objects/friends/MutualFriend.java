@@ -18,13 +18,14 @@ public class MutualFriend implements Validable {
     private Integer commonCount;
 
     @SerializedName("common_friends")
-    private List<Integer> commonFriends;
+    private List<Long> commonFriends;
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("id")
-    private Integer id;
+    private Long id;
 
     public Integer getCommonCount() {
         return commonCount;
@@ -35,20 +36,20 @@ public class MutualFriend implements Validable {
         return this;
     }
 
-    public List<Integer> getCommonFriends() {
+    public List<Long> getCommonFriends() {
         return commonFriends;
     }
 
-    public MutualFriend setCommonFriends(List<Integer> commonFriends) {
+    public MutualFriend setCommonFriends(List<Long> commonFriends) {
         this.commonFriends = commonFriends;
         return this;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public MutualFriend setId(Integer id) {
+    public MutualFriend setId(Long id) {
         this.id = id;
         return this;
     }

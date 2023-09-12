@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.widgets.WidgetsGetCommentsQuery;
 import com.vk.api.sdk.queries.widgets.WidgetsGetPagesQuery;
 
@@ -24,9 +25,10 @@ public class Widgets extends AbstractAction {
     /**
      * Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("widgets.getComments")
     public WidgetsGetCommentsQuery getComments(UserActor actor) {
         return new WidgetsGetCommentsQuery(getClient(), actor);
     }
@@ -34,9 +36,10 @@ public class Widgets extends AbstractAction {
     /**
      * Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("widgets.getComments")
     public WidgetsGetCommentsQuery getComments(ServiceActor actor) {
         return new WidgetsGetCommentsQuery(getClient(), actor);
     }
@@ -44,9 +47,10 @@ public class Widgets extends AbstractAction {
     /**
      * Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("widgets.getPages")
     public WidgetsGetPagesQuery getPages(UserActor actor) {
         return new WidgetsGetPagesQuery(getClient(), actor);
     }
@@ -54,9 +58,10 @@ public class Widgets extends AbstractAction {
     /**
      * Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("widgets.getPages")
     public WidgetsGetPagesQuery getPages(ServiceActor actor) {
         return new WidgetsGetPagesQuery(getClient(), actor);
     }

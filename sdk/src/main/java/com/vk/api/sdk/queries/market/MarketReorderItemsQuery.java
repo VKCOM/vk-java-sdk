@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderItemsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public MarketReorderItemsQuery(VkApiClient client, UserActor actor, int ownerId, int itemId) {
+    public MarketReorderItemsQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer itemId) {
         super(client, "market.reorderItems", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +31,25 @@ public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderI
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketReorderItemsQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.reorderItems", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an item owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReorderItemsQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketReorderItemsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,6 +59,7 @@ public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderI
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public MarketReorderItemsQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -53,7 +70,8 @@ public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderI
      * @param value value of "item id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReorderItemsQuery itemId(int value) {
+    @ApiParam("item_id")
+    public MarketReorderItemsQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
 
@@ -63,6 +81,7 @@ public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderI
      * @param value value of "before" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("before")
     public MarketReorderItemsQuery before(Integer value) {
         return unsafeParam("before", value);
     }
@@ -73,6 +92,7 @@ public class MarketReorderItemsQuery extends AbstractQueryBuilder<MarketReorderI
      * @param value value of "after" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("after")
     public MarketReorderItemsQuery after(Integer value) {
         return unsafeParam("after", value);
     }

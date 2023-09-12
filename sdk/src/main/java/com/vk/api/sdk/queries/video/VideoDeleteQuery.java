@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class VideoDeleteQuery extends AbstractQueryBuilder<VideoDeleteQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoDeleteQuery(VkApiClient client, UserActor actor, int videoId) {
+    public VideoDeleteQuery(VkApiClient client, UserActor actor, Integer videoId) {
         super(client, "video.delete", OkResponse.class);
         accessToken(actor.getAccessToken());
         videoId(videoId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoDeleteQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.delete", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,27 +43,32 @@ public class VideoDeleteQuery extends AbstractQueryBuilder<VideoDeleteQuery, OkR
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoDeleteQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoDeleteQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
     /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoDeleteQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public VideoDeleteQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
      * Set target id
      *
-     * @param value value of "target id" parameter.
+     * @param value value of "target id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoDeleteQuery targetId(Integer value) {
+    @ApiParam("target_id")
+    public VideoDeleteQuery targetId(Long value) {
         return unsafeParam("target_id", value);
     }
 

@@ -12,7 +12,13 @@ public enum VideoType implements EnumParam {
     MUSIC_VIDEO("music_video"),
 
     @SerializedName("movie")
-    MOVIE("movie");
+    MOVIE("movie"),
+
+    @SerializedName("live")
+    LIVE("live"),
+
+    @SerializedName("short_video")
+    SHORT_VIDEO("short_video");
 
     private final String value;
 

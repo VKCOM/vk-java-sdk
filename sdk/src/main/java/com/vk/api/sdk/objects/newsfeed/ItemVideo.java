@@ -10,8 +10,38 @@ import java.util.Objects;
  * ItemVideo object
  */
 public class ItemVideo extends ItemBase implements Validable {
+    /**
+     * Index of current carousel element
+     */
+    @SerializedName("carousel_offset")
+    private Integer carouselOffset;
+
+    /**
+     * Post ID
+     */
+    @SerializedName("post_id")
+    private Integer postId;
+
     @SerializedName("video")
     private ItemVideoVideo video;
+
+    public Integer getCarouselOffset() {
+        return carouselOffset;
+    }
+
+    public ItemVideo setCarouselOffset(Integer carouselOffset) {
+        this.carouselOffset = carouselOffset;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public ItemVideo setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
 
     public ItemVideoVideo getVideo() {
         return video;
@@ -24,7 +54,7 @@ public class ItemVideo extends ItemBase implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(video);
+        return Objects.hash(carouselOffset, postId, video);
     }
 
     @Override
@@ -32,7 +62,9 @@ public class ItemVideo extends ItemBase implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemVideo itemVideo = (ItemVideo) o;
-        return Objects.equals(video, itemVideo.video);
+        return Objects.equals(postId, itemVideo.postId) &&
+                Objects.equals(video, itemVideo.video) &&
+                Objects.equals(carouselOffset, itemVideo.carouselOffset);
     }
 
     @Override
@@ -43,7 +75,9 @@ public class ItemVideo extends ItemBase implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemVideo{");
-        sb.append("video=").append(video);
+        sb.append("postId=").append(postId);
+        sb.append(", video=").append(video);
+        sb.append(", carouselOffset=").append(carouselOffset);
         sb.append('}');
         return sb.toString();
     }

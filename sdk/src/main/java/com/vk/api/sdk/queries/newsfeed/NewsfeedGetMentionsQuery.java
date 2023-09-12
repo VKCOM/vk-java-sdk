@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.newsfeed.responses.GetMentionsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMentionsQuery, GetMentionsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,10 +27,12 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
     /**
      * Owner ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetMentionsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public NewsfeedGetMentionsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -39,6 +42,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public NewsfeedGetMentionsQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -49,6 +53,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public NewsfeedGetMentionsQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -59,6 +64,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public NewsfeedGetMentionsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -69,6 +75,7 @@ public class NewsfeedGetMentionsQuery extends AbstractQueryBuilder<NewsfeedGetMe
      * @param value value of "count" parameter. Maximum is 50. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedGetMentionsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

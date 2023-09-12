@@ -11,38 +11,17 @@ import java.util.Objects;
  * ItemPromoButton object
  */
 public class ItemPromoButton extends ItemBase implements Validable {
-    @SerializedName("text")
-    private String text;
-
-    @SerializedName("title")
-    private String title;
-
     @SerializedName("action")
     private ItemPromoButtonAction action;
 
     @SerializedName("images")
     private List<ItemPromoButtonImage> images;
 
-    @SerializedName("track_code")
-    private String trackCode;
+    @SerializedName("text")
+    private String text;
 
-    public String getText() {
-        return text;
-    }
-
-    public ItemPromoButton setText(String text) {
-        this.text = text;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public ItemPromoButton setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("title")
+    private String title;
 
     public ItemPromoButtonAction getAction() {
         return action;
@@ -62,18 +41,27 @@ public class ItemPromoButton extends ItemBase implements Validable {
         return this;
     }
 
-    public String getTrackCode() {
-        return trackCode;
+    public String getText() {
+        return text;
     }
 
-    public ItemPromoButton setTrackCode(String trackCode) {
-        this.trackCode = trackCode;
+    public ItemPromoButton setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemPromoButton setTitle(String title) {
+        this.title = title;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(trackCode, images, action, text, title);
+        return Objects.hash(images, action, text, title);
     }
 
     @Override
@@ -83,7 +71,6 @@ public class ItemPromoButton extends ItemBase implements Validable {
         ItemPromoButton itemPromoButton = (ItemPromoButton) o;
         return Objects.equals(images, itemPromoButton.images) &&
                 Objects.equals(action, itemPromoButton.action) &&
-                Objects.equals(trackCode, itemPromoButton.trackCode) &&
                 Objects.equals(text, itemPromoButton.text) &&
                 Objects.equals(title, itemPromoButton.title);
     }
@@ -98,7 +85,6 @@ public class ItemPromoButton extends ItemBase implements Validable {
         final StringBuilder sb = new StringBuilder("ItemPromoButton{");
         sb.append("images=").append(images);
         sb.append(", action=").append(action);
-        sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", text='").append(text).append("'");
         sb.append(", title='").append(title).append("'");
         sb.append('}');

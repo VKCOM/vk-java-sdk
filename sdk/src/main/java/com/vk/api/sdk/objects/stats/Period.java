@@ -13,23 +13,17 @@ public class Period implements Validable {
     @SerializedName("activity")
     private Activity activity;
 
-    /**
-     * Unix timestamp
-     */
     @SerializedName("period_from")
     private Integer periodFrom;
 
-    /**
-     * Unix timestamp
-     */
     @SerializedName("period_to")
     private Integer periodTo;
 
     @SerializedName("reach")
-    private Reach reach;
+    private ReachOneOf reach;
 
     @SerializedName("visitors")
-    private Views visitors;
+    private VisitorsOneOf visitors;
 
     public Activity getActivity() {
         return activity;
@@ -58,20 +52,20 @@ public class Period implements Validable {
         return this;
     }
 
-    public Reach getReach() {
+    public ReachOneOf getReach() {
         return reach;
     }
 
-    public Period setReach(Reach reach) {
+    public Period setReach(ReachOneOf reach) {
         this.reach = reach;
         return this;
     }
 
-    public Views getVisitors() {
+    public VisitorsOneOf getVisitors() {
         return visitors;
     }
 
-    public Period setVisitors(Views visitors) {
+    public Period setVisitors(VisitorsOneOf visitors) {
         this.visitors = visitors;
         return this;
     }

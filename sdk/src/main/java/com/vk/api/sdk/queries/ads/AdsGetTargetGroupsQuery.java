@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetTargetGroupsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGroupsQuery, List<GetTargetGroupsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetTargetGroupsQuery(VkApiClient client, UserActor actor, int accountId) {
+    public AdsGetTargetGroupsQuery(VkApiClient client, UserActor actor, Integer accountId) {
         super(client, "ads.getTargetGroups", Utils.buildParametrizedType(List.class, GetTargetGroupsResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetTargetGroupsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getTargetGroups", Utils.buildParametrizedType(List.class, GetTargetGroupsResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,7 +44,8 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetTargetGroupsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetTargetGroupsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -42,16 +55,18 @@ public class AdsGetTargetGroupsQuery extends AbstractQueryBuilder<AdsGetTargetGr
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsGetTargetGroupsQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
 
     /**
-     * '1' — to return pixel code.
+     * '1' - to return pixel code.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public AdsGetTargetGroupsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }

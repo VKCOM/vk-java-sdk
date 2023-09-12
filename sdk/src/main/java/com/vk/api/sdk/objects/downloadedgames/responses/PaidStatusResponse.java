@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.downloadedgames.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,6 +15,7 @@ public class PaidStatusResponse implements Validable {
      * Game has been paid
      */
     @SerializedName("is_paid")
+    @Required
     private Boolean isPaid;
 
     public Boolean getIsPaid() {

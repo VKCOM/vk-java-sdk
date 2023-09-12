@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.video;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
  */
 public class LiveInfo implements Validable {
     @SerializedName("enabled")
+    @Required
     private BoolInt enabled;
 
     @SerializedName("is_notifications_blocked")

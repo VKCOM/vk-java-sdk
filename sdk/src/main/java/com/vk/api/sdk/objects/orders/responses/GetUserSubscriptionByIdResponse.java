@@ -12,6 +12,18 @@ import java.util.Objects;
  */
 public class GetUserSubscriptionByIdResponse implements Validable {
     /**
+     * Subscription's application id
+     */
+    @SerializedName("app_id")
+    private Integer appId;
+
+    /**
+     * Subscription's application name
+     */
+    @SerializedName("application_name")
+    private String applicationName;
+
+    /**
      * Cancel reason
      */
     @SerializedName("cancel_reason")
@@ -21,7 +33,14 @@ public class GetUserSubscriptionByIdResponse implements Validable {
      * Date of creation in Unixtime
      */
     @SerializedName("create_time")
+    @Required
     private Integer createTime;
+
+    /**
+     * Subscription expiration time in Unixtime
+     */
+    @SerializedName("expire_time")
+    private Integer expireTime;
 
     /**
      * Subscription ID
@@ -31,9 +50,16 @@ public class GetUserSubscriptionByIdResponse implements Validable {
     private Integer id;
 
     /**
+     * Is game (not miniapp) subscription
+     */
+    @SerializedName("is_game")
+    private Boolean isGame;
+
+    /**
      * Subscription order item
      */
     @SerializedName("item_id")
+    @Required
     private String itemId;
 
     /**
@@ -41,12 +67,6 @@ public class GetUserSubscriptionByIdResponse implements Validable {
      */
     @SerializedName("next_bill_time")
     private Integer nextBillTime;
-
-    /**
-     * Subscription expiration time in Unixtime
-     */
-    @SerializedName("expire_time")
-    private Integer expireTime;
 
     /**
      * Pending cancel state
@@ -65,7 +85,14 @@ public class GetUserSubscriptionByIdResponse implements Validable {
      * Date of last period start in Unixtime
      */
     @SerializedName("period_start_time")
+    @Required
     private Integer periodStartTime;
+
+    /**
+     * Item photo image url
+     */
+    @SerializedName("photo_url")
+    private String photoUrl;
 
     /**
      * Subscription price
@@ -73,30 +100,6 @@ public class GetUserSubscriptionByIdResponse implements Validable {
     @SerializedName("price")
     @Required
     private Integer price;
-
-    /**
-     * Subscription name
-     */
-    @SerializedName("title")
-    private String title;
-
-    /**
-     * Subscription's application id
-     */
-    @SerializedName("app_id")
-    private Integer appId;
-
-    /**
-     * Subscription's application name
-     */
-    @SerializedName("application_name")
-    private String applicationName;
-
-    /**
-     * Item photo image url
-     */
-    @SerializedName("photo_url")
-    private String photoUrl;
 
     /**
      * Subscription status
@@ -112,6 +115,12 @@ public class GetUserSubscriptionByIdResponse implements Validable {
     private Boolean testMode;
 
     /**
+     * Subscription name
+     */
+    @SerializedName("title")
+    private String title;
+
+    /**
      * Date of trial expire in Unixtime
      */
     @SerializedName("trial_expire_time")
@@ -121,7 +130,26 @@ public class GetUserSubscriptionByIdResponse implements Validable {
      * Date of last change in Unixtime
      */
     @SerializedName("update_time")
+    @Required
     private Integer updateTime;
+
+    public Integer getAppId() {
+        return appId;
+    }
+
+    public GetUserSubscriptionByIdResponse setAppId(Integer appId) {
+        this.appId = appId;
+        return this;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
+    }
+
+    public GetUserSubscriptionByIdResponse setApplicationName(String applicationName) {
+        this.applicationName = applicationName;
+        return this;
+    }
 
     public String getCancelReason() {
         return cancelReason;
@@ -141,12 +169,30 @@ public class GetUserSubscriptionByIdResponse implements Validable {
         return this;
     }
 
+    public Integer getExpireTime() {
+        return expireTime;
+    }
+
+    public GetUserSubscriptionByIdResponse setExpireTime(Integer expireTime) {
+        this.expireTime = expireTime;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public GetUserSubscriptionByIdResponse setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsGame() {
+        return isGame;
+    }
+
+    public GetUserSubscriptionByIdResponse setIsGame(Boolean isGame) {
+        this.isGame = isGame;
         return this;
     }
 
@@ -165,15 +211,6 @@ public class GetUserSubscriptionByIdResponse implements Validable {
 
     public GetUserSubscriptionByIdResponse setNextBillTime(Integer nextBillTime) {
         this.nextBillTime = nextBillTime;
-        return this;
-    }
-
-    public Integer getExpireTime() {
-        return expireTime;
-    }
-
-    public GetUserSubscriptionByIdResponse setExpireTime(Integer expireTime) {
-        this.expireTime = expireTime;
         return this;
     }
 
@@ -204,48 +241,21 @@ public class GetUserSubscriptionByIdResponse implements Validable {
         return this;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public GetUserSubscriptionByIdResponse setPrice(Integer price) {
-        this.price = price;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public GetUserSubscriptionByIdResponse setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public Integer getAppId() {
-        return appId;
-    }
-
-    public GetUserSubscriptionByIdResponse setAppId(Integer appId) {
-        this.appId = appId;
-        return this;
-    }
-
-    public String getApplicationName() {
-        return applicationName;
-    }
-
-    public GetUserSubscriptionByIdResponse setApplicationName(String applicationName) {
-        this.applicationName = applicationName;
-        return this;
-    }
-
     public String getPhotoUrl() {
         return photoUrl;
     }
 
     public GetUserSubscriptionByIdResponse setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+        return this;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public GetUserSubscriptionByIdResponse setPrice(Integer price) {
+        this.price = price;
         return this;
     }
 
@@ -264,6 +274,15 @@ public class GetUserSubscriptionByIdResponse implements Validable {
 
     public GetUserSubscriptionByIdResponse setTestMode(Boolean testMode) {
         this.testMode = testMode;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public GetUserSubscriptionByIdResponse setTitle(String title) {
+        this.title = title;
         return this;
     }
 
@@ -287,7 +306,7 @@ public class GetUserSubscriptionByIdResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(pendingCancel, period, updateTime, trialExpireTime, title, itemId, photoUrl, expireTime, createTime, price, testMode, appId, nextBillTime, periodStartTime, id, cancelReason, applicationName, status);
+        return Objects.hash(pendingCancel, period, updateTime, trialExpireTime, title, itemId, photoUrl, expireTime, createTime, price, testMode, appId, nextBillTime, periodStartTime, id, cancelReason, applicationName, isGame, status);
     }
 
     @Override
@@ -303,6 +322,7 @@ public class GetUserSubscriptionByIdResponse implements Validable {
                 Objects.equals(expireTime, getUserSubscriptionByIdResponse.expireTime) &&
                 Objects.equals(pendingCancel, getUserSubscriptionByIdResponse.pendingCancel) &&
                 Objects.equals(title, getUserSubscriptionByIdResponse.title) &&
+                Objects.equals(isGame, getUserSubscriptionByIdResponse.isGame) &&
                 Objects.equals(periodStartTime, getUserSubscriptionByIdResponse.periodStartTime) &&
                 Objects.equals(cancelReason, getUserSubscriptionByIdResponse.cancelReason) &&
                 Objects.equals(updateTime, getUserSubscriptionByIdResponse.updateTime) &&
@@ -331,6 +351,7 @@ public class GetUserSubscriptionByIdResponse implements Validable {
         sb.append(", expireTime=").append(expireTime);
         sb.append(", pendingCancel=").append(pendingCancel);
         sb.append(", title='").append(title).append("'");
+        sb.append(", isGame=").append(isGame);
         sb.append(", periodStartTime=").append(periodStartTime);
         sb.append(", cancelReason='").append(cancelReason).append("'");
         sb.append(", updateTime=").append(updateTime);

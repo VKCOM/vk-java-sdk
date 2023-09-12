@@ -11,14 +11,26 @@ public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("photo")
     PHOTO("photo"),
 
+    @SerializedName("photos_list")
+    PHOTOS_LIST("photos_list"),
+
     @SerializedName("posted_photo")
     POSTED_PHOTO("posted_photo"),
 
     @SerializedName("audio")
     AUDIO("audio"),
 
+    @SerializedName("audio_playlist")
+    AUDIO_PLAYLIST("audio_playlist"),
+
     @SerializedName("video")
     VIDEO("video"),
+
+    @SerializedName("clip")
+    CLIP("clip"),
+
+    @SerializedName("video_playlist")
+    VIDEO_PLAYLIST("video_playlist"),
 
     @SerializedName("doc")
     DOC("doc"),
@@ -44,11 +56,8 @@ public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("album")
     ALBUM("album"),
 
-    @SerializedName("photos_list")
-    PHOTOS_LIST("photos_list"),
-
-    @SerializedName("market_market_album")
-    MARKET_MARKET_ALBUM("market_market_album"),
+    @SerializedName("market_album")
+    MARKET_ALBUM("market_album"),
 
     @SerializedName("market")
     MARKET("market"),
@@ -68,6 +77,9 @@ public enum WallpostAttachmentType implements EnumParam {
     @SerializedName("textpost")
     TEXTPOST("textpost"),
 
+    @SerializedName("textpost_publish")
+    TEXTPOST_PUBLISH("textpost_publish"),
+
     @SerializedName("situational_theme")
     SITUATIONAL_THEME("situational_theme"),
 
@@ -75,7 +87,10 @@ public enum WallpostAttachmentType implements EnumParam {
     GROUP("group"),
 
     @SerializedName("sticker")
-    STICKER("sticker");
+    STICKER("sticker"),
+
+    @SerializedName("podcast")
+    PODCAST("podcast");
 
     private final String value;
 

@@ -11,16 +11,16 @@ import java.util.Objects;
  */
 public class ContactsItem implements Validable {
     /**
-     * User ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    /**
      * Contact description
      */
     @SerializedName("desc")
     private String desc;
+
+    /**
+     * Contact email
+     */
+    @SerializedName("email")
+    private String email;
 
     /**
      * Contact phone
@@ -29,19 +29,11 @@ public class ContactsItem implements Validable {
     private String phone;
 
     /**
-     * Contact email
+     * User ID
+     * Entity: owner
      */
-    @SerializedName("email")
-    private String email;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public ContactsItem setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    @SerializedName("user_id")
+    private Long userId;
 
     public String getDesc() {
         return desc;
@@ -49,6 +41,15 @@ public class ContactsItem implements Validable {
 
     public ContactsItem setDesc(String desc) {
         this.desc = desc;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public ContactsItem setEmail(String email) {
+        this.email = email;
         return this;
     }
 
@@ -61,12 +62,12 @@ public class ContactsItem implements Validable {
         return this;
     }
 
-    public String getEmail() {
-        return email;
+    public Long getUserId() {
+        return userId;
     }
 
-    public ContactsItem setEmail(String email) {
-        this.email = email;
+    public ContactsItem setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -80,8 +81,8 @@ public class ContactsItem implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactsItem contactsItem = (ContactsItem) o;
-        return Objects.equals(userId, contactsItem.userId) &&
-                Objects.equals(phone, contactsItem.phone) &&
+        return Objects.equals(phone, contactsItem.phone) &&
+                Objects.equals(userId, contactsItem.userId) &&
                 Objects.equals(email, contactsItem.email) &&
                 Objects.equals(desc, contactsItem.desc);
     }
@@ -94,8 +95,8 @@ public class ContactsItem implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ContactsItem{");
-        sb.append("userId=").append(userId);
-        sb.append(", phone='").append(phone).append("'");
+        sb.append("phone='").append(phone).append("'");
+        sb.append(", userId=").append(userId);
         sb.append(", email='").append(email).append("'");
         sb.append(", desc='").append(desc).append("'");
         sb.append('}');

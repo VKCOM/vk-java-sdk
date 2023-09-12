@@ -22,35 +22,35 @@ public class GroupsLongPoll extends Groups {
     /**
      * Retrieves server info needed to use long polling.
      */
-    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, int groupId) {
+    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, Long groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 
     /**
      * Retrieves server info needed to use long polling.
      */
-    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor, int groupId) {
+    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor, Long groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 
     /**
      * Retrieves group longpoll settings
      */
-    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, int groupId) {
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, Long groupId) {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Retrieves group longpoll settings
      */
-    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor, int groupId) {
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor, Long groupId) {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Sets group longpoll settings
      */
-    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, int groupId) {
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, Long groupId) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 

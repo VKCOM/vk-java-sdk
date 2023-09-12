@@ -12,7 +12,10 @@ public enum ChatSettingsState implements EnumParam {
     KICKED("kicked"),
 
     @SerializedName("left")
-    LEFT("left");
+    LEFT("left"),
+
+    @SerializedName("out")
+    OUT("out");
 
     private final String value;
 

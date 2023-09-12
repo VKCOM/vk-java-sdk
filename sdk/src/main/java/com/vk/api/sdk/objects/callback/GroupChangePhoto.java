@@ -12,21 +12,16 @@ import java.util.Objects;
  * GroupChangePhoto object
  */
 public class GroupChangePhoto implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("photo")
     @Required
     private Photo photo;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GroupChangePhoto setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Photo getPhoto() {
         return photo;
@@ -34,6 +29,15 @@ public class GroupChangePhoto implements Validable {
 
     public GroupChangePhoto setPhoto(Photo photo) {
         this.photo = photo;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GroupChangePhoto setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

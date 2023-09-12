@@ -23,6 +23,12 @@ public class DemostatsFormat implements Validable {
     @SerializedName("day")
     private String day;
 
+    @SerializedName("day_from")
+    private String dayFrom;
+
+    @SerializedName("day_to")
+    private String dayTo;
+
     /**
      * Month as YYYY-MM
      */
@@ -68,6 +74,24 @@ public class DemostatsFormat implements Validable {
         return this;
     }
 
+    public String getDayFrom() {
+        return dayFrom;
+    }
+
+    public DemostatsFormat setDayFrom(String dayFrom) {
+        this.dayFrom = dayFrom;
+        return this;
+    }
+
+    public String getDayTo() {
+        return dayTo;
+    }
+
+    public DemostatsFormat setDayTo(String dayTo) {
+        this.dayTo = dayTo;
+        return this;
+    }
+
     public String getMonth() {
         return month;
     }
@@ -106,7 +130,7 @@ public class DemostatsFormat implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(cities, month, sex, overall, sexAge, day, age);
+        return Objects.hash(cities, month, sex, dayTo, overall, dayFrom, sexAge, day, age);
     }
 
     @Override
@@ -118,8 +142,10 @@ public class DemostatsFormat implements Validable {
                 Objects.equals(month, demostatsFormat.month) &&
                 Objects.equals(sex, demostatsFormat.sex) &&
                 Objects.equals(overall, demostatsFormat.overall) &&
+                Objects.equals(dayFrom, demostatsFormat.dayFrom) &&
                 Objects.equals(sexAge, demostatsFormat.sexAge) &&
                 Objects.equals(day, demostatsFormat.day) &&
+                Objects.equals(dayTo, demostatsFormat.dayTo) &&
                 Objects.equals(age, demostatsFormat.age);
     }
 
@@ -135,8 +161,10 @@ public class DemostatsFormat implements Validable {
         sb.append(", month='").append(month).append("'");
         sb.append(", sex=").append(sex);
         sb.append(", overall=").append(overall);
+        sb.append(", dayFrom='").append(dayFrom).append("'");
         sb.append(", sexAge=").append(sexAge);
         sb.append(", day='").append(day).append("'");
+        sb.append(", dayTo='").append(dayTo).append("'");
         sb.append(", age=").append(age);
         sb.append('}');
         return sb.toString();

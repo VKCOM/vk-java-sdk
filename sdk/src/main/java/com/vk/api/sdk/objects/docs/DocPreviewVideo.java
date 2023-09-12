@@ -13,6 +13,20 @@ import java.util.Objects;
  */
 public class DocPreviewVideo implements Validable {
     /**
+     * Video file size in bites
+     */
+    @SerializedName("file_size")
+    @Required
+    private Integer fileSize;
+
+    /**
+     * Video's height in pixels
+     */
+    @SerializedName("height")
+    @Required
+    private Integer height;
+
+    /**
      * Video URL
      */
     @SerializedName("src")
@@ -26,18 +40,23 @@ public class DocPreviewVideo implements Validable {
     @Required
     private Integer width;
 
-    /**
-     * Video's height in pixels
-     */
-    @SerializedName("height")
-    @Required
-    private Integer height;
+    public Integer getFileSize() {
+        return fileSize;
+    }
 
-    /**
-     * Video file size in bites
-     */
-    @SerializedName("file_size")
-    private Integer fileSize;
+    public DocPreviewVideo setFileSize(Integer fileSize) {
+        this.fileSize = fileSize;
+        return this;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public DocPreviewVideo setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
 
     public URI getSrc() {
         return src;
@@ -54,24 +73,6 @@ public class DocPreviewVideo implements Validable {
 
     public DocPreviewVideo setWidth(Integer width) {
         this.width = width;
-        return this;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public DocPreviewVideo setHeight(Integer height) {
-        this.height = height;
-        return this;
-    }
-
-    public Integer getFileSize() {
-        return fileSize;
-    }
-
-    public DocPreviewVideo setFileSize(Integer fileSize) {
-        this.fileSize = fileSize;
         return this;
     }
 

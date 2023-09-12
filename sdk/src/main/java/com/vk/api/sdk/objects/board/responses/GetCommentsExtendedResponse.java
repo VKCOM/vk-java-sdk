@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.board.TopicComment;
-import com.vk.api.sdk.objects.board.TopicPoll;
-import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.polls.Poll;
+import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,20 +23,26 @@ public class GetCommentsExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<TopicComment> items;
 
     @SerializedName("poll")
-    private TopicPoll poll;
+    private Poll poll;
 
     @SerializedName("profiles")
     @Required
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<Group> groups;
+    /**
+     * Offset of comment
+     */
+    @SerializedName("real_offset")
+    private Integer realOffset;
 
     public Integer getCount() {
         return count;
@@ -44,6 +50,15 @@ public class GetCommentsExtendedResponse implements Validable {
 
     public GetCommentsExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetCommentsExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -56,36 +71,36 @@ public class GetCommentsExtendedResponse implements Validable {
         return this;
     }
 
-    public TopicPoll getPoll() {
+    public Poll getPoll() {
         return poll;
     }
 
-    public GetCommentsExtendedResponse setPoll(TopicPoll poll) {
+    public GetCommentsExtendedResponse setPoll(Poll poll) {
         this.poll = poll;
         return this;
     }
 
-    public List<User> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetCommentsExtendedResponse setProfiles(List<User> profiles) {
+    public GetCommentsExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
         return this;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public Integer getRealOffset() {
+        return realOffset;
     }
 
-    public GetCommentsExtendedResponse setGroups(List<Group> groups) {
-        this.groups = groups;
+    public GetCommentsExtendedResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, profiles, groups, poll, items);
+        return Objects.hash(realOffset, count, profiles, groups, poll, items);
     }
 
     @Override
@@ -93,7 +108,8 @@ public class GetCommentsExtendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsExtendedResponse getCommentsExtendedResponse = (GetCommentsExtendedResponse) o;
-        return Objects.equals(count, getCommentsExtendedResponse.count) &&
+        return Objects.equals(realOffset, getCommentsExtendedResponse.realOffset) &&
+                Objects.equals(count, getCommentsExtendedResponse.count) &&
                 Objects.equals(profiles, getCommentsExtendedResponse.profiles) &&
                 Objects.equals(groups, getCommentsExtendedResponse.groups) &&
                 Objects.equals(poll, getCommentsExtendedResponse.poll) &&
@@ -108,7 +124,8 @@ public class GetCommentsExtendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsExtendedResponse{");
-        sb.append("count=").append(count);
+        sb.append("realOffset=").append(realOffset);
+        sb.append(", count=").append(count);
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
         sb.append(", poll=").append(poll);

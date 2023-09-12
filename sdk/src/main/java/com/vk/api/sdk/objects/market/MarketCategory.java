@@ -19,15 +19,20 @@ public class MarketCategory implements Validable {
     private Integer id;
 
     /**
+     * Is v2 category
+     */
+    @SerializedName("is_v2")
+    private Boolean isV2;
+
+    /**
      * Category name
      */
     @SerializedName("name")
     @Required
     private String name;
 
-    @SerializedName("section")
-    @Required
-    private Section section;
+    @SerializedName("parent")
+    private MarketCategoryNested parent;
 
     public Integer getId() {
         return id;
@@ -35,6 +40,15 @@ public class MarketCategory implements Validable {
 
     public MarketCategory setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsV2() {
+        return isV2;
+    }
+
+    public MarketCategory setIsV2(Boolean isV2) {
+        this.isV2 = isV2;
         return this;
     }
 
@@ -47,18 +61,18 @@ public class MarketCategory implements Validable {
         return this;
     }
 
-    public Section getSection() {
-        return section;
+    public MarketCategoryNested getParent() {
+        return parent;
     }
 
-    public MarketCategory setSection(Section section) {
-        this.section = section;
+    public MarketCategory setParent(MarketCategoryNested parent) {
+        this.parent = parent;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, section, id);
+        return Objects.hash(parent, isV2, name, id);
     }
 
     @Override
@@ -66,9 +80,10 @@ public class MarketCategory implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MarketCategory marketCategory = (MarketCategory) o;
-        return Objects.equals(name, marketCategory.name) &&
-                Objects.equals(section, marketCategory.section) &&
-                Objects.equals(id, marketCategory.id);
+        return Objects.equals(parent, marketCategory.parent) &&
+                Objects.equals(name, marketCategory.name) &&
+                Objects.equals(id, marketCategory.id) &&
+                Objects.equals(isV2, marketCategory.isV2);
     }
 
     @Override
@@ -79,9 +94,10 @@ public class MarketCategory implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("MarketCategory{");
-        sb.append("name='").append(name).append("'");
-        sb.append(", section=").append(section);
+        sb.append("parent=").append(parent);
+        sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", isV2=").append(isV2);
         sb.append('}');
         return sb.toString();
     }

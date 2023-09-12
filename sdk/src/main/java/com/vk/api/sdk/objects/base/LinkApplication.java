@@ -14,16 +14,16 @@ public class LinkApplication implements Validable {
      * Application Id
      */
     @SerializedName("app_id")
-    private Float appId;
+    private Number appId;
 
     @SerializedName("store")
     private LinkApplicationStore store;
 
-    public Float getAppId() {
+    public Number getAppId() {
         return appId;
     }
 
-    public LinkApplication setAppId(Float appId) {
+    public LinkApplication setAppId(Number appId) {
         this.appId = appId;
         return this;
     }

@@ -4,7 +4,8 @@ package com.vk.api.sdk.objects.friends.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.friends.Requests;
+import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.friends.RequestsXtrMutual;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,10 +17,24 @@ public class GetRequestsNeedMutualResponse implements Validable {
      * Total requests number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
+    /**
+     * Total unread requests number
+     */
+    @SerializedName("count_unread")
+    private Integer countUnread;
+
     @SerializedName("items")
-    private List<Requests> items;
+    @Required
+    private List<RequestsXtrMutual> items;
+
+    /**
+     * Friend requests last viewed timestamp
+     */
+    @SerializedName("last_viewed")
+    private Integer lastViewed;
 
     public Integer getCount() {
         return count;
@@ -30,18 +45,36 @@ public class GetRequestsNeedMutualResponse implements Validable {
         return this;
     }
 
-    public List<Requests> getItems() {
+    public Integer getCountUnread() {
+        return countUnread;
+    }
+
+    public GetRequestsNeedMutualResponse setCountUnread(Integer countUnread) {
+        this.countUnread = countUnread;
+        return this;
+    }
+
+    public List<RequestsXtrMutual> getItems() {
         return items;
     }
 
-    public GetRequestsNeedMutualResponse setItems(List<Requests> items) {
+    public GetRequestsNeedMutualResponse setItems(List<RequestsXtrMutual> items) {
         this.items = items;
+        return this;
+    }
+
+    public Integer getLastViewed() {
+        return lastViewed;
+    }
+
+    public GetRequestsNeedMutualResponse setLastViewed(Integer lastViewed) {
+        this.lastViewed = lastViewed;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(lastViewed, count, countUnread, items);
     }
 
     @Override
@@ -49,7 +82,9 @@ public class GetRequestsNeedMutualResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetRequestsNeedMutualResponse getRequestsNeedMutualResponse = (GetRequestsNeedMutualResponse) o;
-        return Objects.equals(count, getRequestsNeedMutualResponse.count) &&
+        return Objects.equals(lastViewed, getRequestsNeedMutualResponse.lastViewed) &&
+                Objects.equals(count, getRequestsNeedMutualResponse.count) &&
+                Objects.equals(countUnread, getRequestsNeedMutualResponse.countUnread) &&
                 Objects.equals(items, getRequestsNeedMutualResponse.items);
     }
 
@@ -61,7 +96,9 @@ public class GetRequestsNeedMutualResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRequestsNeedMutualResponse{");
-        sb.append("count=").append(count);
+        sb.append("lastViewed=").append(lastViewed);
+        sb.append(", count=").append(count);
+        sb.append(", countUnread=").append(countUnread);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

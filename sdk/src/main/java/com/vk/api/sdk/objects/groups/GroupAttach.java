@@ -19,18 +19,11 @@ public class GroupAttach implements Validable {
     private Integer id;
 
     /**
-     * text of attach
+     * is favorite
      */
-    @SerializedName("text")
+    @SerializedName("is_favorite")
     @Required
-    private String text;
-
-    /**
-     * activity or category of group
-     */
-    @SerializedName("status")
-    @Required
-    private String status;
+    private Boolean isFavorite;
 
     /**
      * size of group
@@ -40,10 +33,18 @@ public class GroupAttach implements Validable {
     private Integer size;
 
     /**
-     * is favorite
+     * activity or category of group
      */
-    @SerializedName("is_favorite")
-    private Boolean isFavorite;
+    @SerializedName("status")
+    @Required
+    private String status;
+
+    /**
+     * text of attach
+     */
+    @SerializedName("text")
+    @Required
+    private String text;
 
     public Integer getId() {
         return id;
@@ -54,21 +55,12 @@ public class GroupAttach implements Validable {
         return this;
     }
 
-    public String getText() {
-        return text;
+    public Boolean getIsFavorite() {
+        return isFavorite;
     }
 
-    public GroupAttach setText(String text) {
-        this.text = text;
-        return this;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public GroupAttach setStatus(String status) {
-        this.status = status;
+    public GroupAttach setIsFavorite(Boolean isFavorite) {
+        this.isFavorite = isFavorite;
         return this;
     }
 
@@ -81,12 +73,21 @@ public class GroupAttach implements Validable {
         return this;
     }
 
-    public Boolean getIsFavorite() {
-        return isFavorite;
+    public String getStatus() {
+        return status;
     }
 
-    public GroupAttach setIsFavorite(Boolean isFavorite) {
-        this.isFavorite = isFavorite;
+    public GroupAttach setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public GroupAttach setText(String text) {
+        this.text = text;
         return this;
     }
 

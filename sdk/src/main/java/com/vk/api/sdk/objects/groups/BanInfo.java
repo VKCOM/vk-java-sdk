@@ -28,9 +28,6 @@ public class BanInfo implements Validable {
     @SerializedName("comment_visible")
     private Boolean commentVisible;
 
-    @SerializedName("is_closed")
-    private Boolean isClosed;
-
     /**
      * Date when user has been added to blacklist in Unixtime
      */
@@ -42,6 +39,9 @@ public class BanInfo implements Validable {
      */
     @SerializedName("end_date")
     private Integer endDate;
+
+    @SerializedName("is_closed")
+    private Boolean isClosed;
 
     @SerializedName("reason")
     private BanInfoReason reason;
@@ -73,15 +73,6 @@ public class BanInfo implements Validable {
         return this;
     }
 
-    public Boolean getIsClosed() {
-        return isClosed;
-    }
-
-    public BanInfo setIsClosed(Boolean isClosed) {
-        this.isClosed = isClosed;
-        return this;
-    }
-
     public Integer getDate() {
         return date;
     }
@@ -97,6 +88,15 @@ public class BanInfo implements Validable {
 
     public BanInfo setEndDate(Integer endDate) {
         this.endDate = endDate;
+        return this;
+    }
+
+    public Boolean getIsClosed() {
+        return isClosed;
+    }
+
+    public BanInfo setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
         return this;
     }
 

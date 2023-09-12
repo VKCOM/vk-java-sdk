@@ -18,7 +18,7 @@ public class VotersUsers implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<Integer> items;
+    private List<Long> items;
 
     public Integer getCount() {
         return count;
@@ -29,11 +29,11 @@ public class VotersUsers implements Validable {
         return this;
     }
 
-    public List<Integer> getItems() {
+    public List<Long> getItems() {
         return items;
     }
 
-    public VotersUsers setItems(List<Integer> items) {
+    public VotersUsers setItems(List<Long> items) {
         this.items = items;
         return this;
     }

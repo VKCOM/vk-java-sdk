@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * 'typing' — user has started to type.
+ * 'typing' - user has started to type.
  */
 public enum SetActivityType implements EnumParam {
     @SerializedName("audiomessage")

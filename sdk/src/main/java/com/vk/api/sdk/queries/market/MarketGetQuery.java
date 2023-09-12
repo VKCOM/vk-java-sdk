@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.GetResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,34 +14,49 @@ import java.util.List;
  */
 public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      */
-    public MarketGetQuery(VkApiClient client, UserActor actor, int ownerId) {
+    public MarketGetQuery(VkApiClient client, UserActor actor, Long ownerId) {
         super(client, "market.get", GetResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketGetQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.get", GetResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketGetQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketGetQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
     /**
      * Set album id
      *
-     * @param value value of "album id" parameter. Minimum is 0. By default 0.
+     * @param value value of "album id" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public MarketGetQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -51,6 +67,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MarketGetQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -61,6 +78,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MarketGetQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -71,6 +89,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MarketGetQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -81,6 +100,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "date from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_from")
     public MarketGetQuery dateFrom(String value) {
         return unsafeParam("date_from", value);
     }
@@ -91,6 +111,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "date to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_to")
     public MarketGetQuery dateTo(String value) {
         return unsafeParam("date_to", value);
     }
@@ -101,6 +122,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "need variants" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_variants")
     public MarketGetQuery needVariants(Boolean value) {
         return unsafeParam("need_variants", value);
     }
@@ -111,6 +133,7 @@ public class MarketGetQuery extends AbstractQueryBuilder<MarketGetQuery, GetResp
      * @param value value of "with disabled" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("with_disabled")
     public MarketGetQuery withDisabled(Boolean value) {
         return unsafeParam("with_disabled", value);
     }

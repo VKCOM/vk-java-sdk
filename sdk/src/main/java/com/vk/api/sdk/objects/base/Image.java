@@ -12,15 +12,18 @@ import java.util.Objects;
  * Image object
  */
 public class Image implements Validable {
-    @SerializedName("id")
-    private String id;
-
     /**
      * Image height
      */
     @SerializedName("height")
     @Required
     private Integer height;
+
+    @SerializedName("id")
+    private String id;
+
+    @SerializedName("theme")
+    private ImageTheme theme;
 
     /**
      * Image url
@@ -36,6 +39,15 @@ public class Image implements Validable {
     @Required
     private Integer width;
 
+    public Integer getHeight() {
+        return height;
+    }
+
+    public Image setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
     public String getId() {
         return id;
     }
@@ -45,12 +57,12 @@ public class Image implements Validable {
         return this;
     }
 
-    public Integer getHeight() {
-        return height;
+    public ImageTheme getTheme() {
+        return theme;
     }
 
-    public Image setHeight(Integer height) {
-        this.height = height;
+    public Image setTheme(ImageTheme theme) {
+        this.theme = theme;
         return this;
     }
 
@@ -74,7 +86,7 @@ public class Image implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, id, url, height);
+        return Objects.hash(width, theme, id, url, height);
     }
 
     @Override
@@ -83,6 +95,7 @@ public class Image implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Image image = (Image) o;
         return Objects.equals(width, image.width) &&
+                Objects.equals(theme, image.theme) &&
                 Objects.equals(id, image.id) &&
                 Objects.equals(url, image.url) &&
                 Objects.equals(height, image.height);
@@ -97,6 +110,7 @@ public class Image implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Image{");
         sb.append("width=").append(width);
+        sb.append(", theme='").append(theme).append("'");
         sb.append(", id='").append(id).append("'");
         sb.append(", url=").append(url);
         sb.append(", height=").append(height);

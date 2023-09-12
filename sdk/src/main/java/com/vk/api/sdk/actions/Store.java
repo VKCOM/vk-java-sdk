@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.store.StoreAddStickersToFavoriteQuery;
 import com.vk.api.sdk.queries.store.StoreGetFavoriteStickersQuery;
 import com.vk.api.sdk.queries.store.StoreGetProductsQuery;
@@ -27,10 +28,11 @@ public class Store extends AbstractAction {
     /**
      * Adds given sticker IDs to the list of user's favorite stickers
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stickerIds Sticker IDs to be added
      * @return query
      */
+    @ApiMethod("store.addStickersToFavorite")
     public StoreAddStickersToFavoriteQuery addStickersToFavorite(UserActor actor,
             Integer... stickerIds) {
         return new StoreAddStickersToFavoriteQuery(getClient(), actor, stickerIds);
@@ -39,35 +41,50 @@ public class Store extends AbstractAction {
     /**
      * Adds given sticker IDs to the list of user's favorite stickers
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stickerIds Sticker IDs to be added
      * @return query
      */
+    @ApiMethod("store.addStickersToFavorite")
     public StoreAddStickersToFavoriteQuery addStickersToFavorite(UserActor actor,
             List<Integer> stickerIds) {
         return new StoreAddStickersToFavoriteQuery(getClient(), actor, stickerIds);
     }
 
     /**
-     * @param actor vk actor
+     * Adds given sticker IDs to the list of user's favorite stickers
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("store.addStickersToFavorite")
+    public StoreAddStickersToFavoriteQuery addStickersToFavorite(UserActor actor) {
+        return new StoreAddStickersToFavoriteQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("store.getFavoriteStickers")
     public StoreGetFavoriteStickersQuery getFavoriteStickers(UserActor actor) {
         return new StoreGetFavoriteStickersQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("store.getProducts")
     public StoreGetProductsQuery getProducts(UserActor actor) {
         return new StoreGetProductsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("store.getStickersKeywords")
     public StoreGetStickersKeywordsQuery getStickersKeywords(UserActor actor) {
         return new StoreGetStickersKeywordsQuery(getClient(), actor);
     }
@@ -75,10 +92,11 @@ public class Store extends AbstractAction {
     /**
      * Removes given sticker IDs from the list of user's favorite stickers
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stickerIds Sticker IDs to be removed
      * @return query
      */
+    @ApiMethod("store.removeStickersFromFavorite")
     public StoreRemoveStickersFromFavoriteQuery removeStickersFromFavorite(UserActor actor,
             Integer... stickerIds) {
         return new StoreRemoveStickersFromFavoriteQuery(getClient(), actor, stickerIds);
@@ -87,12 +105,24 @@ public class Store extends AbstractAction {
     /**
      * Removes given sticker IDs from the list of user's favorite stickers
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stickerIds Sticker IDs to be removed
      * @return query
      */
+    @ApiMethod("store.removeStickersFromFavorite")
     public StoreRemoveStickersFromFavoriteQuery removeStickersFromFavorite(UserActor actor,
             List<Integer> stickerIds) {
         return new StoreRemoveStickersFromFavoriteQuery(getClient(), actor, stickerIds);
+    }
+
+    /**
+     * Removes given sticker IDs from the list of user's favorite stickers
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("store.removeStickersFromFavorite")
+    public StoreRemoveStickersFromFavoriteQuery removeStickersFromFavorite(UserActor actor) {
+        return new StoreRemoveStickersFromFavoriteQuery(getClient(), actor);
     }
 }

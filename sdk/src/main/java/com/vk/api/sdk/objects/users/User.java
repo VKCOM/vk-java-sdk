@@ -15,32 +15,11 @@ import java.util.Objects;
  * User object
  */
 public class User extends UserMin implements Validable {
-    /**
-     * User sex
-     */
-    @SerializedName("sex")
-    private Sex sex;
+    @SerializedName("friend_status")
+    private FriendStatusStatus friendStatus;
 
-    /**
-     * Domain name of the user's page
-     */
-    @SerializedName("screen_name")
-    private String screenName;
-
-    /**
-     * URL of square photo of the user with 50 pixels in width
-     */
-    @SerializedName("photo_50")
-    private URI photo50;
-
-    /**
-     * URL of square photo of the user with 100 pixels in width
-     */
-    @SerializedName("photo_100")
-    private URI photo100;
-
-    @SerializedName("online_info")
-    private OnlineInfo onlineInfo;
+    @SerializedName("mutual")
+    private RequestsMutual mutual;
 
     /**
      * Information whether the user is online
@@ -49,22 +28,43 @@ public class User extends UserMin implements Validable {
     private BoolInt online;
 
     /**
+     * Application ID
+     */
+    @SerializedName("online_app")
+    private Integer onlineApp;
+
+    @SerializedName("online_info")
+    private OnlineInfo onlineInfo;
+
+    /**
      * Information whether the user is online in mobile site or application
      */
     @SerializedName("online_mobile")
     private BoolInt onlineMobile;
 
     /**
-     * Application ID
+     * URL of square photo of the user with 100 pixels in width
      */
-    @SerializedName("online_app")
-    private Integer onlineApp;
+    @SerializedName("photo_100")
+    private URI photo100;
 
     /**
-     * Information whether the user is verified
+     * URL of square photo of the user with 50 pixels in width
      */
-    @SerializedName("verified")
-    private BoolInt verified;
+    @SerializedName("photo_50")
+    private URI photo50;
+
+    /**
+     * Domain name of the user's page
+     */
+    @SerializedName("screen_name")
+    private String screenName;
+
+    /**
+     * User sex
+     */
+    @SerializedName("sex")
+    private Sex sex;
 
     /**
      * Information whether the user has a "fire" pictogram.
@@ -72,97 +72,11 @@ public class User extends UserMin implements Validable {
     @SerializedName("trending")
     private BoolInt trending;
 
-    @SerializedName("friend_status")
-    private FriendStatusStatus friendStatus;
-
-    @SerializedName("mutual")
-    private RequestsMutual mutual;
-
-    public Sex getSex() {
-        return sex;
-    }
-
-    public User setSex(Sex sex) {
-        this.sex = sex;
-        return this;
-    }
-
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public User setScreenName(String screenName) {
-        this.screenName = screenName;
-        return this;
-    }
-
-    public URI getPhoto50() {
-        return photo50;
-    }
-
-    public User setPhoto50(URI photo50) {
-        this.photo50 = photo50;
-        return this;
-    }
-
-    public URI getPhoto100() {
-        return photo100;
-    }
-
-    public User setPhoto100(URI photo100) {
-        this.photo100 = photo100;
-        return this;
-    }
-
-    public OnlineInfo getOnlineInfo() {
-        return onlineInfo;
-    }
-
-    public User setOnlineInfo(OnlineInfo onlineInfo) {
-        this.onlineInfo = onlineInfo;
-        return this;
-    }
-
-    public boolean isOnline() {
-        return online == BoolInt.YES;
-    }
-
-    public BoolInt getOnline() {
-        return online;
-    }
-
-    public boolean isOnlineMobile() {
-        return onlineMobile == BoolInt.YES;
-    }
-
-    public BoolInt getOnlineMobile() {
-        return onlineMobile;
-    }
-
-    public Integer getOnlineApp() {
-        return onlineApp;
-    }
-
-    public User setOnlineApp(Integer onlineApp) {
-        this.onlineApp = onlineApp;
-        return this;
-    }
-
-    public boolean isVerified() {
-        return verified == BoolInt.YES;
-    }
-
-    public BoolInt getVerified() {
-        return verified;
-    }
-
-    public boolean isTrending() {
-        return trending == BoolInt.YES;
-    }
-
-    public BoolInt getTrending() {
-        return trending;
-    }
+    /**
+     * Information whether the user is verified
+     */
+    @SerializedName("verified")
+    private BoolInt verified;
 
     public FriendStatusStatus getFriendStatus() {
         return friendStatus;
@@ -180,6 +94,92 @@ public class User extends UserMin implements Validable {
     public User setMutual(RequestsMutual mutual) {
         this.mutual = mutual;
         return this;
+    }
+
+    public boolean isOnline() {
+        return online == BoolInt.YES;
+    }
+
+    public BoolInt getOnline() {
+        return online;
+    }
+
+    public Integer getOnlineApp() {
+        return onlineApp;
+    }
+
+    public User setOnlineApp(Integer onlineApp) {
+        this.onlineApp = onlineApp;
+        return this;
+    }
+
+    public OnlineInfo getOnlineInfo() {
+        return onlineInfo;
+    }
+
+    public User setOnlineInfo(OnlineInfo onlineInfo) {
+        this.onlineInfo = onlineInfo;
+        return this;
+    }
+
+    public boolean isOnlineMobile() {
+        return onlineMobile == BoolInt.YES;
+    }
+
+    public BoolInt getOnlineMobile() {
+        return onlineMobile;
+    }
+
+    public URI getPhoto100() {
+        return photo100;
+    }
+
+    public User setPhoto100(URI photo100) {
+        this.photo100 = photo100;
+        return this;
+    }
+
+    public URI getPhoto50() {
+        return photo50;
+    }
+
+    public User setPhoto50(URI photo50) {
+        this.photo50 = photo50;
+        return this;
+    }
+
+    public String getScreenName() {
+        return screenName;
+    }
+
+    public User setScreenName(String screenName) {
+        this.screenName = screenName;
+        return this;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public User setSex(Sex sex) {
+        this.sex = sex;
+        return this;
+    }
+
+    public boolean isTrending() {
+        return trending == BoolInt.YES;
+    }
+
+    public BoolInt getTrending() {
+        return trending;
+    }
+
+    public boolean isVerified() {
+        return verified == BoolInt.YES;
+    }
+
+    public BoolInt getVerified() {
+        return verified;
     }
 
     @Override

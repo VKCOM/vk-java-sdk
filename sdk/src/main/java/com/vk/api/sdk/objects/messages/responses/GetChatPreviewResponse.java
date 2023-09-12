@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.messages.ChatPreview;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.List;
@@ -13,11 +14,23 @@ import java.util.Objects;
  * GetChatPreviewResponse object
  */
 public class GetChatPreviewResponse implements Validable {
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("preview")
     private ChatPreview preview;
 
     @SerializedName("profiles")
     private List<UserFull> profiles;
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetChatPreviewResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
 
     public ChatPreview getPreview() {
         return preview;
@@ -39,7 +52,7 @@ public class GetChatPreviewResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(preview, profiles);
+        return Objects.hash(preview, profiles, groups);
     }
 
     @Override
@@ -48,7 +61,8 @@ public class GetChatPreviewResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetChatPreviewResponse getChatPreviewResponse = (GetChatPreviewResponse) o;
         return Objects.equals(preview, getChatPreviewResponse.preview) &&
-                Objects.equals(profiles, getChatPreviewResponse.profiles);
+                Objects.equals(profiles, getChatPreviewResponse.profiles) &&
+                Objects.equals(groups, getChatPreviewResponse.groups);
     }
 
     @Override
@@ -61,6 +75,7 @@ public class GetChatPreviewResponse implements Validable {
         final StringBuilder sb = new StringBuilder("GetChatPreviewResponse{");
         sb.append("preview=").append(preview);
         sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append('}');
         return sb.toString();
     }

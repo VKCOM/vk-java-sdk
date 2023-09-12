@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.GetCatalogInfoResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class GroupsGetCatalogInfoQuery extends AbstractQueryBuilder<GroupsGetCatalogInfoQuery, GetCatalogInfoResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,6 +30,7 @@ public class GroupsGetCatalogInfoQuery extends AbstractQueryBuilder<GroupsGetCat
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public GroupsGetCatalogInfoQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -39,6 +41,7 @@ public class GroupsGetCatalogInfoQuery extends AbstractQueryBuilder<GroupsGetCat
      * @param value value of "subcategories" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("subcategories")
     public GroupsGetCatalogInfoQuery subcategories(Boolean value) {
         return unsafeParam("subcategories", value);
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.photos.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URI;
 import java.util.Objects;
 
@@ -15,13 +16,8 @@ public class GetUploadServerResponse implements Validable {
      * Album ID
      */
     @SerializedName("album_id")
+    @Required
     private Integer albumId;
-
-    /**
-     * URL to upload photo
-     */
-    @SerializedName("upload_url")
-    private URI uploadUrl;
 
     /**
      * Fallback URL if upload_url returned error
@@ -30,16 +26,26 @@ public class GetUploadServerResponse implements Validable {
     private URI fallbackUploadUrl;
 
     /**
-     * User ID
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    /**
      * Group ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    private Long groupId;
+
+    /**
+     * URL to upload photo
+     */
+    @SerializedName("upload_url")
+    @Required
+    private URI uploadUrl;
+
+    /**
+     * User ID
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getAlbumId() {
         return albumId;
@@ -47,15 +53,6 @@ public class GetUploadServerResponse implements Validable {
 
     public GetUploadServerResponse setAlbumId(Integer albumId) {
         this.albumId = albumId;
-        return this;
-    }
-
-    public URI getUploadUrl() {
-        return uploadUrl;
-    }
-
-    public GetUploadServerResponse setUploadUrl(URI uploadUrl) {
-        this.uploadUrl = uploadUrl;
         return this;
     }
 
@@ -68,21 +65,30 @@ public class GetUploadServerResponse implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GetUploadServerResponse setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public GetUploadServerResponse setGroupId(Integer groupId) {
+    public GetUploadServerResponse setGroupId(Long groupId) {
         this.groupId = groupId;
+        return this;
+    }
+
+    public URI getUploadUrl() {
+        return uploadUrl;
+    }
+
+    public GetUploadServerResponse setUploadUrl(URI uploadUrl) {
+        this.uploadUrl = uploadUrl;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GetUploadServerResponse setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -96,10 +102,10 @@ public class GetUploadServerResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetUploadServerResponse getUploadServerResponse = (GetUploadServerResponse) o;
-        return Objects.equals(userId, getUploadServerResponse.userId) &&
-                Objects.equals(groupId, getUploadServerResponse.groupId) &&
-                Objects.equals(uploadUrl, getUploadServerResponse.uploadUrl) &&
+        return Objects.equals(groupId, getUploadServerResponse.groupId) &&
+                Objects.equals(userId, getUploadServerResponse.userId) &&
                 Objects.equals(fallbackUploadUrl, getUploadServerResponse.fallbackUploadUrl) &&
+                Objects.equals(uploadUrl, getUploadServerResponse.uploadUrl) &&
                 Objects.equals(albumId, getUploadServerResponse.albumId);
     }
 
@@ -111,10 +117,10 @@ public class GetUploadServerResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetUploadServerResponse{");
-        sb.append("userId=").append(userId);
-        sb.append(", groupId=").append(groupId);
-        sb.append(", uploadUrl=").append(uploadUrl);
+        sb.append("groupId=").append(groupId);
+        sb.append(", userId=").append(userId);
         sb.append(", fallbackUploadUrl=").append(fallbackUploadUrl);
+        sb.append(", uploadUrl=").append(uploadUrl);
         sb.append(", albumId=").append(albumId);
         sb.append('}');
         return sb.toString();

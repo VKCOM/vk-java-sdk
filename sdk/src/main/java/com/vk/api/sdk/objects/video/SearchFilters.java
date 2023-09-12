@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 public enum SearchFilters implements EnumParam {
-    @SerializedName("youtube")
-    YOUTUBE("youtube"),
-
-    @SerializedName("vimeo")
-    VIMEO("vimeo"),
+    @SerializedName("long")
+    LONG("long"),
 
     @SerializedName("short")
     SHORT("short"),
 
-    @SerializedName("long")
-    LONG("long");
+    @SerializedName("vimeo")
+    VIMEO("vimeo"),
+
+    @SerializedName("youtube")
+    YOUTUBE("youtube");
 
     private final String value;
 

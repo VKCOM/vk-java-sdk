@@ -5,7 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.oneofs.UsersSubscriptionsItemOneOf;
+import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.users.SubscriptionsItem;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -18,9 +19,11 @@ public class GetSuggestedSourcesResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<JsonObject> items;
 
     public Integer getCount() {
@@ -32,8 +35,8 @@ public class GetSuggestedSourcesResponse implements Validable {
         return this;
     }
 
-    public List<UsersSubscriptionsItemOneOf> getItems() {
-        return items.stream().map(UsersSubscriptionsItemOneOf::new).collect(Collectors.toList());
+    public List<SubscriptionsItem> getItems() {
+        return items.stream().map(SubscriptionsItem::new).collect(Collectors.toList());
     }
 
     @Override

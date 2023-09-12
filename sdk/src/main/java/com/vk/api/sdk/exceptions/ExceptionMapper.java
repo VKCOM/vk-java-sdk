@@ -46,14 +46,22 @@ public class ExceptionMapper {
                 return new ApiBlockedException(error.getErrorMsg());
             case 20:
                 return new ApiMethodPermissionException(error.getErrorMsg());
+            case 7701:
+                return new ApiAsrAudioDurationFloodedException(error.getErrorMsg());
             case 21:
                 return new ApiMethodAdsException(error.getErrorMsg());
+            case 7702:
+                return new ApiAsrFileIsTooBigException(error.getErrorMsg());
             case 22:
                 return new ApiUploadException(error.getErrorMsg());
             case 23:
                 return new ApiMethodDisabledException(error.getErrorMsg());
+            case 7703:
+                return new ApiAsrInvalidHashException(error.getErrorMsg());
             case 24:
                 return new ApiNeedConfirmationException(error.getErrorMsg());
+            case 7704:
+                return new ApiAsrNotFoundException(error.getErrorMsg());
             case 3609:
                 return new ApiTokenExtensionRequiredException(error.getErrorMsg());
             case 25:
@@ -72,6 +80,8 @@ public class ExceptionMapper {
                 return new ApiPrivateProfileException(error.getErrorMsg());
             case 3102:
                 return new ApiWallCheckLinkCantDetermineSourceException(error.getErrorMsg());
+            case 32:
+                return new ApiWaitException(error.getErrorMsg());
             case 33:
                 return new ApiNotImplementedYetException(error.getErrorMsg());
             case 34:
@@ -90,6 +100,10 @@ public class ExceptionMapper {
                 return new ApiUnknownGroupException(error.getErrorMsg());
             case 41:
                 return new ApiAdditionalSignupRequiredException(error.getErrorMsg());
+            case 42:
+                return new ApiIpIsNotAllowedException(error.getErrorMsg());
+            case 43:
+                return new ApiSectionDisabledException(error.getErrorMsg());
             case 2100:
                 return new ApiStickersNotPurchasedException(error.getErrorMsg());
             case 2101:
@@ -114,6 +128,10 @@ public class ExceptionMapper {
                 return new ApiAdsSpecificException(error.getErrorMsg());
             case 1116:
                 return new ApiAuthAnonymousTokenIsInvalidException(error.getErrorMsg());
+            case 1117:
+                return new ApiAuthAccessTokenHasExpiredException(error.getErrorMsg());
+            case 1118:
+                return new ApiAuthAnonymousTokenIpMismatchException(error.getErrorMsg());
             case 100:
                 return new ApiParamException(error.getErrorMsg());
             case 101:
@@ -134,12 +152,26 @@ public class ExceptionMapper {
                 return new ApiAdsObjectDeletedException(error.getErrorMsg());
             case 118:
                 return new ApiParamServerException(error.getErrorMsg());
+            case 630:
+                return new ApiAdsLookalikeRequestAlreadyInProgressException(error.getErrorMsg());
             case 119:
                 return new ApiParamTitleException(error.getErrorMsg());
+            case 631:
+                return new ApiAdsLookalikeRequestMaxCountPerDayReachedException(error.getErrorMsg());
+            case 632:
+                return new ApiAdsLookalikeRequestAudienceTooSmallException(error.getErrorMsg());
             case 121:
                 return new ApiParamHashException(error.getErrorMsg());
+            case 633:
+                return new ApiAdsLookalikeRequestAudienceTooLargeException(error.getErrorMsg());
+            case 634:
+                return new ApiAdsLookalikeRequestExportAlreadyInProgressException(error.getErrorMsg());
             case 122:
                 return new ApiParamPhotosException(error.getErrorMsg());
+            case 635:
+                return new ApiAdsLookalikeRequestExportMaxCountPerDayReachedException(error.getErrorMsg());
+            case 636:
+                return new ApiAdsLookalikeRequestExportRetargetingGroupLimitException(error.getErrorMsg());
             case 125:
                 return new ApiParamGroupIdException(error.getErrorMsg());
             case 1150:
@@ -152,6 +184,10 @@ public class ExceptionMapper {
                 return new ApiParamDocAccessException(error.getErrorMsg());
             case 129:
                 return new ApiParamPhotoException(error.getErrorMsg());
+            case 1154:
+                return new ApiParamDocRestoreAccessException(error.getErrorMsg());
+            case 1155:
+                return new ApiParamDocRestoreTimeoutException(error.getErrorMsg());
             case 1160:
                 return new ApiPhotoChangedException(error.getErrorMsg());
             case 140:
@@ -164,8 +200,6 @@ public class ExceptionMapper {
                 return new ApiMobileNotActivatedException(error.getErrorMsg());
             case 147:
                 return new ApiInsufficientFundsException(error.getErrorMsg());
-            case 148:
-                return new ApiAccessMenuException(error.getErrorMsg());
             case 150:
                 return new ApiParamTimestampException(error.getErrorMsg());
             case 171:
@@ -262,6 +296,8 @@ public class ExceptionMapper {
                 return new ApiAppsSubscriptionInvalidStatusException(error.getErrorMsg());
             case 1260:
                 return new ApiInvalidAddressException(error.getErrorMsg());
+            case 11500:
+                return new ApiCuaConfirmationRequiredException(error.getErrorMsg());
             case 250:
                 return new ApiPollsAccessException(error.getErrorMsg());
             case 251:
@@ -272,10 +308,8 @@ public class ExceptionMapper {
                 return new ApiPollsAccessWithoutVoteException(error.getErrorMsg());
             case 260:
                 return new ApiAccessGroupsException(error.getErrorMsg());
-            case 1310:
-                return new ApiCommunitiesCatalogDisabledException(error.getErrorMsg());
-            case 1311:
-                return new ApiCommunitiesCategoriesDisabledException(error.getErrorMsg());
+            case 9999:
+                return new ApiNotSupportedHttpMethodException(error.getErrorMsg());
             case 800:
                 return new ApiVideoAlreadyAddedException(error.getErrorMsg());
             case 801:
@@ -284,6 +318,10 @@ public class ExceptionMapper {
                 return new ApiAlbumFullException(error.getErrorMsg());
             case 302:
                 return new ApiAlbumsLimitException(error.getErrorMsg());
+            case 11101:
+                return new ApiTranslationsCantTranslateException(error.getErrorMsg());
+            case 11102:
+                return new ApiTranslationsMultipleSourceLangException(error.getErrorMsg());
             case 1900:
                 return new ApiPrettyCardsCardNotFoundException(error.getErrorMsg());
             case 1901:
@@ -310,6 +348,10 @@ public class ExceptionMapper {
                 return new ApiMarketItemHasBadLinksException(error.getErrorMsg());
             case 1409:
                 return new ApiMarketExtendedNotEnabledException(error.getErrorMsg());
+            case 1410:
+                return new ApiMarketVariantsNotEnabledException(error.getErrorMsg());
+            case 1411:
+                return new ApiMarketVariantsErrorException(error.getErrorMsg());
             case 1412:
                 return new ApiMarketGroupingItemsWithDifferentPropertiesException(error.getErrorMsg());
             case 900:
@@ -318,22 +360,36 @@ public class ExceptionMapper {
                 return new ApiMarketGroupingAlreadyHasSuchVariantException(error.getErrorMsg());
             case 901:
                 return new ApiMessagesDenySendException(error.getErrorMsg());
+            case 1414:
+                return new ApiMarketGroupingHasOtherPropertiesException(error.getErrorMsg());
             case 902:
                 return new ApiMessagesPrivacyException(error.getErrorMsg());
+            case 1415:
+                return new ApiMarketGroupingMustHaveVariantsException(error.getErrorMsg());
             case 1416:
                 return new ApiMarketVariantNotFoundException(error.getErrorMsg());
             case 1417:
                 return new ApiMarketPropertyNotFoundException(error.getErrorMsg());
+            case 1418:
+                return new ApiMarketMaxPropertiesLimitExceedException(error.getErrorMsg());
+            case 1419:
+                return new ApiMarketMaxVariantsLimitExceedException(error.getErrorMsg());
             case 907:
                 return new ApiMessagesTooOldPtsException(error.getErrorMsg());
             case 908:
                 return new ApiMessagesTooNewPtsException(error.getErrorMsg());
             case 909:
                 return new ApiMessagesEditExpiredException(error.getErrorMsg());
+            case 1421:
+                return new ApiMarketNameTooLongException(error.getErrorMsg());
             case 910:
                 return new ApiMessagesTooBigException(error.getErrorMsg());
             case 911:
                 return new ApiMessagesKeyboardInvalidException(error.getErrorMsg());
+            case 1423:
+                return new ApiMarketVariantValueTooLongException(error.getErrorMsg());
+            case 1424:
+                return new ApiMarketUnknownPropertyTypeException(error.getErrorMsg());
             case 912:
                 return new ApiMessagesChatBotFeatureException(error.getErrorMsg());
             case 1425:
@@ -364,6 +420,8 @@ public class ExceptionMapper {
                 return new ApiMessagesCantFwdException(error.getErrorMsg());
             case 1433:
                 return new ApiMarketPhotosCropInvalidFormatException(error.getErrorMsg());
+            case 922:
+                return new ApiMessagesChatUserLeftException(error.getErrorMsg());
             case 1434:
                 return new ApiMarketPhotosCropOverflowException(error.getErrorMsg());
             case 1435:
@@ -394,6 +452,8 @@ public class ExceptionMapper {
                 return new ApiMessagesCantPinOneTimeStoryException(error.getErrorMsg());
             case 943:
                 return new ApiMessagesIntentCantUseException(error.getErrorMsg());
+            case 1456:
+                return new ApiMarketOrdersInvalidStatusException(error.getErrorMsg());
             case 944:
                 return new ApiMessagesIntentLimitOverflowException(error.getErrorMsg());
             case 945:
@@ -408,8 +468,18 @@ public class ExceptionMapper {
                 return new ApiMessagesPeerBlockedReasonByTimeException(error.getErrorMsg());
             case 962:
                 return new ApiMessagesUserNotDonException(error.getErrorMsg());
+            case 969:
+                return new ApiMessagesMessageCannotBeForwardedException(error.getErrorMsg());
+            case 970:
+                return new ApiMessagesCantPinExpiringMessageException(error.getErrorMsg());
             case 2000:
                 return new ApiCallbackApiServersLimitException(error.getErrorMsg());
+            case 1009:
+                return new ApiMessagesInvalidReactionIdException(error.getErrorMsg());
+            case 1010:
+                return new ApiMessagesForbiddenReactionException(error.getErrorMsg());
+            case 1011:
+                return new ApiMessagesReactionsLimitReachedException(error.getErrorMsg());
             case 500:
                 return new ApiVotesPermissionException(error.getErrorMsg());
             default:

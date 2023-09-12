@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.market.ReportReason;
 import java.util.Arrays;
@@ -14,14 +15,15 @@ import java.util.List;
  */
 public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param itemId value of "item id" parameter. Minimum is 0.
      */
-    public MarketReportQuery(VkApiClient client, UserActor actor, int ownerId, int itemId) {
+    public MarketReportQuery(VkApiClient client, UserActor actor, Long ownerId, Integer itemId) {
         super(client, "market.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -29,12 +31,25 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketReportQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.report", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an item owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReportQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketReportQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -44,16 +59,18 @@ public class MarketReportQuery extends AbstractQueryBuilder<MarketReportQuery, O
      * @param value value of "item id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketReportQuery itemId(int value) {
+    @ApiParam("item_id")
+    public MarketReportQuery itemId(Integer value) {
         return unsafeParam("item_id", value);
     }
 
     /**
-     * Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
+     * Complaint reason. Possible values: *'0' - spam,, *'1' - child porn,, *'2' - extremism,, *'3' - violence,, *'4' - drugs propaganda,, *'5' - adult materials,, *'6' - insult.
      *
      * @param value value of "reason" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reason")
     public MarketReportQuery reason(ReportReason value) {
         return unsafeParam("reason", value);
     }

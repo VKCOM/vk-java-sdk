@@ -21,7 +21,13 @@ public class GetMembersResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<Integer> items;
+    private List<Long> items;
+
+    /**
+     * Encoded string for a next page
+     */
+    @SerializedName("next_from")
+    private String nextFrom;
 
     public Integer getCount() {
         return count;
@@ -32,18 +38,27 @@ public class GetMembersResponse implements Validable {
         return this;
     }
 
-    public List<Integer> getItems() {
+    public List<Long> getItems() {
         return items;
     }
 
-    public GetMembersResponse setItems(List<Integer> items) {
+    public GetMembersResponse setItems(List<Long> items) {
         this.items = items;
+        return this;
+    }
+
+    public String getNextFrom() {
+        return nextFrom;
+    }
+
+    public GetMembersResponse setNextFrom(String nextFrom) {
+        this.nextFrom = nextFrom;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, nextFrom, items);
     }
 
     @Override
@@ -51,7 +66,8 @@ public class GetMembersResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetMembersResponse getMembersResponse = (GetMembersResponse) o;
-        return Objects.equals(count, getMembersResponse.count) &&
+        return Objects.equals(nextFrom, getMembersResponse.nextFrom) &&
+                Objects.equals(count, getMembersResponse.count) &&
                 Objects.equals(items, getMembersResponse.items);
     }
 
@@ -63,7 +79,8 @@ public class GetMembersResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetMembersResponse{");
-        sb.append("count=").append(count);
+        sb.append("nextFrom='").append(nextFrom).append("'");
+        sb.append(", count=").append(count);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.friends.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.friends.RequestsXtrMessage;
 import java.util.List;
 import java.util.Objects;
@@ -16,10 +17,24 @@ public class GetRequestsExtendedResponse implements Validable {
      * Total requests number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
+    /**
+     * Total unread requests number
+     */
+    @SerializedName("count_unread")
+    private Integer countUnread;
+
     @SerializedName("items")
+    @Required
     private List<RequestsXtrMessage> items;
+
+    /**
+     * Friend requests last viewed timestamp
+     */
+    @SerializedName("last_viewed")
+    private Integer lastViewed;
 
     public Integer getCount() {
         return count;
@@ -27,6 +42,15 @@ public class GetRequestsExtendedResponse implements Validable {
 
     public GetRequestsExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public Integer getCountUnread() {
+        return countUnread;
+    }
+
+    public GetRequestsExtendedResponse setCountUnread(Integer countUnread) {
+        this.countUnread = countUnread;
         return this;
     }
 
@@ -39,9 +63,18 @@ public class GetRequestsExtendedResponse implements Validable {
         return this;
     }
 
+    public Integer getLastViewed() {
+        return lastViewed;
+    }
+
+    public GetRequestsExtendedResponse setLastViewed(Integer lastViewed) {
+        this.lastViewed = lastViewed;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(lastViewed, count, countUnread, items);
     }
 
     @Override
@@ -49,7 +82,9 @@ public class GetRequestsExtendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetRequestsExtendedResponse getRequestsExtendedResponse = (GetRequestsExtendedResponse) o;
-        return Objects.equals(count, getRequestsExtendedResponse.count) &&
+        return Objects.equals(lastViewed, getRequestsExtendedResponse.lastViewed) &&
+                Objects.equals(count, getRequestsExtendedResponse.count) &&
+                Objects.equals(countUnread, getRequestsExtendedResponse.countUnread) &&
                 Objects.equals(items, getRequestsExtendedResponse.items);
     }
 
@@ -61,7 +96,9 @@ public class GetRequestsExtendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetRequestsExtendedResponse{");
-        sb.append("count=").append(count);
+        sb.append("lastViewed=").append(lastViewed);
+        sb.append(", count=").append(count);
+        sb.append(", countUnread=").append(countUnread);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

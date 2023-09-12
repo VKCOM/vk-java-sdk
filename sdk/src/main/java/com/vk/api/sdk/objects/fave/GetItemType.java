@@ -11,8 +11,14 @@ public enum GetItemType implements EnumParam {
     @SerializedName("clip")
     CLIP("clip"),
 
+    @SerializedName("game")
+    GAME("game"),
+
     @SerializedName("link")
     LINK("link"),
+
+    @SerializedName("mini_app")
+    MINI_APP("mini_app"),
 
     @SerializedName("narrative")
     NARRATIVE("narrative"),

@@ -5,14 +5,27 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.users.UserFull;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * UserXtrRole object
  */
 public class UserXtrRole extends UserFull implements Validable {
+    @SerializedName("permissions")
+    private List<MemberRolePermission> permissions;
+
     @SerializedName("role")
     private RoleOptions role;
+
+    public List<MemberRolePermission> getPermissions() {
+        return permissions;
+    }
+
+    public UserXtrRole setPermissions(List<MemberRolePermission> permissions) {
+        this.permissions = permissions;
+        return this;
+    }
 
     public RoleOptions getRole() {
         return role;
@@ -25,7 +38,7 @@ public class UserXtrRole extends UserFull implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(role);
+        return Objects.hash(role, permissions);
     }
 
     @Override
@@ -33,7 +46,8 @@ public class UserXtrRole extends UserFull implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserXtrRole userXtrRole = (UserXtrRole) o;
-        return Objects.equals(role, userXtrRole.role);
+        return Objects.equals(role, userXtrRole.role) &&
+                Objects.equals(permissions, userXtrRole.permissions);
     }
 
     @Override
@@ -45,6 +59,7 @@ public class UserXtrRole extends UserFull implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("UserXtrRole{");
         sb.append("role=").append(role);
+        sb.append(", permissions=").append(permissions);
         sb.append('}');
         return sb.toString();
     }

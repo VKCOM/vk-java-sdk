@@ -34,9 +34,11 @@ public class Graffiti implements Validable {
 
     /**
      * Graffiti owner ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * Graffiti URL
@@ -79,11 +81,11 @@ public class Graffiti implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public Graffiti setOwnerId(Integer ownerId) {
+    public Graffiti setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }

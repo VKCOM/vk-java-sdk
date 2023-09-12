@@ -7,7 +7,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.Link;
 import com.vk.api.sdk.objects.market.MarketItem;
-import com.vk.api.sdk.objects.video.Video;
+import com.vk.api.sdk.objects.video.VideoFull;
 import com.vk.api.sdk.objects.wall.WallpostFull;
 import java.util.List;
 import java.util.Objects;
@@ -20,6 +20,7 @@ public class Bookmark implements Validable {
      * Timestamp, when this item was bookmarked
      */
     @SerializedName("added_date")
+    @Required
     private Integer addedDate;
 
     @SerializedName("link")
@@ -50,7 +51,7 @@ public class Bookmark implements Validable {
     private BookmarkType type;
 
     @SerializedName("video")
-    private Video video;
+    private VideoFull video;
 
     public Integer getAddedDate() {
         return addedDate;
@@ -115,11 +116,11 @@ public class Bookmark implements Validable {
         return this;
     }
 
-    public Video getVideo() {
+    public VideoFull getVideo() {
         return video;
     }
 
-    public Bookmark setVideo(Video video) {
+    public Bookmark setVideo(VideoFull video) {
         this.video = video;
         return this;
     }

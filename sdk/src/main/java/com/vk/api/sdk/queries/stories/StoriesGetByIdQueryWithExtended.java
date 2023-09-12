@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.stories.responses.GetByIdExtendedResponse;
 import java.util.Arrays;
@@ -15,36 +16,7 @@ import java.util.List;
  */
 public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<StoriesGetByIdQueryWithExtended, GetByIdExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param stories value of "stories" parameter.
-     */
-    public StoriesGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... stories) {
-        super(client, "stories.getById", GetByIdExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        stories(stories);
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param stories value of "stories" parameter.
-     */
-    public StoriesGetByIdQueryWithExtended(VkApiClient client, UserActor actor,
-            List<String> stories) {
-        super(client, "stories.getById", GetByIdExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        stories(stories);
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -59,7 +31,7 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -74,11 +46,41 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
     }
 
     /**
-     * '1' — to return additional fields for users and communities. Default value is 0.
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param stories value of "stories" parameter.
+     */
+    public StoriesGetByIdQueryWithExtended(VkApiClient client, UserActor actor, String... stories) {
+        super(client, "stories.getById", GetByIdExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        stories(stories);
+        extended(true);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param stories value of "stories" parameter.
+     */
+    public StoriesGetByIdQueryWithExtended(VkApiClient client, UserActor actor,
+            List<String> stories) {
+        super(client, "stories.getById", GetByIdExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        stories(stories);
+        extended(true);
+    }
+
+    /**
+     * '1' - to return additional fields for users and communities. Default value is 0.
      *
      * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected StoriesGetByIdQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -90,7 +92,8 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
      * @param value value of "stories" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetByIdQueryWithExtended stories(String... value) {
+    @ApiParam("stories")
+    public StoriesGetByIdQueryWithExtended stories(String... value) {
         return unsafeParam("stories", value);
     }
 
@@ -100,7 +103,8 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
      * @param value value of "stories" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected StoriesGetByIdQueryWithExtended stories(List<String> value) {
+    @ApiParam("stories")
+    public StoriesGetByIdQueryWithExtended stories(List<String> value) {
         return unsafeParam("stories", value);
     }
 
@@ -111,6 +115,7 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetByIdQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -121,6 +126,7 @@ public class StoriesGetByIdQueryWithExtended extends AbstractQueryBuilder<Storie
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public StoriesGetByIdQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

@@ -10,20 +10,14 @@ import java.util.Objects;
  * GiveEventStickerResponse object
  */
 public class GiveEventStickerResponse implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("status")
     private String status;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GiveEventStickerResponse setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
 
     public String getStatus() {
         return status;
@@ -31,6 +25,15 @@ public class GiveEventStickerResponse implements Validable {
 
     public GiveEventStickerResponse setStatus(String status) {
         this.status = status;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GiveEventStickerResponse setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

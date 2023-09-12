@@ -42,9 +42,10 @@ public class Career implements Validable {
 
     /**
      * Community ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    private Long groupId;
 
     /**
      * Career ID
@@ -109,11 +110,11 @@ public class Career implements Validable {
         return this;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public Career setGroupId(Integer groupId) {
+    public Career setGroupId(Long groupId) {
         this.groupId = groupId;
         return this;
     }

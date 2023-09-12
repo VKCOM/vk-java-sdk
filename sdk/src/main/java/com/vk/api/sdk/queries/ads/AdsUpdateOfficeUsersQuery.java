@@ -8,6 +8,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.UserSpecification;
 import com.vk.api.sdk.objects.ads.responses.UpdateOfficeUsersResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,19 +17,46 @@ import java.util.List;
  */
 public class AdsUpdateOfficeUsersQuery extends AbstractQueryBuilder<AdsUpdateOfficeUsersQuery, List<UpdateOfficeUsersResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter. Minimum is 0.
      * @param data value of "data" parameter.
      */
-    public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId,
-            UserSpecification data) {
+    public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor, Integer accountId,
+            UserSpecification... data) {
         super(client, "ads.updateOfficeUsers", Utils.buildParametrizedType(List.class, UpdateOfficeUsersResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         data(data);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param accountId value of "account id" parameter. Minimum is 0.
+     * @param data value of "data" parameter.
+     */
+    public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor, Integer accountId,
+            List<UserSpecification> data) {
+        super(client, "ads.updateOfficeUsers", Utils.buildParametrizedType(List.class, UpdateOfficeUsersResponse.class));
+        accessToken(actor.getAccessToken());
+        accountId(accountId);
+        data(data);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsUpdateOfficeUsersQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.updateOfficeUsers", Utils.buildParametrizedType(List.class, UpdateOfficeUsersResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -37,8 +65,21 @@ public class AdsUpdateOfficeUsersQuery extends AbstractQueryBuilder<AdsUpdateOff
      * @param value value of "account id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateOfficeUsersQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsUpdateOfficeUsersQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
+    }
+
+    /**
+     * data
+     * Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
+     *
+     * @param value value of "data" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("data")
+    public AdsUpdateOfficeUsersQuery data(UserSpecification... value) {
+        return unsafeParam("data", new Gson().toJson(value));
     }
 
     /**
@@ -47,7 +88,8 @@ public class AdsUpdateOfficeUsersQuery extends AbstractQueryBuilder<AdsUpdateOff
      * @param value value of "data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsUpdateOfficeUsersQuery data(UserSpecification value) {
+    @ApiParam("data")
+    public AdsUpdateOfficeUsersQuery data(List<UserSpecification> value) {
         return unsafeParam("data", new Gson().toJson(value));
     }
 

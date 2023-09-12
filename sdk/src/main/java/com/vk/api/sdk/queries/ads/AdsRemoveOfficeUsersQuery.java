@@ -2,29 +2,42 @@
 package com.vk.api.sdk.queries.ads;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.removeOfficeUsers method
  */
-public class AdsRemoveOfficeUsersQuery extends AbstractQueryBuilder<AdsRemoveOfficeUsersQuery, Boolean> {
+public class AdsRemoveOfficeUsersQuery extends AbstractQueryBuilder<AdsRemoveOfficeUsersQuery, List<Boolean>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      * @param ids value of "ids" parameter.
      */
-    public AdsRemoveOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsRemoveOfficeUsersQuery(VkApiClient client, UserActor actor, Integer accountId,
             String ids) {
-        super(client, "ads.removeOfficeUsers", Boolean.class);
+        super(client, "ads.removeOfficeUsers", Utils.buildParametrizedType(List.class, Boolean.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
         ids(ids);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsRemoveOfficeUsersQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.removeOfficeUsers", Utils.buildParametrizedType(List.class, Boolean.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -33,7 +46,8 @@ public class AdsRemoveOfficeUsersQuery extends AbstractQueryBuilder<AdsRemoveOff
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsRemoveOfficeUsersQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsRemoveOfficeUsersQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -43,7 +57,8 @@ public class AdsRemoveOfficeUsersQuery extends AbstractQueryBuilder<AdsRemoveOff
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsRemoveOfficeUsersQuery ids(String value) {
+    @ApiParam("ids")
+    public AdsRemoveOfficeUsersQuery ids(String value) {
         return unsafeParam("ids", value);
     }
 

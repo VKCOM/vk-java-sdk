@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetChairsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class DatabaseGetChairsQuery extends AbstractQueryBuilder<DatabaseGetChairsQuery, GetChairsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param facultyId value of "faculty id" parameter. Minimum is 0.
      */
-    public DatabaseGetChairsQuery(VkApiClient client, UserActor actor, int facultyId) {
+    public DatabaseGetChairsQuery(VkApiClient client, UserActor actor, Integer facultyId) {
         super(client, "database.getChairs", GetChairsResponse.class);
         accessToken(actor.getAccessToken());
         facultyId(facultyId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetChairsQuery(VkApiClient client, UserActor actor) {
+        super(client, "database.getChairs", GetChairsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param facultyId value of "faculty id" parameter. Minimum is 0.
      */
-    public DatabaseGetChairsQuery(VkApiClient client, ServiceActor actor, int facultyId) {
+    public DatabaseGetChairsQuery(VkApiClient client, ServiceActor actor, Integer facultyId) {
         super(client, "database.getChairs", GetChairsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         facultyId(facultyId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetChairsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "database.getChairs", GetChairsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,7 +70,8 @@ public class DatabaseGetChairsQuery extends AbstractQueryBuilder<DatabaseGetChai
      * @param value value of "faculty id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetChairsQuery facultyId(int value) {
+    @ApiParam("faculty_id")
+    public DatabaseGetChairsQuery facultyId(Integer value) {
         return unsafeParam("faculty_id", value);
     }
 
@@ -56,6 +81,7 @@ public class DatabaseGetChairsQuery extends AbstractQueryBuilder<DatabaseGetChai
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetChairsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -66,6 +92,7 @@ public class DatabaseGetChairsQuery extends AbstractQueryBuilder<DatabaseGetChai
      * @param value value of "count" parameter. Maximum is 10000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetChairsQuery count(Integer value) {
         return unsafeParam("count", value);
     }

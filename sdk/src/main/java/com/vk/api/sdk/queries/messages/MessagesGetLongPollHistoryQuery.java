@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.GetLongPollHistoryResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,18 +16,7 @@ import java.util.List;
  */
 public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<MessagesGetLongPollHistoryQuery, GetLongPollHistoryResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesGetLongPollHistoryQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.getLongPollHistory", GetLongPollHistoryResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,21 +28,34 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetLongPollHistoryQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.getLongPollHistory", GetLongPollHistoryResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Last value of the 'ts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      *
      * @param value value of "ts" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ts")
     public MessagesGetLongPollHistoryQuery ts(Integer value) {
         return unsafeParam("ts", value);
     }
 
     /**
-     * Lsat value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
+     * Last value of 'pts' parameter returned from the Long Poll server or by using [vk.com/dev/messages.getLongPollHistory|messages.getLongPollHistory] method.
      *
      * @param value value of "pts" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("pts")
     public MessagesGetLongPollHistoryQuery pts(Integer value) {
         return unsafeParam("pts", value);
     }
@@ -63,16 +66,18 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "preview length" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public MessagesGetLongPollHistoryQuery previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
 
     /**
-     * '1' — to return history with online users only.
+     * '1' - to return history with online users only.
      *
      * @param value value of "onlines" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("onlines")
     public MessagesGetLongPollHistoryQuery onlines(Boolean value) {
         return unsafeParam("onlines", value);
     }
@@ -83,6 +88,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "events limit" parameter. Minimum is 1000. By default 1000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("events_limit")
     public MessagesGetLongPollHistoryQuery eventsLimit(Integer value) {
         return unsafeParam("events_limit", value);
     }
@@ -93,6 +99,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "msgs limit" parameter. Minimum is 200. By default 200.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("msgs_limit")
     public MessagesGetLongPollHistoryQuery msgsLimit(Integer value) {
         return unsafeParam("msgs_limit", value);
     }
@@ -103,6 +110,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "max msg id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("max_msg_id")
     public MessagesGetLongPollHistoryQuery maxMsgId(Integer value) {
         return unsafeParam("max_msg_id", value);
     }
@@ -110,10 +118,12 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
     /**
      * Group ID (for group messages with user access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetLongPollHistoryQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetLongPollHistoryQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -123,6 +133,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "lp version" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("lp_version")
     public MessagesGetLongPollHistoryQuery lpVersion(Integer value) {
         return unsafeParam("lp_version", value);
     }
@@ -133,6 +144,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "last n" parameter. Maximum is 2000. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("last_n")
     public MessagesGetLongPollHistoryQuery lastN(Integer value) {
         return unsafeParam("last_n", value);
     }
@@ -143,8 +155,20 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "credentials" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("credentials")
     public MessagesGetLongPollHistoryQuery credentials(Boolean value) {
         return unsafeParam("credentials", value);
+    }
+
+    /**
+     * Set extended
+     *
+     * @param value value of "extended" parameter. By default false.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("extended")
+    public MessagesGetLongPollHistoryQuery extended(Boolean value) {
+        return unsafeParam("extended", value);
     }
 
     /**
@@ -154,6 +178,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter. By default photo,photo_medium_rec,sex,online,screen_name.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetLongPollHistoryQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -164,6 +189,7 @@ public class MessagesGetLongPollHistoryQuery extends AbstractQueryBuilder<Messag
      * @param value value of "fields" parameter. By default photo,photo_medium_rec,sex,online,screen_name.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetLongPollHistoryQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

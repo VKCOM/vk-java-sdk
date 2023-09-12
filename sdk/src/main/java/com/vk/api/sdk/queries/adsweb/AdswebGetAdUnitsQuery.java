@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.adsweb.responses.GetAdUnitsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnitsQuery, GetAdUnitsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param officeId value of "office id" parameter.
      */
-    public AdswebGetAdUnitsQuery(VkApiClient client, UserActor actor, int officeId) {
+    public AdswebGetAdUnitsQuery(VkApiClient client, UserActor actor, Integer officeId) {
         super(client, "adsweb.getAdUnits", GetAdUnitsResponse.class);
         accessToken(actor.getAccessToken());
         officeId(officeId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdswebGetAdUnitsQuery(VkApiClient client, UserActor actor) {
+        super(client, "adsweb.getAdUnits", GetAdUnitsResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,7 +43,8 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "office id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdswebGetAdUnitsQuery officeId(int value) {
+    @ApiParam("office_id")
+    public AdswebGetAdUnitsQuery officeId(Integer value) {
         return unsafeParam("office_id", value);
     }
 
@@ -41,6 +54,7 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "sites ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sites_ids")
     public AdswebGetAdUnitsQuery sitesIds(String value) {
         return unsafeParam("sites_ids", value);
     }
@@ -51,6 +65,7 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "ad units ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("ad_units_ids")
     public AdswebGetAdUnitsQuery adUnitsIds(String value) {
         return unsafeParam("ad_units_ids", value);
     }
@@ -61,6 +76,7 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AdswebGetAdUnitsQuery fields(String value) {
         return unsafeParam("fields", value);
     }
@@ -71,6 +87,7 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "limit" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public AdswebGetAdUnitsQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }
@@ -81,6 +98,7 @@ public class AdswebGetAdUnitsQuery extends AbstractQueryBuilder<AdswebGetAdUnits
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AdswebGetAdUnitsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }

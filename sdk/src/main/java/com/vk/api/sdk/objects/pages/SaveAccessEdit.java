@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
+ * Who can edit the wiki page: '1' - only community members, '2' - all users can edit the page, '0' - only community managers
  */
 public enum SaveAccessEdit implements EnumParam {
     @SerializedName("0")

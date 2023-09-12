@@ -22,9 +22,10 @@ public class WikipageFull implements Validable {
 
     /**
      * Page creator ID
+     * Entity: owner
      */
     @SerializedName("creator_id")
-    private Integer creatorId;
+    private Long creatorId;
 
     /**
      * Information whether current user can edit the page
@@ -47,15 +48,18 @@ public class WikipageFull implements Validable {
 
     /**
      * Last editor ID
+     * Entity: owner
      */
     @SerializedName("editor_id")
-    private Integer editorId;
+    private Long editorId;
 
     /**
      * Community ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    @Required
+    private Long groupId;
 
     /**
      * Page content, HTML
@@ -71,48 +75,11 @@ public class WikipageFull implements Validable {
     private Integer id;
 
     /**
-     * Page content, wiki
+     * Owner ID
+     * Entity: owner
      */
-    @SerializedName("source")
-    private String source;
-
-    /**
-     * Page title
-     */
-    @SerializedName("title")
-    @Required
-    private String title;
-
-    /**
-     * URL of the page preview
-     */
-    @SerializedName("view_url")
-    private URI viewUrl;
-
-    /**
-     * Views number
-     */
-    @SerializedName("views")
-    @Required
-    private Integer views;
-
-    /**
-     * Edit settings of the page
-     */
-    @SerializedName("who_can_edit")
-    private PrivacySettings whoCanEdit;
-
-    /**
-     * View settings of the page
-     */
-    @SerializedName("who_can_view")
-    private PrivacySettings whoCanView;
-
-    /**
-     * URL
-     */
-    @SerializedName("url")
-    private URI url;
+    @SerializedName("owner_id")
+    private Long ownerId;
 
     /**
      * Parent
@@ -127,10 +94,51 @@ public class WikipageFull implements Validable {
     private String parent2;
 
     /**
-     * Owner ID
+     * Page content, wiki
      */
-    @SerializedName("owner_id")
-    private Integer ownerId;
+    @SerializedName("source")
+    private String source;
+
+    /**
+     * Page title
+     */
+    @SerializedName("title")
+    @Required
+    private String title;
+
+    /**
+     * URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * URL of the page preview
+     */
+    @SerializedName("view_url")
+    @Required
+    private URI viewUrl;
+
+    /**
+     * Views number
+     */
+    @SerializedName("views")
+    @Required
+    private Integer views;
+
+    /**
+     * Edit settings of the page
+     */
+    @SerializedName("who_can_edit")
+    @Required
+    private PrivacySettings whoCanEdit;
+
+    /**
+     * View settings of the page
+     */
+    @SerializedName("who_can_view")
+    @Required
+    private PrivacySettings whoCanView;
 
     public Integer getCreated() {
         return created;
@@ -141,11 +149,11 @@ public class WikipageFull implements Validable {
         return this;
     }
 
-    public Integer getCreatorId() {
+    public Long getCreatorId() {
         return creatorId;
     }
 
-    public WikipageFull setCreatorId(Integer creatorId) {
+    public WikipageFull setCreatorId(Long creatorId) {
         this.creatorId = creatorId;
         return this;
     }
@@ -175,20 +183,20 @@ public class WikipageFull implements Validable {
         return this;
     }
 
-    public Integer getEditorId() {
+    public Long getEditorId() {
         return editorId;
     }
 
-    public WikipageFull setEditorId(Integer editorId) {
+    public WikipageFull setEditorId(Long editorId) {
         this.editorId = editorId;
         return this;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public WikipageFull setGroupId(Integer groupId) {
+    public WikipageFull setGroupId(Long groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -211,6 +219,33 @@ public class WikipageFull implements Validable {
         return this;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public WikipageFull setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public WikipageFull setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getParent2() {
+        return parent2;
+    }
+
+    public WikipageFull setParent2(String parent2) {
+        this.parent2 = parent2;
+        return this;
+    }
+
     public String getSource() {
         return source;
     }
@@ -226,6 +261,15 @@ public class WikipageFull implements Validable {
 
     public WikipageFull setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public URI getUrl() {
+        return url;
+    }
+
+    public WikipageFull setUrl(URI url) {
+        this.url = url;
         return this;
     }
 
@@ -265,45 +309,9 @@ public class WikipageFull implements Validable {
         return this;
     }
 
-    public URI getUrl() {
-        return url;
-    }
-
-    public WikipageFull setUrl(URI url) {
-        this.url = url;
-        return this;
-    }
-
-    public String getParent() {
-        return parent;
-    }
-
-    public WikipageFull setParent(String parent) {
-        this.parent = parent;
-        return this;
-    }
-
-    public String getParent2() {
-        return parent2;
-    }
-
-    public WikipageFull setParent2(String parent2) {
-        this.parent2 = parent2;
-        return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public WikipageFull setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, views, parent2);
+        return Objects.hash(parent, editorId, edited, whoCanView, created, currentUserCanEditAccess, groupId, creatorId, source, ownerId, title, url, whoCanEdit, viewUrl, currentUserCanEdit, html, id, parent2, views);
     }
 
     @Override
@@ -328,8 +336,8 @@ public class WikipageFull implements Validable {
                 Objects.equals(html, wikipageFull.html) &&
                 Objects.equals(id, wikipageFull.id) &&
                 Objects.equals(currentUserCanEditAccess, wikipageFull.currentUserCanEditAccess) &&
-                Objects.equals(views, wikipageFull.views) &&
-                Objects.equals(parent2, wikipageFull.parent2);
+                Objects.equals(parent2, wikipageFull.parent2) &&
+                Objects.equals(views, wikipageFull.views);
     }
 
     @Override
@@ -357,8 +365,8 @@ public class WikipageFull implements Validable {
         sb.append(", html='").append(html).append("'");
         sb.append(", id=").append(id);
         sb.append(", currentUserCanEditAccess=").append(currentUserCanEditAccess);
-        sb.append(", views=").append(views);
         sb.append(", parent2='").append(parent2).append("'");
+        sb.append(", views=").append(views);
         sb.append('}');
         return sb.toString();
     }

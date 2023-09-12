@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.orders;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.orders.responses.GetUserSubscriptionsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +14,14 @@ import java.util.List;
  */
 public class OrdersGetUserSubscriptionsQuery extends AbstractQueryBuilder<OrdersGetUserSubscriptionsQuery, GetUserSubscriptionsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public OrdersGetUserSubscriptionsQuery(VkApiClient client, ServiceActor actor, int userId) {
+    public OrdersGetUserSubscriptionsQuery(VkApiClient client, ServiceActor actor, Long userId) {
         super(client, "orders.getUserSubscriptions", GetUserSubscriptionsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -27,12 +29,26 @@ public class OrdersGetUserSubscriptionsQuery extends AbstractQueryBuilder<Orders
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public OrdersGetUserSubscriptionsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "orders.getUserSubscriptions", GetUserSubscriptionsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersGetUserSubscriptionsQuery userId(int value) {
+    @ApiParam("user_id")
+    public OrdersGetUserSubscriptionsQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 

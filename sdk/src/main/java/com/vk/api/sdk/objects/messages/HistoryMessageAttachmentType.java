@@ -32,6 +32,9 @@ public enum HistoryMessageAttachmentType implements EnumParam {
     @SerializedName("share")
     SHARE("share"),
 
+    @SerializedName("app_action")
+    APP_ACTION("app_action"),
+
     @SerializedName("graffiti")
     GRAFFITI("graffiti"),
 

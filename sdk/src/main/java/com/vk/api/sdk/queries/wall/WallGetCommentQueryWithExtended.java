@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.wall.responses.GetCommentExtendedResponse;
 import java.util.Arrays;
@@ -14,13 +15,13 @@ import java.util.List;
  */
 public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGetCommentQueryWithExtended, GetCommentExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public WallGetCommentQueryWithExtended(VkApiClient client, UserActor actor, int commentId) {
+    public WallGetCommentQueryWithExtended(VkApiClient client, UserActor actor, Integer commentId) {
         super(client, "wall.getComment", GetCommentExtendedResponse.class);
         accessToken(actor.getAccessToken());
         commentId(commentId);
@@ -30,10 +31,12 @@ public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGe
     /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallGetCommentQueryWithExtended ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallGetCommentQueryWithExtended ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +46,8 @@ public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGe
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallGetCommentQueryWithExtended commentId(int value) {
+    @ApiParam("comment_id")
+    public WallGetCommentQueryWithExtended commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 
@@ -53,6 +57,7 @@ public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGe
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected WallGetCommentQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -64,6 +69,7 @@ public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallGetCommentQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -74,6 +80,7 @@ public class WallGetCommentQueryWithExtended extends AbstractQueryBuilder<WallGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallGetCommentQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

@@ -18,8 +18,82 @@ public class CreateResponse implements Validable {
     @SerializedName("anonymous")
     private Boolean anonymous;
 
+    /**
+     * Current user's answer ID
+     */
+    @SerializedName("answer_id")
+    private Long answerId;
+
+    /**
+     * Current user's answer IDs
+     */
+    @SerializedName("answer_ids")
+    private List<Long> answerIds;
+
+    @SerializedName("answers")
+    @Required
+    private List<Answer> answers;
+
+    /**
+     * Poll author's ID
+     */
+    @SerializedName("author_id")
+    private Integer authorId;
+
+    @SerializedName("background")
+    private Background background;
+
+    @SerializedName("can_edit")
+    @Required
+    private Boolean canEdit;
+
+    @SerializedName("can_report")
+    @Required
+    private Boolean canReport;
+
+    @SerializedName("can_share")
+    @Required
+    private Boolean canShare;
+
+    @SerializedName("can_vote")
+    @Required
+    private Boolean canVote;
+
+    @SerializedName("closed")
+    @Required
+    private Boolean closed;
+
+    /**
+     * Date when poll has been created in Unixtime
+     */
+    @SerializedName("created")
+    @Required
+    private Integer created;
+
+    @SerializedName("disable_unvote")
+    @Required
+    private Boolean disableUnvote;
+
+    @SerializedName("embed_hash")
+    private String embedHash;
+
+    @SerializedName("end_date")
+    @Required
+    private Integer endDate;
+
     @SerializedName("friends")
     private List<Friend> friends;
+
+    /**
+     * Poll ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
+
+    @SerializedName("is_board")
+    @Required
+    private Boolean isBoard;
 
     /**
      * Information whether the poll with multiple choices
@@ -29,74 +103,15 @@ public class CreateResponse implements Validable {
     private Boolean multiple;
 
     /**
-     * Current user's answer ID
+     * Poll owner's ID
+     * Entity: owner
      */
-    @SerializedName("answer_id")
-    private Integer answerId;
-
-    @SerializedName("end_date")
-    private Integer endDate;
-
-    /**
-     * Current user's answer IDs
-     */
-    @SerializedName("answer_ids")
-    private List<Integer> answerIds;
-
-    @SerializedName("closed")
+    @SerializedName("owner_id")
     @Required
-    private Boolean closed;
-
-    @SerializedName("is_board")
-    private Boolean isBoard;
-
-    @SerializedName("can_edit")
-    private Boolean canEdit;
-
-    @SerializedName("can_vote")
-    private Boolean canVote;
-
-    @SerializedName("can_report")
-    private Boolean canReport;
-
-    @SerializedName("can_share")
-    private Boolean canShare;
-
-    @SerializedName("embed_hash")
-    private String embedHash;
+    private Long ownerId;
 
     @SerializedName("photo")
     private Background photo;
-
-    @SerializedName("answers")
-    @Required
-    private List<Answer> answers;
-
-    /**
-     * Date when poll has been created in Unixtime
-     */
-    @SerializedName("created")
-    @Required
-    private Integer created;
-
-    /**
-     * Poll ID
-     */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Poll owner's ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Poll author's ID
-     */
-    @SerializedName("author_id")
-    private Integer authorId;
 
     /**
      * Poll question
@@ -105,18 +120,12 @@ public class CreateResponse implements Validable {
     @Required
     private String question;
 
-    @SerializedName("background")
-    private Background background;
-
     /**
      * Votes number
      */
     @SerializedName("votes")
     @Required
     private Integer votes;
-
-    @SerializedName("disable_unvote")
-    private Boolean disableUnvote;
 
     public Boolean getAnonymous() {
         return anonymous;
@@ -127,66 +136,48 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public List<Friend> getFriends() {
-        return friends;
-    }
-
-    public CreateResponse setFriends(List<Friend> friends) {
-        this.friends = friends;
-        return this;
-    }
-
-    public Boolean getMultiple() {
-        return multiple;
-    }
-
-    public CreateResponse setMultiple(Boolean multiple) {
-        this.multiple = multiple;
-        return this;
-    }
-
-    public Integer getAnswerId() {
+    public Long getAnswerId() {
         return answerId;
     }
 
-    public CreateResponse setAnswerId(Integer answerId) {
+    public CreateResponse setAnswerId(Long answerId) {
         this.answerId = answerId;
         return this;
     }
 
-    public Integer getEndDate() {
-        return endDate;
-    }
-
-    public CreateResponse setEndDate(Integer endDate) {
-        this.endDate = endDate;
-        return this;
-    }
-
-    public List<Integer> getAnswerIds() {
+    public List<Long> getAnswerIds() {
         return answerIds;
     }
 
-    public CreateResponse setAnswerIds(List<Integer> answerIds) {
+    public CreateResponse setAnswerIds(List<Long> answerIds) {
         this.answerIds = answerIds;
         return this;
     }
 
-    public Boolean getClosed() {
-        return closed;
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public CreateResponse setClosed(Boolean closed) {
-        this.closed = closed;
+    public CreateResponse setAnswers(List<Answer> answers) {
+        this.answers = answers;
         return this;
     }
 
-    public Boolean getIsBoard() {
-        return isBoard;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public CreateResponse setIsBoard(Boolean isBoard) {
-        this.isBoard = isBoard;
+    public CreateResponse setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+        return this;
+    }
+
+    public Background getBackground() {
+        return background;
+    }
+
+    public CreateResponse setBackground(Background background) {
+        this.background = background;
         return this;
     }
 
@@ -196,15 +187,6 @@ public class CreateResponse implements Validable {
 
     public CreateResponse setCanEdit(Boolean canEdit) {
         this.canEdit = canEdit;
-        return this;
-    }
-
-    public Boolean getCanVote() {
-        return canVote;
-    }
-
-    public CreateResponse setCanVote(Boolean canVote) {
-        this.canVote = canVote;
         return this;
     }
 
@@ -226,30 +208,21 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public String getEmbedHash() {
-        return embedHash;
+    public Boolean getCanVote() {
+        return canVote;
     }
 
-    public CreateResponse setEmbedHash(String embedHash) {
-        this.embedHash = embedHash;
+    public CreateResponse setCanVote(Boolean canVote) {
+        this.canVote = canVote;
         return this;
     }
 
-    public Background getPhoto() {
-        return photo;
+    public Boolean getClosed() {
+        return closed;
     }
 
-    public CreateResponse setPhoto(Background photo) {
-        this.photo = photo;
-        return this;
-    }
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public CreateResponse setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public CreateResponse setClosed(Boolean closed) {
+        this.closed = closed;
         return this;
     }
 
@@ -262,6 +235,42 @@ public class CreateResponse implements Validable {
         return this;
     }
 
+    public Boolean getDisableUnvote() {
+        return disableUnvote;
+    }
+
+    public CreateResponse setDisableUnvote(Boolean disableUnvote) {
+        this.disableUnvote = disableUnvote;
+        return this;
+    }
+
+    public String getEmbedHash() {
+        return embedHash;
+    }
+
+    public CreateResponse setEmbedHash(String embedHash) {
+        this.embedHash = embedHash;
+        return this;
+    }
+
+    public Integer getEndDate() {
+        return endDate;
+    }
+
+    public CreateResponse setEndDate(Integer endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
+    public List<Friend> getFriends() {
+        return friends;
+    }
+
+    public CreateResponse setFriends(List<Friend> friends) {
+        this.friends = friends;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -271,21 +280,39 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getIsBoard() {
+        return isBoard;
+    }
+
+    public CreateResponse setIsBoard(Boolean isBoard) {
+        this.isBoard = isBoard;
+        return this;
+    }
+
+    public Boolean getMultiple() {
+        return multiple;
+    }
+
+    public CreateResponse setMultiple(Boolean multiple) {
+        this.multiple = multiple;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public CreateResponse setOwnerId(Integer ownerId) {
+    public CreateResponse setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public Integer getAuthorId() {
-        return authorId;
+    public Background getPhoto() {
+        return photo;
     }
 
-    public CreateResponse setAuthorId(Integer authorId) {
-        this.authorId = authorId;
+    public CreateResponse setPhoto(Background photo) {
+        this.photo = photo;
         return this;
     }
 
@@ -298,15 +325,6 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public Background getBackground() {
-        return background;
-    }
-
-    public CreateResponse setBackground(Background background) {
-        this.background = background;
-        return this;
-    }
-
     public Integer getVotes() {
         return votes;
     }
@@ -316,18 +334,9 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public Boolean getDisableUnvote() {
-        return disableUnvote;
-    }
-
-    public CreateResponse setDisableUnvote(Boolean disableUnvote) {
-        this.disableUnvote = disableUnvote;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, multiple, answers, photo, answerIds, ownerId, authorId, friends, background, embedHash, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
+        return Objects.hash(answerId, canReport, question, endDate, created, canShare, canEdit, answers, multiple, photo, answerIds, ownerId, authorId, friends, background, embedHash, disableUnvote, anonymous, closed, votes, id, isBoard, canVote);
     }
 
     @Override
@@ -341,15 +350,15 @@ public class CreateResponse implements Validable {
                 Objects.equals(question, createResponse.question) &&
                 Objects.equals(created, createResponse.created) &&
                 Objects.equals(ownerId, createResponse.ownerId) &&
-                Objects.equals(multiple, createResponse.multiple) &&
-                Objects.equals(canShare, createResponse.canShare) &&
                 Objects.equals(answers, createResponse.answers) &&
+                Objects.equals(canShare, createResponse.canShare) &&
+                Objects.equals(multiple, createResponse.multiple) &&
                 Objects.equals(canEdit, createResponse.canEdit) &&
                 Objects.equals(photo, createResponse.photo) &&
                 Objects.equals(isBoard, createResponse.isBoard) &&
                 Objects.equals(answerId, createResponse.answerId) &&
-                Objects.equals(friends, createResponse.friends) &&
                 Objects.equals(canVote, createResponse.canVote) &&
+                Objects.equals(friends, createResponse.friends) &&
                 Objects.equals(canReport, createResponse.canReport) &&
                 Objects.equals(background, createResponse.background) &&
                 Objects.equals(anonymous, createResponse.anonymous) &&
@@ -374,15 +383,15 @@ public class CreateResponse implements Validable {
         sb.append(", question='").append(question).append("'");
         sb.append(", created=").append(created);
         sb.append(", ownerId=").append(ownerId);
-        sb.append(", multiple=").append(multiple);
-        sb.append(", canShare=").append(canShare);
         sb.append(", answers=").append(answers);
+        sb.append(", canShare=").append(canShare);
+        sb.append(", multiple=").append(multiple);
         sb.append(", canEdit=").append(canEdit);
         sb.append(", photo=").append(photo);
         sb.append(", isBoard=").append(isBoard);
         sb.append(", answerId=").append(answerId);
-        sb.append(", friends=").append(friends);
         sb.append(", canVote=").append(canVote);
+        sb.append(", friends=").append(friends);
         sb.append(", canReport=").append(canReport);
         sb.append(", background=").append(background);
         sb.append(", anonymous=").append(anonymous);

@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
+import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.stories.Story;
 import com.vk.api.sdk.objects.users.User;
 import java.util.List;
@@ -19,6 +19,9 @@ public class SaveResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<Story> items;
@@ -26,15 +29,21 @@ public class SaveResponse implements Validable {
     @SerializedName("profiles")
     private List<User> profiles;
 
-    @SerializedName("groups")
-    private List<Group> groups;
-
     public Integer getCount() {
         return count;
     }
 
     public SaveResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public SaveResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -53,15 +62,6 @@ public class SaveResponse implements Validable {
 
     public SaveResponse setProfiles(List<User> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public SaveResponse setGroups(List<Group> groups) {
-        this.groups = groups;
         return this;
     }
 

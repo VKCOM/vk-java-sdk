@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetFacultiesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetFacultiesQuery, GetFacultiesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param universityId value of "university id" parameter. Minimum is 0.
      */
-    public DatabaseGetFacultiesQuery(VkApiClient client, UserActor actor, int universityId) {
+    public DatabaseGetFacultiesQuery(VkApiClient client, UserActor actor, Integer universityId) {
         super(client, "database.getFaculties", GetFacultiesResponse.class);
         accessToken(actor.getAccessToken());
         universityId(universityId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetFacultiesQuery(VkApiClient client, UserActor actor) {
+        super(client, "database.getFaculties", GetFacultiesResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param universityId value of "university id" parameter. Minimum is 0.
      */
-    public DatabaseGetFacultiesQuery(VkApiClient client, ServiceActor actor, int universityId) {
+    public DatabaseGetFacultiesQuery(VkApiClient client, ServiceActor actor, Integer universityId) {
         super(client, "database.getFaculties", GetFacultiesResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         universityId(universityId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DatabaseGetFacultiesQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "database.getFaculties", GetFacultiesResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,7 +70,8 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
      * @param value value of "university id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DatabaseGetFacultiesQuery universityId(int value) {
+    @ApiParam("university_id")
+    public DatabaseGetFacultiesQuery universityId(Integer value) {
         return unsafeParam("university_id", value);
     }
 
@@ -56,6 +81,7 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetFacultiesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -66,6 +92,7 @@ public class DatabaseGetFacultiesQuery extends AbstractQueryBuilder<DatabaseGetF
      * @param value value of "count" parameter. Maximum is 10000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetFacultiesQuery count(Integer value) {
         return unsafeParam("count", value);
     }

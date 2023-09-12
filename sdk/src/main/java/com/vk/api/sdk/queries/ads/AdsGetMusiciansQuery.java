@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetMusiciansResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AdsGetMusiciansQuery extends AbstractQueryBuilder<AdsGetMusiciansQuery, GetMusiciansResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,12 +27,24 @@ public class AdsGetMusiciansQuery extends AbstractQueryBuilder<AdsGetMusiciansQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetMusiciansQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getMusicians", GetMusiciansResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set artist name
      *
      * @param value value of "artist name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetMusiciansQuery artistName(String value) {
+    @ApiParam("artist_name")
+    public AdsGetMusiciansQuery artistName(String value) {
         return unsafeParam("artist_name", value);
     }
 

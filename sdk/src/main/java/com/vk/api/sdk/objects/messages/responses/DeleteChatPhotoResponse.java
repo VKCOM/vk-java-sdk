@@ -11,23 +11,14 @@ import java.util.Objects;
  * DeleteChatPhotoResponse object
  */
 public class DeleteChatPhotoResponse implements Validable {
+    @SerializedName("chat")
+    private Chat chat;
+
     /**
      * Service message ID
      */
     @SerializedName("message_id")
     private Integer messageId;
-
-    @SerializedName("chat")
-    private Chat chat;
-
-    public Integer getMessageId() {
-        return messageId;
-    }
-
-    public DeleteChatPhotoResponse setMessageId(Integer messageId) {
-        this.messageId = messageId;
-        return this;
-    }
 
     public Chat getChat() {
         return chat;
@@ -35,6 +26,15 @@ public class DeleteChatPhotoResponse implements Validable {
 
     public DeleteChatPhotoResponse setChat(Chat chat) {
         this.chat = chat;
+        return this;
+    }
+
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public DeleteChatPhotoResponse setMessageId(Integer messageId) {
+        this.messageId = messageId;
         return this;
     }
 

@@ -5,77 +5,165 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.audio.Audio;
+import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Country;
+import com.vk.api.sdk.objects.base.CropPhoto;
+import com.vk.api.sdk.objects.base.OwnerCover;
+import com.vk.api.sdk.objects.groups.AddressesInfo;
+import com.vk.api.sdk.objects.groups.ClassifiedsProperties;
+import com.vk.api.sdk.objects.groups.ContactsItem;
+import com.vk.api.sdk.objects.groups.CountersGroup;
 import com.vk.api.sdk.objects.groups.GroupAdminLevel;
+import com.vk.api.sdk.objects.groups.GroupBanInfo;
+import com.vk.api.sdk.objects.groups.GroupFullAgeLimits;
+import com.vk.api.sdk.objects.groups.GroupFullMemberStatus;
+import com.vk.api.sdk.objects.groups.GroupFullSection;
 import com.vk.api.sdk.objects.groups.GroupIsClosed;
 import com.vk.api.sdk.objects.groups.GroupType;
+import com.vk.api.sdk.objects.groups.LinksItem;
+import com.vk.api.sdk.objects.groups.LiveCovers;
+import com.vk.api.sdk.objects.groups.MarketInfo;
+import com.vk.api.sdk.objects.groups.OnlineStatus;
 import com.vk.api.sdk.objects.groups.PhotoSize;
 import com.vk.api.sdk.objects.video.LiveInfo;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * CreateResponse object
  */
-public class CreateResponse implements Validable {
+public class CreateResponse extends ClassifiedsProperties implements Validable {
     /**
-     * Community ID
+     * Type of group, start date of event or category of public page
      */
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    /**
-     * Community name
-     */
-    @SerializedName("name")
-    @Required
-    private String name;
+    @SerializedName("activity")
+    private String activity;
 
     /**
-     * Domain of the community page
+     * Info about addresses in groups
      */
-    @SerializedName("screen_name")
-    private String screenName;
-
-    @SerializedName("is_closed")
-    private GroupIsClosed isClosed;
-
-    @SerializedName("type")
-    private GroupType type;
-
-    /**
-     * Information whether current user is administrator
-     */
-    @SerializedName("is_admin")
-    private BoolInt isAdmin;
+    @SerializedName("addresses")
+    private AddressesInfo addresses;
 
     @SerializedName("admin_level")
     private GroupAdminLevel adminLevel;
 
     /**
-     * Information whether current user is member
+     * Information whether age limit
      */
-    @SerializedName("is_member")
-    private BoolInt isMember;
+    @SerializedName("age_limits")
+    private GroupFullAgeLimits ageLimits;
 
     /**
-     * Information whether current user is advertiser
+     * User ban info
      */
-    @SerializedName("is_advertiser")
-    private BoolInt isAdvertiser;
+    @SerializedName("ban_info")
+    private GroupBanInfo banInfo;
 
     /**
-     * Start date in Unixtime format
+     * Information whether current user can call to community
      */
-    @SerializedName("start_date")
-    private Integer startDate;
+    @SerializedName("can_call_to_community")
+    private Boolean canCallToCommunity;
 
     /**
-     * Finish date in Unixtime format
+     * Information whether current user can create topic
      */
-    @SerializedName("finish_date")
-    private Integer finishDate;
+    @SerializedName("can_create_topic")
+    private BoolInt canCreateTopic;
+
+    /**
+     * Information whether current user can send a message to community
+     */
+    @SerializedName("can_message")
+    private BoolInt canMessage;
+
+    /**
+     * Information whether current user can post on community's wall
+     */
+    @SerializedName("can_post")
+    private BoolInt canPost;
+
+    /**
+     * Information whether current user can see all posts on community's wall
+     */
+    @SerializedName("can_see_all_posts")
+    private BoolInt canSeeAllPosts;
+
+    /**
+     * Information whether community can send notifications by phone number to current user
+     */
+    @SerializedName("can_send_notify")
+    private BoolInt canSendNotify;
+
+    /**
+     * Owner in whitelist or not
+     */
+    @SerializedName("can_subscribe_podcasts")
+    private Boolean canSubscribePodcasts;
+
+    /**
+     * Can subscribe to wall
+     */
+    @SerializedName("can_subscribe_posts")
+    private Boolean canSubscribePosts;
+
+    @SerializedName("can_suggest")
+    private BoolInt canSuggest;
+
+    /**
+     * Information whether current user can upload clip
+     */
+    @SerializedName("can_upload_clip")
+    private BoolInt canUploadClip;
+
+    /**
+     * Information whether current user can upload doc
+     */
+    @SerializedName("can_upload_doc")
+    private BoolInt canUploadDoc;
+
+    /**
+     * Information whether current user can upload story
+     */
+    @SerializedName("can_upload_story")
+    private BoolInt canUploadStory;
+
+    /**
+     * Information whether current user can upload video
+     */
+    @SerializedName("can_upload_video")
+    private BoolInt canUploadVideo;
+
+    @SerializedName("city")
+    private BaseObject city;
+
+    /**
+     * Number of community's clips
+     */
+    @SerializedName("clips_count")
+    private Integer clipsCount;
+
+    @SerializedName("contacts")
+    private List<ContactsItem> contacts;
+
+    @SerializedName("counters")
+    private CountersGroup counters;
+
+    @SerializedName("country")
+    private Country country;
+
+    @SerializedName("cover")
+    private OwnerCover cover;
+
+    /**
+     * Данные о точках, по которым вырезаны профильная и миниатюрная фотографии сообщества
+     */
+    @SerializedName("crop_photo")
+    private CropPhoto cropPhoto;
 
     /**
      * Information whether community is banned
@@ -84,10 +172,171 @@ public class CreateResponse implements Validable {
     private String deactivated;
 
     /**
-     * URL of square photo of the community with 50 pixels in width
+     * Community description
      */
-    @SerializedName("photo_50")
-    private URI photo50;
+    @SerializedName("description")
+    private String description;
+
+    /**
+     * Established date
+     */
+    @SerializedName("est_date")
+    private String estDate;
+
+    /**
+     * Finish date in Unixtime format
+     */
+    @SerializedName("finish_date")
+    private Integer finishDate;
+
+    /**
+     * Fixed post ID
+     */
+    @SerializedName("fixed_post")
+    private Integer fixedPost;
+
+    @SerializedName("has_group_channel")
+    private Boolean hasGroupChannel;
+
+    /**
+     * Information whether community has installed market app
+     */
+    @SerializedName("has_market_app")
+    private Boolean hasMarketApp;
+
+    /**
+     * Information whether community has photo
+     */
+    @SerializedName("has_photo")
+    private BoolInt hasPhoto;
+
+    @SerializedName("has_unseen_stories")
+    private Boolean hasUnseenStories;
+
+    /**
+     * Community ID
+     * Entity: groups
+     */
+    @SerializedName("id")
+    @Required
+    private Long id;
+
+    /**
+     * Inviter ID
+     */
+    @SerializedName("invited_by")
+    private Integer invitedBy;
+
+    /**
+     * Information whether current user is administrator
+     */
+    @SerializedName("is_admin")
+    private BoolInt isAdmin;
+
+    /**
+     * Information whether community is adult
+     */
+    @SerializedName("is_adult")
+    private BoolInt isAdult;
+
+    /**
+     * Information whether current user is advertiser
+     */
+    @SerializedName("is_advertiser")
+    private BoolInt isAdvertiser;
+
+    @SerializedName("is_closed")
+    private GroupIsClosed isClosed;
+
+    /**
+     * Information whether community is in faves
+     */
+    @SerializedName("is_favorite")
+    private BoolInt isFavorite;
+
+    /**
+     * Information whether community is hidden from current user's newsfeed
+     */
+    @SerializedName("is_hidden_from_feed")
+    private BoolInt isHiddenFromFeed;
+
+    /**
+     * Information whether current user is member
+     */
+    @SerializedName("is_member")
+    private BoolInt isMember;
+
+    /**
+     * Information whether community can send a message to current user
+     */
+    @SerializedName("is_messages_blocked")
+    private BoolInt isMessagesBlocked;
+
+    /**
+     * Information whether current user is subscribed
+     */
+    @SerializedName("is_subscribed")
+    private BoolInt isSubscribed;
+
+    /**
+     * Information whether current user is subscribed to podcasts
+     */
+    @SerializedName("is_subscribed_podcasts")
+    private Boolean isSubscribedPodcasts;
+
+    @SerializedName("is_video_live_notifications_blocked")
+    private BoolInt isVideoLiveNotificationsBlocked;
+
+    @SerializedName("links")
+    private List<LinksItem> links;
+
+    /**
+     * Live covers state
+     */
+    @SerializedName("live_covers")
+    private LiveCovers liveCovers;
+
+    /**
+     * Community's main photo album ID
+     */
+    @SerializedName("main_album_id")
+    private Integer mainAlbumId;
+
+    @SerializedName("main_section")
+    private GroupFullSection mainSection;
+
+    @SerializedName("market")
+    private MarketInfo market;
+
+    /**
+     * Current user's member status
+     */
+    @SerializedName("member_status")
+    private GroupFullMemberStatus memberStatus;
+
+    /**
+     * Community members number
+     */
+    @SerializedName("members_count")
+    private Integer membersCount;
+
+    /**
+     * Info about number of users in group
+     */
+    @SerializedName("members_count_text")
+    private String membersCountText;
+
+    /**
+     * Community name
+     */
+    @SerializedName("name")
+    private String name;
+
+    /**
+     * Status of replies in community messages
+     */
+    @SerializedName("online_status")
+    private OnlineStatus onlineStatus;
 
     /**
      * URL of square photo of the community with 100 pixels in width
@@ -120,6 +369,12 @@ public class CreateResponse implements Validable {
     private URI photo400Orig;
 
     /**
+     * URL of square photo of the community with 50 pixels in width
+     */
+    @SerializedName("photo_50")
+    private URI photo50;
+
+    /**
      * URL of square photo of the community with max pixels in width
      */
     @SerializedName("photo_max")
@@ -131,11 +386,8 @@ public class CreateResponse implements Validable {
     @SerializedName("photo_max_orig")
     private URI photoMaxOrig;
 
-    /**
-     * Established date
-     */
-    @SerializedName("est_date")
-    private String estDate;
+    @SerializedName("photo_max_size")
+    private PhotoSize photoMaxSize;
 
     /**
      * Public date label
@@ -143,66 +395,118 @@ public class CreateResponse implements Validable {
     @SerializedName("public_date_label")
     private String publicDateLabel;
 
-    @SerializedName("photo_max_size")
-    private PhotoSize photoMaxSize;
+    /**
+     * The number of incoming requests to the community
+     */
+    @SerializedName("requests_count")
+    private Integer requestsCount;
 
-    @SerializedName("is_video_live_notifications_blocked")
-    private BoolInt isVideoLiveNotificationsBlocked;
+    /**
+     * Domain of the community page
+     */
+    @SerializedName("screen_name")
+    private String screenName;
+
+    @SerializedName("secondary_section")
+    private GroupFullSection secondarySection;
+
+    /**
+     * Community's website
+     */
+    @SerializedName("site")
+    private String site;
+
+    /**
+     * Start date in Unixtime format
+     */
+    @SerializedName("start_date")
+    private Integer startDate;
+
+    /**
+     * Community status
+     */
+    @SerializedName("status")
+    private String status;
+
+    @SerializedName("status_audio")
+    private Audio statusAudio;
+
+    @SerializedName("stories_archive_count")
+    private Integer storiesArchiveCount;
+
+    /**
+     * Textlives number
+     */
+    @SerializedName("textlives_count")
+    private Integer textlivesCount;
+
+    /**
+     * Information whether the community has a "fire" pictogram.
+     */
+    @SerializedName("trending")
+    private BoolInt trending;
+
+    @SerializedName("type")
+    private GroupType type;
+
+    @SerializedName("using_vkpay_market_app")
+    private Boolean usingVkpayMarketApp;
+
+    /**
+     * Information whether community is verified
+     */
+    @SerializedName("verified")
+    private BoolInt verified;
 
     @SerializedName("video_live")
     private LiveInfo videoLive;
 
-    public Integer getId() {
-        return id;
+    /**
+     * Number of community's live streams
+     */
+    @SerializedName("video_live_count")
+    private Integer videoLiveCount;
+
+    /**
+     * Community level live streams achievements
+     */
+    @SerializedName("video_live_level")
+    private Integer videoLiveLevel;
+
+    /**
+     * Information about the status of video notifications for the current user.
+     */
+    @SerializedName("video_notifications_status")
+    private CreateResponseVideoNotificationsStatus videoNotificationsStatus;
+
+    /**
+     * Information about wall status in community
+     */
+    @SerializedName("wall")
+    private CreateResponseWall wall;
+
+    /**
+     * Community's main wiki page title
+     */
+    @SerializedName("wiki_page")
+    private String wikiPage;
+
+    public String getActivity() {
+        return activity;
     }
 
-    public CreateResponse setId(Integer id) {
-        this.id = id;
+    public CreateResponse setActivity(String activity) {
+        this.activity = activity;
         return this;
     }
 
-    public String getName() {
-        return name;
+    public AddressesInfo getAddresses() {
+        return addresses;
     }
 
-    public CreateResponse setName(String name) {
-        this.name = name;
+    public CreateResponse setAddresses(AddressesInfo addresses) {
+        this.addresses = addresses;
         return this;
-    }
-
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public CreateResponse setScreenName(String screenName) {
-        this.screenName = screenName;
-        return this;
-    }
-
-    public GroupIsClosed getIsClosed() {
-        return isClosed;
-    }
-
-    public CreateResponse setIsClosed(GroupIsClosed isClosed) {
-        this.isClosed = isClosed;
-        return this;
-    }
-
-    public GroupType getType() {
-        return type;
-    }
-
-    public CreateResponse setType(GroupType type) {
-        this.type = type;
-        return this;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin == BoolInt.YES;
-    }
-
-    public BoolInt getIsAdmin() {
-        return isAdmin;
     }
 
     public GroupAdminLevel getAdminLevel() {
@@ -214,37 +518,191 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public boolean isMember() {
-        return isMember == BoolInt.YES;
+    public GroupFullAgeLimits getAgeLimits() {
+        return ageLimits;
     }
 
-    public BoolInt getIsMember() {
-        return isMember;
-    }
-
-    public boolean isAdvertiser() {
-        return isAdvertiser == BoolInt.YES;
-    }
-
-    public BoolInt getIsAdvertiser() {
-        return isAdvertiser;
-    }
-
-    public Integer getStartDate() {
-        return startDate;
-    }
-
-    public CreateResponse setStartDate(Integer startDate) {
-        this.startDate = startDate;
+    public CreateResponse setAgeLimits(GroupFullAgeLimits ageLimits) {
+        this.ageLimits = ageLimits;
         return this;
     }
 
-    public Integer getFinishDate() {
-        return finishDate;
+    public GroupBanInfo getBanInfo() {
+        return banInfo;
     }
 
-    public CreateResponse setFinishDate(Integer finishDate) {
-        this.finishDate = finishDate;
+    public CreateResponse setBanInfo(GroupBanInfo banInfo) {
+        this.banInfo = banInfo;
+        return this;
+    }
+
+    public Boolean getCanCallToCommunity() {
+        return canCallToCommunity;
+    }
+
+    public CreateResponse setCanCallToCommunity(Boolean canCallToCommunity) {
+        this.canCallToCommunity = canCallToCommunity;
+        return this;
+    }
+
+    public boolean canCreateTopic() {
+        return canCreateTopic == BoolInt.YES;
+    }
+
+    public BoolInt getCanCreateTopic() {
+        return canCreateTopic;
+    }
+
+    public boolean canMessage() {
+        return canMessage == BoolInt.YES;
+    }
+
+    public BoolInt getCanMessage() {
+        return canMessage;
+    }
+
+    public boolean canPost() {
+        return canPost == BoolInt.YES;
+    }
+
+    public BoolInt getCanPost() {
+        return canPost;
+    }
+
+    public boolean canSeeAllPosts() {
+        return canSeeAllPosts == BoolInt.YES;
+    }
+
+    public BoolInt getCanSeeAllPosts() {
+        return canSeeAllPosts;
+    }
+
+    public boolean canSendNotify() {
+        return canSendNotify == BoolInt.YES;
+    }
+
+    public BoolInt getCanSendNotify() {
+        return canSendNotify;
+    }
+
+    public Boolean getCanSubscribePodcasts() {
+        return canSubscribePodcasts;
+    }
+
+    public CreateResponse setCanSubscribePodcasts(Boolean canSubscribePodcasts) {
+        this.canSubscribePodcasts = canSubscribePodcasts;
+        return this;
+    }
+
+    public Boolean getCanSubscribePosts() {
+        return canSubscribePosts;
+    }
+
+    public CreateResponse setCanSubscribePosts(Boolean canSubscribePosts) {
+        this.canSubscribePosts = canSubscribePosts;
+        return this;
+    }
+
+    public boolean canSuggest() {
+        return canSuggest == BoolInt.YES;
+    }
+
+    public BoolInt getCanSuggest() {
+        return canSuggest;
+    }
+
+    public boolean canUploadClip() {
+        return canUploadClip == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadClip() {
+        return canUploadClip;
+    }
+
+    public boolean canUploadDoc() {
+        return canUploadDoc == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadDoc() {
+        return canUploadDoc;
+    }
+
+    public boolean canUploadStory() {
+        return canUploadStory == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadStory() {
+        return canUploadStory;
+    }
+
+    public boolean canUploadVideo() {
+        return canUploadVideo == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadVideo() {
+        return canUploadVideo;
+    }
+
+    public BaseObject getCity() {
+        return city;
+    }
+
+    public CreateResponse setCity(BaseObject city) {
+        this.city = city;
+        return this;
+    }
+
+    public Integer getClipsCount() {
+        return clipsCount;
+    }
+
+    public CreateResponse setClipsCount(Integer clipsCount) {
+        this.clipsCount = clipsCount;
+        return this;
+    }
+
+    public List<ContactsItem> getContacts() {
+        return contacts;
+    }
+
+    public CreateResponse setContacts(List<ContactsItem> contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
+    public CountersGroup getCounters() {
+        return counters;
+    }
+
+    public CreateResponse setCounters(CountersGroup counters) {
+        this.counters = counters;
+        return this;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public CreateResponse setCountry(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public OwnerCover getCover() {
+        return cover;
+    }
+
+    public CreateResponse setCover(OwnerCover cover) {
+        this.cover = cover;
+        return this;
+    }
+
+    public CropPhoto getCropPhoto() {
+        return cropPhoto;
+    }
+
+    public CreateResponse setCropPhoto(CropPhoto cropPhoto) {
+        this.cropPhoto = cropPhoto;
         return this;
     }
 
@@ -257,12 +715,272 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public URI getPhoto50() {
-        return photo50;
+    public String getDescription() {
+        return description;
     }
 
-    public CreateResponse setPhoto50(URI photo50) {
-        this.photo50 = photo50;
+    public CreateResponse setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getEstDate() {
+        return estDate;
+    }
+
+    public CreateResponse setEstDate(String estDate) {
+        this.estDate = estDate;
+        return this;
+    }
+
+    public Integer getFinishDate() {
+        return finishDate;
+    }
+
+    public CreateResponse setFinishDate(Integer finishDate) {
+        this.finishDate = finishDate;
+        return this;
+    }
+
+    public Integer getFixedPost() {
+        return fixedPost;
+    }
+
+    public CreateResponse setFixedPost(Integer fixedPost) {
+        this.fixedPost = fixedPost;
+        return this;
+    }
+
+    public Boolean getHasGroupChannel() {
+        return hasGroupChannel;
+    }
+
+    public CreateResponse setHasGroupChannel(Boolean hasGroupChannel) {
+        this.hasGroupChannel = hasGroupChannel;
+        return this;
+    }
+
+    public Boolean getHasMarketApp() {
+        return hasMarketApp;
+    }
+
+    public CreateResponse setHasMarketApp(Boolean hasMarketApp) {
+        this.hasMarketApp = hasMarketApp;
+        return this;
+    }
+
+    public boolean isHasPhoto() {
+        return hasPhoto == BoolInt.YES;
+    }
+
+    public BoolInt getHasPhoto() {
+        return hasPhoto;
+    }
+
+    public Boolean getHasUnseenStories() {
+        return hasUnseenStories;
+    }
+
+    public CreateResponse setHasUnseenStories(Boolean hasUnseenStories) {
+        this.hasUnseenStories = hasUnseenStories;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CreateResponse setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getInvitedBy() {
+        return invitedBy;
+    }
+
+    public CreateResponse setInvitedBy(Integer invitedBy) {
+        this.invitedBy = invitedBy;
+        return this;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isAdult() {
+        return isAdult == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdult() {
+        return isAdult;
+    }
+
+    public boolean isAdvertiser() {
+        return isAdvertiser == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdvertiser() {
+        return isAdvertiser;
+    }
+
+    public GroupIsClosed getIsClosed() {
+        return isClosed;
+    }
+
+    public CreateResponse setIsClosed(GroupIsClosed isClosed) {
+        this.isClosed = isClosed;
+        return this;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite == BoolInt.YES;
+    }
+
+    public BoolInt getIsFavorite() {
+        return isFavorite;
+    }
+
+    public boolean isHiddenFromFeed() {
+        return isHiddenFromFeed == BoolInt.YES;
+    }
+
+    public BoolInt getIsHiddenFromFeed() {
+        return isHiddenFromFeed;
+    }
+
+    public boolean isMember() {
+        return isMember == BoolInt.YES;
+    }
+
+    public BoolInt getIsMember() {
+        return isMember;
+    }
+
+    public boolean isMessagesBlocked() {
+        return isMessagesBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsMessagesBlocked() {
+        return isMessagesBlocked;
+    }
+
+    public boolean isSubscribed() {
+        return isSubscribed == BoolInt.YES;
+    }
+
+    public BoolInt getIsSubscribed() {
+        return isSubscribed;
+    }
+
+    public Boolean getIsSubscribedPodcasts() {
+        return isSubscribedPodcasts;
+    }
+
+    public CreateResponse setIsSubscribedPodcasts(Boolean isSubscribedPodcasts) {
+        this.isSubscribedPodcasts = isSubscribedPodcasts;
+        return this;
+    }
+
+    public boolean isVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked;
+    }
+
+    public List<LinksItem> getLinks() {
+        return links;
+    }
+
+    public CreateResponse setLinks(List<LinksItem> links) {
+        this.links = links;
+        return this;
+    }
+
+    public LiveCovers getLiveCovers() {
+        return liveCovers;
+    }
+
+    public CreateResponse setLiveCovers(LiveCovers liveCovers) {
+        this.liveCovers = liveCovers;
+        return this;
+    }
+
+    public Integer getMainAlbumId() {
+        return mainAlbumId;
+    }
+
+    public CreateResponse setMainAlbumId(Integer mainAlbumId) {
+        this.mainAlbumId = mainAlbumId;
+        return this;
+    }
+
+    public GroupFullSection getMainSection() {
+        return mainSection;
+    }
+
+    public CreateResponse setMainSection(GroupFullSection mainSection) {
+        this.mainSection = mainSection;
+        return this;
+    }
+
+    public MarketInfo getMarket() {
+        return market;
+    }
+
+    public CreateResponse setMarket(MarketInfo market) {
+        this.market = market;
+        return this;
+    }
+
+    public GroupFullMemberStatus getMemberStatus() {
+        return memberStatus;
+    }
+
+    public CreateResponse setMemberStatus(GroupFullMemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+        return this;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public CreateResponse setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
+    }
+
+    public String getMembersCountText() {
+        return membersCountText;
+    }
+
+    public CreateResponse setMembersCountText(String membersCountText) {
+        this.membersCountText = membersCountText;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public CreateResponse setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public OnlineStatus getOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public CreateResponse setOnlineStatus(OnlineStatus onlineStatus) {
+        this.onlineStatus = onlineStatus;
         return this;
     }
 
@@ -311,6 +1029,15 @@ public class CreateResponse implements Validable {
         return this;
     }
 
+    public URI getPhoto50() {
+        return photo50;
+    }
+
+    public CreateResponse setPhoto50(URI photo50) {
+        this.photo50 = photo50;
+        return this;
+    }
+
     public URI getPhotoMax() {
         return photoMax;
     }
@@ -329,12 +1056,12 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public String getEstDate() {
-        return estDate;
+    public PhotoSize getPhotoMaxSize() {
+        return photoMaxSize;
     }
 
-    public CreateResponse setEstDate(String estDate) {
-        this.estDate = estDate;
+    public CreateResponse setPhotoMaxSize(PhotoSize photoMaxSize) {
+        this.photoMaxSize = photoMaxSize;
         return this;
     }
 
@@ -347,21 +1074,119 @@ public class CreateResponse implements Validable {
         return this;
     }
 
-    public PhotoSize getPhotoMaxSize() {
-        return photoMaxSize;
+    public Integer getRequestsCount() {
+        return requestsCount;
     }
 
-    public CreateResponse setPhotoMaxSize(PhotoSize photoMaxSize) {
-        this.photoMaxSize = photoMaxSize;
+    public CreateResponse setRequestsCount(Integer requestsCount) {
+        this.requestsCount = requestsCount;
         return this;
     }
 
-    public boolean isVideoLiveNotificationsBlocked() {
-        return isVideoLiveNotificationsBlocked == BoolInt.YES;
+    public String getScreenName() {
+        return screenName;
     }
 
-    public BoolInt getIsVideoLiveNotificationsBlocked() {
-        return isVideoLiveNotificationsBlocked;
+    public CreateResponse setScreenName(String screenName) {
+        this.screenName = screenName;
+        return this;
+    }
+
+    public GroupFullSection getSecondarySection() {
+        return secondarySection;
+    }
+
+    public CreateResponse setSecondarySection(GroupFullSection secondarySection) {
+        this.secondarySection = secondarySection;
+        return this;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public CreateResponse setSite(String site) {
+        this.site = site;
+        return this;
+    }
+
+    public Integer getStartDate() {
+        return startDate;
+    }
+
+    public CreateResponse setStartDate(Integer startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public CreateResponse setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public Audio getStatusAudio() {
+        return statusAudio;
+    }
+
+    public CreateResponse setStatusAudio(Audio statusAudio) {
+        this.statusAudio = statusAudio;
+        return this;
+    }
+
+    public Integer getStoriesArchiveCount() {
+        return storiesArchiveCount;
+    }
+
+    public CreateResponse setStoriesArchiveCount(Integer storiesArchiveCount) {
+        this.storiesArchiveCount = storiesArchiveCount;
+        return this;
+    }
+
+    public Integer getTextlivesCount() {
+        return textlivesCount;
+    }
+
+    public CreateResponse setTextlivesCount(Integer textlivesCount) {
+        this.textlivesCount = textlivesCount;
+        return this;
+    }
+
+    public boolean isTrending() {
+        return trending == BoolInt.YES;
+    }
+
+    public BoolInt getTrending() {
+        return trending;
+    }
+
+    public GroupType getType() {
+        return type;
+    }
+
+    public CreateResponse setType(GroupType type) {
+        this.type = type;
+        return this;
+    }
+
+    public Boolean getUsingVkpayMarketApp() {
+        return usingVkpayMarketApp;
+    }
+
+    public CreateResponse setUsingVkpayMarketApp(Boolean usingVkpayMarketApp) {
+        this.usingVkpayMarketApp = usingVkpayMarketApp;
+        return this;
+    }
+
+    public boolean isVerified() {
+        return verified == BoolInt.YES;
+    }
+
+    public BoolInt getVerified() {
+        return verified;
     }
 
     public LiveInfo getVideoLive() {
@@ -373,9 +1198,55 @@ public class CreateResponse implements Validable {
         return this;
     }
 
+    public Integer getVideoLiveCount() {
+        return videoLiveCount;
+    }
+
+    public CreateResponse setVideoLiveCount(Integer videoLiveCount) {
+        this.videoLiveCount = videoLiveCount;
+        return this;
+    }
+
+    public Integer getVideoLiveLevel() {
+        return videoLiveLevel;
+    }
+
+    public CreateResponse setVideoLiveLevel(Integer videoLiveLevel) {
+        this.videoLiveLevel = videoLiveLevel;
+        return this;
+    }
+
+    public CreateResponseVideoNotificationsStatus getVideoNotificationsStatus() {
+        return videoNotificationsStatus;
+    }
+
+    public CreateResponse setVideoNotificationsStatus(
+            CreateResponseVideoNotificationsStatus videoNotificationsStatus) {
+        this.videoNotificationsStatus = videoNotificationsStatus;
+        return this;
+    }
+
+    public CreateResponseWall getWall() {
+        return wall;
+    }
+
+    public CreateResponse setWall(CreateResponseWall wall) {
+        this.wall = wall;
+        return this;
+    }
+
+    public String getWikiPage() {
+        return wikiPage;
+    }
+
+    public CreateResponse setWikiPage(String wikiPage) {
+        this.wikiPage = wikiPage;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(estDate, isAdvertiser, adminLevel, photo50, photo400, screenName, photo200, isMember, type, deactivated, publicDateLabel, photoMaxSize, photoMaxOrig, photoMax, id, isVideoLiveNotificationsBlocked, videoLive, photo200Orig, isAdmin, photo100, isClosed, photo400Orig, name, finishDate, startDate);
+        return Objects.hash(trending, country, canSubscribePosts, addresses, canCreateTopic, invitedBy, adminLevel, banInfo, onlineStatus, videoNotificationsStatus, screenName, isMember, type, deactivated, cover, mainAlbumId, isSubscribed, canUploadVideo, photoMaxOrig, hasUnseenStories, storiesArchiveCount, links, id, membersCount, counters, requestsCount, canSeeAllPosts, canSuggest, isAdmin, canMessage, market, videoLiveCount, canUploadDoc, canSubscribePodcasts, hasPhoto, hasGroupChannel, photo400Orig, name, fixedPost, canCallToCommunity, isHiddenFromFeed, startDate, statusAudio, status, isFavorite, wikiPage, estDate, mainSection, isAdvertiser, activity, city, cropPhoto, isSubscribedPodcasts, photo50, description, memberStatus, photo400, photo200, canSendNotify, videoLiveLevel, publicDateLabel, clipsCount, hasMarketApp, textlivesCount, canPost, photoMaxSize, photoMax, isAdult, isMessagesBlocked, isVideoLiveNotificationsBlocked, videoLive, verified, photo200Orig, secondarySection, canUploadClip, ageLimits, membersCountText, site, photo100, isClosed, finishDate, usingVkpayMarketApp, liveCovers, wall, canUploadStory, contacts);
     }
 
     @Override
@@ -383,31 +1254,92 @@ public class CreateResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CreateResponse createResponse = (CreateResponse) o;
-        return Objects.equals(photo50, createResponse.photo50) &&
+        return Objects.equals(canCallToCommunity, createResponse.canCallToCommunity) &&
+                Objects.equals(trending, createResponse.trending) &&
+                Objects.equals(canUploadStory, createResponse.canUploadStory) &&
+                Objects.equals(country, createResponse.country) &&
+                Objects.equals(requestsCount, createResponse.requestsCount) &&
+                Objects.equals(addresses, createResponse.addresses) &&
+                Objects.equals(textlivesCount, createResponse.textlivesCount) &&
+                Objects.equals(hasUnseenStories, createResponse.hasUnseenStories) &&
                 Objects.equals(type, createResponse.type) &&
+                Objects.equals(statusAudio, createResponse.statusAudio) &&
                 Objects.equals(deactivated, createResponse.deactivated) &&
+                Objects.equals(mainSection, createResponse.mainSection) &&
+                Objects.equals(isAdult, createResponse.isAdult) &&
+                Objects.equals(cover, createResponse.cover) &&
                 Objects.equals(isAdmin, createResponse.isAdmin) &&
-                Objects.equals(photoMaxOrig, createResponse.photoMaxOrig) &&
+                Objects.equals(storiesArchiveCount, createResponse.storiesArchiveCount) &&
                 Objects.equals(photoMaxSize, createResponse.photoMaxSize) &&
-                Objects.equals(screenName, createResponse.screenName) &&
-                Objects.equals(isAdvertiser, createResponse.isAdvertiser) &&
+                Objects.equals(canSubscribePodcasts, createResponse.canSubscribePodcasts) &&
                 Objects.equals(finishDate, createResponse.finishDate) &&
+                Objects.equals(screenName, createResponse.screenName) &&
                 Objects.equals(adminLevel, createResponse.adminLevel) &&
-                Objects.equals(estDate, createResponse.estDate) &&
+                Objects.equals(links, createResponse.links) &&
+                Objects.equals(canSeeAllPosts, createResponse.canSeeAllPosts) &&
                 Objects.equals(id, createResponse.id) &&
                 Objects.equals(photo100, createResponse.photo100) &&
-                Objects.equals(photo200, createResponse.photo200) &&
+                Objects.equals(mainAlbumId, createResponse.mainAlbumId) &&
                 Objects.equals(isClosed, createResponse.isClosed) &&
-                Objects.equals(startDate, createResponse.startDate) &&
-                Objects.equals(photo400, createResponse.photo400) &&
-                Objects.equals(isVideoLiveNotificationsBlocked, createResponse.isVideoLiveNotificationsBlocked) &&
+                Objects.equals(isMessagesBlocked, createResponse.isMessagesBlocked) &&
+                Objects.equals(canUploadVideo, createResponse.canUploadVideo) &&
+                Objects.equals(counters, createResponse.counters) &&
                 Objects.equals(isMember, createResponse.isMember) &&
+                Objects.equals(videoLiveCount, createResponse.videoLiveCount) &&
                 Objects.equals(publicDateLabel, createResponse.publicDateLabel) &&
                 Objects.equals(photoMax, createResponse.photoMax) &&
+                Objects.equals(market, createResponse.market) &&
+                Objects.equals(ageLimits, createResponse.ageLimits) &&
+                Objects.equals(isSubscribedPodcasts, createResponse.isSubscribedPodcasts) &&
                 Objects.equals(name, createResponse.name) &&
+                Objects.equals(isSubscribed, createResponse.isSubscribed) &&
+                Objects.equals(membersCount, createResponse.membersCount) &&
                 Objects.equals(videoLive, createResponse.videoLive) &&
+                Objects.equals(canSuggest, createResponse.canSuggest) &&
                 Objects.equals(photo200Orig, createResponse.photo200Orig) &&
-                Objects.equals(photo400Orig, createResponse.photo400Orig);
+                Objects.equals(photo400Orig, createResponse.photo400Orig) &&
+                Objects.equals(canMessage, createResponse.canMessage) &&
+                Objects.equals(status, createResponse.status) &&
+                Objects.equals(wikiPage, createResponse.wikiPage) &&
+                Objects.equals(canCreateTopic, createResponse.canCreateTopic) &&
+                Objects.equals(clipsCount, createResponse.clipsCount) &&
+                Objects.equals(fixedPost, createResponse.fixedPost) &&
+                Objects.equals(isFavorite, createResponse.isFavorite) &&
+                Objects.equals(activity, createResponse.activity) &&
+                Objects.equals(photo50, createResponse.photo50) &&
+                Objects.equals(city, createResponse.city) &&
+                Objects.equals(canSubscribePosts, createResponse.canSubscribePosts) &&
+                Objects.equals(description, createResponse.description) &&
+                Objects.equals(membersCountText, createResponse.membersCountText) &&
+                Objects.equals(banInfo, createResponse.banInfo) &&
+                Objects.equals(hasPhoto, createResponse.hasPhoto) &&
+                Objects.equals(canUploadClip, createResponse.canUploadClip) &&
+                Objects.equals(photoMaxOrig, createResponse.photoMaxOrig) &&
+                Objects.equals(isAdvertiser, createResponse.isAdvertiser) &&
+                Objects.equals(canSendNotify, createResponse.canSendNotify) &&
+                Objects.equals(memberStatus, createResponse.memberStatus) &&
+                Objects.equals(estDate, createResponse.estDate) &&
+                Objects.equals(isHiddenFromFeed, createResponse.isHiddenFromFeed) &&
+                Objects.equals(canPost, createResponse.canPost) &&
+                Objects.equals(photo200, createResponse.photo200) &&
+                Objects.equals(usingVkpayMarketApp, createResponse.usingVkpayMarketApp) &&
+                Objects.equals(secondarySection, createResponse.secondarySection) &&
+                Objects.equals(photo400, createResponse.photo400) &&
+                Objects.equals(startDate, createResponse.startDate) &&
+                Objects.equals(hasGroupChannel, createResponse.hasGroupChannel) &&
+                Objects.equals(liveCovers, createResponse.liveCovers) &&
+                Objects.equals(isVideoLiveNotificationsBlocked, createResponse.isVideoLiveNotificationsBlocked) &&
+                Objects.equals(hasMarketApp, createResponse.hasMarketApp) &&
+                Objects.equals(onlineStatus, createResponse.onlineStatus) &&
+                Objects.equals(verified, createResponse.verified) &&
+                Objects.equals(videoLiveLevel, createResponse.videoLiveLevel) &&
+                Objects.equals(invitedBy, createResponse.invitedBy) &&
+                Objects.equals(canUploadDoc, createResponse.canUploadDoc) &&
+                Objects.equals(site, createResponse.site) &&
+                Objects.equals(cropPhoto, createResponse.cropPhoto) &&
+                Objects.equals(videoNotificationsStatus, createResponse.videoNotificationsStatus) &&
+                Objects.equals(wall, createResponse.wall) &&
+                Objects.equals(contacts, createResponse.contacts);
     }
 
     @Override
@@ -418,31 +1350,92 @@ public class CreateResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CreateResponse{");
-        sb.append("photo50=").append(photo50);
+        sb.append("canCallToCommunity=").append(canCallToCommunity);
+        sb.append(", trending=").append(trending);
+        sb.append(", canUploadStory=").append(canUploadStory);
+        sb.append(", country=").append(country);
+        sb.append(", requestsCount=").append(requestsCount);
+        sb.append(", addresses=").append(addresses);
+        sb.append(", textlivesCount=").append(textlivesCount);
+        sb.append(", hasUnseenStories=").append(hasUnseenStories);
         sb.append(", type=").append(type);
+        sb.append(", statusAudio=").append(statusAudio);
         sb.append(", deactivated='").append(deactivated).append("'");
+        sb.append(", mainSection=").append(mainSection);
+        sb.append(", isAdult=").append(isAdult);
+        sb.append(", cover=").append(cover);
         sb.append(", isAdmin=").append(isAdmin);
-        sb.append(", photoMaxOrig=").append(photoMaxOrig);
+        sb.append(", storiesArchiveCount=").append(storiesArchiveCount);
         sb.append(", photoMaxSize=").append(photoMaxSize);
-        sb.append(", screenName='").append(screenName).append("'");
-        sb.append(", isAdvertiser=").append(isAdvertiser);
+        sb.append(", canSubscribePodcasts=").append(canSubscribePodcasts);
         sb.append(", finishDate=").append(finishDate);
+        sb.append(", screenName='").append(screenName).append("'");
         sb.append(", adminLevel=").append(adminLevel);
-        sb.append(", estDate='").append(estDate).append("'");
+        sb.append(", links=").append(links);
+        sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
         sb.append(", id=").append(id);
         sb.append(", photo100=").append(photo100);
-        sb.append(", photo200=").append(photo200);
+        sb.append(", mainAlbumId=").append(mainAlbumId);
         sb.append(", isClosed=").append(isClosed);
-        sb.append(", startDate=").append(startDate);
-        sb.append(", photo400=").append(photo400);
-        sb.append(", isVideoLiveNotificationsBlocked=").append(isVideoLiveNotificationsBlocked);
+        sb.append(", isMessagesBlocked=").append(isMessagesBlocked);
+        sb.append(", canUploadVideo=").append(canUploadVideo);
+        sb.append(", counters=").append(counters);
         sb.append(", isMember=").append(isMember);
+        sb.append(", videoLiveCount=").append(videoLiveCount);
         sb.append(", publicDateLabel='").append(publicDateLabel).append("'");
         sb.append(", photoMax=").append(photoMax);
+        sb.append(", market=").append(market);
+        sb.append(", ageLimits=").append(ageLimits);
+        sb.append(", isSubscribedPodcasts=").append(isSubscribedPodcasts);
         sb.append(", name='").append(name).append("'");
+        sb.append(", isSubscribed=").append(isSubscribed);
+        sb.append(", membersCount=").append(membersCount);
         sb.append(", videoLive=").append(videoLive);
+        sb.append(", canSuggest=").append(canSuggest);
         sb.append(", photo200Orig=").append(photo200Orig);
         sb.append(", photo400Orig=").append(photo400Orig);
+        sb.append(", canMessage=").append(canMessage);
+        sb.append(", status='").append(status).append("'");
+        sb.append(", wikiPage='").append(wikiPage).append("'");
+        sb.append(", canCreateTopic=").append(canCreateTopic);
+        sb.append(", clipsCount=").append(clipsCount);
+        sb.append(", fixedPost=").append(fixedPost);
+        sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", activity='").append(activity).append("'");
+        sb.append(", photo50=").append(photo50);
+        sb.append(", city=").append(city);
+        sb.append(", canSubscribePosts=").append(canSubscribePosts);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", membersCountText='").append(membersCountText).append("'");
+        sb.append(", banInfo=").append(banInfo);
+        sb.append(", hasPhoto=").append(hasPhoto);
+        sb.append(", canUploadClip=").append(canUploadClip);
+        sb.append(", photoMaxOrig=").append(photoMaxOrig);
+        sb.append(", isAdvertiser=").append(isAdvertiser);
+        sb.append(", canSendNotify=").append(canSendNotify);
+        sb.append(", memberStatus=").append(memberStatus);
+        sb.append(", estDate='").append(estDate).append("'");
+        sb.append(", isHiddenFromFeed=").append(isHiddenFromFeed);
+        sb.append(", canPost=").append(canPost);
+        sb.append(", photo200=").append(photo200);
+        sb.append(", usingVkpayMarketApp=").append(usingVkpayMarketApp);
+        sb.append(", secondarySection=").append(secondarySection);
+        sb.append(", photo400=").append(photo400);
+        sb.append(", startDate=").append(startDate);
+        sb.append(", hasGroupChannel=").append(hasGroupChannel);
+        sb.append(", liveCovers=").append(liveCovers);
+        sb.append(", isVideoLiveNotificationsBlocked=").append(isVideoLiveNotificationsBlocked);
+        sb.append(", hasMarketApp=").append(hasMarketApp);
+        sb.append(", onlineStatus=").append(onlineStatus);
+        sb.append(", verified=").append(verified);
+        sb.append(", videoLiveLevel=").append(videoLiveLevel);
+        sb.append(", invitedBy=").append(invitedBy);
+        sb.append(", canUploadDoc=").append(canUploadDoc);
+        sb.append(", site='").append(site).append("'");
+        sb.append(", cropPhoto=").append(cropPhoto);
+        sb.append(", videoNotificationsStatus='").append(videoNotificationsStatus).append("'");
+        sb.append(", wall=").append(wall);
+        sb.append(", contacts=").append(contacts);
         sb.append('}');
         return sb.toString();
     }

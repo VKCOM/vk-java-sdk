@@ -11,27 +11,27 @@ import java.util.Objects;
  * WallCommentDelete object
  */
 public class WallCommentDelete implements Validable {
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
     @SerializedName("id")
     @Required
     private Integer id;
 
-    @SerializedName("user_id")
-    private Integer userId;
+    /**
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
 
     @SerializedName("post_id")
+    @Required
     private Integer postId;
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public WallCommentDelete setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Integer getId() {
         return id;
@@ -42,12 +42,12 @@ public class WallCommentDelete implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Long getOwnerId() {
+        return ownerId;
     }
 
-    public WallCommentDelete setUserId(Integer userId) {
-        this.userId = userId;
+    public WallCommentDelete setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
         return this;
     }
 
@@ -57,6 +57,15 @@ public class WallCommentDelete implements Validable {
 
     public WallCommentDelete setPostId(Integer postId) {
         this.postId = postId;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public WallCommentDelete setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

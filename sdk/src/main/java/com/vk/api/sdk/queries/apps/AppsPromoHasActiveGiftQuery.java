@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,30 +15,53 @@ import java.util.List;
  */
 public class AppsPromoHasActiveGiftQuery extends AbstractQueryBuilder<AppsPromoHasActiveGiftQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param promoId value of "promo id" parameter. Minimum is 0.
      */
-    public AppsPromoHasActiveGiftQuery(VkApiClient client, UserActor actor, int promoId) {
+    public AppsPromoHasActiveGiftQuery(VkApiClient client, UserActor actor, Integer promoId) {
         super(client, "apps.promoHasActiveGift", BoolResponse.class);
         accessToken(actor.getAccessToken());
         promoId(promoId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppsPromoHasActiveGiftQuery(VkApiClient client, UserActor actor) {
+        super(client, "apps.promoHasActiveGift", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param promoId value of "promo id" parameter. Minimum is 0.
      */
-    public AppsPromoHasActiveGiftQuery(VkApiClient client, ServiceActor actor, int promoId) {
+    public AppsPromoHasActiveGiftQuery(VkApiClient client, ServiceActor actor, Integer promoId) {
         super(client, "apps.promoHasActiveGift", BoolResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
         promoId(promoId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppsPromoHasActiveGiftQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "apps.promoHasActiveGift", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
     }
 
     /**
@@ -46,17 +70,20 @@ public class AppsPromoHasActiveGiftQuery extends AbstractQueryBuilder<AppsPromoH
      * @param value value of "promo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsPromoHasActiveGiftQuery promoId(int value) {
+    @ApiParam("promo_id")
+    public AppsPromoHasActiveGiftQuery promoId(Integer value) {
         return unsafeParam("promo_id", value);
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsPromoHasActiveGiftQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public AppsPromoHasActiveGiftQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 

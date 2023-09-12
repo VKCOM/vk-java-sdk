@@ -41,6 +41,7 @@ public class WidgetComment implements Validable {
      * Comment author ID
      */
     @SerializedName("from_id")
+    @Required
     private Integer fromId;
 
     /**
@@ -50,11 +51,24 @@ public class WidgetComment implements Validable {
     @Required
     private Integer id;
 
+    /**
+     * Information whether the post in favorites list
+     */
+    @SerializedName("is_favorite")
+    private BoolInt isFavorite;
+
     @SerializedName("likes")
     private LikesInfo likes;
 
     @SerializedName("media")
     private CommentMedia media;
+
+    /**
+     * Wall owner's ID
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    private Long ownerId;
 
     @SerializedName("post_source")
     private PostSource postSource;
@@ -63,10 +77,17 @@ public class WidgetComment implements Validable {
      * Post type
      */
     @SerializedName("post_type")
-    private Integer postType;
+    @Required
+    private String postType;
 
     @SerializedName("reposts")
     private RepostsInfo reposts;
+
+    /**
+     * Preview length control parameter
+     */
+    @SerializedName("short_text_rate")
+    private Number shortTextRate;
 
     /**
      * Comment text
@@ -79,6 +100,7 @@ public class WidgetComment implements Validable {
      * Wall owner
      */
     @SerializedName("to_id")
+    @Required
     private Integer toId;
 
     @SerializedName("user")
@@ -137,6 +159,14 @@ public class WidgetComment implements Validable {
         return this;
     }
 
+    public boolean isFavorite() {
+        return isFavorite == BoolInt.YES;
+    }
+
+    public BoolInt getIsFavorite() {
+        return isFavorite;
+    }
+
     public LikesInfo getLikes() {
         return likes;
     }
@@ -155,6 +185,15 @@ public class WidgetComment implements Validable {
         return this;
     }
 
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public WidgetComment setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
     public PostSource getPostSource() {
         return postSource;
     }
@@ -164,11 +203,11 @@ public class WidgetComment implements Validable {
         return this;
     }
 
-    public Integer getPostType() {
+    public String getPostType() {
         return postType;
     }
 
-    public WidgetComment setPostType(Integer postType) {
+    public WidgetComment setPostType(String postType) {
         this.postType = postType;
         return this;
     }
@@ -179,6 +218,15 @@ public class WidgetComment implements Validable {
 
     public WidgetComment setReposts(RepostsInfo reposts) {
         this.reposts = reposts;
+        return this;
+    }
+
+    public Number getShortTextRate() {
+        return shortTextRate;
+    }
+
+    public WidgetComment setShortTextRate(Number shortTextRate) {
+        this.shortTextRate = shortTextRate;
         return this;
     }
 
@@ -211,7 +259,7 @@ public class WidgetComment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, toId, attachments, comments, postType, postSource, media, fromId, canDelete, id, text, user, reposts, likes);
+        return Objects.hash(date, toId, attachments, comments, postType, shortTextRate, postSource, media, ownerId, fromId, canDelete, id, text, user, reposts, isFavorite, likes);
     }
 
     @Override
@@ -223,8 +271,11 @@ public class WidgetComment implements Validable {
                 Objects.equals(attachments, widgetComment.attachments) &&
                 Objects.equals(comments, widgetComment.comments) &&
                 Objects.equals(fromId, widgetComment.fromId) &&
+                Objects.equals(isFavorite, widgetComment.isFavorite) &&
+                Objects.equals(ownerId, widgetComment.ownerId) &&
                 Objects.equals(toId, widgetComment.toId) &&
                 Objects.equals(media, widgetComment.media) &&
+                Objects.equals(shortTextRate, widgetComment.shortTextRate) &&
                 Objects.equals(canDelete, widgetComment.canDelete) &&
                 Objects.equals(postSource, widgetComment.postSource) &&
                 Objects.equals(postType, widgetComment.postType) &&
@@ -247,11 +298,14 @@ public class WidgetComment implements Validable {
         sb.append(", attachments=").append(attachments);
         sb.append(", comments=").append(comments);
         sb.append(", fromId=").append(fromId);
+        sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", toId=").append(toId);
         sb.append(", media=").append(media);
+        sb.append(", shortTextRate=").append(shortTextRate);
         sb.append(", canDelete=").append(canDelete);
         sb.append(", postSource=").append(postSource);
-        sb.append(", postType=").append(postType);
+        sb.append(", postType='").append(postType).append("'");
         sb.append(", id=").append(id);
         sb.append(", text='").append(text).append("'");
         sb.append(", user=").append(user);

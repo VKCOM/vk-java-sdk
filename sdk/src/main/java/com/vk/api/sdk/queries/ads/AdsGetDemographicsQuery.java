@@ -8,6 +8,7 @@ import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.GetDemographicsIdsType;
 import com.vk.api.sdk.objects.ads.GetDemographicsPeriod;
 import com.vk.api.sdk.objects.ads.responses.GetDemographicsResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemographicsQuery, List<GetDemographicsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param dateFrom value of "date from" parameter.
      * @param dateTo value of "date to" parameter.
      */
-    public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsGetDemographicsQuery(VkApiClient client, UserActor actor, Integer accountId,
             GetDemographicsIdsType idsType, String ids, GetDemographicsPeriod period,
             String dateFrom, String dateTo) {
         super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, GetDemographicsResponse.class));
@@ -41,22 +42,35 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetDemographicsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getDemographics", Utils.buildParametrizedType(List.class, GetDemographicsResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetDemographicsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
     /**
-     * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
+     * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery idsType(GetDemographicsIdsType value) {
+    @ApiParam("ids_type")
+    public AdsGetDemographicsQuery idsType(GetDemographicsIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -66,37 +80,41 @@ public class AdsGetDemographicsQuery extends AbstractQueryBuilder<AdsGetDemograp
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery ids(String value) {
+    @ApiParam("ids")
+    public AdsGetDemographicsQuery ids(String value) {
         return unsafeParam("ids", value);
     }
 
     /**
-     * Data grouping by dates: *day — statistics by days,, *month — statistics by months,, *overall — overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
+     * Data grouping by dates: *day - statistics by days,, *month - statistics by months,, *overall - overall statistics. 'date_from' and 'date_to' parameters set temporary limits.
      *
      * @param value value of "period" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery period(GetDemographicsPeriod value) {
+    @ApiParam("period")
+    public AdsGetDemographicsQuery period(GetDemographicsPeriod value) {
         return unsafeParam("period", value);
     }
 
     /**
-     * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — day it was created on,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — month it was created in,, *overall: 0.
+     * Date to show statistics from. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - day it was created on,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - month it was created in,, *overall: 0.
      *
      * @param value value of "date from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery dateFrom(String value) {
+    @ApiParam("date_from")
+    public AdsGetDemographicsQuery dateFrom(String value) {
         return unsafeParam("date_from", value);
     }
 
     /**
-     * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
+     * Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 - September 27, 2011, **0 - current day,, *month: YYYY-MM, example: 2011-09 - September 2011, **0 - current month,, *overall: 0.
      *
      * @param value value of "date to" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetDemographicsQuery dateTo(String value) {
+    @ApiParam("date_to")
+    public AdsGetDemographicsQuery dateTo(String value) {
         return unsafeParam("date_to", value);
     }
 

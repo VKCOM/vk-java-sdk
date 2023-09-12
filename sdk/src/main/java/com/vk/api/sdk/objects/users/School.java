@@ -23,6 +23,12 @@ public class School implements Validable {
     private String className;
 
     /**
+     * School class id
+     */
+    @SerializedName("class_id")
+    private Integer classId;
+
+    /**
      * Country ID
      */
     @SerializedName("country")
@@ -39,6 +45,9 @@ public class School implements Validable {
      */
     @SerializedName("name")
     private String name;
+
+    @SerializedName("speciality")
+    private String speciality;
 
     /**
      * School type ID
@@ -70,9 +79,6 @@ public class School implements Validable {
     @SerializedName("year_to")
     private Integer yearTo;
 
-    @SerializedName("speciality")
-    private String speciality;
-
     public Integer getCity() {
         return city;
     }
@@ -88,6 +94,15 @@ public class School implements Validable {
 
     public School setClassName(String className) {
         this.className = className;
+        return this;
+    }
+
+    public Integer getClassId() {
+        return classId;
+    }
+
+    public School setClassId(Integer classId) {
+        this.classId = classId;
         return this;
     }
 
@@ -115,6 +130,15 @@ public class School implements Validable {
 
     public School setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public School setSpeciality(String speciality) {
+        this.speciality = speciality;
         return this;
     }
 
@@ -163,18 +187,9 @@ public class School implements Validable {
         return this;
     }
 
-    public String getSpeciality() {
-        return speciality;
-    }
-
-    public School setSpeciality(String speciality) {
-        this.speciality = speciality;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(country, speciality, typeStr, city, yearFrom, name, className, id, yearGraduated, type, yearTo);
+        return Objects.hash(country, speciality, typeStr, classId, city, yearFrom, name, className, id, yearGraduated, type, yearTo);
     }
 
     @Override
@@ -186,6 +201,7 @@ public class School implements Validable {
                 Objects.equals(speciality, school.speciality) &&
                 Objects.equals(yearFrom, school.yearFrom) &&
                 Objects.equals(city, school.city) &&
+                Objects.equals(classId, school.classId) &&
                 Objects.equals(name, school.name) &&
                 Objects.equals(typeStr, school.typeStr) &&
                 Objects.equals(yearTo, school.yearTo) &&
@@ -207,6 +223,7 @@ public class School implements Validable {
         sb.append(", speciality='").append(speciality).append("'");
         sb.append(", yearFrom=").append(yearFrom);
         sb.append(", city=").append(city);
+        sb.append(", classId=").append(classId);
         sb.append(", name='").append(name).append("'");
         sb.append(", typeStr='").append(typeStr).append("'");
         sb.append(", yearTo=").append(yearTo);

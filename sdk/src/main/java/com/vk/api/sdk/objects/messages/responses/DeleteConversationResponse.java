@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,6 +15,7 @@ public class DeleteConversationResponse implements Validable {
      * Id of the last message, that was deleted
      */
     @SerializedName("last_deleted_id")
+    @Required
     private Integer lastDeletedId;
 
     public Integer getLastDeletedId() {

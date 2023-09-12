@@ -11,6 +11,9 @@ import java.util.Objects;
  * UserMin object
  */
 public class UserMin implements Validable {
+    @SerializedName("can_access_closed")
+    private Boolean canAccessClosed;
+
     /**
      * Returns if a profile is deleted or blocked
      */
@@ -31,10 +34,14 @@ public class UserMin implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private Long id;
+
+    @SerializedName("is_closed")
+    private Boolean isClosed;
 
     /**
      * User last name
@@ -42,11 +49,14 @@ public class UserMin implements Validable {
     @SerializedName("last_name")
     private String lastName;
 
-    @SerializedName("can_access_closed")
-    private Boolean canAccessClosed;
+    public Boolean getCanAccessClosed() {
+        return canAccessClosed;
+    }
 
-    @SerializedName("is_closed")
-    private Boolean isClosed;
+    public UserMin setCanAccessClosed(Boolean canAccessClosed) {
+        this.canAccessClosed = canAccessClosed;
+        return this;
+    }
 
     public String getDeactivated() {
         return deactivated;
@@ -75,30 +85,12 @@ public class UserMin implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public UserMin setId(Integer id) {
+    public UserMin setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserMin setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public Boolean getCanAccessClosed() {
-        return canAccessClosed;
-    }
-
-    public UserMin setCanAccessClosed(Boolean canAccessClosed) {
-        this.canAccessClosed = canAccessClosed;
         return this;
     }
 
@@ -108,6 +100,15 @@ public class UserMin implements Validable {
 
     public UserMin setIsClosed(Boolean isClosed) {
         this.isClosed = isClosed;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserMin setLastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 

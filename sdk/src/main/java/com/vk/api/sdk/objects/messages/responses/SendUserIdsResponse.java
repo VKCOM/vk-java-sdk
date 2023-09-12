@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.MessageError;
 import java.util.Objects;
 
@@ -11,35 +12,22 @@ import java.util.Objects;
  * SendUserIdsResponse object
  */
 public class SendUserIdsResponse implements Validable {
-    @SerializedName("peer_id")
-    private Integer peerId;
-
-    @SerializedName("message_id")
-    private Integer messageId;
-
     @SerializedName("conversation_message_id")
     private Integer conversationMessageId;
 
     @SerializedName("error")
     private MessageError error;
 
-    public Integer getPeerId() {
-        return peerId;
-    }
+    @SerializedName("message_id")
+    @Required
+    private Integer messageId;
 
-    public SendUserIdsResponse setPeerId(Integer peerId) {
-        this.peerId = peerId;
-        return this;
-    }
-
-    public Integer getMessageId() {
-        return messageId;
-    }
-
-    public SendUserIdsResponse setMessageId(Integer messageId) {
-        this.messageId = messageId;
-        return this;
-    }
+    /**
+     * Entity: peer
+     */
+    @SerializedName("peer_id")
+    @Required
+    private Long peerId;
 
     public Integer getConversationMessageId() {
         return conversationMessageId;
@@ -59,6 +47,24 @@ public class SendUserIdsResponse implements Validable {
         return this;
     }
 
+    public Integer getMessageId() {
+        return messageId;
+    }
+
+    public SendUserIdsResponse setMessageId(Integer messageId) {
+        this.messageId = messageId;
+        return this;
+    }
+
+    public Long getPeerId() {
+        return peerId;
+    }
+
+    public SendUserIdsResponse setPeerId(Long peerId) {
+        this.peerId = peerId;
+        return this;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(peerId, conversationMessageId, messageId, error);
@@ -71,8 +77,8 @@ public class SendUserIdsResponse implements Validable {
         SendUserIdsResponse sendUserIdsResponse = (SendUserIdsResponse) o;
         return Objects.equals(messageId, sendUserIdsResponse.messageId) &&
                 Objects.equals(error, sendUserIdsResponse.error) &&
-                Objects.equals(peerId, sendUserIdsResponse.peerId) &&
-                Objects.equals(conversationMessageId, sendUserIdsResponse.conversationMessageId);
+                Objects.equals(conversationMessageId, sendUserIdsResponse.conversationMessageId) &&
+                Objects.equals(peerId, sendUserIdsResponse.peerId);
     }
 
     @Override
@@ -85,8 +91,8 @@ public class SendUserIdsResponse implements Validable {
         final StringBuilder sb = new StringBuilder("SendUserIdsResponse{");
         sb.append("messageId=").append(messageId);
         sb.append(", error=").append(error);
-        sb.append(", peerId=").append(peerId);
         sb.append(", conversationMessageId=").append(conversationMessageId);
+        sb.append(", peerId=").append(peerId);
         sb.append('}');
         return sb.toString();
     }

@@ -12,6 +12,18 @@ import java.util.Objects;
  */
 public class Graffiti implements Validable {
     /**
+     * Access key for graffiti
+     */
+    @SerializedName("access_key")
+    private String accessKey;
+
+    /**
+     * Graffiti height
+     */
+    @SerializedName("height")
+    private Integer height;
+
+    /**
      * Graffiti ID
      */
     @SerializedName("id")
@@ -19,9 +31,10 @@ public class Graffiti implements Validable {
 
     /**
      * Graffiti owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    private Long ownerId;
 
     /**
      * URL of the preview image with 200 px in width
@@ -35,6 +48,36 @@ public class Graffiti implements Validable {
     @SerializedName("photo_586")
     private URI photo586;
 
+    /**
+     * Graffiti URL
+     */
+    @SerializedName("url")
+    private URI url;
+
+    /**
+     * Graffiti width
+     */
+    @SerializedName("width")
+    private Integer width;
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public Graffiti setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public Graffiti setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -44,11 +87,11 @@ public class Graffiti implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public Graffiti setOwnerId(Integer ownerId) {
+    public Graffiti setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
@@ -71,9 +114,27 @@ public class Graffiti implements Validable {
         return this;
     }
 
+    public URI getUrl() {
+        return url;
+    }
+
+    public Graffiti setUrl(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public Graffiti setWidth(Integer width) {
+        this.width = width;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(photo586, id, photo200, ownerId);
+        return Objects.hash(accessKey, width, photo586, id, photo200, ownerId, url, height);
     }
 
     @Override
@@ -82,9 +143,13 @@ public class Graffiti implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         Graffiti graffiti = (Graffiti) o;
         return Objects.equals(ownerId, graffiti.ownerId) &&
+                Objects.equals(accessKey, graffiti.accessKey) &&
+                Objects.equals(width, graffiti.width) &&
                 Objects.equals(id, graffiti.id) &&
                 Objects.equals(photo200, graffiti.photo200) &&
-                Objects.equals(photo586, graffiti.photo586);
+                Objects.equals(photo586, graffiti.photo586) &&
+                Objects.equals(url, graffiti.url) &&
+                Objects.equals(height, graffiti.height);
     }
 
     @Override
@@ -96,9 +161,13 @@ public class Graffiti implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Graffiti{");
         sb.append("ownerId=").append(ownerId);
+        sb.append(", accessKey='").append(accessKey).append("'");
+        sb.append(", width=").append(width);
         sb.append(", id=").append(id);
         sb.append(", photo200=").append(photo200);
         sb.append(", photo586=").append(photo586);
+        sb.append(", url=").append(url);
+        sb.append(", height=").append(height);
         sb.append('}');
         return sb.toString();
     }

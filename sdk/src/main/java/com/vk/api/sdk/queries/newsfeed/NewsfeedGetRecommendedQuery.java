@@ -4,23 +4,24 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.newsfeed.responses.GetRecommendedResponse;
+import com.vk.api.sdk.objects.newsfeed.responses.GenericResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Newsfeed.getRecommended method
  */
-public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGetRecommendedQuery, GetRecommendedResponse> {
+public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGetRecommendedQuery, GenericResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public NewsfeedGetRecommendedQuery(VkApiClient client, UserActor actor) {
-        super(client, "newsfeed.getRecommended", GetRecommendedResponse.class);
+        super(client, "newsfeed.getRecommended", GenericResponse.class);
         accessToken(actor.getAccessToken());
     }
 
@@ -30,6 +31,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public NewsfeedGetRecommendedQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -40,6 +42,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public NewsfeedGetRecommendedQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -50,6 +53,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("max_photos")
     public NewsfeedGetRecommendedQuery maxPhotos(Integer value) {
         return unsafeParam("max_photos", value);
     }
@@ -60,6 +64,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_from")
     public NewsfeedGetRecommendedQuery startFrom(String value) {
         return unsafeParam("start_from", value);
     }
@@ -70,6 +75,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedGetRecommendedQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -81,6 +87,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetRecommendedQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -91,6 +98,7 @@ public class NewsfeedGetRecommendedQuery extends AbstractQueryBuilder<NewsfeedGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetRecommendedQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

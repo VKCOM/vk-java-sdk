@@ -13,25 +13,26 @@ import java.util.Objects;
 public class DonutMoneyWithdraw implements Validable {
     @SerializedName("amount")
     @Required
-    private Float amount;
+    private Number amount;
 
     @SerializedName("amount_without_fee")
-    private Float amountWithoutFee;
+    @Required
+    private Number amountWithoutFee;
 
-    public Float getAmount() {
+    public Number getAmount() {
         return amount;
     }
 
-    public DonutMoneyWithdraw setAmount(Float amount) {
+    public DonutMoneyWithdraw setAmount(Number amount) {
         this.amount = amount;
         return this;
     }
 
-    public Float getAmountWithoutFee() {
+    public Number getAmountWithoutFee() {
         return amountWithoutFee;
     }
 
-    public DonutMoneyWithdraw setAmountWithoutFee(Float amountWithoutFee) {
+    public DonutMoneyWithdraw setAmountWithoutFee(Number amountWithoutFee) {
         this.amountWithoutFee = amountWithoutFee;
         return this;
     }

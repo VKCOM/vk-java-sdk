@@ -11,6 +11,9 @@ import java.util.Objects;
  * ItemDigestFooter object
  */
 public class ItemDigestFooter implements Validable {
+    @SerializedName("button")
+    private ItemDigestButton button;
+
     @SerializedName("style")
     @Required
     private ItemDigestFooterStyle style;
@@ -22,8 +25,14 @@ public class ItemDigestFooter implements Validable {
     @Required
     private String text;
 
-    @SerializedName("button")
-    private ItemDigestButton button;
+    public ItemDigestButton getButton() {
+        return button;
+    }
+
+    public ItemDigestFooter setButton(ItemDigestButton button) {
+        this.button = button;
+        return this;
+    }
 
     public ItemDigestFooterStyle getStyle() {
         return style;
@@ -40,15 +49,6 @@ public class ItemDigestFooter implements Validable {
 
     public ItemDigestFooter setText(String text) {
         this.text = text;
-        return this;
-    }
-
-    public ItemDigestButton getButton() {
-        return button;
-    }
-
-    public ItemDigestFooter setButton(ItemDigestButton button) {
-        this.button = button;
         return this;
     }
 

@@ -16,6 +16,9 @@ import java.util.Objects;
  * GetConversationMembersResponse object
  */
 public class GetConversationMembersResponse implements Validable {
+    @SerializedName("chat_restrictions")
+    private ChatRestrictions chatRestrictions;
+
     /**
      * Chat members count
      */
@@ -23,18 +26,24 @@ public class GetConversationMembersResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<ConversationMember> items;
 
-    @SerializedName("chat_restrictions")
-    private ChatRestrictions chatRestrictions;
-
     @SerializedName("profiles")
     private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    private List<GroupFull> groups;
+    public ChatRestrictions getChatRestrictions() {
+        return chatRestrictions;
+    }
+
+    public GetConversationMembersResponse setChatRestrictions(ChatRestrictions chatRestrictions) {
+        this.chatRestrictions = chatRestrictions;
+        return this;
+    }
 
     public Integer getCount() {
         return count;
@@ -42,6 +51,15 @@ public class GetConversationMembersResponse implements Validable {
 
     public GetConversationMembersResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetConversationMembersResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -54,30 +72,12 @@ public class GetConversationMembersResponse implements Validable {
         return this;
     }
 
-    public ChatRestrictions getChatRestrictions() {
-        return chatRestrictions;
-    }
-
-    public GetConversationMembersResponse setChatRestrictions(ChatRestrictions chatRestrictions) {
-        this.chatRestrictions = chatRestrictions;
-        return this;
-    }
-
     public List<UserFull> getProfiles() {
         return profiles;
     }
 
     public GetConversationMembersResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetConversationMembersResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 
@@ -94,8 +94,8 @@ public class GetConversationMembersResponse implements Validable {
         return Objects.equals(count, getConversationMembersResponse.count) &&
                 Objects.equals(profiles, getConversationMembersResponse.profiles) &&
                 Objects.equals(groups, getConversationMembersResponse.groups) &&
-                Objects.equals(items, getConversationMembersResponse.items) &&
-                Objects.equals(chatRestrictions, getConversationMembersResponse.chatRestrictions);
+                Objects.equals(chatRestrictions, getConversationMembersResponse.chatRestrictions) &&
+                Objects.equals(items, getConversationMembersResponse.items);
     }
 
     @Override
@@ -109,8 +109,8 @@ public class GetConversationMembersResponse implements Validable {
         sb.append("count=").append(count);
         sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
-        sb.append(", items=").append(items);
         sb.append(", chatRestrictions=").append(chatRestrictions);
+        sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();
     }

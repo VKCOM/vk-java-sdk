@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,38 @@ import java.util.List;
  */
 public class PhotosReorderAlbumsQuery extends AbstractQueryBuilder<PhotosReorderAlbumsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param albumId value of "album id" parameter.
      */
-    public PhotosReorderAlbumsQuery(VkApiClient client, UserActor actor, int albumId) {
+    public PhotosReorderAlbumsQuery(VkApiClient client, UserActor actor, Integer albumId) {
         super(client, "photos.reorderAlbums", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosReorderAlbumsQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.reorderAlbums", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the album.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosReorderAlbumsQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosReorderAlbumsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -41,7 +55,8 @@ public class PhotosReorderAlbumsQuery extends AbstractQueryBuilder<PhotosReorder
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosReorderAlbumsQuery albumId(int value) {
+    @ApiParam("album_id")
+    public PhotosReorderAlbumsQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 
@@ -51,6 +66,7 @@ public class PhotosReorderAlbumsQuery extends AbstractQueryBuilder<PhotosReorder
      * @param value value of "before" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("before")
     public PhotosReorderAlbumsQuery before(Integer value) {
         return unsafeParam("before", value);
     }
@@ -61,6 +77,7 @@ public class PhotosReorderAlbumsQuery extends AbstractQueryBuilder<PhotosReorder
      * @param value value of "after" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("after")
     public PhotosReorderAlbumsQuery after(Integer value) {
         return unsafeParam("after", value);
     }

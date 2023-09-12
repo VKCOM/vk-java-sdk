@@ -4,37 +4,52 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.market.responses.DeleteCommentResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Market.deleteComment method
  */
-public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteCommentQuery, DeleteCommentResponse> {
+public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteCommentQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param commentId value of "comment id" parameter. Minimum is 0.
      */
-    public MarketDeleteCommentQuery(VkApiClient client, UserActor actor, int ownerId,
-            int commentId) {
-        super(client, "market.deleteComment", DeleteCommentResponse.class);
+    public MarketDeleteCommentQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer commentId) {
+        super(client, "market.deleteComment", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         commentId(commentId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketDeleteCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.deleteComment", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketDeleteCommentQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketDeleteCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -44,7 +59,8 @@ public class MarketDeleteCommentQuery extends AbstractQueryBuilder<MarketDeleteC
      * @param value value of "comment id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketDeleteCommentQuery commentId(int value) {
+    @ApiParam("comment_id")
+    public MarketDeleteCommentQuery commentId(Integer value) {
         return unsafeParam("comment_id", value);
     }
 

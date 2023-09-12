@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.donut;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.donut.responses.GetSubscriptionResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,39 @@ import java.util.List;
  */
 public class DonutGetSubscriptionQuery extends AbstractQueryBuilder<DonutGetSubscriptionQuery, GetSubscriptionResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      */
-    public DonutGetSubscriptionQuery(VkApiClient client, UserActor actor, int ownerId) {
+    public DonutGetSubscriptionQuery(VkApiClient client, UserActor actor, Long ownerId) {
         super(client, "donut.getSubscription", GetSubscriptionResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public DonutGetSubscriptionQuery(VkApiClient client, UserActor actor) {
+        super(client, "donut.getSubscription", GetSubscriptionResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected DonutGetSubscriptionQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public DonutGetSubscriptionQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 

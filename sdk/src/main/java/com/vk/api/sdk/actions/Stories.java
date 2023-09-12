@@ -6,12 +6,13 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.stories.StoriesBanOwnerQuery;
 import com.vk.api.sdk.queries.stories.StoriesDeleteQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetBannedQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetBannedQueryWithExtended;
-import com.vk.api.sdk.queries.stories.StoriesGetByIdQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetByIdQueryWithExtended;
+import com.vk.api.sdk.queries.stories.StoriesGetDetailedStatsQueryWithV5200;
 import com.vk.api.sdk.queries.stories.StoriesGetPhotoUploadServerQuery;
 import com.vk.api.sdk.queries.stories.StoriesGetQueryWithV5113;
 import com.vk.api.sdk.queries.stories.StoriesGetRepliesQueryWithV5113;
@@ -42,31 +43,45 @@ public class Stories extends AbstractAction {
     /**
      * Allows to hide stories from chosen sources from current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownersIds List of sources IDs
      * @return query
      */
-    public StoriesBanOwnerQuery banOwner(UserActor actor, Integer... ownersIds) {
+    @ApiMethod("stories.banOwner")
+    public StoriesBanOwnerQuery banOwner(UserActor actor, Long... ownersIds) {
         return new StoriesBanOwnerQuery(getClient(), actor, ownersIds);
     }
 
     /**
      * Allows to hide stories from chosen sources from current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownersIds List of sources IDs
      * @return query
      */
-    public StoriesBanOwnerQuery banOwner(UserActor actor, List<Integer> ownersIds) {
+    @ApiMethod("stories.banOwner")
+    public StoriesBanOwnerQuery banOwner(UserActor actor, List<Long> ownersIds) {
         return new StoriesBanOwnerQuery(getClient(), actor, ownersIds);
+    }
+
+    /**
+     * Allows to hide stories from chosen sources from current user's feed.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.banOwner")
+    public StoriesBanOwnerQuery banOwner(UserActor actor) {
+        return new StoriesBanOwnerQuery(getClient(), actor);
     }
 
     /**
      * Allows to delete story.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("stories.delete")
     public StoriesDeleteQuery delete(UserActor actor) {
         return new StoriesDeleteQuery(getClient(), actor);
     }
@@ -74,9 +89,10 @@ public class Stories extends AbstractAction {
     /**
      * Allows to delete story.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("stories.delete")
     public StoriesDeleteQuery delete(GroupActor actor) {
         return new StoriesDeleteQuery(getClient(), actor);
     }
@@ -84,9 +100,10 @@ public class Stories extends AbstractAction {
     /**
      * Returns stories available for current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("stories.get")
     public StoriesGetQueryWithV5113 getV5113(UserActor actor) {
         return new StoriesGetQueryWithV5113(getClient(), actor);
     }
@@ -94,9 +111,10 @@ public class Stories extends AbstractAction {
     /**
      * Returns stories available for current user.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("stories.get")
     public StoriesGetQueryWithV5113 getV5113(GroupActor actor) {
         return new StoriesGetQueryWithV5113(getClient(), actor);
     }
@@ -104,9 +122,10 @@ public class Stories extends AbstractAction {
     /**
      * Returns list of sources hidden from current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("stories.getBanned")
     public StoriesGetBannedQuery getBanned(UserActor actor) {
         return new StoriesGetBannedQuery(getClient(), actor);
     }
@@ -114,9 +133,10 @@ public class Stories extends AbstractAction {
     /**
      * Returns list of sources hidden from current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("stories.getBanned")
     public StoriesGetBannedQueryWithExtended getBannedExtended(UserActor actor) {
         return new StoriesGetBannedQueryWithExtended(getClient(), actor);
     }
@@ -124,54 +144,11 @@ public class Stories extends AbstractAction {
     /**
      * Returns story by its ID.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
      * @return query
      */
-    public StoriesGetByIdQuery getById(UserActor actor, String... stories) {
-        return new StoriesGetByIdQuery(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQuery getById(UserActor actor, List<String> stories) {
-        return new StoriesGetByIdQuery(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQuery getById(GroupActor actor, String... stories) {
-        return new StoriesGetByIdQuery(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
-    public StoriesGetByIdQuery getById(GroupActor actor, List<String> stories) {
-        return new StoriesGetByIdQuery(getClient(), actor, stories);
-    }
-
-    /**
-     * Returns story by its ID.
-     *
-     * @param actor vk actor
-     * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
-     * @return query
-     */
+    @ApiMethod("stories.getById")
     public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... stories) {
         return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
     }
@@ -179,10 +156,11 @@ public class Stories extends AbstractAction {
     /**
      * Returns story by its ID.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
      * @return query
      */
+    @ApiMethod("stories.getById")
     public StoriesGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> stories) {
         return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
     }
@@ -190,10 +168,11 @@ public class Stories extends AbstractAction {
     /**
      * Returns story by its ID.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
      * @return query
      */
+    @ApiMethod("stories.getById")
     public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, String... stories) {
         return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
     }
@@ -201,20 +180,34 @@ public class Stories extends AbstractAction {
     /**
      * Returns story by its ID.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param stories Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
      * @return query
      */
+    @ApiMethod("stories.getById")
     public StoriesGetByIdQueryWithExtended getByIdExtended(GroupActor actor, List<String> stories) {
         return new StoriesGetByIdQueryWithExtended(getClient(), actor, stories);
     }
 
     /**
-     * Returns URL for uploading a story with photo.
-     *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @param ownerId
+     * @param storyId
      * @return query
      */
+    @ApiMethod("stories.getDetailedStats")
+    public StoriesGetDetailedStatsQueryWithV5200 getDetailedStatsV5200(UserActor actor,
+            Long ownerId, Integer storyId) {
+        return new StoriesGetDetailedStatsQueryWithV5200(getClient(), actor, ownerId, storyId);
+    }
+
+    /**
+     * Returns URL for uploading a story with photo.
+     *
+     * @param actor vk user actor
+     * @return query
+     */
+    @ApiMethod("stories.getPhotoUploadServer")
     public StoriesGetPhotoUploadServerQuery getPhotoUploadServer(UserActor actor) {
         return new StoriesGetPhotoUploadServerQuery(getClient(), actor);
     }
@@ -222,9 +215,10 @@ public class Stories extends AbstractAction {
     /**
      * Returns URL for uploading a story with photo.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("stories.getPhotoUploadServer")
     public StoriesGetPhotoUploadServerQuery getPhotoUploadServer(GroupActor actor) {
         return new StoriesGetPhotoUploadServerQuery(getClient(), actor);
     }
@@ -232,59 +226,86 @@ public class Stories extends AbstractAction {
     /**
      * Returns replies to the story.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId Story owner ID.
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(UserActor actor, int ownerId,
-            int storyId) {
+    @ApiMethod("stories.getReplies")
+    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(UserActor actor, Long ownerId,
+            Integer storyId) {
         return new StoriesGetRepliesQueryWithV5113(getClient(), actor, ownerId, storyId);
     }
 
     /**
      * Returns replies to the story.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param ownerId Story owner ID.
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(GroupActor actor, int ownerId,
-            int storyId) {
+    @ApiMethod("stories.getReplies")
+    public StoriesGetRepliesQueryWithV5113 getRepliesV5113(GroupActor actor, Long ownerId,
+            Integer storyId) {
         return new StoriesGetRepliesQueryWithV5113(getClient(), actor, ownerId, storyId);
     }
 
     /**
      * Returns stories available for current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId Story owner ID. 
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetStatsQuery getStats(UserActor actor, int ownerId, int storyId) {
+    @ApiMethod("stories.getStats")
+    public StoriesGetStatsQuery getStats(UserActor actor, Long ownerId, Integer storyId) {
         return new StoriesGetStatsQuery(getClient(), actor, ownerId, storyId);
     }
 
     /**
      * Returns stories available for current user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.getStats")
+    public StoriesGetStatsQuery getStats(UserActor actor) {
+        return new StoriesGetStatsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns stories available for current user.
+     *
+     * @param actor vk group actor
      * @param ownerId Story owner ID. 
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesGetStatsQuery getStats(GroupActor actor, int ownerId, int storyId) {
+    @ApiMethod("stories.getStats")
+    public StoriesGetStatsQuery getStats(GroupActor actor, Long ownerId, Integer storyId) {
         return new StoriesGetStatsQuery(getClient(), actor, ownerId, storyId);
+    }
+
+    /**
+     * Returns stories available for current user.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.getStats")
+    public StoriesGetStatsQuery getStats(GroupActor actor) {
+        return new StoriesGetStatsQuery(getClient(), actor);
     }
 
     /**
      * Allows to receive URL for uploading story with video.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("stories.getVideoUploadServer")
     public StoriesGetVideoUploadServerQuery getVideoUploadServer(UserActor actor) {
         return new StoriesGetVideoUploadServerQuery(getClient(), actor);
     }
@@ -292,9 +313,10 @@ public class Stories extends AbstractAction {
     /**
      * Allows to receive URL for uploading story with video.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("stories.getVideoUploadServer")
     public StoriesGetVideoUploadServerQuery getVideoUploadServer(GroupActor actor) {
         return new StoriesGetVideoUploadServerQuery(getClient(), actor);
     }
@@ -302,147 +324,201 @@ public class Stories extends AbstractAction {
     /**
      * Returns a list of story viewers.
      *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
+     * @param actor vk user actor
      * @param storyId Story ID.
      * @return query
      */
+    @ApiMethod("stories.getViewers")
     public StoriesGetViewersQueryWithExtendedV5115 getViewersExtendedV5115(UserActor actor,
-            int ownerId, int storyId) {
-        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, ownerId, storyId);
+            Integer storyId) {
+        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, storyId);
     }
 
     /**
      * Returns a list of story viewers.
      *
-     * @param actor vk actor
-     * @param ownerId Story owner ID.
+     * @param actor vk group actor
      * @param storyId Story ID.
      * @return query
      */
+    @ApiMethod("stories.getViewers")
     public StoriesGetViewersQueryWithExtendedV5115 getViewersExtendedV5115(GroupActor actor,
-            int ownerId, int storyId) {
-        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, ownerId, storyId);
+            Integer storyId) {
+        return new StoriesGetViewersQueryWithExtendedV5115(getClient(), actor, storyId);
     }
 
     /**
      * Hides all replies in the last 24 hours from the user to current user's stories.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user whose replies should be hidden.
      * @return query
      */
-    public StoriesHideAllRepliesQuery hideAllReplies(UserActor actor, int ownerId) {
+    @ApiMethod("stories.hideAllReplies")
+    public StoriesHideAllRepliesQuery hideAllReplies(UserActor actor, Long ownerId) {
         return new StoriesHideAllRepliesQuery(getClient(), actor, ownerId);
     }
 
     /**
      * Hides all replies in the last 24 hours from the user to current user's stories.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.hideAllReplies")
+    public StoriesHideAllRepliesQuery hideAllReplies(UserActor actor) {
+        return new StoriesHideAllRepliesQuery(getClient(), actor);
+    }
+
+    /**
+     * Hides all replies in the last 24 hours from the user to current user's stories.
+     *
+     * @param actor vk group actor
      * @param ownerId ID of the user whose replies should be hidden.
      * @return query
      */
-    public StoriesHideAllRepliesQuery hideAllReplies(GroupActor actor, int ownerId) {
+    @ApiMethod("stories.hideAllReplies")
+    public StoriesHideAllRepliesQuery hideAllReplies(GroupActor actor, Long ownerId) {
         return new StoriesHideAllRepliesQuery(getClient(), actor, ownerId);
     }
 
     /**
+     * Hides all replies in the last 24 hours from the user to current user's stories.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.hideAllReplies")
+    public StoriesHideAllRepliesQuery hideAllReplies(GroupActor actor) {
+        return new StoriesHideAllRepliesQuery(getClient(), actor);
+    }
+
+    /**
      * Hides the reply to the current user's story.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of the user whose replies should be hidden.
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesHideReplyQuery hideReply(UserActor actor, int ownerId, int storyId) {
+    @ApiMethod("stories.hideReply")
+    public StoriesHideReplyQuery hideReply(UserActor actor, Long ownerId, Integer storyId) {
         return new StoriesHideReplyQuery(getClient(), actor, ownerId, storyId);
     }
 
     /**
      * Hides the reply to the current user's story.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.hideReply")
+    public StoriesHideReplyQuery hideReply(UserActor actor) {
+        return new StoriesHideReplyQuery(getClient(), actor);
+    }
+
+    /**
+     * Hides the reply to the current user's story.
+     *
+     * @param actor vk group actor
      * @param ownerId ID of the user whose replies should be hidden.
      * @param storyId Story ID.
      * @return query
      */
-    public StoriesHideReplyQuery hideReply(GroupActor actor, int ownerId, int storyId) {
+    @ApiMethod("stories.hideReply")
+    public StoriesHideReplyQuery hideReply(GroupActor actor, Long ownerId, Integer storyId) {
         return new StoriesHideReplyQuery(getClient(), actor, ownerId, storyId);
     }
 
     /**
-     * @param actor vk actor
-     * @param uploadResults
-     * @return query
+     * Hides the reply to the current user's story.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
      */
-    public StoriesSaveQuery save(UserActor actor, String... uploadResults) {
-        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    @ApiMethod("stories.hideReply")
+    public StoriesHideReplyQuery hideReply(GroupActor actor) {
+        return new StoriesHideReplyQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
-     * @param uploadResults
+     * @param actor vk user actor
      * @return query
      */
-    public StoriesSaveQuery save(UserActor actor, List<String> uploadResults) {
-        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    @ApiMethod("stories.save")
+    public StoriesSaveQuery save(UserActor actor) {
+        return new StoriesSaveQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
-     * @param uploadResults
+     * @param actor vk group actor
      * @return query
      */
-    public StoriesSaveQuery save(GroupActor actor, String... uploadResults) {
-        return new StoriesSaveQuery(getClient(), actor, uploadResults);
+    @ApiMethod("stories.save")
+    public StoriesSaveQuery save(GroupActor actor) {
+        return new StoriesSaveQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
-     * @param uploadResults
+     * @param actor vk user actor
      * @return query
      */
-    public StoriesSaveQuery save(GroupActor actor, List<String> uploadResults) {
-        return new StoriesSaveQuery(getClient(), actor, uploadResults);
-    }
-
-    /**
-     * @param actor vk actor
-     * @return query
-     */
+    @ApiMethod("stories.search")
     public StoriesSearchQueryWithV5113 searchV5113(UserActor actor) {
         return new StoriesSearchQueryWithV5113(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param accessKey
      * @return query
      */
+    @ApiMethod("stories.sendInteraction")
     public StoriesSendInteractionQuery sendInteraction(ServiceActor actor, String accessKey) {
         return new StoriesSendInteractionQuery(getClient(), actor, accessKey);
     }
 
     /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.sendInteraction")
+    public StoriesSendInteractionQuery sendInteraction(ServiceActor actor) {
+        return new StoriesSendInteractionQuery(getClient(), actor);
+    }
+
+    /**
      * Allows to show stories from hidden sources in current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownersIds List of hidden sources to show stories from.
      * @return query
      */
-    public StoriesUnbanOwnerQuery unbanOwner(UserActor actor, Integer... ownersIds) {
+    @ApiMethod("stories.unbanOwner")
+    public StoriesUnbanOwnerQuery unbanOwner(UserActor actor, Long... ownersIds) {
         return new StoriesUnbanOwnerQuery(getClient(), actor, ownersIds);
     }
 
     /**
      * Allows to show stories from hidden sources in current user's feed.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownersIds List of hidden sources to show stories from.
      * @return query
      */
-    public StoriesUnbanOwnerQuery unbanOwner(UserActor actor, List<Integer> ownersIds) {
+    @ApiMethod("stories.unbanOwner")
+    public StoriesUnbanOwnerQuery unbanOwner(UserActor actor, List<Long> ownersIds) {
         return new StoriesUnbanOwnerQuery(getClient(), actor, ownersIds);
+    }
+
+    /**
+     * Allows to show stories from hidden sources in current user's feed.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("stories.unbanOwner")
+    public StoriesUnbanOwnerQuery unbanOwner(UserActor actor) {
+        return new StoriesUnbanOwnerQuery(getClient(), actor);
     }
 }

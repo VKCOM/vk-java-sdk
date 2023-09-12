@@ -8,8 +8,10 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.ads.AdApproved;
 import com.vk.api.sdk.objects.ads.AdCostType;
 import com.vk.api.sdk.objects.ads.AdStatus;
+import com.vk.api.sdk.objects.ads.EventsRetargetingGroup;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,28 +22,62 @@ public class GetAdsResponse implements Validable {
      * Ad format
      */
     @SerializedName("ad_format")
+    @Required
     private Integer adFormat;
 
     /**
      * Ad platform
      */
     @SerializedName("ad_platform")
+    @Required
     private JsonPrimitive adPlatform;
+
+    /**
+     * Ad platform no ad network
+     */
+    @SerializedName("ad_platform_no_ad_network")
+    private Integer adPlatformNoAdNetwork;
+
+    /**
+     * Ad platform no wall
+     */
+    @SerializedName("ad_platform_no_wall")
+    private Integer adPlatformNoWall;
+
+    /**
+     * Age restriction
+     */
+    @SerializedName("age_restriction")
+    private Integer ageRestriction;
 
     /**
      * Total limit
      */
     @SerializedName("all_limit")
-    private Integer allLimit;
+    @Required
+    private String allLimit;
 
     @SerializedName("approved")
     @Required
     private AdApproved approved;
 
     /**
+     * Autobidding
+     */
+    @SerializedName("autobidding")
+    private BoolInt autobidding;
+
+    /**
+     * Max cost of target actions for autobidding, kopecks
+     */
+    @SerializedName("autobidding_max_cost")
+    private String autobiddingMaxCost;
+
+    /**
      * Campaign ID
      */
     @SerializedName("campaign_id")
+    @Required
     private Integer campaignId;
 
     /**
@@ -56,38 +92,69 @@ public class GetAdsResponse implements Validable {
     @SerializedName("category2_id")
     private Integer category2Id;
 
+    /**
+     * Conversion event id
+     */
+    @SerializedName("conversion_event_id")
+    private Integer conversionEventId;
+
+    /**
+     * Conversion pixel id
+     */
+    @SerializedName("conversion_pixel_id")
+    private Integer conversionPixelId;
+
     @SerializedName("cost_type")
+    @Required
     private AdCostType costType;
-
-    /**
-     * Cost of a click, kopecks
-     */
-    @SerializedName("cpc")
-    private Integer cpc;
-
-    /**
-     * Cost of 1000 impressions, kopecks
-     */
-    @SerializedName("cpm")
-    private Integer cpm;
 
     /**
      * Cost of an action, kopecks
      */
     @SerializedName("cpa")
-    private Integer cpa;
+    private String cpa;
 
     /**
-     * Cost of 1000 impressions optimized, kopecks
+     * Cost of a click, kopecks
      */
-    @SerializedName("ocpm")
-    private Integer ocpm;
+    @SerializedName("cpc")
+    private String cpc;
 
     /**
-     * Max cost of target actions for autobidding, kopecks
+     * Cost of 1000 impressions, kopecks
      */
-    @SerializedName("autobidding_max_cost")
-    private Integer autobiddingMaxCost;
+    @SerializedName("cpm")
+    private String cpm;
+
+    /**
+     * Create time
+     */
+    @SerializedName("create_time")
+    private Integer createTime;
+
+    /**
+     * Day limit
+     */
+    @SerializedName("day_limit")
+    private String dayLimit;
+
+    /**
+     * Disclaimer finance
+     */
+    @SerializedName("disclaimer_finance")
+    private Integer disclaimerFinance;
+
+    /**
+     * Disclaimer finance license no
+     */
+    @SerializedName("disclaimer_finance_license_no")
+    private String disclaimerFinanceLicenseNo;
+
+    /**
+     * Disclaimer finance name
+     */
+    @SerializedName("disclaimer_finance_name")
+    private String disclaimerFinanceName;
 
     /**
      * Information whether disclaimer is enabled
@@ -108,6 +175,24 @@ public class GetAdsResponse implements Validable {
     private BoolInt disclaimerSupplements;
 
     /**
+     * Events retargeting groups
+     */
+    @SerializedName("events_retargeting_groups")
+    private List<EventsRetargetingGroup> eventsRetargetingGroups;
+
+    /**
+     * Goal type
+     */
+    @SerializedName("goal_type")
+    private Integer goalType;
+
+    /**
+     * Has campaign budget optimization
+     */
+    @SerializedName("has_campaign_budget_optimization")
+    private Boolean hasCampaignBudgetOptimization;
+
+    /**
      * Ad ID
      */
     @SerializedName("id")
@@ -121,10 +206,46 @@ public class GetAdsResponse implements Validable {
     private Integer impressionsLimit;
 
     /**
+     * Impressions limit period
+     */
+    @SerializedName("impressions_limit_period")
+    private Integer impressionsLimitPeriod;
+
+    /**
      * Information whether impressions are limited
      */
     @SerializedName("impressions_limited")
     private BoolInt impressionsLimited;
+
+    /**
+     * is promo
+     */
+    @SerializedName("is_promo")
+    private Boolean isPromo;
+
+    /**
+     * Link id
+     */
+    @SerializedName("link_id")
+    private Integer linkId;
+
+    /**
+     * Link owner id
+     */
+    @SerializedName("link_owner_id")
+    private Long linkOwnerId;
+
+    /**
+     * Link type
+     */
+    @SerializedName("link_type")
+    private Integer linkType;
+
+    /**
+     * Link url
+     */
+    @SerializedName("link_url")
+    private String linkUrl;
 
     /**
      * Ad title
@@ -133,15 +254,75 @@ public class GetAdsResponse implements Validable {
     @Required
     private String name;
 
+    /**
+     * Cost of 1000 impressions optimized, kopecks
+     */
+    @SerializedName("ocpm")
+    private String ocpm;
+
+    /**
+     * Publisher platforms
+     */
+    @SerializedName("publisher_platforms")
+    private String publisherPlatforms;
+
+    /**
+     * Publisher platform auto
+     */
+    @SerializedName("publisher_platforms_auto")
+    private BoolInt publisherPlatformsAuto;
+
+    /**
+     * Start time
+     */
+    @SerializedName("start_time")
+    private Integer startTime;
+
     @SerializedName("status")
     @Required
     private AdStatus status;
+
+    /**
+     * Stop time
+     */
+    @SerializedName("stop_time")
+    private Integer stopTime;
+
+    /**
+     * Suggested criteria
+     */
+    @SerializedName("suggested_criteria")
+    private Integer suggestedCriteria;
+
+    /**
+     * Update time
+     */
+    @SerializedName("update_time")
+    private Integer updateTime;
+
+    /**
+     * User goal type
+     */
+    @SerializedName("user_goal_type")
+    private Integer userGoalType;
 
     /**
      * Information whether the ad is a video
      */
     @SerializedName("video")
     private BoolInt video;
+
+    /**
+     * Weekly schedule hours
+     */
+    @SerializedName("weekly_schedule_hours")
+    private List<String> weeklyScheduleHours;
+
+    /**
+     * Weekly schedule use holidays
+     */
+    @SerializedName("weekly_schedule_use_holidays")
+    private Integer weeklyScheduleUseHolidays;
 
     public Integer getAdFormat() {
         return adFormat;
@@ -161,11 +342,38 @@ public class GetAdsResponse implements Validable {
         return this;
     }
 
-    public Integer getAllLimit() {
+    public Integer getAdPlatformNoAdNetwork() {
+        return adPlatformNoAdNetwork;
+    }
+
+    public GetAdsResponse setAdPlatformNoAdNetwork(Integer adPlatformNoAdNetwork) {
+        this.adPlatformNoAdNetwork = adPlatformNoAdNetwork;
+        return this;
+    }
+
+    public Integer getAdPlatformNoWall() {
+        return adPlatformNoWall;
+    }
+
+    public GetAdsResponse setAdPlatformNoWall(Integer adPlatformNoWall) {
+        this.adPlatformNoWall = adPlatformNoWall;
+        return this;
+    }
+
+    public Integer getAgeRestriction() {
+        return ageRestriction;
+    }
+
+    public GetAdsResponse setAgeRestriction(Integer ageRestriction) {
+        this.ageRestriction = ageRestriction;
+        return this;
+    }
+
+    public String getAllLimit() {
         return allLimit;
     }
 
-    public GetAdsResponse setAllLimit(Integer allLimit) {
+    public GetAdsResponse setAllLimit(String allLimit) {
         this.allLimit = allLimit;
         return this;
     }
@@ -176,6 +384,23 @@ public class GetAdsResponse implements Validable {
 
     public GetAdsResponse setApproved(AdApproved approved) {
         this.approved = approved;
+        return this;
+    }
+
+    public boolean isAutobidding() {
+        return autobidding == BoolInt.YES;
+    }
+
+    public BoolInt getAutobidding() {
+        return autobidding;
+    }
+
+    public String getAutobiddingMaxCost() {
+        return autobiddingMaxCost;
+    }
+
+    public GetAdsResponse setAutobiddingMaxCost(String autobiddingMaxCost) {
+        this.autobiddingMaxCost = autobiddingMaxCost;
         return this;
     }
 
@@ -206,6 +431,24 @@ public class GetAdsResponse implements Validable {
         return this;
     }
 
+    public Integer getConversionEventId() {
+        return conversionEventId;
+    }
+
+    public GetAdsResponse setConversionEventId(Integer conversionEventId) {
+        this.conversionEventId = conversionEventId;
+        return this;
+    }
+
+    public Integer getConversionPixelId() {
+        return conversionPixelId;
+    }
+
+    public GetAdsResponse setConversionPixelId(Integer conversionPixelId) {
+        this.conversionPixelId = conversionPixelId;
+        return this;
+    }
+
     public AdCostType getCostType() {
         return costType;
     }
@@ -215,48 +458,75 @@ public class GetAdsResponse implements Validable {
         return this;
     }
 
-    public Integer getCpc() {
-        return cpc;
-    }
-
-    public GetAdsResponse setCpc(Integer cpc) {
-        this.cpc = cpc;
-        return this;
-    }
-
-    public Integer getCpm() {
-        return cpm;
-    }
-
-    public GetAdsResponse setCpm(Integer cpm) {
-        this.cpm = cpm;
-        return this;
-    }
-
-    public Integer getCpa() {
+    public String getCpa() {
         return cpa;
     }
 
-    public GetAdsResponse setCpa(Integer cpa) {
+    public GetAdsResponse setCpa(String cpa) {
         this.cpa = cpa;
         return this;
     }
 
-    public Integer getOcpm() {
-        return ocpm;
+    public String getCpc() {
+        return cpc;
     }
 
-    public GetAdsResponse setOcpm(Integer ocpm) {
-        this.ocpm = ocpm;
+    public GetAdsResponse setCpc(String cpc) {
+        this.cpc = cpc;
         return this;
     }
 
-    public Integer getAutobiddingMaxCost() {
-        return autobiddingMaxCost;
+    public String getCpm() {
+        return cpm;
     }
 
-    public GetAdsResponse setAutobiddingMaxCost(Integer autobiddingMaxCost) {
-        this.autobiddingMaxCost = autobiddingMaxCost;
+    public GetAdsResponse setCpm(String cpm) {
+        this.cpm = cpm;
+        return this;
+    }
+
+    public Integer getCreateTime() {
+        return createTime;
+    }
+
+    public GetAdsResponse setCreateTime(Integer createTime) {
+        this.createTime = createTime;
+        return this;
+    }
+
+    public String getDayLimit() {
+        return dayLimit;
+    }
+
+    public GetAdsResponse setDayLimit(String dayLimit) {
+        this.dayLimit = dayLimit;
+        return this;
+    }
+
+    public Integer getDisclaimerFinance() {
+        return disclaimerFinance;
+    }
+
+    public GetAdsResponse setDisclaimerFinance(Integer disclaimerFinance) {
+        this.disclaimerFinance = disclaimerFinance;
+        return this;
+    }
+
+    public String getDisclaimerFinanceLicenseNo() {
+        return disclaimerFinanceLicenseNo;
+    }
+
+    public GetAdsResponse setDisclaimerFinanceLicenseNo(String disclaimerFinanceLicenseNo) {
+        this.disclaimerFinanceLicenseNo = disclaimerFinanceLicenseNo;
+        return this;
+    }
+
+    public String getDisclaimerFinanceName() {
+        return disclaimerFinanceName;
+    }
+
+    public GetAdsResponse setDisclaimerFinanceName(String disclaimerFinanceName) {
+        this.disclaimerFinanceName = disclaimerFinanceName;
         return this;
     }
 
@@ -284,6 +554,34 @@ public class GetAdsResponse implements Validable {
         return disclaimerSupplements;
     }
 
+    public List<EventsRetargetingGroup> getEventsRetargetingGroups() {
+        return eventsRetargetingGroups;
+    }
+
+    public GetAdsResponse setEventsRetargetingGroups(
+            List<EventsRetargetingGroup> eventsRetargetingGroups) {
+        this.eventsRetargetingGroups = eventsRetargetingGroups;
+        return this;
+    }
+
+    public Integer getGoalType() {
+        return goalType;
+    }
+
+    public GetAdsResponse setGoalType(Integer goalType) {
+        this.goalType = goalType;
+        return this;
+    }
+
+    public Boolean getHasCampaignBudgetOptimization() {
+        return hasCampaignBudgetOptimization;
+    }
+
+    public GetAdsResponse setHasCampaignBudgetOptimization(Boolean hasCampaignBudgetOptimization) {
+        this.hasCampaignBudgetOptimization = hasCampaignBudgetOptimization;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -302,6 +600,15 @@ public class GetAdsResponse implements Validable {
         return this;
     }
 
+    public Integer getImpressionsLimitPeriod() {
+        return impressionsLimitPeriod;
+    }
+
+    public GetAdsResponse setImpressionsLimitPeriod(Integer impressionsLimitPeriod) {
+        this.impressionsLimitPeriod = impressionsLimitPeriod;
+        return this;
+    }
+
     public boolean isImpressionsLimited() {
         return impressionsLimited == BoolInt.YES;
     }
@@ -310,12 +617,92 @@ public class GetAdsResponse implements Validable {
         return impressionsLimited;
     }
 
+    public Boolean getIsPromo() {
+        return isPromo;
+    }
+
+    public GetAdsResponse setIsPromo(Boolean isPromo) {
+        this.isPromo = isPromo;
+        return this;
+    }
+
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public GetAdsResponse setLinkId(Integer linkId) {
+        this.linkId = linkId;
+        return this;
+    }
+
+    public Long getLinkOwnerId() {
+        return linkOwnerId;
+    }
+
+    public GetAdsResponse setLinkOwnerId(Long linkOwnerId) {
+        this.linkOwnerId = linkOwnerId;
+        return this;
+    }
+
+    public Integer getLinkType() {
+        return linkType;
+    }
+
+    public GetAdsResponse setLinkType(Integer linkType) {
+        this.linkType = linkType;
+        return this;
+    }
+
+    public String getLinkUrl() {
+        return linkUrl;
+    }
+
+    public GetAdsResponse setLinkUrl(String linkUrl) {
+        this.linkUrl = linkUrl;
+        return this;
+    }
+
     public String getName() {
         return name;
     }
 
     public GetAdsResponse setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getOcpm() {
+        return ocpm;
+    }
+
+    public GetAdsResponse setOcpm(String ocpm) {
+        this.ocpm = ocpm;
+        return this;
+    }
+
+    public String getPublisherPlatforms() {
+        return publisherPlatforms;
+    }
+
+    public GetAdsResponse setPublisherPlatforms(String publisherPlatforms) {
+        this.publisherPlatforms = publisherPlatforms;
+        return this;
+    }
+
+    public boolean isPublisherPlatformsAuto() {
+        return publisherPlatformsAuto == BoolInt.YES;
+    }
+
+    public BoolInt getPublisherPlatformsAuto() {
+        return publisherPlatformsAuto;
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public GetAdsResponse setStartTime(Integer startTime) {
+        this.startTime = startTime;
         return this;
     }
 
@@ -328,6 +715,42 @@ public class GetAdsResponse implements Validable {
         return this;
     }
 
+    public Integer getStopTime() {
+        return stopTime;
+    }
+
+    public GetAdsResponse setStopTime(Integer stopTime) {
+        this.stopTime = stopTime;
+        return this;
+    }
+
+    public Integer getSuggestedCriteria() {
+        return suggestedCriteria;
+    }
+
+    public GetAdsResponse setSuggestedCriteria(Integer suggestedCriteria) {
+        this.suggestedCriteria = suggestedCriteria;
+        return this;
+    }
+
+    public Integer getUpdateTime() {
+        return updateTime;
+    }
+
+    public GetAdsResponse setUpdateTime(Integer updateTime) {
+        this.updateTime = updateTime;
+        return this;
+    }
+
+    public Integer getUserGoalType() {
+        return userGoalType;
+    }
+
+    public GetAdsResponse setUserGoalType(Integer userGoalType) {
+        this.userGoalType = userGoalType;
+        return this;
+    }
+
     public boolean isVideo() {
         return video == BoolInt.YES;
     }
@@ -336,9 +759,27 @@ public class GetAdsResponse implements Validable {
         return video;
     }
 
+    public List<String> getWeeklyScheduleHours() {
+        return weeklyScheduleHours;
+    }
+
+    public GetAdsResponse setWeeklyScheduleHours(List<String> weeklyScheduleHours) {
+        this.weeklyScheduleHours = weeklyScheduleHours;
+        return this;
+    }
+
+    public Integer getWeeklyScheduleUseHolidays() {
+        return weeklyScheduleUseHolidays;
+    }
+
+    public GetAdsResponse setWeeklyScheduleUseHolidays(Integer weeklyScheduleUseHolidays) {
+        this.weeklyScheduleUseHolidays = weeklyScheduleUseHolidays;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(autobiddingMaxCost, cpm, impressionsLimit, ocpm, allLimit, campaignId, category2Id, disclaimerMedical, category1Id, disclaimerSpecialist, video, disclaimerSupplements, adPlatform, approved, impressionsLimited, cpa, costType, cpc, name, id, adFormat, status);
+        return Objects.hash(allLimit, category2Id, adPlatform, approved, cpa, eventsRetargetingGroups, costType, cpc, linkUrl, disclaimerFinanceLicenseNo, id, adPlatformNoWall, impressionsLimitPeriod, userGoalType, cpm, suggestedCriteria, campaignId, disclaimerSpecialist, disclaimerSupplements, linkOwnerId, autobidding, name, conversionPixelId, publisherPlatformsAuto, status, adPlatformNoAdNetwork, hasCampaignBudgetOptimization, disclaimerMedical, category1Id, weeklyScheduleHours, video, isPromo, startTime, stopTime, disclaimerFinanceName, autobiddingMaxCost, impressionsLimit, goalType, weeklyScheduleUseHolidays, ocpm, publisherPlatforms, updateTime, conversionEventId, disclaimerFinance, linkId, dayLimit, createTime, impressionsLimited, ageRestriction, linkType, adFormat);
     }
 
     @Override
@@ -346,28 +787,57 @@ public class GetAdsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetAdsResponse getAdsResponse = (GetAdsResponse) o;
-        return Objects.equals(adFormat, getAdsResponse.adFormat) &&
-                Objects.equals(cpm, getAdsResponse.cpm) &&
-                Objects.equals(ocpm, getAdsResponse.ocpm) &&
-                Objects.equals(autobiddingMaxCost, getAdsResponse.autobiddingMaxCost) &&
-                Objects.equals(costType, getAdsResponse.costType) &&
-                Objects.equals(video, getAdsResponse.video) &&
-                Objects.equals(allLimit, getAdsResponse.allLimit) &&
-                Objects.equals(category1Id, getAdsResponse.category1Id) &&
-                Objects.equals(impressionsLimited, getAdsResponse.impressionsLimited) &&
+        return Objects.equals(costType, getAdsResponse.costType) &&
+                Objects.equals(linkId, getAdsResponse.linkId) &&
                 Objects.equals(approved, getAdsResponse.approved) &&
-                Objects.equals(disclaimerSpecialist, getAdsResponse.disclaimerSpecialist) &&
-                Objects.equals(adPlatform, getAdsResponse.adPlatform) &&
                 Objects.equals(cpa, getAdsResponse.cpa) &&
+                Objects.equals(disclaimerFinance, getAdsResponse.disclaimerFinance) &&
                 Objects.equals(cpc, getAdsResponse.cpc) &&
-                Objects.equals(impressionsLimit, getAdsResponse.impressionsLimit) &&
-                Objects.equals(name, getAdsResponse.name) &&
+                Objects.equals(publisherPlatformsAuto, getAdsResponse.publisherPlatformsAuto) &&
+                Objects.equals(linkUrl, getAdsResponse.linkUrl) &&
                 Objects.equals(id, getAdsResponse.id) &&
-                Objects.equals(disclaimerSupplements, getAdsResponse.disclaimerSupplements) &&
+                Objects.equals(publisherPlatforms, getAdsResponse.publisherPlatforms) &&
                 Objects.equals(campaignId, getAdsResponse.campaignId) &&
                 Objects.equals(category2Id, getAdsResponse.category2Id) &&
-                Objects.equals(disclaimerMedical, getAdsResponse.disclaimerMedical) &&
-                Objects.equals(status, getAdsResponse.status);
+                Objects.equals(adFormat, getAdsResponse.adFormat) &&
+                Objects.equals(cpm, getAdsResponse.cpm) &&
+                Objects.equals(createTime, getAdsResponse.createTime) &&
+                Objects.equals(hasCampaignBudgetOptimization, getAdsResponse.hasCampaignBudgetOptimization) &&
+                Objects.equals(adPlatformNoAdNetwork, getAdsResponse.adPlatformNoAdNetwork) &&
+                Objects.equals(disclaimerFinanceLicenseNo, getAdsResponse.disclaimerFinanceLicenseNo) &&
+                Objects.equals(autobidding, getAdsResponse.autobidding) &&
+                Objects.equals(category1Id, getAdsResponse.category1Id) &&
+                Objects.equals(startTime, getAdsResponse.startTime) &&
+                Objects.equals(impressionsLimit, getAdsResponse.impressionsLimit) &&
+                Objects.equals(name, getAdsResponse.name) &&
+                Objects.equals(status, getAdsResponse.status) &&
+                Objects.equals(goalType, getAdsResponse.goalType) &&
+                Objects.equals(autobiddingMaxCost, getAdsResponse.autobiddingMaxCost) &&
+                Objects.equals(stopTime, getAdsResponse.stopTime) &&
+                Objects.equals(dayLimit, getAdsResponse.dayLimit) &&
+                Objects.equals(video, getAdsResponse.video) &&
+                Objects.equals(weeklyScheduleUseHolidays, getAdsResponse.weeklyScheduleUseHolidays) &&
+                Objects.equals(allLimit, getAdsResponse.allLimit) &&
+                Objects.equals(impressionsLimited, getAdsResponse.impressionsLimited) &&
+                Objects.equals(weeklyScheduleHours, getAdsResponse.weeklyScheduleHours) &&
+                Objects.equals(updateTime, getAdsResponse.updateTime) &&
+                Objects.equals(suggestedCriteria, getAdsResponse.suggestedCriteria) &&
+                Objects.equals(adPlatformNoWall, getAdsResponse.adPlatformNoWall) &&
+                Objects.equals(disclaimerSupplements, getAdsResponse.disclaimerSupplements) &&
+                Objects.equals(ocpm, getAdsResponse.ocpm) &&
+                Objects.equals(impressionsLimitPeriod, getAdsResponse.impressionsLimitPeriod) &&
+                Objects.equals(linkOwnerId, getAdsResponse.linkOwnerId) &&
+                Objects.equals(linkType, getAdsResponse.linkType) &&
+                Objects.equals(conversionEventId, getAdsResponse.conversionEventId) &&
+                Objects.equals(disclaimerSpecialist, getAdsResponse.disclaimerSpecialist) &&
+                Objects.equals(adPlatform, getAdsResponse.adPlatform) &&
+                Objects.equals(disclaimerFinanceName, getAdsResponse.disclaimerFinanceName) &&
+                Objects.equals(eventsRetargetingGroups, getAdsResponse.eventsRetargetingGroups) &&
+                Objects.equals(ageRestriction, getAdsResponse.ageRestriction) &&
+                Objects.equals(isPromo, getAdsResponse.isPromo) &&
+                Objects.equals(userGoalType, getAdsResponse.userGoalType) &&
+                Objects.equals(conversionPixelId, getAdsResponse.conversionPixelId) &&
+                Objects.equals(disclaimerMedical, getAdsResponse.disclaimerMedical);
     }
 
     @Override
@@ -378,28 +848,57 @@ public class GetAdsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetAdsResponse{");
-        sb.append("adFormat=").append(adFormat);
-        sb.append(", cpm=").append(cpm);
-        sb.append(", ocpm=").append(ocpm);
-        sb.append(", autobiddingMaxCost=").append(autobiddingMaxCost);
-        sb.append(", costType=").append(costType);
-        sb.append(", video=").append(video);
-        sb.append(", allLimit=").append(allLimit);
-        sb.append(", category1Id=").append(category1Id);
-        sb.append(", impressionsLimited=").append(impressionsLimited);
+        sb.append("costType=").append(costType);
+        sb.append(", linkId=").append(linkId);
         sb.append(", approved=").append(approved);
-        sb.append(", disclaimerSpecialist=").append(disclaimerSpecialist);
-        sb.append(", adPlatform=").append(adPlatform);
-        sb.append(", cpa=").append(cpa);
-        sb.append(", cpc=").append(cpc);
-        sb.append(", impressionsLimit=").append(impressionsLimit);
-        sb.append(", name='").append(name).append("'");
+        sb.append(", cpa='").append(cpa).append("'");
+        sb.append(", disclaimerFinance=").append(disclaimerFinance);
+        sb.append(", cpc='").append(cpc).append("'");
+        sb.append(", publisherPlatformsAuto=").append(publisherPlatformsAuto);
+        sb.append(", linkUrl='").append(linkUrl).append("'");
         sb.append(", id=").append(id);
-        sb.append(", disclaimerSupplements=").append(disclaimerSupplements);
+        sb.append(", publisherPlatforms='").append(publisherPlatforms).append("'");
         sb.append(", campaignId=").append(campaignId);
         sb.append(", category2Id=").append(category2Id);
-        sb.append(", disclaimerMedical=").append(disclaimerMedical);
+        sb.append(", adFormat=").append(adFormat);
+        sb.append(", cpm='").append(cpm).append("'");
+        sb.append(", createTime=").append(createTime);
+        sb.append(", hasCampaignBudgetOptimization=").append(hasCampaignBudgetOptimization);
+        sb.append(", adPlatformNoAdNetwork=").append(adPlatformNoAdNetwork);
+        sb.append(", disclaimerFinanceLicenseNo='").append(disclaimerFinanceLicenseNo).append("'");
+        sb.append(", autobidding=").append(autobidding);
+        sb.append(", category1Id=").append(category1Id);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", impressionsLimit=").append(impressionsLimit);
+        sb.append(", name='").append(name).append("'");
         sb.append(", status=").append(status);
+        sb.append(", goalType=").append(goalType);
+        sb.append(", autobiddingMaxCost='").append(autobiddingMaxCost).append("'");
+        sb.append(", stopTime=").append(stopTime);
+        sb.append(", dayLimit='").append(dayLimit).append("'");
+        sb.append(", video=").append(video);
+        sb.append(", weeklyScheduleUseHolidays=").append(weeklyScheduleUseHolidays);
+        sb.append(", allLimit='").append(allLimit).append("'");
+        sb.append(", impressionsLimited=").append(impressionsLimited);
+        sb.append(", weeklyScheduleHours='").append(weeklyScheduleHours).append("'");
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", suggestedCriteria=").append(suggestedCriteria);
+        sb.append(", adPlatformNoWall=").append(adPlatformNoWall);
+        sb.append(", disclaimerSupplements=").append(disclaimerSupplements);
+        sb.append(", ocpm='").append(ocpm).append("'");
+        sb.append(", impressionsLimitPeriod=").append(impressionsLimitPeriod);
+        sb.append(", linkOwnerId=").append(linkOwnerId);
+        sb.append(", linkType=").append(linkType);
+        sb.append(", conversionEventId=").append(conversionEventId);
+        sb.append(", disclaimerSpecialist=").append(disclaimerSpecialist);
+        sb.append(", adPlatform=").append(adPlatform);
+        sb.append(", disclaimerFinanceName='").append(disclaimerFinanceName).append("'");
+        sb.append(", eventsRetargetingGroups=").append(eventsRetargetingGroups);
+        sb.append(", ageRestriction=").append(ageRestriction);
+        sb.append(", isPromo=").append(isPromo);
+        sb.append(", userGoalType=").append(userGoalType);
+        sb.append(", conversionPixelId=").append(conversionPixelId);
+        sb.append(", disclaimerMedical=").append(disclaimerMedical);
         sb.append('}');
         return sb.toString();
     }

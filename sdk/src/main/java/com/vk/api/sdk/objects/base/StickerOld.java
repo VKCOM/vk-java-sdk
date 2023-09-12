@@ -12,28 +12,22 @@ import java.util.Objects;
  */
 public class StickerOld implements Validable {
     /**
+     * Height in px
+     */
+    @SerializedName("height")
+    private Integer height;
+
+    /**
      * Sticker ID
      */
     @SerializedName("id")
     private Integer id;
 
     /**
-     * Pack ID
+     * Information whether the sticker is allowed
      */
-    @SerializedName("product_id")
-    private Integer productId;
-
-    /**
-     * Width in px
-     */
-    @SerializedName("width")
-    private Integer width;
-
-    /**
-     * Height in px
-     */
-    @SerializedName("height")
-    private Integer height;
+    @SerializedName("is_allowed")
+    private Boolean isAllowed;
 
     /**
      * URL of the preview image with 128 px in height
@@ -66,10 +60,25 @@ public class StickerOld implements Validable {
     private URI photo64;
 
     /**
-     * Information whether the sticker is allowed
+     * Pack ID
      */
-    @SerializedName("is_allowed")
-    private Boolean isAllowed;
+    @SerializedName("product_id")
+    private Integer productId;
+
+    /**
+     * Width in px
+     */
+    @SerializedName("width")
+    private Integer width;
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public StickerOld setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
 
     public Integer getId() {
         return id;
@@ -80,30 +89,12 @@ public class StickerOld implements Validable {
         return this;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public Boolean getIsAllowed() {
+        return isAllowed;
     }
 
-    public StickerOld setProductId(Integer productId) {
-        this.productId = productId;
-        return this;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public StickerOld setWidth(Integer width) {
-        this.width = width;
-        return this;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public StickerOld setHeight(Integer height) {
-        this.height = height;
+    public StickerOld setIsAllowed(Boolean isAllowed) {
+        this.isAllowed = isAllowed;
         return this;
     }
 
@@ -152,18 +143,27 @@ public class StickerOld implements Validable {
         return this;
     }
 
-    public Boolean getIsAllowed() {
-        return isAllowed;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public StickerOld setIsAllowed(Boolean isAllowed) {
-        this.isAllowed = isAllowed;
+    public StickerOld setProductId(Integer productId) {
+        this.productId = productId;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public StickerOld setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isAllowed, productId, photo64, photo352, width, photo256, id, photo128, photo512, height);
+        return Objects.hash(isAllowed, photo64, productId, photo352, width, photo256, id, photo128, photo512, height);
     }
 
     @Override
@@ -173,8 +173,8 @@ public class StickerOld implements Validable {
         StickerOld stickerOld = (StickerOld) o;
         return Objects.equals(photo512, stickerOld.photo512) &&
                 Objects.equals(photo128, stickerOld.photo128) &&
-                Objects.equals(productId, stickerOld.productId) &&
                 Objects.equals(photo64, stickerOld.photo64) &&
+                Objects.equals(productId, stickerOld.productId) &&
                 Objects.equals(width, stickerOld.width) &&
                 Objects.equals(isAllowed, stickerOld.isAllowed) &&
                 Objects.equals(id, stickerOld.id) &&
@@ -193,8 +193,8 @@ public class StickerOld implements Validable {
         final StringBuilder sb = new StringBuilder("StickerOld{");
         sb.append("photo512=").append(photo512);
         sb.append(", photo128=").append(photo128);
-        sb.append(", productId=").append(productId);
         sb.append(", photo64=").append(photo64);
+        sb.append(", productId=").append(productId);
         sb.append(", width=").append(width);
         sb.append(", isAllowed=").append(isAllowed);
         sb.append(", id=").append(id);

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.market;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.market.responses.AddAlbumResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,15 @@ import java.util.List;
  */
 public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuery, AddAlbumResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param title value of "title" parameter.
      */
-    public MarketAddAlbumQuery(VkApiClient client, UserActor actor, int ownerId, String title) {
+    public MarketAddAlbumQuery(VkApiClient client, UserActor actor, Long ownerId, String title) {
         super(client, "market.addAlbum", AddAlbumResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +30,25 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MarketAddAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "market.addAlbum", AddAlbumResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of an item owner community.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketAddAlbumQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public MarketAddAlbumQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +58,8 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MarketAddAlbumQuery title(String value) {
+    @ApiParam("title")
+    public MarketAddAlbumQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -53,6 +69,7 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
      * @param value value of "photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_id")
     public MarketAddAlbumQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
@@ -63,6 +80,7 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
      * @param value value of "main album" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("main_album")
     public MarketAddAlbumQuery mainAlbum(Boolean value) {
         return unsafeParam("main_album", value);
     }
@@ -73,6 +91,7 @@ public class MarketAddAlbumQuery extends AbstractQueryBuilder<MarketAddAlbumQuer
      * @param value value of "is hidden" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_hidden")
     public MarketAddAlbumQuery isHidden(Boolean value) {
         return unsafeParam("is_hidden", value);
     }

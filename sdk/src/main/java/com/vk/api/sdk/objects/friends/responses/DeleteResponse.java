@@ -11,21 +11,11 @@ import java.util.Objects;
  * DeleteResponse object
  */
 public class DeleteResponse implements Validable {
-    @SerializedName("success")
-    @Required
-    private Integer success;
-
     /**
      * Returns 1 if friend has been deleted
      */
     @SerializedName("friend_deleted")
     private DeleteResponseFriendDeleted friendDeleted;
-
-    /**
-     * Returns 1 if out request has been canceled
-     */
-    @SerializedName("out_request_deleted")
-    private DeleteResponseOutRequestDeleted outRequestDeleted;
 
     /**
      * Returns 1 if incoming request has been declined
@@ -34,19 +24,20 @@ public class DeleteResponse implements Validable {
     private DeleteResponseInRequestDeleted inRequestDeleted;
 
     /**
+     * Returns 1 if out request has been canceled
+     */
+    @SerializedName("out_request_deleted")
+    private DeleteResponseOutRequestDeleted outRequestDeleted;
+
+    @SerializedName("success")
+    @Required
+    private Integer success;
+
+    /**
      * Returns 1 if suggestion has been declined
      */
     @SerializedName("suggestion_deleted")
     private DeleteResponseSuggestionDeleted suggestionDeleted;
-
-    public Integer getSuccess() {
-        return success;
-    }
-
-    public DeleteResponse setSuccess(Integer success) {
-        this.success = success;
-        return this;
-    }
 
     public DeleteResponseFriendDeleted getFriendDeleted() {
         return friendDeleted;
@@ -54,6 +45,15 @@ public class DeleteResponse implements Validable {
 
     public DeleteResponse setFriendDeleted(DeleteResponseFriendDeleted friendDeleted) {
         this.friendDeleted = friendDeleted;
+        return this;
+    }
+
+    public DeleteResponseInRequestDeleted getInRequestDeleted() {
+        return inRequestDeleted;
+    }
+
+    public DeleteResponse setInRequestDeleted(DeleteResponseInRequestDeleted inRequestDeleted) {
+        this.inRequestDeleted = inRequestDeleted;
         return this;
     }
 
@@ -66,12 +66,12 @@ public class DeleteResponse implements Validable {
         return this;
     }
 
-    public DeleteResponseInRequestDeleted getInRequestDeleted() {
-        return inRequestDeleted;
+    public Integer getSuccess() {
+        return success;
     }
 
-    public DeleteResponse setInRequestDeleted(DeleteResponseInRequestDeleted inRequestDeleted) {
-        this.inRequestDeleted = inRequestDeleted;
+    public DeleteResponse setSuccess(Integer success) {
+        this.success = success;
         return this;
     }
 

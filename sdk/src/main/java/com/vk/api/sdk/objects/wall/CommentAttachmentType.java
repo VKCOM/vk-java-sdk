@@ -14,6 +14,9 @@ public enum CommentAttachmentType implements EnumParam {
     @SerializedName("audio")
     AUDIO("audio"),
 
+    @SerializedName("audio_playlist")
+    AUDIO_PLAYLIST("audio_playlist"),
+
     @SerializedName("video")
     VIDEO("video"),
 
@@ -36,7 +39,10 @@ public enum CommentAttachmentType implements EnumParam {
     MARKET("market"),
 
     @SerializedName("sticker")
-    STICKER("sticker");
+    STICKER("sticker"),
+
+    @SerializedName("graffiti")
+    GRAFFITI("graffiti");
 
     private final String value;
 

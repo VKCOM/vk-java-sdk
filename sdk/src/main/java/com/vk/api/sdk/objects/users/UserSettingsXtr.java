@@ -19,9 +19,6 @@ import java.util.Objects;
  * UserSettingsXtr object
  */
 public class UserSettingsXtr implements Validable {
-    @SerializedName("connections")
-    private UserConnections connections;
-
     /**
      * User's date of birth
      */
@@ -37,6 +34,9 @@ public class UserSettingsXtr implements Validable {
     @SerializedName("city")
     private City city;
 
+    @SerializedName("connections")
+    private UserConnections connections;
+
     @SerializedName("country")
     private Country country;
 
@@ -50,7 +50,14 @@ public class UserSettingsXtr implements Validable {
      * User's hometown
      */
     @SerializedName("home_town")
+    @Required
     private String homeTown;
+
+    @SerializedName("interests")
+    private UserSettingsInterests interests;
+
+    @SerializedName("languages")
+    private List<String> languages;
 
     /**
      * User last name
@@ -116,21 +123,6 @@ public class UserSettingsXtr implements Validable {
     @SerializedName("status_audio")
     private Audio statusAudio;
 
-    @SerializedName("interests")
-    private UserSettingsInterests interests;
-
-    @SerializedName("languages")
-    private List<String> languages;
-
-    public UserConnections getConnections() {
-        return connections;
-    }
-
-    public UserSettingsXtr setConnections(UserConnections connections) {
-        this.connections = connections;
-        return this;
-    }
-
     public String getBdate() {
         return bdate;
     }
@@ -158,6 +150,15 @@ public class UserSettingsXtr implements Validable {
         return this;
     }
 
+    public UserConnections getConnections() {
+        return connections;
+    }
+
+    public UserSettingsXtr setConnections(UserConnections connections) {
+        this.connections = connections;
+        return this;
+    }
+
     public Country getCountry() {
         return country;
     }
@@ -182,6 +183,24 @@ public class UserSettingsXtr implements Validable {
 
     public UserSettingsXtr setHomeTown(String homeTown) {
         this.homeTown = homeTown;
+        return this;
+    }
+
+    public UserSettingsInterests getInterests() {
+        return interests;
+    }
+
+    public UserSettingsXtr setInterests(UserSettingsInterests interests) {
+        this.interests = interests;
+        return this;
+    }
+
+    public List<String> getLanguages() {
+        return languages;
+    }
+
+    public UserSettingsXtr setLanguages(List<String> languages) {
+        this.languages = languages;
         return this;
     }
 
@@ -301,24 +320,6 @@ public class UserSettingsXtr implements Validable {
         return this;
     }
 
-    public UserSettingsInterests getInterests() {
-        return interests;
-    }
-
-    public UserSettingsXtr setInterests(UserSettingsInterests interests) {
-        this.interests = interests;
-        return this;
-    }
-
-    public List<String> getLanguages() {
-        return languages;
-    }
-
-    public UserSettingsXtr setLanguages(List<String> languages) {
-        this.languages = languages;
-        return this;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(country, lastName, bdate, relationPartner, languages, city, sex, maidenName, personal, bdateVisibility, screenName, relation, firstName, relationRequests, homeTown, phone, relationPending, interests, nameRequest, connections, statusAudio, status);
@@ -345,11 +346,11 @@ public class UserSettingsXtr implements Validable {
                 Objects.equals(phone, userSettingsXtr.phone) &&
                 Objects.equals(screenName, userSettingsXtr.screenName) &&
                 Objects.equals(nameRequest, userSettingsXtr.nameRequest) &&
-                Objects.equals(relationPending, userSettingsXtr.relationPending) &&
                 Objects.equals(interests, userSettingsXtr.interests) &&
+                Objects.equals(relationPending, userSettingsXtr.relationPending) &&
                 Objects.equals(firstName, userSettingsXtr.firstName) &&
-                Objects.equals(connections, userSettingsXtr.connections) &&
                 Objects.equals(bdateVisibility, userSettingsXtr.bdateVisibility) &&
+                Objects.equals(connections, userSettingsXtr.connections) &&
                 Objects.equals(status, userSettingsXtr.status);
     }
 
@@ -377,11 +378,11 @@ public class UserSettingsXtr implements Validable {
         sb.append(", phone='").append(phone).append("'");
         sb.append(", screenName='").append(screenName).append("'");
         sb.append(", nameRequest=").append(nameRequest);
-        sb.append(", relationPending=").append(relationPending);
         sb.append(", interests=").append(interests);
+        sb.append(", relationPending=").append(relationPending);
         sb.append(", firstName='").append(firstName).append("'");
-        sb.append(", connections=").append(connections);
         sb.append(", bdateVisibility=").append(bdateVisibility);
+        sb.append(", connections=").append(connections);
         sb.append(", status='").append(status).append("'");
         sb.append('}');
         return sb.toString();

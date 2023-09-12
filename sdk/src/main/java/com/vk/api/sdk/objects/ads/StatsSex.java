@@ -9,39 +9,9 @@ import java.util.Objects;
 /**
  * StatsSex object
  */
-public class StatsSex implements Validable {
-    /**
-     * Clicks rate
-     */
-    @SerializedName("clicks_rate")
-    private Float clicksRate;
-
-    /**
-     * Impressions rate
-     */
-    @SerializedName("impressions_rate")
-    private Float impressionsRate;
-
+public class StatsSex extends DemographicStatsPeriodItemBase implements Validable {
     @SerializedName("value")
     private StatsSexValue value;
-
-    public Float getClicksRate() {
-        return clicksRate;
-    }
-
-    public StatsSex setClicksRate(Float clicksRate) {
-        this.clicksRate = clicksRate;
-        return this;
-    }
-
-    public Float getImpressionsRate() {
-        return impressionsRate;
-    }
-
-    public StatsSex setImpressionsRate(Float impressionsRate) {
-        this.impressionsRate = impressionsRate;
-        return this;
-    }
 
     public StatsSexValue getValue() {
         return value;
@@ -54,7 +24,7 @@ public class StatsSex implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(clicksRate, impressionsRate, value);
+        return Objects.hash(value);
     }
 
     @Override
@@ -62,9 +32,7 @@ public class StatsSex implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StatsSex statsSex = (StatsSex) o;
-        return Objects.equals(impressionsRate, statsSex.impressionsRate) &&
-                Objects.equals(value, statsSex.value) &&
-                Objects.equals(clicksRate, statsSex.clicksRate);
+        return Objects.equals(value, statsSex.value);
     }
 
     @Override
@@ -75,9 +43,7 @@ public class StatsSex implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StatsSex{");
-        sb.append("impressionsRate=").append(impressionsRate);
-        sb.append(", value=").append(value);
-        sb.append(", clicksRate=").append(clicksRate);
+        sb.append("value=").append(value);
         sb.append('}');
         return sb.toString();
     }

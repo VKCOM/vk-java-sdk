@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.PropertyExists;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,24 @@ import java.util.Objects;
  * VideoAlbumFull object
  */
 public class VideoAlbumFull extends VideoAlbum implements Validable {
+    /**
+     * Is user can delete playlist
+     */
+    @SerializedName("can_delete")
+    private BoolInt canDelete;
+
+    /**
+     * Is user can edit playlist
+     */
+    @SerializedName("can_edit")
+    private BoolInt canEdit;
+
+    /**
+     * Is user can upload video to playlist
+     */
+    @SerializedName("can_upload")
+    private BoolInt canUpload;
+
     /**
      * Total number of videos in album
      */
@@ -42,7 +61,32 @@ public class VideoAlbumFull extends VideoAlbum implements Validable {
      * Date when the album has been updated last time in Unixtime
      */
     @SerializedName("updated_time")
+    @Required
     private Integer updatedTime;
+
+    public boolean canDelete() {
+        return canDelete == BoolInt.YES;
+    }
+
+    public BoolInt getCanDelete() {
+        return canDelete;
+    }
+
+    public boolean canEdit() {
+        return canEdit == BoolInt.YES;
+    }
+
+    public BoolInt getCanEdit() {
+        return canEdit;
+    }
+
+    public boolean canUpload() {
+        return canUpload == BoolInt.YES;
+    }
+
+    public BoolInt getCanUpload() {
+        return canUpload;
+    }
 
     public Integer getCount() {
         return count;
@@ -81,7 +125,7 @@ public class VideoAlbumFull extends VideoAlbum implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(isSystem, image, updatedTime, imageBlur, count);
+        return Objects.hash(isSystem, image, updatedTime, imageBlur, canEdit, count, canDelete, canUpload);
     }
 
     @Override
@@ -93,7 +137,10 @@ public class VideoAlbumFull extends VideoAlbum implements Validable {
                 Objects.equals(isSystem, videoAlbumFull.isSystem) &&
                 Objects.equals(updatedTime, videoAlbumFull.updatedTime) &&
                 Objects.equals(imageBlur, videoAlbumFull.imageBlur) &&
-                Objects.equals(count, videoAlbumFull.count);
+                Objects.equals(canDelete, videoAlbumFull.canDelete) &&
+                Objects.equals(count, videoAlbumFull.count) &&
+                Objects.equals(canEdit, videoAlbumFull.canEdit) &&
+                Objects.equals(canUpload, videoAlbumFull.canUpload);
     }
 
     @Override
@@ -108,7 +155,10 @@ public class VideoAlbumFull extends VideoAlbum implements Validable {
         sb.append(", isSystem=").append(isSystem);
         sb.append(", updatedTime=").append(updatedTime);
         sb.append(", imageBlur=").append(imageBlur);
+        sb.append(", canDelete=").append(canDelete);
         sb.append(", count=").append(count);
+        sb.append(", canEdit=").append(canEdit);
+        sb.append(", canUpload=").append(canUpload);
         sb.append('}');
         return sb.toString();
     }

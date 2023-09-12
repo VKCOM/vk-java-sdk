@@ -2,12 +2,12 @@
 package com.vk.api.sdk.objects.ads;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.base.BoolInt;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,15 +18,27 @@ public class AdLayout implements Validable {
      * Ad format
      */
     @SerializedName("ad_format")
+    @Required
     private Integer adFormat;
+
+    /**
+     * Age restriction
+     */
+    @SerializedName("age_restriction")
+    private Integer ageRestriction;
 
     /**
      * Campaign ID
      */
     @SerializedName("campaign_id")
+    @Required
     private Integer campaignId;
 
+    @SerializedName("clips_list")
+    private List<ClipItem> clipsList;
+
     @SerializedName("cost_type")
+    @Required
     private AdCostType costType;
 
     /**
@@ -37,16 +49,35 @@ public class AdLayout implements Validable {
     private String description;
 
     /**
+     * Goal type
+     */
+    @SerializedName("goal_type")
+    private Integer goalType;
+
+    /**
+     * Icon source
+     */
+    @SerializedName("icon_src")
+    private String iconSrc;
+
+    /**
+     * Icon source 2x
+     */
+    @SerializedName("icon_src_2x")
+    private String iconSrc2x;
+
+    /**
      * Ad ID
      */
     @SerializedName("id")
     @Required
-    private String id;
+    private Integer id;
 
     /**
      * Image URL
      */
     @SerializedName("image_src")
+    @Required
     private URI imageSrc;
 
     /**
@@ -56,22 +87,66 @@ public class AdLayout implements Validable {
     private URI imageSrc2x;
 
     /**
+     * Link button
+     */
+    @SerializedName("link_button")
+    private String linkButton;
+
+    /**
      * Domain of advertised object
      */
     @SerializedName("link_domain")
     private String linkDomain;
 
     /**
+     * Link title
+     */
+    @SerializedName("link_title")
+    private String linkTitle;
+
+    /**
+     * Type of advertised object
+     */
+    @SerializedName("link_type")
+    @Required
+    private Integer linkType;
+
+    /**
      * URL of advertised object
      */
     @SerializedName("link_url")
+    @Required
     private URI linkUrl;
+
+    /**
+     * Okved
+     */
+    @SerializedName("okved")
+    private String okved;
+
+    @SerializedName("post")
+    private Post post;
 
     /**
      * link to preview an ad as it is shown on the website
      */
     @SerializedName("preview_link")
-    private JsonPrimitive previewLink;
+    private String previewLink;
+
+    /**
+     * Repeat video
+     */
+    @SerializedName("repeat_video")
+    private Integer repeatVideo;
+
+    /**
+     * Social
+     */
+    @SerializedName("social")
+    private Boolean social;
+
+    @SerializedName("stories_data")
+    private Stories storiesData;
 
     /**
      * Ad title
@@ -86,6 +161,54 @@ public class AdLayout implements Validable {
     @SerializedName("video")
     private BoolInt video;
 
+    /**
+     * Video duration
+     */
+    @SerializedName("video_duration")
+    private Integer videoDuration;
+
+    /**
+     * Video image source
+     */
+    @SerializedName("video_image_src")
+    private String videoImageSrc;
+
+    /**
+     * Video image source 2x
+     */
+    @SerializedName("video_image_src_2x")
+    private String videoImageSrc2x;
+
+    /**
+     * Video source 1080p
+     */
+    @SerializedName("video_src_1080")
+    private String videoSrc1080;
+
+    /**
+     * Video source 240p
+     */
+    @SerializedName("video_src_240")
+    private String videoSrc240;
+
+    /**
+     * Video source 360p
+     */
+    @SerializedName("video_src_360")
+    private String videoSrc360;
+
+    /**
+     * Video source 480p
+     */
+    @SerializedName("video_src_480")
+    private String videoSrc480;
+
+    /**
+     * Video source 720p
+     */
+    @SerializedName("video_src_720")
+    private String videoSrc720;
+
     public Integer getAdFormat() {
         return adFormat;
     }
@@ -95,12 +218,30 @@ public class AdLayout implements Validable {
         return this;
     }
 
+    public Integer getAgeRestriction() {
+        return ageRestriction;
+    }
+
+    public AdLayout setAgeRestriction(Integer ageRestriction) {
+        this.ageRestriction = ageRestriction;
+        return this;
+    }
+
     public Integer getCampaignId() {
         return campaignId;
     }
 
     public AdLayout setCampaignId(Integer campaignId) {
         this.campaignId = campaignId;
+        return this;
+    }
+
+    public List<ClipItem> getClipsList() {
+        return clipsList;
+    }
+
+    public AdLayout setClipsList(List<ClipItem> clipsList) {
+        this.clipsList = clipsList;
         return this;
     }
 
@@ -122,11 +263,38 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public String getId() {
+    public Integer getGoalType() {
+        return goalType;
+    }
+
+    public AdLayout setGoalType(Integer goalType) {
+        this.goalType = goalType;
+        return this;
+    }
+
+    public String getIconSrc() {
+        return iconSrc;
+    }
+
+    public AdLayout setIconSrc(String iconSrc) {
+        this.iconSrc = iconSrc;
+        return this;
+    }
+
+    public String getIconSrc2x() {
+        return iconSrc2x;
+    }
+
+    public AdLayout setIconSrc2x(String iconSrc2x) {
+        this.iconSrc2x = iconSrc2x;
+        return this;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public AdLayout setId(String id) {
+    public AdLayout setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -149,12 +317,39 @@ public class AdLayout implements Validable {
         return this;
     }
 
+    public String getLinkButton() {
+        return linkButton;
+    }
+
+    public AdLayout setLinkButton(String linkButton) {
+        this.linkButton = linkButton;
+        return this;
+    }
+
     public String getLinkDomain() {
         return linkDomain;
     }
 
     public AdLayout setLinkDomain(String linkDomain) {
         this.linkDomain = linkDomain;
+        return this;
+    }
+
+    public String getLinkTitle() {
+        return linkTitle;
+    }
+
+    public AdLayout setLinkTitle(String linkTitle) {
+        this.linkTitle = linkTitle;
+        return this;
+    }
+
+    public Integer getLinkType() {
+        return linkType;
+    }
+
+    public AdLayout setLinkType(Integer linkType) {
+        this.linkType = linkType;
         return this;
     }
 
@@ -167,12 +362,57 @@ public class AdLayout implements Validable {
         return this;
     }
 
-    public JsonPrimitive getPreviewLink() {
+    public String getOkved() {
+        return okved;
+    }
+
+    public AdLayout setOkved(String okved) {
+        this.okved = okved;
+        return this;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public AdLayout setPost(Post post) {
+        this.post = post;
+        return this;
+    }
+
+    public String getPreviewLink() {
         return previewLink;
     }
 
-    public AdLayout setPreviewLink(JsonPrimitive previewLink) {
+    public AdLayout setPreviewLink(String previewLink) {
         this.previewLink = previewLink;
+        return this;
+    }
+
+    public Integer getRepeatVideo() {
+        return repeatVideo;
+    }
+
+    public AdLayout setRepeatVideo(Integer repeatVideo) {
+        this.repeatVideo = repeatVideo;
+        return this;
+    }
+
+    public Boolean getSocial() {
+        return social;
+    }
+
+    public AdLayout setSocial(Boolean social) {
+        this.social = social;
+        return this;
+    }
+
+    public Stories getStoriesData() {
+        return storiesData;
+    }
+
+    public AdLayout setStoriesData(Stories storiesData) {
+        this.storiesData = storiesData;
         return this;
     }
 
@@ -193,9 +433,81 @@ public class AdLayout implements Validable {
         return video;
     }
 
+    public Integer getVideoDuration() {
+        return videoDuration;
+    }
+
+    public AdLayout setVideoDuration(Integer videoDuration) {
+        this.videoDuration = videoDuration;
+        return this;
+    }
+
+    public String getVideoImageSrc() {
+        return videoImageSrc;
+    }
+
+    public AdLayout setVideoImageSrc(String videoImageSrc) {
+        this.videoImageSrc = videoImageSrc;
+        return this;
+    }
+
+    public String getVideoImageSrc2x() {
+        return videoImageSrc2x;
+    }
+
+    public AdLayout setVideoImageSrc2x(String videoImageSrc2x) {
+        this.videoImageSrc2x = videoImageSrc2x;
+        return this;
+    }
+
+    public String getVideoSrc1080() {
+        return videoSrc1080;
+    }
+
+    public AdLayout setVideoSrc1080(String videoSrc1080) {
+        this.videoSrc1080 = videoSrc1080;
+        return this;
+    }
+
+    public String getVideoSrc240() {
+        return videoSrc240;
+    }
+
+    public AdLayout setVideoSrc240(String videoSrc240) {
+        this.videoSrc240 = videoSrc240;
+        return this;
+    }
+
+    public String getVideoSrc360() {
+        return videoSrc360;
+    }
+
+    public AdLayout setVideoSrc360(String videoSrc360) {
+        this.videoSrc360 = videoSrc360;
+        return this;
+    }
+
+    public String getVideoSrc480() {
+        return videoSrc480;
+    }
+
+    public AdLayout setVideoSrc480(String videoSrc480) {
+        this.videoSrc480 = videoSrc480;
+        return this;
+    }
+
+    public String getVideoSrc720() {
+        return videoSrc720;
+    }
+
+    public AdLayout setVideoSrc720(String videoSrc720) {
+        this.videoSrc720 = videoSrc720;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(campaignId, previewLink, costType, linkUrl, imageSrc2x, description, imageSrc, id, video, adFormat, title, linkDomain);
+        return Objects.hash(iconSrc2x, iconSrc, description, imageSrc, video, title, post, repeatVideo, costType, linkUrl, imageSrc2x, clipsList, id, videoImageSrc2x, linkButton, goalType, videoSrc360, videoSrc240, social, videoSrc480, campaignId, previewLink, videoSrc720, storiesData, linkTitle, videoDuration, okved, videoSrc1080, ageRestriction, linkType, adFormat, linkDomain, videoImageSrc);
     }
 
     @Override
@@ -203,18 +515,39 @@ public class AdLayout implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AdLayout adLayout = (AdLayout) o;
-        return Objects.equals(adFormat, adLayout.adFormat) &&
-                Objects.equals(previewLink, adLayout.previewLink) &&
+        return Objects.equals(storiesData, adLayout.storiesData) &&
+                Objects.equals(videoDuration, adLayout.videoDuration) &&
+                Objects.equals(goalType, adLayout.goalType) &&
+                Objects.equals(iconSrc2x, adLayout.iconSrc2x) &&
                 Objects.equals(costType, adLayout.costType) &&
-                Objects.equals(imageSrc2x, adLayout.imageSrc2x) &&
                 Objects.equals(description, adLayout.description) &&
+                Objects.equals(video, adLayout.video) &&
+                Objects.equals(videoImageSrc, adLayout.videoImageSrc) &&
+                Objects.equals(title, adLayout.title) &&
+                Objects.equals(previewLink, adLayout.previewLink) &&
+                Objects.equals(videoSrc1080, adLayout.videoSrc1080) &&
+                Objects.equals(post, adLayout.post) &&
+                Objects.equals(iconSrc, adLayout.iconSrc) &&
                 Objects.equals(linkUrl, adLayout.linkUrl) &&
                 Objects.equals(id, adLayout.id) &&
-                Objects.equals(video, adLayout.video) &&
-                Objects.equals(title, adLayout.title) &&
+                Objects.equals(campaignId, adLayout.campaignId) &&
+                Objects.equals(adFormat, adLayout.adFormat) &&
+                Objects.equals(linkButton, adLayout.linkButton) &&
+                Objects.equals(social, adLayout.social) &&
+                Objects.equals(linkTitle, adLayout.linkTitle) &&
+                Objects.equals(videoSrc480, adLayout.videoSrc480) &&
                 Objects.equals(imageSrc, adLayout.imageSrc) &&
                 Objects.equals(linkDomain, adLayout.linkDomain) &&
-                Objects.equals(campaignId, adLayout.campaignId);
+                Objects.equals(videoSrc240, adLayout.videoSrc240) &&
+                Objects.equals(videoSrc360, adLayout.videoSrc360) &&
+                Objects.equals(linkType, adLayout.linkType) &&
+                Objects.equals(imageSrc2x, adLayout.imageSrc2x) &&
+                Objects.equals(okved, adLayout.okved) &&
+                Objects.equals(videoSrc720, adLayout.videoSrc720) &&
+                Objects.equals(videoImageSrc2x, adLayout.videoImageSrc2x) &&
+                Objects.equals(ageRestriction, adLayout.ageRestriction) &&
+                Objects.equals(clipsList, adLayout.clipsList) &&
+                Objects.equals(repeatVideo, adLayout.repeatVideo);
     }
 
     @Override
@@ -225,18 +558,39 @@ public class AdLayout implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AdLayout{");
-        sb.append("adFormat=").append(adFormat);
-        sb.append(", previewLink=").append(previewLink);
+        sb.append("storiesData=").append(storiesData);
+        sb.append(", videoDuration=").append(videoDuration);
+        sb.append(", goalType=").append(goalType);
+        sb.append(", iconSrc2x='").append(iconSrc2x).append("'");
         sb.append(", costType=").append(costType);
-        sb.append(", imageSrc2x=").append(imageSrc2x);
         sb.append(", description='").append(description).append("'");
-        sb.append(", linkUrl=").append(linkUrl);
-        sb.append(", id='").append(id).append("'");
         sb.append(", video=").append(video);
+        sb.append(", videoImageSrc='").append(videoImageSrc).append("'");
         sb.append(", title='").append(title).append("'");
+        sb.append(", previewLink='").append(previewLink).append("'");
+        sb.append(", videoSrc1080='").append(videoSrc1080).append("'");
+        sb.append(", post=").append(post);
+        sb.append(", iconSrc='").append(iconSrc).append("'");
+        sb.append(", linkUrl=").append(linkUrl);
+        sb.append(", id=").append(id);
+        sb.append(", campaignId=").append(campaignId);
+        sb.append(", adFormat=").append(adFormat);
+        sb.append(", linkButton='").append(linkButton).append("'");
+        sb.append(", social=").append(social);
+        sb.append(", linkTitle='").append(linkTitle).append("'");
+        sb.append(", videoSrc480='").append(videoSrc480).append("'");
         sb.append(", imageSrc=").append(imageSrc);
         sb.append(", linkDomain='").append(linkDomain).append("'");
-        sb.append(", campaignId=").append(campaignId);
+        sb.append(", videoSrc240='").append(videoSrc240).append("'");
+        sb.append(", videoSrc360='").append(videoSrc360).append("'");
+        sb.append(", linkType=").append(linkType);
+        sb.append(", imageSrc2x=").append(imageSrc2x);
+        sb.append(", okved='").append(okved).append("'");
+        sb.append(", videoSrc720='").append(videoSrc720).append("'");
+        sb.append(", videoImageSrc2x='").append(videoImageSrc2x).append("'");
+        sb.append(", ageRestriction=").append(ageRestriction);
+        sb.append(", clipsList=").append(clipsList);
+        sb.append(", repeatVideo=").append(repeatVideo);
         sb.append('}');
         return sb.toString();
     }

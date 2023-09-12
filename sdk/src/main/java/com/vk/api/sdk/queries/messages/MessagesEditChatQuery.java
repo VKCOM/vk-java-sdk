@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,29 +15,51 @@ import java.util.List;
  */
 public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChatQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      */
-    public MessagesEditChatQuery(VkApiClient client, UserActor actor, int chatId) {
+    public MessagesEditChatQuery(VkApiClient client, GroupActor actor, Integer chatId) {
         super(client, "messages.editChat", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesEditChatQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.editChat", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param chatId value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      */
-    public MessagesEditChatQuery(VkApiClient client, GroupActor actor, int chatId) {
+    public MessagesEditChatQuery(VkApiClient client, UserActor actor, Integer chatId) {
         super(client, "messages.editChat", OkResponse.class);
         accessToken(actor.getAccessToken());
         chatId(chatId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesEditChatQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.editChat", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -45,7 +68,8 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
      * @param value value of "chat id" parameter. Maximum is 100000000. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesEditChatQuery chatId(int value) {
+    @ApiParam("chat_id")
+    public MessagesEditChatQuery chatId(Integer value) {
         return unsafeParam("chat_id", value);
     }
 
@@ -55,6 +79,7 @@ public class MessagesEditChatQuery extends AbstractQueryBuilder<MessagesEditChat
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("title")
     public MessagesEditChatQuery title(String value) {
         return unsafeParam("title", value);
     }

@@ -4,6 +4,9 @@ package com.vk.api.sdk.objects.market.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserFull;
 import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
@@ -16,10 +19,24 @@ public class GetCommentsResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
 
+    /**
+     * List of groups, available only if extended=true exists in query params
+     */
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
+    @Required
     private List<WallComment> items;
+
+    /**
+     * List of users, available only if extended=true exists in query params
+     */
+    @SerializedName("profiles")
+    private List<UserFull> profiles;
 
     public Integer getCount() {
         return count;
@@ -27,6 +44,15 @@ public class GetCommentsResponse implements Validable {
 
     public GetCommentsResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetCommentsResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -39,9 +65,18 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
+    public List<UserFull> getProfiles() {
+        return profiles;
+    }
+
+    public GetCommentsResponse setProfiles(List<UserFull> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(count, items);
+        return Objects.hash(count, profiles, groups, items);
     }
 
     @Override
@@ -50,6 +85,8 @@ public class GetCommentsResponse implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentsResponse getCommentsResponse = (GetCommentsResponse) o;
         return Objects.equals(count, getCommentsResponse.count) &&
+                Objects.equals(profiles, getCommentsResponse.profiles) &&
+                Objects.equals(groups, getCommentsResponse.groups) &&
                 Objects.equals(items, getCommentsResponse.items);
     }
 
@@ -62,6 +99,8 @@ public class GetCommentsResponse implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentsResponse{");
         sb.append("count=").append(count);
+        sb.append(", profiles=").append(profiles);
+        sb.append(", groups=").append(groups);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

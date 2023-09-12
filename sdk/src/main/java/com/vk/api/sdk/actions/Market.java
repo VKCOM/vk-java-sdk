@@ -5,22 +5,31 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
+import com.vk.api.sdk.objects.market.ReportCommentReason;
 import com.vk.api.sdk.queries.market.MarketAddAlbumQuery;
+import com.vk.api.sdk.queries.market.MarketAddPropertyQuery;
+import com.vk.api.sdk.queries.market.MarketAddPropertyVariantQuery;
 import com.vk.api.sdk.queries.market.MarketAddQuery;
 import com.vk.api.sdk.queries.market.MarketAddToAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketCreateCommentQuery;
 import com.vk.api.sdk.queries.market.MarketDeleteAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketDeleteCommentQuery;
+import com.vk.api.sdk.queries.market.MarketDeletePropertyQuery;
+import com.vk.api.sdk.queries.market.MarketDeletePropertyVariantQuery;
 import com.vk.api.sdk.queries.market.MarketDeleteQuery;
 import com.vk.api.sdk.queries.market.MarketEditAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketEditCommentQuery;
 import com.vk.api.sdk.queries.market.MarketEditOrderQuery;
+import com.vk.api.sdk.queries.market.MarketEditPropertyQuery;
+import com.vk.api.sdk.queries.market.MarketEditPropertyVariantQuery;
 import com.vk.api.sdk.queries.market.MarketEditQuery;
+import com.vk.api.sdk.queries.market.MarketFilterCategoriesQueryWithNew;
 import com.vk.api.sdk.queries.market.MarketGetAlbumByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQuery;
 import com.vk.api.sdk.queries.market.MarketGetByIdQueryWithExtended;
-import com.vk.api.sdk.queries.market.MarketGetCategoriesQuery;
+import com.vk.api.sdk.queries.market.MarketGetCategoriesQueryWithNew;
 import com.vk.api.sdk.queries.market.MarketGetCommentsQuery;
 import com.vk.api.sdk.queries.market.MarketGetGroupOrdersQuery;
 import com.vk.api.sdk.queries.market.MarketGetOrderByIdQuery;
@@ -29,6 +38,7 @@ import com.vk.api.sdk.queries.market.MarketGetOrdersQuery;
 import com.vk.api.sdk.queries.market.MarketGetOrdersQueryWithExtended;
 import com.vk.api.sdk.queries.market.MarketGetQuery;
 import com.vk.api.sdk.queries.market.MarketGetQueryWithExtended;
+import com.vk.api.sdk.queries.market.MarketGroupItemsQuery;
 import com.vk.api.sdk.queries.market.MarketRemoveFromAlbumQuery;
 import com.vk.api.sdk.queries.market.MarketReorderAlbumsQuery;
 import com.vk.api.sdk.queries.market.MarketReorderItemsQuery;
@@ -36,8 +46,11 @@ import com.vk.api.sdk.queries.market.MarketReportCommentQuery;
 import com.vk.api.sdk.queries.market.MarketReportQuery;
 import com.vk.api.sdk.queries.market.MarketRestoreCommentQuery;
 import com.vk.api.sdk.queries.market.MarketRestoreQuery;
+import com.vk.api.sdk.queries.market.MarketSearchItemsBasicQueryWithBasic;
+import com.vk.api.sdk.queries.market.MarketSearchItemsQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQuery;
 import com.vk.api.sdk.queries.market.MarketSearchQueryWithExtended;
+import com.vk.api.sdk.queries.market.MarketUngroupItemsQuery;
 import java.util.List;
 
 /**
@@ -56,40 +69,115 @@ public class Market extends AbstractAction {
     /**
      * Ads a new item to the market.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param name Item name.
      * @param description Item description.
      * @param categoryId Item category ID.
      * @return query
      */
-    public MarketAddQuery add(UserActor actor, int ownerId, String name, String description,
-            int categoryId) {
+    @ApiMethod("market.add")
+    public MarketAddQuery add(UserActor actor, Long ownerId, String name, String description,
+            Integer categoryId) {
         return new MarketAddQuery(getClient(), actor, ownerId, name, description, categoryId);
+    }
+
+    /**
+     * Ads a new item to the market.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.add")
+    public MarketAddQuery add(UserActor actor) {
+        return new MarketAddQuery(getClient(), actor);
     }
 
     /**
      * Creates new collection of items
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param title Collection title.
      * @return query
      */
-    public MarketAddAlbumQuery addAlbum(UserActor actor, int ownerId, String title) {
+    @ApiMethod("market.addAlbum")
+    public MarketAddAlbumQuery addAlbum(UserActor actor, Long ownerId, String title) {
         return new MarketAddAlbumQuery(getClient(), actor, ownerId, title);
+    }
+
+    /**
+     * Creates new collection of items
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.addAlbum")
+    public MarketAddAlbumQuery addAlbum(UserActor actor) {
+        return new MarketAddAlbumQuery(getClient(), actor);
+    }
+
+    /**
+     * Adds property
+     *
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param title Property name.
+     * @return query
+     */
+    @ApiMethod("market.addProperty")
+    public MarketAddPropertyQuery addProperty(UserActor actor, Long groupId, String title) {
+        return new MarketAddPropertyQuery(getClient(), actor, groupId, title);
+    }
+
+    /**
+     * Adds property
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.addProperty")
+    public MarketAddPropertyQuery addProperty(UserActor actor) {
+        return new MarketAddPropertyQuery(getClient(), actor);
+    }
+
+    /**
+     * Adds property variant
+     *
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param propertyId Property id.
+     * @param title Variant name.
+     * @return query
+     */
+    @ApiMethod("market.addPropertyVariant")
+    public MarketAddPropertyVariantQuery addPropertyVariant(UserActor actor, Long groupId,
+            Integer propertyId, String title) {
+        return new MarketAddPropertyVariantQuery(getClient(), actor, groupId, propertyId, title);
+    }
+
+    /**
+     * Adds property variant
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.addPropertyVariant")
+    public MarketAddPropertyVariantQuery addPropertyVariant(UserActor actor) {
+        return new MarketAddPropertyVariantQuery(getClient(), actor);
     }
 
     /**
      * Adds an item to one or multiple collections.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemIds
      * @param albumIds Collections IDs to add item to.
      * @return query
      */
-    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, Integer[] itemIds,
+    @ApiMethod("market.addToAlbum")
+    public MarketAddToAlbumQuery addToAlbum(UserActor actor, Long ownerId, Integer[] itemIds,
             Integer... albumIds) {
         return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemIds, albumIds);
     }
@@ -97,195 +185,458 @@ public class Market extends AbstractAction {
     /**
      * Adds an item to one or multiple collections.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemIds
      * @param albumIds Collections IDs to add item to.
      * @return query
      */
-    public MarketAddToAlbumQuery addToAlbum(UserActor actor, int ownerId, List<Integer> itemIds,
+    @ApiMethod("market.addToAlbum")
+    public MarketAddToAlbumQuery addToAlbum(UserActor actor, Long ownerId, List<Integer> itemIds,
             List<Integer> albumIds) {
         return new MarketAddToAlbumQuery(getClient(), actor, ownerId, itemIds, albumIds);
     }
 
     /**
+     * Adds an item to one or multiple collections.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.addToAlbum")
+    public MarketAddToAlbumQuery addToAlbum(UserActor actor) {
+        return new MarketAddToAlbumQuery(getClient(), actor);
+    }
+
+    /**
      * Creates a new comment for an item.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @return query
      */
-    public MarketCreateCommentQuery createComment(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.createComment")
+    public MarketCreateCommentQuery createComment(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketCreateCommentQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Creates a new comment for an item.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.createComment")
+    public MarketCreateCommentQuery createComment(UserActor actor) {
+        return new MarketCreateCommentQuery(getClient(), actor);
     }
 
     /**
      * Deletes an item.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @return query
      */
-    public MarketDeleteQuery delete(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.delete")
+    public MarketDeleteQuery delete(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketDeleteQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Deletes an item.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.delete")
+    public MarketDeleteQuery delete(UserActor actor) {
+        return new MarketDeleteQuery(getClient(), actor);
     }
 
     /**
      * Deletes a collection of items.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an collection owner community.
      * @param albumId Collection ID.
      * @return query
      */
-    public MarketDeleteAlbumQuery deleteAlbum(UserActor actor, int ownerId, int albumId) {
+    @ApiMethod("market.deleteAlbum")
+    public MarketDeleteAlbumQuery deleteAlbum(UserActor actor, Long ownerId, Integer albumId) {
         return new MarketDeleteAlbumQuery(getClient(), actor, ownerId, albumId);
+    }
+
+    /**
+     * Deletes a collection of items.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.deleteAlbum")
+    public MarketDeleteAlbumQuery deleteAlbum(UserActor actor) {
+        return new MarketDeleteAlbumQuery(getClient(), actor);
     }
 
     /**
      * Deletes an item's comment
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @param commentId comment id
      * @return query
      */
-    public MarketDeleteCommentQuery deleteComment(UserActor actor, int ownerId, int commentId) {
+    @ApiMethod("market.deleteComment")
+    public MarketDeleteCommentQuery deleteComment(UserActor actor, Long ownerId,
+            Integer commentId) {
         return new MarketDeleteCommentQuery(getClient(), actor, ownerId, commentId);
+    }
+
+    /**
+     * Deletes an item's comment
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.deleteComment")
+    public MarketDeleteCommentQuery deleteComment(UserActor actor) {
+        return new MarketDeleteCommentQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param propertyId Property id.
+     * @return query
+     */
+    @ApiMethod("market.deleteProperty")
+    public MarketDeletePropertyQuery deleteProperty(UserActor actor, Long groupId,
+            Integer propertyId) {
+        return new MarketDeletePropertyQuery(getClient(), actor, groupId, propertyId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.deleteProperty")
+    public MarketDeletePropertyQuery deleteProperty(UserActor actor) {
+        return new MarketDeletePropertyQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param variantId Variant id.
+     * @return query
+     */
+    @ApiMethod("market.deletePropertyVariant")
+    public MarketDeletePropertyVariantQuery deletePropertyVariant(UserActor actor, Long groupId,
+            Integer variantId) {
+        return new MarketDeletePropertyVariantQuery(getClient(), actor, groupId, variantId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.deletePropertyVariant")
+    public MarketDeletePropertyVariantQuery deletePropertyVariant(UserActor actor) {
+        return new MarketDeletePropertyVariantQuery(getClient(), actor);
     }
 
     /**
      * Edits an item.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
-     * @param name Item name.
-     * @param description Item description.
-     * @param categoryId Item category ID.
      * @return query
      */
-    public MarketEditQuery edit(UserActor actor, int ownerId, int itemId, String name,
-            String description, int categoryId) {
-        return new MarketEditQuery(getClient(), actor, ownerId, itemId, name, description, categoryId);
+    @ApiMethod("market.edit")
+    public MarketEditQuery edit(UserActor actor, Long ownerId, Integer itemId) {
+        return new MarketEditQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Edits an item.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.edit")
+    public MarketEditQuery edit(UserActor actor) {
+        return new MarketEditQuery(getClient(), actor);
     }
 
     /**
      * Edits a collection of items
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an collection owner community.
      * @param albumId Collection ID.
      * @param title Collection title.
      * @return query
      */
-    public MarketEditAlbumQuery editAlbum(UserActor actor, int ownerId, int albumId, String title) {
+    @ApiMethod("market.editAlbum")
+    public MarketEditAlbumQuery editAlbum(UserActor actor, Long ownerId, Integer albumId,
+            String title) {
         return new MarketEditAlbumQuery(getClient(), actor, ownerId, albumId, title);
+    }
+
+    /**
+     * Edits a collection of items
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editAlbum")
+    public MarketEditAlbumQuery editAlbum(UserActor actor) {
+        return new MarketEditAlbumQuery(getClient(), actor);
     }
 
     /**
      * Chages item comment's text
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param commentId Comment ID.
      * @return query
      */
-    public MarketEditCommentQuery editComment(UserActor actor, int ownerId, int commentId) {
+    @ApiMethod("market.editComment")
+    public MarketEditCommentQuery editComment(UserActor actor, Long ownerId, Integer commentId) {
         return new MarketEditCommentQuery(getClient(), actor, ownerId, commentId);
     }
 
     /**
+     * Chages item comment's text
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editComment")
+    public MarketEditCommentQuery editComment(UserActor actor) {
+        return new MarketEditCommentQuery(getClient(), actor);
+    }
+
+    /**
      * Edit order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId
      * @param orderId
      * @return query
      */
-    public MarketEditOrderQuery editOrder(UserActor actor, int userId, int orderId) {
+    @ApiMethod("market.editOrder")
+    public MarketEditOrderQuery editOrder(UserActor actor, Long userId, Integer orderId) {
         return new MarketEditOrderQuery(getClient(), actor, userId, orderId);
     }
 
     /**
      * Edit order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editOrder")
+    public MarketEditOrderQuery editOrder(UserActor actor) {
+        return new MarketEditOrderQuery(getClient(), actor);
+    }
+
+    /**
+     * Edit order
+     *
+     * @param actor vk group actor
      * @param userId
      * @param orderId
      * @return query
      */
-    public MarketEditOrderQuery editOrder(GroupActor actor, int userId, int orderId) {
+    @ApiMethod("market.editOrder")
+    public MarketEditOrderQuery editOrder(GroupActor actor, Long userId, Integer orderId) {
         return new MarketEditOrderQuery(getClient(), actor, userId, orderId);
+    }
+
+    /**
+     * Edit order
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editOrder")
+    public MarketEditOrderQuery editOrder(GroupActor actor) {
+        return new MarketEditOrderQuery(getClient(), actor);
+    }
+
+    /**
+     * Adds property
+     *
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param propertyId Property id.
+     * @param title Property name
+     * @return query
+     */
+    @ApiMethod("market.editProperty")
+    public MarketEditPropertyQuery editProperty(UserActor actor, Long groupId, Integer propertyId,
+            String title) {
+        return new MarketEditPropertyQuery(getClient(), actor, groupId, propertyId, title);
+    }
+
+    /**
+     * Adds property
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editProperty")
+    public MarketEditPropertyQuery editProperty(UserActor actor) {
+        return new MarketEditPropertyQuery(getClient(), actor);
+    }
+
+    /**
+     * Edit property variant name
+     *
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param variantId Variant id.
+     * @param title Variant name.
+     * @return query
+     */
+    @ApiMethod("market.editPropertyVariant")
+    public MarketEditPropertyVariantQuery editPropertyVariant(UserActor actor, Long groupId,
+            Integer variantId, String title) {
+        return new MarketEditPropertyVariantQuery(getClient(), actor, groupId, variantId, title);
+    }
+
+    /**
+     * Edit property variant name
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.editPropertyVariant")
+    public MarketEditPropertyVariantQuery editPropertyVariant(UserActor actor) {
+        return new MarketEditPropertyVariantQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a filter list of market categories.
+     *
+     * @param actor vk user actor
+     * @return query
+     */
+    @ApiMethod("market.filterCategories")
+    public MarketFilterCategoriesQueryWithNew filterCategoriesNew(UserActor actor) {
+        return new MarketFilterCategoriesQueryWithNew(getClient(), actor);
     }
 
     /**
      * Returns items list for a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @return query
      */
-    public MarketGetQueryWithExtended getExtended(UserActor actor, int ownerId) {
+    @ApiMethod("market.get")
+    public MarketGetQueryWithExtended getExtended(UserActor actor, Long ownerId) {
         return new MarketGetQueryWithExtended(getClient(), actor, ownerId);
     }
 
     /**
      * Returns items list for a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @return query
      */
-    public MarketGetQuery get(UserActor actor, int ownerId) {
+    @ApiMethod("market.get")
+    public MarketGetQuery get(UserActor actor, Long ownerId) {
         return new MarketGetQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * Returns items list for a community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.get")
+    public MarketGetQuery get(UserActor actor) {
+        return new MarketGetQuery(getClient(), actor);
     }
 
     /**
      * Returns items album's data
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @param albumIds collections identifiers to obtain data from
      * @return query
      */
-    public MarketGetAlbumByIdQuery getAlbumById(UserActor actor, int ownerId, Integer... albumIds) {
+    @ApiMethod("market.getAlbumById")
+    public MarketGetAlbumByIdQuery getAlbumById(UserActor actor, Long ownerId,
+            Integer... albumIds) {
         return new MarketGetAlbumByIdQuery(getClient(), actor, ownerId, albumIds);
     }
 
     /**
      * Returns items album's data
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @param albumIds collections identifiers to obtain data from
      * @return query
      */
-    public MarketGetAlbumByIdQuery getAlbumById(UserActor actor, int ownerId,
+    @ApiMethod("market.getAlbumById")
+    public MarketGetAlbumByIdQuery getAlbumById(UserActor actor, Long ownerId,
             List<Integer> albumIds) {
         return new MarketGetAlbumByIdQuery(getClient(), actor, ownerId, albumIds);
     }
 
     /**
+     * Returns items album's data
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getAlbumById")
+    public MarketGetAlbumByIdQuery getAlbumById(UserActor actor) {
+        return new MarketGetAlbumByIdQuery(getClient(), actor);
+    }
+
+    /**
      * Returns community's market collections list.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an items owner community.
      * @return query
      */
-    public MarketGetAlbumsQuery getAlbums(UserActor actor, int ownerId) {
+    @ApiMethod("market.getAlbums")
+    public MarketGetAlbumsQuery getAlbums(UserActor actor, Long ownerId) {
         return new MarketGetAlbumsQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * Returns community's market collections list.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getAlbums")
+    public MarketGetAlbumsQuery getAlbums(UserActor actor) {
+        return new MarketGetAlbumsQuery(getClient(), actor);
     }
 
     /**
      * Returns information about market items by their ids.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      * @return query
      */
+    @ApiMethod("market.getById")
     public MarketGetByIdQuery getById(UserActor actor, String... itemIds) {
         return new MarketGetByIdQuery(getClient(), actor, itemIds);
     }
@@ -293,10 +644,11 @@ public class Market extends AbstractAction {
     /**
      * Returns information about market items by their ids.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      * @return query
      */
+    @ApiMethod("market.getById")
     public MarketGetByIdQuery getById(UserActor actor, List<String> itemIds) {
         return new MarketGetByIdQuery(getClient(), actor, itemIds);
     }
@@ -304,10 +656,22 @@ public class Market extends AbstractAction {
     /**
      * Returns information about market items by their ids.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getById")
+    public MarketGetByIdQuery getById(UserActor actor) {
+        return new MarketGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information about market items by their ids.
+     *
+     * @param actor vk user actor
      * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      * @return query
      */
+    @ApiMethod("market.getById")
     public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, String... itemIds) {
         return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
     }
@@ -315,10 +679,11 @@ public class Market extends AbstractAction {
     /**
      * Returns information about market items by their ids.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param itemIds Comma-separated ids list: {user id}_{item id}. If an item belongs to a community -{community id} is used. " 'Videos' value example: , '-4363_136089719,13245770_137352259'"
      * @return query
      */
+    @ApiMethod("market.getById")
     public MarketGetByIdQueryWithExtended getByIdExtended(UserActor actor, List<String> itemIds) {
         return new MarketGetByIdQueryWithExtended(getClient(), actor, itemIds);
     }
@@ -326,117 +691,212 @@ public class Market extends AbstractAction {
     /**
      * Returns a list of market categories.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
-    public MarketGetCategoriesQuery getCategories(UserActor actor) {
-        return new MarketGetCategoriesQuery(getClient(), actor);
+    @ApiMethod("market.getCategories")
+    public MarketGetCategoriesQueryWithNew getCategoriesNew(UserActor actor) {
+        return new MarketGetCategoriesQueryWithNew(getClient(), actor);
     }
 
     /**
      * Returns comments list for an item.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community
      * @param itemId Item ID.
      * @return query
      */
-    public MarketGetCommentsQuery getComments(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.getComments")
+    public MarketGetCommentsQuery getComments(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketGetCommentsQuery(getClient(), actor, ownerId, itemId);
     }
 
     /**
-     * Get market orders
+     * Returns comments list for an item.
      *
-     * @param actor vk actor
-     * @param groupId
-     * @return query
+     * @param actor vk user actor
+     * @return only actor query 
      */
-    public MarketGetGroupOrdersQuery getGroupOrders(UserActor actor, int groupId) {
-        return new MarketGetGroupOrdersQuery(getClient(), actor, groupId);
+    @ApiMethod("market.getComments")
+    public MarketGetCommentsQuery getComments(UserActor actor) {
+        return new MarketGetCommentsQuery(getClient(), actor);
     }
 
     /**
      * Get market orders
      *
-     * @param actor vk actor
-     * @param groupId
+     * @param actor vk user actor
      * @return query
      */
-    public MarketGetGroupOrdersQuery getGroupOrders(GroupActor actor, int groupId) {
-        return new MarketGetGroupOrdersQuery(getClient(), actor, groupId);
+    @ApiMethod("market.getGroupOrders")
+    public MarketGetGroupOrdersQuery getGroupOrders(UserActor actor) {
+        return new MarketGetGroupOrdersQuery(getClient(), actor);
+    }
+
+    /**
+     * Get market orders
+     *
+     * @param actor vk group actor
+     * @return query
+     */
+    @ApiMethod("market.getGroupOrders")
+    public MarketGetGroupOrdersQuery getGroupOrders(GroupActor actor) {
+        return new MarketGetGroupOrdersQuery(getClient(), actor);
     }
 
     /**
      * Get order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param orderId
      * @return query
      */
-    public MarketGetOrderByIdQuery getOrderById(UserActor actor, int orderId) {
+    @ApiMethod("market.getOrderById")
+    public MarketGetOrderByIdQuery getOrderById(UserActor actor, Integer orderId) {
         return new MarketGetOrderByIdQuery(getClient(), actor, orderId);
     }
 
     /**
      * Get order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getOrderById")
+    public MarketGetOrderByIdQuery getOrderById(UserActor actor) {
+        return new MarketGetOrderByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * Get order
+     *
+     * @param actor vk group actor
      * @param orderId
      * @return query
      */
-    public MarketGetOrderByIdQuery getOrderById(GroupActor actor, int orderId) {
+    @ApiMethod("market.getOrderById")
+    public MarketGetOrderByIdQuery getOrderById(GroupActor actor, Integer orderId) {
         return new MarketGetOrderByIdQuery(getClient(), actor, orderId);
     }
 
     /**
+     * Get order
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getOrderById")
+    public MarketGetOrderByIdQuery getOrderById(GroupActor actor) {
+        return new MarketGetOrderByIdQuery(getClient(), actor);
+    }
+
+    /**
      * Get market items in the order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param orderId
      * @return query
      */
-    public MarketGetOrderItemsQuery getOrderItems(UserActor actor, int orderId) {
+    @ApiMethod("market.getOrderItems")
+    public MarketGetOrderItemsQuery getOrderItems(UserActor actor, Integer orderId) {
         return new MarketGetOrderItemsQuery(getClient(), actor, orderId);
     }
 
     /**
      * Get market items in the order
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getOrderItems")
+    public MarketGetOrderItemsQuery getOrderItems(UserActor actor) {
+        return new MarketGetOrderItemsQuery(getClient(), actor);
+    }
+
+    /**
+     * Get market items in the order
+     *
+     * @param actor vk group actor
      * @param orderId
      * @return query
      */
-    public MarketGetOrderItemsQuery getOrderItems(GroupActor actor, int orderId) {
+    @ApiMethod("market.getOrderItems")
+    public MarketGetOrderItemsQuery getOrderItems(GroupActor actor, Integer orderId) {
         return new MarketGetOrderItemsQuery(getClient(), actor, orderId);
     }
 
     /**
-     * @param actor vk actor
+     * Get market items in the order
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.getOrderItems")
+    public MarketGetOrderItemsQuery getOrderItems(GroupActor actor) {
+        return new MarketGetOrderItemsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("market.getOrders")
     public MarketGetOrdersQuery getOrders(UserActor actor) {
         return new MarketGetOrdersQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("market.getOrders")
     public MarketGetOrdersQueryWithExtended getOrdersExtended(UserActor actor) {
         return new MarketGetOrdersQueryWithExtended(getClient(), actor);
     }
 
     /**
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param itemIds Item ids.
+     * @return query
+     */
+    @ApiMethod("market.groupItems")
+    public MarketGroupItemsQuery groupItems(UserActor actor, Long groupId, Integer... itemIds) {
+        return new MarketGroupItemsQuery(getClient(), actor, groupId, itemIds);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param itemIds Item ids.
+     * @return query
+     */
+    @ApiMethod("market.groupItems")
+    public MarketGroupItemsQuery groupItems(UserActor actor, Long groupId, List<Integer> itemIds) {
+        return new MarketGroupItemsQuery(getClient(), actor, groupId, itemIds);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.groupItems")
+    public MarketGroupItemsQuery groupItems(UserActor actor) {
+        return new MarketGroupItemsQuery(getClient(), actor);
+    }
+
+    /**
      * Removes an item from one or multiple collections.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @param albumIds Collections IDs to remove item from.
      * @return query
      */
-    public MarketRemoveFromAlbumQuery removeFromAlbum(UserActor actor, int ownerId, int itemId,
+    @ApiMethod("market.removeFromAlbum")
+    public MarketRemoveFromAlbumQuery removeFromAlbum(UserActor actor, Long ownerId, Integer itemId,
             Integer... albumIds) {
         return new MarketRemoveFromAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
     }
@@ -444,110 +904,258 @@ public class Market extends AbstractAction {
     /**
      * Removes an item from one or multiple collections.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @param albumIds Collections IDs to remove item from.
      * @return query
      */
-    public MarketRemoveFromAlbumQuery removeFromAlbum(UserActor actor, int ownerId, int itemId,
+    @ApiMethod("market.removeFromAlbum")
+    public MarketRemoveFromAlbumQuery removeFromAlbum(UserActor actor, Long ownerId, Integer itemId,
             List<Integer> albumIds) {
         return new MarketRemoveFromAlbumQuery(getClient(), actor, ownerId, itemId, albumIds);
     }
 
     /**
+     * Removes an item from one or multiple collections.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.removeFromAlbum")
+    public MarketRemoveFromAlbumQuery removeFromAlbum(UserActor actor) {
+        return new MarketRemoveFromAlbumQuery(getClient(), actor);
+    }
+
+    /**
      * Reorders the collections list.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param albumId Collection ID.
      * @return query
      */
-    public MarketReorderAlbumsQuery reorderAlbums(UserActor actor, int ownerId, int albumId) {
+    @ApiMethod("market.reorderAlbums")
+    public MarketReorderAlbumsQuery reorderAlbums(UserActor actor, Long ownerId, Integer albumId) {
         return new MarketReorderAlbumsQuery(getClient(), actor, ownerId, albumId);
+    }
+
+    /**
+     * Reorders the collections list.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.reorderAlbums")
+    public MarketReorderAlbumsQuery reorderAlbums(UserActor actor) {
+        return new MarketReorderAlbumsQuery(getClient(), actor);
     }
 
     /**
      * Changes item place in a collection.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @return query
      */
-    public MarketReorderItemsQuery reorderItems(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.reorderItems")
+    public MarketReorderItemsQuery reorderItems(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketReorderItemsQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Changes item place in a collection.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.reorderItems")
+    public MarketReorderItemsQuery reorderItems(UserActor actor) {
+        return new MarketReorderItemsQuery(getClient(), actor);
     }
 
     /**
      * Sends a complaint to the item.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Item ID.
      * @return query
      */
-    public MarketReportQuery report(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.report")
+    public MarketReportQuery report(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketReportQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Sends a complaint to the item.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.report")
+    public MarketReportQuery report(UserActor actor) {
+        return new MarketReportQuery(getClient(), actor);
     }
 
     /**
      * Sends a complaint to the item's comment.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param commentId Comment ID.
-     * @param reason Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
+     * @param reason Complaint reason. Possible values: *'0' - spam,, *'1' - child porn,, *'2' - extremism,, *'3' - violence,, *'4' - drugs propaganda,, *'5' - adult materials,, *'6' - insult.
      * @return query
      */
-    public MarketReportCommentQuery reportComment(UserActor actor, int ownerId, int commentId,
-            int reason) {
+    @ApiMethod("market.reportComment")
+    public MarketReportCommentQuery reportComment(UserActor actor, Long ownerId, Integer commentId,
+            ReportCommentReason reason) {
         return new MarketReportCommentQuery(getClient(), actor, ownerId, commentId, reason);
+    }
+
+    /**
+     * Sends a complaint to the item's comment.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.reportComment")
+    public MarketReportCommentQuery reportComment(UserActor actor) {
+        return new MarketReportCommentQuery(getClient(), actor);
     }
 
     /**
      * Restores recently deleted item
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an item owner community.
      * @param itemId Deleted item ID.
      * @return query
      */
-    public MarketRestoreQuery restore(UserActor actor, int ownerId, int itemId) {
+    @ApiMethod("market.restore")
+    public MarketRestoreQuery restore(UserActor actor, Long ownerId, Integer itemId) {
         return new MarketRestoreQuery(getClient(), actor, ownerId, itemId);
+    }
+
+    /**
+     * Restores recently deleted item
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.restore")
+    public MarketRestoreQuery restore(UserActor actor) {
+        return new MarketRestoreQuery(getClient(), actor);
     }
 
     /**
      * Restores a recently deleted comment
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
      * @param commentId deleted comment id
      * @return query
      */
-    public MarketRestoreCommentQuery restoreComment(UserActor actor, int ownerId, int commentId) {
+    @ApiMethod("market.restoreComment")
+    public MarketRestoreCommentQuery restoreComment(UserActor actor, Long ownerId,
+            Integer commentId) {
         return new MarketRestoreCommentQuery(getClient(), actor, ownerId, commentId);
+    }
+
+    /**
+     * Restores a recently deleted comment
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.restoreComment")
+    public MarketRestoreCommentQuery restoreComment(UserActor actor) {
+        return new MarketRestoreCommentQuery(getClient(), actor);
     }
 
     /**
      * Searches market items in a community's catalog
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an items owner community.
      * @return query
      */
-    public MarketSearchQueryWithExtended searchExtended(UserActor actor, int ownerId) {
+    @ApiMethod("market.search")
+    public MarketSearchQueryWithExtended searchExtended(UserActor actor, Long ownerId) {
         return new MarketSearchQueryWithExtended(getClient(), actor, ownerId);
     }
 
     /**
      * Searches market items in a community's catalog
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId ID of an items owner community.
      * @return query
      */
-    public MarketSearchQuery search(UserActor actor, int ownerId) {
+    @ApiMethod("market.search")
+    public MarketSearchQuery search(UserActor actor, Long ownerId) {
         return new MarketSearchQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * Searches market items in a community's catalog
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.search")
+    public MarketSearchQuery search(UserActor actor) {
+        return new MarketSearchQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param q
+     * @return query
+     */
+    @ApiMethod("market.searchItems")
+    public MarketSearchItemsQuery searchItems(UserActor actor, String q) {
+        return new MarketSearchItemsQuery(getClient(), actor, q);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.searchItems")
+    public MarketSearchItemsQuery searchItems(UserActor actor) {
+        return new MarketSearchItemsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param q
+     * @return query
+     */
+    @ApiMethod("market.searchItemsBasic")
+    public MarketSearchItemsBasicQueryWithBasic searchItemsBasicBasic(UserActor actor, String q) {
+        return new MarketSearchItemsBasicQueryWithBasic(getClient(), actor, q);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @param groupId Group id.
+     * @param itemGroupId Items group id.
+     * @return query
+     */
+    @ApiMethod("market.ungroupItems")
+    public MarketUngroupItemsQuery ungroupItems(UserActor actor, Long groupId,
+            Integer itemGroupId) {
+        return new MarketUngroupItemsQuery(getClient(), actor, groupId, itemGroupId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("market.ungroupItems")
+    public MarketUngroupItemsQuery ungroupItems(UserActor actor) {
+        return new MarketUngroupItemsQuery(getClient(), actor);
     }
 }

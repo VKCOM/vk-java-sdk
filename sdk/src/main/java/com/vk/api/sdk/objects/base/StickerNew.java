@@ -13,24 +13,6 @@ import java.util.Objects;
  */
 public class StickerNew implements Validable {
     /**
-     * Sticker ID
-     */
-    @SerializedName("sticker_id")
-    private Integer stickerId;
-
-    /**
-     * Pack ID
-     */
-    @SerializedName("product_id")
-    private Integer productId;
-
-    @SerializedName("images")
-    private List<Image> images;
-
-    @SerializedName("images_with_background")
-    private List<Image> imagesWithBackground;
-
-    /**
      * URL of sticker animation script
      */
     @SerializedName("animation_url")
@@ -42,27 +24,45 @@ public class StickerNew implements Validable {
     @SerializedName("animations")
     private List<StickerAnimation> animations;
 
+    @SerializedName("images")
+    private List<Image> images;
+
+    @SerializedName("images_with_background")
+    private List<Image> imagesWithBackground;
+
     /**
      * Information whether the sticker is allowed
      */
     @SerializedName("is_allowed")
     private Boolean isAllowed;
 
-    public Integer getStickerId() {
-        return stickerId;
+    /**
+     * Pack ID
+     */
+    @SerializedName("product_id")
+    private Integer productId;
+
+    /**
+     * Sticker ID
+     */
+    @SerializedName("sticker_id")
+    private Integer stickerId;
+
+    public URI getAnimationUrl() {
+        return animationUrl;
     }
 
-    public StickerNew setStickerId(Integer stickerId) {
-        this.stickerId = stickerId;
+    public StickerNew setAnimationUrl(URI animationUrl) {
+        this.animationUrl = animationUrl;
         return this;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public List<StickerAnimation> getAnimations() {
+        return animations;
     }
 
-    public StickerNew setProductId(Integer productId) {
-        this.productId = productId;
+    public StickerNew setAnimations(List<StickerAnimation> animations) {
+        this.animations = animations;
         return this;
     }
 
@@ -84,30 +84,30 @@ public class StickerNew implements Validable {
         return this;
     }
 
-    public URI getAnimationUrl() {
-        return animationUrl;
-    }
-
-    public StickerNew setAnimationUrl(URI animationUrl) {
-        this.animationUrl = animationUrl;
-        return this;
-    }
-
-    public List<StickerAnimation> getAnimations() {
-        return animations;
-    }
-
-    public StickerNew setAnimations(List<StickerAnimation> animations) {
-        this.animations = animations;
-        return this;
-    }
-
     public Boolean getIsAllowed() {
         return isAllowed;
     }
 
     public StickerNew setIsAllowed(Boolean isAllowed) {
         this.isAllowed = isAllowed;
+        return this;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public StickerNew setProductId(Integer productId) {
+        this.productId = productId;
+        return this;
+    }
+
+    public Integer getStickerId() {
+        return stickerId;
+    }
+
+    public StickerNew setStickerId(Integer stickerId) {
+        this.stickerId = stickerId;
         return this;
     }
 
@@ -121,11 +121,11 @@ public class StickerNew implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StickerNew stickerNew = (StickerNew) o;
-        return Objects.equals(stickerId, stickerNew.stickerId) &&
+        return Objects.equals(animationUrl, stickerNew.animationUrl) &&
                 Objects.equals(images, stickerNew.images) &&
-                Objects.equals(animationUrl, stickerNew.animationUrl) &&
-                Objects.equals(productId, stickerNew.productId) &&
+                Objects.equals(stickerId, stickerNew.stickerId) &&
                 Objects.equals(animations, stickerNew.animations) &&
+                Objects.equals(productId, stickerNew.productId) &&
                 Objects.equals(isAllowed, stickerNew.isAllowed) &&
                 Objects.equals(imagesWithBackground, stickerNew.imagesWithBackground);
     }
@@ -138,11 +138,11 @@ public class StickerNew implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("StickerNew{");
-        sb.append("stickerId=").append(stickerId);
+        sb.append("animationUrl=").append(animationUrl);
         sb.append(", images=").append(images);
-        sb.append(", animationUrl=").append(animationUrl);
-        sb.append(", productId=").append(productId);
+        sb.append(", stickerId=").append(stickerId);
         sb.append(", animations=").append(animations);
+        sb.append(", productId=").append(productId);
         sb.append(", isAllowed=").append(isAllowed);
         sb.append(", imagesWithBackground=").append(imagesWithBackground);
         sb.append('}');

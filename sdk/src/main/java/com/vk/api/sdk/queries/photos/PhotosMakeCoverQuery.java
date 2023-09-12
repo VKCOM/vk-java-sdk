@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,38 @@ import java.util.List;
  */
 public class PhotosMakeCoverQuery extends AbstractQueryBuilder<PhotosMakeCoverQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param photoId value of "photo id" parameter.
      */
-    public PhotosMakeCoverQuery(VkApiClient client, UserActor actor, int photoId) {
+    public PhotosMakeCoverQuery(VkApiClient client, UserActor actor, Integer photoId) {
         super(client, "photos.makeCover", OkResponse.class);
         accessToken(actor.getAccessToken());
         photoId(photoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosMakeCoverQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.makeCover", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the photo.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosMakeCoverQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PhotosMakeCoverQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -41,7 +55,8 @@ public class PhotosMakeCoverQuery extends AbstractQueryBuilder<PhotosMakeCoverQu
      * @param value value of "photo id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosMakeCoverQuery photoId(int value) {
+    @ApiParam("photo_id")
+    public PhotosMakeCoverQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
 
@@ -51,6 +66,7 @@ public class PhotosMakeCoverQuery extends AbstractQueryBuilder<PhotosMakeCoverQu
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public PhotosMakeCoverQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }

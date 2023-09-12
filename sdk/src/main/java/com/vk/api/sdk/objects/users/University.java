@@ -41,10 +41,22 @@ public class University implements Validable {
     private String educationForm;
 
     /**
+     * Education form id
+     */
+    @SerializedName("education_form_id")
+    private Integer educationFormId;
+
+    /**
      * Education status
      */
     @SerializedName("education_status")
     private String educationStatus;
+
+    /**
+     * Education status id
+     */
+    @SerializedName("education_status_id")
+    private Integer educationStatusId;
 
     /**
      * Faculty ID
@@ -124,12 +136,30 @@ public class University implements Validable {
         return this;
     }
 
+    public Integer getEducationFormId() {
+        return educationFormId;
+    }
+
+    public University setEducationFormId(Integer educationFormId) {
+        this.educationFormId = educationFormId;
+        return this;
+    }
+
     public String getEducationStatus() {
         return educationStatus;
     }
 
     public University setEducationStatus(String educationStatus) {
         this.educationStatus = educationStatus;
+        return this;
+    }
+
+    public Integer getEducationStatusId() {
+        return educationStatusId;
+    }
+
+    public University setEducationStatusId(Integer educationStatusId) {
+        this.educationStatusId = educationStatusId;
         return this;
     }
 
@@ -189,7 +219,7 @@ public class University implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, educationStatus, universityGroupId, city, graduation, chairName, chair, name, facultyName, id, educationForm, faculty);
+        return Objects.hash(country, educationStatusId, city, chair, educationForm, faculty, educationStatus, universityGroupId, chairName, graduation, name, educationFormId, facultyName, id);
     }
 
     @Override
@@ -198,17 +228,19 @@ public class University implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         University university = (University) o;
         return Objects.equals(country, university.country) &&
-                Objects.equals(facultyName, university.facultyName) &&
                 Objects.equals(universityGroupId, university.universityGroupId) &&
                 Objects.equals(city, university.city) &&
-                Objects.equals(graduation, university.graduation) &&
                 Objects.equals(chair, university.chair) &&
-                Objects.equals(name, university.name) &&
-                Objects.equals(id, university.id) &&
                 Objects.equals(educationStatus, university.educationStatus) &&
                 Objects.equals(educationForm, university.educationForm) &&
                 Objects.equals(chairName, university.chairName) &&
-                Objects.equals(faculty, university.faculty);
+                Objects.equals(faculty, university.faculty) &&
+                Objects.equals(facultyName, university.facultyName) &&
+                Objects.equals(educationFormId, university.educationFormId) &&
+                Objects.equals(graduation, university.graduation) &&
+                Objects.equals(name, university.name) &&
+                Objects.equals(educationStatusId, university.educationStatusId) &&
+                Objects.equals(id, university.id);
     }
 
     @Override
@@ -220,17 +252,19 @@ public class University implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("University{");
         sb.append("country=").append(country);
-        sb.append(", facultyName='").append(facultyName).append("'");
         sb.append(", universityGroupId=").append(universityGroupId);
         sb.append(", city=").append(city);
-        sb.append(", graduation=").append(graduation);
         sb.append(", chair=").append(chair);
-        sb.append(", name='").append(name).append("'");
-        sb.append(", id=").append(id);
         sb.append(", educationStatus='").append(educationStatus).append("'");
         sb.append(", educationForm='").append(educationForm).append("'");
         sb.append(", chairName='").append(chairName).append("'");
         sb.append(", faculty=").append(faculty);
+        sb.append(", facultyName='").append(facultyName).append("'");
+        sb.append(", educationFormId=").append(educationFormId);
+        sb.append(", graduation=").append(graduation);
+        sb.append(", name='").append(name).append("'");
+        sb.append(", educationStatusId=").append(educationStatusId);
+        sb.append(", id=").append(id);
         sb.append('}');
         return sb.toString();
     }

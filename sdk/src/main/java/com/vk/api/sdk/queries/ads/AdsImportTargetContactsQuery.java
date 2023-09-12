@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImportTargetContactsQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -20,8 +21,8 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
      * @param targetGroupId value of "target group id" parameter.
      * @param contacts value of "contacts" parameter.
      */
-    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor, int accountId,
-            int targetGroupId, String contacts) {
+    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor, Integer accountId,
+            Integer targetGroupId, String contacts) {
         super(client, "ads.importTargetContacts", Integer.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
@@ -30,12 +31,24 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsImportTargetContactsQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.importTargetContacts", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsImportTargetContactsQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsImportTargetContactsQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
@@ -45,6 +58,7 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
      * @param value value of "client id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("client_id")
     public AdsImportTargetContactsQuery clientId(Integer value) {
         return unsafeParam("client_id", value);
     }
@@ -55,7 +69,8 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
      * @param value value of "target group id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsImportTargetContactsQuery targetGroupId(int value) {
+    @ApiParam("target_group_id")
+    public AdsImportTargetContactsQuery targetGroupId(Integer value) {
         return unsafeParam("target_group_id", value);
     }
 
@@ -65,7 +80,8 @@ public class AdsImportTargetContactsQuery extends AbstractQueryBuilder<AdsImport
      * @param value value of "contacts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsImportTargetContactsQuery contacts(String value) {
+    @ApiParam("contacts")
+    public AdsImportTargetContactsQuery contacts(String value) {
         return unsafeParam("contacts", value);
     }
 

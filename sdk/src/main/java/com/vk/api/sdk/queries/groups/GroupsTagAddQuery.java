@@ -3,7 +3,9 @@ package com.vk.api.sdk.queries.groups;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import com.vk.api.sdk.objects.groups.TagAddTagColor;
 import java.util.Arrays;
@@ -14,14 +16,44 @@ import java.util.List;
  */
 public class GroupsTagAddQuery extends AbstractQueryBuilder<GroupsTagAddQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param tagName value of "tag name" parameter.
      */
-    public GroupsTagAddQuery(VkApiClient client, UserActor actor, int groupId, String tagName) {
+    public GroupsTagAddQuery(VkApiClient client, GroupActor actor, Long groupId, String tagName) {
+        super(client, "groups.tagAdd", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+        groupId(groupId);
+        tagName(tagName);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsTagAddQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.tagAdd", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param tagName value of "tag name" parameter.
+     */
+    public GroupsTagAddQuery(VkApiClient client, UserActor actor, Long groupId, String tagName) {
         super(client, "groups.tagAdd", BoolResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -29,12 +61,25 @@ public class GroupsTagAddQuery extends AbstractQueryBuilder<GroupsTagAddQuery, B
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsTagAddQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.tagAdd", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsTagAddQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsTagAddQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -44,7 +89,8 @@ public class GroupsTagAddQuery extends AbstractQueryBuilder<GroupsTagAddQuery, B
      * @param value value of "tag name" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsTagAddQuery tagName(String value) {
+    @ApiParam("tag_name")
+    public GroupsTagAddQuery tagName(String value) {
         return unsafeParam("tag_name", value);
     }
 
@@ -54,6 +100,7 @@ public class GroupsTagAddQuery extends AbstractQueryBuilder<GroupsTagAddQuery, B
      * @param value value of "tag color" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("tag_color")
     public GroupsTagAddQuery tagColor(TagAddTagColor value) {
         return unsafeParam("tag_color", value);
     }

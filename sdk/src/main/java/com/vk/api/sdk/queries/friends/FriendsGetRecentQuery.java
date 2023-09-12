@@ -5,21 +5,22 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Friends.getRecent method
  */
-public class FriendsGetRecentQuery extends AbstractQueryBuilder<FriendsGetRecentQuery, List<Integer>> {
+public class FriendsGetRecentQuery extends AbstractQueryBuilder<FriendsGetRecentQuery, List<Long>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public FriendsGetRecentQuery(VkApiClient client, UserActor actor) {
-        super(client, "friends.getRecent", Utils.buildParametrizedType(List.class, Integer.class));
+        super(client, "friends.getRecent", Utils.buildParametrizedType(List.class, Long.class));
         accessToken(actor.getAccessToken());
     }
 
@@ -29,6 +30,7 @@ public class FriendsGetRecentQuery extends AbstractQueryBuilder<FriendsGetRecent
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FriendsGetRecentQuery count(Integer value) {
         return unsafeParam("count", value);
     }

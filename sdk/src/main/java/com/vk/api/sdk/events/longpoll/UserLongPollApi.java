@@ -7,9 +7,9 @@ public abstract class UserLongPollApi extends LongPollApi {
 
     private final UserActor actor;
 
-    private final int groupId;
+    private final Long groupId;
 
-    protected UserLongPollApi(VkApiClient client, UserActor actor, int groupId, int waitTime) {
+    protected UserLongPollApi(VkApiClient client, UserActor actor, Long groupId, int waitTime) {
         super(client, waitTime);
         this.actor = actor;
         this.groupId = groupId;

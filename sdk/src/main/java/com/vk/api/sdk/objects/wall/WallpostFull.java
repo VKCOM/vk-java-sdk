@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.CommentsInfo;
+import com.vk.api.sdk.objects.newsfeed.ItemWallpostFeedback;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,8 +14,11 @@ import java.util.Objects;
  * WallpostFull object
  */
 public class WallpostFull extends Wallpost implements Validable {
-    @SerializedName("copy_history")
-    private List<Wallpost> copyHistory;
+    /**
+     * Information whether current user can delete the post
+     */
+    @SerializedName("can_delete")
+    private BoolInt canDelete;
 
     /**
      * Information whether current user can edit the post
@@ -23,34 +27,47 @@ public class WallpostFull extends Wallpost implements Validable {
     private BoolInt canEdit;
 
     /**
-     * Post creator ID (if post still can be edited)
-     */
-    @SerializedName("created_by")
-    private Integer createdBy;
-
-    /**
-     * Information whether current user can delete the post
-     */
-    @SerializedName("can_delete")
-    private BoolInt canDelete;
-
-    /**
      * Information whether current user can pin the post
      */
     @SerializedName("can_pin")
     private BoolInt canPin;
 
+    /**
+     * Index of current carousel element
+     */
+    @SerializedName("carousel_offset")
+    private Integer carouselOffset;
+
+    @SerializedName("comments")
+    private CommentsInfo comments;
+
+    @SerializedName("copy_history")
+    private List<WallpostFull> copyHistory;
+
+    /**
+     * Post creator ID (if post still can be edited)
+     * Entity: owner
+     */
+    @SerializedName("created_by")
+    private Long createdBy;
+
     @SerializedName("donut")
     private WallpostDonut donut;
+
+    @SerializedName("feedback")
+    private ItemWallpostFeedback feedback;
+
+    /**
+     * Hash for sharing
+     */
+    @SerializedName("hash")
+    private String hash;
 
     /**
      * Information whether the post is pinned
      */
     @SerializedName("is_pinned")
-    private Integer isPinned;
-
-    @SerializedName("comments")
-    private CommentsInfo comments;
+    private BoolInt isPinned;
 
     /**
      * Information whether the post is marked as ads
@@ -59,30 +76,32 @@ public class WallpostFull extends Wallpost implements Validable {
     private BoolInt markedAsAds;
 
     /**
+     * Preview length control parameter
+     */
+    @SerializedName("short_text_rate")
+    private Number shortTextRate;
+
+    /**
+     * Entity: owner
+     */
+    @SerializedName("to_id")
+    private Long toId;
+
+    /**
      * Topic ID. Allowed values can be obtained from newsfeed.getPostTopics method
      */
     @SerializedName("topic_id")
     private WallpostFullTopicId topicId;
 
-    /**
-     * Preview length control parameter
-     */
-    @SerializedName("short_text_rate")
-    private Float shortTextRate;
+    @SerializedName("type")
+    private PostType type;
 
-    /**
-     * Hash for sharing
-     */
-    @SerializedName("hash")
-    private String hash;
-
-    public List<Wallpost> getCopyHistory() {
-        return copyHistory;
+    public boolean canDelete() {
+        return canDelete == BoolInt.YES;
     }
 
-    public WallpostFull setCopyHistory(List<Wallpost> copyHistory) {
-        this.copyHistory = copyHistory;
-        return this;
+    public BoolInt getCanDelete() {
+        return canDelete;
     }
 
     public boolean canEdit() {
@@ -93,23 +112,6 @@ public class WallpostFull extends Wallpost implements Validable {
         return canEdit;
     }
 
-    public Integer getCreatedBy() {
-        return createdBy;
-    }
-
-    public WallpostFull setCreatedBy(Integer createdBy) {
-        this.createdBy = createdBy;
-        return this;
-    }
-
-    public boolean canDelete() {
-        return canDelete == BoolInt.YES;
-    }
-
-    public BoolInt getCanDelete() {
-        return canDelete;
-    }
-
     public boolean canPin() {
         return canPin == BoolInt.YES;
     }
@@ -118,21 +120,12 @@ public class WallpostFull extends Wallpost implements Validable {
         return canPin;
     }
 
-    public WallpostDonut getDonut() {
-        return donut;
+    public Integer getCarouselOffset() {
+        return carouselOffset;
     }
 
-    public WallpostFull setDonut(WallpostDonut donut) {
-        this.donut = donut;
-        return this;
-    }
-
-    public Integer getIsPinned() {
-        return isPinned;
-    }
-
-    public WallpostFull setIsPinned(Integer isPinned) {
-        this.isPinned = isPinned;
+    public WallpostFull setCarouselOffset(Integer carouselOffset) {
+        this.carouselOffset = carouselOffset;
         return this;
     }
 
@@ -145,29 +138,39 @@ public class WallpostFull extends Wallpost implements Validable {
         return this;
     }
 
-    public boolean isMarkedAsAds() {
-        return markedAsAds == BoolInt.YES;
+    public List<WallpostFull> getCopyHistory() {
+        return copyHistory;
     }
 
-    public BoolInt getMarkedAsAds() {
-        return markedAsAds;
-    }
-
-    public WallpostFullTopicId getTopicId() {
-        return topicId;
-    }
-
-    public WallpostFull setTopicId(WallpostFullTopicId topicId) {
-        this.topicId = topicId;
+    public WallpostFull setCopyHistory(List<WallpostFull> copyHistory) {
+        this.copyHistory = copyHistory;
         return this;
     }
 
-    public Float getShortTextRate() {
-        return shortTextRate;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public WallpostFull setShortTextRate(Float shortTextRate) {
-        this.shortTextRate = shortTextRate;
+    public WallpostFull setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+        return this;
+    }
+
+    public WallpostDonut getDonut() {
+        return donut;
+    }
+
+    public WallpostFull setDonut(WallpostDonut donut) {
+        this.donut = donut;
+        return this;
+    }
+
+    public ItemWallpostFeedback getFeedback() {
+        return feedback;
+    }
+
+    public WallpostFull setFeedback(ItemWallpostFeedback feedback) {
+        this.feedback = feedback;
         return this;
     }
 
@@ -180,9 +183,61 @@ public class WallpostFull extends Wallpost implements Validable {
         return this;
     }
 
+    public boolean isPinned() {
+        return isPinned == BoolInt.YES;
+    }
+
+    public BoolInt getIsPinned() {
+        return isPinned;
+    }
+
+    public boolean isMarkedAsAds() {
+        return markedAsAds == BoolInt.YES;
+    }
+
+    public BoolInt getMarkedAsAds() {
+        return markedAsAds;
+    }
+
+    public Number getShortTextRate() {
+        return shortTextRate;
+    }
+
+    public WallpostFull setShortTextRate(Number shortTextRate) {
+        this.shortTextRate = shortTextRate;
+        return this;
+    }
+
+    public Long getToId() {
+        return toId;
+    }
+
+    public WallpostFull setToId(Long toId) {
+        this.toId = toId;
+        return this;
+    }
+
+    public WallpostFullTopicId getTopicId() {
+        return topicId;
+    }
+
+    public WallpostFull setTopicId(WallpostFullTopicId topicId) {
+        this.topicId = topicId;
+        return this;
+    }
+
+    public PostType getType() {
+        return type;
+    }
+
+    public WallpostFull setType(PostType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(topicId, comments, createdBy, isPinned, shortTextRate, donut, canEdit, canDelete, markedAsAds, canPin, hash, copyHistory);
+        return Objects.hash(toId, carouselOffset, comments, isPinned, canEdit, shortTextRate, type, feedback, topicId, createdBy, donut, canDelete, canPin, markedAsAds, hash, copyHistory);
     }
 
     @Override
@@ -190,18 +245,22 @@ public class WallpostFull extends Wallpost implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WallpostFull wallpostFull = (WallpostFull) o;
-        return Objects.equals(shortTextRate, wallpostFull.shortTextRate) &&
-                Objects.equals(comments, wallpostFull.comments) &&
+        return Objects.equals(comments, wallpostFull.comments) &&
+                Objects.equals(canEdit, wallpostFull.canEdit) &&
+                Objects.equals(toId, wallpostFull.toId) &&
+                Objects.equals(type, wallpostFull.type) &&
+                Objects.equals(createdBy, wallpostFull.createdBy) &&
+                Objects.equals(canPin, wallpostFull.canPin) &&
+                Objects.equals(copyHistory, wallpostFull.copyHistory) &&
+                Objects.equals(isPinned, wallpostFull.isPinned) &&
+                Objects.equals(feedback, wallpostFull.feedback) &&
+                Objects.equals(shortTextRate, wallpostFull.shortTextRate) &&
                 Objects.equals(canDelete, wallpostFull.canDelete) &&
                 Objects.equals(donut, wallpostFull.donut) &&
-                Objects.equals(canEdit, wallpostFull.canEdit) &&
                 Objects.equals(markedAsAds, wallpostFull.markedAsAds) &&
                 Objects.equals(topicId, wallpostFull.topicId) &&
-                Objects.equals(createdBy, wallpostFull.createdBy) &&
-                Objects.equals(hash, wallpostFull.hash) &&
-                Objects.equals(copyHistory, wallpostFull.copyHistory) &&
-                Objects.equals(canPin, wallpostFull.canPin) &&
-                Objects.equals(isPinned, wallpostFull.isPinned);
+                Objects.equals(carouselOffset, wallpostFull.carouselOffset) &&
+                Objects.equals(hash, wallpostFull.hash);
     }
 
     @Override
@@ -212,18 +271,22 @@ public class WallpostFull extends Wallpost implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("WallpostFull{");
-        sb.append("shortTextRate=").append(shortTextRate);
-        sb.append(", comments=").append(comments);
+        sb.append("comments=").append(comments);
+        sb.append(", canEdit=").append(canEdit);
+        sb.append(", toId=").append(toId);
+        sb.append(", type=").append(type);
+        sb.append(", createdBy=").append(createdBy);
+        sb.append(", canPin=").append(canPin);
+        sb.append(", copyHistory=").append(copyHistory);
+        sb.append(", isPinned=").append(isPinned);
+        sb.append(", feedback=").append(feedback);
+        sb.append(", shortTextRate=").append(shortTextRate);
         sb.append(", canDelete=").append(canDelete);
         sb.append(", donut=").append(donut);
-        sb.append(", canEdit=").append(canEdit);
         sb.append(", markedAsAds=").append(markedAsAds);
         sb.append(", topicId=").append(topicId);
-        sb.append(", createdBy=").append(createdBy);
+        sb.append(", carouselOffset=").append(carouselOffset);
         sb.append(", hash='").append(hash).append("'");
-        sb.append(", copyHistory=").append(copyHistory);
-        sb.append(", canPin=").append(canPin);
-        sb.append(", isPinned=").append(isPinned);
         sb.append('}');
         return sb.toString();
     }

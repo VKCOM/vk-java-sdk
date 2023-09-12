@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.notifications.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.apps.App;
 import com.vk.api.sdk.objects.groups.Group;
 import com.vk.api.sdk.objects.notifications.NotificationItem;
@@ -17,20 +18,22 @@ import java.util.Objects;
  * GetResponse object
  */
 public class GetResponse implements Validable {
+    @SerializedName("apps")
+    private List<App> apps;
+
     /**
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
-
-    @SerializedName("items")
-    private List<NotificationItem> items;
-
-    @SerializedName("profiles")
-    private List<User> profiles;
 
     @SerializedName("groups")
     private List<Group> groups;
+
+    @SerializedName("items")
+    @Required
+    private List<NotificationItem> items;
 
     /**
      * Time when user has been checked notifications last time
@@ -38,20 +41,29 @@ public class GetResponse implements Validable {
     @SerializedName("last_viewed")
     private Integer lastViewed;
 
+    @SerializedName("next_from")
+    private String nextFrom;
+
     @SerializedName("photos")
     private List<Photo> photos;
+
+    @SerializedName("profiles")
+    private List<User> profiles;
+
+    @SerializedName("ttl")
+    private Integer ttl;
 
     @SerializedName("videos")
     private List<Video> videos;
 
-    @SerializedName("apps")
-    private List<App> apps;
+    public List<App> getApps() {
+        return apps;
+    }
 
-    @SerializedName("next_from")
-    private String nextFrom;
-
-    @SerializedName("ttl")
-    private Integer ttl;
+    public GetResponse setApps(List<App> apps) {
+        this.apps = apps;
+        return this;
+    }
 
     public Integer getCount() {
         return count;
@@ -59,24 +71,6 @@ public class GetResponse implements Validable {
 
     public GetResponse setCount(Integer count) {
         this.count = count;
-        return this;
-    }
-
-    public List<NotificationItem> getItems() {
-        return items;
-    }
-
-    public GetResponse setItems(List<NotificationItem> items) {
-        this.items = items;
-        return this;
-    }
-
-    public List<User> getProfiles() {
-        return profiles;
-    }
-
-    public GetResponse setProfiles(List<User> profiles) {
-        this.profiles = profiles;
         return this;
     }
 
@@ -89,39 +83,21 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public List<NotificationItem> getItems() {
+        return items;
+    }
+
+    public GetResponse setItems(List<NotificationItem> items) {
+        this.items = items;
+        return this;
+    }
+
     public Integer getLastViewed() {
         return lastViewed;
     }
 
     public GetResponse setLastViewed(Integer lastViewed) {
         this.lastViewed = lastViewed;
-        return this;
-    }
-
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public GetResponse setPhotos(List<Photo> photos) {
-        this.photos = photos;
-        return this;
-    }
-
-    public List<Video> getVideos() {
-        return videos;
-    }
-
-    public GetResponse setVideos(List<Video> videos) {
-        this.videos = videos;
-        return this;
-    }
-
-    public List<App> getApps() {
-        return apps;
-    }
-
-    public GetResponse setApps(List<App> apps) {
-        this.apps = apps;
         return this;
     }
 
@@ -134,12 +110,39 @@ public class GetResponse implements Validable {
         return this;
     }
 
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public GetResponse setPhotos(List<Photo> photos) {
+        this.photos = photos;
+        return this;
+    }
+
+    public List<User> getProfiles() {
+        return profiles;
+    }
+
+    public GetResponse setProfiles(List<User> profiles) {
+        this.profiles = profiles;
+        return this;
+    }
+
     public Integer getTtl() {
         return ttl;
     }
 
     public GetResponse setTtl(Integer ttl) {
         this.ttl = ttl;
+        return this;
+    }
+
+    public List<Video> getVideos() {
+        return videos;
+    }
+
+    public GetResponse setVideos(List<Video> videos) {
+        this.videos = videos;
         return this;
     }
 

@@ -7,6 +7,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.ads.ObjectType;
 import com.vk.api.sdk.objects.ads.StatsFormat;
 import com.vk.api.sdk.objects.ads.StatsViewsTimes;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,7 +21,7 @@ public class GetStatisticsResponse implements Validable {
     private Integer id;
 
     @SerializedName("stats")
-    private StatsFormat stats;
+    private List<StatsFormat> stats;
 
     @SerializedName("type")
     private ObjectType type;
@@ -37,11 +38,11 @@ public class GetStatisticsResponse implements Validable {
         return this;
     }
 
-    public StatsFormat getStats() {
+    public List<StatsFormat> getStats() {
         return stats;
     }
 
-    public GetStatisticsResponse setStats(StatsFormat stats) {
+    public GetStatisticsResponse setStats(List<StatsFormat> stats) {
         this.stats = stats;
         return this;
     }

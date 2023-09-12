@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.auth.AuthRestoreQuery;
 
 /**
@@ -23,11 +24,12 @@ public class Auth extends AbstractAction {
     /**
      * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param phone User phone number.
      * @param lastName User last name.
      * @return query
      */
+    @ApiMethod("auth.restore")
     public AuthRestoreQuery restore(UserActor actor, String phone, String lastName) {
         return new AuthRestoreQuery(getClient(), actor, phone, lastName);
     }
@@ -35,10 +37,22 @@ public class Auth extends AbstractAction {
     /**
      * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
      *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("auth.restore")
+    public AuthRestoreQuery restore(UserActor actor) {
+        return new AuthRestoreQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+     *
      * @param phone User phone number.
      * @param lastName User last name.
      * @return query
      */
+    @ApiMethod("auth.restore")
     public AuthRestoreQuery restore(String phone, String lastName) {
         return new AuthRestoreQuery(getClient(), phone, lastName);
     }
@@ -46,12 +60,34 @@ public class Auth extends AbstractAction {
     /**
      * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
      *
-     * @param actor vk actor
+     * @return only actor query 
+     */
+    @ApiMethod("auth.restore")
+    public AuthRestoreQuery restore() {
+        return new AuthRestoreQuery(getClient());
+    }
+
+    /**
+     * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+     *
+     * @param actor vk service actor
      * @param phone User phone number.
      * @param lastName User last name.
      * @return query
      */
+    @ApiMethod("auth.restore")
     public AuthRestoreQuery restore(ServiceActor actor, String phone, String lastName) {
         return new AuthRestoreQuery(getClient(), actor, phone, lastName);
+    }
+
+    /**
+     * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("auth.restore")
+    public AuthRestoreQuery restore(ServiceActor actor) {
+        return new AuthRestoreQuery(getClient(), actor);
     }
 }

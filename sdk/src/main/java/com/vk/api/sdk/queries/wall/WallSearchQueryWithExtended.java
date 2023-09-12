@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.wall.responses.SearchExtendedResponse;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearchQueryWithExtended, SearchExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -42,10 +43,12 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
     /**
      * User or community id. "Remember that for a community 'owner_id' must be negative."
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallSearchQueryWithExtended ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallSearchQueryWithExtended ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -55,6 +58,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "domain" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("domain")
     public WallSearchQueryWithExtended domain(String value) {
         return unsafeParam("domain", value);
     }
@@ -65,6 +69,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "query" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("query")
     public WallSearchQueryWithExtended query(String value) {
         return unsafeParam("query", value);
     }
@@ -75,6 +80,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "owners only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("owners_only")
     public WallSearchQueryWithExtended ownersOnly(Boolean value) {
         return unsafeParam("owners_only", value);
     }
@@ -85,6 +91,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public WallSearchQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -95,6 +102,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public WallSearchQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -105,6 +113,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected WallSearchQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -116,6 +125,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallSearchQueryWithExtended fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -126,6 +136,7 @@ public class WallSearchQueryWithExtended extends AbstractQueryBuilder<WallSearch
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public WallSearchQueryWithExtended fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

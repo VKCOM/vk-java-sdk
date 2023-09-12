@@ -29,6 +29,7 @@ public class GetPostsReachResponse implements Validable {
      * Community joins
      */
     @SerializedName("join_group")
+    @Required
     private Integer joinGroup;
 
     /**
@@ -39,15 +40,23 @@ public class GetPostsReachResponse implements Validable {
     private Integer links;
 
     /**
+     * Pretty cards clicks
+     */
+    @SerializedName("pretty_cards_clicks")
+    private Integer prettyCardsClicks;
+
+    /**
      * Subscribers reach
      */
     @SerializedName("reach_subscribers")
+    @Required
     private Integer reachSubscribers;
 
     /**
      * Total reach
      */
     @SerializedName("reach_total")
+    @Required
     private Integer reachTotal;
 
     /**
@@ -61,6 +70,7 @@ public class GetPostsReachResponse implements Validable {
      * Community clicks
      */
     @SerializedName("to_group")
+    @Required
     private Integer toGroup;
 
     /**
@@ -75,6 +85,12 @@ public class GetPostsReachResponse implements Validable {
      */
     @SerializedName("video_views_100p")
     private Integer videoViews100p;
+
+    /**
+     * Video views for 10 seconds
+     */
+    @SerializedName("video_views_10s")
+    private Integer videoViews10s;
 
     /**
      * Video views for 25 percent
@@ -142,6 +158,15 @@ public class GetPostsReachResponse implements Validable {
         return this;
     }
 
+    public Integer getPrettyCardsClicks() {
+        return prettyCardsClicks;
+    }
+
+    public GetPostsReachResponse setPrettyCardsClicks(Integer prettyCardsClicks) {
+        this.prettyCardsClicks = prettyCardsClicks;
+        return this;
+    }
+
     public Integer getReachSubscribers() {
         return reachSubscribers;
     }
@@ -196,6 +221,15 @@ public class GetPostsReachResponse implements Validable {
         return this;
     }
 
+    public Integer getVideoViews10s() {
+        return videoViews10s;
+    }
+
+    public GetPostsReachResponse setVideoViews10s(Integer videoViews10s) {
+        this.videoViews10s = videoViews10s;
+        return this;
+    }
+
     public Integer getVideoViews25p() {
         return videoViews25p;
     }
@@ -243,7 +277,7 @@ public class GetPostsReachResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(reachSubscribers, videoViewsStart, videoViews100p, reachTotal, joinGroup, videoViews50p, hide, videoViews75p, unsubscribe, videoViews25p, report, links, id, toGroup, videoViews3s);
+        return Objects.hash(reachSubscribers, videoViewsStart, videoViews100p, reachTotal, joinGroup, videoViews10s, videoViews50p, hide, videoViews75p, unsubscribe, prettyCardsClicks, videoViews25p, report, links, id, toGroup, videoViews3s);
     }
 
     @Override
@@ -251,7 +285,9 @@ public class GetPostsReachResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetPostsReachResponse getPostsReachResponse = (GetPostsReachResponse) o;
-        return Objects.equals(toGroup, getPostsReachResponse.toGroup) &&
+        return Objects.equals(prettyCardsClicks, getPostsReachResponse.prettyCardsClicks) &&
+                Objects.equals(toGroup, getPostsReachResponse.toGroup) &&
+                Objects.equals(videoViews10s, getPostsReachResponse.videoViews10s) &&
                 Objects.equals(videoViews75p, getPostsReachResponse.videoViews75p) &&
                 Objects.equals(videoViews25p, getPostsReachResponse.videoViews25p) &&
                 Objects.equals(joinGroup, getPostsReachResponse.joinGroup) &&
@@ -276,7 +312,9 @@ public class GetPostsReachResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetPostsReachResponse{");
-        sb.append("toGroup=").append(toGroup);
+        sb.append("prettyCardsClicks=").append(prettyCardsClicks);
+        sb.append(", toGroup=").append(toGroup);
+        sb.append(", videoViews10s=").append(videoViews10s);
         sb.append(", videoViews75p=").append(videoViews75p);
         sb.append(", videoViews25p=").append(videoViews25p);
         sb.append(", joinGroup=").append(joinGroup);

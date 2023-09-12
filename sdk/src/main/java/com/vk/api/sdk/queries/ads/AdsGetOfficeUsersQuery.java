@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.responses.GetOfficeUsersResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,16 +15,27 @@ import java.util.List;
  */
 public class AdsGetOfficeUsersQuery extends AbstractQueryBuilder<AdsGetOfficeUsersQuery, List<GetOfficeUsersResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetOfficeUsersQuery(VkApiClient client, UserActor actor, int accountId) {
+    public AdsGetOfficeUsersQuery(VkApiClient client, UserActor actor, Integer accountId) {
         super(client, "ads.getOfficeUsers", Utils.buildParametrizedType(List.class, GetOfficeUsersResponse.class));
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetOfficeUsersQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getOfficeUsers", Utils.buildParametrizedType(List.class, GetOfficeUsersResponse.class));
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -32,7 +44,8 @@ public class AdsGetOfficeUsersQuery extends AbstractQueryBuilder<AdsGetOfficeUse
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetOfficeUsersQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetOfficeUsersQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 

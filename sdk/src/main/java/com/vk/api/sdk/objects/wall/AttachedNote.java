@@ -13,6 +13,9 @@ import java.util.Objects;
  * AttachedNote object
  */
 public class AttachedNote implements Validable {
+    @SerializedName("can_comment")
+    private Integer canComment;
+
     /**
      * Comments number
      */
@@ -36,15 +39,36 @@ public class AttachedNote implements Validable {
 
     /**
      * Note owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    @SerializedName("privacy_comment")
+    private List<String> privacyComment;
+
+    @SerializedName("privacy_view")
+    private List<String> privacyView;
 
     /**
      * Read comments number
      */
     @SerializedName("read_comments")
+    @Required
     private Integer readComments;
+
+    /**
+     * Note text
+     */
+    @SerializedName("text")
+    private String text;
+
+    /**
+     * Note wiki text
+     */
+    @SerializedName("text_wiki")
+    private String textWiki;
 
     /**
      * Note title
@@ -54,31 +78,20 @@ public class AttachedNote implements Validable {
     private String title;
 
     /**
-     * Note text
-     */
-    @SerializedName("text")
-    private String text;
-
-    @SerializedName("privacy_view")
-    private List<String> privacyView;
-
-    @SerializedName("privacy_comment")
-    private List<String> privacyComment;
-
-    @SerializedName("can_comment")
-    private Integer canComment;
-
-    /**
-     * Note wiki text
-     */
-    @SerializedName("text_wiki")
-    private String textWiki;
-
-    /**
      * URL of the page with note preview
      */
     @SerializedName("view_url")
+    @Required
     private URI viewUrl;
+
+    public Integer getCanComment() {
+        return canComment;
+    }
+
+    public AttachedNote setCanComment(Integer canComment) {
+        this.canComment = canComment;
+        return this;
+    }
 
     public Integer getComments() {
         return comments;
@@ -107,48 +120,12 @@ public class AttachedNote implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public AttachedNote setOwnerId(Integer ownerId) {
+    public AttachedNote setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
-        return this;
-    }
-
-    public Integer getReadComments() {
-        return readComments;
-    }
-
-    public AttachedNote setReadComments(Integer readComments) {
-        this.readComments = readComments;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public AttachedNote setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public AttachedNote setText(String text) {
-        this.text = text;
-        return this;
-    }
-
-    public List<String> getPrivacyView() {
-        return privacyView;
-    }
-
-    public AttachedNote setPrivacyView(List<String> privacyView) {
-        this.privacyView = privacyView;
         return this;
     }
 
@@ -161,12 +138,30 @@ public class AttachedNote implements Validable {
         return this;
     }
 
-    public Integer getCanComment() {
-        return canComment;
+    public List<String> getPrivacyView() {
+        return privacyView;
     }
 
-    public AttachedNote setCanComment(Integer canComment) {
-        this.canComment = canComment;
+    public AttachedNote setPrivacyView(List<String> privacyView) {
+        this.privacyView = privacyView;
+        return this;
+    }
+
+    public Integer getReadComments() {
+        return readComments;
+    }
+
+    public AttachedNote setReadComments(Integer readComments) {
+        this.readComments = readComments;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public AttachedNote setText(String text) {
+        this.text = text;
         return this;
     }
 
@@ -176,6 +171,15 @@ public class AttachedNote implements Validable {
 
     public AttachedNote setTextWiki(String textWiki) {
         this.textWiki = textWiki;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public AttachedNote setTitle(String title) {
+        this.title = title;
         return this;
     }
 

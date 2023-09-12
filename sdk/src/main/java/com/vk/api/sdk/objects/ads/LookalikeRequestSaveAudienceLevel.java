@@ -11,25 +11,16 @@ import java.util.Objects;
  */
 public class LookalikeRequestSaveAudienceLevel implements Validable {
     /**
-     * Save audience level id, which is used in save audience queries
-     */
-    @SerializedName("level")
-    private Integer level;
-
-    /**
      * Saved audience audience size for according level
      */
     @SerializedName("audience_count")
     private Integer audienceCount;
 
-    public Integer getLevel() {
-        return level;
-    }
-
-    public LookalikeRequestSaveAudienceLevel setLevel(Integer level) {
-        this.level = level;
-        return this;
-    }
+    /**
+     * Save audience level id, which is used in save audience queries
+     */
+    @SerializedName("level")
+    private Integer level;
 
     public Integer getAudienceCount() {
         return audienceCount;
@@ -37,6 +28,15 @@ public class LookalikeRequestSaveAudienceLevel implements Validable {
 
     public LookalikeRequestSaveAudienceLevel setAudienceCount(Integer audienceCount) {
         this.audienceCount = audienceCount;
+        return this;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public LookalikeRequestSaveAudienceLevel setLevel(Integer level) {
+        this.level = level;
         return this;
     }
 

@@ -13,12 +13,6 @@ import java.util.Objects;
  */
 public class LinksItem implements Validable {
     /**
-     * Link title
-     */
-    @SerializedName("name")
-    private String name;
-
-    /**
      * Link description
      */
     @SerializedName("desc")
@@ -37,6 +31,18 @@ public class LinksItem implements Validable {
     private Integer id;
 
     /**
+     * Information whether the image on processing
+     */
+    @SerializedName("image_processing")
+    private BoolInt imageProcessing;
+
+    /**
+     * Link title
+     */
+    @SerializedName("name")
+    private String name;
+
+    /**
      * URL of square image of the link with 100 pixels in width
      */
     @SerializedName("photo_100")
@@ -53,21 +59,6 @@ public class LinksItem implements Validable {
      */
     @SerializedName("url")
     private URI url;
-
-    /**
-     * Information whether the image on processing
-     */
-    @SerializedName("image_processing")
-    private BoolInt imageProcessing;
-
-    public String getName() {
-        return name;
-    }
-
-    public LinksItem setName(String name) {
-        this.name = name;
-        return this;
-    }
 
     public String getDesc() {
         return desc;
@@ -92,6 +83,23 @@ public class LinksItem implements Validable {
 
     public LinksItem setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public boolean isImageProcessing() {
+        return imageProcessing == BoolInt.YES;
+    }
+
+    public BoolInt getImageProcessing() {
+        return imageProcessing;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LinksItem setName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -120,14 +128,6 @@ public class LinksItem implements Validable {
     public LinksItem setUrl(URI url) {
         this.url = url;
         return this;
-    }
-
-    public boolean isImageProcessing() {
-        return imageProcessing == BoolInt.YES;
-    }
-
-    public BoolInt getImageProcessing() {
-        return imageProcessing;
     }
 
     @Override

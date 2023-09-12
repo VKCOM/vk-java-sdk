@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * Type of sending (delivering) notifications: 'immediately' — push and bell notifications will be delivered as soon as possible, 'delayed' — push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' — only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
+ * Type of sending (delivering) notifications: 'immediately' - push and bell notifications will be delivered as soon as possible, 'delayed' - push and bell notifications will be delivered in the most comfortable time for the user, 'delayed_push' - only push notifications will be delivered in the most comfortable time, while the bell notifications will be delivered as soon as possible
  */
 public enum SendMessageSendingMode implements EnumParam {
     @SerializedName("delayed")
@@ -15,7 +15,10 @@ public enum SendMessageSendingMode implements EnumParam {
     DELAYED_PUSH("delayed_push"),
 
     @SerializedName("immediately")
-    IMMEDIATELY("immediately");
+    IMMEDIATELY("immediately"),
+
+    @SerializedName("without_push")
+    WITHOUT_PUSH("without_push");
 
     private final String value;
 

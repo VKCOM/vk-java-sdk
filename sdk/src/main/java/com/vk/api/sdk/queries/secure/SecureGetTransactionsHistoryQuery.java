@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.secure.responses.GetTransactionsHistoryResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilder<SecureGetTransactionsHistoryQuery, List<GetTransactionsHistoryResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public SecureGetTransactionsHistoryQuery type(Integer value) {
         return unsafeParam("type", value);
     }
@@ -38,20 +40,24 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
     /**
      * Set uid from
      *
-     * @param value value of "uid from" parameter. Minimum is 0.
+     * @param value value of "uid from" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureGetTransactionsHistoryQuery uidFrom(Integer value) {
+    @ApiParam("uid_from")
+    public SecureGetTransactionsHistoryQuery uidFrom(Long value) {
         return unsafeParam("uid_from", value);
     }
 
     /**
      * Set uid to
      *
-     * @param value value of "uid to" parameter. Minimum is 0.
+     * @param value value of "uid to" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureGetTransactionsHistoryQuery uidTo(Integer value) {
+    @ApiParam("uid_to")
+    public SecureGetTransactionsHistoryQuery uidTo(Long value) {
         return unsafeParam("uid_to", value);
     }
 
@@ -61,6 +67,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
      * @param value value of "date from" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_from")
     public SecureGetTransactionsHistoryQuery dateFrom(Integer value) {
         return unsafeParam("date_from", value);
     }
@@ -71,6 +78,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
      * @param value value of "date to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_to")
     public SecureGetTransactionsHistoryQuery dateTo(Integer value) {
         return unsafeParam("date_to", value);
     }
@@ -81,6 +89,7 @@ public class SecureGetTransactionsHistoryQuery extends AbstractSecureQueryBuilde
      * @param value value of "limit" parameter. Maximum is 1000. Minimum is 0. By default 1000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public SecureGetTransactionsHistoryQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }

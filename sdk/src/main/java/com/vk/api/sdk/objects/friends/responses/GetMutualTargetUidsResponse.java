@@ -18,13 +18,14 @@ public class GetMutualTargetUidsResponse implements Validable {
     private Integer commonCount;
 
     @SerializedName("common_friends")
-    private List<Integer> commonFriends;
+    private List<Long> commonFriends;
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("id")
-    private Integer id;
+    private Long id;
 
     public Integer getCommonCount() {
         return commonCount;
@@ -35,20 +36,20 @@ public class GetMutualTargetUidsResponse implements Validable {
         return this;
     }
 
-    public List<Integer> getCommonFriends() {
+    public List<Long> getCommonFriends() {
         return commonFriends;
     }
 
-    public GetMutualTargetUidsResponse setCommonFriends(List<Integer> commonFriends) {
+    public GetMutualTargetUidsResponse setCommonFriends(List<Long> commonFriends) {
         this.commonFriends = commonFriends;
         return this;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public GetMutualTargetUidsResponse setId(Integer id) {
+    public GetMutualTargetUidsResponse setId(Long id) {
         this.id = id;
         return this;
     }

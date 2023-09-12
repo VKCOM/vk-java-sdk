@@ -10,6 +10,12 @@ import java.util.Objects;
  * ItemPhotoTag object
  */
 public class ItemPhotoTag extends ItemBase implements Validable {
+    /**
+     * Index of current carousel element
+     */
+    @SerializedName("carousel_offset")
+    private Integer carouselOffset;
+
     @SerializedName("photo_tags")
     private ItemPhotoTagPhotoTags photoTags;
 
@@ -18,6 +24,15 @@ public class ItemPhotoTag extends ItemBase implements Validable {
      */
     @SerializedName("post_id")
     private Integer postId;
+
+    public Integer getCarouselOffset() {
+        return carouselOffset;
+    }
+
+    public ItemPhotoTag setCarouselOffset(Integer carouselOffset) {
+        this.carouselOffset = carouselOffset;
+        return this;
+    }
 
     public ItemPhotoTagPhotoTags getPhotoTags() {
         return photoTags;
@@ -39,7 +54,7 @@ public class ItemPhotoTag extends ItemBase implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, photoTags);
+        return Objects.hash(carouselOffset, postId, photoTags);
     }
 
     @Override
@@ -48,7 +63,8 @@ public class ItemPhotoTag extends ItemBase implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ItemPhotoTag itemPhotoTag = (ItemPhotoTag) o;
         return Objects.equals(postId, itemPhotoTag.postId) &&
-                Objects.equals(photoTags, itemPhotoTag.photoTags);
+                Objects.equals(photoTags, itemPhotoTag.photoTags) &&
+                Objects.equals(carouselOffset, itemPhotoTag.carouselOffset);
     }
 
     @Override
@@ -61,6 +77,7 @@ public class ItemPhotoTag extends ItemBase implements Validable {
         final StringBuilder sb = new StringBuilder("ItemPhotoTag{");
         sb.append("postId=").append(postId);
         sb.append(", photoTags=").append(photoTags);
+        sb.append(", carouselOffset=").append(carouselOffset);
         sb.append('}');
         return sb.toString();
     }

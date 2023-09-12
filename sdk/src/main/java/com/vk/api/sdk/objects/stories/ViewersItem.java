@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.stories;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.users.UserFull;
 import java.util.Objects;
 
@@ -15,16 +16,19 @@ public class ViewersItem implements Validable {
      * user has like for this object
      */
     @SerializedName("is_liked")
+    @Required
     private Boolean isLiked;
-
-    /**
-     * user id
-     */
-    @SerializedName("user_id")
-    private Integer userId;
 
     @SerializedName("user")
     private UserFull user;
+
+    /**
+     * user id
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public Boolean getIsLiked() {
         return isLiked;
@@ -35,21 +39,21 @@ public class ViewersItem implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public ViewersItem setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
     public UserFull getUser() {
         return user;
     }
 
     public ViewersItem setUser(UserFull user) {
         this.user = user;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public ViewersItem setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

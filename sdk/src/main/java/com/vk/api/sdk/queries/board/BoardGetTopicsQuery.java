@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.board.GetTopicsOrder;
 import com.vk.api.sdk.objects.board.GetTopicsPreview;
 import com.vk.api.sdk.objects.board.responses.GetTopicsResponse;
@@ -16,26 +17,39 @@ import java.util.List;
  */
 public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuery, GetTopicsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public BoardGetTopicsQuery(VkApiClient client, UserActor actor, int groupId) {
+    public BoardGetTopicsQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "board.getTopics", GetTopicsResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public BoardGetTopicsQuery(VkApiClient client, ServiceActor actor, int groupId) {
+    public BoardGetTopicsQuery(VkApiClient client, UserActor actor) {
+        super(client, "board.getTopics", GetTopicsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public BoardGetTopicsQuery(VkApiClient client, ServiceActor actor, Long groupId) {
         super(client, "board.getTopics", GetTopicsResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -43,21 +57,36 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public BoardGetTopicsQuery(VkApiClient client, ServiceActor actor) {
+        super(client, "board.getTopics", GetTopicsResponse.class);
+        accessToken(actor.getAccessToken());
+        clientSecret(actor.getClientSecret());
+    }
+
+    /**
      * ID of the community that owns the discussion board.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected BoardGetTopicsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public BoardGetTopicsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
-     * Sort order: '1' — by date updated in reverse chronological order. '2' — by date created in reverse chronological order. '-1' — by date updated in chronological order. '-2' — by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
+     * Sort order: '1' - by date updated in reverse chronological order. '2' - by date created in reverse chronological order. '-1' - by date updated in chronological order. '-2' - by date created in chronological order. If no sort order is specified, topics are returned in the order specified by the group administrator. Pinned topics are returned first, regardless of the sorting.
      *
      * @param value value of "order" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("order")
     public BoardGetTopicsQuery order(GetTopicsOrder value) {
         return unsafeParam("order", value);
     }
@@ -68,6 +97,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public BoardGetTopicsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -78,26 +108,29 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 40.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public BoardGetTopicsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — to return information about users who created topics or who posted there last, '0' — to return no additional fields (default)
+     * '1' - to return information about users who created topics or who posted there last, '0' - to return no additional fields (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public BoardGetTopicsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
+     * '1' - to return the first comment in each topic,, '2' - to return the last comment in each topic,, '0' - to return no comments. By default: '0'.
      *
      * @param value value of "preview" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview")
     public BoardGetTopicsQuery preview(GetTopicsPreview value) {
         return unsafeParam("preview", value);
     }
@@ -108,17 +141,19 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      * @param value value of "preview length" parameter. Minimum is 0. By default 90.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("preview_length")
     public BoardGetTopicsQuery previewLength(Integer value) {
         return unsafeParam("preview_length", value);
     }
 
     /**
-     * topic_ids
+     * topicIds
      * IDs of topics to be returned (100 maximum). By default, all topics are returned. If this parameter is set, the 'order', 'offset', and 'count' parameters are ignored.
      *
      * @param value value of "topic ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("topic_ids")
     public BoardGetTopicsQuery topicIds(Integer... value) {
         return unsafeParam("topic_ids", value);
     }
@@ -129,6 +164,7 @@ public class BoardGetTopicsQuery extends AbstractQueryBuilder<BoardGetTopicsQuer
      * @param value value of "topic ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("topic_ids")
     public BoardGetTopicsQuery topicIds(List<Integer> value) {
         return unsafeParam("topic_ids", value);
     }

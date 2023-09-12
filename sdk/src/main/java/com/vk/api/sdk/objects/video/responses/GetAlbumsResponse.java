@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.video.VideoAlbumFull;
+import com.vk.api.sdk.objects.video.VideoAlbum;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public class GetAlbumsResponse implements Validable {
 
     @SerializedName("items")
     @Required
-    private List<VideoAlbumFull> items;
+    private List<VideoAlbum> items;
 
     public Integer getCount() {
         return count;
@@ -33,11 +33,11 @@ public class GetAlbumsResponse implements Validable {
         return this;
     }
 
-    public List<VideoAlbumFull> getItems() {
+    public List<VideoAlbum> getItems() {
         return items;
     }
 
-    public GetAlbumsResponse setItems(List<VideoAlbumFull> items) {
+    public GetAlbumsResponse setItems(List<VideoAlbum> items) {
         this.items = items;
         return this;
     }

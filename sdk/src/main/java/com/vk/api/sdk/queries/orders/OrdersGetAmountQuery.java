@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.orders.responses.GetAmountResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +15,15 @@ import java.util.List;
  */
 public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQuery, List<GetAmountResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @param votes value of "votes" parameter.
      */
-    public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId, String... votes) {
+    public OrdersGetAmountQuery(VkApiClient client, UserActor actor, Long userId, String... votes) {
         super(client, "orders.getAmount", Utils.buildParametrizedType(List.class, GetAmountResponse.class));
         accessToken(actor.getAccessToken());
         userId(userId);
@@ -29,14 +31,15 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @param votes value of "votes" parameter.
      */
-    public OrdersGetAmountQuery(VkApiClient client, UserActor actor, int userId,
+    public OrdersGetAmountQuery(VkApiClient client, UserActor actor, Long userId,
             List<String> votes) {
         super(client, "orders.getAmount", Utils.buildParametrizedType(List.class, GetAmountResponse.class));
         accessToken(actor.getAccessToken());
@@ -45,12 +48,25 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public OrdersGetAmountQuery(VkApiClient client, UserActor actor) {
+        super(client, "orders.getAmount", Utils.buildParametrizedType(List.class, GetAmountResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersGetAmountQuery userId(int value) {
+    @ApiParam("user_id")
+    public OrdersGetAmountQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -61,7 +77,8 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      * @param value value of "votes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersGetAmountQuery votes(String... value) {
+    @ApiParam("votes")
+    public OrdersGetAmountQuery votes(String... value) {
         return unsafeParam("votes", value);
     }
 
@@ -71,7 +88,8 @@ public class OrdersGetAmountQuery extends AbstractQueryBuilder<OrdersGetAmountQu
      * @param value value of "votes" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected OrdersGetAmountQuery votes(List<String> value) {
+    @ApiParam("votes")
+    public OrdersGetAmountQuery votes(List<String> value) {
         return unsafeParam("votes", value);
     }
 

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +15,16 @@ import java.util.List;
  */
 public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenCommentsQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallOpenCommentsQuery(VkApiClient client, UserActor actor, int ownerId, int postId) {
+    public WallOpenCommentsQuery(VkApiClient client, GroupActor actor, Long ownerId,
+            Integer postId) {
         super(client, "wall.openComments", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -29,27 +32,53 @@ public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenComments
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     */
+    public WallOpenCommentsQuery(VkApiClient client, GroupActor actor) {
+        super(client, "wall.openComments", BoolResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallOpenCommentsQuery(VkApiClient client, GroupActor actor, int ownerId, int postId) {
+    public WallOpenCommentsQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer postId) {
         super(client, "wall.openComments", BoolResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         postId(postId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallOpenCommentsQuery(VkApiClient client, UserActor actor) {
+        super(client, "wall.openComments", BoolResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallOpenCommentsQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public WallOpenCommentsQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -59,7 +88,8 @@ public class WallOpenCommentsQuery extends AbstractQueryBuilder<WallOpenComments
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallOpenCommentsQuery postId(int value) {
+    @ApiParam("post_id")
+    public WallOpenCommentsQuery postId(Integer value) {
         return unsafeParam("post_id", value);
     }
 

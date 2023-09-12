@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractSecureQueryBuilder;
 import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.secure.responses.GetSMSHistoryResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureGetSMSHistoryQuery, List<GetSMSHistoryResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,10 +29,12 @@ public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureG
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public SecureGetSMSHistoryQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public SecureGetSMSHistoryQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -41,6 +44,7 @@ public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureG
      * @param value value of "date from" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_from")
     public SecureGetSMSHistoryQuery dateFrom(Integer value) {
         return unsafeParam("date_from", value);
     }
@@ -51,16 +55,18 @@ public class SecureGetSMSHistoryQuery extends AbstractSecureQueryBuilder<SecureG
      * @param value value of "date to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("date_to")
     public SecureGetSMSHistoryQuery dateTo(Integer value) {
         return unsafeParam("date_to", value);
     }
 
     /**
-     * Number of returned posts. By default — 1000.
+     * Number of returned posts. By default - 1000.
      *
      * @param value value of "limit" parameter. Maximum is 1000. Minimum is 0. By default 1000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("limit")
     public SecureGetSMSHistoryQuery limit(Integer value) {
         return unsafeParam("limit", value);
     }

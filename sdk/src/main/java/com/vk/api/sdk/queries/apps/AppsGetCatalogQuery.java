@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.apps.GetCatalogFilter;
 import com.vk.api.sdk.objects.apps.GetCatalogSort;
 import com.vk.api.sdk.objects.apps.responses.GetCatalogResponse;
@@ -17,38 +18,35 @@ import java.util.List;
  */
 public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuery, GetCatalogResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param count value of "count" parameter. Minimum is 0. By default 100.
      */
-    public AppsGetCatalogQuery(VkApiClient client, UserActor actor, int count) {
+    public AppsGetCatalogQuery(VkApiClient client, UserActor actor) {
         super(client, "apps.getCatalog", GetCatalogResponse.class);
         accessToken(actor.getAccessToken());
-        count(count);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param count value of "count" parameter. Minimum is 0. By default 100.
      */
-    public AppsGetCatalogQuery(VkApiClient client, ServiceActor actor, int count) {
+    public AppsGetCatalogQuery(VkApiClient client, ServiceActor actor) {
         super(client, "apps.getCatalog", GetCatalogResponse.class);
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
-        count(count);
     }
 
     /**
-     * Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
+     * Sort order: 'popular_today' - popular for one day (default), 'visitors' - by visitors number , 'create_date' - by creation date, 'growth_rate' - by growth rate, 'popular_week' - popular for one week
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public AppsGetCatalogQuery sort(GetCatalogSort value) {
         return unsafeParam("sort", value);
     }
@@ -59,6 +57,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AppsGetCatalogQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -69,7 +68,8 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "count" parameter. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsGetCatalogQuery count(int value) {
+    @ApiParam("count")
+    public AppsGetCatalogQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
@@ -79,16 +79,18 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "platform" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("platform")
     public AppsGetCatalogQuery platform(String value) {
         return unsafeParam("platform", value);
     }
 
     /**
-     * '1' — to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' — not to return additional fields (default).
+     * '1' - to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' - not to return additional fields (default).
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public AppsGetCatalogQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -99,6 +101,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "return friends" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_friends")
     public AppsGetCatalogQuery returnFriends(Boolean value) {
         return unsafeParam("return_friends", value);
     }
@@ -109,6 +112,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("name_case")
     public AppsGetCatalogQuery nameCase(String value) {
         return unsafeParam("name_case", value);
     }
@@ -119,6 +123,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public AppsGetCatalogQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -129,16 +134,18 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "genre id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("genre_id")
     public AppsGetCatalogQuery genreId(Integer value) {
         return unsafeParam("genre_id", value);
     }
 
     /**
-     * 'installed' — to return list of installed apps (only for mobile platform).
+     * 'installed' - to return list of installed apps (only for mobile platform).
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public AppsGetCatalogQuery filter(GetCatalogFilter value) {
         return unsafeParam("filter", value);
     }
@@ -150,6 +157,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetCatalogQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -160,6 +168,7 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetCatalogQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }
@@ -171,6 +180,6 @@ public class AppsGetCatalogQuery extends AbstractQueryBuilder<AppsGetCatalogQuer
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("count", "access_token");
+        return Arrays.asList("access_token");
     }
 }

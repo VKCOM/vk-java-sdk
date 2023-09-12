@@ -32,6 +32,9 @@ public class MarketItem implements Validable {
     @Required
     private MarketCategory category;
 
+    @SerializedName("category_v2")
+    private MarketCategory categoryV2;
+
     /**
      * Date when the item has been created in Unixtime
      */
@@ -55,18 +58,51 @@ public class MarketItem implements Validable {
     @Required
     private Integer id;
 
+    @SerializedName("is_adult")
+    private Boolean isAdult;
+
     @SerializedName("is_favorite")
     private Boolean isFavorite;
 
+    @SerializedName("is_main_variant")
+    private Boolean isMainVariant;
+
+    @SerializedName("is_owner")
+    private Boolean isOwner;
+
     /**
      * Item owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
+
+    /**
+     * Attach for post id
+     */
+    @SerializedName("post_id")
+    private Integer postId;
+
+    /**
+     * Attach for post owner id
+     * Entity: owner
+     */
+    @SerializedName("post_owner_id")
+    private Long postOwnerId;
 
     @SerializedName("price")
     @Required
     private Price price;
+
+    @SerializedName("sku")
+    private String sku;
+
+    /**
+     * Inventory balances
+     */
+    @SerializedName("stock_amount")
+    private Integer stockAmount;
 
     /**
      * URL of the preview image
@@ -85,16 +121,10 @@ public class MarketItem implements Validable {
      * URL to item
      */
     @SerializedName("url")
-    private URI url;
+    private String url;
 
     @SerializedName("variants_grouping_id")
     private Integer variantsGroupingId;
-
-    @SerializedName("is_main_variant")
-    private Boolean isMainVariant;
-
-    @SerializedName("sku")
-    private String sku;
 
     public String getAccessKey() {
         return accessKey;
@@ -129,6 +159,15 @@ public class MarketItem implements Validable {
 
     public MarketItem setCategory(MarketCategory category) {
         this.category = category;
+        return this;
+    }
+
+    public MarketCategory getCategoryV2() {
+        return categoryV2;
+    }
+
+    public MarketItem setCategoryV2(MarketCategory categoryV2) {
+        this.categoryV2 = categoryV2;
         return this;
     }
 
@@ -168,6 +207,15 @@ public class MarketItem implements Validable {
         return this;
     }
 
+    public Boolean getIsAdult() {
+        return isAdult;
+    }
+
+    public MarketItem setIsAdult(Boolean isAdult) {
+        this.isAdult = isAdult;
+        return this;
+    }
+
     public Boolean getIsFavorite() {
         return isFavorite;
     }
@@ -177,12 +225,48 @@ public class MarketItem implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Boolean getIsMainVariant() {
+        return isMainVariant;
+    }
+
+    public MarketItem setIsMainVariant(Boolean isMainVariant) {
+        this.isMainVariant = isMainVariant;
+        return this;
+    }
+
+    public Boolean getIsOwner() {
+        return isOwner;
+    }
+
+    public MarketItem setIsOwner(Boolean isOwner) {
+        this.isOwner = isOwner;
+        return this;
+    }
+
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public MarketItem setOwnerId(Integer ownerId) {
+    public MarketItem setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public MarketItem setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public Long getPostOwnerId() {
+        return postOwnerId;
+    }
+
+    public MarketItem setPostOwnerId(Long postOwnerId) {
+        this.postOwnerId = postOwnerId;
         return this;
     }
 
@@ -192,6 +276,24 @@ public class MarketItem implements Validable {
 
     public MarketItem setPrice(Price price) {
         this.price = price;
+        return this;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public MarketItem setSku(String sku) {
+        this.sku = sku;
+        return this;
+    }
+
+    public Integer getStockAmount() {
+        return stockAmount;
+    }
+
+    public MarketItem setStockAmount(Integer stockAmount) {
+        this.stockAmount = stockAmount;
         return this;
     }
 
@@ -213,11 +315,11 @@ public class MarketItem implements Validable {
         return this;
     }
 
-    public URI getUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public MarketItem setUrl(URI url) {
+    public MarketItem setUrl(String url) {
         this.url = url;
         return this;
     }
@@ -231,27 +333,9 @@ public class MarketItem implements Validable {
         return this;
     }
 
-    public Boolean getIsMainVariant() {
-        return isMainVariant;
-    }
-
-    public MarketItem setIsMainVariant(Boolean isMainVariant) {
-        this.isMainVariant = isMainVariant;
-        return this;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public MarketItem setSku(String sku) {
-        this.sku = sku;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(date, variantsGroupingId, thumbPhoto, buttonTitle, description, externalId, availability, ownerId, title, url, isMainVariant, accessKey, price, id, category, sku, isFavorite);
+        return Objects.hash(date, variantsGroupingId, thumbPhoto, buttonTitle, postOwnerId, description, externalId, availability, postId, ownerId, title, url, stockAmount, isMainVariant, isOwner, accessKey, price, id, category, sku, categoryV2, isAdult, isFavorite);
     }
 
     @Override
@@ -261,6 +345,9 @@ public class MarketItem implements Validable {
         MarketItem marketItem = (MarketItem) o;
         return Objects.equals(date, marketItem.date) &&
                 Objects.equals(isFavorite, marketItem.isFavorite) &&
+                Objects.equals(stockAmount, marketItem.stockAmount) &&
+                Objects.equals(postOwnerId, marketItem.postOwnerId) &&
+                Objects.equals(isOwner, marketItem.isOwner) &&
                 Objects.equals(ownerId, marketItem.ownerId) &&
                 Objects.equals(description, marketItem.description) &&
                 Objects.equals(externalId, marketItem.externalId) &&
@@ -268,8 +355,11 @@ public class MarketItem implements Validable {
                 Objects.equals(availability, marketItem.availability) &&
                 Objects.equals(title, marketItem.title) &&
                 Objects.equals(url, marketItem.url) &&
+                Objects.equals(isAdult, marketItem.isAdult) &&
                 Objects.equals(thumbPhoto, marketItem.thumbPhoto) &&
+                Objects.equals(postId, marketItem.postId) &&
                 Objects.equals(variantsGroupingId, marketItem.variantsGroupingId) &&
+                Objects.equals(categoryV2, marketItem.categoryV2) &&
                 Objects.equals(price, marketItem.price) &&
                 Objects.equals(accessKey, marketItem.accessKey) &&
                 Objects.equals(buttonTitle, marketItem.buttonTitle) &&
@@ -288,15 +378,21 @@ public class MarketItem implements Validable {
         final StringBuilder sb = new StringBuilder("MarketItem{");
         sb.append("date=").append(date);
         sb.append(", isFavorite=").append(isFavorite);
+        sb.append(", stockAmount=").append(stockAmount);
+        sb.append(", postOwnerId=").append(postOwnerId);
+        sb.append(", isOwner=").append(isOwner);
         sb.append(", ownerId=").append(ownerId);
         sb.append(", description='").append(description).append("'");
         sb.append(", externalId='").append(externalId).append("'");
         sb.append(", isMainVariant=").append(isMainVariant);
         sb.append(", availability=").append(availability);
         sb.append(", title='").append(title).append("'");
-        sb.append(", url=").append(url);
+        sb.append(", url='").append(url).append("'");
+        sb.append(", isAdult=").append(isAdult);
         sb.append(", thumbPhoto=").append(thumbPhoto);
+        sb.append(", postId=").append(postId);
         sb.append(", variantsGroupingId=").append(variantsGroupingId);
+        sb.append(", categoryV2=").append(categoryV2);
         sb.append(", price=").append(price);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", buttonTitle='").append(buttonTitle).append("'");

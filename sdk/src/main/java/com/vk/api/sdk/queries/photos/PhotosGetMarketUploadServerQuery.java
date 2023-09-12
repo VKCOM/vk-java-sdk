@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.photos.responses.GetMarketUploadServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,39 @@ import java.util.List;
  */
 public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<PhotosGetMarketUploadServerQuery, GetMarketUploadServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public PhotosGetMarketUploadServerQuery(VkApiClient client, UserActor actor, int groupId) {
+    public PhotosGetMarketUploadServerQuery(VkApiClient client, UserActor actor, Long groupId) {
         super(client, "photos.getMarketUploadServer", GetMarketUploadServerResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosGetMarketUploadServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.getMarketUploadServer", GetMarketUploadServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosGetMarketUploadServerQuery groupId(int value) {
+    @ApiParam("group_id")
+    public PhotosGetMarketUploadServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -41,6 +56,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      * @param value value of "main photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("main_photo")
     public PhotosGetMarketUploadServerQuery mainPhoto(Boolean value) {
         return unsafeParam("main_photo", value);
     }
@@ -51,6 +67,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      * @param value value of "crop x" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_x")
     public PhotosGetMarketUploadServerQuery cropX(Integer value) {
         return unsafeParam("crop_x", value);
     }
@@ -61,6 +78,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      * @param value value of "crop y" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_y")
     public PhotosGetMarketUploadServerQuery cropY(Integer value) {
         return unsafeParam("crop_y", value);
     }
@@ -71,6 +89,7 @@ public class PhotosGetMarketUploadServerQuery extends AbstractQueryBuilder<Photo
      * @param value value of "crop width" parameter. Minimum is 400.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("crop_width")
     public PhotosGetMarketUploadServerQuery cropWidth(Integer value) {
         return unsafeParam("crop_width", value);
     }

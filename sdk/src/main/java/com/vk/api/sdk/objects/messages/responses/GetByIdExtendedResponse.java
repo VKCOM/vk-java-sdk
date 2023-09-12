@@ -22,16 +22,15 @@ public class GetByIdExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<Message> items;
 
     @SerializedName("profiles")
-    @Required
     private List<UserFull> profiles;
-
-    @SerializedName("groups")
-    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -39,6 +38,15 @@ public class GetByIdExtendedResponse implements Validable {
 
     public GetByIdExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetByIdExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -57,15 +65,6 @@ public class GetByIdExtendedResponse implements Validable {
 
     public GetByIdExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetByIdExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

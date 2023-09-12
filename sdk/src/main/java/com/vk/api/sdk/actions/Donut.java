@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.donut.DonutGetFriendsQueryWithFields;
 import com.vk.api.sdk.queries.donut.DonutGetSubscriptionQuery;
 import com.vk.api.sdk.queries.donut.DonutGetSubscriptionsQuery;
@@ -23,41 +24,63 @@ public class Donut extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param fields
      * @return query
      */
-    public DonutGetFriendsQueryWithFields getFriendsWithFields(UserActor actor, int ownerId,
+    @ApiMethod("donut.getFriends")
+    public DonutGetFriendsQueryWithFields getFriendsWithFields(UserActor actor, Long ownerId,
             String... fields) {
         return new DonutGetFriendsQueryWithFields(getClient(), actor, ownerId, fields);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @return query
      */
-    public DonutGetSubscriptionQuery getSubscription(UserActor actor, int ownerId) {
+    @ApiMethod("donut.getSubscription")
+    public DonutGetSubscriptionQuery getSubscription(UserActor actor, Long ownerId) {
         return new DonutGetSubscriptionQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("donut.getSubscription")
+    public DonutGetSubscriptionQuery getSubscription(UserActor actor) {
+        return new DonutGetSubscriptionQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of user's VK Donut subscriptions.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("donut.getSubscriptions")
     public DonutGetSubscriptionsQuery getSubscriptions(UserActor actor) {
         return new DonutGetSubscriptionsQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @return query
      */
-    public DonutIsDonQuery isDon(UserActor actor, int ownerId) {
+    @ApiMethod("donut.isDon")
+    public DonutIsDonQuery isDon(UserActor actor, Long ownerId) {
         return new DonutIsDonQuery(getClient(), actor, ownerId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("donut.isDon")
+    public DonutIsDonQuery isDon(UserActor actor) {
+        return new DonutIsDonQuery(getClient(), actor);
     }
 }

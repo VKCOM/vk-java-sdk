@@ -13,56 +13,14 @@ import java.util.Objects;
  * Order object
  */
 public class Order implements Validable {
-    @SerializedName("id")
-    @Required
-    private Integer id;
-
-    @SerializedName("group_id")
-    private Integer groupId;
-
-    @SerializedName("user_id")
-    private Integer userId;
-
-    @SerializedName("display_order_id")
-    private String displayOrderId;
-
-    @SerializedName("date")
-    @Required
-    private Integer date;
-
-    @SerializedName("status")
-    @Required
-    private Integer status;
-
-    @SerializedName("items_count")
-    private Integer itemsCount;
-
-    @SerializedName("track_number")
-    private String trackNumber;
-
-    @SerializedName("track_link")
-    private String trackLink;
-
-    @SerializedName("comment")
-    private String comment;
-
     @SerializedName("address")
     private String address;
 
-    @SerializedName("merchant_comment")
-    private String merchantComment;
-
-    @SerializedName("weight")
-    private Integer weight;
-
-    @SerializedName("total_price")
-    private Price totalPrice;
-
     /**
-     * Several order items for preview
+     * Extended field. Can current viewer add review for at least one item in this order
      */
-    @SerializedName("preview_order_items")
-    private List<OrderItem> previewOrderItems;
+    @SerializedName("can_add_review")
+    private Boolean canAddReview;
 
     /**
      * Information for cancel and revert order
@@ -70,95 +28,78 @@ public class Order implements Validable {
     @SerializedName("cancel_info")
     private Link cancelInfo;
 
-    public Integer getId() {
-        return id;
-    }
+    @SerializedName("comment")
+    private String comment;
 
-    public Order setId(Integer id) {
-        this.id = id;
-        return this;
-    }
+    /**
+     * Seller comment for user
+     */
+    @SerializedName("comment_for_user")
+    private String commentForUser;
 
-    public Integer getGroupId() {
-        return groupId;
-    }
+    @SerializedName("date")
+    @Required
+    private Integer date;
 
-    public Order setGroupId(Integer groupId) {
-        this.groupId = groupId;
-        return this;
-    }
+    @SerializedName("date_viewed")
+    private Integer dateViewed;
 
-    public Integer getUserId() {
-        return userId;
-    }
+    @SerializedName("discount")
+    private Price discount;
 
-    public Order setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    @SerializedName("display_order_id")
+    private String displayOrderId;
 
-    public String getDisplayOrderId() {
-        return displayOrderId;
-    }
+    /**
+     * Entity: groups
+     */
+    @SerializedName("group_id")
+    @Required
+    private Long groupId;
 
-    public Order setDisplayOrderId(String displayOrderId) {
-        this.displayOrderId = displayOrderId;
-        return this;
-    }
+    @SerializedName("id")
+    @Required
+    private Integer id;
 
-    public Integer getDate() {
-        return date;
-    }
+    @SerializedName("is_viewed_by_admin")
+    private Boolean isViewedByAdmin;
 
-    public Order setDate(Integer date) {
-        this.date = date;
-        return this;
-    }
+    @SerializedName("items_count")
+    @Required
+    private Integer itemsCount;
 
-    public Integer getStatus() {
-        return status;
-    }
+    @SerializedName("merchant_comment")
+    private String merchantComment;
 
-    public Order setStatus(Integer status) {
-        this.status = status;
-        return this;
-    }
+    /**
+     * Several order items for preview
+     */
+    @SerializedName("preview_order_items")
+    private List<OrderItem> previewOrderItems;
 
-    public Integer getItemsCount() {
-        return itemsCount;
-    }
+    @SerializedName("status")
+    @Required
+    private Integer status;
 
-    public Order setItemsCount(Integer itemsCount) {
-        this.itemsCount = itemsCount;
-        return this;
-    }
+    @SerializedName("total_price")
+    @Required
+    private Price totalPrice;
 
-    public String getTrackNumber() {
-        return trackNumber;
-    }
+    @SerializedName("track_link")
+    private String trackLink;
 
-    public Order setTrackNumber(String trackNumber) {
-        this.trackNumber = trackNumber;
-        return this;
-    }
+    @SerializedName("track_number")
+    private String trackNumber;
 
-    public String getTrackLink() {
-        return trackLink;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
-    public Order setTrackLink(String trackLink) {
-        this.trackLink = trackLink;
-        return this;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public Order setComment(String comment) {
-        this.comment = comment;
-        return this;
-    }
+    @SerializedName("weight")
+    private Integer weight;
 
     public String getAddress() {
         return address;
@@ -169,39 +110,12 @@ public class Order implements Validable {
         return this;
     }
 
-    public String getMerchantComment() {
-        return merchantComment;
+    public Boolean getCanAddReview() {
+        return canAddReview;
     }
 
-    public Order setMerchantComment(String merchantComment) {
-        this.merchantComment = merchantComment;
-        return this;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public Order setWeight(Integer weight) {
-        this.weight = weight;
-        return this;
-    }
-
-    public Price getTotalPrice() {
-        return totalPrice;
-    }
-
-    public Order setTotalPrice(Price totalPrice) {
-        this.totalPrice = totalPrice;
-        return this;
-    }
-
-    public List<OrderItem> getPreviewOrderItems() {
-        return previewOrderItems;
-    }
-
-    public Order setPreviewOrderItems(List<OrderItem> previewOrderItems) {
-        this.previewOrderItems = previewOrderItems;
+    public Order setCanAddReview(Boolean canAddReview) {
+        this.canAddReview = canAddReview;
         return this;
     }
 
@@ -214,9 +128,171 @@ public class Order implements Validable {
         return this;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public Order setComment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public String getCommentForUser() {
+        return commentForUser;
+    }
+
+    public Order setCommentForUser(String commentForUser) {
+        this.commentForUser = commentForUser;
+        return this;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public Order setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Integer getDateViewed() {
+        return dateViewed;
+    }
+
+    public Order setDateViewed(Integer dateViewed) {
+        this.dateViewed = dateViewed;
+        return this;
+    }
+
+    public Price getDiscount() {
+        return discount;
+    }
+
+    public Order setDiscount(Price discount) {
+        this.discount = discount;
+        return this;
+    }
+
+    public String getDisplayOrderId() {
+        return displayOrderId;
+    }
+
+    public Order setDisplayOrderId(String displayOrderId) {
+        this.displayOrderId = displayOrderId;
+        return this;
+    }
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public Order setGroupId(Long groupId) {
+        this.groupId = groupId;
+        return this;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Order setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Boolean getIsViewedByAdmin() {
+        return isViewedByAdmin;
+    }
+
+    public Order setIsViewedByAdmin(Boolean isViewedByAdmin) {
+        this.isViewedByAdmin = isViewedByAdmin;
+        return this;
+    }
+
+    public Integer getItemsCount() {
+        return itemsCount;
+    }
+
+    public Order setItemsCount(Integer itemsCount) {
+        this.itemsCount = itemsCount;
+        return this;
+    }
+
+    public String getMerchantComment() {
+        return merchantComment;
+    }
+
+    public Order setMerchantComment(String merchantComment) {
+        this.merchantComment = merchantComment;
+        return this;
+    }
+
+    public List<OrderItem> getPreviewOrderItems() {
+        return previewOrderItems;
+    }
+
+    public Order setPreviewOrderItems(List<OrderItem> previewOrderItems) {
+        this.previewOrderItems = previewOrderItems;
+        return this;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public Order setStatus(Integer status) {
+        this.status = status;
+        return this;
+    }
+
+    public Price getTotalPrice() {
+        return totalPrice;
+    }
+
+    public Order setTotalPrice(Price totalPrice) {
+        this.totalPrice = totalPrice;
+        return this;
+    }
+
+    public String getTrackLink() {
+        return trackLink;
+    }
+
+    public Order setTrackLink(String trackLink) {
+        this.trackLink = trackLink;
+        return this;
+    }
+
+    public String getTrackNumber() {
+        return trackNumber;
+    }
+
+    public Order setTrackNumber(String trackNumber) {
+        this.trackNumber = trackNumber;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public Order setUserId(Long userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public Order setWeight(Integer weight) {
+        this.weight = weight;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(date, address, trackNumber, totalPrice, cancelInfo, groupId, weight, userId, itemsCount, merchantComment, trackLink, comment, id, previewOrderItems, displayOrderId, status);
+        return Objects.hash(date, address, trackNumber, totalPrice, cancelInfo, dateViewed, isViewedByAdmin, groupId, discount, weight, canAddReview, userId, itemsCount, merchantComment, trackLink, comment, commentForUser, id, previewOrderItems, displayOrderId, status);
     }
 
     @Override
@@ -226,19 +302,24 @@ public class Order implements Validable {
         Order order = (Order) o;
         return Objects.equals(date, order.date) &&
                 Objects.equals(address, order.address) &&
+                Objects.equals(canAddReview, order.canAddReview) &&
                 Objects.equals(totalPrice, order.totalPrice) &&
+                Objects.equals(discount, order.discount) &&
                 Objects.equals(weight, order.weight) &&
+                Objects.equals(commentForUser, order.commentForUser) &&
+                Objects.equals(dateViewed, order.dateViewed) &&
+                Objects.equals(isViewedByAdmin, order.isViewedByAdmin) &&
                 Objects.equals(trackLink, order.trackLink) &&
                 Objects.equals(itemsCount, order.itemsCount) &&
                 Objects.equals(groupId, order.groupId) &&
                 Objects.equals(userId, order.userId) &&
-                Objects.equals(trackNumber, order.trackNumber) &&
                 Objects.equals(comment, order.comment) &&
+                Objects.equals(trackNumber, order.trackNumber) &&
                 Objects.equals(id, order.id) &&
                 Objects.equals(displayOrderId, order.displayOrderId) &&
                 Objects.equals(merchantComment, order.merchantComment) &&
-                Objects.equals(previewOrderItems, order.previewOrderItems) &&
                 Objects.equals(cancelInfo, order.cancelInfo) &&
+                Objects.equals(previewOrderItems, order.previewOrderItems) &&
                 Objects.equals(status, order.status);
     }
 
@@ -252,19 +333,24 @@ public class Order implements Validable {
         final StringBuilder sb = new StringBuilder("Order{");
         sb.append("date=").append(date);
         sb.append(", address='").append(address).append("'");
+        sb.append(", canAddReview=").append(canAddReview);
         sb.append(", totalPrice=").append(totalPrice);
+        sb.append(", discount=").append(discount);
         sb.append(", weight=").append(weight);
+        sb.append(", commentForUser='").append(commentForUser).append("'");
+        sb.append(", dateViewed=").append(dateViewed);
+        sb.append(", isViewedByAdmin=").append(isViewedByAdmin);
         sb.append(", trackLink='").append(trackLink).append("'");
         sb.append(", itemsCount=").append(itemsCount);
         sb.append(", groupId=").append(groupId);
         sb.append(", userId=").append(userId);
-        sb.append(", trackNumber='").append(trackNumber).append("'");
         sb.append(", comment='").append(comment).append("'");
+        sb.append(", trackNumber='").append(trackNumber).append("'");
         sb.append(", id=").append(id);
         sb.append(", displayOrderId='").append(displayOrderId).append("'");
         sb.append(", merchantComment='").append(merchantComment).append("'");
-        sb.append(", previewOrderItems=").append(previewOrderItems);
         sb.append(", cancelInfo=").append(cancelInfo);
+        sb.append(", previewOrderItems=").append(previewOrderItems);
         sb.append(", status=").append(status);
         sb.append('}');
         return sb.toString();

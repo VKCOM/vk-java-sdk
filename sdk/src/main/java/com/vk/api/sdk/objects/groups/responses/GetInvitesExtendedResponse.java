@@ -21,6 +21,10 @@ public class GetInvitesExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<GroupFull> items;
@@ -29,16 +33,21 @@ public class GetInvitesExtendedResponse implements Validable {
     @Required
     private List<UserMin> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<GroupFull> groups;
-
     public Integer getCount() {
         return count;
     }
 
     public GetInvitesExtendedResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetInvitesExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -57,15 +66,6 @@ public class GetInvitesExtendedResponse implements Validable {
 
     public GetInvitesExtendedResponse setProfiles(List<UserMin> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetInvitesExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

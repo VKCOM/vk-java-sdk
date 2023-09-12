@@ -26,6 +26,9 @@ public class CommentAttachment implements Validable {
     @SerializedName("doc")
     private Doc doc;
 
+    @SerializedName("graffiti")
+    private Graffiti graffiti;
+
     @SerializedName("link")
     private Link link;
 
@@ -69,6 +72,15 @@ public class CommentAttachment implements Validable {
 
     public CommentAttachment setDoc(Doc doc) {
         this.doc = doc;
+        return this;
+    }
+
+    public Graffiti getGraffiti() {
+        return graffiti;
+    }
+
+    public CommentAttachment setGraffiti(Graffiti graffiti) {
+        this.graffiti = graffiti;
         return this;
     }
 
@@ -155,7 +167,7 @@ public class CommentAttachment implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(market, note, marketMarketAlbum, link, sticker, doc, photo, audio, page, video, type);
+        return Objects.hash(market, note, marketMarketAlbum, link, sticker, doc, photo, graffiti, audio, page, video, type);
     }
 
     @Override
@@ -170,6 +182,7 @@ public class CommentAttachment implements Validable {
                 Objects.equals(sticker, commentAttachment.sticker) &&
                 Objects.equals(doc, commentAttachment.doc) &&
                 Objects.equals(photo, commentAttachment.photo) &&
+                Objects.equals(graffiti, commentAttachment.graffiti) &&
                 Objects.equals(audio, commentAttachment.audio) &&
                 Objects.equals(page, commentAttachment.page) &&
                 Objects.equals(video, commentAttachment.video) &&
@@ -191,6 +204,7 @@ public class CommentAttachment implements Validable {
         sb.append(", sticker=").append(sticker);
         sb.append(", doc=").append(doc);
         sb.append(", photo=").append(photo);
+        sb.append(", graffiti=").append(graffiti);
         sb.append(", audio=").append(audio);
         sb.append(", page=").append(page);
         sb.append(", video=").append(video);

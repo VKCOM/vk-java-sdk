@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.streaming;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.streaming.SetSettingsMonthlyTier;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class StreamingSetSettingsQuery extends AbstractQueryBuilder<StreamingSetSettingsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class StreamingSetSettingsQuery extends AbstractQueryBuilder<StreamingSet
      * @param value value of "monthly tier" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("monthly_tier")
     public StreamingSetSettingsQuery monthlyTier(SetSettingsMonthlyTier value) {
         return unsafeParam("monthly_tier", value);
     }

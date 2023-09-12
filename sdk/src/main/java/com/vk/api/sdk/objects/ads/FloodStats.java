@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,6 +26,12 @@ public class FloodStats implements Validable {
     @Required
     private Integer refresh;
 
+    /**
+     * Used requests per user
+     */
+    @SerializedName("stats_by_user")
+    private List<FloodStatsByUserItem> statsByUser;
+
     public Integer getLeft() {
         return left;
     }
@@ -43,9 +50,18 @@ public class FloodStats implements Validable {
         return this;
     }
 
+    public List<FloodStatsByUserItem> getStatsByUser() {
+        return statsByUser;
+    }
+
+    public FloodStats setStatsByUser(List<FloodStatsByUserItem> statsByUser) {
+        this.statsByUser = statsByUser;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(left, refresh);
+        return Objects.hash(left, statsByUser, refresh);
     }
 
     @Override
@@ -54,6 +70,7 @@ public class FloodStats implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         FloodStats floodStats = (FloodStats) o;
         return Objects.equals(left, floodStats.left) &&
+                Objects.equals(statsByUser, floodStats.statsByUser) &&
                 Objects.equals(refresh, floodStats.refresh);
     }
 
@@ -66,6 +83,7 @@ public class FloodStats implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("FloodStats{");
         sb.append("left=").append(left);
+        sb.append(", statsByUser=").append(statsByUser);
         sb.append(", refresh=").append(refresh);
         sb.append('}');
         return sb.toString();

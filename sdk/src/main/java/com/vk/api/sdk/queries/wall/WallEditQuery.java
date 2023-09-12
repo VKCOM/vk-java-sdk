@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.wall;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.wall.EditTopicId;
 import com.vk.api.sdk.objects.wall.responses.EditResponse;
 import java.util.Arrays;
@@ -14,25 +15,38 @@ import java.util.List;
  */
 public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param postId value of "post id" parameter. Minimum is 0.
      */
-    public WallEditQuery(VkApiClient client, UserActor actor, int postId) {
+    public WallEditQuery(VkApiClient client, UserActor actor, Integer postId) {
         super(client, "wall.edit", EditResponse.class);
         accessToken(actor.getAccessToken());
         postId(postId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public WallEditQuery(VkApiClient client, UserActor actor) {
+        super(client, "wall.edit", EditResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * User ID or community ID. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallEditQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public WallEditQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -42,7 +56,8 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "post id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected WallEditQuery postId(int value) {
+    @ApiParam("post_id")
+    public WallEditQuery postId(Integer value) {
         return unsafeParam("post_id", value);
     }
 
@@ -52,6 +67,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "friends only" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("friends_only")
     public WallEditQuery friendsOnly(Boolean value) {
         return unsafeParam("friends_only", value);
     }
@@ -62,6 +78,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message")
     public WallEditQuery message(String value) {
         return unsafeParam("message", value);
     }
@@ -72,6 +89,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "services" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("services")
     public WallEditQuery services(String value) {
         return unsafeParam("services", value);
     }
@@ -82,6 +100,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "signed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("signed")
     public WallEditQuery signed(Boolean value) {
         return unsafeParam("signed", value);
     }
@@ -92,6 +111,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "publish date" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("publish_date")
     public WallEditQuery publishDate(Integer value) {
         return unsafeParam("publish_date", value);
     }
@@ -102,6 +122,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "lat" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("lat")
     public WallEditQuery lat(Number value) {
         return unsafeParam("lat", value);
     }
@@ -112,6 +133,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "long" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("long")
     public WallEditQuery lng(Number value) {
         return unsafeParam("long", value);
     }
@@ -122,6 +144,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "place id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("place_id")
     public WallEditQuery placeId(Integer value) {
         return unsafeParam("place_id", value);
     }
@@ -132,6 +155,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "mark as ads" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("mark_as_ads")
     public WallEditQuery markAsAds(Boolean value) {
         return unsafeParam("mark_as_ads", value);
     }
@@ -142,6 +166,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "close comments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("close_comments")
     public WallEditQuery closeComments(Boolean value) {
         return unsafeParam("close_comments", value);
     }
@@ -152,6 +177,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "donut paid duration" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_paid_duration")
     public WallEditQuery donutPaidDuration(Integer value) {
         return unsafeParam("donut_paid_duration", value);
     }
@@ -162,6 +188,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "poster bkg id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("poster_bkg_id")
     public WallEditQuery posterBkgId(Integer value) {
         return unsafeParam("poster_bkg_id", value);
     }
@@ -169,10 +196,12 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
     /**
      * Set poster bkg owner id
      *
-     * @param value value of "poster bkg owner id" parameter.
+     * @param value value of "poster bkg owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public WallEditQuery posterBkgOwnerId(Integer value) {
+    @ApiParam("poster_bkg_owner_id")
+    public WallEditQuery posterBkgOwnerId(Long value) {
         return unsafeParam("poster_bkg_owner_id", value);
     }
 
@@ -182,6 +211,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "poster bkg access hash" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("poster_bkg_access_hash")
     public WallEditQuery posterBkgAccessHash(String value) {
         return unsafeParam("poster_bkg_access_hash", value);
     }
@@ -192,6 +222,7 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "copyright" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("copyright")
     public WallEditQuery copyright(String value) {
         return unsafeParam("copyright", value);
     }
@@ -202,29 +233,55 @@ public class WallEditQuery extends AbstractQueryBuilder<WallEditQuery, EditRespo
      * @param value value of "topic id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("topic_id")
     public WallEditQuery topicId(EditTopicId value) {
         return unsafeParam("topic_id", value);
     }
 
     /**
      * attachments
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallEditQuery attachments(String... value) {
         return unsafeParam("attachments", value);
     }
 
     /**
-     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
+     * (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", ' - Type of media attachment: 'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document, '<owner_id>' - ID of the media application owner. '<media_id>' - Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error is thrown."
      *
      * @param value value of "attachments" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("attachments")
     public WallEditQuery attachments(List<String> value) {
         return unsafeParam("attachments", value);
+    }
+
+    /**
+     * primaryAttachments
+     * Set primary attachments
+     *
+     * @param value value of "primary attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("primary_attachments")
+    public WallEditQuery primaryAttachments(String... value) {
+        return unsafeParam("primary_attachments", value);
+    }
+
+    /**
+     * Set primary attachments
+     *
+     * @param value value of "primary attachments" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("primary_attachments")
+    public WallEditQuery primaryAttachments(List<String> value) {
+        return unsafeParam("primary_attachments", value);
     }
 
     @Override

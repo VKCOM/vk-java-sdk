@@ -12,6 +12,12 @@ import java.util.Objects;
  */
 public class Offer implements Validable {
     /**
+     * Currency amount
+     */
+    @SerializedName("currency_amount")
+    private Number currencyAmount;
+
+    /**
      * Offer description
      */
     @SerializedName("description")
@@ -42,6 +48,18 @@ public class Offer implements Validable {
     private String instructionHtml;
 
     /**
+     * Link id
+     */
+    @SerializedName("link_id")
+    private Integer linkId;
+
+    /**
+     * Link type
+     */
+    @SerializedName("link_type")
+    private OfferLinkType linkType;
+
+    /**
      * Offer price
      */
     @SerializedName("price")
@@ -65,23 +83,14 @@ public class Offer implements Validable {
     @SerializedName("title")
     private String title;
 
-    /**
-     * Currency amount
-     */
-    @SerializedName("currency_amount")
-    private Float currencyAmount;
+    public Number getCurrencyAmount() {
+        return currencyAmount;
+    }
 
-    /**
-     * Link id
-     */
-    @SerializedName("link_id")
-    private Integer linkId;
-
-    /**
-     * Link type
-     */
-    @SerializedName("link_type")
-    private OfferLinkType linkType;
+    public Offer setCurrencyAmount(Number currencyAmount) {
+        this.currencyAmount = currencyAmount;
+        return this;
+    }
 
     public String getDescription() {
         return description;
@@ -128,6 +137,24 @@ public class Offer implements Validable {
         return this;
     }
 
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public Offer setLinkId(Integer linkId) {
+        this.linkId = linkId;
+        return this;
+    }
+
+    public OfferLinkType getLinkType() {
+        return linkType;
+    }
+
+    public Offer setLinkType(OfferLinkType linkType) {
+        this.linkType = linkType;
+        return this;
+    }
+
     public Integer getPrice() {
         return price;
     }
@@ -164,33 +191,6 @@ public class Offer implements Validable {
         return this;
     }
 
-    public Float getCurrencyAmount() {
-        return currencyAmount;
-    }
-
-    public Offer setCurrencyAmount(Float currencyAmount) {
-        this.currencyAmount = currencyAmount;
-        return this;
-    }
-
-    public Integer getLinkId() {
-        return linkId;
-    }
-
-    public Offer setLinkId(Integer linkId) {
-        this.linkId = linkId;
-        return this;
-    }
-
-    public OfferLinkType getLinkType() {
-        return linkType;
-    }
-
-    public Offer setLinkType(OfferLinkType linkType) {
-        this.linkType = linkType;
-        return this;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(img, linkId, instruction, price, currencyAmount, description, linkType, shortDescription, id, tag, title, instructionHtml);
@@ -203,8 +203,8 @@ public class Offer implements Validable {
         Offer offer = (Offer) o;
         return Objects.equals(linkType, offer.linkType) &&
                 Objects.equals(shortDescription, offer.shortDescription) &&
-                Objects.equals(img, offer.img) &&
                 Objects.equals(currencyAmount, offer.currencyAmount) &&
+                Objects.equals(img, offer.img) &&
                 Objects.equals(instruction, offer.instruction) &&
                 Objects.equals(price, offer.price) &&
                 Objects.equals(description, offer.description) &&
@@ -225,8 +225,8 @@ public class Offer implements Validable {
         final StringBuilder sb = new StringBuilder("Offer{");
         sb.append("linkType='").append(linkType).append("'");
         sb.append(", shortDescription='").append(shortDescription).append("'");
-        sb.append(", img=").append(img);
         sb.append(", currencyAmount=").append(currencyAmount);
+        sb.append(", img=").append(img);
         sb.append(", instruction='").append(instruction).append("'");
         sb.append(", price=").append(price);
         sb.append(", description='").append(description).append("'");

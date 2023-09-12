@@ -18,6 +18,12 @@ public class LiveSettings implements Validable {
     private BoolInt canRewind;
 
     /**
+     * If live in clips apps
+     */
+    @SerializedName("is_clips_live")
+    private BoolInt isClipsLive;
+
+    /**
      * If live is endless or not
      */
     @SerializedName("is_endless")
@@ -35,6 +41,14 @@ public class LiveSettings implements Validable {
 
     public BoolInt getCanRewind() {
         return canRewind;
+    }
+
+    public boolean isClipsLive() {
+        return isClipsLive == BoolInt.YES;
+    }
+
+    public BoolInt getIsClipsLive() {
+        return isClipsLive;
     }
 
     public boolean isEndless() {
@@ -56,7 +70,7 @@ public class LiveSettings implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canRewind, isEndless, maxDuration);
+        return Objects.hash(canRewind, isEndless, isClipsLive, maxDuration);
     }
 
     @Override
@@ -64,7 +78,8 @@ public class LiveSettings implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiveSettings liveSettings = (LiveSettings) o;
-        return Objects.equals(isEndless, liveSettings.isEndless) &&
+        return Objects.equals(isClipsLive, liveSettings.isClipsLive) &&
+                Objects.equals(isEndless, liveSettings.isEndless) &&
                 Objects.equals(maxDuration, liveSettings.maxDuration) &&
                 Objects.equals(canRewind, liveSettings.canRewind);
     }
@@ -77,7 +92,8 @@ public class LiveSettings implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("LiveSettings{");
-        sb.append("isEndless=").append(isEndless);
+        sb.append("isClipsLive=").append(isClipsLive);
+        sb.append(", isEndless=").append(isEndless);
         sb.append(", maxDuration=").append(maxDuration);
         sb.append(", canRewind=").append(canRewind);
         sb.append('}');

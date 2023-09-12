@@ -22,6 +22,18 @@ public class TargSuggestions implements Validable {
     @SerializedName("name")
     private String name;
 
+    /**
+     * Parent
+     */
+    @SerializedName("parent")
+    private String parent;
+
+    /**
+     * Object type
+     */
+    @SerializedName("type")
+    private String type;
+
     public Integer getId() {
         return id;
     }
@@ -40,9 +52,27 @@ public class TargSuggestions implements Validable {
         return this;
     }
 
+    public String getParent() {
+        return parent;
+    }
+
+    public TargSuggestions setParent(String parent) {
+        this.parent = parent;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public TargSuggestions setType(String type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(parent, name, id, type);
     }
 
     @Override
@@ -50,8 +80,10 @@ public class TargSuggestions implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TargSuggestions targSuggestions = (TargSuggestions) o;
-        return Objects.equals(name, targSuggestions.name) &&
-                Objects.equals(id, targSuggestions.id);
+        return Objects.equals(parent, targSuggestions.parent) &&
+                Objects.equals(name, targSuggestions.name) &&
+                Objects.equals(id, targSuggestions.id) &&
+                Objects.equals(type, targSuggestions.type);
     }
 
     @Override
@@ -62,8 +94,10 @@ public class TargSuggestions implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("TargSuggestions{");
-        sb.append("name='").append(name).append("'");
+        sb.append("parent='").append(parent).append("'");
+        sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
+        sb.append(", type='").append(type).append("'");
         sb.append('}');
         return sb.toString();
     }

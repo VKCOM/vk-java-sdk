@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.notes;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,14 +13,14 @@ import java.util.List;
  */
 public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCommentQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param noteId value of "note id" parameter. Minimum is 0.
      * @param message value of "message" parameter.
      */
-    public NotesCreateCommentQuery(VkApiClient client, UserActor actor, int noteId,
+    public NotesCreateCommentQuery(VkApiClient client, UserActor actor, Integer noteId,
             String message) {
         super(client, "notes.createComment", Integer.class);
         accessToken(actor.getAccessToken());
@@ -28,22 +29,36 @@ public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCom
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NotesCreateCommentQuery(VkApiClient client, UserActor actor) {
+        super(client, "notes.createComment", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Note ID.
      *
      * @param value value of "note id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotesCreateCommentQuery noteId(int value) {
+    @ApiParam("note_id")
+    public NotesCreateCommentQuery noteId(Integer value) {
         return unsafeParam("note_id", value);
     }
 
     /**
      * Note owner ID.
      *
-     * @param value value of "owner id" parameter. Minimum is 0.
+     * @param value value of "owner id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NotesCreateCommentQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public NotesCreateCommentQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -53,6 +68,7 @@ public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCom
      * @param value value of "reply to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reply_to")
     public NotesCreateCommentQuery replyTo(Integer value) {
         return unsafeParam("reply_to", value);
     }
@@ -63,7 +79,8 @@ public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCom
      * @param value value of "message" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NotesCreateCommentQuery message(String value) {
+    @ApiParam("message")
+    public NotesCreateCommentQuery message(String value) {
         return unsafeParam("message", value);
     }
 
@@ -73,6 +90,7 @@ public class NotesCreateCommentQuery extends AbstractQueryBuilder<NotesCreateCom
      * @param value value of "guid" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("guid")
     public NotesCreateCommentQuery guid(String value) {
         return unsafeParam("guid", value);
     }

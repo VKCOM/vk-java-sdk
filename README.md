@@ -4,22 +4,22 @@
 
 Java library for VK API interaction, includes OAuth 2.0 authorization and API methods. Full VK API features documentation can be found [here](http://vk.com/dev).
 
-This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.131.
+This library has been created using the VK API JSON Schema. It can be found [here](https://github.com/VKCOM/vk-api-schema). It uses VK API [version](https://vk.com/dev/versions) 5.199.
 
 ## 1. Prerequisites
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 1.8 or later
-* [Gradle](https://gradle.org/) 2.13 or later
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 15 or later
+* [Gradle](https://gradle.org/) 7.4.2 or later
 
 ## 2. Dependencies
 
 VK Java SDK uses:
-* [Apache Http Client](https://hc.apache.org) version 4.5.8
-* [SLF4J](http://www.slf4j.org/) version 1.7.26
+* [Apache Http Client](https://hc.apache.org) version 4.5.13
+* [SLF4J](http://www.slf4j.org/) version 2.0.9
 * [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) version 3.6
-* [Apache Commons Collections](https://commons.apache.org/proper/commons-collections/) version 4.3
-* [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.6
-* [Google Gson](https://github.com/google/gson) version  2.8.5
+* [Apache Commons Collections](https://commons.apache.org/proper/commons-collections/) version 4.4
+* [Apache Commons IO](https://commons.apache.org/proper/commons-io/) version 2.11.0
+* [Google Gson](https://github.com/google/gson) version  2.9.0
 
 ## 3. Latest release
 
@@ -62,8 +62,8 @@ Maven:
 <dependencies>
     <dependency>
         <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-jdk14</artifactId>
-        <version>1.7.26</version>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.9</version>
     </dependency>
 </dependencies>
 ```
@@ -71,7 +71,7 @@ Maven:
 Gradle:
 ```
 dependencies {
-    compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.26'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 }
 ```
 
@@ -97,19 +97,19 @@ Maven:
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.11.2</version>
+      <version>2.20.0</version>
     </dependency>
     
     <!-- Log4j API and Core implementation required for binding -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-api</artifactId>
-      <version>2.11.2</version>
+      <version>2.20.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.11.2</version>
+      <version>2.20.0</version>
     </dependency>
 </dependencies>
 ```
@@ -118,11 +118,11 @@ Gradle:
 ```
 dependencies {
     //Binding for Log4J -->
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
     
     //Log4j API and Core implementation required for binding
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
 }
 ```
 

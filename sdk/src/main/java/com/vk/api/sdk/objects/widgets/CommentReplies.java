@@ -19,10 +19,22 @@ public class CommentReplies implements Validable {
     private BoolInt canPost;
 
     /**
+     * Information whether current user can view the comments
+     */
+    @SerializedName("can_view")
+    private BoolInt canView;
+
+    /**
      * Comments number
      */
     @SerializedName("count")
     private Integer count;
+
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private BoolInt groupsCanPost;
 
     @SerializedName("replies")
     private List<CommentRepliesItem> replies;
@@ -35,6 +47,14 @@ public class CommentReplies implements Validable {
         return canPost;
     }
 
+    public boolean canView() {
+        return canView == BoolInt.YES;
+    }
+
+    public BoolInt getCanView() {
+        return canView;
+    }
+
     public Integer getCount() {
         return count;
     }
@@ -42,6 +62,14 @@ public class CommentReplies implements Validable {
     public CommentReplies setCount(Integer count) {
         this.count = count;
         return this;
+    }
+
+    public boolean isGroupsCanPost() {
+        return groupsCanPost == BoolInt.YES;
+    }
+
+    public BoolInt getGroupsCanPost() {
+        return groupsCanPost;
     }
 
     public List<CommentRepliesItem> getReplies() {
@@ -55,7 +83,7 @@ public class CommentReplies implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(canPost, replies, count);
+        return Objects.hash(canView, canPost, replies, count, groupsCanPost);
     }
 
     @Override
@@ -63,8 +91,10 @@ public class CommentReplies implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommentReplies commentReplies = (CommentReplies) o;
-        return Objects.equals(replies, commentReplies.replies) &&
+        return Objects.equals(canView, commentReplies.canView) &&
+                Objects.equals(replies, commentReplies.replies) &&
                 Objects.equals(count, commentReplies.count) &&
+                Objects.equals(groupsCanPost, commentReplies.groupsCanPost) &&
                 Objects.equals(canPost, commentReplies.canPost);
     }
 
@@ -76,8 +106,10 @@ public class CommentReplies implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("CommentReplies{");
-        sb.append("replies=").append(replies);
+        sb.append("canView=").append(canView);
+        sb.append(", replies=").append(replies);
         sb.append(", count=").append(count);
+        sb.append(", groupsCanPost=").append(groupsCanPost);
         sb.append(", canPost=").append(canPost);
         sb.append('}');
         return sb.toString();

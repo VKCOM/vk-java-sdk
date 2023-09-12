@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.video.SearchSort;
 import com.vk.api.sdk.objects.video.responses.SearchExtendedResponse;
 import java.util.Arrays;
@@ -14,16 +15,14 @@ import java.util.List;
  */
 public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSearchQueryWithExtended, SearchExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param q value of "q" parameter.
      */
-    public VideoSearchQueryWithExtended(VkApiClient client, UserActor actor, String q) {
+    public VideoSearchQueryWithExtended(VkApiClient client, UserActor actor) {
         super(client, "video.search", SearchExtendedResponse.class);
         accessToken(actor.getAccessToken());
-        q(q);
         extended(true);
     }
 
@@ -33,16 +32,18 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoSearchQueryWithExtended q(String value) {
+    @ApiParam("q")
+    public VideoSearchQueryWithExtended q(String value) {
         return unsafeParam("q", value);
     }
 
     /**
-     * Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
+     * Sort order: '1' - by duration, '2' - by relevance, '0' - by date added
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public VideoSearchQueryWithExtended sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
@@ -53,16 +54,18 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "hd" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("hd")
     public VideoSearchQueryWithExtended hd(Integer value) {
         return unsafeParam("hd", value);
     }
 
     /**
-     * '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
+     * '1' - to disable the Safe Search filter, '0' - to enable the Safe Search filter
      *
      * @param value value of "adult" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("adult")
     public VideoSearchQueryWithExtended adult(Boolean value) {
         return unsafeParam("adult", value);
     }
@@ -73,6 +76,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "live" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("live")
     public VideoSearchQueryWithExtended live(Boolean value) {
         return unsafeParam("live", value);
     }
@@ -83,6 +87,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "search own" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("search_own")
     public VideoSearchQueryWithExtended searchOwn(Boolean value) {
         return unsafeParam("search_own", value);
     }
@@ -93,6 +98,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public VideoSearchQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -103,6 +109,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "longer" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("longer")
     public VideoSearchQueryWithExtended longer(Integer value) {
         return unsafeParam("longer", value);
     }
@@ -113,6 +120,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "shorter" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("shorter")
     public VideoSearchQueryWithExtended shorter(Integer value) {
         return unsafeParam("shorter", value);
     }
@@ -123,6 +131,7 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public VideoSearchQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -133,29 +142,67 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected VideoSearchQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
+     * Set owner id
+     *
+     * @param value value of "owner id" parameter. Entity - owner
+     *
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("owner_id")
+    public VideoSearchQueryWithExtended ownerId(Long value) {
+        return unsafeParam("owner_id", value);
+    }
+
+    /**
      * filters
-     * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+     * Filters to apply: 'youtube' - return YouTube videos only, 'vimeo' - return Vimeo videos only, 'short' - return short videos only, 'long' - return long videos only
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public VideoSearchQueryWithExtended filters(String... value) {
         return unsafeParam("filters", value);
     }
 
     /**
-     * Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+     * Filters to apply: 'youtube' - return YouTube videos only, 'vimeo' - return Vimeo videos only, 'short' - return short videos only, 'long' - return long videos only
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public VideoSearchQueryWithExtended filters(List<String> value) {
         return unsafeParam("filters", value);
+    }
+
+    /**
+     * fields
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public VideoSearchQueryWithExtended fields(String... value) {
+        return unsafeParam("fields", value);
+    }
+
+    /**
+     * Set fields
+     *
+     * @param value value of "fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("fields")
+    public VideoSearchQueryWithExtended fields(List<String> value) {
+        return unsafeParam("fields", value);
     }
 
     @Override
@@ -165,6 +212,6 @@ public class VideoSearchQueryWithExtended extends AbstractQueryBuilder<VideoSear
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("q", "access_token");
+        return Arrays.asList("access_token");
     }
 }

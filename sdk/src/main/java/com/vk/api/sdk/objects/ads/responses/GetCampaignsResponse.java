@@ -23,6 +23,7 @@ public class GetCampaignsResponse implements Validable {
      * Campaign's total limit, rubles
      */
     @SerializedName("all_limit")
+    @Required
     private String allLimit;
 
     /**
@@ -32,28 +33,17 @@ public class GetCampaignsResponse implements Validable {
     private Integer createTime;
 
     /**
+     * Campaign's day limit, rubles
+     */
+    @SerializedName("day_limit")
+    @Required
+    private String dayLimit;
+
+    /**
      * Campaign goal type
      */
     @SerializedName("goal_type")
     private Integer goalType;
-
-    /**
-     * Campaign user goal type
-     */
-    @SerializedName("user_goal_type")
-    private Integer userGoalType;
-
-    /**
-     * Shows if Campaign Budget Optimization is on
-     */
-    @SerializedName("is_cbo_enabled")
-    private Boolean isCboEnabled;
-
-    /**
-     * Campaign's day limit, rubles
-     */
-    @SerializedName("day_limit")
-    private String dayLimit;
 
     /**
      * Campaign ID
@@ -61,6 +51,12 @@ public class GetCampaignsResponse implements Validable {
     @SerializedName("id")
     @Required
     private Integer id;
+
+    /**
+     * Shows if Campaign Budget Optimization is on
+     */
+    @SerializedName("is_cbo_enabled")
+    private Boolean isCboEnabled;
 
     /**
      * Campaign title
@@ -73,6 +69,7 @@ public class GetCampaignsResponse implements Validable {
      * Campaign start time, as Unixtime
      */
     @SerializedName("start_time")
+    @Required
     private Integer startTime;
 
     @SerializedName("status")
@@ -83,6 +80,7 @@ public class GetCampaignsResponse implements Validable {
      * Campaign stop time, as Unixtime
      */
     @SerializedName("stop_time")
+    @Required
     private Integer stopTime;
 
     @SerializedName("type")
@@ -94,6 +92,12 @@ public class GetCampaignsResponse implements Validable {
      */
     @SerializedName("update_time")
     private Integer updateTime;
+
+    /**
+     * Campaign user goal type
+     */
+    @SerializedName("user_goal_type")
+    private Integer userGoalType;
 
     /**
      * Limit of views per user per campaign
@@ -128,33 +132,6 @@ public class GetCampaignsResponse implements Validable {
         return this;
     }
 
-    public Integer getGoalType() {
-        return goalType;
-    }
-
-    public GetCampaignsResponse setGoalType(Integer goalType) {
-        this.goalType = goalType;
-        return this;
-    }
-
-    public Integer getUserGoalType() {
-        return userGoalType;
-    }
-
-    public GetCampaignsResponse setUserGoalType(Integer userGoalType) {
-        this.userGoalType = userGoalType;
-        return this;
-    }
-
-    public Boolean getIsCboEnabled() {
-        return isCboEnabled;
-    }
-
-    public GetCampaignsResponse setIsCboEnabled(Boolean isCboEnabled) {
-        this.isCboEnabled = isCboEnabled;
-        return this;
-    }
-
     public String getDayLimit() {
         return dayLimit;
     }
@@ -164,12 +141,30 @@ public class GetCampaignsResponse implements Validable {
         return this;
     }
 
+    public Integer getGoalType() {
+        return goalType;
+    }
+
+    public GetCampaignsResponse setGoalType(Integer goalType) {
+        this.goalType = goalType;
+        return this;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public GetCampaignsResponse setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public Boolean getIsCboEnabled() {
+        return isCboEnabled;
+    }
+
+    public GetCampaignsResponse setIsCboEnabled(Boolean isCboEnabled) {
+        this.isCboEnabled = isCboEnabled;
         return this;
     }
 
@@ -224,6 +219,15 @@ public class GetCampaignsResponse implements Validable {
 
     public GetCampaignsResponse setUpdateTime(Integer updateTime) {
         this.updateTime = updateTime;
+        return this;
+    }
+
+    public Integer getUserGoalType() {
+        return userGoalType;
+    }
+
+    public GetCampaignsResponse setUserGoalType(Integer userGoalType) {
+        this.userGoalType = userGoalType;
         return this;
     }
 

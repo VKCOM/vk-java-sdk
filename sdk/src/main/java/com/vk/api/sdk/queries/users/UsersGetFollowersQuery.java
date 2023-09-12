@@ -5,8 +5,9 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.users.Fields;
-import com.vk.api.sdk.objects.users.GetFollowersNameCase;
 import com.vk.api.sdk.objects.users.responses.GetFollowersResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowersQuery, GetFollowersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,10 +42,12 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public UsersGetFollowersQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -54,6 +57,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public UsersGetFollowersQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -64,17 +68,19 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public UsersGetFollowersQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: 'nom' - nominative (default), 'gen' - genitive , 'dat' - dative, 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetFollowersQuery nameCase(GetFollowersNameCase value) {
+    @ApiParam("name_case")
+    public UsersGetFollowersQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
@@ -85,6 +91,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetFollowersQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -95,6 +102,7 @@ public class UsersGetFollowersQuery extends AbstractQueryBuilder<UsersGetFollowe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetFollowersQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

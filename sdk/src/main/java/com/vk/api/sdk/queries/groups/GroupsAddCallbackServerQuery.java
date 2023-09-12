@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.AddCallbackServerResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,33 +15,16 @@ import java.util.List;
  */
 public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAddCallbackServerQuery, AddCallbackServerResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param url value of "url" parameter.
-     * @param title value of "title" parameter.
-     */
-    public GroupsAddCallbackServerQuery(VkApiClient client, UserActor actor, int groupId,
-            String url, String title) {
-        super(client, "groups.addCallbackServer", AddCallbackServerResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-        url(url);
-        title(title);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      * @param url value of "url" parameter.
      * @param title value of "title" parameter.
      */
-    public GroupsAddCallbackServerQuery(VkApiClient client, GroupActor actor, int groupId,
+    public GroupsAddCallbackServerQuery(VkApiClient client, GroupActor actor, Long groupId,
             String url, String title) {
         super(client, "groups.addCallbackServer", AddCallbackServerResponse.class);
         accessToken(actor.getAccessToken());
@@ -51,12 +35,56 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsAddCallbackServerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.addCallbackServer", AddCallbackServerResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param url value of "url" parameter.
+     * @param title value of "title" parameter.
+     */
+    public GroupsAddCallbackServerQuery(VkApiClient client, UserActor actor, Long groupId,
+            String url, String title) {
+        super(client, "groups.addCallbackServer", AddCallbackServerResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        url(url);
+        title(title);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsAddCallbackServerQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.addCallbackServer", AddCallbackServerResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsAddCallbackServerQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsAddCallbackServerQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -66,7 +94,8 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
      * @param value value of "url" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsAddCallbackServerQuery url(String value) {
+    @ApiParam("url")
+    public GroupsAddCallbackServerQuery url(String value) {
         return unsafeParam("url", value);
     }
 
@@ -76,7 +105,8 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsAddCallbackServerQuery title(String value) {
+    @ApiParam("title")
+    public GroupsAddCallbackServerQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -86,6 +116,7 @@ public class GroupsAddCallbackServerQuery extends AbstractQueryBuilder<GroupsAdd
      * @param value value of "secret key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("secret_key")
     public GroupsAddCallbackServerQuery secretKey(String value) {
         return unsafeParam("secret_key", value);
     }

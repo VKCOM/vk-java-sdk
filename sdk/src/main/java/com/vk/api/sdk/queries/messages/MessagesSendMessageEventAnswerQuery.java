@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,18 @@ import java.util.List;
  */
 public class MessagesSendMessageEventAnswerQuery extends AbstractQueryBuilder<MessagesSendMessageEventAnswerQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param eventId value of "event id" parameter.
-     * @param userId value of "user id" parameter.
-     * @param peerId value of "peer id" parameter.
+     * @param userId value of "user id" parameter. Entity - owner
+     *
+     * @param peerId value of "peer id" parameter. Entity - peer
+     *
      */
     public MessagesSendMessageEventAnswerQuery(VkApiClient client, GroupActor actor, String eventId,
-            int userId, int peerId) {
+            Long userId, Long peerId) {
         super(client, "messages.sendMessageEventAnswer", OkResponse.class);
         accessToken(actor.getAccessToken());
         eventId(eventId);
@@ -31,32 +34,48 @@ public class MessagesSendMessageEventAnswerQuery extends AbstractQueryBuilder<Me
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesSendMessageEventAnswerQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.sendMessageEventAnswer", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set event id
      *
      * @param value value of "event id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesSendMessageEventAnswerQuery eventId(String value) {
+    @ApiParam("event_id")
+    public MessagesSendMessageEventAnswerQuery eventId(String value) {
         return unsafeParam("event_id", value);
     }
 
     /**
      * Set user id
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesSendMessageEventAnswerQuery userId(int value) {
+    @ApiParam("user_id")
+    public MessagesSendMessageEventAnswerQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Set peer id
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesSendMessageEventAnswerQuery peerId(int value) {
+    @ApiParam("peer_id")
+    public MessagesSendMessageEventAnswerQuery peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
@@ -66,6 +85,7 @@ public class MessagesSendMessageEventAnswerQuery extends AbstractQueryBuilder<Me
      * @param value value of "event data" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("event_data")
     public MessagesSendMessageEventAnswerQuery eventData(String value) {
         return unsafeParam("event_data", value);
     }

@@ -5,76 +5,61 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.Image;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * ProductIcon object
  */
 public class ProductIcon implements Validable {
-    @SerializedName("id")
-    private String id;
+    /**
+     * Base URL for images in set
+     */
+    @SerializedName("base_url")
+    @Required
+    private URI baseUrl;
+
+    @SerializedName("images")
+    private List<Image> images;
 
     /**
-     * Image height
+     * Version number to be appended to the image URL
      */
-    @SerializedName("height")
-    @Required
-    private Integer height;
+    @SerializedName("version")
+    private Integer version;
 
-    /**
-     * Image url
-     */
-    @SerializedName("url")
-    @Required
-    private URI url;
-
-    /**
-     * Image width
-     */
-    @SerializedName("width")
-    @Required
-    private Integer width;
-
-    public String getId() {
-        return id;
+    public URI getBaseUrl() {
+        return baseUrl;
     }
 
-    public ProductIcon setId(String id) {
-        this.id = id;
+    public ProductIcon setBaseUrl(URI baseUrl) {
+        this.baseUrl = baseUrl;
         return this;
     }
 
-    public Integer getHeight() {
-        return height;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public ProductIcon setHeight(Integer height) {
-        this.height = height;
+    public ProductIcon setImages(List<Image> images) {
+        this.images = images;
         return this;
     }
 
-    public URI getUrl() {
-        return url;
+    public Integer getVersion() {
+        return version;
     }
 
-    public ProductIcon setUrl(URI url) {
-        this.url = url;
-        return this;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public ProductIcon setWidth(Integer width) {
-        this.width = width;
+    public ProductIcon setVersion(Integer version) {
+        this.version = version;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, id, url, height);
+        return Objects.hash(images, baseUrl, version);
     }
 
     @Override
@@ -82,10 +67,9 @@ public class ProductIcon implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductIcon productIcon = (ProductIcon) o;
-        return Objects.equals(width, productIcon.width) &&
-                Objects.equals(id, productIcon.id) &&
-                Objects.equals(url, productIcon.url) &&
-                Objects.equals(height, productIcon.height);
+        return Objects.equals(images, productIcon.images) &&
+                Objects.equals(baseUrl, productIcon.baseUrl) &&
+                Objects.equals(version, productIcon.version);
     }
 
     @Override
@@ -96,10 +80,9 @@ public class ProductIcon implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ProductIcon{");
-        sb.append("width=").append(width);
-        sb.append(", id='").append(id).append("'");
-        sb.append(", url=").append(url);
-        sb.append(", height=").append(height);
+        sb.append("images=").append(images);
+        sb.append(", baseUrl=").append(baseUrl);
+        sb.append(", version=").append(version);
         sb.append('}');
         return sb.toString();
     }

@@ -11,21 +11,12 @@ import java.util.Objects;
  * SettingsTwitter object
  */
 public class SettingsTwitter implements Validable {
-    @SerializedName("status")
-    @Required
-    private SettingsTwitterStatus status;
-
     @SerializedName("name")
     private String name;
 
-    public SettingsTwitterStatus getStatus() {
-        return status;
-    }
-
-    public SettingsTwitter setStatus(SettingsTwitterStatus status) {
-        this.status = status;
-        return this;
-    }
+    @SerializedName("status")
+    @Required
+    private SettingsTwitterStatus status;
 
     public String getName() {
         return name;
@@ -33,6 +24,15 @@ public class SettingsTwitter implements Validable {
 
     public SettingsTwitter setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public SettingsTwitterStatus getStatus() {
+        return status;
+    }
+
+    public SettingsTwitter setStatus(SettingsTwitterStatus status) {
+        this.status = status;
         return this;
     }
 

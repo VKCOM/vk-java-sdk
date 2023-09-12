@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.adsweb.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.adsweb.GetStatisticsResponseItemsItem;
 import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
@@ -12,21 +13,12 @@ import java.util.Objects;
  * GetStatisticsResponse object
  */
 public class GetStatisticsResponse implements Validable {
-    @SerializedName("next_page_id")
-    private String nextPageId;
-
     @SerializedName("items")
     @Required
     private List<GetStatisticsResponseItemsItem> items;
 
-    public String getNextPageId() {
-        return nextPageId;
-    }
-
-    public GetStatisticsResponse setNextPageId(String nextPageId) {
-        this.nextPageId = nextPageId;
-        return this;
-    }
+    @SerializedName("next_page_id")
+    private String nextPageId;
 
     public List<GetStatisticsResponseItemsItem> getItems() {
         return items;
@@ -34,6 +26,15 @@ public class GetStatisticsResponse implements Validable {
 
     public GetStatisticsResponse setItems(List<GetStatisticsResponseItemsItem> items) {
         this.items = items;
+        return this;
+    }
+
+    public String getNextPageId() {
+        return nextPageId;
+    }
+
+    public GetStatisticsResponse setNextPageId(String nextPageId) {
+        this.nextPageId = nextPageId;
         return this;
     }
 

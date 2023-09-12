@@ -11,21 +11,12 @@ import java.util.Objects;
  * ItemDigestButton object
  */
 public class ItemDigestButton implements Validable {
-    @SerializedName("title")
-    @Required
-    private String title;
-
     @SerializedName("style")
     private ItemDigestButtonStyle style;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public ItemDigestButton setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("title")
+    @Required
+    private String title;
 
     public ItemDigestButtonStyle getStyle() {
         return style;
@@ -33,6 +24,15 @@ public class ItemDigestButton implements Validable {
 
     public ItemDigestButton setStyle(ItemDigestButtonStyle style) {
         this.style = style;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemDigestButton setTitle(String title) {
+        this.title = title;
         return this;
     }
 

@@ -33,9 +33,11 @@ public class PhotoAlbum implements Validable {
 
     /**
      * Album owner's ID
+     * Entity: owner
      */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
     /**
      * Photos number
@@ -88,11 +90,11 @@ public class PhotoAlbum implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public PhotoAlbum setOwnerId(Integer ownerId) {
+    public PhotoAlbum setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }

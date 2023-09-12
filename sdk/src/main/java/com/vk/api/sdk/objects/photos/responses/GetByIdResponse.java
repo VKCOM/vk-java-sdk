@@ -4,7 +4,15 @@ package com.vk.api.sdk.objects.photos.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
-import com.vk.api.sdk.objects.photos.Photo;
+import com.vk.api.sdk.objects.annotations.Required;
+import com.vk.api.sdk.objects.base.BoolInt;
+import com.vk.api.sdk.objects.base.Likes;
+import com.vk.api.sdk.objects.base.ObjectCount;
+import com.vk.api.sdk.objects.base.PropertyExists;
+import com.vk.api.sdk.objects.base.RepostsInfo;
+import com.vk.api.sdk.objects.photos.Image;
+import com.vk.api.sdk.objects.photos.PhotoSizes;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,21 +20,376 @@ import java.util.Objects;
  * GetByIdResponse object
  */
 public class GetByIdResponse implements Validable {
-    @SerializedName("items")
-    private List<Photo> items;
+    /**
+     * Access key for the photo
+     */
+    @SerializedName("access_key")
+    private String accessKey;
 
-    public List<Photo> getItems() {
-        return items;
+    /**
+     * Album ID
+     */
+    @SerializedName("album_id")
+    @Required
+    private Integer albumId;
+
+    /**
+     * Information whether current user can comment the photo
+     */
+    @SerializedName("can_comment")
+    private BoolInt canComment;
+
+    @SerializedName("comments")
+    private ObjectCount comments;
+
+    /**
+     * Date when uploaded
+     */
+    @SerializedName("date")
+    @Required
+    private Integer date;
+
+    /**
+     * Whether photo has attached tag links
+     */
+    @SerializedName("has_tags")
+    @Required
+    private Boolean hasTags;
+
+    /**
+     * Original photo height
+     */
+    @SerializedName("height")
+    private Integer height;
+
+    /**
+     * Returns if the photo is hidden above the wall
+     */
+    @SerializedName("hidden")
+    private PropertyExists hidden;
+
+    /**
+     * Photo ID
+     */
+    @SerializedName("id")
+    @Required
+    private Integer id;
+
+    @SerializedName("images")
+    private List<Image> images;
+
+    /**
+     * Latitude
+     */
+    @SerializedName("lat")
+    private Number lat;
+
+    @SerializedName("likes")
+    private Likes likes;
+
+    /**
+     * Longitude
+     */
+    @SerializedName("long")
+    private Number lng;
+
+    /**
+     * Photo owner's ID
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    @Required
+    private Long ownerId;
+
+    /**
+     * URL of image with 2560 px width
+     */
+    @SerializedName("photo_256")
+    private URI photo256;
+
+    @SerializedName("place")
+    private String place;
+
+    /**
+     * Post ID
+     */
+    @SerializedName("post_id")
+    private Integer postId;
+
+    /**
+     * Real position of the photo
+     */
+    @SerializedName("real_offset")
+    private Integer realOffset;
+
+    @SerializedName("reposts")
+    private RepostsInfo reposts;
+
+    @SerializedName("sizes")
+    private List<PhotoSizes> sizes;
+
+    @SerializedName("square_crop")
+    private String squareCrop;
+
+    @SerializedName("tags")
+    private ObjectCount tags;
+
+    /**
+     * Photo caption
+     */
+    @SerializedName("text")
+    private String text;
+
+    /**
+     * ID of the user who have uploaded the photo
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
+
+    /**
+     * Sets vertical alignment of a photo
+     */
+    @SerializedName("vertical_align")
+    private GetByIdResponseVerticalAlign verticalAlign;
+
+    /**
+     * Original photo width
+     */
+    @SerializedName("width")
+    private Integer width;
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    public GetByIdResponse setItems(List<Photo> items) {
-        this.items = items;
+    public GetByIdResponse setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+        return this;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public GetByIdResponse setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+        return this;
+    }
+
+    public boolean canComment() {
+        return canComment == BoolInt.YES;
+    }
+
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
+    public ObjectCount getComments() {
+        return comments;
+    }
+
+    public GetByIdResponse setComments(ObjectCount comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public GetByIdResponse setDate(Integer date) {
+        this.date = date;
+        return this;
+    }
+
+    public Boolean getHasTags() {
+        return hasTags;
+    }
+
+    public GetByIdResponse setHasTags(Boolean hasTags) {
+        this.hasTags = hasTags;
+        return this;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public GetByIdResponse setHeight(Integer height) {
+        this.height = height;
+        return this;
+    }
+
+    public boolean isHidden() {
+        return hidden == PropertyExists.PROPERTY_EXISTS;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public GetByIdResponse setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public GetByIdResponse setImages(List<Image> images) {
+        this.images = images;
+        return this;
+    }
+
+    public Number getLat() {
+        return lat;
+    }
+
+    public GetByIdResponse setLat(Number lat) {
+        this.lat = lat;
+        return this;
+    }
+
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public GetByIdResponse setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public Number getLng() {
+        return lng;
+    }
+
+    public GetByIdResponse setLng(Number lng) {
+        this.lng = lng;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public GetByIdResponse setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public URI getPhoto256() {
+        return photo256;
+    }
+
+    public GetByIdResponse setPhoto256(URI photo256) {
+        this.photo256 = photo256;
+        return this;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public GetByIdResponse setPlace(String place) {
+        this.place = place;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public GetByIdResponse setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public Integer getRealOffset() {
+        return realOffset;
+    }
+
+    public GetByIdResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
+        return this;
+    }
+
+    public RepostsInfo getReposts() {
+        return reposts;
+    }
+
+    public GetByIdResponse setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
+    }
+
+    public List<PhotoSizes> getSizes() {
+        return sizes;
+    }
+
+    public GetByIdResponse setSizes(List<PhotoSizes> sizes) {
+        this.sizes = sizes;
+        return this;
+    }
+
+    public String getSquareCrop() {
+        return squareCrop;
+    }
+
+    public GetByIdResponse setSquareCrop(String squareCrop) {
+        this.squareCrop = squareCrop;
+        return this;
+    }
+
+    public ObjectCount getTags() {
+        return tags;
+    }
+
+    public GetByIdResponse setTags(ObjectCount tags) {
+        this.tags = tags;
+        return this;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public GetByIdResponse setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GetByIdResponse setUserId(Long userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public GetByIdResponseVerticalAlign getVerticalAlign() {
+        return verticalAlign;
+    }
+
+    public GetByIdResponse setVerticalAlign(GetByIdResponseVerticalAlign verticalAlign) {
+        this.verticalAlign = verticalAlign;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public GetByIdResponse setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(items);
+        return Objects.hash(date, hidden, albumId, ownerId, realOffset, sizes, hasTags, canComment, id, place, text, squareCrop, lat, height, likes, verticalAlign, images, comments, lng, photo256, postId, userId, tags, accessKey, width, reposts);
     }
 
     @Override
@@ -34,7 +397,32 @@ public class GetByIdResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetByIdResponse getByIdResponse = (GetByIdResponse) o;
-        return Objects.equals(items, getByIdResponse.items);
+        return Objects.equals(date, getByIdResponse.date) &&
+                Objects.equals(hidden, getByIdResponse.hidden) &&
+                Objects.equals(ownerId, getByIdResponse.ownerId) &&
+                Objects.equals(lng, getByIdResponse.lng) &&
+                Objects.equals(canComment, getByIdResponse.canComment) &&
+                Objects.equals(sizes, getByIdResponse.sizes) &&
+                Objects.equals(id, getByIdResponse.id) &&
+                Objects.equals(place, getByIdResponse.place) &&
+                Objects.equals(text, getByIdResponse.text) &&
+                Objects.equals(lat, getByIdResponse.lat) &&
+                Objects.equals(height, getByIdResponse.height) &&
+                Objects.equals(likes, getByIdResponse.likes) &&
+                Objects.equals(images, getByIdResponse.images) &&
+                Objects.equals(comments, getByIdResponse.comments) &&
+                Objects.equals(verticalAlign, getByIdResponse.verticalAlign) &&
+                Objects.equals(tags, getByIdResponse.tags) &&
+                Objects.equals(realOffset, getByIdResponse.realOffset) &&
+                Objects.equals(postId, getByIdResponse.postId) &&
+                Objects.equals(userId, getByIdResponse.userId) &&
+                Objects.equals(accessKey, getByIdResponse.accessKey) &&
+                Objects.equals(width, getByIdResponse.width) &&
+                Objects.equals(albumId, getByIdResponse.albumId) &&
+                Objects.equals(hasTags, getByIdResponse.hasTags) &&
+                Objects.equals(squareCrop, getByIdResponse.squareCrop) &&
+                Objects.equals(photo256, getByIdResponse.photo256) &&
+                Objects.equals(reposts, getByIdResponse.reposts);
     }
 
     @Override
@@ -45,7 +433,32 @@ public class GetByIdResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetByIdResponse{");
-        sb.append("items=").append(items);
+        sb.append("date=").append(date);
+        sb.append(", hidden=").append(hidden);
+        sb.append(", ownerId=").append(ownerId);
+        sb.append(", lng=").append(lng);
+        sb.append(", canComment=").append(canComment);
+        sb.append(", sizes=").append(sizes);
+        sb.append(", id=").append(id);
+        sb.append(", place='").append(place).append("'");
+        sb.append(", text='").append(text).append("'");
+        sb.append(", lat=").append(lat);
+        sb.append(", height=").append(height);
+        sb.append(", likes=").append(likes);
+        sb.append(", images=").append(images);
+        sb.append(", comments=").append(comments);
+        sb.append(", verticalAlign='").append(verticalAlign).append("'");
+        sb.append(", tags=").append(tags);
+        sb.append(", realOffset=").append(realOffset);
+        sb.append(", postId=").append(postId);
+        sb.append(", userId=").append(userId);
+        sb.append(", accessKey='").append(accessKey).append("'");
+        sb.append(", width=").append(width);
+        sb.append(", albumId=").append(albumId);
+        sb.append(", hasTags=").append(hasTags);
+        sb.append(", squareCrop='").append(squareCrop).append("'");
+        sb.append(", photo256=").append(photo256);
+        sb.append(", reposts=").append(reposts);
         sb.append('}');
         return sb.toString();
     }

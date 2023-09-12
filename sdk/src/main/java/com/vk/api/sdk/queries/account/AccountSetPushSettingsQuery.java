@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.account;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSetPushSettingsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -26,12 +27,24 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AccountSetPushSettingsQuery(VkApiClient client, UserActor actor) {
+        super(client, "account.setPushSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Unique device ID.
      *
      * @param value value of "device id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AccountSetPushSettingsQuery deviceId(String value) {
+    @ApiParam("device_id")
+    public AccountSetPushSettingsQuery deviceId(String value) {
         return unsafeParam("device_id", value);
     }
 
@@ -41,6 +54,7 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
      * @param value value of "settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("settings")
     public AccountSetPushSettingsQuery settings(String value) {
         return unsafeParam("settings", value);
     }
@@ -51,6 +65,7 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
      * @param value value of "key" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("key")
     public AccountSetPushSettingsQuery key(String value) {
         return unsafeParam("key", value);
     }
@@ -62,6 +77,7 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
      * @param value value of "value" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("value")
     public AccountSetPushSettingsQuery value(String... value) {
         return unsafeParam("value", value);
     }
@@ -72,6 +88,7 @@ public class AccountSetPushSettingsQuery extends AbstractQueryBuilder<AccountSet
      * @param value value of "value" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("value")
     public AccountSetPushSettingsQuery value(List<String> value) {
         return unsafeParam("value", value);
     }

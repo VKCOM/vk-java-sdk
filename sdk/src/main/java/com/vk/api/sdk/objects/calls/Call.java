@@ -21,12 +21,17 @@ public class Call implements Validable {
      * Caller initiator
      */
     @SerializedName("initiator_id")
+    @Required
     private Integer initiatorId;
+
+    @SerializedName("participants")
+    private Participants participants;
 
     /**
      * Caller receiver
      */
     @SerializedName("receiver_id")
+    @Required
     private Integer receiverId;
 
     @SerializedName("state")
@@ -46,9 +51,6 @@ public class Call implements Validable {
     @SerializedName("video")
     private Boolean video;
 
-    @SerializedName("participants")
-    private Participants participants;
-
     public Integer getDuration() {
         return duration;
     }
@@ -64,6 +66,15 @@ public class Call implements Validable {
 
     public Call setInitiatorId(Integer initiatorId) {
         this.initiatorId = initiatorId;
+        return this;
+    }
+
+    public Participants getParticipants() {
+        return participants;
+    }
+
+    public Call setParticipants(Participants participants) {
+        this.participants = participants;
         return this;
     }
 
@@ -100,15 +111,6 @@ public class Call implements Validable {
 
     public Call setVideo(Boolean video) {
         this.video = video;
-        return this;
-    }
-
-    public Participants getParticipants() {
-        return participants;
-    }
-
-    public Call setParticipants(Participants participants) {
-        this.participants = participants;
         return this;
     }
 

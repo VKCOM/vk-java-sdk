@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.GetCallbackSettingsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,14 @@ import java.util.List;
  */
 public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsGetCallbackSettingsQuery, GetCallbackSettingsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public GroupsGetCallbackSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsGetCallbackSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public GroupsGetCallbackSettingsQuery(VkApiClient client, GroupActor actor, Long groupId) {
         super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -41,12 +30,51 @@ public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsG
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetCallbackSettingsQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsGetCallbackSettingsQuery(VkApiClient client, UserActor actor, Long groupId) {
+        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetCallbackSettingsQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.getCallbackSettings", GetCallbackSettingsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsGetCallbackSettingsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsGetCallbackSettingsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -56,6 +84,7 @@ public class GroupsGetCallbackSettingsQuery extends AbstractQueryBuilder<GroupsG
      * @param value value of "server id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("server_id")
     public GroupsGetCallbackSettingsQuery serverId(Integer value) {
         return unsafeParam("server_id", value);
     }

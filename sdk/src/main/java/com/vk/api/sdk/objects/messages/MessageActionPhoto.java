@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.net.URI;
 import java.util.Objects;
 
@@ -15,18 +16,21 @@ public class MessageActionPhoto implements Validable {
      * URL of the preview image with 100px in width
      */
     @SerializedName("photo_100")
+    @Required
     private URI photo100;
 
     /**
      * URL of the preview image with 200px in width
      */
     @SerializedName("photo_200")
+    @Required
     private URI photo200;
 
     /**
      * URL of the preview image with 50px in width
      */
     @SerializedName("photo_50")
+    @Required
     private URI photo50;
 
     public URI getPhoto100() {

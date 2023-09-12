@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVideosQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoReorderVideosQuery(VkApiClient client, UserActor actor, int ownerId, int videoId) {
+    public VideoReorderVideosQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer videoId) {
         super(client, "video.reorderVideos", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,21 +31,35 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoReorderVideosQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.reorderVideos", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the album with videos.
      *
-     * @param value value of "target id" parameter.
+     * @param value value of "target id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoReorderVideosQuery targetId(Integer value) {
+    @ApiParam("target_id")
+    public VideoReorderVideosQuery targetId(Long value) {
         return unsafeParam("target_id", value);
     }
 
     /**
      * ID of the video album.
      *
-     * @param value value of "album id" parameter.
+     * @param value value of "album id" parameter. By default -2.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public VideoReorderVideosQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -50,10 +67,12 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
     /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoReorderVideosQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public VideoReorderVideosQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -63,17 +82,20 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoReorderVideosQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoReorderVideosQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
     /**
      * ID of the user or community that owns the video before which the video in question shall be placed.
      *
-     * @param value value of "before owner id" parameter.
+     * @param value value of "before owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoReorderVideosQuery beforeOwnerId(Integer value) {
+    @ApiParam("before_owner_id")
+    public VideoReorderVideosQuery beforeOwnerId(Long value) {
         return unsafeParam("before_owner_id", value);
     }
 
@@ -83,6 +105,7 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
      * @param value value of "before video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("before_video_id")
     public VideoReorderVideosQuery beforeVideoId(Integer value) {
         return unsafeParam("before_video_id", value);
     }
@@ -90,10 +113,12 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
     /**
      * ID of the user or community that owns the video after which the photo in question shall be placed.
      *
-     * @param value value of "after owner id" parameter.
+     * @param value value of "after owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoReorderVideosQuery afterOwnerId(Integer value) {
+    @ApiParam("after_owner_id")
+    public VideoReorderVideosQuery afterOwnerId(Long value) {
         return unsafeParam("after_owner_id", value);
     }
 
@@ -103,6 +128,7 @@ public class VideoReorderVideosQuery extends AbstractQueryBuilder<VideoReorderVi
      * @param value value of "after video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("after_video_id")
     public VideoReorderVideosQuery afterVideoId(Integer value) {
         return unsafeParam("after_video_id", value);
     }

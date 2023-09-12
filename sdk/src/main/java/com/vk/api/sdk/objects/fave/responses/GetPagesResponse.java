@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.fave.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.fave.Page;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +14,11 @@ import java.util.Objects;
  */
 public class GetPagesResponse implements Validable {
     @SerializedName("count")
+    @Required
     private Integer count;
 
     @SerializedName("items")
+    @Required
     private List<Page> items;
 
     public Integer getCount() {

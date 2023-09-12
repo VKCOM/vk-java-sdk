@@ -25,9 +25,16 @@ public class Topic implements Validable {
 
     /**
      * Creator ID
+     * Entity: owner
      */
     @SerializedName("created_by")
-    private Integer createdBy;
+    private Long createdBy;
+
+    /**
+     * First comment text
+     */
+    @SerializedName("first_comment")
+    private String firstComment;
 
     /**
      * Topic ID
@@ -48,6 +55,12 @@ public class Topic implements Validable {
     private BoolInt isFixed;
 
     /**
+     * Last comment text
+     */
+    @SerializedName("last_comment")
+    private String lastComment;
+
+    /**
      * Topic title
      */
     @SerializedName("title")
@@ -61,9 +74,10 @@ public class Topic implements Validable {
 
     /**
      * ID of user who updated the topic
+     * Entity: owner
      */
     @SerializedName("updated_by")
-    private Integer updatedBy;
+    private Long updatedBy;
 
     public Integer getComments() {
         return comments;
@@ -83,12 +97,21 @@ public class Topic implements Validable {
         return this;
     }
 
-    public Integer getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public Topic setCreatedBy(Integer createdBy) {
+    public Topic setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
+        return this;
+    }
+
+    public String getFirstComment() {
+        return firstComment;
+    }
+
+    public Topic setFirstComment(String firstComment) {
+        this.firstComment = firstComment;
         return this;
     }
 
@@ -117,6 +140,15 @@ public class Topic implements Validable {
         return isFixed;
     }
 
+    public String getLastComment() {
+        return lastComment;
+    }
+
+    public Topic setLastComment(String lastComment) {
+        this.lastComment = lastComment;
+        return this;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -135,18 +167,18 @@ public class Topic implements Validable {
         return this;
     }
 
-    public Integer getUpdatedBy() {
+    public Long getUpdatedBy() {
         return updatedBy;
     }
 
-    public Topic setUpdatedBy(Integer updatedBy) {
+    public Topic setUpdatedBy(Long updatedBy) {
         this.updatedBy = updatedBy;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(comments, updatedBy, isClosed, createdBy, created, id, title, isFixed, updated);
+        return Objects.hash(firstComment, comments, updatedBy, isClosed, createdBy, created, lastComment, id, title, isFixed, updated);
     }
 
     @Override
@@ -157,11 +189,13 @@ public class Topic implements Validable {
         return Objects.equals(comments, topic.comments) &&
                 Objects.equals(created, topic.created) &&
                 Objects.equals(updatedBy, topic.updatedBy) &&
+                Objects.equals(lastComment, topic.lastComment) &&
                 Objects.equals(id, topic.id) &&
                 Objects.equals(isFixed, topic.isFixed) &&
                 Objects.equals(title, topic.title) &&
                 Objects.equals(createdBy, topic.createdBy) &&
                 Objects.equals(updated, topic.updated) &&
+                Objects.equals(firstComment, topic.firstComment) &&
                 Objects.equals(isClosed, topic.isClosed);
     }
 
@@ -176,11 +210,13 @@ public class Topic implements Validable {
         sb.append("comments=").append(comments);
         sb.append(", created=").append(created);
         sb.append(", updatedBy=").append(updatedBy);
+        sb.append(", lastComment='").append(lastComment).append("'");
         sb.append(", id=").append(id);
         sb.append(", isFixed=").append(isFixed);
         sb.append(", title='").append(title).append("'");
         sb.append(", createdBy=").append(createdBy);
         sb.append(", updated=").append(updated);
+        sb.append(", firstComment='").append(firstComment).append("'");
         sb.append(", isClosed=").append(isClosed);
         sb.append('}');
         return sb.toString();

@@ -13,6 +13,9 @@ import java.util.Objects;
  * GetPushSettingsResponse object
  */
 public class GetPushSettingsResponse implements Validable {
+    @SerializedName("conversations")
+    private PushConversations conversations;
+
     /**
      * Information whether notifications are disabled
      */
@@ -28,8 +31,14 @@ public class GetPushSettingsResponse implements Validable {
     @SerializedName("settings")
     private PushParams settings;
 
-    @SerializedName("conversations")
-    private PushConversations conversations;
+    public PushConversations getConversations() {
+        return conversations;
+    }
+
+    public GetPushSettingsResponse setConversations(PushConversations conversations) {
+        this.conversations = conversations;
+        return this;
+    }
 
     public boolean isDisabled() {
         return disabled == BoolInt.YES;
@@ -54,15 +63,6 @@ public class GetPushSettingsResponse implements Validable {
 
     public GetPushSettingsResponse setSettings(PushParams settings) {
         this.settings = settings;
-        return this;
-    }
-
-    public PushConversations getConversations() {
-        return conversations;
-    }
-
-    public GetPushSettingsResponse setConversations(PushConversations conversations) {
-        this.conversations = conversations;
         return this;
     }
 

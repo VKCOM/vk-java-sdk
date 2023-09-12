@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -14,26 +15,14 @@ import java.util.List;
  */
 public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsSetLongPollSettingsQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     */
-    public GroupsSetLongPollSettingsQuery(VkApiClient client, UserActor actor, int groupId) {
-        super(client, "groups.setLongPollSettings", OkResponse.class);
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
      */
-    public GroupsSetLongPollSettingsQuery(VkApiClient client, GroupActor actor, int groupId) {
+    public GroupsSetLongPollSettingsQuery(VkApiClient client, GroupActor actor, Long groupId) {
         super(client, "groups.setLongPollSettings", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(actor.getGroupId());
@@ -41,21 +30,61 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetLongPollSettingsQuery(VkApiClient client, GroupActor actor) {
+        super(client, "groups.setLongPollSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(actor.getGroupId());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     */
+    public GroupsSetLongPollSettingsQuery(VkApiClient client, UserActor actor, Long groupId) {
+        super(client, "groups.setLongPollSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsSetLongPollSettingsQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.setLongPollSettings", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsSetLongPollSettingsQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsSetLongPollSettingsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
-     * Sets whether Long Poll is enabled ('0' — disabled, '1' — enabled).
+     * Sets whether Long Poll is enabled ('0' - disabled, '1' - enabled).
      *
      * @param value value of "enabled" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("enabled")
     public GroupsSetLongPollSettingsQuery enabled(Boolean value) {
         return unsafeParam("enabled", value);
     }
@@ -66,56 +95,62 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "api version" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("api_version")
     public GroupsSetLongPollSettingsQuery apiVersion(String value) {
         return unsafeParam("api_version", value);
     }
 
     /**
-     * A new incoming message has been received ('0' — disabled, '1' — enabled).
+     * A new incoming message has been received ('0' - disabled, '1' - enabled).
      *
      * @param value value of "message new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_new")
     public GroupsSetLongPollSettingsQuery messageNew(Boolean value) {
         return unsafeParam("message_new", value);
     }
 
     /**
-     * A new outcoming message has been received ('0' — disabled, '1' — enabled).
+     * A new outcoming message has been received ('0' - disabled, '1' - enabled).
      *
      * @param value value of "message reply" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_reply")
     public GroupsSetLongPollSettingsQuery messageReply(Boolean value) {
         return unsafeParam("message_reply", value);
     }
 
     /**
-     * Allowed messages notifications ('0' — disabled, '1' — enabled).
+     * Allowed messages notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "message allow" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_allow")
     public GroupsSetLongPollSettingsQuery messageAllow(Boolean value) {
         return unsafeParam("message_allow", value);
     }
 
     /**
-     * Denied messages notifications ('0' — disabled, '1' — enabled).
+     * Denied messages notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "message deny" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_deny")
     public GroupsSetLongPollSettingsQuery messageDeny(Boolean value) {
         return unsafeParam("message_deny", value);
     }
 
     /**
-     * A message has been edited ('0' — disabled, '1' — enabled).
+     * A message has been edited ('0' - disabled, '1' - enabled).
      *
      * @param value value of "message edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_edit")
     public GroupsSetLongPollSettingsQuery messageEdit(Boolean value) {
         return unsafeParam("message_edit", value);
     }
@@ -126,286 +161,326 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message typing state" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_typing_state")
     public GroupsSetLongPollSettingsQuery messageTypingState(Boolean value) {
         return unsafeParam("message_typing_state", value);
     }
 
     /**
-     * New photos notifications ('0' — disabled, '1' — enabled).
+     * Messages read notifications ('0' - disabled, '1' - enabled).
+     *
+     * @param value value of "message read" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("message_read")
+    public GroupsSetLongPollSettingsQuery messageRead(Boolean value) {
+        return unsafeParam("message_read", value);
+    }
+
+    /**
+     * New photos notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "photo new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_new")
     public GroupsSetLongPollSettingsQuery photoNew(Boolean value) {
         return unsafeParam("photo_new", value);
     }
 
     /**
-     * New audios notifications ('0' — disabled, '1' — enabled).
+     * New audios notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "audio new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("audio_new")
     public GroupsSetLongPollSettingsQuery audioNew(Boolean value) {
         return unsafeParam("audio_new", value);
     }
 
     /**
-     * New videos notifications ('0' — disabled, '1' — enabled).
+     * New videos notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "video new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("video_new")
     public GroupsSetLongPollSettingsQuery videoNew(Boolean value) {
         return unsafeParam("video_new", value);
     }
 
     /**
-     * New wall replies notifications ('0' — disabled, '1' — enabled).
+     * New wall replies notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall reply new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_reply_new")
     public GroupsSetLongPollSettingsQuery wallReplyNew(Boolean value) {
         return unsafeParam("wall_reply_new", value);
     }
 
     /**
-     * Wall replies edited notifications ('0' — disabled, '1' — enabled).
+     * Wall replies edited notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall reply edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_reply_edit")
     public GroupsSetLongPollSettingsQuery wallReplyEdit(Boolean value) {
         return unsafeParam("wall_reply_edit", value);
     }
 
     /**
-     * A wall comment has been deleted ('0' — disabled, '1' — enabled).
+     * A wall comment has been deleted ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall reply delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_reply_delete")
     public GroupsSetLongPollSettingsQuery wallReplyDelete(Boolean value) {
         return unsafeParam("wall_reply_delete", value);
     }
 
     /**
-     * A wall comment has been restored ('0' — disabled, '1' — enabled).
+     * A wall comment has been restored ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall reply restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_reply_restore")
     public GroupsSetLongPollSettingsQuery wallReplyRestore(Boolean value) {
         return unsafeParam("wall_reply_restore", value);
     }
 
     /**
-     * New wall posts notifications ('0' — disabled, '1' — enabled).
+     * New wall posts notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_post_new")
     public GroupsSetLongPollSettingsQuery wallPostNew(Boolean value) {
         return unsafeParam("wall_post_new", value);
     }
 
     /**
-     * New wall posts notifications ('0' — disabled, '1' — enabled).
+     * New wall posts notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "wall repost" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("wall_repost")
     public GroupsSetLongPollSettingsQuery wallRepost(Boolean value) {
         return unsafeParam("wall_repost", value);
     }
 
     /**
-     * New board posts notifications ('0' — disabled, '1' — enabled).
+     * New board posts notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "board post new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("board_post_new")
     public GroupsSetLongPollSettingsQuery boardPostNew(Boolean value) {
         return unsafeParam("board_post_new", value);
     }
 
     /**
-     * Board posts edited notifications ('0' — disabled, '1' — enabled).
+     * Board posts edited notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "board post edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("board_post_edit")
     public GroupsSetLongPollSettingsQuery boardPostEdit(Boolean value) {
         return unsafeParam("board_post_edit", value);
     }
 
     /**
-     * Board posts restored notifications ('0' — disabled, '1' — enabled).
+     * Board posts restored notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "board post restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("board_post_restore")
     public GroupsSetLongPollSettingsQuery boardPostRestore(Boolean value) {
         return unsafeParam("board_post_restore", value);
     }
 
     /**
-     * Board posts deleted notifications ('0' — disabled, '1' — enabled).
+     * Board posts deleted notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "board post delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("board_post_delete")
     public GroupsSetLongPollSettingsQuery boardPostDelete(Boolean value) {
         return unsafeParam("board_post_delete", value);
     }
 
     /**
-     * New comment to photo notifications ('0' — disabled, '1' — enabled).
+     * New comment to photo notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "photo comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_comment_new")
     public GroupsSetLongPollSettingsQuery photoCommentNew(Boolean value) {
         return unsafeParam("photo_comment_new", value);
     }
 
     /**
-     * A photo comment has been edited ('0' — disabled, '1' — enabled).
+     * A photo comment has been edited ('0' - disabled, '1' - enabled).
      *
      * @param value value of "photo comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_comment_edit")
     public GroupsSetLongPollSettingsQuery photoCommentEdit(Boolean value) {
         return unsafeParam("photo_comment_edit", value);
     }
 
     /**
-     * A photo comment has been deleted ('0' — disabled, '1' — enabled).
+     * A photo comment has been deleted ('0' - disabled, '1' - enabled).
      *
      * @param value value of "photo comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_comment_delete")
     public GroupsSetLongPollSettingsQuery photoCommentDelete(Boolean value) {
         return unsafeParam("photo_comment_delete", value);
     }
 
     /**
-     * A photo comment has been restored ('0' — disabled, '1' — enabled).
+     * A photo comment has been restored ('0' - disabled, '1' - enabled).
      *
      * @param value value of "photo comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_comment_restore")
     public GroupsSetLongPollSettingsQuery photoCommentRestore(Boolean value) {
         return unsafeParam("photo_comment_restore", value);
     }
 
     /**
-     * New comment to video notifications ('0' — disabled, '1' — enabled).
+     * New comment to video notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "video comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("video_comment_new")
     public GroupsSetLongPollSettingsQuery videoCommentNew(Boolean value) {
         return unsafeParam("video_comment_new", value);
     }
 
     /**
-     * A video comment has been edited ('0' — disabled, '1' — enabled).
+     * A video comment has been edited ('0' - disabled, '1' - enabled).
      *
      * @param value value of "video comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("video_comment_edit")
     public GroupsSetLongPollSettingsQuery videoCommentEdit(Boolean value) {
         return unsafeParam("video_comment_edit", value);
     }
 
     /**
-     * A video comment has been deleted ('0' — disabled, '1' — enabled).
+     * A video comment has been deleted ('0' - disabled, '1' - enabled).
      *
      * @param value value of "video comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("video_comment_delete")
     public GroupsSetLongPollSettingsQuery videoCommentDelete(Boolean value) {
         return unsafeParam("video_comment_delete", value);
     }
 
     /**
-     * A video comment has been restored ('0' — disabled, '1' — enabled).
+     * A video comment has been restored ('0' - disabled, '1' - enabled).
      *
      * @param value value of "video comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("video_comment_restore")
     public GroupsSetLongPollSettingsQuery videoCommentRestore(Boolean value) {
         return unsafeParam("video_comment_restore", value);
     }
 
     /**
-     * New comment to market item notifications ('0' — disabled, '1' — enabled).
+     * New comment to market item notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "market comment new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("market_comment_new")
     public GroupsSetLongPollSettingsQuery marketCommentNew(Boolean value) {
         return unsafeParam("market_comment_new", value);
     }
 
     /**
-     * A market comment has been edited ('0' — disabled, '1' — enabled).
+     * A market comment has been edited ('0' - disabled, '1' - enabled).
      *
      * @param value value of "market comment edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("market_comment_edit")
     public GroupsSetLongPollSettingsQuery marketCommentEdit(Boolean value) {
         return unsafeParam("market_comment_edit", value);
     }
 
     /**
-     * A market comment has been deleted ('0' — disabled, '1' — enabled).
+     * A market comment has been deleted ('0' - disabled, '1' - enabled).
      *
      * @param value value of "market comment delete" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("market_comment_delete")
     public GroupsSetLongPollSettingsQuery marketCommentDelete(Boolean value) {
         return unsafeParam("market_comment_delete", value);
     }
 
     /**
-     * A market comment has been restored ('0' — disabled, '1' — enabled).
+     * A market comment has been restored ('0' - disabled, '1' - enabled).
      *
      * @param value value of "market comment restore" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("market_comment_restore")
     public GroupsSetLongPollSettingsQuery marketCommentRestore(Boolean value) {
         return unsafeParam("market_comment_restore", value);
     }
 
     /**
-     * A vote in a public poll has been added ('0' — disabled, '1' — enabled).
+     * A vote in a public poll has been added ('0' - disabled, '1' - enabled).
      *
      * @param value value of "poll vote new" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("poll_vote_new")
     public GroupsSetLongPollSettingsQuery pollVoteNew(Boolean value) {
         return unsafeParam("poll_vote_new", value);
     }
 
     /**
-     * Joined community notifications ('0' — disabled, '1' — enabled).
+     * Joined community notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "group join" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_join")
     public GroupsSetLongPollSettingsQuery groupJoin(Boolean value) {
         return unsafeParam("group_join", value);
     }
 
     /**
-     * Left community notifications ('0' — disabled, '1' — enabled).
+     * Left community notifications ('0' - disabled, '1' - enabled).
      *
      * @param value value of "group leave" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_leave")
     public GroupsSetLongPollSettingsQuery groupLeave(Boolean value) {
         return unsafeParam("group_leave", value);
     }
@@ -416,6 +491,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group change settings" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_change_settings")
     public GroupsSetLongPollSettingsQuery groupChangeSettings(Boolean value) {
         return unsafeParam("group_change_settings", value);
     }
@@ -426,6 +502,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group change photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_change_photo")
     public GroupsSetLongPollSettingsQuery groupChangePhoto(Boolean value) {
         return unsafeParam("group_change_photo", value);
     }
@@ -436,6 +513,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "group officers edit" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_officers_edit")
     public GroupsSetLongPollSettingsQuery groupOfficersEdit(Boolean value) {
         return unsafeParam("group_officers_edit", value);
     }
@@ -446,6 +524,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "user block" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("user_block")
     public GroupsSetLongPollSettingsQuery userBlock(Boolean value) {
         return unsafeParam("user_block", value);
     }
@@ -456,6 +535,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "user unblock" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("user_unblock")
     public GroupsSetLongPollSettingsQuery userUnblock(Boolean value) {
         return unsafeParam("user_unblock", value);
     }
@@ -466,6 +546,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "like add" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("like_add")
     public GroupsSetLongPollSettingsQuery likeAdd(Boolean value) {
         return unsafeParam("like_add", value);
     }
@@ -476,6 +557,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "like remove" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("like_remove")
     public GroupsSetLongPollSettingsQuery likeRemove(Boolean value) {
         return unsafeParam("like_remove", value);
     }
@@ -486,8 +568,20 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "message event" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("message_event")
     public GroupsSetLongPollSettingsQuery messageEvent(Boolean value) {
         return unsafeParam("message_event", value);
+    }
+
+    /**
+     * Set message reaction event
+     *
+     * @param value value of "message reaction event" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("message_reaction_event")
+    public GroupsSetLongPollSettingsQuery messageReactionEvent(Boolean value) {
+        return unsafeParam("message_reaction_event", value);
     }
 
     /**
@@ -496,6 +590,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut subscription create" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_subscription_create")
     public GroupsSetLongPollSettingsQuery donutSubscriptionCreate(Boolean value) {
         return unsafeParam("donut_subscription_create", value);
     }
@@ -506,6 +601,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut subscription prolonged" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_subscription_prolonged")
     public GroupsSetLongPollSettingsQuery donutSubscriptionProlonged(Boolean value) {
         return unsafeParam("donut_subscription_prolonged", value);
     }
@@ -516,6 +612,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut subscription cancelled" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_subscription_cancelled")
     public GroupsSetLongPollSettingsQuery donutSubscriptionCancelled(Boolean value) {
         return unsafeParam("donut_subscription_cancelled", value);
     }
@@ -526,6 +623,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut subscription price changed" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_subscription_price_changed")
     public GroupsSetLongPollSettingsQuery donutSubscriptionPriceChanged(Boolean value) {
         return unsafeParam("donut_subscription_price_changed", value);
     }
@@ -536,6 +634,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut subscription expired" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_subscription_expired")
     public GroupsSetLongPollSettingsQuery donutSubscriptionExpired(Boolean value) {
         return unsafeParam("donut_subscription_expired", value);
     }
@@ -546,6 +645,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut money withdraw" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_money_withdraw")
     public GroupsSetLongPollSettingsQuery donutMoneyWithdraw(Boolean value) {
         return unsafeParam("donut_money_withdraw", value);
     }
@@ -556,6 +656,7 @@ public class GroupsSetLongPollSettingsQuery extends AbstractQueryBuilder<GroupsS
      * @param value value of "donut money withdraw error" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("donut_money_withdraw_error")
     public GroupsSetLongPollSettingsQuery donutMoneyWithdrawError(Boolean value) {
         return unsafeParam("donut_money_withdraw_error", value);
     }

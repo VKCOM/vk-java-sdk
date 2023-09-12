@@ -5,18 +5,22 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
+import java.net.URI;
 import java.util.Objects;
 
 /**
  * PostCopyright object
  */
 public class PostCopyright implements Validable {
+    /**
+     * Entity: owner
+     */
     @SerializedName("id")
-    private Integer id;
+    private Long id;
 
     @SerializedName("link")
     @Required
-    private String link;
+    private URI link;
 
     @SerializedName("name")
     @Required
@@ -26,20 +30,20 @@ public class PostCopyright implements Validable {
     @Required
     private String type;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public PostCopyright setId(Integer id) {
+    public PostCopyright setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public String getLink() {
+    public URI getLink() {
         return link;
     }
 
-    public PostCopyright setLink(String link) {
+    public PostCopyright setLink(URI link) {
         this.link = link;
         return this;
     }
@@ -86,7 +90,7 @@ public class PostCopyright implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PostCopyright{");
-        sb.append("link='").append(link).append("'");
+        sb.append("link=").append(link);
         sb.append(", name='").append(name).append("'");
         sb.append(", id=").append(id);
         sb.append(", type='").append(type).append("'");

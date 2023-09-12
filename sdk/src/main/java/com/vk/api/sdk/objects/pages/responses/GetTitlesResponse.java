@@ -22,7 +22,7 @@ public class GetTitlesResponse implements Validable {
      * Page creator name
      */
     @SerializedName("creator_name")
-    private Integer creatorName;
+    private String creatorName;
 
     /**
      * Last editor ID
@@ -38,9 +38,11 @@ public class GetTitlesResponse implements Validable {
 
     /**
      * Community ID
+     * Entity: groups
      */
     @SerializedName("group_id")
-    private Integer groupId;
+    @Required
+    private Long groupId;
 
     /**
      * Page ID
@@ -67,12 +69,14 @@ public class GetTitlesResponse implements Validable {
      * Edit settings of the page
      */
     @SerializedName("who_can_edit")
+    @Required
     private PrivacySettings whoCanEdit;
 
     /**
      * View settings of the page
      */
     @SerializedName("who_can_view")
+    @Required
     private PrivacySettings whoCanView;
 
     public Integer getCreatorId() {
@@ -84,11 +88,11 @@ public class GetTitlesResponse implements Validable {
         return this;
     }
 
-    public Integer getCreatorName() {
+    public String getCreatorName() {
         return creatorName;
     }
 
-    public GetTitlesResponse setCreatorName(Integer creatorName) {
+    public GetTitlesResponse setCreatorName(String creatorName) {
         this.creatorName = creatorName;
         return this;
     }
@@ -111,11 +115,11 @@ public class GetTitlesResponse implements Validable {
         return this;
     }
 
-    public Integer getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public GetTitlesResponse setGroupId(Integer groupId) {
+    public GetTitlesResponse setGroupId(Long groupId) {
         this.groupId = groupId;
         return this;
     }
@@ -200,7 +204,7 @@ public class GetTitlesResponse implements Validable {
         sb.append(", whoCanView=").append(whoCanView);
         sb.append(", groupId=").append(groupId);
         sb.append(", creatorId=").append(creatorId);
-        sb.append(", creatorName=").append(creatorName);
+        sb.append(", creatorName='").append(creatorName).append("'");
         sb.append(", editorId=").append(editorId);
         sb.append(", id=").append(id);
         sb.append(", title='").append(title).append("'");

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.photos.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
@@ -16,16 +17,18 @@ public class GetCommentsResponse implements Validable {
      * Total number
      */
     @SerializedName("count")
+    @Required
     private Integer count;
+
+    @SerializedName("items")
+    @Required
+    private List<WallComment> items;
 
     /**
      * Real offset of the comments
      */
     @SerializedName("real_offset")
     private Integer realOffset;
-
-    @SerializedName("items")
-    private List<WallComment> items;
 
     public Integer getCount() {
         return count;
@@ -36,21 +39,21 @@ public class GetCommentsResponse implements Validable {
         return this;
     }
 
-    public Integer getRealOffset() {
-        return realOffset;
-    }
-
-    public GetCommentsResponse setRealOffset(Integer realOffset) {
-        this.realOffset = realOffset;
-        return this;
-    }
-
     public List<WallComment> getItems() {
         return items;
     }
 
     public GetCommentsResponse setItems(List<WallComment> items) {
         this.items = items;
+        return this;
+    }
+
+    public Integer getRealOffset() {
+        return realOffset;
+    }
+
+    public GetCommentsResponse setRealOffset(Integer realOffset) {
+        this.realOffset = realOffset;
         return this;
     }
 

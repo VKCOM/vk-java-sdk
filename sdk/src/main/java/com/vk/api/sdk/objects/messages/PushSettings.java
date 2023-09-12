@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.messages;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,20 @@ public class PushSettings implements Validable {
      * Information whether push notifications are disabled forever
      */
     @SerializedName("disabled_forever")
+    @Required
     private Boolean disabledForever;
+
+    /**
+     * Information whether the mass mentions (like '@all', '@online') are disabled
+     */
+    @SerializedName("disabled_mass_mentions")
+    private Boolean disabledMassMentions;
+
+    /**
+     * Information whether the mentions are disabled
+     */
+    @SerializedName("disabled_mentions")
+    private Boolean disabledMentions;
 
     /**
      * Time until what notifications are disabled
@@ -26,19 +40,8 @@ public class PushSettings implements Validable {
      * Information whether the sound is on
      */
     @SerializedName("no_sound")
+    @Required
     private Boolean noSound;
-
-    /**
-     * Information whether the mentions are disabled
-     */
-    @SerializedName("disabled_mentions")
-    private Boolean disabledMentions;
-
-    /**
-     * Information whether the mass mentions (like '@all', '@online') are disabled
-     */
-    @SerializedName("disabled_mass_mentions")
-    private Boolean disabledMassMentions;
 
     public Boolean getDisabledForever() {
         return disabledForever;
@@ -46,6 +49,24 @@ public class PushSettings implements Validable {
 
     public PushSettings setDisabledForever(Boolean disabledForever) {
         this.disabledForever = disabledForever;
+        return this;
+    }
+
+    public Boolean getDisabledMassMentions() {
+        return disabledMassMentions;
+    }
+
+    public PushSettings setDisabledMassMentions(Boolean disabledMassMentions) {
+        this.disabledMassMentions = disabledMassMentions;
+        return this;
+    }
+
+    public Boolean getDisabledMentions() {
+        return disabledMentions;
+    }
+
+    public PushSettings setDisabledMentions(Boolean disabledMentions) {
+        this.disabledMentions = disabledMentions;
         return this;
     }
 
@@ -64,24 +85,6 @@ public class PushSettings implements Validable {
 
     public PushSettings setNoSound(Boolean noSound) {
         this.noSound = noSound;
-        return this;
-    }
-
-    public Boolean getDisabledMentions() {
-        return disabledMentions;
-    }
-
-    public PushSettings setDisabledMentions(Boolean disabledMentions) {
-        this.disabledMentions = disabledMentions;
-        return this;
-    }
-
-    public Boolean getDisabledMassMentions() {
-        return disabledMassMentions;
-    }
-
-    public PushSettings setDisabledMassMentions(Boolean disabledMassMentions) {
-        this.disabledMassMentions = disabledMassMentions;
         return this;
     }
 

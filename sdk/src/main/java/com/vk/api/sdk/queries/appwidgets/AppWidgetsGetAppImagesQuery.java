@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.appwidgets.GetAppImagesImageType;
 import com.vk.api.sdk.objects.appwidgets.responses.GetAppImagesResponse;
 import java.util.Arrays;
@@ -16,18 +17,7 @@ import java.util.List;
  */
 public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgetsGetAppImagesQuery, GetAppImagesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public AppWidgetsGetAppImagesQuery(VkApiClient client, UserActor actor) {
-        super(client, "appWidgets.getAppImages", GetAppImagesResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,7 +28,18 @@ public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgets
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AppWidgetsGetAppImagesQuery(VkApiClient client, UserActor actor) {
+        super(client, "appWidgets.getAppImages", GetAppImagesResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -55,6 +56,7 @@ public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public AppWidgetsGetAppImagesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -65,6 +67,7 @@ public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public AppWidgetsGetAppImagesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -75,6 +78,7 @@ public class AppWidgetsGetAppImagesQuery extends AbstractQueryBuilder<AppWidgets
      * @param value value of "image type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("image_type")
     public AppWidgetsGetAppImagesQuery imageType(GetAppImagesImageType value) {
         return unsafeParam("image_type", value);
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public class LiveCovers implements Validable {
      * Information whether live covers is enabled
      */
     @SerializedName("is_enabled")
+    @Required
     private Boolean isEnabled;
 
     /**

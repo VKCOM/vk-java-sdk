@@ -11,25 +11,29 @@ import java.util.Objects;
  * UserSpecificationCutted object
  */
 public class UserSpecificationCutted implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
+    @SerializedName("client_id")
+    private Integer clientId;
 
     @SerializedName("role")
     @Required
     private AccessRolePublic role;
 
-    @SerializedName("client_id")
-    private Integer clientId;
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     @SerializedName("view_budget")
     private Boolean viewBudget;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public UserSpecificationCutted setUserId(Integer userId) {
-        this.userId = userId;
+    public UserSpecificationCutted setClientId(Integer clientId) {
+        this.clientId = clientId;
         return this;
     }
 
@@ -42,12 +46,12 @@ public class UserSpecificationCutted implements Validable {
         return this;
     }
 
-    public Integer getClientId() {
-        return clientId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public UserSpecificationCutted setClientId(Integer clientId) {
-        this.clientId = clientId;
+    public UserSpecificationCutted setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 

@@ -13,6 +13,12 @@ public class StatsViewsTimes implements Validable {
     @SerializedName("views_ads_times_1")
     private Integer viewsAdsTimes1;
 
+    @SerializedName("views_ads_times_10")
+    private Integer viewsAdsTimes10;
+
+    @SerializedName("views_ads_times_11_plus")
+    private Integer viewsAdsTimes11Plus;
+
     @SerializedName("views_ads_times_2")
     private Integer viewsAdsTimes2;
 
@@ -37,18 +43,30 @@ public class StatsViewsTimes implements Validable {
     @SerializedName("views_ads_times_9")
     private Integer viewsAdsTimes9;
 
-    @SerializedName("views_ads_times_10")
-    private Integer viewsAdsTimes10;
-
-    @SerializedName("views_ads_times_11_plus")
-    private Integer viewsAdsTimes11Plus;
-
     public Integer getViewsAdsTimes1() {
         return viewsAdsTimes1;
     }
 
     public StatsViewsTimes setViewsAdsTimes1(Integer viewsAdsTimes1) {
         this.viewsAdsTimes1 = viewsAdsTimes1;
+        return this;
+    }
+
+    public Integer getViewsAdsTimes10() {
+        return viewsAdsTimes10;
+    }
+
+    public StatsViewsTimes setViewsAdsTimes10(Integer viewsAdsTimes10) {
+        this.viewsAdsTimes10 = viewsAdsTimes10;
+        return this;
+    }
+
+    public Integer getViewsAdsTimes11Plus() {
+        return viewsAdsTimes11Plus;
+    }
+
+    public StatsViewsTimes setViewsAdsTimes11Plus(Integer viewsAdsTimes11Plus) {
+        this.viewsAdsTimes11Plus = viewsAdsTimes11Plus;
         return this;
     }
 
@@ -124,24 +142,6 @@ public class StatsViewsTimes implements Validable {
         return this;
     }
 
-    public Integer getViewsAdsTimes10() {
-        return viewsAdsTimes10;
-    }
-
-    public StatsViewsTimes setViewsAdsTimes10(Integer viewsAdsTimes10) {
-        this.viewsAdsTimes10 = viewsAdsTimes10;
-        return this;
-    }
-
-    public Integer getViewsAdsTimes11Plus() {
-        return viewsAdsTimes11Plus;
-    }
-
-    public StatsViewsTimes setViewsAdsTimes11Plus(Integer viewsAdsTimes11Plus) {
-        this.viewsAdsTimes11Plus = viewsAdsTimes11Plus;
-        return this;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(viewsAdsTimes3, viewsAdsTimes2, viewsAdsTimes1, viewsAdsTimes9, viewsAdsTimes11Plus, viewsAdsTimes8, viewsAdsTimes7, viewsAdsTimes6, viewsAdsTimes5, viewsAdsTimes10, viewsAdsTimes4);
@@ -159,8 +159,8 @@ public class StatsViewsTimes implements Validable {
                 Objects.equals(viewsAdsTimes6, statsViewsTimes.viewsAdsTimes6) &&
                 Objects.equals(viewsAdsTimes5, statsViewsTimes.viewsAdsTimes5) &&
                 Objects.equals(viewsAdsTimes4, statsViewsTimes.viewsAdsTimes4) &&
-                Objects.equals(viewsAdsTimes3, statsViewsTimes.viewsAdsTimes3) &&
                 Objects.equals(viewsAdsTimes11Plus, statsViewsTimes.viewsAdsTimes11Plus) &&
+                Objects.equals(viewsAdsTimes3, statsViewsTimes.viewsAdsTimes3) &&
                 Objects.equals(viewsAdsTimes2, statsViewsTimes.viewsAdsTimes2) &&
                 Objects.equals(viewsAdsTimes1, statsViewsTimes.viewsAdsTimes1);
     }
@@ -180,8 +180,8 @@ public class StatsViewsTimes implements Validable {
         sb.append(", viewsAdsTimes6=").append(viewsAdsTimes6);
         sb.append(", viewsAdsTimes5='").append(viewsAdsTimes5).append("'");
         sb.append(", viewsAdsTimes4=").append(viewsAdsTimes4);
-        sb.append(", viewsAdsTimes3=").append(viewsAdsTimes3);
         sb.append(", viewsAdsTimes11Plus=").append(viewsAdsTimes11Plus);
+        sb.append(", viewsAdsTimes3=").append(viewsAdsTimes3);
         sb.append(", viewsAdsTimes2=").append(viewsAdsTimes2);
         sb.append(", viewsAdsTimes1=").append(viewsAdsTimes1);
         sb.append('}');

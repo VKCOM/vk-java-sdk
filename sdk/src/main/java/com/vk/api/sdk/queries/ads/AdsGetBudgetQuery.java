@@ -4,24 +4,36 @@ package com.vk.api.sdk.queries.ads;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Ads.getBudget method
  */
-public class AdsGetBudgetQuery extends AbstractQueryBuilder<AdsGetBudgetQuery, Integer> {
+public class AdsGetBudgetQuery extends AbstractQueryBuilder<AdsGetBudgetQuery, String> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param accountId value of "account id" parameter.
      */
-    public AdsGetBudgetQuery(VkApiClient client, UserActor actor, int accountId) {
-        super(client, "ads.getBudget", Integer.class);
+    public AdsGetBudgetQuery(VkApiClient client, UserActor actor, Integer accountId) {
+        super(client, "ads.getBudget", String.class);
         accessToken(actor.getAccessToken());
         accountId(accountId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetBudgetQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getBudget", String.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -30,7 +42,8 @@ public class AdsGetBudgetQuery extends AbstractQueryBuilder<AdsGetBudgetQuery, I
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetBudgetQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetBudgetQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 

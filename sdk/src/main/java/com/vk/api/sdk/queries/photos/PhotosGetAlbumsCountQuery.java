@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class PhotosGetAlbumsCountQuery extends AbstractQueryBuilder<PhotosGetAlbumsCountQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,21 +26,36 @@ public class PhotosGetAlbumsCountQuery extends AbstractQueryBuilder<PhotosGetAlb
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetAlbumsCountQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public PhotosGetAlbumsCountQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Community ID.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosGetAlbumsCountQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosGetAlbumsCountQuery groupId(Long value) {
         return unsafeParam("group_id", value);
+    }
+
+    /**
+     * Set need system
+     *
+     * @param value value of "need system" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("need_system")
+    public PhotosGetAlbumsCountQuery needSystem(Boolean value) {
+        return unsafeParam("need_system", value);
     }
 
     @Override

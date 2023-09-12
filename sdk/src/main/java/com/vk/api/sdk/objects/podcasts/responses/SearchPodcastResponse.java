@@ -21,6 +21,7 @@ public class SearchPodcastResponse implements Validable {
      * Total amount of found results
      */
     @SerializedName("results_total")
+    @Required
     private Integer resultsTotal;
 
     public List<ExternalData> getPodcasts() {

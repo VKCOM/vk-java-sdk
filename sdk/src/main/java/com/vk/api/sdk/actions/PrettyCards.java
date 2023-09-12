@@ -4,6 +4,7 @@ package com.vk.api.sdk.actions;
 import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.prettycards.PrettyCardsCreateQuery;
 import com.vk.api.sdk.queries.prettycards.PrettyCardsDeleteQuery;
 import com.vk.api.sdk.queries.prettycards.PrettyCardsEditQuery;
@@ -26,71 +27,123 @@ public class PrettyCards extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param photo
      * @param title
      * @param link
      * @return query
      */
-    public PrettyCardsCreateQuery create(UserActor actor, int ownerId, String photo, String title,
+    @ApiMethod("prettyCards.create")
+    public PrettyCardsCreateQuery create(UserActor actor, Long ownerId, String photo, String title,
             String link) {
         return new PrettyCardsCreateQuery(getClient(), actor, ownerId, photo, title, link);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("prettyCards.create")
+    public PrettyCardsCreateQuery create(UserActor actor) {
+        return new PrettyCardsCreateQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param cardId
      * @return query
      */
-    public PrettyCardsDeleteQuery delete(UserActor actor, int ownerId, int cardId) {
+    @ApiMethod("prettyCards.delete")
+    public PrettyCardsDeleteQuery delete(UserActor actor, Long ownerId, Integer cardId) {
         return new PrettyCardsDeleteQuery(getClient(), actor, ownerId, cardId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("prettyCards.delete")
+    public PrettyCardsDeleteQuery delete(UserActor actor) {
+        return new PrettyCardsDeleteQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param cardId
      * @return query
      */
-    public PrettyCardsEditQuery edit(UserActor actor, int ownerId, int cardId) {
+    @ApiMethod("prettyCards.edit")
+    public PrettyCardsEditQuery edit(UserActor actor, Long ownerId, Integer cardId) {
         return new PrettyCardsEditQuery(getClient(), actor, ownerId, cardId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("prettyCards.edit")
+    public PrettyCardsEditQuery edit(UserActor actor) {
+        return new PrettyCardsEditQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @return query
      */
-    public PrettyCardsGetQuery get(UserActor actor, int ownerId) {
+    @ApiMethod("prettyCards.get")
+    public PrettyCardsGetQuery get(UserActor actor, Long ownerId) {
         return new PrettyCardsGetQuery(getClient(), actor, ownerId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("prettyCards.get")
+    public PrettyCardsGetQuery get(UserActor actor) {
+        return new PrettyCardsGetQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param ownerId
      * @param cardIds
      * @return query
      */
-    public PrettyCardsGetByIdQuery getById(UserActor actor, int ownerId, Integer... cardIds) {
+    @ApiMethod("prettyCards.getById")
+    public PrettyCardsGetByIdQuery getById(UserActor actor, Long ownerId, Integer... cardIds) {
         return new PrettyCardsGetByIdQuery(getClient(), actor, ownerId, cardIds);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param ownerId
      * @param cardIds
      * @return query
      */
-    public PrettyCardsGetByIdQuery getById(UserActor actor, int ownerId, List<Integer> cardIds) {
+    @ApiMethod("prettyCards.getById")
+    public PrettyCardsGetByIdQuery getById(UserActor actor, Long ownerId, List<Integer> cardIds) {
         return new PrettyCardsGetByIdQuery(getClient(), actor, ownerId, cardIds);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("prettyCards.getById")
+    public PrettyCardsGetByIdQuery getById(UserActor actor) {
+        return new PrettyCardsGetByIdQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("prettyCards.getUploadURL")
     public PrettyCardsGetUploadURLQuery getUploadURL(UserActor actor) {
         return new PrettyCardsGetUploadURLQuery(getClient(), actor);
     }

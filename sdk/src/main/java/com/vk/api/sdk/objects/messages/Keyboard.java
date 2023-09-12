@@ -14,28 +14,30 @@ import java.util.Objects;
 public class Keyboard implements Validable {
     /**
      * Community or bot, which set this keyboard
+     * Entity: owner
      */
     @SerializedName("author_id")
-    private Integer authorId;
+    private Long authorId;
 
     @SerializedName("buttons")
     @Required
     private List<List<KeyboardButton>> buttons;
 
+    @SerializedName("inline")
+    private Boolean inline;
+
     /**
      * Should this keyboard disappear on first use
      */
     @SerializedName("one_time")
+    @Required
     private Boolean oneTime;
 
-    @SerializedName("inline")
-    private Boolean inline;
-
-    public Integer getAuthorId() {
+    public Long getAuthorId() {
         return authorId;
     }
 
-    public Keyboard setAuthorId(Integer authorId) {
+    public Keyboard setAuthorId(Long authorId) {
         this.authorId = authorId;
         return this;
     }
@@ -49,21 +51,21 @@ public class Keyboard implements Validable {
         return this;
     }
 
-    public Boolean getOneTime() {
-        return oneTime;
-    }
-
-    public Keyboard setOneTime(Boolean oneTime) {
-        this.oneTime = oneTime;
-        return this;
-    }
-
     public Boolean getInline() {
         return inline;
     }
 
     public Keyboard setInline(Boolean inline) {
         this.inline = inline;
+        return this;
+    }
+
+    public Boolean getOneTime() {
+        return oneTime;
+    }
+
+    public Keyboard setOneTime(Boolean oneTime) {
+        this.oneTime = oneTime;
         return this;
     }
 

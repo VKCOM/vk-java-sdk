@@ -5,8 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.groups.Group;
-import com.vk.api.sdk.objects.users.User;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.users.UserFull;
 import com.vk.api.sdk.objects.wall.WallComment;
 import java.util.List;
 import java.util.Objects;
@@ -15,17 +15,66 @@ import java.util.Objects;
  * GetCommentExtendedResponse object
  */
 public class GetCommentExtendedResponse implements Validable {
+    /**
+     * Information whether current user can comment the post
+     */
+    @SerializedName("can_post")
+    private Boolean canPost;
+
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
+    /**
+     * Information whether groups can comment the post
+     */
+    @SerializedName("groups_can_post")
+    private Boolean groupsCanPost;
+
     @SerializedName("items")
     @Required
     private List<WallComment> items;
 
+    /**
+     * Author id of the comment's post
+     * Entity: owner
+     */
+    @SerializedName("post_author_id")
+    private Long postAuthorId;
+
     @SerializedName("profiles")
     @Required
-    private List<User> profiles;
+    private List<UserFull> profiles;
 
-    @SerializedName("groups")
-    @Required
-    private List<Group> groups;
+    @SerializedName("show_reply_button")
+    private Boolean showReplyButton;
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public GetCommentExtendedResponse setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetCommentExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
+
+    public Boolean getGroupsCanPost() {
+        return groupsCanPost;
+    }
+
+    public GetCommentExtendedResponse setGroupsCanPost(Boolean groupsCanPost) {
+        this.groupsCanPost = groupsCanPost;
+        return this;
+    }
 
     public List<WallComment> getItems() {
         return items;
@@ -36,27 +85,36 @@ public class GetCommentExtendedResponse implements Validable {
         return this;
     }
 
-    public List<User> getProfiles() {
+    public Long getPostAuthorId() {
+        return postAuthorId;
+    }
+
+    public GetCommentExtendedResponse setPostAuthorId(Long postAuthorId) {
+        this.postAuthorId = postAuthorId;
+        return this;
+    }
+
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetCommentExtendedResponse setProfiles(List<User> profiles) {
+    public GetCommentExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
         return this;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public Boolean getShowReplyButton() {
+        return showReplyButton;
     }
 
-    public GetCommentExtendedResponse setGroups(List<Group> groups) {
-        this.groups = groups;
+    public GetCommentExtendedResponse setShowReplyButton(Boolean showReplyButton) {
+        this.showReplyButton = showReplyButton;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(profiles, groups, items);
+        return Objects.hash(postAuthorId, canPost, profiles, groups, groupsCanPost, items, showReplyButton);
     }
 
     @Override
@@ -64,8 +122,12 @@ public class GetCommentExtendedResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCommentExtendedResponse getCommentExtendedResponse = (GetCommentExtendedResponse) o;
-        return Objects.equals(profiles, getCommentExtendedResponse.profiles) &&
+        return Objects.equals(groupsCanPost, getCommentExtendedResponse.groupsCanPost) &&
+                Objects.equals(profiles, getCommentExtendedResponse.profiles) &&
                 Objects.equals(groups, getCommentExtendedResponse.groups) &&
+                Objects.equals(canPost, getCommentExtendedResponse.canPost) &&
+                Objects.equals(postAuthorId, getCommentExtendedResponse.postAuthorId) &&
+                Objects.equals(showReplyButton, getCommentExtendedResponse.showReplyButton) &&
                 Objects.equals(items, getCommentExtendedResponse.items);
     }
 
@@ -77,8 +139,12 @@ public class GetCommentExtendedResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetCommentExtendedResponse{");
-        sb.append("profiles=").append(profiles);
+        sb.append("groupsCanPost=").append(groupsCanPost);
+        sb.append(", profiles=").append(profiles);
         sb.append(", groups=").append(groups);
+        sb.append(", canPost=").append(canPost);
+        sb.append(", postAuthorId=").append(postAuthorId);
+        sb.append(", showReplyButton=").append(showReplyButton);
         sb.append(", items=").append(items);
         sb.append('}');
         return sb.toString();

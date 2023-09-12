@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.ReportType;
 import com.vk.api.sdk.queries.users.UsersGetFollowersQuery;
@@ -32,9 +33,10 @@ public class Users extends AbstractAction {
     /**
      * Returns detailed information on users.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("users.get")
     public UsersGetQuery get(UserActor actor) {
         return new UsersGetQuery(getClient(), actor);
     }
@@ -42,9 +44,10 @@ public class Users extends AbstractAction {
     /**
      * Returns detailed information on users.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("users.get")
     public UsersGetQuery get(GroupActor actor) {
         return new UsersGetQuery(getClient(), actor);
     }
@@ -52,9 +55,10 @@ public class Users extends AbstractAction {
     /**
      * Returns detailed information on users.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("users.get")
     public UsersGetQuery get(ServiceActor actor) {
         return new UsersGetQuery(getClient(), actor);
     }
@@ -62,9 +66,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("users.getFollowers")
     public UsersGetFollowersQuery getFollowers(UserActor actor) {
         return new UsersGetFollowersQuery(getClient(), actor);
     }
@@ -72,9 +77,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("users.getFollowers")
     public UsersGetFollowersQuery getFollowers(ServiceActor actor) {
         return new UsersGetFollowersQuery(getClient(), actor);
     }
@@ -82,10 +88,11 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
      * @return query
      */
+    @ApiMethod("users.getFollowers")
     public UsersGetFollowersQueryWithFields getFollowersWithFields(UserActor actor,
             Fields... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
@@ -94,10 +101,11 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
      * @return query
      */
+    @ApiMethod("users.getFollowers")
     public UsersGetFollowersQueryWithFields getFollowersWithFields(ServiceActor actor,
             Fields... fields) {
         return new UsersGetFollowersQueryWithFields(getClient(), actor, fields);
@@ -106,9 +114,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("users.getSubscriptions")
     public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended(UserActor actor) {
         return new UsersGetSubscriptionsQueryWithExtended(getClient(), actor);
     }
@@ -116,9 +125,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("users.getSubscriptions")
     public UsersGetSubscriptionsQueryWithExtended getSubscriptionsExtended(ServiceActor actor) {
         return new UsersGetSubscriptionsQueryWithExtended(getClient(), actor);
     }
@@ -126,9 +136,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("users.getSubscriptions")
     public UsersGetSubscriptionsQuery getSubscriptions(UserActor actor) {
         return new UsersGetSubscriptionsQuery(getClient(), actor);
     }
@@ -136,9 +147,10 @@ public class Users extends AbstractAction {
     /**
      * Returns a list of IDs of users and communities followed by the user.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("users.getSubscriptions")
     public UsersGetSubscriptionsQuery getSubscriptions(ServiceActor actor) {
         return new UsersGetSubscriptionsQuery(getClient(), actor);
     }
@@ -146,21 +158,34 @@ public class Users extends AbstractAction {
     /**
      * Reports (submits a complain about) a user.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId ID of the user about whom a complaint is being made.
      * @param type Type of complaint: 'porn' - pornography, 'spam' - spamming, 'insult' - abusive behavior, 'advertisement' - disruptive advertisements
      * @return query
      */
-    public UsersReportQuery report(UserActor actor, int userId, ReportType type) {
+    @ApiMethod("users.report")
+    public UsersReportQuery report(UserActor actor, Long userId, ReportType type) {
         return new UsersReportQuery(getClient(), actor, userId, type);
+    }
+
+    /**
+     * Reports (submits a complain about) a user.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("users.report")
+    public UsersReportQuery report(UserActor actor) {
+        return new UsersReportQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of users matching the search criteria.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("users.search")
     public UsersSearchQuery search(UserActor actor) {
         return new UsersSearchQuery(getClient(), actor);
     }

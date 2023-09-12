@@ -17,7 +17,7 @@ public class PrettyCard implements Validable {
      * Button key
      */
     @SerializedName("button")
-    private String button;
+    private ButtonOneOf button;
 
     /**
      * Button text in current language
@@ -29,6 +29,7 @@ public class PrettyCard implements Validable {
      * Card ID (long int returned as string)
      */
     @SerializedName("card_id")
+    @Required
     private String cardId;
 
     @SerializedName("images")
@@ -38,6 +39,7 @@ public class PrettyCard implements Validable {
      * Link URL
      */
     @SerializedName("link_url")
+    @Required
     private String linkUrl;
 
     /**
@@ -66,11 +68,11 @@ public class PrettyCard implements Validable {
     @Required
     private String title;
 
-    public String getButton() {
+    public ButtonOneOf getButton() {
         return button;
     }
 
-    public PrettyCard setButton(String button) {
+    public PrettyCard setButton(ButtonOneOf button) {
         this.button = button;
         return this;
     }
@@ -176,7 +178,7 @@ public class PrettyCard implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("PrettyCard{");
-        sb.append("button='").append(button).append("'");
+        sb.append("button=").append(button);
         sb.append(", priceOld='").append(priceOld).append("'");
         sb.append(", images=").append(images);
         sb.append(", price='").append(price).append("'");

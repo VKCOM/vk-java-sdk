@@ -13,26 +13,14 @@ import java.util.List;
  */
 public class StatsTrackVisitorQuery extends AbstractQueryBuilder<StatsTrackVisitorQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param id value of "id" parameter.
      */
-    public StatsTrackVisitorQuery(VkApiClient client, UserActor actor, String id) {
+    public StatsTrackVisitorQuery(VkApiClient client, UserActor actor) {
         super(client, "stats.trackVisitor", OkResponse.class);
         accessToken(actor.getAccessToken());
-        id(id);
-    }
-
-    /**
-     * Set id
-     *
-     * @param value value of "id" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    protected StatsTrackVisitorQuery id(String value) {
-        return unsafeParam("id", value);
     }
 
     @Override
@@ -42,6 +30,6 @@ public class StatsTrackVisitorQuery extends AbstractQueryBuilder<StatsTrackVisit
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("id", "access_token");
+        return Arrays.asList("access_token");
     }
 }

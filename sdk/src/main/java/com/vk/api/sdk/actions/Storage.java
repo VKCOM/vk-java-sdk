@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.queries.storage.StorageGetKeysQuery;
 import com.vk.api.sdk.queries.storage.StorageGetQuery;
 import com.vk.api.sdk.queries.storage.StorageSetQuery;
@@ -26,9 +27,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns a value of variable with the name set by key parameter.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("storage.get")
     public StorageGetQuery get(UserActor actor) {
         return new StorageGetQuery(getClient(), actor);
     }
@@ -36,9 +38,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns a value of variable with the name set by key parameter.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("storage.get")
     public StorageGetQuery get(GroupActor actor) {
         return new StorageGetQuery(getClient(), actor);
     }
@@ -46,9 +49,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns a value of variable with the name set by key parameter.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("storage.get")
     public StorageGetQuery get(ServiceActor actor) {
         return new StorageGetQuery(getClient(), actor);
     }
@@ -56,9 +60,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns the names of all variables.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("storage.getKeys")
     public StorageGetKeysQuery getKeys(UserActor actor) {
         return new StorageGetKeysQuery(getClient(), actor);
     }
@@ -66,9 +71,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns the names of all variables.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("storage.getKeys")
     public StorageGetKeysQuery getKeys(GroupActor actor) {
         return new StorageGetKeysQuery(getClient(), actor);
     }
@@ -76,9 +82,10 @@ public class Storage extends AbstractAction {
     /**
      * Returns the names of all variables.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("storage.getKeys")
     public StorageGetKeysQuery getKeys(ServiceActor actor) {
         return new StorageGetKeysQuery(getClient(), actor);
     }
@@ -86,10 +93,11 @@ public class Storage extends AbstractAction {
     /**
      * Saves a value of variable with the name set by 'key' parameter.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param key
      * @return query
      */
+    @ApiMethod("storage.set")
     public StorageSetQuery set(UserActor actor, String key) {
         return new StorageSetQuery(getClient(), actor, key);
     }
@@ -97,10 +105,22 @@ public class Storage extends AbstractAction {
     /**
      * Saves a value of variable with the name set by 'key' parameter.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("storage.set")
+    public StorageSetQuery set(UserActor actor) {
+        return new StorageSetQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves a value of variable with the name set by 'key' parameter.
+     *
+     * @param actor vk group actor
      * @param key
      * @return query
      */
+    @ApiMethod("storage.set")
     public StorageSetQuery set(GroupActor actor, String key) {
         return new StorageSetQuery(getClient(), actor, key);
     }
@@ -108,11 +128,34 @@ public class Storage extends AbstractAction {
     /**
      * Saves a value of variable with the name set by 'key' parameter.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("storage.set")
+    public StorageSetQuery set(GroupActor actor) {
+        return new StorageSetQuery(getClient(), actor);
+    }
+
+    /**
+     * Saves a value of variable with the name set by 'key' parameter.
+     *
+     * @param actor vk service actor
      * @param key
      * @return query
      */
+    @ApiMethod("storage.set")
     public StorageSetQuery set(ServiceActor actor, String key) {
         return new StorageSetQuery(getClient(), actor, key);
+    }
+
+    /**
+     * Saves a value of variable with the name set by 'key' parameter.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("storage.set")
+    public StorageSetQuery set(ServiceActor actor) {
+        return new StorageSetQuery(getClient(), actor);
     }
 }

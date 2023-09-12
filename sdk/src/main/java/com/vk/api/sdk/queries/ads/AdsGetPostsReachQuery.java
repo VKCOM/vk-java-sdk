@@ -7,6 +7,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.ads.GetPostsReachIdsType;
 import com.vk.api.sdk.objects.ads.responses.GetPostsReachResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReachQuery, List<GetPostsReachResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -23,7 +24,7 @@ public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReach
      * @param idsType value of "ids type" parameter.
      * @param ids value of "ids" parameter.
      */
-    public AdsGetPostsReachQuery(VkApiClient client, UserActor actor, int accountId,
+    public AdsGetPostsReachQuery(VkApiClient client, UserActor actor, Integer accountId,
             GetPostsReachIdsType idsType, String ids) {
         super(client, "ads.getPostsReach", Utils.buildParametrizedType(List.class, GetPostsReachResponse.class));
         accessToken(actor.getAccessToken());
@@ -33,22 +34,35 @@ public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReach
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdsGetPostsReachQuery(VkApiClient client, UserActor actor) {
+        super(client, "ads.getPostsReach", Utils.buildParametrizedType(List.class, GetPostsReachResponse.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Advertising account ID.
      *
      * @param value value of "account id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetPostsReachQuery accountId(int value) {
+    @ApiParam("account_id")
+    public AdsGetPostsReachQuery accountId(Integer value) {
         return unsafeParam("account_id", value);
     }
 
     /**
-     * Type of requested objects listed in 'ids' parameter: *ad — ads,, *campaign — campaigns.
+     * Type of requested objects listed in 'ids' parameter: *ad - ads,, *campaign - campaigns.
      *
      * @param value value of "ids type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetPostsReachQuery idsType(GetPostsReachIdsType value) {
+    @ApiParam("ids_type")
+    public AdsGetPostsReachQuery idsType(GetPostsReachIdsType value) {
         return unsafeParam("ids_type", value);
     }
 
@@ -58,7 +72,8 @@ public class AdsGetPostsReachQuery extends AbstractQueryBuilder<AdsGetPostsReach
      * @param value value of "ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdsGetPostsReachQuery ids(String value) {
+    @ApiParam("ids")
+    public AdsGetPostsReachQuery ids(String value) {
         return unsafeParam("ids", value);
     }
 

@@ -18,10 +18,7 @@ public enum StoryType implements EnumParam {
     LIVE_ACTIVE("live_active"),
 
     @SerializedName("live_finished")
-    LIVE_FINISHED("live_finished"),
-
-    @SerializedName("birthday_invite")
-    BIRTHDAY_INVITE("birthday_invite");
+    LIVE_FINISHED("live_finished");
 
     private final String value;
 

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.responses.SearchConversationsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,18 +16,7 @@ import java.util.List;
  */
 public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<MessagesSearchConversationsQuery, SearchConversationsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesSearchConversationsQuery(VkApiClient client, UserActor actor) {
-        super(client, "messages.searchConversations", SearchConversationsResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -38,11 +28,23 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesSearchConversationsQuery(VkApiClient client, UserActor actor) {
+        super(client, "messages.searchConversations", SearchConversationsResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Search query string.
      *
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public MessagesSearchConversationsQuery q(String value) {
         return unsafeParam("q", value);
     }
@@ -53,16 +55,18 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
      * @param value value of "count" parameter. Maximum is 255. Minimum is 1. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesSearchConversationsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
 
     /**
-     * '1' — return extra information about users and communities
+     * '1' - return extra information about users and communities
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MessagesSearchConversationsQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -70,10 +74,12 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
     /**
      * Group ID (for group messages with user access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesSearchConversationsQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesSearchConversationsQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -84,6 +90,7 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesSearchConversationsQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -94,6 +101,7 @@ public class MessagesSearchConversationsQuery extends AbstractQueryBuilder<Messa
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesSearchConversationsQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

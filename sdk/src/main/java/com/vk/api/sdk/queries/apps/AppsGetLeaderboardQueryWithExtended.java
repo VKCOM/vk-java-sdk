@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.apps;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.apps.GetLeaderboardType;
 import com.vk.api.sdk.objects.apps.responses.GetLeaderboardExtendedResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class AppsGetLeaderboardQueryWithExtended extends AbstractQueryBuilder<AppsGetLeaderboardQueryWithExtended, GetLeaderboardExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -29,31 +30,34 @@ public class AppsGetLeaderboardQueryWithExtended extends AbstractQueryBuilder<Ap
     }
 
     /**
-     * Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
+     * Leaderboard type. Possible values: *'level' - by level,, *'points' - by mission points,, *'score' - by score ().
      *
      * @param value value of "type" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AppsGetLeaderboardQueryWithExtended type(GetLeaderboardType value) {
+    @ApiParam("type")
+    public AppsGetLeaderboardQueryWithExtended type(GetLeaderboardType value) {
         return unsafeParam("type", value);
     }
 
     /**
-     * Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
+     * Rating type. Possible values: *'1' - global rating among all players,, *'0' - rating among user friends.
      *
-     * @param value value of "global" parameter. By default 1.
+     * @param value value of "global" parameter. By default true.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("global")
     public AppsGetLeaderboardQueryWithExtended global(Boolean value) {
         return unsafeParam("global", value);
     }
 
     /**
-     * 1 — to return additional info about users
+     * 1 - to return additional info about users
      *
-     * @param value value of "extended" parameter. By default 0.
+     * @param value value of "extended" parameter. By default false.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected AppsGetLeaderboardQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }

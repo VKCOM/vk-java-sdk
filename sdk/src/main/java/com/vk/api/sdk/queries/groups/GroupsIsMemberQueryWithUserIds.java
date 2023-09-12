@@ -7,6 +7,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.responses.IsMemberUserIdsResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -16,44 +17,15 @@ import java.util.List;
  */
 public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsIsMemberQueryWithUserIds, List<IsMemberUserIdsResponse>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
-     */
-    public GroupsIsMemberQueryWithUserIds(VkApiClient client, UserActor actor, String groupId,
-            Integer... userIds) {
-        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-        userIds(userIds);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * @param groupId value of "group id" parameter. Entity - groups
      *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
-     */
-    public GroupsIsMemberQueryWithUserIds(VkApiClient client, UserActor actor, String groupId,
-            List<Integer> userIds) {
-        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
-        accessToken(actor.getAccessToken());
-        groupId(groupId);
-        userIds(userIds);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
      */
     public GroupsIsMemberQueryWithUserIds(VkApiClient client, GroupActor actor, String groupId,
-            Integer... userIds) {
+            Long... userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -61,14 +33,15 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Entity - groups
+     *
      */
     public GroupsIsMemberQueryWithUserIds(VkApiClient client, GroupActor actor, String groupId,
-            List<Integer> userIds) {
+            List<Long> userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -76,14 +49,47 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Entity - groups
+     *
+     */
+    public GroupsIsMemberQueryWithUserIds(VkApiClient client, UserActor actor, String groupId,
+            Long... userIds) {
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Entity - groups
+     *
+     */
+    public GroupsIsMemberQueryWithUserIds(VkApiClient client, UserActor actor, String groupId,
+            List<Long> userIds) {
+        super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
+        accessToken(actor.getAccessToken());
+        groupId(groupId);
+        userIds(userIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     * @param groupId value of "group id" parameter. Entity - groups
+     *
      */
     public GroupsIsMemberQueryWithUserIds(VkApiClient client, ServiceActor actor, String groupId,
-            Integer... userIds) {
+            Long... userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -92,14 +98,15 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Entity - groups
+     *
      */
     public GroupsIsMemberQueryWithUserIds(VkApiClient client, ServiceActor actor, String groupId,
-            List<Integer> userIds) {
+            List<Long> userIds) {
         super(client, "groups.isMember", Utils.buildParametrizedType(List.class, IsMemberUserIdsResponse.class));
         accessToken(actor.getAccessToken());
         clientSecret(actor.getClientSecret());
@@ -110,41 +117,47 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
     /**
      * ID or screen name of the community.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - groups
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsIsMemberQueryWithUserIds groupId(String value) {
+    @ApiParam("group_id")
+    public GroupsIsMemberQueryWithUserIds groupId(String value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public GroupsIsMemberQueryWithUserIds userId(Integer value) {
+    @ApiParam("user_id")
+    public GroupsIsMemberQueryWithUserIds userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
-     * '1' — to return an extended response with additional fields. By default: '0'.
+     * '1' - to return an extended response with additional fields. By default: '0'.
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public GroupsIsMemberQueryWithUserIds extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * user_ids
+     * userIds
      * User IDs.
      *
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsIsMemberQueryWithUserIds userIds(Integer... value) {
+    @ApiParam("user_ids")
+    protected GroupsIsMemberQueryWithUserIds userIds(Long... value) {
         return unsafeParam("user_ids", value);
     }
 
@@ -154,7 +167,8 @@ public class GroupsIsMemberQueryWithUserIds extends AbstractQueryBuilder<GroupsI
      * @param value value of "user ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsIsMemberQueryWithUserIds userIds(List<Integer> value) {
+    @ApiParam("user_ids")
+    protected GroupsIsMemberQueryWithUserIds userIds(List<Long> value) {
         return unsafeParam("user_ids", value);
     }
 

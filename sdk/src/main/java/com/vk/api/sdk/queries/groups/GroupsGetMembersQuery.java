@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.GetMembersFilter;
 import com.vk.api.sdk.objects.groups.GetMembersSort;
 import com.vk.api.sdk.objects.groups.responses.GetMembersResponse;
@@ -18,18 +19,7 @@ import java.util.List;
  */
 public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembersQuery, GetMembersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public GroupsGetMembersQuery(VkApiClient client, UserActor actor) {
-        super(client, "groups.getMembers", GetMembersResponse.class);
-        accessToken(actor.getAccessToken());
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -40,7 +30,18 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsGetMembersQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.getMembers", GetMembersResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -54,9 +55,11 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
     /**
      * ID or screen name of the community.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - groups
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("group_id")
     public GroupsGetMembersQuery groupId(String value) {
         return unsafeParam("group_id", value);
     }
@@ -67,6 +70,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "sort" parameter. By default id_asc.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public GroupsGetMembersQuery sort(GetMembersSort value) {
         return unsafeParam("sort", value);
     }
@@ -77,6 +81,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public GroupsGetMembersQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -87,6 +92,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "count" parameter. Minimum is 0. By default 1000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public GroupsGetMembersQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -97,6 +103,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public GroupsGetMembersQuery filter(GetMembersFilter value) {
         return unsafeParam("filter", value);
     }
@@ -108,6 +115,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetMembersQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -118,6 +126,7 @@ public class GroupsGetMembersQuery extends AbstractQueryBuilder<GroupsGetMembers
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public GroupsGetMembersQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

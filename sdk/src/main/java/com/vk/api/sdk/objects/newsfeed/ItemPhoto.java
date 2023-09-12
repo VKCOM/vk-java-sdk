@@ -10,6 +10,12 @@ import java.util.Objects;
  * ItemPhoto object
  */
 public class ItemPhoto extends ItemBase implements Validable {
+    /**
+     * Index of current carousel element
+     */
+    @SerializedName("carousel_offset")
+    private Integer carouselOffset;
+
     @SerializedName("photos")
     private ItemPhotoPhotos photos;
 
@@ -18,6 +24,15 @@ public class ItemPhoto extends ItemBase implements Validable {
      */
     @SerializedName("post_id")
     private Integer postId;
+
+    public Integer getCarouselOffset() {
+        return carouselOffset;
+    }
+
+    public ItemPhoto setCarouselOffset(Integer carouselOffset) {
+        this.carouselOffset = carouselOffset;
+        return this;
+    }
 
     public ItemPhotoPhotos getPhotos() {
         return photos;
@@ -39,7 +54,7 @@ public class ItemPhoto extends ItemBase implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, photos);
+        return Objects.hash(carouselOffset, postId, photos);
     }
 
     @Override
@@ -48,7 +63,8 @@ public class ItemPhoto extends ItemBase implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ItemPhoto itemPhoto = (ItemPhoto) o;
         return Objects.equals(postId, itemPhoto.postId) &&
-                Objects.equals(photos, itemPhoto.photos);
+                Objects.equals(photos, itemPhoto.photos) &&
+                Objects.equals(carouselOffset, itemPhoto.carouselOffset);
     }
 
     @Override
@@ -61,6 +77,7 @@ public class ItemPhoto extends ItemBase implements Validable {
         final StringBuilder sb = new StringBuilder("ItemPhoto{");
         sb.append("postId=").append(postId);
         sb.append(", photos=").append(photos);
+        sb.append(", carouselOffset=").append(carouselOffset);
         sb.append('}');
         return sb.toString();
     }

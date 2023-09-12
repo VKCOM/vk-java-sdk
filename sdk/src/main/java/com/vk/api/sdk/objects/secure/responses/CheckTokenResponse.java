@@ -30,9 +30,10 @@ public class CheckTokenResponse implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
 
     public Integer getDate() {
         return date;
@@ -61,11 +62,11 @@ public class CheckTokenResponse implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public CheckTokenResponse setUserId(Integer userId) {
+    public CheckTokenResponse setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

@@ -11,16 +11,11 @@ import java.util.Objects;
  */
 public class MessageRequestData implements Validable {
     /**
-     * Status of message request
-     */
-    @SerializedName("status")
-    private String status;
-
-    /**
      * Message request sender id
+     * Entity: owner
      */
     @SerializedName("inviter_id")
-    private Integer inviterId;
+    private Long inviterId;
 
     /**
      * Message request date
@@ -28,20 +23,17 @@ public class MessageRequestData implements Validable {
     @SerializedName("request_date")
     private Integer requestDate;
 
-    public String getStatus() {
-        return status;
-    }
+    /**
+     * Status of message request
+     */
+    @SerializedName("status")
+    private String status;
 
-    public MessageRequestData setStatus(String status) {
-        this.status = status;
-        return this;
-    }
-
-    public Integer getInviterId() {
+    public Long getInviterId() {
         return inviterId;
     }
 
-    public MessageRequestData setInviterId(Integer inviterId) {
+    public MessageRequestData setInviterId(Long inviterId) {
         this.inviterId = inviterId;
         return this;
     }
@@ -52,6 +44,15 @@ public class MessageRequestData implements Validable {
 
     public MessageRequestData setRequestDate(Integer requestDate) {
         this.requestDate = requestDate;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public MessageRequestData setStatus(String status) {
+        this.status = status;
         return this;
     }
 

@@ -2,38 +2,54 @@
 package com.vk.api.sdk.queries.video;
 
 import com.vk.api.sdk.client.AbstractQueryBuilder;
+import com.vk.api.sdk.client.Utils;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.base.responses.OkResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Video.addToAlbum method
  */
-public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQuery, OkResponse> {
+public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQuery, List<Integer>> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoAddToAlbumQuery(VkApiClient client, UserActor actor, int ownerId, int videoId) {
-        super(client, "video.addToAlbum", OkResponse.class);
+    public VideoAddToAlbumQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer videoId) {
+        super(client, "video.addToAlbum", Utils.buildParametrizedType(List.class, Integer.class));
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
         videoId(videoId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoAddToAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.addToAlbum", Utils.buildParametrizedType(List.class, Integer.class));
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set target id
      *
-     * @param value value of "target id" parameter.
+     * @param value value of "target id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoAddToAlbumQuery targetId(Integer value) {
+    @ApiParam("target_id")
+    public VideoAddToAlbumQuery targetId(Long value) {
         return unsafeParam("target_id", value);
     }
 
@@ -43,6 +59,7 @@ public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQu
      * @param value value of "album id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_id")
     public VideoAddToAlbumQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
@@ -50,10 +67,12 @@ public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQu
     /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoAddToAlbumQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public VideoAddToAlbumQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -63,17 +82,19 @@ public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQu
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoAddToAlbumQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoAddToAlbumQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
     /**
-     * album_ids
+     * albumIds
      * Set album ids
      *
      * @param value value of "album ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_ids")
     public VideoAddToAlbumQuery albumIds(Integer... value) {
         return unsafeParam("album_ids", value);
     }
@@ -84,6 +105,7 @@ public class VideoAddToAlbumQuery extends AbstractQueryBuilder<VideoAddToAlbumQu
      * @param value value of "album ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("album_ids")
     public VideoAddToAlbumQuery albumIds(List<Integer> value) {
         return unsafeParam("album_ids", value);
     }

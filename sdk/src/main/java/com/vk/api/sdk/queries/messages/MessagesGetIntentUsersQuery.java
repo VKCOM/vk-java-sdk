@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.messages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.GetIntentUsersIntent;
 import com.vk.api.sdk.objects.messages.responses.GetIntentUsersResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGetIntentUsersQuery, GetIntentUsersResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,12 +29,24 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetIntentUsersQuery(VkApiClient client, GroupActor actor) {
+        super(client, "messages.getIntentUsers", GetIntentUsersResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set intent
      *
      * @param value value of "intent" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected MessagesGetIntentUsersQuery intent(GetIntentUsersIntent value) {
+    @ApiParam("intent")
+    public MessagesGetIntentUsersQuery intent(GetIntentUsersIntent value) {
         return unsafeParam("intent", value);
     }
 
@@ -43,6 +56,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "subscribe id" parameter. Maximum is 100. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("subscribe_id")
     public MessagesGetIntentUsersQuery subscribeId(Integer value) {
         return unsafeParam("subscribe_id", value);
     }
@@ -53,6 +67,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "offset" parameter. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MessagesGetIntentUsersQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -63,6 +78,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesGetIntentUsersQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -73,17 +89,19 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public MessagesGetIntentUsersQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
 
     /**
-     * name_case
+     * nameCase
      * Set name case
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("name_case")
     public MessagesGetIntentUsersQuery nameCase(String... value) {
         return unsafeParam("name_case", value);
     }
@@ -94,6 +112,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("name_case")
     public MessagesGetIntentUsersQuery nameCase(List<String> value) {
         return unsafeParam("name_case", value);
     }
@@ -105,6 +124,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetIntentUsersQuery fields(String... value) {
         return unsafeParam("fields", value);
     }
@@ -115,6 +135,7 @@ public class MessagesGetIntentUsersQuery extends AbstractQueryBuilder<MessagesGe
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetIntentUsersQuery fields(List<String> value) {
         return unsafeParam("fields", value);
     }

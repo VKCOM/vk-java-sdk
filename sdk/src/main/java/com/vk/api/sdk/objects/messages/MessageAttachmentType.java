@@ -17,6 +17,9 @@ public enum MessageAttachmentType implements EnumParam {
     @SerializedName("video")
     VIDEO("video"),
 
+    @SerializedName("video_playlist")
+    VIDEO_PLAYLIST("video_playlist"),
+
     @SerializedName("doc")
     DOC("doc"),
 

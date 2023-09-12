@@ -14,47 +14,32 @@ import java.util.Objects;
  * Form object
  */
 public class Form implements Validable {
-    @SerializedName("form_id")
-    private Integer formId;
-
-    @SerializedName("group_id")
-    private Integer groupId;
-
-    @SerializedName("photo")
-    private String photo;
-
-    @SerializedName("name")
-    private String name;
-
-    @SerializedName("title")
-    private String title;
-
-    @SerializedName("description")
-    private String description;
+    @SerializedName("active")
+    private BoolInt active;
 
     @SerializedName("confirmation")
     private String confirmation;
 
-    @SerializedName("site_link_url")
-    private URI siteLinkUrl;
+    @SerializedName("description")
+    private String description;
 
-    @SerializedName("policy_link_url")
-    private URI policyLinkUrl;
+    @SerializedName("form_id")
+    @Required
+    private Integer formId;
 
-    @SerializedName("questions")
-    private List<QuestionItem> questions;
-
-    @SerializedName("active")
-    private BoolInt active;
+    /**
+     * Entity: groups
+     */
+    @SerializedName("group_id")
+    @Required
+    private Long groupId;
 
     @SerializedName("leads_count")
+    @Required
     private Integer leadsCount;
 
-    @SerializedName("pixel_code")
-    private String pixelCode;
-
-    @SerializedName("once_per_user")
-    private Integer oncePerUser;
+    @SerializedName("name")
+    private String name;
 
     @SerializedName("notify_admins")
     private String notifyAdmins;
@@ -62,52 +47,45 @@ public class Form implements Validable {
     @SerializedName("notify_emails")
     private String notifyEmails;
 
+    @SerializedName("once_per_user")
+    private Integer oncePerUser;
+
+    @SerializedName("photo")
+    private String photo;
+
+    @SerializedName("pixel_code")
+    private String pixelCode;
+
+    @SerializedName("policy_link_url")
+    private URI policyLinkUrl;
+
+    @SerializedName("questions")
+    private List<QuestionItem> questions;
+
+    @SerializedName("site_link_url")
+    private URI siteLinkUrl;
+
+    @SerializedName("title")
+    private String title;
+
     @SerializedName("url")
     @Required
     private URI url;
 
-    public Integer getFormId() {
-        return formId;
+    public boolean isActive() {
+        return active == BoolInt.YES;
     }
 
-    public Form setFormId(Integer formId) {
-        this.formId = formId;
-        return this;
+    public BoolInt getActive() {
+        return active;
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public String getConfirmation() {
+        return confirmation;
     }
 
-    public Form setGroupId(Integer groupId) {
-        this.groupId = groupId;
-        return this;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public Form setPhoto(String photo) {
-        this.photo = photo;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Form setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Form setTitle(String title) {
-        this.title = title;
+    public Form setConfirmation(String confirmation) {
+        this.confirmation = confirmation;
         return this;
     }
 
@@ -120,48 +98,22 @@ public class Form implements Validable {
         return this;
     }
 
-    public String getConfirmation() {
-        return confirmation;
+    public Integer getFormId() {
+        return formId;
     }
 
-    public Form setConfirmation(String confirmation) {
-        this.confirmation = confirmation;
+    public Form setFormId(Integer formId) {
+        this.formId = formId;
         return this;
     }
 
-    public URI getSiteLinkUrl() {
-        return siteLinkUrl;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public Form setSiteLinkUrl(URI siteLinkUrl) {
-        this.siteLinkUrl = siteLinkUrl;
+    public Form setGroupId(Long groupId) {
+        this.groupId = groupId;
         return this;
-    }
-
-    public URI getPolicyLinkUrl() {
-        return policyLinkUrl;
-    }
-
-    public Form setPolicyLinkUrl(URI policyLinkUrl) {
-        this.policyLinkUrl = policyLinkUrl;
-        return this;
-    }
-
-    public List<QuestionItem> getQuestions() {
-        return questions;
-    }
-
-    public Form setQuestions(List<QuestionItem> questions) {
-        this.questions = questions;
-        return this;
-    }
-
-    public boolean isActive() {
-        return active == BoolInt.YES;
-    }
-
-    public BoolInt getActive() {
-        return active;
     }
 
     public Integer getLeadsCount() {
@@ -173,21 +125,12 @@ public class Form implements Validable {
         return this;
     }
 
-    public String getPixelCode() {
-        return pixelCode;
+    public String getName() {
+        return name;
     }
 
-    public Form setPixelCode(String pixelCode) {
-        this.pixelCode = pixelCode;
-        return this;
-    }
-
-    public Integer getOncePerUser() {
-        return oncePerUser;
-    }
-
-    public Form setOncePerUser(Integer oncePerUser) {
-        this.oncePerUser = oncePerUser;
+    public Form setName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -209,6 +152,69 @@ public class Form implements Validable {
         return this;
     }
 
+    public Integer getOncePerUser() {
+        return oncePerUser;
+    }
+
+    public Form setOncePerUser(Integer oncePerUser) {
+        this.oncePerUser = oncePerUser;
+        return this;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public Form setPhoto(String photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public String getPixelCode() {
+        return pixelCode;
+    }
+
+    public Form setPixelCode(String pixelCode) {
+        this.pixelCode = pixelCode;
+        return this;
+    }
+
+    public URI getPolicyLinkUrl() {
+        return policyLinkUrl;
+    }
+
+    public Form setPolicyLinkUrl(URI policyLinkUrl) {
+        this.policyLinkUrl = policyLinkUrl;
+        return this;
+    }
+
+    public List<QuestionItem> getQuestions() {
+        return questions;
+    }
+
+    public Form setQuestions(List<QuestionItem> questions) {
+        this.questions = questions;
+        return this;
+    }
+
+    public URI getSiteLinkUrl() {
+        return siteLinkUrl;
+    }
+
+    public Form setSiteLinkUrl(URI siteLinkUrl) {
+        this.siteLinkUrl = siteLinkUrl;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Form setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     public URI getUrl() {
         return url;
     }
@@ -220,7 +226,7 @@ public class Form implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(formId, leadsCount, oncePerUser, groupId, questions, photo, description, active, confirmation, title, notifyAdmins, notifyEmails, url, pixelCode, siteLinkUrl, name, policyLinkUrl);
+        return Objects.hash(formId, leadsCount, oncePerUser, groupId, questions, active, description, photo, confirmation, title, notifyAdmins, notifyEmails, url, pixelCode, siteLinkUrl, name, policyLinkUrl);
     }
 
     @Override
@@ -230,15 +236,15 @@ public class Form implements Validable {
         Form form = (Form) o;
         return Objects.equals(formId, form.formId) &&
                 Objects.equals(questions, form.questions) &&
-                Objects.equals(photo, form.photo) &&
-                Objects.equals(description, form.description) &&
-                Objects.equals(siteLinkUrl, form.siteLinkUrl) &&
                 Objects.equals(active, form.active) &&
+                Objects.equals(description, form.description) &&
+                Objects.equals(photo, form.photo) &&
+                Objects.equals(siteLinkUrl, form.siteLinkUrl) &&
                 Objects.equals(notifyAdmins, form.notifyAdmins) &&
                 Objects.equals(confirmation, form.confirmation) &&
-                Objects.equals(title, form.title) &&
-                Objects.equals(pixelCode, form.pixelCode) &&
                 Objects.equals(oncePerUser, form.oncePerUser) &&
+                Objects.equals(pixelCode, form.pixelCode) &&
+                Objects.equals(title, form.title) &&
                 Objects.equals(url, form.url) &&
                 Objects.equals(leadsCount, form.leadsCount) &&
                 Objects.equals(notifyEmails, form.notifyEmails) &&
@@ -257,15 +263,15 @@ public class Form implements Validable {
         final StringBuilder sb = new StringBuilder("Form{");
         sb.append("formId=").append(formId);
         sb.append(", questions=").append(questions);
-        sb.append(", photo='").append(photo).append("'");
-        sb.append(", description='").append(description).append("'");
-        sb.append(", siteLinkUrl=").append(siteLinkUrl);
         sb.append(", active=").append(active);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", photo='").append(photo).append("'");
+        sb.append(", siteLinkUrl=").append(siteLinkUrl);
         sb.append(", notifyAdmins='").append(notifyAdmins).append("'");
         sb.append(", confirmation='").append(confirmation).append("'");
-        sb.append(", title='").append(title).append("'");
-        sb.append(", pixelCode='").append(pixelCode).append("'");
         sb.append(", oncePerUser=").append(oncePerUser);
+        sb.append(", pixelCode='").append(pixelCode).append("'");
+        sb.append(", title='").append(title).append("'");
         sb.append(", url=").append(url);
         sb.append(", leadsCount=").append(leadsCount);
         sb.append(", notifyEmails='").append(notifyEmails).append("'");

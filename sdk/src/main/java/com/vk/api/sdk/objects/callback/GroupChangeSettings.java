@@ -12,21 +12,16 @@ import java.util.Objects;
  * GroupChangeSettings object
  */
 public class GroupChangeSettings implements Validable {
-    @SerializedName("user_id")
-    private Integer userId;
-
     @SerializedName("self")
     @Required
     private BoolInt self;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public GroupChangeSettings setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
+    /**
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    @Required
+    private Long userId;
 
     public boolean isSelf() {
         return self == BoolInt.YES;
@@ -34,6 +29,15 @@ public class GroupChangeSettings implements Validable {
 
     public BoolInt getSelf() {
         return self;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public GroupChangeSettings setUserId(Long userId) {
+        this.userId = userId;
+        return this;
     }
 
     @Override

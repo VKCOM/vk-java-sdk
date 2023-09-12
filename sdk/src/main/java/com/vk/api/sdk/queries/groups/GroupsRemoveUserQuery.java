@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class GroupsRemoveUserQuery extends AbstractQueryBuilder<GroupsRemoveUserQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter. Minimum is 1.
-     * @param userId value of "user id" parameter. Minimum is 1.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
+     * @param userId value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      */
-    public GroupsRemoveUserQuery(VkApiClient client, UserActor actor, int groupId, int userId) {
+    public GroupsRemoveUserQuery(VkApiClient client, UserActor actor, Long groupId, Long userId) {
         super(client, "groups.removeUser", OkResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,22 +31,37 @@ public class GroupsRemoveUserQuery extends AbstractQueryBuilder<GroupsRemoveUser
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsRemoveUserQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.removeUser", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID.
      *
-     * @param value value of "group id" parameter. Minimum is 1.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsRemoveUserQuery groupId(int value) {
+    @ApiParam("group_id")
+    public GroupsRemoveUserQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 1.
+     * @param value value of "user id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsRemoveUserQuery userId(int value) {
+    @ApiParam("user_id")
+    public GroupsRemoveUserQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 

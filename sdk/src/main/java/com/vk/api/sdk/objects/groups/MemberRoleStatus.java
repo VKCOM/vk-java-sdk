@@ -18,7 +18,10 @@ public enum MemberRoleStatus implements EnumParam {
     ADMINISTRATOR("administrator"),
 
     @SerializedName("creator")
-    CREATOR("creator");
+    CREATOR("creator"),
+
+    @SerializedName("advertiser")
+    ADVERTISER("advertiser");
 
     private final String value;
 

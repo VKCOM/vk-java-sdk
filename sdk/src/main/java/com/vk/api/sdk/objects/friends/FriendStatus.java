@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.friends;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Objects;
  */
 public class FriendStatus implements Validable {
     @SerializedName("friend_status")
+    @Required
     private FriendStatusStatus friendStatus;
 
     /**
@@ -21,9 +23,11 @@ public class FriendStatus implements Validable {
 
     /**
      * User ID
+     * Entity: owner
      */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     public FriendStatusStatus getFriendStatus() {
         return friendStatus;
@@ -43,11 +47,11 @@ public class FriendStatus implements Validable {
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public FriendStatus setUserId(Integer userId) {
+    public FriendStatus setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

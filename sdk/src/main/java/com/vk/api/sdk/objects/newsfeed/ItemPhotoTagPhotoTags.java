@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.newsfeed;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.photos.Photo;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class ItemPhotoTagPhotoTags implements Validable {
     private Integer count;
 
     @SerializedName("items")
-    private List<NewsfeedPhoto> items;
+    private List<Photo> items;
 
     public Integer getCount() {
         return count;
@@ -29,11 +30,11 @@ public class ItemPhotoTagPhotoTags implements Validable {
         return this;
     }
 
-    public List<NewsfeedPhoto> getItems() {
+    public List<Photo> getItems() {
         return items;
     }
 
-    public ItemPhotoTagPhotoTags setItems(List<NewsfeedPhoto> items) {
+    public ItemPhotoTagPhotoTags setItems(List<Photo> items) {
         this.items = items;
         return this;
     }

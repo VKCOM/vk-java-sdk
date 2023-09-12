@@ -4,33 +4,35 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
-import com.vk.api.sdk.objects.newsfeed.Filters;
-import com.vk.api.sdk.objects.newsfeed.responses.GetResponse;
+import com.vk.api.sdk.objects.newsfeed.NewsfeedItemType;
+import com.vk.api.sdk.objects.newsfeed.responses.GenericResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Newsfeed.get method
  */
-public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, GetResponse> {
+public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, GenericResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      */
     public NewsfeedGetQuery(VkApiClient client, UserActor actor) {
-        super(client, "newsfeed.get", GetResponse.class);
+        super(client, "newsfeed.get", GenericResponse.class);
         accessToken(actor.getAccessToken());
     }
 
     /**
-     * '1' — to return news items from banned sources
+     * '1' - to return news items from banned sources
      *
      * @param value value of "return banned" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_banned")
     public NewsfeedGetQuery returnBanned(Boolean value) {
         return unsafeParam("return_banned", value);
     }
@@ -41,6 +43,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public NewsfeedGetQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -51,6 +54,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public NewsfeedGetQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -61,6 +65,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "max photos" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("max_photos")
     public NewsfeedGetQuery maxPhotos(Integer value) {
         return unsafeParam("max_photos", value);
     }
@@ -71,6 +76,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("source_ids")
     public NewsfeedGetQuery sourceIds(String value) {
         return unsafeParam("source_ids", value);
     }
@@ -81,6 +87,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_from")
     public NewsfeedGetQuery startFrom(String value) {
         return unsafeParam("start_from", value);
     }
@@ -91,6 +98,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "count" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedGetQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -101,28 +109,31 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "section" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("section")
     public NewsfeedGetQuery section(String value) {
         return unsafeParam("section", value);
     }
 
     /**
      * filters
-     * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
+     * Filters to apply: 'post' - new wall posts, 'photo' - new photos, 'photo_tag' - new photo tags, 'wall_photo' - new wall photos, 'friend' - new friends
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery filters(Filters... value) {
+    @ApiParam("filters")
+    public NewsfeedGetQuery filters(NewsfeedItemType... value) {
         return unsafeParam("filters", value);
     }
 
     /**
-     * Filters to apply: 'post' — new wall posts, 'photo' — new photos, 'photo_tag' — new photo tags, 'wall_photo' — new wall photos, 'friend' — new friends
+     * Filters to apply: 'post' - new wall posts, 'photo' - new photos, 'photo_tag' - new photo tags, 'wall_photo' - new wall photos, 'friend' - new friends
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedGetQuery filters(List<Filters> value) {
+    @ApiParam("filters")
+    public NewsfeedGetQuery filters(List<NewsfeedItemType> value) {
         return unsafeParam("filters", value);
     }
 
@@ -133,6 +144,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -143,6 +155,7 @@ public class NewsfeedGetQuery extends AbstractQueryBuilder<NewsfeedGetQuery, Get
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

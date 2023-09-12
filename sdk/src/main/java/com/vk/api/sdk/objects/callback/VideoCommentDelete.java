@@ -15,13 +15,22 @@ public class VideoCommentDelete implements Validable {
     @Required
     private Integer id;
 
+    /**
+     * Entity: owner
+     */
     @SerializedName("owner_id")
-    private Integer ownerId;
+    @Required
+    private Long ownerId;
 
+    /**
+     * Entity: owner
+     */
     @SerializedName("user_id")
-    private Integer userId;
+    @Required
+    private Long userId;
 
     @SerializedName("video_id")
+    @Required
     private Integer videoId;
 
     public Integer getId() {
@@ -33,20 +42,20 @@ public class VideoCommentDelete implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
+    public Long getOwnerId() {
         return ownerId;
     }
 
-    public VideoCommentDelete setOwnerId(Integer ownerId) {
+    public VideoCommentDelete setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public VideoCommentDelete setUserId(Integer userId) {
+    public VideoCommentDelete setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

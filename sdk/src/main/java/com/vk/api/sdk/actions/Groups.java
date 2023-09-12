@@ -6,6 +6,7 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.objects.groups.GetMembersFilter;
 import com.vk.api.sdk.objects.groups.TagBindAct;
 import com.vk.api.sdk.objects.groups.ToggleMarketState;
@@ -28,13 +29,12 @@ import com.vk.api.sdk.queries.groups.GroupsEditQuery;
 import com.vk.api.sdk.queries.groups.GroupsEnableOnlineQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetAddressesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetBannedQuery;
-import com.vk.api.sdk.queries.groups.GroupsGetByIdQueryWithObjectLegacy;
+import com.vk.api.sdk.queries.groups.GroupsGetByIdQueryWithObject;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackConfirmationCodeQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackServersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCallbackSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCatalogInfoQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetCatalogInfoQueryWithExtended;
-import com.vk.api.sdk.queries.groups.GroupsGetCatalogQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitedUsersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetInvitesQueryWithExtended;
@@ -43,6 +43,7 @@ import com.vk.api.sdk.queries.groups.GroupsGetLongPollSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFields;
 import com.vk.api.sdk.queries.groups.GroupsGetMembersQueryWithFilter;
+import com.vk.api.sdk.queries.groups.GroupsGetOnlineStatusQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetQueryWithObjectExtended;
 import com.vk.api.sdk.queries.groups.GroupsGetRequestsQuery;
@@ -51,6 +52,7 @@ import com.vk.api.sdk.queries.groups.GroupsGetSettingsQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetTagListQuery;
 import com.vk.api.sdk.queries.groups.GroupsGetTokenPermissionsQuery;
 import com.vk.api.sdk.queries.groups.GroupsInviteQuery;
+import com.vk.api.sdk.queries.groups.GroupsInviteQueryWithUserIdsList;
 import com.vk.api.sdk.queries.groups.GroupsIsMemberQuery;
 import com.vk.api.sdk.queries.groups.GroupsIsMemberQueryWithExtended;
 import com.vk.api.sdk.queries.groups.GroupsIsMemberQueryWithUserIds;
@@ -85,293 +87,560 @@ public class Groups extends AbstractAction {
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param title
      * @param address
-     * @param countryId
      * @param cityId
      * @param latitude
      * @param longitude
      * @return query
      */
-    public GroupsAddAddressQuery addAddress(UserActor actor, int groupId, String title,
-            String address, int countryId, int cityId, double latitude, double longitude) {
-        return new GroupsAddAddressQuery(getClient(), actor, groupId, title, address, countryId, cityId, latitude, longitude);
+    @ApiMethod("groups.addAddress")
+    public GroupsAddAddressQuery addAddress(UserActor actor, Long groupId, String title,
+            String address, Integer cityId, Number latitude, Number longitude) {
+        return new GroupsAddAddressQuery(getClient(), actor, groupId, title, address, cityId, latitude, longitude);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.addAddress")
+    public GroupsAddAddressQuery addAddress(UserActor actor) {
+        return new GroupsAddAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param title
      * @param address
-     * @param countryId
      * @param cityId
      * @param latitude
      * @param longitude
      * @return query
      */
-    public GroupsAddAddressQuery addAddress(GroupActor actor, int groupId, String title,
-            String address, int countryId, int cityId, double latitude, double longitude) {
-        return new GroupsAddAddressQuery(getClient(), actor, groupId, title, address, countryId, cityId, latitude, longitude);
+    @ApiMethod("groups.addAddress")
+    public GroupsAddAddressQuery addAddress(GroupActor actor, Long groupId, String title,
+            String address, Integer cityId, Number latitude, Number longitude) {
+        return new GroupsAddAddressQuery(getClient(), actor, groupId, title, address, cityId, latitude, longitude);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.addAddress")
+    public GroupsAddAddressQuery addAddress(GroupActor actor) {
+        return new GroupsAddAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param url
      * @param title
      * @return query
      */
-    public GroupsAddCallbackServerQuery addCallbackServer(UserActor actor, int groupId, String url,
+    @ApiMethod("groups.addCallbackServer")
+    public GroupsAddCallbackServerQuery addCallbackServer(UserActor actor, Long groupId, String url,
             String title) {
         return new GroupsAddCallbackServerQuery(getClient(), actor, groupId, url, title);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.addCallbackServer")
+    public GroupsAddCallbackServerQuery addCallbackServer(UserActor actor) {
+        return new GroupsAddCallbackServerQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param url
      * @param title
      * @return query
      */
-    public GroupsAddCallbackServerQuery addCallbackServer(GroupActor actor, int groupId, String url,
-            String title) {
+    @ApiMethod("groups.addCallbackServer")
+    public GroupsAddCallbackServerQuery addCallbackServer(GroupActor actor, Long groupId,
+            String url, String title) {
         return new GroupsAddCallbackServerQuery(getClient(), actor, groupId, url, title);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.addCallbackServer")
+    public GroupsAddCallbackServerQuery addCallbackServer(GroupActor actor) {
+        return new GroupsAddCallbackServerQuery(getClient(), actor);
     }
 
     /**
      * Allows to add a link to the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param link Link URL.
      * @return query
      */
-    public GroupsAddLinkQuery addLink(UserActor actor, int groupId, String link) {
+    @ApiMethod("groups.addLink")
+    public GroupsAddLinkQuery addLink(UserActor actor, Long groupId, String link) {
         return new GroupsAddLinkQuery(getClient(), actor, groupId, link);
+    }
+
+    /**
+     * Allows to add a link to the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.addLink")
+    public GroupsAddLinkQuery addLink(UserActor actor) {
+        return new GroupsAddLinkQuery(getClient(), actor);
     }
 
     /**
      * Allows to approve join request to the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param userId User ID.
      * @return query
      */
-    public GroupsApproveRequestQuery approveRequest(UserActor actor, int groupId, int userId) {
+    @ApiMethod("groups.approveRequest")
+    public GroupsApproveRequestQuery approveRequest(UserActor actor, Long groupId, Long userId) {
         return new GroupsApproveRequestQuery(getClient(), actor, groupId, userId);
     }
 
     /**
-     * @param actor vk actor
+     * Allows to approve join request to the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.approveRequest")
+    public GroupsApproveRequestQuery approveRequest(UserActor actor) {
+        return new GroupsApproveRequestQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsBanQuery ban(UserActor actor, int groupId) {
+    @ApiMethod("groups.ban")
+    public GroupsBanQuery ban(UserActor actor, Long groupId) {
         return new GroupsBanQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.ban")
+    public GroupsBanQuery ban(UserActor actor) {
+        return new GroupsBanQuery(getClient(), actor);
     }
 
     /**
      * Creates a new community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param title Community title.
      * @return query
      */
+    @ApiMethod("groups.create")
     public GroupsCreateQuery create(UserActor actor, String title) {
         return new GroupsCreateQuery(getClient(), actor, title);
     }
 
     /**
-     * @param actor vk actor
+     * Creates a new community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.create")
+    public GroupsCreateQuery create(UserActor actor) {
+        return new GroupsCreateQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param addressId
      * @return query
      */
-    public GroupsDeleteAddressQuery deleteAddress(UserActor actor, int groupId, int addressId) {
+    @ApiMethod("groups.deleteAddress")
+    public GroupsDeleteAddressQuery deleteAddress(UserActor actor, Long groupId,
+            Integer addressId) {
         return new GroupsDeleteAddressQuery(getClient(), actor, groupId, addressId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.deleteAddress")
+    public GroupsDeleteAddressQuery deleteAddress(UserActor actor) {
+        return new GroupsDeleteAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param addressId
      * @return query
      */
-    public GroupsDeleteAddressQuery deleteAddress(GroupActor actor, int groupId, int addressId) {
+    @ApiMethod("groups.deleteAddress")
+    public GroupsDeleteAddressQuery deleteAddress(GroupActor actor, Long groupId,
+            Integer addressId) {
         return new GroupsDeleteAddressQuery(getClient(), actor, groupId, addressId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.deleteAddress")
+    public GroupsDeleteAddressQuery deleteAddress(GroupActor actor) {
+        return new GroupsDeleteAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param serverId
      * @return query
      */
-    public GroupsDeleteCallbackServerQuery deleteCallbackServer(UserActor actor, int groupId,
-            int serverId) {
+    @ApiMethod("groups.deleteCallbackServer")
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(UserActor actor, Long groupId,
+            Integer serverId) {
         return new GroupsDeleteCallbackServerQuery(getClient(), actor, groupId, serverId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.deleteCallbackServer")
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(UserActor actor) {
+        return new GroupsDeleteCallbackServerQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param serverId
      * @return query
      */
-    public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor, int groupId,
-            int serverId) {
+    @ApiMethod("groups.deleteCallbackServer")
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor, Long groupId,
+            Integer serverId) {
         return new GroupsDeleteCallbackServerQuery(getClient(), actor, groupId, serverId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.deleteCallbackServer")
+    public GroupsDeleteCallbackServerQuery deleteCallbackServer(GroupActor actor) {
+        return new GroupsDeleteCallbackServerQuery(getClient(), actor);
     }
 
     /**
      * Allows to delete a link from the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param linkId Link ID.
      * @return query
      */
-    public GroupsDeleteLinkQuery deleteLink(UserActor actor, int groupId, int linkId) {
+    @ApiMethod("groups.deleteLink")
+    public GroupsDeleteLinkQuery deleteLink(UserActor actor, Long groupId, Integer linkId) {
         return new GroupsDeleteLinkQuery(getClient(), actor, groupId, linkId);
     }
 
     /**
-     * @param actor vk actor
+     * Allows to delete a link from the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.deleteLink")
+    public GroupsDeleteLinkQuery deleteLink(UserActor actor) {
+        return new GroupsDeleteLinkQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsDisableOnlineQuery disableOnline(UserActor actor, int groupId) {
+    @ApiMethod("groups.disableOnline")
+    public GroupsDisableOnlineQuery disableOnline(UserActor actor, Long groupId) {
         return new GroupsDisableOnlineQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.disableOnline")
+    public GroupsDisableOnlineQuery disableOnline(UserActor actor) {
+        return new GroupsDisableOnlineQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @return query
      */
-    public GroupsDisableOnlineQuery disableOnline(GroupActor actor, int groupId) {
+    @ApiMethod("groups.disableOnline")
+    public GroupsDisableOnlineQuery disableOnline(GroupActor actor, Long groupId) {
         return new GroupsDisableOnlineQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.disableOnline")
+    public GroupsDisableOnlineQuery disableOnline(GroupActor actor) {
+        return new GroupsDisableOnlineQuery(getClient(), actor);
     }
 
     /**
      * Edits a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsEditQuery edit(UserActor actor, int groupId) {
+    @ApiMethod("groups.edit")
+    public GroupsEditQuery edit(UserActor actor, Long groupId) {
         return new GroupsEditQuery(getClient(), actor, groupId);
     }
 
     /**
      * Edits a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.edit")
+    public GroupsEditQuery edit(UserActor actor) {
+        return new GroupsEditQuery(getClient(), actor);
+    }
+
+    /**
+     * Edits a community.
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsEditQuery edit(GroupActor actor, int groupId) {
+    @ApiMethod("groups.edit")
+    public GroupsEditQuery edit(GroupActor actor, Long groupId) {
         return new GroupsEditQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * Edits a community.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.edit")
+    public GroupsEditQuery edit(GroupActor actor) {
+        return new GroupsEditQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param addressId
      * @return query
      */
-    public GroupsEditAddressQuery editAddress(UserActor actor, int groupId, int addressId) {
+    @ApiMethod("groups.editAddress")
+    public GroupsEditAddressQuery editAddress(UserActor actor, Long groupId, Integer addressId) {
         return new GroupsEditAddressQuery(getClient(), actor, groupId, addressId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editAddress")
+    public GroupsEditAddressQuery editAddress(UserActor actor) {
+        return new GroupsEditAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param addressId
      * @return query
      */
-    public GroupsEditAddressQuery editAddress(GroupActor actor, int groupId, int addressId) {
+    @ApiMethod("groups.editAddress")
+    public GroupsEditAddressQuery editAddress(GroupActor actor, Long groupId, Integer addressId) {
         return new GroupsEditAddressQuery(getClient(), actor, groupId, addressId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editAddress")
+    public GroupsEditAddressQuery editAddress(GroupActor actor) {
+        return new GroupsEditAddressQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param serverId
      * @param url
      * @param title
      * @return query
      */
-    public GroupsEditCallbackServerQuery editCallbackServer(UserActor actor, int groupId,
-            int serverId, String url, String title) {
+    @ApiMethod("groups.editCallbackServer")
+    public GroupsEditCallbackServerQuery editCallbackServer(UserActor actor, Long groupId,
+            Integer serverId, String url, String title) {
         return new GroupsEditCallbackServerQuery(getClient(), actor, groupId, serverId, url, title);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editCallbackServer")
+    public GroupsEditCallbackServerQuery editCallbackServer(UserActor actor) {
+        return new GroupsEditCallbackServerQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @param serverId
      * @param url
      * @param title
      * @return query
      */
-    public GroupsEditCallbackServerQuery editCallbackServer(GroupActor actor, int groupId,
-            int serverId, String url, String title) {
+    @ApiMethod("groups.editCallbackServer")
+    public GroupsEditCallbackServerQuery editCallbackServer(GroupActor actor, Long groupId,
+            Integer serverId, String url, String title) {
         return new GroupsEditCallbackServerQuery(getClient(), actor, groupId, serverId, url, title);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editCallbackServer")
+    public GroupsEditCallbackServerQuery editCallbackServer(GroupActor actor) {
+        return new GroupsEditCallbackServerQuery(getClient(), actor);
     }
 
     /**
      * Allows to edit a link in the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param linkId Link ID.
      * @return query
      */
-    public GroupsEditLinkQuery editLink(UserActor actor, int groupId, int linkId) {
+    @ApiMethod("groups.editLink")
+    public GroupsEditLinkQuery editLink(UserActor actor, Long groupId, Integer linkId) {
         return new GroupsEditLinkQuery(getClient(), actor, groupId, linkId);
+    }
+
+    /**
+     * Allows to edit a link in the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editLink")
+    public GroupsEditLinkQuery editLink(UserActor actor) {
+        return new GroupsEditLinkQuery(getClient(), actor);
     }
 
     /**
      * Allows to add, remove or edit the community manager.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param userId User ID.
      * @return query
      */
-    public GroupsEditManagerQuery editManager(UserActor actor, int groupId, int userId) {
+    @ApiMethod("groups.editManager")
+    public GroupsEditManagerQuery editManager(UserActor actor, Long groupId, Long userId) {
         return new GroupsEditManagerQuery(getClient(), actor, groupId, userId);
     }
 
     /**
-     * @param actor vk actor
+     * Allows to add, remove or edit the community manager.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.editManager")
+    public GroupsEditManagerQuery editManager(UserActor actor) {
+        return new GroupsEditManagerQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsEnableOnlineQuery enableOnline(UserActor actor, int groupId) {
+    @ApiMethod("groups.enableOnline")
+    public GroupsEnableOnlineQuery enableOnline(UserActor actor, Long groupId) {
         return new GroupsEnableOnlineQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.enableOnline")
+    public GroupsEnableOnlineQuery enableOnline(UserActor actor) {
+        return new GroupsEnableOnlineQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @return query
      */
-    public GroupsEnableOnlineQuery enableOnline(GroupActor actor, int groupId) {
+    @ApiMethod("groups.enableOnline")
+    public GroupsEnableOnlineQuery enableOnline(GroupActor actor, Long groupId) {
         return new GroupsEnableOnlineQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.enableOnline")
+    public GroupsEnableOnlineQuery enableOnline(GroupActor actor) {
+        return new GroupsEnableOnlineQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of the communities to which a user belongs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.get")
     public GroupsGetQuery get(UserActor actor) {
         return new GroupsGetQuery(getClient(), actor);
     }
@@ -379,9 +648,10 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of the communities to which a user belongs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.get")
     public GroupsGetQueryWithObjectExtended getObjectExtended(UserActor actor) {
         return new GroupsGetQueryWithObjectExtended(getClient(), actor);
     }
@@ -389,157 +659,267 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community addresses.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
-    public GroupsGetAddressesQuery getAddresses(UserActor actor, int groupId) {
+    @ApiMethod("groups.getAddresses")
+    public GroupsGetAddressesQuery getAddresses(UserActor actor, Long groupId) {
         return new GroupsGetAddressesQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns a list of community addresses.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getAddresses")
+    public GroupsGetAddressesQuery getAddresses(UserActor actor) {
+        return new GroupsGetAddressesQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of community addresses.
+     *
+     * @param actor vk service actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
-    public GroupsGetAddressesQuery getAddresses(ServiceActor actor, int groupId) {
+    @ApiMethod("groups.getAddresses")
+    public GroupsGetAddressesQuery getAddresses(ServiceActor actor, Long groupId) {
         return new GroupsGetAddressesQuery(getClient(), actor, groupId);
     }
 
     /**
+     * Returns a list of community addresses.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getAddresses")
+    public GroupsGetAddressesQuery getAddresses(ServiceActor actor) {
+        return new GroupsGetAddressesQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a list of users on a community blacklist.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetBannedQuery getBanned(UserActor actor, int groupId) {
+    @ApiMethod("groups.getBanned")
+    public GroupsGetBannedQuery getBanned(UserActor actor, Long groupId) {
         return new GroupsGetBannedQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns a list of users on a community blacklist.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getBanned")
+    public GroupsGetBannedQuery getBanned(UserActor actor) {
+        return new GroupsGetBannedQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns a list of users on a community blacklist.
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetBannedQuery getBanned(GroupActor actor, int groupId) {
+    @ApiMethod("groups.getBanned")
+    public GroupsGetBannedQuery getBanned(GroupActor actor, Long groupId) {
         return new GroupsGetBannedQuery(getClient(), actor, groupId);
     }
 
     /**
-     * Returns information about communities by their IDs.
+     * Returns a list of users on a community blacklist.
      *
-     * @param actor vk actor
-     * @return query
+     * @param actor vk group actor
+     * @return only actor query 
      */
-    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(UserActor actor) {
-        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
+    @ApiMethod("groups.getBanned")
+    public GroupsGetBannedQuery getBanned(GroupActor actor) {
+        return new GroupsGetBannedQuery(getClient(), actor);
     }
 
     /**
      * Returns information about communities by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
-    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(GroupActor actor) {
-        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
+    @ApiMethod("groups.getById")
+    public GroupsGetByIdQueryWithObject getByIdObject(UserActor actor) {
+        return new GroupsGetByIdQueryWithObject(getClient(), actor);
     }
 
     /**
      * Returns information about communities by their IDs.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
-    public GroupsGetByIdQueryWithObjectLegacy getByIdObjectLegacy(ServiceActor actor) {
-        return new GroupsGetByIdQueryWithObjectLegacy(getClient(), actor);
+    @ApiMethod("groups.getById")
+    public GroupsGetByIdQueryWithObject getByIdObject(GroupActor actor) {
+        return new GroupsGetByIdQueryWithObject(getClient(), actor);
+    }
+
+    /**
+     * Returns information about communities by their IDs.
+     *
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("groups.getById")
+    public GroupsGetByIdQueryWithObject getByIdObject(ServiceActor actor) {
+        return new GroupsGetByIdQueryWithObject(getClient(), actor);
     }
 
     /**
      * Returns Callback API confirmation code for the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
+    @ApiMethod("groups.getCallbackConfirmationCode")
     public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(UserActor actor,
-            int groupId) {
+            Long groupId) {
         return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns Callback API confirmation code for the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getCallbackConfirmationCode")
+    public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(UserActor actor) {
+        return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns Callback API confirmation code for the community.
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
+    @ApiMethod("groups.getCallbackConfirmationCode")
     public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(GroupActor actor,
-            int groupId) {
+            Long groupId) {
         return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * Returns Callback API confirmation code for the community.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getCallbackConfirmationCode")
+    public GroupsGetCallbackConfirmationCodeQuery getCallbackConfirmationCode(GroupActor actor) {
+        return new GroupsGetCallbackConfirmationCodeQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsGetCallbackServersQuery getCallbackServers(UserActor actor, int groupId) {
+    @ApiMethod("groups.getCallbackServers")
+    public GroupsGetCallbackServersQuery getCallbackServers(UserActor actor, Long groupId) {
         return new GroupsGetCallbackServersQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getCallbackServers")
+    public GroupsGetCallbackServersQuery getCallbackServers(UserActor actor) {
+        return new GroupsGetCallbackServersQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @return query
      */
-    public GroupsGetCallbackServersQuery getCallbackServers(GroupActor actor, int groupId) {
+    @ApiMethod("groups.getCallbackServers")
+    public GroupsGetCallbackServersQuery getCallbackServers(GroupActor actor, Long groupId) {
         return new GroupsGetCallbackServersQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getCallbackServers")
+    public GroupsGetCallbackServersQuery getCallbackServers(GroupActor actor) {
+        return new GroupsGetCallbackServersQuery(getClient(), actor);
     }
 
     /**
      * Returns [vk.com/dev/callback_api|Callback API] notifications settings.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.getCallbackSettings")
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor, Long groupId) {
         return new GroupsGetCallbackSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns [vk.com/dev/callback_api|Callback API] notifications settings.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getCallbackSettings")
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(UserActor actor) {
+        return new GroupsGetCallbackSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns [vk.com/dev/callback_api|Callback API] notifications settings.
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor, int groupId) {
+    @ApiMethod("groups.getCallbackSettings")
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor, Long groupId) {
         return new GroupsGetCallbackSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
-     * Returns communities list for a catalog category.
+     * Returns [vk.com/dev/callback_api|Callback API] notifications settings.
      *
-     * @param actor vk actor
-     * @return query
+     * @param actor vk group actor
+     * @return only actor query 
      */
-    public GroupsGetCatalogQuery getCatalog(UserActor actor) {
-        return new GroupsGetCatalogQuery(getClient(), actor);
+    @ApiMethod("groups.getCallbackSettings")
+    public GroupsGetCallbackSettingsQuery getCallbackSettings(GroupActor actor) {
+        return new GroupsGetCallbackSettingsQuery(getClient(), actor);
     }
 
     /**
      * Returns categories list for communities catalog
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.getCatalogInfo")
     public GroupsGetCatalogInfoQueryWithExtended getCatalogInfoExtended(UserActor actor) {
         return new GroupsGetCatalogInfoQueryWithExtended(getClient(), actor);
     }
@@ -547,9 +927,10 @@ public class Groups extends AbstractAction {
     /**
      * Returns categories list for communities catalog
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.getCatalogInfo")
     public GroupsGetCatalogInfoQuery getCatalogInfo(UserActor actor) {
         return new GroupsGetCatalogInfoQuery(getClient(), actor);
     }
@@ -557,20 +938,33 @@ public class Groups extends AbstractAction {
     /**
      * Returns invited users list of a community
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Group ID to return invited users for.
      * @return query
      */
-    public GroupsGetInvitedUsersQuery getInvitedUsers(UserActor actor, int groupId) {
+    @ApiMethod("groups.getInvitedUsers")
+    public GroupsGetInvitedUsersQuery getInvitedUsers(UserActor actor, Long groupId) {
         return new GroupsGetInvitedUsersQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns invited users list of a community
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getInvitedUsers")
+    public GroupsGetInvitedUsersQuery getInvitedUsers(UserActor actor) {
+        return new GroupsGetInvitedUsersQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of invitations to join communities and events.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.getInvites")
     public GroupsGetInvitesQuery getInvites(UserActor actor) {
         return new GroupsGetInvitesQuery(getClient(), actor);
     }
@@ -578,9 +972,10 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of invitations to join communities and events.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.getInvites")
     public GroupsGetInvitesQueryWithExtended getInvitesExtended(UserActor actor) {
         return new GroupsGetInvitesQueryWithExtended(getClient(), actor);
     }
@@ -588,53 +983,102 @@ public class Groups extends AbstractAction {
     /**
      * Returns the data needed to query a Long Poll server for events
      *
-     * @param actor vk actor
-     * @param groupId Community ID
+     * @param actor vk user actor
+     * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, int groupId) {
+    @ApiMethod("groups.getLongPollServer")
+    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor, Long groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns the data needed to query a Long Poll server for events
      *
-     * @param actor vk actor
-     * @param groupId Community ID
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getLongPollServer")
+    public GroupsGetLongPollServerQuery getLongPollServer(UserActor actor) {
+        return new GroupsGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns the data needed to query a Long Poll server for events
+     *
+     * @param actor vk group actor
+     * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor, int groupId) {
+    @ApiMethod("groups.getLongPollServer")
+    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor, Long groupId) {
         return new GroupsGetLongPollServerQuery(getClient(), actor, groupId);
     }
 
     /**
+     * Returns the data needed to query a Long Poll server for events
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getLongPollServer")
+    public GroupsGetLongPollServerQuery getLongPollServer(GroupActor actor) {
+        return new GroupsGetLongPollServerQuery(getClient(), actor);
+    }
+
+    /**
      * Returns Long Poll notification settings
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.getLongPollSettings")
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor, Long groupId) {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Returns Long Poll notification settings
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getLongPollSettings")
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(UserActor actor) {
+        return new GroupsGetLongPollSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns Long Poll notification settings
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor, int groupId) {
+    @ApiMethod("groups.getLongPollSettings")
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor, Long groupId) {
         return new GroupsGetLongPollSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns Long Poll notification settings
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getLongPollSettings")
+    public GroupsGetLongPollSettingsQuery getLongPollSettings(GroupActor actor) {
+        return new GroupsGetLongPollSettingsQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQuery getMembers(UserActor actor) {
         return new GroupsGetMembersQuery(getClient(), actor);
     }
@@ -642,9 +1086,10 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQuery getMembers(GroupActor actor) {
         return new GroupsGetMembersQuery(getClient(), actor);
     }
@@ -652,9 +1097,10 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQuery getMembers(ServiceActor actor) {
         return new GroupsGetMembersQuery(getClient(), actor);
     }
@@ -662,10 +1108,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param fields List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFields getMembersWithFields(UserActor actor, Fields... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
     }
@@ -673,10 +1120,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param fields List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFields getMembersWithFields(GroupActor actor,
             Fields... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
@@ -685,10 +1133,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param fields List of additional fields to be returned. Available values: 'sex, bdate, city, country, photo_50, photo_100, photo_200_orig, photo_200, photo_400_orig, photo_max, photo_max_orig, online, online_mobile, lists, domain, has_mobile, contacts, connections, site, education, universities, schools, can_post, can_see_all_posts, can_see_audio, can_write_private_message, status, last_seen, common_count, relation, relatives, counters'.
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFields getMembersWithFields(ServiceActor actor,
             Fields... fields) {
         return new GroupsGetMembersQueryWithFields(getClient(), actor, fields);
@@ -697,10 +1146,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(UserActor actor,
             GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
@@ -709,10 +1159,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(GroupActor actor,
             GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
@@ -721,24 +1172,64 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of community members.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param filter *'friends' - only friends in this community will be returned,, *'unsure' - only those who pressed 'I may attend' will be returned (if it's an event).
      * @return query
      */
+    @ApiMethod("groups.getMembers")
     public GroupsGetMembersQueryWithFilter getMembersWithFilter(ServiceActor actor,
             GetMembersFilter filter) {
         return new GroupsGetMembersQueryWithFilter(getClient(), actor, filter);
     }
 
     /**
+     * @param actor vk user actor
+     * @param groupId
+     * @return query
+     */
+    @ApiMethod("groups.getOnlineStatus")
+    public GroupsGetOnlineStatusQuery getOnlineStatus(UserActor actor, Long groupId) {
+        return new GroupsGetOnlineStatusQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getOnlineStatus")
+    public GroupsGetOnlineStatusQuery getOnlineStatus(UserActor actor) {
+        return new GroupsGetOnlineStatusQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @param groupId
+     * @return query
+     */
+    @ApiMethod("groups.getOnlineStatus")
+    public GroupsGetOnlineStatusQuery getOnlineStatus(GroupActor actor, Long groupId) {
+        return new GroupsGetOnlineStatusQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getOnlineStatus")
+    public GroupsGetOnlineStatusQuery getOnlineStatus(GroupActor actor) {
+        return new GroupsGetOnlineStatusQuery(getClient(), actor);
+    }
+
+    /**
      * Returns a list of requests to the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param fields Profile fields to return.
      * @return query
      */
-    public GroupsGetRequestsQueryWithFields getRequestsWithFields(UserActor actor, int groupId,
+    @ApiMethod("groups.getRequests")
+    public GroupsGetRequestsQueryWithFields getRequestsWithFields(UserActor actor, Long groupId,
             Fields... fields) {
         return new GroupsGetRequestsQueryWithFields(getClient(), actor, groupId, fields);
     }
@@ -746,40 +1237,100 @@ public class Groups extends AbstractAction {
     /**
      * Returns a list of requests to the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetRequestsQuery getRequests(UserActor actor, int groupId) {
+    @ApiMethod("groups.getRequests")
+    public GroupsGetRequestsQuery getRequests(UserActor actor, Long groupId) {
         return new GroupsGetRequestsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns a list of requests to the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getRequests")
+    public GroupsGetRequestsQuery getRequests(UserActor actor) {
+        return new GroupsGetRequestsQuery(getClient(), actor);
     }
 
     /**
      * Returns community settings.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsGetSettingsQuery getSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.getSettings")
+    public GroupsGetSettingsQuery getSettings(UserActor actor, String groupId) {
         return new GroupsGetSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns community settings.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getSettings")
+    public GroupsGetSettingsQuery getSettings(UserActor actor) {
+        return new GroupsGetSettingsQuery(getClient(), actor);
     }
 
     /**
      * List of group's tags
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsGetTagListQuery getTagList(UserActor actor, int groupId) {
+    @ApiMethod("groups.getTagList")
+    public GroupsGetTagListQuery getTagList(UserActor actor, Long groupId) {
         return new GroupsGetTagListQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * List of group's tags
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getTagList")
+    public GroupsGetTagListQuery getTagList(UserActor actor) {
+        return new GroupsGetTagListQuery(getClient(), actor);
+    }
+
+    /**
+     * List of group's tags
+     *
+     * @param actor vk group actor
+     * @param groupId
      * @return query
      */
+    @ApiMethod("groups.getTagList")
+    public GroupsGetTagListQuery getTagList(GroupActor actor, Long groupId) {
+        return new GroupsGetTagListQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * List of group's tags
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.getTagList")
+    public GroupsGetTagListQuery getTagList(GroupActor actor) {
+        return new GroupsGetTagListQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return query
+     */
+    @ApiMethod("groups.getTokenPermissions")
     public GroupsGetTokenPermissionsQuery getTokenPermissions(GroupActor actor) {
         return new GroupsGetTokenPermissionsQuery(getClient(), actor);
     }
@@ -787,22 +1338,48 @@ public class Groups extends AbstractAction {
     /**
      * Allows to invite friends to the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
-     * @param userId User ID.
      * @return query
      */
-    public GroupsInviteQuery invite(UserActor actor, int groupId, int userId) {
-        return new GroupsInviteQuery(getClient(), actor, groupId, userId);
+    @ApiMethod("groups.invite")
+    public GroupsInviteQuery invite(UserActor actor, Long groupId) {
+        return new GroupsInviteQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Allows to invite friends to the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.invite")
+    public GroupsInviteQuery invite(UserActor actor) {
+        return new GroupsInviteQuery(getClient(), actor);
+    }
+
+    /**
+     * Allows to invite friends to the community.
+     *
+     * @param actor vk user actor
+     * @param groupId Community ID.
+     * @param userIdsList User IDs.
+     * @return query
+     */
+    @ApiMethod("groups.invite")
+    public GroupsInviteQueryWithUserIdsList inviteWithUserIdsList(UserActor actor, Long groupId,
+            Long... userIdsList) {
+        return new GroupsInviteQueryWithUserIdsList(getClient(), actor, groupId, userIdsList);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithExtended isMemberExtended(UserActor actor, String groupId) {
         return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
@@ -810,10 +1387,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithExtended isMemberExtended(GroupActor actor, String groupId) {
         return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
@@ -821,10 +1399,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithExtended isMemberExtended(ServiceActor actor, String groupId) {
         return new GroupsIsMemberQueryWithExtended(getClient(), actor, groupId);
     }
@@ -832,10 +1411,80 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(UserActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(UserActor actor) {
+        return new GroupsIsMemberQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk group actor
+     * @param groupId ID or screen name of the community.
+     * @return query
+     */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(GroupActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(GroupActor actor) {
+        return new GroupsIsMemberQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk service actor
+     * @param groupId ID or screen name of the community.
+     * @return query
+     */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(ServiceActor actor, String groupId) {
+        return new GroupsIsMemberQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.isMember")
+    public GroupsIsMemberQuery isMember(ServiceActor actor) {
+        return new GroupsIsMemberQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns information specifying whether a user is a member of a community.
+     *
+     * @param actor vk user actor
+     * @param groupId ID or screen name of the community.
+     * @return query
+     */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIdsExtended isMemberUserIdsExtended(UserActor actor,
             String groupId) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId);
@@ -844,10 +1493,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIdsExtended isMemberUserIdsExtended(GroupActor actor,
             String groupId) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId);
@@ -856,10 +1506,11 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIdsExtended isMemberUserIdsExtended(ServiceActor actor,
             String groupId) {
         return new GroupsIsMemberQueryWithUserIdsExtended(getClient(), actor, groupId);
@@ -868,81 +1519,52 @@ public class Groups extends AbstractAction {
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId ID or screen name of the community.
      * @param userIds User IDs.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIds isMemberWithUserIds(UserActor actor, String groupId,
-            Integer... userIds) {
+            Long... userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk group actor
      * @param groupId ID or screen name of the community.
      * @param userIds User IDs.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIds isMemberWithUserIds(GroupActor actor, String groupId,
-            Integer... userIds) {
+            Long... userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
     }
 
     /**
      * Returns information specifying whether a user is a member of a community.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @param groupId ID or screen name of the community.
      * @param userIds User IDs.
      * @return query
      */
+    @ApiMethod("groups.isMember")
     public GroupsIsMemberQueryWithUserIds isMemberWithUserIds(ServiceActor actor, String groupId,
-            Integer... userIds) {
+            Long... userIds) {
         return new GroupsIsMemberQueryWithUserIds(getClient(), actor, groupId, userIds);
-    }
-
-    /**
-     * Returns information specifying whether a user is a member of a community.
-     *
-     * @param actor vk actor
-     * @param groupId ID or screen name of the community.
-     * @return query
-     */
-    public GroupsIsMemberQuery isMember(UserActor actor, String groupId) {
-        return new GroupsIsMemberQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Returns information specifying whether a user is a member of a community.
-     *
-     * @param actor vk actor
-     * @param groupId ID or screen name of the community.
-     * @return query
-     */
-    public GroupsIsMemberQuery isMember(GroupActor actor, String groupId) {
-        return new GroupsIsMemberQuery(getClient(), actor, groupId);
-    }
-
-    /**
-     * Returns information specifying whether a user is a member of a community.
-     *
-     * @param actor vk actor
-     * @param groupId ID or screen name of the community.
-     * @return query
-     */
-    public GroupsIsMemberQuery isMember(ServiceActor actor, String groupId) {
-        return new GroupsIsMemberQuery(getClient(), actor, groupId);
     }
 
     /**
      * With this method you can join the group or public page, and also confirm your participation in an event.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("groups.join")
     public GroupsJoinQuery join(UserActor actor) {
         return new GroupsJoinQuery(getClient(), actor);
     }
@@ -950,192 +1572,514 @@ public class Groups extends AbstractAction {
     /**
      * With this method you can leave a group, public page, or event.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId ID or screen name of the community.
      * @return query
      */
-    public GroupsLeaveQuery leave(UserActor actor, int groupId) {
+    @ApiMethod("groups.leave")
+    public GroupsLeaveQuery leave(UserActor actor, Long groupId) {
         return new GroupsLeaveQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * With this method you can leave a group, public page, or event.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.leave")
+    public GroupsLeaveQuery leave(UserActor actor) {
+        return new GroupsLeaveQuery(getClient(), actor);
     }
 
     /**
      * Removes a user from the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param userId User ID.
      * @return query
      */
-    public GroupsRemoveUserQuery removeUser(UserActor actor, int groupId, int userId) {
+    @ApiMethod("groups.removeUser")
+    public GroupsRemoveUserQuery removeUser(UserActor actor, Long groupId, Long userId) {
         return new GroupsRemoveUserQuery(getClient(), actor, groupId, userId);
+    }
+
+    /**
+     * Removes a user from the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.removeUser")
+    public GroupsRemoveUserQuery removeUser(UserActor actor) {
+        return new GroupsRemoveUserQuery(getClient(), actor);
     }
 
     /**
      * Allows to reorder links in the community.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @param linkId Link ID.
      * @return query
      */
-    public GroupsReorderLinkQuery reorderLink(UserActor actor, int groupId, int linkId) {
+    @ApiMethod("groups.reorderLink")
+    public GroupsReorderLinkQuery reorderLink(UserActor actor, Long groupId, Integer linkId) {
         return new GroupsReorderLinkQuery(getClient(), actor, groupId, linkId);
+    }
+
+    /**
+     * Allows to reorder links in the community.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.reorderLink")
+    public GroupsReorderLinkQuery reorderLink(UserActor actor) {
+        return new GroupsReorderLinkQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of communities matching the search criteria.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param q Search query string.
      * @return query
      */
+    @ApiMethod("groups.search")
     public GroupsSearchQuery search(UserActor actor, String q) {
         return new GroupsSearchQuery(getClient(), actor, q);
     }
 
     /**
+     * Returns a list of communities matching the search criteria.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.search")
+    public GroupsSearchQuery search(UserActor actor) {
+        return new GroupsSearchQuery(getClient(), actor);
+    }
+
+    /**
      * Allow to set notifications settings for group.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.setCallbackSettings")
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor, Long groupId) {
         return new GroupsSetCallbackSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Allow to set notifications settings for group.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setCallbackSettings")
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(UserActor actor) {
+        return new GroupsSetCallbackSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * Allow to set notifications settings for group.
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor, int groupId) {
+    @ApiMethod("groups.setCallbackSettings")
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor, Long groupId) {
         return new GroupsSetCallbackSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
+     * Allow to set notifications settings for group.
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setCallbackSettings")
+    public GroupsSetCallbackSettingsQuery setCallbackSettings(GroupActor actor) {
+        return new GroupsSetCallbackSettingsQuery(getClient(), actor);
+    }
+
+    /**
      * Sets Long Poll notification settings
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.setLongPollSettings")
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor, Long groupId) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
      * Sets Long Poll notification settings
      *
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setLongPollSettings")
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(UserActor actor) {
+        return new GroupsSetLongPollSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * Sets Long Poll notification settings
+     *
+     * @param actor vk group actor
      * @param groupId Community ID.
      * @return query
      */
-    public GroupsSetLongPollSettingsQuery setLongPollSettings(GroupActor actor, int groupId) {
+    @ApiMethod("groups.setLongPollSettings")
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(GroupActor actor, Long groupId) {
         return new GroupsSetLongPollSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * Sets Long Poll notification settings
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setLongPollSettings")
+    public GroupsSetLongPollSettingsQuery setLongPollSettings(GroupActor actor) {
+        return new GroupsSetLongPollSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsSetSettingsQuery setSettings(UserActor actor, int groupId) {
+    @ApiMethod("groups.setSettings")
+    public GroupsSetSettingsQuery setSettings(UserActor actor, Long groupId) {
         return new GroupsSetSettingsQuery(getClient(), actor, groupId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setSettings")
+    public GroupsSetSettingsQuery setSettings(UserActor actor) {
+        return new GroupsSetSettingsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk group actor
      * @param groupId
      * @return query
      */
-    public GroupsSetSettingsQuery setSettings(GroupActor actor, int groupId) {
+    @ApiMethod("groups.setSettings")
+    public GroupsSetSettingsQuery setSettings(GroupActor actor, Long groupId) {
         return new GroupsSetSettingsQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setSettings")
+    public GroupsSetSettingsQuery setSettings(GroupActor actor) {
+        return new GroupsSetSettingsQuery(getClient(), actor);
     }
 
     /**
      * In order to save note about group participant
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param userId
      * @return query
      */
-    public GroupsSetUserNoteQuery setUserNote(UserActor actor, int groupId, int userId) {
+    @ApiMethod("groups.setUserNote")
+    public GroupsSetUserNoteQuery setUserNote(UserActor actor, Long groupId, Long userId) {
         return new GroupsSetUserNoteQuery(getClient(), actor, groupId, userId);
+    }
+
+    /**
+     * In order to save note about group participant
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setUserNote")
+    public GroupsSetUserNoteQuery setUserNote(UserActor actor) {
+        return new GroupsSetUserNoteQuery(getClient(), actor);
+    }
+
+    /**
+     * In order to save note about group participant
+     *
+     * @param actor vk group actor
+     * @param groupId
+     * @param userId
+     * @return query
+     */
+    @ApiMethod("groups.setUserNote")
+    public GroupsSetUserNoteQuery setUserNote(GroupActor actor, Long groupId, Long userId) {
+        return new GroupsSetUserNoteQuery(getClient(), actor, groupId, userId);
+    }
+
+    /**
+     * In order to save note about group participant
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.setUserNote")
+    public GroupsSetUserNoteQuery setUserNote(GroupActor actor) {
+        return new GroupsSetUserNoteQuery(getClient(), actor);
     }
 
     /**
      * Add new group's tag
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param tagName
      * @return query
      */
-    public GroupsTagAddQuery tagAdd(UserActor actor, int groupId, String tagName) {
+    @ApiMethod("groups.tagAdd")
+    public GroupsTagAddQuery tagAdd(UserActor actor, Long groupId, String tagName) {
         return new GroupsTagAddQuery(getClient(), actor, groupId, tagName);
+    }
+
+    /**
+     * Add new group's tag
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagAdd")
+    public GroupsTagAddQuery tagAdd(UserActor actor) {
+        return new GroupsTagAddQuery(getClient(), actor);
+    }
+
+    /**
+     * Add new group's tag
+     *
+     * @param actor vk group actor
+     * @param groupId
+     * @param tagName
+     * @return query
+     */
+    @ApiMethod("groups.tagAdd")
+    public GroupsTagAddQuery tagAdd(GroupActor actor, Long groupId, String tagName) {
+        return new GroupsTagAddQuery(getClient(), actor, groupId, tagName);
+    }
+
+    /**
+     * Add new group's tag
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagAdd")
+    public GroupsTagAddQuery tagAdd(GroupActor actor) {
+        return new GroupsTagAddQuery(getClient(), actor);
     }
 
     /**
      * Bind or unbind group's tag to user
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param tagId
      * @param userId
      * @param act Describe the action
      * @return query
      */
-    public GroupsTagBindQuery tagBind(UserActor actor, int groupId, int tagId, int userId,
+    @ApiMethod("groups.tagBind")
+    public GroupsTagBindQuery tagBind(UserActor actor, Long groupId, Integer tagId, Long userId,
             TagBindAct act) {
         return new GroupsTagBindQuery(getClient(), actor, groupId, tagId, userId, act);
     }
 
     /**
+     * Bind or unbind group's tag to user
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagBind")
+    public GroupsTagBindQuery tagBind(UserActor actor) {
+        return new GroupsTagBindQuery(getClient(), actor);
+    }
+
+    /**
+     * Bind or unbind group's tag to user
+     *
+     * @param actor vk group actor
+     * @param groupId
+     * @param tagId
+     * @param userId
+     * @param act Describe the action
+     * @return query
+     */
+    @ApiMethod("groups.tagBind")
+    public GroupsTagBindQuery tagBind(GroupActor actor, Long groupId, Integer tagId, Long userId,
+            TagBindAct act) {
+        return new GroupsTagBindQuery(getClient(), actor, groupId, tagId, userId, act);
+    }
+
+    /**
+     * Bind or unbind group's tag to user
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagBind")
+    public GroupsTagBindQuery tagBind(GroupActor actor) {
+        return new GroupsTagBindQuery(getClient(), actor);
+    }
+
+    /**
      * Delete group's tag
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param tagId
      * @return query
      */
-    public GroupsTagDeleteQuery tagDelete(UserActor actor, int groupId, int tagId) {
+    @ApiMethod("groups.tagDelete")
+    public GroupsTagDeleteQuery tagDelete(UserActor actor, Long groupId, Integer tagId) {
         return new GroupsTagDeleteQuery(getClient(), actor, groupId, tagId);
+    }
+
+    /**
+     * Delete group's tag
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagDelete")
+    public GroupsTagDeleteQuery tagDelete(UserActor actor) {
+        return new GroupsTagDeleteQuery(getClient(), actor);
+    }
+
+    /**
+     * Delete group's tag
+     *
+     * @param actor vk group actor
+     * @param groupId
+     * @param tagId
+     * @return query
+     */
+    @ApiMethod("groups.tagDelete")
+    public GroupsTagDeleteQuery tagDelete(GroupActor actor, Long groupId, Integer tagId) {
+        return new GroupsTagDeleteQuery(getClient(), actor, groupId, tagId);
+    }
+
+    /**
+     * Delete group's tag
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagDelete")
+    public GroupsTagDeleteQuery tagDelete(GroupActor actor) {
+        return new GroupsTagDeleteQuery(getClient(), actor);
     }
 
     /**
      * Update group's tag
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param groupId
      * @param tagId
      * @param tagName
      * @return query
      */
-    public GroupsTagUpdateQuery tagUpdate(UserActor actor, int groupId, int tagId, String tagName) {
+    @ApiMethod("groups.tagUpdate")
+    public GroupsTagUpdateQuery tagUpdate(UserActor actor, Long groupId, Integer tagId,
+            String tagName) {
         return new GroupsTagUpdateQuery(getClient(), actor, groupId, tagId, tagName);
     }
 
     /**
-     * @param actor vk actor
+     * Update group's tag
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagUpdate")
+    public GroupsTagUpdateQuery tagUpdate(UserActor actor) {
+        return new GroupsTagUpdateQuery(getClient(), actor);
+    }
+
+    /**
+     * Update group's tag
+     *
+     * @param actor vk group actor
+     * @param groupId
+     * @param tagId
+     * @param tagName
+     * @return query
+     */
+    @ApiMethod("groups.tagUpdate")
+    public GroupsTagUpdateQuery tagUpdate(GroupActor actor, Long groupId, Integer tagId,
+            String tagName) {
+        return new GroupsTagUpdateQuery(getClient(), actor, groupId, tagId, tagName);
+    }
+
+    /**
+     * Update group's tag
+     *
+     * @param actor vk group actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.tagUpdate")
+    public GroupsTagUpdateQuery tagUpdate(GroupActor actor) {
+        return new GroupsTagUpdateQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @param state
      * @return query
      */
-    public GroupsToggleMarketQuery toggleMarket(UserActor actor, int groupId,
+    @ApiMethod("groups.toggleMarket")
+    public GroupsToggleMarketQuery toggleMarket(UserActor actor, Long groupId,
             ToggleMarketState state) {
         return new GroupsToggleMarketQuery(getClient(), actor, groupId, state);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.toggleMarket")
+    public GroupsToggleMarketQuery toggleMarket(UserActor actor) {
+        return new GroupsToggleMarketQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param groupId
      * @return query
      */
-    public GroupsUnbanQuery unban(UserActor actor, int groupId) {
+    @ApiMethod("groups.unban")
+    public GroupsUnbanQuery unban(UserActor actor, Long groupId) {
         return new GroupsUnbanQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("groups.unban")
+    public GroupsUnbanQuery unban(UserActor actor) {
+        return new GroupsUnbanQuery(getClient(), actor);
     }
 }

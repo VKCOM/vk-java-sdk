@@ -5,48 +5,44 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
-import com.vk.api.sdk.objects.wall.Wallpost;
 import com.vk.api.sdk.objects.wall.WallpostAttachment;
 import java.util.Objects;
 
 /**
  * ItemDigestFullItem object
  */
-public class ItemDigestFullItem implements Validable {
-    @SerializedName("text")
-    private String text;
-
-    @SerializedName("source_name")
-    private String sourceName;
+public class ItemDigestFullItem extends ItemBase implements Validable {
+    @SerializedName("attachment")
+    private WallpostAttachment attachment;
 
     @SerializedName("attachment_index")
     private Integer attachmentIndex;
 
-    @SerializedName("attachment")
-    private WallpostAttachment attachment;
+    /**
+     * Optional red badge for posts in digest block
+     */
+    @SerializedName("badge_text")
+    private String badgeText;
+
+    @SerializedName("post")
+    @Required
+    private ItemWallpost post;
+
+    @SerializedName("source_name")
+    private String sourceName;
 
     @SerializedName("style")
     private ItemDigestFullItemStyle style;
 
-    @SerializedName("post")
-    @Required
-    private Wallpost post;
+    @SerializedName("text")
+    private String text;
 
-    public String getText() {
-        return text;
+    public WallpostAttachment getAttachment() {
+        return attachment;
     }
 
-    public ItemDigestFullItem setText(String text) {
-        this.text = text;
-        return this;
-    }
-
-    public String getSourceName() {
-        return sourceName;
-    }
-
-    public ItemDigestFullItem setSourceName(String sourceName) {
-        this.sourceName = sourceName;
+    public ItemDigestFullItem setAttachment(WallpostAttachment attachment) {
+        this.attachment = attachment;
         return this;
     }
 
@@ -59,12 +55,30 @@ public class ItemDigestFullItem implements Validable {
         return this;
     }
 
-    public WallpostAttachment getAttachment() {
-        return attachment;
+    public String getBadgeText() {
+        return badgeText;
     }
 
-    public ItemDigestFullItem setAttachment(WallpostAttachment attachment) {
-        this.attachment = attachment;
+    public ItemDigestFullItem setBadgeText(String badgeText) {
+        this.badgeText = badgeText;
+        return this;
+    }
+
+    public ItemWallpost getPost() {
+        return post;
+    }
+
+    public ItemDigestFullItem setPost(ItemWallpost post) {
+        this.post = post;
+        return this;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public ItemDigestFullItem setSourceName(String sourceName) {
+        this.sourceName = sourceName;
         return this;
     }
 
@@ -77,18 +91,18 @@ public class ItemDigestFullItem implements Validable {
         return this;
     }
 
-    public Wallpost getPost() {
-        return post;
+    public String getText() {
+        return text;
     }
 
-    public ItemDigestFullItem setPost(Wallpost post) {
-        this.post = post;
+    public ItemDigestFullItem setText(String text) {
+        this.text = text;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(attachment, post, attachmentIndex, style, text, sourceName);
+        return Objects.hash(attachment, post, attachmentIndex, style, text, sourceName, badgeText);
     }
 
     @Override
@@ -96,8 +110,9 @@ public class ItemDigestFullItem implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemDigestFullItem itemDigestFullItem = (ItemDigestFullItem) o;
-        return Objects.equals(attachmentIndex, itemDigestFullItem.attachmentIndex) &&
-                Objects.equals(attachment, itemDigestFullItem.attachment) &&
+        return Objects.equals(attachment, itemDigestFullItem.attachment) &&
+                Objects.equals(attachmentIndex, itemDigestFullItem.attachmentIndex) &&
+                Objects.equals(badgeText, itemDigestFullItem.badgeText) &&
                 Objects.equals(post, itemDigestFullItem.post) &&
                 Objects.equals(style, itemDigestFullItem.style) &&
                 Objects.equals(text, itemDigestFullItem.text) &&
@@ -112,8 +127,9 @@ public class ItemDigestFullItem implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemDigestFullItem{");
-        sb.append("attachmentIndex=").append(attachmentIndex);
-        sb.append(", attachment=").append(attachment);
+        sb.append("attachment=").append(attachment);
+        sb.append(", attachmentIndex=").append(attachmentIndex);
+        sb.append(", badgeText='").append(badgeText).append("'");
         sb.append(", post=").append(post);
         sb.append(", style='").append(style).append("'");
         sb.append(", text='").append(text).append("'");

@@ -4,150 +4,22 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.audio.Audio;
 import com.vk.api.sdk.objects.base.BaseObject;
 import com.vk.api.sdk.objects.base.BoolInt;
 import com.vk.api.sdk.objects.base.Country;
 import com.vk.api.sdk.objects.base.CropPhoto;
+import com.vk.api.sdk.objects.base.OwnerCover;
+import com.vk.api.sdk.objects.video.LiveInfo;
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * GroupFull object
  */
-public class GroupFull extends Group implements Validable {
-    @SerializedName("market")
-    private MarketInfo market;
-
-    /**
-     * Current user's member status
-     */
-    @SerializedName("member_status")
-    private GroupFullMemberStatus memberStatus;
-
-    /**
-     * Information whether community is adult
-     */
-    @SerializedName("is_adult")
-    private BoolInt isAdult;
-
-    /**
-     * Information whether community is hidden from current user's newsfeed
-     */
-    @SerializedName("is_hidden_from_feed")
-    private BoolInt isHiddenFromFeed;
-
-    /**
-     * Information whether community is in faves
-     */
-    @SerializedName("is_favorite")
-    private BoolInt isFavorite;
-
-    /**
-     * Information whether current user is subscribed
-     */
-    @SerializedName("is_subscribed")
-    private BoolInt isSubscribed;
-
-    @SerializedName("city")
-    private BaseObject city;
-
-    @SerializedName("country")
-    private Country country;
-
-    /**
-     * Information whether community is verified
-     */
-    @SerializedName("verified")
-    private BoolInt verified;
-
-    /**
-     * Community description
-     */
-    @SerializedName("description")
-    private String description;
-
-    /**
-     * Community's main wiki page title
-     */
-    @SerializedName("wiki_page")
-    private String wikiPage;
-
-    /**
-     * Community members number
-     */
-    @SerializedName("members_count")
-    private Integer membersCount;
-
-    /**
-     * The number of incoming requests to the community
-     */
-    @SerializedName("requests_count")
-    private Integer requestsCount;
-
-    /**
-     * Community level live streams achievements
-     */
-    @SerializedName("video_live_level")
-    private Integer videoLiveLevel;
-
-    /**
-     * Number of community's live streams
-     */
-    @SerializedName("video_live_count")
-    private Integer videoLiveCount;
-
-    /**
-     * Number of community's clips
-     */
-    @SerializedName("clips_count")
-    private Integer clipsCount;
-
-    @SerializedName("counters")
-    private CountersGroup counters;
-
-    @SerializedName("cover")
-    private Cover cover;
-
-    /**
-     * Information whether current user can post on community's wall
-     */
-    @SerializedName("can_post")
-    private BoolInt canPost;
-
-    @SerializedName("can_suggest")
-    private BoolInt canSuggest;
-
-    /**
-     * Information whether current user can upload story
-     */
-    @SerializedName("can_upload_story")
-    private BoolInt canUploadStory;
-
-    /**
-     * Information whether current user can upload doc
-     */
-    @SerializedName("can_upload_doc")
-    private BoolInt canUploadDoc;
-
-    /**
-     * Information whether current user can upload video
-     */
-    @SerializedName("can_upload_video")
-    private BoolInt canUploadVideo;
-
-    /**
-     * Information whether current user can see all posts on community's wall
-     */
-    @SerializedName("can_see_all_posts")
-    private BoolInt canSeeAllPosts;
-
-    /**
-     * Information whether current user can create topic
-     */
-    @SerializedName("can_create_topic")
-    private BoolInt canCreateTopic;
-
+public class GroupFull extends ClassifiedsProperties implements Validable {
     /**
      * Type of group, start date of event or category of public page
      */
@@ -155,97 +27,13 @@ public class GroupFull extends Group implements Validable {
     private String activity;
 
     /**
-     * Fixed post ID
+     * Info about addresses in groups
      */
-    @SerializedName("fixed_post")
-    private Integer fixedPost;
+    @SerializedName("addresses")
+    private AddressesInfo addresses;
 
-    /**
-     * Information whether community has photo
-     */
-    @SerializedName("has_photo")
-    private BoolInt hasPhoto;
-
-    /**
-     * Данные о точках, по которым вырезаны профильная и миниатюрная фотографии сообщества
-     */
-    @SerializedName("crop_photo")
-    private CropPhoto cropPhoto;
-
-    /**
-     * Community status
-     */
-    @SerializedName("status")
-    private String status;
-
-    @SerializedName("status_audio")
-    private Audio statusAudio;
-
-    /**
-     * Community's main photo album ID
-     */
-    @SerializedName("main_album_id")
-    private Integer mainAlbumId;
-
-    @SerializedName("links")
-    private List<LinksItem> links;
-
-    @SerializedName("contacts")
-    private List<ContactsItem> contacts;
-
-    /**
-     * Information about wall status in community
-     */
-    @SerializedName("wall")
-    private GroupFullWall wall;
-
-    /**
-     * Community's website
-     */
-    @SerializedName("site")
-    private String site;
-
-    @SerializedName("main_section")
-    private GroupFullSection mainSection;
-
-    @SerializedName("secondary_section")
-    private GroupFullSection secondarySection;
-
-    /**
-     * Information whether the community has a "fire" pictogram.
-     */
-    @SerializedName("trending")
-    private BoolInt trending;
-
-    /**
-     * Information whether current user can send a message to community
-     */
-    @SerializedName("can_message")
-    private BoolInt canMessage;
-
-    /**
-     * Information whether community can send a message to current user
-     */
-    @SerializedName("is_messages_blocked")
-    private BoolInt isMessagesBlocked;
-
-    /**
-     * Information whether community can send notifications by phone number to current user
-     */
-    @SerializedName("can_send_notify")
-    private BoolInt canSendNotify;
-
-    /**
-     * Status of replies in community messages
-     */
-    @SerializedName("online_status")
-    private OnlineStatus onlineStatus;
-
-    /**
-     * Inviter ID
-     */
-    @SerializedName("invited_by")
-    private Integer invitedBy;
+    @SerializedName("admin_level")
+    private GroupAdminLevel adminLevel;
 
     /**
      * Information whether age limit
@@ -260,28 +48,40 @@ public class GroupFull extends Group implements Validable {
     private GroupBanInfo banInfo;
 
     /**
-     * Information whether community has installed market app
+     * Information whether current user can call to community
      */
-    @SerializedName("has_market_app")
-    private Boolean hasMarketApp;
-
-    @SerializedName("using_vkpay_market_app")
-    private Boolean usingVkpayMarketApp;
-
-    @SerializedName("has_group_channel")
-    private Boolean hasGroupChannel;
+    @SerializedName("can_call_to_community")
+    private Boolean canCallToCommunity;
 
     /**
-     * Info about addresses in groups
+     * Information whether current user can create topic
      */
-    @SerializedName("addresses")
-    private AddressesInfo addresses;
+    @SerializedName("can_create_topic")
+    private BoolInt canCreateTopic;
 
     /**
-     * Information whether current user is subscribed to podcasts
+     * Information whether current user can send a message to community
      */
-    @SerializedName("is_subscribed_podcasts")
-    private Boolean isSubscribedPodcasts;
+    @SerializedName("can_message")
+    private BoolInt canMessage;
+
+    /**
+     * Information whether current user can post on community's wall
+     */
+    @SerializedName("can_post")
+    private BoolInt canPost;
+
+    /**
+     * Information whether current user can see all posts on community's wall
+     */
+    @SerializedName("can_see_all_posts")
+    private BoolInt canSeeAllPosts;
+
+    /**
+     * Information whether community can send notifications by phone number to current user
+     */
+    @SerializedName("can_send_notify")
+    private BoolInt canSendNotify;
 
     /**
      * Owner in whitelist or not
@@ -295,230 +95,385 @@ public class GroupFull extends Group implements Validable {
     @SerializedName("can_subscribe_posts")
     private Boolean canSubscribePosts;
 
+    @SerializedName("can_suggest")
+    private BoolInt canSuggest;
+
+    /**
+     * Information whether current user can upload clip
+     */
+    @SerializedName("can_upload_clip")
+    private BoolInt canUploadClip;
+
+    /**
+     * Information whether current user can upload doc
+     */
+    @SerializedName("can_upload_doc")
+    private BoolInt canUploadDoc;
+
+    /**
+     * Information whether current user can upload story
+     */
+    @SerializedName("can_upload_story")
+    private BoolInt canUploadStory;
+
+    /**
+     * Information whether current user can upload video
+     */
+    @SerializedName("can_upload_video")
+    private BoolInt canUploadVideo;
+
+    @SerializedName("city")
+    private BaseObject city;
+
+    /**
+     * Number of community's clips
+     */
+    @SerializedName("clips_count")
+    private Integer clipsCount;
+
+    @SerializedName("contacts")
+    private List<ContactsItem> contacts;
+
+    @SerializedName("counters")
+    private CountersGroup counters;
+
+    @SerializedName("country")
+    private Country country;
+
+    @SerializedName("cover")
+    private OwnerCover cover;
+
+    /**
+     * Данные о точках, по которым вырезаны профильная и миниатюрная фотографии сообщества
+     */
+    @SerializedName("crop_photo")
+    private CropPhoto cropPhoto;
+
+    /**
+     * Information whether community is banned
+     */
+    @SerializedName("deactivated")
+    private String deactivated;
+
+    /**
+     * Community description
+     */
+    @SerializedName("description")
+    private String description;
+
+    /**
+     * Established date
+     */
+    @SerializedName("est_date")
+    private String estDate;
+
+    /**
+     * Finish date in Unixtime format
+     */
+    @SerializedName("finish_date")
+    private Integer finishDate;
+
+    /**
+     * Fixed post ID
+     */
+    @SerializedName("fixed_post")
+    private Integer fixedPost;
+
+    @SerializedName("has_group_channel")
+    private Boolean hasGroupChannel;
+
+    /**
+     * Information whether community has installed market app
+     */
+    @SerializedName("has_market_app")
+    private Boolean hasMarketApp;
+
+    /**
+     * Information whether community has photo
+     */
+    @SerializedName("has_photo")
+    private BoolInt hasPhoto;
+
+    @SerializedName("has_unseen_stories")
+    private Boolean hasUnseenStories;
+
+    /**
+     * Community ID
+     * Entity: groups
+     */
+    @SerializedName("id")
+    @Required
+    private Long id;
+
+    /**
+     * Inviter ID
+     */
+    @SerializedName("invited_by")
+    private Integer invitedBy;
+
+    /**
+     * Information whether current user is administrator
+     */
+    @SerializedName("is_admin")
+    private BoolInt isAdmin;
+
+    /**
+     * Information whether community is adult
+     */
+    @SerializedName("is_adult")
+    private BoolInt isAdult;
+
+    /**
+     * Information whether current user is advertiser
+     */
+    @SerializedName("is_advertiser")
+    private BoolInt isAdvertiser;
+
+    @SerializedName("is_closed")
+    private GroupIsClosed isClosed;
+
+    /**
+     * Information whether community is in faves
+     */
+    @SerializedName("is_favorite")
+    private BoolInt isFavorite;
+
+    /**
+     * Information whether community is hidden from current user's newsfeed
+     */
+    @SerializedName("is_hidden_from_feed")
+    private BoolInt isHiddenFromFeed;
+
+    /**
+     * Information whether current user is member
+     */
+    @SerializedName("is_member")
+    private BoolInt isMember;
+
+    /**
+     * Information whether community can send a message to current user
+     */
+    @SerializedName("is_messages_blocked")
+    private BoolInt isMessagesBlocked;
+
+    /**
+     * Information whether current user is subscribed
+     */
+    @SerializedName("is_subscribed")
+    private BoolInt isSubscribed;
+
+    /**
+     * Information whether current user is subscribed to podcasts
+     */
+    @SerializedName("is_subscribed_podcasts")
+    private Boolean isSubscribedPodcasts;
+
+    @SerializedName("is_video_live_notifications_blocked")
+    private BoolInt isVideoLiveNotificationsBlocked;
+
+    @SerializedName("links")
+    private List<LinksItem> links;
+
     /**
      * Live covers state
      */
     @SerializedName("live_covers")
     private LiveCovers liveCovers;
 
+    /**
+     * Community's main photo album ID
+     */
+    @SerializedName("main_album_id")
+    private Integer mainAlbumId;
+
+    @SerializedName("main_section")
+    private GroupFullSection mainSection;
+
+    @SerializedName("market")
+    private MarketInfo market;
+
+    /**
+     * Current user's member status
+     */
+    @SerializedName("member_status")
+    private GroupFullMemberStatus memberStatus;
+
+    /**
+     * Community members number
+     */
+    @SerializedName("members_count")
+    private Integer membersCount;
+
+    /**
+     * Info about number of users in group
+     */
+    @SerializedName("members_count_text")
+    private String membersCountText;
+
+    /**
+     * Community name
+     */
+    @SerializedName("name")
+    private String name;
+
+    /**
+     * Status of replies in community messages
+     */
+    @SerializedName("online_status")
+    private OnlineStatus onlineStatus;
+
+    /**
+     * URL of square photo of the community with 100 pixels in width
+     */
+    @SerializedName("photo_100")
+    private URI photo100;
+
+    /**
+     * URL of square photo of the community with 200 pixels in width
+     */
+    @SerializedName("photo_200")
+    private URI photo200;
+
+    /**
+     * URL of square photo of the community with 200 pixels in width original
+     */
+    @SerializedName("photo_200_orig")
+    private URI photo200Orig;
+
+    /**
+     * URL of square photo of the community with 400 pixels in width
+     */
+    @SerializedName("photo_400")
+    private URI photo400;
+
+    /**
+     * URL of square photo of the community with 400 pixels in width original
+     */
+    @SerializedName("photo_400_orig")
+    private URI photo400Orig;
+
+    /**
+     * URL of square photo of the community with 50 pixels in width
+     */
+    @SerializedName("photo_50")
+    private URI photo50;
+
+    /**
+     * URL of square photo of the community with max pixels in width
+     */
+    @SerializedName("photo_max")
+    private URI photoMax;
+
+    /**
+     * URL of square photo of the community with max pixels in width original
+     */
+    @SerializedName("photo_max_orig")
+    private URI photoMaxOrig;
+
+    @SerializedName("photo_max_size")
+    private PhotoSize photoMaxSize;
+
+    /**
+     * Public date label
+     */
+    @SerializedName("public_date_label")
+    private String publicDateLabel;
+
+    /**
+     * The number of incoming requests to the community
+     */
+    @SerializedName("requests_count")
+    private Integer requestsCount;
+
+    /**
+     * Domain of the community page
+     */
+    @SerializedName("screen_name")
+    private String screenName;
+
+    @SerializedName("secondary_section")
+    private GroupFullSection secondarySection;
+
+    /**
+     * Community's website
+     */
+    @SerializedName("site")
+    private String site;
+
+    /**
+     * Start date in Unixtime format
+     */
+    @SerializedName("start_date")
+    private Integer startDate;
+
+    /**
+     * Community status
+     */
+    @SerializedName("status")
+    private String status;
+
+    @SerializedName("status_audio")
+    private Audio statusAudio;
+
     @SerializedName("stories_archive_count")
     private Integer storiesArchiveCount;
 
-    @SerializedName("has_unseen_stories")
-    private Boolean hasUnseenStories;
+    /**
+     * Textlives number
+     */
+    @SerializedName("textlives_count")
+    private Integer textlivesCount;
 
-    public MarketInfo getMarket() {
-        return market;
-    }
+    /**
+     * Information whether the community has a "fire" pictogram.
+     */
+    @SerializedName("trending")
+    private BoolInt trending;
 
-    public GroupFull setMarket(MarketInfo market) {
-        this.market = market;
-        return this;
-    }
+    @SerializedName("type")
+    private GroupType type;
 
-    public GroupFullMemberStatus getMemberStatus() {
-        return memberStatus;
-    }
+    @SerializedName("using_vkpay_market_app")
+    private Boolean usingVkpayMarketApp;
 
-    public GroupFull setMemberStatus(GroupFullMemberStatus memberStatus) {
-        this.memberStatus = memberStatus;
-        return this;
-    }
+    /**
+     * Information whether community is verified
+     */
+    @SerializedName("verified")
+    private BoolInt verified;
 
-    public boolean isAdult() {
-        return isAdult == BoolInt.YES;
-    }
+    @SerializedName("video_live")
+    private LiveInfo videoLive;
 
-    public BoolInt getIsAdult() {
-        return isAdult;
-    }
+    /**
+     * Number of community's live streams
+     */
+    @SerializedName("video_live_count")
+    private Integer videoLiveCount;
 
-    public boolean isHiddenFromFeed() {
-        return isHiddenFromFeed == BoolInt.YES;
-    }
+    /**
+     * Community level live streams achievements
+     */
+    @SerializedName("video_live_level")
+    private Integer videoLiveLevel;
 
-    public BoolInt getIsHiddenFromFeed() {
-        return isHiddenFromFeed;
-    }
+    /**
+     * Information about the status of video notifications for the current user.
+     */
+    @SerializedName("video_notifications_status")
+    private GroupFullVideoNotificationsStatus videoNotificationsStatus;
 
-    public boolean isFavorite() {
-        return isFavorite == BoolInt.YES;
-    }
+    /**
+     * Information about wall status in community
+     */
+    @SerializedName("wall")
+    private GroupFullWall wall;
 
-    public BoolInt getIsFavorite() {
-        return isFavorite;
-    }
-
-    public boolean isSubscribed() {
-        return isSubscribed == BoolInt.YES;
-    }
-
-    public BoolInt getIsSubscribed() {
-        return isSubscribed;
-    }
-
-    public BaseObject getCity() {
-        return city;
-    }
-
-    public GroupFull setCity(BaseObject city) {
-        this.city = city;
-        return this;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public GroupFull setCountry(Country country) {
-        this.country = country;
-        return this;
-    }
-
-    public boolean isVerified() {
-        return verified == BoolInt.YES;
-    }
-
-    public BoolInt getVerified() {
-        return verified;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public GroupFull setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getWikiPage() {
-        return wikiPage;
-    }
-
-    public GroupFull setWikiPage(String wikiPage) {
-        this.wikiPage = wikiPage;
-        return this;
-    }
-
-    public Integer getMembersCount() {
-        return membersCount;
-    }
-
-    public GroupFull setMembersCount(Integer membersCount) {
-        this.membersCount = membersCount;
-        return this;
-    }
-
-    public Integer getRequestsCount() {
-        return requestsCount;
-    }
-
-    public GroupFull setRequestsCount(Integer requestsCount) {
-        this.requestsCount = requestsCount;
-        return this;
-    }
-
-    public Integer getVideoLiveLevel() {
-        return videoLiveLevel;
-    }
-
-    public GroupFull setVideoLiveLevel(Integer videoLiveLevel) {
-        this.videoLiveLevel = videoLiveLevel;
-        return this;
-    }
-
-    public Integer getVideoLiveCount() {
-        return videoLiveCount;
-    }
-
-    public GroupFull setVideoLiveCount(Integer videoLiveCount) {
-        this.videoLiveCount = videoLiveCount;
-        return this;
-    }
-
-    public Integer getClipsCount() {
-        return clipsCount;
-    }
-
-    public GroupFull setClipsCount(Integer clipsCount) {
-        this.clipsCount = clipsCount;
-        return this;
-    }
-
-    public CountersGroup getCounters() {
-        return counters;
-    }
-
-    public GroupFull setCounters(CountersGroup counters) {
-        this.counters = counters;
-        return this;
-    }
-
-    public Cover getCover() {
-        return cover;
-    }
-
-    public GroupFull setCover(Cover cover) {
-        this.cover = cover;
-        return this;
-    }
-
-    public boolean canPost() {
-        return canPost == BoolInt.YES;
-    }
-
-    public BoolInt getCanPost() {
-        return canPost;
-    }
-
-    public boolean canSuggest() {
-        return canSuggest == BoolInt.YES;
-    }
-
-    public BoolInt getCanSuggest() {
-        return canSuggest;
-    }
-
-    public boolean canUploadStory() {
-        return canUploadStory == BoolInt.YES;
-    }
-
-    public BoolInt getCanUploadStory() {
-        return canUploadStory;
-    }
-
-    public boolean canUploadDoc() {
-        return canUploadDoc == BoolInt.YES;
-    }
-
-    public BoolInt getCanUploadDoc() {
-        return canUploadDoc;
-    }
-
-    public boolean canUploadVideo() {
-        return canUploadVideo == BoolInt.YES;
-    }
-
-    public BoolInt getCanUploadVideo() {
-        return canUploadVideo;
-    }
-
-    public boolean canSeeAllPosts() {
-        return canSeeAllPosts == BoolInt.YES;
-    }
-
-    public BoolInt getCanSeeAllPosts() {
-        return canSeeAllPosts;
-    }
-
-    public boolean canCreateTopic() {
-        return canCreateTopic == BoolInt.YES;
-    }
-
-    public BoolInt getCanCreateTopic() {
-        return canCreateTopic;
-    }
+    /**
+     * Community's main wiki page title
+     */
+    @SerializedName("wiki_page")
+    private String wikiPage;
 
     public String getActivity() {
         return activity;
@@ -529,160 +484,21 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
-    public Integer getFixedPost() {
-        return fixedPost;
+    public AddressesInfo getAddresses() {
+        return addresses;
     }
 
-    public GroupFull setFixedPost(Integer fixedPost) {
-        this.fixedPost = fixedPost;
+    public GroupFull setAddresses(AddressesInfo addresses) {
+        this.addresses = addresses;
         return this;
     }
 
-    public boolean isHasPhoto() {
-        return hasPhoto == BoolInt.YES;
+    public GroupAdminLevel getAdminLevel() {
+        return adminLevel;
     }
 
-    public BoolInt getHasPhoto() {
-        return hasPhoto;
-    }
-
-    public CropPhoto getCropPhoto() {
-        return cropPhoto;
-    }
-
-    public GroupFull setCropPhoto(CropPhoto cropPhoto) {
-        this.cropPhoto = cropPhoto;
-        return this;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public GroupFull setStatus(String status) {
-        this.status = status;
-        return this;
-    }
-
-    public Audio getStatusAudio() {
-        return statusAudio;
-    }
-
-    public GroupFull setStatusAudio(Audio statusAudio) {
-        this.statusAudio = statusAudio;
-        return this;
-    }
-
-    public Integer getMainAlbumId() {
-        return mainAlbumId;
-    }
-
-    public GroupFull setMainAlbumId(Integer mainAlbumId) {
-        this.mainAlbumId = mainAlbumId;
-        return this;
-    }
-
-    public List<LinksItem> getLinks() {
-        return links;
-    }
-
-    public GroupFull setLinks(List<LinksItem> links) {
-        this.links = links;
-        return this;
-    }
-
-    public List<ContactsItem> getContacts() {
-        return contacts;
-    }
-
-    public GroupFull setContacts(List<ContactsItem> contacts) {
-        this.contacts = contacts;
-        return this;
-    }
-
-    public GroupFullWall getWall() {
-        return wall;
-    }
-
-    public GroupFull setWall(GroupFullWall wall) {
-        this.wall = wall;
-        return this;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public GroupFull setSite(String site) {
-        this.site = site;
-        return this;
-    }
-
-    public GroupFullSection getMainSection() {
-        return mainSection;
-    }
-
-    public GroupFull setMainSection(GroupFullSection mainSection) {
-        this.mainSection = mainSection;
-        return this;
-    }
-
-    public GroupFullSection getSecondarySection() {
-        return secondarySection;
-    }
-
-    public GroupFull setSecondarySection(GroupFullSection secondarySection) {
-        this.secondarySection = secondarySection;
-        return this;
-    }
-
-    public boolean isTrending() {
-        return trending == BoolInt.YES;
-    }
-
-    public BoolInt getTrending() {
-        return trending;
-    }
-
-    public boolean canMessage() {
-        return canMessage == BoolInt.YES;
-    }
-
-    public BoolInt getCanMessage() {
-        return canMessage;
-    }
-
-    public boolean isMessagesBlocked() {
-        return isMessagesBlocked == BoolInt.YES;
-    }
-
-    public BoolInt getIsMessagesBlocked() {
-        return isMessagesBlocked;
-    }
-
-    public boolean canSendNotify() {
-        return canSendNotify == BoolInt.YES;
-    }
-
-    public BoolInt getCanSendNotify() {
-        return canSendNotify;
-    }
-
-    public OnlineStatus getOnlineStatus() {
-        return onlineStatus;
-    }
-
-    public GroupFull setOnlineStatus(OnlineStatus onlineStatus) {
-        this.onlineStatus = onlineStatus;
-        return this;
-    }
-
-    public Integer getInvitedBy() {
-        return invitedBy;
-    }
-
-    public GroupFull setInvitedBy(Integer invitedBy) {
-        this.invitedBy = invitedBy;
+    public GroupFull setAdminLevel(GroupAdminLevel adminLevel) {
+        this.adminLevel = adminLevel;
         return this;
     }
 
@@ -704,49 +520,53 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
-    public Boolean getHasMarketApp() {
-        return hasMarketApp;
+    public Boolean getCanCallToCommunity() {
+        return canCallToCommunity;
     }
 
-    public GroupFull setHasMarketApp(Boolean hasMarketApp) {
-        this.hasMarketApp = hasMarketApp;
+    public GroupFull setCanCallToCommunity(Boolean canCallToCommunity) {
+        this.canCallToCommunity = canCallToCommunity;
         return this;
     }
 
-    public Boolean getUsingVkpayMarketApp() {
-        return usingVkpayMarketApp;
+    public boolean canCreateTopic() {
+        return canCreateTopic == BoolInt.YES;
     }
 
-    public GroupFull setUsingVkpayMarketApp(Boolean usingVkpayMarketApp) {
-        this.usingVkpayMarketApp = usingVkpayMarketApp;
-        return this;
+    public BoolInt getCanCreateTopic() {
+        return canCreateTopic;
     }
 
-    public Boolean getHasGroupChannel() {
-        return hasGroupChannel;
+    public boolean canMessage() {
+        return canMessage == BoolInt.YES;
     }
 
-    public GroupFull setHasGroupChannel(Boolean hasGroupChannel) {
-        this.hasGroupChannel = hasGroupChannel;
-        return this;
+    public BoolInt getCanMessage() {
+        return canMessage;
     }
 
-    public AddressesInfo getAddresses() {
-        return addresses;
+    public boolean canPost() {
+        return canPost == BoolInt.YES;
     }
 
-    public GroupFull setAddresses(AddressesInfo addresses) {
-        this.addresses = addresses;
-        return this;
+    public BoolInt getCanPost() {
+        return canPost;
     }
 
-    public Boolean getIsSubscribedPodcasts() {
-        return isSubscribedPodcasts;
+    public boolean canSeeAllPosts() {
+        return canSeeAllPosts == BoolInt.YES;
     }
 
-    public GroupFull setIsSubscribedPodcasts(Boolean isSubscribedPodcasts) {
-        this.isSubscribedPodcasts = isSubscribedPodcasts;
-        return this;
+    public BoolInt getCanSeeAllPosts() {
+        return canSeeAllPosts;
+    }
+
+    public boolean canSendNotify() {
+        return canSendNotify == BoolInt.YES;
+    }
+
+    public BoolInt getCanSendNotify() {
+        return canSendNotify;
     }
 
     public Boolean getCanSubscribePodcasts() {
@@ -767,12 +587,537 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
+    public boolean canSuggest() {
+        return canSuggest == BoolInt.YES;
+    }
+
+    public BoolInt getCanSuggest() {
+        return canSuggest;
+    }
+
+    public boolean canUploadClip() {
+        return canUploadClip == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadClip() {
+        return canUploadClip;
+    }
+
+    public boolean canUploadDoc() {
+        return canUploadDoc == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadDoc() {
+        return canUploadDoc;
+    }
+
+    public boolean canUploadStory() {
+        return canUploadStory == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadStory() {
+        return canUploadStory;
+    }
+
+    public boolean canUploadVideo() {
+        return canUploadVideo == BoolInt.YES;
+    }
+
+    public BoolInt getCanUploadVideo() {
+        return canUploadVideo;
+    }
+
+    public BaseObject getCity() {
+        return city;
+    }
+
+    public GroupFull setCity(BaseObject city) {
+        this.city = city;
+        return this;
+    }
+
+    public Integer getClipsCount() {
+        return clipsCount;
+    }
+
+    public GroupFull setClipsCount(Integer clipsCount) {
+        this.clipsCount = clipsCount;
+        return this;
+    }
+
+    public List<ContactsItem> getContacts() {
+        return contacts;
+    }
+
+    public GroupFull setContacts(List<ContactsItem> contacts) {
+        this.contacts = contacts;
+        return this;
+    }
+
+    public CountersGroup getCounters() {
+        return counters;
+    }
+
+    public GroupFull setCounters(CountersGroup counters) {
+        this.counters = counters;
+        return this;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public GroupFull setCountry(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public OwnerCover getCover() {
+        return cover;
+    }
+
+    public GroupFull setCover(OwnerCover cover) {
+        this.cover = cover;
+        return this;
+    }
+
+    public CropPhoto getCropPhoto() {
+        return cropPhoto;
+    }
+
+    public GroupFull setCropPhoto(CropPhoto cropPhoto) {
+        this.cropPhoto = cropPhoto;
+        return this;
+    }
+
+    public String getDeactivated() {
+        return deactivated;
+    }
+
+    public GroupFull setDeactivated(String deactivated) {
+        this.deactivated = deactivated;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public GroupFull setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getEstDate() {
+        return estDate;
+    }
+
+    public GroupFull setEstDate(String estDate) {
+        this.estDate = estDate;
+        return this;
+    }
+
+    public Integer getFinishDate() {
+        return finishDate;
+    }
+
+    public GroupFull setFinishDate(Integer finishDate) {
+        this.finishDate = finishDate;
+        return this;
+    }
+
+    public Integer getFixedPost() {
+        return fixedPost;
+    }
+
+    public GroupFull setFixedPost(Integer fixedPost) {
+        this.fixedPost = fixedPost;
+        return this;
+    }
+
+    public Boolean getHasGroupChannel() {
+        return hasGroupChannel;
+    }
+
+    public GroupFull setHasGroupChannel(Boolean hasGroupChannel) {
+        this.hasGroupChannel = hasGroupChannel;
+        return this;
+    }
+
+    public Boolean getHasMarketApp() {
+        return hasMarketApp;
+    }
+
+    public GroupFull setHasMarketApp(Boolean hasMarketApp) {
+        this.hasMarketApp = hasMarketApp;
+        return this;
+    }
+
+    public boolean isHasPhoto() {
+        return hasPhoto == BoolInt.YES;
+    }
+
+    public BoolInt getHasPhoto() {
+        return hasPhoto;
+    }
+
+    public Boolean getHasUnseenStories() {
+        return hasUnseenStories;
+    }
+
+    public GroupFull setHasUnseenStories(Boolean hasUnseenStories) {
+        this.hasUnseenStories = hasUnseenStories;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public GroupFull setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Integer getInvitedBy() {
+        return invitedBy;
+    }
+
+    public GroupFull setInvitedBy(Integer invitedBy) {
+        this.invitedBy = invitedBy;
+        return this;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isAdult() {
+        return isAdult == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdult() {
+        return isAdult;
+    }
+
+    public boolean isAdvertiser() {
+        return isAdvertiser == BoolInt.YES;
+    }
+
+    public BoolInt getIsAdvertiser() {
+        return isAdvertiser;
+    }
+
+    public GroupIsClosed getIsClosed() {
+        return isClosed;
+    }
+
+    public GroupFull setIsClosed(GroupIsClosed isClosed) {
+        this.isClosed = isClosed;
+        return this;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite == BoolInt.YES;
+    }
+
+    public BoolInt getIsFavorite() {
+        return isFavorite;
+    }
+
+    public boolean isHiddenFromFeed() {
+        return isHiddenFromFeed == BoolInt.YES;
+    }
+
+    public BoolInt getIsHiddenFromFeed() {
+        return isHiddenFromFeed;
+    }
+
+    public boolean isMember() {
+        return isMember == BoolInt.YES;
+    }
+
+    public BoolInt getIsMember() {
+        return isMember;
+    }
+
+    public boolean isMessagesBlocked() {
+        return isMessagesBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsMessagesBlocked() {
+        return isMessagesBlocked;
+    }
+
+    public boolean isSubscribed() {
+        return isSubscribed == BoolInt.YES;
+    }
+
+    public BoolInt getIsSubscribed() {
+        return isSubscribed;
+    }
+
+    public Boolean getIsSubscribedPodcasts() {
+        return isSubscribedPodcasts;
+    }
+
+    public GroupFull setIsSubscribedPodcasts(Boolean isSubscribedPodcasts) {
+        this.isSubscribedPodcasts = isSubscribedPodcasts;
+        return this;
+    }
+
+    public boolean isVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked == BoolInt.YES;
+    }
+
+    public BoolInt getIsVideoLiveNotificationsBlocked() {
+        return isVideoLiveNotificationsBlocked;
+    }
+
+    public List<LinksItem> getLinks() {
+        return links;
+    }
+
+    public GroupFull setLinks(List<LinksItem> links) {
+        this.links = links;
+        return this;
+    }
+
     public LiveCovers getLiveCovers() {
         return liveCovers;
     }
 
     public GroupFull setLiveCovers(LiveCovers liveCovers) {
         this.liveCovers = liveCovers;
+        return this;
+    }
+
+    public Integer getMainAlbumId() {
+        return mainAlbumId;
+    }
+
+    public GroupFull setMainAlbumId(Integer mainAlbumId) {
+        this.mainAlbumId = mainAlbumId;
+        return this;
+    }
+
+    public GroupFullSection getMainSection() {
+        return mainSection;
+    }
+
+    public GroupFull setMainSection(GroupFullSection mainSection) {
+        this.mainSection = mainSection;
+        return this;
+    }
+
+    public MarketInfo getMarket() {
+        return market;
+    }
+
+    public GroupFull setMarket(MarketInfo market) {
+        this.market = market;
+        return this;
+    }
+
+    public GroupFullMemberStatus getMemberStatus() {
+        return memberStatus;
+    }
+
+    public GroupFull setMemberStatus(GroupFullMemberStatus memberStatus) {
+        this.memberStatus = memberStatus;
+        return this;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public GroupFull setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+        return this;
+    }
+
+    public String getMembersCountText() {
+        return membersCountText;
+    }
+
+    public GroupFull setMembersCountText(String membersCountText) {
+        this.membersCountText = membersCountText;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public GroupFull setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public OnlineStatus getOnlineStatus() {
+        return onlineStatus;
+    }
+
+    public GroupFull setOnlineStatus(OnlineStatus onlineStatus) {
+        this.onlineStatus = onlineStatus;
+        return this;
+    }
+
+    public URI getPhoto100() {
+        return photo100;
+    }
+
+    public GroupFull setPhoto100(URI photo100) {
+        this.photo100 = photo100;
+        return this;
+    }
+
+    public URI getPhoto200() {
+        return photo200;
+    }
+
+    public GroupFull setPhoto200(URI photo200) {
+        this.photo200 = photo200;
+        return this;
+    }
+
+    public URI getPhoto200Orig() {
+        return photo200Orig;
+    }
+
+    public GroupFull setPhoto200Orig(URI photo200Orig) {
+        this.photo200Orig = photo200Orig;
+        return this;
+    }
+
+    public URI getPhoto400() {
+        return photo400;
+    }
+
+    public GroupFull setPhoto400(URI photo400) {
+        this.photo400 = photo400;
+        return this;
+    }
+
+    public URI getPhoto400Orig() {
+        return photo400Orig;
+    }
+
+    public GroupFull setPhoto400Orig(URI photo400Orig) {
+        this.photo400Orig = photo400Orig;
+        return this;
+    }
+
+    public URI getPhoto50() {
+        return photo50;
+    }
+
+    public GroupFull setPhoto50(URI photo50) {
+        this.photo50 = photo50;
+        return this;
+    }
+
+    public URI getPhotoMax() {
+        return photoMax;
+    }
+
+    public GroupFull setPhotoMax(URI photoMax) {
+        this.photoMax = photoMax;
+        return this;
+    }
+
+    public URI getPhotoMaxOrig() {
+        return photoMaxOrig;
+    }
+
+    public GroupFull setPhotoMaxOrig(URI photoMaxOrig) {
+        this.photoMaxOrig = photoMaxOrig;
+        return this;
+    }
+
+    public PhotoSize getPhotoMaxSize() {
+        return photoMaxSize;
+    }
+
+    public GroupFull setPhotoMaxSize(PhotoSize photoMaxSize) {
+        this.photoMaxSize = photoMaxSize;
+        return this;
+    }
+
+    public String getPublicDateLabel() {
+        return publicDateLabel;
+    }
+
+    public GroupFull setPublicDateLabel(String publicDateLabel) {
+        this.publicDateLabel = publicDateLabel;
+        return this;
+    }
+
+    public Integer getRequestsCount() {
+        return requestsCount;
+    }
+
+    public GroupFull setRequestsCount(Integer requestsCount) {
+        this.requestsCount = requestsCount;
+        return this;
+    }
+
+    public String getScreenName() {
+        return screenName;
+    }
+
+    public GroupFull setScreenName(String screenName) {
+        this.screenName = screenName;
+        return this;
+    }
+
+    public GroupFullSection getSecondarySection() {
+        return secondarySection;
+    }
+
+    public GroupFull setSecondarySection(GroupFullSection secondarySection) {
+        this.secondarySection = secondarySection;
+        return this;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public GroupFull setSite(String site) {
+        this.site = site;
+        return this;
+    }
+
+    public Integer getStartDate() {
+        return startDate;
+    }
+
+    public GroupFull setStartDate(Integer startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public GroupFull setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public Audio getStatusAudio() {
+        return statusAudio;
+    }
+
+    public GroupFull setStatusAudio(Audio statusAudio) {
+        this.statusAudio = statusAudio;
         return this;
     }
 
@@ -785,18 +1130,107 @@ public class GroupFull extends Group implements Validable {
         return this;
     }
 
-    public Boolean getHasUnseenStories() {
-        return hasUnseenStories;
+    public Integer getTextlivesCount() {
+        return textlivesCount;
     }
 
-    public GroupFull setHasUnseenStories(Boolean hasUnseenStories) {
-        this.hasUnseenStories = hasUnseenStories;
+    public GroupFull setTextlivesCount(Integer textlivesCount) {
+        this.textlivesCount = textlivesCount;
+        return this;
+    }
+
+    public boolean isTrending() {
+        return trending == BoolInt.YES;
+    }
+
+    public BoolInt getTrending() {
+        return trending;
+    }
+
+    public GroupType getType() {
+        return type;
+    }
+
+    public GroupFull setType(GroupType type) {
+        this.type = type;
+        return this;
+    }
+
+    public Boolean getUsingVkpayMarketApp() {
+        return usingVkpayMarketApp;
+    }
+
+    public GroupFull setUsingVkpayMarketApp(Boolean usingVkpayMarketApp) {
+        this.usingVkpayMarketApp = usingVkpayMarketApp;
+        return this;
+    }
+
+    public boolean isVerified() {
+        return verified == BoolInt.YES;
+    }
+
+    public BoolInt getVerified() {
+        return verified;
+    }
+
+    public LiveInfo getVideoLive() {
+        return videoLive;
+    }
+
+    public GroupFull setVideoLive(LiveInfo videoLive) {
+        this.videoLive = videoLive;
+        return this;
+    }
+
+    public Integer getVideoLiveCount() {
+        return videoLiveCount;
+    }
+
+    public GroupFull setVideoLiveCount(Integer videoLiveCount) {
+        this.videoLiveCount = videoLiveCount;
+        return this;
+    }
+
+    public Integer getVideoLiveLevel() {
+        return videoLiveLevel;
+    }
+
+    public GroupFull setVideoLiveLevel(Integer videoLiveLevel) {
+        this.videoLiveLevel = videoLiveLevel;
+        return this;
+    }
+
+    public GroupFullVideoNotificationsStatus getVideoNotificationsStatus() {
+        return videoNotificationsStatus;
+    }
+
+    public GroupFull setVideoNotificationsStatus(
+            GroupFullVideoNotificationsStatus videoNotificationsStatus) {
+        this.videoNotificationsStatus = videoNotificationsStatus;
+        return this;
+    }
+
+    public GroupFullWall getWall() {
+        return wall;
+    }
+
+    public GroupFull setWall(GroupFullWall wall) {
+        this.wall = wall;
+        return this;
+    }
+
+    public String getWikiPage() {
+        return wikiPage;
+    }
+
+    public GroupFull setWikiPage(String wikiPage) {
+        this.wikiPage = wikiPage;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(trending, country, canSubscribePosts, addresses, canCreateTopic, invitedBy, banInfo, onlineStatus, cover, mainAlbumId, isSubscribed, canUploadVideo, hasUnseenStories, storiesArchiveCount, links, membersCount, counters, requestsCount, canSeeAllPosts, canSuggest, canMessage, market, videoLiveCount, canUploadDoc, canSubscribePodcasts, hasPhoto, hasGroupChannel, fixedPost, isHiddenFromFeed, statusAudio, status, isFavorite, wikiPage, mainSection, activity, city, cropPhoto, isSubscribedPodcasts, description, memberStatus, canSendNotify, videoLiveLevel, clipsCount, hasMarketApp, canPost, isAdult, isMessagesBlocked, verified, secondarySection, ageLimits, site, usingVkpayMarketApp, liveCovers, wall, canUploadStory, contacts);
+        return Objects.hash(trending, country, canSubscribePosts, addresses, canCreateTopic, invitedBy, adminLevel, banInfo, onlineStatus, videoNotificationsStatus, screenName, isMember, type, deactivated, cover, mainAlbumId, isSubscribed, canUploadVideo, photoMaxOrig, hasUnseenStories, storiesArchiveCount, links, id, membersCount, counters, requestsCount, canSeeAllPosts, canSuggest, isAdmin, canMessage, market, videoLiveCount, canUploadDoc, canSubscribePodcasts, hasPhoto, hasGroupChannel, photo400Orig, name, fixedPost, canCallToCommunity, isHiddenFromFeed, startDate, statusAudio, status, isFavorite, wikiPage, estDate, mainSection, isAdvertiser, activity, city, cropPhoto, isSubscribedPodcasts, photo50, description, memberStatus, photo400, photo200, canSendNotify, videoLiveLevel, publicDateLabel, clipsCount, hasMarketApp, textlivesCount, canPost, photoMaxSize, photoMax, isAdult, isMessagesBlocked, isVideoLiveNotificationsBlocked, videoLive, verified, photo200Orig, secondarySection, canUploadClip, ageLimits, membersCountText, site, photo100, isClosed, finishDate, usingVkpayMarketApp, liveCovers, wall, canUploadStory, contacts);
     }
 
     @Override
@@ -804,52 +1238,81 @@ public class GroupFull extends Group implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupFull groupFull = (GroupFull) o;
-        return Objects.equals(trending, groupFull.trending) &&
+        return Objects.equals(canCallToCommunity, groupFull.canCallToCommunity) &&
+                Objects.equals(trending, groupFull.trending) &&
+                Objects.equals(canUploadStory, groupFull.canUploadStory) &&
                 Objects.equals(country, groupFull.country) &&
                 Objects.equals(requestsCount, groupFull.requestsCount) &&
-                Objects.equals(canUploadStory, groupFull.canUploadStory) &&
                 Objects.equals(addresses, groupFull.addresses) &&
+                Objects.equals(textlivesCount, groupFull.textlivesCount) &&
                 Objects.equals(hasUnseenStories, groupFull.hasUnseenStories) &&
+                Objects.equals(type, groupFull.type) &&
                 Objects.equals(statusAudio, groupFull.statusAudio) &&
+                Objects.equals(deactivated, groupFull.deactivated) &&
                 Objects.equals(mainSection, groupFull.mainSection) &&
                 Objects.equals(isAdult, groupFull.isAdult) &&
                 Objects.equals(cover, groupFull.cover) &&
+                Objects.equals(isAdmin, groupFull.isAdmin) &&
                 Objects.equals(storiesArchiveCount, groupFull.storiesArchiveCount) &&
+                Objects.equals(photoMaxSize, groupFull.photoMaxSize) &&
                 Objects.equals(canSubscribePodcasts, groupFull.canSubscribePodcasts) &&
+                Objects.equals(finishDate, groupFull.finishDate) &&
+                Objects.equals(screenName, groupFull.screenName) &&
+                Objects.equals(adminLevel, groupFull.adminLevel) &&
                 Objects.equals(links, groupFull.links) &&
                 Objects.equals(canSeeAllPosts, groupFull.canSeeAllPosts) &&
+                Objects.equals(id, groupFull.id) &&
+                Objects.equals(photo100, groupFull.photo100) &&
                 Objects.equals(mainAlbumId, groupFull.mainAlbumId) &&
+                Objects.equals(isClosed, groupFull.isClosed) &&
                 Objects.equals(isMessagesBlocked, groupFull.isMessagesBlocked) &&
                 Objects.equals(canUploadVideo, groupFull.canUploadVideo) &&
                 Objects.equals(counters, groupFull.counters) &&
+                Objects.equals(isMember, groupFull.isMember) &&
                 Objects.equals(videoLiveCount, groupFull.videoLiveCount) &&
+                Objects.equals(publicDateLabel, groupFull.publicDateLabel) &&
+                Objects.equals(photoMax, groupFull.photoMax) &&
                 Objects.equals(market, groupFull.market) &&
                 Objects.equals(ageLimits, groupFull.ageLimits) &&
                 Objects.equals(isSubscribedPodcasts, groupFull.isSubscribedPodcasts) &&
+                Objects.equals(name, groupFull.name) &&
                 Objects.equals(isSubscribed, groupFull.isSubscribed) &&
                 Objects.equals(membersCount, groupFull.membersCount) &&
+                Objects.equals(videoLive, groupFull.videoLive) &&
                 Objects.equals(canSuggest, groupFull.canSuggest) &&
-                Objects.equals(wikiPage, groupFull.wikiPage) &&
-                Objects.equals(status, groupFull.status) &&
+                Objects.equals(photo200Orig, groupFull.photo200Orig) &&
+                Objects.equals(photo400Orig, groupFull.photo400Orig) &&
                 Objects.equals(canMessage, groupFull.canMessage) &&
+                Objects.equals(status, groupFull.status) &&
+                Objects.equals(wikiPage, groupFull.wikiPage) &&
                 Objects.equals(canCreateTopic, groupFull.canCreateTopic) &&
                 Objects.equals(clipsCount, groupFull.clipsCount) &&
                 Objects.equals(fixedPost, groupFull.fixedPost) &&
                 Objects.equals(isFavorite, groupFull.isFavorite) &&
                 Objects.equals(activity, groupFull.activity) &&
+                Objects.equals(photo50, groupFull.photo50) &&
                 Objects.equals(city, groupFull.city) &&
                 Objects.equals(canSubscribePosts, groupFull.canSubscribePosts) &&
                 Objects.equals(description, groupFull.description) &&
-                Objects.equals(hasPhoto, groupFull.hasPhoto) &&
+                Objects.equals(membersCountText, groupFull.membersCountText) &&
                 Objects.equals(banInfo, groupFull.banInfo) &&
-                Objects.equals(memberStatus, groupFull.memberStatus) &&
+                Objects.equals(hasPhoto, groupFull.hasPhoto) &&
+                Objects.equals(canUploadClip, groupFull.canUploadClip) &&
+                Objects.equals(photoMaxOrig, groupFull.photoMaxOrig) &&
+                Objects.equals(isAdvertiser, groupFull.isAdvertiser) &&
                 Objects.equals(canSendNotify, groupFull.canSendNotify) &&
+                Objects.equals(memberStatus, groupFull.memberStatus) &&
+                Objects.equals(estDate, groupFull.estDate) &&
                 Objects.equals(isHiddenFromFeed, groupFull.isHiddenFromFeed) &&
                 Objects.equals(canPost, groupFull.canPost) &&
+                Objects.equals(photo200, groupFull.photo200) &&
                 Objects.equals(usingVkpayMarketApp, groupFull.usingVkpayMarketApp) &&
                 Objects.equals(secondarySection, groupFull.secondarySection) &&
+                Objects.equals(photo400, groupFull.photo400) &&
+                Objects.equals(startDate, groupFull.startDate) &&
                 Objects.equals(hasGroupChannel, groupFull.hasGroupChannel) &&
                 Objects.equals(liveCovers, groupFull.liveCovers) &&
+                Objects.equals(isVideoLiveNotificationsBlocked, groupFull.isVideoLiveNotificationsBlocked) &&
                 Objects.equals(hasMarketApp, groupFull.hasMarketApp) &&
                 Objects.equals(onlineStatus, groupFull.onlineStatus) &&
                 Objects.equals(verified, groupFull.verified) &&
@@ -858,6 +1321,7 @@ public class GroupFull extends Group implements Validable {
                 Objects.equals(canUploadDoc, groupFull.canUploadDoc) &&
                 Objects.equals(site, groupFull.site) &&
                 Objects.equals(cropPhoto, groupFull.cropPhoto) &&
+                Objects.equals(videoNotificationsStatus, groupFull.videoNotificationsStatus) &&
                 Objects.equals(wall, groupFull.wall) &&
                 Objects.equals(contacts, groupFull.contacts);
     }
@@ -870,52 +1334,81 @@ public class GroupFull extends Group implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GroupFull{");
-        sb.append("trending=").append(trending);
+        sb.append("canCallToCommunity=").append(canCallToCommunity);
+        sb.append(", trending=").append(trending);
+        sb.append(", canUploadStory=").append(canUploadStory);
         sb.append(", country=").append(country);
         sb.append(", requestsCount=").append(requestsCount);
-        sb.append(", canUploadStory=").append(canUploadStory);
         sb.append(", addresses=").append(addresses);
+        sb.append(", textlivesCount=").append(textlivesCount);
         sb.append(", hasUnseenStories=").append(hasUnseenStories);
+        sb.append(", type=").append(type);
         sb.append(", statusAudio=").append(statusAudio);
+        sb.append(", deactivated='").append(deactivated).append("'");
         sb.append(", mainSection=").append(mainSection);
         sb.append(", isAdult=").append(isAdult);
         sb.append(", cover=").append(cover);
+        sb.append(", isAdmin=").append(isAdmin);
         sb.append(", storiesArchiveCount=").append(storiesArchiveCount);
+        sb.append(", photoMaxSize=").append(photoMaxSize);
         sb.append(", canSubscribePodcasts=").append(canSubscribePodcasts);
+        sb.append(", finishDate=").append(finishDate);
+        sb.append(", screenName='").append(screenName).append("'");
+        sb.append(", adminLevel=").append(adminLevel);
         sb.append(", links=").append(links);
         sb.append(", canSeeAllPosts=").append(canSeeAllPosts);
+        sb.append(", id=").append(id);
+        sb.append(", photo100=").append(photo100);
         sb.append(", mainAlbumId=").append(mainAlbumId);
+        sb.append(", isClosed=").append(isClosed);
         sb.append(", isMessagesBlocked=").append(isMessagesBlocked);
         sb.append(", canUploadVideo=").append(canUploadVideo);
         sb.append(", counters=").append(counters);
+        sb.append(", isMember=").append(isMember);
         sb.append(", videoLiveCount=").append(videoLiveCount);
+        sb.append(", publicDateLabel='").append(publicDateLabel).append("'");
+        sb.append(", photoMax=").append(photoMax);
         sb.append(", market=").append(market);
         sb.append(", ageLimits=").append(ageLimits);
         sb.append(", isSubscribedPodcasts=").append(isSubscribedPodcasts);
+        sb.append(", name='").append(name).append("'");
         sb.append(", isSubscribed=").append(isSubscribed);
         sb.append(", membersCount=").append(membersCount);
+        sb.append(", videoLive=").append(videoLive);
         sb.append(", canSuggest=").append(canSuggest);
-        sb.append(", wikiPage='").append(wikiPage).append("'");
-        sb.append(", status='").append(status).append("'");
+        sb.append(", photo200Orig=").append(photo200Orig);
+        sb.append(", photo400Orig=").append(photo400Orig);
         sb.append(", canMessage=").append(canMessage);
+        sb.append(", status='").append(status).append("'");
+        sb.append(", wikiPage='").append(wikiPage).append("'");
         sb.append(", canCreateTopic=").append(canCreateTopic);
         sb.append(", clipsCount=").append(clipsCount);
         sb.append(", fixedPost=").append(fixedPost);
         sb.append(", isFavorite=").append(isFavorite);
         sb.append(", activity='").append(activity).append("'");
+        sb.append(", photo50=").append(photo50);
         sb.append(", city=").append(city);
         sb.append(", canSubscribePosts=").append(canSubscribePosts);
         sb.append(", description='").append(description).append("'");
-        sb.append(", hasPhoto=").append(hasPhoto);
+        sb.append(", membersCountText='").append(membersCountText).append("'");
         sb.append(", banInfo=").append(banInfo);
-        sb.append(", memberStatus=").append(memberStatus);
+        sb.append(", hasPhoto=").append(hasPhoto);
+        sb.append(", canUploadClip=").append(canUploadClip);
+        sb.append(", photoMaxOrig=").append(photoMaxOrig);
+        sb.append(", isAdvertiser=").append(isAdvertiser);
         sb.append(", canSendNotify=").append(canSendNotify);
+        sb.append(", memberStatus=").append(memberStatus);
+        sb.append(", estDate='").append(estDate).append("'");
         sb.append(", isHiddenFromFeed=").append(isHiddenFromFeed);
         sb.append(", canPost=").append(canPost);
+        sb.append(", photo200=").append(photo200);
         sb.append(", usingVkpayMarketApp=").append(usingVkpayMarketApp);
         sb.append(", secondarySection=").append(secondarySection);
+        sb.append(", photo400=").append(photo400);
+        sb.append(", startDate=").append(startDate);
         sb.append(", hasGroupChannel=").append(hasGroupChannel);
         sb.append(", liveCovers=").append(liveCovers);
+        sb.append(", isVideoLiveNotificationsBlocked=").append(isVideoLiveNotificationsBlocked);
         sb.append(", hasMarketApp=").append(hasMarketApp);
         sb.append(", onlineStatus=").append(onlineStatus);
         sb.append(", verified=").append(verified);
@@ -924,6 +1417,7 @@ public class GroupFull extends Group implements Validable {
         sb.append(", canUploadDoc=").append(canUploadDoc);
         sb.append(", site='").append(site).append("'");
         sb.append(", cropPhoto=").append(cropPhoto);
+        sb.append(", videoNotificationsStatus='").append(videoNotificationsStatus).append("'");
         sb.append(", wall=").append(wall);
         sb.append(", contacts=").append(contacts);
         sb.append('}');

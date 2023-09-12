@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.groups;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.groups.CreateSubtype;
 import com.vk.api.sdk.objects.groups.CreateType;
 import com.vk.api.sdk.objects.groups.responses.CreateResponse;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, CreateResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,12 +29,24 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public GroupsCreateQuery(VkApiClient client, UserActor actor) {
+        super(client, "groups.create", CreateResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community title.
      *
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected GroupsCreateQuery title(String value) {
+    @ApiParam("title")
+    public GroupsCreateQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -43,6 +56,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
      * @param value value of "description" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("description")
     public GroupsCreateQuery description(String value) {
         return unsafeParam("description", value);
     }
@@ -53,6 +67,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
      * @param value value of "type" parameter. By default group.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("type")
     public GroupsCreateQuery type(CreateType value) {
         return unsafeParam("type", value);
     }
@@ -63,6 +78,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
      * @param value value of "public category" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("public_category")
     public GroupsCreateQuery publicCategory(Integer value) {
         return unsafeParam("public_category", value);
     }
@@ -73,6 +89,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
      * @param value value of "public subcategory" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("public_subcategory")
     public GroupsCreateQuery publicSubcategory(Integer value) {
         return unsafeParam("public_subcategory", value);
     }
@@ -83,6 +100,7 @@ public class GroupsCreateQuery extends AbstractQueryBuilder<GroupsCreateQuery, C
      * @param value value of "subtype" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("subtype")
     public GroupsCreateQuery subtype(CreateSubtype value) {
         return unsafeParam("subtype", value);
     }

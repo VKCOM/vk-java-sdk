@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
+import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import org.apache.commons.text.translate.CharSequenceTranslator;
 import org.apache.commons.text.translate.LookupTranslator;
@@ -112,6 +113,6 @@ public class ExecuteBatchQuery extends AbstractQueryBuilder<ExecuteBatchQuery, J
 
     @Override
     protected List<String> essentialKeys() {
-        return Arrays.asList("code", "access_token");
+        return Arrays.asList("code");
     }
 }

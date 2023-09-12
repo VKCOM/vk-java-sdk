@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.responses.GetSuggestedSourcesResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<NewsfeedGetSuggestedSourcesQuery, GetSuggestedSourcesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public NewsfeedGetSuggestedSourcesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -40,6 +42,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedGetSuggestedSourcesQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -50,6 +53,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * @param value value of "shuffle" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("shuffle")
     public NewsfeedGetSuggestedSourcesQuery shuffle(Boolean value) {
         return unsafeParam("shuffle", value);
     }
@@ -61,6 +65,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetSuggestedSourcesQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -71,6 +76,7 @@ public class NewsfeedGetSuggestedSourcesQuery extends AbstractQueryBuilder<Newsf
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetSuggestedSourcesQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

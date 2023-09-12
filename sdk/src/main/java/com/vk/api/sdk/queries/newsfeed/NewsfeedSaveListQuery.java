@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveListQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -25,11 +26,23 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public NewsfeedSaveListQuery(VkApiClient client, UserActor actor) {
+        super(client, "newsfeed.saveList", Integer.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Numeric list identifier (if not sent, will be set automatically).
      *
      * @param value value of "list id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("list_id")
     public NewsfeedSaveListQuery listId(Integer value) {
         return unsafeParam("list_id", value);
     }
@@ -40,7 +53,8 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected NewsfeedSaveListQuery title(String value) {
+    @ApiParam("title")
+    public NewsfeedSaveListQuery title(String value) {
         return unsafeParam("title", value);
     }
 
@@ -50,18 +64,20 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      * @param value value of "no reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("no_reposts")
     public NewsfeedSaveListQuery noReposts(Boolean value) {
         return unsafeParam("no_reposts", value);
     }
 
     /**
-     * source_ids
+     * sourceIds
      * Users and communities identifiers to be added to the list. Community identifiers must be negative numbers.
      *
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSaveListQuery sourceIds(Integer... value) {
+    @ApiParam("source_ids")
+    public NewsfeedSaveListQuery sourceIds(Long... value) {
         return unsafeParam("source_ids", value);
     }
 
@@ -71,7 +87,8 @@ public class NewsfeedSaveListQuery extends AbstractQueryBuilder<NewsfeedSaveList
      * @param value value of "source ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public NewsfeedSaveListQuery sourceIds(List<Integer> value) {
+    @ApiParam("source_ids")
+    public NewsfeedSaveListQuery sourceIds(List<Long> value) {
         return unsafeParam("source_ids", value);
     }
 

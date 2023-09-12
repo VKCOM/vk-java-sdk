@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.responses.GetSubscriptionsExtendedResponse;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder<UsersGetSubscriptionsQueryWithExtended, GetSubscriptionsExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -27,7 +28,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -42,19 +43,22 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
     /**
      * User ID.
      *
-     * @param value value of "user id" parameter. Minimum is 0.
+     * @param value value of "user id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersGetSubscriptionsQueryWithExtended userId(Integer value) {
+    @ApiParam("user_id")
+    public UsersGetSubscriptionsQueryWithExtended userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
-     * '1' — to return a combined list of users and communities, '0' — to return separate lists of users and communities (default)
+     * '1' - to return a combined list of users and communities, '0' - to return separate lists of users and communities (default)
      *
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected UsersGetSubscriptionsQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -65,6 +69,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public UsersGetSubscriptionsQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -75,6 +80,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public UsersGetSubscriptionsQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -86,6 +92,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetSubscriptionsQueryWithExtended fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -96,6 +103,7 @@ public class UsersGetSubscriptionsQueryWithExtended extends AbstractQueryBuilder
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersGetSubscriptionsQueryWithExtended fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

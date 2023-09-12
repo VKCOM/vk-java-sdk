@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.pages;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,6 +29,7 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
      * @param value value of "text" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("text")
     public PagesSaveQuery text(String value) {
         return unsafeParam("text", value);
     }
@@ -38,6 +40,7 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
      * @param value value of "page id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("page_id")
     public PagesSaveQuery pageId(Integer value) {
         return unsafeParam("page_id", value);
     }
@@ -45,20 +48,24 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
     /**
      * ID of the community that owns the wiki page.
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PagesSaveQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
      * User ID
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PagesSaveQuery userId(Integer value) {
+    @ApiParam("user_id")
+    public PagesSaveQuery userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
@@ -68,6 +75,7 @@ public class PagesSaveQuery extends AbstractQueryBuilder<PagesSaveQuery, Integer
      * @param value value of "title" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("title")
     public PagesSaveQuery title(String value) {
         return unsafeParam("title", value);
     }

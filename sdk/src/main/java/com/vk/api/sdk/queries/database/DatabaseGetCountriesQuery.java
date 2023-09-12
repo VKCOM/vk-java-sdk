@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.database;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.database.responses.GetCountriesResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetCountriesQuery, GetCountriesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -24,11 +25,12 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
     }
 
     /**
-     * '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
+     * '1' - to return a full list of all countries, '0' - to return a list of countries near the current user's country (default).
      *
      * @param value value of "need all" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("need_all")
     public DatabaseGetCountriesQuery needAll(Boolean value) {
         return unsafeParam("need_all", value);
     }
@@ -39,6 +41,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
      * @param value value of "code" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("code")
     public DatabaseGetCountriesQuery code(String value) {
         return unsafeParam("code", value);
     }
@@ -49,6 +52,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public DatabaseGetCountriesQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -59,6 +63,7 @@ public class DatabaseGetCountriesQuery extends AbstractQueryBuilder<DatabaseGetC
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 100.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public DatabaseGetCountriesQuery count(Integer value) {
         return unsafeParam("count", value);
     }

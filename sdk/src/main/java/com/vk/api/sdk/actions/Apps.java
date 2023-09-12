@@ -5,19 +5,29 @@ import com.vk.api.sdk.client.AbstractAction;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiMethod;
 import com.vk.api.sdk.objects.apps.GetLeaderboardType;
+import com.vk.api.sdk.queries.apps.AppsAddUsersToTestingGroupQuery;
 import com.vk.api.sdk.queries.apps.AppsDeleteAppRequestsQuery;
 import com.vk.api.sdk.queries.apps.AppsGetCatalogQuery;
 import com.vk.api.sdk.queries.apps.AppsGetFriendsListQuery;
+import com.vk.api.sdk.queries.apps.AppsGetFriendsListQueryWithExtended;
+import com.vk.api.sdk.queries.apps.AppsGetLastUploadedVersionQueryWithLastUploadedVersion;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQuery;
 import com.vk.api.sdk.queries.apps.AppsGetLeaderboardQueryWithExtended;
 import com.vk.api.sdk.queries.apps.AppsGetMiniAppPoliciesQuery;
 import com.vk.api.sdk.queries.apps.AppsGetQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScopesQuery;
 import com.vk.api.sdk.queries.apps.AppsGetScoreQuery;
+import com.vk.api.sdk.queries.apps.AppsGetTestingGroupsQuery;
+import com.vk.api.sdk.queries.apps.AppsIsNotificationsAllowedQuery;
 import com.vk.api.sdk.queries.apps.AppsPromoHasActiveGiftQuery;
 import com.vk.api.sdk.queries.apps.AppsPromoUseGiftQuery;
+import com.vk.api.sdk.queries.apps.AppsRemoveTestingGroupQuery;
+import com.vk.api.sdk.queries.apps.AppsRemoveUsersFromTestingGroupsQuery;
 import com.vk.api.sdk.queries.apps.AppsSendRequestQuery;
+import com.vk.api.sdk.queries.apps.AppsUpdateMetaForTestingGroupQueryWithGroup;
+import java.util.List;
 
 /**
  * List of Apps methods
@@ -33,11 +43,45 @@ public class Apps extends AbstractAction {
     }
 
     /**
-     * Deletes all request notifications from the current app.
-     *
-     * @param actor vk actor
+     * @param actor vk service actor
+     * @param groupId
+     * @param userIds
      * @return query
      */
+    @ApiMethod("apps.addUsersToTestingGroup")
+    public AppsAddUsersToTestingGroupQuery addUsersToTestingGroup(ServiceActor actor, Long groupId,
+            Long... userIds) {
+        return new AppsAddUsersToTestingGroupQuery(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param groupId
+     * @param userIds
+     * @return query
+     */
+    @ApiMethod("apps.addUsersToTestingGroup")
+    public AppsAddUsersToTestingGroupQuery addUsersToTestingGroup(ServiceActor actor, Long groupId,
+            List<Long> userIds) {
+        return new AppsAddUsersToTestingGroupQuery(getClient(), actor, groupId, userIds);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.addUsersToTestingGroup")
+    public AppsAddUsersToTestingGroupQuery addUsersToTestingGroup(ServiceActor actor) {
+        return new AppsAddUsersToTestingGroupQuery(getClient(), actor);
+    }
+
+    /**
+     * Deletes all request notifications from the current app.
+     *
+     * @param actor vk user actor
+     * @return query
+     */
+    @ApiMethod("apps.deleteAppRequests")
     public AppsDeleteAppRequestsQuery deleteAppRequests(UserActor actor) {
         return new AppsDeleteAppRequestsQuery(getClient(), actor);
     }
@@ -45,9 +89,10 @@ public class Apps extends AbstractAction {
     /**
      * Returns applications data.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("apps.get")
     public AppsGetQuery get(UserActor actor) {
         return new AppsGetQuery(getClient(), actor);
     }
@@ -55,9 +100,10 @@ public class Apps extends AbstractAction {
     /**
      * Returns applications data.
      *
-     * @param actor vk actor
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("apps.get")
     public AppsGetQuery get(ServiceActor actor) {
         return new AppsGetQuery(getClient(), actor);
     }
@@ -65,42 +111,65 @@ public class Apps extends AbstractAction {
     /**
      * Returns a list of applications (apps) available to users in the App Catalog.
      *
-     * @param actor vk actor
-     * @param count Number of apps to return.
+     * @param actor vk user actor
      * @return query
      */
-    public AppsGetCatalogQuery getCatalog(UserActor actor, int count) {
-        return new AppsGetCatalogQuery(getClient(), actor, count);
+    @ApiMethod("apps.getCatalog")
+    public AppsGetCatalogQuery getCatalog(UserActor actor) {
+        return new AppsGetCatalogQuery(getClient(), actor);
     }
 
     /**
      * Returns a list of applications (apps) available to users in the App Catalog.
      *
-     * @param actor vk actor
-     * @param count Number of apps to return.
+     * @param actor vk service actor
      * @return query
      */
-    public AppsGetCatalogQuery getCatalog(ServiceActor actor, int count) {
-        return new AppsGetCatalogQuery(getClient(), actor, count);
+    @ApiMethod("apps.getCatalog")
+    public AppsGetCatalogQuery getCatalog(ServiceActor actor) {
+        return new AppsGetCatalogQuery(getClient(), actor);
     }
 
     /**
      * Creates friends list for requests and invites in current app.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("apps.getFriendsList")
+    public AppsGetFriendsListQueryWithExtended getFriendsListExtended(UserActor actor) {
+        return new AppsGetFriendsListQueryWithExtended(getClient(), actor);
+    }
+
+    /**
+     * Creates friends list for requests and invites in current app.
+     *
+     * @param actor vk user actor
+     * @return query
+     */
+    @ApiMethod("apps.getFriendsList")
     public AppsGetFriendsListQuery getFriendsList(UserActor actor) {
         return new AppsGetFriendsListQuery(getClient(), actor);
     }
 
     /**
-     * Returns players rating in the game.
-     *
-     * @param actor vk actor
-     * @param type Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
+     * @param actor vk service actor
      * @return query
      */
+    @ApiMethod("apps.getLastUploadedVersion")
+    public AppsGetLastUploadedVersionQueryWithLastUploadedVersion getLastUploadedVersionLastUploadedVersion(
+            ServiceActor actor) {
+        return new AppsGetLastUploadedVersionQueryWithLastUploadedVersion(getClient(), actor);
+    }
+
+    /**
+     * Returns players rating in the game.
+     *
+     * @param actor vk user actor
+     * @param type Leaderboard type. Possible values: *'level' - by level,, *'points' - by mission points,, *'score' - by score ().
+     * @return query
+     */
+    @ApiMethod("apps.getLeaderboard")
     public AppsGetLeaderboardQuery getLeaderboard(UserActor actor, GetLeaderboardType type) {
         return new AppsGetLeaderboardQuery(getClient(), actor, type);
     }
@@ -108,10 +177,22 @@ public class Apps extends AbstractAction {
     /**
      * Returns players rating in the game.
      *
-     * @param actor vk actor
-     * @param type Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.getLeaderboard")
+    public AppsGetLeaderboardQuery getLeaderboard(UserActor actor) {
+        return new AppsGetLeaderboardQuery(getClient(), actor);
+    }
+
+    /**
+     * Returns players rating in the game.
+     *
+     * @param actor vk user actor
+     * @param type Leaderboard type. Possible values: *'level' - by level,, *'points' - by mission points,, *'score' - by score ().
      * @return query
      */
+    @ApiMethod("apps.getLeaderboard")
     public AppsGetLeaderboardQueryWithExtended getLeaderboardExtended(UserActor actor,
             GetLeaderboardType type) {
         return new AppsGetLeaderboardQueryWithExtended(getClient(), actor, type);
@@ -120,20 +201,33 @@ public class Apps extends AbstractAction {
     /**
      * Returns policies and terms given to a mini app.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param appId Mini App ID
      * @return query
      */
-    public AppsGetMiniAppPoliciesQuery getMiniAppPolicies(UserActor actor, int appId) {
+    @ApiMethod("apps.getMiniAppPolicies")
+    public AppsGetMiniAppPoliciesQuery getMiniAppPolicies(UserActor actor, Integer appId) {
         return new AppsGetMiniAppPoliciesQuery(getClient(), actor, appId);
+    }
+
+    /**
+     * Returns policies and terms given to a mini app.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.getMiniAppPolicies")
+    public AppsGetMiniAppPoliciesQuery getMiniAppPolicies(UserActor actor) {
+        return new AppsGetMiniAppPoliciesQuery(getClient(), actor);
     }
 
     /**
      * Returns scopes for auth
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @return query
      */
+    @ApiMethod("apps.getScopes")
     public AppsGetScopesQuery getScopes(UserActor actor) {
         return new AppsGetScopesQuery(getClient(), actor);
     }
@@ -141,58 +235,213 @@ public class Apps extends AbstractAction {
     /**
      * Returns user score in app
      *
-     * @param actor vk actor
-     * @param userId
+     * @param actor vk user actor
      * @return query
      */
-    public AppsGetScoreQuery getScore(UserActor actor, int userId) {
-        return new AppsGetScoreQuery(getClient(), actor, userId);
+    @ApiMethod("apps.getScore")
+    public AppsGetScoreQuery getScore(UserActor actor) {
+        return new AppsGetScoreQuery(getClient(), actor);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("apps.getTestingGroups")
+    public AppsGetTestingGroupsQuery getTestingGroups(ServiceActor actor) {
+        return new AppsGetTestingGroupsQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
+     * @return query
+     */
+    @ApiMethod("apps.isNotificationsAllowed")
+    public AppsIsNotificationsAllowedQuery isNotificationsAllowed(UserActor actor) {
+        return new AppsIsNotificationsAllowedQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return query
+     */
+    @ApiMethod("apps.isNotificationsAllowed")
+    public AppsIsNotificationsAllowedQuery isNotificationsAllowed(ServiceActor actor) {
+        return new AppsIsNotificationsAllowedQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param promoId Id of game promo action
      * @return query
      */
-    public AppsPromoHasActiveGiftQuery promoHasActiveGift(UserActor actor, int promoId) {
+    @ApiMethod("apps.promoHasActiveGift")
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(UserActor actor, Integer promoId) {
         return new AppsPromoHasActiveGiftQuery(getClient(), actor, promoId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.promoHasActiveGift")
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(UserActor actor) {
+        return new AppsPromoHasActiveGiftQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
      * @param promoId Id of game promo action
      * @return query
      */
-    public AppsPromoHasActiveGiftQuery promoHasActiveGift(ServiceActor actor, int promoId) {
+    @ApiMethod("apps.promoHasActiveGift")
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(ServiceActor actor, Integer promoId) {
         return new AppsPromoHasActiveGiftQuery(getClient(), actor, promoId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.promoHasActiveGift")
+    public AppsPromoHasActiveGiftQuery promoHasActiveGift(ServiceActor actor) {
+        return new AppsPromoHasActiveGiftQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk user actor
      * @param promoId Id of game promo action
      * @return query
      */
-    public AppsPromoUseGiftQuery promoUseGift(UserActor actor, int promoId) {
+    @ApiMethod("apps.promoUseGift")
+    public AppsPromoUseGiftQuery promoUseGift(UserActor actor, Integer promoId) {
         return new AppsPromoUseGiftQuery(getClient(), actor, promoId);
     }
 
     /**
-     * @param actor vk actor
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.promoUseGift")
+    public AppsPromoUseGiftQuery promoUseGift(UserActor actor) {
+        return new AppsPromoUseGiftQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
      * @param promoId Id of game promo action
      * @return query
      */
-    public AppsPromoUseGiftQuery promoUseGift(ServiceActor actor, int promoId) {
+    @ApiMethod("apps.promoUseGift")
+    public AppsPromoUseGiftQuery promoUseGift(ServiceActor actor, Integer promoId) {
         return new AppsPromoUseGiftQuery(getClient(), actor, promoId);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.promoUseGift")
+    public AppsPromoUseGiftQuery promoUseGift(ServiceActor actor) {
+        return new AppsPromoUseGiftQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param groupId
+     * @return query
+     */
+    @ApiMethod("apps.removeTestingGroup")
+    public AppsRemoveTestingGroupQuery removeTestingGroup(ServiceActor actor, Long groupId) {
+        return new AppsRemoveTestingGroupQuery(getClient(), actor, groupId);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.removeTestingGroup")
+    public AppsRemoveTestingGroupQuery removeTestingGroup(ServiceActor actor) {
+        return new AppsRemoveTestingGroupQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param userIds
+     * @return query
+     */
+    @ApiMethod("apps.removeUsersFromTestingGroups")
+    public AppsRemoveUsersFromTestingGroupsQuery removeUsersFromTestingGroups(ServiceActor actor,
+            Long... userIds) {
+        return new AppsRemoveUsersFromTestingGroupsQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param userIds
+     * @return query
+     */
+    @ApiMethod("apps.removeUsersFromTestingGroups")
+    public AppsRemoveUsersFromTestingGroupsQuery removeUsersFromTestingGroups(ServiceActor actor,
+            List<Long> userIds) {
+        return new AppsRemoveUsersFromTestingGroupsQuery(getClient(), actor, userIds);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.removeUsersFromTestingGroups")
+    public AppsRemoveUsersFromTestingGroupsQuery removeUsersFromTestingGroups(ServiceActor actor) {
+        return new AppsRemoveUsersFromTestingGroupsQuery(getClient(), actor);
     }
 
     /**
      * Sends a request to another user in an app that uses VK authorization.
      *
-     * @param actor vk actor
+     * @param actor vk user actor
      * @param userId id of the user to send a request
      * @return query
      */
-    public AppsSendRequestQuery sendRequest(UserActor actor, int userId) {
+    @ApiMethod("apps.sendRequest")
+    public AppsSendRequestQuery sendRequest(UserActor actor, Long userId) {
         return new AppsSendRequestQuery(getClient(), actor, userId);
+    }
+
+    /**
+     * Sends a request to another user in an app that uses VK authorization.
+     *
+     * @param actor vk user actor
+     * @return only actor query 
+     */
+    @ApiMethod("apps.sendRequest")
+    public AppsSendRequestQuery sendRequest(UserActor actor) {
+        return new AppsSendRequestQuery(getClient(), actor);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param webview
+     * @param name
+     * @param platforms
+     * @return query
+     */
+    @ApiMethod("apps.updateMetaForTestingGroup")
+    public AppsUpdateMetaForTestingGroupQueryWithGroup updateMetaForTestingGroupGroup(
+            ServiceActor actor, String webview, String name, String... platforms) {
+        return new AppsUpdateMetaForTestingGroupQueryWithGroup(getClient(), actor, webview, name, platforms);
+    }
+
+    /**
+     * @param actor vk service actor
+     * @param webview
+     * @param name
+     * @param platforms
+     * @return query
+     */
+    @ApiMethod("apps.updateMetaForTestingGroup")
+    public AppsUpdateMetaForTestingGroupQueryWithGroup updateMetaForTestingGroupGroup(
+            ServiceActor actor, String webview, String name, List<String> platforms) {
+        return new AppsUpdateMetaForTestingGroupQueryWithGroup(getClient(), actor, webview, name, platforms);
     }
 }

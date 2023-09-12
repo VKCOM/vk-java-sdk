@@ -18,6 +18,36 @@ public class VideoFiles implements Validable {
     private URI external;
 
     /**
+     * URL of the flv file with 320p quality
+     */
+    @SerializedName("flv_320")
+    private URI flv320;
+
+    /**
+     * URL of the mpeg4 file with 1080p quality
+     */
+    @SerializedName("mp4_1080")
+    private URI mp41080;
+
+    /**
+     * URL of the mpeg4 file with 144p quality
+     */
+    @SerializedName("mp4_144")
+    private URI mp4144;
+
+    /**
+     * URL of the mpeg4 file with 2K quality
+     */
+    @SerializedName("mp4_1440")
+    private URI mp41440;
+
+    /**
+     * URL of the mpeg4 file with 4K quality
+     */
+    @SerializedName("mp4_2160")
+    private URI mp42160;
+
+    /**
      * URL of the mpeg4 file with 240p quality
      */
     @SerializedName("mp4_240")
@@ -41,36 +71,57 @@ public class VideoFiles implements Validable {
     @SerializedName("mp4_720")
     private URI mp4720;
 
-    /**
-     * URL of the mpeg4 file with 1080p quality
-     */
-    @SerializedName("mp4_1080")
-    private URI mp41080;
-
-    /**
-     * URL of the mpeg4 file with 2K quality
-     */
-    @SerializedName("mp4_1440")
-    private URI mp41440;
-
-    /**
-     * URL of the mpeg4 file with 4K quality
-     */
-    @SerializedName("mp4_2160")
-    private URI mp42160;
-
-    /**
-     * URL of the flv file with 320p quality
-     */
-    @SerializedName("flv_320")
-    private URI flv320;
-
     public URI getExternal() {
         return external;
     }
 
     public VideoFiles setExternal(URI external) {
         this.external = external;
+        return this;
+    }
+
+    public URI getFlv320() {
+        return flv320;
+    }
+
+    public VideoFiles setFlv320(URI flv320) {
+        this.flv320 = flv320;
+        return this;
+    }
+
+    public URI getMp41080() {
+        return mp41080;
+    }
+
+    public VideoFiles setMp41080(URI mp41080) {
+        this.mp41080 = mp41080;
+        return this;
+    }
+
+    public URI getMp4144() {
+        return mp4144;
+    }
+
+    public VideoFiles setMp4144(URI mp4144) {
+        this.mp4144 = mp4144;
+        return this;
+    }
+
+    public URI getMp41440() {
+        return mp41440;
+    }
+
+    public VideoFiles setMp41440(URI mp41440) {
+        this.mp41440 = mp41440;
+        return this;
+    }
+
+    public URI getMp42160() {
+        return mp42160;
+    }
+
+    public VideoFiles setMp42160(URI mp42160) {
+        this.mp42160 = mp42160;
         return this;
     }
 
@@ -110,45 +161,9 @@ public class VideoFiles implements Validable {
         return this;
     }
 
-    public URI getMp41080() {
-        return mp41080;
-    }
-
-    public VideoFiles setMp41080(URI mp41080) {
-        this.mp41080 = mp41080;
-        return this;
-    }
-
-    public URI getMp41440() {
-        return mp41440;
-    }
-
-    public VideoFiles setMp41440(URI mp41440) {
-        this.mp41440 = mp41440;
-        return this;
-    }
-
-    public URI getMp42160() {
-        return mp42160;
-    }
-
-    public VideoFiles setMp42160(URI mp42160) {
-        this.mp42160 = mp42160;
-        return this;
-    }
-
-    public URI getFlv320() {
-        return flv320;
-    }
-
-    public VideoFiles setFlv320(URI flv320) {
-        this.flv320 = flv320;
-        return this;
-    }
-
     @Override
     public int hashCode() {
-        return Objects.hash(mp42160, mp41080, external, mp4720, flv320, mp4480, mp41440, mp4360, mp4240);
+        return Objects.hash(mp42160, mp41080, external, mp4144, mp4720, flv320, mp4480, mp41440, mp4360, mp4240);
     }
 
     @Override
@@ -163,6 +178,7 @@ public class VideoFiles implements Validable {
                 Objects.equals(flv320, videoFiles.flv320) &&
                 Objects.equals(mp4720, videoFiles.mp4720) &&
                 Objects.equals(mp41440, videoFiles.mp41440) &&
+                Objects.equals(mp4144, videoFiles.mp4144) &&
                 Objects.equals(mp4240, videoFiles.mp4240) &&
                 Objects.equals(mp42160, videoFiles.mp42160);
     }
@@ -182,6 +198,7 @@ public class VideoFiles implements Validable {
         sb.append(", flv320=").append(flv320);
         sb.append(", mp4720=").append(mp4720);
         sb.append(", mp41440=").append(mp41440);
+        sb.append(", mp4144=").append(mp4144);
         sb.append(", mp4240=").append(mp4240);
         sb.append(", mp42160=").append(mp42160);
         sb.append('}');

@@ -12,26 +12,17 @@ import java.util.Objects;
  * CropPhoto object
  */
 public class CropPhoto implements Validable {
-    @SerializedName("photo")
-    @Required
-    private Photo photo;
-
     @SerializedName("crop")
     @Required
     private CropPhotoCrop crop;
 
+    @SerializedName("photo")
+    @Required
+    private Photo photo;
+
     @SerializedName("rect")
     @Required
     private CropPhotoRect rect;
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public CropPhoto setPhoto(Photo photo) {
-        this.photo = photo;
-        return this;
-    }
 
     public CropPhotoCrop getCrop() {
         return crop;
@@ -39,6 +30,15 @@ public class CropPhoto implements Validable {
 
     public CropPhoto setCrop(CropPhotoCrop crop) {
         this.crop = crop;
+        return this;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public CropPhoto setPhoto(Photo photo) {
+        this.photo = photo;
         return this;
     }
 

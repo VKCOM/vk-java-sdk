@@ -23,6 +23,7 @@ public class EventAttach implements Validable {
      * text of attach
      */
     @SerializedName("button_text")
+    @Required
     private String buttonText;
 
     /**
@@ -30,19 +31,21 @@ public class EventAttach implements Validable {
      */
     @SerializedName("friends")
     @Required
-    private List<Integer> friends;
+    private List<Long> friends;
 
     /**
      * event ID
+     * Entity: groups
      */
     @SerializedName("id")
     @Required
-    private Integer id;
+    private Long id;
 
     /**
      * is favorite
      */
     @SerializedName("is_favorite")
+    @Required
     private Boolean isFavorite;
 
     /**
@@ -82,20 +85,20 @@ public class EventAttach implements Validable {
         return this;
     }
 
-    public List<Integer> getFriends() {
+    public List<Long> getFriends() {
         return friends;
     }
 
-    public EventAttach setFriends(List<Integer> friends) {
+    public EventAttach setFriends(List<Long> friends) {
         this.friends = friends;
         return this;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public EventAttach setId(Integer id) {
+    public EventAttach setId(Long id) {
         this.id = id;
         return this;
     }

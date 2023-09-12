@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.leadforms;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.leadforms.responses.DeleteResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,15 @@ import java.util.List;
  */
 public class LeadFormsDeleteQuery extends AbstractQueryBuilder<LeadFormsDeleteQuery, DeleteResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param groupId value of "group id" parameter.
+     * @param groupId value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @param formId value of "form id" parameter.
      */
-    public LeadFormsDeleteQuery(VkApiClient client, UserActor actor, int groupId, int formId) {
+    public LeadFormsDeleteQuery(VkApiClient client, UserActor actor, Long groupId, Integer formId) {
         super(client, "leadForms.delete", DeleteResponse.class);
         accessToken(actor.getAccessToken());
         groupId(groupId);
@@ -28,12 +30,25 @@ public class LeadFormsDeleteQuery extends AbstractQueryBuilder<LeadFormsDeleteQu
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public LeadFormsDeleteQuery(VkApiClient client, UserActor actor) {
+        super(client, "leadForms.delete", DeleteResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set group id
      *
-     * @param value value of "group id" parameter.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LeadFormsDeleteQuery groupId(int value) {
+    @ApiParam("group_id")
+    public LeadFormsDeleteQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -43,7 +58,8 @@ public class LeadFormsDeleteQuery extends AbstractQueryBuilder<LeadFormsDeleteQu
      * @param value value of "form id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected LeadFormsDeleteQuery formId(int value) {
+    @ApiParam("form_id")
+    public LeadFormsDeleteQuery formId(Integer value) {
         return unsafeParam("form_id", value);
     }
 

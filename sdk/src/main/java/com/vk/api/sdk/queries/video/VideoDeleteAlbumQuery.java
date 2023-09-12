@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,25 +14,38 @@ import java.util.List;
  */
 public class VideoDeleteAlbumQuery extends AbstractQueryBuilder<VideoDeleteAlbumQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param albumId value of "album id" parameter. Minimum is 0.
      */
-    public VideoDeleteAlbumQuery(VkApiClient client, UserActor actor, int albumId) {
+    public VideoDeleteAlbumQuery(VkApiClient client, UserActor actor, Integer albumId) {
         super(client, "video.deleteAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoDeleteAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.deleteAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Community ID (if the album is owned by a community).
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 1. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public VideoDeleteAlbumQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public VideoDeleteAlbumQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -41,7 +55,8 @@ public class VideoDeleteAlbumQuery extends AbstractQueryBuilder<VideoDeleteAlbum
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoDeleteAlbumQuery albumId(int value) {
+    @ApiParam("album_id")
+    public VideoDeleteAlbumQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 

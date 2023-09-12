@@ -4,53 +4,67 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.polls.responses.AddVoteResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.responses.BoolResponse;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Query for Polls.addVote method
  */
-public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, AddVoteResponse> {
+public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, BoolResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pollId value of "poll id" parameter. Minimum is 0.
      * @param answerIds value of "answer ids" parameter.
      */
-    public PollsAddVoteQuery(VkApiClient client, UserActor actor, int pollId,
-            Integer... answerIds) {
-        super(client, "polls.addVote", AddVoteResponse.class);
+    public PollsAddVoteQuery(VkApiClient client, UserActor actor, Integer pollId,
+            Long... answerIds) {
+        super(client, "polls.addVote", BoolResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param pollId value of "poll id" parameter. Minimum is 0.
      * @param answerIds value of "answer ids" parameter.
      */
-    public PollsAddVoteQuery(VkApiClient client, UserActor actor, int pollId,
-            List<Integer> answerIds) {
-        super(client, "polls.addVote", AddVoteResponse.class);
+    public PollsAddVoteQuery(VkApiClient client, UserActor actor, Integer pollId,
+            List<Long> answerIds) {
+        super(client, "polls.addVote", BoolResponse.class);
         accessToken(actor.getAccessToken());
         pollId(pollId);
         answerIds(answerIds);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PollsAddVoteQuery(VkApiClient client, UserActor actor) {
+        super(client, "polls.addVote", BoolResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
      * ID of the user or community that owns the poll. Use a negative value to designate a community ID.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsAddVoteQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PollsAddVoteQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -60,7 +74,8 @@ public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, A
      * @param value value of "poll id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsAddVoteQuery pollId(int value) {
+    @ApiParam("poll_id")
+    public PollsAddVoteQuery pollId(Integer value) {
         return unsafeParam("poll_id", value);
     }
 
@@ -70,18 +85,20 @@ public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, A
      * @param value value of "is board" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_board")
     public PollsAddVoteQuery isBoard(Boolean value) {
         return unsafeParam("is_board", value);
     }
 
     /**
-     * answer_ids
+     * answerIds
      * Set answer ids
      *
      * @param value value of "answer ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsAddVoteQuery answerIds(Integer... value) {
+    @ApiParam("answer_ids")
+    public PollsAddVoteQuery answerIds(Long... value) {
         return unsafeParam("answer_ids", value);
     }
 
@@ -91,7 +108,8 @@ public class PollsAddVoteQuery extends AbstractQueryBuilder<PollsAddVoteQuery, A
      * @param value value of "answer ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PollsAddVoteQuery answerIds(List<Integer> value) {
+    @ApiParam("answer_ids")
+    public PollsAddVoteQuery answerIds(List<Long> value) {
         return unsafeParam("answer_ids", value);
     }
 

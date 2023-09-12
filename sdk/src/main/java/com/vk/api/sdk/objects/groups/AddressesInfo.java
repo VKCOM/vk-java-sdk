@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.groups;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.annotations.Required;
 import java.util.Objects;
 
 /**
@@ -11,10 +12,23 @@ import java.util.Objects;
  */
 public class AddressesInfo implements Validable {
     /**
+     * Count of addresses
+     */
+    @SerializedName("count")
+    private Integer count;
+
+    /**
      * Information whether addresses is enabled
      */
     @SerializedName("is_enabled")
+    @Required
     private Boolean isEnabled;
+
+    /**
+     * Main address
+     */
+    @SerializedName("main_address")
+    private Address mainAddress;
 
     /**
      * Main address id for group
@@ -22,12 +36,30 @@ public class AddressesInfo implements Validable {
     @SerializedName("main_address_id")
     private Integer mainAddressId;
 
+    public Integer getCount() {
+        return count;
+    }
+
+    public AddressesInfo setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public Boolean getIsEnabled() {
         return isEnabled;
     }
 
     public AddressesInfo setIsEnabled(Boolean isEnabled) {
         this.isEnabled = isEnabled;
+        return this;
+    }
+
+    public Address getMainAddress() {
+        return mainAddress;
+    }
+
+    public AddressesInfo setMainAddress(Address mainAddress) {
+        this.mainAddress = mainAddress;
         return this;
     }
 
@@ -42,7 +74,7 @@ public class AddressesInfo implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mainAddressId, isEnabled);
+        return Objects.hash(mainAddressId, isEnabled, count, mainAddress);
     }
 
     @Override
@@ -51,6 +83,8 @@ public class AddressesInfo implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         AddressesInfo addressesInfo = (AddressesInfo) o;
         return Objects.equals(isEnabled, addressesInfo.isEnabled) &&
+                Objects.equals(mainAddress, addressesInfo.mainAddress) &&
+                Objects.equals(count, addressesInfo.count) &&
                 Objects.equals(mainAddressId, addressesInfo.mainAddressId);
     }
 
@@ -63,6 +97,8 @@ public class AddressesInfo implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("AddressesInfo{");
         sb.append("isEnabled=").append(isEnabled);
+        sb.append(", mainAddress=").append(mainAddress);
+        sb.append(", count=").append(count);
         sb.append(", mainAddressId=").append(mainAddressId);
         sb.append('}');
         return sb.toString();

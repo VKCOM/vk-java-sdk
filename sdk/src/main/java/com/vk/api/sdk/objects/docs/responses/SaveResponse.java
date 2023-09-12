@@ -14,9 +14,6 @@ import java.util.Objects;
  * SaveResponse object
  */
 public class SaveResponse implements Validable {
-    @SerializedName("type")
-    private DocAttachmentType type;
-
     @SerializedName("audio_message")
     private AudioMessage audioMessage;
 
@@ -26,14 +23,8 @@ public class SaveResponse implements Validable {
     @SerializedName("graffiti")
     private Graffiti graffiti;
 
-    public DocAttachmentType getType() {
-        return type;
-    }
-
-    public SaveResponse setType(DocAttachmentType type) {
-        this.type = type;
-        return this;
-    }
+    @SerializedName("type")
+    private DocAttachmentType type;
 
     public AudioMessage getAudioMessage() {
         return audioMessage;
@@ -62,9 +53,18 @@ public class SaveResponse implements Validable {
         return this;
     }
 
+    public DocAttachmentType getType() {
+        return type;
+    }
+
+    public SaveResponse setType(DocAttachmentType type) {
+        this.type = type;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(doc, graffiti, type, audioMessage);
+        return Objects.hash(doc, graffiti, audioMessage, type);
     }
 
     @Override
@@ -74,8 +74,8 @@ public class SaveResponse implements Validable {
         SaveResponse saveResponse = (SaveResponse) o;
         return Objects.equals(doc, saveResponse.doc) &&
                 Objects.equals(graffiti, saveResponse.graffiti) &&
-                Objects.equals(type, saveResponse.type) &&
-                Objects.equals(audioMessage, saveResponse.audioMessage);
+                Objects.equals(audioMessage, saveResponse.audioMessage) &&
+                Objects.equals(type, saveResponse.type);
     }
 
     @Override
@@ -88,8 +88,8 @@ public class SaveResponse implements Validable {
         final StringBuilder sb = new StringBuilder("SaveResponse{");
         sb.append("doc=").append(doc);
         sb.append(", graffiti=").append(graffiti);
-        sb.append(", type=").append(type);
         sb.append(", audioMessage=").append(audioMessage);
+        sb.append(", type=").append(type);
         sb.append('}');
         return sb.toString();
     }

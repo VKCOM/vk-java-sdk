@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.photos;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class PhotosDeleteAlbumQuery extends AbstractQueryBuilder<PhotosDeleteAlbumQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param albumId value of "album id" parameter. Minimum is 0.
      */
-    public PhotosDeleteAlbumQuery(VkApiClient client, UserActor actor, int albumId) {
+    public PhotosDeleteAlbumQuery(VkApiClient client, UserActor actor, Integer albumId) {
         super(client, "photos.deleteAlbum", OkResponse.class);
         accessToken(actor.getAccessToken());
         albumId(albumId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PhotosDeleteAlbumQuery(VkApiClient client, UserActor actor) {
+        super(client, "photos.deleteAlbum", OkResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,17 +43,20 @@ public class PhotosDeleteAlbumQuery extends AbstractQueryBuilder<PhotosDeleteAlb
      * @param value value of "album id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PhotosDeleteAlbumQuery albumId(int value) {
+    @ApiParam("album_id")
+    public PhotosDeleteAlbumQuery albumId(Integer value) {
         return unsafeParam("album_id", value);
     }
 
     /**
      * ID of the community that owns the album.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PhotosDeleteAlbumQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public PhotosDeleteAlbumQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 

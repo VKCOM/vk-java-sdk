@@ -2,7 +2,6 @@
 package com.vk.api.sdk.objects.groups.responses;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonPrimitive;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
@@ -19,6 +18,7 @@ import com.vk.api.sdk.objects.groups.GroupTopics;
 import com.vk.api.sdk.objects.groups.GroupVideo;
 import com.vk.api.sdk.objects.groups.GroupWall;
 import com.vk.api.sdk.objects.groups.GroupWiki;
+import com.vk.api.sdk.objects.groups.SectionsListItem;
 import com.vk.api.sdk.objects.groups.SettingsTwitter;
 import com.vk.api.sdk.objects.groups.SubjectItem;
 import java.net.URI;
@@ -41,12 +41,11 @@ public class GetSettingsResponse implements Validable {
     @SerializedName("address")
     private String address;
 
-    /**
-     * Audio settings
-     */
-    @SerializedName("audio")
-    @Required
-    private GroupAudio audio;
+    @SerializedName("addresses")
+    private Boolean addresses;
+
+    @SerializedName("age_limits")
+    private GroupAgeLimits ageLimits;
 
     /**
      * Articles settings
@@ -56,40 +55,60 @@ public class GetSettingsResponse implements Validable {
     private Integer articles;
 
     /**
-     * Photo suggests setting
+     * Audio settings
      */
-    @SerializedName("recognize_photo")
-    private Integer recognizePhoto;
+    @SerializedName("audio")
+    @Required
+    private GroupAudio audio;
+
+    /**
+     * If this setting is enabled then users can add your community to a chat
+     */
+    @SerializedName("bots_add_to_chat")
+    private BoolInt botsAddToChat;
+
+    /**
+     * By enabling bot abilities, you can send users messages with a customized keyboard attached as well as use other promotional abilities
+     */
+    @SerializedName("bots_capabilities")
+    private BoolInt botsCapabilities;
+
+    /**
+     * If this setting is enabled, users will see a Start button when they start a chat with your community for the first time
+     */
+    @SerializedName("bots_start_button")
+    private BoolInt botsStartButton;
 
     /**
      * City id of group
      */
     @SerializedName("city_id")
+    @Required
     private Integer cityId;
+
+    /**
+     * City name of group
+     */
+    @SerializedName("city_name")
+    @Required
+    private String cityName;
 
     @SerializedName("contacts")
     private BoolInt contacts;
-
-    @SerializedName("links")
-    private BoolInt links;
-
-    @SerializedName("sections_list")
-    private List<List<JsonPrimitive>> sectionsList;
-
-    @SerializedName("main_section")
-    private GroupFullSection mainSection;
-
-    @SerializedName("secondary_section")
-    private GroupFullSection secondarySection;
-
-    @SerializedName("age_limits")
-    private GroupAgeLimits ageLimits;
 
     /**
      * Country id of group
      */
     @SerializedName("country_id")
+    @Required
     private Integer countryId;
+
+    /**
+     * Country name of group
+     */
+    @SerializedName("country_name")
+    @Required
+    private String countryName;
 
     /**
      * Community description
@@ -99,35 +118,69 @@ public class GetSettingsResponse implements Validable {
     private String description;
 
     /**
+     * Information whether the replies from groups is disabled
+     */
+    @SerializedName("disable_replies_from_groups")
+    @Required
+    private BoolInt disableRepliesFromGroups;
+
+    /**
      * Docs settings
      */
     @SerializedName("docs")
     @Required
     private GroupDocs docs;
 
+    /**
+     * Community email
+     */
+    @SerializedName("email")
+    private String email;
+
+    @SerializedName("event_group_id")
+    private Integer eventGroupId;
+
     @SerializedName("events")
     private BoolInt events;
+
+    /**
+     * Finish date in Unix-time format
+     */
+    @SerializedName("finish_date")
+    private Integer finishDate;
+
+    @SerializedName("links")
+    private BoolInt links;
+
+    @SerializedName("main_section")
+    private GroupFullSection mainSection;
 
     /**
      * Information whether the obscene filter is enabled
      */
     @SerializedName("obscene_filter")
+    @Required
     private BoolInt obsceneFilter;
 
     /**
      * Information whether the stop words filter is enabled
      */
     @SerializedName("obscene_stopwords")
+    @Required
     private BoolInt obsceneStopwords;
 
     /**
      * The list of stop words
      */
     @SerializedName("obscene_words")
+    @Required
     private List<String> obsceneWords;
 
-    @SerializedName("event_group_id")
-    private Integer eventGroupId;
+    /**
+     * Community phone
+     */
+    @SerializedName("phone")
+    private String phone;
 
     /**
      * Photos settings
@@ -158,22 +211,28 @@ public class GetSettingsResponse implements Validable {
     private Integer publicSubcategory;
 
     /**
+     * Photo suggests setting
+     */
+    @SerializedName("recognize_photo")
+    private Integer recognizePhoto;
+
+    /**
      * URL of the RSS feed
      */
     @SerializedName("rss")
     private URI rss;
+
+    @SerializedName("secondary_section")
+    private GroupFullSection secondarySection;
+
+    @SerializedName("sections_list")
+    private List<SectionsListItem> sectionsList;
 
     /**
      * Start date
      */
     @SerializedName("start_date")
     private Integer startDate;
-
-    /**
-     * Finish date in Unix-time format
-     */
-    @SerializedName("finish_date")
-    private Integer finishDate;
 
     /**
      * Community subject ID
@@ -201,6 +260,13 @@ public class GetSettingsResponse implements Validable {
     @Required
     private GroupTopics topics;
 
+    /**
+     * Information whether the toxic filter is enabled
+     */
+    @SerializedName("toxic_filter")
+    @Required
+    private BoolInt toxicFilter;
+
     @SerializedName("twitter")
     private SettingsTwitter twitter;
 
@@ -223,18 +289,6 @@ public class GetSettingsResponse implements Validable {
      */
     @SerializedName("website")
     private String website;
-
-    /**
-     * Community phone
-     */
-    @SerializedName("phone")
-    private String phone;
-
-    /**
-     * Community email
-     */
-    @SerializedName("email")
-    private String email;
 
     /**
      * Wiki settings
@@ -261,82 +315,12 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
-    public GroupAudio getAudio() {
-        return audio;
+    public Boolean getAddresses() {
+        return addresses;
     }
 
-    public GetSettingsResponse setAudio(GroupAudio audio) {
-        this.audio = audio;
-        return this;
-    }
-
-    public Integer getArticles() {
-        return articles;
-    }
-
-    public GetSettingsResponse setArticles(Integer articles) {
-        this.articles = articles;
-        return this;
-    }
-
-    public Integer getRecognizePhoto() {
-        return recognizePhoto;
-    }
-
-    public GetSettingsResponse setRecognizePhoto(Integer recognizePhoto) {
-        this.recognizePhoto = recognizePhoto;
-        return this;
-    }
-
-    public Integer getCityId() {
-        return cityId;
-    }
-
-    public GetSettingsResponse setCityId(Integer cityId) {
-        this.cityId = cityId;
-        return this;
-    }
-
-    public boolean isContacts() {
-        return contacts == BoolInt.YES;
-    }
-
-    public BoolInt getContacts() {
-        return contacts;
-    }
-
-    public boolean isLinks() {
-        return links == BoolInt.YES;
-    }
-
-    public BoolInt getLinks() {
-        return links;
-    }
-
-    public List<List<JsonPrimitive>> getSectionsList() {
-        return sectionsList;
-    }
-
-    public GetSettingsResponse setSectionsList(List<List<JsonPrimitive>> sectionsList) {
-        this.sectionsList = sectionsList;
-        return this;
-    }
-
-    public GroupFullSection getMainSection() {
-        return mainSection;
-    }
-
-    public GetSettingsResponse setMainSection(GroupFullSection mainSection) {
-        this.mainSection = mainSection;
-        return this;
-    }
-
-    public GroupFullSection getSecondarySection() {
-        return secondarySection;
-    }
-
-    public GetSettingsResponse setSecondarySection(GroupFullSection secondarySection) {
-        this.secondarySection = secondarySection;
+    public GetSettingsResponse setAddresses(Boolean addresses) {
+        this.addresses = addresses;
         return this;
     }
 
@@ -349,12 +333,89 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public Integer getArticles() {
+        return articles;
+    }
+
+    public GetSettingsResponse setArticles(Integer articles) {
+        this.articles = articles;
+        return this;
+    }
+
+    public GroupAudio getAudio() {
+        return audio;
+    }
+
+    public GetSettingsResponse setAudio(GroupAudio audio) {
+        this.audio = audio;
+        return this;
+    }
+
+    public boolean isBotsAddToChat() {
+        return botsAddToChat == BoolInt.YES;
+    }
+
+    public BoolInt getBotsAddToChat() {
+        return botsAddToChat;
+    }
+
+    public boolean isBotsCapabilities() {
+        return botsCapabilities == BoolInt.YES;
+    }
+
+    public BoolInt getBotsCapabilities() {
+        return botsCapabilities;
+    }
+
+    public boolean isBotsStartButton() {
+        return botsStartButton == BoolInt.YES;
+    }
+
+    public BoolInt getBotsStartButton() {
+        return botsStartButton;
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public GetSettingsResponse setCityId(Integer cityId) {
+        this.cityId = cityId;
+        return this;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public GetSettingsResponse setCityName(String cityName) {
+        this.cityName = cityName;
+        return this;
+    }
+
+    public boolean isContacts() {
+        return contacts == BoolInt.YES;
+    }
+
+    public BoolInt getContacts() {
+        return contacts;
+    }
+
     public Integer getCountryId() {
         return countryId;
     }
 
     public GetSettingsResponse setCountryId(Integer countryId) {
         this.countryId = countryId;
+        return this;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public GetSettingsResponse setCountryName(String countryName) {
+        this.countryName = countryName;
         return this;
     }
 
@@ -367,6 +428,14 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public boolean isDisableRepliesFromGroups() {
+        return disableRepliesFromGroups == BoolInt.YES;
+    }
+
+    public BoolInt getDisableRepliesFromGroups() {
+        return disableRepliesFromGroups;
+    }
+
     public GroupDocs getDocs() {
         return docs;
     }
@@ -376,12 +445,56 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public GetSettingsResponse setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public Integer getEventGroupId() {
+        return eventGroupId;
+    }
+
+    public GetSettingsResponse setEventGroupId(Integer eventGroupId) {
+        this.eventGroupId = eventGroupId;
+        return this;
+    }
+
     public boolean isEvents() {
         return events == BoolInt.YES;
     }
 
     public BoolInt getEvents() {
         return events;
+    }
+
+    public Integer getFinishDate() {
+        return finishDate;
+    }
+
+    public GetSettingsResponse setFinishDate(Integer finishDate) {
+        this.finishDate = finishDate;
+        return this;
+    }
+
+    public boolean isLinks() {
+        return links == BoolInt.YES;
+    }
+
+    public BoolInt getLinks() {
+        return links;
+    }
+
+    public GroupFullSection getMainSection() {
+        return mainSection;
+    }
+
+    public GetSettingsResponse setMainSection(GroupFullSection mainSection) {
+        this.mainSection = mainSection;
+        return this;
     }
 
     public boolean isObsceneFilter() {
@@ -409,12 +522,12 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
-    public Integer getEventGroupId() {
-        return eventGroupId;
+    public String getPhone() {
+        return phone;
     }
 
-    public GetSettingsResponse setEventGroupId(Integer eventGroupId) {
-        this.eventGroupId = eventGroupId;
+    public GetSettingsResponse setPhone(String phone) {
+        this.phone = phone;
         return this;
     }
 
@@ -473,6 +586,15 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public Integer getRecognizePhoto() {
+        return recognizePhoto;
+    }
+
+    public GetSettingsResponse setRecognizePhoto(Integer recognizePhoto) {
+        this.recognizePhoto = recognizePhoto;
+        return this;
+    }
+
     public URI getRss() {
         return rss;
     }
@@ -482,21 +604,30 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public GroupFullSection getSecondarySection() {
+        return secondarySection;
+    }
+
+    public GetSettingsResponse setSecondarySection(GroupFullSection secondarySection) {
+        this.secondarySection = secondarySection;
+        return this;
+    }
+
+    public List<SectionsListItem> getSectionsList() {
+        return sectionsList;
+    }
+
+    public GetSettingsResponse setSectionsList(List<SectionsListItem> sectionsList) {
+        this.sectionsList = sectionsList;
+        return this;
+    }
+
     public Integer getStartDate() {
         return startDate;
     }
 
     public GetSettingsResponse setStartDate(Integer startDate) {
         this.startDate = startDate;
-        return this;
-    }
-
-    public Integer getFinishDate() {
-        return finishDate;
-    }
-
-    public GetSettingsResponse setFinishDate(Integer finishDate) {
-        this.finishDate = finishDate;
         return this;
     }
 
@@ -545,6 +676,14 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
+    public boolean isToxicFilter() {
+        return toxicFilter == BoolInt.YES;
+    }
+
+    public BoolInt getToxicFilter() {
+        return toxicFilter;
+    }
+
     public SettingsTwitter getTwitter() {
         return twitter;
     }
@@ -581,24 +720,6 @@ public class GetSettingsResponse implements Validable {
         return this;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public GetSettingsResponse setPhone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public GetSettingsResponse setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
     public GroupWiki getWiki() {
         return wiki;
     }
@@ -610,7 +731,7 @@ public class GetSettingsResponse implements Validable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mainSection, access, obsceneStopwords, subject, wiki, description, obsceneFilter, video, publicDate, cityId, title, photos, countryId, recognizePhoto, publicDateLabel, twitter, rss, docs, links, audio, publicCategory, events, email, eventGroupId, sectionsList, subjectList, website, address, topics, publicCategoryList, secondarySection, suggestedPrivacy, ageLimits, publicSubcategory, obsceneWords, phone, finishDate, articles, wall, startDate, contacts);
+        return Objects.hash(addresses, obsceneStopwords, subject, wiki, obsceneFilter, cityId, photos, recognizePhoto, twitter, docs, botsCapabilities, botsStartButton, links, events, eventGroupId, sectionsList, suggestedPrivacy, obsceneWords, phone, countryName, startDate, mainSection, access, description, video, publicDate, title, countryId, publicDateLabel, toxicFilter, rss, cityName, audio, publicCategory, email, subjectList, website, address, topics, publicCategoryList, secondarySection, botsAddToChat, ageLimits, disableRepliesFromGroups, publicSubcategory, finishDate, articles, wall, contacts);
     }
 
     @Override
@@ -618,47 +739,55 @@ public class GetSettingsResponse implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetSettingsResponse getSettingsResponse = (GetSettingsResponse) o;
-        return Objects.equals(access, getSettingsResponse.access) &&
+        return Objects.equals(addresses, getSettingsResponse.addresses) &&
                 Objects.equals(publicCategory, getSettingsResponse.publicCategory) &&
                 Objects.equals(publicSubcategory, getSettingsResponse.publicSubcategory) &&
                 Objects.equals(subject, getSettingsResponse.subject) &&
                 Objects.equals(wiki, getSettingsResponse.wiki) &&
-                Objects.equals(description, getSettingsResponse.description) &&
-                Objects.equals(video, getSettingsResponse.video) &&
-                Objects.equals(title, getSettingsResponse.title) &&
+                Objects.equals(botsStartButton, getSettingsResponse.botsStartButton) &&
                 Objects.equals(photos, getSettingsResponse.photos) &&
                 Objects.equals(mainSection, getSettingsResponse.mainSection) &&
                 Objects.equals(obsceneStopwords, getSettingsResponse.obsceneStopwords) &&
-                Objects.equals(suggestedPrivacy, getSettingsResponse.suggestedPrivacy) &&
                 Objects.equals(twitter, getSettingsResponse.twitter) &&
-                Objects.equals(rss, getSettingsResponse.rss) &&
                 Objects.equals(docs, getSettingsResponse.docs) &&
-                Objects.equals(subjectList, getSettingsResponse.subjectList) &&
                 Objects.equals(finishDate, getSettingsResponse.finishDate) &&
                 Objects.equals(links, getSettingsResponse.links) &&
-                Objects.equals(audio, getSettingsResponse.audio) &&
                 Objects.equals(obsceneFilter, getSettingsResponse.obsceneFilter) &&
-                Objects.equals(publicDate, getSettingsResponse.publicDate) &&
-                Objects.equals(secondarySection, getSettingsResponse.secondarySection) &&
                 Objects.equals(events, getSettingsResponse.events) &&
+                Objects.equals(publicDateLabel, getSettingsResponse.publicDateLabel) &&
+                Objects.equals(publicCategoryList, getSettingsResponse.publicCategoryList) &&
+                Objects.equals(ageLimits, getSettingsResponse.ageLimits) &&
+                Objects.equals(toxicFilter, getSettingsResponse.toxicFilter) &&
+                Objects.equals(phone, getSettingsResponse.phone) &&
+                Objects.equals(countryId, getSettingsResponse.countryId) &&
+                Objects.equals(cityId, getSettingsResponse.cityId) &&
+                Objects.equals(botsAddToChat, getSettingsResponse.botsAddToChat) &&
+                Objects.equals(botsCapabilities, getSettingsResponse.botsCapabilities) &&
+                Objects.equals(access, getSettingsResponse.access) &&
+                Objects.equals(description, getSettingsResponse.description) &&
+                Objects.equals(video, getSettingsResponse.video) &&
+                Objects.equals(title, getSettingsResponse.title) &&
+                Objects.equals(suggestedPrivacy, getSettingsResponse.suggestedPrivacy) &&
+                Objects.equals(cityName, getSettingsResponse.cityName) &&
+                Objects.equals(rss, getSettingsResponse.rss) &&
+                Objects.equals(subjectList, getSettingsResponse.subjectList) &&
+                Objects.equals(countryName, getSettingsResponse.countryName) &&
+                Objects.equals(audio, getSettingsResponse.audio) &&
+                Objects.equals(publicDate, getSettingsResponse.publicDate) &&
                 Objects.equals(email, getSettingsResponse.email) &&
+                Objects.equals(secondarySection, getSettingsResponse.secondarySection) &&
                 Objects.equals(startDate, getSettingsResponse.startDate) &&
                 Objects.equals(website, getSettingsResponse.website) &&
                 Objects.equals(address, getSettingsResponse.address) &&
                 Objects.equals(topics, getSettingsResponse.topics) &&
                 Objects.equals(recognizePhoto, getSettingsResponse.recognizePhoto) &&
                 Objects.equals(obsceneWords, getSettingsResponse.obsceneWords) &&
-                Objects.equals(publicDateLabel, getSettingsResponse.publicDateLabel) &&
-                Objects.equals(publicCategoryList, getSettingsResponse.publicCategoryList) &&
-                Objects.equals(ageLimits, getSettingsResponse.ageLimits) &&
-                Objects.equals(phone, getSettingsResponse.phone) &&
+                Objects.equals(disableRepliesFromGroups, getSettingsResponse.disableRepliesFromGroups) &&
                 Objects.equals(sectionsList, getSettingsResponse.sectionsList) &&
                 Objects.equals(eventGroupId, getSettingsResponse.eventGroupId) &&
                 Objects.equals(articles, getSettingsResponse.articles) &&
                 Objects.equals(wall, getSettingsResponse.wall) &&
-                Objects.equals(contacts, getSettingsResponse.contacts) &&
-                Objects.equals(countryId, getSettingsResponse.countryId) &&
-                Objects.equals(cityId, getSettingsResponse.cityId);
+                Objects.equals(contacts, getSettingsResponse.contacts);
     }
 
     @Override
@@ -669,47 +798,55 @@ public class GetSettingsResponse implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("GetSettingsResponse{");
-        sb.append("access=").append(access);
+        sb.append("addresses=").append(addresses);
         sb.append(", publicCategory=").append(publicCategory);
         sb.append(", publicSubcategory=").append(publicSubcategory);
         sb.append(", subject=").append(subject);
         sb.append(", wiki=").append(wiki);
-        sb.append(", description='").append(description).append("'");
-        sb.append(", video=").append(video);
-        sb.append(", title='").append(title).append("'");
+        sb.append(", botsStartButton=").append(botsStartButton);
         sb.append(", photos=").append(photos);
         sb.append(", mainSection=").append(mainSection);
         sb.append(", obsceneStopwords=").append(obsceneStopwords);
-        sb.append(", suggestedPrivacy=").append(suggestedPrivacy);
         sb.append(", twitter=").append(twitter);
-        sb.append(", rss=").append(rss);
         sb.append(", docs=").append(docs);
-        sb.append(", subjectList=").append(subjectList);
         sb.append(", finishDate=").append(finishDate);
         sb.append(", links=").append(links);
-        sb.append(", audio=").append(audio);
         sb.append(", obsceneFilter=").append(obsceneFilter);
-        sb.append(", publicDate='").append(publicDate).append("'");
-        sb.append(", secondarySection=").append(secondarySection);
         sb.append(", events=").append(events);
+        sb.append(", publicDateLabel='").append(publicDateLabel).append("'");
+        sb.append(", publicCategoryList=").append(publicCategoryList);
+        sb.append(", ageLimits=").append(ageLimits);
+        sb.append(", toxicFilter=").append(toxicFilter);
+        sb.append(", phone='").append(phone).append("'");
+        sb.append(", countryId=").append(countryId);
+        sb.append(", cityId=").append(cityId);
+        sb.append(", botsAddToChat=").append(botsAddToChat);
+        sb.append(", botsCapabilities=").append(botsCapabilities);
+        sb.append(", access=").append(access);
+        sb.append(", description='").append(description).append("'");
+        sb.append(", video=").append(video);
+        sb.append(", title='").append(title).append("'");
+        sb.append(", suggestedPrivacy=").append(suggestedPrivacy);
+        sb.append(", cityName='").append(cityName).append("'");
+        sb.append(", rss=").append(rss);
+        sb.append(", subjectList=").append(subjectList);
+        sb.append(", countryName='").append(countryName).append("'");
+        sb.append(", audio=").append(audio);
+        sb.append(", publicDate='").append(publicDate).append("'");
         sb.append(", email='").append(email).append("'");
+        sb.append(", secondarySection=").append(secondarySection);
         sb.append(", startDate=").append(startDate);
         sb.append(", website='").append(website).append("'");
         sb.append(", address='").append(address).append("'");
         sb.append(", topics=").append(topics);
         sb.append(", recognizePhoto=").append(recognizePhoto);
         sb.append(", obsceneWords='").append(obsceneWords).append("'");
-        sb.append(", publicDateLabel='").append(publicDateLabel).append("'");
-        sb.append(", publicCategoryList=").append(publicCategoryList);
-        sb.append(", ageLimits=").append(ageLimits);
-        sb.append(", phone='").append(phone).append("'");
+        sb.append(", disableRepliesFromGroups=").append(disableRepliesFromGroups);
         sb.append(", sectionsList=").append(sectionsList);
         sb.append(", eventGroupId=").append(eventGroupId);
         sb.append(", articles=").append(articles);
         sb.append(", wall=").append(wall);
         sb.append(", contacts=").append(contacts);
-        sb.append(", countryId=").append(countryId);
-        sb.append(", cityId=").append(cityId);
         sb.append('}');
         return sb.toString();
     }

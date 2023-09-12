@@ -12,9 +12,6 @@ import java.util.Objects;
  * GetPostReachResponse object
  */
 public class GetPostReachResponse implements Validable {
-    @SerializedName("post_id")
-    private Integer postId;
-
     /**
      * Hidings number
      */
@@ -32,6 +29,12 @@ public class GetPostReachResponse implements Validable {
      */
     @SerializedName("links")
     private Integer links;
+
+    @SerializedName("post_id")
+    private Integer postId;
+
+    @SerializedName("reach_ads")
+    private Integer reachAds;
 
     /**
      * Subscribers reach
@@ -54,14 +57,14 @@ public class GetPostReachResponse implements Validable {
     @SerializedName("reach_viral")
     private Integer reachViral;
 
-    @SerializedName("reach_ads")
-    private Integer reachAds;
-
     /**
      * Reports number
      */
     @SerializedName("report")
     private Integer report;
+
+    @SerializedName("sex_age")
+    private List<SexAge> sexAge;
 
     /**
      * Clickthrough to community
@@ -74,18 +77,6 @@ public class GetPostReachResponse implements Validable {
      */
     @SerializedName("unsubscribe")
     private Integer unsubscribe;
-
-    @SerializedName("sex_age")
-    private List<SexAge> sexAge;
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public GetPostReachResponse setPostId(Integer postId) {
-        this.postId = postId;
-        return this;
-    }
 
     public Integer getHide() {
         return hide;
@@ -111,6 +102,24 @@ public class GetPostReachResponse implements Validable {
 
     public GetPostReachResponse setLinks(Integer links) {
         this.links = links;
+        return this;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public GetPostReachResponse setPostId(Integer postId) {
+        this.postId = postId;
+        return this;
+    }
+
+    public Integer getReachAds() {
+        return reachAds;
+    }
+
+    public GetPostReachResponse setReachAds(Integer reachAds) {
+        this.reachAds = reachAds;
         return this;
     }
 
@@ -159,21 +168,21 @@ public class GetPostReachResponse implements Validable {
         return this;
     }
 
-    public Integer getReachAds() {
-        return reachAds;
-    }
-
-    public GetPostReachResponse setReachAds(Integer reachAds) {
-        this.reachAds = reachAds;
-        return this;
-    }
-
     public Integer getReport() {
         return report;
     }
 
     public GetPostReachResponse setReport(Integer report) {
         this.report = report;
+        return this;
+    }
+
+    public List<SexAge> getSexAge() {
+        return sexAge;
+    }
+
+    public GetPostReachResponse setSexAge(List<SexAge> sexAge) {
+        this.sexAge = sexAge;
         return this;
     }
 
@@ -192,15 +201,6 @@ public class GetPostReachResponse implements Validable {
 
     public GetPostReachResponse setUnsubscribe(Integer unsubscribe) {
         this.unsubscribe = unsubscribe;
-        return this;
-    }
-
-    public List<SexAge> getSexAge() {
-        return sexAge;
-    }
-
-    public GetPostReachResponse setSexAge(List<SexAge> sexAge) {
-        this.sexAge = sexAge;
         return this;
     }
 

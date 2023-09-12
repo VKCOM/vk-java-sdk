@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
-import com.vk.api.sdk.objects.users.UserMin;
+import com.vk.api.sdk.objects.users.UserFull;
 import com.vk.api.sdk.objects.video.VideoFull;
 import java.util.List;
 import java.util.Objects;
@@ -22,15 +22,15 @@ public class GetResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
     private List<VideoFull> items;
 
     @SerializedName("profiles")
-    private List<UserMin> profiles;
-
-    @SerializedName("groups")
-    private List<GroupFull> groups;
+    private List<UserFull> profiles;
 
     public Integer getCount() {
         return count;
@@ -38,6 +38,15 @@ public class GetResponse implements Validable {
 
     public GetResponse setCount(Integer count) {
         this.count = count;
+        return this;
+    }
+
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
         return this;
     }
 
@@ -50,21 +59,12 @@ public class GetResponse implements Validable {
         return this;
     }
 
-    public List<UserMin> getProfiles() {
+    public List<UserFull> getProfiles() {
         return profiles;
     }
 
-    public GetResponse setProfiles(List<UserMin> profiles) {
+    public GetResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

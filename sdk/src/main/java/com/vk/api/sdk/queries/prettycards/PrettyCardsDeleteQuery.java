@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.prettycards;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.prettycards.responses.DeleteResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,14 +14,16 @@ import java.util.List;
  */
 public class PrettyCardsDeleteQuery extends AbstractQueryBuilder<PrettyCardsDeleteQuery, DeleteResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param cardId value of "card id" parameter.
      */
-    public PrettyCardsDeleteQuery(VkApiClient client, UserActor actor, int ownerId, int cardId) {
+    public PrettyCardsDeleteQuery(VkApiClient client, UserActor actor, Long ownerId,
+            Integer cardId) {
         super(client, "prettyCards.delete", DeleteResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -28,12 +31,25 @@ public class PrettyCardsDeleteQuery extends AbstractQueryBuilder<PrettyCardsDele
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public PrettyCardsDeleteQuery(VkApiClient client, UserActor actor) {
+        super(client, "prettyCards.delete", DeleteResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * Set owner id
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsDeleteQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public PrettyCardsDeleteQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -43,7 +59,8 @@ public class PrettyCardsDeleteQuery extends AbstractQueryBuilder<PrettyCardsDele
      * @param value value of "card id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected PrettyCardsDeleteQuery cardId(int value) {
+    @ApiParam("card_id")
+    public PrettyCardsDeleteQuery cardId(Integer value) {
         return unsafeParam("card_id", value);
     }
 

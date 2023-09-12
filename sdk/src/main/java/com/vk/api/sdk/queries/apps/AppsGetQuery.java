@@ -5,9 +5,11 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.ServiceActor;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.apps.GetNameCase;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.apps.AppFields;
 import com.vk.api.sdk.objects.apps.GetPlatform;
 import com.vk.api.sdk.objects.apps.responses.GetResponse;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.List;
  */
 public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -28,7 +30,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
     }
 
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build service api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -45,16 +47,18 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "app id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("app_id")
     public AppsGetQuery appId(Integer value) {
         return unsafeParam("app_id", value);
     }
 
     /**
-     * Platform. Possible values: *'ios' — iOS,, *'android' — Android,, *'winphone' — Windows Phone,, *'web' — приложения на vk.com. By default: 'web'.
+     * Platform. Possible values: *'ios' - iOS,, *'android' - Android,, *'winphone' - Windows Phone,, *'web' - приложения на vk.com. By default: 'web'.
      *
      * @param value value of "platform" parameter. By default web.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("platform")
     public AppsGetQuery platform(GetPlatform value) {
         return unsafeParam("platform", value);
     }
@@ -65,6 +69,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "extended" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     public AppsGetQuery extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -75,28 +80,31 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "return friends" parameter. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("return_friends")
     public AppsGetQuery returnFriends(Boolean value) {
         return unsafeParam("return_friends", value);
     }
 
     /**
-     * Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
+     * Case for declension of user name and surname: 'nom' - nominative (default),, 'gen' - genitive,, 'dat' - dative,, 'acc' - accusative,, 'ins' - instrumental,, 'abl' - prepositional. (only if 'return_friends' = '1')
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery nameCase(GetNameCase value) {
+    @ApiParam("name_case")
+    public AppsGetQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
     /**
-     * app_ids
+     * appIds
      * List of application ID
      *
      * @param value value of "app ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery appIds(String... value) {
+    @ApiParam("app_ids")
+    public AppsGetQuery appIds(Integer... value) {
         return unsafeParam("app_ids", value);
     }
 
@@ -106,7 +114,8 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "app ids" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public AppsGetQuery appIds(List<String> value) {
+    @ApiParam("app_ids")
+    public AppsGetQuery appIds(List<Integer> value) {
         return unsafeParam("app_ids", value);
     }
 
@@ -117,6 +126,7 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -127,8 +137,32 @@ public class AppsGetQuery extends AbstractQueryBuilder<AppsGetQuery, GetResponse
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public AppsGetQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
+    }
+
+    /**
+     * appFields
+     * List of app fields to return. Fields 'id', 'type' and 'title' will always be in response. Leave this field empty to get all fields
+     *
+     * @param value value of "app fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("app_fields")
+    public AppsGetQuery appFields(AppFields... value) {
+        return unsafeParam("app_fields", value);
+    }
+
+    /**
+     * List of app fields to return. Fields 'id', 'type' and 'title' will always be in response. Leave this field empty to get all fields
+     *
+     * @param value value of "app fields" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("app_fields")
+    public AppsGetQuery appFields(List<AppFields> value) {
+        return unsafeParam("app_fields", value);
     }
 
     @Override

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.users;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.users.Fields;
 import com.vk.api.sdk.objects.users.SearchSex;
 import com.vk.api.sdk.objects.users.SearchSort;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, SearchResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -33,16 +34,18 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "q" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("q")
     public UsersSearchQuery q(String value) {
         return unsafeParam("q", value);
     }
 
     /**
-     * Sort order: '1' — by date registered, '0' — by rating
+     * Sort order: '1' - by date registered, '0' - by rating
      *
      * @param value value of "sort" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sort")
     public UsersSearchQuery sort(SearchSort value) {
         return unsafeParam("sort", value);
     }
@@ -53,6 +56,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public UsersSearchQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -63,6 +67,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "count" parameter. Maximum is 1000. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public UsersSearchQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -73,8 +78,20 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "city" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("city")
     public UsersSearchQuery city(Integer value) {
         return unsafeParam("city", value);
+    }
+
+    /**
+     * City ID. Use parameter city instead
+     *
+     * @param value value of "city id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("city_id")
+    public UsersSearchQuery cityId(Integer value) {
+        return unsafeParam("city_id", value);
     }
 
     /**
@@ -83,8 +100,20 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "country" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("country")
     public UsersSearchQuery country(Integer value) {
         return unsafeParam("country", value);
+    }
+
+    /**
+     * Country ID. Use parameter country instead
+     *
+     * @param value value of "country id" parameter. Minimum is 0.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("country_id")
+    public UsersSearchQuery countryId(Integer value) {
+        return unsafeParam("country_id", value);
     }
 
     /**
@@ -93,6 +122,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "hometown" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("hometown")
     public UsersSearchQuery hometown(String value) {
         return unsafeParam("hometown", value);
     }
@@ -103,6 +133,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "university country" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("university_country")
     public UsersSearchQuery universityCountry(Integer value) {
         return unsafeParam("university_country", value);
     }
@@ -113,6 +144,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "university" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("university")
     public UsersSearchQuery university(Integer value) {
         return unsafeParam("university", value);
     }
@@ -123,6 +155,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "university year" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("university_year")
     public UsersSearchQuery universityYear(Integer value) {
         return unsafeParam("university_year", value);
     }
@@ -133,6 +166,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "university faculty" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("university_faculty")
     public UsersSearchQuery universityFaculty(Integer value) {
         return unsafeParam("university_faculty", value);
     }
@@ -143,26 +177,29 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "university chair" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("university_chair")
     public UsersSearchQuery universityChair(Integer value) {
         return unsafeParam("university_chair", value);
     }
 
     /**
-     * '1' — female, '2' — male, '0' — any (default)
+     * '1' - female, '2' - male, '0' - any (default)
      *
      * @param value value of "sex" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("sex")
     public UsersSearchQuery sex(SearchSex value) {
         return unsafeParam("sex", value);
     }
 
     /**
-     * Relationship status: '1' — Not married, '2' — In a relationship, '3' — Engaged, '4' — Married, '5' — It's complicated, '6' — Actively searching, '7' — In love
+     * Relationship status: '0' - Not specified, '1' - Not married, '2' - In a relationship, '3' - Engaged, '4' - Married, '5' - It's complicated, '6' - Actively searching, '7' - In love, '8' - In a civil union
      *
      * @param value value of "status" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("status")
     public UsersSearchQuery status(SearchStatus value) {
         return unsafeParam("status", value);
     }
@@ -173,6 +210,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "age from" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("age_from")
     public UsersSearchQuery ageFrom(Integer value) {
         return unsafeParam("age_from", value);
     }
@@ -183,6 +221,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "age to" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("age_to")
     public UsersSearchQuery ageTo(Integer value) {
         return unsafeParam("age_to", value);
     }
@@ -193,6 +232,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "birth day" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("birth_day")
     public UsersSearchQuery birthDay(Integer value) {
         return unsafeParam("birth_day", value);
     }
@@ -203,6 +243,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "birth month" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("birth_month")
     public UsersSearchQuery birthMonth(Integer value) {
         return unsafeParam("birth_month", value);
     }
@@ -213,26 +254,29 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "birth year" parameter. Maximum is 2100. Minimum is 1900.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("birth_year")
     public UsersSearchQuery birthYear(Integer value) {
         return unsafeParam("birth_year", value);
     }
 
     /**
-     * '1' — online only, '0' — all users
+     * '1' - online only, '0' - all users
      *
      * @param value value of "online" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("online")
     public UsersSearchQuery online(Boolean value) {
         return unsafeParam("online", value);
     }
 
     /**
-     * '1' — with photo only, '0' — all users
+     * '1' - with photo only, '0' - all users
      *
      * @param value value of "has photo" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("has_photo")
     public UsersSearchQuery hasPhoto(Boolean value) {
         return unsafeParam("has_photo", value);
     }
@@ -243,6 +287,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "school country" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("school_country")
     public UsersSearchQuery schoolCountry(Integer value) {
         return unsafeParam("school_country", value);
     }
@@ -253,6 +298,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "school city" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("school_city")
     public UsersSearchQuery schoolCity(Integer value) {
         return unsafeParam("school_city", value);
     }
@@ -263,6 +309,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "school class" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("school_class")
     public UsersSearchQuery schoolClass(Integer value) {
         return unsafeParam("school_class", value);
     }
@@ -273,6 +320,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "school" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("school")
     public UsersSearchQuery school(Integer value) {
         return unsafeParam("school", value);
     }
@@ -283,6 +331,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "school year" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("school_year")
     public UsersSearchQuery schoolYear(Integer value) {
         return unsafeParam("school_year", value);
     }
@@ -293,6 +342,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "religion" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("religion")
     public UsersSearchQuery religion(String value) {
         return unsafeParam("religion", value);
     }
@@ -303,6 +353,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "company" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("company")
     public UsersSearchQuery company(String value) {
         return unsafeParam("company", value);
     }
@@ -313,6 +364,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "position" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("position")
     public UsersSearchQuery position(String value) {
         return unsafeParam("position", value);
     }
@@ -320,32 +372,24 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
     /**
      * ID of a community to search in communities.
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery groupId(Integer value) {
+    @ApiParam("group_id")
+    public UsersSearchQuery groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
     /**
-     * from_list
-     * Set from list
+     * Set screen ref
      *
-     * @param value value of "from list" parameter.
+     * @param value value of "screen ref" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public UsersSearchQuery fromList(String... value) {
-        return unsafeParam("from_list", value);
-    }
-
-    /**
-     * Set from list
-     *
-     * @param value value of "from list" parameter.
-     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
-     */
-    public UsersSearchQuery fromList(List<String> value) {
-        return unsafeParam("from_list", value);
+    @ApiParam("screen_ref")
+    public UsersSearchQuery screenRef(String value) {
+        return unsafeParam("screen_ref", value);
     }
 
     /**
@@ -355,6 +399,7 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersSearchQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -365,8 +410,32 @@ public class UsersSearchQuery extends AbstractQueryBuilder<UsersSearchQuery, Sea
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public UsersSearchQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
+    }
+
+    /**
+     * fromList
+     * Set from list
+     *
+     * @param value value of "from list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("from_list")
+    public UsersSearchQuery fromList(String... value) {
+        return unsafeParam("from_list", value);
+    }
+
+    /**
+     * Set from list
+     *
+     * @param value value of "from list" parameter.
+     * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
+     */
+    @ApiParam("from_list")
+    public UsersSearchQuery fromList(List<String> value) {
+        return unsafeParam("from_list", value);
     }
 
     @Override

@@ -23,10 +23,40 @@ public class Video implements Validable {
     private String accessKey;
 
     /**
+     * 1 if video is added to user's albums
+     */
+    @SerializedName("added")
+    private BoolInt added;
+
+    /**
      * Date when the video has been added in Unixtime
      */
     @SerializedName("adding_date")
     private Integer addingDate;
+
+    /**
+     * Live donations balance
+     */
+    @SerializedName("balance")
+    private Integer balance;
+
+    /**
+     * Information whether current user can add the video
+     */
+    @SerializedName("can_add")
+    private BoolInt canAdd;
+
+    /**
+     * Information whether current user can add the video to favourites
+     */
+    @SerializedName("can_add_to_faves")
+    private BoolInt canAddToFaves;
+
+    /**
+     * Information whether current user can attach action button to the video
+     */
+    @SerializedName("can_attach_link")
+    private BoolInt canAttachLink;
 
     /**
      * Information whether current user can comment the video
@@ -35,10 +65,22 @@ public class Video implements Validable {
     private BoolInt canComment;
 
     /**
+     * Information whether current user can delete the video
+     */
+    @SerializedName("can_delete")
+    private BoolInt canDelete;
+
+    /**
      * Information whether current user can edit the video
      */
     @SerializedName("can_edit")
     private BoolInt canEdit;
+
+    /**
+     * Information whether current user can edit the video privacy
+     */
+    @SerializedName("can_edit_privacy")
+    private BoolInt canEditPrivacy;
 
     /**
      * Information whether current user can like the video
@@ -50,7 +92,7 @@ public class Video implements Validable {
      * Information whether current user can repost the video
      */
     @SerializedName("can_repost")
-    private BoolInt canRepost;
+    private Integer canRepost;
 
     /**
      * Information whether current user can subscribe to author of the video
@@ -59,34 +101,28 @@ public class Video implements Validable {
     private BoolInt canSubscribe;
 
     /**
-     * Information whether current user can add the video to favourites
-     */
-    @SerializedName("can_add_to_faves")
-    private BoolInt canAddToFaves;
-
-    /**
-     * Information whether current user can add the video
-     */
-    @SerializedName("can_add")
-    private BoolInt canAdd;
-
-    /**
-     * Information whether current user can attach action button to the video
-     */
-    @SerializedName("can_attach_link")
-    private BoolInt canAttachLink;
-
-    /**
-     * 1 if video is private
-     */
-    @SerializedName("is_private")
-    private BoolInt isPrivate;
-
-    /**
      * Number of comments
      */
     @SerializedName("comments")
     private Integer comments;
+
+    /**
+     * Restriction code
+     */
+    @SerializedName("content_restricted")
+    private Integer contentRestricted;
+
+    /**
+     * Restriction text
+     */
+    @SerializedName("content_restricted_message")
+    private String contentRestrictedMessage;
+
+    /**
+     * 1 if  video is being converted
+     */
+    @SerializedName("converting")
+    private BoolInt converting;
 
     /**
      * Date when video has been uploaded in Unixtime
@@ -106,17 +142,8 @@ public class Video implements Validable {
     @SerializedName("duration")
     private Integer duration;
 
-    @SerializedName("image")
-    private List<VideoImage> image;
-
     @SerializedName("first_frame")
     private List<VideoImage> firstFrame;
-
-    /**
-     * Video width
-     */
-    @SerializedName("width")
-    private Integer width;
 
     /**
      * Video height
@@ -130,29 +157,66 @@ public class Video implements Validable {
     @SerializedName("id")
     private Integer id;
 
-    /**
-     * Video owner ID
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * Id of the user who uploaded the video if it was uploaded to a group by member
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    /**
-     * Video title
-     */
-    @SerializedName("title")
-    private String title;
+    @SerializedName("image")
+    private List<VideoImage> image;
 
     /**
      * Whether video is added to bookmarks
      */
     @SerializedName("is_favorite")
     private Boolean isFavorite;
+
+    /**
+     * 1 if video is private
+     */
+    @SerializedName("is_private")
+    private BoolInt isPrivate;
+
+    /**
+     * 1 if user is subscribed to author of the video
+     */
+    @SerializedName("is_subscribed")
+    private BoolInt isSubscribed;
+
+    @SerializedName("likes")
+    private Likes likes;
+
+    /**
+     * 1 if the video is a live stream
+     */
+    @SerializedName("live")
+    private PropertyExists live;
+
+    /**
+     * Whether current user is subscribed to the upcoming live stream notification (if not subscribed to the author)
+     */
+    @SerializedName("live_notify")
+    private BoolInt liveNotify;
+
+    /**
+     * Date in Unixtime when the live stream is scheduled to start by the author
+     */
+    @SerializedName("live_start_time")
+    private Integer liveStartTime;
+
+    /**
+     * If video is external, number of views on vk
+     */
+    @SerializedName("local_views")
+    private Integer localViews;
+
+    /**
+     * Video owner ID
+     * Entity: owner
+     */
+    @SerializedName("owner_id")
+    private Long ownerId;
+
+    /**
+     * External platform
+     */
+    @SerializedName("platform")
+    private String platform;
 
     /**
      * Video embed URL
@@ -167,94 +231,16 @@ public class Video implements Validable {
     private PropertyExists processing;
 
     /**
-     * 1 if  video is being converted
-     */
-    @SerializedName("converting")
-    private BoolInt converting;
-
-    /**
-     * 1 if video is added to user's albums
-     */
-    @SerializedName("added")
-    private BoolInt added;
-
-    /**
-     * 1 if user is subscribed to author of the video
-     */
-    @SerializedName("is_subscribed")
-    private BoolInt isSubscribed;
-
-    @SerializedName("track_code")
-    private String trackCode;
-
-    /**
      * Information whether the video is repeated
      */
     @SerializedName("repeat")
     private PropertyExists repeat;
 
-    @SerializedName("type")
-    private VideoType type;
+    @SerializedName("reposts")
+    private RepostsInfo reposts;
 
-    /**
-     * Number of views
-     */
-    @SerializedName("views")
-    private Integer views;
-
-    /**
-     * If video is external, number of views on vk
-     */
-    @SerializedName("local_views")
-    private Integer localViews;
-
-    /**
-     * Restriction code
-     */
-    @SerializedName("content_restricted")
-    private Integer contentRestricted;
-
-    /**
-     * Restriction text
-     */
-    @SerializedName("content_restricted_message")
-    private String contentRestrictedMessage;
-
-    /**
-     * Live donations balance
-     */
-    @SerializedName("balance")
-    private Integer balance;
-
-    /**
-     * Live stream status
-     */
-    @SerializedName("live_status")
-    private VideoLiveStatus liveStatus;
-
-    /**
-     * 1 if the video is a live stream
-     */
-    @SerializedName("live")
-    private PropertyExists live;
-
-    /**
-     * 1 if the video is an upcoming stream
-     */
-    @SerializedName("upcoming")
-    private PropertyExists upcoming;
-
-    /**
-     * Date in Unixtime when the live stream is scheduled to start by the author
-     */
-    @SerializedName("live_start_time")
-    private Integer liveStartTime;
-
-    /**
-     * Whether current user is subscribed to the upcoming live stream notification (if not subscribed to the author)
-     */
-    @SerializedName("live_notify")
-    private BoolInt liveNotify;
+    @SerializedName("response_type")
+    private VideoResponseType responseType;
 
     /**
      * Number of spectators of the stream
@@ -263,16 +249,41 @@ public class Video implements Validable {
     private Integer spectators;
 
     /**
-     * External platform
+     * Video title
      */
-    @SerializedName("platform")
-    private String platform;
+    @SerializedName("title")
+    private String title;
 
-    @SerializedName("likes")
-    private Likes likes;
+    @SerializedName("track_code")
+    private String trackCode;
 
-    @SerializedName("reposts")
-    private RepostsInfo reposts;
+    @SerializedName("type")
+    private VideoType type;
+
+    /**
+     * 1 if the video is an upcoming stream
+     */
+    @SerializedName("upcoming")
+    private PropertyExists upcoming;
+
+    /**
+     * Id of the user who uploaded the video if it was uploaded to a group by member
+     * Entity: owner
+     */
+    @SerializedName("user_id")
+    private Long userId;
+
+    /**
+     * Number of views
+     */
+    @SerializedName("views")
+    private Integer views;
+
+    /**
+     * Video width
+     */
+    @SerializedName("width")
+    private Integer width;
 
     public String getAccessKey() {
         return accessKey;
@@ -281,6 +292,14 @@ public class Video implements Validable {
     public Video setAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
+    }
+
+    public boolean isAdded() {
+        return added == BoolInt.YES;
+    }
+
+    public BoolInt getAdded() {
+        return added;
     }
 
     public Integer getAddingDate() {
@@ -292,52 +311,13 @@ public class Video implements Validable {
         return this;
     }
 
-    public boolean canComment() {
-        return canComment == BoolInt.YES;
+    public Integer getBalance() {
+        return balance;
     }
 
-    public BoolInt getCanComment() {
-        return canComment;
-    }
-
-    public boolean canEdit() {
-        return canEdit == BoolInt.YES;
-    }
-
-    public BoolInt getCanEdit() {
-        return canEdit;
-    }
-
-    public boolean canLike() {
-        return canLike == BoolInt.YES;
-    }
-
-    public BoolInt getCanLike() {
-        return canLike;
-    }
-
-    public boolean canRepost() {
-        return canRepost == BoolInt.YES;
-    }
-
-    public BoolInt getCanRepost() {
-        return canRepost;
-    }
-
-    public boolean canSubscribe() {
-        return canSubscribe == BoolInt.YES;
-    }
-
-    public BoolInt getCanSubscribe() {
-        return canSubscribe;
-    }
-
-    public boolean canAddToFaves() {
-        return canAddToFaves == BoolInt.YES;
-    }
-
-    public BoolInt getCanAddToFaves() {
-        return canAddToFaves;
+    public Video setBalance(Integer balance) {
+        this.balance = balance;
+        return this;
     }
 
     public boolean canAdd() {
@@ -348,6 +328,14 @@ public class Video implements Validable {
         return canAdd;
     }
 
+    public boolean canAddToFaves() {
+        return canAddToFaves == BoolInt.YES;
+    }
+
+    public BoolInt getCanAddToFaves() {
+        return canAddToFaves;
+    }
+
     public boolean canAttachLink() {
         return canAttachLink == BoolInt.YES;
     }
@@ -356,12 +344,61 @@ public class Video implements Validable {
         return canAttachLink;
     }
 
-    public boolean isPrivate() {
-        return isPrivate == BoolInt.YES;
+    public boolean canComment() {
+        return canComment == BoolInt.YES;
     }
 
-    public BoolInt getIsPrivate() {
-        return isPrivate;
+    public BoolInt getCanComment() {
+        return canComment;
+    }
+
+    public boolean canDelete() {
+        return canDelete == BoolInt.YES;
+    }
+
+    public BoolInt getCanDelete() {
+        return canDelete;
+    }
+
+    public boolean canEdit() {
+        return canEdit == BoolInt.YES;
+    }
+
+    public BoolInt getCanEdit() {
+        return canEdit;
+    }
+
+    public boolean canEditPrivacy() {
+        return canEditPrivacy == BoolInt.YES;
+    }
+
+    public BoolInt getCanEditPrivacy() {
+        return canEditPrivacy;
+    }
+
+    public boolean canLike() {
+        return canLike == BoolInt.YES;
+    }
+
+    public BoolInt getCanLike() {
+        return canLike;
+    }
+
+    public Integer getCanRepost() {
+        return canRepost;
+    }
+
+    public Video setCanRepost(Integer canRepost) {
+        this.canRepost = canRepost;
+        return this;
+    }
+
+    public boolean canSubscribe() {
+        return canSubscribe == BoolInt.YES;
+    }
+
+    public BoolInt getCanSubscribe() {
+        return canSubscribe;
     }
 
     public Integer getComments() {
@@ -371,6 +408,32 @@ public class Video implements Validable {
     public Video setComments(Integer comments) {
         this.comments = comments;
         return this;
+    }
+
+    public Integer getContentRestricted() {
+        return contentRestricted;
+    }
+
+    public Video setContentRestricted(Integer contentRestricted) {
+        this.contentRestricted = contentRestricted;
+        return this;
+    }
+
+    public String getContentRestrictedMessage() {
+        return contentRestrictedMessage;
+    }
+
+    public Video setContentRestrictedMessage(String contentRestrictedMessage) {
+        this.contentRestrictedMessage = contentRestrictedMessage;
+        return this;
+    }
+
+    public boolean isConverting() {
+        return converting == BoolInt.YES;
+    }
+
+    public BoolInt getConverting() {
+        return converting;
     }
 
     public Integer getDate() {
@@ -400,30 +463,12 @@ public class Video implements Validable {
         return this;
     }
 
-    public List<VideoImage> getImage() {
-        return image;
-    }
-
-    public Video setImage(List<VideoImage> image) {
-        this.image = image;
-        return this;
-    }
-
     public List<VideoImage> getFirstFrame() {
         return firstFrame;
     }
 
     public Video setFirstFrame(List<VideoImage> firstFrame) {
         this.firstFrame = firstFrame;
-        return this;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public Video setWidth(Integer width) {
-        this.width = width;
         return this;
     }
 
@@ -445,30 +490,12 @@ public class Video implements Validable {
         return this;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public List<VideoImage> getImage() {
+        return image;
     }
 
-    public Video setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-        return this;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public Video setUserId(Integer userId) {
-        this.userId = userId;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Video setTitle(String title) {
-        this.title = title;
+    public Video setImage(List<VideoImage> image) {
+        this.image = image;
         return this;
     }
 
@@ -478,6 +505,79 @@ public class Video implements Validable {
 
     public Video setIsFavorite(Boolean isFavorite) {
         this.isFavorite = isFavorite;
+        return this;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate == BoolInt.YES;
+    }
+
+    public BoolInt getIsPrivate() {
+        return isPrivate;
+    }
+
+    public boolean isSubscribed() {
+        return isSubscribed == BoolInt.YES;
+    }
+
+    public BoolInt getIsSubscribed() {
+        return isSubscribed;
+    }
+
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public Video setLikes(Likes likes) {
+        this.likes = likes;
+        return this;
+    }
+
+    public boolean isLive() {
+        return live == PropertyExists.PROPERTY_EXISTS;
+    }
+
+    public boolean isLiveNotify() {
+        return liveNotify == BoolInt.YES;
+    }
+
+    public BoolInt getLiveNotify() {
+        return liveNotify;
+    }
+
+    public Integer getLiveStartTime() {
+        return liveStartTime;
+    }
+
+    public Video setLiveStartTime(Integer liveStartTime) {
+        this.liveStartTime = liveStartTime;
+        return this;
+    }
+
+    public Integer getLocalViews() {
+        return localViews;
+    }
+
+    public Video setLocalViews(Integer localViews) {
+        this.localViews = localViews;
+        return this;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public Video setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public Video setPlatform(String platform) {
+        this.platform = platform;
         return this;
     }
 
@@ -494,28 +594,44 @@ public class Video implements Validable {
         return processing == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public boolean isConverting() {
-        return converting == BoolInt.YES;
+    public boolean isRepeat() {
+        return repeat == PropertyExists.PROPERTY_EXISTS;
     }
 
-    public BoolInt getConverting() {
-        return converting;
+    public RepostsInfo getReposts() {
+        return reposts;
     }
 
-    public boolean isAdded() {
-        return added == BoolInt.YES;
+    public Video setReposts(RepostsInfo reposts) {
+        this.reposts = reposts;
+        return this;
     }
 
-    public BoolInt getAdded() {
-        return added;
+    public VideoResponseType getResponseType() {
+        return responseType;
     }
 
-    public boolean isSubscribed() {
-        return isSubscribed == BoolInt.YES;
+    public Video setResponseType(VideoResponseType responseType) {
+        this.responseType = responseType;
+        return this;
     }
 
-    public BoolInt getIsSubscribed() {
-        return isSubscribed;
+    public Integer getSpectators() {
+        return spectators;
+    }
+
+    public Video setSpectators(Integer spectators) {
+        this.spectators = spectators;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Video setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     public String getTrackCode() {
@@ -527,16 +643,25 @@ public class Video implements Validable {
         return this;
     }
 
-    public boolean isRepeat() {
-        return repeat == PropertyExists.PROPERTY_EXISTS;
-    }
-
     public VideoType getType() {
         return type;
     }
 
     public Video setType(VideoType type) {
         this.type = type;
+        return this;
+    }
+
+    public boolean isUpcoming() {
+        return upcoming == PropertyExists.PROPERTY_EXISTS;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public Video setUserId(Long userId) {
+        this.userId = userId;
         return this;
     }
 
@@ -549,115 +674,18 @@ public class Video implements Validable {
         return this;
     }
 
-    public Integer getLocalViews() {
-        return localViews;
+    public Integer getWidth() {
+        return width;
     }
 
-    public Video setLocalViews(Integer localViews) {
-        this.localViews = localViews;
-        return this;
-    }
-
-    public Integer getContentRestricted() {
-        return contentRestricted;
-    }
-
-    public Video setContentRestricted(Integer contentRestricted) {
-        this.contentRestricted = contentRestricted;
-        return this;
-    }
-
-    public String getContentRestrictedMessage() {
-        return contentRestrictedMessage;
-    }
-
-    public Video setContentRestrictedMessage(String contentRestrictedMessage) {
-        this.contentRestrictedMessage = contentRestrictedMessage;
-        return this;
-    }
-
-    public Integer getBalance() {
-        return balance;
-    }
-
-    public Video setBalance(Integer balance) {
-        this.balance = balance;
-        return this;
-    }
-
-    public VideoLiveStatus getLiveStatus() {
-        return liveStatus;
-    }
-
-    public Video setLiveStatus(VideoLiveStatus liveStatus) {
-        this.liveStatus = liveStatus;
-        return this;
-    }
-
-    public boolean isLive() {
-        return live == PropertyExists.PROPERTY_EXISTS;
-    }
-
-    public boolean isUpcoming() {
-        return upcoming == PropertyExists.PROPERTY_EXISTS;
-    }
-
-    public Integer getLiveStartTime() {
-        return liveStartTime;
-    }
-
-    public Video setLiveStartTime(Integer liveStartTime) {
-        this.liveStartTime = liveStartTime;
-        return this;
-    }
-
-    public boolean isLiveNotify() {
-        return liveNotify == BoolInt.YES;
-    }
-
-    public BoolInt getLiveNotify() {
-        return liveNotify;
-    }
-
-    public Integer getSpectators() {
-        return spectators;
-    }
-
-    public Video setSpectators(Integer spectators) {
-        this.spectators = spectators;
-        return this;
-    }
-
-    public String getPlatform() {
-        return platform;
-    }
-
-    public Video setPlatform(String platform) {
-        this.platform = platform;
-        return this;
-    }
-
-    public Likes getLikes() {
-        return likes;
-    }
-
-    public Video setLikes(Likes likes) {
-        this.likes = likes;
-        return this;
-    }
-
-    public RepostsInfo getReposts() {
-        return reposts;
-    }
-
-    public Video setReposts(RepostsInfo reposts) {
-        this.reposts = reposts;
+    public Video setWidth(Integer width) {
+        this.width = width;
         return this;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, added, converting, canLike, canEdit, canAdd, canAddToFaves, description, isPrivate, ownerId, liveNotify, title, type, liveStartTime, platform, duration, canSubscribe, isSubscribed, balance, firstFrame, repeat, canComment, id, addingDate, views, live, liveStatus, height, player, likes, trackCode, image, comments, contentRestrictedMessage, canRepost, contentRestricted, spectators, userId, localViews, canAttachLink, accessKey, width, processing, upcoming, reposts, isFavorite);
+        return Objects.hash(date, added, converting, canLike, canEdit, canAdd, canAddToFaves, description, canEditPrivacy, isPrivate, ownerId, liveNotify, title, type, liveStartTime, platform, duration, canSubscribe, responseType, isSubscribed, balance, firstFrame, repeat, canDelete, canComment, id, addingDate, live, views, height, likes, player, trackCode, image, comments, contentRestrictedMessage, canRepost, contentRestricted, spectators, userId, localViews, canAttachLink, accessKey, width, processing, reposts, upcoming, isFavorite);
     }
 
     @Override
@@ -665,17 +693,18 @@ public class Video implements Validable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Video video = (Video) o;
-        return Objects.equals(isPrivate, video.isPrivate) &&
-                Objects.equals(date, video.date) &&
+        return Objects.equals(date, video.date) &&
+                Objects.equals(isPrivate, video.isPrivate) &&
                 Objects.equals(isFavorite, video.isFavorite) &&
                 Objects.equals(addingDate, video.addingDate) &&
                 Objects.equals(canAddToFaves, video.canAddToFaves) &&
                 Objects.equals(added, video.added) &&
-                Objects.equals(ownerId, video.ownerId) &&
                 Objects.equals(converting, video.converting) &&
+                Objects.equals(ownerId, video.ownerId) &&
                 Objects.equals(liveNotify, video.liveNotify) &&
-                Objects.equals(description, video.description) &&
                 Objects.equals(contentRestrictedMessage, video.contentRestrictedMessage) &&
+                Objects.equals(description, video.description) &&
+                Objects.equals(responseType, video.responseType) &&
                 Objects.equals(canAttachLink, video.canAttachLink) &&
                 Objects.equals(title, video.title) &&
                 Objects.equals(type, video.type) &&
@@ -685,14 +714,14 @@ public class Video implements Validable {
                 Objects.equals(localViews, video.localViews) &&
                 Objects.equals(balance, video.balance) &&
                 Objects.equals(canLike, video.canLike) &&
+                Objects.equals(canDelete, video.canDelete) &&
                 Objects.equals(repeat, video.repeat) &&
                 Objects.equals(id, video.id) &&
-                Objects.equals(views, video.views) &&
                 Objects.equals(live, video.live) &&
+                Objects.equals(views, video.views) &&
                 Objects.equals(height, video.height) &&
-                Objects.equals(player, video.player) &&
-                Objects.equals(liveStatus, video.liveStatus) &&
                 Objects.equals(likes, video.likes) &&
+                Objects.equals(player, video.player) &&
                 Objects.equals(liveStartTime, video.liveStartTime) &&
                 Objects.equals(image, video.image) &&
                 Objects.equals(comments, video.comments) &&
@@ -701,6 +730,7 @@ public class Video implements Validable {
                 Objects.equals(spectators, video.spectators) &&
                 Objects.equals(canSubscribe, video.canSubscribe) &&
                 Objects.equals(canRepost, video.canRepost) &&
+                Objects.equals(canEditPrivacy, video.canEditPrivacy) &&
                 Objects.equals(userId, video.userId) &&
                 Objects.equals(accessKey, video.accessKey) &&
                 Objects.equals(width, video.width) &&
@@ -708,8 +738,8 @@ public class Video implements Validable {
                 Objects.equals(isSubscribed, video.isSubscribed) &&
                 Objects.equals(trackCode, video.trackCode) &&
                 Objects.equals(canAdd, video.canAdd) &&
-                Objects.equals(upcoming, video.upcoming) &&
                 Objects.equals(reposts, video.reposts) &&
+                Objects.equals(upcoming, video.upcoming) &&
                 Objects.equals(firstFrame, video.firstFrame);
     }
 
@@ -721,17 +751,18 @@ public class Video implements Validable {
 
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("Video{");
-        sb.append("isPrivate=").append(isPrivate);
-        sb.append(", date=").append(date);
+        sb.append("date=").append(date);
+        sb.append(", isPrivate=").append(isPrivate);
         sb.append(", isFavorite=").append(isFavorite);
         sb.append(", addingDate=").append(addingDate);
         sb.append(", canAddToFaves=").append(canAddToFaves);
         sb.append(", added=").append(added);
-        sb.append(", ownerId=").append(ownerId);
         sb.append(", converting=").append(converting);
+        sb.append(", ownerId=").append(ownerId);
         sb.append(", liveNotify=").append(liveNotify);
-        sb.append(", description='").append(description).append("'");
         sb.append(", contentRestrictedMessage='").append(contentRestrictedMessage).append("'");
+        sb.append(", description='").append(description).append("'");
+        sb.append(", responseType='").append(responseType).append("'");
         sb.append(", canAttachLink=").append(canAttachLink);
         sb.append(", title='").append(title).append("'");
         sb.append(", type='").append(type).append("'");
@@ -741,14 +772,14 @@ public class Video implements Validable {
         sb.append(", localViews=").append(localViews);
         sb.append(", balance=").append(balance);
         sb.append(", canLike=").append(canLike);
+        sb.append(", canDelete=").append(canDelete);
         sb.append(", repeat=").append(repeat);
         sb.append(", id=").append(id);
-        sb.append(", views=").append(views);
         sb.append(", live=").append(live);
+        sb.append(", views=").append(views);
         sb.append(", height=").append(height);
-        sb.append(", player=").append(player);
-        sb.append(", liveStatus='").append(liveStatus).append("'");
         sb.append(", likes=").append(likes);
+        sb.append(", player=").append(player);
         sb.append(", liveStartTime=").append(liveStartTime);
         sb.append(", image=").append(image);
         sb.append(", comments=").append(comments);
@@ -757,6 +788,7 @@ public class Video implements Validable {
         sb.append(", spectators=").append(spectators);
         sb.append(", canSubscribe=").append(canSubscribe);
         sb.append(", canRepost=").append(canRepost);
+        sb.append(", canEditPrivacy=").append(canEditPrivacy);
         sb.append(", userId=").append(userId);
         sb.append(", accessKey='").append(accessKey).append("'");
         sb.append(", width=").append(width);
@@ -764,8 +796,8 @@ public class Video implements Validable {
         sb.append(", isSubscribed=").append(isSubscribed);
         sb.append(", trackCode='").append(trackCode).append("'");
         sb.append(", canAdd=").append(canAdd);
-        sb.append(", upcoming=").append(upcoming);
         sb.append(", reposts=").append(reposts);
+        sb.append(", upcoming=").append(upcoming);
         sb.append(", firstFrame=").append(firstFrame);
         sb.append('}');
         return sb.toString();

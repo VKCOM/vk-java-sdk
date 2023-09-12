@@ -27,7 +27,13 @@ public enum ReportPostReason implements EnumParam {
     ADULT_MATERIAL(5),
 
     @SerializedName("6")
-    INSULT_ABUSE(6);
+    INSULT_ABUSE(6),
+
+    @SerializedName("8")
+    SUICIDE_CALLS(8),
+
+    @SerializedName("11")
+    WEAPONS_SELLING(11);
 
     private final Integer value;
 

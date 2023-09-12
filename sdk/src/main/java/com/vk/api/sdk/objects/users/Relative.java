@@ -19,9 +19,10 @@ public class Relative implements Validable {
 
     /**
      * Relative ID
+     * Entity: owner
      */
     @SerializedName("id")
-    private Integer id;
+    private Long id;
 
     /**
      * Name of relative
@@ -45,11 +46,11 @@ public class Relative implements Validable {
         return this;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Relative setId(Integer id) {
+    public Relative setId(Long id) {
         this.id = id;
         return this;
     }

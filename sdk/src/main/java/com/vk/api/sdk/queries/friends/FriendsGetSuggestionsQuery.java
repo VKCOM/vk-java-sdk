@@ -4,7 +4,8 @@ package com.vk.api.sdk.queries.friends;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
-import com.vk.api.sdk.objects.friends.GetSuggestionsNameCase;
+import com.vk.api.sdk.objects.annotations.ApiParam;
+import com.vk.api.sdk.objects.base.NameCase;
 import com.vk.api.sdk.objects.friends.responses.GetSuggestionsResponse;
 import com.vk.api.sdk.objects.users.Fields;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetSuggestionsQuery, GetSuggestionsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "count" parameter. Maximum is 500. Minimum is 0. By default 500.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public FriendsGetSuggestionsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -41,37 +43,41 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "offset" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public FriendsGetSuggestionsQuery offset(Integer value) {
         return unsafeParam("offset", value);
     }
 
     /**
-     * Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+     * Case for declension of user name and surname: , 'nom' - nominative (default) , 'gen' - genitive , 'dat' - dative , 'acc' - accusative , 'ins' - instrumental , 'abl' - prepositional
      *
      * @param value value of "name case" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public FriendsGetSuggestionsQuery nameCase(GetSuggestionsNameCase value) {
+    @ApiParam("name_case")
+    public FriendsGetSuggestionsQuery nameCase(NameCase value) {
         return unsafeParam("name_case", value);
     }
 
     /**
      * filter
-     * Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
+     * Types of potential friends to return: 'mutual' - users with many mutual friends , 'contacts' - users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' - users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public FriendsGetSuggestionsQuery filter(String... value) {
         return unsafeParam("filter", value);
     }
 
     /**
-     * Types of potential friends to return: 'mutual' — users with many mutual friends , 'contacts' — users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' — users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
+     * Types of potential friends to return: 'mutual' - users with many mutual friends , 'contacts' - users found with the [vk.com/dev/account.importContacts|account.importContacts] method , 'mutual_contacts' - users who imported the same contacts as the current user with the [vk.com/dev/account.importContacts|account.importContacts] method
      *
      * @param value value of "filter" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filter")
     public FriendsGetSuggestionsQuery filter(List<String> value) {
         return unsafeParam("filter", value);
     }
@@ -83,6 +89,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FriendsGetSuggestionsQuery fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -93,6 +100,7 @@ public class FriendsGetSuggestionsQuery extends AbstractQueryBuilder<FriendsGetS
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public FriendsGetSuggestionsQuery fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.objects.adsweb.responses.GetAdCategoriesResponse;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,16 +14,27 @@ import java.util.List;
  */
 public class AdswebGetAdCategoriesQuery extends AbstractQueryBuilder<AdswebGetAdCategoriesQuery, GetAdCategoriesResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
      * @param officeId value of "office id" parameter.
      */
-    public AdswebGetAdCategoriesQuery(VkApiClient client, UserActor actor, int officeId) {
+    public AdswebGetAdCategoriesQuery(VkApiClient client, UserActor actor, Integer officeId) {
         super(client, "adsweb.getAdCategories", GetAdCategoriesResponse.class);
         accessToken(actor.getAccessToken());
         officeId(officeId);
+    }
+
+    /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public AdswebGetAdCategoriesQuery(VkApiClient client, UserActor actor) {
+        super(client, "adsweb.getAdCategories", GetAdCategoriesResponse.class);
+        accessToken(actor.getAccessToken());
     }
 
     /**
@@ -31,7 +43,8 @@ public class AdswebGetAdCategoriesQuery extends AbstractQueryBuilder<AdswebGetAd
      * @param value value of "office id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected AdswebGetAdCategoriesQuery officeId(int value) {
+    @ApiParam("office_id")
+    public AdswebGetAdCategoriesQuery officeId(Integer value) {
         return unsafeParam("office_id", value);
     }
 

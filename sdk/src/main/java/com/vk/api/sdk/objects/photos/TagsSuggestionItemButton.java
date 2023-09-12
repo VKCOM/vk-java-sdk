@@ -10,23 +10,14 @@ import java.util.Objects;
  * TagsSuggestionItemButton object
  */
 public class TagsSuggestionItemButton implements Validable {
-    @SerializedName("title")
-    private String title;
-
     @SerializedName("action")
     private TagsSuggestionItemButtonAction action;
 
     @SerializedName("style")
     private TagsSuggestionItemButtonStyle style;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public TagsSuggestionItemButton setTitle(String title) {
-        this.title = title;
-        return this;
-    }
+    @SerializedName("title")
+    private String title;
 
     public TagsSuggestionItemButtonAction getAction() {
         return action;
@@ -43,6 +34,15 @@ public class TagsSuggestionItemButton implements Validable {
 
     public TagsSuggestionItemButton setStyle(TagsSuggestionItemButtonStyle style) {
         this.style = style;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public TagsSuggestionItemButton setTitle(String title) {
+        this.title = title;
         return this;
     }
 

@@ -10,14 +10,17 @@ import java.util.Objects;
  * DonutSubscriptionExpired object
  */
 public class DonutSubscriptionExpired implements Validable {
+    /**
+     * Entity: owner
+     */
     @SerializedName("user_id")
-    private Integer userId;
+    private Long userId;
 
-    public Integer getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public DonutSubscriptionExpired setUserId(Integer userId) {
+    public DonutSubscriptionExpired setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.newsfeed;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.UserGroupFields;
 import com.vk.api.sdk.objects.newsfeed.CommentsFilters;
 import com.vk.api.sdk.objects.newsfeed.responses.GetCommentsResponse;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCommentsQuery, GetCommentsResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -31,6 +32,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "count" parameter. Maximum is 100. Minimum is 0. By default 30.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public NewsfeedGetCommentsQuery count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -41,6 +43,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "reposts" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reposts")
     public NewsfeedGetCommentsQuery reposts(String value) {
         return unsafeParam("reposts", value);
     }
@@ -51,6 +54,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "start time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_time")
     public NewsfeedGetCommentsQuery startTime(Integer value) {
         return unsafeParam("start_time", value);
     }
@@ -61,6 +65,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "end time" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_time")
     public NewsfeedGetCommentsQuery endTime(Integer value) {
         return unsafeParam("end_time", value);
     }
@@ -71,6 +76,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "last comments count" parameter. Maximum is 10. Minimum is 0. By default 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("last_comments_count")
     public NewsfeedGetCommentsQuery lastCommentsCount(Integer value) {
         return unsafeParam("last_comments_count", value);
     }
@@ -81,27 +87,30 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "start from" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_from")
     public NewsfeedGetCommentsQuery startFrom(String value) {
         return unsafeParam("start_from", value);
     }
 
     /**
      * filters
-     * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+     * Filters to apply: 'post' - new comments on wall posts, 'photo' - new comments on photos, 'video' - new comments on videos, 'topic' - new comments on discussions, 'note' - new comments on notes,
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public NewsfeedGetCommentsQuery filters(CommentsFilters... value) {
         return unsafeParam("filters", value);
     }
 
     /**
-     * Filters to apply: 'post' — new comments on wall posts, 'photo' — new comments on photos, 'video' — new comments on videos, 'topic' — new comments on discussions, 'note' — new comments on notes,
+     * Filters to apply: 'post' - new comments on wall posts, 'photo' - new comments on photos, 'video' - new comments on videos, 'topic' - new comments on discussions, 'note' - new comments on notes,
      *
      * @param value value of "filters" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("filters")
     public NewsfeedGetCommentsQuery filters(List<CommentsFilters> value) {
         return unsafeParam("filters", value);
     }
@@ -113,6 +122,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetCommentsQuery fields(UserGroupFields... value) {
         return unsafeParam("fields", value);
     }
@@ -123,6 +133,7 @@ public class NewsfeedGetCommentsQuery extends AbstractQueryBuilder<NewsfeedGetCo
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public NewsfeedGetCommentsQuery fields(List<UserGroupFields> value) {
         return unsafeParam("fields", value);
     }

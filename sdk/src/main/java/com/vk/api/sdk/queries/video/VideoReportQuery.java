@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.video;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.base.responses.OkResponse;
 import com.vk.api.sdk.objects.video.ReportReason;
 import java.util.Arrays;
@@ -14,14 +15,15 @@ import java.util.List;
  */
 public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
-     * @param ownerId value of "owner id" parameter.
+     * @param ownerId value of "owner id" parameter. Entity - owner
+     *
      * @param videoId value of "video id" parameter. Minimum is 0.
      */
-    public VideoReportQuery(VkApiClient client, UserActor actor, int ownerId, int videoId) {
+    public VideoReportQuery(VkApiClient client, UserActor actor, Long ownerId, Integer videoId) {
         super(client, "video.report", OkResponse.class);
         accessToken(actor.getAccessToken());
         ownerId(ownerId);
@@ -29,12 +31,25 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public VideoReportQuery(VkApiClient client, UserActor actor) {
+        super(client, "video.report", OkResponse.class);
+        accessToken(actor.getAccessToken());
+    }
+
+    /**
      * ID of the user or community that owns the video.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoReportQuery ownerId(int value) {
+    @ApiParam("owner_id")
+    public VideoReportQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -44,7 +59,8 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
      * @param value value of "video id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    protected VideoReportQuery videoId(int value) {
+    @ApiParam("video_id")
+    public VideoReportQuery videoId(Integer value) {
         return unsafeParam("video_id", value);
     }
 
@@ -54,6 +70,7 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
      * @param value value of "reason" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("reason")
     public VideoReportQuery reason(ReportReason value) {
         return unsafeParam("reason", value);
     }
@@ -64,6 +81,7 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
      * @param value value of "comment" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("comment")
     public VideoReportQuery comment(String value) {
         return unsafeParam("comment", value);
     }
@@ -74,6 +92,7 @@ public class VideoReportQuery extends AbstractQueryBuilder<VideoReportQuery, OkR
      * @param value value of "search query" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("search_query")
     public VideoReportQuery searchQuery(String value) {
         return unsafeParam("search_query", value);
     }

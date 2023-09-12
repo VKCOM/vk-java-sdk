@@ -12,11 +12,17 @@ import java.util.Objects;
  */
 public class ItemDigestHeader implements Validable {
     /**
-     * Title of the header
+     * Optional field for red badge in Trends feed blocks
      */
-    @SerializedName("title")
+    @SerializedName("badge_text")
+    private String badgeText;
+
+    @SerializedName("button")
+    private ItemDigestButton button;
+
+    @SerializedName("style")
     @Required
-    private String title;
+    private ItemDigestHeaderStyle style;
 
     /**
      * Subtitle of the header, when title have two strings
@@ -24,37 +30,19 @@ public class ItemDigestHeader implements Validable {
     @SerializedName("subtitle")
     private String subtitle;
 
-    @SerializedName("style")
+    /**
+     * Title of the header
+     */
+    @SerializedName("title")
     @Required
-    private ItemDigestHeaderStyle style;
+    private String title;
 
-    @SerializedName("button")
-    private ItemDigestButton button;
-
-    public String getTitle() {
-        return title;
+    public String getBadgeText() {
+        return badgeText;
     }
 
-    public ItemDigestHeader setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public ItemDigestHeader setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
-        return this;
-    }
-
-    public ItemDigestHeaderStyle getStyle() {
-        return style;
-    }
-
-    public ItemDigestHeader setStyle(ItemDigestHeaderStyle style) {
-        this.style = style;
+    public ItemDigestHeader setBadgeText(String badgeText) {
+        this.badgeText = badgeText;
         return this;
     }
 
@@ -67,9 +55,36 @@ public class ItemDigestHeader implements Validable {
         return this;
     }
 
+    public ItemDigestHeaderStyle getStyle() {
+        return style;
+    }
+
+    public ItemDigestHeader setStyle(ItemDigestHeaderStyle style) {
+        this.style = style;
+        return this;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public ItemDigestHeader setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+        return this;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ItemDigestHeader setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(button, subtitle, style, title);
+        return Objects.hash(button, subtitle, style, title, badgeText);
     }
 
     @Override
@@ -78,6 +93,7 @@ public class ItemDigestHeader implements Validable {
         if (o == null || getClass() != o.getClass()) return false;
         ItemDigestHeader itemDigestHeader = (ItemDigestHeader) o;
         return Objects.equals(button, itemDigestHeader.button) &&
+                Objects.equals(badgeText, itemDigestHeader.badgeText) &&
                 Objects.equals(subtitle, itemDigestHeader.subtitle) &&
                 Objects.equals(style, itemDigestHeader.style) &&
                 Objects.equals(title, itemDigestHeader.title);
@@ -92,6 +108,7 @@ public class ItemDigestHeader implements Validable {
     public String toPrettyString() {
         final StringBuilder sb = new StringBuilder("ItemDigestHeader{");
         sb.append("button=").append(button);
+        sb.append(", badgeText='").append(badgeText).append("'");
         sb.append(", subtitle='").append(subtitle).append("'");
         sb.append(", style='").append(style).append("'");
         sb.append(", title='").append(title).append("'");

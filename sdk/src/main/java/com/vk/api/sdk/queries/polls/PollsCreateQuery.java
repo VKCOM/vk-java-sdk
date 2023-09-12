@@ -4,6 +4,7 @@ package com.vk.api.sdk.queries.polls;
 import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.polls.CreateBackgroundId;
 import com.vk.api.sdk.objects.polls.responses.CreateResponse;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, CreateResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -30,6 +31,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "question" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("question")
     public PollsCreateQuery question(String value) {
         return unsafeParam("question", value);
     }
@@ -40,6 +42,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "is anonymous" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_anonymous")
     public PollsCreateQuery isAnonymous(Boolean value) {
         return unsafeParam("is_anonymous", value);
     }
@@ -50,6 +53,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "is multiple" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("is_multiple")
     public PollsCreateQuery isMultiple(Boolean value) {
         return unsafeParam("is_multiple", value);
     }
@@ -60,6 +64,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "end date" parameter. Minimum is 1550700000.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("end_date")
     public PollsCreateQuery endDate(Integer value) {
         return unsafeParam("end_date", value);
     }
@@ -67,10 +72,12 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
     /**
      * If a poll will be added to a communty it is required to send a negative group identifier. Current user by default.
      *
-     * @param value value of "owner id" parameter.
+     * @param value value of "owner id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public PollsCreateQuery ownerId(Integer value) {
+    @ApiParam("owner_id")
+    public PollsCreateQuery ownerId(Long value) {
         return unsafeParam("owner_id", value);
     }
 
@@ -80,6 +87,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "app id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("app_id")
     public PollsCreateQuery appId(Integer value) {
         return unsafeParam("app_id", value);
     }
@@ -90,6 +98,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "add answers" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("add_answers")
     public PollsCreateQuery addAnswers(String value) {
         return unsafeParam("add_answers", value);
     }
@@ -100,6 +109,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "photo id" parameter. Minimum is 0.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("photo_id")
     public PollsCreateQuery photoId(Integer value) {
         return unsafeParam("photo_id", value);
     }
@@ -110,6 +120,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "background id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("background_id")
     public PollsCreateQuery backgroundId(CreateBackgroundId value) {
         return unsafeParam("background_id", value);
     }
@@ -120,6 +131,7 @@ public class PollsCreateQuery extends AbstractQueryBuilder<PollsCreateQuery, Cre
      * @param value value of "disable unvote" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("disable_unvote")
     public PollsCreateQuery disableUnvote(Boolean value) {
         return unsafeParam("disable_unvote", value);
     }

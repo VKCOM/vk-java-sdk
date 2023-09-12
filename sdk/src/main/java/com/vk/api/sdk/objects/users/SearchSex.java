@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.queries.EnumParam;
 
 /**
- * '1' — female, '2' — male, '0' — any (default)
+ * '1' - female, '2' - male, '0' - any (default)
  */
 public enum SearchSex implements EnumParam {
     @SerializedName("0")

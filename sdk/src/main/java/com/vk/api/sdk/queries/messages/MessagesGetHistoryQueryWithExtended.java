@@ -5,6 +5,7 @@ import com.vk.api.sdk.client.AbstractQueryBuilder;
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.objects.annotations.ApiParam;
 import com.vk.api.sdk.objects.messages.GetHistoryRev;
 import com.vk.api.sdk.objects.messages.responses.GetHistoryExtendedResponse;
 import com.vk.api.sdk.objects.users.Fields;
@@ -16,19 +17,7 @@ import java.util.List;
  */
 public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<MessagesGetHistoryQueryWithExtended, GetHistoryExtendedResponse> {
     /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
-     *
-     * @param client VK API client
-     * @param actor actor with access token
-     */
-    public MessagesGetHistoryQueryWithExtended(VkApiClient client, UserActor actor) {
-        super(client, "messages.getHistory", GetHistoryExtendedResponse.class);
-        accessToken(actor.getAccessToken());
-        extended(true);
-    }
-
-    /**
-     * Creates a AbstractQueryBuilder instance that can be used to build api request with various parameters
+     * Creates a AbstractQueryBuilder instance that can be used to build group api request with various parameters
      *
      * @param client VK API client
      * @param actor actor with access token
@@ -41,11 +30,24 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
     }
 
     /**
+     * Creates a AbstractQueryBuilder instance that can be used to build user api request with various parameters
+     *
+     * @param client VK API client
+     * @param actor actor with access token
+     */
+    public MessagesGetHistoryQueryWithExtended(VkApiClient client, UserActor actor) {
+        super(client, "messages.getHistory", GetHistoryExtendedResponse.class);
+        accessToken(actor.getAccessToken());
+        extended(true);
+    }
+
+    /**
      * Offset needed to return a specific subset of messages.
      *
      * @param value value of "offset" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("offset")
     public MessagesGetHistoryQueryWithExtended offset(Integer value) {
         return unsafeParam("offset", value);
     }
@@ -56,6 +58,7 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
      * @param value value of "count" parameter. Maximum is 200. Minimum is 0. By default 20.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("count")
     public MessagesGetHistoryQueryWithExtended count(Integer value) {
         return unsafeParam("count", value);
     }
@@ -63,39 +66,45 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
     /**
      * ID of the user whose message history you want to return.
      *
-     * @param value value of "user id" parameter.
+     * @param value value of "user id" parameter. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQueryWithExtended userId(Integer value) {
+    @ApiParam("user_id")
+    public MessagesGetHistoryQueryWithExtended userId(Long value) {
         return unsafeParam("user_id", value);
     }
 
     /**
      * Set peer id
      *
-     * @param value value of "peer id" parameter.
+     * @param value value of "peer id" parameter. Entity - peer
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQueryWithExtended peerId(Integer value) {
+    @ApiParam("peer_id")
+    public MessagesGetHistoryQueryWithExtended peerId(Long value) {
         return unsafeParam("peer_id", value);
     }
 
     /**
      * Starting message ID from which to return history.
      *
-     * @param value value of "start message id" parameter. Minimum is 0.
+     * @param value value of "start message id" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("start_message_id")
     public MessagesGetHistoryQueryWithExtended startMessageId(Integer value) {
         return unsafeParam("start_message_id", value);
     }
 
     /**
-     * Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
+     * Sort order: '1' - return messages in chronological order. '0' - return messages in reverse chronological order.
      *
      * @param value value of "rev" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("rev")
     public MessagesGetHistoryQueryWithExtended rev(GetHistoryRev value) {
         return unsafeParam("rev", value);
     }
@@ -106,6 +115,7 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
      * @param value value of "extended" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("extended")
     protected MessagesGetHistoryQueryWithExtended extended(Boolean value) {
         return unsafeParam("extended", value);
     }
@@ -113,10 +123,12 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
     /**
      * Group ID (for group messages with group access token)
      *
-     * @param value value of "group id" parameter. Minimum is 0.
+     * @param value value of "group id" parameter. Minimum is 0. Entity - owner
+     *
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
-    public MessagesGetHistoryQueryWithExtended groupId(Integer value) {
+    @ApiParam("group_id")
+    public MessagesGetHistoryQueryWithExtended groupId(Long value) {
         return unsafeParam("group_id", value);
     }
 
@@ -127,6 +139,7 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetHistoryQueryWithExtended fields(Fields... value) {
         return unsafeParam("fields", value);
     }
@@ -137,6 +150,7 @@ public class MessagesGetHistoryQueryWithExtended extends AbstractQueryBuilder<Me
      * @param value value of "fields" parameter.
      * @return a reference to this {@code AbstractQueryBuilder} object to fulfill the "Builder" pattern.
      */
+    @ApiParam("fields")
     public MessagesGetHistoryQueryWithExtended fields(List<Fields> value) {
         return unsafeParam("fields", value);
     }

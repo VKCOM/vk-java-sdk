@@ -31,9 +31,11 @@ public class PinnedMessage implements Validable {
 
     /**
      * Message author's ID
+     * Entity: owner
      */
     @SerializedName("from_id")
-    private Integer fromId;
+    @Required
+    private Long fromId;
 
     /**
      * Forwarded messages
@@ -51,11 +53,16 @@ public class PinnedMessage implements Validable {
     @Required
     private Integer id;
 
+    @SerializedName("keyboard")
+    private Keyboard keyboard;
+
     /**
      * Peer ID
+     * Entity: peer
      */
     @SerializedName("peer_id")
-    private Integer peerId;
+    @Required
+    private Long peerId;
 
     @SerializedName("reply_message")
     private ForeignMessage replyMessage;
@@ -66,9 +73,6 @@ public class PinnedMessage implements Validable {
     @SerializedName("text")
     @Required
     private String text;
-
-    @SerializedName("keyboard")
-    private Keyboard keyboard;
 
     public List<MessageAttachment> getAttachments() {
         return attachments;
@@ -97,11 +101,11 @@ public class PinnedMessage implements Validable {
         return this;
     }
 
-    public Integer getFromId() {
+    public Long getFromId() {
         return fromId;
     }
 
-    public PinnedMessage setFromId(Integer fromId) {
+    public PinnedMessage setFromId(Long fromId) {
         this.fromId = fromId;
         return this;
     }
@@ -133,11 +137,20 @@ public class PinnedMessage implements Validable {
         return this;
     }
 
-    public Integer getPeerId() {
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public PinnedMessage setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+        return this;
+    }
+
+    public Long getPeerId() {
         return peerId;
     }
 
-    public PinnedMessage setPeerId(Integer peerId) {
+    public PinnedMessage setPeerId(Long peerId) {
         this.peerId = peerId;
         return this;
     }
@@ -157,15 +170,6 @@ public class PinnedMessage implements Validable {
 
     public PinnedMessage setText(String text) {
         this.text = text;
-        return this;
-    }
-
-    public Keyboard getKeyboard() {
-        return keyboard;
-    }
-
-    public PinnedMessage setKeyboard(Keyboard keyboard) {
-        this.keyboard = keyboard;
         return this;
     }
 

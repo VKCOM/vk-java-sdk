@@ -4,6 +4,7 @@ package com.vk.api.sdk.objects.adsweb.responses;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.vk.api.sdk.objects.Validable;
+import com.vk.api.sdk.objects.adsweb.GetAdUnitsResponseAdUnitsAdUnit;
 import com.vk.api.sdk.objects.annotations.Required;
 import java.util.List;
 import java.util.Objects;
@@ -12,21 +13,12 @@ import java.util.Objects;
  * GetAdUnitsResponse object
  */
 public class GetAdUnitsResponse implements Validable {
-    @SerializedName("count")
-    @Required
-    private Integer count;
-
     @SerializedName("ad_units")
     private List<GetAdUnitsResponseAdUnitsAdUnit> adUnits;
 
-    public Integer getCount() {
-        return count;
-    }
-
-    public GetAdUnitsResponse setCount(Integer count) {
-        this.count = count;
-        return this;
-    }
+    @SerializedName("count")
+    @Required
+    private Integer count;
 
     public List<GetAdUnitsResponseAdUnitsAdUnit> getAdUnits() {
         return adUnits;
@@ -34,6 +26,15 @@ public class GetAdUnitsResponse implements Validable {
 
     public GetAdUnitsResponse setAdUnits(List<GetAdUnitsResponseAdUnitsAdUnit> adUnits) {
         this.adUnits = adUnits;
+        return this;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public GetAdUnitsResponse setCount(Integer count) {
+        this.count = count;
         return this;
     }
 

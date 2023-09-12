@@ -9,26 +9,26 @@ import com.vk.api.sdk.queries.EnumParam;
  */
 public enum CriteriaSex implements EnumParam {
     @SerializedName("0")
-    ANY(0),
+    ANY("0"),
 
     @SerializedName("1")
-    MALE(1),
+    MALE("1"),
 
     @SerializedName("2")
-    FEMALE(2);
+    FEMALE("2");
 
-    private final Integer value;
+    private final String value;
 
-    CriteriaSex(Integer value) {
+    CriteriaSex(String value) {
         this.value = value;
     }
 
     public String getValue() {
-        return value.toString();
+        return value;
     }
 
     @Override
     public String toString() {
-        return value.toString().toLowerCase();
+        return value.toLowerCase();
     }
 }

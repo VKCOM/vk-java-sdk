@@ -7,7 +7,7 @@ import com.vk.api.sdk.objects.Validable;
 import com.vk.api.sdk.objects.annotations.Required;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.users.UserFull;
-import com.vk.api.sdk.objects.wall.WallpostFull;
+import com.vk.api.sdk.objects.wall.WallItem;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,17 +22,17 @@ public class GetExtendedResponse implements Validable {
     @Required
     private Integer count;
 
+    @SerializedName("groups")
+    @Required
+    private List<GroupFull> groups;
+
     @SerializedName("items")
     @Required
-    private List<WallpostFull> items;
+    private List<WallItem> items;
 
     @SerializedName("profiles")
     @Required
     private List<UserFull> profiles;
-
-    @SerializedName("groups")
-    @Required
-    private List<GroupFull> groups;
 
     public Integer getCount() {
         return count;
@@ -43,11 +43,20 @@ public class GetExtendedResponse implements Validable {
         return this;
     }
 
-    public List<WallpostFull> getItems() {
+    public List<GroupFull> getGroups() {
+        return groups;
+    }
+
+    public GetExtendedResponse setGroups(List<GroupFull> groups) {
+        this.groups = groups;
+        return this;
+    }
+
+    public List<WallItem> getItems() {
         return items;
     }
 
-    public GetExtendedResponse setItems(List<WallpostFull> items) {
+    public GetExtendedResponse setItems(List<WallItem> items) {
         this.items = items;
         return this;
     }
@@ -58,15 +67,6 @@ public class GetExtendedResponse implements Validable {
 
     public GetExtendedResponse setProfiles(List<UserFull> profiles) {
         this.profiles = profiles;
-        return this;
-    }
-
-    public List<GroupFull> getGroups() {
-        return groups;
-    }
-
-    public GetExtendedResponse setGroups(List<GroupFull> groups) {
-        this.groups = groups;
         return this;
     }
 

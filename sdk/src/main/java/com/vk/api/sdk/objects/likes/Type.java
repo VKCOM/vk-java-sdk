@@ -42,7 +42,16 @@ public enum Type implements EnumParam {
     SITEPAGE("sitepage"),
 
     @SerializedName("textpost")
-    TEXTPOST("textpost");
+    TEXTPOST("textpost"),
+
+    @SerializedName("community_review")
+    COMMUNITY_REVIEW("community_review"),
+
+    @SerializedName("story")
+    STORY("story"),
+
+    @SerializedName("group_like")
+    GROUP_LIKE("group_like");
 
     private final String value;
 

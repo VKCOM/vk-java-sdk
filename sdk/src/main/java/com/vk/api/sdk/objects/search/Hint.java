@@ -35,6 +35,9 @@ public class Hint implements Validable {
     @SerializedName("group")
     private Group group;
 
+    @SerializedName("link")
+    private Link link;
+
     @SerializedName("profile")
     private UserMin profile;
 
@@ -44,9 +47,6 @@ public class Hint implements Validable {
     @SerializedName("type")
     @Required
     private HintType type;
-
-    @SerializedName("link")
-    private Link link;
 
     public App getApp() {
         return app;
@@ -83,6 +83,15 @@ public class Hint implements Validable {
         return this;
     }
 
+    public Link getLink() {
+        return link;
+    }
+
+    public Hint setLink(Link link) {
+        this.link = link;
+        return this;
+    }
+
     public UserMin getProfile() {
         return profile;
     }
@@ -107,15 +116,6 @@ public class Hint implements Validable {
 
     public Hint setType(HintType type) {
         this.type = type;
-        return this;
-    }
-
-    public Link getLink() {
-        return link;
-    }
-
-    public Hint setLink(Link link) {
-        this.link = link;
         return this;
     }
 
