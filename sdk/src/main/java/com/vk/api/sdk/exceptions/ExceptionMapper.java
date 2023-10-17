@@ -39,7 +39,7 @@ public class ExceptionMapper {
             case 16:
                 return new ApiAuthHttpsException(error.getErrorMsg());
             case 17:
-                return new ApiAuthValidationException(error.getErrorMsg());
+                return new ApiAuthValidationException(error.getErrorMsg(), error.getRedirectUri());
             case 18:
                 return new ApiUserDeletedException(error.getErrorMsg());
             case 19:
