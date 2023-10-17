@@ -31,7 +31,7 @@ public abstract class EventsHandler {
         return null;
     }
 
-    protected void messageNew(Integer groupId, Message message) {
+    protected void messageNew(Integer groupId, MessageObject message) {
         LOG.error(OVERRIDING_ERR);
     }
 
