@@ -22,7 +22,7 @@ public class GetTitlesResponse implements Validable {
      * Page creator name
      */
     @SerializedName("creator_name")
-    private Integer creatorName;
+    private String creatorName;
 
     /**
      * Last editor ID
@@ -84,11 +84,11 @@ public class GetTitlesResponse implements Validable {
         return this;
     }
 
-    public Integer getCreatorName() {
+    public String getCreatorName() {
         return creatorName;
     }
 
-    public GetTitlesResponse setCreatorName(Integer creatorName) {
+    public GetTitlesResponse setCreatorName(String creatorName) {
         this.creatorName = creatorName;
         return this;
     }

@@ -21,7 +21,7 @@ public class Wikipage implements Validable {
      * Page creator name
      */
     @SerializedName("creator_name")
-    private Integer creatorName;
+    private String creatorName;
 
     /**
      * Last editor ID
@@ -83,11 +83,11 @@ public class Wikipage implements Validable {
         return this;
     }
 
-    public Integer getCreatorName() {
+    public String getCreatorName() {
         return creatorName;
     }
 
-    public Wikipage setCreatorName(Integer creatorName) {
+    public Wikipage setCreatorName(String creatorName) {
         this.creatorName = creatorName;
         return this;
     }
